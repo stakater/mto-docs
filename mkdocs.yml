@@ -1,7 +1,9 @@
 site_name: Multi Tenant Operator
 docs_dir: content
-site_url: https://docs.stakater.com/mto
+site_url: https://docs.stakater.com/
 repo_url: https://github.com/stakater/mto-docs
+edit_uri: blob/main/content/
+use_directory_urls: false
 theme:
     name: material
     prev_next_buttons_location: none
@@ -10,6 +12,16 @@ theme:
     custom_dir: custom_theme/
     palette:
         primary: white
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
 extra:
     analytics:
         provider: google
