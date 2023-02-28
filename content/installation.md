@@ -310,5 +310,5 @@ A default `IntegrationConfig` is installed with MTO, which can be found in `stak
 ## Notes
 
 * If MTO is deployed in a newly created namespace, restart its pod once so MTO can retrieve webhook-server-cert provided by OpenShift (if the pod is started before the secret was made).
-* For more details on how to use MTO please refer [use-cases](./../multi-tenant-operator/usecases/quota.md).
-* For more details on how to extend your MTO manager ClusterRole please refer [use-cases](./../multi-tenant-operator/usecases/manager-clusterrole.md).
+* For more details on how to use MTO please refer [use-cases](./usecases/quota.md).
+* For more details on how to extend your MTO manager ClusterRole please refer [use-cases](./usecases/manager-clusterrole.md).

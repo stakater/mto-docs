@@ -54,7 +54,7 @@ In order to use the Software under this Agreement, you must receive a license ke
 
 ## 6. Support, Maintenance and Services
 
-- 6.1 Subject to the terms and conditions of this Agreement, as set forth in your invoice, and as set forth on the Multi Tenant Operator [support page](../support/support.md), support and maintenance services may be included with the purchase of your license subscription.
+- 6.1 Subject to the terms and conditions of this Agreement, as set forth in your invoice, and as set forth on the [Stakater support page](https://docs.stakater.com/content/sre/support/support.html), support and maintenance services may be included with the purchase of your license subscription.
 
 ## 7. Disclaimer of Warranties
 
@@ -94,7 +94,7 @@ In order to use the Software under this Agreement, you must receive a license ke
 
 - 12.1 Entire Agreement. This Agreement sets forth our entire agreement with respect to the Software and the subject matter hereof and supersedes all prior and contemporaneous understandings and agreements whether written or oral.
 
-- 12.2 Amendment. The Company reserves the right, in its sole discretion, to amend this Agreement from time. Amendments are managed as described in [General Provisions](../../openshift-as-a-service/general-provisions.md).
+- 12.2 Amendment. The Company reserves the right, in its sole discretion, to amend this Agreement from time. Amendments are managed as described in [General Provisions](https://docs.stakater.com/content/openshift-as-a-service/general-provisions.html).
 
 - 12.3 Assignment. You may not assign this Agreement or any of its rights under this Agreement without the prior written consent of The Company and any attempted assignment without such consent shall be void.
 
