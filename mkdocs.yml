@@ -1,0 +1,64 @@
+site_name: Multi Tenant Operator
+docs_dir: content
+site_url: https://docs.stakater.com/mto
+repo_url: https://github.com/stakater/mto-docs
+theme:
+    name: material
+    prev_next_buttons_location: none
+    logo: assets/images/favicon.svg
+    favicon: assets/images/favicon.svg
+    custom_dir: custom_theme/
+    palette:
+        primary: white
+    features:
+        - navigation.tabs
+extra:
+    analytics:
+        provider: google
+        property: G-TTH1YYW5TX
+    consent:
+        title: Cookie consent
+        actions:
+            - accept
+            - reject
+            - manage
+        description: >-
+            We use cookies to recognize your repeated visits and preferences, as well
+            as to measure the effectiveness of our documentation and whether users
+            find what they're searching for. With your consent, you're helping us to
+            make our documentation better.
+nav:
+    - content/sre/multi-tenant-operator/overview.md
+    - content/sre/multi-tenant-operator/eula.md
+    - content/sre/multi-tenant-operator/features.md
+    - content/sre/multi-tenant-operator/installation.md
+    - content/sre/multi-tenant-operator/integration-config.md
+    - content/sre/multi-tenant-operator/customresources.md
+    - content/sre/multi-tenant-operator/tenant-roles.md
+    - Use Cases:
+        - content/sre/multi-tenant-operator/usecases/quota.md
+        - content/sre/multi-tenant-operator/usecases/tenant.md
+        - content/sre/multi-tenant-operator/usecases/namespace.md
+        - content/sre/multi-tenant-operator/usecases/volume-limits.md
+        - content/sre/multi-tenant-operator/usecases/template.md
+        - content/sre/multi-tenant-operator/usecases/deploying-templates.md
+        - content/sre/multi-tenant-operator/usecases/custom-roles.md
+        - content/sre/multi-tenant-operator/usecases/mapping-resources.md
+        - content/sre/multi-tenant-operator/usecases/secret-distribution.md
+        - content/sre/multi-tenant-operator/usecases/configuring-multitenant-network-isolation.md
+        - content/sre/multi-tenant-operator/usecases/distributing-secrets-using-sealed-secret-template.md
+        - content/sre/multi-tenant-operator/usecases/integrationconfig.md
+        - content/sre/multi-tenant-operator/usecases/argocd.md
+        - content/sre/multi-tenant-operator/usecases/mattermost.md
+        - content/sre/multi-tenant-operator/usecases/manager-clusterrole.md
+        - content/sre/multi-tenant-operator/usecases/hibernation.md
+        - content/sre/multi-tenant-operator/usecases/private-sandboxes.md
+    - content/sre/multi-tenant-operator/hibernation.md
+    - content/sre/multi-tenant-operator/argocd-multitenancy.md
+    - content/sre/multi-tenant-operator/vault-multitenancy.md
+    - content/sre/multi-tenant-operator/changelog.md
+    - content/sre/multi-tenant-operator/troubleshooting.md
+    - content/sre/multi-tenant-operator/faq.md
+plugins:
+    - search
+    - mermaid2
