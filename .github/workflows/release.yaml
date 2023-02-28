@@ -5,8 +5,16 @@ on:
     tags:
       - "v*"
 
+# When a release is manually created, then we make a new version of the docs that contains all release versions
 jobs:
   release:
-    uses: stakater/.github/.github/workflows/release_template.yaml@v0.0.12
+    uses: stakater/.github/.github/workflows/push_container.yaml@v0.0.12
+    with:
+      DOCKER_FILE_PATH: Dockerfile
+      RELEASE_BRANCH: main
+      BUILD_PARAMETERS: " VERSION=${{github.ref_name}}"
     secrets:
+      CONTAINER_REGISTRY_URL: ${{ secrets.STAKATER_NEXUS_PREPROD_REGISTRY }}
+      CONTAINER_REGISTRY_USERNAME: ${{ secrets.STAKATER_NEXUS_PREPROD_USERNAME }}
+      CONTAINER_REGISTRY_PASSWORD: ${{ secrets.STAKATER_NEXUS_PREPROD_PASSWORD }}
       SLACK_WEBHOOK_URL: ${{ secrets.STAKATER_DELIVERY_SLACK_WEBHOOK }}
