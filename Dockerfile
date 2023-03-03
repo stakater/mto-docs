@@ -1,6 +1,6 @@
 FROM python:3.11-alpine as builder
 
-RUN pip3 install mkdocs-material mkdocs-mermaid2-plugin
+RUN pip3 install mkdocs-material mkdocs-mermaid2-plugin mike
 
 # set workdir
 RUN mkdir -p $HOME/application
@@ -10,7 +10,7 @@ WORKDIR $HOME/application
 COPY --chown=1001:root . .
 
 # build the docs
-RUN mkdocs build
+#RUN mkdocs build
 
 FROM nginxinc/nginx-unprivileged:1.23-alpine as deploy
 COPY --from=builder $HOME/application/site/ /usr/share/nginx/html/
