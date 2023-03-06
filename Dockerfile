@@ -11,6 +11,7 @@ COPY --chown=1001:root . .
 
 # build the docs
 #RUN mkdocs build
+# get the content from the gh-pages branch
 
 FROM nginxinc/nginx-unprivileged:1.23-alpine as deploy
 COPY --from=builder $HOME/application/site/ /usr/share/nginx/html/
