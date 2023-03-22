@@ -101,7 +101,7 @@ oc create namespace multi-tenant-operator
 namespace/multi-tenant-operator created
 ```
 
-* Create a subscription YAML for MTO and apply it in `multi-tenant-operator` namespace
+* Create a subscription YAML for MTO and apply it in `multi-tenant-operator` namespace. To enable console set `.spec.config.env[].ENABLE_CONSOLE` to `true`. This will create a route resource, which can be used to access the Multi-Tenant-Operator console.
 
 ```bash
 oc create -f - << EOF
@@ -116,7 +116,11 @@ spec:
   name: tenant-operator
   source: certified-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: tenant-operator.v0.7.0
+  startingCSV: tenant-operator.v0.9.0
+  config:
+    env:
+      - name: ENABLE_CONSOLE
+        value: 'true'
 EOF
 subscription.operators.coreos.com/tenant-operator created
 ```
@@ -310,5 +314,5 @@ A default `IntegrationConfig` is installed with MTO, which can be found in `stak
 ## Notes
 
 * If MTO is deployed in a newly created namespace, restart its pod once so MTO can retrieve webhook-server-cert provided by OpenShift (if the pod is started before the secret was made).
-* For more details on how to use MTO please refer [use-cases](./usecases/quota.md).
-* For more details on how to extend your MTO manager ClusterRole please refer [use-cases](./usecases/manager-clusterrole.md).
+* For more details on how to use MTO please refer [use-cases](./../multi-tenant-operator/usecases/quota.md).
+* For more details on how to extend your MTO manager ClusterRole please refer [use-cases](./../multi-tenant-operator/usecases/manager-clusterrole.md).
