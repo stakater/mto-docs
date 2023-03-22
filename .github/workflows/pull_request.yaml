@@ -17,7 +17,7 @@ jobs:
     if: ${{ github.base_ref == 'main' }}
     uses: stakater/.github/.github/workflows/pull_request_container_build.yaml@v0.0.23
     with:
-      DOCKER_BUILD_CONTEXTS: content=https://github.com/stakater/mto.git#pull-request-deployments
+      DOCKER_BUILD_CONTEXTS: content=https://github.com/stakater/mto-docs.git#pull-request-deployments
       DOCKER_FILE_PATH: Dockerfile
     secrets:
       CONTAINER_REGISTRY_URL: ${{ secrets.STAKATER_NEXUS_PREPROD_REGISTRY }}
