@@ -1,20 +1,10 @@
-FROM python:3.11-alpine as builder
-
-RUN pip3 install mkdocs-material mkdocs-mermaid2-plugin mike
-
-# set workdir
-RUN mkdir -p $HOME/application
-WORKDIR $HOME/application
+# syntax=docker/dockerfile:1
+FROM nginxinc/nginx-unprivileged:1.23-alpine
+WORKDIR /usr/share/nginx/html/
 
 # copy the entire application
-COPY --chown=1001:root . .
+COPY --from=content --chown=1001:root . .
 
-# build the docs
-#RUN mkdocs build
-# get the content from the gh-pages branch
-
-FROM nginxinc/nginx-unprivileged:1.23-alpine as deploy
-COPY --from=builder $HOME/application/site/ /usr/share/nginx/html/
 COPY default.conf /etc/nginx/conf.d/
 
 # set non-root user
