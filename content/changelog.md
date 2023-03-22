@@ -1,5 +1,29 @@
 # Changelog
 
+## v0.9.x
+
+### v0.9.1
+
+- fix: Allow namespace controller to reconcile without crashing, if no IC exists
+- fix: In case a group mentioned in IC doesn't exist, it won't block reconciliation or editing of MTO's manifests
+
+### v0.9.0
+
+- feat: Added console for tenants, templates and integration config
+- feat: Added support for custom realm name for RHSSO integration in Integration Config
+- feat: Add multiple status conditions to tenant and TGI for success and failure cases
+- feat: Show error messages with tenant and TGI status
+- fix: Stop reconciliation breaking for tenant and TGI, instead continue and show warnings
+- fix: Disable TGI/TI reconcile if mentioned template is not found.
+- fix: Disable repeated users webhook in tenant
+- enhance: Reduced API calls
+- enhance: General enhancements and improvements
+- chore: Update dependencies
+
+#### Enabling console
+
+- To enable console visit [Installation](./installation.md), and add config to subscription for OperatorHub based installation.
+
 ## v0.8.x
 
 ### v0.8.3
@@ -13,7 +37,7 @@
 ### v0.8.0
 
 - feat: Allow custom roles for each tenant via label selector, more details in [custom roles document](./usecases/custom-roles.md)
-    - Roles mapping is a required field in [MTO's IntegrationConfig](./integration-config.md). By default, it will always be filled with OpenShift's admin/edit/view roles
+    - Roles mapping is a required field in [MTO's IntegrationConfig][def]. By default, it will always be filled with OpenShift's admin/edit/view roles
     - Ensure that mentioned roles exist within the cluster
     - Remove coupling with OpenShift's built-in admin/edit/view roles
 - feat: Removed coupling of ResourceSupervisor and Tenant resources
@@ -318,9 +342,11 @@
 
 ### v0.2.32
 
-- refactor: Restructure integration config spec, more details in [relevant docs](./integration-config.md)
+- refactor: Restructure integration config spec, more details in [relevant docs][def]
 - feat: Allow users to input custom regex in certain fields inside of integration config, more details in [relevant docs](./integration-config.md#openshift)
 
 ### v0.2.31
 
 - feat: Add limit range for `kube-RBAC-proxy`
+
+[def]: ./integration-config.md
