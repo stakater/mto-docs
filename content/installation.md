@@ -101,7 +101,7 @@ oc create namespace multi-tenant-operator
 namespace/multi-tenant-operator created
 ```
 
-* Create a subscription YAML for MTO and apply it in `multi-tenant-operator` namespace
+* Create a subscription YAML for MTO and apply it in `multi-tenant-operator` namespace. To enable console set `.spec.config.env[].ENABLE_CONSOLE` to `true`. This will create a route resource, which can be used to access the Multi-Tenant-Operator console.
 
 ```bash
 oc create -f - << EOF
@@ -116,7 +116,11 @@ spec:
   name: tenant-operator
   source: certified-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: tenant-operator.v0.7.0
+  startingCSV: tenant-operator.v0.9.0
+  config:
+    env:
+      - name: ENABLE_CONSOLE
+        value: 'true'
 EOF
 subscription.operators.coreos.com/tenant-operator created
 ```
