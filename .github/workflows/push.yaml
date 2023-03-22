@@ -4,16 +4,10 @@ on:
   push:
     branches:
       - 'main'
+      - '[0-9]+.[0-9]+'
 
 jobs:
   push:
-    uses: stakater/.github/.github/workflows/push_container.yaml@v0.0.13
-    with:
-      DOCKER_FILE_PATH: Dockerfile
-      RELEASE_BRANCH: main
+    uses: stakater/.github/.github/workflows/push_versioned_doc.yaml@v0.0.23
     secrets:
-      CONTAINER_REGISTRY_URL: ${{ secrets.STAKATER_NEXUS_PREPROD_REGISTRY }}
-      CONTAINER_REGISTRY_USERNAME: ${{ secrets.STAKATER_NEXUS_PREPROD_USERNAME }}
-      CONTAINER_REGISTRY_PASSWORD: ${{ secrets.STAKATER_NEXUS_PREPROD_PASSWORD }}
-      SLACK_WEBHOOK_URL: ${{ secrets.STAKATER_DELIVERY_SLACK_WEBHOOK }}
       GH_TOKEN: ${{ secrets.STAKATER_GITHUB_TOKEN }}
