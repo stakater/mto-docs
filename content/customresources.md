@@ -2,8 +2,6 @@
 
 Multi Tenant Operator defines the following 5 Custom Resources:
 
-[[toc]]
-
 ## 1. Quota
 
 Cluster scoped resource:
