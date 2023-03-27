@@ -7,11 +7,11 @@ on:
 
 jobs:
   create_release:
-    uses: stakater/.github/.github/workflows/release_template.yaml@v0.0.24
+    uses: stakater/.github/.github/workflows/release_template.yaml@v0.0.25
     secrets:
       SLACK_WEBHOOK_URL: ${{ secrets.STAKATER_DELIVERY_SLACK_WEBHOOK }}
   build_container:
-    uses: stakater/.github/.github/workflows/push_container_only.yaml@v0.0.24
+    uses: stakater/.github/.github/workflows/push_container_only.yaml@v0.0.25
     with:
       DOCKER_BUILD_CONTEXTS: content=https://github.com/stakater/mto-docs.git#gh-pages
       DOCKER_FILE_PATH: Dockerfile
