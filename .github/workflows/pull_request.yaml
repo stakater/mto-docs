@@ -27,3 +27,5 @@ jobs:
       DOCKER_SECRETS: GIT_AUTH_TOKEN=${{ secrets.STAKATER_GITHUB_TOKEN }}
   deploy_doc:
     uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@v0.0.27
+    secrets:
+      GH_TOKEN: ${{ secrets.STAKATER_GITHUB_TOKEN }}

@@ -8,3 +8,5 @@ on:
 jobs:
   push:
     uses: stakater/.github/.github/workflows/pull_request_closed.yaml@v0.0.27
+    secrets:
+      GH_TOKEN: ${{ secrets.STAKATER_GITHUB_TOKEN }}
