@@ -2,23 +2,28 @@
 
 Bill as the cluster admin want to add additional rules for manager ClusterRole.
 
-Bill can extend rules by adding additional RBAC rules at `managerRoleExtendedRules` in MTO Helm Charts
+Bill can extend rules using the aggregation. Bill can extend the `admin` role for MTO using the aggregation label for admin ClusterRole. Bill will create a new ClusterRole with all the permissions he need to extend for MTO and add the aggregation label on the newly created ClusterRole.
 
 ```yaml
-managerRoleExtendedRules:
-  - apiGroups:
-    - user.openshift.io
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: extend-admin-role
+  labels:
+    rbac.authorization.k8s.io/aggregate-to-admin: 'true'
+rules:
+  - verbs:
+      - create
+      - update
+      - patch
+      - delete
+    apiGroups:
+      - user.openshift.io
     resources:
-    - groups
-    verbs:
-    - create
-    - delete
-    - get
-    - list
-    - patch
-    - update
-    - watch
+      - groups
 ```
+
+> Note: You can learn more about `aggregated-cluster-roles` [here](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#aggregated-clusterroles)
 
 ## What’s next
 
