@@ -53,7 +53,7 @@ apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: IntegrationConfig
 metadata:
   name: tenant-operator-config
-  namespace: openshift-operators
+  namespace: multi-tenant-operator
 spec:
   openshift:
     privilegedNamespaces:
@@ -79,6 +79,19 @@ oc create namespace multi-tenant-operator
 namespace/multi-tenant-operator created
 ```
 
+* Create an OperatorGroup YAML for MTO and apply it in `multi-tenant-operator` namespace.
+
+```bash
+oc create -f - << EOF
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: tenant-operator
+  namespace: multi-tenant-operator
+EOF
+operatorgroup.operators.coreos.com/tenant-operator created
+```
+
 * Create a subscription YAML for MTO and apply it in `multi-tenant-operator` namespace. To enable console set `.spec.config.env[].ENABLE_CONSOLE` to `true`. This will create a route resource, which can be used to access the Multi-Tenant-Operator console.
 
 ```bash
@@ -89,12 +102,12 @@ metadata:
   name: tenant-operator
   namespace: multi-tenant-operator
 spec:
-  channel: alpha
+  channel: stable
   installPlanApproval: Automatic
   name: tenant-operator
   source: certified-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: tenant-operator.v0.9.0
+  startingCSV: tenant-operator.v0.9.1
   config:
     env:
       - name: ENABLE_CONSOLE
@@ -130,7 +143,7 @@ apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: IntegrationConfig
 metadata:
   name: tenant-operator-config
-  namespace: openshift-operators
+  namespace: multi-tenant-operator
 spec:
   openshift:
     privilegedNamespaces:
@@ -168,4 +181,4 @@ You can uninstall MTO by following these steps:
 ## Notes
 
 * For more details on how to use MTO please refer [use-cases](./usecases/quota.md).
-* For more details on how to extend your MTO manager ClusterRole please refer [use-cases](./usecases/manager-clusterrole.md).
+* For more details on how to extend your MTO manager ClusterRole please refer [extend-admin-clusterrole](./usecases/admin-clusterrole.md).
