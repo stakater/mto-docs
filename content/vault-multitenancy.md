@@ -4,7 +4,7 @@ HashiCorp Vault is an identity-based secret and encryption management system. Va
 
 ## Vault integration in Multi Tenant Operator
 
-### Service Account auth in Vault
+### Service Account Auth in Vault
 
 MTO enables the [Kubernetes auth method](https://www.Vaultproject.io/docs/auth/kubernetes) which can be used to authenticate with Vault using a Kubernetes Service Account Token. When enabled, for every tenant namespace, MTO automatically creates policies and roles that allow the service accounts present in those namespaces to **read** secrets at tenant's path in Vault. The name of the role is the same as **namespace** name.
 
