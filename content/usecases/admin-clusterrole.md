@@ -2,7 +2,7 @@
 
 Bill as the cluster admin want to add additional rules for admin ClusterRole.
 
-Bill can extend the `admin` role for MTO using the aggregation label for admin ClusterRole. Bill will create a new ClusterRole with all the permissions he need to extend for MTO and add the aggregation label on the newly created ClusterRole.
+Bill can extend the `admin` role for MTO using the aggregation label for admin ClusterRole. Bill will create a new ClusterRole with all the permissions he needs to extend for MTO and add the aggregation label on the newly created ClusterRole.
 
 ```yaml
 kind: ClusterRole
