@@ -19,4 +19,5 @@ rules:
     resources:
       - groups
 ```
+
 > Note: You can learn more about `aggregated-cluster-roles` [here](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#aggregated-clusterroles)
