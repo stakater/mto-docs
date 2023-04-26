@@ -26,6 +26,6 @@ We have set a default ArgoCD configuration in Multi Tenant Operator that fulfils
 - Tenant 'Owners' can configure their own GitOps source repos at a tenant level
 - Cluster admins can prevent specific resources from syncing via ArgoCD
 - Cluster admins have full access to all ArgoCD applications and AppProjects
-- Since ArgoCD integration is on a per tenant level, namespace-scoped applications are only synced to Tenant's namespaces
+- Since ArgoCD integration is on a per-tenant level, namespace-scoped applications are only synced to Tenant's namespaces
 
 Detailed use cases showing how to create AppProjects are mentioned in [use cases for ArgoCD](./usecases/argocd.md).
