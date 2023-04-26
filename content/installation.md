@@ -4,7 +4,7 @@ This document contains instructions on installing, uninstalling and configuring 
 
 1. [OpenShift OperatorHub UI](#installing-via-operatorhub-ui)
 
-2. [Subscription](#installing-via-cli/gitops)
+2. [CLI/GitOps](#installing-via-cli-or-gitops)
 
 3. [Uninstall](#uninstall-via-operatorhub-ui)
 
@@ -70,7 +70,7 @@ spec:
 
 For more details and configurations check out [IntegrationConfig](./integration-config.md).
 
-## Installing via CLI/GitOps
+## Installing via CLI OR GitOps
 
 * Create namespace `multi-tenant-operator`
 
