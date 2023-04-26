@@ -4,7 +4,7 @@ This document contains instructions on installing, uninstalling and configuring 
 
 1. [OpenShift OperatorHub UI](#installing-via-operatorhub-ui)
 
-2. [Subscription](#installing-via-subscription)
+2. [Subscription](#installing-via-cli/gitops)
 
 3. [Uninstall](#uninstall-via-operatorhub-ui)
 
@@ -70,7 +70,7 @@ spec:
 
 For more details and configurations check out [IntegrationConfig](./integration-config.md).
 
-## Installing via Subscription
+## Installing via CLI/GitOps
 
 * Create namespace `multi-tenant-operator`
 
@@ -115,6 +115,8 @@ spec:
 EOF
 subscription.operators.coreos.com/tenant-operator created
 ```
+
+> Note: To bring MTO via GitOps, add the above files in GitOps repository.
 
 * After creating the `subscription` custom resource open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
 
