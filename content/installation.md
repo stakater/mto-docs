@@ -8,7 +8,6 @@ This document contains instructions on installing, uninstalling and configuring 
 
 3. [Uninstall](#uninstall-via-operatorhub-ui)
 
-
 ## Requirements
 
 * An **OpenShift** cluster [v4.7 - v4.12]
@@ -147,7 +146,6 @@ spec:
 ```
 
 For more details and configurations check out [IntegrationConfig](./integration-config.md).
-
 
 ## Uninstall via OperatorHub UI
 
