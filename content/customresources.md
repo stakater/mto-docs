@@ -1,6 +1,6 @@
 # Custom Resources
 
-Multi Tenant Operator defines the following 5 Custom Resources:
+Below is the detailed explanation about Custom Resources of MTO
 
 ## 1. Quota
 
