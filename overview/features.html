@@ -500,7 +500,7 @@
   
     <li class="md-nav__item">
       <a href="usecases/quota.html" class="md-nav__link">
-        Enforcing Resources Quotas
+        Enforcing Quotas
       </a>
     </li>
   
@@ -997,13 +997,13 @@
 <p>Multi Tenant Operator can be configured to automatically provision a namespace in the cluster for every member of the specific tenant, that will also be preloaded with any selected templates and consume the same pool of resources from the tenants quota creating safe remote dev namespaces that teams can use as scratch namespace for rapid prototyping and development. So, every developer gets a Kubernetes-based cloud development environment that feel like working on localhost.</p>
 <h2 id="templates-and-template-distribution">Templates and Template distribution</h2>
 <p>Multi Tenant Operator allows admins/users to define templates for namespaces, so that others can instantiate these templates to provision namespaces with batteries loaded. A template could pre-populate a namespace for certain use cases or with basic tooling required. Templates allow you to define Kubernetes manifests, Helm chart and more to be applied when the template is used to create a namespace.</p>
-<p>Multi Tenant Operator even allows the parameterizing of these templates for flexibility and ease of use. It also provides the option to enforce the presence of templates in one tenant's or all the tenants' namespaces for configuring secure defaults.</p>
+<p>It also allows the parameterizing of these templates for flexibility and ease of use. It also provides the option to enforce the presence of templates in one tenant's or all the tenants' namespaces for configuring secure defaults.</p>
 <p>Common use cases for namespace templates may be:</p>
 <ul>
 <li>Adding networking policies for multitenancy</li>
 <li>Adding development tooling to a namespace</li>
 <li>Deploying pre-populated databases with test data</li>
-<li>Equipping new namespaces with optional credentials such as image pull secrets</li>
+<li>Injecting new namespaces with optional credentials such as image pull secrets</li>
 </ul>
 <h2 id="hibernation">Hibernation</h2>
 <p>Multi Tenant Operator can downscale Deployments and StatefulSets in a tenant's Namespace according to a defined  sleep schedule. The Deployments and StatefulSets are brought back to their required replicas according to the provided wake schedule.</p>

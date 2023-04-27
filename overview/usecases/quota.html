@@ -21,7 +21,7 @@
     
     
       
-        <title>Enforcing Resources Quotas - Multi Tenant Operator</title>
+        <title>Enforcing Quotas - Multi Tenant Operator</title>
       
     
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#enforcing-resources-quotas" class="md-skip">
+        <a href="#enforcing-quotas" class="md-skip">
           Skip to content
         </a>
       
@@ -131,7 +131,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Enforcing Resources Quotas
+              Enforcing Quotas
             
           </span>
         </div>
@@ -386,12 +386,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Enforcing Resources Quotas
+          Enforcing Quotas
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="quota.html" class="md-nav__link md-nav__link--active">
-        Enforcing Resources Quotas
+        Enforcing Quotas
       </a>
       
         
@@ -412,13 +412,6 @@
         <li class="md-nav__item">
   <a href="#assigning-resource-quotas" class="md-nav__link">
     Assigning Resource Quotas
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    What’s next
   </a>
   
 </li>
@@ -799,13 +792,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    What’s next
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -824,10 +810,10 @@
   
 
 
-<h1 id="enforcing-resources-quotas">Enforcing Resources Quotas</h1>
-<p>Using Multi Tenant Operator, the cluster-admin can set and enforce resource quotas and limit ranges for tenants.</p>
+<h1 id="enforcing-quotas">Enforcing Quotas</h1>
+<p>Using Multi Tenant Operator, the cluster-admin can set and enforce cluster resource quotas and limit ranges for tenants.</p>
 <h2 id="assigning-resource-quotas">Assigning Resource Quotas</h2>
-<p>Bill is a cluster admin who will first creates a resource quota where he sets the maximum resource limits that Anna's tenant will have.
+<p>Bill is a cluster admin who will first create <code>Quota</code> CR where he sets the maximum resource limits that Anna's tenant will have.
 Here <code>limitrange</code> is an optional field, cluster admin can skip it if not needed.</p>
 <p>The annotation <code>quota.tenantoperator.stakater.com/is-default: "true"</code> sets the quota as default quota.</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
@@ -862,7 +848,7 @@ Here <code>limitrange</code> is an optional field, cluster admin can skip it if 
 NAME<span class="w">       </span>STATE<span class="w">    </span>AGE
 small<span class="w">      </span>Active<span class="w">   </span>3m
 </code></pre></div>
-<p>Bill then proceeds to create a tenant for Anna, while also linking the newly created <code>quota</code>.</p>
+<p>Bill then proceeds to create a tenant for Anna, while also linking the newly created <code>Quota</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
@@ -884,8 +870,6 @@ small<span class="w">      </span>Active<span class="w">   </span>3m
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>pods<span class="w"> </span>bluesky-training
 Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Cannot<span class="w"> </span>exceed<span class="w"> </span>Namespace<span class="w"> </span>quota:<span class="w"> </span>please,<span class="w"> </span>reach<span class="w"> </span>out<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>system<span class="w"> </span>administrators<span class="o">)</span>
 </code></pre></div>
-<h2 id="whats-next">What’s next</h2>
-<p>See how Bill can create <a href="tenant.html">tenants</a></p>
 
 
   

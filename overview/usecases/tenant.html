@@ -377,7 +377,7 @@
   
     <li class="md-nav__item">
       <a href="quota.html" class="md-nav__link">
-        Enforcing Resources Quotas
+        Enforcing Quotas
       </a>
     </li>
   
@@ -462,13 +462,6 @@
           <li class="md-nav__item">
   <a href="#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted" class="md-nav__link">
     Retaining tenant namespaces and AppProject when a tenant is being deleted
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    What’s next
   </a>
   
 </li>
@@ -876,13 +869,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    What’s next
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -973,7 +959,8 @@ no
 yes
 </code></pre></div>
 <h3 id="assigning-users-sandbox-namespace">Assigning Users Sandbox Namespace</h3>
-<p>Bill assigned the ownership of <code>bluesky</code> to <code>Anna</code> and <code>Anthony</code>. Now if the users want sandboxes to be made for them, they'll have to ask <code>Bill</code> to enable <code>sandbox</code> functionality. To enable that, Bill will just set <code>enabled: true</code> within the <code>sandboxConfig</code> field</p>
+<p>Bill assigned the ownership of <code>bluesky</code> to <code>Anna</code> and <code>Anthony</code>. Now if the users want sandboxes to be made for them, they'll have to ask <code>Bill</code> to enable <code>sandbox</code> functionality. </p>
+<p>To enable that, Bill will just set <code>enabled: true</code> within the <code>sandboxConfig</code> field</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt; EOF</span>
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
@@ -1124,8 +1111,6 @@ bluesky-prod<span class="w">     </span>Active<span class="w">   </span>5d5h
 <span class="w">    </span><span class="nt">cleanAppProject</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <p>With the above configuration all tenant namespaces will not be deleted when tenant <code>bluesky</code> is deleted. By default the value of <code>spec.onDelete.cleanNamespaces</code> is also <code>false</code>.</p>
-<h3 id="whats-next">What’s next</h3>
-<p>See how Anna can create <a href="namespace.html">namespaces</a></p>
 
 
   
