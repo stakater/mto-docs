@@ -14,7 +14,7 @@
         <link rel="prev" href="template.html">
       
       
-        <link rel="next" href="extend-default-roles.html">
+        <link rel="next" href="distributing-resources.html">
       
       <link rel="icon" href="../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
@@ -542,6 +542,20 @@
   
   
     <li class="md-nav__item">
+      <a href="distributing-resources.html" class="md-nav__link">
+        Copying Secrets and Configmaps across Tenant Namespaces via TGI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="extend-default-roles.html" class="md-nav__link">
         Extending the default access level for tenant members
       </a>
@@ -558,20 +572,6 @@
     <li class="md-nav__item">
       <a href="custom-roles.html" class="md-nav__link">
         Changing the default access level for tenant owners
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="mapping-resources.html" class="md-nav__link">
-        Mapping Resources across Tenant Namespaces via TGI
       </a>
     </li>
   
@@ -940,7 +940,7 @@ docker-secret<span class="w">    </span>Active<span class="w">   </span>2m
 </code></pre></div>
 <p><code>TemplateGroupInstance</code> can also target specific tenants or all tenant namespaces under a single yaml definition.</p>
 <h3 id="templategroupinstance-for-multiple-tenants">TemplateGroupInstance for multiple Tenants</h3>
-<p>It can be done by using the <code>matchExpressions</code> field, dividing the tenant label in key and values. </p>
+<p>It can be done by using the <code>matchExpressions</code> field, dividing the tenant label in key and values.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
 <span class="nt">metadata</span><span class="p">:</span>

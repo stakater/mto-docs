@@ -542,6 +542,20 @@
   
   
     <li class="md-nav__item">
+      <a href="distributing-resources.html" class="md-nav__link">
+        Copying Secrets and Configmaps across Tenant Namespaces via TGI
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="extend-default-roles.html" class="md-nav__link">
         Extending the default access level for tenant members
       </a>
@@ -558,20 +572,6 @@
     <li class="md-nav__item">
       <a href="custom-roles.html" class="md-nav__link">
         Changing the default access level for tenant owners
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="mapping-resources.html" class="md-nav__link">
-        Mapping Resources across Tenant Namespaces via TGI
       </a>
     </li>
   
@@ -959,7 +959,7 @@ no
 yes
 </code></pre></div>
 <h3 id="assigning-users-sandbox-namespace">Assigning Users Sandbox Namespace</h3>
-<p>Bill assigned the ownership of <code>bluesky</code> to <code>Anna</code> and <code>Anthony</code>. Now if the users want sandboxes to be made for them, they'll have to ask <code>Bill</code> to enable <code>sandbox</code> functionality. </p>
+<p>Bill assigned the ownership of <code>bluesky</code> to <code>Anna</code> and <code>Anthony</code>. Now if the users want sandboxes to be made for them, they'll have to ask <code>Bill</code> to enable <code>sandbox</code> functionality.</p>
 <p>To enable that, Bill will just set <code>enabled: true</code> within the <code>sandboxConfig</code> field</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt; EOF</span>
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
