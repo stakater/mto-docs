@@ -688,6 +688,26 @@
     Vault integration in Multi Tenant Operator
   </a>
   
+    <nav class="md-nav" aria-label="Vault integration in Multi Tenant Operator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-account-auth-in-vault" class="md-nav__link">
+    Service Account Auth in Vault
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-oidc-auth-in-vault" class="md-nav__link">
+    User OIDC Auth in Vault
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -774,6 +794,26 @@
     Vault integration in Multi Tenant Operator
   </a>
   
+    <nav class="md-nav" aria-label="Vault integration in Multi Tenant Operator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-account-auth-in-vault" class="md-nav__link">
+    Service Account Auth in Vault
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-oidc-auth-in-vault" class="md-nav__link">
+    User OIDC Auth in Vault
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -797,10 +837,47 @@
 <h1 id="vault-multitenancy">Vault Multitenancy</h1>
 <p>HashiCorp Vault is an identity-based secret and encryption management system. Vault validates and authorizes a system's clients (users, machines, apps) before providing them access to secrets or stored sensitive data.</p>
 <h2 id="vault-integration-in-multi-tenant-operator">Vault integration in Multi Tenant Operator</h2>
-<p>MTO manages tenant authentication via Vault. MTO automatically creates policies and roles that allow the tenant namespace service accounts to <strong>read</strong> secrets at tenant's path in Vault. The name of the role is the same as <strong>namespace</strong> name.</p>
-<p>The pod is authenticated to Vault using the <a href="https://www.Vaultproject.io/docs/auth/kubernetes">Kubernetes auth method</a>. In Vault, roles are associated with Kubernetes service accounts, which permits the service account to read Secrets at a particular path in Vault.</p>
+<h3 id="service-account-auth-in-vault">Service Account Auth in Vault</h3>
+<p>MTO enables the <a href="https://www.Vaultproject.io/docs/auth/kubernetes">Kubernetes auth method</a> which can be used to authenticate with Vault using a Kubernetes Service Account Token. When enabled, for every tenant namespace, MTO automatically creates policies and roles that allow the service accounts present in those namespaces to <strong>read</strong> secrets at tenant's path in Vault. The name of the role is the same as <strong>namespace</strong> name.</p>
+<p>These service accounts are required to have <code>stakater.com/vault-access: true</code> label, so they can be authenticated with Vault via MTO.</p>
 <p><img alt="image" src="images/to-vault-multitenancy.png" /></p>
 <p>Fig 1. Shows how MTO manages authentication with Vault</p>
+<h3 id="user-oidc-auth-in-vault">User OIDC Auth in Vault</h3>
+<p>MTO integration with Vault and RHSSO provides a way for users to log in to Vault using OIDC Method.</p>
+<p>Once both integrations are set-up with <a href="/content/integration-config.md">IntegrationConfig CR</a>, MTO links tenant users to specific client roles named after their tenant under Vault client in RHSSO.</p>
+<p>After that, MTO creates specific policies for its tenant users</p>
+<p>Mapping of tenant roles to Vault is shown below</p>
+<table>
+<thead>
+<tr>
+<th align="left">Tenant Role</th>
+<th align="left">Vault Path</th>
+<th align="left">Vault Capabilities</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Owner, Editor</td>
+<td align="left">(tenantName)/*</td>
+<td align="left">Create, Read, Update, Delete, List</td>
+</tr>
+<tr>
+<td align="left">Owner, Editor</td>
+<td align="left">sys/mounts/(tenantName)/*</td>
+<td align="left">Create, Read, Update, Delete, List</td>
+</tr>
+<tr>
+<td align="left">Owner, Editor</td>
+<td align="left">managed-addons/*</td>
+<td align="left">Read, List</td>
+</tr>
+<tr>
+<td align="left">Viewer</td>
+<td align="left">(tenantName)/*</td>
+<td align="left">Read</td>
+</tr>
+</tbody>
+</table>
 
 
   
