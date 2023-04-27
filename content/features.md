@@ -40,14 +40,14 @@ Multi Tenant Operator can be configured to automatically provision a namespace i
 
 Multi Tenant Operator allows admins/users to define templates for namespaces, so that others can instantiate these templates to provision namespaces with batteries loaded. A template could pre-populate a namespace for certain use cases or with basic tooling required. Templates allow you to define Kubernetes manifests, Helm chart and more to be applied when the template is used to create a namespace.
 
-Multi Tenant Operator even allows the parameterizing of these templates for flexibility and ease of use. It also provides the option to enforce the presence of templates in one tenant's or all the tenants' namespaces for configuring secure defaults.
+It also allows the parameterizing of these templates for flexibility and ease of use. It also provides the option to enforce the presence of templates in one tenant's or all the tenants' namespaces for configuring secure defaults.
 
 Common use cases for namespace templates may be:
 
 - Adding networking policies for multitenancy
 - Adding development tooling to a namespace
 - Deploying pre-populated databases with test data
-- Equipping new namespaces with optional credentials such as image pull secrets
+- Injecting new namespaces with optional credentials such as image pull secrets
 
 ## Hibernation
 

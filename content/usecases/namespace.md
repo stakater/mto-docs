@@ -17,6 +17,8 @@ When Anna creates the namespace, MTO assigns Anna and other tenant members the r
 
 As a tenant owner, Anna is able to create namespaces.
 
+If you have enabled [Argocd Multitenancy](/content/argocd-multitenancy.md), our preferred solution is to create tenant namespaces by using [Tenant](/content/usecases/tenant.md) spec to avoid syncing issues in ArgoCD console during namespace creation.
+
 ## Add Existing Namespaces to Tenant via GitOps
 
 Using GitOps as your preferred development workflow, you can add existing namespaces for your tenants by including the tenant label.
@@ -61,7 +63,3 @@ To remove namespaces from your cluster via GitOps;
 - You can edit your namespace manifest through the OpenShift Web Console or with the OpenShift command line tool.
 - Now that you have removed your namespace manifest from your watched git repository, and from your managed ArgoCD apps, sync your git repository and allow your changes be propagated.
 - Verify that your namespace has been deleted.
-
-## What’s next
-
-See how Bill can create [templates](./template.md)

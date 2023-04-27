@@ -1,10 +1,10 @@
-# Enforcing Resources Quotas
+# Enforcing Quotas
 
-Using Multi Tenant Operator, the cluster-admin can set and enforce resource quotas and limit ranges for tenants.
+Using Multi Tenant Operator, the cluster-admin can set and enforce cluster resource quotas and limit ranges for tenants.
 
 ## Assigning Resource Quotas
 
-Bill is a cluster admin who will first creates a resource quota where he sets the maximum resource limits that Anna's tenant will have.
+Bill is a cluster admin who will first create `Quota` CR where he sets the maximum resource limits that Anna's tenant will have.
 Here `limitrange` is an optional field, cluster admin can skip it if not needed.
 
 The annotation `quota.tenantoperator.stakater.com/is-default: "true"` sets the quota as default quota.
@@ -46,7 +46,7 @@ NAME       STATE    AGE
 small      Active   3m
 ```
 
-Bill then proceeds to create a tenant for Anna, while also linking the newly created `quota`.
+Bill then proceeds to create a tenant for Anna, while also linking the newly created `Quota`.
 
 ```yaml
 kubectl create -f - << EOF
@@ -77,7 +77,3 @@ Once the resource quota assigned to the tenant has been reached, Anna cannot cre
 kubectl create pods bluesky-training
 Error from server (Cannot exceed Namespace quota: please, reach out to the system administrators)
 ```
-
-## What’s next
-
-See how Bill can create [tenants](./tenant.md)

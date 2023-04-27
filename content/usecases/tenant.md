@@ -90,7 +90,9 @@ yes
 
 ### Assigning Users Sandbox Namespace
 
-Bill assigned the ownership of `bluesky` to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, they'll have to ask `Bill` to enable `sandbox` functionality. To enable that, Bill will just set `enabled: true` within the `sandboxConfig` field
+Bill assigned the ownership of `bluesky` to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, they'll have to ask `Bill` to enable `sandbox` functionality. 
+
+To enable that, Bill will just set `enabled: true` within the `sandboxConfig` field
 
 ```yaml
 kubectl apply -f - << EOF
@@ -268,7 +270,3 @@ spec:
 ```
 
 With the above configuration all tenant namespaces will not be deleted when tenant `bluesky` is deleted. By default the value of `spec.onDelete.cleanNamespaces` is also `false`.
-
-### What’s next
-
-See how Anna can create [namespaces](./namespace.md)
