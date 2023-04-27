@@ -850,10 +850,12 @@
 <li>Tenants are able to see only their ArgoCD applications in the ArgoCD frontend</li>
 <li>Tenant 'Owners' and 'Editors' will have full access to their ArgoCD applications</li>
 <li>Tenants in the 'Viewers' group will have read-only access to their ArgoCD applications</li>
-<li>Tenants can only sync whitelisted cluster-scoped and namespaced resources via their applications</li>
+<li>Tenants can sync all namespace-scoped resources, except those that are blacklisted in the spec</li>
+<li>Tenants can only sync cluster-scoped resources that are whitelisted in the spec</li>
 <li>Tenant 'Owners' can configure their own GitOps source repos at a tenant level</li>
 <li>Cluster admins can prevent specific resources from syncing via ArgoCD</li>
 <li>Cluster admins have full access to all ArgoCD applications and AppProjects</li>
+<li>Since ArgoCD integration is on a per-tenant level, namespace-scoped applications are only synced to Tenant's namespaces</li>
 </ul>
 <p>Detailed use cases showing how to create AppProjects are mentioned in <a href="usecases/argocd.html">use cases for ArgoCD</a>.</p>
 
