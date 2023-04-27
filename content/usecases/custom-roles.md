@@ -1,6 +1,8 @@
 # Changing the default access level for tenant owners
 
-Bill as the cluster admin wants to reduce the privileges that tenant owners have, so they cannot create or edit Roles or bind them. As an admin of an OpenShift cluster, Bill can do this by assigning the `edit` role to all tenant owners. This is easily achieved by modifying the IntegrationConfig:
+This feature allows the cluster admins to change the default roles assigned to Tenant owner, editor, viewer groups.
+
+For example, if Bill as the cluster admin wants to reduce the privileges that tenant owners have, so they cannot create or edit Roles or bind them. As an admin of an OpenShift cluster, Bill can do this by assigning the `edit` role to all tenant owners. This is easily achieved by modifying the [IntegrationConfig](/content/integration-config.md):
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -68,7 +70,3 @@ spec:
 ```
 
 New Bindings will be created for the Tenant owners of `bluesky` and `alpha`, corresponding to the `admin` Role. Bindings for editors and viewer will be inherited from the `default roles`. All other Tenant owners will have an `edit` Role bound to them within their namespaces
-
-## What’s next
-
-See how Bill can configure [multi-tenant isolation with network policies using templates](./configuring-multitenant-network-isolation.md)

@@ -80,15 +80,15 @@ metadata:
 spec:
   owners: # optional
     users: # optional
-      - haseeb@stakater.com
+      - dave@stakater.com
     groups: # optional
       - alpha
   editors: # optional
     users: # optional
-      - hanzala@stakater.com
+      - jack@stakater.com
   viewers: # optional
     users: # optional
-      - jose@stakater.com
+      - james@stakater.com
   quota: medium # required
   sandboxConfig: # optional
     enabled: true # optional
@@ -122,11 +122,11 @@ spec:
       openshift.io/node-selector: node-role.kubernetes.io/infra=
   specificMetadata: # optional
     - annotations: # optional
-        stakater.com/user: haseeb
+        stakater.com/user: dave
       labels: # optional
         stakater.com/sandbox: true
       namespaces: # optional
-        - alpha-haseeb-stakater-sandbox
+        - alpha-dave-stakater-sandbox
   templateInstances: # optional
   - spec: # optional
       template: networkpolicy # required

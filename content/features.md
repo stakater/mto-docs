@@ -12,15 +12,21 @@ Multi Tenant Operator is also able to leverage existing OpenShift groups or exte
 
 ## HashiCorp Vault Multitenancy
 
-Multi Tenant Operator is not only providing strong Multi Tenancy for the OpenShift internals but also extends the tenants permission model to HashiCorp Vault where it can create Vault paths and greatly ease the overhead of managing RBAC in Vault.
+Multi Tenant Operator extends the tenants permission model to HashiCorp Vault where it can create Vault paths and greatly ease the overhead of managing RBAC in Vault. Tenant users can manage their own secrets without the concern of someone else having access to their Vault paths.
+
+More details on [Vault Multitenancy](/content/vault-multitenancy.md)
 
 ## ArgoCD Multitenancy
 
 Multi Tenant Operator is not only providing strong Multi Tenancy for the OpenShift internals but also extends the tenants permission model to ArgoCD were it can provision AppProjects and Allowed Repositories for your tenants greatly ease the overhead of managing RBAC in ArgoCD.
 
+More details on [ArgoCD Multitenancy](/content/argocd-multitenancy.md)
+
 ## Mattermost Multitenancy
 
 Multi Tenant Operator can manage Mattermost to create Teams for tenant users. All tenant users get a unique team and a list of predefined channels gets created. When a user is removed from the tenant, the user is also removed from the Mattermost team corresponding to tenant.
+
+More details on [Mattermost](/content/usecases/mattermost.md)
 
 ## Cost/Resource Optimization
 

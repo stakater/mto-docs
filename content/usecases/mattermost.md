@@ -1,6 +1,14 @@
 # Creating Mattermost Teams for your tenant
 
-Bill wants each tenant to also have their own Mattermost Teams. To make sure this happens correctly, Bill will first add the `stakater.com/mattermost: true` label to the tenant:
+## Requirements
+
+[MTO-mattermost-integration-operator](https://github.com/stakater-ab/mto-mattermost-integration-operator)
+Please contact stakater to install the mattermost integration operator before following the below mentioned steps.
+
+## Steps to enable integration
+
+Bill wants some of the tenants to also have their own Mattermost Teams. To make sure this happens correctly, Bill will first add the `stakater.com/mattermost: true` label to the tenants.
+The label will enable the mto-mattermost-integration-operator to create and manage Mattermost Teams based on Tenants.
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta2
@@ -10,10 +18,6 @@ metadata:
   labels:
     stakater.com/mattermost: 'true'
 spec:
-  argocd:
-    sourceRepos:
-      # specify source repos here
-      - "https://github.com/stakater/GitOps-config"
   owners:
     users:
       - user

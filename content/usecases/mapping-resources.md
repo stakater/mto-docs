@@ -38,7 +38,7 @@ kubectl get secret docker-pull-secret -n bluesky-anna-aurora-sandbox
 NAME             STATE    AGE
 docker-pull-secret    Active   3m
 
-kubectl get secret docker-pull-secret -n alpha-haseeb-aurora-sandbox
+kubectl get secret docker-pull-secret -n alpha-dave-aurora-sandbox
 NAME             STATE    AGE
 docker-pull-secret    Active   3m
 ```

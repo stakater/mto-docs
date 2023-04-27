@@ -11,8 +11,8 @@ metadata:
   name: tenant-network-policy
 resources:
   manifests:
-  - kind: NetworkPolicy
-    apiVersion: networking.k8s.io/v1
+  - apiVersion: networking.k8s.io/v1
+    kind: NetworkPolicy
     metadata:
       name: allow-same-namespace
     spec:
@@ -48,7 +48,7 @@ resources:
       - Ingress
 ```
 
-Once the template has been created, Bill edits the `IntegrationConfig` to add unique label to tenant projects:
+Once the template has been created, Bill edits the [IntegrationConfig](/content/integration-config.md) to add unique label to all tenant projects:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -76,9 +76,9 @@ spec:
       - ^system:serviceaccount:kube-*
 ```
 
-Bill has added a new label `tenant-network-policy: "true"` for tenant projects, now MTO will add that label in all projects of tenants.
+Bill has added a new label `tenant-network-policy: "true"` in project section of IntegrationConfig, now MTO will add that label in all tenant projects.
 
-Finally Bill creates a `TemplateGroupInstance` which will deploy the network policies using the newly created project label and template.
+Finally Bill creates a `TemplateGroupInstance` which will distribute the network policies using the newly added project label and template.
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -93,4 +93,4 @@ spec:
   sync: true
 ```
 
-MTO will now deploy the network policies mentioned in `Template` to all tenant projects.
+MTO will now deploy the network policies mentioned in `Template` to all projects matching the label selector mentioned in the TemplateGroupInstance.
