@@ -12,7 +12,7 @@ jobs:
     with:
       MD_CONFIG: .github/md_config.json
       DOC_SRC: content
-      MD_LINT_CONFIG: markdownlint.yaml
+      MD_LINT_CONFIG: .markdownlint.yaml
   build_container:
     if: ${{ github.base_ref == 'main' }}
     uses: stakater/.github/.github/workflows/pull_request_container_build.yaml@v0.0.29
