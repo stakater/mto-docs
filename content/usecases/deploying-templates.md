@@ -61,7 +61,7 @@ docker-secret    Active   2m
 
 ### TemplateGroupInstance for multiple Tenants
 
-It can be done by using the `matchExpressions` field, dividing the tenant label in key and values. 
+It can be done by using the `matchExpressions` field, dividing the tenant label in key and values.
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1

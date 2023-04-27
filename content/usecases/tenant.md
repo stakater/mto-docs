@@ -90,7 +90,7 @@ yes
 
 ### Assigning Users Sandbox Namespace
 
-Bill assigned the ownership of `bluesky` to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, they'll have to ask `Bill` to enable `sandbox` functionality. 
+Bill assigned the ownership of `bluesky` to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, they'll have to ask `Bill` to enable `sandbox` functionality.
 
 To enable that, Bill will just set `enabled: true` within the `sandboxConfig` field
 

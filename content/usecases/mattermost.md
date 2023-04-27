@@ -2,7 +2,8 @@
 
 ## Requirements
 
-[MTO-mattermost-integration-operator](https://github.com/stakater-ab/mto-mattermost-integration-operator)
+`MTO-mattermost-integration-operator`
+
 Please contact stakater to install the mattermost integration operator before following the below mentioned steps.
 
 ## Steps to enable integration
