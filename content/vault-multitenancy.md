@@ -18,7 +18,7 @@ Fig 1. Shows how MTO manages authentication with Vault
 
 MTO integration with Vault and RHSSO provides a way for users to log in to Vault using OIDC Method.
 
-Once both integrations are set-up with IntegrationConfig CR, MTO links tenant users to specific client roles named after their tenant under Vault client in RHSSO.
+Once both integrations are set-up with [IntegrationConfig CR](/content/integration-config.md), MTO links tenant users to specific client roles named after their tenant under Vault client in RHSSO.
 
 After that, MTO creates specific policies for its tenant users
 

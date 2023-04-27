@@ -79,6 +79,7 @@ spec:
         kind: EnvironmentProvisioner
   rhsso:
     enabled: true
+    realm: customer
     endpoint:
       url: https://iam-keycloak-auth.apps.prod.abcdefghi.kubeapp.cloud/
       secretReference:
