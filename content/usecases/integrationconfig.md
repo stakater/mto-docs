@@ -135,13 +135,10 @@ Bill would first have to integrate RHSSO with MTO by adding the details in Integ
 ```yaml
 rhsso:
   enabled: true
+  realm: customer
   endpoint:
     secretReference:
       name: auth-secrets
       namespace: openshift-auth
     url: https://iam-keycloak-auth.apps.prod.abcdefghi.kubeapp.cloud/
 ```
-
-## What’s next
-
-See how Bill can create [ArgoCD AppProjects](./argocd.md) for their tenants

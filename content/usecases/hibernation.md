@@ -2,7 +2,7 @@
 
 ## Hibernating a tenant
 
-Bill is a cluster administrator who wants to free up unused cluster resources at nighttime, in an effort to reduce costs during the night (when the cluster isn't being used).
+Bill is a cluster administrator who wants to free up unused cluster resources at nighttime, in an effort to reduce costs (when the cluster isn't being used).
 
 First, Bill creates a tenant with the `hibernation` schedules mentioned in the spec, or adds the hibernation field to an existing tenant:
 
@@ -45,8 +45,6 @@ The ResourceSupervisor will look like this at 'running' time (as per the schedul
 apiVersion: tenantoperator.stakater.com/v1beta1
 kind: ResourceSupervisor
 metadata:
-  finalizers:
-    - tenantoperator.stakater.com/resourcesupervisor
   name: example
 spec:
   argocd:
@@ -70,8 +68,6 @@ The ResourceSupervisor will look like this at 'sleeping' time (as per the schedu
 apiVersion: tenantoperator.stakater.com/v1beta1
 kind: ResourceSupervisor
 metadata:
-  finalizers:
-    - tenantoperator.stakater.com/resourcesupervisor
   name: example
 spec:
   argocd:
@@ -104,8 +100,6 @@ Bill wants to prevent the `build` namespace from going to sleep, so he can add t
 apiVersion: tenantoperator.stakater.com/v1beta1
 kind: ResourceSupervisor
 metadata:
-  finalizers:
-    - tenantoperator.stakater.com/resourcesupervisor
   name: example
 spec:
   argocd:
@@ -129,7 +123,7 @@ status:
 
 ## Hibernating namespaces and/or ArgoCD Applications with ResourceSupervisor
 
-Bill, the cluster administrator, wants to hibernate a collection of namespaces and AppProjects belonging to multiple different tenants. He can do so by creating a ResourceSupervisor manually, and specifying in its spec the hibernation schedule, and the namespaces and ArgoCD Applications that need to be hibernated as per the mentioned schedule.
+Bill, the cluster administrator, wants to hibernate a collection of namespaces and AppProjects belonging to multiple different tenants. He can do so by creating a ResourceSupervisor manually, specifying the hibernation schedule in its spec, the namespaces and ArgoCD Applications that need to be hibernated as per the mentioned schedule.
 Bill can also use the same method to hibernate some namespaces and ArgoCD Applications that do not belong to any tenant on his cluster.
 
 The example given below will hibernate the ArgoCD Applications in the 'test-app-project' AppProject; and it will also hibernate the 'ns2' and 'ns4' namespaces.
@@ -143,7 +137,7 @@ spec:
   argocd:
     appProjects:
       - test-app-project
-    namespace: test-ns
+    namespace: argocd-ns
   hibernation:
     sleepSchedule: 0 20 * * 1-5
     wakeSchedule: 0 8 * * 1-5
