@@ -272,7 +272,7 @@ spec:
     cleanAppProject: false
 ```
 
-With the above configuration all tenant namespaces and AppProject will not be deleted when tenant `bluesky` is deleted. By default the value of `spec.onDelete.cleanNamespaces` is also `false` and `spec.onDelete.cleanAppProject` is `true`
+With the above configuration all tenant namespaces and AppProject will not be deleted when tenant `bluesky` is deleted. By default, the value of `spec.onDelete.cleanNamespaces` is also `false` and `spec.onDelete.cleanAppProject` is `true`
 
 ## What’s next
 
