@@ -1315,6 +1315,7 @@ For example:</p>
 <p>If <code>RHSSO</code> is configured on a cluster, then RHSSO configuration can be enabled.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">rhsso</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer</span>
 <span class="w">  </span><span class="nt">endpoint</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">secretReference</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auth-secrets</span>
@@ -1325,6 +1326,7 @@ For example:</p>
 <ul>
 <li><code>secretReference.name:</code> Will contain the name of the secret.</li>
 <li><code>secretReference.namespace:</code> Will contain the namespace of the secret.</li>
+<li><code>realm:</code> Will contain the realm name which is configured for users.</li>
 <li><code>url:</code> Will contain the URL of RHSSO.</li>
 </ul>
 <h2 id="vault">Vault</h2>
