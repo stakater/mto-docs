@@ -1,4 +1,4 @@
-# Creating Tenant
+## Creating Tenant
 
 Bill is a cluster admin who receives a new request from Aurora Solutions CTO asking for a new tenant for Anna's team.
 
@@ -27,7 +27,7 @@ EOF
 Bill checks if the new tenant is created:
 
 ```bash
-kubectl get tenant bluesky
+kubectl get tenants.tenantoperator.stakater.com bluesky
 NAME       STATE    AGE
 bluesky    Active   3m
 ```
@@ -52,7 +52,7 @@ no
 Including the `Tenant` resource
 
 ```bash
-kubectl auth can-i get tenants
+kubectl auth can-i get tenants.tenantoperator.stakater.com
 no
 ```
 
@@ -88,9 +88,11 @@ kubectl auth can-i create namespaces
 yes
 ```
 
-### Assigning Users Sandbox Namespace
+## Assigning Users Sandbox Namespace
 
-Bill assigned the ownership of `bluesky` to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, they'll have to ask `Bill` to enable `sandbox` functionality. To enable that, Bill will just set `enabled: true` within the `sandboxConfig` field
+Bill assigned the ownership of `bluesky` to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, they'll have to ask `Bill` to enable `sandbox` functionality.
+
+To enable that, Bill will just set `enabled: true` within the `sandboxConfig` field
 
 ```yaml
 kubectl apply -f - << EOF
@@ -124,9 +126,11 @@ bluesky-anthony-aurora-sandbox   Active   5d5h
 bluesky-john-aurora-sandbox      Active   5d5h
 ```
 
-### Creating Namespaces via Tenant Custom Resource
+If Bill wants to make sure that only the sandbox owner can view his sandbox namespace, he can achieve this by setting `private: true` within the `sandboxConfig` filed.
 
-Bill now wants to create namespaces for `dev`, `build` and `production` environments for the tenant members. To create those namespaces Bill will just add those names into the `namespaces` list in the tenant CR.
+## Creating Namespaces via Tenant Custom Resource
+
+Bill now wants to create namespaces for `dev`, `build` and `production` environments for the tenant members. To create those namespaces Bill will just add those names within the `namespaces` field in the tenant CR. If Bill wants to append the tenant name as a prefix in namespace name, then he can use `namespaces.withTenantPrefix` field. Else he can use `namespaces.withoutTenantPrefix` for namespaces for which he does not need tenant name as a prefix.
 
 ```yaml
 kubectl apply -f - << EOF
@@ -149,6 +153,7 @@ spec:
     withTenantPrefix:
       - dev
       - build
+    withoutTenantPrefix:
       - prod
 EOF
 ```
@@ -160,10 +165,10 @@ kubectl get namespaces
 NAME             STATUS   AGE
 bluesky-dev      Active   5d5h
 bluesky-build    Active   5d5h
-bluesky-prod     Active   5d5h
+prod             Active   5d5h
 ```
 
-### Distributing common labels and annotations to tenant namespaces via Tenant Custom Resource
+## Distributing common labels and annotations to tenant namespaces via Tenant Custom Resource
 
 Bill now wants to add labels/annotations to all the namespaces for a tenant. To create those labels/annotations Bill will just add them into `commonMetadata.labels`/`commonMetadata.annotations` field in the tenant CR.
 
@@ -200,7 +205,7 @@ EOF
 
 With the above configuration all tenant namespaces will now contain the mentioned labels and annotations.
 
-### Distributing specific labels and annotations to tenant namespaces via Tenant Custom Resource
+## Distributing specific labels and annotations to tenant namespaces via Tenant Custom Resource
 
 Bill now wants to add labels/annotations to specific namespaces for a tenant. To create those labels/annotations Bill will just add them into `specificMetadata.labels`/`specificMetadata.annotations` and specific namespaces in `specificMetadata.namespaces` field in the tenant CR.
 
@@ -240,7 +245,7 @@ EOF
 
 With the above configuration all tenant namespaces will now contain the mentioned labels and annotations.
 
-### Retaining tenant namespaces and AppProject when a tenant is being deleted
+## Retaining tenant namespaces and AppProject when a tenant is being deleted
 
 Bill now wants to delete tenant `bluesky` and wants to retain all namespaces and AppProject of the tenant. To retain the namespaces Bill will set `spec.onDelete.cleanNamespaces`, and `spec.onDelete.cleanAppProjects` to `false`.
 
@@ -267,8 +272,8 @@ spec:
     cleanAppProject: false
 ```
 
-With the above configuration all tenant namespaces will not be deleted when tenant `bluesky` is deleted. By default the value of `spec.onDelete.cleanNamespaces` is also `false`.
+With the above configuration all tenant namespaces and AppProject will not be deleted when tenant `bluesky` is deleted. By default the value of `spec.onDelete.cleanNamespaces` is also `false` and `spec.onDelete.cleanAppProject` is `true`
 
-### What’s next
+## What’s next
 
 See how Anna can create [namespaces](./namespace.md)
