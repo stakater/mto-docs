@@ -295,10 +295,8 @@ spec:
   template: networkpolicy
   sync: true
 parameters:
-  - name: DEFAULT_CPU_LIMIT
-    value: "1.5"
-  - name: DEFAULT_CPU_REQUESTS
-    value: "1"
+  - name: CIDR_IP
+    value: "172.17.0.0/16"
 ```
 
 TemplateInstance are used to keep track of resources created from Templates, which are being instantiated inside a Namespace.
@@ -324,10 +322,8 @@ spec:
         - alpha
         - beta
 parameters:
-  - name: DEFAULT_CPU_LIMIT
-    value: "1.5"
-  - name: DEFAULT_CPU_REQUESTS
-    value: "1"
+  - name: CIDR_IP
+    value: "172.17.0.0/16"
 ```
 
 TemplateGroupInstance distributes a template across multiple namespaces which are selected by labelSelector.
