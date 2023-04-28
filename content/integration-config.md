@@ -324,6 +324,7 @@ If `RHSSO` is configured on a cluster, then RHSSO configuration can be enabled.
 ```yaml
 rhsso:
   enabled: true
+  realm: customer
   endpoint:
     secretReference:
       name: auth-secrets
@@ -335,6 +336,7 @@ If enabled, than admins have to provide secret and URL of RHSSO.
 
 - `secretReference.name:` Will contain the name of the secret.
 - `secretReference.namespace:` Will contain the namespace of the secret.
+- `realm:` Will contain the realm name which is configured for users.
 - `url:` Will contain the URL of RHSSO.
 
 ## Vault

@@ -12,44 +12,60 @@ Multi Tenant Operator is also able to leverage existing OpenShift groups or exte
 
 ## HashiCorp Vault Multitenancy
 
-Multi Tenant Operator is not only providing strong Multi Tenancy for the OpenShift internals but also extends the tenants permission model to HashiCorp Vault where it can create Vault paths and greatly ease the overhead of managing RBAC in Vault.
+Multi Tenant Operator extends the tenants permission model to HashiCorp Vault where it can create Vault paths and greatly ease the overhead of managing RBAC in Vault. Tenant users can manage their own secrets without the concern of someone else having access to their Vault paths.
+
+More details on [Vault Multitenancy](/content/vault-multitenancy.md)
 
 ## ArgoCD Multitenancy
 
 Multi Tenant Operator is not only providing strong Multi Tenancy for the OpenShift internals but also extends the tenants permission model to ArgoCD were it can provision AppProjects and Allowed Repositories for your tenants greatly ease the overhead of managing RBAC in ArgoCD.
 
+More details on [ArgoCD Multitenancy](/content/argocd-multitenancy.md)
+
 ## Mattermost Multitenancy
 
 Multi Tenant Operator can manage Mattermost to create Teams for tenant users. All tenant users get a unique team and a list of predefined channels gets created. When a user is removed from the tenant, the user is also removed from the Mattermost team corresponding to tenant.
+
+More details on [Mattermost](/content/usecases/mattermost.md)
 
 ## Cost/Resource Optimization
 
 Multi Tenant Operator provides a mechanism for defining Resource Quotas at the tenant scope, meaning all namespaces belonging to a particular tenant share the defined quota, which is why you are able to safely enable dev teams to self serve their namespaces whilst being confident that they can only use the resources allocated based on budget and business needs.
 
+More details on [Quota](/content/usecases/quota.md)
+
 ## Remote Development Namespaces
 
 Multi Tenant Operator can be configured to automatically provision a namespace in the cluster for every member of the specific tenant, that will also be preloaded with any selected templates and consume the same pool of resources from the tenants quota creating safe remote dev namespaces that teams can use as scratch namespace for rapid prototyping and development. So, every developer gets a Kubernetes-based cloud development environment that feel like working on localhost.
+
+More details on [Sandboxes](/content/usecases/private-sandboxes.md)
 
 ## Templates and Template distribution
 
 Multi Tenant Operator allows admins/users to define templates for namespaces, so that others can instantiate these templates to provision namespaces with batteries loaded. A template could pre-populate a namespace for certain use cases or with basic tooling required. Templates allow you to define Kubernetes manifests, Helm chart and more to be applied when the template is used to create a namespace.
 
-Multi Tenant Operator even allows the parameterizing of these templates for flexibility and ease of use. It also provides the option to enforce the presence of templates in one tenant's or all the tenants' namespaces for configuring secure defaults.
+It also allows the parameterizing of these templates for flexibility and ease of use. It also provides the option to enforce the presence of templates in one tenant's or all the tenants' namespaces for configuring secure defaults.
 
 Common use cases for namespace templates may be:
 
 - Adding networking policies for multitenancy
 - Adding development tooling to a namespace
 - Deploying pre-populated databases with test data
-- Equipping new namespaces with optional credentials such as image pull secrets
+- Injecting new namespaces with optional credentials such as image pull secrets
+
+More details on [Distributing Template Resources](/content/usecases/deploying-templates.md)
 
 ## Hibernation
 
 Multi Tenant Operator can downscale Deployments and StatefulSets in a tenant's Namespace according to a defined  sleep schedule. The Deployments and StatefulSets are brought back to their required replicas according to the provided wake schedule.
 
+More details on [Hibernation](/content/hibernation.md)
+
 ## Cross Namespace Resource Distribution
 
 Multi Tenant Operator supports cloning of secrets and configmaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide reference to secrets and configmaps. It uses a template group instance to distribute those secrets and namespaces in matching namespaces, even if namespaces belong to different tenants. If template instance is used then the resources will only be mapped if namespaces belong to same tenant.
+
+More details on [Distributing Secrets and ConfigMaps](/content/usecases/distributing-resources.md)
 
 ## Self-Service
 

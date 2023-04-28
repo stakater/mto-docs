@@ -65,7 +65,7 @@ metadata:
 spec:
   owners:
     users:
-    - haseeb@aurora.org
+    - dave@aurora.org
   quota: small
   sandbox: true
 EOF

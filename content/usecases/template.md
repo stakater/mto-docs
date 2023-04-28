@@ -2,7 +2,7 @@
 
 Anna wants to create a Template that she can use to initialize or share common resources across namespaces (e.g. PullSecrets).
 
-Anna can either create a template using `Custom Resource Manifests`
+Anna can either create a template using `manifests` field, covering Kubernetes or custom resources.
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -38,7 +38,7 @@ resources:
       redisPort: 6379
 ```
 
-Or by using `Resource Mapping`
+She can also use `resourceMapping` field to copy over secrets and configmaps from one namespace to others.
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -91,7 +91,3 @@ resources:
 ```
 
 Parameters can be used with both `manifests` and `helm charts`
-
-## What’s next
-
-See how Anna can deploy a [template in a namespace](./deploying-templates.md)

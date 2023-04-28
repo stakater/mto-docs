@@ -80,15 +80,15 @@ metadata:
 spec:
   owners: # optional
     users: # optional
-      - haseeb@stakater.com
+      - dave@stakater.com
     groups: # optional
       - alpha
   editors: # optional
     users: # optional
-      - hanzala@stakater.com
+      - jack@stakater.com
   viewers: # optional
     users: # optional
-      - jose@stakater.com
+      - james@stakater.com
   quota: medium # required
   sandboxConfig: # optional
     enabled: true # optional
@@ -122,14 +122,15 @@ spec:
       openshift.io/node-selector: node-role.kubernetes.io/infra=
   specificMetadata: # optional
     - annotations: # optional
-        stakater.com/user: haseeb
+        stakater.com/user: dave
       labels: # optional
         stakater.com/sandbox: true
       namespaces: # optional
-        - alpha-haseeb-stakater-sandbox
+        - alpha-dave-stakater-sandbox
   templateInstances: # optional
   - spec: # optional
       template: networkpolicy # required
+      sync: true  # optional
       parameters: # optional
         - name: CIDR_IP
           value: "172.17.0.0/16"
@@ -288,11 +289,14 @@ Namespace scoped resource:
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: TemplateInstance
 metadata:
-  name: redis-instance
+  name: networkpolicy
   namespace: build
 spec:
-  template: redis
-  sync: false
+  template: networkpolicy
+  sync: true
+parameters:
+  - name: CIDR_IP
+    value: "172.17.0.0/16"
 ```
 
 TemplateInstance are used to keep track of resources created from Templates, which are being instantiated inside a Namespace.
@@ -306,13 +310,20 @@ Cluster scoped resource:
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: TemplateGroupInstance
 metadata:
-  name: redis-instance
+  name: namespace-parameterized-restrictions-tgi
 spec:
-  template: redis
-  selector:
-    matchLabels:
-      app: redis
+  template: namespace-parameterized-restrictions
   sync: true
+  selector:
+    matchExpressions:
+    - key: stakater.com/tenant
+      operator: In
+      values:
+        - alpha
+        - beta
+parameters:
+  - name: CIDR_IP
+    value: "172.17.0.0/16"
 ```
 
 TemplateGroupInstance distributes a template across multiple namespaces which are selected by labelSelector.

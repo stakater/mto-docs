@@ -1,4 +1,4 @@
-# Mapping Resources across Tenant Namespaces via TGI
+# Copying Secrets and Configmaps across Tenant Namespaces via TGI
 
 Bill is a cluster admin who wants to map a `docker-pull-secret`, present in a `build` namespace, in tenant namespaces where certain labels exists.
 
@@ -38,7 +38,7 @@ kubectl get secret docker-pull-secret -n bluesky-anna-aurora-sandbox
 NAME             STATE    AGE
 docker-pull-secret    Active   3m
 
-kubectl get secret docker-pull-secret -n alpha-haseeb-aurora-sandbox
+kubectl get secret docker-pull-secret -n alpha-dave-aurora-sandbox
 NAME             STATE    AGE
 docker-pull-secret    Active   3m
 ```
