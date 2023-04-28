@@ -377,7 +377,7 @@
   
     <li class="md-nav__item">
       <a href="quota.html" class="md-nav__link">
-        Enforcing Resources Quotas
+        Enforcing Quotas
       </a>
     </li>
   
@@ -447,7 +447,21 @@
   
     <li class="md-nav__item">
       <a href="deploying-templates.html" class="md-nav__link">
-        Deploying Template to Namespaces via Tenant
+        Distributing Resources in Namespaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="distributing-resources.html" class="md-nav__link">
+        Copying Secrets and Configmaps across Tenant Namespaces via TGI
       </a>
     </li>
   
@@ -476,20 +490,6 @@
     <li class="md-nav__item">
       <a href="custom-roles.html" class="md-nav__link">
         Changing the default access level for tenant owners
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="mapping-resources.html" class="md-nav__link">
-        Mapping Resources across Tenant Namespaces via TGI
       </a>
     </li>
   
@@ -581,9 +581,47 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Creating Mattermost Teams for your tenant
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="mattermost.html" class="md-nav__link md-nav__link--active">
         Creating Mattermost Teams for your tenant
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps-to-enable-integration" class="md-nav__link">
+    Steps to enable integration
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -748,6 +786,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    Requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps-to-enable-integration" class="md-nav__link">
+    Steps to enable integration
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -765,7 +825,12 @@
 
 
 <h1 id="creating-mattermost-teams-for-your-tenant">Creating Mattermost Teams for your tenant</h1>
-<p>Bill wants each tenant to also have their own Mattermost Teams. To make sure this happens correctly, Bill will first add the <code>stakater.com/mattermost: true</code> label to the tenant:</p>
+<h2 id="requirements">Requirements</h2>
+<p><code>MTO-Mattermost-Integration-Operator</code></p>
+<p>Please contact stakater to install the Mattermost integration operator before following the below mentioned steps.</p>
+<h2 id="steps-to-enable-integration">Steps to enable integration</h2>
+<p>Bill wants some of the tenants to also have their own Mattermost Teams. To make sure this happens correctly, Bill will first add the <code>stakater.com/mattermost: true</code> label to the tenants.
+The label will enable the <code>mto-mattermost-integration-operator</code> to create and manage Mattermost Teams based on Tenants.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -773,10 +838,6 @@
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">stakater.com/mattermost</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sourceRepos</span><span class="p">:</span>
-<span class="w">      </span><span class="c1"># specify source repos here</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;https://github.com/stakater/GitOps-config&quot;</span>
 <span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">users</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user</span>

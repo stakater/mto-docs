@@ -8,20 +8,20 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/SA-2217/usecases/mapping-resources.html">
+        <link rel="canonical" href="https://docs.stakater.com/SA-2217/usecases/distributing-resources.html">
       
       
-        <link rel="prev" href="custom-roles.html">
+        <link rel="prev" href="deploying-templates.html">
       
       
-        <link rel="next" href="secret-distribution.html">
+        <link rel="next" href="extend-default-roles.html">
       
       <link rel="icon" href="../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Mapping Resources across Tenant Namespaces via TGI - Multi Tenant Operator</title>
+        <title>Copying Secrets and Configmaps across Tenant Namespaces via TGI - Multi Tenant Operator</title>
       
     
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mapping-resources-across-tenant-namespaces-via-tgi" class="md-skip">
+        <a href="#copying-secrets-and-configmaps-across-tenant-namespaces-via-tgi" class="md-skip">
           Skip to content
         </a>
       
@@ -131,7 +131,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Mapping Resources across Tenant Namespaces via TGI
+              Copying Secrets and Configmaps across Tenant Namespaces via TGI
             
           </span>
         </div>
@@ -377,7 +377,7 @@
   
     <li class="md-nav__item">
       <a href="quota.html" class="md-nav__link">
-        Enforcing Resources Quotas
+        Enforcing Quotas
       </a>
     </li>
   
@@ -447,35 +447,7 @@
   
     <li class="md-nav__item">
       <a href="deploying-templates.html" class="md-nav__link">
-        Deploying Template to Namespaces via Tenant
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="extend-default-roles.html" class="md-nav__link">
-        Extending the default access level for tenant members
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="custom-roles.html" class="md-nav__link">
-        Changing the default access level for tenant owners
+        Distributing Resources in Namespaces
       </a>
     </li>
   
@@ -498,12 +470,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Mapping Resources across Tenant Namespaces via TGI
+          Copying Secrets and Configmaps across Tenant Namespaces via TGI
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="mapping-resources.html" class="md-nav__link md-nav__link--active">
-        Mapping Resources across Tenant Namespaces via TGI
+      <a href="distributing-resources.html" class="md-nav__link md-nav__link--active">
+        Copying Secrets and Configmaps across Tenant Namespaces via TGI
       </a>
       
         
@@ -532,6 +504,34 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="extend-default-roles.html" class="md-nav__link">
+        Extending the default access level for tenant members
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="custom-roles.html" class="md-nav__link">
+        Changing the default access level for tenant owners
+      </a>
     </li>
   
 
@@ -810,7 +810,7 @@
   
 
 
-<h1 id="mapping-resources-across-tenant-namespaces-via-tgi">Mapping Resources across Tenant Namespaces via TGI</h1>
+<h1 id="copying-secrets-and-configmaps-across-tenant-namespaces-via-tgi">Copying Secrets and Configmaps across Tenant Namespaces via TGI</h1>
 <p>Bill is a cluster admin who wants to map a <code>docker-pull-secret</code>, present in a <code>build</code> namespace, in tenant namespaces where certain labels exists.</p>
 <p>First, Bill creates a template:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
@@ -840,7 +840,7 @@
 NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
 docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
 
-kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-pull-secret<span class="w"> </span>-n<span class="w"> </span>alpha-haseeb-aurora-sandbox
+kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-pull-secret<span class="w"> </span>-n<span class="w"> </span>alpha-dave-aurora-sandbox
 NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
 docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
 </code></pre></div>
