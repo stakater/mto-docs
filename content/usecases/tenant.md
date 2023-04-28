@@ -273,8 +273,3 @@ spec:
 ```
 
 With the above configuration all tenant namespaces and AppProject will not be deleted when tenant `bluesky` is deleted. By default, the value of `spec.onDelete.cleanNamespaces` is also `false` and `spec.onDelete.cleanAppProject` is `true`
-
-## What’s next
-
-See how Anna can create [namespaces](./namespace.md)
-With the above configuration all tenant namespaces will not be deleted when tenant `bluesky` is deleted. By default the value of `spec.onDelete.cleanNamespaces` is also `false`.
