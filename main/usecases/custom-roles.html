@@ -14,7 +14,7 @@
         <link rel="prev" href="extend-default-roles.html">
       
       
-        <link rel="next" href="mapping-resources.html">
+        <link rel="next" href="secret-distribution.html">
       
       <link rel="icon" href="../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
@@ -377,7 +377,7 @@
   
     <li class="md-nav__item">
       <a href="quota.html" class="md-nav__link">
-        Enforcing Resources Quotas
+        Enforcing Quotas
       </a>
     </li>
   
@@ -447,7 +447,21 @@
   
     <li class="md-nav__item">
       <a href="deploying-templates.html" class="md-nav__link">
-        Deploying Template to Namespaces via Tenant
+        Distributing Resources in Namespaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="distributing-resources.html" class="md-nav__link">
+        Copying Secrets and Configmaps across Tenant Namespaces via TGI
       </a>
     </li>
   
@@ -514,31 +528,10 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    What’s next
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="mapping-resources.html" class="md-nav__link">
-        Mapping Resources across Tenant Namespaces via TGI
-      </a>
     </li>
   
 
@@ -799,13 +792,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    What’s next
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -825,7 +811,8 @@
 
 
 <h1 id="changing-the-default-access-level-for-tenant-owners">Changing the default access level for tenant owners</h1>
-<p>Bill as the cluster admin wants to reduce the privileges that tenant owners have, so they cannot create or edit Roles or bind them. As an admin of an OpenShift cluster, Bill can do this by assigning the <code>edit</code> role to all tenant owners. This is easily achieved by modifying the IntegrationConfig:</p>
+<p>This feature allows the cluster admins to change the default roles assigned to Tenant owner, editor, viewer groups.</p>
+<p>For example, if Bill as the cluster admin wants to reduce the privileges that tenant owners have, so they cannot create or edit Roles or bind them. As an admin of an OpenShift cluster, Bill can do this by assigning the <code>edit</code> role to all tenant owners. This is easily achieved by modifying the <a href="/content/integration-config.md">IntegrationConfig</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -885,8 +872,6 @@
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
 </code></pre></div>
 <p>New Bindings will be created for the Tenant owners of <code>bluesky</code> and <code>alpha</code>, corresponding to the <code>admin</code> Role. Bindings for editors and viewer will be inherited from the <code>default roles</code>. All other Tenant owners will have an <code>edit</code> Role bound to them within their namespaces</p>
-<h2 id="whats-next">What’s next</h2>
-<p>See how Bill can configure <a href="configuring-multitenant-network-isolation.html">multi-tenant isolation with network policies using templates</a></p>
 
 
   

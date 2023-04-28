@@ -377,7 +377,7 @@
   
     <li class="md-nav__item">
       <a href="quota.html" class="md-nav__link">
-        Enforcing Resources Quotas
+        Enforcing Quotas
       </a>
     </li>
   
@@ -451,13 +451,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    What’s next
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -502,7 +495,21 @@
   
     <li class="md-nav__item">
       <a href="deploying-templates.html" class="md-nav__link">
-        Deploying Template to Namespaces via Tenant
+        Distributing Resources in Namespaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="distributing-resources.html" class="md-nav__link">
+        Copying Secrets and Configmaps across Tenant Namespaces via TGI
       </a>
     </li>
   
@@ -531,20 +538,6 @@
     <li class="md-nav__item">
       <a href="custom-roles.html" class="md-nav__link">
         Changing the default access level for tenant owners
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="mapping-resources.html" class="md-nav__link">
-        Mapping Resources across Tenant Namespaces via TGI
       </a>
     </li>
   
@@ -813,13 +806,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    What’s next
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -852,6 +838,7 @@
 </blockquote>
 <p>When Anna creates the namespace, MTO assigns Anna and other tenant members the roles based on their user types, such as a tenant owner getting the OpenShift <code>admin</code> role for that namespace.</p>
 <p>As a tenant owner, Anna is able to create namespaces.</p>
+<p>If you have enabled <a href="/content/argocd-multitenancy.md">ArgoCD Multitenancy</a>, our preferred solution is to create tenant namespaces by using <a href="/content/usecases/tenant.md">Tenant</a> spec to avoid syncing issues in ArgoCD console during namespace creation.</p>
 <h2 id="add-existing-namespaces-to-tenant-via-gitops">Add Existing Namespaces to Tenant via GitOps</h2>
 <p>Using GitOps as your preferred development workflow, you can add existing namespaces for your tenants by including the tenant label.</p>
 <p>To add an existing namespace to your tenant via GitOps:</p>
@@ -885,8 +872,6 @@
 <li>Now that you have removed your namespace manifest from your watched git repository, and from your managed ArgoCD apps, sync your git repository and allow your changes be propagated.</li>
 <li>Verify that your namespace has been deleted.</li>
 </ul>
-<h2 id="whats-next">What’s next</h2>
-<p>See how Bill can create <a href="template.html">templates</a></p>
 
 
   

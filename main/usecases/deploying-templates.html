@@ -14,14 +14,14 @@
         <link rel="prev" href="template.html">
       
       
-        <link rel="next" href="extend-default-roles.html">
+        <link rel="next" href="distributing-resources.html">
       
       <link rel="icon" href="../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Deploying Template to Namespaces via Tenant - Multi Tenant Operator</title>
+        <title>Distributing Resources in Namespaces - Multi Tenant Operator</title>
       
     
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deploying-template-to-namespaces-via-tenant" class="md-skip">
+        <a href="#distributing-resources-in-namespaces" class="md-skip">
           Skip to content
         </a>
       
@@ -131,7 +131,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Deploying Template to Namespaces via Tenant
+              Distributing Resources in Namespaces
             
           </span>
         </div>
@@ -377,7 +377,7 @@
   
     <li class="md-nav__item">
       <a href="quota.html" class="md-nav__link">
-        Enforcing Resources Quotas
+        Enforcing Quotas
       </a>
     </li>
   
@@ -456,12 +456,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Deploying Template to Namespaces via Tenant
+          Distributing Resources in Namespaces
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="deploying-templates.html" class="md-nav__link md-nav__link--active">
-        Deploying Template to Namespaces via Tenant
+        Distributing Resources in Namespaces
       </a>
       
         
@@ -480,6 +480,40 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#deploying-template-to-namespaces-via-templategroupinstances" class="md-nav__link">
+    Deploying Template to Namespaces via TemplateGroupInstances
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying Template to Namespaces via TemplateGroupInstances">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#templategroupinstance-for-multiple-tenants" class="md-nav__link">
+    TemplateGroupInstance for multiple Tenants
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templategroupinstance-for-all-tenants" class="md-nav__link">
+    TemplateGroupInstance for all Tenants
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-template-to-namespaces-via-tenant" class="md-nav__link">
+    Deploying Template to Namespaces via Tenant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploying-template-to-a-namespace-via-templateinstance" class="md-nav__link">
     Deploying Template to a Namespace via TemplateInstance
   </a>
@@ -487,22 +521,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploying-template-to-namespaces-via-templategroupinstances" class="md-nav__link">
-    Deploying Template to Namespaces via TemplateGroupInstances
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#passing-parameters-to-template-via-templateinstance-or-tenant" class="md-nav__link">
-    Passing Parameters to Template via TemplateInstance or Tenant
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    What’s next
+  <a href="#passing-parameters-to-template-via-templateinstance-templategroupinstance-or-tenant" class="md-nav__link">
+    Passing Parameters to Template via TemplateInstance, TemplateGroupInstance or Tenant
   </a>
   
 </li>
@@ -511,6 +531,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="distributing-resources.html" class="md-nav__link">
+        Copying Secrets and Configmaps across Tenant Namespaces via TGI
+      </a>
     </li>
   
 
@@ -538,20 +572,6 @@
     <li class="md-nav__item">
       <a href="custom-roles.html" class="md-nav__link">
         Changing the default access level for tenant owners
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="mapping-resources.html" class="md-nav__link">
-        Mapping Resources across Tenant Namespaces via TGI
       </a>
     </li>
   
@@ -807,6 +827,40 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#deploying-template-to-namespaces-via-templategroupinstances" class="md-nav__link">
+    Deploying Template to Namespaces via TemplateGroupInstances
+  </a>
+  
+    <nav class="md-nav" aria-label="Deploying Template to Namespaces via TemplateGroupInstances">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#templategroupinstance-for-multiple-tenants" class="md-nav__link">
+    TemplateGroupInstance for multiple Tenants
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templategroupinstance-for-all-tenants" class="md-nav__link">
+    TemplateGroupInstance for all Tenants
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-template-to-namespaces-via-tenant" class="md-nav__link">
+    Deploying Template to Namespaces via Tenant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploying-template-to-a-namespace-via-templateinstance" class="md-nav__link">
     Deploying Template to a Namespace via TemplateInstance
   </a>
@@ -814,22 +868,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploying-template-to-namespaces-via-templategroupinstances" class="md-nav__link">
-    Deploying Template to Namespaces via TemplateGroupInstances
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#passing-parameters-to-template-via-templateinstance-or-tenant" class="md-nav__link">
-    Passing Parameters to Template via TemplateInstance or Tenant
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    What’s next
+  <a href="#passing-parameters-to-template-via-templateinstance-templategroupinstance-or-tenant" class="md-nav__link">
+    Passing Parameters to Template via TemplateInstance, TemplateGroupInstance or Tenant
   </a>
   
 </li>
@@ -852,7 +892,85 @@
   
 
 
-<h1 id="deploying-template-to-namespaces-via-tenant">Deploying Template to Namespaces via Tenant</h1>
+<h1 id="distributing-resources-in-namespaces">Distributing Resources in Namespaces</h1>
+<p>Multi Tenant Operator has three Custom Resources which can cover this need using the <code>Template</code> CR, depending upon the conditions and preference.</p>
+<ol>
+<li>TemplateGroupInstance</li>
+<li>TemplateInstance</li>
+<li>Tenant</li>
+</ol>
+<p>Stakater Team, however, encourages the use of <code>TemplateGroupInstance</code> to distribute resources in multiple namespaces as it is optimized for better performance.</p>
+<h2 id="deploying-template-to-namespaces-via-templategroupinstances">Deploying Template to Namespaces via TemplateGroupInstances</h2>
+<p>Bill, the cluster admin, wants to deploy a docker pull secret in namespaces where certain labels exists.</p>
+<p>First, Bill creates a template:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret</span>
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="w">      </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="w">      </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">.dockercfg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eyAKICAiaHR0cHM6IC8vaW5kZXguZG9ja2VyLmlvL3YxLyI6IHsgImF1dGgiOiAiYzNSaGEyRjBaWEk2VjI5M1YyaGhkRUZIY21WaGRGQmhjM04zYjNKayJ9Cn0K</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/dockercfg</span>
+</code></pre></div>
+<p>Once the template has been created, Bill makes a <code>TemplateGroupInstance</code> referring to the <code>Template</code> he wants to deploy with <code>MatchLabels</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-group-instance</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>Afterwards, Bill can see that secrets have been successfully created in all label matching namespaces.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-secret<span class="w"> </span>-n<span class="w"> </span>bluesky-anna-aurora-sandbox
+NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
+docker-secret<span class="w">    </span>Active<span class="w">   </span>3m
+
+kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-secret<span class="w"> </span>-n<span class="w"> </span>alpha-dave-aurora-sandbox
+NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
+docker-secret<span class="w">    </span>Active<span class="w">   </span>2m
+</code></pre></div>
+<p><code>TemplateGroupInstance</code> can also target specific tenants or all tenant namespaces under a single yaml definition.</p>
+<h3 id="templategroupinstance-for-multiple-tenants">TemplateGroupInstance for multiple Tenants</h3>
+<p>It can be done by using the <code>matchExpressions</code> field, dividing the tenant label in key and values.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-group-instance</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchExpressions</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater.com/tenant</span>
+<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<span class="w">      </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beta</span>
+<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<h3 id="templategroupinstance-for-all-tenants">TemplateGroupInstance for all Tenants</h3>
+<p>This can also be done by using the <code>matchExpressions</code> field, using just the tenant label key <code>stakater.com/tenant</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-group-instance</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchExpressions</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater.com/tenant</span>
+<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Exists</span>
+<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<h2 id="deploying-template-to-namespaces-via-tenant">Deploying Template to Namespaces via Tenant</h2>
 <p>Bill is a cluster admin who wants to deploy a docker-pull-secret in Anna's tenant namespaces where certain labels exists.</p>
 <p>First, Bill creates a template:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
@@ -891,7 +1009,7 @@
 <span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 </code></pre></div>
-<p>Multi Tenant Operator will deploy <code>TemplateInstances</code> mentioned in <code>templateInstances</code>, <code>TemplateInstances</code> will only be applied in those <code>namespaces</code> which belong to Anna's <code>tenant</code> and which have <code>matching label</code>.</p>
+<p>Multi Tenant Operator will deploy <code>TemplateInstances</code> mentioned in <code>templateInstances</code> field, <code>TemplateInstances</code> will only be applied in those <code>namespaces</code> which belong to Anna's <code>tenant</code> and have the matching label of <code>kind: build</code>.</p>
 <p>So now Anna adds label <code>kind: build</code> to her existing namespace <code>bluesky-anna-aurora-sandbox</code>, and after adding the label she see's that the secret has been created.</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-secret<span class="w"> </span>-n<span class="w"> </span>bluesky-anna-aurora-sandbox
 NAME<span class="w">                  </span>STATE<span class="w">    </span>AGE
@@ -929,45 +1047,7 @@ docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
 NAME<span class="w">                  </span>STATE<span class="w">    </span>AGE
 docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
 </code></pre></div>
-<h2 id="deploying-template-to-namespaces-via-templategroupinstances">Deploying Template to Namespaces via TemplateGroupInstances</h2>
-<p>Bill, the cluster admin, wants to deploy a docker pull secret in namespaces where certain labels exists.</p>
-<p>First, Bill creates a template:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret</span>
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
-<span class="w">      </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="w">      </span><span class="nt">data</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">.dockercfg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eyAKICAiaHR0cHM6IC8vaW5kZXguZG9ja2VyLmlvL3YxLyI6IHsgImF1dGgiOiAiYzNSaGEyRjBaWEk2VjI5M1YyaGhkRUZIY21WaGRGQmhjM04zYjNKayJ9Cn0K</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/dockercfg</span>
-</code></pre></div>
-<p>Once the template has been created, Bill makes a <code>TemplateGroupInstance</code> referring to the <code>Template</code> he wants to deploy with <code>MatchLabels</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-group-instance</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<p>Afterwards, Bill can see that secrets has been successfully created in all matching namespaces.</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-secret<span class="w"> </span>-n<span class="w"> </span>bluesky-anna-aurora-sandbox
-NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
-docker-secret<span class="w">    </span>Active<span class="w">   </span>3m
-
-kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-secret<span class="w"> </span>-n<span class="w"> </span>alpha-haseeb-aurora-sandbox
-NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
-docker-secret<span class="w">    </span>Active<span class="w">   </span>2m
-</code></pre></div>
-<h2 id="passing-parameters-to-template-via-templateinstance-or-tenant">Passing Parameters to Template via TemplateInstance or Tenant</h2>
+<h2 id="passing-parameters-to-template-via-templateinstance-templategroupinstance-or-tenant">Passing Parameters to Template via TemplateInstance, TemplateGroupInstance or Tenant</h2>
 <p>Anna wants to deploy a LimitRange resource to certain namespaces.</p>
 <p>First Anna asks Bill, the cluster admin, to create template with parameters for LimitRange for her:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
@@ -1014,7 +1094,28 @@ docker-secret<span class="w">    </span>Active<span class="w">   </span>2m
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_REQUESTS</span>
 <span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
 </code></pre></div>
-<p>Or she can use her tenant</p>
+<p>If she wants to distribute the same Template over multiple namespaces, she can use <code>TemplateGroupInstance</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions-tgi</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions</span>
+<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchExpressions</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater.com/tenant</span>
+<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<span class="w">      </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beta</span>
+<span class="nt">parameters</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_LIMIT</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.5&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_REQUESTS</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+</code></pre></div>
+<p>Or she can use her tenant to cover only the tenant namespaces.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1042,8 +1143,6 @@ docker-secret<span class="w">    </span>Active<span class="w">   </span>2m
 <span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 </code></pre></div>
-<h2 id="whats-next">What’s next</h2>
-<p>See how Bill can configure <a href="custom-roles.html">tenant member roles</a></p>
 
 
   

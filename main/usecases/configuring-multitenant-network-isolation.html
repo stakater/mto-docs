@@ -377,7 +377,7 @@
   
     <li class="md-nav__item">
       <a href="quota.html" class="md-nav__link">
-        Enforcing Resources Quotas
+        Enforcing Quotas
       </a>
     </li>
   
@@ -447,7 +447,21 @@
   
     <li class="md-nav__item">
       <a href="deploying-templates.html" class="md-nav__link">
-        Deploying Template to Namespaces via Tenant
+        Distributing Resources in Namespaces
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="distributing-resources.html" class="md-nav__link">
+        Copying Secrets and Configmaps across Tenant Namespaces via TGI
       </a>
     </li>
   
@@ -476,20 +490,6 @@
     <li class="md-nav__item">
       <a href="custom-roles.html" class="md-nav__link">
         Changing the default access level for tenant owners
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="mapping-resources.html" class="md-nav__link">
-        Mapping Resources across Tenant Namespaces via TGI
       </a>
     </li>
   
@@ -773,8 +773,8 @@
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-network-policy</span>
 <span class="nt">resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkPolicy</span>
-<span class="w">    </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkPolicy</span>
 <span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allow-same-namespace</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
@@ -809,7 +809,7 @@
 <span class="w">      </span><span class="nt">policyTypes</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
 </code></pre></div>
-<p>Once the template has been created, Bill edits the <code>IntegrationConfig</code> to add unique label to tenant projects:</p>
+<p>Once the template has been created, Bill edits the <a href="/content/integration-config.md">IntegrationConfig</a> to add unique label to all tenant projects:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -834,8 +834,8 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift-*</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:kube-*</span>
 </code></pre></div>
-<p>Bill has added a new label <code>tenant-network-policy: "true"</code> for tenant projects, now MTO will add that label in all projects of tenants.</p>
-<p>Finally Bill creates a <code>TemplateGroupInstance</code> which will deploy the network policies using the newly created project label and template.</p>
+<p>Bill has added a new label <code>tenant-network-policy: "true"</code> in project section of IntegrationConfig, now MTO will add that label in all tenant projects.</p>
+<p>Finally Bill creates a <code>TemplateGroupInstance</code> which will distribute the network policies using the newly added project label and template.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -847,7 +847,7 @@
 <span class="w">      </span><span class="nt">tenant-network-policy</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 <span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-<p>MTO will now deploy the network policies mentioned in <code>Template</code> to all tenant projects.</p>
+<p>MTO will now deploy the network policies mentioned in <code>Template</code> to all projects matching the label selector mentioned in the TemplateGroupInstance.</p>
 
 
   
