@@ -94,8 +94,8 @@ spec:
     enabled: true # optional
     private: true # optional
   onDelete: # optional
-    cleanNamespaces: true # optional
-    cleanAppProject: false # optional
+    cleanNamespaces: false # optional
+    cleanAppProject: true # optional
   argocd: # optional
     sourceRepos: # required
       - https://github.com/stakater/gitops-config

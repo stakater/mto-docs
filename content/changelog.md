@@ -120,7 +120,7 @@
 
 ### v0.5.0
 
-- feat: Add support for tenant namespaces off-boarding. For more details check out [onDelete](./usecases/tenant.md#retaining-tenant-namespaces-when-a-tenant-is-being-deleted)
+- feat: Add support for tenant namespaces off-boarding. For more details check out [onDelete](./usecases/tenant.md#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted)
 - feat: Add tenant webhook for spec validation
 
 - fix: TemplateGroupInstance now cleans up leftover Template resources from namespaces that are no longer part of TGI namespace selector
