@@ -2,7 +2,7 @@
 
 Anna wants to create a Template that she can use to initialize or share common resources across namespaces (e.g. PullSecrets).
 
-Anna can either create a template using `manifests` field, covering kubernetes or custom resources.
+Anna can either create a template using `manifests` field, covering Kubernetes or custom resources.
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1

@@ -2,7 +2,7 @@
 
 ## Creating ArgoCD AppProjects for your tenant
 
-Bill wants each tenant to also have their own ArgoCD AppProjects. To make sure this happens correctly, Bill will first specify the argocd namespace in the [IntegrationConfig](/content/integration-config.md):
+Bill wants each tenant to also have their own ArgoCD AppProjects. To make sure this happens correctly, Bill will first specify the ArgoCD namespace in the [IntegrationConfig](/content/integration-config.md):
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1

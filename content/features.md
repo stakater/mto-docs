@@ -32,9 +32,13 @@ More details on [Mattermost](/content/usecases/mattermost.md)
 
 Multi Tenant Operator provides a mechanism for defining Resource Quotas at the tenant scope, meaning all namespaces belonging to a particular tenant share the defined quota, which is why you are able to safely enable dev teams to self serve their namespaces whilst being confident that they can only use the resources allocated based on budget and business needs.
 
+More details on [Quota](/content/usecases/quota.md)
+
 ## Remote Development Namespaces
 
 Multi Tenant Operator can be configured to automatically provision a namespace in the cluster for every member of the specific tenant, that will also be preloaded with any selected templates and consume the same pool of resources from the tenants quota creating safe remote dev namespaces that teams can use as scratch namespace for rapid prototyping and development. So, every developer gets a Kubernetes-based cloud development environment that feel like working on localhost.
+
+More details on [Sandboxes](/content/usecases/private-sandboxes.md)
 
 ## Templates and Template distribution
 
@@ -49,6 +53,8 @@ Common use cases for namespace templates may be:
 - Deploying pre-populated databases with test data
 - Injecting new namespaces with optional credentials such as image pull secrets
 
+More details on [Distributing Template Resources](/content/usecases/deploying-templates.md)
+
 ## Hibernation
 
 Multi Tenant Operator can downscale Deployments and StatefulSets in a tenant's Namespace according to a defined  sleep schedule. The Deployments and StatefulSets are brought back to their required replicas according to the provided wake schedule.
@@ -58,6 +64,8 @@ More details on [Hibernation](/content/hibernation.md)
 ## Cross Namespace Resource Distribution
 
 Multi Tenant Operator supports cloning of secrets and configmaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide reference to secrets and configmaps. It uses a template group instance to distribute those secrets and namespaces in matching namespaces, even if namespaces belong to different tenants. If template instance is used then the resources will only be mapped if namespaces belong to same tenant.
+
+More details on [Distributing Secrets and ConfigMaps](/content/usecases/distributing-resources.md)
 
 ## Self-Service
 

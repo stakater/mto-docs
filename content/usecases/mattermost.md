@@ -2,14 +2,14 @@
 
 ## Requirements
 
-`MTO-mattermost-integration-operator`
+`MTO-Mattermost-Integration-Operator`
 
-Please contact stakater to install the mattermost integration operator before following the below mentioned steps.
+Please contact stakater to install the Mattermost integration operator before following the below mentioned steps.
 
 ## Steps to enable integration
 
 Bill wants some of the tenants to also have their own Mattermost Teams. To make sure this happens correctly, Bill will first add the `stakater.com/mattermost: true` label to the tenants.
-The label will enable the mto-mattermost-integration-operator to create and manage Mattermost Teams based on Tenants.
+The label will enable the `mto-mattermost-integration-operator` to create and manage Mattermost Teams based on Tenants.
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta2
