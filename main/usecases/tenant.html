@@ -428,46 +428,40 @@
     Assign multiple users as tenant owner
   </a>
   
-    <nav class="md-nav" aria-label="Assign multiple users as tenant owner">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#assigning-users-sandbox-namespace" class="md-nav__link">
     Assigning Users Sandbox Namespace
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#creating-namespaces-via-tenant-custom-resource" class="md-nav__link">
     Creating Namespaces via Tenant Custom Resource
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#distributing-common-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource" class="md-nav__link">
     Distributing common labels and annotations to tenant namespaces via Tenant Custom Resource
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#distributing-specific-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource" class="md-nav__link">
     Distributing specific labels and annotations to tenant namespaces via Tenant Custom Resource
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted" class="md-nav__link">
     Retaining tenant namespaces and AppProject when a tenant is being deleted
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -831,46 +825,40 @@
     Assign multiple users as tenant owner
   </a>
   
-    <nav class="md-nav" aria-label="Assign multiple users as tenant owner">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#assigning-users-sandbox-namespace" class="md-nav__link">
     Assigning Users Sandbox Namespace
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#creating-namespaces-via-tenant-custom-resource" class="md-nav__link">
     Creating Namespaces via Tenant Custom Resource
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#distributing-common-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource" class="md-nav__link">
     Distributing common labels and annotations to tenant namespaces via Tenant Custom Resource
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#distributing-specific-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource" class="md-nav__link">
     Distributing specific labels and annotations to tenant namespaces via Tenant Custom Resource
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted" class="md-nav__link">
     Retaining tenant namespaces and AppProject when a tenant is being deleted
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -914,7 +902,7 @@
 <span class="l l-Scalar l-Scalar-Plain">EOF</span>
 </code></pre></div>
 <p>Bill checks if the new tenant is created:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>tenant<span class="w"> </span>bluesky
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>tenants.tenantoperator.stakater.com<span class="w"> </span>bluesky
 NAME<span class="w">       </span>STATE<span class="w">    </span>AGE
 bluesky<span class="w">    </span>Active<span class="w">   </span>3m
 </code></pre></div>
@@ -930,7 +918,7 @@ kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w">
 no
 </code></pre></div>
 <p>Including the <code>Tenant</code> resource</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>get<span class="w"> </span>tenants
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>get<span class="w"> </span>tenants.tenantoperator.stakater.com
 no
 </code></pre></div>
 <h2 id="assign-multiple-users-as-tenant-owner">Assign multiple users as tenant owner</h2>
@@ -958,7 +946,7 @@ no
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>namespaces
 yes
 </code></pre></div>
-<h3 id="assigning-users-sandbox-namespace">Assigning Users Sandbox Namespace</h3>
+<h2 id="assigning-users-sandbox-namespace">Assigning Users Sandbox Namespace</h2>
 <p>Bill assigned the ownership of <code>bluesky</code> to <code>Anna</code> and <code>Anthony</code>. Now if the users want sandboxes to be made for them, they'll have to ask <code>Bill</code> to enable <code>sandbox</code> functionality.</p>
 <p>To enable that, Bill will just set <code>enabled: true</code> within the <code>sandboxConfig</code> field</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt; EOF</span>
@@ -988,8 +976,9 @@ bluesky-anna-aurora-sandbox<span class="w">      </span>Active<span class="w">  
 bluesky-anthony-aurora-sandbox<span class="w">   </span>Active<span class="w">   </span>5d5h
 bluesky-john-aurora-sandbox<span class="w">      </span>Active<span class="w">   </span>5d5h
 </code></pre></div>
-<h3 id="creating-namespaces-via-tenant-custom-resource">Creating Namespaces via Tenant Custom Resource</h3>
-<p>Bill now wants to create namespaces for <code>dev</code>, <code>build</code> and <code>production</code> environments for the tenant members. To create those namespaces Bill will just add those names into the <code>namespaces</code> list in the tenant CR.</p>
+<p>If Bill wants to make sure that only the sandbox owner can view his sandbox namespace, he can achieve this by setting <code>private: true</code> within the <code>sandboxConfig</code> filed.</p>
+<h2 id="creating-namespaces-via-tenant-custom-resource">Creating Namespaces via Tenant Custom Resource</h2>
+<p>Bill now wants to create namespaces for <code>dev</code>, <code>build</code> and <code>production</code> environments for the tenant members. To create those namespaces Bill will just add those names within the <code>namespaces</code> field in the tenant CR. If Bill wants to append the tenant name as a prefix in namespace name, then he can use <code>namespaces.withTenantPrefix</code> field. Else he can use <code>namespaces.withoutTenantPrefix</code> for namespaces for which he does not need tenant name as a prefix.</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt; EOF</span>
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
@@ -1010,6 +999,7 @@ bluesky-john-aurora-sandbox<span class="w">      </span>Active<span class="w">  
 <span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">    </span><span class="nt">withoutTenantPrefix</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prod</span>
 <span class="l l-Scalar l-Scalar-Plain">EOF</span>
 </code></pre></div>
@@ -1018,9 +1008,9 @@ bluesky-john-aurora-sandbox<span class="w">      </span>Active<span class="w">  
 NAME<span class="w">             </span>STATUS<span class="w">   </span>AGE
 bluesky-dev<span class="w">      </span>Active<span class="w">   </span>5d5h
 bluesky-build<span class="w">    </span>Active<span class="w">   </span>5d5h
-bluesky-prod<span class="w">     </span>Active<span class="w">   </span>5d5h
+prod<span class="w">             </span>Active<span class="w">   </span>5d5h
 </code></pre></div>
-<h3 id="distributing-common-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource">Distributing common labels and annotations to tenant namespaces via Tenant Custom Resource</h3>
+<h2 id="distributing-common-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource">Distributing common labels and annotations to tenant namespaces via Tenant Custom Resource</h2>
 <p>Bill now wants to add labels/annotations to all the namespaces for a tenant. To create those labels/annotations Bill will just add them into <code>commonMetadata.labels</code>/<code>commonMetadata.annotations</code> field in the tenant CR.</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt; EOF</span>
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
@@ -1052,7 +1042,7 @@ bluesky-prod<span class="w">     </span>Active<span class="w">   </span>5d5h
 <span class="l l-Scalar l-Scalar-Plain">EOF</span>
 </code></pre></div>
 <p>With the above configuration all tenant namespaces will now contain the mentioned labels and annotations.</p>
-<h3 id="distributing-specific-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource">Distributing specific labels and annotations to tenant namespaces via Tenant Custom Resource</h3>
+<h2 id="distributing-specific-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource">Distributing specific labels and annotations to tenant namespaces via Tenant Custom Resource</h2>
 <p>Bill now wants to add labels/annotations to specific namespaces for a tenant. To create those labels/annotations Bill will just add them into <code>specificMetadata.labels</code>/<code>specificMetadata.annotations</code> and specific namespaces in <code>specificMetadata.namespaces</code> field in the tenant CR.</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt; EOF</span>
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
@@ -1087,7 +1077,7 @@ bluesky-prod<span class="w">     </span>Active<span class="w">   </span>5d5h
 <span class="l l-Scalar l-Scalar-Plain">EOF</span>
 </code></pre></div>
 <p>With the above configuration all tenant namespaces will now contain the mentioned labels and annotations.</p>
-<h3 id="retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted">Retaining tenant namespaces and AppProject when a tenant is being deleted</h3>
+<h2 id="retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted">Retaining tenant namespaces and AppProject when a tenant is being deleted</h2>
 <p>Bill now wants to delete tenant <code>bluesky</code> and wants to retain all namespaces and AppProject of the tenant. To retain the namespaces Bill will set <code>spec.onDelete.cleanNamespaces</code>, and <code>spec.onDelete.cleanAppProjects</code> to <code>false</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
@@ -1110,7 +1100,7 @@ bluesky-prod<span class="w">     </span>Active<span class="w">   </span>5d5h
 <span class="w">    </span><span class="nt">cleanNamespaces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">cleanAppProject</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
-<p>With the above configuration all tenant namespaces will not be deleted when tenant <code>bluesky</code> is deleted. By default the value of <code>spec.onDelete.cleanNamespaces</code> is also <code>false</code>.</p>
+<p>With the above configuration all tenant namespaces and AppProject will not be deleted when tenant <code>bluesky</code> is deleted. By default, the value of <code>spec.onDelete.cleanNamespaces</code> is also <code>false</code> and <code>spec.onDelete.cleanAppProject</code> is <code>true</code></p>
 
 
   
@@ -1212,7 +1202,7 @@ bluesky-prod<span class="w">     </span>Active<span class="w">   </span>5d5h
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
       <script src="../assets/javascripts/bundle.51198bba.min.js"></script>
