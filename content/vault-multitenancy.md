@@ -10,9 +10,9 @@ MTO enables the [Kubernetes auth method](https://www.Vaultproject.io/docs/auth/k
 
 These service accounts are required to have `stakater.com/vault-access: true` label, so they can be authenticated with Vault via MTO.
 
-![image](./images/to-vault-multitenancy.png)
+The Diagram shows how MTO enables ServiceAccounts to read secrets from Vault.
 
-Fig 1. Shows how MTO manages authentication with Vault
+![image](./images/mto-vault-k8s-auth-workflow.png)
 
 ### User OIDC Auth in Vault
 
@@ -32,3 +32,7 @@ Mapping of tenant roles to Vault is shown below
 |Owner, Editor  |sys/mounts/(tenantName)/*|Create, Read, Update, Delete, List|
 |Owner, Editor  |managed-addons/*         |Read, List                        |
 |Viewer         |(tenantName)/*           |Read                              |
+
+A simple user login workflow is shown in the diagram below.
+
+![image](./images/mto-vault-integration-user-workflow.png)
