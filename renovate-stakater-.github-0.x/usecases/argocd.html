@@ -17,7 +17,7 @@
         <link rel="next" href="mattermost.html">
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.9">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.11">
     
     
       
@@ -854,7 +854,7 @@
 
 <h1 id="argocd">ArgoCD</h1>
 <h2 id="creating-argocd-appprojects-for-your-tenant">Creating ArgoCD AppProjects for your tenant</h2>
-<p>Bill wants each tenant to also have their own ArgoCD AppProjects. To make sure this happens correctly, Bill will first specify the ArgoCD namespace in the <a href="/content/integration-config.md">IntegrationConfig</a>:</p>
+<p>Bill wants each tenant to also have their own ArgoCD AppProjects. To make sure this happens correctly, Bill will first specify the ArgoCD namespace in the <a href="../integration-config.html">IntegrationConfig</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -946,7 +946,7 @@ openshift-operators<span class="w">   </span>sigma<span class="w">        </span
 <p>Users belonging to the Sigma group will now only see applications created by them in the ArgoCD frontend now:</p>
 <p><img alt="image" src="../images/argocd.png" /></p>
 <h2 id="prevent-argocd-from-syncing-certain-namespaced-resources">Prevent ArgoCD from syncing certain namespaced resources</h2>
-<p>Bill wants tenants to not be able to sync <code>ResourceQuota</code> and <code>LimitRange</code> resources to their namespaces. To do this correctly, Bill will specify these resources to blacklist in the ArgoCD portion of the <a href="/content/integration-config.md">IntegrationConfig</a>:</p>
+<p>Bill wants tenants to not be able to sync <code>ResourceQuota</code> and <code>LimitRange</code> resources to their namespaces. To do this correctly, Bill will specify these resources to blacklist in the ArgoCD portion of the <a href="../integration-config.html">IntegrationConfig</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
