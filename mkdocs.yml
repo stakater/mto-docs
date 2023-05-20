@@ -20,9 +20,9 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - attr_list
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+#  - pymdownx.emoji:
+#      emoji_index: !!python/name:materialx.emoji.twemoji
+#      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 extra:
     analytics:
@@ -44,38 +44,72 @@ extra:
         default: latest
 
 nav:
-    - index.md
-    - eula.md
-    - features.md
-    - installation.md
-    - integration-config.md
-    - customresources.md
-    - tenant-roles.md
-    - Use Cases:
-        - usecases/quota.md
-        - usecases/tenant.md
-        - usecases/namespace.md
-        - usecases/volume-limits.md
-        - usecases/template.md
-        - usecases/deploying-templates.md
-        - usecases/distributing-resources.md
-        - usecases/extend-default-roles.md
-        - usecases/custom-roles.md
-        - usecases/secret-distribution.md
-        - usecases/configuring-multitenant-network-isolation.md
-        - usecases/distributing-secrets-using-sealed-secret-template.md
-        - usecases/integrationconfig.md
-        - usecases/argocd.md
-        - usecases/mattermost.md
-        - usecases/admin-clusterrole.md
-        - usecases/hibernation.md
-        - usecases/private-sandboxes.md
-    - hibernation.md
-    - argocd-multitenancy.md
-    - vault-multitenancy.md
+    - introduction.md
+    - Tutorials:
+      - tutorials/installation.md
+      - Create your first Tenant:
+        - tutorials/tenant/create-tenant.md
+        - tutorials/tenant/assign-quota-tenant.md
+        - tutorials/tenant/create-sandbox.md
+        - tutorials/tenant/creating-namespaces.md
+        - tutorials/tenant/assigning-metadata.md
+        - tutorials/tenant/tenant-hibernation.md
+        - tutorials/tenant/custom-rbac.md
+      - "Template: Definition and Usage Guide":
+        - tutorials/template/template.md
+        - tutorials/template/template-instance.md
+        - tutorials/template/template-group-instance.md
+      - ArgoCD Multi-tenancy:
+        - tutorials/argocd/why-argocd-multi-tenancy.md
+        - tutorials/argocd/enabling-multi-tenancy-argocd.md
+      - Vault Multi-Tenancy:
+        - tutorials/vault/why-vault-multi-tenancy.md
+        - tutorials/vault/enabling-multi-tenancy-vault.md
+    - How-to Guides:
+      - how-to-guides/tenant.md
+      - how-to-guides/integration-config.md
+      - how-to-guides/quota.md
+      - how-to-guides/template.md
+      - how-to-guides/template-instance.md
+      - how-to-guides/template-group-instance.md
+    - Reference guides:
+      - reference-guides/distributing-secrets.md
+      - reference-guides/add-remove-namespace-gitops.md
+    - FAQ:
+      - faq/index.md
     - changelog.md
-    - troubleshooting.md
-    - faq.md
+    - eula.md
+#    - features.md
+#    - installation.md
+#    - integration-config.md
+#    - customresources.md
+#    - tenant-roles.md
+#    - Use Cases:
+#        - usecases/quota.md
+#        - usecases/tenant.md
+#        - usecases/namespace.md
+#        - usecases/volume-limits.md
+#        - usecases/template.md
+#        - usecases/deploying-templates.md
+#        - usecases/distributing-resources.md
+#        - usecases/extend-default-roles.md
+#        - usecases/custom-roles.md
+#        - usecases/secret-distribution.md
+#        - usecases/configuring-multitenant-network-isolation.md
+#        - usecases/distributing-secrets-using-sealed-secret-template.md
+#        - usecases/integrationconfig.md
+#        - usecases/argocd.md
+#        - usecases/mattermost.md
+#        - usecases/admin-clusterrole.md
+#        - usecases/hibernation.md
+#        - usecases/private-sandboxes.md
+#    - hibernation.md
+#    - argocd-multitenancy.md
+#    - vault-multitenancy.md
+#    - changelog.md
+#    - troubleshooting.md
+#    - faq.md
+#    - eula.md
 plugins:
     - search
     - mermaid2
