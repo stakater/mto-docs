@@ -44,7 +44,7 @@ spec:
   ...
 ```
 
-Afterwards, Bill must specify the source GitOps repos for the tenant inside the tenant CR like so:
+Afterward, Bill must specify the source GitOps repos for the tenant inside the tenant CR like so:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta2
@@ -98,7 +98,7 @@ spec:
   roles:
     - description: >-
         Role that gives full access to all resources inside the tenant's
-        namespace to the tenant owner group
+        namespace to the tenant owner groups
       groups:
         - saap-cluster-admins
         - stakater-team

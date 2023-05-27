@@ -31,7 +31,7 @@ spec:
   sync: true
 ```
 
-Afterwards, Bill can see that secrets has been successfully mapped in all matching namespaces.
+Afterward, Bill can see that secrets has been successfully mapped in all matching namespaces.
 
 ```bash
 kubectl get secret docker-pull-secret -n bluesky-anna-aurora-sandbox
@@ -74,7 +74,7 @@ spec:
   sync: true
 ```
 
-Afterwards, Bill can see that secrets has been successfully mapped in all matching namespaces.
+Afterward, Bill can see that secrets has been successfully mapped in all matching namespaces.
 
 ```bash
 kubectl get secret docker-pull-secret -n bluesky-anna-aurora-sandbox

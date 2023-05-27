@@ -28,7 +28,7 @@ resources:
         namespace: example
 ```
 
-Now using this Template we can propagate registry secret to different namespaces that has some common set of labels.
+Now using this Template we can propagate registry secret to different namespaces that have some common set of labels.
 
 For example, will just add one label `kind: registry` and all namespaces with this label will get this secret.
 

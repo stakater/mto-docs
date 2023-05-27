@@ -141,7 +141,7 @@ tenantRoles:
 
 ### Default
 
-This field contains roles that will be used to create default roleBindings for each namespace that belongs to tenants. These roleBindings are only created for a namespace if that namespaces isn't already matched by the `custom` field below it. Therefore, it is required to have at least one role mentioned within each of its three subfields: `owner`, `editor`, and `viewer`. These 3 subfields also correspond to the member fields of the [Tenant CR](./customresources.md#_2-tenant)
+This field contains roles that will be used to create default roleBindings for each namespace that belongs to tenants. These roleBindings are only created for a namespace if that namespace isn't already matched by the `custom` field below it. Therefore, it is required to have at least one role mentioned within each of its three subfields: `owner`, `editor`, and `viewer`. These 3 subfields also correspond to the member fields of the [Tenant CR](./customresources.md#_2-tenant)
 
 ### Custom
 
@@ -332,7 +332,7 @@ rhsso:
     url: https://iam-keycloak-auth.apps.prod.abcdefghi.kubeapp.cloud/
 ```
 
-If enabled, than admins have to provide secret and URL of RHSSO.
+If enabled, then admins have to provide secret and URL of RHSSO.
 
 - `secretReference.name:` Will contain the name of the secret.
 - `secretReference.namespace:` Will contain the namespace of the secret.
@@ -359,7 +359,7 @@ Vault:
     clientName: vault
 ```
 
-If enabled, than admins have to provide secret, URL and SSO accessorID of Vault.
+If enabled, then admins have to provide secret, URL and SSO accessorID of Vault.
 
 - `secretReference.name:` Will contain the name of the secret.
 - `secretReference.namespace:` Will contain the namespace of the secret.

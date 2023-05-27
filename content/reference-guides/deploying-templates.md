@@ -45,7 +45,7 @@ spec:
   sync: true
 ```
 
-Afterwards, Bill can see that secrets have been successfully created in all label matching namespaces.
+Afterward, Bill can see that secrets have been successfully created in all label matching namespaces.
 
 ```bash
 kubectl get secret docker-secret -n bluesky-anna-aurora-sandbox
@@ -147,7 +147,7 @@ spec:
 
 Multi Tenant Operator will deploy `TemplateInstances` mentioned in `templateInstances` field, `TemplateInstances` will only be applied in those `namespaces` which belong to Anna's `tenant` and have the matching label of `kind: build`.
 
-So now Anna adds label `kind: build` to her existing namespace `bluesky-anna-aurora-sandbox`, and after adding the label she see's that the secret has been created.
+So now Anna adds label `kind: build` to her existing namespace `bluesky-anna-aurora-sandbox`, and after adding the label she sees that the secret has been created.
 
 ```bash
 kubectl get secret docker-secret -n bluesky-anna-aurora-sandbox
@@ -235,7 +235,7 @@ resources:
             type: Container
 ```
 
-Afterwards, Anna creates a `TemplateInstance` in her namespace referring to the `Template` she wants to deploy:
+Afterward, Anna creates a `TemplateInstance` in her namespace referring to the `Template` she wants to deploy:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1

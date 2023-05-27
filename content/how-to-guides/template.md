@@ -80,7 +80,7 @@ Templates are used to initialize Namespaces, share common resources across names
 * They are being tracked by TemplateInstances in each Namespace they are applied to.
 * They can contain pre-defined parameters such as ${namespace}/${tenant} or user-defined ${MY_PARAMETER} that can be specified within an TemplateInstance.
 
-Also you can define custom variables in `Template` and `TemplateInstance` . The parameters defined in `TemplateInstance` are overwritten the values defined in `Template` .
+Also, you can define custom variables in `Template` and `TemplateInstance` . The parameters defined in `TemplateInstance` are overwritten the values defined in `Template` .
 
 Manifest Templates: The easiest option to define a Template is by specifying an array of Kubernetes manifests which should be applied when the Template is being instantiated.
 
