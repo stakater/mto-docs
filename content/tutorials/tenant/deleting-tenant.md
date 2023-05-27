@@ -1,6 +1,5 @@
 # Deleting a Tenant
 
-
 ## Retaining tenant namespaces and AppProject when a tenant is being deleted
 
 Bill now wants to delete tenant `bluesky` and wants to retain all namespaces and AppProject of the tenant. To retain the namespaces Bill will set `spec.onDelete.cleanNamespaces`, and `spec.onDelete.cleanAppProjects` to `false`.

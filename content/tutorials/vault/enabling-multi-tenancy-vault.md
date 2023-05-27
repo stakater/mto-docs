@@ -38,5 +38,3 @@ Mapping of tenant roles to Vault is shown below
 A simple user login workflow is shown in the diagram below.
 
 ![image](./images/mto-vault-integration-user-workflow.png)
-
-

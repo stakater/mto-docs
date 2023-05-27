@@ -1,6 +1,5 @@
 # Creating Namespaces
 
-
 ## Creating Namespaces via Tenant Custom Resource
 
 Bill now wants to create namespaces for `dev`, `build` and `production` environments for the tenant members. To create those namespaces Bill will just add those names within the `namespaces` field in the tenant CR. If Bill wants to append the tenant name as a prefix in namespace name, then he can use `namespaces.withTenantPrefix` field. Else he can use `namespaces.withoutTenantPrefix` for namespaces for which he does not need tenant name as a prefix.
@@ -40,7 +39,6 @@ bluesky-dev      Active   5d5h
 bluesky-build    Active   5d5h
 prod             Active   5d5h
 ```
-
 
 Anna as the tenant owner can create new namespaces for her tenant.
 

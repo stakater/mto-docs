@@ -88,8 +88,7 @@ spec:
     - ns2
 ```
 
-
-# Freeing up unused resources with hibernation
+## Freeing up unused resources with hibernation
 
 ## Hibernating a tenant
 

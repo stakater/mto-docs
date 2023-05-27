@@ -1,6 +1,5 @@
 # Create Sandbox Namespaces for Tenant Users
 
-
 ## Assigning Users Sandbox Namespace
 
 Bill assigned the ownership of `bluesky` to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, they'll have to ask `Bill` to enable `sandbox` functionality.
@@ -40,7 +39,6 @@ bluesky-john-aurora-sandbox      Active   5d5h
 ```
 
 If Bill wants to make sure that only the sandbox owner can view his sandbox namespace, he can achieve this by setting `private: true` within the `sandboxConfig` filed.
-
 
 # Create Private Sandboxes
 
