@@ -754,6 +754,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#cluster-scoped-resource" class="md-nav__link">
+    Cluster scoped resource:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mandatory-and-optional-templates" class="md-nav__link">
     Mandatory and Optional Templates
   </a>
@@ -1223,6 +1230,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#cluster-scoped-resource" class="md-nav__link">
+    Cluster scoped resource:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mandatory-and-optional-templates" class="md-nav__link">
     Mandatory and Optional Templates
   </a>
@@ -1248,7 +1262,7 @@
 
 
 <h1 id="template">Template</h1>
-<p>Cluster scoped resource:</p>
+<h2 id="cluster-scoped-resource">Cluster scoped resource:</h2>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1329,7 +1343,7 @@
 <p>Manifest Templates: The easiest option to define a Template is by specifying an array of Kubernetes manifests which should be applied when the Template is being instantiated.</p>
 <p>Helm Chart Templates: Instead of manifests, a Template can specify a Helm chart that will be installed (using Helm template) when the Template is being instantiated.</p>
 <p>Resource Mapping Templates: A template can be used to map secrets and configmaps from one tenant's namespace to another tenant's namespace, or within a tenant's namespace.</p>
-<h3 id="mandatory-and-optional-templates">Mandatory and Optional Templates</h3>
+<h2 id="mandatory-and-optional-templates">Mandatory and Optional Templates</h2>
 <p>Templates can either be mandatory or optional. By default, all Templates are optional. Cluster Admins can make Templates mandatory by adding them to the <code>spec.templateInstances</code> array within the Tenant configuration. All Templates listed in <code>spec.templateInstances</code> will always be instantiated within every <code>Namespace</code> that is created for the respective Tenant.</p>
 
 
