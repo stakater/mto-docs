@@ -32,7 +32,7 @@ NAME       STATE    AGE
 bluesky    Active   3m
 ```
 
-Anna can now login to the cluster and check if she can create namespaces
+Anna can now log in to the cluster and check if she can create namespaces
 
 ```bash
 kubectl auth can-i create namespaces
@@ -81,7 +81,7 @@ spec:
 EOF
 ```
 
-With the configuration above, Anthony can log-in to the cluster and execute
+With the configuration above, Anthony can log in to the cluster and execute
 
 ```bash
 kubectl auth can-i create namespaces
