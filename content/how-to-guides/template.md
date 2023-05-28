@@ -1,6 +1,6 @@
 # Template
 
-## Cluster scoped resource:
+## Cluster scoped resource
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -91,4 +91,3 @@ Resource Mapping Templates: A template can be used to map secrets and configmaps
 ## Mandatory and Optional Templates
 
 Templates can either be mandatory or optional. By default, all Templates are optional. Cluster Admins can make Templates mandatory by adding them to the `spec.templateInstances` array within the Tenant configuration. All Templates listed in `spec.templateInstances` will always be instantiated within every `Namespace` that is created for the respective Tenant.
-
