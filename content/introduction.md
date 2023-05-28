@@ -24,8 +24,7 @@ MTO enables cluster admins to host multiple tenants in a single OpenShift Cluste
 
 MTO is also [OpenShift certified](https://catalog.redhat.com/software/operators/detail/618fa05e3adfdfc43f73b126)
 
-
-# Features
+## Features
 
 The major features of Multi Tenant Operator (MTO) are described below.
 

@@ -1,6 +1,6 @@
 # Understanding and Utilizing Template
 
-# Creating Templates
+## Creating Templates
 
 Anna wants to create a Template that she can use to initialize or share common resources across namespaces (e.g. PullSecrets).
 

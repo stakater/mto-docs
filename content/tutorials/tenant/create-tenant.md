@@ -1,6 +1,5 @@
 # Creating a Tenant
 
-
 Bill is a cluster admin who receives a new request from Aurora Solutions CTO asking for a new tenant for Anna's team.
 
 Bill creates a new tenant called `bluesky` in the cluster:

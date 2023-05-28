@@ -24,9 +24,6 @@ We have set a default ArgoCD configuration in Multi Tenant Operator that fulfils
 
 Detailed use cases showing how to create AppProjects are mentioned in [use cases for ArgoCD](./usecases/argocd.md).
 
-
-
-
 ## Creating ArgoCD AppProjects for your tenant
 
 Bill wants each tenant to also have their own ArgoCD AppProjects. To make sure this happens correctly, Bill will first specify the ArgoCD namespace in the [IntegrationConfig](./../integration-config.md):
