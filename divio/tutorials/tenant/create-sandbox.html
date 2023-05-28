@@ -408,6 +408,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#create-private-sandboxes" class="md-nav__link">
+    Create Private Sandboxes
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1231,6 +1238,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#create-private-sandboxes" class="md-nav__link">
+    Create Private Sandboxes
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1281,7 +1295,7 @@ bluesky-anthony-aurora-sandbox<span class="w">   </span>Active<span class="w">  
 bluesky-john-aurora-sandbox<span class="w">      </span>Active<span class="w">   </span>5d5h
 </code></pre></div>
 <p>If Bill wants to make sure that only the sandbox owner can view his sandbox namespace, he can achieve this by setting <code>private: true</code> within the <code>sandboxConfig</code> filed.</p>
-<h1 id="create-private-sandboxes">Create Private Sandboxes</h1>
+<h2 id="create-private-sandboxes">Create Private Sandboxes</h2>
 <p>Bill assigned the ownership of <code>bluesky</code> to <code>Anna</code> and <code>Anthony</code>. Now if the users want sandboxes to be made for them, they'll have to ask <code>Bill</code> to enable <code>sandbox</code> functionality. The Users also want to make sure that the sandboxes that are created for them are also only visible to the user they belong to. To enable that, Bill will just set <code>enabled: true</code> and <code>private: true</code> within the <code>sandboxConfig</code> field</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt; EOF</span>
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
