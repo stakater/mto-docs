@@ -1,6 +1,5 @@
 # Hibernating a Tenant
 
-
 ## Hibernating Namespaces
 
 You can manage workloads in your cluster with MTO by implementing a hibernation schedule for your tenants.

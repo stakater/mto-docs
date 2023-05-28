@@ -1,6 +1,5 @@
 # Assigning Common/Specific Metadata
 
-
 ## Distributing common labels and annotations to tenant namespaces via Tenant Custom Resource
 
 Bill now wants to add labels/annotations to all the namespaces for a tenant. To create those labels/annotations Bill will just add them into `commonMetadata.labels`/`commonMetadata.annotations` field in the tenant CR.

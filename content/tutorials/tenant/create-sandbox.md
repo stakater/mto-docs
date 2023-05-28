@@ -40,7 +40,7 @@ bluesky-john-aurora-sandbox      Active   5d5h
 
 If Bill wants to make sure that only the sandbox owner can view his sandbox namespace, he can achieve this by setting `private: true` within the `sandboxConfig` filed.
 
-# Create Private Sandboxes
+## Create Private Sandboxes
 
 Bill assigned the ownership of `bluesky` to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, they'll have to ask `Bill` to enable `sandbox` functionality. The Users also want to make sure that the sandboxes that are created for them are also only visible to the user they belong to. To enable that, Bill will just set `enabled: true` and `private: true` within the `sandboxConfig` field
 

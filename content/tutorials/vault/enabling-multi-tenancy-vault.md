@@ -1,6 +1,6 @@
 # Enabling Multi-Tenancy in Vault
 
-# Vault Multitenancy
+## Vault Multitenancy
 
 HashiCorp Vault is an identity-based secret and encryption management system. Vault validates and authorizes a system's clients (users, machines, apps) before providing them access to secrets or stored sensitive data.
 
