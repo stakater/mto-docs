@@ -746,6 +746,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#limiting-persistentvolume-for-tenant" class="md-nav__link">
+    Limiting PersistentVolume for Tenant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-storageclass-restrictions-for-tenant" class="md-nav__link">
+    Adding StorageClass Restrictions for Tenant
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1229,6 +1243,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#limiting-persistentvolume-for-tenant" class="md-nav__link">
+    Limiting PersistentVolume for Tenant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-storageclass-restrictions-for-tenant" class="md-nav__link">
+    Adding StorageClass Restrictions for Tenant
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1307,7 +1335,7 @@ small<span class="w">      </span>Active<span class="w">   </span>3m
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>pods<span class="w"> </span>bluesky-training
 Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Cannot<span class="w"> </span>exceed<span class="w"> </span>Namespace<span class="w"> </span>quota:<span class="w"> </span>please,<span class="w"> </span>reach<span class="w"> </span>out<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>system<span class="w"> </span>administrators<span class="o">)</span>
 </code></pre></div>
-<h1 id="limiting-persistentvolume-for-tenant">Limiting PersistentVolume for Tenant</h1>
+<h2 id="limiting-persistentvolume-for-tenant">Limiting PersistentVolume for Tenant</h2>
 <p>Bill, as a cluster admin, wants to restrict the amount of storage a Tenant can use. For that he'll add the <code>requests.storage</code> field to <code>quota.spec.resourcequota.hard</code>. If Bill wants to restrict tenant <code>bluesky</code> to use only <code>50Gi</code> of storage, he'll first create a quota with <code>requests.storage</code> field set to <code>50Gi</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
