@@ -78,8 +78,7 @@ kubectl create pods bluesky-training
 Error from server (Cannot exceed Namespace quota: please, reach out to the system administrators)
 ```
 
-
-# Limiting PersistentVolume for Tenant
+## Limiting PersistentVolume for Tenant
 
 Bill, as a cluster admin, wants to restrict the amount of storage a Tenant can use. For that he'll add the `requests.storage` field to `quota.spec.resourcequota.hard`. If Bill wants to restrict tenant `bluesky` to use only `50Gi` of storage, he'll first create a quota with `requests.storage` field set to `50Gi`.
 
