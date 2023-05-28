@@ -74,10 +74,10 @@ It also allows the parameterizing of these templates for flexibility and ease of
 
 Common use cases for namespace templates may be:
 
-- Adding networking policies for multitenancy
-- Adding development tooling to a namespace
-- Deploying pre-populated databases with test data
-- Injecting new namespaces with optional credentials such as image pull secrets
+* Adding networking policies for multitenancy
+* Adding development tooling to a namespace
+* Deploying pre-populated databases with test data
+* Injecting new namespaces with optional credentials such as image pull secrets
 
 More details on [Distributing Template Resources](./usecases/deploying-templates.md)
 
