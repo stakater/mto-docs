@@ -1056,6 +1056,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../../faq.html" class="md-nav__link">
+        FAQs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../changelog.html" class="md-nav__link">
         Changelog
       </a>
@@ -1086,8 +1101,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../faq.html" class="md-nav__link">
-        FAQs
+      <a href="../../troubleshooting.html" class="md-nav__link">
+        Troubleshooting Guide
       </a>
     </li>
   
@@ -1179,11 +1194,11 @@
 <p>MTO enables the <a href="https://www.Vaultproject.io/docs/auth/kubernetes">Kubernetes auth method</a> which can be used to authenticate with Vault using a Kubernetes Service Account Token. When enabled, for every tenant namespace, MTO automatically creates policies and roles that allow the service accounts present in those namespaces to <strong>read</strong> secrets at tenant's path in Vault. The name of the role is the same as <strong>namespace</strong> name.</p>
 <p>These service accounts are required to have <code>stakater.com/vault-access: true</code> label, so they can be authenticated with Vault via MTO.</p>
 <p>The Diagram shows how MTO enables ServiceAccounts to read secrets from Vault.</p>
-<p><a class="glightbox" href="./images/mto-vault-k8s-auth-workflow.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="./images/mto-vault-k8s-auth-workflow.png" /></a></p>
+<p><a class="glightbox" href="../../images/mto-vault-k8s-auth-workflow.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../images/mto-vault-k8s-auth-workflow.png" /></a></p>
 <h3 id="user-oidc-auth-in-vault">User OIDC Auth in Vault</h3>
 <p>This requires a running <code>RHSSO(RedHat Single Sign On)</code> instance integrated with Vault over <a href="https://developer.hashicorp.com/vault/docs/auth/jwt">OIDC</a> login method.</p>
 <p>MTO integration with Vault and RHSSO provides a way for users to log in to Vault where they only have access to relevant tenant paths.</p>
-<p>Once both integrations are set-up with <a href="/content/integration-config.md">IntegrationConfig CR</a>, MTO links tenant users to specific client roles named after their tenant under Vault client in RHSSO.</p>
+<p>Once both integrations are set up with <a href="../../how-to-guides/integration-config.html">IntegrationConfig CR</a>, MTO links tenant users to specific client roles named after their tenant under Vault client in RHSSO.</p>
 <p>After that, MTO creates specific policies in Vault for its tenant users.</p>
 <p>Mapping of tenant roles to Vault is shown below</p>
 <table>
@@ -1218,7 +1233,7 @@
 </tbody>
 </table>
 <p>A simple user login workflow is shown in the diagram below.</p>
-<p><a class="glightbox" href="./images/mto-vault-integration-user-workflow.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="./images/mto-vault-integration-user-workflow.png" /></a></p>
+<p><a class="glightbox" href="../../images/mto-vault-integration-user-workflow.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../images/mto-vault-integration-user-workflow.png" /></a></p>
 
 
   

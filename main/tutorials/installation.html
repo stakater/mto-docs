@@ -1081,6 +1081,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../faq.html" class="md-nav__link">
+        FAQs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../changelog.html" class="md-nav__link">
         Changelog
       </a>
@@ -1111,8 +1126,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../faq.html" class="md-nav__link">
-        FAQs
+      <a href="../troubleshooting.html" class="md-nav__link">
+        Troubleshooting Guide
       </a>
     </li>
   
@@ -1294,7 +1309,7 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:kube-*</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:redhat-*</span>
 </code></pre></div>
-<p>For more details and configurations check out <a href="./integration-config.md">IntegrationConfig</a>.</p>
+<p>For more details and configurations check out <a href="../how-to-guides/integration-config.html">IntegrationConfig</a>.</p>
 <h2 id="installing-via-cli-or-gitops">Installing via CLI OR GitOps</h2>
 <ul>
 <li>Create namespace <code>multi-tenant-operator</code></li>
@@ -1379,12 +1394,12 @@ subscription.operators.coreos.com/tenant-operator<span class="w"> </span>created
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:kube-*</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:redhat-*</span>
 </code></pre></div>
-<p>For more details and configurations check out <a href="./integration-config.md">IntegrationConfig</a>.</p>
+<p>For more details and configurations check out <a href="../how-to-guides/integration-config.html">IntegrationConfig</a>.</p>
 <h2 id="uninstall-via-operatorhub-ui">Uninstall via OperatorHub UI</h2>
 <p>You can uninstall MTO by following these steps:</p>
 <ul>
 <li>
-<p>Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set <code>spec.onDelete.cleanNamespaces</code> to <code>false</code> for all those tenants whose namespaces you want to retain, and <code>spec.onDelete.cleanAppProject</code> to <code>false</code> for all those tenants whose AppProject you want to retain. For more details check out <a href="./usecases/tenant.md#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted">onDelete</a></p>
+<p>Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set <code>spec.onDelete.cleanNamespaces</code> to <code>false</code> for all those tenants whose namespaces you want to retain, and <code>spec.onDelete.cleanAppProject</code> to <code>false</code> for all those tenants whose AppProject you want to retain. For more details check out <a href="./tutorials/tenant/deleting-tenant.html#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted">onDelete</a></p>
 </li>
 <li>
 <p>After making the required changes open OpenShift console and click on <code>Operators</code>, followed by <code>Installed Operators</code> from the side menu</p>
@@ -1405,8 +1420,8 @@ subscription.operators.coreos.com/tenant-operator<span class="w"> </span>created
 </ul>
 <h2 id="notes">Notes</h2>
 <ul>
-<li>For more details on how to use MTO please refer <a href="./usecases/quota.md">use-cases</a>.</li>
-<li>For more details on how to extend your MTO manager ClusterRole please refer <a href="./usecases/admin-clusterrole.md">extend-admin-clusterrole</a>.</li>
+<li>For more details on how to use MTO please refer <a href="tenant/create-tenant.html">Tenant tutorial</a>.</li>
+<li>For more details on how to extend your MTO manager ClusterRole please refer <a href="../reference-guides/admin-clusterrole.html">extend-admin-clusterrole</a>.</li>
 </ul>
 
 

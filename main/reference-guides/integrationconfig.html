@@ -1034,6 +1034,21 @@
   
   
     <li class="md-nav__item">
+      <a href="../faq.html" class="md-nav__link">
+        FAQs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../changelog.html" class="md-nav__link">
         Changelog
       </a>
@@ -1064,8 +1079,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../faq.html" class="md-nav__link">
-        FAQs
+      <a href="../troubleshooting.html" class="md-nav__link">
+        Troubleshooting Guide
       </a>
     </li>
   
@@ -1187,7 +1202,7 @@ namespace/stakater-test<span class="w"> </span>created
 <p><a href="https://www.vaultproject.io/">Vault</a> is used to secure, store and tightly control access to tokens, passwords, certificates, and encryption keys for protecting secrets and other sensitive data using a UI, CLI, or HTTP API.</p>
 <p>If Bill (the cluster admin) has Vault configured in his cluster, then he can take benefit from MTO's integration with Vault.</p>
 <p>MTO automatically creates Vault secret paths for tenants, where tenant members can securely save their secrets. It also authorizes tenant members to access these secrets via OIDC.</p>
-<p>Bill would first have to integrate Vault with MTO by adding the details in IntegrationConfig. For more <a href="../integration-config.html#vault">details</a></p>
+<p>Bill would first have to integrate Vault with MTO by adding the details in IntegrationConfig. For more <a href="../how-to-guides/integration-config.html#vault">details</a></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1227,7 +1242,7 @@ namespace/stakater-test<span class="w"> </span>created
 <p>Red Hat Single Sign-On <a href="https://access.redhat.com/products/red-hat-single-sign-on">RHSSO</a> is based on the Keycloak project and enables you to secure your web applications by providing Web single sign-on (SSO) capabilities based on popular standards such as SAML 2.0, OpenID Connect and OAuth 2.0.</p>
 <p>If Bill the cluster admin has RHSSO configured in his cluster, then he can take benefit from MTO's integration with RHSSO and Vault.</p>
 <p>MTO automatically allows tenant members to access Vault via OIDC(RHSSO authentication and authorization) to access secret paths for tenants where tenant members can securely save their secrets.</p>
-<p>Bill would first have to integrate RHSSO with MTO by adding the details in IntegrationConfig. <a href="../integration-config.html#rhsso-red-hat-single-sign-on">Visit here</a> for more details.</p>
+<p>Bill would first have to integrate RHSSO with MTO by adding the details in IntegrationConfig. <a href="../how-to-guides/integration-config.html#rhsso-red-hat-single-sign-on">Visit here</a> for more details.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">rhsso</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer</span>
