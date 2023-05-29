@@ -57,7 +57,7 @@ When Anna creates the namespace, MTO assigns Anna and other tenant members the r
 
 As a tenant owner, Anna is able to create namespaces.
 
-If you have enabled [ArgoCD Multitenancy](./../argocd-multitenancy.md), our preferred solution is to create tenant namespaces by using [Tenant](./tenant.md) spec to avoid syncing issues in ArgoCD console during namespace creation.
+If you have enabled [ArgoCD Multitenancy](./tutorials/argocd/enabling-multi-tenancy-argocd.md), our preferred solution is to create tenant namespaces by using [Tenant](./tenant.md) spec to avoid syncing issues in ArgoCD console during namespace creation.
 
 ## Add Existing Namespaces to Tenant via GitOps
 

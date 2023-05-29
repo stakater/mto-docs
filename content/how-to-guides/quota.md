@@ -38,7 +38,7 @@ spec:
 EOF
 ```
 
-For more details please refer to [Quotas](../customresources.md#_1-quota).
+For more details please refer to [Quotas](./how-to-guides/quota.md).
 
 ```bash
 kubectl get quota small
