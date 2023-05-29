@@ -68,7 +68,7 @@ spec:
       - ^system:serviceaccount:redhat-*
 ```
 
-For more details and configurations check out [IntegrationConfig](./integration-config.md).
+For more details and configurations check out [IntegrationConfig](../how-to-guides/integration-config.md).
 
 ## Installing via CLI OR GitOps
 
@@ -160,13 +160,13 @@ spec:
       - ^system:serviceaccount:redhat-*
 ```
 
-For more details and configurations check out [IntegrationConfig](./integration-config.md).
+For more details and configurations check out [IntegrationConfig](../how-to-guides/integration-config.md).
 
 ## Uninstall via OperatorHub UI
 
 You can uninstall MTO by following these steps:
 
-* Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set `spec.onDelete.cleanNamespaces` to `false` for all those tenants whose namespaces you want to retain, and `spec.onDelete.cleanAppProject` to `false` for all those tenants whose AppProject you want to retain. For more details check out [onDelete](./usecases/tenant.md#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted)
+* Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set `spec.onDelete.cleanNamespaces` to `false` for all those tenants whose namespaces you want to retain, and `spec.onDelete.cleanAppProject` to `false` for all those tenants whose AppProject you want to retain. For more details check out [onDelete](./tutorials/tenant/deleting-tenant.html#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted)
 
 * After making the required changes open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
 
@@ -182,5 +182,5 @@ You can uninstall MTO by following these steps:
 
 ## Notes
 
-* For more details on how to use MTO please refer [use-cases](./usecases/quota.md).
-* For more details on how to extend your MTO manager ClusterRole please refer [extend-admin-clusterrole](./usecases/admin-clusterrole.md).
+* For more details on how to use MTO please refer [Tenant tutorial](./tenant/create-tenant.md).
+* For more details on how to extend your MTO manager ClusterRole please refer [extend-admin-clusterrole](../reference-guides/admin-clusterrole.md).
