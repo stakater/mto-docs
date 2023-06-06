@@ -2,6 +2,11 @@
 
 ## v0.9.x
 
+### v0.9.2
+
+- fix: Values within TemplateInstances created via Tenants will no longer be duplicated on Tenant CR update
+- fix: Fixed a bug that made private namespaces become public
+
 ### v0.9.1
 
 - fix: Allow namespace controller to reconcile without crashing, if no IC exists
