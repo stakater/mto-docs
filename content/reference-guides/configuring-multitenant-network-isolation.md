@@ -48,7 +48,7 @@ resources:
       - Ingress
 ```
 
-Once the template has been created, Bill edits the [IntegrationConfig](./../integration-config.md) to add unique label to all tenant projects:
+Once the template has been created, Bill edits the [IntegrationConfig](../how-to-guides/integration-config.md) to add unique label to all tenant projects:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -78,7 +78,7 @@ spec:
 
 Bill has added a new label `tenant-network-policy: "true"` in project section of IntegrationConfig, now MTO will add that label in all tenant projects.
 
-Finally Bill creates a `TemplateGroupInstance` which will distribute the network policies using the newly added project label and template.
+Finally, Bill creates a `TemplateGroupInstance` which will distribute the network policies using the newly added project label and template.
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1

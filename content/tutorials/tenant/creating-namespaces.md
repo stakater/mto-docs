@@ -1,4 +1,44 @@
-# Creating Namespace
+# Creating Namespaces
+
+## Creating Namespaces via Tenant Custom Resource
+
+Bill now wants to create namespaces for `dev`, `build` and `production` environments for the tenant members. To create those namespaces Bill will just add those names within the `namespaces` field in the tenant CR. If Bill wants to append the tenant name as a prefix in namespace name, then he can use `namespaces.withTenantPrefix` field. Else he can use `namespaces.withoutTenantPrefix` for namespaces for which he does not need tenant name as a prefix.
+
+```yaml
+kubectl apply -f - << EOF
+apiVersion: tenantoperator.stakater.com/v1beta2
+kind: Tenant
+metadata:
+  name: bluesky
+spec:
+  owners:
+    users:
+    - anna@aurora.org
+    - anthony@aurora.org
+  editors:
+    users:
+    - john@aurora.org
+    groups:
+    - alpha
+  quota: small
+  namespaces:
+    withTenantPrefix:
+      - dev
+      - build
+    withoutTenantPrefix:
+      - prod
+EOF
+```
+
+With the above configuration tenant members will now see new namespaces have been created.
+
+```bash
+kubectl get namespaces
+NAME             STATUS   AGE
+bluesky-dev      Active   5d5h
+bluesky-build    Active   5d5h
+prod             Active   5d5h
+```
 
 Anna as the tenant owner can create new namespaces for her tenant.
 
@@ -17,7 +57,7 @@ When Anna creates the namespace, MTO assigns Anna and other tenant members the r
 
 As a tenant owner, Anna is able to create namespaces.
 
-If you have enabled [ArgoCD Multitenancy](./../argocd-multitenancy.md), our preferred solution is to create tenant namespaces by using [Tenant](./tenant.md) spec to avoid syncing issues in ArgoCD console during namespace creation.
+If you have enabled [ArgoCD Multitenancy](./tutorials/argocd/enabling-multi-tenancy-argocd.md), our preferred solution is to create tenant namespaces by using [Tenant](./tenant.md) spec to avoid syncing issues in ArgoCD console during namespace creation.
 
 ## Add Existing Namespaces to Tenant via GitOps
 

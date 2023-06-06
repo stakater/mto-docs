@@ -1,8 +1,30 @@
-# ArgoCD
+# Enabling Multi-Tenancy in ArgoCD
+
+## ArgoCD integration in Multi Tenant Operator
+
+With Multi Tenant Operator (MTO), cluster admins can configure multi tenancy in their cluster. Now with ArgoCD integration, multi tenancy can be configured in ArgoCD applications and AppProjects.
+
+MTO (if configured to) will create AppProjects for each tenant. The AppProject will allow tenants to create ArgoCD Applications that can be synced to namespaces owned by those tenants. Cluster admins will also be able to blacklist certain namespaces resources if they want, and allow certain cluster scoped resources as well (see the `NamespaceResourceBlacklist` and `ClusterResourceWhitelist` sections in [Integration Config docs](../../how-to-guides/integration-config.md) and [Tenant Custom Resource docs](../../how-to-guides/tenant.md)).
+
+Note that ArgoCD integration in MTO is completely optional.
+
+## Default ArgoCD configuration
+
+We have set a default ArgoCD configuration in Multi Tenant Operator that fulfils the following use cases:
+
+- Tenants are able to see only their ArgoCD applications in the ArgoCD frontend
+- Tenant 'Owners' and 'Editors' will have full access to their ArgoCD applications
+- Tenants in the 'Viewers' group will have read-only access to their ArgoCD applications
+- Tenants can sync all namespace-scoped resources, except those that are blacklisted in the spec
+- Tenants can only sync cluster-scoped resources that are whitelisted in the spec
+- Tenant 'Owners' can configure their own GitOps source repos at a tenant level
+- Cluster admins can prevent specific resources from syncing via ArgoCD
+- Cluster admins have full access to all ArgoCD applications and AppProjects
+- Since ArgoCD integration is on a per-tenant level, namespace-scoped applications are only synced to Tenant's namespaces
 
 ## Creating ArgoCD AppProjects for your tenant
 
-Bill wants each tenant to also have their own ArgoCD AppProjects. To make sure this happens correctly, Bill will first specify the ArgoCD namespace in the [IntegrationConfig](./../integration-config.md):
+Bill wants each tenant to also have their own ArgoCD AppProjects. To make sure this happens correctly, Bill will first specify the ArgoCD namespace in the [IntegrationConfig](../../how-to-guides/integration-config.md):
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -17,7 +39,7 @@ spec:
   ...
 ```
 
-Afterwards, Bill must specify the source GitOps repos for the tenant inside the tenant CR like so:
+Afterward, Bill must specify the source GitOps repos for the tenant inside the tenant CR like so:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta2
@@ -71,7 +93,7 @@ spec:
   roles:
     - description: >-
         Role that gives full access to all resources inside the tenant's
-        namespace to the tenant owner group
+        namespace to the tenant owner groups
       groups:
         - saap-cluster-admins
         - stakater-team
@@ -105,11 +127,11 @@ spec:
 
 Users belonging to the Sigma group will now only see applications created by them in the ArgoCD frontend now:
 
-![image](./../images/argocd.png)
+![image](../../images/argocd.png)
 
 ## Prevent ArgoCD from syncing certain namespaced resources
 
-Bill wants tenants to not be able to sync `ResourceQuota` and `LimitRange` resources to their namespaces. To do this correctly, Bill will specify these resources to blacklist in the ArgoCD portion of the [IntegrationConfig](./../integration-config.md):
+Bill wants tenants to not be able to sync `ResourceQuota` and `LimitRange` resources to their namespaces. To do this correctly, Bill will specify these resources to blacklist in the ArgoCD portion of the [IntegrationConfig](../../how-to-guides/integration-config.md):
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1

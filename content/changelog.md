@@ -27,7 +27,7 @@
 
 #### Enabling console
 
-- To enable console visit [Installation](./installation.md), and add config to subscription for OperatorHub based installation.
+- To enable console visit [Installation](./tutorials/installation.md), and add config to subscription for OperatorHub based installation.
 
 ## v0.8.x
 
@@ -41,8 +41,8 @@
 
 ### v0.8.0
 
-- feat: Allow custom roles for each tenant via label selector, more details in [custom roles document](./usecases/custom-roles.md)
-    - Roles mapping is a required field in [MTO's IntegrationConfig][def]. By default, it will always be filled with OpenShift's admin/edit/view roles
+- feat: Allow custom roles for each tenant via label selector, more details in [custom roles document](./reference-guides/custom-roles.md)
+    - Roles mapping is a required field in [MTO's IntegrationConfig](./how-to-guides/integration-config.md). By default, it will always be filled with OpenShift's admin/edit/view roles
     - Ensure that mentioned roles exist within the cluster
     - Remove coupling with OpenShift's built-in admin/edit/view roles
 - feat: Removed coupling of ResourceSupervisor and Tenant resources
@@ -82,7 +82,7 @@
 - feat: Allow creation of namespaces without tenant prefix from within tenant spec
 - fix: Webhook changes will now be updated without manual intervention
 - maintain: Updated Tenant CR version from v1beta1 to v1beta2. Conversion webhook is added to facilitate transition to new version
-    - see [Tenant spec](./customresources.md#_2-tenant) for updated spec
+    - see [Tenant spec](./how-to-guides/tenant.md) for updated spec
 - enhance: Better automated testing
 
 ## v0.6.x
@@ -125,13 +125,13 @@
 
 ### v0.5.0
 
-- feat: Add support for tenant namespaces off-boarding. For more details check out [onDelete](./usecases/tenant.md#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted)
+- feat: Add support for tenant namespaces off-boarding. For more details check out [onDelete](./tutorials/tenant/deleting-tenant.md#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted)
 - feat: Add tenant webhook for spec validation
 
 - fix: TemplateGroupInstance now cleans up leftover Template resources from namespaces that are no longer part of TGI namespace selector
 - fix: Fixed hibernation sync issue
 
-- enhance: Update tenant spec for applying common/specific namespace labels/annotations. For more details check out [commonMetadata & SpecificMetadata](./usecases/tenant.md#distributing-common-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource)
+- enhance: Update tenant spec for applying common/specific namespace labels/annotations. For more details check out [commonMetadata & SpecificMetadata](./tutorials/tenant/assigning-metadata.md)
 - enhance: Add support for multi-pod architecture for Operator-Hub
 
 - chore: Remove conversion webhook for Quota and Tenant
@@ -141,7 +141,7 @@
 ### v0.4.7
 
 - feat: Add hibernation of StatefulSets and Deployments based on a timer
-- feat: [New custom resource](./customresources.md#_6-resourcesupervisor) that handles hibernation
+- feat: [New custom resource](./tutorials/tenant/tenant-hibernation.md) that handles hibernation
 
 ### v0.4.6
 
@@ -218,7 +218,7 @@
 
 ### v0.3.24
 
-- feat: Add feature to allow ArgoCD to sync specific cluster scoped custom resources, configurable via Integration Config. More details in [relevant docs](./integration-config.md#argocd)
+- feat: Add feature to allow ArgoCD to sync specific cluster scoped custom resources, configurable via Integration Config. More details in [relevant docs](./how-to-guides/integration-config.md#argocd)
 
 ### v0.3.23
 
@@ -255,8 +255,8 @@
 
 > ⚠️ ApiVersion `v1alpha1` of Tenant and Quota custom resources has been deprecated and is scheduled to be removed in the future. The following links contain the updated structure of both resources
 >
-> - [Quota v1beta1](./customresources.md#_1-quota)
-> - [Tenant v1beta1](./customresources.md#_2-tenant)
+> - [Quota v1beta1](./how-to-guides/quota.md)
+> - [Tenant v1beta1](./how-to-guides/tenant.md)
 
 ### v0.3.18
 
@@ -326,13 +326,13 @@
 
 ### v0.3.2
 
-- refactor: Restructure Quota CR, more details in [relevant docs](./customresources.md#_1-quota)
+- refactor: Restructure Quota CR, more details in [relevant docs](./how-to-guides/quota.md)
 - feat: Add support for adding LimitRanges in Quota
 - feat: Add conversion webhook to convert existing v1alpha1 versions of quota to v1beta1
 
 ### v0.3.1
 
-- feat: Add ability to create ArgoCD AppProjects per tenant, more details in [relevant docs](./usecases/argocd.md)
+- feat: Add ability to create ArgoCD AppProjects per tenant, more details in [relevant docs](./tutorials/argocd/enabling-multi-tenancy-argocd.md)
 
 ### v0.3.0
 
@@ -342,16 +342,16 @@
 
 ### v0.2.33
 
-- refactor: Restructure Tenant spec, more details in [relevant docs](./customresources.md#_2-tenant)
+- refactor: Restructure Tenant spec, more details in [relevant docs](./how-to-guides/tenant.md)
 - feat: Add conversion webhook to convert existing v1alpha1 versions of tenant to v1beta1
 
 ### v0.2.32
 
 - refactor: Restructure integration config spec, more details in [relevant docs][def]
-- feat: Allow users to input custom regex in certain fields inside of integration config, more details in [relevant docs](./integration-config.md#openshift)
+- feat: Allow users to input custom regex in certain fields inside of integration config, more details in [relevant docs](./how-to-guides/integration-config.md#openshift)
 
 ### v0.2.31
 
 - feat: Add limit range for `kube-RBAC-proxy`
 
-[def]: ./integration-config.md
+[def]: ./how-to-guides/integration-config.md
