@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - 'main'
-      - '[0-9]+.[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+'
 
 jobs:
   push:
-    uses: stakater/.github/.github/workflows/push_versioned_doc.yaml@v0.0.38
+    uses: stakater/.github/.github/workflows/push_versioned_doc.yaml@v0.0.39
     secrets:
       GH_TOKEN: ${{ secrets.STAKATER_GITHUB_TOKEN }}
