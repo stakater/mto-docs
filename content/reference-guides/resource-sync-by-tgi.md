@@ -86,9 +86,8 @@ resources:
 
 !!! note
     However, this label will not stop Multi Tenant Operator from updating the resource on following conditions:
-
     - Template gets updated
     - TemplateGroupInstance gets updated
     - Resource gets deleted
 
-If you dont want to sync the resources in any case, you can disable sync via `sync: false` in `TemplateGroupInstance` spec.
+If you don't want to sync the resources in any case, you can disable sync via `sync: false` in `TemplateGroupInstance` spec.
