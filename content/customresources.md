@@ -11,8 +11,6 @@ apiVersion: tenantoperator.stakater.com/v1beta1
 kind: Quota
 metadata:
   name: medium
-  annotations:
-    quota.tenantoperator.stakater.com/is-default: "false"
 spec:
   resourcequota:
     hard:
