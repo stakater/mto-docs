@@ -27,4 +27,4 @@ rules:
 
 ## What’s next
 
-See how Bill can [hibernate unused namespaces at night](./tutorials/tenant/tenant-hibernation.md)
+See how Bill can [hibernate unused namespaces at night](../tutorials/tenant/tenant-hibernation.md)

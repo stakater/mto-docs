@@ -2,6 +2,14 @@
 
 ## v0.9.x
 
+### v0.9.4
+
+- enhance: Removed Quota's default support of adding it to Tenant CR in `spec.quota`, if `quota.tenantoperator.stakater.com/is-default: "true"` annotation is present
+- fix: ValidatingWebhookConfiguration CRs are now owned by OLM, to handle cleanup upon operator uninstall
+- enhance: TemplateGroupInstance CRs now actively watch the resources they apply, and perform functions to make sure they are in sync with the state mentioned in their respective Templates
+
+> More information about TemplateGroupInstance's sync at [Sync Resources Deployed by TemplateGroupInstance](./reference-guides/resource-sync-by-tgi.md)
+
 ### v0.9.2
 
 - fix: Values within TemplateInstances created via Tenants will no longer be duplicated on Tenant CR update

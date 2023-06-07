@@ -1,1 +1,1 @@
-# Add/Remove Namespace to Tenant via GitOps
+# Add/Remove Namespace from Tenant via GitOps
