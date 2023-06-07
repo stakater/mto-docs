@@ -853,6 +853,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference-guides/resource-sync-by-tgi.html" class="md-nav__link">
+        Sync Resources Deployed by TemplateGroupInstance
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         Distributing Secrets Using Sealed Secrets Template
       </a>
@@ -1088,13 +1102,10 @@
 <h2 id="assigning-resource-quotas">Assigning Resource Quotas</h2>
 <p>Bill is a cluster admin who will first create <code>Quota</code> CR where he sets the maximum resource limits that Anna's tenant will have.
 Here <code>limitrange</code> is an optional field, cluster admin can skip it if not needed.</p>
-<p>The annotation <code>quota.tenantoperator.stakater.com/is-default: "true"</code> sets the quota as default quota.</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quota</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">quota.tenantoperator.stakater.com/is-default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;false&quot;</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">resourcequota</span><span class="p">:</span>
@@ -1135,7 +1146,6 @@ small<span class="w">      </span>Active<span class="w">   </span>3m
 <span class="w">  </span><span class="nt">sandbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="l l-Scalar l-Scalar-Plain">EOF</span>
 </code></pre></div>
-<p>When no quota is mentioned in the <code>quota</code> field of Tenant CR, MTO looks for quota with the following annotation <code>quota.tenantoperator.stakater.com/is-default: "true"</code> and links that quota with the tenant.</p>
 <p>Now that the quota is linked with Anna's tenant, Anna can create any resource within the values of resource quota and limit range.</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>bluesky-production<span class="w"> </span>create<span class="w"> </span>deployment<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx:latest<span class="w"> </span>--replicas<span class="w"> </span><span class="m">4</span>
 </code></pre></div>
