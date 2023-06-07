@@ -7,7 +7,7 @@ Using Multi Tenant Operator, the cluster-admin can set and enforce cluster resou
 Bill is a cluster admin who will first create `Quota` CR where he sets the maximum resource limits that Anna's tenant will have.
 Here `limitrange` is an optional field, cluster admin can skip it if not needed.
 
-The annotation `quota.tenantoperator.stakater.com/is-default: "true"` sets the quota as default quota. Like this.
+The annotation `quota.tenantoperator.stakater.com/is-default: "true"` sets the quota as default quota. Like.
 
 ```yaml
 kubectl create -f - << EOF
