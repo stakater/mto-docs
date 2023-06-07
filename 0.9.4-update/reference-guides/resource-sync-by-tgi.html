@@ -8,20 +8,20 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/0.9.4-update/reference-guides/integrationconfig.html">
+        <link rel="canonical" href="https://docs.stakater.com/0.9.4-update/reference-guides/resource-sync-by-tgi.html">
       
       
-        <link rel="prev" href="extend-default-roles.html">
+        <link rel="prev" href="distributing-secrets.html">
       
       
-        <link rel="next" href="mattermost.html">
+        <link rel="next" href="distributing-secrets-using-sealed-secret-template.html">
       
       <link rel="icon" href="../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
     
     
       
-        <title>Configuring Managed Namespaces and ServiceAccounts in IntegrationConfig - Multi Tenant Operator</title>
+        <title>Sync Resources Deployed by TemplateGroupInstance - Multi Tenant Operator</title>
       
     
     
@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuring-managed-namespaces-and-serviceaccounts-in-integrationconfig" class="md-skip">
+        <a href="#sync-resources-deployed-by-templategroupinstance" class="md-skip">
           Skip to content
         </a>
       
@@ -142,7 +142,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Configuring Managed Namespaces and ServiceAccounts in IntegrationConfig
+              Sync Resources Deployed by TemplateGroupInstance
             
           </span>
         </div>
@@ -857,11 +857,52 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="resource-sync-by-tgi.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Sync Resources Deployed by TemplateGroupInstance
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="resource-sync-by-tgi.html" class="md-nav__link md-nav__link--active">
         Sync Resources Deployed by TemplateGroupInstance
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ignore-resources-updates-on-resources" class="md-nav__link">
+    Ignore Resources Updates on Resources
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -899,59 +940,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Configuring Managed Namespaces and ServiceAccounts in IntegrationConfig
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="integrationconfig.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="integrationconfig.html" class="md-nav__link">
         Configuring Managed Namespaces and ServiceAccounts in IntegrationConfig
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#configuring-vault-in-integrationconfig" class="md-nav__link">
-    Configuring Vault in IntegrationConfig
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuring-rhsso-red-hat-single-sign-on-in-integrationconfig" class="md-nav__link">
-    Configuring RHSSO (Red Hat Single Sign-On) in IntegrationConfig
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1127,15 +1120,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configuring-vault-in-integrationconfig" class="md-nav__link">
-    Configuring Vault in IntegrationConfig
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuring-rhsso-red-hat-single-sign-on-in-integrationconfig" class="md-nav__link">
-    Configuring RHSSO (Red Hat Single Sign-On) in IntegrationConfig
+  <a href="#ignore-resources-updates-on-resources" class="md-nav__link">
+    Ignore Resources Updates on Resources
   </a>
   
 </li>
@@ -1158,114 +1144,94 @@
   
 
 
-<h1 id="configuring-managed-namespaces-and-serviceaccounts-in-integrationconfig">Configuring Managed Namespaces and ServiceAccounts in IntegrationConfig</h1>
-<p>Bill is a cluster admin who can use <code>IntegrationConfig</code> to configure how <code>Multi Tenant Operator (MTO)</code> manages the cluster.</p>
-<p>By default, MTO watches all namespaces and will enforce all the governing policies on them.
-All namespaces managed by MTO require the <code>stakater.com/tenant</code> label.
-MTO ignores privileged namespaces that are mentioned in the IntegrationConfig, and does not manage them. Therefore, any tenant label on such namespaces will be ignored.</p>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>stakater-test
-Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Cannot<span class="w"> </span>Create<span class="w"> </span>namespace<span class="w"> </span>stakater-test<span class="w"> </span>without<span class="w"> </span>label<span class="w"> </span>stakater.com/tenant.<span class="w"> </span>User:<span class="w"> </span>Bill<span class="o">)</span>:<span class="w"> </span>admission<span class="w"> </span>webhook<span class="w"> </span><span class="s2">&quot;vnamespace.kb.io&quot;</span><span class="w"> </span>denied<span class="w"> </span>the<span class="w"> </span>request:<span class="w"> </span>Cannot<span class="w"> </span>CREATE<span class="w"> </span>namespace<span class="w"> </span>stakater-test<span class="w"> </span>without<span class="w"> </span>label<span class="w"> </span>stakater.com/tenant.<span class="w"> </span>User:<span class="w"> </span>Bill
-</code></pre></div>
-<p>Bill is trying to create a namespace without the <code>stakater.com/tenant</code> label. Creating a namespace without this label is only allowed if the namespace is privileged. Privileged namespaces will be ignored by MTO and do not require the said label. Therefore, Bill will add the required regex in the IntegrationConfig, along with any other namespaces which are privileged and should be ignored by MTO - like <code>default</code>, or namespaces with prefixes like <code>openshift</code>, <code>kube</code>:</p>
+<h1 id="sync-resources-deployed-by-templategroupinstance">Sync Resources Deployed by TemplateGroupInstance</h1>
+<p>The TemplateGroupInstance CR provides two types of resource sync for the resources mentioned in Template</p>
+<p>For the given example, let's consider we want to apply the following template</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater-tenant-operator</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">openshift</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">privilegedNamespaces</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^default$</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^openshift*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^kube*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^stakater*</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret</span>
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="w">      </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="w">      </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">.dockercfg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eyAKICAiaHR0cHM6IC8vaW5kZXguZG9ja2VyLmlvL3YxLyI6IHsgImF1dGgiOiAiYzNSaGEyRjBaWEk2VjI5M1YyaGhkRUZIY21WaGRGQmhjM04zYjNKayJ9Cn0K</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/dockercfg</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
+<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-automated-thing</span>
+<span class="w">      </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-automated-thing-token-zyxwv</span>
 </code></pre></div>
-<p>After mentioning the required regex (<code>^stakater*</code>) under <code>privilegedNamespaces</code>, Bill can create the namespace without interference.</p>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>stakater-test
-namespace/stakater-test<span class="w"> </span>created
-</code></pre></div>
-<p>MTO will also disallow all users which are not tenant owners to perform CRUD operations on namespaces. This will also prevent Service Accounts from performing CRUD operations.</p>
-<p>If Bill wants MTO to ignore Service Accounts, then he would simply have to add them in the IntegrationConfig:</p>
+<p>And the following TemplateGroupInstance is used to deploy these resources to namespaces having label <code>kind: build</code></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater-tenant-operator</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-group-instance</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">openshift</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">privilegedServiceAccounts</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:serviceaccount:openshift</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:serviceaccount:stakater</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:serviceaccount:kube</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:serviceaccount:redhat</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:serviceaccount:hive</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-<p>Bill can also use regex patterns to ignore a set of service accounts:</p>
+<p>As we can see, in our TGI, we have a field <code>spec.sync</code> which is set to <code>true</code>. This will update the resources on two conditions:</p>
+<ul>
+<li>The Template CR is updated</li>
+<li>
+<p>The TemplateGroupInstance CR is reconciled/updated</p>
+</li>
+<li>
+<p>If, for any reason, the underlying resource gets updated or deleted, <code>TemplateGroupInstance</code> CR will try to revert it back to the state mentioned in the <code>Template</code> CR.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the updated field of the deployed manifest is not mentioned in the Template, it will not get reverted. </p>
+<p>For example, if <code>secrets</code> field is not mentioned in ServiceAcoount in the above Template, it will not get reverted if changed</p>
+</div>
+<h2 id="ignore-resources-updates-on-resources">Ignore Resources Updates on Resources</h2>
+<p>If the resources mentioned in <code>Template</code> CR conflict with another controller/operator, and you want TemplateGroupInstance to not actively revert the resource updates, you can add the following label to the conflicting resource <code>multi-tenant-operator/ignore-resource-updates: ""</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater-tenant-operator</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">openshift</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">privilegedServiceAccounts</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:stakater*</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret</span>
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="w">      </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="w">      </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">.dockercfg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eyAKICAiaHR0cHM6IC8vaW5kZXguZG9ja2VyLmlvL3YxLyI6IHsgImF1dGgiOiAiYzNSaGEyRjBaWEk2VjI5M1YyaGhkRUZIY21WaGRGQmhjM04zYjNKayJ9Cn0K</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/dockercfg</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
+<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-automated-thing</span>
+<span class="w">        </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">multi-tenant-operator/ignore-resource-updates</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example-automated-thing-token-zyxwv</span>
 </code></pre></div>
-<h2 id="configuring-vault-in-integrationconfig">Configuring Vault in IntegrationConfig</h2>
-<p><a href="https://www.vaultproject.io/">Vault</a> is used to secure, store and tightly control access to tokens, passwords, certificates, and encryption keys for protecting secrets and other sensitive data using a UI, CLI, or HTTP API.</p>
-<p>If Bill (the cluster admin) has Vault configured in his cluster, then he can take benefit from MTO's integration with Vault.</p>
-<p>MTO automatically creates Vault secret paths for tenants, where tenant members can securely save their secrets. It also authorizes tenant members to access these secrets via OIDC.</p>
-<p>Bill would first have to integrate Vault with MTO by adding the details in IntegrationConfig. For more <a href="../how-to-guides/integration-config.html#vault">details</a></p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater-tenant-operator</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">vault</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">secretReference</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault-root-token</span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
-<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
-<span class="w">        </span><span class="no">https://vault.apps.prod.abcdefghi.kubeapp.cloud/</span>
-<span class="w">    </span><span class="nt">sso</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">accessorID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auth_oidc_aa6aa9aa</span>
-<span class="w">      </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
-</code></pre></div>
-<p>Bill then creates a tenant for Anna and John:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@acme.org</span>
-<span class="w">  </span><span class="nt">viewers</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">john@acme.org</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="w">  </span><span class="nt">sandbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-</code></pre></div>
-<p>Now Bill goes to <code>Vault</code> and sees that a path for <code>tenant</code> has been made under the name <code>bluesky/kv</code>, confirming that Tenant members with the Owner or Edit roles now have access to the tenant's Vault path.</p>
-<p>Now if Anna sign's in to the Vault via OIDC, she can see her tenants path and secrets. Whereas if John sign's in to the Vault via OIDC, he can't see his tenants path or secrets as he doesn't have the access required to view them.</p>
-<h2 id="configuring-rhsso-red-hat-single-sign-on-in-integrationconfig">Configuring RHSSO (Red Hat Single Sign-On) in IntegrationConfig</h2>
-<p>Red Hat Single Sign-On <a href="https://access.redhat.com/products/red-hat-single-sign-on">RHSSO</a> is based on the Keycloak project and enables you to secure your web applications by providing Web single sign-on (SSO) capabilities based on popular standards such as SAML 2.0, OpenID Connect and OAuth 2.0.</p>
-<p>If Bill the cluster admin has RHSSO configured in his cluster, then he can take benefit from MTO's integration with RHSSO and Vault.</p>
-<p>MTO automatically allows tenant members to access Vault via OIDC(RHSSO authentication and authorization) to access secret paths for tenants where tenant members can securely save their secrets.</p>
-<p>Bill would first have to integrate RHSSO with MTO by adding the details in IntegrationConfig. <a href="../how-to-guides/integration-config.html#rhsso-red-hat-single-sign-on">Visit here</a> for more details.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">rhsso</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer</span>
-<span class="w">  </span><span class="nt">endpoint</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">secretReference</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auth-secrets</span>
-<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-auth</span>
-<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://iam-keycloak-auth.apps.prod.abcdefghi.kubeapp.cloud/</span>
-</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>However, this label will not stop Multi Tenant Operator from updating the resource on following conditions:</p>
+<ul>
+<li>Template gets updated</li>
+<li>TemplateGroupInstance gets updated</li>
+<li>Resource gets deleted</li>
+</ul>
+</div>
+<p>If you dont want to sync the resources in any case, you can disable sync via <code>sync: false</code> in <code>TemplateGroupInstance</code> spec.</p>
 
 
   
