@@ -11,11 +11,13 @@
         <link rel="canonical" href="https://docs.stakater.com/renovate-stakater-.github-0.x/faq.html">
       
       
-        <link rel="prev" href="eula.html">
+        <link rel="prev" href="explanation/why-argocd-multi-tenancy.html">
       
+      
+        <link rel="next" href="changelog.html">
       
       <link rel="icon" href="assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.15">
     
     
       
@@ -23,10 +25,10 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.85bb2934.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.26e3688c.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.a6bdf11c.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.ecc896b0.min.css">
       
       
 
@@ -122,7 +124,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Multi Tenant Operator" class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="index.html" title="Multi Tenant Operator" class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
   <img src="assets/images/favicon.svg" alt="logo">
 
@@ -221,7 +223,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
   <img src="assets/images/favicon.svg" alt="logo">
 
@@ -251,7 +253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="introduction.html" class="md-nav__link">
+      <a href="index.html" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -980,36 +982,6 @@
 
   
   
-  
-    <li class="md-nav__item">
-      <a href="changelog.html" class="md-nav__link">
-        Changelog
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="eula.html" class="md-nav__link">
-        Multi Tenant Operator End User License Agreement
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
     
   
   
@@ -1070,6 +1042,51 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="changelog.html" class="md-nav__link">
+        Changelog
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="eula.html" class="md-nav__link">
+        Multi Tenant Operator End User License Agreement
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="troubleshooting.html" class="md-nav__link">
+        Troubleshooting Guide
+      </a>
     </li>
   
 
@@ -1141,9 +1158,9 @@
 
 <h1 id="faqs">FAQs</h1>
 <h2 id="q-error-received-while-performing-create-update-or-delete-action-on-namespace-cannot-create-namespace-test-john-without-label-stakatercomtenant">Q. Error received while performing Create, Update or Delete action on namespace <code>"Cannot CREATE namespace test-john without label stakater.com/tenant"</code></h2>
-<p><strong>A.</strong> Error occurs when a user is trying to perform create, update, delete action on a namespace without the required <code>stakater.com/tenant</code> label. This label is used by the operator to see that authorized users can perform that action on the namespace. Just add the label with the tenant name so that MTO knows which tenant the namespace belongs to, and who is authorized to perform create/update/delete operations. For more details please refer to <a href="usecases/namespace.html">Namespace use-case</a>.</p>
+<p><strong>A.</strong> Error occurs when a user is trying to perform create, update, delete action on a namespace without the required <code>stakater.com/tenant</code> label. This label is used by the operator to see that authorized users can perform that action on the namespace. Just add the label with the tenant name so that MTO knows which tenant the namespace belongs to, and who is authorized to perform create/update/delete operations. For more details please refer to <a href="tutorials/tenant/creating-namespaces.html">Namespace use-case</a>.</p>
 <h2 id="q-how-do-i-deploy-cluster-scoped-resource-via-the-argocd-integration">Q. How do I deploy cluster-scoped resource via the ArgoCD integration?</h2>
-<p><strong>A.</strong> Multi-Tenant Operator's ArgoCD Integration allows configuration of which cluster-scoped resources can be deployed, both globally and on a per-tenant basis. For a global whitelist that applies to all tenants, you can add both resource <code>group</code> and  <code>kind</code> to the <a href="integration-config.html#argocd">IntegrationConfig's</a> <code>spec.argocd.clusterResourceWhitelist</code> field. Alternatively, you can set this up on a tenant level by configuring the same details within a <a href="customresources.html#2-tenant">Tenant's</a> <code>spec.argocd.appProject.clusterResourceWhitelist</code> field. For more details, check out the <a href="usecases/argocd.html#allow-argocd-to-sync-certain-cluster-wide-resources">ArgoCD integration use cases</a></p>
+<p><strong>A.</strong> Multi-Tenant Operator's ArgoCD Integration allows configuration of which cluster-scoped resources can be deployed, both globally and on a per-tenant basis. For a global whitelist that applies to all tenants, you can add both resource <code>group</code> and  <code>kind</code> to the <a href="how-to-guides/integration-config.html#argocd">IntegrationConfig's</a> <code>spec.argocd.clusterResourceWhitelist</code> field. Alternatively, you can set this up on a tenant level by configuring the same details within a <a href="how-to-guides/tenant.html">Tenant's</a> <code>spec.argocd.appProject.clusterResourceWhitelist</code> field. For more details, check out the <a href="tutorials/argocd/enabling-multi-tenancy-argocd.html#allow-argocd-to-sync-certain-cluster-wide-resources">ArgoCD integration use cases</a></p>
 <h2 id="q-invalidspecerror-application-repo-repo-is-not-permitted-in-project-project">Q. InvalidSpecError: application repo \&lt;repo> is not permitted in project \&lt;project></h2>
 <p><strong>A.</strong> The above error can occur if the ArgoCD Application is syncing from a source that is not allowed the referenced AppProject. To solve this, verify that you have referred to the correct project in the given ArgoCD Application, and that the repoURL used for the Application's source is valid. If the error still appears, you can add the URL to the relevant Tenant's <code>spec.argocd.sourceRepos</code> array.</p>
 
