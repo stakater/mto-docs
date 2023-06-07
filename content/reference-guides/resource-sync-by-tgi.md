@@ -51,9 +51,7 @@ As we can see, in our TGI, we have a field `spec.sync` which is set to `true`. T
 - If, for any reason, the underlying resource gets updated or deleted, `TemplateGroupInstance` CR will try to revert it back to the state mentioned in the `Template` CR.
 
 !!! note
-    
     If the updated field of the deployed manifest is not mentioned in the Template, it will not get reverted. 
-
     For example, if `secrets` field is not mentioned in ServiceAcoount in the above Template, it will not get reverted if changed
 
 ## Ignore Resources Updates on Resources
@@ -87,7 +85,6 @@ resources:
 ```
 
 !!! note
-    
     However, this label will not stop Multi Tenant Operator from updating the resource on following conditions:
 
     - Template gets updated
