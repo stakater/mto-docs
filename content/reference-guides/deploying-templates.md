@@ -3,8 +3,8 @@
 Multi Tenant Operator has three Custom Resources which can cover this need using the `Template` CR, depending upon the conditions and preference.
 
 1. TemplateGroupInstance
-2. TemplateInstance
-3. Tenant
+1. TemplateInstance
+1. Tenant
 
 Stakater Team, however, encourages the use of `TemplateGroupInstance` to distribute resources in multiple namespaces as it is optimized for better performance.
 
