@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM nginxinc/nginx-unprivileged:1.25-alpine
-WORKDIR /usr/share/nginx/html/
+WORKDIR /usr/share/nginx/html/mto/
 
 # copy the entire application
 COPY --from=content --chown=1001:root . .
