@@ -23,9 +23,9 @@ spec:
   openshift:
     privilegedNamespaces:
       - ^default$
-      - ^openshift*
-      - ^kube*
-      - ^stakater*
+      - ^openshift.*
+      - ^kube.*
+      - ^stakater.*
 ```
 
 After mentioning the required regex (`^stakater*`) under `privilegedNamespaces`, Bill can create the namespace without interference.
