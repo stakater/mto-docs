@@ -28,7 +28,7 @@ spec:
       - ^stakater.*
 ```
 
-After mentioning the required regex (`^stakater*`) under `privilegedNamespaces`, Bill can create the namespace without interference.
+After mentioning the required regex (`^stakater.*`) under `privilegedNamespaces`, Bill can create the namespace without interference.
 
 ```bash
 oc create namespace stakater-test
@@ -66,8 +66,8 @@ metadata:
 spec:
   openshift:
     privilegedServiceAccounts:
-      - ^system:serviceaccount:openshift*
-      - ^system:serviceaccount:stakater*
+      - ^system:serviceaccount:openshift.*
+      - ^system:serviceaccount:stakater.*
 ```
 
 ## Configuring Vault in IntegrationConfig
