@@ -1180,7 +1180,7 @@ Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> 
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^kube.*</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^stakater.*</span>
 </code></pre></div>
-<p>After mentioning the required regex (<code>^stakater*</code>) under <code>privilegedNamespaces</code>, Bill can create the namespace without interference.</p>
+<p>After mentioning the required regex (<code>^stakater.*</code>) under <code>privilegedNamespaces</code>, Bill can create the namespace without interference.</p>
 <div class="highlight"><pre><span></span><code>oc<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>stakater-test
 namespace/stakater-test<span class="w"> </span>created
 </code></pre></div>
@@ -1209,8 +1209,8 @@ namespace/stakater-test<span class="w"> </span>created
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">openshift</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">privilegedServiceAccounts</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:stakater*</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift.*</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:stakater.*</span>
 </code></pre></div>
 <h2 id="configuring-vault-in-integrationconfig">Configuring Vault in IntegrationConfig</h2>
 <p><a href="https://www.vaultproject.io/">Vault</a> is used to secure, store and tightly control access to tokens, passwords, certificates, and encryption keys for protecting secrets and other sensitive data using a UI, CLI, or HTTP API.</p>
