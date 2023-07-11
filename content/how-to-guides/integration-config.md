@@ -345,7 +345,7 @@ If `vault` is configured on a cluster, then Vault configuration can be enabled.
 ```yaml
 vault:
   enabled: true
-  accessorPath: oidc 
+  accessorPath: oidc
   address: 'https://vault.apps.prod.abcdefghi.kubeapp.cloud/'
   roleName: mto
   sso:
@@ -355,7 +355,7 @@ vault:
 If enabled, then admins have to provide following details:
 
 - `accessorPath:` Accessor's Path within vault to fetch SSO accessorID
-- `address:` Valid Vault address reachable within cluster. 
+- `address:` Valid Vault address reachable within cluster.
 - `roleName:` Vault's Kubernetes authentication role
 - `sso.clientName:` SSO's client name.
 
