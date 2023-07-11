@@ -354,10 +354,10 @@ vault:
 
 If enabled, then admins have to provide following details:
 
-- `accessorPath:` Accessor's Path within vault to fetch SSO accessorID
+- `accessorPath:` Accessor Path within Vault to fetch SSO accessorID
 - `address:` Valid Vault address reachable within cluster.
 - `roleName:` Vault's Kubernetes authentication role
-- `sso.clientName:` SSO's client name.
+- `sso.clientName:` SSO client name.
 
 For more details around enabling Kubernetes auth in Vault, visit [here](https://developer.hashicorp.com/vault/docs/auth/kubernetes)
 
