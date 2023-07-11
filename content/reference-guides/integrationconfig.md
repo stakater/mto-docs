@@ -89,14 +89,10 @@ metadata:
 spec:
   vault:
     enabled: true
-    endpoint:
-      secretReference:
-        name: vault-root-token
-        namespace: vault
-      url: >-
-        https://vault.apps.prod.abcdefghi.kubeapp.cloud/
+    accessorPath: oidc 
+    address: 'https://vault.apps.prod.abcdefghi.kubeapp.cloud/'
+    roleName: mto
     sso:
-      accessorID: auth_oidc_aa6aa9aa
       clientName: vault
 ```
 
