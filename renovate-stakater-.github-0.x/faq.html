@@ -17,7 +17,7 @@
         <link rel="next" href="changelog.html">
       
       <link rel="icon" href="assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.1.21">
     
     
       
@@ -1175,7 +1175,7 @@
 <p><strong>A.</strong> Error occurs when a user is trying to perform create, update, delete action on a namespace without the required <code>stakater.com/tenant</code> label. This label is used by the operator to see that authorized users can perform that action on the namespace. Just add the label with the tenant name so that MTO knows which tenant the namespace belongs to, and who is authorized to perform create/update/delete operations. For more details please refer to <a href="tutorials/tenant/creating-namespaces.html">Namespace use-case</a>.</p>
 <h2 id="q-how-do-i-deploy-cluster-scoped-resource-via-the-argocd-integration">Q. How do I deploy cluster-scoped resource via the ArgoCD integration?</h2>
 <p><strong>A.</strong> Multi-Tenant Operator's ArgoCD Integration allows configuration of which cluster-scoped resources can be deployed, both globally and on a per-tenant basis. For a global whitelist that applies to all tenants, you can add both resource <code>group</code> and  <code>kind</code> to the <a href="how-to-guides/integration-config.html#argocd">IntegrationConfig's</a> <code>spec.argocd.clusterResourceWhitelist</code> field. Alternatively, you can set this up on a tenant level by configuring the same details within a <a href="how-to-guides/tenant.html">Tenant's</a> <code>spec.argocd.appProject.clusterResourceWhitelist</code> field. For more details, check out the <a href="tutorials/argocd/enabling-multi-tenancy-argocd.html#allow-argocd-to-sync-certain-cluster-wide-resources">ArgoCD integration use cases</a></p>
-<h2 id="q-invalidspecerror-application-repo-repo-is-not-permitted-in-project-project">Q. InvalidSpecError: application repo \&lt;repo> is not permitted in project \&lt;project></h2>
+<h2 id="q-invalidspecerror-application-repo-repo-is-not-permitted-in-project-project">Q. InvalidSpecError: application repo \&lt;repo&gt; is not permitted in project \&lt;project&gt;</h2>
 <p><strong>A.</strong> The above error can occur if the ArgoCD Application is syncing from a source that is not allowed the referenced AppProject. To solve this, verify that you have referred to the correct project in the given ArgoCD Application, and that the repoURL used for the Application's source is valid. If the error still appears, you can add the URL to the relevant Tenant's <code>spec.argocd.sourceRepos</code> array.</p>
 
 
