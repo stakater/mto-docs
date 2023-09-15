@@ -251,9 +251,9 @@ users:
 
 ### Cluster Admin Groups
 
-`clusterAdminGroups:` Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of privilegedNamespaces. 
+`clusterAdminGroups:` Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of privilegedNamespaces.
 
-Note: An edge case however is when you have a user containing ':' (eg: kube:admin or kube:masters), in which case, it is a platform problem in that it doesn't allow us to add such users to the group. So, even when you have logged in as kube:admin, you might not be able to delete the privilegedNamespaces due to this reason.
+Note: An edge case however is when you have a user containing `:` (eg: `kube:admin` or `kube:masters`), in which case, it is a platform problem in that it doesn't allow us to add such users to the group. So, even when you have logged in as `kube:admin`, you might not be able to delete the privilegedNamespaces due to this reason.
 
 ### Privileged Namespaces
 
