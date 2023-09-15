@@ -1709,7 +1709,7 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">andrew@stakater.com</span>
 </code></pre></div>
 <h3 id="cluster-admin-groups">Cluster Admin Groups</h3>
-<p><code>clusterAdminGroups:</code> Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of privilegedNamespaces. </p>
+<p><code>clusterAdminGroups:</code> Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of privilegedNamespaces.</p>
 <p>Note: An edge case however is when you have a user containing <code>:</code> (eg: <code>kube:admin</code> or <code>kube:masters</code>), in which case, it is a platform problem in that it doesn't allow us to add such users to the group. So, even when you have logged in as <code>kube:admin</code>, you might not be able to delete the privilegedNamespaces due to this reason.</p>
 <h3 id="privileged-namespaces">Privileged Namespaces</h3>
 <p><code>privilegedNamespaces:</code> Contains the list of <code>namespaces</code> ignored by MTO. MTO will not manage the <code>namespaces</code> in this list. Treatment for privileged namespaces does not involve further integrations or finalizers processing as with normal namespaces. Values in this list are regex patterns.
