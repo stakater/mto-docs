@@ -1506,7 +1506,7 @@
 <li>Tenant 'Owners' and 'Editors' will have full access to their ArgoCD applications</li>
 <li>Tenants in the 'Viewers' group will have read-only access to their ArgoCD applications</li>
 <li>Tenants can sync all namespace-scoped resources, except those that are blacklisted in the spec</li>
-<li>Tenants can only sync cluster-scoped resources that are whitelisted in the spec</li>
+<li>Tenants can only sync cluster-scoped resources that are allow-listed in the spec</li>
 <li>Tenant 'Owners' can configure their own GitOps source repos at a tenant level</li>
 <li>Cluster admins can prevent specific resources from syncing via ArgoCD</li>
 <li>Cluster admins have full access to all ArgoCD applications and AppProjects</li>
@@ -1638,7 +1638,7 @@ openshift-operators<span class="w">   </span>sigma<span class="w">        </span
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <h2 id="allow-argocd-to-sync-certain-cluster-wide-resources">Allow ArgoCD to sync certain cluster-wide resources</h2>
-<p>Bill now wants tenants to be able to sync the <code>Environment</code> cluster scoped resource to the cluster. To do this correctly, Bill will specify the resource to whitelist in the ArgoCD portion of the Integration Config's Spec:</p>
+<p>Bill now wants tenants to be able to sync the <code>Environment</code> cluster scoped resource to the cluster. To do this correctly, Bill will specify the resource to allow-list in the ArgoCD portion of the Integration Config's Spec:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1653,7 +1653,7 @@ openshift-operators<span class="w">   </span>sigma<span class="w">        </span
 <span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Environment</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
-<p>Now, if the resource is added to any tenant's project directory in GitOps, ArgoCD will sync them to the cluster. The AppProject will also have the whitelisted resources added to it:</p>
+<p>Now, if the resource is added to any tenant's project directory in GitOps, ArgoCD will sync them to the cluster. The AppProject will also have the allow-listed resources added to it:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AppProject</span>
 <span class="nt">metadata</span><span class="p">:</span>
