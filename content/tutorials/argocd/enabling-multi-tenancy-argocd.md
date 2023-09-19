@@ -16,7 +16,7 @@ We have set a default ArgoCD configuration in Multi Tenant Operator that fulfils
 - Tenant 'Owners' and 'Editors' will have full access to their ArgoCD applications
 - Tenants in the 'Viewers' group will have read-only access to their ArgoCD applications
 - Tenants can sync all namespace-scoped resources, except those that are blacklisted in the spec
-- Tenants can only sync cluster-scoped resources that are whitelisted in the spec
+- Tenants can only sync cluster-scoped resources that are allow-listed in the spec
 - Tenant 'Owners' can configure their own GitOps source repos at a tenant level
 - Cluster admins can prevent specific resources from syncing via ArgoCD
 - Cluster admins have full access to all ArgoCD applications and AppProjects
@@ -171,7 +171,7 @@ spec:
 
 ## Allow ArgoCD to sync certain cluster-wide resources
 
-Bill now wants tenants to be able to sync the `Environment` cluster scoped resource to the cluster. To do this correctly, Bill will specify the resource to whitelist in the ArgoCD portion of the Integration Config's Spec:
+Bill now wants tenants to be able to sync the `Environment` cluster scoped resource to the cluster. To do this correctly, Bill will specify the resource to allow-list in the ArgoCD portion of the Integration Config's Spec:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -189,7 +189,7 @@ spec:
   ...
 ```
 
-Now, if the resource is added to any tenant's project directory in GitOps, ArgoCD will sync them to the cluster. The AppProject will also have the whitelisted resources added to it:
+Now, if the resource is added to any tenant's project directory in GitOps, ArgoCD will sync them to the cluster. The AppProject will also have the allow-listed resources added to it:
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
