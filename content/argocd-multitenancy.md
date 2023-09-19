@@ -22,7 +22,7 @@ We have set a default ArgoCD configuration in Multi Tenant Operator that fulfils
 - Tenant 'Owners' and 'Editors' will have full access to their ArgoCD applications
 - Tenants in the 'Viewers' group will have read-only access to their ArgoCD applications
 - Tenants can sync all namespace-scoped resources, except those that are blacklisted in the spec
-- Tenants can only sync cluster-scoped resources that are whitelisted in the spec
+- Tenants can only sync cluster-scoped resources that are allow-listed in the spec
 - Tenant 'Owners' can configure their own GitOps source repos at a tenant level
 - Cluster admins can prevent specific resources from syncing via ArgoCD
 - Cluster admins have full access to all ArgoCD applications and AppProjects
