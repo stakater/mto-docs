@@ -20,7 +20,7 @@
 
 ### Fix
 
-- Updated CreateMergePatch to MergeMergePatches to address issues caused by losing resourceVersion and UID when converting oldObject to newObject. This prevents problems when the object is edited by another controller.
+- Updated CreateMergePatch to MergeMergePatches to address issues caused by losing `resourceVersion` and UID when converting `oldObject` to `newObject`. This prevents problems when the object is edited by another controller.
 - In Template Resource distribution for Secret type, we now consider the source's Secret field type, preventing default creation as Opaque regardless of the source's actual type.
 - Enhanced admin permissions for tenant role in Vault to include Create, Update, Delete alongside existing Read and List privileges for the common-shared-secrets path. Viewers now have Read permission.
 
