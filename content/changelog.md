@@ -11,7 +11,7 @@
 - Graph visualization of Tenant and its associated resources on MTO Console.
 - Tenant and Admin level authz/authn support within MTO Console and Gateway.
 - Now in MTO console you can view cost of different Tenant resources with different date, resource type etc, filters.
-- MTO can now create a default keycloak realm, client and mto-admin user for Console.
+- MTO can now create a default keycloak realm, client and `mto-admin` user for Console.
 - Implemented Cluster Resource Quota for vanilla kubernetes platform type.
 - Dependency of TLS secrets for MTO Webhook.
 - Added Helm Chart that would be used for installing MTO over Kubernetes.
