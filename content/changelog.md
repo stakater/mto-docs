@@ -12,7 +12,7 @@
 - Tenant and Admin level authz/authn support within MTO Console and Gateway.
 - Now in MTO console you can view cost of different Tenant resources with different date, resource type and additional filters.
 - MTO can now create a default keycloak realm, client and `mto-admin` user for Console.
-- Implemented Cluster Resource Quota for vanilla kubernetes platform type.
+- Implemented Cluster Resource Quota for vanilla Kubernetes platform type.
 - Dependency of TLS secrets for MTO Webhook.
 - Added Helm Chart that would be used for installing MTO over Kubernetes.
     - And it comes with default Cert Manager manifests for certificates.
@@ -22,7 +22,7 @@
 
 - Updated CreateMergePatch to MergeMergePatches to address issues caused by losing resourceVersion and UID when converting oldObject to newObject. This prevents problems when the object is edited by another controller.
 - In Template Resource distribution for Secret type, we now consider the source's Secret field type, preventing default creation as Opaque regardless of the source's actual type.
-- Enhanced admin permissions for vault tenant to include Create, Update, Delete alongside existing Read and List privileges for the common-shared-secrets path. Viewers now have Read permission.
+- Enhanced admin permissions for tenant role in Vault to include Create, Update, Delete alongside existing Read and List privileges for the common-shared-secrets path. Viewers now have Read permission.
 
 ### Enhanced
 
