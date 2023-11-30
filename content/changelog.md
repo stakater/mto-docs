@@ -26,7 +26,7 @@
 
 ### Enhanced
 
-- Started to support Kubernetes along with Openshift as platform type.
+- Started to support Kubernetes along with OpenShift as platform type.
 - Support of MTO's PostgreSQL instance as persistent storage for keycloak.
 - Added `kube:admin` as default cluster admin within MTO.
 
