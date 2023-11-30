@@ -149,7 +149,7 @@ spec:
 
 ## Allow ArgoCD to sync certain cluster-wide resources
 
-Bill now wants tenants to be able to sync the `Environment` cluster scoped resource to the cluster. To do this correctly, Bill will specify the resource to whitelist in the ArgoCD portion of the Integration Config's Spec:
+Bill now wants tenants to be able to sync the `Environment` cluster scoped resource to the cluster. To do this correctly, Bill will specify the resource to allow-list in the ArgoCD portion of the Integration Config's Spec:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -167,7 +167,7 @@ spec:
   ...
 ```
 
-Now, if the resource is added to any tenant's project directory in GitOps, ArgoCD will sync them to the cluster. The AppProject will also have the whitelisted resources added to it:
+Now, if the resource is added to any tenant's project directory in GitOps, ArgoCD will sync them to the cluster. The AppProject will also have the allow-listed resources added to it:
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
