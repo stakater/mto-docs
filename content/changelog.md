@@ -10,7 +10,7 @@
 - Added support for custom metrics with Template, Template Instance and Template Group Instance.
 - Graph visualization of Tenant and its associated resources on MTO Console.
 - Tenant and Admin level authz/authn support within MTO Console and Gateway.
-- Now in MTO console you can view cost of different Tenant resources with different date, resource type etc, filters.
+- Now in MTO console you can view cost of different Tenant resources with different date, resource type and additional filters.
 - MTO can now create a default keycloak realm, client and `mto-admin` user for Console.
 - Implemented Cluster Resource Quota for vanilla kubernetes platform type.
 - Dependency of TLS secrets for MTO Webhook.
