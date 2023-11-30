@@ -9,13 +9,13 @@
 - Added support for caching for MTO Console using PostgreSQL as caching layer.
 - Added support for custom metrics with Template, Template Instance and Template Group Instance.
 - Graph visualization of Tenant and its associated resources on MTO Console.
-- Tenant and Admin level authz/authn support within MTO Console and Gateway. 
+- Tenant and Admin level authz/authn support within MTO Console and Gateway.
 - Now in MTO console you can view cost of different Tenant resources with different date, resource type etc, filters.
 - MTO can now create a default keycloak realm, client and mto-admin user for Console.
 - Implemented Cluster Resource Quota for vanilla kubernetes platform type.
 - Dependency of TLS secrets for MTO Webhook.
 - Added Helm Chart that would be used for installing MTO over Kubernetes.
-  - And it comes with default Cert Manager manifests for certificates.
+    - And it comes with default Cert Manager manifests for certificates.
 - Support for MTO e2e.
 
 ### Fix
@@ -26,9 +26,9 @@
 
 ### Enhanced
 
-- Started to support Kubernetes along with Openshift as platform type. 
+- Started to support Kubernetes along with Openshift as platform type.
 - Support of MTO's postgres instance as persistent storage for keycloak. 
-- Added `kube:admin` as default cluster admin within MTO. 
+- Added `kube:admin` as default cluster admin within MTO.
 
 ## v0.9.x
 
