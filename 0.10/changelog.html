@@ -1377,6 +1377,57 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#v010x" class="md-nav__link">
+    <span class="md-ellipsis">
+      v0.10.x
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.10.x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v0100" class="md-nav__link">
+    <span class="md-ellipsis">
+      v0.10.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fix
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v09x" class="md-nav__link">
     <span class="md-ellipsis">
       v0.9.x
@@ -2177,6 +2228,57 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#v010x" class="md-nav__link">
+    <span class="md-ellipsis">
+      v0.10.x
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.10.x">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#v0100" class="md-nav__link">
+    <span class="md-ellipsis">
+      v0.10.0
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fix
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#v09x" class="md-nav__link">
     <span class="md-ellipsis">
       v0.9.x
@@ -2921,6 +3023,36 @@
 
 
 <h1 id="changelog">Changelog</h1>
+<h2 id="v010x">v0.10.x</h2>
+<h3 id="v0100">v0.10.0</h3>
+<h3 id="feature">Feature</h3>
+<ul>
+<li>Added support for caching for MTO Console using PostgreSQL as caching layer.</li>
+<li>Added support for custom metrics with Template, Template Instance and Template Group Instance.</li>
+<li>Graph visualization of Tenant and its associated resources on MTO Console.</li>
+<li>Tenant and Admin level authz/authn support within MTO Console and Gateway.</li>
+<li>Now in MTO console you can view cost of different Tenant resources with different date, resource type and additional filters.</li>
+<li>MTO can now create a default keycloak realm, client and <code>mto-admin</code> user for Console.</li>
+<li>Implemented Cluster Resource Quota for vanilla Kubernetes platform type.</li>
+<li>Dependency of TLS secrets for MTO Webhook.</li>
+<li>Added Helm Chart that would be used for installing MTO over Kubernetes.<ul>
+<li>And it comes with default Cert Manager manifests for certificates.</li>
+</ul>
+</li>
+<li>Support for MTO e2e.</li>
+</ul>
+<h3 id="fix">Fix</h3>
+<ul>
+<li>Updated CreateMergePatch to MergeMergePatches to address issues caused by losing <code>resourceVersion</code> and UID when converting <code>oldObject</code> to <code>newObject</code>. This prevents problems when the object is edited by another controller.</li>
+<li>In Template Resource distribution for Secret type, we now consider the source's Secret field type, preventing default creation as Opaque regardless of the source's actual type.</li>
+<li>Enhanced admin permissions for tenant role in Vault to include Create, Update, Delete alongside existing Read and List privileges for the common-shared-secrets path. Viewers now have Read permission.</li>
+</ul>
+<h3 id="enhanced">Enhanced</h3>
+<ul>
+<li>Started to support Kubernetes along with OpenShift as platform type.</li>
+<li>Support of MTO's PostgreSQL instance as persistent storage for keycloak.</li>
+<li>Added <code>kube:admin</code> as default cluster admin within MTO.</li>
+</ul>
 <h2 id="v09x">v0.9.x</h2>
 <h3 id="v094">v0.9.4</h3>
 <ul>
@@ -3176,7 +3308,7 @@
 </blockquote>
 <ul>
 <li><code>caBundle</code> field in validation webhooks is not being populated for newly added webhooks. A temporary fix is to edit the validation webhook configuration manifest without the <code>caBundle</code> field added in any webhook, so OpenShift can add it to all fields simultaneously<ul>
-<li>Edit the <code>ValidatingWebhookConfiguration</code> <code>stakater-tenant-operator-validating-webhook-configuration</code> by removing all the <code>caBundle</code> fields of all webhooks</li>
+<li>Edit the <code>ValidatingWebhookConfiguration</code> <code>multi-tenant-operator-validating-webhook-configuration</code> by removing all the <code>caBundle</code> fields of all webhooks</li>
 <li>Save the manifest</li>
 <li>Verify that all <code>caBundle</code> fields have been populated</li>
 <li>Restart Tenant-Operator pods</li>
