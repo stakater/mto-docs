@@ -1,5 +1,35 @@
 # Changelog
 
+## v0.10.x
+
+### v0.10.0
+
+### Feature
+
+- Added support for caching for MTO Console using PostgreSQL as caching layer.
+- Added support for custom metrics with Template, Template Instance and Template Group Instance.
+- Graph visualization of Tenant and its associated resources on MTO Console.
+- Tenant and Admin level authz/authn support within MTO Console and Gateway.
+- Now in MTO console you can view cost of different Tenant resources with different date, resource type and additional filters.
+- MTO can now create a default keycloak realm, client and `mto-admin` user for Console.
+- Implemented Cluster Resource Quota for vanilla Kubernetes platform type.
+- Dependency of TLS secrets for MTO Webhook.
+- Added Helm Chart that would be used for installing MTO over Kubernetes.
+    - And it comes with default Cert Manager manifests for certificates.
+- Support for MTO e2e.
+
+### Fix
+
+- Updated CreateMergePatch to MergeMergePatches to address issues caused by losing `resourceVersion` and UID when converting `oldObject` to `newObject`. This prevents problems when the object is edited by another controller.
+- In Template Resource distribution for Secret type, we now consider the source's Secret field type, preventing default creation as Opaque regardless of the source's actual type.
+- Enhanced admin permissions for tenant role in Vault to include Create, Update, Delete alongside existing Read and List privileges for the common-shared-secrets path. Viewers now have Read permission.
+
+### Enhanced
+
+- Started to support Kubernetes along with OpenShift as platform type.
+- Support of MTO's PostgreSQL instance as persistent storage for keycloak.
+- Added `kube:admin` as default cluster admin within MTO.
+
 ## v0.9.x
 
 ### v0.9.4
@@ -242,7 +272,7 @@
 > ⚠️ Known Issues
 
 - `caBundle` field in validation webhooks is not being populated for newly added webhooks. A temporary fix is to edit the validation webhook configuration manifest without the `caBundle` field added in any webhook, so OpenShift can add it to all fields simultaneously
-    - Edit the `ValidatingWebhookConfiguration` `stakater-tenant-operator-validating-webhook-configuration` by removing all the `caBundle` fields of all webhooks
+    - Edit the `ValidatingWebhookConfiguration` `multi-tenant-operator-validating-webhook-configuration` by removing all the `caBundle` fields of all webhooks
     - Save the manifest
     - Verify that all `caBundle` fields have been populated
     - Restart Tenant-Operator pods
