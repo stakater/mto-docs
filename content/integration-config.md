@@ -254,7 +254,7 @@ users:
 `clusterAdminGroups:` Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way
 
 !!! note
-    User `kube:admin` is bypassed by default to perform operations as a cluster admin, this includes operations on all of the namespaces.
+    User `kube:admin` is bypassed by default to perform operations as a cluster admin, this includes operations on all the namespaces.
 
 ### Privileged Namespaces
 
