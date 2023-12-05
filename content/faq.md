@@ -31,7 +31,7 @@ from server for: "namespace.yaml": namespaces "ns1" is forbidden: User "muneeb" 
 
 **Answer.** Tenant members will not be able to use `kubectl apply` because `apply` first gets all the instances of that resource, in this case namespaces, and then does the required operation on the selected resource. To maintain tenancy, tenant members do not the access to get or list all the namespaces.
 
-The fix is create namespaces with `kubectl create` instead.
+The fix is to create namespaces with `kubectl create` instead.
 
 ## MTO - ArgoCD Integration
 
