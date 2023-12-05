@@ -94,3 +94,13 @@ Explore the seamless integration of a dedicated database to streamline resource 
 The implementation of this feature is facilitated through the Bootstrap controller, simplifying the deployment process. This controller not only establishes the Postgres database but also configures a service for smooth communication and generates a secret containing crucial details for establishing a secure connection to the database.
 
 Furthermore, the introduction of a dedicated cache layer ensures that there is no added burden on the kube API server when responding to MTO-console requests. This enhancement not only improves response times but also contributes to a more efficient and responsive resource management system.
+
+## Custom Metrics Support
+
+Multi Tenant Operator now supports custom metrics for templates, template instances and template group instances.
+
+Exposed metrics contain, number of resources deployed, number of resources failed, total number of resources deployed for template instances and template group instances. These metrics can be used to monitor the usage of templates and template instances in the cluster.
+
+Additionally, this allows us to expose other performace metrics listed [here](https://book.kubebuilder.io/reference/metrics-reference.html).
+
+More details on [Enabling Custom Metrics](./reference-guides/custom-metrics.md)
