@@ -7,7 +7,7 @@ apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: IntegrationConfig
 metadata:
   name: tenant-operator-config
-  namespace: stakater-tenant-operator
+  namespace: multi-tenant-operator
 spec:
   tenantRoles:
     default:
@@ -252,6 +252,9 @@ users:
 ### Cluster Admin Groups
 
 `clusterAdminGroups:` Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way
+
+!!! note
+    User `kube:admin` is bypassed by default to perform operations as a cluster admin, this includes operations on all of the namespaces.
 
 ### Privileged Namespaces
 

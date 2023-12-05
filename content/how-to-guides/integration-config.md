@@ -7,7 +7,7 @@ apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: IntegrationConfig
 metadata:
   name: tenant-operator-config
-  namespace: stakater-tenant-operator
+  namespace: multi-tenant-operator
 spec:
   tenantRoles:
     default:
