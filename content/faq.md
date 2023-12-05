@@ -2,15 +2,21 @@
 
 ## Namespace Admission Webhook
 
-### Q. Error received while performing Create, Update or Delete action on namespace : `"Cannot CREATE namespace test-john without label stakater.com/tenant"`
+### Q. Error received while performing Create, Update or Delete action on namespace
+
+```terminal
+Cannot CREATE namespace test-john without label stakater.com/tenant
+```
 
 **A.** Error occurs when a user is trying to perform create, update, delete action on a namespace without the required `stakater.com/tenant` label. This label is used by the operator to see that authorized users can perform that action on the namespace. Just add the label with the tenant name so that MTO knows which tenant the namespace belongs to, and who is authorized to perform create/update/delete operations. For more details please refer to [Namespace use-case](./tutorials/tenant/creating-namespaces.md).
 
-### Q. Error received while performing Create, Update or Delete action on Openshift Project : `Cannot CREATE namespace testing without label stakater.com/tenant. User: system:serviceaccount:openshift-apiserver:openshift-apiserver-sa`
+### Q. Error received while performing Create, Update or Delete action on OpenShift Project
 
+```terminal
+Cannot CREATE namespace testing without label stakater.com/tenant. User: system:serviceaccount:openshift-apiserver:openshift-apiserver-sa
+```
 
-
-**A.** This error occurs because we dont allow Tenant members to do operations on Openshift Project, whenever an operation is done on a project, `openshift-apiserver-sa` tries to do the same request onto a namespace. Thats why the user sees `openshift-apiserver-sa` Service Account instead of its own user in the error message.
+**A.** This error occurs because we don't allow Tenant members to do operations on OpenShift Project, whenever an operation is done on a project, `openshift-apiserver-sa` tries to do the same request onto a namespace. That's why the user sees `openshift-apiserver-sa` Service Account instead of its own user in the error message.
 
 The fix is to try the same operation on the namespace manifest instead.
 
