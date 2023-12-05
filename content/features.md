@@ -86,3 +86,11 @@ With Multi Tenant Operator teams can share a single cluster with multiple teams,
 ## Native Experience
 
 Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience without introducing additional management layers, plugins, or customized binaries.
+
+## Caching and Database
+
+Explore the seamless integration of a dedicated database to streamline resource management. Now, all resources managed by MTO are efficiently stored in a Postgres database, enhancing the mto-console's ability to effortlessly retrieve essential resources for optimal presentation.
+
+The implementation of this feature is facilitated through the Bootstrap controller, simplifying the deployment process. This controller not only establishes the Postgres database but also configures a service for smooth communication and generates a secret containing crucial details for establishing a secure connection to the database.
+
+Furthermore, the introduction of a dedicated cache layer ensures that there is no added burden on the kube API server when responding to MTO-console requests. This enhancement not only improves response times but also contributes to a more efficient and responsive resource management system.
