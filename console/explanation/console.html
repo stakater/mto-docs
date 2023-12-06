@@ -1518,6 +1518,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#caching-and-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caching and Database
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       Conclusion
@@ -1575,6 +1584,10 @@
 <h2 id="live-yaml-configuration-and-graph-view">Live YAML Configuration and Graph View</h2>
 <p>In the MTO Console, each resource section is equipped with a "View" button, revealing the live YAML configuration for complete information on the resource. For Tenant resources, a supplementary "Graph" option is available, illustrating the relationships and dependencies of all resources under a Tenant. This dual-view approach empowers users with both the detailed control of YAML and the holistic oversight of the graph view.</p>
 <p><a class="glightbox" href="../images/tenants_graph.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/tenants_graph.png" /></a></p>
+<h2 id="caching-and-database">Caching and Database</h2>
+<p>MTO integrates a dedicated database to streamline resource management. Now, all resources managed by MTO are efficiently stored in a Postgres database, enhancing the MTO Console's ability to efficiently retrieve all the resources for optimal presentation.</p>
+<p>The implementation of this feature is facilitated by the Bootstrap controller, streamlining the deployment process. This controller creates the PostgreSQL Database, establishes a service for inter-pod communication, and generates a secret to ensure secure connectivity to the database.</p>
+<p>Furthermore, the introduction of a dedicated cache layer ensures that there is no added burden on the kube API server when responding to MTO Console requests. This enhancement not only improves response times but also contributes to a more efficient and responsive resource management system.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>The MTO Console is engineered to simplify complex multi-tenant management. The current iteration focuses on providing comprehensive visibility. Future updates could include direct CUD (Create/Update/Delete) capabilities from the dashboard, enhancing the console’s functionality. The Showback feature remains a standout, offering critical cost tracking and analysis. The delineation of roles between administrators and tenant users ensures a secure and organized operational framework.</p>
 
