@@ -113,6 +113,6 @@ With Multi Tenant Operator teams can share a single cluster with multiple teams,
 
 Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience without introducing additional management layers, plugins, or customized binaries.
 
-# Cost visualization
+## Cost visualization
 
 In MTO we have Showback feature is designed to offer a transparent and detailed view of resource consumption and associated costs within the multi-tenant environment. This page presents a sophisticated, user-friendly interface equipped with a date range filter, allowing users to specify the period they're interested in. Accompanying this is a versatile dropdown menu, offering the ability to drill down into costs by tenant, namespace, deployment, stateful set, and daemon set. The heart of the Showback page is a color-coded graph that dynamically adjusts to display the total cost for each resource, giving users a visual representation of where their resources are allocated and how costs are distributed over time. Below the graph, a detailed table lists out the total cost along with the breakdown for CPU, RAM, and Persistent Volume costs, ensuring users have all the data they need at their fingertips. Additionally, the ability to export this data facilitates further analysis, allowing for efficient budget tracking and financial planning. With the Showback feature, both administrators and tenants gain valuable insights, enabling them to make informed decisions about resource utilization and cost efficiency.
