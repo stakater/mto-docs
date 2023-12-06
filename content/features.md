@@ -89,11 +89,11 @@ Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience
 
 ## Caching and Database
 
-Explore the seamless integration of a dedicated database to streamline resource management. Now, all resources managed by MTO are efficiently stored in a Postgres database, enhancing the MTO-Console's ability to effortlessly retrieve essential resources for optimal presentation.
+MTO now integrates a dedicated database to streamline resource management. Now, all resources managed by MTO are efficiently stored in a Postgres database, enhancing the MTO Console's ability to effortlessly retrieve essential resources for optimal presentation.
 
-The implementation of this feature is facilitated through the Bootstrap controller, simplifying the deployment process. This controller not only establishes the Postgres database but also configures a service for smooth communication and generates a secret containing crucial details for establishing a secure connection to the database.
+The implementation of this feature is facilitated by the Bootstrap controller, streamlining the deployment process. This controller creates the PostgreSQL Database, establishes a service for inter-pod communication, and generates a secret to ensure secure connectivity to the database.
 
-Furthermore, the introduction of a dedicated cache layer ensures that there is no added burden on the kube API server when responding to MTO-console requests. This enhancement not only improves response times but also contributes to a more efficient and responsive resource management system.
+Furthermore, the introduction of a dedicated cache layer ensures that there is no added burden on the kube API server when responding to MTO Console requests. This enhancement not only improves response times but also contributes to a more efficient and responsive resource management system.
 
 ## Custom Metrics Support
 
@@ -107,6 +107,6 @@ More details on [Enabling Custom Metrics](./reference-guides/custom-metrics.md)
 
 ## Graph Visualization for Tenants
 
-Multi Tenant Operator now supports graph visualization for tenants on the MTO-Console. Effortlessly associate tenants with their respective resources using the enhanced graph feature on the MTO console. This dynamic graph illustrates the relationships between tenants and the resources they create, encompassing both MTO's proprietary resources and native Kubernetes/OpenShift elements.
+Multi Tenant Operator now supports graph visualization for tenants on the MTO Console. Effortlessly associate tenants with their respective resources using the enhanced graph feature on the MTO Console. This dynamic graph illustrates the relationships between tenants and the resources they create, encompassing both MTO's proprietary resources and native Kubernetes/OpenShift elements.
 
 More details on [Graph Visualization](./reference-guides/graph-visualization.md)
