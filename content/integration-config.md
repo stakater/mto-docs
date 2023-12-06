@@ -253,8 +253,6 @@ users:
 
 `clusterAdminGroups:` Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of privilegedNamespaces.
 
-Note: An edge case however is when you have a user containing `:` (`kube:admin` or `kube:masters`), in which case, it is a platform problem in that it doesn't allow us to add such users to the group. So, even when you have logged in as `kube:admin`, you might not be able to delete the privilegedNamespaces due to this reason.
-
 ### Privileged Namespaces
 
 `privilegedNamespaces:` Contains the list of `namespaces` ignored by MTO. MTO will not manage the `namespaces` in this list. Treatment for privileged namespaces does not involve further integrations or finalizers processing as with normal namespaces. Values in this list are regex patterns.
