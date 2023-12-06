@@ -114,6 +114,7 @@ With Multi Tenant Operator teams can share a single cluster with multiple teams,
 Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience without introducing additional management layers, plugins, or customized binaries.
 
 ## Authentication and Authorization in MTO
+
 The Multi Tenant Operator (MTO) application leverages Keycloak for advanced authentication and authorization, ensuring a high level of security and operational efficiency in multi-tenant environments. This integration is pivotal in creating a secure boundary where tenants have access only to their specific resources, effectively preventing unauthorized access to data outside their tenancy. Administrators, on the other hand, are granted a holistic view, enabling them to manage and oversee all tenants and their configurations comprehensively.
 
 Keycloak's integration into MTO brings several advantages. Firstly, it simplifies the user authentication process by providing a single sign-on (SSO) experience, enhancing user convenience while maintaining robust security standards. Secondly, it allows for fine-grained access control. Administrators can define and enforce role-based access policies that precisely match user roles with their access rights, ensuring that users only have the necessary permissions to perform their tasks. This capability is crucial in a multi-tenant setup where varying levels of access and control are essential.
@@ -121,3 +122,4 @@ Keycloak's integration into MTO brings several advantages. Firstly, it simplifie
 Furthermore, the use of Keycloak in MTO supports compliance with various security standards and regulations, as it offers detailed audit logs and user access history. This feature is particularly valuable for organizations needing to adhere to stringent data security and privacy regulations.
 
 In summary, the integration of Keycloak in MTO represents a significant step forward in managing multi-tenant environments. It provides a secure, efficient, and compliant framework for authentication and authorization, balancing the need for security with ease of use and administrative flexibility.
+![image](../images/login.png)
