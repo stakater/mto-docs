@@ -18,7 +18,7 @@ apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: IntegrationConfig
 metadata:
   name: tenant-operator-config
-  namespace: stakater-tenant-operator
+  namespace: multi-tenant-operator
 spec:
   openshift:
     privilegedNamespaces:
@@ -44,7 +44,7 @@ apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: IntegrationConfig
 metadata:
   name: tenant-operator-config
-  namespace: stakater-tenant-operator
+  namespace: multi-tenant-operator
 spec:
   openshift:
     privilegedServiceAccounts:
@@ -62,7 +62,7 @@ apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: IntegrationConfig
 metadata:
   name: tenant-operator-config
-  namespace: stakater-tenant-operator
+  namespace: multi-tenant-operator
 spec:
   openshift:
     privilegedServiceAccounts:
@@ -85,7 +85,7 @@ apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: IntegrationConfig
 metadata:
   name: tenant-operator-config
-  namespace: stakater-tenant-operator
+  namespace: multi-tenant-operator
 spec:
   vault:
     enabled: true
