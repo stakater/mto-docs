@@ -6,7 +6,7 @@ The Multi Tenant Operator (MTO) Console is a comprehensive user interface design
 
 ## Dashboard Overview
 
-The dashboard serves as a centralized monitoring hub, offering insights into the current state of tenants, namespaces, templates and quotas. It is designed to provide a quick summary/snapshot of MTO's status and facilitates easier interaction with various resources such as tenants, namespaces, templates, and quotas.
+The dashboard serves as a centralized monitoring hub, offering insights into the current state of tenants, namespaces, and quotas. It is designed to provide a quick summary/snapshot of MTO resources' status. Additionally, it includes a Showback graph that presents a quick glance of the seven-day cost trends associated with the namespaces.
 
 ![image](../images/dashboard.png)
 
@@ -45,7 +45,7 @@ The Showback feature is an essential financial governance tool, providing detail
 
 ### Administrators `:`
 
-Administrators have overarching access to the console, including the ability to view all namespaces and tenants. They have exclusive access to the IntegrationConfig, allowing them to define and manage system-wide settings and integrations.
+Administrators have overarching access to the console, including the ability to view all namespaces and tenants. They have exclusive access to the IntegrationConfig, allowing them to view all the settings and integrations.
 
 ![image](../images/integrationConfig.png)
 
@@ -56,6 +56,8 @@ Regular tenant users can monitor and manage their allocated resources. However, 
 ## Live YAML Configuration and Graph View
 
 In the MTO Console, each resource section is equipped with a "View" button, revealing the live YAML configuration for complete information on the resource. For Tenant resources, a supplementary "Graph" option is available, illustrating the relationships and dependencies of all resources under a Tenant. This dual-view approach empowers users with both the detailed control of YAML and the holistic oversight of the graph view.
+
+You can find more details on graph visualization here: [Graph Visualization](../reference-guides/graph-visualization.md)
 
 ![image](../images/tenants_graph.png)
 
