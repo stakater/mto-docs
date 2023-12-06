@@ -87,14 +87,6 @@ With Multi Tenant Operator teams can share a single cluster with multiple teams,
 
 Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience without introducing additional management layers, plugins, or customized binaries.
 
-## Caching and Database
-
-MTO now integrates a dedicated database to streamline resource management. Now, all resources managed by MTO are efficiently stored in a Postgres database, enhancing the MTO Console's ability to effortlessly retrieve essential resources for optimal presentation.
-
-The implementation of this feature is facilitated by the Bootstrap controller, streamlining the deployment process. This controller creates the PostgreSQL Database, establishes a service for inter-pod communication, and generates a secret to ensure secure connectivity to the database.
-
-Furthermore, the introduction of a dedicated cache layer ensures that there is no added burden on the kube API server when responding to MTO Console requests. This enhancement not only improves response times but also contributes to a more efficient and responsive resource management system.
-
 ## Custom Metrics Support
 
 Multi Tenant Operator now supports custom metrics for templates, template instances and template group instances.
