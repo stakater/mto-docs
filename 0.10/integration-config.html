@@ -1801,13 +1801,13 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">andrew@stakater.com</span>
 </code></pre></div>
 <h3 id="cluster-admin-groups">Cluster Admin Groups</h3>
-<p><code>clusterAdminGroups:</code> Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way</p>
+<p><code>clusterAdminGroups:</code> Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of privilegedNamespaces.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>User <code>kube:admin</code> is bypassed by default to perform operations as a cluster admin, this includes operations on all the namespaces.</p>
 </div>
 <h3 id="privileged-namespaces">Privileged Namespaces</h3>
-<p><code>privilegedNamespaces:</code> Contains the list of <code>namespaces</code> ignored by MTO. MTO will not manage the <code>namespaces</code> in this list. Values in this list are regex patterns.
+<p><code>privilegedNamespaces:</code> Contains the list of <code>namespaces</code> ignored by MTO. MTO will not manage the <code>namespaces</code> in this list. Treatment for privileged namespaces does not involve further integrations or finalizers processing as with normal namespaces. Values in this list are regex patterns.
 For example:</p>
 <ul>
 <li>To ignore the <code>default</code> namespace, we can specify <code>^default$</code></li>
