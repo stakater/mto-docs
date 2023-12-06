@@ -16,12 +16,12 @@ Here, admins have a bird's-eye view of all tenants, with the ability to delve in
 ![image](../images/tenant-graph.png)
 
 ### Namespaces
-Namespaces are organized under their respective tenants for easy tracking and oversight. This section allows for a clear view of what namespaces are accessible to you as a tenant member, with options for detailed exploration.
+Users can view all the namespaces that belong to their tenant, offering a comprehensive perspective of the accessible namespaces for tenant members. This section also provides options for detailed exploration.
 
 ![image](../images/namespaces.png)
 
 ### Quotas
-Quotas are crucial for managing resource allocation. In this section, administrators can assess the quotas assigned to each tenant, ensuring a balanced distribution of resources in line with operational requirements.
+MTO's Quotas are crucial for managing resource allocation. In this section, administrators can assess the quotas assigned to each tenant, ensuring a balanced distribution of resources in line with operational requirements.
 
 ![image](../images/quotas.png)
 
