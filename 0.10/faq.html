@@ -1431,6 +1431,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#q-why-are-there-mto-showback-pods-failing-in-my-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q. Why are there mto-showback-* pods failing in my cluster?
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1600,6 +1609,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#q-why-are-there-mto-showback-pods-failing-in-my-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q. Why are there mto-showback-* pods failing in my cluster?
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1642,6 +1660,8 @@ from server for: &quot;namespace.yaml&quot;: namespaces &quot;ns1&quot; is forbi
 <p><strong>Answer.</strong> Multi-Tenant Operator's ArgoCD Integration allows configuration of which cluster-scoped resources can be deployed, both globally and on a per-tenant basis. For a global allow-list that applies to all tenants, you can add both resource <code>group</code> and  <code>kind</code> to the <a href="how-to-guides/integration-config.html#argocd">IntegrationConfig's</a> <code>spec.argocd.clusterResourceWhitelist</code> field. Alternatively, you can set this up on a tenant level by configuring the same details within a <a href="how-to-guides/tenant.html">Tenant's</a> <code>spec.argocd.appProject.clusterResourceWhitelist</code> field. For more details, check out the <a href="tutorials/argocd/enabling-multi-tenancy-argocd.html#allow-argocd-to-sync-certain-cluster-wide-resources">ArgoCD integration use cases</a></p>
 <h2 id="q-invalidspecerror-application-repo-repo-is-not-permitted-in-project-project">Q. InvalidSpecError: application repo \&lt;repo&gt; is not permitted in project \&lt;project&gt;</h2>
 <p><strong>Answer.</strong> The above error can occur if the ArgoCD Application is syncing from a source that is not allowed the referenced AppProject. To solve this, verify that you have referred to the correct project in the given ArgoCD Application, and that the repoURL used for the Application's source is valid. If the error still appears, you can add the URL to the relevant Tenant's <code>spec.argocd.sourceRepos</code> array.</p>
+<h2 id="q-why-are-there-mto-showback-pods-failing-in-my-cluster">Q. Why are there <code>mto-showback-*</code> pods failing in my cluster?</h2>
+<p><strong>Answer.</strong> The <code>mto-showback-*</code> pods are used to calculate the cost of the resources used by each tenant. These pods are created by the Multi-Tenant Operator and are scheduled to run every 10 minutes. If the pods are failing, it is likely that the operator's necessary to calculate cost are not present in the cluster. To solve this, you can navigate to <code>Operators</code> -&gt; <code>Installed Operators</code> in the OpenShift console and check if the MTO-OpenCost and MTO-Prometheus operators are installed. If they are in a pending state, you can manually approve them to install them in the cluster.</p>
 
 
   
