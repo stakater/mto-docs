@@ -1,6 +1,6 @@
 # Graph Visualization on MTO Console
 
-Effortlessly associate tenants with their respective resources using the enhanced graph feature on the MTO console front end. This dynamic graph illustrates the relationships between tenants and the resources they create, encompassing both MTO's proprietary resources and native Kubernetes/Openshift elements.
+Effortlessly associate tenants with their respective resources using the enhanced graph feature on the MTO console front end. This dynamic graph illustrates the relationships between tenants and the resources they create, encompassing both MTO's proprietary resources and native Kubernetes/OpenShift elements.
 
 Example Graph:
 
