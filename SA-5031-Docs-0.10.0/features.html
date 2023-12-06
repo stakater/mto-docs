@@ -1524,15 +1524,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#caching-and-database" class="md-nav__link">
-    <span class="md-ellipsis">
-      Caching and Database
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#custom-metrics-support" class="md-nav__link">
     <span class="md-ellipsis">
       Custom Metrics Support
@@ -1616,10 +1607,6 @@
 <p>With Multi Tenant Operator teams can share a single cluster with multiple teams, groups of users, or departments by saving operational and management efforts. This prevents you from Kubernetes cluster sprawl.</p>
 <h2 id="native-experience">Native Experience</h2>
 <p>Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience without introducing additional management layers, plugins, or customized binaries.</p>
-<h2 id="caching-and-database">Caching and Database</h2>
-<p>MTO now integrates a dedicated database to streamline resource management. Now, all resources managed by MTO are efficiently stored in a Postgres database, enhancing the MTO Console's ability to effortlessly retrieve essential resources for optimal presentation.</p>
-<p>The implementation of this feature is facilitated by the Bootstrap controller, streamlining the deployment process. This controller creates the PostgreSQL Database, establishes a service for inter-pod communication, and generates a secret to ensure secure connectivity to the database.</p>
-<p>Furthermore, the introduction of a dedicated cache layer ensures that there is no added burden on the kube API server when responding to MTO Console requests. This enhancement not only improves response times but also contributes to a more efficient and responsive resource management system.</p>
 <h2 id="custom-metrics-support">Custom Metrics Support</h2>
 <p>Multi Tenant Operator now supports custom metrics for templates, template instances and template group instances.</p>
 <p>Exposed metrics contain, number of resources deployed, number of resources failed, total number of resources deployed for template instances and template group instances. These metrics can be used to monitor the usage of templates and template instances in the cluster.</p>
