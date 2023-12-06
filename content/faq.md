@@ -42,3 +42,7 @@ The fix is to create namespaces with `kubectl create` instead.
 ## Q. InvalidSpecError: application repo \<repo\> is not permitted in project \<project\>
 
 **Answer.** The above error can occur if the ArgoCD Application is syncing from a source that is not allowed the referenced AppProject. To solve this, verify that you have referred to the correct project in the given ArgoCD Application, and that the repoURL used for the Application's source is valid. If the error still appears, you can add the URL to the relevant Tenant's `spec.argocd.sourceRepos` array.
+
+## Q. Why are there `mto-showback-*` pods failing in my cluster?
+
+**Answer.** The `mto-showback-*` pods are used to calculate the cost of the resources used by each tenant. These pods are created by the Multi-Tenant Operator and are scheduled to run every 10 minutes. If the pods are failing, it is likely that the operator's necessary to calculate cost are not present in the cluster. To solve this, you can navigate to `Operators` -> `Installed Operators` in the OpenShift console and check if the MTO-OpenCost and MTO-Prometheus operators are installed. If they are in a pending state, you can manually approve them to install them in the cluster.

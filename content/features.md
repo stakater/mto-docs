@@ -86,3 +86,19 @@ With Multi Tenant Operator teams can share a single cluster with multiple teams,
 ## Native Experience
 
 Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience without introducing additional management layers, plugins, or customized binaries.
+
+## Custom Metrics Support
+
+Multi Tenant Operator now supports custom metrics for templates, template instances and template group instances.
+
+Exposed metrics contain, number of resources deployed, number of resources failed, total number of resources deployed for template instances and template group instances. These metrics can be used to monitor the usage of templates and template instances in the cluster.
+
+Additionally, this allows us to expose other performance metrics listed [here](https://book.kubebuilder.io/reference/metrics-reference.html).
+
+More details on [Enabling Custom Metrics](./reference-guides/custom-metrics.md)
+
+## Graph Visualization for Tenants
+
+Multi Tenant Operator now supports graph visualization for tenants on the MTO Console. Effortlessly associate tenants with their respective resources using the enhanced graph feature on the MTO Console. This dynamic graph illustrates the relationships between tenants and the resources they create, encompassing both MTO's proprietary resources and native Kubernetes/OpenShift elements.
+
+More details on [Graph Visualization](./reference-guides/graph-visualization.md)
