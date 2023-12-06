@@ -104,3 +104,9 @@ Exposed metrics contain, number of resources deployed, number of resources faile
 Additionally, this allows us to expose other performace metrics listed [here](https://book.kubebuilder.io/reference/metrics-reference.html).
 
 More details on [Enabling Custom Metrics](./reference-guides/custom-metrics.md)
+
+## Graph Visualization for Tenants
+
+Multi Tenant Operator now supports graph visualization for tenants on the MTO-Console. Effortlessly associate tenants with their respective resources using the enhanced graph feature on the MTO console. This dynamic graph illustrates the relationships between tenants and the resources they create, encompassing both MTO's proprietary resources and native Kubernetes/Openshift elements.
+
+More details on [Graph Visualization](./reference-guides/graph-visualization.md)
