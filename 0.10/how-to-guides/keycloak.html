@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/0.10/how-to-guides/template-group-instance.html">
+        <link rel="canonical" href="https://docs.stakater.com/0.10/how-to-guides/keycloak.html">
       
       
-        <link rel="prev" href="template-instance.html">
-      
-      
-        <link rel="next" href="offboarding/uninstalling.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
@@ -22,7 +18,7 @@
     
     
       
-        <title>TemplateGroupInstance - Multi Tenant Operator</title>
+        <title>Setting Up User Access in Keycloak for MTO Console - Multi Tenant Operator</title>
       
     
     
@@ -93,7 +89,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#templategroupinstance" class="md-skip">
+        <a href="#setting-up-user-access-in-keycloak-for-mto-console" class="md-skip">
           Skip to content
         </a>
       
@@ -144,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              TemplateGroupInstance
+              Setting Up User Access in Keycloak for MTO Console
             
           </span>
         </div>
@@ -711,21 +707,19 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -739,7 +733,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             How-to Guides
@@ -855,19 +849,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="template-group-instance.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="template-group-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -876,7 +861,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1416,6 +1400,59 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-keycloak-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Keycloak Console
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-new-users-in-keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding new Users in Keycloak
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-mto-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing MTO Console
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#granting-access-to-tenant-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Granting Access to Tenant Resources
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifying-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verifying Access
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1432,27 +1469,73 @@
   
 
 
-<h1 id="templategroupinstance">TemplateGroupInstance</h1>
-<p>Cluster scoped resource:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
+<h1 id="setting-up-user-access-in-keycloak-for-mto-console">Setting Up User Access in Keycloak for MTO Console</h1>
+<p>This guide walks you through the process of adding new users in Keycloak and granting them access to Multi Tenant Operator (MTO) Console.</p>
+<h2 id="accessing-keycloak-console">Accessing Keycloak Console</h2>
+<ul>
+<li>Log in to the OpenShift Console.</li>
+<li>Go to the 'Routes' section within the 'multi-tenant-operator' namespace.</li>
+</ul>
+<p><a class="glightbox" href="../images/routes.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="routes" src="../images/routes.png" /></a></p>
+<ul>
+<li>Click on the Keycloak console link provided in the Routes.</li>
+<li>Login using the admin credentials (default: admin/admin).</li>
+</ul>
+<h2 id="adding-new-users-in-keycloak">Adding new Users in Keycloak</h2>
+<ul>
+<li>In the Keycloak console, switch to the <code>mto</code> realm.</li>
+</ul>
+<p><a class="glightbox" href="../images/realm.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="realm" src="../images/realm.png" /></a></p>
+<ul>
+<li>Go to the <code>Users</code> section in the <code>mto</code> realm.</li>
+<li>Follow the prompts to add a new user.</li>
+</ul>
+<p><a class="glightbox" href="../images/keycloak-new-user.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="keycloak-new-user" src="../images/keycloak-new-user.png" /></a></p>
+<ul>
+<li>Once you add a new user, here is how the Users section would look like</li>
+</ul>
+<p><a class="glightbox" href="../images/keycloak-users.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="keycloak-users" src="../images/keycloak-users.png" /></a></p>
+<h2 id="accessing-mto-console">Accessing MTO Console</h2>
+<ul>
+<li>Go back to the OpenShift Console, navigate to the Routes section, and get the URL for the MTO Console.</li>
+<li>Open the MTO Console URL and log in with the newly added user credentials.</li>
+</ul>
+<p>Now, at this point, a user will be authenticated to the MTO Console. But in order to get access to view any Tenant resources, the user will need to be part of a Tenant.</p>
+<h2 id="granting-access-to-tenant-resources">Granting Access to Tenant Resources</h2>
+<ul>
+<li>Open Tenant CR: In the OpenShift cluster, locate and open the Tenant Custom Resource (CR) that you wish to give access to. You will see a YAML file similar to the following example:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions-tgi</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arsenal</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater.com/tenant</span>
-<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">      </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beta</span>
-<span class="nt">parameters</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CIDR_IP</span>
-<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.17.0.0/16&quot;</span>
+<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gabriel@arsenal.com</span>
+<span class="w">  </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arsenal</span>
+<span class="w">  </span><span class="nt">editors</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hakimi@arsenal.com</span>
+<span class="w">  </span><span class="nt">viewers</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">neymar@arsenal.com</span>
 </code></pre></div>
-<p>TemplateGroupInstance distributes a template across multiple namespaces which are selected by labelSelector.</p>
+<ul>
+<li>Edit Tenant CR: Add the newly created user's email to the appropriate section (owners, editors, viewers) in the Tenant CR. For example, if you have created a user <code>john@arsenal.com</code> and wish to add them as an editor, the edited section would look like this:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">editors</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gabriel@arsenal.com</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">benzema@arsenal.com</span>
+</code></pre></div>
+<ul>
+<li>Save Changes: Save and apply the changes to the Tenant CR.</li>
+</ul>
+<h2 id="verifying-access">Verifying Access</h2>
+<p>Once the above steps are completed, you should be able to access the MTO Console now and see alpha Tenant's details along with all the other resources such as namespaces and templates that John has access to.</p>
 
 
 
