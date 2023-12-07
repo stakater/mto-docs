@@ -69,6 +69,20 @@ The implementation of this feature is facilitated by the Bootstrap controller, s
 
 Furthermore, the introduction of a dedicated cache layer ensures that there is no added burden on the kube API server when responding to MTO Console requests. This enhancement not only improves response times but also contributes to a more efficient and responsive resource management system.
 
+## Authentication and Authorization
+
+MTO Console ensures secure access control using a robust combination of Keycloak for authentication and a custom-built authorization module.
+
+### Keycloak Integration
+
+Keycloak, an industry-standard authentication tool, is integrated for secure user login and management. It supports seamless integration with existing ADs or SSO systems and grants administrators complete control over user access.
+
+### Custom Authorization Module
+
+Complementing Keycloak, our custom authorization module intelligently controls access based on user roles and their association with tenants. Special checks are in place for admin users, granting them comprehensive permissions.
+
+For more details on Keycloak's integration, PostgreSQL as persistent storage, and the intricacies of our authorization module, please visit [here](./auth.md).
+
 ## Conclusion
 
 The MTO Console is engineered to simplify complex multi-tenant management. The current iteration focuses on providing comprehensive visibility. Future updates could include direct CUD (Create/Update/Delete) capabilities from the dashboard, enhancing the console’s functionality. The Showback feature remains a standout, offering critical cost tracking and analysis. The delineation of roles between administrators and tenant users ensures a secure and organized operational framework.
