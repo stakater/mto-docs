@@ -4,7 +4,7 @@ This guide walks you through the process of adding new users in Keycloak and gra
 
 ## Accessing Keycloak Console
 
-a. Log in to the OpenShift Console.
+a. Log in to the OpenShift Console.  
 b. Go to the 'Routes' section within the 'multi-tenant-operator' namespace.
 
 ![openshift-routes](../images/openshift-routes.png)
@@ -14,8 +14,8 @@ d. Login using the admin credentials (default: admin/admin).
 
 ## Adding new Users in Keycloak
 
-a. In the Keycloak console, switch to the `mto` realm.
-b. Go to the `Users` section in the `mto` realm.
+a. In the Keycloak console, switch to the `mto` realm.  
+b. Go to the `Users` section in the `mto` realm.  
 c. Follow the prompts to add a new user.
 
 ![keycloak-new-user](../images/keycloak-new-user.png)
