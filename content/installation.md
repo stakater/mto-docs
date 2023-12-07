@@ -10,7 +10,7 @@ This document contains instructions on installing, uninstalling and configuring 
 
 ## Requirements
 
-* An **OpenShift** cluster [v4.7 - v4.12]
+* An **OpenShift** cluster [v4.8 - v4.13]
 
 ## Installing via OperatorHub UI
 
@@ -41,34 +41,6 @@ This document contains instructions on installing, uninstalling and configuring 
 ![image](./images/to_installed_successful.png)
 
 > Note: MTO will be installed in `multi-tenant-operator` namespace.
-
-### Configuring IntegrationConfig
-
-IntegrationConfig is required to configure the settings of multi-tenancy for MTO.
-
-* We recommend using the following IntegrationConfig as a starting point
-
-```yaml
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: IntegrationConfig
-metadata:
-  name: tenant-operator-config
-  namespace: multi-tenant-operator
-spec:
-  openshift:
-    privilegedNamespaces:
-      - default
-      - ^openshift-*
-      - ^kube-*
-      - ^redhat-*
-    privilegedServiceAccounts:
-      - ^system:serviceaccount:default-*
-      - ^system:serviceaccount:openshift-*
-      - ^system:serviceaccount:kube-*
-      - ^system:serviceaccount:redhat-*
-```
-
-For more details and configurations check out [IntegrationConfig](./integration-config.md).
 
 ## Installing via CLI OR GitOps
 
@@ -107,11 +79,7 @@ spec:
   name: tenant-operator
   source: certified-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: tenant-operator.v0.9.1
-  config:
-    env:
-      - name: ENABLE_CONSOLE
-        value: 'true'
+  startingCSV: tenant-operator.v0.10.0
 EOF
 subscription.operators.coreos.com/tenant-operator created
 ```
@@ -134,33 +102,40 @@ subscription.operators.coreos.com/tenant-operator created
 
 ![image](./images/to_installed_successful_pod.png)
 
-### Configuring IntegrationConfig
+For more details and configurations check out [IntegrationConfig](./integration-config.md).
 
-IntegrationConfig is required to configure the settings of multi-tenancy for MTO.
+## Enabling Console
 
-* We recommend using the following IntegrationConfig as a starting point:
+To enable console gui for MTO, go to `Search` -> `IntegrationConfig` -> `tenant-operator-config` and make sure the following fields are set to `true`:
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: IntegrationConfig
-metadata:
-  name: tenant-operator-config
-  namespace: multi-tenant-operator
 spec:
-  openshift:
-    privilegedNamespaces:
-      - default
-      - ^openshift-*
-      - ^kube-*
-      - ^redhat-*
-    privilegedServiceAccounts:
-      - ^system:serviceaccount:default-*
-      - ^system:serviceaccount:openshift-*
-      - ^system:serviceaccount:kube-*
-      - ^system:serviceaccount:redhat-*
+  provision:
+    console: true
+    showback: true
 ```
 
-For more details and configurations check out [IntegrationConfig](./integration-config.md).
+> Note: If your install plan approval is set to `Manual` then you will have to manually approve the install plan for MTO console components to be installed.
+
+### Manual Approval
+
+* Open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu.
+
+![image](./images/manual-approve-1.png)
+
+* Now click on `Upgrade available` in front of `mto-opencost` or `mto-prometheus`.
+
+![image](./images/manual-approve-2.png)
+
+* Now click on `Preview InstallPlan` on top.
+
+![image](./images/manual-approve-3.png)
+
+* Now click on `Approve` button.
+
+![image](./images/manual-approve-4.png)
+
+* Now the install plan will be approved and MTO console components will be installed.
 
 ## Uninstall via OperatorHub UI
 
