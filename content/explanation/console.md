@@ -43,13 +43,13 @@ The Showback feature is an essential financial governance tool, providing detail
 
 ## User Roles and Permissions
 
-### Administrators `:`
+### Administrators
 
 Administrators have overarching access to the console, including the ability to view all namespaces and tenants. They have exclusive access to the IntegrationConfig, allowing them to view all the settings and integrations.
 
 ![image](../images/integrationConfig.png)
 
-### Tenant Users `:`
+### Tenant Users
 
 Regular tenant users can monitor and manage their allocated resources. However, they do not have access to the IntegrationConfig and cannot view resources across different tenants, ensuring data privacy and operational integrity.
 
@@ -68,6 +68,20 @@ MTO integrates a dedicated database to streamline resource management. Now, all 
 The implementation of this feature is facilitated by the Bootstrap controller, streamlining the deployment process. This controller creates the PostgreSQL Database, establishes a service for inter-pod communication, and generates a secret to ensure secure connectivity to the database.
 
 Furthermore, the introduction of a dedicated cache layer ensures that there is no added burden on the kube API server when responding to MTO Console requests. This enhancement not only improves response times but also contributes to a more efficient and responsive resource management system.
+
+## Authentication and Authorization
+
+MTO Console ensures secure access control using a robust combination of Keycloak for authentication and a custom-built authorization module.
+
+### Keycloak Integration
+
+Keycloak, an industry-standard authentication tool, is integrated for secure user login and management. It supports seamless integration with existing ADs or SSO systems and grants administrators complete control over user access.
+
+### Custom Authorization Module
+
+Complementing Keycloak, our custom authorization module intelligently controls access based on user roles and their association with tenants. Special checks are in place for admin users, granting them comprehensive permissions.
+
+For more details on Keycloak's integration, PostgreSQL as persistent storage, and the intricacies of our authorization module, please visit [here](./auth.md).
 
 ## Conclusion
 
