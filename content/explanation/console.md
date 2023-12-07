@@ -59,7 +59,7 @@ In the MTO Console, each resource section is equipped with a "View" button, reve
 
 You can find more details on graph visualization here: [Graph Visualization](../reference-guides/graph-visualization.md)
 
-![tenants_graph](../images/tenants_graph.png)
+![tenants-graph](../images/tenants_graph.png)
 
 ## Caching and Database
 
