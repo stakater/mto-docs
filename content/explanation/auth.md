@@ -2,7 +2,7 @@
 
 ## Keycloak for Authentication
 
-MTO Console incorporates Keycloak, a leading authentication module, to manage user access securely and efficiently. Keycloak is provisioned automatically by our controllers, setting up a new realm, client, and a default user named 'mto'.
+MTO Console incorporates Keycloak, a leading authentication module, to manage user access securely and efficiently. Keycloak is provisioned automatically by our controllers, setting up a new realm, client, and a default user named `mto`.
 
 ### Benefits `:`
 
