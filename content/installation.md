@@ -6,6 +6,8 @@ This document contains instructions on installing, uninstalling and configuring 
 
 1. [CLI/GitOps](#installing-via-cli-or-gitops)
 
+1. [Enabling Console](#enabling-console)
+
 1. [Uninstall](#uninstall-via-operatorhub-ui)
 
 ## Requirements
@@ -106,7 +108,7 @@ For more details and configurations check out [IntegrationConfig](./integration-
 
 ## Enabling Console
 
-To enable console gui for MTO, go to `Search` -> `IntegrationConfig` -> `tenant-operator-config` and make sure the following fields are set to `true`:
+To enable console GUI for MTO, go to `Search` -> `IntegrationConfig` -> `tenant-operator-config` and make sure the following fields are set to `true`:
 
 ```yaml
 spec:
@@ -115,7 +117,7 @@ spec:
     showback: true
 ```
 
-> Note: If your install plan approval is set to `Manual` then you will have to manually approve the install plan for MTO console components to be installed.
+> Note: If your `InstallPlan` approval is set to `Manual` then you will have to manually approve the `InstallPlan` for MTO console components to be installed.
 
 ### Manual Approval
 
@@ -135,7 +137,7 @@ spec:
 
 ![image](./images/manual-approve-4.png)
 
-* Now the install plan will be approved and MTO console components will be installed.
+* Now the `InstallPlan` will be approved, and MTO console components will be installed.
 
 ## Uninstall via OperatorHub UI
 
