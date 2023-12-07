@@ -8,38 +8,38 @@ The Multi Tenant Operator (MTO) Console is a comprehensive user interface design
 
 The dashboard serves as a centralized monitoring hub, offering insights into the current state of tenants, namespaces, and quotas. It is designed to provide a quick summary/snapshot of MTO resources' status. Additionally, it includes a Showback graph that presents a quick glance of the seven-day cost trends associated with the namespaces/tenants based on the logged-in user.
 
-![image](../images/dashboard.png)
+![dashboard](../images/dashboard.png)
 
 ### Tenants
 
 Here, admins have a bird's-eye view of all tenants, with the ability to delve into each one for detailed examination and management. This section is pivotal for observing the distribution and organization of tenants within the system. More information on each tenant can be accessed by clicking the view option against each tenant name.
 
-![image](../images/tenants.png)
+![tenants](../images/tenants.png)
 
 ### Namespaces
 
 Users can view all the namespaces that belong to their tenant, offering a comprehensive perspective of the accessible namespaces for tenant members. This section also provides options for detailed exploration.
 
-![image](../images/namespaces.png)
+![namespaces](../images/namespaces.png)
 
 ### Quotas
 
 MTO's Quotas are crucial for managing resource allocation. In this section, administrators can assess the quotas assigned to each tenant, ensuring a balanced distribution of resources in line with operational requirements.
 
-![image](../images/quotas.png)
+![quotas](../images/quotas.png)
 
 ### Templates
 
 The Templates section acts as a repository for standardized resource deployment patterns, which can be utilized to maintain consistency and reliability across tenant environments. Few examples include provisioning specific k8s manifests, helm charts, secrets or configmaps across a set of namespaces.
 
-![image](../images/templates.png)
-![image](../images/templateGroupInstances.png)
+![templates](../images/templates.png)
+![templateGroupInstances](../images/templateGroupInstances.png)
 
 ### Showback
 
 The Showback feature is an essential financial governance tool, providing detailed insights into the cost implications of resource usage by tenant or namespace or other filters. This facilitates a transparent cost management and internal chargeback or showback process, enabling informed decision-making regarding resource consumption and budgeting.
 
-![image](../images/showback.png)
+![showback](../images/showback.png)
 
 ## User Roles and Permissions
 
@@ -47,7 +47,7 @@ The Showback feature is an essential financial governance tool, providing detail
 
 Administrators have overarching access to the console, including the ability to view all namespaces and tenants. They have exclusive access to the IntegrationConfig, allowing them to view all the settings and integrations.
 
-![image](../images/integrationConfig.png)
+![integrationConfig](../images/integrationConfig.png)
 
 ### Tenant Users
 
@@ -59,7 +59,7 @@ In the MTO Console, each resource section is equipped with a "View" button, reve
 
 You can find more details on graph visualization here: [Graph Visualization](../reference-guides/graph-visualization.md)
 
-![image](../images/tenants_graph.png)
+![tenants-graph](../images/tenants_graph.png)
 
 ## Caching and Database
 
