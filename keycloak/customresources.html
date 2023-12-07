@@ -1,0 +1,1984 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.stakater.com/keycloak/customresources.html">
+      
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.svg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
+    
+    
+      
+        <title>Custom Resources - Multi Tenant Operator</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.fad675c6.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-TTH1YYW5TX"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-TTH1YYW5TX",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-TTH1YYW5TX",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>var consent;"undefined"==typeof __md_analytics||(consent=__md_get("__consent"))&&consent.analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#custom-resources" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+  You're not viewing the latest version.
+  <a href="../."> 
+    <strong>Click here to go to latest.</strong>
+  </a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="Multi Tenant Operator" class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+      
+  <img src="assets/images/favicon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Multi Tenant Operator
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Custom Resources
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/stakater/mto-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+      
+  <img src="assets/images/favicon.svg" alt="logo">
+
+    </a>
+    Multi Tenant Operator
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/stakater/mto-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/installation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Create your first Tenant
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Create your first Tenant
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/tenant/create-tenant.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating a Tenant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/tenant/create-sandbox.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create Sandbox Namespaces for Tenant Users
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/tenant/creating-namespaces.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Namespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/tenant/assigning-metadata.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assigning Common/Specific Metadata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/tenant/tenant-hibernation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hibernating a Tenant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/tenant/deleting-tenant.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deleting a Tenant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Template: Definition and Usage Guide
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Template: Definition and Usage Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/template/template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Understanding and Utilizing Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ArgoCD Multi-tenancy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            ArgoCD Multi-tenancy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/argocd/enabling-multi-tenancy-argocd.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enabling Multi-Tenancy in ArgoCD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vault Multi-Tenancy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Vault Multi-Tenancy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorials/vault/enabling-multi-tenancy-vault.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enabling Multi-Tenancy in Vault
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    How-to Guides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            How-to Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to-guides/tenant.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tenant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to-guides/integration-config.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integration Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to-guides/quota.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to-guides/template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to-guides/template-instance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TemplateInstance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to-guides/template-group-instance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TemplateGroupInstance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Offboarding
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Offboarding
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Uninstall via OperatorHub UI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Reference guides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Reference guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference-guides/admin-clusterrole.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extending Admin ClusterRole
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring Multi-Tenant Isolation with Network Policy Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference-guides/custom-roles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changing the default access level for tenant owners
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference-guides/deploying-templates.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Distributing Resources in Namespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference-guides/distributing-resources.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Copying Secrets and Configmaps across Tenant Namespaces via TGI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference-guides/distributing-secrets.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Distributing Secrets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference-guides/resource-sync-by-tgi.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sync Resources Deployed by TemplateGroupInstance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Distributing Secrets Using Sealed Secrets Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference-guides/extend-default-roles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extending the default access level for tenant members
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference-guides/integrationconfig.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring Managed Namespaces and ServiceAccounts in IntegrationConfig
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference-guides/mattermost.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Mattermost Teams for your tenant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference-guides/secret-distribution.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Propagate Secrets from Parent to Descendant namespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Explanation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Explanation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="explanation/why-argocd-multi-tenancy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Need for Multi-Tenancy in ArgoCD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="faq.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="changelog.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changelog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="eula.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi Tenant Operator End User License Agreement
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="troubleshooting.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Quota
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Tenant
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Template
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Template">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mandatory-and-optional-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mandatory and Optional Templates
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-templateinstance" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. TemplateInstance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-templategroupinstance" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. TemplateGroupInstance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-resourcesupervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. ResourceSupervisor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespace
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="custom-resources">Custom Resources</h1>
+<p>Below is the detailed explanation about Custom Resources of MTO</p>
+<h2 id="1-quota">1. Quota</h2>
+<p>Cluster scoped resource:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quota</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">resourcequota</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hard</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests.cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;5&#39;</span>
+<span class="w">      </span><span class="nt">limits.cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;10&#39;</span>
+<span class="w">      </span><span class="nt">requests.memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;5Gi&#39;</span>
+<span class="w">      </span><span class="nt">limits.memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;10Gi&#39;</span>
+<span class="w">      </span><span class="nt">configmaps</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span>
+<span class="w">      </span><span class="nt">persistentvolumeclaims</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4&quot;</span>
+<span class="w">      </span><span class="nt">replicationcontrollers</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;20&quot;</span>
+<span class="w">      </span><span class="nt">secrets</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span>
+<span class="w">      </span><span class="nt">services</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span>
+<span class="w">      </span><span class="nt">services.loadbalancers</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
+<span class="w">  </span><span class="nt">limitrange</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Pod&quot;</span>
+<span class="w">        </span><span class="nt">max</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1Gi&quot;</span>
+<span class="w">        </span><span class="nt">min</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;200m&quot;</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;100Mi&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Container&quot;</span>
+<span class="w">        </span><span class="nt">max</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1Gi&quot;</span>
+<span class="w">        </span><span class="nt">min</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;100m&quot;</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50Mi&quot;</span>
+<span class="w">        </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;300m&quot;</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;200Mi&quot;</span>
+<span class="w">        </span><span class="nt">defaultRequest</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;200m&quot;</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;100Mi&quot;</span>
+<span class="w">        </span><span class="nt">maxLimitRequestRatio</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span>
+</code></pre></div>
+<p>When several tenants share a single cluster with a fixed number of resources, there is a concern that one tenant could use more than its fair share of resources. Quota is a wrapper around OpenShift <code>ClusterResourceQuota</code> and <code>LimitRange</code> which provides administrators to limit resource consumption per <code>Tenant</code>.
+For more details <a href="https://kubernetes.io/docs/concepts/policy/resource-quotas/">Quota.Spec</a> , <a href="https://kubernetes.io/docs/concepts/policy/limit-range/">LimitRange.Spec</a></p>
+<h2 id="2-tenant">2. Tenant</h2>
+<p>Cluster scoped resource:</p>
+<p>The smallest valid Tenant definition is given below (with just one field in its spec):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+</code></pre></div>
+<p>Here is a more detailed Tenant definition, explained below:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">owners</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">users</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dave@stakater.com</span>
+<span class="w">    </span><span class="nt">groups</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+<span class="w">  </span><span class="nt">editors</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">users</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jack@stakater.com</span>
+<span class="w">  </span><span class="nt">viewers</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">users</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">james@stakater.com</span>
+<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span><span class="w"> </span><span class="c1"># required</span>
+<span class="w">  </span><span class="nt">sandboxConfig</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">private</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">  </span><span class="nt">onDelete</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">cleanNamespaces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">cleanAppProject</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">sourceRepos</span><span class="p">:</span><span class="w"> </span><span class="c1"># required</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/stakater/gitops-config</span>
+<span class="w">    </span><span class="nt">appProject</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tronador.stakater.com</span>
+<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Environment</span>
+<span class="w">      </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="w">  </span><span class="nt">hibernation</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">23 * * * *</span><span class="w"> </span><span class="c1"># required</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">26 * * * *</span><span class="w"> </span><span class="c1"># required</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">    </span><span class="nt">withoutTenantPrefix</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">preview</span>
+<span class="w">  </span><span class="nt">commonMetadata</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="nt">stakater.com/team</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/infra=</span>
+<span class="w">  </span><span class="nt">specificMetadata</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">        </span><span class="nt">stakater.com/user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dave</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">        </span><span class="nt">stakater.com/sandbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">namespaces</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha-dave-stakater-sandbox</span>
+<span class="w">  </span><span class="nt">templateInstances</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networkpolicy</span><span class="w"> </span><span class="c1"># required</span>
+<span class="w">      </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">  </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="nt">parameters</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CIDR_IP</span>
+<span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.17.0.0/16&quot;</span>
+<span class="w">    </span><span class="nt">selector</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">        </span><span class="nt">policy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">network-restriction</span>
+</code></pre></div>
+<ul>
+<li>
+<p>Tenant has 3 kinds of <code>Members</code>. Each member type should have different roles assigned to them. These roles are gotten from the <a href="integration-config.html#tenantroles">IntegrationConfig's TenantRoles field</a>. You can customize these roles to your liking, but by default the following configuration applies:</p>
+<ul>
+<li><code>Owners:</code> Users who will be owners of a tenant. They will have OpenShift admin-role assigned to their users, with additional access to create namespaces as well.</li>
+<li><code>Editors:</code> Users who will be editors of a tenant. They will have OpenShift edit-role assigned to their users.</li>
+<li><code>Viewers:</code> Users who will be viewers of a tenant. They will have OpenShift view-role assigned to their users.</li>
+<li>For more details, check out <a href="tenant-roles.html">their definitions</a>.</li>
+</ul>
+</li>
+<li>
+<p><code>Users</code> can be linked to the tenant by specifying there username in <code>owners.users</code>, <code>editors.users</code> and <code>viewers.users</code> respectively.</p>
+</li>
+<li>
+<p><code>Groups</code> can be linked to the tenant by specifying the group name in <code>owners.groups</code>, <code>editors.groups</code> and <code>viewers.groups</code> respectively.</p>
+</li>
+<li>
+<p>Tenant will have a <code>Quota</code> to limit resource consumption.</p>
+</li>
+<li>
+<p><code>sandboxConfig</code> is used to configure the tenant user sandbox feature</p>
+<ul>
+<li>Setting <code>enabled</code> to <em>true</em> will create <em>sandbox namespaces</em> for owners and editors.</li>
+<li>Sandbox will follow the following naming convention <strong>{TenantName}</strong>-<strong>{UserName}</strong>-<em>sandbox</em>.</li>
+<li>In case of groups, the sandbox namespaces will be created for each member of the group.</li>
+<li>Setting <code>private</code> to <em>true</em> will make those sandboxes be only visible to the user they belong to. By default, sandbox namespaces are visible to all tenant members</li>
+</ul>
+</li>
+<li>
+<p><code>onDelete</code> is used to tell Multi Tenant Operator what to do when a Tenant is deleted.</p>
+<ul>
+<li><code>cleanNamespaces</code> if the value is set to <strong>true</strong> <em>MTO</em> deletes all <em>tenant namespaces</em> when a <code>Tenant</code> is deleted. Default value is <strong>false</strong>.</li>
+<li><code>cleanAppProject</code> will keep the generated ArgoCD AppProject if the value is set to <strong>false</strong>. By default, the value is <strong>true</strong>.</li>
+</ul>
+</li>
+<li>
+<p><code>argocd</code> is required if you want to create an ArgoCD AppProject for the tenant.</p>
+<ul>
+<li><code>sourceRepos</code> contain a list of repositories that point to your GitOps.</li>
+<li><code>appProject</code> is used to set the <code>clusterResourceWhitelist</code> and <code>namespaceResourceBlacklist</code> resources. If these are also applied via <code>IntegrationConfig</code> then those applied via Tenant CR will have higher precedence for given Tenant.</li>
+</ul>
+</li>
+<li>
+<p><code>hibernation</code> can be used to create a schedule during which the namespaces belonging to the tenant will be put to sleep. The values of the <code>sleepSchedule</code> and <code>wakeSchedule</code> fields must be a string in a cron format.</p>
+</li>
+<li>
+<p>Namespaces can also be created via tenant CR by <em>specifying names</em> in <code>namespaces</code>.</p>
+<ul>
+<li>Multi Tenant Operator will append <em>tenant name</em> prefix while creating namespaces if the list of namespaces is under the <code>withTenantPrefix</code> field, so the format will be <strong>{TenantName}</strong>-<strong>{Name}</strong>.</li>
+<li>Namespaces listed under the <code>withoutTenantPrefix</code> will be created with the given name. Writing down namespaces here that already exist within the cluster are not allowed.</li>
+<li><code>stakater.com/kind: {Name}</code> label will also be added to the namespaces.</li>
+</ul>
+</li>
+<li>
+<p><code>commonMetadata</code> can be used to distribute common labels and annotations among tenant namespaces.</p>
+<ul>
+<li><code>labels</code> distributes provided labels among all tenant namespaces</li>
+<li><code>annotations</code> distributes provided annotations among all tenant namespaces</li>
+</ul>
+</li>
+<li>
+<p><code>specificMetadata</code> can be used to distribute specific labels and annotations among specific tenant namespaces.</p>
+<ul>
+<li><code>labels</code> distributes given labels among specific tenant namespaces</li>
+<li><code>annotations</code> distributes given annotations among specific tenant namespaces</li>
+<li><code>namespaces</code> consists a list of specific tenant namespaces across which the labels and annotations will be distributed</li>
+</ul>
+</li>
+<li>
+<p>Tenant automatically deploys <code>template</code> resource mentioned in <code>templateInstances</code> to matching tenant namespaces.</p>
+<ul>
+<li><code>Template</code> resources are created in those <code>namespaces</code> which belong to a <code>tenant</code> and contain <code>matching labels</code>.</li>
+<li><code>Template</code> resources are created in all <code>namespaces</code> of a <code>tenant</code> if <code>selector</code> field is empty.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>⚠️ If same label or annotation key is being applied using different methods provided, then the highest precedence will be given to <code>specificMetadata</code> followed by <code>commonMetadata</code> and in the end would be the ones applied from <code>openshift.project.labels</code>/<code>openshift.project.annotations</code> in <code>IntegrationConfig</code></p>
+</blockquote>
+<h2 id="3-template">3. Template</h2>
+<p>Cluster scoped resource:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span>
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">helm</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">releaseName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span>
+<span class="w">    </span><span class="nt">chart</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">repository</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span>
+<span class="w">        </span><span class="nt">repoUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://charts.bitnami.com/bitnami</span>
+<span class="w">    </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">redisPort: 6379</span>
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networkpolicy</span>
+<span class="nt">parameters</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CIDR_IP</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.17.0.0/16&quot;</span>
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkPolicy</span>
+<span class="w">      </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
+<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deny-cross-ns-traffic</span>
+<span class="w">      </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">podSelector</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span>
+<span class="w">        </span><span class="nt">policyTypes</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Egress</span>
+<span class="w">        </span><span class="nt">ingress</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">from</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ipBlock</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">cidr</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${{CIDR_IP}}&quot;</span>
+<span class="w">              </span><span class="nt">except</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">172.17.1.0/24</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespaceSelector</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">myproject</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">podSelector</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
+<span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">            </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6379</span>
+<span class="w">        </span><span class="nt">egress</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">to</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">ipBlock</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">cidr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.0.0.0/24</span>
+<span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">            </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5978</span>
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">resource-mapping</span>
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">resourceMappings</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secret-s1</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-n1</span>
+<span class="w">    </span><span class="nt">configMaps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configmap-c1</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-n2</span>
+</code></pre></div>
+<p>Templates are used to initialize Namespaces, share common resources across namespaces, and map secrets/configmaps from one namespace to other namespaces.</p>
+<ul>
+<li>They either contain one or more Kubernetes manifests, a reference to secrets/configmaps, or a Helm chart.</li>
+<li>They are being tracked by TemplateInstances in each Namespace they are applied to.</li>
+<li>They can contain pre-defined parameters such as ${namespace}/${tenant} or user-defined ${MY_PARAMETER} that can be specified within an TemplateInstance.</li>
+</ul>
+<p>Also you can define custom variables in <code>Template</code> and <code>TemplateInstance</code> . The parameters defined in <code>TemplateInstance</code> are overwritten the values defined in <code>Template</code> .</p>
+<p>Manifest Templates: The easiest option to define a Template is by specifying an array of Kubernetes manifests which should be applied when the Template is being instantiated.</p>
+<p>Helm Chart Templates: Instead of manifests, a Template can specify a Helm chart that will be installed (using Helm template) when the Template is being instantiated.</p>
+<p>Resource Mapping Templates: A template can be used to map secrets and configmaps from one tenant's namespace to another tenant's namespace, or within a tenant's namespace.</p>
+<h3 id="mandatory-and-optional-templates">Mandatory and Optional Templates</h3>
+<p>Templates can either be mandatory or optional. By default, all Templates are optional. Cluster Admins can make Templates mandatory by adding them to the <code>spec.templateInstances</code> array within the Tenant configuration. All Templates listed in <code>spec.templateInstances</code> will always be instantiated within every <code>Namespace</code> that is created for the respective Tenant.</p>
+<h2 id="4-templateinstance">4. TemplateInstance</h2>
+<p>Namespace scoped resource:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateInstance</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networkpolicy</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networkpolicy</span>
+<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">parameters</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CIDR_IP</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.17.0.0/16&quot;</span>
+</code></pre></div>
+<p>TemplateInstance are used to keep track of resources created from Templates, which are being instantiated inside a Namespace.
+Generally, a TemplateInstance is created from a Template and then the TemplateInstances will not be updated when the Template changes later on. To change this behavior, it is possible to set <code>spec.sync: true</code> in a TemplateInstance. Setting this option, means to keep this TemplateInstance in sync with the underlying template (similar to Helm upgrade).</p>
+<h2 id="5-templategroupinstance">5. TemplateGroupInstance</h2>
+<p>Cluster scoped resource:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions-tgi</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions</span>
+<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchExpressions</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater.com/tenant</span>
+<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<span class="w">      </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beta</span>
+<span class="nt">parameters</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CIDR_IP</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.17.0.0/16&quot;</span>
+</code></pre></div>
+<p>TemplateGroupInstance distributes a template across multiple namespaces which are selected by labelSelector.</p>
+<h2 id="6-resourcesupervisor">6. ResourceSupervisor</h2>
+<p>Cluster scoped resource:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">appProjects</span><span class="p">:</span>
+<span class="w">     </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
+<span class="w"> </span><span class="w w-Error"> </span><span class="nt">hibernation</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">23 * * * *</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">26 * * * *</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stage</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
+<span class="nt">status</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">currentStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">running</span>
+<span class="w">  </span><span class="nt">nextReconcileTime</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2022-07-07T11:23:00Z&#39;</span>
+</code></pre></div>
+<p>The <code>ResourceSupervisor</code> is a resource created by MTO in case the <a href="hibernation.html">Hibernation</a> feature is enabled. The Resource manages the sleep/wake schedule of the namespaces owned by the tenant, and manages the previous state of any sleeping application. Currently, only StatefulSets and Deployments are put to sleep. Additionally, ArgoCD AppProjects that belong to the tenant have a <code>deny</code> SyncWindow added to them.</p>
+<p>The <code>ResourceSupervisor</code> can be created both via the <code>Tenant</code> or manually. For more details, check some of its <a href="usecases/hibernation.html">use cases</a></p>
+<h2 id="namespace">Namespace</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">stakater.com/tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blue-sky</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+</code></pre></div>
+<ul>
+<li>Namespace should have label <code>stakater.com/tenant</code> which contains the name of tenant to which it belongs to. The labels and annotations specified in the operator config,  <code>ocp.labels.project</code> and <code>ocp.annotations.project</code> are inserted in the namespace by the controller.</li>
+</ul>
+<h2 id="notes">Notes</h2>
+<ul>
+<li><code>tenant.spec.users.owner</code>: Can only create <em>Namespaces</em> with required <em>tenant label</em> and can delete <em>Projects</em>. To edit <em>Namespace</em> use <code>GitOps/ArgoCD</code></li>
+</ul>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+<p>Copyright &copy; 2023 Stakater AB – <a href="#__consent">Change cookie settings</a></p>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+  
+    
+  
+
+
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="github" checked>
+          <span class="task-list-indicator"></span>
+          GitHub
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+      <button type="reset" class="md-button md-button--primary">Reject</button>
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.cd18aaf1.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
