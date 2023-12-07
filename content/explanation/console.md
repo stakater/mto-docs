@@ -43,13 +43,13 @@ The Showback feature is an essential financial governance tool, providing detail
 
 ## User Roles and Permissions
 
-### Administrators `:`
+### Administrators
 
 Administrators have overarching access to the console, including the ability to view all namespaces and tenants. They have exclusive access to the IntegrationConfig, allowing them to view all the settings and integrations.
 
 ![image](../images/integrationConfig.png)
 
-### Tenant Users `:`
+### Tenant Users
 
 Regular tenant users can monitor and manage their allocated resources. However, they do not have access to the IntegrationConfig and cannot view resources across different tenants, ensuring data privacy and operational integrity.
 

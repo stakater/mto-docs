@@ -4,11 +4,11 @@
 
 MTO Console incorporates Keycloak, a leading authentication module, to manage user access securely and efficiently. Keycloak is provisioned automatically by our controllers, setting up a new realm, client, and a default user named `mto`.
 
-### Benefits `:`
+### Benefits
 
-- Industry Standard `:` Offers robust, reliable authentication in line with industry standards.
-- Integration with Existing Systems `:` Enables easy linkage with existing Active Directories or SSO systems, avoiding the need for redundant user management.
-- Administrative Control `:` Grants administrators full authority over user access to the console, enhancing security and operational integrity.
+- Industry Standard: Offers robust, reliable authentication in line with industry standards.
+- Integration with Existing Systems: Enables easy linkage with existing Active Directories or SSO systems, avoiding the need for redundant user management.
+- Administrative Control: Grants administrators full authority over user access to the console, enhancing security and operational integrity.
 
 ## PostgreSQL as Persistent Storage for Keycloak
 
@@ -16,7 +16,7 @@ MTO Console leverages PostgreSQL as the persistent storage solution for Keycloak
 
 It offers benefits such as enhanced data reliability, easy data export and import.
 
-### Benefits `:`
+### Benefits
 
 - Persistent Data Storage: By using PostgreSQL, Keycloak's data, including realms, clients, and user information, is preserved even in the event of a pod restart. This ensures continuous availability and stability of the authentication system.
 - Data Exportability: Customers can easily export Keycloak configurations and data from the PostgreSQL database.
@@ -28,7 +28,7 @@ It offers benefits such as enhanced data reliability, easy data export and impor
 
 The MTO Console is equipped with an authorization module, designed to manage access rights intelligently and securely.
 
-### Benefits `:`
+### Benefits
 
 - User and Tenant Based: Authorization decisions are made based on the user's membership in specific tenants, ensuring appropriate access control.
 - Role-Specific Access: The module considers the roles assigned to users, granting permissions accordingly to maintain operational integrity.
