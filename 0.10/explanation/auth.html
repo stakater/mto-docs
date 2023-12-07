@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/0.10/explanation/console.html">
+        <link rel="canonical" href="https://docs.stakater.com/0.10/explanation/auth.html">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>MTO Console - Multi Tenant Operator</title>
+        <title>Authentication and Authorization in MTO Console - Multi Tenant Operator</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mto-console" class="md-skip">
+        <a href="#authentication-and-authorization-in-mto-console" class="md-skip">
           Skip to content
         </a>
       
@@ -141,7 +141,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MTO Console
+              Authentication and Authorization in MTO Console
             
           </span>
         </div>
@@ -1407,64 +1407,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction" class="md-nav__link">
+  <a href="#keycloak-for-authentication" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      Keycloak for Authentication
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dashboard-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dashboard Overview
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Dashboard Overview">
+    <nav class="md-nav" aria-label="Keycloak for Authentication">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#tenants" class="md-nav__link">
+  <a href="#benefits" class="md-nav__link">
     <span class="md-ellipsis">
-      Tenants
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#namespaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      Namespaces
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#quotas" class="md-nav__link">
-    <span class="md-ellipsis">
-      Quotas
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templates" class="md-nav__link">
-    <span class="md-ellipsis">
-      Templates
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#showback" class="md-nav__link">
-    <span class="md-ellipsis">
-      Showback
+      Benefits
     </span>
   </a>
   
@@ -1476,28 +1431,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#user-roles-and-permissions" class="md-nav__link">
+  <a href="#postgresql-as-persistent-storage-for-keycloak" class="md-nav__link">
     <span class="md-ellipsis">
-      User Roles and Permissions
+      PostgreSQL as Persistent Storage for Keycloak
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="User Roles and Permissions">
+    <nav class="md-nav" aria-label="PostgreSQL as Persistent Storage for Keycloak">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#administrators" class="md-nav__link">
+  <a href="#benefits_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Administrators
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tenant-users" class="md-nav__link">
-    <span class="md-ellipsis">
-      Tenant Users
+      Benefits
     </span>
   </a>
   
@@ -1509,46 +1455,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#live-yaml-configuration-and-graph-view" class="md-nav__link">
+  <a href="#built-in-module-for-authorization" class="md-nav__link">
     <span class="md-ellipsis">
-      Live YAML Configuration and Graph View
+      Built-in module for Authorization
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#caching-and-database" class="md-nav__link">
-    <span class="md-ellipsis">
-      Caching and Database
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#authentication-and-authorization" class="md-nav__link">
-    <span class="md-ellipsis">
-      Authentication and Authorization
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Authentication and Authorization">
+    <nav class="md-nav" aria-label="Built-in module for Authorization">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#keycloak-integration" class="md-nav__link">
+  <a href="#benefits_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Keycloak Integration
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#custom-authorization-module" class="md-nav__link">
-    <span class="md-ellipsis">
-      Custom Authorization Module
+      Benefits
     </span>
   </a>
   
@@ -1556,15 +1475,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Conclusion
-    </span>
-  </a>
   
 </li>
       
@@ -1586,51 +1496,36 @@
   
 
 
-<h1 id="mto-console">MTO Console</h1>
-<h2 id="introduction">Introduction</h2>
-<p>The Multi Tenant Operator (MTO) Console is a comprehensive user interface designed for both administrators and tenant users to manage multi-tenant environments. The MTO Console simplifies the complexity involved in handling various aspects of tenants and their related resources.</p>
-<h2 id="dashboard-overview">Dashboard Overview</h2>
-<p>The dashboard serves as a centralized monitoring hub, offering insights into the current state of tenants, namespaces, and quotas. It is designed to provide a quick summary/snapshot of MTO resources' status. Additionally, it includes a Showback graph that presents a quick glance of the seven-day cost trends associated with the namespaces/tenants based on the logged-in user.</p>
-<p><a class="glightbox" href="../images/dashboard.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/dashboard.png" /></a></p>
-<h3 id="tenants">Tenants</h3>
-<p>Here, admins have a bird's-eye view of all tenants, with the ability to delve into each one for detailed examination and management. This section is pivotal for observing the distribution and organization of tenants within the system. More information on each tenant can be accessed by clicking the view option against each tenant name.</p>
-<p><a class="glightbox" href="../images/tenants.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/tenants.png" /></a></p>
-<h3 id="namespaces">Namespaces</h3>
-<p>Users can view all the namespaces that belong to their tenant, offering a comprehensive perspective of the accessible namespaces for tenant members. This section also provides options for detailed exploration.</p>
-<p><a class="glightbox" href="../images/namespaces.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/namespaces.png" /></a></p>
-<h3 id="quotas">Quotas</h3>
-<p>MTO's Quotas are crucial for managing resource allocation. In this section, administrators can assess the quotas assigned to each tenant, ensuring a balanced distribution of resources in line with operational requirements.</p>
-<p><a class="glightbox" href="../images/quotas.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/quotas.png" /></a></p>
-<h3 id="templates">Templates</h3>
-<p>The Templates section acts as a repository for standardized resource deployment patterns, which can be utilized to maintain consistency and reliability across tenant environments. Few examples include provisioning specific k8s manifests, helm charts, secrets or configmaps across a set of namespaces.</p>
-<p><a class="glightbox" href="../images/templates.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/templates.png" /></a>
-<a class="glightbox" href="../images/templateGroupInstances.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/templateGroupInstances.png" /></a></p>
-<h3 id="showback">Showback</h3>
-<p>The Showback feature is an essential financial governance tool, providing detailed insights into the cost implications of resource usage by tenant or namespace or other filters. This facilitates a transparent cost management and internal chargeback or showback process, enabling informed decision-making regarding resource consumption and budgeting.</p>
-<p><a class="glightbox" href="../images/showback.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/showback.png" /></a></p>
-<h2 id="user-roles-and-permissions">User Roles and Permissions</h2>
-<h3 id="administrators">Administrators</h3>
-<p>Administrators have overarching access to the console, including the ability to view all namespaces and tenants. They have exclusive access to the IntegrationConfig, allowing them to view all the settings and integrations.</p>
-<p><a class="glightbox" href="../images/integrationConfig.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/integrationConfig.png" /></a></p>
-<h3 id="tenant-users">Tenant Users</h3>
-<p>Regular tenant users can monitor and manage their allocated resources. However, they do not have access to the IntegrationConfig and cannot view resources across different tenants, ensuring data privacy and operational integrity.</p>
-<h2 id="live-yaml-configuration-and-graph-view">Live YAML Configuration and Graph View</h2>
-<p>In the MTO Console, each resource section is equipped with a "View" button, revealing the live YAML configuration for complete information on the resource. For Tenant resources, a supplementary "Graph" option is available, illustrating the relationships and dependencies of all resources under a Tenant. This dual-view approach empowers users with both the detailed control of YAML and the holistic oversight of the graph view.</p>
-<p>You can find more details on graph visualization here: <a href="../reference-guides/graph-visualization.html">Graph Visualization</a></p>
-<p><a class="glightbox" href="../images/tenants_graph.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/tenants_graph.png" /></a></p>
-<h2 id="caching-and-database">Caching and Database</h2>
-<p>MTO integrates a dedicated database to streamline resource management. Now, all resources managed by MTO are efficiently stored in a Postgres database, enhancing the MTO Console's ability to efficiently retrieve all the resources for optimal presentation.</p>
-<p>The implementation of this feature is facilitated by the Bootstrap controller, streamlining the deployment process. This controller creates the PostgreSQL Database, establishes a service for inter-pod communication, and generates a secret to ensure secure connectivity to the database.</p>
-<p>Furthermore, the introduction of a dedicated cache layer ensures that there is no added burden on the kube API server when responding to MTO Console requests. This enhancement not only improves response times but also contributes to a more efficient and responsive resource management system.</p>
-<h2 id="authentication-and-authorization">Authentication and Authorization</h2>
-<p>MTO Console ensures secure access control using a robust combination of Keycloak for authentication and a custom-built authorization module.</p>
-<h3 id="keycloak-integration">Keycloak Integration</h3>
-<p>Keycloak, an industry-standard authentication tool, is integrated for secure user login and management. It supports seamless integration with existing ADs or SSO systems and grants administrators complete control over user access.</p>
-<h3 id="custom-authorization-module">Custom Authorization Module</h3>
-<p>Complementing Keycloak, our custom authorization module intelligently controls access based on user roles and their association with tenants. Special checks are in place for admin users, granting them comprehensive permissions.</p>
-<p>For more details on Keycloak's integration, PostgreSQL as persistent storage, and the intricacies of our authorization module, please visit <a href="auth.html">here</a>.</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>The MTO Console is engineered to simplify complex multi-tenant management. The current iteration focuses on providing comprehensive visibility. Future updates could include direct CUD (Create/Update/Delete) capabilities from the dashboard, enhancing the console’s functionality. The Showback feature remains a standout, offering critical cost tracking and analysis. The delineation of roles between administrators and tenant users ensures a secure and organized operational framework.</p>
+<h1 id="authentication-and-authorization-in-mto-console">Authentication and Authorization in MTO Console</h1>
+<h2 id="keycloak-for-authentication">Keycloak for Authentication</h2>
+<p>MTO Console incorporates Keycloak, a leading authentication module, to manage user access securely and efficiently. Keycloak is provisioned automatically by our controllers, setting up a new realm, client, and a default user named <code>mto</code>.</p>
+<h3 id="benefits">Benefits</h3>
+<ul>
+<li>Industry Standard: Offers robust, reliable authentication in line with industry standards.</li>
+<li>Integration with Existing Systems: Enables easy linkage with existing Active Directories or SSO systems, avoiding the need for redundant user management.</li>
+<li>Administrative Control: Grants administrators full authority over user access to the console, enhancing security and operational integrity.</li>
+</ul>
+<h2 id="postgresql-as-persistent-storage-for-keycloak">PostgreSQL as Persistent Storage for Keycloak</h2>
+<p>MTO Console leverages PostgreSQL as the persistent storage solution for Keycloak, enhancing the reliability and flexibility of the authentication system.</p>
+<p>It offers benefits such as enhanced data reliability, easy data export and import.</p>
+<h3 id="benefits_1">Benefits</h3>
+<ul>
+<li>Persistent Data Storage: By using PostgreSQL, Keycloak's data, including realms, clients, and user information, is preserved even in the event of a pod restart. This ensures continuous availability and stability of the authentication system.</li>
+<li>Data Exportability: Customers can easily export Keycloak configurations and data from the PostgreSQL database.</li>
+<li>Transferability Across Environments: The exported data can be conveniently imported into another cluster or Keycloak instance, facilitating smooth transitions and backups.</li>
+<li>No Data Loss: Ensures that critical authentication data is not lost during system updates or maintenance.</li>
+<li>Operational Flexibility: Provides customers with greater control over their authentication data, enabling them to manage and migrate their configurations as needed.</li>
+</ul>
+<h2 id="built-in-module-for-authorization">Built-in module for Authorization</h2>
+<p>The MTO Console is equipped with an authorization module, designed to manage access rights intelligently and securely.</p>
+<h3 id="benefits_2">Benefits</h3>
+<ul>
+<li>User and Tenant Based: Authorization decisions are made based on the user's membership in specific tenants, ensuring appropriate access control.</li>
+<li>Role-Specific Access: The module considers the roles assigned to users, granting permissions accordingly to maintain operational integrity.</li>
+<li>Elevated Privileges for Admins: Users identified as administrators or members of the clusterAdminGroups are granted comprehensive permissions across the console.</li>
+<li>Database Caching: Authorization decisions are cached in the database, reducing reliance on the Kubernetes API server.</li>
+<li>Faster, Reliable Access: This caching mechanism ensures quicker and more reliable access for users, enhancing the overall responsiveness of the MTO Console.</li>
+</ul>
 
 
   
