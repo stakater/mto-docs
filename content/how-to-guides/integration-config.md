@@ -394,4 +394,7 @@ path "identity/group-alias" {
 path "identity/group/name/*" {
   capabilities = ["read", "list"]
 }
+path "identity/group/id/*" {
+  capabilities = ["create", "read", "update", "patch", "delete", "list"]
+}
 ```
