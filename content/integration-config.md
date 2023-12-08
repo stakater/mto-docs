@@ -386,4 +386,12 @@ provision:
 `provision.console:` Can be used to enable/disable console GUI for MTO.
 `provision.showback:` Can be used to enable/disable showback feature on the console.
 
+Integration config will be managing the following resources required for console GUI:
+
+- `Showback` cronjob.
+- `Keycloak` deployment.
+- `MTO-OpenCost` operator.
+- `MTO-Prometheus` operator.
+- `MTO-Postgresql` stateful set.
+
 Details on console GUI and showback can be found [here](explanation/console.md)
