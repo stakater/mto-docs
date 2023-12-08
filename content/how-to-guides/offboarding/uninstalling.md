@@ -4,6 +4,10 @@ You can uninstall MTO by following these steps:
 
 * Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set `spec.onDelete.cleanNamespaces` to `false` for all those tenants whose namespaces you want to retain, and `spec.onDelete.cleanAppProject` to `false` for all those tenants whose AppProject you want to retain. For more details check out [onDelete](../../tutorials/tenant/deleting-tenant.md#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted)
 
+* In case you have enabled console, you will have to disable it first by navigating to `Search` -> `IntegrationConfig` -> `tenant-operator-config` and set `spec.provision.console` and `spec.provision.showback` to `false`.
+
+* Remove IntegrationConfig CR from the cluster by navigating to `Search` -> `IntegrationConfig` -> `tenant-operator-config` and select `Delete` from actions dropdown.
+
 * After making the required changes open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
 
 ![image](../../images/installed-operators.png)
