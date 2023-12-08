@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.0">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.1">
     
     
       
@@ -1495,6 +1495,12 @@
 <ul>
 <li>
 <p>Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set <code>spec.onDelete.cleanNamespaces</code> to <code>false</code> for all those tenants whose namespaces you want to retain, and <code>spec.onDelete.cleanAppProject</code> to <code>false</code> for all those tenants whose AppProject you want to retain. For more details check out <a href="../../tutorials/tenant/deleting-tenant.html#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted">onDelete</a></p>
+</li>
+<li>
+<p>In case you have enabled console, you will have to disable it first by navigating to <code>Search</code> -&gt; <code>IntegrationConfig</code> -&gt; <code>tenant-operator-config</code> and set <code>spec.provision.console</code> and <code>spec.provision.showback</code> to <code>false</code>.</p>
+</li>
+<li>
+<p>Remove IntegrationConfig CR from the cluster by navigating to <code>Search</code> -&gt; <code>IntegrationConfig</code> -&gt; <code>tenant-operator-config</code> and select <code>Delete</code> from actions dropdown.</p>
 </li>
 <li>
 <p>After making the required changes open OpenShift console and click on <code>Operators</code>, followed by <code>Installed Operators</code> from the side menu</p>
