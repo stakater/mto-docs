@@ -1862,14 +1862,11 @@
 <span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-auth</span>
 <span class="w">  </span><span class="nt">vault</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://vault.apps.prod.abcdefghi.kubeapp.cloud/</span>
-<span class="w">      </span><span class="nt">secretReference</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault-root-token</span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
+<span class="w">    </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
+<span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;https://vault.apps.prod.abcdefghi.kubeapp.cloud/&#39;</span>
+<span class="w">    </span><span class="nt">roleName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
 <span class="w">    </span><span class="nt">sso</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
-<span class="w">      </span><span class="nt">accessorID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ACCESSOR_ID_TOKEN&gt;</span>
 </code></pre></div>
 <p>Following are the different components that can be used to configure multi-tenancy in a cluster via Multi Tenant Operator.</p>
 <h2 id="tenantroles">TenantRoles</h2>
@@ -2070,24 +2067,55 @@ For example:</p>
 <p>If <code>vault</code> is configured on a cluster, then Vault configuration can be enabled.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">Vault</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">endpoint</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">secretReference</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault-root-token</span>
-<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
-<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
-<span class="w">      </span><span class="no">https://vault.apps.prod.abcdefghi.kubeapp.cloud/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">accessorPath</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">address</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;https://vault.apps.prod.abcdefghi.kubeapp.cloud/&#39;</span>
+<span class="w">    </span><span class="nt">roleName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
 <span class="w">  </span><span class="nt">sso</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">accessorID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ACCESSOR_ID_TOKEN&gt;</span>
 <span class="w">    </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
 </code></pre></div>
-<p>If enabled, then admins have to provide secret, URL and SSO accessorID of Vault.</p>
+<p>If enabled, then admins have to provide following details:</p>
 <ul>
-<li><code>secretReference.name:</code> Will contain the name of the secret.</li>
-<li><code>secretReference.namespace:</code> Will contain the namespace of the secret.</li>
-<li><code>url:</code> Will contain the URL of Vault.</li>
-<li><code>sso.accessorID:</code> Will contain the SSO accessorID.</li>
-<li><code>sso.clientName:</code> Will contain the client name.</li>
+<li><code>accessorPath:</code> Accessor Path within Vault to fetch SSO accessorID</li>
+<li><code>address:</code> Valid Vault address reachable within cluster.</li>
+<li><code>roleName:</code> Vault's Kubernetes authentication role</li>
+<li><code>sso.clientName:</code> SSO client name.</li>
 </ul>
+<p>For more details around enabling Kubernetes auth in Vault, visit <a href="https://developer.hashicorp.com/vault/docs/auth/kubernetes">here</a></p>
+<p>The role created within Vault for Kubernetes authentication should have the following permissions:</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">path &quot;secret/*&quot; {</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="l l-Scalar l-Scalar-Plain">path &quot;sys/mounts&quot; {</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;read&quot;, &quot;list&quot;]</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="l l-Scalar l-Scalar-Plain">path &quot;sys/mounts/*&quot; {</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="l l-Scalar l-Scalar-Plain">path &quot;managed-addons/*&quot; {</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;read&quot;, &quot;list&quot;]</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="l l-Scalar l-Scalar-Plain">path &quot;auth/kubernetes/role/*&quot; {</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="l l-Scalar l-Scalar-Plain">path &quot;sys/auth&quot; {</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;read&quot;, &quot;list&quot;]</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="l l-Scalar l-Scalar-Plain">path &quot;sys/policies/*&quot; {</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="l l-Scalar l-Scalar-Plain">path &quot;identity/group&quot; {</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="l l-Scalar l-Scalar-Plain">path &quot;identity/group-alias&quot; {</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="l l-Scalar l-Scalar-Plain">path &quot;identity/group/name/*&quot; {</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;read&quot;, &quot;list&quot;]</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="l l-Scalar l-Scalar-Plain">path &quot;identity/group/id/*&quot; {</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
+<span class="l l-Scalar l-Scalar-Plain">}</span>
+</code></pre></div>
 
 
 
