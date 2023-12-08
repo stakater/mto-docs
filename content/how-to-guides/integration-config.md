@@ -7,7 +7,7 @@ apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: IntegrationConfig
 metadata:
   name: tenant-operator-config
-  namespace: stakater-tenant-operator
+  namespace: multi-tenant-operator
 spec:
   tenantRoles:
     default:
@@ -87,14 +87,11 @@ spec:
         namespace: openshift-auth
   vault:
     enabled: true
-    endpoint:
-      url: https://vault.apps.prod.abcdefghi.kubeapp.cloud/
-      secretReference:
-        name: vault-root-token
-        namespace: vault
+    accessorPath: oidc/
+    address: 'https://vault.apps.prod.abcdefghi.kubeapp.cloud/'
+    roleName: mto
     sso:
       clientName: vault
-      accessorID: <ACCESSOR_ID_TOKEN>
 ```
 
 Following are the different components that can be used to configure multi-tenancy in a cluster via Multi Tenant Operator.
@@ -348,21 +345,56 @@ If `vault` is configured on a cluster, then Vault configuration can be enabled.
 ```yaml
 Vault:
   enabled: true
-  endpoint:
-    secretReference:
-      name: vault-root-token
-      namespace: vault
-    url: >-
-      https://vault.apps.prod.abcdefghi.kubeapp.cloud/
+    accessorPath: oidc/
+    address: 'https://vault.apps.prod.abcdefghi.kubeapp.cloud/'
+    roleName: mto
   sso:
-    accessorID: <ACCESSOR_ID_TOKEN>
     clientName: vault
 ```
 
-If enabled, then admins have to provide secret, URL and SSO accessorID of Vault.
+If enabled, then admins have to provide following details:
 
-- `secretReference.name:` Will contain the name of the secret.
-- `secretReference.namespace:` Will contain the namespace of the secret.
-- `url:` Will contain the URL of Vault.
-- `sso.accessorID:` Will contain the SSO accessorID.
-- `sso.clientName:` Will contain the client name.
+- `accessorPath:` Accessor Path within Vault to fetch SSO accessorID
+- `address:` Valid Vault address reachable within cluster.
+- `roleName:` Vault's Kubernetes authentication role
+- `sso.clientName:` SSO client name.
+
+For more details around enabling Kubernetes auth in Vault, visit [here](https://developer.hashicorp.com/vault/docs/auth/kubernetes)
+
+The role created within Vault for Kubernetes authentication should have the following permissions:
+
+```yaml
+path "secret/*" {
+  capabilities = ["create", "read", "update", "patch", "delete", "list"]
+}
+path "sys/mounts" {
+  capabilities = ["read", "list"]
+}
+path "sys/mounts/*" {
+  capabilities = ["create", "read", "update", "patch", "delete", "list"]
+}
+path "managed-addons/*" {
+  capabilities = ["read", "list"]
+}
+path "auth/kubernetes/role/*" {
+  capabilities = ["create", "read", "update", "patch", "delete", "list"]
+}
+path "sys/auth" {
+  capabilities = ["read", "list"]
+}
+path "sys/policies/*" {
+  capabilities = ["create", "read", "update", "patch", "delete", "list"]
+}
+path "identity/group" {
+  capabilities = ["create", "read", "update", "patch", "delete", "list"]
+}
+path "identity/group-alias" {
+  capabilities = ["create", "read", "update", "patch", "delete", "list"]
+}
+path "identity/group/name/*" {
+  capabilities = ["read", "list"]
+}
+path "identity/group/id/*" {
+  capabilities = ["create", "read", "update", "patch", "delete", "list"]
+}
+```

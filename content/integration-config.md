@@ -7,7 +7,7 @@ apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: IntegrationConfig
 metadata:
   name: tenant-operator-config
-  namespace: stakater-tenant-operator
+  namespace: multi-tenant-operator
 spec:
   tenantRoles:
     default:
@@ -95,6 +95,9 @@ spec:
     sso:
       clientName: vault
       accessorID: <ACCESSOR_ID_TOKEN>
+  provision:
+    console: true
+    showback: true
 ```
 
 Following are the different components that can be used to configure multi-tenancy in a cluster via Multi Tenant Operator.
@@ -251,11 +254,14 @@ users:
 
 ### Cluster Admin Groups
 
-`clusterAdminGroups:` Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way
+`clusterAdminGroups:` Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of privilegedNamespaces.
+
+!!! note
+    User `kube:admin` is bypassed by default to perform operations as a cluster admin, this includes operations on all the namespaces.
 
 ### Privileged Namespaces
 
-`privilegedNamespaces:` Contains the list of `namespaces` ignored by MTO. MTO will not manage the `namespaces` in this list. Values in this list are regex patterns.
+`privilegedNamespaces:` Contains the list of `namespaces` ignored by MTO. MTO will not manage the `namespaces` in this list. Treatment for privileged namespaces does not involve further integrations or finalizers processing as with normal namespaces. Values in this list are regex patterns.
 For example:
 
 - To ignore the `default` namespace, we can specify `^default$`
@@ -368,3 +374,24 @@ If enabled, than admins have to provide secret, URL and SSO accessorID of Vault.
 - `sso.clientName:` Will contain the client name.
 
 For more details please refer [use-cases](./usecases/integrationconfig.md)
+
+## Provision
+
+```yaml
+provision:
+  console: true
+  showback: true
+```
+
+`provision.console:` Can be used to enable/disable console GUI for MTO.
+`provision.showback:` Can be used to enable/disable showback feature on the console.
+
+Integration config will be managing the following resources required for console GUI:
+
+- `Showback` cronjob.
+- `Keycloak` deployment.
+- `MTO-OpenCost` operator.
+- `MTO-Prometheus` operator.
+- `MTO-Postgresql` stateful set.
+
+Details on console GUI and showback can be found [here](explanation/console.md)
