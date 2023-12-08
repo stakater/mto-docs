@@ -95,6 +95,9 @@ spec:
     sso:
       clientName: vault
       accessorID: <ACCESSOR_ID_TOKEN>
+  provision:
+    console: true
+    showback: true
 ```
 
 Following are the different components that can be used to configure multi-tenancy in a cluster via Multi Tenant Operator.
@@ -371,3 +374,16 @@ If enabled, than admins have to provide secret, URL and SSO accessorID of Vault.
 - `sso.clientName:` Will contain the client name.
 
 For more details please refer [use-cases](./usecases/integrationconfig.md)
+
+## Provision
+
+```yaml
+provision:
+  console: true
+  showback: true
+```
+
+`provision.console:` Can be used to enable/disable console GUI for MTO.
+`provision.showback:` Can be used to enable/disable showback feature on the console.
+
+Details on console GUI and showback can be found [here](explanation/console.md)
