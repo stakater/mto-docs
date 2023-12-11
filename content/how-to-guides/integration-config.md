@@ -100,7 +100,7 @@ Following are the different components that can be used to configure multi-tenan
 
 TenantRoles are required within the IntegrationConfig, as they are used for defining what roles will be applied to each Tenant namespace. The field allows optional custom roles, that are then used to create RoleBindings for namespaces that match a labelSelector.
 
-> ⚠️ If you do not configure roles in any way, then the default OpenShift roles of `owner`, `edit`, and `view` will apply to Tenant members. Their details can be found [here](../tenant-roles.md)
+> ⚠️ If you do not configure roles in any way, then the default OpenShift roles of `owner`, `edit`, and `view` will apply to Tenant members. Their details can be found [here](../reference-guides/custom-roles.md)
 
 ```yaml
 tenantRoles:
@@ -248,11 +248,17 @@ users:
 
 ### Cluster Admin Groups
 
-`clusterAdminGroups:` Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way
+### Cluster Admin Groups
+
+`clusterAdminGroups:` Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of privilegedNamespaces.
+
+!!! note
+    User `kube:admin` is bypassed by default to perform operations as a cluster admin, this includes operations on all the namespaces.
 
 ### Privileged Namespaces
 
-`privilegedNamespaces:` Contains the list of `namespaces` ignored by MTO. MTO will not manage the `namespaces` in this list. Values in this list are regex patterns.
+`privilegedNamespaces:` Contains the list of `namespaces` ignored by MTO. MTO will not manage the `namespaces` in this list. Treatment for privileged namespaces does not involve further integrations or finalizers processing as with normal namespaces. Values in this list are regex patterns.
+
 For example:
 
 - To ignore the `default` namespace, we can specify `^default$`
@@ -312,6 +318,27 @@ argocd:
 
 `argocd.clusterResourceWhitelist` allows ArgoCD to sync the listed cluster scoped resources from your GitOps repo.
 
+## Provision
+
+```yaml
+provision:
+  console: true
+  showback: true
+```
+
+`provision.console:` Can be used to enable/disable console GUI for MTO.
+`provision.showback:` Can be used to enable/disable showback feature on the console.
+
+Integration config will be managing the following resources required for console GUI:
+
+- `Showback` cronjob.
+- `Keycloak` deployment.
+- `MTO-OpenCost` operator.
+- `MTO-Prometheus` operator.
+- `MTO-Postgresql` stateful set.
+
+Details on console GUI and showback can be found [here](../explanation/console.md)
+
 ## RHSSO (Red Hat Single Sign-On)
 
 Red Hat Single Sign-On [RHSSO](https://access.redhat.com/products/red-hat-single-sign-on) is based on the Keycloak project and enables you to secure your web applications by providing Web single sign-on (SSO) capabilities based on popular standards such as SAML 2.0, OpenID Connect and OAuth 2.0.
@@ -345,9 +372,9 @@ If `vault` is configured on a cluster, then Vault configuration can be enabled.
 ```yaml
 Vault:
   enabled: true
-    accessorPath: oidc/
-    address: 'https://vault.apps.prod.abcdefghi.kubeapp.cloud/'
-    roleName: mto
+  accessorPath: oidc/
+  address: 'https://vault.apps.prod.abcdefghi.kubeapp.cloud/'
+  roleName: mto
   sso:
     clientName: vault
 ```
