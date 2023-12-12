@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.1">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.45e1311d.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -881,6 +881,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#cluster-admin-groups_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cluster Admin Groups
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#privileged-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
       Privileged Namespaces
@@ -951,6 +960,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provision
+    </span>
+  </a>
   
 </li>
       
@@ -1427,6 +1445,48 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-guides/custom-metrics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Metrics Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-guides/graph-visualization.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph Visualization on MTO Console
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1470,6 +1530,48 @@
             Explanation
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanation/console.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MTO Console
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanation/auth.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authentication and Authorization in MTO Console
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1667,6 +1769,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#cluster-admin-groups_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cluster Admin Groups
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#privileged-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
       Privileged Namespaces
@@ -1737,6 +1848,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provision
+    </span>
+  </a>
   
 </li>
       
@@ -1872,7 +1992,7 @@
 <h2 id="tenantroles">TenantRoles</h2>
 <p>TenantRoles are required within the IntegrationConfig, as they are used for defining what roles will be applied to each Tenant namespace. The field allows optional custom roles, that are then used to create RoleBindings for namespaces that match a labelSelector.</p>
 <blockquote>
-<p>⚠️ If you do not configure roles in any way, then the default OpenShift roles of <code>owner</code>, <code>edit</code>, and <code>view</code> will apply to Tenant members. Their details can be found <a href="../tenant-roles.html">here</a></p>
+<p>⚠️ If you do not configure roles in any way, then the default OpenShift roles of <code>owner</code>, <code>edit</code>, and <code>view</code> will apply to Tenant members. Their details can be found <a href="../reference-guides/custom-roles.html">here</a></p>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="nt">tenantRoles</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">default</span><span class="p">:</span>
@@ -1997,10 +2117,15 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">andrew@stakater.com</span>
 </code></pre></div>
 <h3 id="cluster-admin-groups">Cluster Admin Groups</h3>
-<p><code>clusterAdminGroups:</code> Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way</p>
+<h3 id="cluster-admin-groups_1">Cluster Admin Groups</h3>
+<p><code>clusterAdminGroups:</code> Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of privilegedNamespaces.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>User <code>kube:admin</code> is bypassed by default to perform operations as a cluster admin, this includes operations on all the namespaces.</p>
+</div>
 <h3 id="privileged-namespaces">Privileged Namespaces</h3>
-<p><code>privilegedNamespaces:</code> Contains the list of <code>namespaces</code> ignored by MTO. MTO will not manage the <code>namespaces</code> in this list. Values in this list are regex patterns.
-For example:</p>
+<p><code>privilegedNamespaces:</code> Contains the list of <code>namespaces</code> ignored by MTO. MTO will not manage the <code>namespaces</code> in this list. Treatment for privileged namespaces does not involve further integrations or finalizers processing as with normal namespaces. Values in this list are regex patterns.</p>
+<p>For example:</p>
 <ul>
 <li>To ignore the <code>default</code> namespace, we can specify <code>^default$</code></li>
 <li>To ignore all namespaces starting with the <code>openshift-</code> prefix, we can specify <code>^openshift-*</code>.</li>
@@ -2043,6 +2168,22 @@ For example:</p>
 <span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvironmentProvisioner</span>
 </code></pre></div>
 <p><code>argocd.clusterResourceWhitelist</code> allows ArgoCD to sync the listed cluster scoped resources from your GitOps repo.</p>
+<h2 id="provision">Provision</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">provision</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p><code>provision.console:</code> Can be used to enable/disable console GUI for MTO.
+<code>provision.showback:</code> Can be used to enable/disable showback feature on the console.</p>
+<p>Integration config will be managing the following resources required for console GUI:</p>
+<ul>
+<li><code>Showback</code> cronjob.</li>
+<li><code>Keycloak</code> deployment.</li>
+<li><code>MTO-OpenCost</code> operator.</li>
+<li><code>MTO-Prometheus</code> operator.</li>
+<li><code>MTO-Postgresql</code> stateful set.</li>
+</ul>
+<p>Details on console GUI and showback can be found <a href="../explanation/console.html">here</a></p>
 <h2 id="rhsso-red-hat-single-sign-on">RHSSO (Red Hat Single Sign-On)</h2>
 <p>Red Hat Single Sign-On <a href="https://access.redhat.com/products/red-hat-single-sign-on">RHSSO</a> is based on the Keycloak project and enables you to secure your web applications by providing Web single sign-on (SSO) capabilities based on popular standards such as SAML 2.0, OpenID Connect and OAuth 2.0.</p>
 <p>If <code>RHSSO</code> is configured on a cluster, then RHSSO configuration can be enabled.</p>
@@ -2067,9 +2208,9 @@ For example:</p>
 <p>If <code>vault</code> is configured on a cluster, then Vault configuration can be enabled.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">Vault</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">accessorPath</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
-<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">address</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&#39;https://vault.apps.prod.abcdefghi.kubeapp.cloud/&#39;</span>
-<span class="w">    </span><span class="nt">roleName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">  </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
+<span class="w">  </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;https://vault.apps.prod.abcdefghi.kubeapp.cloud/&#39;</span>
+<span class="w">  </span><span class="nt">roleName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
 <span class="w">  </span><span class="nt">sso</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
 </code></pre></div>

@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.1">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.45e1311d.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.50c56a3b.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -1232,6 +1232,48 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference-guides/custom-metrics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Metrics Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference-guides/graph-visualization.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph Visualization on MTO Console
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1275,6 +1317,48 @@
             Explanation
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="explanation/console.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MTO Console
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="explanation/auth.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authentication and Authorization in MTO Console
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1393,7 +1477,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="v0.10.0">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#feature" class="md-nav__link">
@@ -1419,6 +1504,11 @@
       Enhanced
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2244,7 +2334,8 @@
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="v0.10.0">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#feature" class="md-nav__link">
@@ -2270,6 +2361,11 @@
       Enhanced
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3025,7 +3121,7 @@
 <h1 id="changelog">Changelog</h1>
 <h2 id="v010x">v0.10.x</h2>
 <h3 id="v0100">v0.10.0</h3>
-<h3 id="feature">Feature</h3>
+<h4 id="feature">Feature</h4>
 <ul>
 <li>Added support for caching for MTO Console using PostgreSQL as caching layer.</li>
 <li>Added support for custom metrics with Template, Template Instance and Template Group Instance.</li>
@@ -3041,13 +3137,13 @@
 </li>
 <li>Support for MTO e2e.</li>
 </ul>
-<h3 id="fix">Fix</h3>
+<h4 id="fix">Fix</h4>
 <ul>
 <li>Updated CreateMergePatch to MergeMergePatches to address issues caused by losing <code>resourceVersion</code> and UID when converting <code>oldObject</code> to <code>newObject</code>. This prevents problems when the object is edited by another controller.</li>
 <li>In Template Resource distribution for Secret type, we now consider the source's Secret field type, preventing default creation as Opaque regardless of the source's actual type.</li>
 <li>Enhanced admin permissions for tenant role in Vault to include Create, Update, Delete alongside existing Read and List privileges for the common-shared-secrets path. Viewers now have Read permission.</li>
 </ul>
-<h3 id="enhanced">Enhanced</h3>
+<h4 id="enhanced">Enhanced</h4>
 <ul>
 <li>Started to support Kubernetes along with OpenShift as platform type.</li>
 <li>Support of MTO's PostgreSQL instance as persistent storage for keycloak.</li>
