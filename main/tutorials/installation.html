@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.1">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.45e1311d.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -380,21 +380,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installing via OperatorHub UI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configuring-integrationconfig" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configuring IntegrationConfig
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -404,13 +389,22 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installing via CLI OR GitOps">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enabling-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enabling Console
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enabling Console">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#configuring-integrationconfig_1" class="md-nav__link">
+  <a href="#manual-approval" class="md-nav__link">
     <span class="md-ellipsis">
-      Configuring IntegrationConfig
+      Manual Approval
     </span>
   </a>
   
@@ -1349,6 +1343,48 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-guides/custom-metrics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Metrics Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference-guides/graph-visualization.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph Visualization on MTO Console
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1392,6 +1428,48 @@
             Explanation
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanation/console.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MTO Console
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanation/auth.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authentication and Authorization in MTO Console
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1543,21 +1621,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installing via OperatorHub UI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configuring-integrationconfig" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configuring IntegrationConfig
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1567,13 +1630,22 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installing via CLI OR GitOps">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enabling-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enabling Console
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enabling Console">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#configuring-integrationconfig_1" class="md-nav__link">
+  <a href="#manual-approval" class="md-nav__link">
     <span class="md-ellipsis">
-      Configuring IntegrationConfig
+      Manual Approval
     </span>
   </a>
   
@@ -1630,12 +1702,15 @@
 <p><a href="#installing-via-cli-or-gitops">CLI/GitOps</a></p>
 </li>
 <li>
+<p><a href="#enabling-console">Enabling Console</a></p>
+</li>
+<li>
 <p><a href="#uninstall-via-operatorhub-ui">Uninstall</a></p>
 </li>
 </ol>
 <h2 id="requirements">Requirements</h2>
 <ul>
-<li>An <strong>OpenShift</strong> cluster [v4.7 - v4.12]</li>
+<li>An <strong>OpenShift</strong> cluster [v4.8 - v4.13]</li>
 </ul>
 <h2 id="installing-via-operatorhub-ui">Installing via OperatorHub UI</h2>
 <ul>
@@ -1668,30 +1743,6 @@
 <blockquote>
 <p>Note: MTO will be installed in <code>multi-tenant-operator</code> namespace.</p>
 </blockquote>
-<h3 id="configuring-integrationconfig">Configuring IntegrationConfig</h3>
-<p>IntegrationConfig is required to configure the settings of multi-tenancy for MTO.</p>
-<ul>
-<li>We recommend using the following IntegrationConfig as a starting point</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">openshift</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">privilegedNamespaces</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^openshift-*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^kube-*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^redhat-*</span>
-<span class="w">    </span><span class="nt">privilegedServiceAccounts</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:default-*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift-*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:kube-*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:redhat-*</span>
-</code></pre></div>
-<p>For more details and configurations check out <a href="../how-to-guides/integration-config.html">IntegrationConfig</a>.</p>
 <h2 id="installing-via-cli-or-gitops">Installing via CLI OR GitOps</h2>
 <ul>
 <li>Create namespace <code>multi-tenant-operator</code></li>
@@ -1726,11 +1777,7 @@ operatorgroup.operators.coreos.com/tenant-operator<span class="w"> </span>create
 <span class="s">  name: tenant-operator</span>
 <span class="s">  source: certified-operators</span>
 <span class="s">  sourceNamespace: openshift-marketplace</span>
-<span class="s">  startingCSV: tenant-operator.v0.9.1</span>
-<span class="s">  config:</span>
-<span class="s">    env:</span>
-<span class="s">      - name: ENABLE_CONSOLE</span>
-<span class="s">        value: &#39;true&#39;</span>
+<span class="s">  startingCSV: tenant-operator.v0.10.0</span>
 <span class="s">EOF</span>
 subscription.operators.coreos.com/tenant-operator<span class="w"> </span>created
 </code></pre></div>
@@ -1753,35 +1800,42 @@ subscription.operators.coreos.com/tenant-operator<span class="w"> </span>created
 <li>Once pods are up and running, MTO will be ready to enforce multi-tenancy in your cluster</li>
 </ul>
 <p><a class="glightbox" href="../images/to_installed_successful_pod.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/to_installed_successful_pod.png" /></a></p>
-<h3 id="configuring-integrationconfig_1">Configuring IntegrationConfig</h3>
-<p>IntegrationConfig is required to configure the settings of multi-tenancy for MTO.</p>
-<ul>
-<li>We recommend using the following IntegrationConfig as a starting point:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">openshift</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">privilegedNamespaces</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^openshift-*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^kube-*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^redhat-*</span>
-<span class="w">    </span><span class="nt">privilegedServiceAccounts</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:default-*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift-*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:kube-*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:redhat-*</span>
-</code></pre></div>
 <p>For more details and configurations check out <a href="../how-to-guides/integration-config.html">IntegrationConfig</a>.</p>
+<h2 id="enabling-console">Enabling Console</h2>
+<p>To enable console GUI for MTO, go to <code>Search</code> -&gt; <code>IntegrationConfig</code> -&gt; <code>tenant-operator-config</code> and make sure the following fields are set to <code>true</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">provision</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<p>Note: If your <code>InstallPlan</code> approval is set to <code>Manual</code> then you will have to manually approve the <code>InstallPlan</code> for MTO console components to be installed.</p>
+</blockquote>
+<h3 id="manual-approval">Manual Approval</h3>
+<ul>
+<li>Open OpenShift console and click on <code>Operators</code>, followed by <code>Installed Operators</code> from the side menu.</li>
+</ul>
+<p><a class="glightbox" href="../images/manual-approve-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/manual-approve-1.png" /></a></p>
+<ul>
+<li>Now click on <code>Upgrade available</code> in front of <code>mto-opencost</code> or <code>mto-prometheus</code>.</li>
+</ul>
+<p><a class="glightbox" href="../images/manual-approve-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/manual-approve-2.png" /></a></p>
+<ul>
+<li>Now click on <code>Preview InstallPlan</code> on top.</li>
+</ul>
+<p><a class="glightbox" href="../images/manual-approve-3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/manual-approve-3.png" /></a></p>
+<ul>
+<li>Now click on <code>Approve</code> button.</li>
+</ul>
+<p><a class="glightbox" href="../images/manual-approve-4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/manual-approve-4.png" /></a></p>
+<ul>
+<li>Now the <code>InstallPlan</code> will be approved, and MTO console components will be installed.</li>
+</ul>
 <h2 id="uninstall-via-operatorhub-ui">Uninstall via OperatorHub UI</h2>
 <p>You can uninstall MTO by following these steps:</p>
 <ul>
 <li>
-<p>Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set <code>spec.onDelete.cleanNamespaces</code> to <code>false</code> for all those tenants whose namespaces you want to retain, and <code>spec.onDelete.cleanAppProject</code> to <code>false</code> for all those tenants whose AppProject you want to retain. For more details check out <a href="tenant/deleting-tenant.html#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted">onDelete</a></p>
+<p>Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set <code>spec.onDelete.cleanNamespaces</code> to <code>false</code> for all those tenants whose namespaces you want to retain, and <code>spec.onDelete.cleanAppProject</code> to <code>false</code> for all those tenants whose AppProject you want to retain. For more details check out <a href="tenant/deleting-tenant.html">onDelete</a></p>
 </li>
 <li>
 <p>After making the required changes open OpenShift console and click on <code>Operators</code>, followed by <code>Installed Operators</code> from the side menu</p>
