@@ -4,7 +4,7 @@
 
 ### v0.10.0
 
-### Feature
+#### Feature
 
 - Added support for caching for MTO Console using PostgreSQL as caching layer.
 - Added support for custom metrics with Template, Template Instance and Template Group Instance.
@@ -18,13 +18,13 @@
     - And it comes with default Cert Manager manifests for certificates.
 - Support for MTO e2e.
 
-### Fix
+#### Fix
 
 - Updated CreateMergePatch to MergeMergePatches to address issues caused by losing `resourceVersion` and UID when converting `oldObject` to `newObject`. This prevents problems when the object is edited by another controller.
 - In Template Resource distribution for Secret type, we now consider the source's Secret field type, preventing default creation as Opaque regardless of the source's actual type.
 - Enhanced admin permissions for tenant role in Vault to include Create, Update, Delete alongside existing Read and List privileges for the common-shared-secrets path. Viewers now have Read permission.
 
-### Enhanced
+#### Enhanced
 
 - Started to support Kubernetes along with OpenShift as platform type.
 - Support of MTO's PostgreSQL instance as persistent storage for keycloak.
