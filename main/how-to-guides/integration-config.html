@@ -1615,6 +1615,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanation/logs-metrics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metrics and Logs Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2149,11 +2170,15 @@
 <p>For example:</p>
 <ul>
 <li>To ignore the <code>default</code> namespace, we can specify <code>^default$</code></li>
-<li>To ignore all namespaces starting with the <code>openshift-</code> prefix, we can specify <code>^openshift-*</code>.</li>
-<li>To ignore any namespace containing <code>stakater</code> in its name, we can specify <code>stakater</code>. (A constant word given as a regex pattern will match any namespace containing that word.)</li>
+<li>To ignore all namespaces starting with the <code>openshift-</code> prefix, we can specify <code>^openshift-.*</code>.</li>
+<li>To ignore any namespace containing <code>stakater</code> in its name, we can specify <code>^stakater.</code>. (A constant word given as a regex pattern will match any namespace containing that word.)</li>
 </ul>
 <h3 id="privileged-serviceaccounts">Privileged ServiceAccounts</h3>
-<p><code>privilegedServiceAccounts:</code> Contains the list of <code>ServiceAccounts</code> ignored by MTO. MTO will not manage the <code>ServiceAccounts</code> in this list. Values in this list are regex patterns. For example, to ignore all <code>ServiceAccounts</code> starting with the <code>system:serviceaccount:openshift-</code> prefix, we can use <code>^system:serviceaccount:openshift-*</code>; and to ignore the <code>system:serviceaccount:builder</code> service account we can use <code>^system:serviceaccount:builder$.</code></p>
+<p><code>privilegedServiceAccounts:</code> Contains the list of <code>ServiceAccounts</code> ignored by MTO. MTO will not manage the <code>ServiceAccounts</code> in this list. Values in this list are regex patterns. For example, to ignore all <code>ServiceAccounts</code> starting with the <code>system:serviceaccount:openshift-</code> prefix, we can use <code>^system:serviceaccount:openshift-.*</code>; and to ignore a specific service account like <code>system:serviceaccount:builder</code> service account we can use <code>^system:serviceaccount:builder$.</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>stakater</code>, <code>stakater.</code> and <code>stakater.*</code> will have the same effect. To check out the combinations, go to <a href="https://regex101.com/">Regex101</a>, select Golang, and type your expected regex and test string.  </p>
+</div>
 <h3 id="namespace-access-policy">Namespace Access Policy</h3>
 <p><code>namespaceAccessPolicy.Deny:</code> Can be used to restrict privileged <em>users/groups</em> CRUD operation over managed namespaces.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">namespaceAccessPolicy</span><span class="p">:</span>
