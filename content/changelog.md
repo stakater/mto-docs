@@ -6,7 +6,7 @@
 
 #### Fix
 
-- `TemplateGroupInstance` controller now correctly updates the its status and the namespace count upon the deletion of a namespace.
+- `TemplateGroupInstance` controller now correctly updates the `TemplateGroupInstance` custom resource status and the namespace count upon the deletion of a namespace.
 - Conflict between `TemplateGroupInstance` controller and `kube-contoller-manager` over mentioning of secret names in `secrets` or `imagePullSecrets` field in `ServiceAccounts` has been fixed by temporarily ignoring updates to or from `ServiceAccounts`.
 
 #### Enhanced
