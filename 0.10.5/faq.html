@@ -1495,7 +1495,7 @@
           <li class="md-nav__item">
   <a href="#q-errors-in-replicaset-events-about-pods-not-being-able-to-schedule-on-openshift-because-scc-annotation-is-not-found" class="md-nav__link">
     <span class="md-ellipsis">
-      Q. Errors in ReplicaSet Events about pods not being able to schedule on Openshift because scc annotation is not found
+      Q. Errors in ReplicaSet Events about pods not being able to schedule on OpenShift because scc annotation is not found
     </span>
   </a>
   
@@ -1697,7 +1697,7 @@
           <li class="md-nav__item">
   <a href="#q-errors-in-replicaset-events-about-pods-not-being-able-to-schedule-on-openshift-because-scc-annotation-is-not-found" class="md-nav__link">
     <span class="md-ellipsis">
-      Q. Errors in ReplicaSet Events about pods not being able to schedule on Openshift because scc annotation is not found
+      Q. Errors in ReplicaSet Events about pods not being able to schedule on OpenShift because scc annotation is not found
     </span>
   </a>
   
@@ -1812,10 +1812,10 @@
 
 <h1 id="faqs">FAQs</h1>
 <h2 id="pod-creation-error">Pod Creation Error</h2>
-<h3 id="q-errors-in-replicaset-events-about-pods-not-being-able-to-schedule-on-openshift-because-scc-annotation-is-not-found">Q. Errors in ReplicaSet Events about pods not being able to schedule on Openshift because scc annotation is not found</h3>
+<h3 id="q-errors-in-replicaset-events-about-pods-not-being-able-to-schedule-on-openshift-because-scc-annotation-is-not-found">Q. Errors in ReplicaSet Events about pods not being able to schedule on OpenShift because scc annotation is not found</h3>
 <div class="highlight"><pre><span></span><code>unable to find annotation openshift.io/sa.scc.uid-range
 </code></pre></div>
-<p><strong>Answer.</strong> Openshift recently updated its process of handling SCC and it's now managed by annotations like <code>openshift.io/sa.scc.uid-range</code> on the namespaces. Absense  of them wont let pods schedule. The fix for the above error is to make sure ServiceAccount <code>system:serviceaccount:openshift-infra.</code> regex is always mentioned in <code>PrivilegedServiceAccounts</code> section of <code>IntegrationConfig</code>. This regex will allow operations from all <code>ServiceAccounts</code> present in <code>openshift-infra</code> namespace. More info at <a href="integration-config.html#privileged-serviceaccounts">Privileged Service Accounts</a></p>
+<p><strong>Answer.</strong> OpenShift recently updated its process of handling SCC, and it's now managed by annotations like <code>openshift.io/sa.scc.uid-range</code> on the namespaces. Absence  of them wont let pods schedule. The fix for the above error is to make sure ServiceAccount <code>system:serviceaccount:openshift-infra.</code> regex is always mentioned in <code>PrivilegedServiceAccounts</code> section of <code>IntegrationConfig</code>. This regex will allow operations from all <code>ServiceAccounts</code> present in <code>openshift-infra</code> namespace. More info at <a href="integration-config.html#privileged-serviceaccounts">Privileged Service Accounts</a></p>
 <h2 id="namespace-admission-webhook">Namespace Admission Webhook</h2>
 <h3 id="q-error-received-while-performing-create-update-or-delete-action-on-namespace">Q. Error received while performing Create, Update or Delete action on Namespace</h3>
 <div class="highlight"><pre><span></span><code>Cannot CREATE namespace test-john without label stakater.com/tenant

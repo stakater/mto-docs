@@ -1663,7 +1663,7 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Updates to ServiceAccounts are ignored by both, reconciler and informers, in an attempt to avoid conflict between the TGI controller and Kube Controller Manager. ServiceAccounts are only reverted back in case of unexpected deletions when sync is true.</p>
+<p>Updates to ServiceAccounts are ignored by both, reconciler and informers, in an attempt to avoid conflict between the TGI controller and Kube Controller Manager. ServiceAccounts are only reverted in case of unexpected deletions when sync is true.</p>
 </div>
 <h2 id="ignore-resources-updates-on-resources">Ignore Resources Updates on Resources</h2>
 <p>If the resources mentioned in <code>Template</code> CR conflict with another controller/operator, and you want TemplateGroupInstance to not actively revert the resource updates, you can add the following label to the conflicting resource <code>multi-tenant-operator/ignore-resource-updates: ""</code>.</p>
