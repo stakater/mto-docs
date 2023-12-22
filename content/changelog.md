@@ -2,6 +2,21 @@
 
 ## v0.10.x
 
+### v0.10.5
+
+#### Fix
+
+- `TemplateGroupInstance` controller now correctly updates the `TemplateGroupInstance` custom resource status and the namespace count upon the deletion of a namespace.
+- Conflict between `TemplateGroupInstance` controller and `kube-contoller-manager` over mentioning of secret names in `secrets` or `imagePullSecrets` field in `ServiceAccounts` has been fixed by temporarily ignoring updates to or from `ServiceAccounts`.
+
+#### Enhanced
+
+- Privileged service accounts mentioned in the `IntegrationConfig` have now access over all types of namespaces. Previously operations were denied on orphaned namespaces (the namespaces which are not part of both privileged and tenant scope). More info in [FAQs](./faq.md)
+- `TemplateGroupInstance` controller now ensures that its underlying resources are force-synced when a namespace is created or deleted.
+- Optimizations were made to ensure the reconciler in the TGI controller runs only once per watch event, reducing reconcile times.
+- The `TemplateGroupInstance` reconcile flow has been refined to process only the namespace for which the event was received, streamlining resource creation/deletion and improving overall efficiency.
+- Introduced new metrics to enhance the monitoring capabilities of the operator. Details at [TGI Metrics Explanation](./explanation/logs-metrics.md)
+
 ### v0.10.0
 
 #### Feature
