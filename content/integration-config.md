@@ -262,12 +262,15 @@ users:
 For example:
 
 - To ignore the `default` namespace, we can specify `^default$`
-- To ignore all namespaces starting with the `openshift-` prefix, we can specify `^openshift-*`.
-- To ignore any namespace containing `stakater` in its name, we can specify `stakater`. (A constant word given as a regex pattern will match any namespace containing that word.)
+- To ignore all namespaces starting with the `openshift-` prefix, we can specify `^openshift-.*`.
+- To ignore any namespace containing `stakater` in its name, we can specify `^stakater.`. (A constant word given as a regex pattern will match any namespace containing that word.)
 
 ### Privileged ServiceAccounts
 
-`privilegedServiceAccounts:` Contains the list of `ServiceAccounts` ignored by MTO. MTO will not manage the `ServiceAccounts` in this list. Values in this list are regex patterns. For example, to ignore all `ServiceAccounts` starting with the `system:serviceaccount:openshift-` prefix, we can use `^system:serviceaccount:openshift-*`; and to ignore the `system:serviceaccount:builder` service account we can use `^system:serviceaccount:builder$.`
+`privilegedServiceAccounts:` Contains the list of `ServiceAccounts` ignored by MTO. MTO will not manage the `ServiceAccounts` in this list. Values in this list are regex patterns. For example, to ignore all `ServiceAccounts` starting with the `system:serviceaccount:openshift-` prefix, we can use `^system:serviceaccount:openshift-.*`; and to ignore a specific service account like `system:serviceaccount:builder` service account we can use `^system:serviceaccount:builder$.`
+
+!!! note
+    `stakater`, `stakater.` and `stakater.*` will have the same effect. To check out the combinations, go to [Regex101](https://regex101.com/), select Golang, and type your expected regex and test string.  
 
 ### Namespace Access Policy
 
