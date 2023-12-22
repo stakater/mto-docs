@@ -11,7 +11,7 @@
 
 #### Enhanced
 
-- Privileged service accounts mentioned in the `IntegrationConfig` have now access over all types of namespaces. Previously operations were denied on orphaned namespaces (the namespaces which are not part of both privileged and tenant scope). More info in [Troubleshooting Guide](./faq.md)
+- Privileged service accounts mentioned in the `IntegrationConfig` have now access over all types of namespaces. Previously operations were denied on orphaned namespaces (the namespaces which are not part of both privileged and tenant scope). More info in [FAQs](./faq.md)
 - `TemplateGroupInstance` controller now ensures that its underlying resources are force-synced when a namespace is created or deleted.
 - Optimizations were made to ensure the reconciler in the TGI controller runs only once per watch event, reducing reconcile times.
 - The `TemplateGroupInstance` reconcile flow has been refined to process only the namespace for which the event was received, streamlining resource creation/deletion and improving overall efficiency.
