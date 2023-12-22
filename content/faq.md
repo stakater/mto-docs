@@ -1,5 +1,15 @@
 # FAQs
 
+## Pod Creation Error
+
+### Q. Errors in ReplicaSet Events about pods not being able to schedule on Openshift because scc annotation is not found
+
+```terminal
+unable to find annotation openshift.io/sa.scc.uid-range
+```
+
+**Answer.** Openshift recently updated its process of handling SCC and it's now managed by annotations like `openshift.io/sa.scc.uid-range` on the namespaces. Absense  of them wont let pods schedule. The fix for the above error is to make sure ServiceAccount `system:serviceaccount:openshift-infra.` regex is always mentioned in `PrivilegedServiceAccounts` section of `IntegrationConfig`. This regex will allow operations from all `ServiceAccounts` present in `openshift-infra` namespace. More info at [Privileged Service Accounts](./integration-config.md#privileged-serviceaccounts)
+
 ## Namespace Admission Webhook
 
 ### Q. Error received while performing Create, Update or Delete action on Namespace
