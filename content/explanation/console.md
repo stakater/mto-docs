@@ -16,15 +16,15 @@ provision:
     ingress:
         console:
             host: tenant-operator-console.<hostname>
-            ingressSecretName: <ingress-secret-name>
+            tlsSecretName: <ingress-secret-name>
             ingressClassName: <ingress-class-name>
         gateway:
             host: tenant-operator-gateway.<hostname>
-            ingressSecretName: <ingress-secret-name>
+            tlsSecretName: <ingress-secret-name>
             ingressClassName: <ingress-class-name>
         keycloak:
             host: tenant-operator-keycloak.<hostname>
-            ingressSecretName: <ingress-secret-name>
+            tlsSecretName: <ingress-secret-name>
             ingressClassName: <ingress-class-name>
     showback: true
 ```  
