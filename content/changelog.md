@@ -2,6 +2,16 @@
 
 ## v0.10.x
 
+### v0.10.6
+
+#### Fix
+
+- Fixed broken logs for namespace webhook where username and namespace were interchangeably used after a recent update
+
+#### Enhanced
+
+- Made log messages more elaborative and consistent on one format for namespace webhook
+
 ### v0.10.5
 
 #### Fix
