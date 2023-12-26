@@ -8,6 +8,34 @@ The Multi Tenant Operator (MTO) Console is a comprehensive user interface design
 
 The dashboard serves as a centralized monitoring hub, offering insights into the current state of tenants, namespaces, and quotas. It is designed to provide a quick summary/snapshot of MTO resources' status. Additionally, it includes a Showback graph that presents a quick glance of the seven-day cost trends associated with the namespaces/tenants based on the logged-in user.
 
+By default, MTO Console will be disabled and would need to enabled by setting the below configuration in IntegrationConfig.
+    
+```yaml
+provision:
+    console: true
+    ingress:
+        console:
+            host: tenant-operator-console.<hostname>
+            ingressSecretName: <ingress-secret-name>
+            ingressClassName: <ingress-class-name>
+        gateway:
+            host: tenant-operator-gateway.<hostname>
+            ingressSecretName: <ingress-secret-name>
+            ingressClassName: <ingress-class-name>
+        keycloak:
+            host: tenant-operator-keycloak.<hostname>
+            ingressSecretName: <ingress-secret-name>
+            ingressClassName: <ingress-class-name>
+    showback: true
+```  
+
+`<hostname>` : Hostname of the cluster  
+`<ingress-secret-name>` : Name of the secret that contains the TLS certificate and key  
+`<ingress-class-name>` : Name of the ingress class  
+
+Once the above configuration is set on the IntegrationConfig, MTO would start provisioning the required resources for MTO Console to be ready. In a few moments, you should be able to see the Console Ingress in the `multi-tenant-operator` namespace which gives you access to the Console.
+
+For more details on the configuration, please visit [here](../how-to-guides/integration-config.md).
 ![dashboard](../images/dashboard.png)
 
 ### Tenants

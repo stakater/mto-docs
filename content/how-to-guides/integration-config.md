@@ -77,6 +77,22 @@ spec:
     clusterResourceWhitelist:
       - group: tronador.stakater.com
         kind: EnvironmentProvisioner
+  provision:
+    console: true
+    ingress:
+      console:
+        host: tenant-operator-console.apps.tno1-ams.s9nghh76.lab.kubeapp.cloud
+        ingressSecretName: tenant-operator-tls
+        ingressClassName: nginx
+      gateway:
+        host: tenant-operator-gateway.apps.tno1-ams.s9nghh76.lab.kubeapp.cloud
+        ingressSecretName: tenant-operator-tls
+        ingressClassName: nginx
+      keycloak:
+        host: tenant-operator-keycloak.apps.tno1-ams.s9nghh76.lab.kubeapp.cloud
+        ingressSecretName: tenant-operator-tls
+        ingressClassName: nginx
+    showback: true        
   rhsso:
     enabled: true
     realm: customer
@@ -326,11 +342,28 @@ argocd:
 ```yaml
 provision:
   console: true
+  ingress:
+    console:
+      host: tenant-operator-console.apps.tno1-ams.s9nghh76.lab.kubeapp.cloud
+      ingressSecretName: tenant-operator-tls
+      ingressClassName: nginx
+    gateway:
+      host: tenant-operator-gateway.apps.tno1-ams.s9nghh76.lab.kubeapp.cloud
+      ingressSecretName: tenant-operator-tls
+      ingressClassName: nginx
+    keycloak:
+      host: tenant-operator-keycloak.apps.tno1-ams.s9nghh76.lab.kubeapp.cloud
+      ingressSecretName: tenant-operator-tls
+      ingressClassName: nginx
   showback: true
 ```
 
-`provision.console:` Can be used to enable/disable console GUI for MTO.
-`provision.showback:` Can be used to enable/disable showback feature on the console.
+`provision.console:` Enables or disables the console GUI for MTO.
+`provision.ingress:` Configures the ingress settings for various components:
+    `console:` Settings for the console's ingress, including host, TLS secret, and ingress class.
+    `gateway:` Settings for the gateway's ingress.
+    `keycloak:` Settings for the Keycloak's ingress.
+`provision.showback:` Enables or disables the showback feature on the console.
 
 Integration config will be managing the following resources required for console GUI:
 
