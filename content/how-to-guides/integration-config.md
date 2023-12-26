@@ -81,15 +81,15 @@ spec:
     console: true
     ingress:
       console:
-        host: tenant-operator-console.apps.tno1-ams.s9nghh76.lab.kubeapp.cloud
+        host: tenant-operator-console.apps.mycluster-ams.abcdef.cloud
         ingressSecretName: tenant-operator-tls
         ingressClassName: nginx
       gateway:
-        host: tenant-operator-gateway.apps.tno1-ams.s9nghh76.lab.kubeapp.cloud
+        host: tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud
         ingressSecretName: tenant-operator-tls
         ingressClassName: nginx
       keycloak:
-        host: tenant-operator-keycloak.apps.tno1-ams.s9nghh76.lab.kubeapp.cloud
+        host: tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud
         ingressSecretName: tenant-operator-tls
         ingressClassName: nginx
     showback: true        
@@ -344,15 +344,15 @@ provision:
   console: true
   ingress:
     console:
-      host: tenant-operator-console.apps.tno1-ams.s9nghh76.lab.kubeapp.cloud
+      host: tenant-operator-console.apps.mycluster-ams.abcdef.cloud
       ingressSecretName: tenant-operator-tls
       ingressClassName: nginx
     gateway:
-      host: tenant-operator-gateway.apps.tno1-ams.s9nghh76.lab.kubeapp.cloud
+      host: tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud
       ingressSecretName: tenant-operator-tls
       ingressClassName: nginx
     keycloak:
-      host: tenant-operator-keycloak.apps.tno1-ams.s9nghh76.lab.kubeapp.cloud
+      host: tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud
       ingressSecretName: tenant-operator-tls
       ingressClassName: nginx
   showback: true

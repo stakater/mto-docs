@@ -8,7 +8,7 @@ The Multi Tenant Operator (MTO) Console is a comprehensive user interface design
 
 The dashboard serves as a centralized monitoring hub, offering insights into the current state of tenants, namespaces, and quotas. It is designed to provide a quick summary/snapshot of MTO resources' status. Additionally, it includes a Showback graph that presents a quick glance of the seven-day cost trends associated with the namespaces/tenants based on the logged-in user.
 
-By default, MTO Console will be disabled and would need to enabled by setting the below configuration in IntegrationConfig.
+By default, MTO Console will be disabled and has to be enabled by setting the below configuration in IntegrationConfig.
 
 ```yaml
 provision:
