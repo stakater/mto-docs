@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
@@ -1513,13 +1513,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#v0105" class="md-nav__link">
+  <a href="#v0106" class="md-nav__link">
     <span class="md-ellipsis">
-      v0.10.5
+      v0.10.6
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="v0.10.5">
+    <nav class="md-nav" aria-label="v0.10.6">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1533,6 +1533,39 @@
         
           <li class="md-nav__item">
   <a href="#enhanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v0105" class="md-nav__link">
+    <span class="md-ellipsis">
+      v0.10.5
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.10.5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fix_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fix
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhanced_1" class="md-nav__link">
     <span class="md-ellipsis">
       Enhanced
     </span>
@@ -1565,7 +1598,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fix_1" class="md-nav__link">
+  <a href="#fix_2" class="md-nav__link">
     <span class="md-ellipsis">
       Fix
     </span>
@@ -1574,7 +1607,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#enhanced_1" class="md-nav__link">
+  <a href="#enhanced_2" class="md-nav__link">
     <span class="md-ellipsis">
       Enhanced
     </span>
@@ -2403,13 +2436,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#v0105" class="md-nav__link">
+  <a href="#v0106" class="md-nav__link">
     <span class="md-ellipsis">
-      v0.10.5
+      v0.10.6
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="v0.10.5">
+    <nav class="md-nav" aria-label="v0.10.6">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2423,6 +2456,39 @@
         
           <li class="md-nav__item">
   <a href="#enhanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v0105" class="md-nav__link">
+    <span class="md-ellipsis">
+      v0.10.5
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.10.5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fix_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fix
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhanced_1" class="md-nav__link">
     <span class="md-ellipsis">
       Enhanced
     </span>
@@ -2455,7 +2521,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fix_1" class="md-nav__link">
+  <a href="#fix_2" class="md-nav__link">
     <span class="md-ellipsis">
       Fix
     </span>
@@ -2464,7 +2530,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#enhanced_1" class="md-nav__link">
+  <a href="#enhanced_2" class="md-nav__link">
     <span class="md-ellipsis">
       Enhanced
     </span>
@@ -3228,13 +3294,22 @@
 
 <h1 id="changelog">Changelog</h1>
 <h2 id="v010x">v0.10.x</h2>
-<h3 id="v0105">v0.10.5</h3>
+<h3 id="v0106">v0.10.6</h3>
 <h4 id="fix">Fix</h4>
+<ul>
+<li>Fixed broken logs for namespace webhook where username and namespace were interchangeably used after a recent update</li>
+</ul>
+<h4 id="enhanced">Enhanced</h4>
+<ul>
+<li>Made log messages more elaborative and consistent on one format for namespace webhook</li>
+</ul>
+<h3 id="v0105">v0.10.5</h3>
+<h4 id="fix_1">Fix</h4>
 <ul>
 <li><code>TemplateGroupInstance</code> controller now correctly updates the <code>TemplateGroupInstance</code> custom resource status and the namespace count upon the deletion of a namespace.</li>
 <li>Conflict between <code>TemplateGroupInstance</code> controller and <code>kube-contoller-manager</code> over mentioning of secret names in <code>secrets</code> or <code>imagePullSecrets</code> field in <code>ServiceAccounts</code> has been fixed by temporarily ignoring updates to or from <code>ServiceAccounts</code>.</li>
 </ul>
-<h4 id="enhanced">Enhanced</h4>
+<h4 id="enhanced_1">Enhanced</h4>
 <ul>
 <li>Privileged service accounts mentioned in the <code>IntegrationConfig</code> have now access over all types of namespaces. Previously operations were denied on orphaned namespaces (the namespaces which are not part of both privileged and tenant scope). More info in <a href="faq.html">FAQs</a></li>
 <li><code>TemplateGroupInstance</code> controller now ensures that its underlying resources are force-synced when a namespace is created or deleted.</li>
@@ -3259,13 +3334,13 @@
 </li>
 <li>Support for MTO e2e.</li>
 </ul>
-<h4 id="fix_1">Fix</h4>
+<h4 id="fix_2">Fix</h4>
 <ul>
 <li>Updated CreateMergePatch to MergeMergePatches to address issues caused by losing <code>resourceVersion</code> and UID when converting <code>oldObject</code> to <code>newObject</code>. This prevents problems when the object is edited by another controller.</li>
 <li>In Template Resource distribution for Secret type, we now consider the source's Secret field type, preventing default creation as Opaque regardless of the source's actual type.</li>
 <li>Enhanced admin permissions for tenant role in Vault to include Create, Update, Delete alongside existing Read and List privileges for the common-shared-secrets path. Viewers now have Read permission.</li>
 </ul>
-<h4 id="enhanced_1">Enhanced</h4>
+<h4 id="enhanced_2">Enhanced</h4>
 <ul>
 <li>Started to support Kubernetes along with OpenShift as platform type.</li>
 <li>Support of MTO's PostgreSQL instance as persistent storage for keycloak.</li>
