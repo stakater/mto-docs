@@ -4,15 +4,40 @@ site_url: https://docs.stakater.com/
 repo_url: https://github.com/stakater/mto-docs
 edit_uri: blob/main/content/
 use_directory_urls: false
+extra_css:
+    - stylesheets/extra.css
 theme:
     name: material
+    custom_dir: dist/_theme
     logo: assets/images/favicon.svg
     favicon: assets/images/favicon.svg
-    custom_dir: custom_theme/
     palette:
-        primary: white
+    - media: "(prefers-color-scheme)"
+      toggle:
+        name: Switch to system preference
+        icon: material/brightness-auto
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: orange
+      toggle:
+        name: Switch to light mode
+        icon: material/brightness-7
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: orange
+      toggle:
+        name: Switch to dark mode
+        icon: material/brightness-3
     features:
         - content.code.copy
+        - navigation.tracking
+        - toc.follow
+        - toc.integrate
+        - navigation.top
+        - navigation.instant
+        - navigation.instant.prefetch
 
 markdown_extensions:
   - admonition
@@ -22,7 +47,8 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
-
+  - toc:
+      permalink: true
 extra:
     analytics:
         provider: google
