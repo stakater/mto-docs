@@ -43,6 +43,11 @@ Install mkdocs-material and mermaid plugin:
 ```bash
 $ pip3 install mkdocs-material mkdocs-mermaid2-plugin mkdocs-glightbox
 ```
+Then, run below script to prepare theme from local and common theme resources. It will output to `dist/_theme` directory and it will also create `mkdocs.yml` file in root directory.
+
+```bash
+$ ./prepare_theme.sh
+```
 
 Finally serve the docs using the built-in web server which is based on Python http server - note that the production build will use Nginx instead:
 
@@ -55,6 +60,12 @@ or
 ```bash
 $ python3 -m mkdocs serve
 ```
+
+if you want to make theme changes with live reload, you can use `--watch-theme` with serve like below:
+```bash
+$ mkdocs serve --watch-theme
+```
+Then, you can make changes in `content` or `dist/_theme` folder.
 
 ### QA Checks
 
