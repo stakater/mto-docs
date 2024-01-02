@@ -9,6 +9,16 @@ SAAP docs are built using [MkDocs](https://github.com/mkdocs/mkdocs) which is ba
 
 This repository has Github action workflow which checks the quality of the documentation and builds the Dockerfile image on Pull Requests. On a push to the main branch, it will create a GitHub release and push the built Dockerfile image to an image repository.
 
+## Take update on git submodule
+
+This project contains two git submodules and if you wish to take an update on them, you can use this command:
+
+```bash
+git submodule update --init --recursive --remote
+```
+
+checkout `.gitmodules` to see what git submodules have been linked here.
+
 ## Build locally
 
 There are at least three options to get fast continuous feedback during local development:
@@ -21,13 +31,13 @@ There are at least three options to get fast continuous feedback during local de
 Build Dockerfile test image:
 
 ```bash
-$ docker build . -t test
+docker build . -t test
 ```
 
 Run test container:
 
 ```bash
-$ docker run -p 8080:8080 test
+docker run -p 8080:8080 test
 ```
 
 Then access the docs on [`localhost:8080`](localhost:8080).
@@ -38,12 +48,9 @@ Use [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/insta
 
 Install [Python 3](https://www.python.org/downloads/).
 
-Install mkdocs-material and mermaid plugin:
+Install python environment dependencies if you are using any other than what is defined in `theme_common`.
 
-```bash
-$ pip3 install mkdocs-material mkdocs-mermaid2-plugin mkdocs-glightbox
-```
-Then, run below script to prepare theme from local and common theme resources. It will output to `dist/_theme` directory and it will also create `mkdocs.yml` file in root directory.
+Then, run below script to prepare theme from local and common theme resources. It will output to `dist/_theme` directory and it will also create `mkdocs.yml` file in root directory. We are also installing the python dependencies coming from `theme_common` here.
 
 ```bash
 $ ./prepare_theme.sh
@@ -65,7 +72,7 @@ if you want to make theme changes with live reload, you can use `--watch-theme` 
 ```bash
 $ mkdocs serve --watch-theme
 ```
-Then, you can make changes in `content` or `dist/_theme` folder.
+Then, you can make changes in `content` or `dist/_theme` folder. Please note that `dist/_theme` is a build folder and any changes made here will be lost if you do not move them to theme_common or theme_override folder.
 
 ### QA Checks
 

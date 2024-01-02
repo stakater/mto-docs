@@ -1,13 +1,16 @@
 FROM python:3.12-alpine as builder
 
-RUN pip3 install mkdocs-material mkdocs-mermaid2-plugin mkdocs-glightbox
-
 # set workdir
 RUN mkdir -p $HOME/application
 WORKDIR $HOME/application
 
 # copy the entire application
 COPY --chown=1001:root . .
+
+RUN pip install -r theme_common/requirements.txt
+
+# In case you have your own python dependencies, you can use activate below command:
+# RUN pip install -r requirements.txt
 
 # pre-mkbuild step, we are infusing common and local theme changes
 RUN python theme_common/scripts/combine_theme_resources.py theme_common/resources theme_override/resources dist/_theme
