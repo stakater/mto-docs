@@ -1815,7 +1815,7 @@ openshift-operators<span class="w">   </span>sigma<span class="w">        </span
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;https://github.com/stakater/gitops-config&quot;</span>
 </code></pre></div>
 <p>Users belonging to the Sigma group will now only see applications created by them in the ArgoCD frontend now:</p>
-<p><a class="glightbox" href="../../images/argocd.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../images/argocd.png" /></a></p>
+<p><a class="glightbox" href="../../images/argocd.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../images/argocd.png" /></a></p>
 <h2 id="prevent-argocd-from-syncing-certain-namespaced-resources">Prevent ArgoCD from syncing certain namespaced resources</h2>
 <p>Bill wants tenants to not be able to sync <code>ResourceQuota</code> and <code>LimitRange</code> resources to their namespaces. To do this correctly, Bill will specify these resources to blacklist in the ArgoCD portion of the <a href="../../how-to-guides/integration-config.html">IntegrationConfig</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
