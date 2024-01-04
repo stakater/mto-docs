@@ -50,7 +50,7 @@ Install [Python 3](https://www.python.org/downloads/).
 
 Install python environment dependencies if you are using any other than what is defined in `theme_common`.
 
-Then run below script to prepare theme from local and common theme resources. It will output to `dist/_theme` directory and it will also create `mkdocs.yml` file in root directory. We are also installing the python dependencies coming from `theme_common` here.
+Then run below script to prepare theme from local and common theme resources. It will output to `dist/_theme` directory and create `mkdocs.yml` file in root directory. We are also installing the python dependencies coming from `theme_common` here.
 
 ```bash
 $ ./prepare_theme.sh
