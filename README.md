@@ -11,13 +11,13 @@ This repository has GitHub action workflow which checks the quality of the docum
 
 ## Take update on git submodule
 
-This project contains two git submodules and if you wish to take an update on them, you can use this command:
+This project contains a git submodule and if you wish to take an update on it, you can use this command:
 
 ```bash
 git submodule update --init --recursive --remote
 ```
 
-checkout `.gitmodules` to see what git submodules have been linked here.
+view `.gitmodules` file to see linked git submodules.
 
 ## Build locally
 
