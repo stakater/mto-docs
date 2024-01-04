@@ -34,7 +34,10 @@ jobs:
         with:
           python-version: 3.11
 
-      - name: Run Prepare theme script to merge theme_common and theme_override folders
+      - name: Install mike
+        run: pip3 install mike
+
+      - name: Run prepare_theme.sh script from repository to merge theme_common and theme_override folders
         run: |
           chmod +x prepare_theme.sh
           ./prepare_theme.sh
