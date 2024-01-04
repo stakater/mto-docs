@@ -8,14 +8,14 @@ on:
 
 jobs:
   doc_qa:
-    uses: stakater/.github/.github/workflows/pull_request_doc_qa.yaml@v0.0.54
+    uses: stakater/.github/.github/workflows/pull_request_doc_qa.yaml@v0.0.58
     with:
       MD_CONFIG: .github/md_config.json
       DOC_SRC: content
       MD_LINT_CONFIG: .markdownlint.yaml
   build_container:
     if: ${{ github.base_ref == 'main' }}
-    uses: stakater/.github/.github/workflows/pull_request_container_build.yaml@v0.0.54
+    uses: stakater/.github/.github/workflows/pull_request_container_build.yaml@v0.0.58
     with:
       DOCKER_BUILD_CONTEXTS: content=https://github.com/stakater/mto-docs.git#pull-request-deployments
       DOCKER_FILE_PATH: Dockerfile
