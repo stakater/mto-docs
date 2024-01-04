@@ -7,7 +7,47 @@ on:
       - '[0-9]+.[0-9]+'
 
 jobs:
+  # push:
+  #   uses: stakater/.github/.github/workflows/push_versioned_doc.yaml@v0.0.59
+  #   secrets:
+  #     GH_TOKEN: ${{ secrets.STAKATER_GITHUB_TOKEN }}
+
   push:
-    uses: stakater/.github/.github/workflows/push_versioned_doc.yaml@v0.0.59
-    secrets:
-      GH_TOKEN: ${{ secrets.STAKATER_GITHUB_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source files
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+          persist-credentials: true
+          token: ${{ secrets.STAKATER_GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install doc tools
+        run: pip3 install mkdocs-material mkdocs-mermaid2-plugin mike mkdocs-glightbox
+
+      - name: Configure Git user
+        run: |
+          git config --local user.email "stakater@gmail.com"
+          git config --local user.name "stakater-user"
+
+      - name: Deploy content
+        run: mike deploy --push ${{ github.ref_name }}
+
+      - name: Set alias
+        run: mike alias --push main latest
+
+      - name: Set default doc version
+        run: mike set-default --push latest
+
+      - name: Push Latest Tag
+        uses: anothrNick/github-tag-action@1.61.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.STAKATER_GITHUB_TOKEN }}
+          WITH_V: true
+          DEFAULT_BUMP: patch
