@@ -7,7 +7,7 @@ SAAP docs are built using [MkDocs](https://github.com/mkdocs/mkdocs) which is ba
 
 ## GitHub Actions
 
-This repository has Github action workflow which checks the quality of the documentation and builds the Dockerfile image on Pull Requests. On a push to the main branch, it will create a GitHub release and push the built Dockerfile image to an image repository.
+This repository has GitHub action workflow which checks the quality of the documentation and builds the Dockerfile image on Pull Requests. On a push to the main branch, it will create a GitHub release and push the built Dockerfile image to an image repository.
 
 ## Take update on git submodule
 
@@ -50,13 +50,13 @@ Install [Python 3](https://www.python.org/downloads/).
 
 Install python environment dependencies if you are using any other than what is defined in `theme_common`.
 
-Then, run below script to prepare theme from local and common theme resources. It will output to `dist/_theme` directory and it will also create `mkdocs.yml` file in root directory. We are also installing the python dependencies coming from `theme_common` here.
+Then run below script to prepare theme from local and common theme resources. It will output to `dist/_theme` directory and it will also create `mkdocs.yml` file in root directory. We are also installing the python dependencies coming from `theme_common` here.
 
 ```bash
 $ ./prepare_theme.sh
 ```
 
-Finally serve the docs using the built-in web server which is based on Python http server - note that the production build will use Nginx instead:
+Finally, serve the docs using the built-in web server which is based on Python http server - note that the production build will use Nginx instead:
 
 ```bash
 $ mkdocs serve
