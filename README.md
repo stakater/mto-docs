@@ -9,6 +9,10 @@ SAAP docs are built using [MkDocs](https://github.com/mkdocs/mkdocs) which is ba
 
 This repository has GitHub action workflow which checks the quality of the documentation and builds the Dockerfile image on Pull Requests. On a push to the main branch, it will create a GitHub release and push the built Dockerfile image to an image repository.
 
+## How to make changes
+It is important to know that you should only make changes in `theme_override` and `content` directory. Also, be mindful of which `mkdocs.yml` file you change since there are more than one such files.
+
+
 ## Take update on git submodule
 
 This project contains a git submodule and if you wish to take an update on it, you can use this command:
@@ -44,7 +48,7 @@ Then access the docs on [`localhost:8080`](localhost:8080).
 
 ### Run commands locally
 
-Use [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html) to set up Python virtual environments.
+Use [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html) to set up Python virtual environment.
 
 Install [Python 3](https://www.python.org/downloads/).
 
@@ -73,6 +77,7 @@ if you want to make theme changes with live reload, you can use `--watch-theme` 
 $ mkdocs serve --watch-theme
 ```
 Then, you can make changes in `content` or `dist/_theme` folder. Please note that `dist/_theme` is a build folder and any changes made here will be lost if you do not move them to theme_common or theme_override folder.
+
 
 ### QA Checks
 
