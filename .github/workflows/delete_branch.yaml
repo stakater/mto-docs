@@ -4,58 +4,8 @@ on:
   delete
 
 jobs:
-  # delete:
-  #   uses: stakater/.github/.github/workflows/branch_deleted.yaml@v0.0.59
-  #   secrets:
-  #     GH_TOKEN: ${{ secrets.STAKATER_GITHUB_TOKEN }}
   delete:
-    if: github.event.ref_type == 'branch'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check if the deleted branch is a version branch
-        id: branch_check
-        uses: MeilCli/regex-match@v1
-        with:
-          regex_pattern: '^[0-9]+\.[0-9]+(\.[0-9]+)?$'
-          search_string: ${{ github.event.ref }}
-
-      - name: Checkout source files
-        if: steps.branch_check.outputs.matched == 'true'
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          submodules: recursive
-          persist-credentials: true
-          token: ${{ secrets.STAKATER_GITHUB_TOKEN }}
-
-      - name: Set up Python
-        if: steps.branch_check.outputs.matched == 'true'
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.11
-
-      - name: Install mike
-        run: pip3 install mike
-
-      - name: Run prepare_theme.sh script from repository to merge theme_common and theme_override folders
-        run: |
-          chmod +x prepare_theme.sh
-          ./prepare_theme.sh
-
-      - name: Configure Git user
-        if: steps.branch_check.outputs.matched == 'true'
-        run: |
-          git config --local user.email "stakater@gmail.com"
-          git config --local user.name "stakater-user"
-
-      - name: Delete removed version
-        if: steps.branch_check.outputs.matched == 'true'
-        run: mike delete --push ${{ github.event.ref }}
-
-      - name: Push Latest Tag
-        if: steps.branch_check.outputs.matched == 'true'
-        uses: anothrNick/github-tag-action@1.61.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.STAKATER_GITHUB_TOKEN }}
-          WITH_V: true
-          DEFAULT_BUMP: patch
+    uses: stakater/.github/.github/workflows/mkdocs_branch_deleted.yaml@v0.0.60
+    secrets:
+      GH_TOKEN: ${{ secrets.STAKATER_GITHUB_TOKEN }}
+  

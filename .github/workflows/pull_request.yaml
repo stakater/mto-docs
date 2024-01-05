@@ -8,14 +8,14 @@ on:
 
 jobs:
   doc_qa:
-    uses: stakater/.github/.github/workflows/pull_request_doc_qa.yaml@v0.0.59
+    uses: stakater/.github/.github/workflows/pull_request_doc_qa.yaml@v0.0.60
     with:
       MD_CONFIG: .github/md_config.json
       DOC_SRC: content
       MD_LINT_CONFIG: .markdownlint.yaml
   build_container:
     if: ${{ github.base_ref == 'main' }}
-    uses: stakater/.github/.github/workflows/pull_request_container_build.yaml@v0.0.59
+    uses: stakater/.github/.github/workflows/pull_request_container_build.yaml@v0.0.60
     with:
       # below context not needed
       DOCKER_BUILD_CONTEXTS: content=https://github.com/stakater/mto-docs.git#pull-request-deployments
@@ -26,40 +26,7 @@ jobs:
       CONTAINER_REGISTRY_PASSWORD: ${{ secrets.STAKATER_NEXUS_PREPROD_PASSWORD }}
       SLACK_WEBHOOK_URL: ${{ secrets.STAKATER_DELIVERY_SLACK_WEBHOOK }}
       DOCKER_SECRETS: GIT_AUTH_TOKEN=${{ secrets.STAKATER_GITHUB_TOKEN }}
-  # deploy_doc:
-  #   uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@v0.0.54
-  #   secrets:
-  #     GH_TOKEN: ${{ secrets.STAKATER_GITHUB_TOKEN }}
-  deploy_doc_temp:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout source files
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          submodules: recursive
-          persist-credentials: true
-          token: ${{ secrets.STAKATER_GITHUB_TOKEN }}
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.11
-
-      - name: Install mike
-        run: pip3 install mike
-
-      - name: Run prepare_theme.sh script from repository to merge theme_common and theme_override folders
-        run: |
-          chmod +x prepare_theme.sh
-          ./prepare_theme.sh
-
-      - name: Configure git user
-        run: |
-          git config --local user.email "stakater@gmail.com"
-          git config --local user.name "stakater-user"
-
-      - name: Deploy PR docs
-        env:
-          HEAD_REF: ${{ github.head_ref }}
-        run: mike deploy --push -b pull-request-deployments ${HEAD_REF//\//-}
+  deploy_doc:
+    uses: stakater/.github/.github/workflows/mkdocs_pull_request_versioned_doc.yaml@v0.0.60
+    secrets:
+      GH_TOKEN: ${{ secrets.STAKATER_GITHUB_TOKEN }}
