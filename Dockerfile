@@ -1,32 +1,10 @@
-FROM python:3.12-alpine as builder
-
-# set workdir
-RUN mkdir -p $HOME/application
-WORKDIR $HOME/application
+# syntax=docker/dockerfile:1
+FROM nginxinc/nginx-unprivileged:1.25-alpine
+WORKDIR /usr/share/nginx/html/
 
 # copy the entire application
-COPY --chown=1001:root . .
+COPY --from=content --chown=1001:root . .
 
-RUN pip install -r theme_common/requirements.txt
-
-# In case you have your own python dependencies, you can use activate below command:
-# RUN pip install -r requirements.txt
-
-# pre-mkbuild step, we are infusing common and local theme changes
-RUN python theme_common/scripts/combine_theme_resources.py theme_common/resources theme_override/resources dist/_theme
-RUN python theme_common/scripts/combine_mkdocs_config_yaml.py theme_common/mkdocs.yml theme_override/mkdocs.yml mkdocs.yml
-
-RUN rm -f 'prepare_theme.sh' && \
-    rm -rf theme_global && \
-    rm -rf theme_common
-
-# build the docs
-RUN mkdocs build
-# remove the build theme because it is not needed after site is build.
-RUN rm -rf dist
-
-FROM nginxinc/nginx-unprivileged:1.25-alpine as deploy
-COPY --from=builder $HOME/application/site/ /usr/share/nginx/html/
 COPY default.conf /etc/nginx/conf.d/
 
 # set non-root user
