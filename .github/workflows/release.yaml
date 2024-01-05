@@ -13,8 +13,6 @@ jobs:
   build_container:
     uses: stakater/.github/.github/workflows/push_container_only.yaml@v0.0.60
     with:
-      # below context not needed
-      DOCKER_BUILD_CONTEXTS: content=https://github.com/stakater/mto-docs.git#gh-pages
       DOCKER_FILE_PATH: Dockerfile
     secrets:
       CONTAINER_REGISTRY_URL: ${{ secrets.STAKATER_NEXUS_PREPROD_REGISTRY }}
