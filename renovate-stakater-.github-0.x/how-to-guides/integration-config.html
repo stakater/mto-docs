@@ -43,10 +43,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700,700i%7CMontserrat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Montserrat";--md-code-font:"Montserrat Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -81,10 +83,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -152,7 +156,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.04 7 9.54 0 4.5-2.94 8.27-7 9.54.95.3 1.95.46 3 .46a10 10 0 0 0 10-10A10 10 0 0 0 9 2Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -229,7 +269,9 @@
 
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
@@ -1730,203 +1772,6 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#tenantroles" class="md-nav__link">
-    <span class="md-ellipsis">
-      TenantRoles
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="TenantRoles">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#default" class="md-nav__link">
-    <span class="md-ellipsis">
-      Default
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#custom" class="md-nav__link">
-    <span class="md-ellipsis">
-      Custom
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#openshift" class="md-nav__link">
-    <span class="md-ellipsis">
-      OpenShift
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="OpenShift">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#project-group-and-sandbox" class="md-nav__link">
-    <span class="md-ellipsis">
-      Project, group and sandbox
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cluster-admin-groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cluster Admin Groups
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cluster-admin-groups_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cluster Admin Groups
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#privileged-namespaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      Privileged Namespaces
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#privileged-serviceaccounts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Privileged ServiceAccounts
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#namespace-access-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Namespace Access Policy
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#argocd" class="md-nav__link">
-    <span class="md-ellipsis">
-      ArgoCD
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ArgoCD">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#namespace" class="md-nav__link">
-    <span class="md-ellipsis">
-      Namespace
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#namespaceresourceblacklist" class="md-nav__link">
-    <span class="md-ellipsis">
-      NamespaceResourceBlacklist
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clusterresourcewhitelist" class="md-nav__link">
-    <span class="md-ellipsis">
-      ClusterResourceWhitelist
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#provision" class="md-nav__link">
-    <span class="md-ellipsis">
-      Provision
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rhsso-red-hat-single-sign-on" class="md-nav__link">
-    <span class="md-ellipsis">
-      RHSSO (Red Hat Single Sign-On)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vault" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vault
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           
             <div class="md-content" data-md-component="content">
@@ -1938,7 +1783,7 @@
   
 
 
-<h1 id="integration-config">Integration Config</h1>
+<h1 id="integration-config">Integration Config<a class="headerlink" href="#integration-config" title="Permanent link">#</a></h1>
 <p>IntegrationConfig is used to configure settings of multi-tenancy for Multi Tenant Operator.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
@@ -2031,7 +1876,7 @@
 <span class="w">      </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
 </code></pre></div>
 <p>Following are the different components that can be used to configure multi-tenancy in a cluster via Multi Tenant Operator.</p>
-<h2 id="tenantroles">TenantRoles</h2>
+<h2 id="tenantroles">TenantRoles<a class="headerlink" href="#tenantroles" title="Permanent link">#</a></h2>
 <p>TenantRoles are required within the IntegrationConfig, as they are used for defining what roles will be applied to each Tenant namespace. The field allows optional custom roles, that are then used to create RoleBindings for namespaces that match a labelSelector.</p>
 <blockquote>
 <p>⚠️ If you do not configure roles in any way, then the default OpenShift roles of <code>owner</code>, <code>edit</code>, and <code>view</code> will apply to Tenant members. Their details can be found <a href="../reference-guides/custom-roles.html">here</a></p>
@@ -2068,9 +1913,9 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-viewer</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-view</span>
 </code></pre></div>
-<h3 id="default">Default</h3>
+<h3 id="default">Default<a class="headerlink" href="#default" title="Permanent link">#</a></h3>
 <p>This field contains roles that will be used to create default roleBindings for each namespace that belongs to tenants. These roleBindings are only created for a namespace if that namespace isn't already matched by the <code>custom</code> field below it. Therefore, it is required to have at least one role mentioned within each of its three subfields: <code>owner</code>, <code>editor</code>, and <code>viewer</code>. These 3 subfields also correspond to the member fields of the <a href="tenant.html#tenant">Tenant CR</a></p>
-<h3 id="custom">Custom</h3>
+<h3 id="custom">Custom<a class="headerlink" href="#custom" title="Permanent link">#</a></h3>
 <p>An array of custom roles. Similar to the <code>default</code> field, you can mention roles within this field as well. However, the custom roles also require the use of a <code>labelSelector</code> for each iteration within the array. The roles mentioned here will only apply to the namespaces that are matched by the labelSelector. If a namespace is matched by 2 different labelSelectors, then both roles will apply to it. Additionally, roles can be skipped within the labelSelector. These missing roles are then inherited from the <code>default</code> roles field . For example, if the following custom roles arrangement is used:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">custom</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">labelSelector</span><span class="p">:</span>
@@ -2086,7 +1931,7 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-owner</span>
 </code></pre></div>
 <p>Then the <code>editor</code> and <code>viewer</code> roles will be taken from the <code>default</code> roles field, as that is required to have at least one role mentioned.</p>
-<h2 id="openshift">OpenShift</h2>
+<h2 id="openshift">OpenShift<a class="headerlink" href="#openshift" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nt">openshift</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">project</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
@@ -2117,7 +1962,7 @@
 <span class="w">        </span><span class="nt">groups</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-admins</span>
 </code></pre></div>
-<h3 id="project-group-and-sandbox">Project, group and sandbox</h3>
+<h3 id="project-group-and-sandbox">Project, group and sandbox<a class="headerlink" href="#project-group-and-sandbox" title="Permanent link">#</a></h3>
 <p>We can use the <code>openshift.project</code>, <code>openshift.group</code> and <code>openshift.sandbox</code> fields to automatically add <code>labels</code> and <code>annotations</code> to  the <strong>Projects</strong> and <strong>Groups</strong> managed via MTO.</p>
 <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">openshift</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">project</span><span class="p">:</span>
@@ -2158,14 +2003,14 @@
 <span class="nt">users</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">andrew@stakater.com</span>
 </code></pre></div>
-<h3 id="cluster-admin-groups">Cluster Admin Groups</h3>
-<h3 id="cluster-admin-groups_1">Cluster Admin Groups</h3>
+<h3 id="cluster-admin-groups">Cluster Admin Groups<a class="headerlink" href="#cluster-admin-groups" title="Permanent link">#</a></h3>
+<h3 id="cluster-admin-groups_1">Cluster Admin Groups<a class="headerlink" href="#cluster-admin-groups_1" title="Permanent link">#</a></h3>
 <p><code>clusterAdminGroups:</code> Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of privilegedNamespaces.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>User <code>kube:admin</code> is bypassed by default to perform operations as a cluster admin, this includes operations on all the namespaces.</p>
 </div>
-<h3 id="privileged-namespaces">Privileged Namespaces</h3>
+<h3 id="privileged-namespaces">Privileged Namespaces<a class="headerlink" href="#privileged-namespaces" title="Permanent link">#</a></h3>
 <p><code>privilegedNamespaces:</code> Contains the list of <code>namespaces</code> ignored by MTO. MTO will not manage the <code>namespaces</code> in this list. Treatment for privileged namespaces does not involve further integrations or finalizers processing as with normal namespaces. Values in this list are regex patterns.</p>
 <p>For example:</p>
 <ul>
@@ -2173,13 +2018,13 @@
 <li>To ignore all namespaces starting with the <code>openshift-</code> prefix, we can specify <code>^openshift-.*</code>.</li>
 <li>To ignore any namespace containing <code>stakater</code> in its name, we can specify <code>^stakater.</code>. (A constant word given as a regex pattern will match any namespace containing that word.)</li>
 </ul>
-<h3 id="privileged-serviceaccounts">Privileged ServiceAccounts</h3>
+<h3 id="privileged-serviceaccounts">Privileged ServiceAccounts<a class="headerlink" href="#privileged-serviceaccounts" title="Permanent link">#</a></h3>
 <p><code>privilegedServiceAccounts:</code> Contains the list of <code>ServiceAccounts</code> ignored by MTO. MTO will not manage the <code>ServiceAccounts</code> in this list. Values in this list are regex patterns. For example, to ignore all <code>ServiceAccounts</code> starting with the <code>system:serviceaccount:openshift-</code> prefix, we can use <code>^system:serviceaccount:openshift-.*</code>; and to ignore a specific service account like <code>system:serviceaccount:builder</code> service account we can use <code>^system:serviceaccount:builder$.</code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><code>stakater</code>, <code>stakater.</code> and <code>stakater.*</code> will have the same effect. To check out the combinations, go to <a href="https://regex101.com/">Regex101</a>, select Golang, and type your expected regex and test string.  </p>
 </div>
-<h3 id="namespace-access-policy">Namespace Access Policy</h3>
+<h3 id="namespace-access-policy">Namespace Access Policy<a class="headerlink" href="#namespace-access-policy" title="Permanent link">#</a></h3>
 <p><code>namespaceAccessPolicy.Deny:</code> Can be used to restrict privileged <em>users/groups</em> CRUD operation over managed namespaces.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">namespaceAccessPolicy</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">deny</span><span class="p">:</span>
@@ -2193,10 +2038,10 @@
 <blockquote>
 <p>⚠️ If you want to use a more complex regex pattern (for the <code>openshift.privilegedNamespaces</code> or <code>openshift.privilegedServiceAccounts</code> field), it is recommended that you test the regex pattern first -  either locally or using a platform such as <a href="https://regex101.com/">https://regex101.com/</a>.</p>
 </blockquote>
-<h2 id="argocd">ArgoCD</h2>
-<h3 id="namespace">Namespace</h3>
+<h2 id="argocd">ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">#</a></h2>
+<h3 id="namespace">Namespace<a class="headerlink" href="#namespace" title="Permanent link">#</a></h3>
 <p><code>argocd.namespace</code> is an optional field used to specify the namespace where ArgoCD Applications and AppProjects are deployed. The field should be populated when you want to create an ArgoCD AppProject for each tenant.</p>
-<h3 id="namespaceresourceblacklist">NamespaceResourceBlacklist</h3>
+<h3 id="namespaceresourceblacklist">NamespaceResourceBlacklist<a class="headerlink" href="#namespaceresourceblacklist" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">argocd</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"> </span><span class="c1"># all resource groups</span>
@@ -2207,14 +2052,14 @@
 <span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkPolicy</span>
 </code></pre></div>
 <p><code>argocd.namespaceResourceBlacklist</code> prevents ArgoCD from syncing the listed resources from your GitOps repo.</p>
-<h3 id="clusterresourcewhitelist">ClusterResourceWhitelist</h3>
+<h3 id="clusterresourcewhitelist">ClusterResourceWhitelist<a class="headerlink" href="#clusterresourcewhitelist" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">argocd</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tronador.stakater.com</span>
 <span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvironmentProvisioner</span>
 </code></pre></div>
 <p><code>argocd.clusterResourceWhitelist</code> allows ArgoCD to sync the listed cluster scoped resources from your GitOps repo.</p>
-<h2 id="provision">Provision</h2>
+<h2 id="provision">Provision<a class="headerlink" href="#provision" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nt">provision</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -2230,7 +2075,7 @@
 <li><code>MTO-Postgresql</code> stateful set.</li>
 </ul>
 <p>Details on console GUI and showback can be found <a href="../explanation/console.html">here</a></p>
-<h2 id="rhsso-red-hat-single-sign-on">RHSSO (Red Hat Single Sign-On)</h2>
+<h2 id="rhsso-red-hat-single-sign-on">RHSSO (Red Hat Single Sign-On)<a class="headerlink" href="#rhsso-red-hat-single-sign-on" title="Permanent link">#</a></h2>
 <p>Red Hat Single Sign-On <a href="https://access.redhat.com/products/red-hat-single-sign-on">RHSSO</a> is based on the Keycloak project and enables you to secure your web applications by providing Web single sign-on (SSO) capabilities based on popular standards such as SAML 2.0, OpenID Connect and OAuth 2.0.</p>
 <p>If <code>RHSSO</code> is configured on a cluster, then RHSSO configuration can be enabled.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">rhsso</span><span class="p">:</span>
@@ -2249,7 +2094,7 @@
 <li><code>realm:</code> Will contain the realm name which is configured for users.</li>
 <li><code>url:</code> Will contain the URL of RHSSO.</li>
 </ul>
-<h2 id="vault">Vault</h2>
+<h2 id="vault">Vault<a class="headerlink" href="#vault" title="Permanent link">#</a></h2>
 <p><a href="https://www.vaultproject.io/">Vault</a> is used to secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data using a UI, CLI, or HTTP API.</p>
 <p>If <code>vault</code> is configured on a cluster, then Vault configuration can be enabled.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">Vault</span><span class="p">:</span>
@@ -2324,6 +2169,12 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2413,7 +2264,7 @@
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "toc.integrate", "navigation.top"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
       <script src="../assets/javascripts/bundle.d7c377c4.min.js"></script>

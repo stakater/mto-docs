@@ -43,10 +43,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700,700i%7CMontserrat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Montserrat";--md-code-font:"Montserrat Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -81,10 +83,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -152,7 +156,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.04 7 9.54 0 4.5-2.94 8.27-7 9.54.95.3 1.95.46 3 .46a10 10 0 0 0 10-10A10 10 0 0 0 9 2Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -229,7 +269,9 @@
 
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
@@ -1628,101 +1670,6 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Requirements
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installing-via-operatorhub-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installing via OperatorHub UI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installing-via-cli-or-gitops" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installing via CLI OR GitOps
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enabling-console" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enabling Console
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Enabling Console">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#manual-approval" class="md-nav__link">
-    <span class="md-ellipsis">
-      Manual Approval
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#uninstall-via-operatorhub-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      Uninstall via OperatorHub UI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Notes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           
             <div class="md-content" data-md-component="content">
@@ -1734,7 +1681,7 @@
   
 
 
-<h1 id="installation">Installation</h1>
+<h1 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h1>
 <p>This document contains instructions on installing, uninstalling and configuring Multi Tenant Operator using OpenShift MarketPlace.</p>
 <ol>
 <li>
@@ -1750,11 +1697,11 @@
 <p><a href="#uninstall-via-operatorhub-ui">Uninstall</a></p>
 </li>
 </ol>
-<h2 id="requirements">Requirements</h2>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
 <ul>
 <li>An <strong>OpenShift</strong> cluster [v4.8 - v4.13]</li>
 </ul>
-<h2 id="installing-via-operatorhub-ui">Installing via OperatorHub UI</h2>
+<h2 id="installing-via-operatorhub-ui">Installing via OperatorHub UI<a class="headerlink" href="#installing-via-operatorhub-ui" title="Permanent link">#</a></h2>
 <ul>
 <li>After opening OpenShift console click on <code>Operators</code>, followed by <code>OperatorHub</code> from the side menu</li>
 </ul>
@@ -1785,7 +1732,7 @@
 <blockquote>
 <p>Note: MTO will be installed in <code>multi-tenant-operator</code> namespace.</p>
 </blockquote>
-<h2 id="installing-via-cli-or-gitops">Installing via CLI OR GitOps</h2>
+<h2 id="installing-via-cli-or-gitops">Installing via CLI OR GitOps<a class="headerlink" href="#installing-via-cli-or-gitops" title="Permanent link">#</a></h2>
 <ul>
 <li>Create namespace <code>multi-tenant-operator</code></li>
 </ul>
@@ -1843,7 +1790,7 @@ subscription.operators.coreos.com/tenant-operator<span class="w"> </span>created
 </ul>
 <p><a class="glightbox" href="../images/to_installed_successful_pod.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/to_installed_successful_pod.png" /></a></p>
 <p>For more details and configurations check out <a href="../how-to-guides/integration-config.html">IntegrationConfig</a>.</p>
-<h2 id="enabling-console">Enabling Console</h2>
+<h2 id="enabling-console">Enabling Console<a class="headerlink" href="#enabling-console" title="Permanent link">#</a></h2>
 <p>To enable console GUI for MTO, go to <code>Search</code> -&gt; <code>IntegrationConfig</code> -&gt; <code>tenant-operator-config</code> and make sure the following fields are set to <code>true</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">provision</span><span class="p">:</span>
@@ -1853,7 +1800,7 @@ subscription.operators.coreos.com/tenant-operator<span class="w"> </span>created
 <blockquote>
 <p>Note: If your <code>InstallPlan</code> approval is set to <code>Manual</code> then you will have to manually approve the <code>InstallPlan</code> for MTO console components to be installed.</p>
 </blockquote>
-<h3 id="manual-approval">Manual Approval</h3>
+<h3 id="manual-approval">Manual Approval<a class="headerlink" href="#manual-approval" title="Permanent link">#</a></h3>
 <ul>
 <li>Open OpenShift console and click on <code>Operators</code>, followed by <code>Installed Operators</code> from the side menu.</li>
 </ul>
@@ -1873,7 +1820,7 @@ subscription.operators.coreos.com/tenant-operator<span class="w"> </span>created
 <ul>
 <li>Now the <code>InstallPlan</code> will be approved, and MTO console components will be installed.</li>
 </ul>
-<h2 id="uninstall-via-operatorhub-ui">Uninstall via OperatorHub UI</h2>
+<h2 id="uninstall-via-operatorhub-ui">Uninstall via OperatorHub UI<a class="headerlink" href="#uninstall-via-operatorhub-ui" title="Permanent link">#</a></h2>
 <p>You can uninstall MTO by following these steps:</p>
 <ul>
 <li>
@@ -1896,7 +1843,7 @@ subscription.operators.coreos.com/tenant-operator<span class="w"> </span>created
 <p><code>Optional:</code> you can also manually remove MTO's CRDs and its resources from the cluster.</p>
 </li>
 </ul>
-<h2 id="notes">Notes</h2>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
 <ul>
 <li>For more details on how to use MTO please refer <a href="tenant/create-tenant.html">Tenant tutorial</a>.</li>
 <li>For more details on how to extend your MTO manager ClusterRole please refer <a href="../reference-guides/admin-clusterrole.html">extend-admin-clusterrole</a>.</li>
@@ -1922,6 +1869,12 @@ subscription.operators.coreos.com/tenant-operator<span class="w"> </span>created
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -2011,7 +1964,7 @@ subscription.operators.coreos.com/tenant-operator<span class="w"> </span>created
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "toc.integrate", "navigation.top"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
       <script src="../assets/javascripts/bundle.d7c377c4.min.js"></script>
