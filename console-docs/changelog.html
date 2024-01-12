@@ -43,10 +43,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700,700i%7CMontserrat+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Montserrat";--md-code-font:"Montserrat Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="stylesheets/extra.css">
     
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -81,10 +83,12 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -152,7 +156,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.04 7 9.54 0 4.5-2.94 8.27-7 9.54.95.3 1.95.46 3 .46a10 10 0 0 0 10-10A10 10 0 0 0 9 2Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -229,7 +269,9 @@
 
 
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
@@ -1513,13 +1555,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#v0105" class="md-nav__link">
+  <a href="#v0106" class="md-nav__link">
     <span class="md-ellipsis">
-      v0.10.5
+      v0.10.6
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="v0.10.5">
+    <nav class="md-nav" aria-label="v0.10.6">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1533,6 +1575,39 @@
         
           <li class="md-nav__item">
   <a href="#enhanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v0105" class="md-nav__link">
+    <span class="md-ellipsis">
+      v0.10.5
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="v0.10.5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fix_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fix
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhanced_1" class="md-nav__link">
     <span class="md-ellipsis">
       Enhanced
     </span>
@@ -1565,7 +1640,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fix_1" class="md-nav__link">
+  <a href="#fix_2" class="md-nav__link">
     <span class="md-ellipsis">
       Fix
     </span>
@@ -1574,7 +1649,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#enhanced_1" class="md-nav__link">
+  <a href="#enhanced_2" class="md-nav__link">
     <span class="md-ellipsis">
       Enhanced
     </span>
@@ -2373,848 +2448,6 @@
               </div>
             
             
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#v010x" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.10.x
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="v0.10.x">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#v0105" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.10.5
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="v0.10.5">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fix" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fix
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#enhanced" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enhanced
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0100" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.10.0
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="v0.10.0">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#feature" class="md-nav__link">
-    <span class="md-ellipsis">
-      Feature
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fix_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fix
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#enhanced_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enhanced
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#v09x" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.9.x
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="v0.9.x">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#v094" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.9.4
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v092" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.9.2
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v091" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.9.1
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v090" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.9.0
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="v0.9.0">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#enabling-console" class="md-nav__link">
-    <span class="md-ellipsis">
-      Enabling console
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#v08x" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.8.x
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="v0.8.x">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#v083" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.8.3
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v081" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.8.1
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v080" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.8.0
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#v07x" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.7.x
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="v0.7.x">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#v074" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.7.4
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v073" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.7.3
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v072" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.7.2
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v071" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.7.1
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v070" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.7.0
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#v06x" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.6.x
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="v0.6.x">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#v061" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.6.1
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v060" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.6.0
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#v05x" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.5.x
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="v0.5.x">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#v054" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.5.4
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v053" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.5.3
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v052" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.5.2
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v051" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.5.1
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v050" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.5.0
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#v04x" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.4.x
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="v0.4.x">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#v047" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.4.7
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v046" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.4.6
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v045" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.4.5
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v044" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.4.4
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v043" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.4.3
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v042" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.4.2
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v041" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.4.1
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v040" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.4.0
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#v03x" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.x
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="v0.3.x">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#v0333" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.33
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0333_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.33
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0333_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.33
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0330" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.30
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0329" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.29
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0328" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.28
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0327" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.27
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0326" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.26
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0325" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.25
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="v0.3.25">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#migrating-from-pervious-version" class="md-nav__link">
-    <span class="md-ellipsis">
-      Migrating from pervious version
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0324" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.24
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0323" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.23
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0322" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.22
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0321" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.21
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0320" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.20
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0319" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.19
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0318" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.18
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0317" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.17
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0316" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.16
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0315" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.15
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0314" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.14
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0313" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.13
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0312" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.12
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0311" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.11
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0310" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.10
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v039" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.9
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v038" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.8
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v037" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.7
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v036" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.6
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v035" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.5
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v034" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.4
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v033" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.3
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v032" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.2
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v031" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.1
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v030" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.3.0
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#v02x" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.2.x
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="v0.2.x">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#v0233" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.2.33
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0232" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.2.32
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#v0231" class="md-nav__link">
-    <span class="md-ellipsis">
-      v0.2.31
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           
             <div class="md-content" data-md-component="content">
@@ -3226,15 +2459,24 @@
   
 
 
-<h1 id="changelog">Changelog</h1>
-<h2 id="v010x">v0.10.x</h2>
-<h3 id="v0105">v0.10.5</h3>
-<h4 id="fix">Fix</h4>
+<h1 id="changelog">Changelog<a class="headerlink" href="#changelog" title="Permanent link">#</a></h1>
+<h2 id="v010x">v0.10.x<a class="headerlink" href="#v010x" title="Permanent link">#</a></h2>
+<h3 id="v0106">v0.10.6<a class="headerlink" href="#v0106" title="Permanent link">#</a></h3>
+<h4 id="fix">Fix<a class="headerlink" href="#fix" title="Permanent link">#</a></h4>
+<ul>
+<li>Fixed broken logs for namespace webhook where username and namespace were interchangeably used after a recent update</li>
+</ul>
+<h4 id="enhanced">Enhanced<a class="headerlink" href="#enhanced" title="Permanent link">#</a></h4>
+<ul>
+<li>Made log messages more elaborative and consistent on one format for namespace webhook</li>
+</ul>
+<h3 id="v0105">v0.10.5<a class="headerlink" href="#v0105" title="Permanent link">#</a></h3>
+<h4 id="fix_1">Fix<a class="headerlink" href="#fix_1" title="Permanent link">#</a></h4>
 <ul>
 <li><code>TemplateGroupInstance</code> controller now correctly updates the <code>TemplateGroupInstance</code> custom resource status and the namespace count upon the deletion of a namespace.</li>
 <li>Conflict between <code>TemplateGroupInstance</code> controller and <code>kube-contoller-manager</code> over mentioning of secret names in <code>secrets</code> or <code>imagePullSecrets</code> field in <code>ServiceAccounts</code> has been fixed by temporarily ignoring updates to or from <code>ServiceAccounts</code>.</li>
 </ul>
-<h4 id="enhanced">Enhanced</h4>
+<h4 id="enhanced_1">Enhanced<a class="headerlink" href="#enhanced_1" title="Permanent link">#</a></h4>
 <ul>
 <li>Privileged service accounts mentioned in the <code>IntegrationConfig</code> have now access over all types of namespaces. Previously operations were denied on orphaned namespaces (the namespaces which are not part of both privileged and tenant scope). More info in <a href="faq.html">FAQs</a></li>
 <li><code>TemplateGroupInstance</code> controller now ensures that its underlying resources are force-synced when a namespace is created or deleted.</li>
@@ -3242,8 +2484,8 @@
 <li>The <code>TemplateGroupInstance</code> reconcile flow has been refined to process only the namespace for which the event was received, streamlining resource creation/deletion and improving overall efficiency.</li>
 <li>Introduced new metrics to enhance the monitoring capabilities of the operator. Details at <a href="explanation/logs-metrics.html">TGI Metrics Explanation</a></li>
 </ul>
-<h3 id="v0100">v0.10.0</h3>
-<h4 id="feature">Feature</h4>
+<h3 id="v0100">v0.10.0<a class="headerlink" href="#v0100" title="Permanent link">#</a></h3>
+<h4 id="feature">Feature<a class="headerlink" href="#feature" title="Permanent link">#</a></h4>
 <ul>
 <li>Added support for caching for MTO Console using PostgreSQL as caching layer.</li>
 <li>Added support for custom metrics with Template, Template Instance and Template Group Instance.</li>
@@ -3259,20 +2501,20 @@
 </li>
 <li>Support for MTO e2e.</li>
 </ul>
-<h4 id="fix_1">Fix</h4>
+<h4 id="fix_2">Fix<a class="headerlink" href="#fix_2" title="Permanent link">#</a></h4>
 <ul>
 <li>Updated CreateMergePatch to MergeMergePatches to address issues caused by losing <code>resourceVersion</code> and UID when converting <code>oldObject</code> to <code>newObject</code>. This prevents problems when the object is edited by another controller.</li>
 <li>In Template Resource distribution for Secret type, we now consider the source's Secret field type, preventing default creation as Opaque regardless of the source's actual type.</li>
 <li>Enhanced admin permissions for tenant role in Vault to include Create, Update, Delete alongside existing Read and List privileges for the common-shared-secrets path. Viewers now have Read permission.</li>
 </ul>
-<h4 id="enhanced_1">Enhanced</h4>
+<h4 id="enhanced_2">Enhanced<a class="headerlink" href="#enhanced_2" title="Permanent link">#</a></h4>
 <ul>
 <li>Started to support Kubernetes along with OpenShift as platform type.</li>
 <li>Support of MTO's PostgreSQL instance as persistent storage for keycloak.</li>
 <li><code>kube:admin</code> is now bypassed by default to perform operations, earlier <code>kube:admin</code> needed to be mentioned in respective tenants to give it access over namespaces.</li>
 </ul>
-<h2 id="v09x">v0.9.x</h2>
-<h3 id="v094">v0.9.4</h3>
+<h2 id="v09x">v0.9.x<a class="headerlink" href="#v09x" title="Permanent link">#</a></h2>
+<h3 id="v094">v0.9.4<a class="headerlink" href="#v094" title="Permanent link">#</a></h3>
 <ul>
 <li>enhance: Removed Quota's default support of adding it to Tenant CR in <code>spec.quota</code>, if <code>quota.tenantoperator.stakater.com/is-default: "true"</code> annotation is present</li>
 <li>fix: ValidatingWebhookConfiguration CRs are now owned by OLM, to handle cleanup upon operator uninstall</li>
@@ -3281,17 +2523,17 @@
 <blockquote>
 <p>More information about TemplateGroupInstance's sync at <a href="reference-guides/resource-sync-by-tgi.html">Sync Resources Deployed by TemplateGroupInstance</a></p>
 </blockquote>
-<h3 id="v092">v0.9.2</h3>
+<h3 id="v092">v0.9.2<a class="headerlink" href="#v092" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Values within TemplateInstances created via Tenants will no longer be duplicated on Tenant CR update</li>
 <li>fix: Fixed a bug that made private namespaces become public</li>
 </ul>
-<h3 id="v091">v0.9.1</h3>
+<h3 id="v091">v0.9.1<a class="headerlink" href="#v091" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Allow namespace controller to reconcile without crashing, if no IC exists</li>
 <li>fix: In case a group mentioned in IC doesn't exist, it won't block reconciliation or editing of MTO's manifests</li>
 </ul>
-<h3 id="v090">v0.9.0</h3>
+<h3 id="v090">v0.9.0<a class="headerlink" href="#v090" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Added console for tenants, templates and integration config</li>
 <li>feat: Added support for custom realm name for RHSSO integration in Integration Config</li>
@@ -3304,20 +2546,20 @@
 <li>enhance: General enhancements and improvements</li>
 <li>chore: Update dependencies</li>
 </ul>
-<h4 id="enabling-console">Enabling console</h4>
+<h4 id="enabling-console">Enabling console<a class="headerlink" href="#enabling-console" title="Permanent link">#</a></h4>
 <ul>
 <li>To enable console visit <a href="tutorials/installation.html">Installation</a>, and add config to subscription for OperatorHub based installation.</li>
 </ul>
-<h2 id="v08x">v0.8.x</h2>
-<h3 id="v083">v0.8.3</h3>
+<h2 id="v08x">v0.8.x<a class="headerlink" href="#v08x" title="Permanent link">#</a></h2>
+<h3 id="v083">v0.8.3<a class="headerlink" href="#v083" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Reconcile namespaces when the group spec for tenants is changed, so new rolebindings can be created for them</li>
 </ul>
-<h3 id="v081">v0.8.1</h3>
+<h3 id="v081">v0.8.1<a class="headerlink" href="#v081" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Updated release pipelines</li>
 </ul>
-<h3 id="v080">v0.8.0</h3>
+<h3 id="v080">v0.8.0<a class="headerlink" href="#v080" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Allow custom roles for each tenant via label selector, more details in <a href="reference-guides/custom-roles.html">custom roles document</a><ul>
 <li>Roles mapping is a required field in <a href="how-to-guides/integration-config.html">MTO's IntegrationConfig</a>. By default, it will always be filled with OpenShift's admin/edit/view roles</li>
@@ -3337,26 +2579,26 @@
 <li>fix: Fix panic in ResourceSupervisor sleep functionality due to sending on closed channel</li>
 <li>chore: Update dependencies</li>
 </ul>
-<h2 id="v07x">v0.7.x</h2>
-<h3 id="v074">v0.7.4</h3>
+<h2 id="v07x">v0.7.x<a class="headerlink" href="#v07x" title="Permanent link">#</a></h2>
+<h3 id="v074">v0.7.4<a class="headerlink" href="#v074" title="Permanent link">#</a></h3>
 <ul>
 <li>maintain: Automate certification of new MTO releases on RedHat's Operator Hub</li>
 </ul>
-<h3 id="v073">v0.7.3</h3>
+<h3 id="v073">v0.7.3<a class="headerlink" href="#v073" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Updated Tenant CR to provide Tenant level AppProject permissions</li>
 </ul>
-<h3 id="v072">v0.7.2</h3>
+<h3 id="v072">v0.7.2<a class="headerlink" href="#v072" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Add support to map secrets/configmaps from one namespace to other namespaces using TI. Secrets/configmaps will only be mapped if their namespaces belong to same Tenant</li>
 </ul>
-<h3 id="v071">v0.7.1</h3>
+<h3 id="v071">v0.7.1<a class="headerlink" href="#v071" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Add option to keep AppProjects created by Multi Tenant Operator in case Tenant is deleted. By default, AppProjects get deleted</li>
 <li>fix: Status now updates after namespaces are created</li>
 <li>maintain: Changes to Helm chart's default behaviour</li>
 </ul>
-<h3 id="v070">v0.7.0</h3>
+<h3 id="v070">v0.7.0<a class="headerlink" href="#v070" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Add support to map secrets/configmaps from one namespace to other namespaces using TGI. Resources can be mapped from one Tenant's namespaces to some other Tenant's namespaces</li>
 <li>feat: Allow creation of sandboxes that are private to the user</li>
@@ -3368,12 +2610,12 @@
 </li>
 <li>enhance: Better automated testing</li>
 </ul>
-<h2 id="v06x">v0.6.x</h2>
-<h3 id="v061">v0.6.1</h3>
+<h2 id="v06x">v0.6.x<a class="headerlink" href="#v06x" title="Permanent link">#</a></h2>
+<h3 id="v061">v0.6.1<a class="headerlink" href="#v061" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Update MTO service-account name in environment variable</li>
 </ul>
-<h3 id="v060">v0.6.0</h3>
+<h3 id="v060">v0.6.0<a class="headerlink" href="#v060" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Add support to ArgoCD AppProjects created by Tenant Controller to have their sync disabled when relevant namespaces are hibernating</li>
 <li>feat: Add validation webhook for ResourceSupervisor</li>
@@ -3387,24 +2629,24 @@
 <li>enhance: Optimize TGI and TI performance under load</li>
 <li>maintain: Bump Operator-SDK and Dependencies version</li>
 </ul>
-<h2 id="v05x">v0.5.x</h2>
-<h3 id="v054">v0.5.4</h3>
+<h2 id="v05x">v0.5.x<a class="headerlink" href="#v05x" title="Permanent link">#</a></h2>
+<h3 id="v054">v0.5.4<a class="headerlink" href="#v054" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Update Helm dependency to v3.8.2</li>
 </ul>
-<h3 id="v053">v0.5.3</h3>
+<h3 id="v053">v0.5.3<a class="headerlink" href="#v053" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Add support for parameters in Helm chartRepository in templates</li>
 </ul>
-<h3 id="v052">v0.5.2</h3>
+<h3 id="v052">v0.5.2<a class="headerlink" href="#v052" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Add service name prefix for webhooks</li>
 </ul>
-<h3 id="v051">v0.5.1</h3>
+<h3 id="v051">v0.5.1<a class="headerlink" href="#v051" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: ResourceSupervisor CR no longer requires a field for the Tenant name</li>
 </ul>
-<h3 id="v050">v0.5.0</h3>
+<h3 id="v050">v0.5.0<a class="headerlink" href="#v050" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Add support for tenant namespaces off-boarding. For more details check out <a href="tutorials/tenant/deleting-tenant.html#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted">onDelete</a></li>
 <li>
@@ -3426,78 +2668,78 @@
 <p>chore: Remove conversion webhook for Quota and Tenant</p>
 </li>
 </ul>
-<h2 id="v04x">v0.4.x</h2>
-<h3 id="v047">v0.4.7</h3>
+<h2 id="v04x">v0.4.x<a class="headerlink" href="#v04x" title="Permanent link">#</a></h2>
+<h3 id="v047">v0.4.7<a class="headerlink" href="#v047" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Add hibernation of StatefulSets and Deployments based on a timer</li>
 <li>feat: <a href="tutorials/tenant/tenant-hibernation.html">New custom resource</a> that handles hibernation</li>
 </ul>
-<h3 id="v046">v0.4.6</h3>
+<h3 id="v046">v0.4.6<a class="headerlink" href="#v046" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Revert v0.4.4</li>
 </ul>
-<h3 id="v045">v0.4.5</h3>
+<h3 id="v045">v0.4.5<a class="headerlink" href="#v045" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Add support for applying labels/annotation on specific namespaces</li>
 </ul>
-<h3 id="v044">v0.4.4</h3>
+<h3 id="v044">v0.4.4<a class="headerlink" href="#v044" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Update <code>privilegedNamespaces</code> regex</li>
 </ul>
-<h3 id="v043">v0.4.3</h3>
+<h3 id="v043">v0.4.3<a class="headerlink" href="#v043" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: IntegrationConfig will now be synced in all pods</li>
 </ul>
-<h3 id="v042">v0.4.2</h3>
+<h3 id="v042">v0.4.2<a class="headerlink" href="#v042" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Added support to distribute common labels and annotations to tenant namespaces</li>
 </ul>
-<h3 id="v041">v0.4.1</h3>
+<h3 id="v041">v0.4.1<a class="headerlink" href="#v041" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Update dependencies to latest version</li>
 </ul>
-<h3 id="v040">v0.4.0</h3>
+<h3 id="v040">v0.4.0<a class="headerlink" href="#v040" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Controllers are now separated into individual pods</li>
 </ul>
-<h2 id="v03x">v0.3.x</h2>
-<h3 id="v0333">v0.3.33</h3>
+<h2 id="v03x">v0.3.x<a class="headerlink" href="#v03x" title="Permanent link">#</a></h2>
+<h3 id="v0333">v0.3.33<a class="headerlink" href="#v0333" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Optimize namespace reconciliation</li>
 </ul>
-<h3 id="v0333_1">v0.3.33</h3>
+<h3 id="v0333_1">v0.3.33<a class="headerlink" href="#v0333_1" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Revert v0.3.29 change till webhook network issue isn't resolved</li>
 </ul>
-<h3 id="v0333_2">v0.3.33</h3>
+<h3 id="v0333_2">v0.3.33<a class="headerlink" href="#v0333_2" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Execute webhook and controller of matching custom resource in same pod</li>
 </ul>
-<h3 id="v0330">v0.3.30</h3>
+<h3 id="v0330">v0.3.30<a class="headerlink" href="#v0330" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Namespace controller will now trigger TemplateGroupInstance when a new matching namespace is created</li>
 </ul>
-<h3 id="v0329">v0.3.29</h3>
+<h3 id="v0329">v0.3.29<a class="headerlink" href="#v0329" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Controllers are now separated into individual pods</li>
 </ul>
-<h3 id="v0328">v0.3.28</h3>
+<h3 id="v0328">v0.3.28<a class="headerlink" href="#v0328" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Enhancement of TemplateGroupInstance Namespace event listener</li>
 </ul>
-<h3 id="v0327">v0.3.27</h3>
+<h3 id="v0327">v0.3.27<a class="headerlink" href="#v0327" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: TemplateGroupInstance will create resources instantly whenever a Namespace with matching labels is created</li>
 </ul>
-<h3 id="v0326">v0.3.26</h3>
+<h3 id="v0326">v0.3.26<a class="headerlink" href="#v0326" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Update reconciliation frequency of TemplateGroupInstance</li>
 </ul>
-<h3 id="v0325">v0.3.25</h3>
+<h3 id="v0325">v0.3.25<a class="headerlink" href="#v0325" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: TemplateGroupInstance will now directly create template resources instead of creating TemplateInstances</li>
 </ul>
-<h4 id="migrating-from-pervious-version">Migrating from pervious version</h4>
+<h4 id="migrating-from-pervious-version">Migrating from pervious version<a class="headerlink" href="#migrating-from-pervious-version" title="Permanent link">#</a></h4>
 <ul>
 <li>To migrate to Tenant-Operator:v0.3.25 perform the following steps<ul>
 <li>Downscale Tenant-Operator deployment by setting the replicas count to 0</li>
@@ -3506,15 +2748,15 @@
 </ul>
 </li>
 </ul>
-<h3 id="v0324">v0.3.24</h3>
+<h3 id="v0324">v0.3.24<a class="headerlink" href="#v0324" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Add feature to allow ArgoCD to sync specific cluster scoped custom resources, configurable via Integration Config. More details in <a href="how-to-guides/integration-config.html#argocd">relevant docs</a></li>
 </ul>
-<h3 id="v0323">v0.3.23</h3>
+<h3 id="v0323">v0.3.23<a class="headerlink" href="#v0323" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Added concurrent reconcilers for template instance controller</li>
 </ul>
-<h3 id="v0322">v0.3.22</h3>
+<h3 id="v0322">v0.3.22<a class="headerlink" href="#v0322" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Added validation webhook to prevent Tenant owners from creating RoleBindings with kind 'Group' or 'User'</li>
 <li>fix: Removed redundant logs for namespace webhook</li>
@@ -3533,15 +2775,15 @@
 </ul>
 </li>
 </ul>
-<h3 id="v0321">v0.3.21</h3>
+<h3 id="v0321">v0.3.21<a class="headerlink" href="#v0321" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Added ClusterRole manager rules extension</li>
 </ul>
-<h3 id="v0320">v0.3.20</h3>
+<h3 id="v0320">v0.3.20<a class="headerlink" href="#v0320" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Fixed the recreation of underlying template resources, if resources were deleted</li>
 </ul>
-<h3 id="v0319">v0.3.19</h3>
+<h3 id="v0319">v0.3.19<a class="headerlink" href="#v0319" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Namespace webhook FailurePolicy is now set to Ignore instead of Fail</li>
 <li>fix: Fixed config not being updated in namespace webhook when Integration Config is updated</li>
@@ -3554,98 +2796,98 @@
 <li><a href="how-to-guides/tenant.html">Tenant v1beta1</a></li>
 </ul>
 </blockquote>
-<h3 id="v0318">v0.3.18</h3>
+<h3 id="v0318">v0.3.18<a class="headerlink" href="#v0318" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Add ArgoCD namespace to destination namespaces for App Projects</li>
 </ul>
-<h3 id="v0317">v0.3.17</h3>
+<h3 id="v0317">v0.3.17<a class="headerlink" href="#v0317" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Cluster administrator's permission will now have higher precedence on privileged namespaces</li>
 </ul>
-<h3 id="v0316">v0.3.16</h3>
+<h3 id="v0316">v0.3.16<a class="headerlink" href="#v0316" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Add groups mentioned in Tenant CR to ArgoCD App Project manifests' RBAC</li>
 </ul>
-<h3 id="v0315">v0.3.15</h3>
+<h3 id="v0315">v0.3.15<a class="headerlink" href="#v0315" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Add validation webhook for TemplateInstance &amp; TemplateGroupInstance to prevent their creation in case the Template they reference does not exist</li>
 </ul>
-<h3 id="v0314">v0.3.14</h3>
+<h3 id="v0314">v0.3.14<a class="headerlink" href="#v0314" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Added Validation Webhook for Quota to prevent its deletion when a reference to it exists in any Tenant</li>
 <li>feat: Added Validation Webhook for Template to prevent its deletion when a reference to it exists in any Tenant, TemplateGroupInstance or TemplateInstance</li>
 <li>fix: Fixed a crash that occurred in case Integration Config was not found</li>
 </ul>
-<h3 id="v0313">v0.3.13</h3>
+<h3 id="v0313">v0.3.13<a class="headerlink" href="#v0313" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Multi Tenant Operator will now consider all namespaces to be managed if any default Integration Config is not found</li>
 </ul>
-<h3 id="v0312">v0.3.12</h3>
+<h3 id="v0312">v0.3.12<a class="headerlink" href="#v0312" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: General enhancements and improvements</li>
 </ul>
-<h3 id="v0311">v0.3.11</h3>
+<h3 id="v0311">v0.3.11<a class="headerlink" href="#v0311" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Fix Quota's conversion webhook converting the wrong LimitRange field</li>
 </ul>
-<h3 id="v0310">v0.3.10</h3>
+<h3 id="v0310">v0.3.10<a class="headerlink" href="#v0310" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Fix Quota's LimitRange to its intended design by being an optional field</li>
 </ul>
-<h3 id="v039">v0.3.9</h3>
+<h3 id="v039">v0.3.9<a class="headerlink" href="#v039" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Add ability to prevent certain resources from syncing via ArgoCD</li>
 </ul>
-<h3 id="v038">v0.3.8</h3>
+<h3 id="v038">v0.3.8<a class="headerlink" href="#v038" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Add default annotation to OpenShift Projects that show description about the Project</li>
 </ul>
-<h3 id="v037">v0.3.7</h3>
+<h3 id="v037">v0.3.7<a class="headerlink" href="#v037" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Fix a typo in Multi Tenant Operator's Helm release</li>
 </ul>
-<h3 id="v036">v0.3.6</h3>
+<h3 id="v036">v0.3.6<a class="headerlink" href="#v036" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Fix ArgoCD's <code>destinationNamespaces</code> created by Multi Tenant Operator</li>
 </ul>
-<h3 id="v035">v0.3.5</h3>
+<h3 id="v035">v0.3.5<a class="headerlink" href="#v035" title="Permanent link">#</a></h3>
 <ul>
 <li>fix: Change sandbox creation from 1 for each group to 1 for each user in a group</li>
 </ul>
-<h3 id="v034">v0.3.4</h3>
+<h3 id="v034">v0.3.4<a class="headerlink" href="#v034" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Support creation of sandboxes for each group</li>
 </ul>
-<h3 id="v033">v0.3.3</h3>
+<h3 id="v033">v0.3.3<a class="headerlink" href="#v033" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Add ability to create namespaces from a list of namespace prefixes listed in the Tenant CR</li>
 </ul>
-<h3 id="v032">v0.3.2</h3>
+<h3 id="v032">v0.3.2<a class="headerlink" href="#v032" title="Permanent link">#</a></h3>
 <ul>
 <li>refactor: Restructure Quota CR, more details in <a href="how-to-guides/quota.html">relevant docs</a></li>
 <li>feat: Add support for adding LimitRanges in Quota</li>
 <li>feat: Add conversion webhook to convert existing v1alpha1 versions of quota to v1beta1</li>
 </ul>
-<h3 id="v031">v0.3.1</h3>
+<h3 id="v031">v0.3.1<a class="headerlink" href="#v031" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Add ability to create ArgoCD AppProjects per tenant, more details in <a href="tutorials/argocd/enabling-multi-tenancy-argocd.html">relevant docs</a></li>
 </ul>
-<h3 id="v030">v0.3.0</h3>
+<h3 id="v030">v0.3.0<a class="headerlink" href="#v030" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Add support to add groups in addition to users as tenant members</li>
 </ul>
-<h2 id="v02x">v0.2.x</h2>
-<h3 id="v0233">v0.2.33</h3>
+<h2 id="v02x">v0.2.x<a class="headerlink" href="#v02x" title="Permanent link">#</a></h2>
+<h3 id="v0233">v0.2.33<a class="headerlink" href="#v0233" title="Permanent link">#</a></h3>
 <ul>
 <li>refactor: Restructure Tenant spec, more details in <a href="how-to-guides/tenant.html">relevant docs</a></li>
 <li>feat: Add conversion webhook to convert existing v1alpha1 versions of tenant to v1beta1</li>
 </ul>
-<h3 id="v0232">v0.2.32</h3>
+<h3 id="v0232">v0.2.32<a class="headerlink" href="#v0232" title="Permanent link">#</a></h3>
 <ul>
 <li>refactor: Restructure integration config spec, more details in <a href="how-to-guides/integration-config.html">relevant docs</a></li>
 <li>feat: Allow users to input custom regex in certain fields inside of integration config, more details in <a href="how-to-guides/integration-config.html#openshift">relevant docs</a></li>
 </ul>
-<h3 id="v0231">v0.2.31</h3>
+<h3 id="v0231">v0.2.31<a class="headerlink" href="#v0231" title="Permanent link">#</a></h3>
 <ul>
 <li>feat: Add limit range for <code>kube-RBAC-proxy</code></li>
 </ul>
@@ -3670,6 +2912,12 @@
           
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -3759,7 +3007,7 @@
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
       <script src="assets/javascripts/bundle.d7c377c4.min.js"></script>
