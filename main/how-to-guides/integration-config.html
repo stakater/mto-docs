@@ -1859,6 +1859,23 @@
 <span class="w">    </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tronador.stakater.com</span>
 <span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvironmentProvisioner</span>
+<span class="w">  </span><span class="nt">provision</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">console</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-console.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">        </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">      </span><span class="nt">gateway</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">        </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">      </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">        </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">trustedRootCert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-custom-cert</span>
 <span class="w">  </span><span class="nt">rhsso</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer</span>
@@ -2062,17 +2079,49 @@
 <h2 id="provision">Provision<a class="headerlink" href="#provision" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nt">provision</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">ingress</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">console</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-console.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">      </span><span class="nt">ingressSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">    </span><span class="nt">gateway</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">      </span><span class="nt">ingressSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">    </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">      </span><span class="nt">ingressSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
 <span class="w">  </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">trustedRootCert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-custom-cert</span>
 </code></pre></div>
-<p><code>provision.console:</code> Can be used to enable/disable console GUI for MTO.
-<code>provision.showback:</code> Can be used to enable/disable showback feature on the console.</p>
+<p><code>provision.console:</code> Enables or disables the console GUI for MTO.<br />
+<code>provision.ingress:</code> Configures the ingress settings for various components:<br />
+&emsp;<code>console:</code> Settings for the console's ingress.<br />
+&emsp;<code>gateway:</code> Settings for the gateway's ingress.<br />
+&emsp;<code>keycloak:</code> Settings for the Keycloak's ingress.<br />
+&emsp;(including host, TLS secret, and ingress class)<br />
+<code>provision.showback:</code> Enables or disables the showback feature on the console.<br />
+<code>provision.trustedRootCert:</code> Name of the secret containing the root CA certificate.  </p>
+<p>Here's an example of how to generate the secrets required to configure MTO:</p>
+<p><strong>TLS Secret for Ingress:</strong>  </p>
+<p>Create a TLS secret containing your SSL/TLS certificate and key for secure communication. This secret will be used for the Console, Gateway, and Keycloak ingresses.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>tls<span class="w"> </span>&lt;tls-secret-name&gt;<span class="w"> </span>--key<span class="o">=</span>&lt;path-to-key.pem&gt;<span class="w"> </span>--cert<span class="o">=</span>&lt;path-to-cert.pem&gt;
+</code></pre></div>
+<p><strong>Trusted Root Certificate Secret:</strong>  </p>
+<p>If using a custom certificate authority (CA) or self-signed certificates, create a Kubernetes secret containing your root CA certificate. This is required in order to ensure MTO Components trust the custom certificates.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>&lt;root-ca-secret-name&gt;<span class="w"> </span>--from-file<span class="o">=</span>&lt;path-to-rootCA.pem&gt;
+</code></pre></div>
+<blockquote>
+<p>Note: <code>trustedRootCert</code> and <code>tls-secret-name</code> are optional. If not provided, MTO will use the default root CA certificate and secrets respectively.</p>
+</blockquote>
 <p>Integration config will be managing the following resources required for console GUI:</p>
 <ul>
+<li><code>MTO Postgresql</code> resources.</li>
+<li><code>MTO Prometheus</code> resources.</li>
+<li><code>MTO Opencost</code> resources.</li>
+<li><code>MTO Console, Gateway, Keycloak</code> resources.</li>
 <li><code>Showback</code> cronjob.</li>
-<li><code>Keycloak</code> deployment.</li>
-<li><code>MTO-OpenCost</code> operator.</li>
-<li><code>MTO-Prometheus</code> operator.</li>
-<li><code>MTO-Postgresql</code> stateful set.</li>
 </ul>
 <p>Details on console GUI and showback can be found <a href="../explanation/console.html">here</a></p>
 <h2 id="rhsso-red-hat-single-sign-on">RHSSO (Red Hat Single Sign-On)<a class="headerlink" href="#rhsso-red-hat-single-sign-on" title="Permanent link">#</a></h2>

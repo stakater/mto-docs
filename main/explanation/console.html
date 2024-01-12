@@ -1779,7 +1779,35 @@
 <p>The Multi Tenant Operator (MTO) Console is a comprehensive user interface designed for both administrators and tenant users to manage multi-tenant environments. The MTO Console simplifies the complexity involved in handling various aspects of tenants and their related resources.</p>
 <h2 id="dashboard-overview">Dashboard Overview<a class="headerlink" href="#dashboard-overview" title="Permanent link">#</a></h2>
 <p>The dashboard serves as a centralized monitoring hub, offering insights into the current state of tenants, namespaces, and quotas. It is designed to provide a quick summary/snapshot of MTO resources' status. Additionally, it includes a Showback graph that presents a quick glance of the seven-day cost trends associated with the namespaces/tenants based on the logged-in user.</p>
-<p><a class="glightbox" href="../images/dashboard.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="dashboard" src="../images/dashboard.png" /></a></p>
+<p>By default, MTO Console will be disabled and has to be enabled by setting the below configuration in IntegrationConfig.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">provision</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">console</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-console.&lt;hostname&gt;</span>
+<span class="w">        </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ingress-class-name&gt;</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;tls-secret-name&gt;</span>
+<span class="w">      </span><span class="nt">gateway</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-gateway.&lt;hostname&gt;</span>
+<span class="w">        </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ingress-class-name&gt;</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;tls-secret-name&gt;</span>
+<span class="w">      </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-keycloak.&lt;hostname&gt;</span>
+<span class="w">        </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ingress-class-name&gt;</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;tls-secret-name&gt;</span>
+<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">trustedRootCert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;root-ca-secret-name&gt;</span>
+</code></pre></div>
+<p><code>&lt;hostname&gt;</code> : hostname of the cluster<br />
+<code>&lt;ingress-class-name&gt;</code> : name of the ingress class<br />
+<code>&lt;tls-secret-name&gt;</code> : name of the secret that contains the TLS certificate and key<br />
+<code>&lt;root-ca-secret-name&gt;</code> : name of the secret that contains the root CA certificate</p>
+<blockquote>
+<p>Note: <code>trustedRootCert</code> and <code>tls-secret-name</code> are optional. If not provided, MTO will use the default root CA certificate and secrets respectively.</p>
+</blockquote>
+<p>Once the above configuration is set on the IntegrationConfig, MTO would start provisioning the required resources for MTO Console to be ready. In a few moments, you should be able to see the Console Ingress in the <code>multi-tenant-operator</code> namespace which gives you access to the Console.</p>
+<p>For more details on the configuration, please visit <a href="../how-to-guides/integration-config.html">here</a>.
+<a class="glightbox" href="../images/dashboard.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="dashboard" src="../images/dashboard.png" /></a></p>
 <h3 id="tenants">Tenants<a class="headerlink" href="#tenants" title="Permanent link">#</a></h3>
 <p>Here, admins have a bird's-eye view of all tenants, with the ability to delve into each one for detailed examination and management. This section is pivotal for observing the distribution and organization of tenants within the system. More information on each tenant can be accessed by clicking the view option against each tenant name.</p>
 <p><a class="glightbox" href="../images/tenants.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="tenants" src="../images/tenants.png" /></a></p>
