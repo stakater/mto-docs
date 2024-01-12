@@ -92,7 +92,8 @@ spec:
         host: tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud
         tlsSecretName: tenant-operator-tls
         ingressClassName: nginx
-    showback: true        
+    showback: true
+    trustedRootCert: my-custom-cert
   rhsso:
     enabled: true
     realm: customer
@@ -356,22 +357,44 @@ provision:
       ingressSecretName: tenant-operator-tls
       ingressClassName: nginx
   showback: true
+  trustedRootCert: my-custom-cert
 ```
 
-`provision.console:` Enables or disables the console GUI for MTO.
-`provision.ingress:` Configures the ingress settings for various components:
-    `console:` Settings for the console's ingress, including host, TLS secret, and ingress class.
-    `gateway:` Settings for the gateway's ingress.
-    `keycloak:` Settings for the Keycloak's ingress.
-`provision.showback:` Enables or disables the showback feature on the console.
+`provision.console:` Enables or disables the console GUI for MTO.  
+`provision.ingress:` Configures the ingress settings for various components:  
+&emsp;`console:` Settings for the console's ingress.  
+&emsp;`gateway:` Settings for the gateway's ingress.  
+&emsp;`keycloak:` Settings for the Keycloak's ingress.  
+&emsp;(including host, TLS secret, and ingress class)  
+`provision.showback:` Enables or disables the showback feature on the console.  
+`provision.trustedRootCert:` Name of the secret containing the root CA certificate.  
+
+
+Here's an example of how to generate the secrets required to configure MTO:
+
+##### TLS Secret for Ingress:  
+
+Create a TLS secret containing your SSL/TLS certificate and key for secure communication. This secret will be used for the Console, Gateway, and Keycloak ingresses.
+
+```bash
+kubectl -n multi-tenant-operator create secret tls <tls-secret-name> --key=<path-to-key.pem> --cert=<path-to-cert.pem>
+```
+
+##### Trusted Root Certificate Secret:  
+
+If using a custom certificate authority (CA) or self-signed certificates, create a Kubernetes secret containing your root CA certificate. This is required in order to ensure MTO Components trust the custom certificates.
+
+```bash
+kubectl -n multi-tenant-operator create secret generic <root-ca-secret-name> --from-file=<path-to-rootCA.pem>
+```
 
 Integration config will be managing the following resources required for console GUI:
 
+- `MTO Postgresql` resources.
+- `MTO Prometheus` resources.
+- `MTO Opencost` resources.
+- `MTO Console, Gateway, Keycloak` resources.
 - `Showback` cronjob.
-- `Keycloak` deployment.
-- `MTO-OpenCost` operator.
-- `MTO-Prometheus` operator.
-- `MTO-Postgresql` stateful set.
 
 Details on console GUI and showback can be found [here](../explanation/console.md)
 

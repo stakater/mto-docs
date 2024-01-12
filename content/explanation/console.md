@@ -14,24 +14,26 @@ By default, MTO Console will be disabled and has to be enabled by setting the be
 provision:
     console: true
     ingress:
-        console:
-            host: tenant-operator-console.<hostname>
-            tlsSecretName: <ingress-secret-name>
-            ingressClassName: <ingress-class-name>
-        gateway:
-            host: tenant-operator-gateway.<hostname>
-            tlsSecretName: <ingress-secret-name>
-            ingressClassName: <ingress-class-name>
-        keycloak:
-            host: tenant-operator-keycloak.<hostname>
-            tlsSecretName: <ingress-secret-name>
-            ingressClassName: <ingress-class-name>
+      console:
+        host: tenant-operator-console.<hostname>
+        ingressClassName: <ingress-class-name>
+        tlsSecretName: <tls-secret-name>
+      gateway:
+        host: tenant-operator-gateway.<hostname>
+        ingressClassName: <ingress-class-name>
+        tlsSecretName: <tls-secret-name>
+      keycloak:
+        host: tenant-operator-keycloak.<hostname>
+        ingressClassName: <ingress-class-name>
+        tlsSecretName: <tls-secret-name>
     showback: true
+    trustedRootCert: <root-ca-secret-name>
 ```  
 
 `<hostname>` : hostname of the cluster  
-`<ingress-secret-name>` : name of the secret that contains the TLS certificate and key  
 `<ingress-class-name>` : name of the ingress class  
+`<tls-secret-name>` : name of the secret that contains the TLS certificate and key  
+`<root-ca-secret-name>` : name of the secret that contains the root CA certificate
 
 Once the above configuration is set on the IntegrationConfig, MTO would start provisioning the required resources for MTO Console to be ready. In a few moments, you should be able to see the Console Ingress in the `multi-tenant-operator` namespace which gives you access to the Console.
 
