@@ -387,6 +387,8 @@ If using a custom certificate authority (CA) or self-signed certificates, create
 kubectl -n multi-tenant-operator create secret generic <root-ca-secret-name> --from-file=<path-to-rootCA.pem>
 ```
 
+>Note: `trustedRootCert` and `tls-secret-name` are optional. If not provided, MTO will use the default root CA certificate and secrets respectively.
+
 Integration config will be managing the following resources required for console GUI:
 
 - `MTO Postgresql` resources.
