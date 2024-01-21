@@ -1579,7 +1579,7 @@
           <li class="md-nav__item">
   <a href="#q-error-received-while-doing-kubectl-apply-f-namespaceyaml" class="md-nav__link">
     <span class="md-ellipsis">
-      Q. Error received while doing "kubectl apply -f namespace.yaml"
+      Q. Error received while doing kubectl apply -f namespace.yaml
     </span>
   </a>
   
@@ -1734,7 +1734,7 @@
 </code></pre></div>
 <p><strong>Answer.</strong> This error occurs because we don't allow Tenant members to do operations on OpenShift Project, whenever an operation is done on a project, <code>openshift-apiserver-sa</code> tries to do the same request onto a namespace. That's why the user sees <code>openshift-apiserver-sa</code> Service Account instead of its own user in the error message.</p>
 <p>The fix is to try the same operation on the namespace manifest instead.</p>
-<h3 id="q-error-received-while-doing-kubectl-apply-f-namespaceyaml">Q. Error received while doing "kubectl apply -f namespace.yaml"<a class="headerlink" href="#q-error-received-while-doing-kubectl-apply-f-namespaceyaml" title="Permanent link">#</a></h3>
+<h3 id="q-error-received-while-doing-kubectl-apply-f-namespaceyaml">Q. Error received while doing <code>kubectl apply -f namespace.yaml</code><a class="headerlink" href="#q-error-received-while-doing-kubectl-apply-f-namespaceyaml" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code>Error from server (Forbidden): error when retrieving current configuration of:
 Resource: &quot;/v1, Resource=namespaces&quot;, GroupVersionKind: &quot;/v1, Kind=Namespace&quot;
 Name: &quot;ns1&quot;, Namespace: &quot;&quot;
