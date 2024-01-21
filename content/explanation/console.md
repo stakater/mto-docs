@@ -99,7 +99,7 @@ MTO integrates a dedicated database to streamline resource management. Now, all 
 
 The implementation of this feature is facilitated by the Bootstrap controller, streamlining the deployment process. This controller creates the PostgreSQL Database, establishes a service for inter-pod communication, and generates a secret to ensure secure connectivity to the database.
 
-Furthermore, the introduction of a dedicated cache layer ensures that there is no added burden on the kube API server when responding to MTO Console requests. This enhancement not only improves response times but also contributes to a more efficient and responsive resource management system.
+Furthermore, the introduction of a dedicated cache layer ensures that there is no added burden on the Kube API server when responding to MTO Console requests. This enhancement not only improves response times but also contributes to a more efficient and responsive resource management system.
 
 ## Authentication and Authorization
 

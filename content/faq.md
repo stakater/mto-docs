@@ -30,7 +30,7 @@ Cannot CREATE namespace testing without label stakater.com/tenant. User: system:
 
 The fix is to try the same operation on the namespace manifest instead.
 
-### Q. Error received while doing "kubectl apply -f namespace.yaml"
+### Q. Error received while doing `kubectl apply -f namespace.yaml`
 
 ```terminal
 Error from server (Forbidden): error when retrieving current configuration of:
