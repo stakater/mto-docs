@@ -55,7 +55,7 @@ Afterward, Bill can see that manifests in the chart have been successfully creat
 
 ## Deploying Helm Chart to Namespaces via TemplateGroupInstances from HTTPS Registry
 
-Bill, the cluster admin, wants to deploy a helm chart in namespaces where certain labels exists.
+Bill, the cluster admin, wants to deploy a helm chart from `HTTPS` registry in namespaces where certain labels exists.
 
 First, Bill creates a template:
 
