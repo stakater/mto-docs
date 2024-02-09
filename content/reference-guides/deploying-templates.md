@@ -57,7 +57,7 @@ NAME             STATE    AGE
 docker-secret    Active   2m
 ```
 
-`TemplateGroupInstance` can also target specific tenants or all tenant namespaces under a single yaml definition.
+`TemplateGroupInstance` can also target specific tenants or all tenant namespaces under a single YAML definition.
 
 ### TemplateGroupInstance for multiple Tenants
 
