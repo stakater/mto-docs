@@ -91,11 +91,15 @@ spec:
     vault:
       enabled: true
       authMethod: kubernetes
-      accessorPath: oidc/
-      address: 'https://vault.apps.prod.abcdefghi.kubeapp.cloud/'
-      roleName: mto
-      sso:
-        clientName: vault
+      accessInfo: 
+        accessorPath: oidc/
+        address: https://vault.apps.prod.abcdefghi.kubeapp.cloud/
+        roleName: mto
+        secretRef:       
+          name: ''
+          namespace: ''
+      config: 
+        ssoClient: vault
 ```
 
 Bill then creates a tenant for Anna and John:
