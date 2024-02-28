@@ -1753,7 +1753,7 @@
 <span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">TENANT.USERNAME</span><span class="nv"> </span><span class="s">}}&quot;</span>
 </code></pre></div>
-<p>It will create sandbox namespaces and also apply the sandboxMetadata for owners and editors. Notice the template <code>{{ TENANT.USERNAME }}</code>, it will resolve the username as value of the corresponding annotation. For more info on templated value, see <a href="../../reference-guides/templated-metadata-values.html">here</a></p>
+<p>It will create sandbox namespaces and also apply the <code>sandboxMetadata</code> for owners and editors. Notice the template <code>{{ TENANT.USERNAME }}</code>, it will resolve the username as value of the corresponding annotation. For more info on templated value, see <a href="../../reference-guides/templated-metadata-values.html">here</a></p>
 <h2 id="automate-sandbox-metadata-for-all-tenant-users-via-integrationconfig-cr">Automate sandbox metadata for all Tenant users via IntegrationConfig CR<a class="headerlink" href="#automate-sandbox-metadata-for-all-tenant-users-via-integrationconfig-cr" title="Permanent link">#</a></h2>
 <p>You can also automate the metadata on all sandbox namespaces by using IntegrationConfig, notice <code>metadata.sandboxes</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>

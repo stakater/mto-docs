@@ -1690,15 +1690,17 @@
 <p>Templated values are placeholders in your configuration that get replaced with actual data when the CR is processed. Below is a list of currently supported templated values, their descriptions, and where they can be used.</p>
 <h2 id="supported-templated-values">Supported templated values<a class="headerlink" href="#supported-templated-values" title="Permanent link">#</a></h2>
 <ul>
-<li><code>"{{ TENANT.USERNAME }}"</code></li>
+<li>
+<p><code>"{{ TENANT.USERNAME }}"</code></p>
+<ul>
 <li><strong>Description</strong>: The username associated with users specified in <a href="../tutorials/tenant/create-tenant.html">Tenant</a> under <code>Owners</code> and <code>Editors</code>.</li>
 <li><strong>Supported in CRs</strong>:<ul>
 <li><code>Tenant</code>: Under <code>sandboxMetadata.labels</code> and <code>sandboxMetadata.annotations</code>.</li>
 <li><code>IntegrationConfig</code>: Under <code>metadata.sandboxs.labels</code> and <code>metadata.sandboxs.annotations</code>.</li>
 </ul>
 </li>
-<li>
-<p><strong>Example</strong>:</p>
+<li><strong>Example</strong>:</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">annotation</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">TENANT.USERNAME</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"> </span><span class="c1"># double quotes are required</span>
 </code></pre></div>
