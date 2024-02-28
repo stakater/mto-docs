@@ -84,3 +84,35 @@ kubectl get namespaces
 NAME                             STATUS   AGE
 bluesky-anna-aurora-sandbox      Active   5d5h
 ```
+
+## Set metadata on sandbox namespaces
+
+If you want to have a common metadata on all sandboxes, you can add sandboxMetadata to Tenant like below:
+
+```yaml
+apiVersion: tenantoperator.stakater.com/v1beta2
+kind: Tenant
+metadata:
+  name: bluesky
+spec:
+  owners:
+    users:
+    - anna@aurora.org
+    - anthony@aurora.org
+  editors:
+    users:
+    - john@aurora.org
+    groups:
+    - alpha
+  quota: small
+  sandboxConfig:
+    enabled: true
+    private: true
+  sandboxMetadata:
+    labels:
+      app.kubernetes.io/part-of: che.eclipse.org
+    annotations:
+      che.eclipse.org/username: "{{ TENANT.USERNAME }}" # templatized placeholder
+```
+
+Note: In above Tenant, we have used a templatised annotation value `"{{ TENANT.USERNAME }}"`. It will resolve to user of the respective sandbox namespace. For more info on it, see [here](../../reference-guides/templated-metadata-values.md)
