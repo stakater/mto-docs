@@ -1,8 +1,8 @@
-# Enabling DevWorkspace for Tenant's sandbox in Openshift
+# Enabling DevWorkspace for Tenant's sandbox in OpenShift
 
 ## DevWorkspaces metadata via Multi Tenant Operator
 
-DevWorkspaces require specific metadata on a namespace for it to work in it. With With Multi Tenant Operator (MTO), you can create sandbox namespaces for users of a Tenant, and then add the required metadata automatically on all sandboxes.
+DevWorkspaces require specific metadata on a namespace for it to work in it. With Multi Tenant Operator (MTO), you can create sandbox namespaces for users of a Tenant, and then add the required metadata automatically on all sandboxes.
 
 ## Required metadata for enabling DevWorkspace on sandbox
 
@@ -15,7 +15,7 @@ DevWorkspaces require specific metadata on a namespace for it to work in it. Wit
 ```
 
 ## Automate sandbox metadata for all Tenant users via Tenant CR
-With With Multi Tenant Operator (MTO), you can set `sandboxMetadata` like below to automate metadata for all sandboxes:
+With Multi Tenant Operator (MTO), you can set `sandboxMetadata` like below to automate metadata for all sandboxes:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta2

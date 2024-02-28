@@ -115,4 +115,4 @@ spec:
       che.eclipse.org/username: "{{ TENANT.USERNAME }}" # templatized placeholder
 ```
 
-Note: In above Tenant, we have used a templatised annotation value `"{{ TENANT.USERNAME }}"`. It will resolve to user of the respective sandbox namespace. For more info on it, see [here](../../reference-guides/templated-metadata-values.md)
+Note: In above Tenant, we have used a templated annotation value `"{{ TENANT.USERNAME }}"`. It will resolve to user of the respective sandbox namespace. For more info on it, see [here](../../reference-guides/templated-metadata-values.md)
