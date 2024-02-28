@@ -22,7 +22,7 @@
     
     
       
-        <title>Enabling DevWorkspace for Tenant's sandbox in Openshift - Multi Tenant Operator</title>
+        <title>Enabling DevWorkspace for Tenant's sandbox in OpenShift - Multi Tenant Operator</title>
       
     
     
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Enabling DevWorkspace for Tenant's sandbox in Openshift
+              Enabling DevWorkspace for Tenant's sandbox in OpenShift
             
           </span>
         </div>
@@ -789,7 +789,7 @@
           
   
   <span class="md-ellipsis">
-    Enabling DevWorkspace for Tenant's sandbox in Openshift
+    Enabling DevWorkspace for Tenant's sandbox in OpenShift
   </span>
   
 
@@ -800,7 +800,7 @@
         
   
   <span class="md-ellipsis">
-    Enabling DevWorkspace for Tenant's sandbox in Openshift
+    Enabling DevWorkspace for Tenant's sandbox in OpenShift
   </span>
   
 
@@ -1715,9 +1715,9 @@
   
 
 
-<h1 id="enabling-devworkspace-for-tenants-sandbox-in-openshift">Enabling DevWorkspace for Tenant's sandbox in Openshift<a class="headerlink" href="#enabling-devworkspace-for-tenants-sandbox-in-openshift" title="Permanent link">#</a></h1>
+<h1 id="enabling-devworkspace-for-tenants-sandbox-in-openshift">Enabling DevWorkspace for Tenant's sandbox in OpenShift<a class="headerlink" href="#enabling-devworkspace-for-tenants-sandbox-in-openshift" title="Permanent link">#</a></h1>
 <h2 id="devworkspaces-metadata-via-multi-tenant-operator">DevWorkspaces metadata via Multi Tenant Operator<a class="headerlink" href="#devworkspaces-metadata-via-multi-tenant-operator" title="Permanent link">#</a></h2>
-<p>DevWorkspaces require specific metadata on a namespace for it to work in it. With With Multi Tenant Operator (MTO), you can create sandbox namespaces for users of a Tenant, and then add the required metadata automatically on all sandboxes.</p>
+<p>DevWorkspaces require specific metadata on a namespace for it to work in it. With Multi Tenant Operator (MTO), you can create sandbox namespaces for users of a Tenant, and then add the required metadata automatically on all sandboxes.</p>
 <h2 id="required-metadata-for-enabling-devworkspace-on-sandbox">Required metadata for enabling DevWorkspace on sandbox<a class="headerlink" href="#required-metadata-for-enabling-devworkspace-on-sandbox" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">che.eclipse.org</span>
@@ -1726,7 +1726,7 @@
 <span class="w">    </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;username&gt;</span>
 </code></pre></div>
 <h2 id="automate-sandbox-metadata-for-all-tenant-users-via-tenant-cr">Automate sandbox metadata for all Tenant users via Tenant CR<a class="headerlink" href="#automate-sandbox-metadata-for-all-tenant-users-via-tenant-cr" title="Permanent link">#</a></h2>
-<p>With With Multi Tenant Operator (MTO), you can set <code>sandboxMetadata</code> like below to automate metadata for all sandboxes:</p>
+<p>With Multi Tenant Operator (MTO), you can set <code>sandboxMetadata</code> like below to automate metadata for all sandboxes:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
