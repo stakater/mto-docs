@@ -112,7 +112,7 @@ spec:
     labels:
       app.kubernetes.io/part-of: che.eclipse.org
     annotations:
-      che.eclipse.org/username: "{{ TENANT.USERNAME }}" # templatized placeholder
+      che.eclipse.org/username: "{{ TENANT.USERNAME }}" # templated placeholder
 ```
 
 Note: In above Tenant, we have used a templated annotation value `"{{ TENANT.USERNAME }}"`. It will resolve to user of the respective sandbox namespace. For more info on it, see [here](../../reference-guides/templated-metadata-values.md)

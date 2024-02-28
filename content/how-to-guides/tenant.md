@@ -74,7 +74,7 @@ spec:
     labels: # optional
       app.kubernetes.io/part-of: che.eclipse.org
     annotations: # optional
-      che.eclipse.org/username: "{{ TENANT.USERNAME }}" # templatized placeholder
+      che.eclipse.org/username: "{{ TENANT.USERNAME }}" # templated placeholder
   templateInstances: # optional
   - spec: # optional
       template: networkpolicy # required
