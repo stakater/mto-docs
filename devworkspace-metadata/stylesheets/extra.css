@@ -1,0 +1,75 @@
+:root {
+    --md-primary-fg-color--light: #ECB7B7;
+    --md-primary-fg-color--dark:  #893905;
+    --md-accent-fg-color: #FF7500;
+    --md-accent-fg-color--transparent: #ffd7bd64;
+
+    /* colors for Note block */
+    .md-typeset .admonition.note, .md-typeset details.note {
+        border-color: #EF7C30;
+    }
+    .md-typeset .note>.admonition-title:before, .md-typeset .note>summary:before{
+        background-color: #EF7C30;
+    }
+
+    .md-typeset .note>.admonition-title, .md-typeset .note>summary {
+        background-color: #ef7c3030;
+    }
+    /* search results 'see more' text */
+    .md-search-result__more>summary>div {
+        color: #EF7C30;
+    }
+
+    /* font weights for headings*/
+    .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4, .md-typeset h5, .md-typeset h6 {
+        font-weight: 600;
+    }
+}
+[data-md-color-scheme="slate"] {
+    /* --md-primary-fg-color: black; */
+    --md-primary-fg-color: #EF7C30;
+    --md-default-bg-color: #131414;
+    
+    --md-hue: 22;
+
+    --md-code-hl-keyword-color: #EF7C30;
+    --md-code-hl-string-color: rgba(255, 255, 255, 0.834);
+
+    /*sidebar first heading*/
+    --md-default-fg-color--light: #FFFFFF;
+    /* change Note colors using below vars */
+    /* --md-default-fg-color--lighter: #D2D8E1; */
+    /* --md-default-fg-color--lightest: #ECB7B7; */
+
+
+    .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4, .md-typeset h5, .md-typeset h6 {
+        color: #FFFFFF;
+    }
+
+    --md-typeset-color: rgba(255, 255, 255, 0.8);
+    --md-typeset-a-color: #FF7500;
+}
+
+[data-md-color-scheme="default"] {
+    /*change it to white for a white header bar*/
+    --md-primary-fg-color: #EF7C30;
+    --md-default-bg-color: white;
+    
+    /*code block colors*/
+    --md-code-hl-keyword-color: #EF7C30;
+    --md-code-hl-string-color: rgba(0, 0, 0, 0.7);
+
+    /*sidebar heading title*/
+    --md-default-fg-color--light: rgba(0, 0, 0, 0.837);
+    /*default heading color*/
+    .md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4, .md-typeset h5, .md-typeset h6 {
+        color: rgba(0, 0, 0, 0.837);
+    }
+    /*to change the header bar text to black*/
+    /* .md-header {
+        color: black;
+    } */
+
+    --md-typeset-color: rgba(0, 0, 0, 0.8);
+    --md-typeset-a-color: #EF7C30;
+}
