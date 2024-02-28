@@ -87,7 +87,7 @@ bluesky-anna-aurora-sandbox      Active   5d5h
 
 ## Set metadata on sandbox namespaces
 
-If you want to have a common metadata on all sandboxes, you can add sandboxMetadata to Tenant like below:
+If you want to have a common metadata on all sandboxes, you can add `sandboxMetadata` to Tenant like below:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta2

@@ -1,4 +1,5 @@
 # Assigning metadata
+
 ## Assigning Common/Specific Metadata
 
 ### Distributing common labels and annotations to tenant namespaces via Tenant Custom Resource

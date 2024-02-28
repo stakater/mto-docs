@@ -92,6 +92,7 @@ Spell checking:
 
 ```bash
 brew install vale
+vale sync
 vale content
 ```
 
