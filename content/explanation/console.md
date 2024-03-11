@@ -11,20 +11,18 @@ The dashboard serves as a centralized monitoring hub, offering insights into the
 By default, MTO Console will be disabled and has to be enabled by setting the below configuration in IntegrationConfig.
 
 ```yaml
-provision:
+components:
     console: true
     ingress:
+      ingressClassName: <ingress-class-name>
       console:
         host: tenant-operator-console.<hostname>
-        ingressClassName: <ingress-class-name>
         tlsSecretName: <tls-secret-name>
       gateway:
         host: tenant-operator-gateway.<hostname>
-        ingressClassName: <ingress-class-name>
         tlsSecretName: <tls-secret-name>
       keycloak:
         host: tenant-operator-keycloak.<hostname>
-        ingressClassName: <ingress-class-name>
         tlsSecretName: <tls-secret-name>
     showback: true
     trustedRootCert: <root-ca-secret-name>

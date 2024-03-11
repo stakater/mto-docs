@@ -112,7 +112,7 @@ To enable console GUI for MTO, go to `Search` -> `IntegrationConfig` -> `tenant-
 
 ```yaml
 spec:
-  provision:
+  components:
     console: true
     showback: true
 ```

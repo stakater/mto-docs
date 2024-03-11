@@ -8,7 +8,7 @@
 unable to find annotation openshift.io/sa.scc.uid-range
 ```
 
-**Answer.** OpenShift recently updated its process of handling SCC, and it's now managed by annotations like `openshift.io/sa.scc.uid-range` on the namespaces. Absence  of them wont let pods schedule. The fix for the above error is to make sure ServiceAccount `system:serviceaccount:openshift-infra.` regex is always mentioned in `PrivilegedServiceAccounts` section of `IntegrationConfig`. This regex will allow operations from all `ServiceAccounts` present in `openshift-infra` namespace. More info at [Privileged Service Accounts](./how-to-guides/integration-config.md#privileged-serviceaccounts)
+**Answer.** OpenShift recently updated its process of handling SCC, and it's now managed by annotations like `openshift.io/sa.scc.uid-range` on the namespaces. Absence  of them wont let pods schedule. The fix for the above error is to make sure ServiceAccount `system:serviceaccount:openshift-infra.` regex is always mentioned in `Privileged.serviceAccounts` section of `IntegrationConfig`. This regex will allow operations from all `ServiceAccounts` present in `openshift-infra` namespace. More info at [Privileged Service Accounts](./how-to-guides/integration-config.md#privileged-serviceaccounts)
 
 ## Namespace Admission Webhook
 
@@ -47,11 +47,11 @@ The fix is to create namespaces with `kubectl create` instead.
 
 ### Q. How do I deploy cluster-scoped resource via the ArgoCD integration?
 
-**Answer.** Multi-Tenant Operator's ArgoCD Integration allows configuration of which cluster-scoped resources can be deployed, both globally and on a per-tenant basis. For a global allow-list that applies to all tenants, you can add both resource `group` and  `kind` to the [IntegrationConfig's](./how-to-guides/integration-config.md#argocd) `spec.argocd.clusterResourceWhitelist` field. Alternatively, you can set this up on a tenant level by configuring the same details within a [Tenant's](./how-to-guides/tenant.md) `spec.argocd.appProject.clusterResourceWhitelist` field. For more details, check out the [ArgoCD integration use cases](./tutorials/argocd/enabling-multi-tenancy-argocd.md#allow-argocd-to-sync-certain-cluster-wide-resources)
+**Answer.** Multi-Tenant Operator's ArgoCD Integration allows configuration of which cluster-scoped resources can be deployed, both globally and on a per-tenant basis. For a global allow-list that applies to all tenants, you can add both resource `group` and  `kind` to the [IntegrationConfig's](./how-to-guides/integration-config.md#argocd) `spec.integrations.argocd.clusterResourceWhitelist` field. Alternatively, you can set this up on a tenant level by configuring the same details within a [Tenant's](./how-to-guides/tenant.md) `spec.integrations.argocd.appProject.clusterResourceWhitelist` field. For more details, check out the [ArgoCD integration use cases](./tutorials/argocd/enabling-multi-tenancy-argocd.md#allow-argocd-to-sync-certain-cluster-wide-resources)
 
 ## Q. InvalidSpecError: application repo \<repo\> is not permitted in project \<project\>
 
-**Answer.** The above error can occur if the ArgoCD Application is syncing from a source that is not allowed the referenced AppProject. To solve this, verify that you have referred to the correct project in the given ArgoCD Application, and that the repoURL used for the Application's source is valid. If the error still appears, you can add the URL to the relevant Tenant's `spec.argocd.sourceRepos` array.
+**Answer.** The above error can occur if the ArgoCD Application is syncing from a source that is not allowed the referenced AppProject. To solve this, verify that you have referred to the correct project in the given ArgoCD Application, and that the repoURL used for the Application's source is valid. If the error still appears, you can add the URL to the relevant Tenant's `spec.integrations.argocd.sourceRepos` array.
 
 ## Q. Why are there `mto-showback-*` pods failing in my cluster?
 

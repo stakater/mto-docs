@@ -27,7 +27,7 @@ We have set a default ArgoCD configuration in Multi Tenant Operator that fulfils
 Bill wants each tenant to also have their own ArgoCD AppProjects. To make sure this happens correctly, Bill will first specify the ArgoCD namespace in the [IntegrationConfig](../../how-to-guides/integration-config.md):
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: IntegrationConfig
 metadata:
   name: tenant-operator-config
@@ -134,20 +134,21 @@ Users belonging to the Sigma group will now only see applications created by the
 Bill wants tenants to not be able to sync `ResourceQuota` and `LimitRange` resources to their namespaces. To do this correctly, Bill will specify these resources to blacklist in the ArgoCD portion of the [IntegrationConfig](../../how-to-guides/integration-config.md):
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: IntegrationConfig
 metadata:
   name: tenant-operator-config
   namespace: multi-tenant-operator
 spec:
   ...
-  argocd:
-    namespace: openshift-operators
-    namespaceResourceBlacklist:
-      - group: ""
-        kind: ResourceQuota
-      - group: ""
-        kind: LimitRange
+  integrations:
+    argocd:
+      namespace: openshift-operators
+      namespaceResourceBlacklist:
+        - group: ""
+          kind: ResourceQuota
+        - group: ""
+          kind: LimitRange
   ...
 ```
 
@@ -174,18 +175,19 @@ spec:
 Bill now wants tenants to be able to sync the `Environment` cluster scoped resource to the cluster. To do this correctly, Bill will specify the resource to allow-list in the ArgoCD portion of the Integration Config's Spec:
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: IntegrationConfig
 metadata:
   name: tenant-operator-config
   namespace: multi-tenant-operator
 spec:
   ...
-  argocd:
-    namespace: openshift-operators
-    clusterResourceWhitelist:
-      - group: ""
-        kind: Environment
+  integrations:
+    argocd:
+      namespace: openshift-operators
+      clusterResourceWhitelist:
+        - group: ""
+          kind: Environment
   ...
 ```
 
