@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/mto-helm/reference-guides/distributing-secrets.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/mto-helm/reference-guides/templated-metadata-values.html">
       
       
-        <link rel="prev" href="distributing-resources.html">
+        <link rel="prev" href="graph-visualization.html">
       
       
-        <link rel="next" href="resource-sync-by-tgi.html">
+        <link rel="next" href="../explanation/console.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Distributing Secrets - Multi Tenant Operator</title>
+        <title>Templated values in Labels and Annotations - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#distributing-secrets" class="md-skip">
+        <a href="#templated-values-in-labels-and-annotations" class="md-skip">
           Skip to content
         </a>
       
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Distributing Secrets
+              Templated values in Labels and Annotations
             
           </span>
         </div>
@@ -1179,19 +1179,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="distributing-secrets.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="distributing-secrets.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1200,7 +1191,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1420,10 +1410,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="templated-metadata-values.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Templated values in Labels and Annotations
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="templated-metadata-values.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1432,6 +1442,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#supported-templated-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported templated values
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1668,81 +1707,26 @@
   
 
 
-<h1 id="distributing-secrets">Distributing Secrets<a class="headerlink" href="#distributing-secrets" title="Permanent link">#</a></h1>
-<p>Bill is a cluster admin who wants to provide a mechanism for distributing secrets in multiple namespaces. For this, he wants to use <a href="https://github.com/bitnami-labs/sealed-secrets#sealed-secrets-for-kubernetes">Sealed Secrets</a> as the solution by adding them to MTO Template CR</p>
-<p>First, Bill creates a Template in which Sealed Secret is mentioned:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sealed-secret</span>
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SealedSecret</span>
-<span class="w">    </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bitnami.com/v1alpha1</span>
-<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysecret</span>
-<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">encryptedData</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">.dockerconfigjson</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgBy3i4OJSWK+PiTySYZZA9rO43cGDEq.....</span>
-<span class="w">      </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/dockerconfigjson</span>
-<span class="w">        </span><span class="c1"># this is an example of labels and annotations that will be added to the output secret</span>
-<span class="w">        </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">            </span><span class="s">&quot;jenkins.io/credentials-type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">usernamePassword</span>
-<span class="w">          </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">            </span><span class="s">&quot;jenkins.io/credentials-description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">credentials from Kubernetes</span>
+<h1 id="templated-values-in-labels-and-annotations">Templated values in Labels and Annotations<a class="headerlink" href="#templated-values-in-labels-and-annotations" title="Permanent link">#</a></h1>
+<p>Templated values are placeholders in your configuration that get replaced with actual data when the CR is processed. Below is a list of currently supported templated values, their descriptions, and where they can be used.</p>
+<h2 id="supported-templated-values">Supported templated values<a class="headerlink" href="#supported-templated-values" title="Permanent link">#</a></h2>
+<ul>
+<li>
+<p><code>"{{ TENANT.USERNAME }}"</code></p>
+<ul>
+<li><strong>Description</strong>: The username associated with users specified in <a href="../tutorials/tenant/create-tenant.html">Tenant</a> under <code>Owners</code> and <code>Editors</code>.</li>
+<li><strong>Supported in CRs</strong>:<ul>
+<li><code>Tenant</code>: Under <code>sandboxMetadata.labels</code> and <code>sandboxMetadata.annotations</code>.</li>
+<li><code>IntegrationConfig</code>: Under <code>metadata.sandboxs.labels</code> and <code>metadata.sandboxs.annotations</code>.</li>
+</ul>
+</li>
+<li><strong>Example</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">annotation</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">TENANT.USERNAME</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"> </span><span class="c1"># double quotes are required</span>
 </code></pre></div>
-<p>Once the template has been created, Bill has to edit the <code>Tenant</code> to add unique label to namespaces in which the secret has to be deployed.
-For this, he can use the support for <a href="../tutorials/tenant/assigning-metadata.html#distributing-common-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource">common</a> and <a href="../tutorials/tenant/assigning-metadata.html#distributing-specific-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource">specific</a> labels across namespaces.</p>
-<p>Bill has to specify a label on namespaces in which he needs the secret. He can add it to all namespaces inside a tenant or some specific namespaces depending on the use case.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
-<span class="w">  </span><span class="nt">editors</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">john@aurora.org</span>
-<span class="w">    </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prod</span>
-
-<span class="w">  </span><span class="c1"># use this if you want to add label to some specific namespaces</span>
-<span class="w">  </span><span class="nt">specificMetadata</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-namespace</span>
-<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">distribute-image-pull-secret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-
-<span class="w">  </span><span class="c1"># use this if you want to add label to all namespaces under your tenant</span>
-<span class="w">  </span><span class="nt">commonMetadata</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">distribute-image-pull-secret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<p>Bill has added support for a new label <code>distribute-image-pull-secret: true"</code> for tenant projects/namespaces, now MTO will add that label depending on the used field.</p>
-<p>Finally, Bill creates a <code>TemplateGroupInstance</code> which will deploy the sealed secrets using the newly created project label and template.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sealed-secret</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sealed-secret</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">distribute-image-pull-secret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<p>MTO will now deploy the sealed secrets mentioned in <code>Template</code> to namespaces which have the mentioned label. The rest of the work to deploy secret from a sealed secret has to be done by Sealed Secrets Controller.</p>
+</li>
+</ul>
 
 
 
