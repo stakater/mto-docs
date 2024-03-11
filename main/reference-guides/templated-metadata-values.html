@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/main/reference-guides/distributing-resources.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/main/reference-guides/templated-metadata-values.html">
       
       
-        <link rel="prev" href="deploying-templates.html">
+        <link rel="prev" href="graph-visualization.html">
       
       
-        <link rel="next" href="distributing-secrets.html">
+        <link rel="next" href="../explanation/console.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Copying Secrets and Configmaps across Tenant Namespaces via TGI - Multi Tenant Operator</title>
+        <title>Templated values in Labels and Annotations - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#copying-secrets-and-configmaps-across-tenant-namespaces-via-tgi" class="md-skip">
+        <a href="#templated-values-in-labels-and-annotations" class="md-skip">
           Skip to content
         </a>
       
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Copying Secrets and Configmaps across Tenant Namespaces via TGI
+              Templated values in Labels and Annotations
             
           </span>
         </div>
@@ -1158,30 +1158,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Copying Secrets and Configmaps across Tenant Namespaces via TGI
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="distributing-resources.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="distributing-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1190,35 +1170,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#mapping-resources-within-tenant-namespaces-via-ti" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mapping Resources within Tenant Namespaces via TI
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1438,10 +1389,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="templated-metadata-values.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Templated values in Labels and Annotations
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="templated-metadata-values.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1450,6 +1421,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#supported-templated-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported templated values
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1686,68 +1686,26 @@
   
 
 
-<h1 id="copying-secrets-and-configmaps-across-tenant-namespaces-via-tgi">Copying Secrets and Configmaps across Tenant Namespaces via TGI<a class="headerlink" href="#copying-secrets-and-configmaps-across-tenant-namespaces-via-tgi" title="Permanent link">#</a></h1>
-<p>Bill is a cluster admin who wants to map a <code>docker-pull-secret</code>, present in a <code>build</code> namespace, in tenant namespaces where certain labels exists.</p>
-<p>First, Bill creates a template:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">resourceMappings</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">secrets</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<h1 id="templated-values-in-labels-and-annotations">Templated values in Labels and Annotations<a class="headerlink" href="#templated-values-in-labels-and-annotations" title="Permanent link">#</a></h1>
+<p>Templated values are placeholders in your configuration that get replaced with actual data when the CR is processed. Below is a list of currently supported templated values, their descriptions, and where they can be used.</p>
+<h2 id="supported-templated-values">Supported templated values<a class="headerlink" href="#supported-templated-values" title="Permanent link">#</a></h2>
+<ul>
+<li>
+<p><code>"{{ TENANT.USERNAME }}"</code></p>
+<ul>
+<li><strong>Description</strong>: The username associated with users specified in <a href="../tutorials/tenant/create-tenant.html">Tenant</a> under <code>Owners</code> and <code>Editors</code>.</li>
+<li><strong>Supported in CRs</strong>:<ul>
+<li><code>Tenant</code>: Under <code>sandboxMetadata.labels</code> and <code>sandboxMetadata.annotations</code>.</li>
+<li><code>IntegrationConfig</code>: Under <code>metadata.sandboxs.labels</code> and <code>metadata.sandboxs.annotations</code>.</li>
+</ul>
+</li>
+<li><strong>Example</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">annotation</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">TENANT.USERNAME</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"> </span><span class="c1"># double quotes are required</span>
 </code></pre></div>
-<p>Once the template has been created, Bill makes a <code>TemplateGroupInstance</code> referring to the <code>Template</code> he wants to deploy with <code>MatchLabels</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-group-instance</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<p>Afterward, Bill can see that secrets has been successfully mapped in all matching namespaces.</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-pull-secret<span class="w"> </span>-n<span class="w"> </span>bluesky-anna-aurora-sandbox
-NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
-docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
-
-kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-pull-secret<span class="w"> </span>-n<span class="w"> </span>alpha-dave-aurora-sandbox
-NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
-docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
-</code></pre></div>
-<h2 id="mapping-resources-within-tenant-namespaces-via-ti">Mapping Resources within Tenant Namespaces via TI<a class="headerlink" href="#mapping-resources-within-tenant-namespaces-via-ti" title="Permanent link">#</a></h2>
-<p>Anna is a tenant owner who wants to map a <code>docker-pull-secret</code>, present in <code>bluseky-build</code> namespace, to <code>bluesky-anna-aurora-sandbox</code> namespace.</p>
-<p>First, Bill creates a template:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">resourceMappings</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">secrets</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-build</span>
-</code></pre></div>
-<p>Once the template has been created, Anna creates a <code>TemplateInstance</code> in <code>bluesky-anna-aurora-sandbox</code> namespace, referring to the <code>Template</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-instance</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-anna-aurora-sandbox</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<p>Afterward, Bill can see that secrets has been successfully mapped in all matching namespaces.</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-pull-secret<span class="w"> </span>-n<span class="w"> </span>bluesky-anna-aurora-sandbox
-NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
-docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
-</code></pre></div>
+</li>
+</ul>
 
 
 
