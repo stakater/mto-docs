@@ -51,14 +51,14 @@ resources:
 Once the template has been created, Bill edits the [IntegrationConfig](../how-to-guides/integration-config.md) to add unique label to all tenant projects:
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1alpha1
+apiVersion: tenantoperator.stakater.com/v1beta1
 kind: IntegrationConfig
 metadata:
   name: tenant-operator-config
   namespace: multi-tenant-operator
 spec:
-  openshift:
-    project:
+  metadata:
+    namespaces:
       labels:
         stakater.com/workload-monitoring: "true"
         tenant-network-policy: "true"
@@ -67,11 +67,12 @@ spec:
     sandbox:
       labels:
         stakater.com/kind: sandbox
-    privilegedNamespaces:
+  privileged:
+    namespaces:
       - default
       - ^openshift-*
       - ^kube-*
-    privilegedServiceAccounts:
+    serviceAccounts:
       - ^system:serviceaccount:openshift-*
       - ^system:serviceaccount:kube-*
 ```
