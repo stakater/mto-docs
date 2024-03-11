@@ -1753,7 +1753,7 @@
 </ul>
 <h2 id="creating-argocd-appprojects-for-your-tenant">Creating ArgoCD AppProjects for your tenant<a class="headerlink" href="#creating-argocd-appprojects-for-your-tenant" title="Permanent link">#</a></h2>
 <p>Bill wants each tenant to also have their own ArgoCD AppProjects. To make sure this happens correctly, Bill will first specify the ArgoCD namespace in the <a href="../../how-to-guides/integration-config.html">IntegrationConfig</a>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
@@ -1845,20 +1845,21 @@ openshift-operators<span class="w">   </span>sigma<span class="w">        </span
 <p><a class="glightbox" href="../../images/argocd.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../images/argocd.png" /></a></p>
 <h2 id="prevent-argocd-from-syncing-certain-namespaced-resources">Prevent ArgoCD from syncing certain namespaced resources<a class="headerlink" href="#prevent-argocd-from-syncing-certain-namespaced-resources" title="Permanent link">#</a></h2>
 <p>Bill wants tenants to not be able to sync <code>ResourceQuota</code> and <code>LimitRange</code> resources to their namespaces. To do this correctly, Bill will specify these resources to blacklist in the ArgoCD portion of the <a href="../../how-to-guides/integration-config.html">IntegrationConfig</a>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">argocd</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
-<span class="w">    </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceQuota</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitRange</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">integrations</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
+<span class="w">      </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceQuota</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitRange</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <p>Now, if these resources are added to any tenant's project directory in GitOps, ArgoCD will not sync them to the cluster. The AppProject will also have the blacklisted resources added to it:</p>
@@ -1878,18 +1879,19 @@ openshift-operators<span class="w">   </span>sigma<span class="w">        </span
 </code></pre></div>
 <h2 id="allow-argocd-to-sync-certain-cluster-wide-resources">Allow ArgoCD to sync certain cluster-wide resources<a class="headerlink" href="#allow-argocd-to-sync-certain-cluster-wide-resources" title="Permanent link">#</a></h2>
 <p>Bill now wants tenants to be able to sync the <code>Environment</code> cluster scoped resource to the cluster. To do this correctly, Bill will specify the resource to allow-list in the ArgoCD portion of the Integration Config's Spec:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">argocd</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
-<span class="w">    </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Environment</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">integrations</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
+<span class="w">      </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Environment</span>
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <p>Now, if the resource is added to any tenant's project directory in GitOps, ArgoCD will sync them to the cluster. The AppProject will also have the allow-listed resources added to it:</p>

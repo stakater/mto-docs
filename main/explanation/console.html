@@ -1845,20 +1845,18 @@
 <h2 id="dashboard-overview">Dashboard Overview<a class="headerlink" href="#dashboard-overview" title="Permanent link">#</a></h2>
 <p>The dashboard serves as a centralized monitoring hub, offering insights into the current state of tenants, namespaces, and quotas. It is designed to provide a quick summary/snapshot of MTO resources' status. Additionally, it includes a Showback graph that presents a quick glance of the seven-day cost trends associated with the namespaces/tenants based on the logged-in user.</p>
 <p>By default, MTO Console will be disabled and has to be enabled by setting the below configuration in IntegrationConfig.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">provision</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ingress-class-name&gt;</span>
 <span class="w">      </span><span class="nt">console</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-console.&lt;hostname&gt;</span>
-<span class="w">        </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ingress-class-name&gt;</span>
 <span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;tls-secret-name&gt;</span>
 <span class="w">      </span><span class="nt">gateway</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-gateway.&lt;hostname&gt;</span>
-<span class="w">        </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ingress-class-name&gt;</span>
 <span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;tls-secret-name&gt;</span>
 <span class="w">      </span><span class="nt">keycloak</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-keycloak.&lt;hostname&gt;</span>
-<span class="w">        </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ingress-class-name&gt;</span>
 <span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;tls-secret-name&gt;</span>
 <span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">trustedRootCert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;root-ca-secret-name&gt;</span>
