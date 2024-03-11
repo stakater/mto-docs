@@ -36,6 +36,7 @@ resources:
       repository:
         name: redis
         repoUrl: https://charts.bitnami.com/bitnami
+        version: 0.0.15
     values: |
       redisPort: 6379
 ```
