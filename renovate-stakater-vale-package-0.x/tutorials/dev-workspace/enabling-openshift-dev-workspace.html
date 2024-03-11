@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-stakater-vale-package-0.x/tutorials/tenant/deleting-tenant.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-stakater-vale-package-0.x/tutorials/dev-workspace/enabling-openshift-dev-workspace.html">
       
       
-        <link rel="prev" href="tenant-hibernation.html">
+        <link rel="prev" href="../vault/enabling-multi-tenancy-vault.html">
       
       
-        <link rel="next" href="../template/template.html">
+        <link rel="next" href="../../how-to-guides/tenant.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.svg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Deleting a Tenant - Multi Tenant Operator</title>
+        <title>Enabling DevWorkspace for Tenant's sandbox in OpenShift - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deleting-a-tenant" class="md-skip">
+        <a href="#enabling-devworkspace-for-tenants-sandbox-in-openshift" class="md-skip">
           Skip to content
         </a>
       
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Deleting a Tenant
+              Enabling DevWorkspace for Tenant's sandbox in OpenShift
             
           </span>
         </div>
@@ -375,19 +375,17 @@
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
@@ -401,7 +399,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             Create your first Tenant
@@ -415,7 +413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="create-tenant.html" class="md-nav__link">
+      <a href="../tenant/create-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -436,7 +434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="create-sandbox.html" class="md-nav__link">
+      <a href="../tenant/create-sandbox.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -457,7 +455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="creating-namespaces.html" class="md-nav__link">
+      <a href="../tenant/creating-namespaces.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -478,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="assigning-metadata.html" class="md-nav__link">
+      <a href="../tenant/assigning-metadata.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -499,7 +497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tenant-hibernation.html" class="md-nav__link">
+      <a href="../tenant/tenant-hibernation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -517,30 +515,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Deleting a Tenant
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="deleting-tenant.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../tenant/deleting-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -549,35 +527,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted" class="md-nav__link">
-    <span class="md-ellipsis">
-      Retaining tenant namespaces and AppProject when a tenant is being deleted
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -787,17 +736,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
         
           
           <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
@@ -811,7 +762,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_6">
             <span class="md-nav__icon md-icon"></span>
             Enabling DevWorkspace metadata
@@ -822,10 +773,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../dev-workspace/enabling-openshift-dev-workspace.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Enabling DevWorkspace for Tenant's sandbox in OpenShift
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="enabling-openshift-dev-workspace.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -834,6 +805,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#devworkspaces-metadata-via-multi-tenant-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      DevWorkspaces metadata via Multi Tenant Operator
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-metadata-for-enabling-devworkspace-on-sandbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required metadata for enabling DevWorkspace on sandbox
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automate-sandbox-metadata-for-all-tenant-users-via-tenant-cr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automate sandbox metadata for all Tenant users via Tenant CR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automate-sandbox-metadata-for-all-tenant-users-via-integrationconfig-cr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automate sandbox metadata for all Tenant users via IntegrationConfig CR
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1688,9 +1715,18 @@
   
 
 
-<h1 id="deleting-a-tenant">Deleting a Tenant<a class="headerlink" href="#deleting-a-tenant" title="Permanent link">#</a></h1>
-<h2 id="retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted">Retaining tenant namespaces and AppProject when a tenant is being deleted<a class="headerlink" href="#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted" title="Permanent link">#</a></h2>
-<p>Bill now wants to delete tenant <code>bluesky</code> and wants to retain all namespaces and AppProject of the tenant. To retain the namespaces Bill will set <code>spec.onDelete.cleanNamespaces</code>, and <code>spec.onDelete.cleanAppProjects</code> to <code>false</code>.</p>
+<h1 id="enabling-devworkspace-for-tenants-sandbox-in-openshift">Enabling DevWorkspace for Tenant's sandbox in OpenShift<a class="headerlink" href="#enabling-devworkspace-for-tenants-sandbox-in-openshift" title="Permanent link">#</a></h1>
+<h2 id="devworkspaces-metadata-via-multi-tenant-operator">DevWorkspaces metadata via Multi Tenant Operator<a class="headerlink" href="#devworkspaces-metadata-via-multi-tenant-operator" title="Permanent link">#</a></h2>
+<p>DevWorkspaces require specific metadata on a namespace for it to work in it. With Multi Tenant Operator (MTO), you can create sandbox namespaces for users of a Tenant, and then add the required metadata automatically on all sandboxes.</p>
+<h2 id="required-metadata-for-enabling-devworkspace-on-sandbox">Required metadata for enabling DevWorkspace on sandbox<a class="headerlink" href="#required-metadata-for-enabling-devworkspace-on-sandbox" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">che.eclipse.org</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workspaces-namespace</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;username&gt;</span>
+</code></pre></div>
+<h2 id="automate-sandbox-metadata-for-all-tenant-users-via-tenant-cr">Automate sandbox metadata for all Tenant users via Tenant CR<a class="headerlink" href="#automate-sandbox-metadata-for-all-tenant-users-via-tenant-cr" title="Permanent link">#</a></h2>
+<p>With Multi Tenant Operator (MTO), you can set <code>sandboxMetadata</code> like below to automate metadata for all sandboxes:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1698,21 +1734,90 @@
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@acme.org</span>
+<span class="w">  </span><span class="nt">editors</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">erik@acme.org</span>
+<span class="w">  </span><span class="nt">viewers</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">john@acme.org</span>
 <span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
 <span class="w">  </span><span class="nt">sandboxConfig</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prod</span>
-<span class="w">  </span><span class="nt">onDelete</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">cleanNamespaces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">cleanAppProject</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">private</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="w">  </span><span class="nt">sandboxMetadata</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">che.eclipse.org</span>
+<span class="w">      </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workspaces-namespace</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">TENANT.USERNAME</span><span class="nv"> </span><span class="s">}}&quot;</span>
 </code></pre></div>
-<p>With the above configuration all tenant namespaces and AppProject will not be deleted when tenant <code>bluesky</code> is deleted. By default, the value of <code>spec.onDelete.cleanNamespaces</code> is also <code>false</code> and <code>spec.onDelete.cleanAppProject</code> is <code>true</code></p>
+<p>It will create sandbox namespaces and also apply the <code>sandboxMetadata</code> for owners and editors. Notice the template <code>{{ TENANT.USERNAME }}</code>, it will resolve the username as value of the corresponding annotation. For more info on templated value, see <a href="../../reference-guides/templated-metadata-values.html">here</a></p>
+<h2 id="automate-sandbox-metadata-for-all-tenant-users-via-integrationconfig-cr">Automate sandbox metadata for all Tenant users via IntegrationConfig CR<a class="headerlink" href="#automate-sandbox-metadata-for-all-tenant-users-via-integrationconfig-cr" title="Permanent link">#</a></h2>
+<p>You can also automate the metadata on all sandbox namespaces by using IntegrationConfig, notice <code>metadata.sandboxes</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">namespaceAccessPolicy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">deny</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">privilegedNamespaces</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">    </span><span class="nt">privileged</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^default$</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^openshift-*</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^kube-*</span>
+<span class="w">      </span><span class="nt">serviceAccounts</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift-*</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:kube-*</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:stakater-actions-runner-controller:actions-runner-controller-runner-deployment$</span>
+<span class="w">    </span><span class="nt">rbac</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">tenantRoles</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">editor</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">clusterRoles</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">edit</span>
+<span class="w">          </span><span class="nt">owner</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">clusterRoles</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
+<span class="w">          </span><span class="nt">viewer</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">clusterRoles</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">view</span>
+<span class="w">  </span><span class="nt">components</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">gateway</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">keycloak</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">integrations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">vault</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">accessInfo</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">        </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">        </span><span class="nt">roleName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">        </span><span class="nt">secretRef</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">          </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">authMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
+<span class="w">      </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ssoClient</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">groups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">    </span><span class="nt">namespaces</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">che.eclipse.org</span>
+<span class="w">        </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workspaces-namespace</span>
+<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">TENANT.USERNAME</span><span class="nv"> </span><span class="s">}}&quot;</span>
+</code></pre></div>
+<p>For more info on templated value <code>"{{ TENANT.USERNAME }}"</code>, see <a href="../../reference-guides/templated-metadata-values.html">here</a></p>
 
 
 
