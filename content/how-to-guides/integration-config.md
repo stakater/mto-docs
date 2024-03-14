@@ -98,7 +98,7 @@ Spec:
       address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud    #include /auth if using RH-SSO
       clientName: mto-console
     argocd:
-      enabled: bool
+      enabled: true
       clusterResourceWhitelist:
         - group: tronador.stakater.com
           kind: EnvironmentProvisioner
@@ -434,7 +434,7 @@ integrations:
     address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/
     clientName: mto-console
   argocd:
-    enabled: bool
+    enabled: true
     clusterResourceWhitelist:
       - group: tronador.stakater.com
         kind: EnvironmentProvisioner
@@ -483,7 +483,7 @@ If `argocd` is configured on a cluster, then ArgoCD configuration can be enabled
 
 ```yaml
 argocd:
-  enabled: bool
+  enabled: true
   clusterResourceWhitelist:
     - group: tronador.stakater.com
       kind: EnvironmentProvisioner
