@@ -95,7 +95,7 @@ Spec:
         openshift.io/node-selector: node-role.kubernetes.io/worker=
   integrations:
     argocd:
-      enabled: bool
+      enabled: true
       clusterResourceWhitelist:
         - group: tronador.stakater.com
           kind: EnvironmentProvisioner
@@ -105,7 +105,7 @@ Spec:
       namespace: openshift-operators
     vault:
       enabled: true
-      authMethod: kubernetes      #enum: {kubernetes:default, Token}
+      authMethod: kubernetes      #enum: {kubernetes:default, token}
       accessInfo: 
         accessorPath: oidc/
         address: https://vault.apps.prod.abcdefghi.kubeapp.cloud/
@@ -437,7 +437,7 @@ Integrations are used to configure the integrations that MTO has with other tool
 ```yaml
 integrations:
   argocd:
-    enabled: bool
+    enabled: true
     clusterResourceWhitelist:
       - group: tronador.stakater.com
         kind: EnvironmentProvisioner
@@ -467,7 +467,7 @@ If `argocd` is configured on a cluster, then ArgoCD configuration can be enabled
 
 ```yaml
 argocd:
-  enabled: bool
+  enabled: true
   clusterResourceWhitelist:
     - group: tronador.stakater.com
       kind: EnvironmentProvisioner
