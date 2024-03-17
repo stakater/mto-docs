@@ -151,7 +151,11 @@ Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience
 
 ### Platform Owner:
 * **Efficient Resource Management**: MTO enables efficient resource management by allowing multiple tenants to share a single cluster, reducing operational and management efforts, and preventing Kubernetes cluster sprawl.
+
 * **Cost Management with Showback**: MTO's showback functionality enables accurate tracking of resource usage by each tenant or namespace, facilitating cost monitoring, optimization, and fair billing.
+
 * **Streamlined Administration with MTO Console**: The MTO Console provides a comprehensive interface for managing multi-tenant environments, simplifying administrative tasks, and offering insights into tenant-related resources.
+
 * **Hibernation for Resource Optimization**: MTO can downscale deployments and stateful sets in a tenant's namespace based on defined sleep schedules, optimizing resource utilization and reducing costs during off-peak hours.
+
 * **Enhanced Collaboration with Mattermost Multitenancy**: MTO can manage Mattermost to create teams for tenant users, enhancing collaboration and communication within tenant groups while ensuring secure access control and membership management.
