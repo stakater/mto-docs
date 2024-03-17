@@ -128,7 +128,7 @@ Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience
 
 ## Benefits and Value Propositions
 
-### Platform Administrator:
+### Platform Administrator
 
 * **Efficient Resource Utilization**: MTO enables the platform administrator to share an OpenShift cluster with multiple tenants, maximizing resource utilization and reducing operational overhead.
 
@@ -140,7 +140,7 @@ Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience
 
 * **Enhanced Security with Vault Multitenancy**: MTO extends the permission model to HashiCorp Vault, enabling administrators to manage RBAC in Vault easily and ensuring tenant users can manage their own secrets securely.
 
-### DevOps Engineer:
+### DevOps Engineer
 
 * **Simplified RBAC Configuration**: MTO abstracts RBAC configuration complexities, allowing DevOps engineers to focus on writing pipelines and deploying applications without worrying about access control.
 
@@ -152,7 +152,7 @@ Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience
 
 * **GitOps-Ready Configuration**: MTO is fully configurable using Custom Resources, making it compatible with GitOps practices, thus facilitating seamless automation and version-controlled configurations.
 
-### Developer:
+### Developer
 
 * **Self-Service Namespace Provisioning**: With MTO, developers can safely provision namespaces for themselves and their teams, promoting agility and reducing dependency on platform administrators.
 
@@ -164,7 +164,7 @@ Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience
 
 * **Cross-Namespace Resource Distribution**: MTO supports cloning of secrets and configmaps across namespaces, allowing developers to access shared resources easily while maintaining isolation between tenants.
 
-### Platform Owner:
+### Platform Owner
 
 * **Efficient Resource Management**: MTO enables efficient resource management by allowing multiple tenants to share a single cluster, reducing operational and management efforts, and preventing Kubernetes cluster sprawl.
 
