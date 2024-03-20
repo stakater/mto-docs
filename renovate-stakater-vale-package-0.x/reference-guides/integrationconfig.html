@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.10ba22f1.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -1245,6 +1245,27 @@
   
   
     <li class="md-nav__item">
+      <a href="deploying-private-helm-charts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying Private Helm Chart to Multiple Namespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="extend-default-roles.html" class="md-nav__link">
         
   
@@ -1315,15 +1336,6 @@
   <a href="#configuring-vault-in-integrationconfig" class="md-nav__link">
     <span class="md-ellipsis">
       Configuring Vault in IntegrationConfig
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuring-rhsso-red-hat-single-sign-on-in-integrationconfig" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configuring RHSSO (Red Hat Single Sign-On) in IntegrationConfig
     </span>
   </a>
   
@@ -1704,14 +1716,14 @@ MTO ignores privileged namespaces that are mentioned in the IntegrationConfig, a
 Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Cannot<span class="w"> </span>Create<span class="w"> </span>namespace<span class="w"> </span>stakater-test<span class="w"> </span>without<span class="w"> </span>label<span class="w"> </span>stakater.com/tenant.<span class="w"> </span>User:<span class="w"> </span>Bill<span class="o">)</span>:<span class="w"> </span>admission<span class="w"> </span>webhook<span class="w"> </span><span class="s2">&quot;vnamespace.kb.io&quot;</span><span class="w"> </span>denied<span class="w"> </span>the<span class="w"> </span>request:<span class="w"> </span>Cannot<span class="w"> </span>CREATE<span class="w"> </span>namespace<span class="w"> </span>stakater-test<span class="w"> </span>without<span class="w"> </span>label<span class="w"> </span>stakater.com/tenant.<span class="w"> </span>User:<span class="w"> </span>Bill
 </code></pre></div>
 <p>Bill is trying to create a namespace without the <code>stakater.com/tenant</code> label. Creating a namespace without this label is only allowed if the namespace is privileged. Privileged namespaces will be ignored by MTO and do not require the said label. Therefore, Bill will add the required regex in the IntegrationConfig, along with any other namespaces which are privileged and should be ignored by MTO - like <code>default</code>, or namespaces with prefixes like <code>openshift</code>, <code>kube</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">openshift</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">privilegedNamespaces</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">privileged</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">namespaces</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^default$</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^openshift-.*</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^kube-.*</span>
@@ -1723,14 +1735,14 @@ namespace/stakater-test<span class="w"> </span>created
 </code></pre></div>
 <p>MTO will also disallow all users which are not tenant owners to perform CRUD operations on namespaces. This will also prevent Service Accounts from performing CRUD operations.</p>
 <p>If Bill wants MTO to ignore Service Accounts, then he would simply have to add them in the IntegrationConfig:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">openshift</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">privilegedServiceAccounts</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">privileged</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">serviceAccounts</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:serviceaccount:openshift</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:serviceaccount:stakater</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:serviceaccount:kube</span>
@@ -1738,14 +1750,14 @@ namespace/stakater-test<span class="w"> </span>created
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:serviceaccount:hive</span>
 </code></pre></div>
 <p>Bill can also use regex patterns to ignore a set of service accounts:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">openshift</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">privilegedServiceAccounts</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">privileged</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">serviceAccounts</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift-.*</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:stakater-.*</span>
 </code></pre></div>
@@ -1754,19 +1766,25 @@ namespace/stakater-test<span class="w"> </span>created
 <p>If Bill (the cluster admin) has Vault configured in his cluster, then he can take benefit from MTO's integration with Vault.</p>
 <p>MTO automatically creates Vault secret paths for tenants, where tenant members can securely save their secrets. It also authorizes tenant members to access these secrets via OIDC.</p>
 <p>Bill would first have to integrate Vault with MTO by adding the details in IntegrationConfig. For more <a href="../how-to-guides/integration-config.html#vault">details</a></p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">vault</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
-<span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;https://vault.apps.prod.abcdefghi.kubeapp.cloud/&#39;</span>
-<span class="w">    </span><span class="nt">roleName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
-<span class="w">    </span><span class="nt">sso</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
+<span class="w">  </span><span class="nt">integrations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">vault</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">authMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
+<span class="w">      </span><span class="nt">accessInfo</span><span class="p">:</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
+<span class="w">        </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://vault.apps.prod.abcdefghi.kubeapp.cloud/</span>
+<span class="w">        </span><span class="nt">roleName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">        </span><span class="nt">secretRef</span><span class="p">:</span><span class="w">       </span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">          </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">ssoClient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
 </code></pre></div>
 <p>Bill then creates a tenant for Anna and John:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
@@ -1785,20 +1803,6 @@ namespace/stakater-test<span class="w"> </span>created
 </code></pre></div>
 <p>Now Bill goes to <code>Vault</code> and sees that a path for <code>tenant</code> has been made under the name <code>bluesky/kv</code>, confirming that Tenant members with the Owner or Edit roles now have access to the tenant's Vault path.</p>
 <p>Now if Anna sign's in to the Vault via OIDC, she can see her tenants path and secrets. Whereas if John sign's in to the Vault via OIDC, he can't see his tenants path or secrets as he doesn't have the access required to view them.</p>
-<h2 id="configuring-rhsso-red-hat-single-sign-on-in-integrationconfig">Configuring RHSSO (Red Hat Single Sign-On) in IntegrationConfig<a class="headerlink" href="#configuring-rhsso-red-hat-single-sign-on-in-integrationconfig" title="Permanent link">#</a></h2>
-<p>Red Hat Single Sign-On <a href="https://access.redhat.com/products/red-hat-single-sign-on">RHSSO</a> is based on the Keycloak project and enables you to secure your web applications by providing Web single sign-on (SSO) capabilities based on popular standards such as SAML 2.0, OpenID Connect and OAuth 2.0.</p>
-<p>If Bill the cluster admin has RHSSO configured in his cluster, then he can take benefit from MTO's integration with RHSSO and Vault.</p>
-<p>MTO automatically allows tenant members to access Vault via OIDC(RHSSO authentication and authorization) to access secret paths for tenants where tenant members can securely save their secrets.</p>
-<p>Bill would first have to integrate RHSSO with MTO by adding the details in IntegrationConfig. <a href="../how-to-guides/integration-config.html#rhsso-red-hat-single-sign-on">Visit here</a> for more details.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">rhsso</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer</span>
-<span class="w">  </span><span class="nt">endpoint</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">secretReference</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auth-secrets</span>
-<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-auth</span>
-<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://iam-keycloak-auth.apps.prod.abcdefghi.kubeapp.cloud/</span>
-</code></pre></div>
 
 
 
@@ -1918,7 +1922,7 @@ namespace/stakater-test<span class="w"> </span>created
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "toc.integrate", "navigation.top"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      <script src="../assets/javascripts/bundle.bd41221c.min.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
