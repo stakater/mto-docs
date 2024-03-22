@@ -20,12 +20,13 @@ metadata:
   name: tenant-operator-config
   namespace: multi-tenant-operator
 spec:
-  privileged:
-    namespaces:
-      - ^default$
-      - ^openshift-.*
-      - ^kube-.*
-      - ^stakater-.*
+  accessControl:
+    privileged:
+      namespaces:
+        - ^default$
+        - ^openshift-.*
+        - ^kube-.*
+        - ^stakater-.*
 ```
 
 After mentioning the required regex (`^stakater-.*`) under `privilegedNamespaces`, Bill can create the namespace without interference.
@@ -46,13 +47,14 @@ metadata:
   name: tenant-operator-config
   namespace: multi-tenant-operator
 spec:
-  privileged:
-    serviceAccounts:
-      - system:serviceaccount:openshift
-      - system:serviceaccount:stakater
-      - system:serviceaccount:kube
-      - system:serviceaccount:redhat
-      - system:serviceaccount:hive
+  accessControl:
+    privileged:
+      serviceAccounts:
+        - system:serviceaccount:openshift
+        - system:serviceaccount:stakater
+        - system:serviceaccount:kube
+        - system:serviceaccount:redhat
+        - system:serviceaccount:hive
 ```
 
 Bill can also use regex patterns to ignore a set of service accounts:
@@ -64,10 +66,11 @@ metadata:
   name: tenant-operator-config
   namespace: multi-tenant-operator
 spec:
-  privileged:
-    serviceAccounts:
-      - ^system:serviceaccount:openshift-.*
-      - ^system:serviceaccount:stakater-.*
+  accessControl:
+    privileged:
+      serviceAccounts:
+        - ^system:serviceaccount:openshift-.*
+        - ^system:serviceaccount:stakater-.*
 ```
 
 ## Configuring Vault in IntegrationConfig

@@ -34,8 +34,10 @@ metadata:
   namespace: multi-tenant-operator
 spec:
   ...
-  argocd:
-    namespace: openshift-operators
+  integrations:
+    argocd:
+      enabled: true
+      namespace: openshift-operators
   ...
 ```
 
@@ -143,6 +145,7 @@ spec:
   ...
   integrations:
     argocd:
+      enabled: true
       namespace: openshift-operators
       namespaceResourceBlacklist:
         - group: ""
@@ -184,6 +187,7 @@ spec:
   ...
   integrations:
     argocd:
+      enabled: true
       namespace: openshift-operators
       clusterResourceWhitelist:
         - group: ""
