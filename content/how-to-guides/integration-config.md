@@ -94,6 +94,13 @@ Spec:
       annotations:
         openshift.io/node-selector: node-role.kubernetes.io/worker=
   integrations:
+    keycloak:
+      realm: mto
+      address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/
+      clientName: mto-console
+      publicKeySecretRef:
+        name: publickey
+        namespace: default
     argocd:
       enabled: bool
       clusterResourceWhitelist:
@@ -436,6 +443,13 @@ Integrations are used to configure the integrations that MTO has with other tool
 
 ```yaml
 integrations:
+  keycloak:
+    realm: mto
+    address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/
+    clientName: mto-console
+    publicKeySecretRef:
+      name: publickey
+      namespace: default
   argocd:
     enabled: bool
     clusterResourceWhitelist:
@@ -458,6 +472,29 @@ integrations:
     config: 
       ssoClient: vault
 ```
+
+### Keycloak
+
+[Keycloak](https://www.keycloak.org/) is an open-source Identity and Access Management solution aimed at modern applications and services. It makes it easy to secure applications and services with little to no code.
+
+If `keycloak` is already configured on a cluster, then Keycloak configuration can be enabled.
+
+```yaml
+keycloak:
+  realm: mto
+  address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/
+  clientName: mto-console
+  publicKeySecretRef:
+    name: publickey
+    namespace: default
+```
+
+- `keycloak.realm:` The realm in Keycloak where the client is configured.
+- `keycloak.address:` The address of the Keycloak instance.
+- `keycloak.clientName:` The name of the client in Keycloak.
+- `keycloak.publicKeySecretRef:` The secret containing the public key of the Keycloak instance.
+
+For more details around enabling Keycloak in MTO, visit [here](../reference-guides/integrating-external-keycloak.md)
 
 ### ArgoCD
 
