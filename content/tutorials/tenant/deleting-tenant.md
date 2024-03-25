@@ -1,30 +1,49 @@
-# Deleting a Tenant
+# Deleting a Tenant While Preserving Resources
 
-## Retaining tenant namespaces and AppProject when a tenant is being deleted
+When managing tenant lifecycles within Kubernetes, certain scenarios require the deletion of a tenant without removing associated namespaces or ArgoCD AppProjects. This ensures that resources and configurations tied to the tenant remain intact for archival or transition purposes.
 
-Bill now wants to delete tenant `bluesky` and wants to retain all namespaces and AppProject of the tenant. To retain the namespaces Bill will set `spec.onDelete.cleanNamespaces`, and `spec.onDelete.cleanAppProjects` to `false`.
+### Configuration for Retaining Resources
+
+Bill decides to decommission the bluesky tenant but needs to preserve all related namespaces for continuity. To achieve this, he adjusts the Tenant Custom Resource (CR) to prevent the automatic cleanup of these resources upon tenant deletion.
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1beta2
+kubectl apply -f - << EOF
+apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  owners:
-    users:
-    - anna@aurora.org
-    - anthony@aurora.org
   quota: small
-  sandboxConfig:
-    enabled: true
+  accessControl:
+    owners:
+      users:
+        - anna@aurora.org
+        - anthony@aurora.org
   namespaces:
+    sandboxes:
+      enabled: true
     withTenantPrefix:
       - dev
       - build
       - prod
-  onDelete:
-    cleanNamespaces: false
-    cleanAppProject: false
+    onDeletePurgeNamespaces: false
+EOF
 ```
 
-With the above configuration all tenant namespaces and AppProject will not be deleted when tenant `bluesky` is deleted. By default, the value of `spec.onDelete.cleanNamespaces` is also `false` and `spec.onDelete.cleanAppProject` is `true`
+With the `onDeletePurgeNamespaces` fields set to false, Bill ensures that the deletion of the bluesky tenant does not trigger the removal of its namespaces. This setup is crucial for cases where the retention of environment setups and deployments is necessary post-tenant deletion.
+
+#### Default Behavior
+
+It's important to note the default behavior of the Tenant Operator regarding resource cleanup:
+
+Namespaces: By default, `onDeletePurgeNamespaces` is set to false, implying that namespaces are not automatically deleted with the tenant unless explicitly configured.
+
+### Deleting the Tenant
+
+Once the Tenant CR is configured as desired, Bill can proceed to delete the bluesky tenant:
+
+```bash
+kubectl delete tenant bluesky
+```
+
+This command removes the tenant resource from the cluster while leaving the specified namespaces untouched, adhering to the configured `onDeletePurgeNamespaces` policies. This approach provides flexibility in managing the lifecycle of tenant resources, catering to various operational strategies and compliance requirements.

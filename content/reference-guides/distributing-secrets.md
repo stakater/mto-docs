@@ -34,39 +34,41 @@ For this, he can use the support for [common](../tutorials/tenant/assigning-meta
 Bill has to specify a label on namespaces in which he needs the secret. He can add it to all namespaces inside a tenant or some specific namespaces depending on the use case.
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1beta2
+apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  owners:
-    users:
-    - anna@aurora.org
-    - anthony@aurora.org
-  editors:
-    users:
-    - john@aurora.org
-    groups:
-    - alpha
   quota: small
+  accessControl:
+    owners:
+      users:
+        - anna@aurora.org
+        - anthony@aurora.org
+    editors:
+      users:
+        - john@aurora.org
+      groups:
+        - alpha
   namespaces:
+    sandboxes:
+      enabled: false # Assuming sandbox configuration as disabled by default, adjust as necessary
     withTenantPrefix:
       - dev
       - build
       - prod
-
-  # use this if you want to add label to some specific namespaces
-  specificMetadata:
-    - namespaces:
-        - test-namespace
-      labels:
-        distribute-image-pull-secret: true
-
-  # use this if you want to add label to all namespaces under your tenant
-  commonMetadata:
-    labels:
-      distribute-image-pull-secret: true
-
+    withoutTenantPrefix: []
+    metadata:
+      # Assuming specificMetadata applies to tenant-prefixed namespaces in v1beta3
+      specific:
+        - namespaces:
+            - bluesky-test-namespace # Adjust the namespace name if it should have the tenant prefix or not
+          labels:
+            distribute-image-pull-secret: true
+      # commonMetadata applies to all namespaces under the tenant
+      common:
+        labels:
+          distribute-image-pull-secret: true
 ```
 
 Bill has added support for a new label `distribute-image-pull-secret: true"` for tenant projects/namespaces, now MTO will add that label depending on the used field.

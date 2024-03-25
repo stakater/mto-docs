@@ -46,16 +46,20 @@ Bill then proceeds to create a tenant for Anna, while also linking the newly cre
 
 ```yaml
 kubectl create -f - << EOF
-apiVersion: tenantoperator.stakater.com/v1beta2
+apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  owners:
-    users:
-    - anna@stakater.com
   quota: small
-  sandbox: false
+  accessControl:
+    owners:
+      users:
+        - anna@aurora.org
+        - anthony@aurora.org
+  namespaces:
+    sandboxes:
+      enabled: true
 EOF
 ```
 
@@ -94,17 +98,20 @@ Once the quota is created, Bill will create the tenant and set the quota field t
 
 ```yaml
 kubectl create -f - << EOF
-apiVersion: tenantoperator.stakater.com/v1beta2
+apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  owners:
-    users:
-    - anna@aurora.org
-    - anthony@aurora.org
-  quota: medium
-  sandbox: true
+  quota: small
+  accessControl:
+    owners:
+      users:
+        - anna@aurora.org
+        - anthony@aurora.org
+  namespaces:
+    sandboxes:
+      enabled: true
 EOF
 ```
 
@@ -132,16 +139,20 @@ Once the quota is created, Bill will create the tenant and set the quota field t
 
 ```yaml
 kubectl create -f - << EOF
-apiVersion: tenantoperator.stakater.com/v1beta2
+apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
 metadata:
-  name: sigma
+  name: bluesky
 spec:
-  owners:
-    users:
-    - dave@aurora.org
   quota: small
-  sandbox: true
+  accessControl:
+    owners:
+      users:
+        - anna@aurora.org
+        - anthony@aurora.org
+  namespaces:
+    sandboxes:
+      enabled: true
 EOF
 ```
 

@@ -105,19 +105,20 @@ spec:
 Bill then creates a tenant for Anna and John:
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1beta2
+apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  owners:
-    users:
-    - anna@acme.org
-  viewers:
-    users:
-    - john@acme.org
   quota: small
-  sandbox: false
+  accessControl:
+    owners:
+      users:
+        - anna@aurora.org
+        - john@acme.org
+  namespaces:
+    sandboxes:
+      enabled: false
 ```
 
 Now Bill goes to `Vault` and sees that a path for `tenant` has been made under the name `bluesky/kv`, confirming that Tenant members with the Owner or Edit roles now have access to the tenant's Vault path.
