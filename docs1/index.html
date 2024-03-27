@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.15">
     
     
       
@@ -1981,7 +1981,7 @@ Furthermore, this functionality supports financial planning and budgeting by off
 <h3 id="platform-administrator">Platform Administrator<a class="headerlink" href="#platform-administrator" title="Permanent link">#</a></h3>
 <ul>
 <li>
-<p><strong>Efficient Resource Utilization</strong>: MTO enables the platform administrator to share an OpenShift cluster with multiple tenants, maximizing resource utilization and reducing operational overhead.</p>
+<p><strong>Efficient Resource Utilization</strong>: Through MTO, the platform administrator can efficiently control quotas, enabling the sharing of an OpenShift cluster with multiple tenants, thereby maximizing resource utilization and reducing operational overhead.</p>
 </li>
 <li>
 <p><strong>Centralized Management</strong>: With MTO, the administrator can configure and manage tenants and their sandboxes centrally, minimizing efforts and ensuring consistent configurations.</p>
@@ -1993,7 +1993,7 @@ Furthermore, this functionality supports financial planning and budgeting by off
 <p><strong>Integration with External Identity Management</strong>: MTO seamlessly integrates with external identity management systems, allowing administrators to leverage existing groups for maintaining tenant membership.</p>
 </li>
 <li>
-<p><strong>Enhanced Security with Vault Multitenancy</strong>: MTO extends the permission model to HashiCorp Vault, enabling administrators to manage RBAC in Vault easily and ensuring tenant users can manage their own secrets securely.</p>
+<p><strong>Enhanced Security with Vault Multitenancy</strong>: Through MTO, the permission model extends to both HashiCorp Vault and ArgoCD, empowering administrators to manage RBAC in both systems seamlessly. This ensures tenant users can securely manage their own secrets in Vault and maintain control over their deployments with ArgoCD.</p>
 </li>
 </ul>
 <h3 id="devops-engineer">DevOps Engineer<a class="headerlink" href="#devops-engineer" title="Permanent link">#</a></h3>
@@ -2002,7 +2002,7 @@ Furthermore, this functionality supports financial planning and budgeting by off
 <p><strong>Simplified RBAC Configuration</strong>: MTO abstracts RBAC configuration complexities, allowing DevOps engineers to focus on writing pipelines and deploying applications without worrying about access control.</p>
 </li>
 <li>
-<p><strong>Integrated ArgoCD Multitenancy</strong>: MTO extends the permission model to ArgoCD, simplifying RBAC management and repository provisioning for tenants, thus reducing overhead in managing deployments.</p>
+<p><strong>Integrated ArgoCD Multitenancy</strong>: MTO extends the permission model to ArgoCD, simplifying RBAC management for tenants, thus reducing overhead in managing deployments.</p>
 </li>
 <li>
 <p><strong>Resource Management</strong>: MTO enables defining Resource Quotas at the tenant scope, ensuring that dev teams can self-serve namespaces within allocated resources, promoting autonomy and agility.</p>
@@ -2026,10 +2026,10 @@ Furthermore, this functionality supports financial planning and budgeting by off
 <p><strong>Native Kubernetes Experience</strong>: Developers can work with MTO without the need for additional management layers or customized binaries, ensuring a seamless and familiar Kubernetes experience.</p>
 </li>
 <li>
-<p><strong>Safe Remote Development Environments</strong>: MTO can automatically provision namespaces preloaded with selected templates, providing developers with safe remote development environments for rapid prototyping and development.</p>
+<p><strong>Cross-Namespace Resource Distribution</strong>: MTO supports cloning of secrets and configmaps across namespaces, allowing developers to access resources easily while maintaining isolation between tenants.</p>
 </li>
 <li>
-<p><strong>Cross-Namespace Resource Distribution</strong>: MTO supports cloning of secrets and configmaps across namespaces, allowing developers to access shared resources easily while maintaining isolation between tenants.</p>
+<p><strong>Self-Managing Secrets in Vault Integration</strong>: Leveraging MTO's capabilities, tenants enabled with Vault integration gain independent access to designated secrets paths tailored to their permissions. This empowers individual members to interact autonomously with Vault, ensuring seamless utilization of sensitive information without any cross-tenant interference or dependency.</p>
 </li>
 </ul>
 <h3 id="platform-owner">Platform Owner<a class="headerlink" href="#platform-owner" title="Permanent link">#</a></h3>
@@ -2045,9 +2045,6 @@ Furthermore, this functionality supports financial planning and budgeting by off
 </li>
 <li>
 <p><strong>Hibernation for Resource Optimization</strong>: MTO can downscale deployments and stateful sets in a tenant's namespace based on defined sleep schedules, optimizing resource utilization and reducing costs during off-peak hours.</p>
-</li>
-<li>
-<p><strong>Enhanced Collaboration with Mattermost Multitenancy</strong>: MTO can manage Mattermost to create teams for tenant users, enhancing collaboration and communication within tenant groups while ensuring secure access control and membership management.</p>
 </li>
 </ul>
 
@@ -2172,7 +2169,7 @@ Furthermore, this functionality supports financial planning and budgeting by off
     <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "toc.integrate", "navigation.top"], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      <script src="assets/javascripts/bundle.bd41221c.min.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
