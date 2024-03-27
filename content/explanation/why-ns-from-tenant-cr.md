@@ -10,4 +10,6 @@
 
 * **Simplified GitOps**: Tenant CRs streamline GitOps practices by enabling the management of multiple namespaces from a single point. This integration simplifies deployment workflows and reduces the need to navigate through multiple repositories or folders for namespace-related changes.
 
+* **Namespace provisioning for AppProjects **: Automated distribution of namespaces into their respective appProjects.
+
 [Creating Namespaces from Tenant CR](../tutorials/tenant/creating-namespaces.md)

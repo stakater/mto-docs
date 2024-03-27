@@ -130,7 +130,7 @@ Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience
 
 ### Platform Administrator
 
-* **Efficient Resource Utilization**: MTO enables the platform administrator to share an OpenShift cluster with multiple tenants, maximizing resource utilization and reducing operational overhead.
+* **Efficient Resource Utilization**: Through MTO, the platform administrator can efficiently control quotas, enabling the sharing of an OpenShift cluster with multiple tenants, thereby maximizing resource utilization and reducing operational overhead.
 
 * **Centralized Management**: With MTO, the administrator can configure and manage tenants and their sandboxes centrally, minimizing efforts and ensuring consistent configurations.
 
@@ -138,13 +138,13 @@ Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience
 
 * **Integration with External Identity Management**: MTO seamlessly integrates with external identity management systems, allowing administrators to leverage existing groups for maintaining tenant membership.
 
-* **Enhanced Security with Vault Multitenancy**: MTO extends the permission model to HashiCorp Vault, enabling administrators to manage RBAC in Vault easily and ensuring tenant users can manage their own secrets securely.
+* **Enhanced Security with Vault Multitenancy**: Through MTO, the permission model extends to both HashiCorp Vault and ArgoCD, empowering administrators to manage RBAC in both systems seamlessly. This ensures tenant users can securely manage their own secrets in Vault and maintain control over their deployments with ArgoCD.
 
 ### DevOps Engineer
 
 * **Simplified RBAC Configuration**: MTO abstracts RBAC configuration complexities, allowing DevOps engineers to focus on writing pipelines and deploying applications without worrying about access control.
 
-* **Integrated ArgoCD Multitenancy**: MTO extends the permission model to ArgoCD, simplifying RBAC management and repository provisioning for tenants, thus reducing overhead in managing deployments.
+* **Integrated ArgoCD Multitenancy**: MTO extends the permission model to ArgoCD, simplifying RBAC management for tenants, thus reducing overhead in managing deployments.
 
 * **Resource Management**: MTO enables defining Resource Quotas at the tenant scope, ensuring that dev teams can self-serve namespaces within allocated resources, promoting autonomy and agility.
 
@@ -160,9 +160,9 @@ Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience
 
 * **Native Kubernetes Experience**: Developers can work with MTO without the need for additional management layers or customized binaries, ensuring a seamless and familiar Kubernetes experience.
 
-* **Safe Remote Development Environments**: MTO can automatically provision namespaces preloaded with selected templates, providing developers with safe remote development environments for rapid prototyping and development.
+* **Cross-Namespace Resource Distribution**: MTO supports cloning of secrets and configmaps across namespaces, allowing developers to access resources easily while maintaining isolation between tenants.
 
-* **Cross-Namespace Resource Distribution**: MTO supports cloning of secrets and configmaps across namespaces, allowing developers to access shared resources easily while maintaining isolation between tenants.
+* **Self-Managing Secrets in Vault Integration**: Leveraging MTO's capabilities, tenants enabled with Vault integration gain independent access to designated secrets paths tailored to their permissions. This empowers individual members to interact autonomously with Vault, ensuring seamless utilization of sensitive information without any cross-tenant interference or dependency.
 
 ### Platform Owner
 
@@ -173,5 +173,3 @@ Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience
 * **Streamlined Administration with MTO Console**: The MTO Console provides a comprehensive interface for managing multi-tenant environments, simplifying administrative tasks, and offering insights into tenant-related resources.
 
 * **Hibernation for Resource Optimization**: MTO can downscale deployments and stateful sets in a tenant's namespace based on defined sleep schedules, optimizing resource utilization and reducing costs during off-peak hours.
-
-* **Enhanced Collaboration with Mattermost Multitenancy**: MTO can manage Mattermost to create teams for tenant users, enhancing collaboration and communication within tenant groups while ensuring secure access control and membership management.
