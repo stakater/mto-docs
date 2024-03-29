@@ -31,50 +31,6 @@ This guide will help you integrate an external Keycloak instance with the MTO Co
 
 - Click on the `Save` button.
 
-**Get the client secret.**
-
-- Navigate to `Realm Settings`.
-- Select the `Keys` tab.
-- Select the `Add Providers` sub-tab.
-- Click on `Add Provider` button.
-
-![Client secret](../images/integrating-external-keycloak-4.png)
-
-- Select `rsa-generated` from the list.
-
-![Client secret](../images/integrating-external-keycloak-5.png)
-
-- Assign `Name` and `Priority` to the provider.
-
-![Client secret](../images/integrating-external-keycloak-6.png)
-
-- Click on the `Save` button.
-
-- Navigate to the `Keys` tab again.
-- Select `Key List` sub-tab.
-- Click on the `Public Key` button for the provider we just created.
-
-![Client secret](../images/integrating-external-keycloak-7.png)
-
-- Copy the `Public Key` and create a secret in the OpenShift cluster.
-
-```bash
-kubectl create secret generic keycloak-public-key --from-literal=SIGNATURE_PUBLIC_KEY=<public-key> -n <namespace>
-```
-
-or create a secret from a file.
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: keycloak-public-key
-  namespace: <namespace>
-type: Opaque
-data:
-  SIGNATURE_PUBLIC_KEY: <base64-encoded-public-key>
-```
-
 ## Update Integration Config
 
 - Update the `IntegrationConfig` CR with the following configuration.
@@ -85,9 +41,6 @@ integrations:
     realm: <realm>
     address: <keycloak-address>
     clientName: <client-name>
-    publicKeySecretRef:
-      name: keycloak-public-key
-      namespace: <namespace>
 ```
 
 - Now, the MTO Console will be integrated with the external Keycloak instance.

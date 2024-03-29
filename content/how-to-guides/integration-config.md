@@ -96,11 +96,8 @@ Spec:
   integrations:
     keycloak:
       realm: mto
-      address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/
+      address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud    #include /auth if using RH-SSO
       clientName: mto-console
-      publicKeySecretRef:
-        name: publickey
-        namespace: default
     argocd:
       enabled: bool
       clusterResourceWhitelist:
@@ -112,7 +109,7 @@ Spec:
       namespace: openshift-operators
     vault:
       enabled: true
-      authMethod: kubernetes      #enum: {kubernetes:default, Token}
+      authMethod: kubernetes      #enum: {kubernetes:default, token}
       accessInfo: 
         accessorPath: oidc/
         address: https://vault.apps.prod.abcdefghi.kubeapp.cloud/
@@ -447,9 +444,6 @@ integrations:
     realm: mto
     address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/
     clientName: mto-console
-    publicKeySecretRef:
-      name: publickey
-      namespace: default
   argocd:
     enabled: bool
     clusterResourceWhitelist:
@@ -484,15 +478,11 @@ keycloak:
   realm: mto
   address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/
   clientName: mto-console
-  publicKeySecretRef:
-    name: publickey
-    namespace: default
 ```
 
 - `keycloak.realm:` The realm in Keycloak where the client is configured.
 - `keycloak.address:` The address of the Keycloak instance.
 - `keycloak.clientName:` The name of the client in Keycloak.
-- `keycloak.publicKeySecretRef:` The secret containing the public key of the Keycloak instance.
 
 For more details around enabling Keycloak in MTO, visit [here](../reference-guides/integrating-external-keycloak.md)
 
