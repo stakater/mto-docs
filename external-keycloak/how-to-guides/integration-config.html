@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.15">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.10ba22f1.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -1585,6 +1585,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference-guides/integrating-external-keycloak.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrating External Keycloak
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference-guides/mattermost.html" class="md-nav__link">
         
   
@@ -2030,11 +2051,8 @@
 <span class="w">  </span><span class="nt">integrations</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">keycloak</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
-<span class="w">      </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/</span>
+<span class="w">      </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://keycloak.apps.prod.abcdefghi.kubeapp.cloud</span><span class="w">    </span><span class="c1">#include /auth if using RH-SSO</span>
 <span class="w">      </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto-console</span>
-<span class="w">      </span><span class="nt">publicKeySecretRef</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">publickey</span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 <span class="w">    </span><span class="nt">argocd</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bool</span>
 <span class="w">      </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
@@ -2046,7 +2064,7 @@
 <span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
 <span class="w">    </span><span class="nt">vault</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="nt">authMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span><span class="w">      </span><span class="c1">#enum: {kubernetes:default, Token}</span>
+<span class="w">      </span><span class="nt">authMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span><span class="w">      </span><span class="c1">#enum: {kubernetes:default, token}</span>
 <span class="w">      </span><span class="nt">accessInfo</span><span class="p">:</span><span class="w"> </span>
 <span class="w">        </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
 <span class="w">        </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://vault.apps.prod.abcdefghi.kubeapp.cloud/</span>
@@ -2335,9 +2353,6 @@
 <span class="w">    </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
 <span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/</span>
 <span class="w">    </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto-console</span>
-<span class="w">    </span><span class="nt">publicKeySecretRef</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">publickey</span>
-<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 <span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bool</span>
 <span class="w">    </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
@@ -2367,15 +2382,11 @@
 <span class="w">  </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
 <span class="w">  </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/</span>
 <span class="w">  </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto-console</span>
-<span class="w">  </span><span class="nt">publicKeySecretRef</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">publickey</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
 </code></pre></div>
 <ul>
 <li><code>keycloak.realm:</code> The realm in Keycloak where the client is configured.</li>
 <li><code>keycloak.address:</code> The address of the Keycloak instance.</li>
 <li><code>keycloak.clientName:</code> The name of the client in Keycloak.</li>
-<li><code>keycloak.publicKeySecretRef:</code> The secret containing the public key of the Keycloak instance.</li>
 </ul>
 <p>For more details around enabling Keycloak in MTO, visit <a href="../reference-guides/integrating-external-keycloak.html">here</a></p>
 <h3 id="argocd">ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">#</a></h3>
