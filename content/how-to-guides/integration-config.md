@@ -471,7 +471,7 @@ integrations:
 
 [Keycloak](https://www.keycloak.org/) is an open-source Identity and Access Management solution aimed at modern applications and services. It makes it easy to secure applications and services with little to no code.
 
-If `keycloak` is already configured on a cluster, then Keycloak configuration can be enabled.
+If a `Keycloak` instance is already set up within your cluster, configure it for MTO by enabling the following configuration:
 
 ```yaml
 keycloak:
