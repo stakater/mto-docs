@@ -25,15 +25,13 @@ components:
         host: tenant-operator-keycloak.<hostname>
         tlsSecretName: <tls-secret-name>
     showback: true
-    trustedRootCert: <root-ca-secret-name>
 ```  
 
 `<hostname>` : hostname of the cluster  
 `<ingress-class-name>` : name of the ingress class  
 `<tls-secret-name>` : name of the secret that contains the TLS certificate and key  
-`<root-ca-secret-name>` : name of the secret that contains the root CA certificate
 
->Note: `trustedRootCert` and `tls-secret-name` are optional. If not provided, MTO will use the default root CA certificate and secrets respectively.
+>Note: `tls-secret-name` are optional. If not provided, MTO will use the default secrets.
 
 Once the above configuration is set on the IntegrationConfig, MTO would start provisioning the required resources for MTO Console to be ready. In a few moments, you should be able to see the Console Ingress in the `multi-tenant-operator` namespace which gives you access to the Console.
 
