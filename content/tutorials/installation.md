@@ -8,6 +8,8 @@ This document contains instructions on installing, uninstalling and configuring 
 
 1. [Enabling Console](#enabling-console)
 
+1. [License configuration](#license-configuration)
+
 1. [Uninstall](#uninstall-via-operatorhub-ui)
 
 ## Requirements
@@ -138,6 +140,29 @@ spec:
 ![image](../images/manual-approve-4.png)
 
 * Now the `InstallPlan` will be approved, and MTO console components will be installed.
+
+## License Configuration
+
+We offer a free license with installation and you can create max 2 [Tenants](../tutorials/tenant/create-tenant.md) with it.
+
+We offer a paid license as well. You need to have a configmap `license` created in MTO's namespace (multi-tenant-operator). To get this configmap, you can contact [`sales@stakater.com`](mailto:sales@stakater.com). It would look like this:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: license
+  namespace: multi-tenant-operator
+data:
+  payload.json: |
+    {
+        "metaData": {
+            "tier" : "paid",
+            "company": "<company name here>"
+        }
+    }
+  signature.base64.txt: <base64 signature here.>
+```
 
 ## Uninstall via OperatorHub UI
 
