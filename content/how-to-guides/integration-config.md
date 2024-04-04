@@ -23,7 +23,6 @@ Spec:
       Gateway:
         Host: tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud
         TLSSecretName: tenant-operator-tls
-    trustedRootCert: my-custom-cert
   accessControl:
     rbac:
       tenantRoles:
@@ -94,8 +93,12 @@ Spec:
       annotations:
         openshift.io/node-selector: node-role.kubernetes.io/worker=
   integrations:
+    keycloak:
+      realm: mto
+      address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud    #include /auth if using RH-SSO
+      clientName: mto-console
     argocd:
-      enabled: bool
+      enabled: true
       clusterResourceWhitelist:
         - group: tronador.stakater.com
           kind: EnvironmentProvisioner
@@ -105,7 +108,7 @@ Spec:
       namespace: openshift-operators
     vault:
       enabled: true
-      authMethod: kubernetes      #enum: {kubernetes:default, Token}
+      authMethod: kubernetes      #enum: {kubernetes:default, token}
       accessInfo: 
         accessorPath: oidc/
         address: https://vault.apps.prod.abcdefghi.kubeapp.cloud/
@@ -136,7 +139,6 @@ Following are the different components that can be used to configure multi-tenan
       Gateway:
         Host: tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud
         TLSSecretName: tenant-operator-tls
-    trustedRootCert: my-custom-cert
 ```
 
 - `components.console:` Enables or disables the console GUI for MTO.
@@ -152,7 +154,6 @@ Following are the different components that can be used to configure multi-tenan
     - `keycloak:` Settings for the Keycloak's ingress.
         - `host:` hostname for the Keycloak's ingress.
         - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the Keycloak's ingress.
-- `components.trustedRootCert:` Name of the secret containing the root CA certificate.  
 
 Here's an example of how to generate the secrets required to configure MTO:
 
@@ -164,15 +165,7 @@ Create a TLS secret containing your SSL/TLS certificate and key for secure commu
 kubectl -n multi-tenant-operator create secret tls <tls-secret-name> --key=<path-to-key.pem> --cert=<path-to-cert.pem>
 ```
 
-**Trusted Root Certificate Secret:**  
-
-If using a custom certificate authority (CA) or self-signed certificates, create a Kubernetes secret containing your root CA certificate. This is required in order to ensure MTO Components trust the custom certificates.
-
-```bash
-kubectl -n multi-tenant-operator create secret generic <root-ca-secret-name> --from-file=<path-to-rootCA.pem>
-```
-
->Note: `trustedRootCert` and `tls-secret-name` are optional. If not provided, MTO will use the default root CA certificate and secrets respectively.
+>Note: `tls-secret-name` is optional. If not provided, MTO will use the default secrets.
 
 Integration config will be managing the following resources required for console GUI:
 
@@ -436,8 +429,12 @@ Integrations are used to configure the integrations that MTO has with other tool
 
 ```yaml
 integrations:
+  keycloak:
+    realm: mto
+    address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/
+    clientName: mto-console
   argocd:
-    enabled: bool
+    enabled: true
     clusterResourceWhitelist:
       - group: tronador.stakater.com
         kind: EnvironmentProvisioner
@@ -459,6 +456,25 @@ integrations:
       ssoClient: vault
 ```
 
+### Keycloak
+
+[Keycloak](https://www.keycloak.org/) is an open-source Identity and Access Management solution aimed at modern applications and services. It makes it easy to secure applications and services with little to no code.
+
+If a `Keycloak` instance is already set up within your cluster, configure it for MTO by enabling the following configuration:
+
+```yaml
+keycloak:
+  realm: mto
+  address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/
+  clientName: mto-console
+```
+
+- `keycloak.realm:` The realm in Keycloak where the client is configured.
+- `keycloak.address:` The address of the Keycloak instance.
+- `keycloak.clientName:` The name of the client in Keycloak.
+
+For more details around enabling Keycloak in MTO, visit [here](../reference-guides/integrating-external-keycloak.md)
+
 ### ArgoCD
 
 [ArgoCD](https://argoproj.github.io/argo-cd/) is a declarative, GitOps continuous delivery tool for Kubernetes. It follows the GitOps pattern of using Git repositories as the source of truth for defining the desired application state. ArgoCD uses Kubernetes manifests and configures the applications on the cluster.
@@ -467,7 +483,7 @@ If `argocd` is configured on a cluster, then ArgoCD configuration can be enabled
 
 ```yaml
 argocd:
-  enabled: bool
+  enabled: true
   clusterResourceWhitelist:
     - group: tronador.stakater.com
       kind: EnvironmentProvisioner
