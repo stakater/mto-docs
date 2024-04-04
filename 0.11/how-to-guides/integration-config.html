@@ -1093,6 +1093,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keycloak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#argocd" class="md-nav__link">
     <span class="md-ellipsis">
       ArgoCD
@@ -1576,6 +1585,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference-guides/integrating-external-keycloak.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrating External Keycloak
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference-guides/mattermost.html" class="md-nav__link">
         
   
@@ -1948,7 +1978,6 @@
 <span class="w">      </span><span class="nt">Gateway</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud</span>
 <span class="w">        </span><span class="nt">TLSSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
-<span class="w">    </span><span class="nt">trustedRootCert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-custom-cert</span>
 <span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">rbac</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">tenantRoles</span><span class="p">:</span>
@@ -2019,8 +2048,12 @@
 <span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/worker=</span>
 <span class="w">  </span><span class="nt">integrations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">      </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://keycloak.apps.prod.abcdefghi.kubeapp.cloud</span><span class="w">    </span><span class="c1">#include /auth if using RH-SSO</span>
+<span class="w">      </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto-console</span>
 <span class="w">    </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bool</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tronador.stakater.com</span>
 <span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvironmentProvisioner</span>
@@ -2030,7 +2063,7 @@
 <span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
 <span class="w">    </span><span class="nt">vault</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="nt">authMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span><span class="w">      </span><span class="c1">#enum: {kubernetes:default, Token}</span>
+<span class="w">      </span><span class="nt">authMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span><span class="w">      </span><span class="c1">#enum: {kubernetes:default, token}</span>
 <span class="w">      </span><span class="nt">accessInfo</span><span class="p">:</span><span class="w"> </span>
 <span class="w">        </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
 <span class="w">        </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://vault.apps.prod.abcdefghi.kubeapp.cloud/</span>
@@ -2057,7 +2090,6 @@
 <span class="w">      </span><span class="nt">Gateway</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud</span>
 <span class="w">        </span><span class="nt">TLSSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
-<span class="w">    </span><span class="nt">trustedRootCert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-custom-cert</span>
 </code></pre></div>
 <ul>
 <li><code>components.console:</code> Enables or disables the console GUI for MTO.</li>
@@ -2081,19 +2113,14 @@
 </li>
 </ul>
 </li>
-<li><code>components.trustedRootCert:</code> Name of the secret containing the root CA certificate.  </li>
 </ul>
 <p>Here's an example of how to generate the secrets required to configure MTO:</p>
 <p><strong>TLS Secret for Ingress:</strong>  </p>
 <p>Create a TLS secret containing your SSL/TLS certificate and key for secure communication. This secret will be used for the Console, Gateway, and Keycloak ingresses.</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>tls<span class="w"> </span>&lt;tls-secret-name&gt;<span class="w"> </span>--key<span class="o">=</span>&lt;path-to-key.pem&gt;<span class="w"> </span>--cert<span class="o">=</span>&lt;path-to-cert.pem&gt;
 </code></pre></div>
-<p><strong>Trusted Root Certificate Secret:</strong>  </p>
-<p>If using a custom certificate authority (CA) or self-signed certificates, create a Kubernetes secret containing your root CA certificate. This is required in order to ensure MTO Components trust the custom certificates.</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>&lt;root-ca-secret-name&gt;<span class="w"> </span>--from-file<span class="o">=</span>&lt;path-to-rootCA.pem&gt;
-</code></pre></div>
 <blockquote>
-<p>Note: <code>trustedRootCert</code> and <code>tls-secret-name</code> are optional. If not provided, MTO will use the default root CA certificate and secrets respectively.</p>
+<p>Note: <code>tls-secret-name</code> is optional. If not provided, MTO will use the default secrets.</p>
 </blockquote>
 <p>Integration config will be managing the following resources required for console GUI:</p>
 <ul>
@@ -2315,8 +2342,12 @@
 <h2 id="integrations">Integrations<a class="headerlink" href="#integrations" title="Permanent link">#</a></h2>
 <p>Integrations are used to configure the integrations that MTO has with other tools. Currently, MTO supports the following integrations:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">integrations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/</span>
+<span class="w">    </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto-console</span>
 <span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bool</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tronador.stakater.com</span>
 <span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvironmentProvisioner</span>
@@ -2337,11 +2368,25 @@
 <span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span>
 <span class="w">      </span><span class="nt">ssoClient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
 </code></pre></div>
+<h3 id="keycloak">Keycloak<a class="headerlink" href="#keycloak" title="Permanent link">#</a></h3>
+<p><a href="https://www.keycloak.org/">Keycloak</a> is an open-source Identity and Access Management solution aimed at modern applications and services. It makes it easy to secure applications and services with little to no code.</p>
+<p>If a <code>Keycloak</code> instance is already set up within your cluster, configure it for MTO by enabling the following configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">  </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/</span>
+<span class="w">  </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto-console</span>
+</code></pre></div>
+<ul>
+<li><code>keycloak.realm:</code> The realm in Keycloak where the client is configured.</li>
+<li><code>keycloak.address:</code> The address of the Keycloak instance.</li>
+<li><code>keycloak.clientName:</code> The name of the client in Keycloak.</li>
+</ul>
+<p>For more details around enabling Keycloak in MTO, visit <a href="../reference-guides/integrating-external-keycloak.html">here</a></p>
 <h3 id="argocd">ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">#</a></h3>
 <p><a href="https://argoproj.github.io/argo-cd/">ArgoCD</a> is a declarative, GitOps continuous delivery tool for Kubernetes. It follows the GitOps pattern of using Git repositories as the source of truth for defining the desired application state. ArgoCD uses Kubernetes manifests and configures the applications on the cluster.</p>
 <p>If <code>argocd</code> is configured on a cluster, then ArgoCD configuration can be enabled.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bool</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tronador.stakater.com</span>
 <span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvironmentProvisioner</span>

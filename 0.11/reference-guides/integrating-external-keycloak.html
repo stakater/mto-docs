@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/0.11/reference-guides/mattermost.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/0.11/reference-guides/integrating-external-keycloak.html">
       
       
-        <link rel="prev" href="integrating-external-keycloak.html">
+        <link rel="prev" href="integrationconfig.html">
       
       
-        <link rel="next" href="secret-distribution.html">
+        <link rel="next" href="mattermost.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Creating Mattermost Teams for your tenant - Multi Tenant Operator</title>
+        <title>Integrating External Keycloak - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#creating-mattermost-teams-for-your-tenant" class="md-skip">
+        <a href="#integrating-external-keycloak" class="md-skip">
           Skip to content
         </a>
       
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Creating Mattermost Teams for your tenant
+              Integrating External Keycloak
             
           </span>
         </div>
@@ -1305,27 +1305,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="integrating-external-keycloak.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Integrating External Keycloak
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -1342,18 +1321,18 @@
           
   
   <span class="md-ellipsis">
-    Creating Mattermost Teams for your tenant
+    Integrating External Keycloak
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="mattermost.html" class="md-nav__link md-nav__link--active">
+      <a href="integrating-external-keycloak.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Creating Mattermost Teams for your tenant
+    Integrating External Keycloak
   </span>
   
 
@@ -1375,18 +1354,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#requirements" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      Requirements
+      Prerequisites
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#steps-to-enable-integration" class="md-nav__link">
+  <a href="#steps" class="md-nav__link">
     <span class="md-ellipsis">
-      Steps to enable integration
+      Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-integration-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Integration Config
     </span>
   </a>
   
@@ -1396,6 +1384,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mattermost.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Mattermost Teams for your tenant
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1737,37 +1746,50 @@
   
 
 
-<h1 id="creating-mattermost-teams-for-your-tenant">Creating Mattermost Teams for your tenant<a class="headerlink" href="#creating-mattermost-teams-for-your-tenant" title="Permanent link">#</a></h1>
-<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
-<p><code>MTO-Mattermost-Integration-Operator</code></p>
-<p>Please contact stakater to install the Mattermost integration operator before following the below-mentioned steps.</p>
-<h2 id="steps-to-enable-integration">Steps to enable integration<a class="headerlink" href="#steps-to-enable-integration" title="Permanent link">#</a></h2>
-<p>Bill wants some tenants to also have their own Mattermost Teams. To make sure this happens correctly, Bill will first add the <code>stakater.com/mattermost: true</code> label to the tenants.
-The label will enable the <code>mto-mattermost-integration-operator</code> to create and manage Mattermost Teams based on Tenants.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">stakater.com/mattermost</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user</span>
-<span class="w">  </span><span class="nt">editors</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user1</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span>
-<span class="w">  </span><span class="nt">sandbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prod</span>
+<h1 id="integrating-external-keycloak">Integrating External Keycloak<a class="headerlink" href="#integrating-external-keycloak" title="Permanent link">#</a></h1>
+<p>MTO Console uses Keycloak for authentication and authorization. By default, the MTO Console uses an internal Keycloak instance that is provisioned by the Multi Tenant Operator in its own namespace. However, you can also integrate an external Keycloak instance with the MTO Console.</p>
+<p>This guide will help you integrate an external Keycloak instance with the MTO Console.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
+<ul>
+<li>An OpenShift cluster with Multi Tenant Operator installed.</li>
+<li>An external Keycloak instance.</li>
+</ul>
+<h2 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">#</a></h2>
+<p><strong>Navigate to the Keycloak console.</strong></p>
+<ul>
+<li>Go to your realm.</li>
+<li>Click on the <code>Clients</code>.</li>
+<li>Click on the <code>Create</code> button to create a new client.</li>
+</ul>
+<p><a class="glightbox" href="../images/integrating-external-keycloak-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Keycloak realm" src="../images/integrating-external-keycloak-1.png" /></a></p>
+<p><strong>Create a new client.</strong></p>
+<ul>
+<li>Fill in the <code>Client ID</code>, <code>Client Name</code> and <code>Client Protocol</code> fields.</li>
+</ul>
+<p><a class="glightbox" href="../images/integrating-external-keycloak-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Client creation" src="../images/integrating-external-keycloak-2.png" /></a></p>
+<ul>
+<li>Add <code>Valid Redirect URIs</code> and <code>Web Origins</code> for the client.</li>
+</ul>
+<p><a class="glightbox" href="../images/integrating-external-keycloak-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Client creation" src="../images/integrating-external-keycloak-3.png" /></a></p>
+<blockquote>
+<p><strong>Note:</strong> The <code>Valid Redirect URIs</code> and <code>Web Origins</code> should be the URL of the MTO Console.</p>
+</blockquote>
+<ul>
+<li>Click on the <code>Save</code> button.</li>
+</ul>
+<h2 id="update-integration-config">Update Integration Config<a class="headerlink" href="#update-integration-config" title="Permanent link">#</a></h2>
+<ul>
+<li>Update the <code>IntegrationConfig</code> CR with the following configuration.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">integrations</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;realm&gt;</span>
+<span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;keycloak-address&gt;</span>
+<span class="w">    </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;client-name&gt;</span>
 </code></pre></div>
-<p>Now user can log In to Mattermost to see their Team and relevant channels associated with it.</p>
-<p><a class="glightbox" href="../images/mattermost-tenant-team.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/mattermost-tenant-team.png" /></a></p>
-<p>The name of the Team is similar to the Tenant name. Notification channels are pre-configured for every team, and can be modified.</p>
+<ul>
+<li>Now, the MTO Console will be integrated with the external Keycloak instance.</li>
+</ul>
 
 
 

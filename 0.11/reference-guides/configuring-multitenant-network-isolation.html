@@ -1318,6 +1318,27 @@
   
   
     <li class="md-nav__item">
+      <a href="integrating-external-keycloak.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrating External Keycloak
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="mattermost.html" class="md-nav__link">
         
   
@@ -1730,14 +1751,15 @@
 <span class="w">    </span><span class="nt">sandbox</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">stakater.com/kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sandbox</span>
-<span class="w">  </span><span class="nt">privileged</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^openshift-*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^kube-*</span>
-<span class="w">    </span><span class="nt">serviceAccounts</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift-*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:kube-*</span>
+<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">privileged</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^openshift-*</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^kube-*</span>
+<span class="w">      </span><span class="nt">serviceAccounts</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift-*</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:kube-*</span>
 </code></pre></div>
 <p>Bill has added a new label <code>tenant-network-policy: "true"</code> in project section of IntegrationConfig, now MTO will add that label in all tenant projects.</p>
 <p>Finally, Bill creates a <code>TemplateGroupInstance</code> which will distribute the network policies using the newly added project label and template.</p>

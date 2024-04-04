@@ -1306,6 +1306,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../reference-guides/integrating-external-keycloak.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrating External Keycloak
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../reference-guides/mattermost.html" class="md-nav__link">
         
   
@@ -1880,14 +1901,12 @@
 <span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-keycloak.&lt;hostname&gt;</span>
 <span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;tls-secret-name&gt;</span>
 <span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">trustedRootCert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;root-ca-secret-name&gt;</span>
 </code></pre></div>
 <p><code>&lt;hostname&gt;</code> : hostname of the cluster<br />
 <code>&lt;ingress-class-name&gt;</code> : name of the ingress class<br />
-<code>&lt;tls-secret-name&gt;</code> : name of the secret that contains the TLS certificate and key<br />
-<code>&lt;root-ca-secret-name&gt;</code> : name of the secret that contains the root CA certificate</p>
+<code>&lt;tls-secret-name&gt;</code> : name of the secret that contains the TLS certificate and key  </p>
 <blockquote>
-<p>Note: <code>trustedRootCert</code> and <code>tls-secret-name</code> are optional. If not provided, MTO will use the default root CA certificate and secrets respectively.</p>
+<p>Note: <code>tls-secret-name</code> are optional. If not provided, MTO will use the default secrets.</p>
 </blockquote>
 <p>Once the above configuration is set on the IntegrationConfig, MTO would start provisioning the required resources for MTO Console to be ready. In a few moments, you should be able to see the Console Ingress in the <code>multi-tenant-operator</code> namespace which gives you access to the Console.</p>
 <p>For more details on the configuration, please visit <a href="../how-to-guides/integration-config.html">here</a>.
