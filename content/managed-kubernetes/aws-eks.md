@@ -8,7 +8,7 @@ In this example, we have already set-up a small EKS cluster with the following n
 
 ![Node Group](../images/eks-nodegroup.png)
 
-We have access configuration set as both, EKS API and Configmap, so that admin can access the cluster using EKS API and map IAM users to our eks cluster using aws-auth configmap.
+We have access configuration set as both, EKS API and Configmap, so that admin can access the cluster using EKS API and map IAM users to our EKS cluster using `aws-auth` configmap.
 
 ![EKS Access Config](../images/eks-access-config.png)
 
@@ -87,7 +87,7 @@ We have mapped this user in `aws-auth` configmap in `kube-system` namespace.
 
 Using this [aws guide](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html), we will ask the user to update its kubeconfig and try to access the cluster.
 
-Since we havent attached any RBAC with this user at the moment, trying to access anything in the cluster would throw an error
+Since we haven't attached any RBAC with this user at the moment, trying to access anything in the cluster would throw an error
 
 ```terminal
 $ kubectl get svc
@@ -97,7 +97,7 @@ Error from server (Forbidden): services is forbidden: User "test-benzema-mto" ca
 
 ### SSO Users
 
-For SSO Users, we will map a role `arn:aws:iam::<account>:role/aws-reserved/sso.amazonaws.com/eu-north-1/AWSReservedSSO_PowerUserAccess_b0ad9936c75e5bcc`, that is attached by default with Users on SSO login to the aws console and `awscli`, in `aws-auth` configmap in `kube-system` namespace.
+For SSO Users, we will map a role `arn:aws:iam::<account>:role/aws-reserved/sso.amazonaws.com/eu-north-1/AWSReservedSSO_PowerUserAccess_b0ad9936c75e5bcc`, that is attached by default with Users on SSO login to the AWS console and `awscli`, in `aws-auth` configmap in `kube-system` namespace.
 
 ```yaml
   mapRoles:
@@ -107,7 +107,7 @@ For SSO Users, we will map a role `arn:aws:iam::<account>:role/aws-reserved/sso.
       username: sso-devteam:{{SessionName}}
 ```
 
-Since this user also doesnt have attached RBAC, trying to access anything in the cluster would throw an error
+Since this user also doesn't have attached RBAC, trying to access anything in the cluster would throw an error
 
 ```terminal
 $ kubectl get svc
@@ -117,7 +117,7 @@ Error from server (Forbidden): services is forbidden: User "sso-devteam:random-u
 
 ### Setting up Tenant for Users
 
-Now, we will set tenants for the above mentioned users.
+Now, we will set tenants for the above-mentioned users.
 
 We will start by creating a `Quota CR` with some resource limits
 
@@ -246,7 +246,7 @@ Trying to do operations outside the scope of its own tenant will result in error
 ```bash
 $ kubectl run nginx --image nginx -n tenant-iam-dev
 
-Error from server (Forbidden): pods is forbidden: User "sso-devteam:random-user-stakater.com" cannot create resource "pods" in API group "" in the namespace "tenant-sso-dev"
+Error from server (Forbidden): pods is forbidden: User "sso-devteam:random-user-stakater.com" cannot create resource "pods" in API group "" in the namespace "tenant-iam-dev"
 ```
 
 To be noted, `sso-devteam:random-user-stakater.com` can not list namespaces
