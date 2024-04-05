@@ -1657,7 +1657,7 @@
 <h2 id="setting-up-an-eks-cluster">Setting up an EKS Cluster<a class="headerlink" href="#setting-up-an-eks-cluster" title="Permanent link">#</a></h2>
 <p>In this example, we have already set-up a small EKS cluster with the following node group specifications</p>
 <p><a class="glightbox" href="../images/eks-nodegroup.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Node Group" src="../images/eks-nodegroup.png" /></a></p>
-<p>We have access configuration set as both, EKS API and Configmap, so that admin can access the cluster using EKS API and map IAM users to our eks cluster using aws-auth configmap.</p>
+<p>We have access configuration set as both, EKS API and Configmap, so that admin can access the cluster using EKS API and map IAM users to our EKS cluster using <code>aws-auth</code> configmap.</p>
 <p><a class="glightbox" href="../images/eks-access-config.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="EKS Access Config" src="../images/eks-access-config.png" /></a></p>
 <p>And we have a policy <code>AmazonEKSClusterAdminPolicy</code> attached with our user which makes it a cluster admin. To be noted, the user is also added in the <code>cluster-admins</code> group which we will later use while installing MTO.</p>
 <p><a class="glightbox" href="../images/eks-access-entry.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="EKS Access Entry" src="../images/eks-access-entry.png" /></a></p>
@@ -1709,26 +1709,26 @@ This user has a policy attached to be able to get cluster info</p>
 <span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-benzema-mto</span>
 </code></pre></div>
 <p>Using this <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html">aws guide</a>, we will ask the user to update its kubeconfig and try to access the cluster.</p>
-<p>Since we havent attached any RBAC with this user at the moment, trying to access anything in the cluster would throw an error</p>
+<p>Since we haven't attached any RBAC with this user at the moment, trying to access anything in the cluster would throw an error</p>
 <div class="highlight"><pre><span></span><code>$ kubectl get svc
 
 Error from server (Forbidden): services is forbidden: User &quot;test-benzema-mto&quot; cannot list resource &quot;services&quot; in API group &quot;&quot; in the namespace &quot;default&quot;
 </code></pre></div>
 <h3 id="sso-users">SSO Users<a class="headerlink" href="#sso-users" title="Permanent link">#</a></h3>
-<p>For SSO Users, we will map a role <code>arn:aws:iam::&lt;account&gt;:role/aws-reserved/sso.amazonaws.com/eu-north-1/AWSReservedSSO_PowerUserAccess_b0ad9936c75e5bcc</code>, that is attached by default with Users on SSO login to the aws console and <code>awscli</code>, in <code>aws-auth</code> configmap in <code>kube-system</code> namespace.</p>
+<p>For SSO Users, we will map a role <code>arn:aws:iam::&lt;account&gt;:role/aws-reserved/sso.amazonaws.com/eu-north-1/AWSReservedSSO_PowerUserAccess_b0ad9936c75e5bcc</code>, that is attached by default with Users on SSO login to the AWS console and <code>awscli</code>, in <code>aws-auth</code> configmap in <code>kube-system</code> namespace.</p>
 <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">mapRoles</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">groups</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sso-devteam</span>
 <span class="w">      </span><span class="nt">rolearn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:iam::&lt;account&gt;:role/AWSReservedSSO_PowerUserAccess_b0ad9936c75e5bcc</span>
 <span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sso-devteam:{{SessionName}}</span>
 </code></pre></div>
-<p>Since this user also doesnt have attached RBAC, trying to access anything in the cluster would throw an error</p>
+<p>Since this user also doesn't have attached RBAC, trying to access anything in the cluster would throw an error</p>
 <div class="highlight"><pre><span></span><code>$ kubectl get svc
 
 Error from server (Forbidden): services is forbidden: User &quot;sso-devteam:random-user-stakater.com&quot; cannot list resource &quot;services&quot; in API group &quot;&quot; in the namespace &quot;default&quot;
 </code></pre></div>
 <h3 id="setting-up-tenant-for-users">Setting up Tenant for Users<a class="headerlink" href="#setting-up-tenant-for-users" title="Permanent link">#</a></h3>
-<p>Now, we will set tenants for the above mentioned users.</p>
+<p>Now, we will set tenants for the above-mentioned users.</p>
 <p>We will start by creating a <code>Quota CR</code> with some resource limits</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt;EOF</span>
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
@@ -1826,7 +1826,7 @@ pod/nginx<span class="w"> </span>created
 <p>Trying to do operations outside the scope of its own tenant will result in errors</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>tenant-iam-dev
 
-Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>pods<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;sso-devteam:random-user-stakater.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>create<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;pods&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>namespace<span class="w"> </span><span class="s2">&quot;tenant-sso-dev&quot;</span>
+Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>pods<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;sso-devteam:random-user-stakater.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>create<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;pods&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>namespace<span class="w"> </span><span class="s2">&quot;tenant-iam-dev&quot;</span>
 </code></pre></div>
 <p>To be noted, <code>sso-devteam:random-user-stakater.com</code> can not list namespaces</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>namespaces
