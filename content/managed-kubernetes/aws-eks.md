@@ -85,7 +85,7 @@ We have mapped this user in `aws-auth` configmap in `kube-system` namespace.
       username: test-benzema-mto
 ```
 
-Using this [aws guide](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html), we will ask the user to update its kubeconfig and try to access the cluster.
+Using this [AWS guide](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html), we will ask the user to update its kubeconfig and try to access the cluster.
 
 Since we haven't attached any RBAC with this user at the moment, trying to access anything in the cluster would throw an error
 
