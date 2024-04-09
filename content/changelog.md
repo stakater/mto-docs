@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.11.x
+
+### v0.11.0
+
+#### Feature
+
+- Added support for configuring external keycloak in integrationconfig.
+- Added free tier support that allows creation of 2 tenants without license.
+
 ## v0.10.x
 
 ### v0.10.6
