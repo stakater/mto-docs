@@ -487,6 +487,57 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#benefits-and-value-propositions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits and Value Propositions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Benefits and Value Propositions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#platform-administrator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platform Administrator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#devops-engineer" class="md-nav__link">
+    <span class="md-ellipsis">
+      DevOps Engineer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Developer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#platform-owner" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platform Owner
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1754,6 +1805,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="explanation/why-ns-from-tenant-cr.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Advantages of managing Namespaces from Tenant CR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1926,6 +1998,76 @@ Furthermore, this functionality supports financial planning and budgeting by off
 <p>With Multi Tenant Operator teams can share a single cluster with multiple teams, groups of users, or departments by saving operational and management efforts. This prevents you from Kubernetes cluster sprawl.</p>
 <h2 id="native-experience">Native Experience<a class="headerlink" href="#native-experience" title="Permanent link">#</a></h2>
 <p>Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience without introducing additional management layers, plugins, or customized binaries.</p>
+<h2 id="benefits-and-value-propositions">Benefits and Value Propositions<a class="headerlink" href="#benefits-and-value-propositions" title="Permanent link">#</a></h2>
+<h3 id="platform-administrator">Platform Administrator<a class="headerlink" href="#platform-administrator" title="Permanent link">#</a></h3>
+<ul>
+<li>
+<p><strong>Efficient Resource Utilization</strong>: Through MTO, the platform administrator can efficiently control quotas, enabling the sharing of an OpenShift cluster with multiple tenants, thereby maximizing resource utilization and reducing operational overhead.</p>
+</li>
+<li>
+<p><strong>Centralized Management</strong>: With MTO, the administrator can configure and manage tenants and their sandboxes centrally, minimizing efforts and ensuring consistent configurations.</p>
+</li>
+<li>
+<p><strong>Streamlined RBAC Configuration</strong>: MTO simplifies RBAC configuration by providing a "least privilege" mindset and automatically updating rules, reducing errors and manual efforts.</p>
+</li>
+<li>
+<p><strong>Integration with External Identity Management</strong>: MTO seamlessly integrates with external identity management systems, allowing administrators to leverage existing groups for maintaining tenant membership.</p>
+</li>
+<li>
+<p><strong>Enhanced Security with Vault Multitenancy</strong>: Through MTO, the permission model extends to both HashiCorp Vault and ArgoCD, empowering administrators to manage RBAC in both systems seamlessly. This ensures tenant users can securely manage their own secrets in Vault and maintain control over their deployments with ArgoCD.</p>
+</li>
+</ul>
+<h3 id="devops-engineer">DevOps Engineer<a class="headerlink" href="#devops-engineer" title="Permanent link">#</a></h3>
+<ul>
+<li>
+<p><strong>Simplified RBAC Configuration</strong>: MTO abstracts RBAC configuration complexities, allowing DevOps engineers to focus on writing pipelines and deploying applications without worrying about access control.</p>
+</li>
+<li>
+<p><strong>Integrated ArgoCD Multitenancy</strong>: MTO extends the permission model to ArgoCD, simplifying RBAC management for tenants, thus reducing overhead in managing deployments.</p>
+</li>
+<li>
+<p><strong>Resource Management</strong>: MTO enables defining Resource Quotas at the tenant scope, ensuring that dev teams can self-serve namespaces within allocated resources, promoting autonomy and agility.</p>
+</li>
+<li>
+<p><strong>Efficient Namespace Provisioning with Templates</strong>: MTO allows defining templates for namespaces, enabling engineers to provision namespaces with preloaded configurations, reducing setup time and ensuring consistency.</p>
+</li>
+<li>
+<p><strong>GitOps-Ready Configuration</strong>: MTO is fully configurable using Custom Resources, making it compatible with GitOps practices, thus facilitating seamless automation and version-controlled configurations.</p>
+</li>
+</ul>
+<h3 id="developer">Developer<a class="headerlink" href="#developer" title="Permanent link">#</a></h3>
+<ul>
+<li>
+<p><strong>Self-Service Namespace Provisioning</strong>: With MTO, developers can safely provision namespaces for themselves and their teams, promoting agility and reducing dependency on platform administrators.</p>
+</li>
+<li>
+<p><strong>Prepopulated Development Environments</strong>: MTO's templating mechanism enables automatic prepopulation of namespaces with resources such as network policies or Helm charts, providing developers with ready-to-use development environments.</p>
+</li>
+<li>
+<p><strong>Native Kubernetes Experience</strong>: Developers can work with MTO without the need for additional management layers or customized binaries, ensuring a seamless and familiar Kubernetes experience.</p>
+</li>
+<li>
+<p><strong>Cross-Namespace Resource Distribution</strong>: MTO supports cloning of secrets and configmaps across namespaces, allowing developers to access resources easily while maintaining isolation between tenants.</p>
+</li>
+<li>
+<p><strong>Self-Managing Secrets in Vault Integration</strong>: Leveraging MTO's capabilities, tenants enabled with Vault integration gain independent access to designated secrets paths tailored to their permissions. This empowers individual members to interact autonomously with Vault, ensuring seamless utilization of sensitive information without any cross-tenant interference or dependency.</p>
+</li>
+</ul>
+<h3 id="platform-owner">Platform Owner<a class="headerlink" href="#platform-owner" title="Permanent link">#</a></h3>
+<ul>
+<li>
+<p><strong>Efficient Resource Management</strong>: MTO enables efficient resource management by allowing multiple tenants to share a single cluster, reducing operational and management efforts, and preventing Kubernetes cluster sprawl.</p>
+</li>
+<li>
+<p><strong>Cost Management with Showback</strong>: MTO's showback functionality enables accurate tracking of resource usage by each tenant or namespace, facilitating cost monitoring, optimization, and fair billing.</p>
+</li>
+<li>
+<p><strong>Streamlined Administration with MTO Console</strong>: The MTO Console provides a comprehensive interface for managing multi-tenant environments, simplifying administrative tasks, and offering insights into tenant-related resources.</p>
+</li>
+<li>
+<p><strong>Hibernation for Resource Optimization</strong>: MTO can downscale deployments and stateful sets in a tenant's namespace based on defined sleep schedules, optimizing resource utilization and reducing costs during off-peak hours.</p>
+</li>
+</ul>
 
 
 
