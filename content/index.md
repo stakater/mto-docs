@@ -125,3 +125,51 @@ With Multi Tenant Operator teams can share a single cluster with multiple teams,
 ## Native Experience
 
 Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience without introducing additional management layers, plugins, or customized binaries.
+
+## Benefits and Value Propositions
+
+### Platform Administrator
+
+* **Efficient Resource Utilization**: Through MTO, the platform administrator can efficiently control quotas, enabling the sharing of an OpenShift cluster with multiple tenants, thereby maximizing resource utilization and reducing operational overhead.
+
+* **Centralized Management**: With MTO, the administrator can configure and manage tenants and their sandboxes centrally, minimizing efforts and ensuring consistent configurations.
+
+* **Streamlined RBAC Configuration**: MTO simplifies RBAC configuration by providing a "least privilege" mindset and automatically updating rules, reducing errors and manual efforts.
+
+* **Integration with External Identity Management**: MTO seamlessly integrates with external identity management systems, allowing administrators to leverage existing groups for maintaining tenant membership.
+
+* **Enhanced Security with Vault Multitenancy**: Through MTO, the permission model extends to both HashiCorp Vault and ArgoCD, empowering administrators to manage RBAC in both systems seamlessly. This ensures tenant users can securely manage their own secrets in Vault and maintain control over their deployments with ArgoCD.
+
+### DevOps Engineer
+
+* **Simplified RBAC Configuration**: MTO abstracts RBAC configuration complexities, allowing DevOps engineers to focus on writing pipelines and deploying applications without worrying about access control.
+
+* **Integrated ArgoCD Multitenancy**: MTO extends the permission model to ArgoCD, simplifying RBAC management for tenants, thus reducing overhead in managing deployments.
+
+* **Resource Management**: MTO enables defining Resource Quotas at the tenant scope, ensuring that dev teams can self-serve namespaces within allocated resources, promoting autonomy and agility.
+
+* **Efficient Namespace Provisioning with Templates**: MTO allows defining templates for namespaces, enabling engineers to provision namespaces with preloaded configurations, reducing setup time and ensuring consistency.
+
+* **GitOps-Ready Configuration**: MTO is fully configurable using Custom Resources, making it compatible with GitOps practices, thus facilitating seamless automation and version-controlled configurations.
+
+### Developer
+
+* **Self-Service Namespace Provisioning**: With MTO, developers can safely provision namespaces for themselves and their teams, promoting agility and reducing dependency on platform administrators.
+
+* **Prepopulated Development Environments**: MTO's templating mechanism enables automatic prepopulation of namespaces with resources such as network policies or Helm charts, providing developers with ready-to-use development environments.
+
+* **Native Kubernetes Experience**: Developers can work with MTO without the need for additional management layers or customized binaries, ensuring a seamless and familiar Kubernetes experience.
+
+* **Cross-Namespace Resource Distribution**: MTO supports cloning of secrets and configmaps across namespaces, allowing developers to access resources easily while maintaining isolation between tenants.
+
+* **Self-Managing Secrets in Vault Integration**: Leveraging MTO's capabilities, tenants enabled with Vault integration gain independent access to designated secrets paths tailored to their permissions. This empowers individual members to interact autonomously with Vault, ensuring seamless utilization of sensitive information without any cross-tenant interference or dependency.
+
+### Platform Owner
+
+* **Efficient Resource Management**: MTO enables efficient resource management by allowing multiple tenants to share a single cluster, reducing operational and management efforts, and preventing Kubernetes cluster sprawl.
+
+* **Cost Management with Showback**: MTO's showback functionality enables accurate tracking of resource usage by each tenant or namespace, facilitating cost monitoring, optimization, and fair billing.
+
+* **Streamlined Administration with MTO Console**: The MTO Console provides a comprehensive interface for managing multi-tenant environments, simplifying administrative tasks, and offering insights into tenant-related resources.
+
+* **Hibernation for Resource Optimization**: MTO can downscale deployments and stateful sets in a tenant's namespace based on defined sleep schedules, optimizing resource utilization and reducing costs during off-peak hours.
