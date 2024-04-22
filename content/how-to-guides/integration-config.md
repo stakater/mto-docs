@@ -95,7 +95,6 @@ Spec:
         openshift.io/node-selector: node-role.kubernetes.io/worker=
   integrations:
     argocd:
-      enabled: bool
       clusterResourceWhitelist:
         - group: tronador.stakater.com
           kind: EnvironmentProvisioner
