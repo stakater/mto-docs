@@ -68,11 +68,11 @@ spec:
     privileged:
       namespaces:
       - ^default$
-      - ^openshift-*
-      - ^kube-*
+      - ^openshift.*
+      - ^kube.*
       serviceAccounts:
-      - ^system:serviceaccount:openshift-*
-      - ^system:serviceaccount:kube-*
+      - ^system:serviceaccount:openshift.*
+      - ^system:serviceaccount:kube.*
       - ^system:serviceaccount:stakater-actions-runner-controller:actions-runner-controller-runner-deployment$
     rbac:
       tenantRoles:

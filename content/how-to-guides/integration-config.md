@@ -68,11 +68,11 @@ Spec:
     privileged:
       namespaces:
         - ^default$
-        - ^openshift-*
-        - ^kube-*
+        - ^openshift.*
+        - ^kube.*
       serviceAccounts:
-        - ^system:serviceaccount:openshift-*
-        - ^system:serviceaccount:kube-*
+        - ^system:serviceaccount:openshift.*
+        - ^system:serviceaccount:kube.*
       users:
         - ''
       groups:
@@ -231,11 +231,11 @@ accessControl:
     privileged:
       namespaces:
         - ^default$
-        - ^openshift-*
-        - ^kube-*
+        - ^openshift.*
+        - ^kube.*
       serviceAccounts:
-        - ^system:serviceaccount:openshift-*
-        - ^system:serviceaccount:kube-*
+        - ^system:serviceaccount:openshift.*
+        - ^system:serviceaccount:kube.*
       users:
         - ''
       groups:
@@ -328,11 +328,11 @@ namespaceAccessPolicy:
   privileged:
     namespaces:
       - ^default$
-      - ^openshift-*
-      - ^kube-*
+      - ^openshift.*
+      - ^kube.*
     serviceAccounts:
-      - ^system:serviceaccount:openshift-*
-      - ^system:serviceaccount:kube-*
+      - ^system:serviceaccount:openshift.*
+      - ^system:serviceaccount:kube.*
     users:
       - ''
     groups:
