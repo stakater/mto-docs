@@ -565,3 +565,27 @@ path "identity/group/id/*" {
   capabilities = ["create", "read", "update", "patch", "delete", "list"]
 }
 ```
+
+### Custom Pricing Model
+
+You can modify IntegrationConfig to customise the default pricing model. Here is what you need at `IntegrationConfig.Spec.components`:
+
+```yaml
+components:
+    console: true # should be enabled
+    showback: true # should be enabled
+    # add below and override any default value
+    # you can also remove the ones you do not need
+    customPricingModel:
+        CPU: "0.031611"
+        spotCPU: "0.006655"
+        RAM: "0.004237"
+        spotRAM: "0.000892"
+        GPU: "0.95"
+        storage: "0.00005479452"
+        zoneNetworkEgress: "0.01"
+        regionNetworkEgress: "0.01"
+        internetNetworkEgress: "0.12"
+```
+
+After modifying your default IntegrationConfig in `multi-tenant-operator` namespace, a configmap named `opencost-custom-pricing` will be updated. You will be able to see updated pricing info in `mto-console`.
