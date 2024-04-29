@@ -7,55 +7,55 @@ edit_uri: blob/main/content/
 nav:
     - index.md
     - Installation:
-      - tutorials/installation.md
+      - installation/openshift.md
     - Tutorials:
-      - Interacting with Templates:
+      - Configuring Tenants:
         - tutorials/tenant/create-tenant.md
         - tutorials/tenant/create-sandbox.md
         - tutorials/tenant/creating-namespaces.md
         - tutorials/tenant/assigning-metadata.md
         - tutorials/tenant/tenant-hibernation.md
         - tutorials/tenant/deleting-tenant.md
-        - tutorials/template/template.md
-      - Expand tutorials section:
-        - expand-section
-      # - ArgoCD Multi-tenancy:
-      # - Vault Multi-Tenancy:
+      - Interacting with Templates:
+        - tutorials/distributing-resources/distributing-resources.md
+        - tutorials/distributing-resources/secret-distribution.md
     - How-to Guides:
-      - reference-guides/admin-clusterrole.md
-      - reference-guides/configuring-multitenant-network-isolation.md
-      - reference-guides/custom-roles.md
-      - reference-guides/deploying-templates.md
-      - reference-guides/distributing-resources.md
-      - reference-guides/distributing-secrets.md
-      - reference-guides/resource-sync-by-tgi.md
-      - reference-guides/distributing-secrets-using-sealed-secret-template.md
-      - reference-guides/deploying-private-helm-charts.md
-      - reference-guides/extend-default-roles.md
-      - tutorials/argocd/enabling-multi-tenancy-argocd.md
-      - reference-guides/integrationconfig.md
-      - reference-guides/mattermost.md
-      - reference-guides/secret-distribution.md
-      - reference-guides/custom-metrics.md
-      - reference-guides/graph-visualization.md      
+      - RBAC:
+        - how-to-guides/custom-roles.md
+        - how-to-guides/admin-clusterrole.md
+        - how-to-guides/extend-default-roles.md
+      - Resource Distribution: 
+        - how-to-guides/configuring-multitenant-network-isolation.md
+        - how-to-guides/deploying-templates.md
+        - how-to-guides/resource-sync-by-tgi.md
+        - how-to-guides/distributing-secrets-using-sealed-secret-template.md
+        - how-to-guides/deploying-private-helm-charts.md
+        - how-to-guides/distributing-secrets.md
+      - Console:
+        - how-to-guides/keycloak.md
+        - how-to-guides/custom-metrics.md
+        - how-to-guides/graph-visualization.md
+      - Integrations:  
+        - how-to-guides/enabling-multi-tenancy-argocd.md
+        - how-to-guides/enabling-multi-tenancy-vault.md
+        - how-to-guides/enabling-openshift-dev-workspace.md
+        - how-to-guides/mattermost.md
       - Offboarding:
         - how-to-guides/offboarding/uninstalling.md
-    # - Reference guides:
-    #   - explanation/console.md
-
     - Explanation:
+      - explanation/logs-metrics.md
+      - explanation/template.md
       - explanation/console.md
-      - explanation/auth.md
+      - explanation/templated-metadata-values.md 
+      - explanation/multi-tenancy-vault.md
       - explanation/why-argocd-multi-tenancy.md
-      - tutorials/vault/enabling-multi-tenancy-vault.md
     - CRDs API Reference:
       - crds-api-reference/integration-config.md
-      - crds-api-reference/tenant.md
       - crds-api-reference/quota.md
-      - crds-api-reference/template-group-instance.md
-      - crds-api-reference/template-instance.md
+      - crds-api-reference/tenant.md
       - crds-api-reference/template.md
-    # - faq.md
+      - crds-api-reference/template-instance.md
+      - crds-api-reference/template-group-instance.md
     - changelog.md
     - eula.md
     - troubleshooting.md

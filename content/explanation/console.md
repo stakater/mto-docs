@@ -87,7 +87,7 @@ Regular tenant users can monitor and manage their allocated resources. However, 
 
 In the MTO Console, each resource section is equipped with a "View" button, revealing the live YAML configuration for complete information on the resource. For Tenant resources, a supplementary "Graph" option is available, illustrating the relationships and dependencies of all resources under a Tenant. This dual-view approach empowers users with both the detailed control of YAML and the holistic oversight of the graph view.
 
-You can find more details on graph visualization here: [Graph Visualization](./graph-visualization.md)
+You can find more details on graph visualization here: [Graph Visualization](../how-to-guides/graph-visualization.md)
 
 ![tenants-graph](../images/tenants_graph.png)
 
