@@ -109,4 +109,4 @@ spec:
       che.eclipse.org/username: "{{ TENANT.USERNAME }}" # templated placeholder
 ```
 
-We are using a templated annotation here. See more on supported templated values for labels and annotations for specific MTO CRs [here](../../reference-guides/templated-metadata-values.md)
+We are using a templated annotation here. See more on supported templated values for labels and annotations for specific MTO CRs [here](../../explanation/templated-metadata-values.md)
