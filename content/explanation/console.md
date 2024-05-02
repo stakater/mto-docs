@@ -37,7 +37,7 @@ components:
 
 Once the above configuration is set on the IntegrationConfig, MTO would start provisioning the required resources for MTO Console to be ready. In a few moments, you should be able to see the Console Ingress in the `multi-tenant-operator` namespace which gives you access to the Console.
 
-For more details on the configuration, please visit [here](../how-to-guides/integration-config.md).
+For more details on the configuration, please visit [here](../crds-api-reference/integration-config.md).
 ![dashboard](../images/dashboard.png)
 
 ### Tenants
@@ -87,7 +87,7 @@ Regular tenant users can monitor and manage their allocated resources. However, 
 
 In the MTO Console, each resource section is equipped with a "View" button, revealing the live YAML configuration for complete information on the resource. For Tenant resources, a supplementary "Graph" option is available, illustrating the relationships and dependencies of all resources under a Tenant. This dual-view approach empowers users with both the detailed control of YAML and the holistic oversight of the graph view.
 
-You can find more details on graph visualization here: [Graph Visualization](../reference-guides/graph-visualization.md)
+You can find more details on graph visualization here: [Graph Visualization](../how-to-guides/graph-visualization.md)
 
 ![tenants-graph](../images/tenants_graph.png)
 
@@ -101,17 +101,41 @@ Furthermore, the introduction of a dedicated cache layer ensures that there is n
 
 ## Authentication and Authorization
 
-MTO Console ensures secure access control using a robust combination of Keycloak for authentication and a custom-built authorization module.
+### Keycloak for Authentication
 
-### Keycloak Integration
+MTO Console incorporates Keycloak, a leading authentication module, to manage user access securely and efficiently. Keycloak is provisioned automatically by our controllers, setting up a new realm, client, and a default user named `mto`.
 
-Keycloak, an industry-standard authentication tool, is integrated for secure user login and management. It supports seamless integration with existing ADs or SSO systems and grants administrators complete control over user access.
+#### Benefits
 
-### Custom Authorization Module
+- Industry Standard: Offers robust, reliable authentication in line with industry standards.
+- Integration with Existing Systems: Enables easy linkage with existing Active Directories or SSO systems, avoiding the need for redundant user management.
+- Administrative Control: Grants administrators full authority over user access to the console, enhancing security and operational integrity.
 
-Complementing Keycloak, our custom authorization module intelligently controls access based on user roles and their association with tenants. Special checks are in place for admin users, granting them comprehensive permissions.
+### PostgreSQL as Persistent Storage for Keycloak
 
-For more details on Keycloak's integration, PostgreSQL as persistent storage, and the intricacies of our authorization module, please visit [here](./auth.md).
+MTO Console leverages PostgreSQL as the persistent storage solution for Keycloak, enhancing the reliability and flexibility of the authentication system.
+
+It offers benefits such as enhanced data reliability, easy data export and import.
+
+#### Benefits
+
+- Persistent Data Storage: By using PostgreSQL, Keycloak's data, including realms, clients, and user information, is preserved even in the event of a pod restart. This ensures continuous availability and stability of the authentication system.
+- Data Exportability: Customers can easily export Keycloak configurations and data from the PostgreSQL database.
+- Transferability Across Environments: The exported data can be conveniently imported into another cluster or Keycloak instance, facilitating smooth transitions and backups.
+- No Data Loss: Ensures that critical authentication data is not lost during system updates or maintenance.
+- Operational Flexibility: Provides customers with greater control over their authentication data, enabling them to manage and migrate their configurations as needed.
+
+### Built-in module for Authorization
+
+The MTO Console is equipped with an authorization module, designed to manage access rights intelligently and securely.
+
+#### Benefits
+
+- User and Tenant Based: Authorization decisions are made based on the user's membership in specific tenants, ensuring appropriate access control.
+- Role-Specific Access: The module considers the roles assigned to users, granting permissions accordingly to maintain operational integrity.
+- Elevated Privileges for Admins: Users identified as administrators or members of the clusterAdminGroups are granted comprehensive permissions across the console.
+- Database Caching: Authorization decisions are cached in the database, reducing reliance on the Kubernetes API server.
+- Faster, Reliable Access: This caching mechanism ensures quicker and more reliable access for users, enhancing the overall responsiveness of the MTO Console.
 
 ## Conclusion
 

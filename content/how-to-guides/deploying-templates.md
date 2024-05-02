@@ -1,12 +1,9 @@
 # Distributing Resources in Namespaces
 
-Multi Tenant Operator has three Custom Resources which can cover this need using the `Template` CR, depending upon the conditions and preference.
+Multi Tenant Operator has two Custom Resources which can cover this need using the `Template` CR, depending upon the conditions and preference.
 
 1. TemplateGroupInstance
 1. TemplateInstance
-1. Tenant
-
-Stakater Team, however, encourages the use of `TemplateGroupInstance` to distribute resources in multiple namespaces as it is optimized for better performance.
 
 ## Deploying Template to Namespaces via TemplateGroupInstances
 
@@ -98,63 +95,6 @@ spec:
   sync: true
 ```
 
-## Deploying Template to Namespaces via Tenant
-
-Bill is a cluster admin who wants to deploy a docker-pull-secret in Anna's tenant namespaces where certain labels exists.
-
-First, Bill creates a template:
-
-```yaml
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: Template
-metadata:
-  name: docker-pull-secret
-resources:
-  manifests:
-    - kind: Secret
-      apiVersion: v1
-      metadata:
-        name: docker-pull-secret
-      data:
-        .dockercfg: eyAKICAiaHR0cHM6IC8vaW5kZXguZG9ja2VyLmlvL3YxLyI6IHsgImF1dGgiOiAiYzNSaGEyRjBaWEk2VjI5M1YyaGhkRUZIY21WaGRGQmhjM04zYjNKayJ9Cn0K
-      type: kubernetes.io/dockercfg
-```
-
-Once the template has been created, Bill edits Anna's tenant and populates the `namespacetemplate` field:
-
-```yaml
-apiVersion: tenantoperator.stakater.com/v1beta2
-kind: Tenant
-metadata:
-  name: bluesky
-spec:
-  owners:
-    users:
-    - anna@aurora.org
-  editors:
-    users:
-    - john@aurora.org
-  quota: small
-  sandboxConfig:
-    enabled: true
-  templateInstances:
-  - spec:
-      template: docker-pull-secret
-    selector:
-      matchLabels:
-        kind: build
-```
-
-Multi Tenant Operator will deploy `TemplateInstances` mentioned in `templateInstances` field, `TemplateInstances` will only be applied in those `namespaces` which belong to Anna's `tenant` and have the matching label of `kind: build`.
-
-So now Anna adds label `kind: build` to her existing namespace `bluesky-anna-aurora-sandbox`, and after adding the label she sees that the secret has been created.
-
-```bash
-kubectl get secret docker-secret -n bluesky-anna-aurora-sandbox
-NAME                  STATE    AGE
-docker-pull-secret    Active   3m
-```
-
 ## Deploying Template to a Namespace via TemplateInstance
 
 Anna wants to deploy a docker pull secret in her namespace.
@@ -198,7 +138,7 @@ NAME                  STATE    AGE
 docker-pull-secret    Active   3m
 ```
 
-## Passing Parameters to Template via TemplateInstance, TemplateGroupInstance or Tenant
+## Passing Parameters to Template via TemplateInstance, TemplateGroupInstance
 
 Anna wants to deploy a LimitRange resource to certain namespaces.
 
@@ -275,35 +215,4 @@ parameters:
     value: "1.5"
   - name: DEFAULT_CPU_REQUESTS
     value: "1"
-```
-
-Or she can use her tenant to cover only the tenant namespaces.
-
-```yaml
-apiVersion: tenantoperator.stakater.com/v1beta2
-kind: Tenant
-metadata:
-  name: bluesky
-spec:
-  owners:
-    users:
-    - anna@aurora.org
-  editors:
-    users:
-    - john@aurora.org
-  quota: small
-  sandboxConfig:
-    enabled: true
-  templateInstances:
-  - spec:
-      template: namespace-parameterized-restrictions
-      sync: true
-    parameters:
-      - name: DEFAULT_CPU_LIMIT
-        value: "1.5"
-      - name: DEFAULT_CPU_REQUESTS
-        value: "1"
-    selector:
-      matchLabels:
-        kind: build
 ```

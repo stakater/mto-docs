@@ -70,11 +70,6 @@ spec:
         stakater.com/sandbox: true
       namespaces: # optional
         - alpha-dave-stakater-sandbox
-  sandboxMetadata: # optional
-    labels: # optional
-      app.kubernetes.io/part-of: che.eclipse.org
-    annotations: # optional
-      che.eclipse.org/username: "{{ TENANT.USERNAME }}" # templated placeholder
   templateInstances: # optional
   - spec: # optional
       template: networkpolicy # required
@@ -127,10 +122,6 @@ spec:
     * `labels` distributes given labels among specific tenant namespaces
     * `annotations` distributes given annotations among specific tenant namespaces
     * `namespaces` consists a list of specific tenant namespaces across which the labels and annotations will be distributed
-
-* `sandboxMetadata` can be used to distribute specific labels and annotations among all tenant sandbox namespaces.
-    * `labels` distributes given labels among tenant sandbox namespaces
-    * `annotations` distributes given annotations among tenant sandbox namespaces. In annotations, we also support a username template `{{ TENANT.USERNAME }}`, it can be used if you want to access tenant username value in annotation i.e. `username: {{ TENANT.USERNAME }}`. This template can be used for `sandboxMetadata` labels as well, given that username is valid for a label value.
 
 * Tenant automatically deploys `template` resource mentioned in `templateInstances` to matching tenant namespaces.
     * `Template` resources are created in those `namespaces` which belong to a `tenant` and contain `matching labels`.
