@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/main/tutorials/tenant/assigning-metadata.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/main/tutorials/distributing-resources/copying-resources.html">
       
       
-        <link rel="prev" href="creating-namespaces.html">
+        <link rel="prev" href="../tenant/deleting-tenant.html">
       
       
-        <link rel="next" href="tenant-hibernation.html">
+        <link rel="next" href="distributing-manifests.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.svg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Assigning metadata - Multi Tenant Operator</title>
+        <title>Copying Secrets and Configmaps across Tenant Namespaces via TGI - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#assigning-metadata" class="md-skip">
+        <a href="#copying-secrets-and-configmaps-across-tenant-namespaces-via-tgi" class="md-skip">
           Skip to content
         </a>
       
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Assigning metadata
+              Copying Secrets and Configmaps across Tenant Namespaces via TGI
             
           </span>
         </div>
@@ -417,19 +417,17 @@
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -443,7 +441,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             Configuring Tenants
@@ -457,7 +455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="create-tenant.html" class="md-nav__link">
+      <a href="../tenant/create-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -478,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="create-sandbox.html" class="md-nav__link">
+      <a href="../tenant/create-sandbox.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -499,7 +497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="creating-namespaces.html" class="md-nav__link">
+      <a href="../tenant/creating-namespaces.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -517,30 +515,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Assigning metadata
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="assigning-metadata.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../tenant/assigning-metadata.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -549,68 +527,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#assigning-commonspecific-metadata" class="md-nav__link">
-    <span class="md-ellipsis">
-      Assigning Common/Specific Metadata
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Assigning Common/Specific Metadata">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#distributing-common-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource" class="md-nav__link">
-    <span class="md-ellipsis">
-      Distributing common labels and annotations to tenant namespaces via Tenant Custom Resource
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#distributing-specific-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource" class="md-nav__link">
-    <span class="md-ellipsis">
-      Distributing specific labels and annotations to tenant namespaces via Tenant Custom Resource
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#assigning-metadata-to-all-sandboxes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Assigning metadata to all sandboxes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -623,7 +539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tenant-hibernation.html" class="md-nav__link">
+      <a href="../tenant/tenant-hibernation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -644,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="deleting-tenant.html" class="md-nav__link">
+      <a href="../tenant/deleting-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -670,17 +586,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -694,7 +612,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             Interacting with Templates
@@ -705,10 +623,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../distributing-resources/copying-resources.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Copying Secrets and Configmaps across Tenant Namespaces via TGI
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="copying-resources.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -717,6 +655,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-resources-within-tenant-namespaces-via-ti" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mapping Resources within Tenant Namespaces via TI
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -729,7 +696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../distributing-resources/distributing-manifests.html" class="md-nav__link">
+      <a href="distributing-manifests.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1744,102 +1711,68 @@
   
 
 
-<h1 id="assigning-metadata">Assigning metadata<a class="headerlink" href="#assigning-metadata" title="Permanent link">#</a></h1>
-<h2 id="assigning-commonspecific-metadata">Assigning Common/Specific Metadata<a class="headerlink" href="#assigning-commonspecific-metadata" title="Permanent link">#</a></h2>
-<h3 id="distributing-common-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource">Distributing common labels and annotations to tenant namespaces via Tenant Custom Resource<a class="headerlink" href="#distributing-common-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource" title="Permanent link">#</a></h3>
-<p>Bill now wants to add labels/annotations to all the namespaces for a tenant. To create those labels/annotations Bill will just add them into <code>commonMetadata.labels</code>/<code>commonMetadata.annotations</code> field in the tenant CR.</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt; EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<h1 id="copying-secrets-and-configmaps-across-tenant-namespaces-via-tgi">Copying Secrets and Configmaps across Tenant Namespaces via TGI<a class="headerlink" href="#copying-secrets-and-configmaps-across-tenant-namespaces-via-tgi" title="Permanent link">#</a></h1>
+<p>Bill is a cluster admin who wants to map a <code>docker-pull-secret</code>, present in a <code>build</code> namespace, in tenant namespaces where certain labels exists.</p>
+<p>First, Bill creates a template:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
-<span class="w">  </span><span class="nt">editors</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">john@aurora.org</span>
-<span class="w">    </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prod</span>
-<span class="w">  </span><span class="nt">commonMetadata</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">app.kubernetes.io/managed-by</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator</span>
-<span class="w">      </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-alpha</span>
-<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/infra=</span>
-<span class="l l-Scalar l-Scalar-Plain">EOF</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">resourceMappings</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 </code></pre></div>
-<p>With the above configuration all tenant namespaces will now contain the mentioned labels and annotations.</p>
-<h3 id="distributing-specific-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource">Distributing specific labels and annotations to tenant namespaces via Tenant Custom Resource<a class="headerlink" href="#distributing-specific-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource" title="Permanent link">#</a></h3>
-<p>Bill now wants to add labels/annotations to specific namespaces for a tenant. To create those labels/annotations Bill will just add them into <code>specificMetadata.labels</code>/<code>specificMetadata.annotations</code> and specific namespaces in <code>specificMetadata.namespaces</code> field in the tenant CR.</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt; EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<p>Once the template has been created, Bill makes a <code>TemplateGroupInstance</code> referring to the <code>Template</code> he wants to deploy with <code>MatchLabels</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-group-instance</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
-<span class="w">  </span><span class="nt">editors</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">john@aurora.org</span>
-<span class="w">    </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="w">  </span><span class="nt">sandboxConfig</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prod</span>
-<span class="w">  </span><span class="nt">specificMetadata</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-anna-aurora-sandbox</span>
-<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">app.kubernetes.io/is-sandbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/worker=</span>
-<span class="l l-Scalar l-Scalar-Plain">EOF</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-<p>With the above configuration all tenant namespaces will now contain the mentioned labels and annotations.</p>
-<h2 id="assigning-metadata-to-all-sandboxes">Assigning metadata to all sandboxes<a class="headerlink" href="#assigning-metadata-to-all-sandboxes" title="Permanent link">#</a></h2>
-<p>Bill can choose to apply metadata to sandbox namespaces only by using <code>sandboxMetadata</code> property of Tenant CR like below:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<p>Afterward, Bill can see that secrets has been successfully mapped in all matching namespaces.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-pull-secret<span class="w"> </span>-n<span class="w"> </span>bluesky-anna-aurora-sandbox
+NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
+docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
+
+kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-pull-secret<span class="w"> </span>-n<span class="w"> </span>alpha-dave-aurora-sandbox
+NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
+docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
+</code></pre></div>
+<h2 id="mapping-resources-within-tenant-namespaces-via-ti">Mapping Resources within Tenant Namespaces via TI<a class="headerlink" href="#mapping-resources-within-tenant-namespaces-via-ti" title="Permanent link">#</a></h2>
+<p>Anna is a tenant owner who wants to map a <code>docker-pull-secret</code>, present in <code>bluseky-build</code> namespace, to <code>bluesky-anna-aurora-sandbox</code> namespace.</p>
+<p>First, Bill creates a template:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
-<span class="w">  </span><span class="nt">editors</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">john@aurora.org</span>
-<span class="w">    </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="w">  </span><span class="nt">sandboxConfig</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">private</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">sandboxMetadata</span><span class="p">:</span><span class="w"> </span><span class="c1"># metadata for all sandbox namespaces</span>
-<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">che.eclipse.org</span>
-<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">TENANT.USERNAME</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"> </span><span class="c1"># templated placeholder</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">resourceMappings</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-build</span>
 </code></pre></div>
-<p>We are using a templated annotation here. See more on supported templated values for labels and annotations for specific MTO CRs <a href="../../explanation/templated-metadata-values.html">here</a></p>
+<p>Once the template has been created, Anna creates a <code>TemplateInstance</code> in <code>bluesky-anna-aurora-sandbox</code> namespace, referring to the <code>Template</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateInstance</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-instance</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-anna-aurora-sandbox</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>Afterward, Bill can see that secrets has been successfully mapped in all matching namespaces.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-pull-secret<span class="w"> </span>-n<span class="w"> </span>bluesky-anna-aurora-sandbox
+NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
+docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
+</code></pre></div>
 
 
 
