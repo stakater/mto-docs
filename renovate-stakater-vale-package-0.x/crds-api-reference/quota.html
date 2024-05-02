@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-stakater-vale-package-0.x/explanation/logs-metrics.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-stakater-vale-package-0.x/crds-api-reference/quota.html">
       
       
-        <link rel="prev" href="../how-to-guides/offboarding/uninstalling.html">
+        <link rel="prev" href="integration-config.html">
       
       
-        <link rel="next" href="template.html">
+        <link rel="next" href="tenant.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Metrics and Logs Documentation - Multi Tenant Operator</title>
+        <title>Quota - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#metrics-and-logs-documentation" class="md-skip">
+        <a href="#quota" class="md-skip">
           Skip to content
         </a>
       
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Metrics and Logs Documentation
+              Quota
             
           </span>
         </div>
@@ -1269,19 +1269,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -1295,7 +1293,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Explanation
@@ -1306,30 +1304,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Metrics and Logs Documentation
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="logs-metrics.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../explanation/logs-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1338,83 +1316,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#metrics-list" class="md-nav__link">
-    <span class="md-ellipsis">
-      Metrics List
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#custom-resource-status" class="md-nav__link">
-    <span class="md-ellipsis">
-      Custom Resource Status
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Custom Resource Status">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#template-group-instance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Template Group Instance
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#log-interpretation-guide" class="md-nav__link">
-    <span class="md-ellipsis">
-      Log Interpretation Guide
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Log Interpretation Guide">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#template-group-instance-controller" class="md-nav__link">
-    <span class="md-ellipsis">
-      Template Group Instance Controller
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1427,7 +1328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="template.html" class="md-nav__link">
+      <a href="../explanation/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1448,7 +1349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="console.html" class="md-nav__link">
+      <a href="../explanation/console.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1469,7 +1370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="templated-metadata-values.html" class="md-nav__link">
+      <a href="../explanation/templated-metadata-values.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1490,7 +1391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../explanation/multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1515,17 +1416,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -1539,7 +1442,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             CRDs API Reference
@@ -1553,7 +1456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/integration-config.html" class="md-nav__link">
+      <a href="integration-config.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1571,10 +1474,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../crds-api-reference/quota.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quota
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="quota.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1583,6 +1506,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#assigning-resource-quotas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assigning Resource Quotas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limiting-persistentvolume-for-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limiting PersistentVolume for Tenant
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-storageclass-restrictions-for-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding StorageClass Restrictions for Tenant
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1595,7 +1565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/tenant.html" class="md-nav__link">
+      <a href="tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1616,7 +1586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/template.html" class="md-nav__link">
+      <a href="template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1637,7 +1607,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/template-instance.html" class="md-nav__link">
+      <a href="template-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1658,7 +1628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/template-group-instance.html" class="md-nav__link">
+      <a href="template-group-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1757,77 +1727,128 @@
   
 
 
-<h1 id="metrics-and-logs-documentation">Metrics and Logs Documentation<a class="headerlink" href="#metrics-and-logs-documentation" title="Permanent link">#</a></h1>
-<p>This document offers an overview of the Prometheus metrics implemented by the <code>multi_tenant_operator</code> controllers, along with an interpretation guide for the logs and statuses generated by these controllers. Each metric is designed to provide specific insights into the controllers' operational performance, while the log interpretation guide aids in understanding their behavior and workflow processes. Additionally, the status descriptions for custom resources provide operational snapshots. Together, these elements form a comprehensive toolkit for monitoring and enhancing the performance and health of the controllers.</p>
-<h2 id="metrics-list">Metrics List<a class="headerlink" href="#metrics-list" title="Permanent link">#</a></h2>
-<p><strong><code>multi_tenant_operator_resources_deployed_total</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Tracks the total number of resources deployed by the operator.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code>, <code>namespace</code></li>
-<li><strong>Usage</strong>: Helps to understand the overall workload managed by the operator.</li>
-</ul>
-<p><strong><code>multi_tenant_operator_resources_deployed</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Monitors resources currently deployed by the operator.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code>, <code>namespace</code>, <code>type</code></li>
-<li><strong>Usage</strong>: Useful for tracking the current state and type of resources managed by the operator.</li>
-</ul>
-<p><strong><code>multi_tenant_operator_reconcile_error</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Indicates resources in an error state, broken down by resource kind, name, and namespace.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code>, <code>namespace</code>, <code>state</code>, <code>errors</code></li>
-<li><strong>Usage</strong>: Essential for identifying and analyzing errors in resource management.</li>
-</ul>
-<p><strong><code>multi_tenant_operator_reconcile_count</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Counts the number of reconciliations performed for a template group instance, categorized by name.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code></li>
-<li><strong>Usage</strong>: Provides insight into the frequency of reconciliation processes.</li>
-</ul>
-<p><strong><code>multi_tenant_operator_reconcile_seconds</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Represents the cumulative duration, in seconds, taken to reconcile a template group instance, categorized by instance name.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code></li>
-<li><strong>Usage</strong>: Critical for assessing the time efficiency of the reconciliation process.</li>
-</ul>
-<p><strong><code>multi_tenant_operator_reconcile_seconds_total</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Tracks the total duration, in seconds, for all reconciliation processes of a template group instance, categorized by instance name.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code></li>
-<li><strong>Usage</strong>: Useful for understanding the overall time spent on reconciliation processes.</li>
-</ul>
-<h2 id="custom-resource-status">Custom Resource Status<a class="headerlink" href="#custom-resource-status" title="Permanent link">#</a></h2>
-<p>In this section, we delve into the status of various custom resources managed by our controllers. The <code>kubectl describe</code> command can be used to fetch the status of these resources.</p>
-<h3 id="template-group-instance">Template Group Instance<a class="headerlink" href="#template-group-instance" title="Permanent link">#</a></h3>
-<p>Status from the <code>templategroupinstances.tenantoperator.stakater.com</code> custom resource:</p>
-<ul>
-<li><strong>Current Operational State</strong>: Provides a snapshot of the resource's current condition.</li>
-<li><strong>Conditions</strong>: Offers a detailed view of the resource's status, which includes:<ul>
-<li><code>InstallSucceeded</code>: Indicates the success of the instance's installation.</li>
-<li><code>Ready</code>: Shows the readiness of the instance, with details on the last reconciliation process, its duration, and relevant messages.</li>
-<li><code>Running</code>: Reports on active processes like ongoing resource reconciliation.</li>
-</ul>
-</li>
-<li><strong>Deployed Namespaces</strong>: Enumerates the namespaces where the instance has been deployed, along with their statuses and associated template manifests.</li>
-<li><strong>Manifest Hashes</strong>: Includes the <code>Template Manifests Hash</code> and <code>Resource Mapping Hash</code>, which provide versioning and change tracking for template manifests and resource mappings.</li>
-</ul>
-<h2 id="log-interpretation-guide">Log Interpretation Guide<a class="headerlink" href="#log-interpretation-guide" title="Permanent link">#</a></h2>
-<h3 id="template-group-instance-controller">Template Group Instance Controller<a class="headerlink" href="#template-group-instance-controller" title="Permanent link">#</a></h3>
-<p>Logs from the <code>tenant-operator-templategroupinstance-controller</code>:</p>
-<ul>
-<li><strong>Reconciliation Process</strong>: Logs starting with <code>Reconciling!</code> mark the beginning of a reconciliation process for a TemplateGroupInstance. Subsequent actions like <code>Creating/Updating TemplateGroupInstance</code> and <code>Retrieving list of namespaces Matching to TGI</code> outline the reconciliation steps.</li>
-<li><strong>Namespace and Resource Management</strong>: Logs such as <code>Namespaces test-namespace-1 is new or failed...</code> and <code>Creating/Updating resource...</code> detail the management of Kubernetes resources in specific namespaces.</li>
-<li><strong>Worker Activities</strong>: Logs labeled <code>[Worker X]</code> show tasks being processed in parallel, including steps like <code>Validating parameters</code>, <code>Gathering objects from manifest</code>, and <code>Apply manifests</code>.</li>
-<li><strong>Reconciliation Completion</strong>: Entries like <code>End Reconciling</code> and <code>Defering XXth Reconciling, with duration XXXms</code> indicate the end of a reconciliation process and its duration, aiding in performance analysis.</li>
-<li><strong>Watcher Events</strong>: Logs from <code>Watcher</code> such as <code>Delete call received for object...</code> and <code>Following resource is recreated...</code> are key for tracking changes to Kubernetes objects.</li>
-</ul>
-<p>These logs are crucial for tracking the system's behavior, diagnosing issues, and comprehending the resource management workflow.</p>
+<h1 id="quota">Quota<a class="headerlink" href="#quota" title="Permanent link">#</a></h1>
+<p>Using Multi Tenant Operator, the cluster-admin can set and enforce cluster resource quotas and limit ranges for tenants.</p>
+<h2 id="assigning-resource-quotas">Assigning Resource Quotas<a class="headerlink" href="#assigning-resource-quotas" title="Permanent link">#</a></h2>
+<p>Bill is a cluster admin who will first create <code>Quota</code> CR where he sets the maximum resource limits that Anna's tenant will have.
+Here <code>limitrange</code> is an optional field, cluster admin can skip it if not needed.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quota</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">resourcequota</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hard</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests.cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;5&#39;</span>
+<span class="w">      </span><span class="nt">requests.memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;5Gi&#39;</span>
+<span class="w">      </span><span class="nt">configmaps</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span>
+<span class="w">      </span><span class="nt">secrets</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span>
+<span class="w">      </span><span class="nt">services</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span>
+<span class="w">      </span><span class="nt">services.loadbalancers</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
+<span class="w">  </span><span class="nt">limitrange</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Pod&quot;</span>
+<span class="w">        </span><span class="nt">max</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1Gi&quot;</span>
+<span class="w">        </span><span class="nt">min</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;200m&quot;</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;100Mi&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">EOF</span>
+</code></pre></div>
+<p>For more details please refer to <a href="quota.html">Quotas</a>.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>quota<span class="w"> </span>small
+NAME<span class="w">       </span>STATE<span class="w">    </span>AGE
+small<span class="w">      </span>Active<span class="w">   </span>3m
+</code></pre></div>
+<p>Bill then proceeds to create a tenant for Anna, while also linking the newly created <code>Quota</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@stakater.com</span>
+<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<span class="w">  </span><span class="nt">sandbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="l l-Scalar l-Scalar-Plain">EOF</span>
+</code></pre></div>
+<p>Now that the quota is linked with Anna's tenant, Anna can create any resource within the values of resource quota and limit range.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>bluesky-production<span class="w"> </span>create<span class="w"> </span>deployment<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx:latest<span class="w"> </span>--replicas<span class="w"> </span><span class="m">4</span>
+</code></pre></div>
+<p>Once the resource quota assigned to the tenant has been reached, Anna cannot create further resources.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>pods<span class="w"> </span>bluesky-training
+Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Cannot<span class="w"> </span>exceed<span class="w"> </span>Namespace<span class="w"> </span>quota:<span class="w"> </span>please,<span class="w"> </span>reach<span class="w"> </span>out<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>system<span class="w"> </span>administrators<span class="o">)</span>
+</code></pre></div>
+<h2 id="limiting-persistentvolume-for-tenant">Limiting PersistentVolume for Tenant<a class="headerlink" href="#limiting-persistentvolume-for-tenant" title="Permanent link">#</a></h2>
+<p>Bill, as a cluster admin, wants to restrict the amount of storage a Tenant can use. For that he'll add the <code>requests.storage</code> field to <code>quota.spec.resourcequota.hard</code>. If Bill wants to restrict tenant <code>bluesky</code> to use only <code>50Gi</code> of storage, he'll first create a quota with <code>requests.storage</code> field set to <code>50Gi</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quota</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">resourcequota</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hard</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests.cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;5&#39;</span>
+<span class="w">      </span><span class="nt">requests.memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;10Gi&#39;</span>
+<span class="w">      </span><span class="nt">requests.storage</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;50Gi&#39;</span>
+</code></pre></div>
+<p>Once the quota is created, Bill will create the tenant and set the quota field to the one he created.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
+<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span>
+<span class="w">  </span><span class="nt">sandbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="l l-Scalar l-Scalar-Plain">EOF</span>
+</code></pre></div>
+<p>Now, the combined storage used by all tenant namespaces will not exceed <code>50Gi</code>.</p>
+<h2 id="adding-storageclass-restrictions-for-tenant">Adding StorageClass Restrictions for Tenant<a class="headerlink" href="#adding-storageclass-restrictions-for-tenant" title="Permanent link">#</a></h2>
+<p>Now, Bill, as a cluster admin, wants to make sure that no Tenant can provision more than a fixed amount of storage from a StorageClass. Bill can restrict that using <code>&lt;storage-class-name&gt;.storageclass.storage.k8s.io/requests.storage</code> field in <code>quota.spec.resourcequota.hard</code> field. If Bill wants to restrict tenant <code>sigma</code> to use only <code>20Gi</code> of storage from storage class <code>stakater</code>, he'll first create a StorageClass <code>stakater</code> and then create the relevant Quota with <code>stakater.storageclass.storage.k8s.io/requests.storage</code> field set to <code>20Gi</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quota</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">resourcequota</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hard</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">requests.cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2&#39;</span>
+<span class="w">      </span><span class="nt">requests.memory</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;4Gi&#39;</span>
+<span class="w">      </span><span class="nt">stakater.storageclass.storage.k8s.io/requests.storage</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;20Gi&#39;</span>
+</code></pre></div>
+<p>Once the quota is created, Bill will create the tenant and set the quota field to the one he created.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dave@aurora.org</span>
+<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<span class="w">  </span><span class="nt">sandbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="l l-Scalar l-Scalar-Plain">EOF</span>
+</code></pre></div>
+<p>Now, the combined storage provisioned from StorageClass <code>stakater</code> used by all tenant namespaces will not exceed <code>20Gi</code>.</p>
+<blockquote>
+<p>The <code>20Gi</code> limit will only be applied to StorageClass <code>stakater</code>. If a tenant member creates a PVC with some other StorageClass, he will not be restricted.</p>
+</blockquote>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>More details about <code>Resource Quota</code> can be found <a href="https://kubernetes.io/docs/concepts/policy/resource-quotas/">here</a></p>
+</div>
 
 
 

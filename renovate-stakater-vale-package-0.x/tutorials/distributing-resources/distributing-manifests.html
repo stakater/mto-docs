@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-stakater-vale-package-0.x/explanation/logs-metrics.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-stakater-vale-package-0.x/tutorials/distributing-resources/distributing-manifests.html">
       
       
-        <link rel="prev" href="../how-to-guides/offboarding/uninstalling.html">
+        <link rel="prev" href="copying-resources.html">
       
       
-        <link rel="next" href="template.html">
+        <link rel="next" href="../../how-to-guides/custom-roles.html">
       
       
-      <link rel="icon" href="../assets/images/favicon.svg">
+      <link rel="icon" href="../../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.20">
     
     
       
-        <title>Metrics and Logs Documentation - Multi Tenant Operator</title>
+        <title>Distributing Resources in Namespaces - Multi Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -67,7 +67,7 @@
     
     
     
-   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -76,7 +76,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#metrics-and-logs-documentation" class="md-skip">
+        <a href="#distributing-resources-in-namespaces" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
             <div class="md-banner__inner md-grid md-typeset">
               
   You're not viewing the latest version.
-  <a href="../.."> 
+  <a href="../../.."> 
     <strong>Click here to go to latest.</strong>
   </a>
 
@@ -127,9 +127,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../index.html" title="Multi Tenant Operator" class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../../index.html" title="Multi Tenant Operator" class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
-  <img src="../assets/images/favicon.svg" alt="logo">
+  <img src="../../assets/images/favicon.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Metrics and Logs Documentation
+              Distributing Resources in Namespaces
             
           </span>
         </div>
@@ -271,9 +271,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
-  <img src="../assets/images/favicon.svg" alt="logo">
+  <img src="../../assets/images/favicon.svg" alt="logo">
 
     </a>
     Multi Tenant Operator
@@ -300,7 +300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
+      <a href="../../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -355,7 +355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../installation/openshift.html" class="md-nav__link">
+      <a href="../../installation/openshift.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -380,17 +380,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -404,7 +406,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Tutorials
@@ -453,7 +455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/create-tenant.html" class="md-nav__link">
+      <a href="../tenant/create-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -474,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/create-sandbox.html" class="md-nav__link">
+      <a href="../tenant/create-sandbox.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -495,7 +497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/creating-namespaces.html" class="md-nav__link">
+      <a href="../tenant/creating-namespaces.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -516,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/assigning-metadata.html" class="md-nav__link">
+      <a href="../tenant/assigning-metadata.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -537,7 +539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/tenant-hibernation.html" class="md-nav__link">
+      <a href="../tenant/tenant-hibernation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -558,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/deleting-tenant.html" class="md-nav__link">
+      <a href="../tenant/deleting-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -584,17 +586,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -608,7 +612,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             Interacting with Templates
@@ -622,7 +626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/distributing-resources/copying-resources.html" class="md-nav__link">
+      <a href="copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -640,10 +644,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../tutorials/distributing-resources/distributing-manifests.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Distributing Resources in Namespaces
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="distributing-manifests.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -652,6 +676,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-template-to-namespaces-via-templategroupinstances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploying Template to Namespaces via TemplateGroupInstances
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -749,7 +802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/custom-roles.html" class="md-nav__link">
+      <a href="../../how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -770,7 +823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/extend-default-roles.html" class="md-nav__link">
+      <a href="../../how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -834,7 +887,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
+      <a href="../../how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -855,7 +908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/deploying-templates.html" class="md-nav__link">
+      <a href="../../how-to-guides/deploying-templates.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -876,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../../how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -897,7 +950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../../how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -918,7 +971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../../how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -939,7 +992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/copying-resources.html" class="md-nav__link">
+      <a href="../../how-to-guides/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1003,7 +1056,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/keycloak.html" class="md-nav__link">
+      <a href="../../how-to-guides/keycloak.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1024,7 +1077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/custom-metrics.html" class="md-nav__link">
+      <a href="../../how-to-guides/custom-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1045,7 +1098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/graph-visualization.html" class="md-nav__link">
+      <a href="../../how-to-guides/graph-visualization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1109,7 +1162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
+      <a href="../../how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1130,7 +1183,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../../how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1151,7 +1204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
+      <a href="../../how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1172,7 +1225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/mattermost.html" class="md-nav__link">
+      <a href="../../how-to-guides/mattermost.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1236,7 +1289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
+      <a href="../../how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1269,19 +1322,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -1295,7 +1346,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Explanation
@@ -1306,30 +1357,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Metrics and Logs Documentation
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="logs-metrics.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../explanation/logs-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1338,83 +1369,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#metrics-list" class="md-nav__link">
-    <span class="md-ellipsis">
-      Metrics List
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#custom-resource-status" class="md-nav__link">
-    <span class="md-ellipsis">
-      Custom Resource Status
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Custom Resource Status">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#template-group-instance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Template Group Instance
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#log-interpretation-guide" class="md-nav__link">
-    <span class="md-ellipsis">
-      Log Interpretation Guide
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Log Interpretation Guide">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#template-group-instance-controller" class="md-nav__link">
-    <span class="md-ellipsis">
-      Template Group Instance Controller
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1427,7 +1381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="template.html" class="md-nav__link">
+      <a href="../../explanation/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1448,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="console.html" class="md-nav__link">
+      <a href="../../explanation/console.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1469,7 +1423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="templated-metadata-values.html" class="md-nav__link">
+      <a href="../../explanation/templated-metadata-values.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1490,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../../explanation/multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1553,7 +1507,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/integration-config.html" class="md-nav__link">
+      <a href="../../crds-api-reference/integration-config.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1574,7 +1528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/quota.html" class="md-nav__link">
+      <a href="../../crds-api-reference/quota.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1595,7 +1549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/tenant.html" class="md-nav__link">
+      <a href="../../crds-api-reference/tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1616,7 +1570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/template.html" class="md-nav__link">
+      <a href="../../crds-api-reference/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1637,7 +1591,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/template-instance.html" class="md-nav__link">
+      <a href="../../crds-api-reference/template-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1658,7 +1612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/template-group-instance.html" class="md-nav__link">
+      <a href="../../crds-api-reference/template-group-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1686,7 +1640,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../changelog.html" class="md-nav__link">
+      <a href="../../changelog.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1706,7 +1660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eula.html" class="md-nav__link">
+      <a href="../../eula.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1726,7 +1680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting.html" class="md-nav__link">
+      <a href="../../troubleshooting.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1757,77 +1711,54 @@
   
 
 
-<h1 id="metrics-and-logs-documentation">Metrics and Logs Documentation<a class="headerlink" href="#metrics-and-logs-documentation" title="Permanent link">#</a></h1>
-<p>This document offers an overview of the Prometheus metrics implemented by the <code>multi_tenant_operator</code> controllers, along with an interpretation guide for the logs and statuses generated by these controllers. Each metric is designed to provide specific insights into the controllers' operational performance, while the log interpretation guide aids in understanding their behavior and workflow processes. Additionally, the status descriptions for custom resources provide operational snapshots. Together, these elements form a comprehensive toolkit for monitoring and enhancing the performance and health of the controllers.</p>
-<h2 id="metrics-list">Metrics List<a class="headerlink" href="#metrics-list" title="Permanent link">#</a></h2>
-<p><strong><code>multi_tenant_operator_resources_deployed_total</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Tracks the total number of resources deployed by the operator.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code>, <code>namespace</code></li>
-<li><strong>Usage</strong>: Helps to understand the overall workload managed by the operator.</li>
-</ul>
-<p><strong><code>multi_tenant_operator_resources_deployed</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Monitors resources currently deployed by the operator.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code>, <code>namespace</code>, <code>type</code></li>
-<li><strong>Usage</strong>: Useful for tracking the current state and type of resources managed by the operator.</li>
-</ul>
-<p><strong><code>multi_tenant_operator_reconcile_error</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Indicates resources in an error state, broken down by resource kind, name, and namespace.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code>, <code>namespace</code>, <code>state</code>, <code>errors</code></li>
-<li><strong>Usage</strong>: Essential for identifying and analyzing errors in resource management.</li>
-</ul>
-<p><strong><code>multi_tenant_operator_reconcile_count</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Counts the number of reconciliations performed for a template group instance, categorized by name.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code></li>
-<li><strong>Usage</strong>: Provides insight into the frequency of reconciliation processes.</li>
-</ul>
-<p><strong><code>multi_tenant_operator_reconcile_seconds</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Represents the cumulative duration, in seconds, taken to reconcile a template group instance, categorized by instance name.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code></li>
-<li><strong>Usage</strong>: Critical for assessing the time efficiency of the reconciliation process.</li>
-</ul>
-<p><strong><code>multi_tenant_operator_reconcile_seconds_total</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Tracks the total duration, in seconds, for all reconciliation processes of a template group instance, categorized by instance name.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code></li>
-<li><strong>Usage</strong>: Useful for understanding the overall time spent on reconciliation processes.</li>
-</ul>
-<h2 id="custom-resource-status">Custom Resource Status<a class="headerlink" href="#custom-resource-status" title="Permanent link">#</a></h2>
-<p>In this section, we delve into the status of various custom resources managed by our controllers. The <code>kubectl describe</code> command can be used to fetch the status of these resources.</p>
-<h3 id="template-group-instance">Template Group Instance<a class="headerlink" href="#template-group-instance" title="Permanent link">#</a></h3>
-<p>Status from the <code>templategroupinstances.tenantoperator.stakater.com</code> custom resource:</p>
-<ul>
-<li><strong>Current Operational State</strong>: Provides a snapshot of the resource's current condition.</li>
-<li><strong>Conditions</strong>: Offers a detailed view of the resource's status, which includes:<ul>
-<li><code>InstallSucceeded</code>: Indicates the success of the instance's installation.</li>
-<li><code>Ready</code>: Shows the readiness of the instance, with details on the last reconciliation process, its duration, and relevant messages.</li>
-<li><code>Running</code>: Reports on active processes like ongoing resource reconciliation.</li>
-</ul>
-</li>
-<li><strong>Deployed Namespaces</strong>: Enumerates the namespaces where the instance has been deployed, along with their statuses and associated template manifests.</li>
-<li><strong>Manifest Hashes</strong>: Includes the <code>Template Manifests Hash</code> and <code>Resource Mapping Hash</code>, which provide versioning and change tracking for template manifests and resource mappings.</li>
-</ul>
-<h2 id="log-interpretation-guide">Log Interpretation Guide<a class="headerlink" href="#log-interpretation-guide" title="Permanent link">#</a></h2>
-<h3 id="template-group-instance-controller">Template Group Instance Controller<a class="headerlink" href="#template-group-instance-controller" title="Permanent link">#</a></h3>
-<p>Logs from the <code>tenant-operator-templategroupinstance-controller</code>:</p>
-<ul>
-<li><strong>Reconciliation Process</strong>: Logs starting with <code>Reconciling!</code> mark the beginning of a reconciliation process for a TemplateGroupInstance. Subsequent actions like <code>Creating/Updating TemplateGroupInstance</code> and <code>Retrieving list of namespaces Matching to TGI</code> outline the reconciliation steps.</li>
-<li><strong>Namespace and Resource Management</strong>: Logs such as <code>Namespaces test-namespace-1 is new or failed...</code> and <code>Creating/Updating resource...</code> detail the management of Kubernetes resources in specific namespaces.</li>
-<li><strong>Worker Activities</strong>: Logs labeled <code>[Worker X]</code> show tasks being processed in parallel, including steps like <code>Validating parameters</code>, <code>Gathering objects from manifest</code>, and <code>Apply manifests</code>.</li>
-<li><strong>Reconciliation Completion</strong>: Entries like <code>End Reconciling</code> and <code>Defering XXth Reconciling, with duration XXXms</code> indicate the end of a reconciliation process and its duration, aiding in performance analysis.</li>
-<li><strong>Watcher Events</strong>: Logs from <code>Watcher</code> such as <code>Delete call received for object...</code> and <code>Following resource is recreated...</code> are key for tracking changes to Kubernetes objects.</li>
-</ul>
-<p>These logs are crucial for tracking the system's behavior, diagnosing issues, and comprehending the resource management workflow.</p>
+<h1 id="distributing-resources-in-namespaces">Distributing Resources in Namespaces<a class="headerlink" href="#distributing-resources-in-namespaces" title="Permanent link">#</a></h1>
+<p>Multi Tenant Operator has two Custom Resources which can cover this need using the <a href="../../crds-api-reference/template.html"><code>Template</code> CR</a>, depending upon the conditions and preference.</p>
+<ol>
+<li>TemplateGroupInstance</li>
+<li>TemplateInstance</li>
+</ol>
+<h2 id="deploying-template-to-namespaces-via-templategroupinstances">Deploying Template to Namespaces via TemplateGroupInstances<a class="headerlink" href="#deploying-template-to-namespaces-via-templategroupinstances" title="Permanent link">#</a></h2>
+<p>Bill, the cluster admin, wants to deploy a docker pull secret in namespaces where certain labels exists.</p>
+<p>First, Bill creates a template:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret</span>
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="w">      </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="w">      </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">.dockercfg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eyAKICAiaHR0cHM6IC8vaW5kZXguZG9ja2VyLmlvL3YxLyI6IHsgImF1dGgiOiAiYzNSaGEyRjBaWEk2VjI5M1YyaGhkRUZIY21WaGRGQmhjM04zYjNKayJ9Cn0K</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/dockercfg</span>
+</code></pre></div>
+<p>Once the template has been created, Bill makes a <code>TemplateGroupInstance</code> referring to the <code>Template</code> he wants to deploy with <code>template</code> field, and the namespaces where resources are needed, using <code>selector</code> field:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-group-instance</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchExpressions</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kind</span>
+<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<span class="w">      </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>Afterward, Bill can see that secrets have been successfully created in all label matching namespaces.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-secret<span class="w"> </span>-n<span class="w"> </span>bluesky-anna-aurora-sandbox
+NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
+docker-secret<span class="w">    </span>Active<span class="w">   </span>3m
+
+kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-secret<span class="w"> </span>-n<span class="w"> </span>alpha-dave-aurora-sandbox
+NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
+docker-secret<span class="w">    </span>Active<span class="w">   </span>2m
+</code></pre></div>
+<p><code>TemplateGroupInstance</code> can also target specific tenants or all tenant namespaces under a single YAML definition.</p>
 
 
 
@@ -1944,10 +1875,10 @@
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "toc.integrate", "navigation.top"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "toc.integrate", "navigation.top"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.dd8806f2.min.js"></script>
+      <script src="../../assets/javascripts/bundle.dd8806f2.min.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>

@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-stakater-vale-package-0.x/explanation/logs-metrics.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-stakater-vale-package-0.x/installation/openshift.html">
       
       
-        <link rel="prev" href="../how-to-guides/offboarding/uninstalling.html">
+        <link rel="prev" href="../index.html">
       
       
-        <link rel="next" href="template.html">
+        <link rel="next" href="../tutorials/tenant/create-tenant.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Metrics and Logs Documentation - Multi Tenant Operator</title>
+        <title>On OpenShift - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#metrics-and-logs-documentation" class="md-skip">
+        <a href="#on-openshift" class="md-skip">
           Skip to content
         </a>
       
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Metrics and Logs Documentation
+              On OpenShift
             
           </span>
         </div>
@@ -317,17 +317,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -341,7 +343,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Installation
@@ -352,10 +354,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../installation/openshift.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    On OpenShift
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="openshift.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -364,6 +386,95 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-via-operatorhub-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing via OperatorHub UI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-via-cli-or-gitops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing via CLI OR GitOps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enabling-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enabling Console
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enabling Console">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual-approval" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Approval
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstall-via-operatorhub-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uninstall via OperatorHub UI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1269,19 +1380,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -1295,7 +1404,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Explanation
@@ -1306,30 +1415,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Metrics and Logs Documentation
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="logs-metrics.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../explanation/logs-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1338,83 +1427,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#metrics-list" class="md-nav__link">
-    <span class="md-ellipsis">
-      Metrics List
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#custom-resource-status" class="md-nav__link">
-    <span class="md-ellipsis">
-      Custom Resource Status
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Custom Resource Status">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#template-group-instance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Template Group Instance
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#log-interpretation-guide" class="md-nav__link">
-    <span class="md-ellipsis">
-      Log Interpretation Guide
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Log Interpretation Guide">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#template-group-instance-controller" class="md-nav__link">
-    <span class="md-ellipsis">
-      Template Group Instance Controller
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1427,7 +1439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="template.html" class="md-nav__link">
+      <a href="../explanation/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1448,7 +1460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="console.html" class="md-nav__link">
+      <a href="../explanation/console.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1469,7 +1481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="templated-metadata-values.html" class="md-nav__link">
+      <a href="../explanation/templated-metadata-values.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1490,7 +1502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../explanation/multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1757,77 +1769,173 @@
   
 
 
-<h1 id="metrics-and-logs-documentation">Metrics and Logs Documentation<a class="headerlink" href="#metrics-and-logs-documentation" title="Permanent link">#</a></h1>
-<p>This document offers an overview of the Prometheus metrics implemented by the <code>multi_tenant_operator</code> controllers, along with an interpretation guide for the logs and statuses generated by these controllers. Each metric is designed to provide specific insights into the controllers' operational performance, while the log interpretation guide aids in understanding their behavior and workflow processes. Additionally, the status descriptions for custom resources provide operational snapshots. Together, these elements form a comprehensive toolkit for monitoring and enhancing the performance and health of the controllers.</p>
-<h2 id="metrics-list">Metrics List<a class="headerlink" href="#metrics-list" title="Permanent link">#</a></h2>
-<p><strong><code>multi_tenant_operator_resources_deployed_total</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Tracks the total number of resources deployed by the operator.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code>, <code>namespace</code></li>
-<li><strong>Usage</strong>: Helps to understand the overall workload managed by the operator.</li>
-</ul>
-<p><strong><code>multi_tenant_operator_resources_deployed</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Monitors resources currently deployed by the operator.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code>, <code>namespace</code>, <code>type</code></li>
-<li><strong>Usage</strong>: Useful for tracking the current state and type of resources managed by the operator.</li>
-</ul>
-<p><strong><code>multi_tenant_operator_reconcile_error</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Indicates resources in an error state, broken down by resource kind, name, and namespace.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code>, <code>namespace</code>, <code>state</code>, <code>errors</code></li>
-<li><strong>Usage</strong>: Essential for identifying and analyzing errors in resource management.</li>
-</ul>
-<p><strong><code>multi_tenant_operator_reconcile_count</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Counts the number of reconciliations performed for a template group instance, categorized by name.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code></li>
-<li><strong>Usage</strong>: Provides insight into the frequency of reconciliation processes.</li>
-</ul>
-<p><strong><code>multi_tenant_operator_reconcile_seconds</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Represents the cumulative duration, in seconds, taken to reconcile a template group instance, categorized by instance name.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code></li>
-<li><strong>Usage</strong>: Critical for assessing the time efficiency of the reconciliation process.</li>
-</ul>
-<p><strong><code>multi_tenant_operator_reconcile_seconds_total</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Tracks the total duration, in seconds, for all reconciliation processes of a template group instance, categorized by instance name.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code></li>
-<li><strong>Usage</strong>: Useful for understanding the overall time spent on reconciliation processes.</li>
-</ul>
-<h2 id="custom-resource-status">Custom Resource Status<a class="headerlink" href="#custom-resource-status" title="Permanent link">#</a></h2>
-<p>In this section, we delve into the status of various custom resources managed by our controllers. The <code>kubectl describe</code> command can be used to fetch the status of these resources.</p>
-<h3 id="template-group-instance">Template Group Instance<a class="headerlink" href="#template-group-instance" title="Permanent link">#</a></h3>
-<p>Status from the <code>templategroupinstances.tenantoperator.stakater.com</code> custom resource:</p>
-<ul>
-<li><strong>Current Operational State</strong>: Provides a snapshot of the resource's current condition.</li>
-<li><strong>Conditions</strong>: Offers a detailed view of the resource's status, which includes:<ul>
-<li><code>InstallSucceeded</code>: Indicates the success of the instance's installation.</li>
-<li><code>Ready</code>: Shows the readiness of the instance, with details on the last reconciliation process, its duration, and relevant messages.</li>
-<li><code>Running</code>: Reports on active processes like ongoing resource reconciliation.</li>
-</ul>
+<h1 id="on-openshift">On OpenShift<a class="headerlink" href="#on-openshift" title="Permanent link">#</a></h1>
+<p>This document contains instructions on installing, uninstalling and configuring Multi Tenant Operator using OpenShift MarketPlace.</p>
+<ol>
+<li>
+<p><a href="#installing-via-operatorhub-ui">OpenShift OperatorHub UI</a></p>
 </li>
-<li><strong>Deployed Namespaces</strong>: Enumerates the namespaces where the instance has been deployed, along with their statuses and associated template manifests.</li>
-<li><strong>Manifest Hashes</strong>: Includes the <code>Template Manifests Hash</code> and <code>Resource Mapping Hash</code>, which provide versioning and change tracking for template manifests and resource mappings.</li>
-</ul>
-<h2 id="log-interpretation-guide">Log Interpretation Guide<a class="headerlink" href="#log-interpretation-guide" title="Permanent link">#</a></h2>
-<h3 id="template-group-instance-controller">Template Group Instance Controller<a class="headerlink" href="#template-group-instance-controller" title="Permanent link">#</a></h3>
-<p>Logs from the <code>tenant-operator-templategroupinstance-controller</code>:</p>
+<li>
+<p><a href="#installing-via-cli-or-gitops">CLI/GitOps</a></p>
+</li>
+<li>
+<p><a href="#enabling-console">Enabling Console</a></p>
+</li>
+<li>
+<p><a href="#uninstall-via-operatorhub-ui">Uninstall</a></p>
+</li>
+</ol>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
 <ul>
-<li><strong>Reconciliation Process</strong>: Logs starting with <code>Reconciling!</code> mark the beginning of a reconciliation process for a TemplateGroupInstance. Subsequent actions like <code>Creating/Updating TemplateGroupInstance</code> and <code>Retrieving list of namespaces Matching to TGI</code> outline the reconciliation steps.</li>
-<li><strong>Namespace and Resource Management</strong>: Logs such as <code>Namespaces test-namespace-1 is new or failed...</code> and <code>Creating/Updating resource...</code> detail the management of Kubernetes resources in specific namespaces.</li>
-<li><strong>Worker Activities</strong>: Logs labeled <code>[Worker X]</code> show tasks being processed in parallel, including steps like <code>Validating parameters</code>, <code>Gathering objects from manifest</code>, and <code>Apply manifests</code>.</li>
-<li><strong>Reconciliation Completion</strong>: Entries like <code>End Reconciling</code> and <code>Defering XXth Reconciling, with duration XXXms</code> indicate the end of a reconciliation process and its duration, aiding in performance analysis.</li>
-<li><strong>Watcher Events</strong>: Logs from <code>Watcher</code> such as <code>Delete call received for object...</code> and <code>Following resource is recreated...</code> are key for tracking changes to Kubernetes objects.</li>
+<li>An <strong>OpenShift</strong> cluster [v4.8 - v4.13]</li>
 </ul>
-<p>These logs are crucial for tracking the system's behavior, diagnosing issues, and comprehending the resource management workflow.</p>
+<h2 id="installing-via-operatorhub-ui">Installing via OperatorHub UI<a class="headerlink" href="#installing-via-operatorhub-ui" title="Permanent link">#</a></h2>
+<ul>
+<li>After opening OpenShift console click on <code>Operators</code>, followed by <code>OperatorHub</code> from the side menu</li>
+</ul>
+<p><a class="glightbox" href="../images/operatorHub.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/operatorHub.png" /></a></p>
+<ul>
+<li>Now search for <code>Multi Tenant Operator</code> and then click on <code>Multi Tenant Operator</code> tile</li>
+</ul>
+<p><a class="glightbox" href="../images/search_tenant_operator_operatorHub.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/search_tenant_operator_operatorHub.png" /></a></p>
+<ul>
+<li>Click on the <code>install</code> button</li>
+</ul>
+<p><a class="glightbox" href="../images/to_install_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/to_install_1.png" /></a></p>
+<ul>
+<li>Select <code>Updated channel</code>. Select <code>multi-tenant-operator</code> to install the operator in <code>multi-tenant-operator</code> namespace from <code>Installed Namespace</code> dropdown menu. After configuring <code>Update approval</code> click on the <code>install</code> button.</li>
+</ul>
+<blockquote>
+<p>Note: Use <code>stable</code> channel for seamless upgrades. For <code>Production Environment</code> prefer <code>Manual</code> approval and use <code>Automatic</code> for <code>Development Environment</code></p>
+</blockquote>
+<p><a class="glightbox" href="../images/to_install_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/to_install_2.png" /></a></p>
+<ul>
+<li>Wait for the operator to be installed</li>
+</ul>
+<p><a class="glightbox" href="../images/to_install_wait.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/to_install_wait.png" /></a></p>
+<ul>
+<li>Once successfully installed, MTO will be ready to enforce multi-tenancy in your cluster</li>
+</ul>
+<p><a class="glightbox" href="../images/to_installed_successful.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/to_installed_successful.png" /></a></p>
+<blockquote>
+<p>Note: MTO will be installed in <code>multi-tenant-operator</code> namespace.</p>
+</blockquote>
+<h2 id="installing-via-cli-or-gitops">Installing via CLI OR GitOps<a class="headerlink" href="#installing-via-cli-or-gitops" title="Permanent link">#</a></h2>
+<ul>
+<li>Create namespace <code>multi-tenant-operator</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>multi-tenant-operator
+namespace/multi-tenant-operator<span class="w"> </span>created
+</code></pre></div>
+<ul>
+<li>Create an OperatorGroup YAML for MTO and apply it in <code>multi-tenant-operator</code> namespace.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
+<span class="s">apiVersion: operators.coreos.com/v1</span>
+<span class="s">kind: OperatorGroup</span>
+<span class="s">metadata:</span>
+<span class="s">  name: tenant-operator</span>
+<span class="s">  namespace: multi-tenant-operator</span>
+<span class="s">EOF</span>
+operatorgroup.operators.coreos.com/tenant-operator<span class="w"> </span>created
+</code></pre></div>
+<ul>
+<li>Create a subscription YAML for MTO and apply it in <code>multi-tenant-operator</code> namespace. To enable console set <code>.spec.config.env[].ENABLE_CONSOLE</code> to <code>true</code>. This will create a route resource, which can be used to access the Multi-Tenant-Operator console.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
+<span class="s">apiVersion: operators.coreos.com/v1alpha1</span>
+<span class="s">kind: Subscription</span>
+<span class="s">metadata:</span>
+<span class="s">  name: tenant-operator</span>
+<span class="s">  namespace: multi-tenant-operator</span>
+<span class="s">spec:</span>
+<span class="s">  channel: stable</span>
+<span class="s">  installPlanApproval: Automatic</span>
+<span class="s">  name: tenant-operator</span>
+<span class="s">  source: certified-operators</span>
+<span class="s">  sourceNamespace: openshift-marketplace</span>
+<span class="s">  startingCSV: tenant-operator.v0.10.0</span>
+<span class="s">EOF</span>
+subscription.operators.coreos.com/tenant-operator<span class="w"> </span>created
+</code></pre></div>
+<blockquote>
+<p>Note: To bring MTO via GitOps, add the above files in GitOps repository.</p>
+</blockquote>
+<ul>
+<li>After creating the <code>subscription</code> custom resource open OpenShift console and click on <code>Operators</code>, followed by <code>Installed Operators</code> from the side menu</li>
+</ul>
+<p><a class="glightbox" href="../images/to_sub_installation_wait.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/to_sub_installation_wait.png" /></a></p>
+<ul>
+<li>Wait for the installation to complete</li>
+</ul>
+<p><a class="glightbox" href="../images/to_sub_installation_successful.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/to_sub_installation_successful.png" /></a></p>
+<ul>
+<li>Once the installation is complete click on <code>Workloads</code>, followed by <code>Pods</code> from the side menu and select <code>multi-tenant-operator</code> project</li>
+</ul>
+<p><a class="glightbox" href="../images/select_multi_tenant_operator_project.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/select_multi_tenant_operator_project.png" /></a></p>
+<ul>
+<li>Once pods are up and running, MTO will be ready to enforce multi-tenancy in your cluster</li>
+</ul>
+<p><a class="glightbox" href="../images/to_installed_successful_pod.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/to_installed_successful_pod.png" /></a></p>
+<p>For more details and configurations check out <a href="../crds-api-reference/integration-config.html">IntegrationConfig</a>.</p>
+<h2 id="enabling-console">Enabling Console<a class="headerlink" href="#enabling-console" title="Permanent link">#</a></h2>
+<p>To enable console GUI for MTO, go to <code>Search</code> -&gt; <code>IntegrationConfig</code> -&gt; <code>tenant-operator-config</code> and make sure the following fields are set to <code>true</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">components</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<p>Note: If your <code>InstallPlan</code> approval is set to <code>Manual</code> then you will have to manually approve the <code>InstallPlan</code> for MTO console components to be installed.</p>
+</blockquote>
+<h3 id="manual-approval">Manual Approval<a class="headerlink" href="#manual-approval" title="Permanent link">#</a></h3>
+<ul>
+<li>Open OpenShift console and click on <code>Operators</code>, followed by <code>Installed Operators</code> from the side menu.</li>
+</ul>
+<p><a class="glightbox" href="../images/manual-approve-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/manual-approve-1.png" /></a></p>
+<ul>
+<li>Now click on <code>Upgrade available</code> in front of <code>mto-opencost</code> or <code>mto-prometheus</code>.</li>
+</ul>
+<p><a class="glightbox" href="../images/manual-approve-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/manual-approve-2.png" /></a></p>
+<ul>
+<li>Now click on <code>Preview InstallPlan</code> on top.</li>
+</ul>
+<p><a class="glightbox" href="../images/manual-approve-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/manual-approve-3.png" /></a></p>
+<ul>
+<li>Now click on <code>Approve</code> button.</li>
+</ul>
+<p><a class="glightbox" href="../images/manual-approve-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/manual-approve-4.png" /></a></p>
+<ul>
+<li>Now the <code>InstallPlan</code> will be approved, and MTO console components will be installed.</li>
+</ul>
+<h2 id="uninstall-via-operatorhub-ui">Uninstall via OperatorHub UI<a class="headerlink" href="#uninstall-via-operatorhub-ui" title="Permanent link">#</a></h2>
+<p>You can uninstall MTO by following these steps:</p>
+<ul>
+<li>
+<p>Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set <code>spec.onDelete.cleanNamespaces</code> to <code>false</code> for all those tenants whose namespaces you want to retain, and <code>spec.onDelete.cleanAppProject</code> to <code>false</code> for all those tenants whose AppProject you want to retain. For more details check out <a href="../tutorials/tenant/deleting-tenant.html">onDelete</a></p>
+</li>
+<li>
+<p>After making the required changes open OpenShift console and click on <code>Operators</code>, followed by <code>Installed Operators</code> from the side menu</p>
+</li>
+</ul>
+<p><a class="glightbox" href="../images/installed-operators.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/installed-operators.png" /></a></p>
+<ul>
+<li>Now click on uninstall and confirm uninstall.</li>
+</ul>
+<p><a class="glightbox" href="../images/uninstall-from-ui.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/uninstall-from-ui.png" /></a></p>
+<ul>
+<li>
+<p>Now the operator has been uninstalled.</p>
+</li>
+<li>
+<p><code>Optional:</code> you can also manually remove MTO's CRDs and its resources from the cluster.</p>
+</li>
+</ul>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
+<ul>
+<li>For more details on how to use MTO please refer <a href="../tutorials/tenant/create-tenant.html">Tenant tutorial</a>.</li>
+<li>For more details on how to extend your MTO manager ClusterRole please refer <a href="../how-to-guides/extend-default-roles.html">extend-default-clusterroles</a>.</li>
+</ul>
 
 
 
