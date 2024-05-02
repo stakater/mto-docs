@@ -8,10 +8,10 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/restructure/tutorials/distributing-resources/secret-distribution.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/restructure/tutorials/distributing-resources/distributing-manifests.html">
       
       
-        <link rel="prev" href="distributing-resources.html">
+        <link rel="prev" href="copying-resources.html">
       
       
         <link rel="next" href="../../how-to-guides/custom-roles.html">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Propagate Secrets from Parent to Descendant namespaces - Multi Tenant Operator</title>
+        <title>Distributing Resources in Namespaces - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#propagate-secrets-from-parent-to-descendant-namespaces" class="md-skip">
+        <a href="#distributing-resources-in-namespaces" class="md-skip">
           Skip to content
         </a>
       
@@ -146,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Propagate Secrets from Parent to Descendant namespaces
+              Distributing Resources in Namespaces
             
           </span>
         </div>
@@ -626,7 +626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="distributing-resources.html" class="md-nav__link">
+      <a href="copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -656,15 +656,54 @@
         
       
       
-      <a href="secret-distribution.html" class="md-nav__link md-nav__link--active">
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Distributing Resources in Namespaces
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="distributing-manifests.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Propagate Secrets from Parent to Descendant namespaces
+    Distributing Resources in Namespaces
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#deploying-template-to-namespaces-via-templategroupinstances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deploying Template to Namespaces via TemplateGroupInstances
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -784,11 +823,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/admin-clusterrole.html" class="md-nav__link">
+      <a href="../../how-to-guides/admin-clusterrole.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Extending Admin ClusterRole
+    None
   </span>
   
 
@@ -974,11 +1013,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/distributing-secrets.html" class="md-nav__link">
+      <a href="../../how-to-guides/distributing-secrets.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Distributing Secrets
+    None
   </span>
   
 
@@ -1447,11 +1486,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../explanation/why-argocd-multi-tenancy.html" class="md-nav__link">
+      <a href="../../explanation/why-argocd-multi-tenancy.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Need for Multi-Tenancy in ArgoCD
+    None
   </span>
   
 
@@ -1714,53 +1753,54 @@
   
 
 
-<h1 id="propagate-secrets-from-parent-to-descendant-namespaces">Propagate Secrets from Parent to Descendant namespaces<a class="headerlink" href="#propagate-secrets-from-parent-to-descendant-namespaces" title="Permanent link">#</a></h1>
-<p>Secrets like <code>registry</code> credentials often need to exist in multiple Namespaces, so that Pods within different namespaces can have access to those credentials in form of secrets.</p>
-<p>Manually creating secrets within different namespaces could lead to challenges, such as:</p>
-<ul>
-<li>Someone will have to create secret either manually or via GitOps each time there is a new descendant namespace that needs the secret</li>
-<li>If we update the parent secret, they will have to update the secret in all descendant namespaces</li>
-<li>This could be time-consuming, and a small mistake while creating or updating the secret could lead to unnecessary debugging</li>
-</ul>
-<p>With the help of Multi-Tenant Operator's Template feature we can make this secret distribution experience easy.</p>
-<hr />
-<p>For example, to copy a Secret called <code>registry</code> which exists in the <code>example</code> to new Namespaces whenever they are created, we will first create a Template which will have reference of the registry secret.</p>
-<p>It will also push updates to the copied Secrets and keep the propagated secrets always sync and updated with parent namespaces.</p>
+<h1 id="distributing-resources-in-namespaces">Distributing Resources in Namespaces<a class="headerlink" href="#distributing-resources-in-namespaces" title="Permanent link">#</a></h1>
+<p>Multi Tenant Operator has two Custom Resources which can cover this need using the <a href="../../crds-api-reference/template.html"><code>Template</code> CR</a>, depending upon the conditions and preference.</p>
+<ol>
+<li>TemplateGroupInstance</li>
+<li>TemplateInstance</li>
+</ol>
+<h2 id="deploying-template-to-namespaces-via-templategroupinstances">Deploying Template to Namespaces via TemplateGroupInstances<a class="headerlink" href="#deploying-template-to-namespaces-via-templategroupinstances" title="Permanent link">#</a></h2>
+<p>Bill, the cluster admin, wants to deploy a docker pull secret in namespaces where certain labels exists.</p>
+<p>First, Bill creates a template:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry-secret</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret</span>
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">resourceMappings</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">secrets</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry</span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
+<span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="w">      </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="w">      </span><span class="nt">data</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">.dockercfg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eyAKICAiaHR0cHM6IC8vaW5kZXguZG9ja2VyLmlvL3YxLyI6IHsgImF1dGgiOiAiYzNSaGEyRjBaWEk2VjI5M1YyaGhkRUZIY21WaGRGQmhjM04zYjNKayJ9Cn0K</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/dockercfg</span>
 </code></pre></div>
-<p>Now using this Template we can propagate registry secret to different namespaces that have some common set of labels.</p>
-<p>For example, will just add one label <code>kind: registry</code> and all namespaces with this label will get this secret.</p>
-<p>For propagating it on different namespaces dynamically will have to create another resource called <code>TemplateGroupInstance</code>.
-<code>TemplateGroupInstance</code> will have <code>Template</code> and <code>matchLabel</code> mapping as shown below:</p>
+<p>Once the template has been created, Bill makes a <code>TemplateGroupInstance</code> referring to the <code>Template</code> he wants to deploy with <code>template</code> field, and the namespaces where resources are needed, using <code>selector</code> field:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry-secret-group-instance</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-group-instance</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry-secret</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
 <span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry</span>
+<span class="w">    </span><span class="nt">matchExpressions</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kind</span>
+<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<span class="w">      </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-<p>After reconciliation, you will be able to see those secrets in namespaces having mentioned label.</p>
-<p>MTO will keep injecting this secret to the new namespaces created with that label.</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>registry-secret<span class="w"> </span>-n<span class="w"> </span>example-ns-1
+<p>Afterward, Bill can see that secrets have been successfully created in all label matching namespaces.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-secret<span class="w"> </span>-n<span class="w"> </span>bluesky-anna-aurora-sandbox
 NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
-registry-secret<span class="w">    </span>Active<span class="w">   </span>3m
+docker-secret<span class="w">    </span>Active<span class="w">   </span>3m
 
-kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>registry-secret<span class="w"> </span>-n<span class="w"> </span>example-ns-2
+kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-secret<span class="w"> </span>-n<span class="w"> </span>alpha-dave-aurora-sandbox
 NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
-registry-secret<span class="w">    </span>Active<span class="w">   </span>3m
+docker-secret<span class="w">    </span>Active<span class="w">   </span>2m
 </code></pre></div>
+<p><code>TemplateGroupInstance</code> can also target specific tenants or all tenant namespaces under a single YAML definition.</p>
 
 
 

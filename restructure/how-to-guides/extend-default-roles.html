@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://docs.stakater.com/mto/restructure/how-to-guides/extend-default-roles.html">
       
       
-        <link rel="prev" href="admin-clusterrole.html">
+        <link rel="prev" href="custom-roles.html">
       
       
         <link rel="next" href="configuring-multitenant-network-isolation.html">
@@ -622,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/distributing-resources/distributing-resources.html" class="md-nav__link">
+      <a href="../tutorials/distributing-resources/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -643,11 +643,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/distributing-resources/secret-distribution.html" class="md-nav__link">
+      <a href="../tutorials/distributing-resources/distributing-manifests.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Propagate Secrets from Parent to Descendant namespaces
+    Distributing Resources in Namespaces
   </span>
   
 
@@ -774,11 +774,11 @@
   
   
     <li class="md-nav__item">
-      <a href="admin-clusterrole.html" class="md-nav__link">
+      <a href="admin-clusterrole.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Extending Admin ClusterRole
+    None
   </span>
   
 
@@ -974,11 +974,11 @@
   
   
     <li class="md-nav__item">
-      <a href="distributing-secrets.html" class="md-nav__link">
+      <a href="distributing-secrets.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Distributing Secrets
+    None
   </span>
   
 
@@ -1447,11 +1447,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../explanation/why-argocd-multi-tenancy.html" class="md-nav__link">
+      <a href="../explanation/why-argocd-multi-tenancy.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Need for Multi-Tenancy in ArgoCD
+    None
   </span>
   
 
@@ -1715,18 +1715,19 @@
 
 
 <h1 id="extending-the-default-access-level-for-tenant-members">Extending the default access level for tenant members<a class="headerlink" href="#extending-the-default-access-level-for-tenant-members" title="Permanent link">#</a></h1>
-<p>Bill as the cluster admin wants to extend the default access for tenant members. As an admin of an OpenShift Cluster, Bill can extend the admin, edit, and view ClusterRole using aggregation. Bill will first create a ClusterRole with privileges to resources which Bill wants to extend. Bill will add the aggregation label to the newly created ClusterRole for extending the default ClusterRoles provided by OpenShift.</p>
+<p>Bill as the cluster admin wants to extend the default access for tenant members. As an admin of an OpenShift Cluster, Bill can extend the admin, edit, and view ClusterRole using aggregation. Bill will first create a ClusterRole with privileges to resources which Bill wants to extend. Bill will add the aggregation label to the newly created ClusterRole for extending the default ClusterRoles.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRole</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extend-view-role</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extend-admin-role</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">rbac.authorization.k8s.io/aggregate-to-view</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span>
+<span class="w">    </span><span class="nt">rbac.authorization.k8s.io/aggregate-to-admin</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span>
 <span class="nt">rules</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">verbs</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">list</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">watch</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">create</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">update</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">delete</span>
 <span class="w">    </span><span class="nt">apiGroups</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user.openshift.io</span>
 <span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
