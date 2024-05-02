@@ -1923,14 +1923,20 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="MTO - OpenCost">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#q-why-are-there-mto-showback-pods-failing-in-my-cluster" class="md-nav__link">
     <span class="md-ellipsis">
       Q. Why are there mto-showback-* pods failing in my cluster?
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2018,7 +2024,7 @@ from server for: &quot;namespace.yaml&quot;: namespaces &quot;ns1&quot; is forbi
 <h3 id="q-invalidspecerror-application-repo-repo-is-not-permitted-in-project-project">Q. InvalidSpecError: application repo \&lt;repo&gt; is not permitted in project \&lt;project&gt;<a class="headerlink" href="#q-invalidspecerror-application-repo-repo-is-not-permitted-in-project-project" title="Permanent link">#</a></h3>
 <p><strong>Answer.</strong> The above error can occur if the ArgoCD Application is syncing from a source that is not allowed the referenced AppProject. To solve this, verify that you have referred to the correct project in the given ArgoCD Application, and that the repoURL used for the Application's source is valid. If the error still appears, you can add the URL to the relevant Tenant's <code>spec.integrations.argocd.sourceRepos</code> array.</p>
 <h2 id="mto-opencost">MTO - OpenCost<a class="headerlink" href="#mto-opencost" title="Permanent link">#</a></h2>
-<h2 id="q-why-are-there-mto-showback-pods-failing-in-my-cluster">Q. Why are there <code>mto-showback-*</code> pods failing in my cluster?<a class="headerlink" href="#q-why-are-there-mto-showback-pods-failing-in-my-cluster" title="Permanent link">#</a></h2>
+<h3 id="q-why-are-there-mto-showback-pods-failing-in-my-cluster">Q. Why are there <code>mto-showback-*</code> pods failing in my cluster?<a class="headerlink" href="#q-why-are-there-mto-showback-pods-failing-in-my-cluster" title="Permanent link">#</a></h3>
 <p><strong>Answer.</strong> The <code>mto-showback-*</code> pods are used to calculate the cost of the resources used by each tenant. These pods are created by the Multi-Tenant Operator and are scheduled to run every 10 minutes. If the pods are failing, it is likely that the operator's necessary to calculate cost are not present in the cluster. To solve this, you can navigate to <code>Operators</code> -&gt; <code>Installed Operators</code> in the OpenShift console and check if the MTO-OpenCost and MTO-Prometheus operators are installed. If they are in a pending state, you can manually approve them to install them in the cluster.</p>
 
 
