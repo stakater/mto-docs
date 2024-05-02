@@ -160,4 +160,4 @@ You can uninstall MTO by following these steps:
 ## Notes
 
 * For more details on how to use MTO please refer [Tenant tutorial](../tutorials/tenant/create-tenant.md).
-* For more details on how to extend your MTO manager ClusterRole please refer [extend-admin-clusterrole](../how-to-guides/admin-clusterrole.md).
+* For more details on how to extend your MTO manager ClusterRole please refer [extend-default-clusterroles](../how-to-guides/extend-default-roles.md).

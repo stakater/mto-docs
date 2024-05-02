@@ -248,8 +248,6 @@ users:
 
 ### Cluster Admin Groups
 
-### Cluster Admin Groups
-
 `clusterAdminGroups:` Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of privilegedNamespaces.
 
 !!! note

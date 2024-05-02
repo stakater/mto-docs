@@ -129,6 +129,9 @@ Users belonging to the Sigma group will now only see applications created by the
 
 ![image](../images/argocd.png)
 
+!!! note
+    For ArgoCD Multi Tenancy to work properly, any default roles or policies attached to all users has to be removed.
+
 ## Prevent ArgoCD from syncing certain namespaced resources
 
 Bill wants tenants to not be able to sync `ResourceQuota` and `LimitRange` resources to their namespaces. To do this correctly, Bill will specify these resources to blacklist in the ArgoCD portion of the [IntegrationConfig](../crds-api-reference/integration-config.md):
