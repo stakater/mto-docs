@@ -17,7 +17,7 @@
         <link rel="next" href="keycloak.html">
       
       
-      <link rel="icon" href="../assets/images/favicon.svg">
+      <link rel="icon" href="../assets/images/logo-light.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.20">
     
     
@@ -43,8 +43,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700,700i%7CMontserrat+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Montserrat";--md-code-font:"Montserrat Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Grotex:300,300i,400,400i,700,700i%7CSpace+Grotex:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Space Grotex";--md-code-font:"Space Grotex"}</style>
       
     
     
@@ -104,101 +104,657 @@
       
     </div>
     
-      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
-        
-          <aside class="md-banner md-banner--warning">
-            <div class="md-banner__inner md-grid md-typeset">
-              
-  You're not viewing the latest version.
-  <a href="../.."> 
-    <strong>Click here to go to latest.</strong>
-  </a>
-
-            </div>
-            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
-          </aside>
-        
-      </div>
-    
     
       
 
-  
 
-<header class="md-header md-header--shadow" data-md-component="header">
+
+
+<style>
+  .md-header {
+    background-color: transparent;
+  }
+
+  .md-header--shadow {
+    box-shadow: none;
+  }
+
+  .md-header--scroll .md-search {
+    display: none;
+  }
+
+  .md-header--scroll .md-search__form {
+    border: none;
+  }
+</style>
+
+<!-- Header -->
+<header class="md-header md-header--shadow md-header--scroll" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../index.html" title="Multi Tenant Operator" class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
-      
-  <img src="../assets/images/favicon.svg" alt="logo">
 
+    <!-- Link to home -->
+    <a href="../index.html" title="Multi Tenant Operator"
+      class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+      <!-- 
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+ -->
     </a>
+
+    <!-- Button to open drawer -->
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg> -->
     </label>
+
+    <!-- Header title -->
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
+        <!-- Logo -->
         <div class="md-header__topic">
-          <span class="md-ellipsis">
-            Multi Tenant Operator
-          </span>
+          
+          <img class="md-header__logo_light" src="../assets/images/logo-light.png#only-light" alt="logo" />
+          
+          
+          <img class="md-header__logo_dark" src="../assets/images/logo-dark.png#only-dark" alt="logo" />
+          
         </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              Propagate Secrets from Parent to Descendant namespaces
-            
-          </span>
-        </div>
+        <!-- Topic -->
       </div>
     </div>
+
+    <!-- Nav links -->
+    <style>
+    .md-header__nav-links {
+        display: flex;
+        align-items: center;
+    }
+
+    .md-header-ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    .md-header-ul-li {
+        margin-right: 20px;
+    }
+
+    .custom-anchor {
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+    }
+
+    .dropdown {
+        position: relative;
+        margin-right: 20px;
+    }
+
+    .offerings-dropdown {
+        width: max-content;
+        height: max-content;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 4px;
+        margin: 12px 0px;
+        padding: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .more-dropdown {
+        width: 6rem;
+        height: 4rem;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 4px;
+        margin: 12px 0px;
+        padding: 14px;
+    }
+
+    .dropdown-content-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .dropdown-content-column {
+        flex: 1;
+        float: left;
+        width: 25%;
+        padding: 10px;
+    }
+
+    .dropdown-content-column-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #EA7845;
+    }
+
+    .dropdown-content-anchor-container {
+        margin: 1rem 0;
+    }
+
+    .disabled-anchor {
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .dropdown-content-dev-links {
+        flex: 1;
+        float: left;
+        width: 25%;
+        padding: 10px;
+        margin: 1rem 0;
+    }
+
+    .dropdown-content-dev-links-anchor-container {
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem 0;
+    }
+
+    .dropdown-content-dev-links-anchor {
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        color: #EA7845;
+    }
+</style>
+
+
+<nav class="md-header__nav-links">
+    <ul class="md-header-ul">
+        <li class="md-header-ul-li"><a class="custom-anchor" href="#">Documentation</a></li>
+        <li class="md-header-ul-li"><a class="custom-anchor" href="https://www.stakater.com/">Stakater Home</a></li>
+
+        <li class="dropdown">
+            <a class="custom-anchor" href="#">Offerings
+                &nbsp;<span>
+                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path class="down-arrow" fill-rule="evenodd" clip-rule="evenodd" d="M6.79566 7.04528C6.58472 7.25596 6.29878 7.37429 6.00066 7.37429C5.70253 7.37429 5.4166 7.25596 5.20566 7.04528L0.962158 2.80328C0.751211 2.59224 0.632742 2.30604 0.632813 2.00764C0.632883 1.70925 0.751487 1.4231 0.962533 1.21216C1.17358 1.00121 1.45978 0.882742 1.75817 0.882813C2.05657 0.882883 2.34271 1.00149 2.55366 1.21253L6.00066 4.65953L9.44766 1.21253C9.65974 1.0075 9.94386 0.893973 10.2388 0.896397C10.5338 0.89882 10.816 1.017 11.0247 1.22549C11.2334 1.43397 11.3518 1.71608 11.3545 2.01106C11.3573 2.30603 11.244 2.59026 11.0392 2.80253L6.79641 7.04603L6.79566 7.04528Z"/>
+</svg>
+                </span></a>
+            <div class="dropdown-menu dropdown-content offerings-dropdown">
+                <div class="dropdown-content-container">
+                    <!-- Column 1 -->
+                    <div class="dropdown-content-column">
+                        <h3 class="dropdown-content-column-title">Products</h3>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/saap-kubernetes-openshift"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'" class="dropdown-item-link-text">Stakater
+                                App
+                                Agility
+                                Platform (SAAP)</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/mto" onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'" class="dropdown-item-link-text">Multi
+                                Tenant
+                                Operator</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a class="custom-anchor disabled-anchor">Tornador
+                                (coming soon)</a>
+                        </div>
+                    </div>
+                    <!-- Column 2 -->
+                    <div class="dropdown-content-column">
+                        <h3 class="dropdown-content-column-title">Services</h3>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/kubernetes-consultancy"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'" class="dropdown-item-link-text">Kubernetes
+                                Consultancy</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/kubernetes-platform-assessment"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'" class="dropdown-item-link-text">Platform
+                                Assessment</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/openshift-as-a-service"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'" class="dropdown-item-link-text">Openshift
+                                Consultancy</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/secure-your-kubernetes-infrastructure"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'" class="dropdown-item-link-text">Secret
+                                Managment Service</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/kubernetes-consultancy"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'" class="dropdown-item-link-text">Platform
+                                Engineering</a>
+                        </div>
+                    </div>
+                    <!-- Column 3 -->
+                    <div class="dropdown-content-column">
+                        <h3 class="dropdown-content-column-title">Open Source</h3>
+
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://github.com/stakater/Reloader"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'"
+                                class="dropdown-item-link-text">Reloader</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://github.com/stakater/IngressMonitorController"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'" class="dropdown-item-link-text">IMC</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://github.com/stakater/forecastle"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'"
+                                class="dropdown-item-link-text">Forecastle</a>
+                        </div>
+                    </div>
+                    <!-- Column 4 -->
+                    <div class="dropdown-content-dev-links">
+                        <div class="dropdown-content-dev-links-anchor-container">
+                            <a href="https://github.com/stakater/" onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'"
+                                class="dropdown-content-dev-links-anchor">Github</a>
+                        </div>
+                        <div class="dropdown-content-dev-links-anchor-container">
+                            <a href="https://docs.stakater.com/" onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'"
+                                class="dropdown-content-dev-links-anchor">Documentation</a>
+                        </div>
+                        <div class="dropdown-content-dev-links-anchor-container">
+                            <a href="https://employee.stakater.com/" onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'"
+                                class="dropdown-content-dev-links-anchor">Employee
+                                Handbook</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="md-header-ul-li"><a class="custom-anchor" href="https://www.stakater.com/blog">Blog</a></li>
+        <li class="md-header-ul-li"><a class="custom-anchor" href="https://www.stakater.com/white-papers">White
+                Papers</a></li>
+
+        <!-- <li class="dropdown">
+            <a class="custom-anchor" href="#">More
+                &nbsp;<span> -->
+        <!-- <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path class="down-arrow" fill-rule="evenodd" clip-rule="evenodd" d="M6.79566 7.04528C6.58472 7.25596 6.29878 7.37429 6.00066 7.37429C5.70253 7.37429 5.4166 7.25596 5.20566 7.04528L0.962158 2.80328C0.751211 2.59224 0.632742 2.30604 0.632813 2.00764C0.632883 1.70925 0.751487 1.4231 0.962533 1.21216C1.17358 1.00121 1.45978 0.882742 1.75817 0.882813C2.05657 0.882883 2.34271 1.00149 2.55366 1.21253L6.00066 4.65953L9.44766 1.21253C9.65974 1.0075 9.94386 0.893973 10.2388 0.896397C10.5338 0.89882 10.816 1.017 11.0247 1.22549C11.2334 1.43397 11.3518 1.71608 11.3545 2.01106C11.3573 2.30603 11.244 2.59026 11.0392 2.80253L6.79641 7.04603L6.79566 7.04528Z"/>
+</svg> -->
+        <!-- </span></a>
+            <div class="dropdown-menu dropdown-content more-dropdown">
+                <a class="custom-anchor" href="#">Item 1</a>
+                <a class="custom-anchor" href="#">Item 2</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+
+<script>
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible") {
+      initializeDropdowns();
+    }
+  });
+
+  // Function to initialize dropdowns
+  function initializeDropdowns() {
+    // Set Documentation link as highlighted by default
+    var documentationLink = document.querySelector(".md-header__nav-links .custom-anchor:first-child");
+    documentationLink.style.color = "#EA7845";
+    documentationLink.classList.add("active");
+
+    // Get all elements with class "dropdown"
+    var dropdowns = document.querySelectorAll(".dropdown");
+
+    // Add mouseenter and mouseleave event listeners to each dropdown
+    dropdowns.forEach(function (dropdown) {
+      var dropdownContent = dropdown.querySelector(".dropdown-content");
+
+      dropdownContent.style.display = "none";
+
+      dropdown.addEventListener("mouseenter", function () {
+        // Hide other dropdowns before showing this one
+        closeOtherDropdowns(dropdowns, dropdown);
+        dropdownContent.style.display = "grid";
+      });
+
+      dropdown.addEventListener("mouseleave", function () {
+        // Dropdown stays open on mouse leave
+      });
+    });
+
+    // Event listener to close dropdowns on clicking outside
+    document.addEventListener("click", function (event) {
+      var isDropdown = event.target.closest(".dropdown");
+      var isAnchor = event.target.closest(".md-header__nav-links .custom-anchor:not(.dropdown .custom-anchor)");
+
+      // Check if the click is outside the header content
+      if (!isDropdown && !isAnchor) {
+        closeDropdowns(dropdowns);
+      }
+    });
+  }
+
+  // Function to close all dropdowns
+  function closeDropdowns(dropdowns) {
+    dropdowns.forEach(function (dropdown) {
+      var dropdownContent = dropdown.querySelector(".dropdown-content");
+      dropdownContent.style.display = "none";
+    });
+  }
+
+  // Function to close other dropdowns except the current one
+  function closeOtherDropdowns(dropdowns, currentDropdown) {
+    dropdowns.forEach(function (otherDropdown) {
+      var otherDropdownContent = otherDropdown.querySelector(".dropdown-content");
+      if (otherDropdown !== currentDropdown && otherDropdownContent.style.display === "grid") {
+        otherDropdownContent.style.display = "none";
+      }
+    });
+  }
+
+  // Call the function immediately on page load
+  initializeDropdowns();
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var customAnchorTags = document.querySelectorAll(".custom-anchor");
+    var dropdownAnchorTags = document.querySelectorAll(".dropdown .custom-anchor");
+    var documentationLink = document.querySelector(".md-header__nav-links .custom-anchor:first-child");
+    var anchorTags = document.querySelectorAll(".md-header__nav-links .custom-anchor:not(.dropdown .custom-anchor)");
+
+    // Function to reset all anchor tags (except Documentation) to default color
+    function resetAnchorColors() {
+      anchorTags.forEach(function (anchor) {
+        if (anchor !== documentationLink) {
+          anchor.style.color = "";
+          anchor.classList.remove("active");
+        }
+      });
+      dropdownAnchorTags.forEach(function (dropdownAnchor) {
+        dropdownAnchor.style.color = "";
+        dropdownAnchor.classList.remove("active");
+      })
+    }
+
+    // Highlight Documentation link by default
+    function highlightDocumentationLink() {
+      resetAnchorColors();
+      documentationLink.style.color = "#EA7845";
+      documentationLink.classList.add("active");
+    }
+
+    // Reset all anchor colors to default on page load
+    highlightDocumentationLink();
+
+    // Highlight anchor tag on click and on mouseenter, remove highlighting on mouseleave
+    anchorTags.forEach(function (anchor) {
+      anchor.addEventListener("click", function () {
+        // Reset all anchor colors to default
+        resetAnchorColors();
+
+        // Highlight the clicked anchor
+        anchor.style.color = "#EA7845";
+        anchor.classList.add("active");
+      });
+
+      anchor.addEventListener("mouseenter", function () {
+        // Highlight on mouse enter if not already active
+        if (!anchor.classList.contains("active")) {
+          anchor.style.color = "#EA7845";
+        }
+      });
+
+      anchor.addEventListener("mouseleave", function () {
+        // Check if the anchor is active before removing highlighting on mouse leave
+        if (!anchor.classList.contains("active")) {
+          anchor.style.color = "";
+        }
+      });
+    });
+
+    // Highlight Documentation link when returning to the page
+    window.addEventListener("focus", function () {
+      highlightDocumentationLink();
+    });
+
+    // Function to show or hide nav links based on scroll position
+    function toggleNavLinksVisibility() {
+      var scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+      // Check if the scroll position is at the top
+      if (scrollPosition === 0) {
+        // Set the visibility of customAnchorTags and anchorTags to ' '
+        anchorTags.forEach(function (anchor) {
+          anchor.style.display = '';
+        });
+        customAnchorTags.forEach(function (customAnchor) {
+          customAnchor.style.display = '';
+        });
+      } else {
+        // Otherwise, hide them
+        anchorTags.forEach(function (anchor) {
+          anchor.style.display = 'none';
+        });
+        customAnchorTags.forEach(function (customAnchor) {
+          customAnchor.style.display = 'none';
+        });
+      }
+    }
+
+    // Event listener for scroll events
+    window.addEventListener("scroll", function () {
+      toggleNavLinksVisibility();
+    });
+
+    // Event listener for footer anchor tags to prevent default behavior
+    var footerLinks = document.querySelectorAll(".md-footer-col-link");
+    footerLinks.forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        // Set nav-links visibility to false when a footer link is clicked
+        anchorTags.forEach(function (anchor) {
+          anchor.style.display = 'none';
+        })
+        customAnchorTags.forEach(function (customAnchor) {
+          customAnchor.style.display = 'none';
+        })
+      });
+    });
+
+    // Highlight anchor tag on click and on mouseenter, remove highlighting on mouseleave
+    anchorTags.forEach(function (anchor) {
+      anchor.addEventListener("click", function () {
+        // Remove previous highlighting
+        anchorTags.forEach(function (otherAnchor) {
+          otherAnchor.style.color = "";
+          otherAnchor.classList.remove("active");
+        });
+
+        // Highlight the clicked anchor
+        anchor.style.color = "#EA7845";
+        anchor.classList.add("active");
+      });
+
+      anchor.addEventListener("mouseenter", function () {
+        // Highlight on mouse enter
+        anchor.style.color = "#EA7845";
+      });
+
+      anchor.addEventListener("mouseleave", function () {
+        // Check if the anchor is active before removing highlighting on mouse leave
+        if (!anchor.classList.contains("active")) {
+          anchor.style.color = "";
+        }
+      });
+    });
+
+    // Highlight dropdown links on click and on mouseenter, remove highlighting on mouseleave
+    var dropdownLinks = document.querySelectorAll(".md-header__nav-links .dropdown .custom-anchor");
+    dropdownLinks.forEach(function (dropdownLink) {
+      dropdownLink.addEventListener("click", function () {
+
+        // Remove previous highlighting only for dropdown links
+        dropdownLinks.forEach(function (otherLink) {
+          otherLink.style.color = "";
+          otherLink.classList.remove("active");
+        });
+
+        // Close all dropdowns when a dropdown link is clicked
+        closeDropdowns();
+      });
+
+      dropdownLink.addEventListener("mouseenter", function () {
+        // Highlight on mouse enter
+        dropdownLink.style.color = "#EA7845";
+      });
+
+      dropdownLink.addEventListener("mouseleave", function () {
+        // Check if the dropdown link is active before removing highlighting on mouse leave
+        if (!dropdownLink.classList.contains("active")) {
+          dropdownLink.style.color = "";
+          dropdownLink.classList.remove("active");
+        }
+      });
+    });
+
+    // Function to close all dropdowns
+    function closeDropdowns() {
+      dropdowns.forEach(function (dropdown) {
+        var dropdownContent = dropdown.querySelector(".dropdown-content");
+        dropdownContent.style.display = "none";
+      });
+      dropdownLinks.forEach(function (dropdownLink) {
+        dropdownLink.style.color = "";
+        dropdownLink.classList.remove("active");
+      });
+    }
+
+    // Event listener to close dropdowns on clicking outside
+    document.addEventListener("click", function (event) {
+      var isDropdown = event.target.closest(".dropdown");
+      var isAnchor = event.target.closest(".md-header__nav-links .custom-anchor:not(.dropdown .custom-anchor)");
+
+      // Check if the click is outside the header content
+      if (!isDropdown && !isAnchor) {
+        closeDropdowns();
+      }
+    });
+  });
+</script>
+
+    <!-- Color palette toggle -->
     
-      
-        <form class="md-header__option" data-md-component="palette">
+    
+    <style>
+  .md-header__button {
+    color: #EA7845;
+  }
+</style>
+
+
+<!-- Color palette toggle -->
+<form class="md-header__option" data-md-component="palette">
   
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_0">
-    
-      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
-      </label>
-    
   
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
-      </label>
-    
   
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
-    
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.04 7 9.54 0 4.5-2.94 8.27-7 9.54.95.3 1.95.46 3 .46a10 10 0 0 0 10-10A10 10 0 0 0 9 2Z"/></svg>
-      </label>
-    
+  
+  <input class="md-option" data-md-color-media="(prefers-color-scheme)"
+    data-md-color-scheme="default" data-md-color-primary="indigo"
+    data-md-color-accent="indigo"  aria-label="Switch to system preference"
+     type="radio" name="__palette" id="__palette_0" />
+  
+  <label class="md-header__button md-icon" title="Switch to system preference"
+    for="__palette_1" hidden>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+  </label>
+  
+  
+  
+  
+  
+  <input class="md-option" data-md-color-media="(prefers-color-scheme: light)"
+    data-md-color-scheme="default" data-md-color-primary="custom"
+    data-md-color-accent="custom"  aria-label="Switch to light mode"
+     type="radio" name="__palette" id="__palette_1" />
+  
+  <label class="md-header__button md-icon" title="Switch to light mode"
+    for="__palette_2" hidden>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+  </label>
+  
+  
+  
+  
+  
+  <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)"
+    data-md-color-scheme="slate" data-md-color-primary="custom"
+    data-md-color-accent="custom"  aria-label="Switch to dark mode"
+     type="radio" name="__palette" id="__palette_2" />
+  
+  <label class="md-header__button md-icon" title="Switch to dark mode"
+    for="__palette_0" hidden>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.04 7 9.54 0 4.5-2.94 8.27-7 9.54.95.3 1.95.46 3 .46a10 10 0 0 0 10-10A10 10 0 0 0 9 2Z"/></svg>
+  </label>
+  
   
 </form>
+    
+    
+
+    <!-- User preference: color palette -->
+    
+    <script>
+    var palette = __md_get("__palette")
+    if (palette && palette.color) {
+  
+      /* Retrieve color palette for system preference */
+      if (palette.color.media === "(prefers-color-scheme)") {
+        var media = matchMedia("(prefers-color-scheme: light)")
+        var input = document.querySelector(media.matches
+          ? "[data-md-color-media='(prefers-color-scheme: light)']"
+          : "[data-md-color-media='(prefers-color-scheme: dark)']"
+        )
+  
+        /* Retrieve colors for system preference */
+        palette.color.media   = input.getAttribute("data-md-color-media"),
+        palette.color.scheme  = input.getAttribute("data-md-color-scheme"),
+        palette.color.primary = input.getAttribute("data-md-color-primary"),
+        palette.color.accent  = input.getAttribute("data-md-color-accent")
+      }
+  
+      /* Set color palette */
+      for (var [key, value] of Object.entries(palette.color))
+        document.body.setAttribute("data-md-color-" + key, value)
+    }
+  </script>
+    
+
+    <!-- Button to open search modal -->
+    
+    <label class="md-header__button md-icon" for="__search">
       
-    
-    
-      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+    </label>
+    <!-- Search interface -->
+    <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -231,22 +787,83 @@
   </div>
 </div>
     
-    
-      <div class="md-header__source">
-        <a href="https://github.com/stakater/mto-docs" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    GitHub
-  </div>
-</a>
-      </div>
-    
   </nav>
+
+  <!-- Navigation tabs (sticky) -->
   
 </header>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var header = document.querySelector('.md-header');
+    var search = document.querySelector('.md-search');
+    var navLinks = document.querySelector('.md-header__nav-links');
+    var searchResults = document.querySelector('.md-search-result');
+    var colorPaletteToggle = document.querySelector('.md-header__option');
+    var searchResultsMeta = document.querySelector('.md-search-result__meta');
+
+    var scrollThreshold = 50;
+
+    var isSearchOpen = false;
+
+    function handleScroll() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (scrollTop > scrollThreshold) {
+        header.classList.add('md-header--scroll');
+        header.style.borderBottom = 'none';
+        search.style.display = 'none';
+        searchResults.style.display = 'none';
+        if (colorPaletteToggle) {
+          colorPaletteToggle.style.display = 'none';
+        }
+        if (navLinks) {
+          navLinks.style.display = 'none';
+        }
+      } else {
+        header.classList.remove('md-header--scroll');
+        header.style.borderBottom = '';
+        search.style.display = '';
+        searchResults.style.display = '';
+        if (colorPaletteToggle) {
+          colorPaletteToggle.style.display = '';
+        }
+        if (navLinks) {
+          navLinks.style.display = isSearchOpen ? 'none' : '';
+        }
+      }
+    }
+
+    function handleNavLinksToggle(isSearchOpen) {
+      navLinks.style.display = isSearchOpen ? 'none' : '';
+    }
+
+    function handleSearchClick(event) {
+      var target = event.target;
+      isSearchOpen = target.classList.contains('focus-visible');
+      handleNavLinksToggle(isSearchOpen);
+
+    }
+
+    function handleSearchResultsMetaClick() {
+      event.stopPropagation();
+      isSearchOpen = false;
+      navLinks.style.display = 'none';
+    }
+
+    handleScroll();
+
+    // Event listener for searchResults click
+    searchResultsMeta.addEventListener("click", handleSearchResultsMetaClick);
+
+
+    search.addEventListener("click", handleSearchClick);
+
+
+    window.addEventListener("scroll", handleScroll);
+  });
+</script>
     
     <div class="md-container" data-md-component="container">
       
@@ -267,13 +884,12 @@
 
 
 
-  
-
-<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
-  <img src="../assets/images/favicon.svg" alt="logo">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
     Multi Tenant Operator
@@ -1661,6 +2277,26 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           
             <div class="md-content" data-md-component="content">
@@ -1835,7 +2471,7 @@ registry-secret<span class="w">    </span>Active<span class="w">   </span>3m
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "toc.integrate", "navigation.top"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.dd8806f2.min.js"></script>
