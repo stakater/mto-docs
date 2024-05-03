@@ -4,6 +4,24 @@ site_url: https://docs.stakater.com/mto/
 repo_url: https://github.com/stakater/mto-docs
 edit_uri: blob/main/content/
 
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  # disabling to bring toc back to right side in mto docs
+  # - attr_list 
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: "#"
+      title: On this page
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
 nav:
     - index.md
     - Installation:
