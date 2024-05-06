@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-stakater-.github-0.x/tutorials/tenant/creating-namespaces.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-stakater-.github-0.x/installation/openshift.html">
       
       
-        <link rel="prev" href="create-sandbox.html">
+        <link rel="prev" href="../index.html">
       
       
-        <link rel="next" href="assigning-metadata.html">
+        <link rel="next" href="../tutorials/tenant/create-tenant.html">
       
       
-      <link rel="icon" href="../../assets/images/logo-light.png">
+      <link rel="icon" href="../assets/images/logo-light.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
     
     
       
-        <title>Creating Namespaces - Multi Tenant Operator</title>
+        <title>On OpenShift - Multi Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.66ac8b77.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -67,7 +67,7 @@
     
     
     
-   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -76,7 +76,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#creating-namespaces" class="md-skip">
+        <a href="#on-openshift" class="md-skip">
           Skip to content
         </a>
       
@@ -133,7 +133,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../../index.html" title="Multi Tenant Operator"
+    <a href="../index.html" title="Multi Tenant Operator"
       class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       <!-- 
   
@@ -153,10 +153,10 @@
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="../../assets/images/logo-light.png#only-light" alt="logo" />
+          <img class="md-header__logo_light" src="../assets/images/logo-light.png#only-light" alt="logo" />
           
           
-          <img class="md-header__logo_dark" src="../../assets/images/logo-dark.png#only-dark" alt="logo" />
+          <img class="md-header__logo_dark" src="../assets/images/logo-dark.png#only-dark" alt="logo" />
           
         </div>
         <!-- Topic -->
@@ -886,7 +886,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -916,7 +916,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../index.html" class="md-nav__link">
+      <a href="../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -933,17 +933,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -957,156 +959,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Installation
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../installation/openshift.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    On OpenShift
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Tutorials
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
-            <span class="md-nav__icon md-icon"></span>
-            Tutorials
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Configuring Tenants
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_1">
-            <span class="md-nav__icon md-icon"></span>
-            Configuring Tenants
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="create-tenant.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Creating a Tenant
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="create-sandbox.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Create Sandbox Namespaces for Tenant Users
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -1128,18 +986,18 @@
           
   
   <span class="md-ellipsis">
-    Creating Namespaces
+    On OpenShift
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="creating-namespaces.html" class="md-nav__link md-nav__link--active">
+      <a href="openshift.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Creating Namespaces
+    On OpenShift
   </span>
   
 
@@ -1163,27 +1021,69 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#creating-namespaces-via-tenant-custom-resource" class="md-nav__link">
+  <a href="#requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating Namespaces via Tenant Custom Resource
+      Requirements
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-existing-namespaces-to-tenant-via-gitops" class="md-nav__link">
+  <a href="#installing-via-operatorhub-ui" class="md-nav__link">
     <span class="md-ellipsis">
-      Add Existing Namespaces to Tenant via GitOps
+      Installing via OperatorHub UI
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#remove-namespaces-from-your-cluster-via-gitops" class="md-nav__link">
+  <a href="#installing-via-cli-or-gitops" class="md-nav__link">
     <span class="md-ellipsis">
-      Remove Namespaces from your Cluster via GitOps
+      Installing via CLI OR GitOps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enabling-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enabling Console
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enabling Console">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual-approval" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Approval
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstall-via-operatorhub-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uninstall via OperatorHub UI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
     </span>
   </a>
   
@@ -1198,6 +1098,83 @@
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Configuring Tenants
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Configuring Tenants
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
               
                 
   
@@ -1205,7 +1182,70 @@
   
   
     <li class="md-nav__item">
-      <a href="assigning-metadata.html" class="md-nav__link">
+      <a href="../tutorials/tenant/create-tenant.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating a Tenant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tenant/create-sandbox.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create Sandbox Namespaces for Tenant Users
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tenant/creating-namespaces.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Namespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tenant/assigning-metadata.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1226,7 +1266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tenant-hibernation.html" class="md-nav__link">
+      <a href="../tutorials/tenant/tenant-hibernation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1247,7 +1287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="deleting-tenant.html" class="md-nav__link">
+      <a href="../tutorials/tenant/deleting-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1311,7 +1351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../distributing-resources/copying-resources.html" class="md-nav__link">
+      <a href="../tutorials/distributing-resources/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1332,7 +1372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../distributing-resources/distributing-manifests.html" class="md-nav__link">
+      <a href="../tutorials/distributing-resources/distributing-manifests.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1438,7 +1478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/custom-roles.html" class="md-nav__link">
+      <a href="../how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1459,7 +1499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/extend-default-roles.html" class="md-nav__link">
+      <a href="../how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1523,7 +1563,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
+      <a href="../how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1544,7 +1584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/deploying-templates.html" class="md-nav__link">
+      <a href="../how-to-guides/deploying-templates.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1565,7 +1605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1586,7 +1626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1607,7 +1647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1628,7 +1668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/copying-resources.html" class="md-nav__link">
+      <a href="../how-to-guides/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1692,7 +1732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/keycloak.html" class="md-nav__link">
+      <a href="../how-to-guides/keycloak.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1713,7 +1753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/custom-metrics.html" class="md-nav__link">
+      <a href="../how-to-guides/custom-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1734,7 +1774,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/graph-visualization.html" class="md-nav__link">
+      <a href="../how-to-guides/graph-visualization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1798,7 +1838,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1819,7 +1859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1840,7 +1880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1861,7 +1901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/mattermost.html" class="md-nav__link">
+      <a href="../how-to-guides/mattermost.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1925,7 +1965,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
+      <a href="../how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1996,7 +2036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../explanation/logs-metrics.html" class="md-nav__link">
+      <a href="../explanation/logs-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2017,7 +2057,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../explanation/template.html" class="md-nav__link">
+      <a href="../explanation/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2038,7 +2078,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../explanation/console.html" class="md-nav__link">
+      <a href="../explanation/console.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2059,7 +2099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../explanation/templated-metadata-values.html" class="md-nav__link">
+      <a href="../explanation/templated-metadata-values.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2080,7 +2120,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../explanation/multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../explanation/multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2143,7 +2183,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../crds-api-reference/integration-config.html" class="md-nav__link">
+      <a href="../crds-api-reference/integration-config.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2164,7 +2204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../crds-api-reference/quota.html" class="md-nav__link">
+      <a href="../crds-api-reference/quota.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2185,7 +2225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../crds-api-reference/tenant.html" class="md-nav__link">
+      <a href="../crds-api-reference/tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2206,7 +2246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../crds-api-reference/template.html" class="md-nav__link">
+      <a href="../crds-api-reference/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2227,7 +2267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../crds-api-reference/template-instance.html" class="md-nav__link">
+      <a href="../crds-api-reference/template-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2248,7 +2288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../crds-api-reference/template-group-instance.html" class="md-nav__link">
+      <a href="../crds-api-reference/template-group-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2276,7 +2316,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../changelog.html" class="md-nav__link">
+      <a href="../changelog.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2296,7 +2336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../eula.html" class="md-nav__link">
+      <a href="../eula.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2316,7 +2356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting.html" class="md-nav__link">
+      <a href="../troubleshooting.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2358,27 +2398,69 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#creating-namespaces-via-tenant-custom-resource" class="md-nav__link">
+  <a href="#requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating Namespaces via Tenant Custom Resource
+      Requirements
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#add-existing-namespaces-to-tenant-via-gitops" class="md-nav__link">
+  <a href="#installing-via-operatorhub-ui" class="md-nav__link">
     <span class="md-ellipsis">
-      Add Existing Namespaces to Tenant via GitOps
+      Installing via OperatorHub UI
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#remove-namespaces-from-your-cluster-via-gitops" class="md-nav__link">
+  <a href="#installing-via-cli-or-gitops" class="md-nav__link">
     <span class="md-ellipsis">
-      Remove Namespaces from your Cluster via GitOps
+      Installing via CLI OR GitOps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enabling-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enabling Console
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enabling Console">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual-approval" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Approval
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstall-via-operatorhub-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uninstall via OperatorHub UI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
     </span>
   </a>
   
@@ -2402,86 +2484,172 @@
   
 
 
-<h1 id="creating-namespaces">Creating Namespaces<a class="headerlink" href="#creating-namespaces" title="Permanent link">#</a></h1>
-<h2 id="creating-namespaces-via-tenant-custom-resource">Creating Namespaces via Tenant Custom Resource<a class="headerlink" href="#creating-namespaces-via-tenant-custom-resource" title="Permanent link">#</a></h2>
-<p>Bill now wants to create namespaces for <code>dev</code>, <code>build</code> and <code>production</code> environments for the tenant members. To create those namespaces Bill will just add those names within the <code>namespaces</code> field in the tenant CR. If Bill wants to append the tenant name as a prefix in namespace name, then he can use <code>namespaces.withTenantPrefix</code> field. Else he can use <code>namespaces.withoutTenantPrefix</code> for namespaces for which he does not need tenant name as a prefix.</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt; EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
-<span class="w">  </span><span class="nt">editors</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">john@aurora.org</span>
-<span class="w">    </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">    </span><span class="nt">withoutTenantPrefix</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prod</span>
-<span class="l l-Scalar l-Scalar-Plain">EOF</span>
+<h1 id="on-openshift">On OpenShift<a class="headerlink" href="#on-openshift" title="Permanent link">#</a></h1>
+<p>This document contains instructions on installing, uninstalling and configuring Multi Tenant Operator using OpenShift MarketPlace.</p>
+<ol>
+<li>
+<p><a href="#installing-via-operatorhub-ui">OpenShift OperatorHub UI</a></p>
+</li>
+<li>
+<p><a href="#installing-via-cli-or-gitops">CLI/GitOps</a></p>
+</li>
+<li>
+<p><a href="#enabling-console">Enabling Console</a></p>
+</li>
+<li>
+<p><a href="#uninstall-via-operatorhub-ui">Uninstall</a></p>
+</li>
+</ol>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
+<ul>
+<li>An <strong>OpenShift</strong> cluster [v4.8 - v4.13]</li>
+</ul>
+<h2 id="installing-via-operatorhub-ui">Installing via OperatorHub UI<a class="headerlink" href="#installing-via-operatorhub-ui" title="Permanent link">#</a></h2>
+<ul>
+<li>After opening OpenShift console click on <code>Operators</code>, followed by <code>OperatorHub</code> from the side menu</li>
+</ul>
+<p><a class="glightbox" href="../images/operatorHub.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/operatorHub.png" /></a></p>
+<ul>
+<li>Now search for <code>Multi Tenant Operator</code> and then click on <code>Multi Tenant Operator</code> tile</li>
+</ul>
+<p><a class="glightbox" href="../images/search_tenant_operator_operatorHub.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/search_tenant_operator_operatorHub.png" /></a></p>
+<ul>
+<li>Click on the <code>install</code> button</li>
+</ul>
+<p><a class="glightbox" href="../images/to_install_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/to_install_1.png" /></a></p>
+<ul>
+<li>Select <code>Updated channel</code>. Select <code>multi-tenant-operator</code> to install the operator in <code>multi-tenant-operator</code> namespace from <code>Installed Namespace</code> dropdown menu. After configuring <code>Update approval</code> click on the <code>install</code> button.</li>
+</ul>
+<blockquote>
+<p>Note: Use <code>stable</code> channel for seamless upgrades. For <code>Production Environment</code> prefer <code>Manual</code> approval and use <code>Automatic</code> for <code>Development Environment</code></p>
+</blockquote>
+<p><a class="glightbox" href="../images/to_install_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/to_install_2.png" /></a></p>
+<ul>
+<li>Wait for the operator to be installed</li>
+</ul>
+<p><a class="glightbox" href="../images/to_install_wait.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/to_install_wait.png" /></a></p>
+<ul>
+<li>Once successfully installed, MTO will be ready to enforce multi-tenancy in your cluster</li>
+</ul>
+<p><a class="glightbox" href="../images/to_installed_successful.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/to_installed_successful.png" /></a></p>
+<blockquote>
+<p>Note: MTO will be installed in <code>multi-tenant-operator</code> namespace.</p>
+</blockquote>
+<h2 id="installing-via-cli-or-gitops">Installing via CLI OR GitOps<a class="headerlink" href="#installing-via-cli-or-gitops" title="Permanent link">#</a></h2>
+<ul>
+<li>Create namespace <code>multi-tenant-operator</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>multi-tenant-operator
+namespace/multi-tenant-operator<span class="w"> </span>created
 </code></pre></div>
-<p>With the above configuration tenant members will now see new namespaces have been created.</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>namespaces
-NAME<span class="w">             </span>STATUS<span class="w">   </span>AGE
-bluesky-dev<span class="w">      </span>Active<span class="w">   </span>5d5h
-bluesky-build<span class="w">    </span>Active<span class="w">   </span>5d5h
-prod<span class="w">             </span>Active<span class="w">   </span>5d5h
+<ul>
+<li>Create an OperatorGroup YAML for MTO and apply it in <code>multi-tenant-operator</code> namespace.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
+<span class="s">apiVersion: operators.coreos.com/v1</span>
+<span class="s">kind: OperatorGroup</span>
+<span class="s">metadata:</span>
+<span class="s">  name: tenant-operator</span>
+<span class="s">  namespace: multi-tenant-operator</span>
+<span class="s">EOF</span>
+operatorgroup.operators.coreos.com/tenant-operator<span class="w"> </span>created
 </code></pre></div>
-<p>Anna as the tenant owner can create new namespaces for her tenant.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-production</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">stakater.com/tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
+<ul>
+<li>Create a subscription YAML for MTO and apply it in <code>multi-tenant-operator</code> namespace. To enable console set <code>.spec.config.env[].ENABLE_CONSOLE</code> to <code>true</code>. This will create a route resource, which can be used to access the Multi-Tenant-Operator console.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
+<span class="s">apiVersion: operators.coreos.com/v1alpha1</span>
+<span class="s">kind: Subscription</span>
+<span class="s">metadata:</span>
+<span class="s">  name: tenant-operator</span>
+<span class="s">  namespace: multi-tenant-operator</span>
+<span class="s">spec:</span>
+<span class="s">  channel: stable</span>
+<span class="s">  installPlanApproval: Automatic</span>
+<span class="s">  name: tenant-operator</span>
+<span class="s">  source: certified-operators</span>
+<span class="s">  sourceNamespace: openshift-marketplace</span>
+<span class="s">  startingCSV: tenant-operator.v0.10.0</span>
+<span class="s">EOF</span>
+subscription.operators.coreos.com/tenant-operator<span class="w"> </span>created
 </code></pre></div>
 <blockquote>
-<p>⚠️ Anna is required to add the tenant label <code>stakater.com/tenant: bluesky</code> which contains the name of her tenant <code>bluesky</code>, while creating the namespace. If this label is not added or if Anna does not belong to the <code>bluesky</code> tenant, then Multi Tenant Operator will not allow the creation of that namespace.</p>
+<p>Note: To bring MTO via GitOps, add the above files in GitOps repository.</p>
 </blockquote>
-<p>When Anna creates the namespace, MTO assigns Anna and other tenant members the roles based on their user types, such as a tenant owner getting the OpenShift <code>admin</code> role for that namespace.</p>
-<p>As a tenant owner, Anna is able to create namespaces.</p>
-<p>If you have enabled <a href="../../how-to-guides/enabling-multi-tenancy-argocd.html">ArgoCD Multitenancy</a>, our preferred solution is to create tenant namespaces by using <a href="../../crds-api-reference/tenant.html">Tenant</a> spec to avoid syncing issues in ArgoCD console during namespace creation.</p>
-<h2 id="add-existing-namespaces-to-tenant-via-gitops">Add Existing Namespaces to Tenant via GitOps<a class="headerlink" href="#add-existing-namespaces-to-tenant-via-gitops" title="Permanent link">#</a></h2>
-<p>Using GitOps as your preferred development workflow, you can add existing namespaces for your tenants by including the tenant label.</p>
-<p>To add an existing namespace to your tenant via GitOps:</p>
-<ol>
-<li>First, migrate your namespace resource to your “watched” git repository</li>
-<li>Edit your namespace <code>yaml</code> to include the tenant label</li>
-<li>Tenant label follows the naming convention <code>stakater.com/tenant: &lt;TENANT_NAME&gt;</code></li>
-<li>Sync your GitOps repository with your cluster and allow changes to be propagated</li>
-<li>Verify that your Tenant users now have access to the namespace</li>
-</ol>
-<p>For example, If Anna, a tenant owner, wants to add the namespace <code>bluesky-dev</code> to her tenant via GitOps, after migrating her namespace manifest to a “watched repository”</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-dev</span>
-</code></pre></div>
-<p>She can then add the tenant label</p>
-<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">labels</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="nt">stakater.com/tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
-</code></pre></div>
-<p>Now all the users of the <code>Bluesky</code> tenant now have access to the existing namespace.</p>
-<p>Additionally, to remove namespaces from a tenant, simply remove the tenant label from the namespace resource and sync your changes to your cluster.</p>
-<h2 id="remove-namespaces-from-your-cluster-via-gitops">Remove Namespaces from your Cluster via GitOps<a class="headerlink" href="#remove-namespaces-from-your-cluster-via-gitops" title="Permanent link">#</a></h2>
-<p>GitOps is a quick and efficient way to automate the management of your K8s resources.</p>
-<p>To remove namespaces from your cluster via GitOps;</p>
 <ul>
-<li>Remove the <code>yaml</code> file containing your namespace configurations from your “watched” git repository.</li>
-<li>ArgoCD automatically sets the <code>[app.kubernetes.io/instance](http://app.kubernetes.io/instance)</code> label on resources it manages. It uses this label it to select resources which inform the basis of an app. To remove a namespace from a managed ArgoCD app, remove the ArgoCD label <code>app.kubernetes.io/instance</code> from the namespace manifest.</li>
-<li>You can edit your namespace manifest through the OpenShift Web Console or with the OpenShift command line tool.</li>
-<li>Now that you have removed your namespace manifest from your watched git repository, and from your managed ArgoCD apps, sync your git repository and allow your changes be propagated.</li>
-<li>Verify that your namespace has been deleted.</li>
+<li>After creating the <code>subscription</code> custom resource open OpenShift console and click on <code>Operators</code>, followed by <code>Installed Operators</code> from the side menu</li>
+</ul>
+<p><a class="glightbox" href="../images/to_sub_installation_wait.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/to_sub_installation_wait.png" /></a></p>
+<ul>
+<li>Wait for the installation to complete</li>
+</ul>
+<p><a class="glightbox" href="../images/to_sub_installation_successful.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/to_sub_installation_successful.png" /></a></p>
+<ul>
+<li>Once the installation is complete click on <code>Workloads</code>, followed by <code>Pods</code> from the side menu and select <code>multi-tenant-operator</code> project</li>
+</ul>
+<p><a class="glightbox" href="../images/select_multi_tenant_operator_project.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/select_multi_tenant_operator_project.png" /></a></p>
+<ul>
+<li>Once pods are up and running, MTO will be ready to enforce multi-tenancy in your cluster</li>
+</ul>
+<p><a class="glightbox" href="../images/to_installed_successful_pod.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/to_installed_successful_pod.png" /></a></p>
+<p>For more details and configurations check out <a href="../crds-api-reference/integration-config.html">IntegrationConfig</a>.</p>
+<h2 id="enabling-console">Enabling Console<a class="headerlink" href="#enabling-console" title="Permanent link">#</a></h2>
+<p>To enable console GUI for MTO, go to <code>Search</code> -&gt; <code>IntegrationConfig</code> -&gt; <code>tenant-operator-config</code> and make sure the following fields are set to <code>true</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">components</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote>
+<p>Note: If your <code>InstallPlan</code> approval is set to <code>Manual</code> then you will have to manually approve the <code>InstallPlan</code> for MTO console components to be installed.</p>
+</blockquote>
+<h3 id="manual-approval">Manual Approval<a class="headerlink" href="#manual-approval" title="Permanent link">#</a></h3>
+<ul>
+<li>Open OpenShift console and click on <code>Operators</code>, followed by <code>Installed Operators</code> from the side menu.</li>
+</ul>
+<p><a class="glightbox" href="../images/manual-approve-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/manual-approve-1.png" /></a></p>
+<ul>
+<li>Now click on <code>Upgrade available</code> in front of <code>mto-opencost</code> or <code>mto-prometheus</code>.</li>
+</ul>
+<p><a class="glightbox" href="../images/manual-approve-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/manual-approve-2.png" /></a></p>
+<ul>
+<li>Now click on <code>Preview InstallPlan</code> on top.</li>
+</ul>
+<p><a class="glightbox" href="../images/manual-approve-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/manual-approve-3.png" /></a></p>
+<ul>
+<li>Now click on <code>Approve</code> button.</li>
+</ul>
+<p><a class="glightbox" href="../images/manual-approve-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/manual-approve-4.png" /></a></p>
+<ul>
+<li>Now the <code>InstallPlan</code> will be approved, and MTO console components will be installed.</li>
+</ul>
+<h2 id="uninstall-via-operatorhub-ui">Uninstall via OperatorHub UI<a class="headerlink" href="#uninstall-via-operatorhub-ui" title="Permanent link">#</a></h2>
+<p>You can uninstall MTO by following these steps:</p>
+<ul>
+<li>
+<p>Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set <code>spec.onDelete.cleanNamespaces</code> to <code>false</code> for all those tenants whose namespaces you want to retain, and <code>spec.onDelete.cleanAppProject</code> to <code>false</code> for all those tenants whose AppProject you want to retain. For more details check out <a href="../tutorials/tenant/deleting-tenant.html">onDelete</a></p>
+</li>
+<li>
+<p>After making the required changes open OpenShift console and click on <code>Operators</code>, followed by <code>Installed Operators</code> from the side menu</p>
+</li>
+</ul>
+<p><a class="glightbox" href="../images/installed-operators.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/installed-operators.png" /></a></p>
+<ul>
+<li>Now click on uninstall and confirm uninstall.</li>
+</ul>
+<p><a class="glightbox" href="../images/uninstall-from-ui.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/uninstall-from-ui.png" /></a></p>
+<ul>
+<li>
+<p>Now the operator has been uninstalled.</p>
+</li>
+<li>
+<p><code>Optional:</code> you can also manually remove MTO's CRDs and its resources from the cluster.</p>
+</li>
+</ul>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
+<ul>
+<li>For more details on how to use MTO please refer <a href="../tutorials/tenant/create-tenant.html">Tenant tutorial</a>.</li>
+<li>For more details on how to extend your MTO manager ClusterRole please refer <a href="../how-to-guides/extend-default-roles.html">extend-default-clusterroles</a>.</li>
 </ul>
 
 
@@ -2599,10 +2767,10 @@ prod<span class="w">             </span>Active<span class="w">   </span>5d5h
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.a7c05c9e.min.js"></script>
+      <script src="../assets/javascripts/bundle.a7c05c9e.min.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
