@@ -1,0 +1,2588 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.stakater.com/mto/0.12/crds-api-reference/tenant.html">
+      
+      
+        <link rel="prev" href="quota.html">
+      
+      
+        <link rel="next" href="template.html">
+      
+      
+      <link rel="icon" href="../assets/images/logo-light.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.23">
+    
+    
+      
+        <title>Tenant - Multi Tenant Operator</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Grotesk:300,300i,400,400i,700,700i%7CSpace+Grotesk:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Space Grotesk";--md-code-font:"Space Grotesk"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-TTH1YYW5TX"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-TTH1YYW5TX",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-TTH1YYW5TX",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>var consent;"undefined"==typeof __md_analytics||(consent=__md_get("__consent"))&&consent.analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tenant" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+
+
+
+<style>
+  .md-header {
+    background-color: transparent;
+  }
+
+  .md-header--shadow {
+    box-shadow: none;
+  }
+
+  .md-header--scroll .md-search {
+    display: none;
+  }
+
+  .md-header--scroll .md-search__form {
+    border: none;
+  }
+</style>
+
+<!-- Header -->
+<header class="md-header md-header--shadow md-header--scroll" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+
+    <!-- Link to home -->
+    <a href="../index.html" title="Multi Tenant Operator"
+      class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+      <!-- 
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+ -->
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg> -->
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <!-- Logo -->
+        <div class="md-header__topic">
+          
+          <img class="md-header__logo_light" src="../assets/images/logo-light.png#only-light" alt="logo" />
+          
+          
+          <img class="md-header__logo_dark" src="../assets/images/logo-dark.png#only-dark" alt="logo" />
+          
+        </div>
+        <!-- Topic -->
+      </div>
+    </div>
+
+    <!-- Nav links -->
+    <style>
+    .md-header__nav-links {
+        display: flex;
+        align-items: center;
+    }
+
+    .md-header-ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    .md-header-ul-li {
+        margin-right: 20px;
+    }
+
+    .custom-anchor {
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+    }
+
+    .dropdown {
+        position: relative;
+        margin-right: 20px;
+    }
+
+    .offerings-dropdown {
+        width: max-content;
+        height: max-content;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 4px;
+        margin: 12px 0px;
+        padding: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .more-dropdown {
+        width: 6rem;
+        height: 4rem;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 4px;
+        margin: 12px 0px;
+        padding: 14px;
+    }
+
+    .dropdown-content-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .dropdown-content-column {
+        flex: 1;
+        float: left;
+        width: 25%;
+        padding: 10px;
+    }
+
+    .dropdown-content-column-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #EA7845;
+    }
+
+    .dropdown-content-anchor-container {
+        margin: 1rem 0;
+    }
+
+    .disabled-anchor {
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .dropdown-content-dev-links {
+        flex: 1;
+        float: left;
+        width: 25%;
+        padding: 10px;
+        margin: 1rem 0;
+    }
+
+    .dropdown-content-dev-links-anchor-container {
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem 0;
+    }
+
+    .dropdown-content-dev-links-anchor {
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        color: #EA7845;
+    }
+</style>
+
+
+<nav class="md-header__nav-links">
+    <ul class="md-header-ul">
+        <li class="md-header-ul-li"><a class="custom-anchor" href="#">Documentation</a></li>
+        <li class="md-header-ul-li"><a class="custom-anchor" href="https://www.stakater.com/">Stakater Home</a></li>
+
+        <li class="dropdown">
+            <a class="custom-anchor" href="#">Offerings
+                &nbsp;<span>
+                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path class="down-arrow" fill-rule="evenodd" clip-rule="evenodd" d="M6.79566 7.04528C6.58472 7.25596 6.29878 7.37429 6.00066 7.37429C5.70253 7.37429 5.4166 7.25596 5.20566 7.04528L0.962158 2.80328C0.751211 2.59224 0.632742 2.30604 0.632813 2.00764C0.632883 1.70925 0.751487 1.4231 0.962533 1.21216C1.17358 1.00121 1.45978 0.882742 1.75817 0.882813C2.05657 0.882883 2.34271 1.00149 2.55366 1.21253L6.00066 4.65953L9.44766 1.21253C9.65974 1.0075 9.94386 0.893973 10.2388 0.896397C10.5338 0.89882 10.816 1.017 11.0247 1.22549C11.2334 1.43397 11.3518 1.71608 11.3545 2.01106C11.3573 2.30603 11.244 2.59026 11.0392 2.80253L6.79641 7.04603L6.79566 7.04528Z"/>
+</svg>
+                </span></a>
+            <div class="dropdown-menu dropdown-content offerings-dropdown">
+                <div class="dropdown-content-container">
+                    <!-- Column 1 -->
+                    <div class="dropdown-content-column">
+                        <h3 class="dropdown-content-column-title">Products</h3>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/saap-kubernetes-openshift"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'" class="dropdown-item-link-text">Stakater
+                                App
+                                Agility
+                                Platform (SAAP)</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/mto" onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'" class="dropdown-item-link-text">Multi
+                                Tenant
+                                Operator</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a class="custom-anchor disabled-anchor">Tornador
+                                (coming soon)</a>
+                        </div>
+                    </div>
+                    <!-- Column 2 -->
+                    <div class="dropdown-content-column">
+                        <h3 class="dropdown-content-column-title">Services</h3>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/kubernetes-consultancy"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'" class="dropdown-item-link-text">Kubernetes
+                                Consultancy</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/kubernetes-platform-assessment"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'" class="dropdown-item-link-text">Platform
+                                Assessment</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/openshift-as-a-service"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'" class="dropdown-item-link-text">Openshift
+                                Consultancy</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/secure-your-kubernetes-infrastructure"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'" class="dropdown-item-link-text">Secret
+                                Managment Service</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/kubernetes-consultancy"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'" class="dropdown-item-link-text">Platform
+                                Engineering</a>
+                        </div>
+                    </div>
+                    <!-- Column 3 -->
+                    <div class="dropdown-content-column">
+                        <h3 class="dropdown-content-column-title">Open Source</h3>
+
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://github.com/stakater/Reloader"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'"
+                                class="dropdown-item-link-text">Reloader</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://github.com/stakater/IngressMonitorController"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'" class="dropdown-item-link-text">IMC</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://github.com/stakater/forecastle"
+                                onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'"
+                                class="dropdown-item-link-text">Forecastle</a>
+                        </div>
+                    </div>
+                    <!-- Column 4 -->
+                    <div class="dropdown-content-dev-links">
+                        <div class="dropdown-content-dev-links-anchor-container">
+                            <a href="https://github.com/stakater/" onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'"
+                                class="dropdown-content-dev-links-anchor">Github</a>
+                        </div>
+                        <div class="dropdown-content-dev-links-anchor-container">
+                            <a href="https://docs.stakater.com/" onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'"
+                                class="dropdown-content-dev-links-anchor">Documentation</a>
+                        </div>
+                        <div class="dropdown-content-dev-links-anchor-container">
+                            <a href="https://employee.stakater.com/" onmouseover="this.style.textDecoration='underline'"
+                                onmouseout="this.style.textDecoration='none'"
+                                class="dropdown-content-dev-links-anchor">Employee
+                                Handbook</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="md-header-ul-li"><a class="custom-anchor" href="https://www.stakater.com/blog">Blog</a></li>
+        <li class="md-header-ul-li"><a class="custom-anchor" href="https://www.stakater.com/white-papers">White
+                Papers</a></li>
+
+        <!-- <li class="dropdown">
+            <a class="custom-anchor" href="#">More
+                &nbsp;<span> -->
+        <!-- <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path class="down-arrow" fill-rule="evenodd" clip-rule="evenodd" d="M6.79566 7.04528C6.58472 7.25596 6.29878 7.37429 6.00066 7.37429C5.70253 7.37429 5.4166 7.25596 5.20566 7.04528L0.962158 2.80328C0.751211 2.59224 0.632742 2.30604 0.632813 2.00764C0.632883 1.70925 0.751487 1.4231 0.962533 1.21216C1.17358 1.00121 1.45978 0.882742 1.75817 0.882813C2.05657 0.882883 2.34271 1.00149 2.55366 1.21253L6.00066 4.65953L9.44766 1.21253C9.65974 1.0075 9.94386 0.893973 10.2388 0.896397C10.5338 0.89882 10.816 1.017 11.0247 1.22549C11.2334 1.43397 11.3518 1.71608 11.3545 2.01106C11.3573 2.30603 11.244 2.59026 11.0392 2.80253L6.79641 7.04603L6.79566 7.04528Z"/>
+</svg> -->
+        <!-- </span></a>
+            <div class="dropdown-menu dropdown-content more-dropdown">
+                <a class="custom-anchor" href="#">Item 1</a>
+                <a class="custom-anchor" href="#">Item 2</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+
+<script>
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible") {
+      initializeDropdowns();
+    }
+  });
+
+  // Function to initialize dropdowns
+  function initializeDropdowns() {
+    // Set Documentation link as highlighted by default
+    var documentationLink = document.querySelector(".md-header__nav-links .custom-anchor:first-child");
+    documentationLink.style.color = "#EA7845";
+    documentationLink.classList.add("active");
+
+    // Get all elements with class "dropdown"
+    var dropdowns = document.querySelectorAll(".dropdown");
+
+    // Add mouseenter and mouseleave event listeners to each dropdown
+    dropdowns.forEach(function (dropdown) {
+      var dropdownContent = dropdown.querySelector(".dropdown-content");
+
+      dropdownContent.style.display = "none";
+
+      dropdown.addEventListener("mouseenter", function () {
+        // Hide other dropdowns before showing this one
+        closeOtherDropdowns(dropdowns, dropdown);
+        dropdownContent.style.display = "grid";
+      });
+
+      dropdown.addEventListener("mouseleave", function () {
+        // Dropdown stays open on mouse leave
+      });
+    });
+
+    // Event listener to close dropdowns on clicking outside
+    document.addEventListener("click", function (event) {
+      var isDropdown = event.target.closest(".dropdown");
+      var isAnchor = event.target.closest(".md-header__nav-links .custom-anchor:not(.dropdown .custom-anchor)");
+
+      // Check if the click is outside the header content
+      if (!isDropdown && !isAnchor) {
+        closeDropdowns(dropdowns);
+      }
+    });
+  }
+
+  // Function to close all dropdowns
+  function closeDropdowns(dropdowns) {
+    dropdowns.forEach(function (dropdown) {
+      var dropdownContent = dropdown.querySelector(".dropdown-content");
+      dropdownContent.style.display = "none";
+    });
+  }
+
+  // Function to close other dropdowns except the current one
+  function closeOtherDropdowns(dropdowns, currentDropdown) {
+    dropdowns.forEach(function (otherDropdown) {
+      var otherDropdownContent = otherDropdown.querySelector(".dropdown-content");
+      if (otherDropdown !== currentDropdown && otherDropdownContent.style.display === "grid") {
+        otherDropdownContent.style.display = "none";
+      }
+    });
+  }
+
+  // Call the function immediately on page load
+  initializeDropdowns();
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var customAnchorTags = document.querySelectorAll(".custom-anchor");
+    var dropdownAnchorTags = document.querySelectorAll(".dropdown .custom-anchor");
+    var documentationLink = document.querySelector(".md-header__nav-links .custom-anchor:first-child");
+    var anchorTags = document.querySelectorAll(".md-header__nav-links .custom-anchor:not(.dropdown .custom-anchor)");
+
+    // Function to reset all anchor tags (except Documentation) to default color
+    function resetAnchorColors() {
+      anchorTags.forEach(function (anchor) {
+        if (anchor !== documentationLink) {
+          anchor.style.color = "";
+          anchor.classList.remove("active");
+        }
+      });
+      dropdownAnchorTags.forEach(function (dropdownAnchor) {
+        dropdownAnchor.style.color = "";
+        dropdownAnchor.classList.remove("active");
+      })
+    }
+
+    // Highlight Documentation link by default
+    function highlightDocumentationLink() {
+      resetAnchorColors();
+      documentationLink.style.color = "#EA7845";
+      documentationLink.classList.add("active");
+    }
+
+    // Reset all anchor colors to default on page load
+    highlightDocumentationLink();
+
+    // Highlight anchor tag on click and on mouseenter, remove highlighting on mouseleave
+    anchorTags.forEach(function (anchor) {
+      anchor.addEventListener("click", function () {
+        // Reset all anchor colors to default
+        resetAnchorColors();
+
+        // Highlight the clicked anchor
+        anchor.style.color = "#EA7845";
+        anchor.classList.add("active");
+      });
+
+      anchor.addEventListener("mouseenter", function () {
+        // Highlight on mouse enter if not already active
+        if (!anchor.classList.contains("active")) {
+          anchor.style.color = "#EA7845";
+        }
+      });
+
+      anchor.addEventListener("mouseleave", function () {
+        // Check if the anchor is active before removing highlighting on mouse leave
+        if (!anchor.classList.contains("active")) {
+          anchor.style.color = "";
+        }
+      });
+    });
+
+    // Highlight Documentation link when returning to the page
+    window.addEventListener("focus", function () {
+      highlightDocumentationLink();
+    });
+
+    // Function to show or hide nav links based on scroll position
+    function toggleNavLinksVisibility() {
+      var scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+      // Check if the scroll position is at the top
+      if (scrollPosition === 0) {
+        // Set the visibility of customAnchorTags and anchorTags to ' '
+        anchorTags.forEach(function (anchor) {
+          anchor.style.display = '';
+        });
+        customAnchorTags.forEach(function (customAnchor) {
+          customAnchor.style.display = '';
+        });
+      } else {
+        // Otherwise, hide them
+        anchorTags.forEach(function (anchor) {
+          anchor.style.display = 'none';
+        });
+        customAnchorTags.forEach(function (customAnchor) {
+          customAnchor.style.display = 'none';
+        });
+      }
+    }
+
+    // Event listener for scroll events
+    window.addEventListener("scroll", function () {
+      toggleNavLinksVisibility();
+    });
+
+    // Event listener for footer anchor tags to prevent default behavior
+    var footerLinks = document.querySelectorAll(".md-footer-col-link");
+    footerLinks.forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        // Set nav-links visibility to false when a footer link is clicked
+        anchorTags.forEach(function (anchor) {
+          anchor.style.display = 'none';
+        })
+        customAnchorTags.forEach(function (customAnchor) {
+          customAnchor.style.display = 'none';
+        })
+      });
+    });
+
+    // Highlight anchor tag on click and on mouseenter, remove highlighting on mouseleave
+    anchorTags.forEach(function (anchor) {
+      anchor.addEventListener("click", function () {
+        // Remove previous highlighting
+        anchorTags.forEach(function (otherAnchor) {
+          otherAnchor.style.color = "";
+          otherAnchor.classList.remove("active");
+        });
+
+        // Highlight the clicked anchor
+        anchor.style.color = "#EA7845";
+        anchor.classList.add("active");
+      });
+
+      anchor.addEventListener("mouseenter", function () {
+        // Highlight on mouse enter
+        anchor.style.color = "#EA7845";
+      });
+
+      anchor.addEventListener("mouseleave", function () {
+        // Check if the anchor is active before removing highlighting on mouse leave
+        if (!anchor.classList.contains("active")) {
+          anchor.style.color = "";
+        }
+      });
+    });
+
+    // Highlight dropdown links on click and on mouseenter, remove highlighting on mouseleave
+    var dropdownLinks = document.querySelectorAll(".md-header__nav-links .dropdown .custom-anchor");
+    dropdownLinks.forEach(function (dropdownLink) {
+      dropdownLink.addEventListener("click", function () {
+
+        // Remove previous highlighting only for dropdown links
+        dropdownLinks.forEach(function (otherLink) {
+          otherLink.style.color = "";
+          otherLink.classList.remove("active");
+        });
+
+        // Close all dropdowns when a dropdown link is clicked
+        closeDropdowns();
+      });
+
+      dropdownLink.addEventListener("mouseenter", function () {
+        // Highlight on mouse enter
+        dropdownLink.style.color = "#EA7845";
+      });
+
+      dropdownLink.addEventListener("mouseleave", function () {
+        // Check if the dropdown link is active before removing highlighting on mouse leave
+        if (!dropdownLink.classList.contains("active")) {
+          dropdownLink.style.color = "";
+          dropdownLink.classList.remove("active");
+        }
+      });
+    });
+
+    // Function to close all dropdowns
+    function closeDropdowns() {
+      dropdowns.forEach(function (dropdown) {
+        var dropdownContent = dropdown.querySelector(".dropdown-content");
+        dropdownContent.style.display = "none";
+      });
+      dropdownLinks.forEach(function (dropdownLink) {
+        dropdownLink.style.color = "";
+        dropdownLink.classList.remove("active");
+      });
+    }
+
+    // Event listener to close dropdowns on clicking outside
+    document.addEventListener("click", function (event) {
+      var isDropdown = event.target.closest(".dropdown");
+      var isAnchor = event.target.closest(".md-header__nav-links .custom-anchor:not(.dropdown .custom-anchor)");
+
+      // Check if the click is outside the header content
+      if (!isDropdown && !isAnchor) {
+        closeDropdowns();
+      }
+    });
+  });
+</script>
+
+    <!-- Color palette toggle -->
+    
+    
+    <style>
+  .md-header__button {
+    color: #EA7845;
+  }
+</style>
+
+
+<!-- Color palette toggle -->
+<form class="md-header__option" data-md-component="palette">
+  
+  
+  
+  
+  <input class="md-option" data-md-color-media="(prefers-color-scheme)"
+    data-md-color-scheme="default" data-md-color-primary="indigo"
+    data-md-color-accent="indigo"  aria-label="Switch to system preference"
+     type="radio" name="__palette" id="__palette_0" />
+  
+  <label class="md-header__button md-icon" title="Switch to system preference"
+    for="__palette_1" hidden>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+  </label>
+  
+  
+  
+  
+  
+  <input class="md-option" data-md-color-media="(prefers-color-scheme: light)"
+    data-md-color-scheme="default" data-md-color-primary="custom"
+    data-md-color-accent="custom"  aria-label="Switch to light mode"
+     type="radio" name="__palette" id="__palette_1" />
+  
+  <label class="md-header__button md-icon" title="Switch to light mode"
+    for="__palette_2" hidden>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+  </label>
+  
+  
+  
+  
+  
+  <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)"
+    data-md-color-scheme="slate" data-md-color-primary="custom"
+    data-md-color-accent="custom"  aria-label="Switch to dark mode"
+     type="radio" name="__palette" id="__palette_2" />
+  
+  <label class="md-header__button md-icon" title="Switch to dark mode"
+    for="__palette_0" hidden>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 2c-1.05 0-2.05.16-3 .46 4.06 1.27 7 5.04 7 9.54 0 4.5-2.94 8.27-7 9.54.95.3 1.95.46 3 .46a10 10 0 0 0 10-10A10 10 0 0 0 9 2Z"/></svg>
+  </label>
+  
+  
+</form>
+    
+    
+
+    <!-- User preference: color palette -->
+    
+    <script>
+    var palette = __md_get("__palette")
+    if (palette && palette.color) {
+  
+      /* Retrieve color palette for system preference */
+      if (palette.color.media === "(prefers-color-scheme)") {
+        var media = matchMedia("(prefers-color-scheme: light)")
+        var input = document.querySelector(media.matches
+          ? "[data-md-color-media='(prefers-color-scheme: light)']"
+          : "[data-md-color-media='(prefers-color-scheme: dark)']"
+        )
+  
+        /* Retrieve colors for system preference */
+        palette.color.media   = input.getAttribute("data-md-color-media"),
+        palette.color.scheme  = input.getAttribute("data-md-color-scheme"),
+        palette.color.primary = input.getAttribute("data-md-color-primary"),
+        palette.color.accent  = input.getAttribute("data-md-color-accent")
+      }
+  
+      /* Set color palette */
+      for (var [key, value] of Object.entries(palette.color))
+        document.body.setAttribute("data-md-color-" + key, value)
+    }
+  </script>
+    
+
+    <!-- Button to open search modal -->
+    
+    <label class="md-header__button md-icon" for="__search">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+    </label>
+    <!-- Search interface -->
+    <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+</header>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var header = document.querySelector('.md-header');
+    var search = document.querySelector('.md-search');
+    var navLinks = document.querySelector('.md-header__nav-links');
+    var searchResults = document.querySelector('.md-search-result');
+    var colorPaletteToggle = document.querySelector('.md-header__option');
+    var searchResultsMeta = document.querySelector('.md-search-result__meta');
+
+    var scrollThreshold = 50;
+
+    var isSearchOpen = false;
+
+    function handleScroll() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (scrollTop > scrollThreshold) {
+        header.classList.add('md-header--scroll');
+        header.style.borderBottom = 'none';
+        search.style.display = 'none';
+        searchResults.style.display = 'none';
+        if (colorPaletteToggle) {
+          colorPaletteToggle.style.display = 'none';
+        }
+        if (navLinks) {
+          navLinks.style.display = 'none';
+        }
+      } else {
+        header.classList.remove('md-header--scroll');
+        header.style.borderBottom = '';
+        search.style.display = '';
+        searchResults.style.display = '';
+        if (colorPaletteToggle) {
+          colorPaletteToggle.style.display = '';
+        }
+        if (navLinks) {
+          navLinks.style.display = isSearchOpen ? 'none' : '';
+        }
+      }
+    }
+
+    function handleNavLinksToggle(isSearchOpen) {
+      navLinks.style.display = isSearchOpen ? 'none' : '';
+    }
+
+    function handleSearchClick(event) {
+      var target = event.target;
+      isSearchOpen = target.classList.contains('focus-visible');
+      handleNavLinksToggle(isSearchOpen);
+
+    }
+
+    function handleSearchResultsMetaClick() {
+      event.stopPropagation();
+      isSearchOpen = false;
+      navLinks.style.display = 'none';
+    }
+
+    handleScroll();
+
+    // Event listener for searchResults click
+    searchResultsMeta.addEventListener("click", handleSearchResultsMetaClick);
+
+
+    search.addEventListener("click", handleSearchClick);
+
+
+    window.addEventListener("scroll", handleScroll);
+  });
+</script>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Multi Tenant Operator
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/stakater/mto-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Installation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/openshift.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    On OpenShift
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Configuring Tenants
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Configuring Tenants
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tenant/create-tenant.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating a Tenant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tenant/create-sandbox.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create Sandbox Namespaces for Tenant Users
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tenant/creating-namespaces.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Namespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tenant/assigning-metadata.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assigning metadata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tenant/tenant-hibernation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hibernating a Tenant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/tenant/deleting-tenant.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deleting a Tenant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Interacting with Templates
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Interacting with Templates
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/distributing-resources/copying-resources.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Copying Secrets and Configmaps across Tenant Namespaces via TGI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorials/distributing-resources/distributing-manifests.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Distributing Resources in Namespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    How-to Guides
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            How-to Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    RBAC
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            RBAC
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/custom-roles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changing the default access level for tenant owners
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/extend-default-roles.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extending the default access level for tenant members
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Resource Distribution
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Resource Distribution
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring Multi-Tenant Isolation with Network Policy Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/deploying-templates.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Distributing Resources in Namespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sync Resources Deployed by TemplateGroupInstance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Distributing Secrets Using Sealed Secrets Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying Private Helm Chart to Multiple Namespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/copying-resources.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Propagate Secrets from Parent to Descendant namespaces
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Console
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Console
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/keycloak.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setting Up User Access in Keycloak for MTO Console
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/custom-metrics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Metrics Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/graph-visualization.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph Visualization on MTO Console
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Integrations
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Integrations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enabling Multi-Tenancy in ArgoCD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring Vault in IntegrationConfig
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enabling DevWorkspace for Tenant's sandbox in OpenShift
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/mattermost.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Mattermost Teams for your tenant
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Offboarding
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Offboarding
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Uninstall via OperatorHub UI on OpenShift
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Explanation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Explanation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanation/logs-metrics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Metrics and Logs Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanation/template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Understanding and Utilizing Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanation/console.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MTO Console
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanation/templated-metadata-values.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Templated values in Labels and Annotations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanation/multi-tenancy-vault.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi-Tenancy in Vault
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CRDs API Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            CRDs API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="integration-config.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integration Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quota.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="tenant.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Tenant
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="template.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Template
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="template-instance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TemplateInstance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="template-group-instance.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TemplateGroupInstance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changelog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eula.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi Tenant Operator End User License Agreement
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="tenant">Tenant<a class="headerlink" href="#tenant" title="Permanent link">#</a></h1>
+<p>Cluster scoped resource:</p>
+<p>The smallest valid Tenant definition is given below (with just one field in its spec):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+</code></pre></div>
+<p>Here is a more detailed Tenant definition, explained below:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">owners</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">users</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dave@stakater.com</span>
+<span class="w">    </span><span class="nt">groups</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+<span class="w">  </span><span class="nt">editors</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">users</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jack@stakater.com</span>
+<span class="w">  </span><span class="nt">viewers</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">users</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">james@stakater.com</span>
+<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span><span class="w"> </span><span class="c1"># required</span>
+<span class="w">  </span><span class="nt">sandboxConfig</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">private</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">  </span><span class="nt">onDelete</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">cleanNamespaces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">cleanAppProject</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">sourceRepos</span><span class="p">:</span><span class="w"> </span><span class="c1"># required</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/stakater/gitops-config</span>
+<span class="w">    </span><span class="nt">appProject</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tronador.stakater.com</span>
+<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Environment</span>
+<span class="w">      </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="w">  </span><span class="nt">hibernation</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">23 * * * *</span><span class="w"> </span><span class="c1"># required</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">26 * * * *</span><span class="w"> </span><span class="c1"># required</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">    </span><span class="nt">withoutTenantPrefix</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">preview</span>
+<span class="w">  </span><span class="nt">commonMetadata</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="nt">stakater.com/team</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/infra=</span>
+<span class="w">  </span><span class="nt">specificMetadata</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">        </span><span class="nt">stakater.com/user</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dave</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">        </span><span class="nt">stakater.com/sandbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">namespaces</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha-dave-stakater-sandbox</span>
+<span class="w">  </span><span class="nt">templateInstances</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">spec</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networkpolicy</span><span class="w"> </span><span class="c1"># required</span>
+<span class="w">      </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">  </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="nt">parameters</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CIDR_IP</span>
+<span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.17.0.0/16&quot;</span>
+<span class="w">    </span><span class="nt">selector</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="c1"># optional</span>
+<span class="w">        </span><span class="nt">policy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">network-restriction</span>
+</code></pre></div>
+<ul>
+<li>
+<p>Tenant has 3 kinds of <code>Members</code>. Each member type should have different roles assigned to them. These roles are gotten from the <a href="integration-config.html#tenantroles">IntegrationConfig's TenantRoles field</a>. You can customize these roles to your liking, but by default the following configuration applies:</p>
+<ul>
+<li><code>Owners:</code> Users who will be owners of a tenant. They will have OpenShift admin-role assigned to their users, with additional access to create namespaces as well.</li>
+<li><code>Editors:</code> Users who will be editors of a tenant. They will have OpenShift edit-role assigned to their users.</li>
+<li><code>Viewers:</code> Users who will be viewers of a tenant. They will have OpenShift view-role assigned to their users.</li>
+</ul>
+</li>
+<li>
+<p><code>Users</code> can be linked to the tenant by specifying there username in <code>owners.users</code>, <code>editors.users</code> and <code>viewers.users</code> respectively.</p>
+</li>
+<li>
+<p><code>Groups</code> can be linked to the tenant by specifying the group name in <code>owners.groups</code>, <code>editors.groups</code> and <code>viewers.groups</code> respectively.</p>
+</li>
+<li>
+<p>Tenant will have a <code>Quota</code> to limit resource consumption.</p>
+</li>
+<li>
+<p><code>sandboxConfig</code> is used to configure the tenant user sandbox feature</p>
+<ul>
+<li>Setting <code>enabled</code> to <em>true</em> will create <em>sandbox namespaces</em> for owners and editors.</li>
+<li>Sandbox will follow the following naming convention <strong>{TenantName}</strong>-<strong>{UserName}</strong>-<em>sandbox</em>.</li>
+<li>In case of groups, the sandbox namespaces will be created for each member of the group.</li>
+<li>Setting <code>private</code> to <em>true</em> will make those sandboxes be only visible to the user they belong to. By default, sandbox namespaces are visible to all tenant members</li>
+</ul>
+</li>
+<li>
+<p><code>onDelete</code> is used to tell Multi Tenant Operator what to do when a Tenant is deleted.</p>
+<ul>
+<li><code>cleanNamespaces</code> if the value is set to <strong>true</strong> <em>MTO</em> deletes all <em>tenant namespaces</em> when a <code>Tenant</code> is deleted. Default value is <strong>false</strong>.</li>
+<li><code>cleanAppProject</code> will keep the generated ArgoCD AppProject if the value is set to <strong>false</strong>. By default, the value is <strong>true</strong>.</li>
+</ul>
+</li>
+<li>
+<p><code>argocd</code> is required if you want to create an ArgoCD AppProject for the tenant.</p>
+<ul>
+<li><code>sourceRepos</code> contain a list of repositories that point to your GitOps.</li>
+<li><code>appProject</code> is used to set the <code>clusterResourceWhitelist</code> and <code>namespaceResourceBlacklist</code> resources. If these are also applied via <code>IntegrationConfig</code> then those applied via Tenant CR will have higher precedence for given Tenant.</li>
+</ul>
+</li>
+<li>
+<p><code>hibernation</code> can be used to create a schedule during which the namespaces belonging to the tenant will be put to sleep. The values of the <code>sleepSchedule</code> and <code>wakeSchedule</code> fields must be a string in a cron format.</p>
+</li>
+<li>
+<p>Namespaces can also be created via tenant CR by <em>specifying names</em> in <code>namespaces</code>.</p>
+<ul>
+<li>Multi Tenant Operator will append <em>tenant name</em> prefix while creating namespaces if the list of namespaces is under the <code>withTenantPrefix</code> field, so the format will be <strong>{TenantName}</strong>-<strong>{Name}</strong>.</li>
+<li>Namespaces listed under the <code>withoutTenantPrefix</code> will be created with the given name. Writing down namespaces here that already exist within the cluster are not allowed.</li>
+<li><code>stakater.com/kind: {Name}</code> label will also be added to the namespaces.</li>
+</ul>
+</li>
+<li>
+<p><code>commonMetadata</code> can be used to distribute common labels and annotations among tenant namespaces.</p>
+<ul>
+<li><code>labels</code> distributes provided labels among all tenant namespaces</li>
+<li><code>annotations</code> distributes provided annotations among all tenant namespaces</li>
+</ul>
+</li>
+<li>
+<p><code>specificMetadata</code> can be used to distribute specific labels and annotations among specific tenant namespaces.</p>
+<ul>
+<li><code>labels</code> distributes given labels among specific tenant namespaces</li>
+<li><code>annotations</code> distributes given annotations among specific tenant namespaces</li>
+<li><code>namespaces</code> consists a list of specific tenant namespaces across which the labels and annotations will be distributed</li>
+</ul>
+</li>
+<li>
+<p>Tenant automatically deploys <code>template</code> resource mentioned in <code>templateInstances</code> to matching tenant namespaces.</p>
+<ul>
+<li><code>Template</code> resources are created in those <code>namespaces</code> which belong to a <code>tenant</code> and contain <code>matching labels</code>.</li>
+<li><code>Template</code> resources are created in all <code>namespaces</code> of a <code>tenant</code> if <code>selector</code> field is empty.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>⚠️ If same label or annotation key is being applied using different methods provided, then the highest precedence will be given to <code>specificMetadata</code> followed by <code>commonMetadata</code> and in the end would be the ones applied from <code>openshift.project.labels</code>/<code>openshift.project.annotations</code> in <code>IntegrationConfig</code></p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+<p>Copyright &copy; 2024 Stakater AB – <a href="#__consent">Change cookie settings</a></p>
+
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+  
+    
+  
+
+
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="github" checked>
+          <span class="task-list-indicator"></span>
+          GitHub
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+      <button type="reset" class="md-button md-button--primary">Reject</button>
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.ebd0bdb7.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
