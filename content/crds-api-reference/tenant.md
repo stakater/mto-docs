@@ -1,11 +1,9 @@
 # Tenant
 
-Cluster scoped resource:
-
-The smallest valid Tenant definition is given below (with just one field in its spec):
+A minimal Tenant definition requires only a quota field, essential for limiting resource consumption:
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1beta2
+apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
 metadata:
   name: alpha
@@ -13,118 +11,113 @@ spec:
   quota: small
 ```
 
-Here is a more detailed Tenant definition, explained below:
+For a more comprehensive setup, a detailed Tenant definition includes various configurations:
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1beta2
+apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
 metadata:
-  name: alpha
+  name: tenant-sample
 spec:
-  owners: # optional
-    users: # optional
-      - dave@stakater.com
-    groups: # optional
-      - alpha
-  editors: # optional
-    users: # optional
-      - jack@stakater.com
-  viewers: # optional
-    users: # optional
-      - james@stakater.com
-  quota: medium # required
-  sandboxConfig: # optional
-    enabled: true # optional
-    private: true # optional
-  onDelete: # optional
-    cleanNamespaces: false # optional
-    cleanAppProject: true # optional
-  argocd: # optional
-    sourceRepos: # required
-      - https://github.com/stakater/gitops-config
-    appProject: # optional
-      clusterResourceWhitelist: # optional
-        - group: tronador.stakater.com
-          kind: Environment
-      namespaceResourceBlacklist: # optional
-        - group: ""
-          kind: ConfigMap
-  hibernation: # optional
-    sleepSchedule: 23 * * * * # required
-    wakeSchedule: 26 * * * * # required
-  namespaces: # optional
-    withTenantPrefix: # optional
+  quota: small
+  accessControl:
+    owners:
+      users:
+        - kubeadmin
+      groups:
+        - admin-group
+    editors:
+      users:
+        - devuser1
+        - devuser2
+      groups:
+        - dev-group
+    viewers:
+      users:
+        - viewuser
+      groups:
+        - view-group
+  hibernation:
+  # UTC time
+    sleepSchedule: "20 * * * *"
+    wakeSchedule: "40 * * * *"        
+  namespaces:
+    sandboxes:
+      enabled: true
+      private: true
+    withoutTenantPrefix:
+      - analytics
+      - marketing
+    withTenantPrefix:
       - dev
-      - build
-    withoutTenantPrefix: # optional
-      - preview
-  commonMetadata: # optional
-    labels: # optional
-      stakater.com/team: alpha
-    annotations: # optional
-      openshift.io/node-selector: node-role.kubernetes.io/infra=
-  specificMetadata: # optional
-    - annotations: # optional
-        stakater.com/user: dave
-      labels: # optional
-        stakater.com/sandbox: true
-      namespaces: # optional
-        - alpha-dave-stakater-sandbox
-  templateInstances: # optional
-  - spec: # optional
-      template: networkpolicy # required
-      sync: true  # optional
-      parameters: # optional
-        - name: CIDR_IP
-          value: "172.17.0.0/16"
-    selector: # optional
-      matchLabels: # optional
-        policy: network-restriction
+      - staging
+    onDeletePurgeNamespaces: true
+    metadata:
+      common:
+        labels:
+          common-label: common-value
+        annotations:
+          common-annotation: common-value
+      sandbox:
+        labels:
+          sandbox-label: sandbox-value
+        annotations:
+          sandbox-annotation: sandbox-value
+      specific:
+        - namespaces:
+            - tenant-sample-dev
+          labels:
+            specific-label: specific-dev-value
+          annotations:
+            specific-annotation: specific-dev-value
+  desc: "This is a sample tenant setup for the v1beta3 version."
 ```
 
-* Tenant has 3 kinds of `Members`. Each member type should have different roles assigned to them. These roles are gotten from the [IntegrationConfig's TenantRoles field](integration-config.md#tenantroles). You can customize these roles to your liking, but by default the following configuration applies:
-    * `Owners:` Users who will be owners of a tenant. They will have OpenShift admin-role assigned to their users, with additional access to create namespaces as well.
-    * `Editors:` Users who will be editors of a tenant. They will have OpenShift edit-role assigned to their users.
-    * `Viewers:` Users who will be viewers of a tenant. They will have OpenShift view-role assigned to their users.
+## Access Control
 
-* `Users` can be linked to the tenant by specifying there username in `owners.users`, `editors.users` and `viewers.users` respectively.
+Structured access control is critical for managing roles and permissions within a tenant effectively. It divides users into three categories, each with customizable privileges. This design enables precise role-based access management.  
 
-* `Groups` can be linked to the tenant by specifying the group name in `owners.groups`, `editors.groups` and `viewers.groups` respectively.
+These roles are obtained from [IntegrationConfig's TenantRoles field](integration-config.md#tenantroles).
+  
+* `Owners`: Have full administrative rights, including resource management and namespace creation. Their roles are crucial for high-level management tasks.
+* `Editors`: Granted permissions to modify resources, enabling them to support day-to-day operations without full administrative access.
+* `Viewers`: Provide read-only access, suitable for oversight and auditing without the ability to alter resources.
 
-* Tenant will have a `Quota` to limit resource consumption.
+Users and groups are linked to these roles by specifying their usernames or group names in the respective fields under `owners`, `editors`, and `viewers`.
 
-* `sandboxConfig` is used to configure the tenant user sandbox feature
-    * Setting `enabled` to *true* will create *sandbox namespaces* for owners and editors.
-    * Sandbox will follow the following naming convention **{TenantName}**-**{UserName}**-*sandbox*.
+## Quota
+
+The `quota` field sets the resource limits for the tenant, such as CPU and memory usage, to prevent any single tenant from consuming a disproportionate amount of resources. This mechanism ensures efficient resource allocation and fosters fair usage practices across all tenants.  
+
+For more information on quotas, please refer [here](./quota.md).
+
+## Namespaces
+
+Controls the creation and management of namespaces within the tenant:
+
+* `sandboxes`:
+    * When enabled, sandbox namespaces are created with the following naming convention - **{TenantName}**-**{UserName}**-*sandbox*.
     * In case of groups, the sandbox namespaces will be created for each member of the group.
-    * Setting `private` to *true* will make those sandboxes be only visible to the user they belong to. By default, sandbox namespaces are visible to all tenant members
+    * Setting `private` to *true* will make the sandboxes visible only to the user they belong to. By default, sandbox namespaces are visible to all tenant members.
 
-* `onDelete` is used to tell Multi Tenant Operator what to do when a Tenant is deleted.
-    * `cleanNamespaces` if the value is set to **true** *MTO* deletes all *tenant namespaces* when a `Tenant` is deleted. Default value is **false**.
-    * `cleanAppProject` will keep the generated ArgoCD AppProject if the value is set to **false**. By default, the value is **true**.
+* `withoutTenantPrefix`: Lists the namespaces to be created without automatically prefixing them with the tenant name, useful for shared or common resources.
+* `withTenantPrefix`: Namespaces listed here will be prefixed with the tenant name, ensuring easy identification and isolation.
+* `onDeletePurgeNamespaces`: Determines whether namespaces associated with the tenant should be deleted upon the tenant's deletion, enabling clean up and resource freeing.
+* `metadata`: Configures metadata like labels and annotations that are applied to namespaces managed by the tenant:
+    * `common`: Applies specified labels and annotations across all namespaces within the tenant, ensuring consistent metadata for resources and workloads.
+    * `sandbox`: Special metadata for sandbox namespaces, which can include templated annotations or labels for dynamic information.
+        * We also support the use of a templating mechanism within annotations, specifically allowing the inclusion of the tenant's username through the placeholder `{{ TENANT.USERNAME }}`. This template can be utilized to dynamically insert the tenant's username value into annotations, for example, as `username: {{ TENANT.USERNAME }}`.
+    * `specific`: Allows applying unique labels and annotations to specified tenant namespaces, enabling custom configurations for particular workloads or environments.
 
-* `argocd` is required if you want to create an ArgoCD AppProject for the tenant.
-    * `sourceRepos` contain a list of repositories that point to your GitOps.
-    * `appProject` is used to set the `clusterResourceWhitelist` and `namespaceResourceBlacklist` resources. If these are also applied via `IntegrationConfig` then those applied via Tenant CR will have higher precedence for given Tenant.
+## Hibernation
 
-* `hibernation` can be used to create a schedule during which the namespaces belonging to the tenant will be put to sleep. The values of the `sleepSchedule` and `wakeSchedule` fields must be a string in a cron format.
+`hibernation` allows for the scheduling of inactive periods for namespaces associated with the tenant, effectively putting them into a "sleep" mode. This capability is designed to conserve resources during known periods of inactivity.
 
-* Namespaces can also be created via tenant CR by *specifying names* in `namespaces`.
-    * Multi Tenant Operator will append *tenant name* prefix while creating namespaces if the list of namespaces is under the `withTenantPrefix` field, so the format will be **{TenantName}**-**{Name}**.
-    * Namespaces listed under the `withoutTenantPrefix` will be created with the given name. Writing down namespaces here that already exist within the cluster are not allowed.
-    * `stakater.com/kind: {Name}` label will also be added to the namespaces.
+* Configuration for this feature involves two key fields, `sleepSchedule` and `wakeSchedule`, both of which accept strings formatted according to cron syntax.
+* These schedules dictate when the namespaces will automatically transition into and out of hibernation, aligning resource usage with actual operational needs.
 
-* `commonMetadata` can be used to distribute common labels and annotations among tenant namespaces.
-    * `labels` distributes provided labels among all tenant namespaces
-    * `annotations` distributes provided annotations among all tenant namespaces
+## Description
 
-* `specificMetadata` can be used to distribute specific labels and annotations among specific tenant namespaces.
-    * `labels` distributes given labels among specific tenant namespaces
-    * `annotations` distributes given annotations among specific tenant namespaces
-    * `namespaces` consists a list of specific tenant namespaces across which the labels and annotations will be distributed
+`desc` provides a human-readable description of the tenant, aiding in documentation and at-a-glance understanding of the tenant's purpose and configuration.
 
-* Tenant automatically deploys `template` resource mentioned in `templateInstances` to matching tenant namespaces.
-    * `Template` resources are created in those `namespaces` which belong to a `tenant` and contain `matching labels`.
-    * `Template` resources are created in all `namespaces` of a `tenant` if `selector` field is empty.
-
-> ⚠️ If same label or annotation key is being applied using different methods provided, then the highest precedence will be given to `specificMetadata` followed by `commonMetadata` and in the end would be the ones applied from `openshift.project.labels`/`openshift.project.annotations` in `IntegrationConfig`
+> ⚠️ If same label or annotation key is being applied using different methods provided, then the highest precedence will be given to `namespaces.metadata.specific` followed by `namespaces.metadata.common` and in the end would be the ones applied from `openshift.project.labels`/`openshift.project.annotations` in `IntegrationConfig`

@@ -1,6 +1,8 @@
 # Hibernating a Tenant
 
-## Hibernating Namespaces
+Implementing hibernation for tenants' namespaces efficiently manages cluster resources by temporarily reducing workload activities during off-peak hours. This guide demonstrates how to configure hibernation schedules for tenant namespaces, leveraging Tenant and ResourceSupervisor for precise control.
+
+## Configuring Hibernation for Tenant Namespaces
 
 You can manage workloads in your cluster with MTO by implementing a hibernation schedule for your tenants.
 Hibernation downsizes the running Deployments and StatefulSets in a tenant’s namespace according to a defined cron schedule. You can set a hibernation schedule for your tenants by adding the ‘spec.hibernation’ field to the tenant's respective Custom Resource.
@@ -96,26 +98,23 @@ Bill is a cluster administrator who wants to free up unused cluster resources at
 First, Bill creates a tenant with the `hibernation` schedules mentioned in the spec, or adds the hibernation field to an existing tenant:
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1beta2
+apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
 metadata:
   name: sigma
 spec:
   hibernation:
-    sleepSchedule: 0 20 * * 1-5
-    wakeSchedule: 0 8 * * 1-5
+    sleepSchedule: "0 20 * * 1-5"  # Sleep at 8 PM on weekdays
+    wakeSchedule: "0 8 * * 1-5"    # Wake at 8 AM on weekdays
   owners:
     users:
-      - user
-  editors:
-    users:
-      - user1
+      - user@example.com
   quota: medium
   namespaces:
     withoutTenantPrefix:
-      - build
-      - stage
       - dev
+      - stage
+      - build
 ```
 
 The schedules above will put all the `Deployments` and `StatefulSets` within the tenant's namespaces to sleep, by reducing their pod count to 0 at 8 PM every weekday. At 8 AM on weekdays, the namespaces will then wake up by restoring their applications' previous pod counts.
