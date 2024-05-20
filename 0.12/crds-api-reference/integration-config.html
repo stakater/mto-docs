@@ -2342,6 +2342,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#custom-pricing-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Pricing Model
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2776,6 +2785,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-pricing-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Pricing Model
+    </span>
+  </a>
   
 </li>
         
@@ -3306,6 +3324,25 @@
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
 <span class="l l-Scalar l-Scalar-Plain">}</span>
 </code></pre></div>
+<h3 id="custom-pricing-model">Custom Pricing Model<a class="headerlink" href="#custom-pricing-model" title="Permanent link">#</a></h3>
+<p>You can modify IntegrationConfig to customise the default pricing model. Here is what you need at <code>IntegrationConfig.Spec.components</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
+<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
+<span class="w">    </span><span class="c1"># add below and override any default value</span>
+<span class="w">    </span><span class="c1"># you can also remove the ones you do not need</span>
+<span class="w">    </span><span class="nt">customPricingModel</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">CPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.031611&quot;</span>
+<span class="w">        </span><span class="nt">spotCPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.006655&quot;</span>
+<span class="w">        </span><span class="nt">RAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.004237&quot;</span>
+<span class="w">        </span><span class="nt">spotRAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.000892&quot;</span>
+<span class="w">        </span><span class="nt">GPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.95&quot;</span>
+<span class="w">        </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.00005479452&quot;</span>
+<span class="w">        </span><span class="nt">zoneNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">        </span><span class="nt">regionNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">        </span><span class="nt">internetNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.12&quot;</span>
+</code></pre></div>
+<p>After modifying your default IntegrationConfig in <code>multi-tenant-operator</code> namespace, a configmap named <code>opencost-custom-pricing</code> will be updated. You will be able to see updated pricing info in <code>mto-console</code>.</p>
 
 
 
