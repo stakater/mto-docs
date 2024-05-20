@@ -143,7 +143,7 @@ spec:
 
 ## License Configuration
 
-We offer a free license with installation and you can create max 2 [Tenants](../tutorials/tenant/create-tenant.md) with it.
+We offer a free license with installation, and you can create max 2 [Tenants](../tutorials/tenant/create-tenant.md) with it.
 
 We offer a paid license as well. You need to have a configmap `license` created in MTO's namespace (multi-tenant-operator). To get this configmap, you can contact [`sales@stakater.com`](mailto:sales@stakater.com). It would look like this:
 
