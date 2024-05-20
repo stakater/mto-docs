@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/images/logo-light.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.23">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.24">
     
     
       
@@ -1115,7 +1115,7 @@
         
   
   <span class="md-ellipsis">
-    Creating Namespaces
+    Creating Namespaces through Tenant Custom Resource
   </span>
   
 
@@ -1136,7 +1136,7 @@
         
   
   <span class="md-ellipsis">
-    Assigning metadata
+    Assigning Metadata in Tenant Custom Resources
   </span>
   
 
@@ -1178,7 +1178,7 @@
         
   
   <span class="md-ellipsis">
-    Deleting a Tenant
+    Deleting a Tenant While Preserving Resources
   </span>
   
 
@@ -2437,16 +2437,20 @@ small<span class="w">      </span>Active<span class="w">   </span>3m
 </code></pre></div>
 <p>Bill then proceeds to create a tenant for Anna, while also linking the newly created <code>Quota</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@stakater.com</span>
 <span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="w">  </span><span class="nt">sandbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="l l-Scalar l-Scalar-Plain">EOF</span>
 </code></pre></div>
 <p>Now that the quota is linked with Anna's tenant, Anna can create any resource within the values of resource quota and limit range.</p>
@@ -2472,17 +2476,20 @@ Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> 
 </code></pre></div>
 <p>Once the quota is created, Bill will create the tenant and set the quota field to the one he created.</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span>
-<span class="w">  </span><span class="nt">sandbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="l l-Scalar l-Scalar-Plain">EOF</span>
 </code></pre></div>
 <p>Now, the combined storage used by all tenant namespaces will not exceed <code>50Gi</code>.</p>
@@ -2502,16 +2509,20 @@ Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> 
 </code></pre></div>
 <p>Once the quota is created, Bill will create the tenant and set the quota field to the one he created.</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dave@aurora.org</span>
 <span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="w">  </span><span class="nt">sandbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="l l-Scalar l-Scalar-Plain">EOF</span>
 </code></pre></div>
 <p>Now, the combined storage provisioned from StorageClass <code>stakater</code> used by all tenant namespaces will not exceed <code>20Gi</code>.</p>
@@ -2641,7 +2652,7 @@ Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> 
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.ebd0bdb7.min.js"></script>
+      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
