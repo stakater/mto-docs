@@ -2326,7 +2326,7 @@
 <span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceQuota</span>
 <span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
 </code></pre></div>
-<p>The above configuration will whitelist the <code>EnvironmentProvisioner</code> CRD and blacklist the <code>ResourceQuota</code> resource. Also note that the <code>namespace</code> field is mandatory and should be set to the namespace where the ArgoCD is deployed.</p>
+<p>The above configuration will allow the <code>EnvironmentProvisioner</code> CRD and blacklist the <code>ResourceQuota</code> resource. Also note that the <code>namespace</code> field is mandatory and should be set to the namespace where the ArgoCD is deployed.</p>
 <p>Every Extension CR is associated with a specific Tenant. Here's an example of an Extension CR that is associated with a Tenant named <code>tenant-sample</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Extensions</span>
