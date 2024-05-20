@@ -39,22 +39,23 @@ Now, at this point, a user will be authenticated to the MTO Console. But in orde
 * Open Tenant CR: In the OpenShift cluster, locate and open the Tenant Custom Resource (CR) that you wish to give access to. You will see a YAML file similar to the following example:
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1beta2
+apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
 metadata:
   name: arsenal
 spec:
   quota: small
-  owners:
-    users:
+  accessControl:
+    owners:
+      users:
         - gabriel@arsenal.com
-  groups:
-    - arsenal
-  editors:
-    users:
+      groups:
+        - arsenal
+    editors:
+      users:
         - hakimi@arsenal.com
-  viewers:
-    users:
+    viewers:
+      users:
         - neymar@arsenal.com
 ```
 
