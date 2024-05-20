@@ -1,6 +1,6 @@
 # Creating a Tenant
 
-Bill, a cluster admin, has been tasked by the CTO of NordMart to set up a new tenant for Anna's team. Following the request, Bill proceeds to create a new tenant named bluesky in the Kubernetes cluster.
+Bill, a cluster admin, has been tasked by the CTO of Nordmart to set up a new tenant for Anna's team. Following the request, Bill proceeds to create a new tenant named bluesky in the Kubernetes cluster.
 
 ## Setting Up the Tenant
 
