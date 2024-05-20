@@ -20,7 +20,7 @@ Before you create an Extension CR, you need to modify the Integration Config res
       namespace: openshift-operators
 ```
 
-The above configuration will whitelist the `EnvironmentProvisioner` CRD and blacklist the `ResourceQuota` resource. Also note that the `namespace` field is mandatory and should be set to the namespace where the ArgoCD is deployed.
+The above configuration will allow the `EnvironmentProvisioner` CRD and blacklist the `ResourceQuota` resource. Also note that the `namespace` field is mandatory and should be set to the namespace where the ArgoCD is deployed.
 
 Every Extension CR is associated with a specific Tenant. Here's an example of an Extension CR that is associated with a Tenant named `tenant-sample`:
 

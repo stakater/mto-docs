@@ -2,7 +2,6 @@
 
 Bill, tasked with structuring namespaces for different environments within a tenant, utilizes the Tenant Custom Resource (CR) to streamline this process efficiently. Here's how Bill can orchestrate the creation of `dev`, `build`, and `production` environments for the tenant members directly through the Tenant CR.
 
-
 ## Strategy for Namespace Creation
 
 To facilitate the environment setup, Bill decides to categorize the namespaces based on their association with the tenant's name. He opts to use the `namespaces.withTenantPrefix` field for namespaces that should carry the tenant name as a prefix, enhancing clarity and organization. For namespaces that do not require a tenant name prefix, Bill employs the `namespaces.withoutTenantPrefix` field.
