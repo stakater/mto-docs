@@ -56,7 +56,6 @@ yes
 
 Anna is confirmed to have the ability to create namespaces within the tenant's scope.
 
-
 **Cluster Resources Access:**
 
 ```bash
