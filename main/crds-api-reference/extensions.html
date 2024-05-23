@@ -8,26 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/main/index.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/main/crds-api-reference/extensions.html">
       
       
+        <link rel="prev" href="../explanation/multi-tenancy-vault.html">
       
-        <link rel="next" href="installation/openshift.html">
+      
+        <link rel="next" href="integration-config.html">
       
       
-      <link rel="icon" href="assets/images/favicon.svg">
+      <link rel="icon" href="../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.24">
     
     
       
-        <title>Multi Tenant Operator</title>
+        <title>Extensions - Multi Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -65,7 +67,7 @@
     
     
     
-   <link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -74,7 +76,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -93,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction" class="md-skip">
+        <a href="#extensions" class="md-skip">
           Skip to content
         </a>
       
@@ -135,7 +137,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="index.html" title="Multi Tenant Operator"
+    <a href="../index.html" title="Multi Tenant Operator"
       class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       <!-- 
   
@@ -155,10 +157,10 @@
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="assets/images/logo-light.png#only-light" alt="logo" />
+          <img class="md-header__logo_light" src="../assets/images/logo-light.png#only-light" alt="logo" />
           
           
-          <img class="md-header__logo_dark" src="assets/images/logo-dark.png#only-dark" alt="logo" />
+          <img class="md-header__logo_dark" src="../assets/images/logo-dark.png#only-dark" alt="logo" />
           
           
           <div class="header-site-name">
@@ -877,7 +879,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -904,30 +906,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Introduction
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="index.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -936,172 +918,6 @@
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
-    <span class="md-ellipsis">
-      Features
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kubernetes-multitenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Kubernetes Multitenancy
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hashicorp-vault-multitenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      HashiCorp Vault Multitenancy
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#argocd-multitenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      ArgoCD Multitenancy
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resource-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resource Management
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#templates-and-template-distribution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Templates and Template distribution
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mto-console" class="md-nav__link">
-    <span class="md-ellipsis">
-      MTO Console
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#showback" class="md-nav__link">
-    <span class="md-ellipsis">
-      Showback
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hibernation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hibernation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mattermost-multitenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mattermost Multitenancy
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#remote-development-namespaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      Remote Development Namespaces
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cross-namespace-resource-distribution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cross Namespace Resource Distribution
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#self-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      Self-Service
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#everything-as-codegitops-ready" class="md-nav__link">
-    <span class="md-ellipsis">
-      Everything as Code/GitOps Ready
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#preventing-clusters-sprawl" class="md-nav__link">
-    <span class="md-ellipsis">
-      Preventing Clusters Sprawl
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#native-experience" class="md-nav__link">
-    <span class="md-ellipsis">
-      Native Experience
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1148,7 +964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="installation/openshift.html" class="md-nav__link">
+      <a href="../installation/openshift.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1246,7 +1062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/tenant/create-tenant.html" class="md-nav__link">
+      <a href="../tutorials/tenant/create-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1267,7 +1083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/tenant/create-sandbox.html" class="md-nav__link">
+      <a href="../tutorials/tenant/create-sandbox.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1288,7 +1104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/tenant/creating-namespaces.html" class="md-nav__link">
+      <a href="../tutorials/tenant/creating-namespaces.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1309,7 +1125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/tenant/assigning-metadata.html" class="md-nav__link">
+      <a href="../tutorials/tenant/assigning-metadata.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1330,7 +1146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/tenant/tenant-hibernation.html" class="md-nav__link">
+      <a href="../tutorials/tenant/tenant-hibernation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1351,7 +1167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/tenant/deleting-tenant.html" class="md-nav__link">
+      <a href="../tutorials/tenant/deleting-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1415,7 +1231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/distributing-resources/copying-resources.html" class="md-nav__link">
+      <a href="../tutorials/distributing-resources/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1436,7 +1252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/distributing-resources/distributing-manifests.html" class="md-nav__link">
+      <a href="../tutorials/distributing-resources/distributing-manifests.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1542,7 +1358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="how-to-guides/custom-roles.html" class="md-nav__link">
+      <a href="../how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1563,7 +1379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="how-to-guides/extend-default-roles.html" class="md-nav__link">
+      <a href="../how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1627,7 +1443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
+      <a href="../how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1648,7 +1464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="how-to-guides/deploying-templates.html" class="md-nav__link">
+      <a href="../how-to-guides/deploying-templates.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1669,7 +1485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1690,7 +1506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1711,7 +1527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1732,7 +1548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="how-to-guides/copying-resources.html" class="md-nav__link">
+      <a href="../how-to-guides/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1796,7 +1612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="how-to-guides/keycloak.html" class="md-nav__link">
+      <a href="../how-to-guides/keycloak.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1817,7 +1633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="how-to-guides/custom-metrics.html" class="md-nav__link">
+      <a href="../how-to-guides/custom-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1838,7 +1654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="how-to-guides/graph-visualization.html" class="md-nav__link">
+      <a href="../how-to-guides/graph-visualization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1902,7 +1718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1923,7 +1739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1944,7 +1760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1965,7 +1781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="how-to-guides/mattermost.html" class="md-nav__link">
+      <a href="../how-to-guides/mattermost.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2029,7 +1845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
+      <a href="../how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2100,7 +1916,7 @@
   
   
     <li class="md-nav__item">
-      <a href="explanation/logs-metrics.html" class="md-nav__link">
+      <a href="../explanation/logs-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2121,7 +1937,7 @@
   
   
     <li class="md-nav__item">
-      <a href="explanation/template.html" class="md-nav__link">
+      <a href="../explanation/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2142,7 +1958,7 @@
   
   
     <li class="md-nav__item">
-      <a href="explanation/console.html" class="md-nav__link">
+      <a href="../explanation/console.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2163,7 +1979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="explanation/templated-metadata-values.html" class="md-nav__link">
+      <a href="../explanation/templated-metadata-values.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2184,7 +2000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="explanation/multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../explanation/multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2209,17 +2025,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -2233,7 +2051,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             CRDs API Reference
@@ -2244,10 +2062,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="crds-api-reference/extensions.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Extensions
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="extensions.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -2256,6 +2094,37 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-argocd-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring ArgoCD Integration
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2268,7 +2137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="crds-api-reference/integration-config.html" class="md-nav__link">
+      <a href="integration-config.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2289,7 +2158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="crds-api-reference/quota.html" class="md-nav__link">
+      <a href="quota.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2310,7 +2179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="crds-api-reference/tenant.html" class="md-nav__link">
+      <a href="tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2331,7 +2200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="crds-api-reference/template.html" class="md-nav__link">
+      <a href="template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2352,7 +2221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="crds-api-reference/template-instance.html" class="md-nav__link">
+      <a href="template-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2373,7 +2242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="crds-api-reference/template-group-instance.html" class="md-nav__link">
+      <a href="template-group-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2401,7 +2270,7 @@
   
   
     <li class="md-nav__item">
-      <a href="changelog.html" class="md-nav__link">
+      <a href="../changelog.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2421,7 +2290,7 @@
   
   
     <li class="md-nav__item">
-      <a href="eula.html" class="md-nav__link">
+      <a href="../eula.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2441,7 +2310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="troubleshooting.html" class="md-nav__link">
+      <a href="../troubleshooting.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2483,144 +2352,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
+  <a href="#configuring-argocd-integration" class="md-nav__link">
     <span class="md-ellipsis">
-      Features
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kubernetes-multitenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Kubernetes Multitenancy
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hashicorp-vault-multitenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      HashiCorp Vault Multitenancy
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#argocd-multitenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      ArgoCD Multitenancy
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resource-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resource Management
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#templates-and-template-distribution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Templates and Template distribution
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mto-console" class="md-nav__link">
-    <span class="md-ellipsis">
-      MTO Console
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#showback" class="md-nav__link">
-    <span class="md-ellipsis">
-      Showback
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hibernation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hibernation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mattermost-multitenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mattermost Multitenancy
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#remote-development-namespaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      Remote Development Namespaces
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cross-namespace-resource-distribution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cross Namespace Resource Distribution
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#self-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      Self-Service
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#everything-as-codegitops-ready" class="md-nav__link">
-    <span class="md-ellipsis">
-      Everything as Code/GitOps Ready
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#preventing-clusters-sprawl" class="md-nav__link">
-    <span class="md-ellipsis">
-      Preventing Clusters Sprawl
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#native-experience" class="md-nav__link">
-    <span class="md-ellipsis">
-      Native Experience
+      Configuring ArgoCD Integration
     </span>
   </a>
   
@@ -2644,82 +2378,58 @@
   
 
 
-<h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h1>
-<p>Kubernetes is designed to support a single tenant platform; OpenShift brings some improvements with its "Secure by default" concepts but it is still very complex to design and orchestrate all the moving parts involved in building a secure multi-tenant platform hence making it difficult for cluster admins to host multi-tenancy in a single OpenShift cluster. If multi-tenancy is achieved by sharing a cluster, it can have many advantages, e.g. efficient resource utilization, less configuration effort and easier sharing of cluster-internal resources among different tenants. OpenShift and all managed applications provide enough primitive resources to achieve multi-tenancy, but it requires professional skills and deep knowledge of OpenShift.</p>
-<p>This is where Multi Tenant Operator (MTO) comes in and provides easy to manage/configure multi-tenancy. MTO provides wrappers around OpenShift resources to provide a higher level of abstraction to users. With MTO admins can configure Network and Security Policies, Resource Quotas, Limit Ranges, RBAC for every tenant, which are automatically inherited by all the namespaces and users in the tenant. Depending on the user's role, they are free to operate within their tenants in complete autonomy.
-MTO supports initializing new tenants using GitOps management pattern. Changes can be managed via PRs just like a typical GitOps workflow, so tenants can request changes, add new users, or remove users.</p>
-<p>The idea of MTO is to use namespaces as independent sandboxes, where tenant applications can run independently of each other. Cluster admins shall configure MTO's custom resources, which then become a self-service system for tenants. This minimizes the efforts of the cluster admins.</p>
-<p>MTO enables cluster admins to host multiple tenants in a single OpenShift Cluster, i.e.:</p>
+<h1 id="extensions">Extensions<a class="headerlink" href="#extensions" title="Permanent link">#</a></h1>
+<p>Extensions in MTO enhance its functionality by allowing integration with external services. Currently, MTO supports integration with ArgoCD, enabling you to synchronize your repositories and configure AppProjects directly through MTO. Future updates will include support for additional integrations.</p>
+<h2 id="configuring-argocd-integration">Configuring ArgoCD Integration<a class="headerlink" href="#configuring-argocd-integration" title="Permanent link">#</a></h2>
+<p>Let us take a look at how you can create an Extension CR and integrate ArgoCD with MTO.</p>
+<p>Before you create an Extension CR, you need to modify the Integration Config resource and add the ArgoCD configuration.</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">integrations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tronador.stakater.com</span>
+<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvironmentProvisioner</span>
+<span class="w">      </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceQuota</span>
+<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
+</code></pre></div>
+<p>The above configuration will allow the <code>EnvironmentProvisioner</code> CRD and blacklist the <code>ResourceQuota</code> resource. Also note that the <code>namespace</code> field is mandatory and should be set to the namespace where the ArgoCD is deployed.</p>
+<p>Every Extension CR is associated with a specific Tenant. Here's an example of an Extension CR that is associated with a Tenant named <code>tenant-sample</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Extensions</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions-sample</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">tenantName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
+<span class="w">  </span><span class="nt">argoCDConfig</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">purgeAppProjectOnDelete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">sourceRepos</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;github.com/stakater/repo&quot;</span>
+<span class="w">    </span><span class="nt">appProject</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Pod&quot;</span>
+<span class="w">      </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v1&quot;</span>
+<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ConfigMap&quot;</span>
+</code></pre></div>
+<p>The above CR creates an Extension for the Tenant named <code>tenant-sample</code> with the following configurations:</p>
 <ul>
-<li>Share an <strong>OpenShift cluster</strong> with multiple tenants</li>
-<li>Share <strong>managed applications</strong> with multiple tenants</li>
-<li>Configure and manage tenants and their sandboxes</li>
+<li><code>purgeAppProjectOnDelete</code>: If set to <code>true</code>, the AppProject will be deleted when the Extension is deleted.</li>
+<li><code>sourceRepos</code>: List of repositories to sync with ArgoCD.</li>
+<li><code>appProject</code>: Configuration for the AppProject.<ul>
+<li><code>clusterResourceWhitelist</code>: List of cluster-scoped resources to sync.</li>
+<li><code>namespaceResourceBlacklist</code>: List of namespace-scoped resources to ignore.</li>
 </ul>
-<p>MTO is also <a href="https://catalog.redhat.com/software/operators/detail/618fa05e3adfdfc43f73b126">OpenShift certified</a></p>
-<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">#</a></h2>
-<p>The major features of Multi Tenant Operator (MTO) are described below.</p>
-<h2 id="kubernetes-multitenancy">Kubernetes Multitenancy<a class="headerlink" href="#kubernetes-multitenancy" title="Permanent link">#</a></h2>
-<p>RBAC is one of the most complicated and error-prone parts of Kubernetes. With Multi Tenant Operator, you can rest assured that RBAC is configured with the "least privilege" mindset and all rules are kept up-to-date with zero manual effort.</p>
-<p>Multi Tenant Operator binds existing ClusterRoles to the Tenant's Namespaces used for managing access to the Namespaces and the resources they contain. You can also modify the default roles or create new roles to have full control and customize access control for your users and teams.</p>
-<p>Multi Tenant Operator is also able to leverage existing OpenShift groups or external groups synced from 3rd party identity management systems, for maintaining Tenant membership in your organization's current user management system.</p>
-<h2 id="hashicorp-vault-multitenancy">HashiCorp Vault Multitenancy<a class="headerlink" href="#hashicorp-vault-multitenancy" title="Permanent link">#</a></h2>
-<p>Multi Tenant Operator extends the tenants permission model to HashiCorp Vault where it can create Vault paths and greatly ease the overhead of managing RBAC in Vault. Tenant users can manage their own secrets without the concern of someone else having access to their Vault paths.</p>
-<p>More details on <a href="how-to-guides/enabling-multi-tenancy-vault.html">Vault Multitenancy</a></p>
-<h2 id="argocd-multitenancy">ArgoCD Multitenancy<a class="headerlink" href="#argocd-multitenancy" title="Permanent link">#</a></h2>
-<p>Multi Tenant Operator is not only providing strong Multi Tenancy for the OpenShift internals but also extends the tenants permission model to ArgoCD were it can provision AppProjects and Allowed Repositories for your tenants greatly ease the overhead of managing RBAC in ArgoCD.</p>
-<p>More details on <a href="how-to-guides/enabling-multi-tenancy-argocd.html">ArgoCD Multitenancy</a></p>
-<h2 id="resource-management">Resource Management<a class="headerlink" href="#resource-management" title="Permanent link">#</a></h2>
-<p>Multi Tenant Operator provides a mechanism for defining Resource Quotas at the tenant scope, meaning all namespaces belonging to a particular tenant share the defined quota, which is why you are able to safely enable dev teams to self serve their namespaces whilst being confident that they can only use the resources allocated based on budget and business needs.</p>
-<p>More details on <a href="crds-api-reference/quota.html">Quota</a></p>
-<h2 id="templates-and-template-distribution">Templates and Template distribution<a class="headerlink" href="#templates-and-template-distribution" title="Permanent link">#</a></h2>
-<p>Multi Tenant Operator allows admins/users to define templates for namespaces, so that others can instantiate these templates to provision namespaces with batteries loaded. A template could pre-populate a namespace for certain use cases or with basic tooling required. Templates allow you to define Kubernetes manifests, Helm chart and more to be applied when the template is used to create a namespace.</p>
-<p>It also allows the parameterizing of these templates for flexibility and ease of use. It also provides the option to enforce the presence of templates in one tenant's or all the tenants' namespaces for configuring secure defaults.</p>
-<p>Common use cases for namespace templates may be:</p>
-<ul>
-<li>Adding networking policies for multitenancy</li>
-<li>Adding development tooling to a namespace</li>
-<li>Deploying pre-populated databases with test data</li>
-<li>Injecting new namespaces with optional credentials such as image pull secrets</li>
+</li>
 </ul>
-<p>More details on <a href="how-to-guides/deploying-templates.html">Distributing Template Resources</a></p>
-<h2 id="mto-console">MTO Console<a class="headerlink" href="#mto-console" title="Permanent link">#</a></h2>
-<p>Multi Tenant Operator Console is a comprehensive user interface designed for both administrators and tenant users to manage multi-tenant environments. The MTO Console simplifies the complexity involved in handling various aspects of tenants and their related resources. It serves as a centralized monitoring hub, offering insights into the current state of tenants, namespaces, templates and quotas. It is designed to provide a quick summary/snapshot of MTO's status and facilitates easier interaction with various resources such as tenants, namespaces, templates, and quotas.</p>
-<p>More details on <a href="explanation/console.html">Console</a></p>
-<h2 id="showback">Showback<a class="headerlink" href="#showback" title="Permanent link">#</a></h2>
-<p>The showback functionality in Multi Tenant Operator (MTO) Console is a significant feature designed to enhance the management of resources and costs in multi-tenant Kubernetes environments. This feature focuses on accurately tracking the usage of resources by each tenant, and/or namespace, enabling organizations to monitor and optimize their expenditures.
-Furthermore, this functionality supports financial planning and budgeting by offering a clear view of operational costs associated with each tenant. This can be particularly beneficial for organizations that chargeback internal departments or external clients based on resource usage, ensuring that billing is fair and reflective of actual consumption.</p>
-<p>More details on <a href="explanation/console.html#showback">Showback</a></p>
-<h2 id="hibernation">Hibernation<a class="headerlink" href="#hibernation" title="Permanent link">#</a></h2>
-<p>Multi Tenant Operator can downscale Deployments and StatefulSets in a tenant's Namespace according to a defined  sleep schedule. The Deployments and StatefulSets are brought back to their required replicas according to the provided wake schedule.</p>
-<p>More details on <a href="tutorials/tenant/tenant-hibernation.html#hibernating-a-tenant">Hibernation</a></p>
-<h2 id="mattermost-multitenancy">Mattermost Multitenancy<a class="headerlink" href="#mattermost-multitenancy" title="Permanent link">#</a></h2>
-<p>Multi Tenant Operator can manage Mattermost to create Teams for tenant users. All tenant users get a unique team and a list of predefined channels gets created. When a user is removed from the tenant, the user is also removed from the Mattermost team corresponding to tenant.</p>
-<p>More details on <a href="how-to-guides/mattermost.html">Mattermost</a></p>
-<h2 id="remote-development-namespaces">Remote Development Namespaces<a class="headerlink" href="#remote-development-namespaces" title="Permanent link">#</a></h2>
-<p>Multi Tenant Operator can be configured to automatically provision a namespace in the cluster for every member of the specific tenant, that will also be preloaded with any selected templates and consume the same pool of resources from the tenants quota creating safe remote dev namespaces that teams can use as scratch namespace for rapid prototyping and development. So, every developer gets a Kubernetes-based cloud development environment that feel like working on localhost.</p>
-<p>More details on <a href="tutorials/tenant/create-sandbox.html">Sandboxes</a></p>
-<h2 id="cross-namespace-resource-distribution">Cross Namespace Resource Distribution<a class="headerlink" href="#cross-namespace-resource-distribution" title="Permanent link">#</a></h2>
-<p>Multi Tenant Operator supports cloning of secrets and configmaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide reference to secrets and configmaps. It uses a template group instance to distribute those secrets and namespaces in matching namespaces, even if namespaces belong to different tenants. If template instance is used then the resources will only be mapped if namespaces belong to same tenant.</p>
-<p>More details on <a href="tutorials/distributing-resources/copying-resources.html">Copying Secrets and ConfigMaps</a></p>
-<h2 id="self-service">Self-Service<a class="headerlink" href="#self-service" title="Permanent link">#</a></h2>
-<p>With Multi Tenant Operator, you can empower your users to safely provision namespaces for themselves and their teams (typically mapped to SSO groups). Team-owned namespaces and the resources inside them count towards the team's quotas rather than the user's individual limits and are automatically shared with all team members according to the access rules you configure in Multi Tenant Operator.</p>
-<p>Also, by leveraging Multi Tenant Operator's templating mechanism, namespaces can be provisioned and automatically pre-populated with any kind of resource or multiple resources such as network policies, docker pull secrets or even Helm charts etc</p>
-<h2 id="everything-as-codegitops-ready">Everything as Code/GitOps Ready<a class="headerlink" href="#everything-as-codegitops-ready" title="Permanent link">#</a></h2>
-<p>Multi Tenant Operator is designed and built to be 100% OpenShift-native and to be configured and managed the same familiar way as native OpenShift resources so is perfect for modern shops that are dedicated to GitOps as it is fully configurable using Custom Resources.</p>
-<h2 id="preventing-clusters-sprawl">Preventing Clusters Sprawl<a class="headerlink" href="#preventing-clusters-sprawl" title="Permanent link">#</a></h2>
-<p>As companies look to further harness the power of cloud-native, they are adopting container technologies at rapid speed, increasing the number of clusters and workloads. As the number of Kubernetes clusters grows, this is an increasing work for the Ops team. When it comes to patching security issues or upgrading clusters, teams are doing five times the amount of work.</p>
-<p>With Multi Tenant Operator teams can share a single cluster with multiple teams, groups of users, or departments by saving operational and management efforts. This prevents you from Kubernetes cluster sprawl.</p>
-<h2 id="native-experience">Native Experience<a class="headerlink" href="#native-experience" title="Permanent link">#</a></h2>
-<p>Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience without introducing additional management layers, plugins, or customized binaries.</p>
+<p>In the backend, MTO will create an ArgoCD AppProject with the specified configurations.</p>
 
 
 
 
 
 
-
-  
-  
 
 
 
@@ -2826,27 +2536,27 @@ Furthermore, this functionality supports financial planning and budgeting by off
                 <div class="flex-2">
                     <div>
                         
-                        <img class="md-header__logo_light" src="assets/images/footer-logo-light.png#only-light"
+                        <img class="md-header__logo_light" src="../assets/images/footer-logo-light.png#only-light"
                             alt="logo" />
                         
                         
-                        <img src="assets/images/footer-logo-dark.png#only-dark" alt="logo" />
+                        <img src="../assets/images/footer-logo-dark.png#only-dark" alt="logo" />
                         
                     </div>
 
                     <div class="display-flex">
                         
-                        <img src="assets/images/CSA_dark.png#only-dark" alt="CSA" />
+                        <img src="../assets/images/CSA_dark.png#only-dark" alt="CSA" />
                         
                         
-                        <img src="assets/images/CSA_light.png#only-light" alt="CSA" />
+                        <img src="../assets/images/CSA_light.png#only-light" alt="CSA" />
                         
 
                         
-                        <img src="assets/images/HC_dark.png#only-dark" alt="HC" />
+                        <img src="../assets/images/HC_dark.png#only-dark" alt="HC" />
                         
                         
-                        <img src="assets/images/HC_light.png#only-light" alt="HC" />
+                        <img src="../assets/images/HC_light.png#only-light" alt="HC" />
                         
                     </div>
 
@@ -3268,10 +2978,10 @@ Furthermore, this functionality supports financial planning and budgeting by off
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.081f42fc.min.js"></script>
+      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

@@ -22,7 +22,7 @@
     
     
       
-        <title>Deleting a Tenant - Multi Tenant Operator</title>
+        <title>Deleting a Tenant While Preserving Resources - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deleting-a-tenant" class="md-skip">
+        <a href="#deleting-a-tenant-while-preserving-resources" class="md-skip">
           Skip to content
         </a>
       
@@ -1112,7 +1112,7 @@
         
   
   <span class="md-ellipsis">
-    Creating Namespaces
+    Creating Namespaces through Tenant Custom Resource
   </span>
   
 
@@ -1133,7 +1133,7 @@
         
   
   <span class="md-ellipsis">
-    Assigning metadata
+    Assigning Metadata in Tenant Custom Resources
   </span>
   
 
@@ -1184,7 +1184,7 @@
           
   
   <span class="md-ellipsis">
-    Deleting a Tenant
+    Deleting a Tenant While Preserving Resources
   </span>
   
 
@@ -1195,7 +1195,7 @@
         
   
   <span class="md-ellipsis">
-    Deleting a Tenant
+    Deleting a Tenant While Preserving Resources
   </span>
   
 
@@ -1219,9 +1219,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted" class="md-nav__link">
+  <a href="#configuration-for-retaining-resources" class="md-nav__link">
     <span class="md-ellipsis">
-      Retaining tenant namespaces and AppProject when a tenant is being deleted
+      Configuration for Retaining Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration for Retaining Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Behavior
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deleting-the-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deleting the Tenant
     </span>
   </a>
   
@@ -2118,6 +2142,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../../crds-api-reference/extensions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extensions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../crds-api-reference/integration-config.html" class="md-nav__link">
         
   
@@ -2333,9 +2378,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted" class="md-nav__link">
+  <a href="#configuration-for-retaining-resources" class="md-nav__link">
     <span class="md-ellipsis">
-      Retaining tenant namespaces and AppProject when a tenant is being deleted
+      Configuration for Retaining Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration for Retaining Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Behavior
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deleting-the-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deleting the Tenant
     </span>
   </a>
   
@@ -2359,31 +2428,41 @@
   
 
 
-<h1 id="deleting-a-tenant">Deleting a Tenant<a class="headerlink" href="#deleting-a-tenant" title="Permanent link">#</a></h1>
-<h2 id="retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted">Retaining tenant namespaces and AppProject when a tenant is being deleted<a class="headerlink" href="#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted" title="Permanent link">#</a></h2>
-<p>Bill now wants to delete tenant <code>bluesky</code> and wants to retain all namespaces and AppProject of the tenant. To retain the namespaces Bill will set <code>spec.onDelete.cleanNamespaces</code>, and <code>spec.onDelete.cleanAppProjects</code> to <code>false</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
+<h1 id="deleting-a-tenant-while-preserving-resources">Deleting a Tenant While Preserving Resources<a class="headerlink" href="#deleting-a-tenant-while-preserving-resources" title="Permanent link">#</a></h1>
+<p>When managing tenant lifecycles within Kubernetes, certain scenarios require the deletion of a tenant without removing associated namespaces or ArgoCD AppProjects. This ensures that resources and configurations tied to the tenant remain intact for archival or transition purposes.</p>
+<h2 id="configuration-for-retaining-resources">Configuration for Retaining Resources<a class="headerlink" href="#configuration-for-retaining-resources" title="Permanent link">#</a></h2>
+<p>Bill decides to decommission the bluesky tenant but needs to preserve all related namespaces for continuity. To achieve this, he adjusts the Tenant Custom Resource (CR) to prevent the automatic cleanup of these resources upon tenant deletion.</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt; EOF</span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
 <span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="w">  </span><span class="nt">sandboxConfig</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
 <span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prod</span>
-<span class="w">  </span><span class="nt">onDelete</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">cleanNamespaces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">cleanAppProject</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">onDeletePurgeNamespaces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="l l-Scalar l-Scalar-Plain">EOF</span>
 </code></pre></div>
-<p>With the above configuration all tenant namespaces and AppProject will not be deleted when tenant <code>bluesky</code> is deleted. By default, the value of <code>spec.onDelete.cleanNamespaces</code> is also <code>false</code> and <code>spec.onDelete.cleanAppProject</code> is <code>true</code></p>
+<p>With the <code>onDeletePurgeNamespaces</code> fields set to false, Bill ensures that the deletion of the bluesky tenant does not trigger the removal of its namespaces. This setup is crucial for cases where the retention of environment setups and deployments is necessary post-tenant deletion.</p>
+<h3 id="default-behavior">Default Behavior<a class="headerlink" href="#default-behavior" title="Permanent link">#</a></h3>
+<p>It's important to note the default behavior of the Tenant Operator regarding resource cleanup:</p>
+<p>Namespaces: By default, <code>onDeletePurgeNamespaces</code> is set to false, implying that namespaces are not automatically deleted with the tenant unless explicitly configured.</p>
+<h2 id="deleting-the-tenant">Deleting the Tenant<a class="headerlink" href="#deleting-the-tenant" title="Permanent link">#</a></h2>
+<p>Once the Tenant CR is configured as desired, Bill can proceed to delete the bluesky tenant:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>tenant<span class="w"> </span>bluesky
+</code></pre></div>
+<p>This command removes the tenant resource from the cluster while leaving the specified namespaces untouched, adhering to the configured <code>onDeletePurgeNamespaces</code> policies. This approach provides flexibility in managing the lifecycle of tenant resources, catering to various operational strategies and compliance requirements.</p>
 
 
 

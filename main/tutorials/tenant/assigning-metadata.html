@@ -22,7 +22,7 @@
     
     
       
-        <title>Assigning metadata - Multi Tenant Operator</title>
+        <title>Assigning Metadata in Tenant Custom Resources - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#assigning-metadata" class="md-skip">
+        <a href="#assigning-metadata-in-tenant-custom-resources" class="md-skip">
           Skip to content
         </a>
       
@@ -1112,7 +1112,7 @@
         
   
   <span class="md-ellipsis">
-    Creating Namespaces
+    Creating Namespaces through Tenant Custom Resource
   </span>
   
 
@@ -1142,7 +1142,7 @@
           
   
   <span class="md-ellipsis">
-    Assigning metadata
+    Assigning Metadata in Tenant Custom Resources
   </span>
   
 
@@ -1153,7 +1153,7 @@
         
   
   <span class="md-ellipsis">
-    Assigning metadata
+    Assigning Metadata in Tenant Custom Resources
   </span>
   
 
@@ -1177,42 +1177,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#assigning-commonspecific-metadata" class="md-nav__link">
+  <a href="#distributing-common-labels-and-annotations" class="md-nav__link">
     <span class="md-ellipsis">
-      Assigning Common/Specific Metadata
+      Distributing Common Labels and Annotations
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Assigning Common/Specific Metadata">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#distributing-common-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource" class="md-nav__link">
-    <span class="md-ellipsis">
-      Distributing common labels and annotations to tenant namespaces via Tenant Custom Resource
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#distributing-specific-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource" class="md-nav__link">
-    <span class="md-ellipsis">
-      Distributing specific labels and annotations to tenant namespaces via Tenant Custom Resource
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#assigning-metadata-to-all-sandboxes" class="md-nav__link">
+  <a href="#distributing-specific-labels-and-annotations" class="md-nav__link">
     <span class="md-ellipsis">
-      Assigning metadata to all sandboxes
+      Distributing Specific Labels and Annotations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assigning-metadata-to-sandbox-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assigning Metadata to Sandbox Namespaces
     </span>
   </a>
   
@@ -1259,7 +1244,7 @@
         
   
   <span class="md-ellipsis">
-    Deleting a Tenant
+    Deleting a Tenant While Preserving Resources
   </span>
   
 
@@ -2151,6 +2136,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../../crds-api-reference/extensions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extensions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../crds-api-reference/integration-config.html" class="md-nav__link">
         
   
@@ -2366,42 +2372,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#assigning-commonspecific-metadata" class="md-nav__link">
+  <a href="#distributing-common-labels-and-annotations" class="md-nav__link">
     <span class="md-ellipsis">
-      Assigning Common/Specific Metadata
+      Distributing Common Labels and Annotations
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Assigning Common/Specific Metadata">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#distributing-common-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource" class="md-nav__link">
-    <span class="md-ellipsis">
-      Distributing common labels and annotations to tenant namespaces via Tenant Custom Resource
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#distributing-specific-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource" class="md-nav__link">
-    <span class="md-ellipsis">
-      Distributing specific labels and annotations to tenant namespaces via Tenant Custom Resource
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#assigning-metadata-to-all-sandboxes" class="md-nav__link">
+  <a href="#distributing-specific-labels-and-annotations" class="md-nav__link">
     <span class="md-ellipsis">
-      Assigning metadata to all sandboxes
+      Distributing Specific Labels and Annotations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assigning-metadata-to-sandbox-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assigning Metadata to Sandbox Namespaces
     </span>
   </a>
   
@@ -2425,102 +2416,108 @@
   
 
 
-<h1 id="assigning-metadata">Assigning metadata<a class="headerlink" href="#assigning-metadata" title="Permanent link">#</a></h1>
-<h2 id="assigning-commonspecific-metadata">Assigning Common/Specific Metadata<a class="headerlink" href="#assigning-commonspecific-metadata" title="Permanent link">#</a></h2>
-<h3 id="distributing-common-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource">Distributing common labels and annotations to tenant namespaces via Tenant Custom Resource<a class="headerlink" href="#distributing-common-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource" title="Permanent link">#</a></h3>
-<p>Bill now wants to add labels/annotations to all the namespaces for a tenant. To create those labels/annotations Bill will just add them into <code>commonMetadata.labels</code>/<code>commonMetadata.annotations</code> field in the tenant CR.</p>
+<h1 id="assigning-metadata-in-tenant-custom-resources">Assigning Metadata in Tenant Custom Resources<a class="headerlink" href="#assigning-metadata-in-tenant-custom-resources" title="Permanent link">#</a></h1>
+<p>In the v1beta3 version of the Tenant Custom Resource (CR), metadata assignment has been refined to offer granular control over labels and annotations across different namespaces associated with a tenant. This functionality enables precise and flexible management of metadata, catering to both general and specific needs.</p>
+<h2 id="distributing-common-labels-and-annotations">Distributing Common Labels and Annotations<a class="headerlink" href="#distributing-common-labels-and-annotations" title="Permanent link">#</a></h2>
+<p>To apply common labels and annotations across all namespaces within a tenant, the <code>namespaces.metadata.common</code> field in the Tenant CR is utilized. This approach ensures that essential metadata is uniformly present across all namespaces, supporting consistent identification, management, and policy enforcement.</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt; EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
-<span class="w">  </span><span class="nt">editors</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">john@aurora.org</span>
-<span class="w">    </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
 <span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
+<span class="w">    </span><span class="nt">editors</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">john@aurora.org</span>
+<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
 <span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prod</span>
-<span class="w">  </span><span class="nt">commonMetadata</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">app.kubernetes.io/managed-by</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator</span>
-<span class="w">      </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-alpha</span>
-<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/infra=</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">common</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">app.kubernetes.io/managed-by</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator</span>
+<span class="w">          </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-alpha</span>
+<span class="w">        </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/infra=</span>
 <span class="l l-Scalar l-Scalar-Plain">EOF</span>
 </code></pre></div>
-<p>With the above configuration all tenant namespaces will now contain the mentioned labels and annotations.</p>
-<h3 id="distributing-specific-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource">Distributing specific labels and annotations to tenant namespaces via Tenant Custom Resource<a class="headerlink" href="#distributing-specific-labels-and-annotations-to-tenant-namespaces-via-tenant-custom-resource" title="Permanent link">#</a></h3>
-<p>Bill now wants to add labels/annotations to specific namespaces for a tenant. To create those labels/annotations Bill will just add them into <code>specificMetadata.labels</code>/<code>specificMetadata.annotations</code> and specific namespaces in <code>specificMetadata.namespaces</code> field in the tenant CR.</p>
+<p>By configuring the <code>namespaces.metadata.common</code> field as shown, all namespaces within the tenant will inherit the specified labels and annotations.</p>
+<h2 id="distributing-specific-labels-and-annotations">Distributing Specific Labels and Annotations<a class="headerlink" href="#distributing-specific-labels-and-annotations" title="Permanent link">#</a></h2>
+<p>For scenarios requiring targeted application of labels and annotations to specific namespaces, the Tenant CR's <code>namespaces.metadata.specific</code> field is designed. This feature enables the assignment of unique metadata to designated namespaces, accommodating specialized configurations and requirements.</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt; EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
-<span class="w">  </span><span class="nt">editors</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">john@aurora.org</span>
-<span class="w">    </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
 <span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="w">  </span><span class="nt">sandboxConfig</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
+<span class="w">    </span><span class="nt">editors</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">john@aurora.org</span>
+<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
 <span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prod</span>
-<span class="w">  </span><span class="nt">specificMetadata</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-anna-aurora-sandbox</span>
-<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">app.kubernetes.io/is-sandbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/worker=</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">specific</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-dev</span>
+<span class="w">          </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">app.kubernetes.io/is-sandbox</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">          </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/worker=</span>
 <span class="l l-Scalar l-Scalar-Plain">EOF</span>
 </code></pre></div>
-<p>With the above configuration all tenant namespaces will now contain the mentioned labels and annotations.</p>
-<h2 id="assigning-metadata-to-all-sandboxes">Assigning metadata to all sandboxes<a class="headerlink" href="#assigning-metadata-to-all-sandboxes" title="Permanent link">#</a></h2>
-<p>Bill can choose to apply metadata to sandbox namespaces only by using <code>sandboxMetadata</code> property of Tenant CR like below:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
+<p>This configuration directs the specific labels and annotations solely to the enumerated namespaces, enabling distinct settings for particular environments.</p>
+<h2 id="assigning-metadata-to-sandbox-namespaces">Assigning Metadata to Sandbox Namespaces<a class="headerlink" href="#assigning-metadata-to-sandbox-namespaces" title="Permanent link">#</a></h2>
+<p>To specifically address <em>sandbox namespaces</em> within the tenant, the <code>namespaces.metadata.sandbox</code> property of the Tenant CR is employed. This section allows for the distinct management of sandbox namespaces, enhancing security and differentiation in development or testing environments.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
-<span class="w">  </span><span class="nt">editors</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">john@aurora.org</span>
-<span class="w">    </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
 <span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="w">  </span><span class="nt">sandboxConfig</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">private</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">sandboxMetadata</span><span class="p">:</span><span class="w"> </span><span class="c1"># metadata for all sandbox namespaces</span>
-<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">che.eclipse.org</span>
-<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">TENANT.USERNAME</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"> </span><span class="c1"># templated placeholder</span>
+<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
+<span class="w">    </span><span class="nt">editors</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">john@aurora.org</span>
+<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">private</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">sandbox</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">che.eclipse.org</span>
+<span class="w">        </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">TENANT.USERNAME</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"> </span><span class="c1"># templated placeholder</span>
 </code></pre></div>
-<p>We are using a templated annotation here. See more on supported templated values for labels and annotations for specific MTO CRs <a href="../../explanation/templated-metadata-values.html">here</a></p>
+<p>This setup ensures that all sandbox namespaces receive the designated metadata, with support for templated values, such as <strong>{{ TENANT.USERNAME }}</strong>, allowing dynamic customization based on the tenant or user context.</p>
+<p>These enhancements in metadata management within the <code>v1beta3</code> version of the Tenant CR provide comprehensive and flexible tools for labeling and annotating namespaces, supporting a wide range of organizational, security, and operational objectives.</p>
 
 
 
