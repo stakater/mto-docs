@@ -70,11 +70,11 @@ spec:
   privileged:
     namespaces:
       - default
-      - ^openshift-*
-      - ^kube-*
+      - ^openshift.*
+      - ^kube.*
     serviceAccounts:
-      - ^system:serviceaccount:openshift-*
-      - ^system:serviceaccount:kube-*
+      - ^system:serviceaccount:openshift.*
+      - ^system:serviceaccount:kube.*
 ```
 
 Bill has added a new label `tenant-network-policy: "true"` in project section of IntegrationConfig, now MTO will add that label in all tenant projects.

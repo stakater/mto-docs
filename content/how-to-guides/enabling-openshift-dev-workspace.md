@@ -19,31 +19,33 @@ DevWorkspaces require specific metadata on a namespace for it to work in it. Wit
 With Multi Tenant Operator (MTO), you can set `sandboxMetadata` like below to automate metadata for all sandboxes:
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1beta2
+apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  owners:
-    users:
-    - anna@acme.org
-  editors:
-    users:
-    - erik@acme.org
-  viewers:
-    users:
-    - john@acme.org
   quota: small
-  sandboxConfig:
-    enabled: true
-    private: false
-
-  sandboxMetadata:
-    labels:
-      app.kubernetes.io/part-of: che.eclipse.org
-      app.kubernetes.io/component: workspaces-namespace
-    annotations:
-      che.eclipse.org/username: "{{ TENANT.USERNAME }}"
+  accessControl:
+    owners:
+      users:
+        - anna@acme.org
+    editors:
+      users:
+        - erik@acme.org
+    viewers:
+      users:
+        - john@acme.org
+  namespaces:
+    sandboxes:
+      enabled: true
+      private: false
+    metadata:
+      sandbox:
+        labels:
+          app.kubernetes.io/part-of: che.eclipse.org
+          app.kubernetes.io/component: workspaces-namespace
+        annotations:
+          che.eclipse.org/username: "{{ TENANT.USERNAME }}"
 ```
 
 It will create sandbox namespaces and also apply the `sandboxMetadata` for owners and editors. Notice the template `{{ TENANT.USERNAME }}`, it will resolve the username as value of the corresponding annotation. For more info on templated value, see [here](../explanation/templated-metadata-values.md)
@@ -66,11 +68,11 @@ spec:
     privileged:
       namespaces:
       - ^default$
-      - ^openshift-*
-      - ^kube-*
+      - ^openshift.*
+      - ^kube.*
       serviceAccounts:
-      - ^system:serviceaccount:openshift-*
-      - ^system:serviceaccount:kube-*
+      - ^system:serviceaccount:openshift.*
+      - ^system:serviceaccount:kube.*
       - ^system:serviceaccount:stakater-actions-runner-controller:actions-runner-controller-runner-deployment$
     rbac:
       tenantRoles:

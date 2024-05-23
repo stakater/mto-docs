@@ -1,5 +1,35 @@
 # Changelog
 
+## v0.12.x
+
+### v0.12.1
+
+#### Fix
+
+- Resolved memory consumption problems in multiple controllers by reducing the number of reconciliations.
+
+### v0.12.0
+
+#### Feature
+
+#### Enhanced
+
+- Updated Tenant CR to v1beta3, more details in [Tenant CRD](./crds-api-reference/tenant.md)
+- Added custom pricing support for Opencost, more details in [Opencost](./crds-api-reference/integration-config.md#Custom-Pricing-Model)
+
+#### Fix
+
+- Resolved an issue in Templates that prevented the deployment of public helm charts.
+
+## v0.11.x
+
+### v0.11.0
+
+#### Feature
+
+- Added support for configuring external keycloak in integrationconfig.
+- Added free tier support that allows creation of 2 tenants without license.
+
 ## v0.10.x
 
 ### v0.10.6
