@@ -209,7 +209,6 @@ spec:
 
 To override the `namespaceResourceBlacklist` and/or `clusterResourceWhitelist` set via Integration Config for a specific tenant, administrators can specify these in the `argoCDConfig` section of the Extension CR:
 
-
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Extensions
