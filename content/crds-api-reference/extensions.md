@@ -31,8 +31,8 @@ metadata:
   name: extensions-sample
 spec:
   tenantName: tenant-sample
-  argoCDConfig:
-    purgeAppProjectOnDelete: true
+  argoCD:
+    onDeletePurgeAppProject: true
     appProject:
       sourceRepos:
         - "github.com/stakater/repo"
@@ -46,7 +46,7 @@ spec:
 
 The above CR creates an Extension for the Tenant named `tenant-sample` with the following configurations:
 
-- `purgeAppProjectOnDelete`: If set to `true`, the AppProject will be deleted when the Extension is deleted.
+- `onDeletePurgeAppProject`: If set to `true`, the AppProject will be deleted when the Extension is deleted.
 - `sourceRepos`: List of repositories to sync with ArgoCD.
 - `appProject`: Configuration for the AppProject.
     - `clusterResourceWhitelist`: List of cluster-scoped resources to sync.

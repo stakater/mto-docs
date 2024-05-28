@@ -48,8 +48,8 @@ metadata:
   name: extensions-sample
 spec:
   tenantName: tenant-sample
-  argoCDConfig:
-    purgeAppProjectOnDelete: true
+  argoCD:
+    onDeletePurgeAppProject: true
     appProject:
       sourceRepos:
         - "github.com/stakater/repo"
@@ -207,7 +207,7 @@ spec:
 
 ## Overriding NamespaceResourceBlacklist and/or ClusterResourceWhitelist Per Tenant
 
-To override the `namespaceResourceBlacklist` and/or `clusterResourceWhitelist` set via Integration Config for a specific tenant, administrators can specify these in the `argoCDConfig` section of the Extension CR:
+To override the `namespaceResourceBlacklist` and/or `clusterResourceWhitelist` set via Integration Config for a specific tenant, administrators can specify these in the `argoCD` section of the Extension CR:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -216,8 +216,8 @@ metadata:
   name: extensions-blue-sky
 spec:
   tenantName: blue-sky
-  argoCDConfig:
-    purgeAppProjectOnDelete: true
+  argoCD:
+    onDeletePurgeAppProject: true
     appProject:
       sourceRepos:
         - "github.com/stakater/repo"
