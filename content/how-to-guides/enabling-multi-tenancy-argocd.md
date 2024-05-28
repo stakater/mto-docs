@@ -42,28 +42,34 @@ spec:
 Afterward, Bill must specify the source GitOps repos for the tenant inside the tenant CR like so:
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1beta2
+apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
 metadata:
   name: sigma
 spec:
-  argocd:
-    sourceRepos:
-      # specify source repos here
-      - "https://github.com/stakater/GitOps-config"
-  owners:
-    users:
-      - user
-  editors:
-    users:
-      - user1
+  integrations:
+    argocd:
+      clusterResourceWhitelist:
+        - group: admissionregistration.k8s.io
+          kind: validatingwebhookconfigurations
+      namespaceResourceBlacklist:
+        - group: '' # all groups
+          kind: ResourceQuota
+      namespace: openshift-operators
+  accessControl:
+    owners:
+      users:
+        - user
+    editors:
+      users:
+        - user1
   quota: medium
-  sandbox: false
   namespaces:
+    sandboxes: 
+      enabled: false
     withTenantPrefix:
       - build
       - stage
-      - dev
 ```
 
 Now Bill can see an AppProject will be created for the tenant
@@ -215,31 +221,31 @@ spec:
 Bill now wants a specific tenant to override the `namespaceResourceBlacklist` and/or `clusterResourceWhitelist` set via Integration Config. Bill will specify these in `argoCD.appProjects` section of Tenant spec.
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1beta2
+apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
 metadata:
   name: blue-sky
 spec:
-  argocd:
-    sourceRepos:
-      # specify source repos here
-      - "https://github.com/stakater/GitOps-config"
-    appProject:
+  integrations:
+    argocd:
       clusterResourceWhitelist:
         - group: admissionregistration.k8s.io
           kind: validatingwebhookconfigurations
       namespaceResourceBlacklist:
-        - group: ""
-          kind: ConfigMap
-  owners:
-    users:
-      - user
-  editors:
-    users:
-      - user1
+        - group: '' # all groups
+          kind: ResourceQuota
+      namespace: openshift-operators
+  accessControl:
+    owners:
+      users:
+        - user
+    editors:
+      users:
+        - user1
   quota: medium
-  sandbox: false
   namespaces:
+    sandboxes: 
+      enabled: false
     withTenantPrefix:
       - build
       - stage
