@@ -33,9 +33,9 @@ spec:
   tenantName: tenant-sample
   argoCDConfig:
     purgeAppProjectOnDelete: true
-    sourceRepos:
-      - "github.com/stakater/repo"
     appProject:
+      sourceRepos:
+        - "github.com/stakater/repo"
       clusterResourceWhitelist:
         - group: ""
           kind: "Pod"
