@@ -20,11 +20,11 @@ COPY default.conf /etc/nginx/conf.d/
 # set non-root user
 USER 1001
 
-LABEL name="Stakater Tronador Documentation" \
+LABEL name="Multi Tenant Operator Documentation" \
       maintainer="Stakater <hello@stakater.com>" \
       vendor="Stakater" \
       release="1" \
-      summary="Documentation for Stakater Tronador"
+      summary="Documentation for Multi Tenant Operator"
 
 EXPOSE 8080:8080/tcp
 
