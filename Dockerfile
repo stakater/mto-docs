@@ -1,20 +1,10 @@
-FROM python:3.12-alpine as builder
-
-RUN pip3 install mkdocs-mermaid2-plugin mkdocs-table-reader-plugin mkdocs-include-markdown-plugin
-
-# set workdir
-RUN mkdir -p $HOME/application
-WORKDIR $HOME/application
+# syntax=docker/dockerfile:1
+FROM nginxinc/nginx-unprivileged:1.26-alpine
+WORKDIR /usr/share/nginx/html/
 
 # copy the entire application
-COPY --chown=1001:root . .
+COPY --from=content --chown=1001:root . .
 
-# build the docs
-RUN chmod +x prepare_theme.sh && ./prepare_theme.sh
-RUN mkdocs build
-
-FROM nginxinc/nginx-unprivileged:1.26-alpine as deploy
-COPY --from=builder $HOME/application/site/ /usr/share/nginx/html/mto/
 COPY default.conf /etc/nginx/conf.d/
 
 # set non-root user
