@@ -8,7 +8,7 @@ kind: IntegrationConfig
 metadata:
   name: tenant-operator-config
   namespace: multi-tenant-operator
-Spec:
+spec:
   components:
     console: true
     showback: true
@@ -554,7 +554,7 @@ path "identity/group/id/*" {
 
 ### Custom Pricing Model
 
-You can modify IntegrationConfig to customise the default pricing model. Here is what you need at `IntegrationConfig.Spec.components`:
+You can modify IntegrationConfig to customise the default pricing model. Here is what you need at `IntegrationConfig.spec.components`:
 
 ```yaml
 components:
