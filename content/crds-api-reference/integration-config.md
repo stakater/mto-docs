@@ -8,7 +8,7 @@ kind: IntegrationConfig
 metadata:
   name: tenant-operator-config
   namespace: multi-tenant-operator
-Spec:
+spec:
   components:
     console: true
     showback: true
