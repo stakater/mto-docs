@@ -106,10 +106,22 @@
     
       <div data-md-color-scheme="default" data-md-component="outdated" hidden>
         
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+You're not viewing the latest version.
+<a href="../..">
+  <strong>Click here to go to latest.</strong>
+</a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
       </div>
     
     
-      
+
 
 
 
@@ -857,7 +869,7 @@
     window.addEventListener("scroll", handleScroll);
   });
 </script>
-    
+
     <div class="md-container" data-md-component="container">
       
       
@@ -2508,8 +2520,8 @@
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions-sample</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tenantName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
-<span class="w">  </span><span class="nt">argoCDConfig</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">purgeAppProjectOnDelete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">argoCD</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">onDeletePurgeAppProject</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">appProject</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">sourceRepos</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;github.com/stakater/repo&quot;</span>
@@ -2644,15 +2656,15 @@ openshift-operators<span class="w">   </span>tenant-sample<span class="w">  </sp
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <h2 id="overriding-namespaceresourceblacklist-andor-clusterresourcewhitelist-per-tenant">Overriding NamespaceResourceBlacklist and/or ClusterResourceWhitelist Per Tenant<a class="headerlink" href="#overriding-namespaceresourceblacklist-andor-clusterresourcewhitelist-per-tenant" title="Permanent link">#</a></h2>
-<p>To override the <code>namespaceResourceBlacklist</code> and/or <code>clusterResourceWhitelist</code> set via Integration Config for a specific tenant, administrators can specify these in the <code>argoCDConfig</code> section of the Extension CR:</p>
+<p>To override the <code>namespaceResourceBlacklist</code> and/or <code>clusterResourceWhitelist</code> set via Integration Config for a specific tenant, administrators can specify these in the <code>argoCD</code> section of the Extension CR:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Extensions</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions-blue-sky</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tenantName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blue-sky</span>
-<span class="w">  </span><span class="nt">argoCDConfig</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">purgeAppProjectOnDelete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">argoCD</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">onDeletePurgeAppProject</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">appProject</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">sourceRepos</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;github.com/stakater/repo&quot;</span>
@@ -2694,7 +2706,7 @@ openshift-operators<span class="w">   </span>tenant-sample<span class="w">  </sp
         
       </main>
       
-        <style>
+<style>
     .svg-container {
         display: flex;
     }
@@ -3133,7 +3145,7 @@ openshift-operators<span class="w">   </span>tenant-sample<span class="w">  </sp
         </div>
     </div>
 </footer>
-      
+
     </div>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>

@@ -106,10 +106,22 @@
     
       <div data-md-color-scheme="default" data-md-component="outdated" hidden>
         
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+You're not viewing the latest version.
+<a href="../..">
+  <strong>Click here to go to latest.</strong>
+</a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
       </div>
     
     
-      
+
 
 
 
@@ -857,7 +869,7 @@
     window.addEventListener("scroll", handleScroll);
   });
 </script>
-    
+
     <div class="md-container" data-md-component="container">
       
       
@@ -2401,8 +2413,8 @@
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions-sample</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tenantName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
-<span class="w">  </span><span class="nt">argoCDConfig</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">purgeAppProjectOnDelete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">argoCD</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">onDeletePurgeAppProject</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">appProject</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">sourceRepos</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;github.com/stakater/repo&quot;</span>
@@ -2415,7 +2427,7 @@
 </code></pre></div>
 <p>The above CR creates an Extension for the Tenant named <code>tenant-sample</code> with the following configurations:</p>
 <ul>
-<li><code>purgeAppProjectOnDelete</code>: If set to <code>true</code>, the AppProject will be deleted when the Extension is deleted.</li>
+<li><code>onDeletePurgeAppProject</code>: If set to <code>true</code>, the AppProject will be deleted when the Extension is deleted.</li>
 <li><code>sourceRepos</code>: List of repositories to sync with ArgoCD.</li>
 <li><code>appProject</code>: Configuration for the AppProject.<ul>
 <li><code>clusterResourceWhitelist</code>: List of cluster-scoped resources to sync.</li>
@@ -2454,7 +2466,7 @@
         
       </main>
       
-        <style>
+<style>
     .svg-container {
         display: flex;
     }
@@ -2893,7 +2905,7 @@
         </div>
     </div>
 </footer>
-      
+
     </div>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
