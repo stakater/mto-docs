@@ -2413,8 +2413,8 @@ You're not viewing the latest version.
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions-sample</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tenantName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
-<span class="w">  </span><span class="nt">argoCDConfig</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">purgeAppProjectOnDelete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">argoCD</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">onDeletePurgeAppProject</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">appProject</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">sourceRepos</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;github.com/stakater/repo&quot;</span>
@@ -2427,7 +2427,7 @@ You're not viewing the latest version.
 </code></pre></div>
 <p>The above CR creates an Extension for the Tenant named <code>tenant-sample</code> with the following configurations:</p>
 <ul>
-<li><code>purgeAppProjectOnDelete</code>: If set to <code>true</code>, the AppProject will be deleted when the Extension is deleted.</li>
+<li><code>onDeletePurgeAppProject</code>: If set to <code>true</code>, the AppProject will be deleted when the Extension is deleted.</li>
 <li><code>sourceRepos</code>: List of repositories to sync with ArgoCD.</li>
 <li><code>appProject</code>: Configuration for the AppProject.<ul>
 <li><code>clusterResourceWhitelist</code>: List of cluster-scoped resources to sync.</li>
