@@ -2,6 +2,15 @@
 
 ## v0.12.x
 
+### v0.12.2x
+
+#### Enhanced
+
+- Added label selector support to Resource Supervisor to select many namespaces for hibernation.
+- Added sleep support to Resource Supervisor. It will allow user to not provide any schedule on Resource Supervisor and selected namespaces will be put to sleep instantly
+- Resource Supervisor Spec has been modified. `spec.hibernation` is now `spec.schedule`. `spec.namespaces` is changed from a list to an object which have labelSelector and list of namespaces. Look here for complete schema [Resource Supervisor](./crds-api-reference/resource-supervisor.md)
+- Resource Supervisor Status is modified. We have changed the way we used to group sleeping applications.
+
 ### v0.12.1
 
 #### Fix
