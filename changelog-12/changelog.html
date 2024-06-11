@@ -4413,6 +4413,8 @@ You're not viewing the latest version.
 <li>Resolved a visibility issue where labels and annotations for sandbox namespaces were not appearing in the extension's status.</li>
 <li>Addressed an issue where AppProject was being deleted upon extension CR deletion, regardless of the <code>onDeletePurgeAppProject</code> field value.</li>
 <li>Optimized memory usage for Keycloak to address high consumption issues.</li>
+<li>Resolved an issue that was causing a panic in the Extension Controller when the IntegrationConfig (IC) was not present.</li>
+<li>Fixed an issue where the status was not being correctly updated when the entire Metadata block was removed from the Tenant specification.</li>
 </ul>
 <h3 id="v01213">v0.12.13<a class="headerlink" href="#v01213" title="Permanent link">#</a></h3>
 <h4 id="fix_1">Fix<a class="headerlink" href="#fix_1" title="Permanent link">#</a></h4>
