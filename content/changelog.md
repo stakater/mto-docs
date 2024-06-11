@@ -10,6 +10,8 @@
 - Resolved a visibility issue where labels and annotations for sandbox namespaces were not appearing in the extension's status.
 - Addressed an issue where AppProject was being deleted upon extension CR deletion, regardless of the `onDeletePurgeAppProject` field value.
 - Optimized memory usage for Keycloak to address high consumption issues.
+- Resolved an issue that was causing a panic in the Extension Controller when the IntegrationConfig (IC) was not present.
+- Fixed an issue where the status was not being correctly updated when the entire Metadata block was removed from the Tenant specification.
 
 ### v0.12.13
 
