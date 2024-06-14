@@ -1807,6 +1807,27 @@ You're not viewing the latest version.
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/integrating-external-keycloak.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrating External Keycloak
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2327,6 +2348,15 @@ You're not viewing the latest version.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keycloak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#argocd" class="md-nav__link">
     <span class="md-ellipsis">
       ArgoCD
@@ -2773,6 +2803,15 @@ You're not viewing the latest version.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keycloak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#argocd" class="md-nav__link">
     <span class="md-ellipsis">
       ArgoCD
@@ -2938,6 +2977,10 @@ You're not viewing the latest version.
 <span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/worker=</span>
 <span class="w">  </span><span class="nt">integrations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">      </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/</span>
+<span class="w">      </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto-console</span>
 <span class="w">    </span><span class="nt">argocd</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tronador.stakater.com</span>
@@ -3195,7 +3238,7 @@ You're not viewing the latest version.
 </code></pre></div>
 <h3 id="namespaces-group-and-sandbox">Namespaces, group and sandbox<a class="headerlink" href="#namespaces-group-and-sandbox" title="Permanent link">#</a></h3>
 <p>We can use the <code>metadata.namespaces</code>, <code>metadata.group</code> and <code>metadata.sandbox</code> fields to automatically add <code>labels</code> and <code>annotations</code> to the <strong>Namespaces</strong> and <strong>Groups</strong> managed via MTO.</p>
-<p>If we want to add default <em>labels/annotations</em> to sandbox namespaces of tenants than we just simply add them in <code>openshift.project.labels</code>/<code>openshift.project.annotations</code> respectively.</p>
+<p>If we want to add default <em>labels/annotations</em> to sandbox namespaces of tenants than we just simply add them in <code>metadata.namespaces.labels</code>/<code>metadata.namespaces.annotations</code> respectively.</p>
 <p>Whenever a project is made it will have the labels and annotations as mentioned above.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Project</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project.openshift.io/v1</span>
@@ -3224,8 +3267,11 @@ You're not viewing the latest version.
 <h2 id="integrations">Integrations<a class="headerlink" href="#integrations" title="Permanent link">#</a></h2>
 <p>Integrations are used to configure the integrations that MTO has with other tools. Currently, MTO supports the following integrations:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">integrations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/</span>
+<span class="w">    </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto-console</span>
 <span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bool</span>
 <span class="w">    </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tronador.stakater.com</span>
 <span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvironmentProvisioner</span>
@@ -3246,6 +3292,20 @@ You're not viewing the latest version.
 <span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span>
 <span class="w">      </span><span class="nt">ssoClient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
 </code></pre></div>
+<h3 id="keycloak">Keycloak<a class="headerlink" href="#keycloak" title="Permanent link">#</a></h3>
+<p><a href="https://www.keycloak.org/">Keycloak</a> is an open-source Identity and Access Management solution aimed at modern applications and services. It makes it easy to secure applications and services with little to no code.</p>
+<p>If a <code>Keycloak</code> instance is already set up within your cluster, configure it for MTO by enabling the following configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">  </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/</span>
+<span class="w">  </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto-console</span>
+</code></pre></div>
+<ul>
+<li><code>keycloak.realm:</code> The realm in Keycloak where the client is configured.</li>
+<li><code>keycloak.address:</code> The address of the Keycloak instance.</li>
+<li><code>keycloak.clientName:</code> The name of the client in Keycloak.</li>
+</ul>
+<p>For more details around enabling Keycloak in MTO, visit <a href="../how-to-guides/integrating-external-keycloak.html">here</a></p>
 <h3 id="argocd">ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">#</a></h3>
 <p><a href="https://argoproj.github.io/argo-cd/">ArgoCD</a> is a declarative, GitOps continuous delivery tool for Kubernetes. It follows the GitOps pattern of using Git repositories as the source of truth for defining the desired application state. ArgoCD uses Kubernetes manifests and configures the applications on the cluster.</p>
 <p>If <code>argocd</code> is configured on a cluster, then ArgoCD configuration can be enabled.</p>
@@ -3306,39 +3366,39 @@ You're not viewing the latest version.
 </ul>
 <p>For more details around enabling Kubernetes auth in Vault, visit <a href="https://developer.hashicorp.com/vault/docs/auth/kubernetes">here</a></p>
 <p>The role created within Vault for Kubernetes authentication should have the following permissions:</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">path &quot;secret/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;sys/mounts&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;read&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;sys/mounts/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;managed-addons/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;read&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;auth/kubernetes/role/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;sys/auth&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;read&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;sys/policies/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;identity/group&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;identity/group-alias&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;identity/group/name/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;read&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;identity/group/id/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
+<div class="highlight"><pre><span></span><code><span class="err">pa</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="s2">&quot;secret/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">capabili</span><span class="kc">t</span><span class="err">ies</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;read&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;update&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;patch&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;delete&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">pa</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="s2">&quot;sys/mounts&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">capabili</span><span class="kc">t</span><span class="err">ies</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;read&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">pa</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="s2">&quot;sys/mounts/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">capabili</span><span class="kc">t</span><span class="err">ies</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;read&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;update&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;patch&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;delete&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">pa</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="s2">&quot;managed-addons/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">capabili</span><span class="kc">t</span><span class="err">ies</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;read&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">pa</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="s2">&quot;auth/kubernetes/role/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">capabili</span><span class="kc">t</span><span class="err">ies</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;read&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;update&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;patch&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;delete&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">pa</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="s2">&quot;sys/auth&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">capabili</span><span class="kc">t</span><span class="err">ies</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;read&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">pa</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="s2">&quot;sys/policies/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">capabili</span><span class="kc">t</span><span class="err">ies</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;read&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;update&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;patch&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;delete&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">pa</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="s2">&quot;identity/group&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">capabili</span><span class="kc">t</span><span class="err">ies</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;read&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;update&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;patch&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;delete&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">pa</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="s2">&quot;identity/group-alias&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">capabili</span><span class="kc">t</span><span class="err">ies</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;read&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;update&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;patch&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;delete&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">pa</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="s2">&quot;identity/group/name/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">capabili</span><span class="kc">t</span><span class="err">ies</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;read&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">pa</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="s2">&quot;identity/group/id/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="err">capabili</span><span class="kc">t</span><span class="err">ies</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;read&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;update&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;patch&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;delete&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div>
 <h3 id="custom-pricing-model">Custom Pricing Model<a class="headerlink" href="#custom-pricing-model" title="Permanent link">#</a></h3>
 <p>You can modify IntegrationConfig to customise the default pricing model. Here is what you need at <code>IntegrationConfig.spec.components</code>:</p>
