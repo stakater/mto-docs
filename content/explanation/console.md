@@ -48,16 +48,16 @@ Here, admins have a bird's-eye view of all tenants, with the ability to delve in
 
 ### Tenants/Quota
 
-**Viewing Quota in the Tenant Console**
+#### Viewing Quota in the Tenant Console
 
 In this view, users can access a dedicated tab to review the quota utilization for their Tenants. Within this tab, users have the option to toggle between two different views: **Aggregated Quota** and **Namespace Quota**.
 
-**Aggregated Quota View:**
+#### Aggregated Quota View:
 
 ![tenants](../images/tenantQuotaAggregatedView.png)
 This view provides users with an overview of the combined resource allocation and usage across all namespaces within their tenant. It offers a comprehensive look at the total limits and usage of resources such as CPU, memory, and other defined quotas. Users can easily monitor and manage resource distribution across their entire tenant environment from this aggregated perspective.
 
-**Namespace Quota View:**
+#### Namespace Quota View:
 
 ![tenants](../images/tenantQuotaNamespaceView.png)
 Alternatively, users can opt to view quota settings on a per-namespace basis. This view allows users to focus specifically on the resource allocation and usage within individual namespaces. By selecting this option, users gain granular insights into the resource constraints and utilization for each namespace, facilitating more targeted management and optimization of resources at the namespace level.
@@ -79,10 +79,10 @@ Upon selecting a specific namespace from the utilization table, users are direct
 
 - **CPU and Memory Graphs:** Visual representations of the namespace's CPU and memory usage over time, enabling users to identify trends and potential issues at a glance.
 - **Workload Table:** A comprehensive list of all workloads within the selected namespace, including pods, deployments, and stateful-sets. The table displays key metrics for each workload, including:
-  - **Cost:** The cost associated with the workload's CPU and memory utilization.
-  - **Request Average:** The average amount of CPU and memory resources requested by the workload.
-  - **Usage Average:** The average amount of CPU and memory resources used by the workload.
-  - **Max:** The maximum value between CPU and memory requests and used resources, calculated every 30 seconds and averaged over the running minutes.
+    - **Cost:** The cost associated with the workload's CPU and memory utilization.
+    - **Request Average:** The average amount of CPU and memory resources requested by the workload.
+    - **Usage Average:** The average amount of CPU and memory resources used by the workload.
+    - **Max:** The maximum value between CPU and memory requests and used resources, calculated every 30 seconds and averaged over the running minutes.
 
 This detailed view provides users with in-depth insights into resource utilization at the workload level, enabling precise monitoring and optimization of resource allocation within the selected namespace.
 
