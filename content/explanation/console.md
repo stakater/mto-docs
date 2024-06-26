@@ -78,7 +78,7 @@ Users can adjust the interval window using the provided selector to customize th
 Upon selecting a specific namespace from the utilization table, users are directed to a detailed view that includes CPU and memory utilization graphs along with a workload table. This detailed view provides:
 
 - **CPU and Memory Graphs:** Visual representations of the namespace's CPU and memory usage over time, enabling users to identify trends and potential issues at a glance.
-- **Workload Table:** A comprehensive list of all workloads within the selected namespace, including pods, deployments, and statefulsets. The table displays key metrics for each workload, including:
+- **Workload Table:** A comprehensive list of all workloads within the selected namespace, including pods, deployments, and stateful-sets. The table displays key metrics for each workload, including:
   - **Cost:** The cost associated with the workload's CPU and memory utilization.
   - **Request Average:** The average amount of CPU and memory resources requested by the workload.
   - **Usage Average:** The average amount of CPU and memory resources used by the workload.
