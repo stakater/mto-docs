@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
     
     
       
@@ -106,10 +106,22 @@
     
       <div data-md-color-scheme="default" data-md-component="outdated" hidden>
         
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+You're not viewing the latest version.
+<a href="../..">
+  <strong>Click here to go to latest.</strong>
+</a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
       </div>
     
     
-      
+
 
 
 
@@ -768,7 +780,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -857,7 +869,7 @@
     window.addEventListener("scroll", handleScroll);
   });
 </script>
-    
+
     <div class="md-container" data-md-component="container">
       
       
@@ -2401,11 +2413,11 @@
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions-sample</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tenantName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
-<span class="w">  </span><span class="nt">argoCDConfig</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">purgeAppProjectOnDelete</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">sourceRepos</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;github.com/stakater/repo&quot;</span>
+<span class="w">  </span><span class="nt">argoCD</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">onDeletePurgeAppProject</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">appProject</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">sourceRepos</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;github.com/stakater/repo&quot;</span>
 <span class="w">      </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 <span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Pod&quot;</span>
@@ -2415,7 +2427,7 @@
 </code></pre></div>
 <p>The above CR creates an Extension for the Tenant named <code>tenant-sample</code> with the following configurations:</p>
 <ul>
-<li><code>purgeAppProjectOnDelete</code>: If set to <code>true</code>, the AppProject will be deleted when the Extension is deleted.</li>
+<li><code>onDeletePurgeAppProject</code>: If set to <code>true</code>, the AppProject will be deleted when the Extension is deleted.</li>
 <li><code>sourceRepos</code>: List of repositories to sync with ArgoCD.</li>
 <li><code>appProject</code>: Configuration for the AppProject.<ul>
 <li><code>clusterResourceWhitelist</code>: List of cluster-scoped resources to sync.</li>
@@ -2454,7 +2466,7 @@
         
       </main>
       
-        <style>
+<style>
     .svg-container {
         display: flex;
     }
@@ -2893,7 +2905,7 @@
         </div>
     </div>
 </footer>
-      
+
     </div>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
@@ -2981,7 +2993,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
