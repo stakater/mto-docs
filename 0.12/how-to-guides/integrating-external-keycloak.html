@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/0.12/how-to-guides/enabling-multi-tenancy-argocd.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/0.12/how-to-guides/integrating-external-keycloak.html">
       
       
-        <link rel="prev" href="graph-visualization.html">
+        <link rel="prev" href="mattermost.html">
       
       
-        <link rel="next" href="enabling-multi-tenancy-vault.html">
+        <link rel="next" href="offboarding/uninstalling.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Enabling Multi-Tenancy in ArgoCD - Multi Tenant Operator</title>
+        <title>Integrating External Keycloak - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#enabling-multi-tenancy-in-argocd" class="md-skip">
+        <a href="#integrating-external-keycloak" class="md-skip">
           Skip to content
         </a>
       
@@ -1731,30 +1731,10 @@ You're not viewing the latest version.
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Enabling Multi-Tenancy in ArgoCD
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="enabling-multi-tenancy-argocd.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="enabling-multi-tenancy-argocd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1763,82 +1743,6 @@ You're not viewing the latest version.
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#argocd-integration-in-multi-tenant-operator" class="md-nav__link">
-    <span class="md-ellipsis">
-      ArgoCD integration in Multi Tenant Operator
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#default-argocd-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Default ArgoCD configuration
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#creating-argocd-appprojects-for-your-tenant" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating ArgoCD AppProjects for your tenant
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#preventing-argocd-from-syncing-certain-namespaced-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Preventing ArgoCD from Syncing Certain Namespaced Resources
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#allowing-argocd-to-sync-certain-cluster-wide-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Allowing ArgoCD to Sync Certain Cluster-Wide Resources
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#overriding-namespaceresourceblacklist-andor-clusterresourcewhitelist-per-tenant" class="md-nav__link">
-    <span class="md-ellipsis">
-      Overriding NamespaceResourceBlacklist and/or ClusterResourceWhitelist Per Tenant
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1911,10 +1815,30 @@ You're not viewing the latest version.
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="integrating-external-keycloak.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Integrating External Keycloak
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="integrating-external-keycloak.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1923,6 +1847,55 @@ You're not viewing the latest version.
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-integration-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Integration Config
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2432,54 +2405,27 @@ You're not viewing the latest version.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#argocd-integration-in-multi-tenant-operator" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      ArgoCD integration in Multi Tenant Operator
+      Prerequisites
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#default-argocd-configuration" class="md-nav__link">
+  <a href="#steps" class="md-nav__link">
     <span class="md-ellipsis">
-      Default ArgoCD configuration
+      Steps
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#creating-argocd-appprojects-for-your-tenant" class="md-nav__link">
+  <a href="#update-integration-config" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating ArgoCD AppProjects for your tenant
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#preventing-argocd-from-syncing-certain-namespaced-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Preventing ArgoCD from Syncing Certain Namespaced Resources
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#allowing-argocd-to-sync-certain-cluster-wide-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Allowing ArgoCD to Sync Certain Cluster-Wide Resources
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#overriding-namespaceresourceblacklist-andor-clusterresourcewhitelist-per-tenant" class="md-nav__link">
-    <span class="md-ellipsis">
-      Overriding NamespaceResourceBlacklist and/or ClusterResourceWhitelist Per Tenant
+      Update Integration Config
     </span>
   </a>
   
@@ -2503,200 +2449,50 @@ You're not viewing the latest version.
   
 
 
-<h1 id="enabling-multi-tenancy-in-argocd">Enabling Multi-Tenancy in ArgoCD<a class="headerlink" href="#enabling-multi-tenancy-in-argocd" title="Permanent link">#</a></h1>
-<h2 id="argocd-integration-in-multi-tenant-operator">ArgoCD integration in Multi Tenant Operator<a class="headerlink" href="#argocd-integration-in-multi-tenant-operator" title="Permanent link">#</a></h2>
-<p>With the Multi-Tenant Operator (MTO), cluster administrators can configure multi-tenancy within their cluster. The integration of ArgoCD with MTO allows for the configuration of multi-tenancy in ArgoCD applications and AppProjects.</p>
-<p>MTO can be configured to create AppProjects for each tenant. These AppProjects enable tenants to create ArgoCD Applications that can be synced to namespaces owned by them. Cluster admins can blacklist certain namespace resources and allow specific cluster-scoped resources as needed (see the NamespaceResourceBlacklist and ClusterResourceWhitelist sections in <a href="../crds-api-reference/integration-config.html">Integration Config docs</a> and <a href="../crds-api-reference/tenant.html">Tenant Custom Resource docs</a>).</p>
-<p>Note that ArgoCD integration in MTO is optional.</p>
-<h2 id="default-argocd-configuration">Default ArgoCD configuration<a class="headerlink" href="#default-argocd-configuration" title="Permanent link">#</a></h2>
-<p>We have set a default ArgoCD configuration in Multi Tenant Operator that fulfils the following use cases:</p>
+<h1 id="integrating-external-keycloak">Integrating External Keycloak<a class="headerlink" href="#integrating-external-keycloak" title="Permanent link">#</a></h1>
+<p>MTO Console uses Keycloak for authentication and authorization. By default, the MTO Console uses an internal Keycloak instance that is provisioned by the Multi Tenant Operator in its own namespace. However, you can also integrate an external Keycloak instance with the MTO Console.</p>
+<p>This guide will help you integrate an external Keycloak instance with the MTO Console.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
 <ul>
-<li>Tenants can only see their ArgoCD applications in the ArgoCD frontend.</li>
-<li>Tenant 'Owners' and 'Editors' have full access to their ArgoCD applications.</li>
-<li>Tenants in the 'Viewers' group have read-only access to their ArgoCD applications.</li>
-<li>Tenants can sync all namespace-scoped resources, except those that are blacklisted.</li>
-<li>Tenants can sync only cluster-scoped resources that are allow-listed.</li>
-<li>Tenant 'Owners' can configure their own GitOps source repositories at the tenant level.</li>
-<li>Cluster admins can prevent specific resources from syncing via ArgoCD.</li>
-<li>Cluster admins have full access to all ArgoCD applications and AppProjects.</li>
-<li>ArgoCD integration is on a per-tenant level; namespace-scoped applications are synced only to tenant namespaces.</li>
+<li>An OpenShift cluster with Multi Tenant Operator installed.</li>
+<li>An external Keycloak instance.</li>
 </ul>
-<h2 id="creating-argocd-appprojects-for-your-tenant">Creating ArgoCD AppProjects for your tenant<a class="headerlink" href="#creating-argocd-appprojects-for-your-tenant" title="Permanent link">#</a></h2>
-<p>To ensure each tenant has their own ArgoCD AppProjects, administrators must first specify the ArgoCD namespace in the <a href="../crds-api-reference/integration-config.html">IntegrationConfig</a>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">argocd</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<h2 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">#</a></h2>
+<p><strong>Navigate to the Keycloak console.</strong></p>
+<ul>
+<li>Go to your realm.</li>
+<li>Click on the <code>Clients</code>.</li>
+<li>Click on the <code>Create</code> button to create a new client.</li>
+</ul>
+<p><a class="glightbox" href="../images/integrating-external-keycloak-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Keycloak realm" src="../images/integrating-external-keycloak-1.png" /></a></p>
+<p><strong>Create a new client.</strong></p>
+<ul>
+<li>Fill in the <code>Client ID</code>, <code>Client Name</code> and <code>Client Protocol</code> fields.</li>
+</ul>
+<p><a class="glightbox" href="../images/integrating-external-keycloak-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Client creation" src="../images/integrating-external-keycloak-2.png" /></a></p>
+<ul>
+<li>Add <code>Valid Redirect URIs</code> and <code>Web Origins</code> for the client.</li>
+</ul>
+<p><a class="glightbox" href="../images/integrating-external-keycloak-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Client creation" src="../images/integrating-external-keycloak-3.png" /></a></p>
+<blockquote>
+<p><strong>Note:</strong> The <code>Valid Redirect URIs</code> and <code>Web Origins</code> should be the URL of the MTO Console.</p>
+</blockquote>
+<ul>
+<li>Click on the <code>Save</code> button.</li>
+</ul>
+<h2 id="update-integration-config">Update Integration Config<a class="headerlink" href="#update-integration-config" title="Permanent link">#</a></h2>
+<ul>
+<li>Update the <code>IntegrationConfig</code> CR with the following configuration.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">integrations</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;realm&gt;</span>
+<span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;keycloak-address&gt;</span>
+<span class="w">    </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;client-name&gt;</span>
 </code></pre></div>
-<p>Administrators then create an Extension CR associated with the tenant:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Extensions</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions-sample</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">tenantName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
-<span class="w">  </span><span class="nt">argoCD</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">onDeletePurgeAppProject</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">appProject</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">sourceRepos</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;github.com/stakater/repo&quot;</span>
-<span class="w">      </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Pod&quot;</span>
-<span class="w">      </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v1&quot;</span>
-<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ConfigMap&quot;</span>
-</code></pre></div>
-<p>This creates an AppProject for the tenant:</p>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>get<span class="w"> </span>AppProject<span class="w"> </span>-A
-NAMESPACE<span class="w">             </span>NAME<span class="w">           </span>AGE
-openshift-operators<span class="w">   </span>tenant-sample<span class="w">  </span>5d15h
-</code></pre></div>
-<p>Example of the created AppProject:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AppProject</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">destinations</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-build</span>
-<span class="w">      </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://kubernetes.default.svc&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-dev</span>
-<span class="w">      </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://kubernetes.default.svc&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-stage</span>
-<span class="w">      </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://kubernetes.default.svc&quot;</span>
-<span class="w">  </span><span class="nt">roles</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
-<span class="w">        </span><span class="no">Role that gives full access to all resources inside the tenant&#39;s</span>
-<span class="w">        </span><span class="no">namespace to the tenant owner groups</span>
-<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">saap-cluster-admins</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater-team</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-owner-group</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-owner</span>
-<span class="w">      </span><span class="nt">policies</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;p,</span><span class="nv"> </span><span class="s">proj:tenant-sample:tenant-sample-owner,</span><span class="nv"> </span><span class="s">*,</span><span class="nv"> </span><span class="s">*,</span><span class="nv"> </span><span class="s">tenant-sample/*,</span><span class="nv"> </span><span class="s">allow&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
-<span class="w">        </span><span class="no">Role that gives edit access to all resources inside the tenant&#39;s</span>
-<span class="w">        </span><span class="no">namespace to the tenant owner group</span>
-<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">saap-cluster-admins</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater-team</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-edit-group</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-edit</span>
-<span class="w">      </span><span class="nt">policies</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;p,</span><span class="nv"> </span><span class="s">proj:tenant-sample:tenant-sample-edit,</span><span class="nv"> </span><span class="s">*,</span><span class="nv"> </span><span class="s">*,</span><span class="nv"> </span><span class="s">tenant-sample/*,</span><span class="nv"> </span><span class="s">allow&quot;</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;-</span>
-<span class="w">        </span><span class="no">Role that gives view access to all resources inside the tenant&#39;s</span>
-<span class="w">        </span><span class="no">namespace to the tenant owner group</span>
-<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">saap-cluster-admins</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater-team</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-view-group</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample-view</span>
-<span class="w">      </span><span class="nt">policies</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;p,</span><span class="nv"> </span><span class="s">proj:tenant-sample:tenant-sample-view,</span><span class="nv"> </span><span class="s">*,</span><span class="nv"> </span><span class="s">get,</span><span class="nv"> </span><span class="s">tenant-sample/*,</span><span class="nv"> </span><span class="s">allow&quot;</span>
-<span class="w">  </span><span class="nt">sourceRepos</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;https://github.com/stakater/gitops-config&quot;</span>
-</code></pre></div>
-<p>Users belonging to the tenant group will now see only applications created by them in the ArgoCD frontend:</p>
-<p><a class="glightbox" href="../images/argocd.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../images/argocd.png" /></a></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For ArgoCD Multi Tenancy to work properly, any default roles or policies attached to all users must be removed.</p>
-</div>
-<h2 id="preventing-argocd-from-syncing-certain-namespaced-resources">Preventing ArgoCD from Syncing Certain Namespaced Resources<a class="headerlink" href="#preventing-argocd-from-syncing-certain-namespaced-resources" title="Permanent link">#</a></h2>
-<p>To prevent tenants from syncing ResourceQuota and LimitRange resources to their namespaces, administrators can specify these resources in the blacklist section of the ArgoCD configuration in the <a href="../crds-api-reference/integration-config.html">IntegrationConfig</a>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">integrations</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
-<span class="w">      </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceQuota</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitRange</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<p>This configuration ensures these resources are not synced by ArgoCD if added to any tenant's project directory in GitOps. The AppProject will include the blacklisted resources:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AppProject</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">namespaceResourceBlacklist</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
-<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceQuota</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
-<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitRange</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<h2 id="allowing-argocd-to-sync-certain-cluster-wide-resources">Allowing ArgoCD to Sync Certain Cluster-Wide Resources<a class="headerlink" href="#allowing-argocd-to-sync-certain-cluster-wide-resources" title="Permanent link">#</a></h2>
-<p>To allow tenants to sync the Environment cluster-scoped resource, administrators can specify this resource in the allow-list section of the ArgoCD configuration in the IntegrationConfig's spec:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">integrations</span><span class="p p-Indicator">:</span>
-<span class="w">    </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
-<span class="w">      </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Environment</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<p>This configuration ensures these resources are synced by ArgoCD if added to any tenant's project directory in GitOps. The AppProject will include the allow-listed resources:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AppProject</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">clusterResourceWhitelist</span><span class="p p-Indicator">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Environment</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-</code></pre></div>
-<h2 id="overriding-namespaceresourceblacklist-andor-clusterresourcewhitelist-per-tenant">Overriding NamespaceResourceBlacklist and/or ClusterResourceWhitelist Per Tenant<a class="headerlink" href="#overriding-namespaceresourceblacklist-andor-clusterresourcewhitelist-per-tenant" title="Permanent link">#</a></h2>
-<p>To override the <code>namespaceResourceBlacklist</code> and/or <code>clusterResourceWhitelist</code> set via Integration Config for a specific tenant, administrators can specify these in the <code>argoCD</code> section of the Extension CR:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Extensions</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extensions-blue-sky</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">tenantName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">blue-sky</span>
-<span class="w">  </span><span class="nt">argoCD</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">onDeletePurgeAppProject</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">appProject</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">sourceRepos</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;github.com/stakater/repo&quot;</span>
-<span class="w">      </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Pod&quot;</span>
-<span class="w">      </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v1&quot;</span>
-<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ConfigMap&quot;</span>
-</code></pre></div>
-<p>This configuration allows for tailored settings for each tenant, ensuring flexibility and control over ArgoCD resources.</p>
+<ul>
+<li>Now, the MTO Console will be integrated with the external Keycloak instance.</li>
+</ul>
 
 
 
