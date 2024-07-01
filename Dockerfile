@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM nginxinc/nginx-unprivileged:1.26-alpine
+FROM nginxinc/nginx-unprivileged:1.27-alpine
 WORKDIR /usr/share/nginx/html/
 
 # copy the entire application
