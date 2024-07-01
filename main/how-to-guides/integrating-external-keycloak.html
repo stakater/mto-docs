@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/main/how-to-guides/enabling-openshift-dev-workspace.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/main/how-to-guides/integrating-external-keycloak.html">
       
       
-        <link rel="prev" href="enabling-multi-tenancy-vault.html">
+        <link rel="prev" href="mattermost.html">
       
       
-        <link rel="next" href="mattermost.html">
+        <link rel="next" href="offboarding/uninstalling.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Enabling DevWorkspace for Tenant's sandbox in OpenShift - Multi Tenant Operator</title>
+        <title>Integrating External Keycloak - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#enabling-devworkspace-for-tenants-sandbox-in-openshift" class="md-skip">
+        <a href="#integrating-external-keycloak" class="md-skip">
           Skip to content
         </a>
       
@@ -1773,30 +1773,10 @@ You're not viewing the latest version.
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Enabling DevWorkspace for Tenant's sandbox in OpenShift
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="enabling-openshift-dev-workspace.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="enabling-openshift-dev-workspace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1805,64 +1785,6 @@ You're not viewing the latest version.
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#devworkspaces-metadata-via-multi-tenant-operator" class="md-nav__link">
-    <span class="md-ellipsis">
-      DevWorkspaces metadata via Multi Tenant Operator
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#required-metadata-for-enabling-devworkspace-on-sandbox" class="md-nav__link">
-    <span class="md-ellipsis">
-      Required metadata for enabling DevWorkspace on sandbox
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#automate-sandbox-metadata-for-all-tenant-users-via-tenant-cr" class="md-nav__link">
-    <span class="md-ellipsis">
-      Automate sandbox metadata for all Tenant users via Tenant CR
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#automate-sandbox-metadata-for-all-tenant-users-via-integrationconfig-cr" class="md-nav__link">
-    <span class="md-ellipsis">
-      Automate sandbox metadata for all Tenant users via IntegrationConfig CR
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1893,10 +1815,30 @@ You're not viewing the latest version.
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="integrating-external-keycloak.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Integrating External Keycloak
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="integrating-external-keycloak.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1905,6 +1847,55 @@ You're not viewing the latest version.
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-integration-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Integration Config
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2414,36 +2405,27 @@ You're not viewing the latest version.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#devworkspaces-metadata-via-multi-tenant-operator" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
-      DevWorkspaces metadata via Multi Tenant Operator
+      Prerequisites
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#required-metadata-for-enabling-devworkspace-on-sandbox" class="md-nav__link">
+  <a href="#steps" class="md-nav__link">
     <span class="md-ellipsis">
-      Required metadata for enabling DevWorkspace on sandbox
+      Steps
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#automate-sandbox-metadata-for-all-tenant-users-via-tenant-cr" class="md-nav__link">
+  <a href="#update-integration-config" class="md-nav__link">
     <span class="md-ellipsis">
-      Automate sandbox metadata for all Tenant users via Tenant CR
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#automate-sandbox-metadata-for-all-tenant-users-via-integrationconfig-cr" class="md-nav__link">
-    <span class="md-ellipsis">
-      Automate sandbox metadata for all Tenant users via IntegrationConfig CR
+      Update Integration Config
     </span>
   </a>
   
@@ -2467,111 +2449,50 @@ You're not viewing the latest version.
   
 
 
-<h1 id="enabling-devworkspace-for-tenants-sandbox-in-openshift">Enabling DevWorkspace for Tenant's sandbox in OpenShift<a class="headerlink" href="#enabling-devworkspace-for-tenants-sandbox-in-openshift" title="Permanent link">#</a></h1>
-<h2 id="devworkspaces-metadata-via-multi-tenant-operator">DevWorkspaces metadata via Multi Tenant Operator<a class="headerlink" href="#devworkspaces-metadata-via-multi-tenant-operator" title="Permanent link">#</a></h2>
-<p>DevWorkspaces require specific metadata on a namespace for it to work in it. With Multi Tenant Operator (MTO), you can create sandbox namespaces for users of a Tenant, and then add the required metadata automatically on all sandboxes.</p>
-<h2 id="required-metadata-for-enabling-devworkspace-on-sandbox">Required metadata for enabling DevWorkspace on sandbox<a class="headerlink" href="#required-metadata-for-enabling-devworkspace-on-sandbox" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">che.eclipse.org</span>
-<span class="w">    </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workspaces-namespace</span>
-<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;username&gt;</span>
+<h1 id="integrating-external-keycloak">Integrating External Keycloak<a class="headerlink" href="#integrating-external-keycloak" title="Permanent link">#</a></h1>
+<p>MTO Console uses Keycloak for authentication and authorization. By default, the MTO Console uses an internal Keycloak instance that is provisioned by the Multi Tenant Operator in its own namespace. However, you can also integrate an external Keycloak instance with the MTO Console.</p>
+<p>This guide will help you integrate an external Keycloak instance with the MTO Console.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
+<ul>
+<li>An OpenShift cluster with Multi Tenant Operator installed.</li>
+<li>An external Keycloak instance.</li>
+</ul>
+<h2 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">#</a></h2>
+<p><strong>Navigate to the Keycloak console.</strong></p>
+<ul>
+<li>Go to your realm.</li>
+<li>Click on the <code>Clients</code>.</li>
+<li>Click on the <code>Create</code> button to create a new client.</li>
+</ul>
+<p><a class="glightbox" href="../images/integrating-external-keycloak-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Keycloak realm" src="../images/integrating-external-keycloak-1.png" /></a></p>
+<p><strong>Create a new client.</strong></p>
+<ul>
+<li>Fill in the <code>Client ID</code>, <code>Client Name</code> and <code>Client Protocol</code> fields.</li>
+</ul>
+<p><a class="glightbox" href="../images/integrating-external-keycloak-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Client creation" src="../images/integrating-external-keycloak-2.png" /></a></p>
+<ul>
+<li>Add <code>Valid Redirect URIs</code> and <code>Web Origins</code> for the client.</li>
+</ul>
+<p><a class="glightbox" href="../images/integrating-external-keycloak-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Client creation" src="../images/integrating-external-keycloak-3.png" /></a></p>
+<blockquote>
+<p><strong>Note:</strong> The <code>Valid Redirect URIs</code> and <code>Web Origins</code> should be the URL of the MTO Console.</p>
+</blockquote>
+<ul>
+<li>Click on the <code>Save</code> button.</li>
+</ul>
+<h2 id="update-integration-config">Update Integration Config<a class="headerlink" href="#update-integration-config" title="Permanent link">#</a></h2>
+<ul>
+<li>Update the <code>IntegrationConfig</code> CR with the following configuration.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">integrations</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;realm&gt;</span>
+<span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;keycloak-address&gt;</span>
+<span class="w">    </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;client-name&gt;</span>
 </code></pre></div>
-<h2 id="automate-sandbox-metadata-for-all-tenant-users-via-tenant-cr">Automate sandbox metadata for all Tenant users via Tenant CR<a class="headerlink" href="#automate-sandbox-metadata-for-all-tenant-users-via-tenant-cr" title="Permanent link">#</a></h2>
-<p>With Multi Tenant Operator (MTO), you can set <code>sandboxMetadata</code> like below to automate metadata for all sandboxes:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@acme.org</span>
-<span class="w">    </span><span class="nt">editors</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">erik@acme.org</span>
-<span class="w">    </span><span class="nt">viewers</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">john@acme.org</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="nt">private</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">sandbox</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">che.eclipse.org</span>
-<span class="w">          </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workspaces-namespace</span>
-<span class="w">        </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">TENANT.USERNAME</span><span class="nv"> </span><span class="s">}}&quot;</span>
-</code></pre></div>
-<p>It will create sandbox namespaces and also apply the <code>sandboxMetadata</code> for owners and editors. Notice the template <code>{{ TENANT.USERNAME }}</code>, it will resolve the username as value of the corresponding annotation. For more info on templated value, see <a href="../explanation/templated-metadata-values.html">here</a></p>
-<h2 id="automate-sandbox-metadata-for-all-tenant-users-via-integrationconfig-cr">Automate sandbox metadata for all Tenant users via IntegrationConfig CR<a class="headerlink" href="#automate-sandbox-metadata-for-all-tenant-users-via-integrationconfig-cr" title="Permanent link">#</a></h2>
-<p>You can also automate the metadata on all sandbox namespaces by using IntegrationConfig, notice <code>metadata.sandboxes</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">namespaceAccessPolicy</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">deny</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">privilegedNamespaces</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">privileged</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^default$</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^openshift.*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^kube.*</span>
-<span class="w">      </span><span class="nt">serviceAccounts</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift.*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:kube.*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:stakater-actions-runner-controller:actions-runner-controller-runner-deployment$</span>
-<span class="w">    </span><span class="nt">rbac</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">tenantRoles</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">default</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">editor</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">clusterRoles</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">edit</span>
-<span class="w">          </span><span class="nt">owner</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">clusterRoles</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
-<span class="w">          </span><span class="nt">viewer</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">clusterRoles</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">view</span>
-<span class="w">  </span><span class="nt">components</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">gateway</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">keycloak</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">integrations</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">vault</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">accessInfo</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">        </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">        </span><span class="nt">roleName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">        </span><span class="nt">secretRef</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">          </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">      </span><span class="nt">authMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
-<span class="w">      </span><span class="nt">config</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">ssoClient</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">  </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">groups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">namespaces</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">app.kubernetes.io/part-of</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">che.eclipse.org</span>
-<span class="w">        </span><span class="nt">app.kubernetes.io/component</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workspaces-namespace</span>
-<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">TENANT.USERNAME</span><span class="nv"> </span><span class="s">}}&quot;</span>
-</code></pre></div>
-<p>For more info on templated value <code>"{{ TENANT.USERNAME }}"</code>, see <a href="../explanation/templated-metadata-values.html">here</a></p>
+<ul>
+<li>Now, the MTO Console will be integrated with the external Keycloak instance.</li>
+</ul>
 
 
 
