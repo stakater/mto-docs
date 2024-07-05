@@ -93,6 +93,10 @@ spec:
       annotations:
         openshift.io/node-selector: node-role.kubernetes.io/worker=
   integrations:
+    keycloak:
+      realm: mto
+      address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/
+      clientName: mto-console
     argocd:
       clusterResourceWhitelist:
         - group: tronador.stakater.com
@@ -384,7 +388,7 @@ metadata:
 
 We can use the `metadata.namespaces`, `metadata.group` and `metadata.sandbox` fields to automatically add `labels` and `annotations` to the **Namespaces** and **Groups** managed via MTO.
 
-If we want to add default *labels/annotations* to sandbox namespaces of tenants than we just simply add them in `openshift.project.labels`/`openshift.project.annotations` respectively.
+If we want to add default *labels/annotations* to sandbox namespaces of tenants than we just simply add them in `metadata.namespaces.labels`/`metadata.namespaces.annotations` respectively.
 
 Whenever a project is made it will have the labels and annotations as mentioned above.
 
@@ -422,8 +426,11 @@ Integrations are used to configure the integrations that MTO has with other tool
 
 ```yaml
 integrations:
+  keycloak:
+    realm: mto
+    address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/
+    clientName: mto-console
   argocd:
-    enabled: bool
     clusterResourceWhitelist:
       - group: tronador.stakater.com
         kind: EnvironmentProvisioner
@@ -444,6 +451,25 @@ integrations:
     config: 
       ssoClient: vault
 ```
+
+### Keycloak
+
+[Keycloak](https://www.keycloak.org/) is an open-source Identity and Access Management solution aimed at modern applications and services. It makes it easy to secure applications and services with little to no code.
+
+If a `Keycloak` instance is already set up within your cluster, configure it for MTO by enabling the following configuration:
+
+```yaml
+keycloak:
+  realm: mto
+  address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/
+  clientName: mto-console
+```
+
+- `keycloak.realm:` The realm in Keycloak where the client is configured.
+- `keycloak.address:` The address of the Keycloak instance.
+- `keycloak.clientName:` The name of the client in Keycloak.
+
+For more details around enabling Keycloak in MTO, visit [here](../how-to-guides/integrating-external-keycloak.md)
 
 ### ArgoCD
 
@@ -516,7 +542,7 @@ For more details around enabling Kubernetes auth in Vault, visit [here](https://
 
 The role created within Vault for Kubernetes authentication should have the following permissions:
 
-```yaml
+```hcl
 path "secret/*" {
   capabilities = ["create", "read", "update", "patch", "delete", "list"]
 }
