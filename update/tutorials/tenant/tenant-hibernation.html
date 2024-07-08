@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.24">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
@@ -106,10 +106,22 @@
     
       <div data-md-color-scheme="default" data-md-component="outdated" hidden>
         
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+You're not viewing the latest version.
+<a href="../../..">
+  <strong>Click here to go to latest.</strong>
+</a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
       </div>
     
     
-      
+
 
 
 
@@ -768,7 +780,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -857,7 +869,7 @@
     window.addEventListener("scroll", handleScroll);
   });
 </script>
-    
+
     <div class="md-container" data-md-component="container">
       
       
@@ -1112,7 +1124,7 @@
         
   
   <span class="md-ellipsis">
-    Creating Namespaces
+    Creating Namespaces through Tenant Custom Resource
   </span>
   
 
@@ -1133,7 +1145,7 @@
         
   
   <span class="md-ellipsis">
-    Assigning metadata
+    Assigning Metadata in Tenant Custom Resources
   </span>
   
 
@@ -1198,9 +1210,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#hibernating-namespaces" class="md-nav__link">
+  <a href="#configuring-hibernation-for-tenant-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
-      Hibernating Namespaces
+      Configuring Hibernation for Tenant Namespaces
     </span>
   </a>
   
@@ -1277,7 +1289,7 @@
         
   
   <span class="md-ellipsis">
-    Deleting a Tenant
+    Deleting a Tenant While Preserving Resources
   </span>
   
 
@@ -1901,6 +1913,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to-guides/integrating-external-keycloak.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrating External Keycloak
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2169,6 +2202,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../../crds-api-reference/extensions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extensions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../crds-api-reference/integration-config.html" class="md-nav__link">
         
   
@@ -2384,9 +2438,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#hibernating-namespaces" class="md-nav__link">
+  <a href="#configuring-hibernation-for-tenant-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
-      Hibernating Namespaces
+      Configuring Hibernation for Tenant Namespaces
     </span>
   </a>
   
@@ -2462,7 +2516,8 @@
 
 
 <h1 id="hibernating-a-tenant">Hibernating a Tenant<a class="headerlink" href="#hibernating-a-tenant" title="Permanent link">#</a></h1>
-<h2 id="hibernating-namespaces">Hibernating Namespaces<a class="headerlink" href="#hibernating-namespaces" title="Permanent link">#</a></h2>
+<p>Implementing hibernation for tenants' namespaces efficiently manages cluster resources by temporarily reducing workload activities during off-peak hours. This guide demonstrates how to configure hibernation schedules for tenant namespaces, leveraging Tenant and ResourceSupervisor for precise control.</p>
+<h2 id="configuring-hibernation-for-tenant-namespaces">Configuring Hibernation for Tenant Namespaces<a class="headerlink" href="#configuring-hibernation-for-tenant-namespaces" title="Permanent link">#</a></h2>
 <p>You can manage workloads in your cluster with MTO by implementing a hibernation schedule for your tenants.
 Hibernation downsizes the running Deployments and StatefulSets in a tenant’s namespace according to a defined cron schedule. You can set a hibernation schedule for your tenants by adding the ‘spec.hibernation’ field to the tenant's respective Custom Resource.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">hibernation</span><span class="p">:</span>
@@ -2539,26 +2594,23 @@ The ResourceSupervisor definition will contain the hibernation cron schedule, th
 <h2 id="hibernating-a-tenant_1">Hibernating a tenant<a class="headerlink" href="#hibernating-a-tenant_1" title="Permanent link">#</a></h2>
 <p>Bill is a cluster administrator who wants to free up unused cluster resources at nighttime, in an effort to reduce costs (when the cluster isn't being used).</p>
 <p>First, Bill creates a tenant with the <code>hibernation</code> schedules mentioned in the spec, or adds the hibernation field to an existing tenant:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta2</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">hibernation</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 20 * * 1-5</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 8 * * 1-5</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0</span><span class="nv"> </span><span class="s">20</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5&quot;</span><span class="w">  </span><span class="c1"># Sleep at 8 PM on weekdays</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5&quot;</span><span class="w">    </span><span class="c1"># Wake at 8 AM on weekdays</span>
 <span class="w">  </span><span class="nt">owners</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user</span>
-<span class="w">  </span><span class="nt">editors</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user1</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user@example.com</span>
 <span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span>
 <span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">withoutTenantPrefix</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stage</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stage</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 </code></pre></div>
 <p>The schedules above will put all the <code>Deployments</code> and <code>StatefulSets</code> within the tenant's namespaces to sleep, by reducing their pod count to 0 at 8 PM every weekday. At 8 AM on weekdays, the namespaces will then wake up by restoring their applications' previous pod counts.</p>
 <p>Bill can verify this behaviour by checking the newly created ResourceSupervisor resource at run time:</p>
@@ -2697,7 +2749,7 @@ Bill can also use the same method to hibernate some namespaces and ArgoCD Applic
         
       </main>
       
-        <style>
+<style>
     .svg-container {
         display: flex;
     }
@@ -3136,7 +3188,7 @@ Bill can also use the same method to hibernate some namespaces and ArgoCD Applic
         </div>
     </div>
 </footer>
-      
+
     </div>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
@@ -3224,7 +3276,7 @@ Bill can also use the same method to hibernate some namespaces and ArgoCD Applic
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.081f42fc.min.js"></script>
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

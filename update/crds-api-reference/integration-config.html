@@ -11,14 +11,14 @@
         <link rel="canonical" href="https://docs.stakater.com/mto/update/crds-api-reference/integration-config.html">
       
       
-        <link rel="prev" href="../explanation/multi-tenancy-vault.html">
+        <link rel="prev" href="extensions.html">
       
       
         <link rel="next" href="quota.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.24">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
@@ -106,10 +106,22 @@
     
       <div data-md-color-scheme="default" data-md-component="outdated" hidden>
         
+          <aside class="md-banner md-banner--warning">
+            <div class="md-banner__inner md-grid md-typeset">
+              
+You're not viewing the latest version.
+<a href="../..">
+  <strong>Click here to go to latest.</strong>
+</a>
+
+            </div>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),outdated=__md_get("__outdated",sessionStorage);!0===outdated&&el&&(el.hidden=!1)</script>
+          </aside>
+        
       </div>
     
     
-      
+
 
 
 
@@ -768,7 +780,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -857,7 +869,7 @@
     window.addEventListener("scroll", handleScroll);
   });
 </script>
-    
+
     <div class="md-container" data-md-component="container">
       
       
@@ -1108,7 +1120,7 @@
         
   
   <span class="md-ellipsis">
-    Creating Namespaces
+    Creating Namespaces through Tenant Custom Resource
   </span>
   
 
@@ -1129,7 +1141,7 @@
         
   
   <span class="md-ellipsis">
-    Assigning metadata
+    Assigning Metadata in Tenant Custom Resources
   </span>
   
 
@@ -1171,7 +1183,7 @@
         
   
   <span class="md-ellipsis">
-    Deleting a Tenant
+    Deleting a Tenant While Preserving Resources
   </span>
   
 
@@ -1795,6 +1807,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/integrating-external-keycloak.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrating External Keycloak
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2062,6 +2095,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="extensions.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extensions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -2113,6 +2167,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Components
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Access Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rbac" class="md-nav__link">
+    <span class="md-ellipsis">
+      RBAC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RBAC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#tenantroles" class="md-nav__link">
     <span class="md-ellipsis">
       TenantRoles
@@ -2144,50 +2227,9 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#openshift" class="md-nav__link">
-    <span class="md-ellipsis">
-      OpenShift
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="OpenShift">
-      <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#project-group-and-sandbox" class="md-nav__link">
-    <span class="md-ellipsis">
-      Project, group and sandbox
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cluster-admin-groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cluster Admin Groups
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#privileged-namespaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      Privileged Namespaces
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#privileged-serviceaccounts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Privileged ServiceAccounts
-    </span>
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
@@ -2198,6 +2240,72 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Namespace Access Policy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deny" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deny
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#privileged" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privileged
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Privileged">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serviceaccounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      ServiceAccounts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Users
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Groups
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -2206,37 +2314,80 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespaces-group-and-sandbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespaces, group and sandbox
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integrations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integrations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keycloak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#argocd" class="md-nav__link">
     <span class="md-ellipsis">
       ArgoCD
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ArgoCD">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vault
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vault">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#namespace" class="md-nav__link">
+  <a href="#authmethod-kubernetes" class="md-nav__link">
     <span class="md-ellipsis">
-      Namespace
+      AuthMethod - Kubernetes
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#namespaceresourceblacklist" class="md-nav__link">
+  <a href="#authmethod-token" class="md-nav__link">
     <span class="md-ellipsis">
-      NamespaceResourceBlacklist
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clusterresourcewhitelist" class="md-nav__link">
-    <span class="md-ellipsis">
-      ClusterResourceWhitelist
+      AuthMethod - Token
     </span>
   </a>
   
@@ -2246,31 +2397,18 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#provision" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#custom-pricing-model" class="md-nav__link">
     <span class="md-ellipsis">
-      Provision
+      Custom Pricing Model
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#rhsso-red-hat-single-sign-on" class="md-nav__link">
-    <span class="md-ellipsis">
-      RHSSO (Red Hat Single Sign-On)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vault" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vault
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2484,6 +2622,35 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Components
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Access Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rbac" class="md-nav__link">
+    <span class="md-ellipsis">
+      RBAC
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RBAC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#tenantroles" class="md-nav__link">
     <span class="md-ellipsis">
       TenantRoles
@@ -2515,50 +2682,9 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#openshift" class="md-nav__link">
-    <span class="md-ellipsis">
-      OpenShift
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="OpenShift">
-      <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#project-group-and-sandbox" class="md-nav__link">
-    <span class="md-ellipsis">
-      Project, group and sandbox
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cluster-admin-groups" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cluster Admin Groups
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#privileged-namespaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      Privileged Namespaces
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#privileged-serviceaccounts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Privileged ServiceAccounts
-    </span>
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
@@ -2569,6 +2695,72 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Namespace Access Policy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deny" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deny
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#privileged" class="md-nav__link">
+    <span class="md-ellipsis">
+      Privileged
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Privileged">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serviceaccounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      ServiceAccounts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Users
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Groups
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -2577,37 +2769,80 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespaces-group-and-sandbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespaces, group and sandbox
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integrations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integrations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keycloak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#argocd" class="md-nav__link">
     <span class="md-ellipsis">
       ArgoCD
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ArgoCD">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vault
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vault">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#namespace" class="md-nav__link">
+  <a href="#authmethod-kubernetes" class="md-nav__link">
     <span class="md-ellipsis">
-      Namespace
+      AuthMethod - Kubernetes
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#namespaceresourceblacklist" class="md-nav__link">
+  <a href="#authmethod-token" class="md-nav__link">
     <span class="md-ellipsis">
-      NamespaceResourceBlacklist
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clusterresourcewhitelist" class="md-nav__link">
-    <span class="md-ellipsis">
-      ClusterResourceWhitelist
+      AuthMethod - Token
     </span>
   </a>
   
@@ -2617,31 +2852,18 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#provision" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#custom-pricing-model" class="md-nav__link">
     <span class="md-ellipsis">
-      Provision
+      Custom Pricing Model
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#rhsso-red-hat-single-sign-on" class="md-nav__link">
-    <span class="md-ellipsis">
-      RHSSO (Red Hat Single Sign-On)
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#vault" class="md-nav__link">
-    <span class="md-ellipsis">
-      Vault
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2665,12 +2887,244 @@
 
 <h1 id="integration-config">Integration Config<a class="headerlink" href="#integration-config" title="Permanent link">#</a></h1>
 <p>IntegrationConfig is used to configure settings of multi-tenancy for Multi Tenant Operator.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
 <span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">components</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nginx&#39;</span>
+<span class="w">      </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">      </span><span class="nt">console</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-console.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">      </span><span class="nt">gateway</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">      </span><span class="nt">customPricingModel</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">CPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.031611&quot;</span>
+<span class="w">        </span><span class="nt">spotCPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.006655&quot;</span>
+<span class="w">        </span><span class="nt">RAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.004237&quot;</span>
+<span class="w">        </span><span class="nt">spotRAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.000892&quot;</span>
+<span class="w">        </span><span class="nt">GPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.95&quot;</span>
+<span class="w">        </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.00005479452&quot;</span>
+<span class="w">        </span><span class="nt">zoneNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">        </span><span class="nt">regionNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">        </span><span class="nt">internetNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.12&quot;</span>
+<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">rbac</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">tenantRoles</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">owner</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">clusterRoles</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
+<span class="w">          </span><span class="nt">editor</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">clusterRoles</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">edit</span>
+<span class="w">          </span><span class="nt">viewer</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">clusterRoles</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">view</span>
+<span class="w">        </span><span class="nt">custom</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">labelSelector</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">matchExpressions</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater.com/kind</span>
+<span class="w">              </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<span class="w">              </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">            </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">stakater.com/kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
+<span class="w">          </span><span class="nt">owner</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">clusterRoles</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-owner</span>
+<span class="w">          </span><span class="nt">editor</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">clusterRoles</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-editor</span>
+<span class="w">          </span><span class="nt">viewer</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">clusterRoles</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-view</span>
+<span class="w">    </span><span class="nt">namespaceAccessPolicy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">deny</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">privilegedNamespaces</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:serviceaccount:openshift-argocd:argocd-application-controller</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adam@stakater.com</span>
+<span class="w">          </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-admins</span>
+<span class="w">    </span><span class="nt">privileged</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^default$</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^openshift.*</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^kube.*</span>
+<span class="w">      </span><span class="nt">serviceAccounts</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift.*</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:kube.*</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-admins</span>
+<span class="w">  </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer-reader</span>
+<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/worker=</span>
+<span class="w">    </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">stakater.com/workload-monitoring</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/worker=</span>
+<span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">stakater.com/kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sandbox</span>
+<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/worker=</span>
+<span class="w">  </span><span class="nt">integrations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">      </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://keycloak.apps.prod.abcdefghi.kubeapp.cloud</span>
+<span class="w">      </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto-console</span>
+<span class="w">    </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tronador.stakater.com</span>
+<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvironmentProvisioner</span>
+<span class="w">      </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"> </span><span class="c1"># all groups</span>
+<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceQuota</span>
+<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
+<span class="w">    </span><span class="nt">vault</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">authMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span><span class="w">      </span><span class="c1">#enum: {kubernetes:default, token}</span>
+<span class="w">      </span><span class="nt">accessInfo</span><span class="p">:</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
+<span class="w">        </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://vault.apps.prod.abcdefghi.kubeapp.cloud/</span>
+<span class="w">        </span><span class="nt">roleName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">        </span><span class="nt">secretRef</span><span class="p">:</span><span class="w">       </span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">          </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span>
+<span class="w">        </span><span class="nt">ssoClient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
+</code></pre></div>
+<p>Following are the different components that can be used to configure multi-tenancy in a cluster via Multi Tenant Operator.</p>
+<h2 id="components">Components<a class="headerlink" href="#components" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">components</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">      </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">      </span><span class="nt">console</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-console.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">      </span><span class="nt">gateway</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+</code></pre></div>
+<ul>
+<li><code>components.console:</code> Enables or disables the console GUI for MTO.</li>
+<li><code>components.showback:</code> Enables or disables the showback feature on the console.</li>
+<li><code>components.ingress:</code> Configures the ingress settings for various components:<ul>
+<li><code>ingressClassName:</code> Ingress class to be used for the ingress.</li>
+<li><code>console:</code> Settings for the console's ingress.<ul>
+<li><code>host:</code> hostname for the console's ingress.</li>
+<li><code>tlsSecretName:</code> Name of the secret containing the TLS certificate and key for the console's ingress.</li>
+</ul>
+</li>
+<li><code>gateway:</code> Settings for the gateway's ingress.<ul>
+<li><code>host:</code> hostname for the gateway's ingress.</li>
+<li><code>tlsSecretName:</code> Name of the secret containing the TLS certificate and key for the gateway's ingress.</li>
+</ul>
+</li>
+<li><code>keycloak:</code> Settings for the Keycloak's ingress.<ul>
+<li><code>host:</code> hostname for the Keycloak's ingress.</li>
+<li><code>tlsSecretName:</code> Name of the secret containing the TLS certificate and key for the Keycloak's ingress.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Here's an example of how to generate the secrets required to configure MTO:</p>
+<p><strong>TLS Secret for Ingress:</strong>  </p>
+<p>Create a TLS secret containing your SSL/TLS certificate and key for secure communication. This secret will be used for the Console, Gateway, and Keycloak ingresses.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>tls<span class="w"> </span>&lt;tls-secret-name&gt;<span class="w"> </span>--key<span class="o">=</span>&lt;path-to-key.pem&gt;<span class="w"> </span>--cert<span class="o">=</span>&lt;path-to-cert.pem&gt;
+</code></pre></div>
+<p>Integration config will be managing the following resources required for console GUI:</p>
+<ul>
+<li><code>MTO Postgresql</code> resources.</li>
+<li><code>MTO Prometheus</code> resources.</li>
+<li><code>MTO Opencost</code> resources.</li>
+<li><code>MTO Console, Gateway, Keycloak</code> resources.</li>
+<li><code>Showback</code> cronjob.</li>
+</ul>
+<p>Details on console GUI and showback can be found <a href="../explanation/console.html">here</a></p>
+<h2 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nt">accessControl</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">rbac</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tenantRoles</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">owner</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">clusterRoles</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
+<span class="w">        </span><span class="nt">editor</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">clusterRoles</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">edit</span>
+<span class="w">        </span><span class="nt">viewer</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">clusterRoles</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">view</span>
+<span class="w">      </span><span class="nt">custom</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">labelSelector</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">matchExpressions</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater.com/kind</span>
+<span class="w">            </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<span class="w">            </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">          </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">stakater.com/kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
+<span class="w">        </span><span class="nt">owner</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">clusterRoles</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-owner</span>
+<span class="w">        </span><span class="nt">editor</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">clusterRoles</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-editor</span>
+<span class="w">        </span><span class="nt">viewer</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">clusterRoles</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-view</span>
+<span class="w">  </span><span class="nt">namespaceAccessPolicy</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">deny</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">privilegedNamespaces</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:serviceaccount:openshift-argocd:argocd-application-controller</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adam@stakater.com</span>
+<span class="w">          </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-admins</span>
+<span class="w">  </span><span class="nt">privileged</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^default$</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^openshift.*</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^kube.*</span>
+<span class="w">    </span><span class="nt">serviceAccounts</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift.*</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:kube.*</span>
+<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">    </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-admins</span>
+</code></pre></div>
+<h3 id="rbac">RBAC<a class="headerlink" href="#rbac" title="Permanent link">#</a></h3>
+<p>RBAC is used to configure the roles that will be applied to each Tenant namespace. The field allows optional custom roles, that are then used to create RoleBindings for namespaces that match a labelSelector.</p>
+<h4 id="tenantroles">TenantRoles<a class="headerlink" href="#tenantroles" title="Permanent link">#</a></h4>
+<p>TenantRoles are required within the IntegrationConfig, as they are used for defining what roles will be applied to each Tenant namespace. The field allows optional custom roles, that are then used to create RoleBindings for namespaces that match a labelSelector.</p>
+<blockquote>
+<p>⚠️ If you do not configure roles in any way, then the default OpenShift roles of <code>owner</code>, <code>edit</code>, and <code>view</code> will apply to Tenant members. Their details can be found <a href="../how-to-guides/custom-roles.html">here</a></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nt">rbac</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tenantRoles</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">default</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">owner</span><span class="p">:</span>
@@ -2682,7 +3136,6 @@
 <span class="w">      </span><span class="nt">viewer</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">clusterRoles</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">view</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">viewer</span>
 <span class="w">    </span><span class="nt">custom</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">labelSelector</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">matchExpressions</span><span class="p">:</span>
@@ -2700,102 +3153,11 @@
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-editor</span>
 <span class="w">      </span><span class="nt">viewer</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">clusterRoles</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-viewer</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-view</span>
-<span class="w">  </span><span class="nt">openshift</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">project</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">stakater.com/workload-monitoring</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/worker=</span>
-<span class="w">    </span><span class="nt">group</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer-reader</span>
-<span class="w">    </span><span class="nt">sandbox</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">stakater.com/kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sandbox</span>
-<span class="w">    </span><span class="nt">clusterAdminGroups</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-admins</span>
-<span class="w">    </span><span class="nt">privilegedNamespaces</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^default$</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^openshift-*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^kube-*</span>
-<span class="w">    </span><span class="nt">privilegedServiceAccounts</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift-*</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:kube-*</span>
-<span class="w">    </span><span class="nt">namespaceAccessPolicy</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">deny</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">privilegedNamespaces</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:serviceaccount:openshift-argocd:argocd-application-controller</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adam@stakater.com</span>
-<span class="w">          </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-admins</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
-<span class="w">    </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"> </span><span class="c1"># all groups</span>
-<span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceQuota</span>
-<span class="w">    </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tronador.stakater.com</span>
-<span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvironmentProvisioner</span>
-<span class="w">  </span><span class="nt">rhsso</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer</span>
-<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://iam-keycloak-auth.apps.prod.abcdefghi.kubeapp.cloud/</span>
-<span class="w">      </span><span class="nt">secretReference</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auth-secrets</span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-auth</span>
-<span class="w">  </span><span class="nt">vault</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
-<span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;https://vault.apps.prod.abcdefghi.kubeapp.cloud/&#39;</span>
-<span class="w">    </span><span class="nt">roleName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
-<span class="w">    </span><span class="nt">sso</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
 </code></pre></div>
-<p>Following are the different components that can be used to configure multi-tenancy in a cluster via Multi Tenant Operator.</p>
-<h2 id="tenantroles">TenantRoles<a class="headerlink" href="#tenantroles" title="Permanent link">#</a></h2>
-<p>TenantRoles are required within the IntegrationConfig, as they are used for defining what roles will be applied to each Tenant namespace. The field allows optional custom roles, that are then used to create RoleBindings for namespaces that match a labelSelector.</p>
-<blockquote>
-<p>⚠️ If you do not configure roles in any way, then the default OpenShift roles of <code>owner</code>, <code>edit</code>, and <code>view</code> will apply to Tenant members. Their details can be found <a href="../how-to-guides/custom-roles.html">here</a></p>
-</blockquote>
-<div class="highlight"><pre><span></span><code><span class="nt">tenantRoles</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">default</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">clusterRoles</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
-<span class="w">    </span><span class="nt">editor</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">clusterRoles</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">edit</span>
-<span class="w">    </span><span class="nt">viewer</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">clusterRoles</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">view</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">viewer</span>
-<span class="w">  </span><span class="nt">custom</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater.com/kind</span>
-<span class="w">        </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">        </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">stakater.com/kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">    </span><span class="nt">owner</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">clusterRoles</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-owner</span>
-<span class="w">    </span><span class="nt">editor</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">clusterRoles</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-editor</span>
-<span class="w">    </span><span class="nt">viewer</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">clusterRoles</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-viewer</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-view</span>
-</code></pre></div>
-<h3 id="default">Default<a class="headerlink" href="#default" title="Permanent link">#</a></h3>
+<h5 id="default">Default<a class="headerlink" href="#default" title="Permanent link">#</a></h5>
 <p>This field contains roles that will be used to create default roleBindings for each namespace that belongs to tenants. These roleBindings are only created for a namespace if that namespace isn't already matched by the <code>custom</code> field below it. Therefore, it is required to have at least one role mentioned within each of its three subfields: <code>owner</code>, <code>editor</code>, and <code>viewer</code>. These 3 subfields also correspond to the member fields of the <a href="tenant.html#tenant">Tenant CR</a></p>
-<h3 id="custom">Custom<a class="headerlink" href="#custom" title="Permanent link">#</a></h3>
+<h5 id="custom">Custom<a class="headerlink" href="#custom" title="Permanent link">#</a></h5>
 <p>An array of custom roles. Similar to the <code>default</code> field, you can mention roles within this field as well. However, the custom roles also require the use of a <code>labelSelector</code> for each iteration within the array. The roles mentioned here will only apply to the namespaces that are matched by the labelSelector. If a namespace is matched by 2 different labelSelectors, then both roles will apply to it. Additionally, roles can be skipped within the labelSelector. These missing roles are then inherited from the <code>default</code> roles field . For example, if the following custom roles arrangement is used:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">custom</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">labelSelector</span><span class="p">:</span>
@@ -2811,53 +3173,76 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-owner</span>
 </code></pre></div>
 <p>Then the <code>editor</code> and <code>viewer</code> roles will be taken from the <code>default</code> roles field, as that is required to have at least one role mentioned.</p>
-<h2 id="openshift">OpenShift<a class="headerlink" href="#openshift" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code><span class="nt">openshift</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">project</span><span class="p">:</span>
+<h3 id="namespace-access-policy">Namespace Access Policy<a class="headerlink" href="#namespace-access-policy" title="Permanent link">#</a></h3>
+<p>Namespace Access Policy is used to configure the namespaces that are allowed to be created by tenants. It also allows the configuration of namespaces that are ignored by MTO.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">namespaceAccessPolicy</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">deny</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">privilegedNamespaces</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-admins</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:serviceaccount:openshift-argocd:argocd-application-controller</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adam@stakater.com</span>
+<span class="w">  </span><span class="nt">privileged</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^default$</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^openshift.*</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^kube.*</span>
+<span class="w">    </span><span class="nt">serviceAccounts</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift.*</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:kube.*</span>
+<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">    </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-admins</span>
+</code></pre></div>
+<h4 id="deny">Deny<a class="headerlink" href="#deny" title="Permanent link">#</a></h4>
+<p><code>namespaceAccessPolicy.Deny:</code> Can be used to restrict privileged <em>users/groups</em> CRUD operation over managed namespaces.</p>
+<h4 id="privileged">Privileged<a class="headerlink" href="#privileged" title="Permanent link">#</a></h4>
+<h5 id="namespaces">Namespaces<a class="headerlink" href="#namespaces" title="Permanent link">#</a></h5>
+<p><code>privileged.namespaces:</code> Contains the list of <code>namespaces</code> ignored by MTO. MTO will not manage the <code>namespaces</code> in this list. Treatment for privileged namespaces does not involve further integrations or finalizers processing as with normal namespaces. Values in this list are regex patterns.</p>
+<p>For example:</p>
+<ul>
+<li>To ignore the <code>default</code> namespace, we can specify <code>^default$</code></li>
+<li>To ignore all namespaces starting with the <code>openshift-</code> prefix, we can specify <code>^openshift-.*</code>.</li>
+<li>To ignore any namespace containing <code>stakater</code> in its name, we can specify <code>^stakater.</code>. (A constant word given as a regex pattern will match any namespace containing that word.)</li>
+</ul>
+<h5 id="serviceaccounts">ServiceAccounts<a class="headerlink" href="#serviceaccounts" title="Permanent link">#</a></h5>
+<p><code>privileged.serviceAccounts:</code> Contains the list of <code>ServiceAccounts</code> ignored by MTO. MTO will not manage the <code>ServiceAccounts</code> in this list. Values in this list are regex patterns. For example, to ignore all <code>ServiceAccounts</code> starting with the <code>system:serviceaccount:openshift-</code> prefix, we can use <code>^system:serviceaccount:openshift-.*</code>; and to ignore a specific service account like <code>system:serviceaccount:builder</code> service account we can use <code>^system:serviceaccount:builder$.</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>stakater</code>, <code>stakater.</code> and <code>stakater.*</code> will have the same effect. To check out the combinations, go to <a href="https://regex101.com/">Regex101</a>, select Golang, and type your expected regex and test string.  </p>
+</div>
+<h5 id="users">Users<a class="headerlink" href="#users" title="Permanent link">#</a></h5>
+<p><code>privileged.users:</code> Contains the list of <code>users</code> ignored by MTO. MTO will not manage the <code>users</code> in this list. Values in this list are regex patterns.</p>
+<h5 id="groups">Groups<a class="headerlink" href="#groups" title="Permanent link">#</a></h5>
+<p><code>privileged.groups:</code> Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of privilegedNamespaces.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>User <code>kube:admin</code> is bypassed by default to perform operations as a cluster admin, this includes operations on all the namespaces.</p>
+</div>
+<blockquote>
+<p>⚠️ If you want to use a more complex regex pattern (for the <code>privileged.namespaces</code> or <code>privileged.serviceAccounts</code> field), it is recommended that you test the regex pattern first -  either locally or using a platform such as <a href="https://regex101.com/">https://regex101.com/</a>.</p>
+</blockquote>
+<h2 id="metadata">Metadata<a class="headerlink" href="#metadata" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer-reader</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">stakater.com/workload-monitoring</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
 <span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/worker=</span>
-<span class="w">  </span><span class="nt">group</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer-reader</span>
-<span class="w">  </span><span class="nt">sandbox</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">sandboxes</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">stakater.com/kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sandbox</span>
-<span class="w">  </span><span class="nt">clusterAdminGroups</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-admins</span>
-<span class="w">  </span><span class="nt">privilegedNamespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^default$</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^openshift-*</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^kube-*</span>
-<span class="w">  </span><span class="nt">privilegedServiceAccounts</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift-*</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:kube-*</span>
-<span class="w">  </span><span class="nt">namespaceAccessPolicy</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">deny</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">privilegedNamespaces</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:serviceaccount:openshift-argocd:argocd-application-controller</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adam@stakater.com</span>
-<span class="w">        </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-admins</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
-<h3 id="project-group-and-sandbox">Project, group and sandbox<a class="headerlink" href="#project-group-and-sandbox" title="Permanent link">#</a></h3>
-<p>We can use the <code>openshift.project</code>, <code>openshift.group</code> and <code>openshift.sandbox</code> fields to automatically add <code>labels</code> and <code>annotations</code> to  the <strong>Projects</strong> and <strong>Groups</strong> managed via MTO.</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">openshift</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">project</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">stakater.com/workload-monitoring</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/worker=</span>
-<span class="w">    </span><span class="nt">group</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer-reader</span>
-<span class="w">    </span><span class="nt">sandbox</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">stakater.com/kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sandbox</span>
-</code></pre></div>
-<p>If we want to add default <em>labels/annotations</em> to sandbox namespaces of tenants than we just simply add them in <code>openshift.project.labels</code>/<code>openshift.project.annotations</code> respectively.</p>
+<h3 id="namespaces-group-and-sandbox">Namespaces, group and sandbox<a class="headerlink" href="#namespaces-group-and-sandbox" title="Permanent link">#</a></h3>
+<p>We can use the <code>metadata.namespaces</code>, <code>metadata.group</code> and <code>metadata.sandbox</code> fields to automatically add <code>labels</code> and <code>annotations</code> to the <strong>Namespaces</strong> and <strong>Groups</strong> managed via MTO.</p>
+<p>If we want to add default <em>labels/annotations</em> to sandbox namespaces of tenants than we just simply add them in <code>metadata.namespaces.labels</code>/<code>metadata.namespaces.annotations</code> respectively.</p>
 <p>Whenever a project is made it will have the labels and annotations as mentioned above.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Project</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project.openshift.io/v1</span>
@@ -2883,146 +3268,161 @@
 <span class="nt">users</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">andrew@stakater.com</span>
 </code></pre></div>
-<h3 id="cluster-admin-groups">Cluster Admin Groups<a class="headerlink" href="#cluster-admin-groups" title="Permanent link">#</a></h3>
-<p><code>clusterAdminGroups:</code> Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of privilegedNamespaces.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>User <code>kube:admin</code> is bypassed by default to perform operations as a cluster admin, this includes operations on all the namespaces.</p>
-</div>
-<h3 id="privileged-namespaces">Privileged Namespaces<a class="headerlink" href="#privileged-namespaces" title="Permanent link">#</a></h3>
-<p><code>privilegedNamespaces:</code> Contains the list of <code>namespaces</code> ignored by MTO. MTO will not manage the <code>namespaces</code> in this list. Treatment for privileged namespaces does not involve further integrations or finalizers processing as with normal namespaces. Values in this list are regex patterns.</p>
-<p>For example:</p>
+<h2 id="integrations">Integrations<a class="headerlink" href="#integrations" title="Permanent link">#</a></h2>
+<p>Integrations are used to configure the integrations that MTO has with other tools. Currently, MTO supports the following integrations:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">integrations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://keycloak.apps.prod.abcdefghi.kubeapp.cloud</span>
+<span class="w">    </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto-console</span>
+<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tronador.stakater.com</span>
+<span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvironmentProvisioner</span>
+<span class="w">    </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"> </span><span class="c1"># all groups</span>
+<span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceQuota</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
+<span class="w">  </span><span class="nt">vault</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">authMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span><span class="w">      </span><span class="c1">#enum: {kubernetes:default, Token}</span>
+<span class="w">    </span><span class="nt">accessInfo</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
+<span class="w">      </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://vault.apps.prod.abcdefghi.kubeapp.cloud/</span>
+<span class="w">      </span><span class="nt">roleName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">      </span><span class="nt">secretRef</span><span class="p">:</span><span class="w">       </span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">ssoClient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
+</code></pre></div>
+<h3 id="keycloak">Keycloak<a class="headerlink" href="#keycloak" title="Permanent link">#</a></h3>
+<p><a href="https://www.keycloak.org/">Keycloak</a> is an open-source Identity and Access Management solution aimed at modern applications and services. It makes it easy to secure applications and services with little to no code.</p>
+<p>If a <code>Keycloak</code> instance is already set up within your cluster, configure it for MTO by enabling the following configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">  </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/</span>
+<span class="w">  </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto-console</span>
+</code></pre></div>
 <ul>
-<li>To ignore the <code>default</code> namespace, we can specify <code>^default$</code></li>
-<li>To ignore all namespaces starting with the <code>openshift-</code> prefix, we can specify <code>^openshift-*</code>.</li>
-<li>To ignore any namespace containing <code>stakater</code> in its name, we can specify <code>stakater</code>. (A constant word given as a regex pattern will match any namespace containing that word.)</li>
+<li><code>keycloak.realm:</code> The realm in Keycloak where the client is configured.</li>
+<li><code>keycloak.address:</code> The address of the Keycloak instance.</li>
+<li><code>keycloak.clientName:</code> The name of the client in Keycloak.</li>
 </ul>
-<h3 id="privileged-serviceaccounts">Privileged ServiceAccounts<a class="headerlink" href="#privileged-serviceaccounts" title="Permanent link">#</a></h3>
-<p><code>privilegedServiceAccounts:</code> Contains the list of <code>ServiceAccounts</code> ignored by MTO. MTO will not manage the <code>ServiceAccounts</code> in this list. Values in this list are regex patterns. For example, to ignore all <code>ServiceAccounts</code> starting with the <code>system:serviceaccount:openshift-</code> prefix, we can use <code>^system:serviceaccount:openshift-*</code>; and to ignore the <code>system:serviceaccount:builder</code> service account we can use <code>^system:serviceaccount:builder$.</code></p>
-<h3 id="namespace-access-policy">Namespace Access Policy<a class="headerlink" href="#namespace-access-policy" title="Permanent link">#</a></h3>
-<p><code>namespaceAccessPolicy.Deny:</code> Can be used to restrict privileged <em>users/groups</em> CRUD operation over managed namespaces.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">namespaceAccessPolicy</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">deny</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">privilegedNamespaces</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-admins</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:serviceaccount:openshift-argocd:argocd-application-controller</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adam@stakater.com</span>
-</code></pre></div>
-<blockquote>
-<p>⚠️ If you want to use a more complex regex pattern (for the <code>openshift.privilegedNamespaces</code> or <code>openshift.privilegedServiceAccounts</code> field), it is recommended that you test the regex pattern first -  either locally or using a platform such as <a href="https://regex101.com/">https://regex101.com/</a>.</p>
-</blockquote>
-<h2 id="argocd">ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">#</a></h2>
-<h3 id="namespace">Namespace<a class="headerlink" href="#namespace" title="Permanent link">#</a></h3>
-<p><code>argocd.namespace</code> is an optional field used to specify the namespace where ArgoCD Applications and AppProjects are deployed. The field should be populated when you want to create an ArgoCD AppProject for each tenant.</p>
-<h3 id="namespaceresourceblacklist">NamespaceResourceBlacklist<a class="headerlink" href="#namespaceresourceblacklist" title="Permanent link">#</a></h3>
+<p>For more details around enabling Keycloak in MTO, visit <a href="../how-to-guides/integrating-external-keycloak.html">here</a></p>
+<h3 id="argocd">ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">#</a></h3>
+<p><a href="https://argoproj.github.io/argo-cd/">ArgoCD</a> is a declarative, GitOps continuous delivery tool for Kubernetes. It follows the GitOps pattern of using Git repositories as the source of truth for defining the desired application state. ArgoCD uses Kubernetes manifests and configures the applications on the cluster.</p>
+<p>If <code>argocd</code> is configured on a cluster, then ArgoCD configuration can be enabled.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"> </span><span class="c1"># all resource groups</span>
-<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceQuota</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
-<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitRange</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
-<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkPolicy</span>
-</code></pre></div>
-<p><code>argocd.namespaceResourceBlacklist</code> prevents ArgoCD from syncing the listed resources from your GitOps repo.</p>
-<h3 id="clusterresourcewhitelist">ClusterResourceWhitelist<a class="headerlink" href="#clusterresourcewhitelist" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bool</span>
 <span class="w">  </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tronador.stakater.com</span>
-<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvironmentProvisioner</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tronador.stakater.com</span>
+<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvironmentProvisioner</span>
+<span class="w">  </span><span class="nt">namespaceResourceBlacklist</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="w"> </span><span class="c1"># all groups</span>
+<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceQuota</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
 </code></pre></div>
-<p><code>argocd.clusterResourceWhitelist</code> allows ArgoCD to sync the listed cluster scoped resources from your GitOps repo.</p>
-<h2 id="provision">Provision<a class="headerlink" href="#provision" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code><span class="nt">provision</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<p><code>provision.console:</code> Can be used to enable/disable console GUI for MTO.
-<code>provision.showback:</code> Can be used to enable/disable showback feature on the console.</p>
-<p>Integration config will be managing the following resources required for console GUI:</p>
 <ul>
-<li><code>Showback</code> cronjob.</li>
-<li><code>Keycloak</code> deployment.</li>
-<li><code>MTO-OpenCost</code> operator.</li>
-<li><code>MTO-Prometheus</code> operator.</li>
-<li><code>MTO-Postgresql</code> stateful set.</li>
+<li><code>argocd.clusterResourceWhitelist</code> allows ArgoCD to sync the listed cluster scoped resources from your GitOps repo.</li>
+<li><code>argocd.namespaceResourceBlacklist</code> prevents ArgoCD from syncing the listed resources from your GitOps repo.</li>
+<li><code>argocd.namespace</code> is an optional field used to specify the namespace where ArgoCD Applications and AppProjects are deployed. The field should be populated when you want to create an ArgoCD AppProject for each tenant.</li>
 </ul>
-<p>Details on console GUI and showback can be found <a href="../explanation/console.html">here</a></p>
-<h2 id="rhsso-red-hat-single-sign-on">RHSSO (Red Hat Single Sign-On)<a class="headerlink" href="#rhsso-red-hat-single-sign-on" title="Permanent link">#</a></h2>
-<p>Red Hat Single Sign-On <a href="https://access.redhat.com/products/red-hat-single-sign-on">RHSSO</a> is based on the Keycloak project and enables you to secure your web applications by providing Web single sign-on (SSO) capabilities based on popular standards such as SAML 2.0, OpenID Connect and OAuth 2.0.</p>
-<p>If <code>RHSSO</code> is configured on a cluster, then RHSSO configuration can be enabled.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">rhsso</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer</span>
-<span class="w">  </span><span class="nt">endpoint</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">secretReference</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auth-secrets</span>
-<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-auth</span>
-<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://iam-keycloak-auth.apps.prod.abcdefghi.kubeapp.cloud/</span>
-</code></pre></div>
-<p>If enabled, then admins have to provide secret and URL of RHSSO.</p>
-<ul>
-<li><code>secretReference.name:</code> Will contain the name of the secret.</li>
-<li><code>secretReference.namespace:</code> Will contain the namespace of the secret.</li>
-<li><code>realm:</code> Will contain the realm name which is configured for users.</li>
-<li><code>url:</code> Will contain the URL of RHSSO.</li>
-</ul>
-<h2 id="vault">Vault<a class="headerlink" href="#vault" title="Permanent link">#</a></h2>
+<h3 id="vault">Vault<a class="headerlink" href="#vault" title="Permanent link">#</a></h3>
 <p><a href="https://www.vaultproject.io/">Vault</a> is used to secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data using a UI, CLI, or HTTP API.</p>
 <p>If <code>vault</code> is configured on a cluster, then Vault configuration can be enabled.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">Vault</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="nt">vault</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
-<span class="w">  </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;https://vault.apps.prod.abcdefghi.kubeapp.cloud/&#39;</span>
-<span class="w">  </span><span class="nt">roleName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
-<span class="w">  </span><span class="nt">sso</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
+<span class="w">  </span><span class="nt">authMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span><span class="w">      </span><span class="c1">#enum: {kubernetes:default, token}</span>
+<span class="w">  </span><span class="nt">accessInfo</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
+<span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://vault.apps.prod.abcdefghi.kubeapp.cloud/</span>
+<span class="w">    </span><span class="nt">roleName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">    </span><span class="nt">secretRef</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">ssoClient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
 </code></pre></div>
-<p>If enabled, then admins have to provide following details:</p>
+<p>If enabled, then admins have to specify the <code>authMethod</code> to be used for authentication. MTO supports two authentication methods:</p>
+<ul>
+<li><code>kubernetes</code>: This is the default authentication method. It uses the Kubernetes authentication method to authenticate with Vault.</li>
+<li><code>token</code>: This method uses a Vault token to authenticate with Vault.</li>
+</ul>
+<h4 id="authmethod-kubernetes">AuthMethod - Kubernetes<a class="headerlink" href="#authmethod-kubernetes" title="Permanent link">#</a></h4>
+<p>If <code>authMethod</code> is set to <code>kubernetes</code>, then admins have to specify the following fields:</p>
 <ul>
 <li><code>accessorPath:</code> Accessor Path within Vault to fetch SSO accessorID</li>
 <li><code>address:</code> Valid Vault address reachable within cluster.</li>
 <li><code>roleName:</code> Vault's Kubernetes authentication role</li>
 <li><code>sso.clientName:</code> SSO client name.</li>
 </ul>
+<h4 id="authmethod-token">AuthMethod - Token<a class="headerlink" href="#authmethod-token" title="Permanent link">#</a></h4>
+<p>If <code>authMethod</code> is set to <code>token</code>, then admins have to specify the following fields:</p>
+<ul>
+<li><code>accessorPath:</code> Accessor Path within Vault to fetch SSO accessorID</li>
+<li><code>address:</code> Valid Vault address reachable within cluster.</li>
+<li><code>secretRef:</code> Secret containing Vault token.<ul>
+<li><code>name:</code> Name of the secret containing Vault token.</li>
+<li><code>namespace:</code> Namespace of the secret containing Vault token.</li>
+</ul>
+</li>
+</ul>
 <p>For more details around enabling Kubernetes auth in Vault, visit <a href="https://developer.hashicorp.com/vault/docs/auth/kubernetes">here</a></p>
 <p>The role created within Vault for Kubernetes authentication should have the following permissions:</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">path &quot;secret/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;sys/mounts&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;read&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;sys/mounts/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;managed-addons/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;read&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;auth/kubernetes/role/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;sys/auth&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;read&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;sys/policies/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;identity/group&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;identity/group-alias&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;identity/group/name/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;read&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;identity/group/id/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
+<div class="highlight"><pre><span></span><code><span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;sys/mounts&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;read&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;sys/mounts/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;managed-addons/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;read&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;auth/kubernetes/role/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;sys/auth&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;read&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;sys/policies/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;identity/group&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;identity/group-alias&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;identity/group/name/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;read&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;identity/group/id/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div>
+<h3 id="custom-pricing-model">Custom Pricing Model<a class="headerlink" href="#custom-pricing-model" title="Permanent link">#</a></h3>
+<p>You can modify IntegrationConfig to customise the default pricing model. Here is what you need at <code>IntegrationConfig.spec.components</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
+<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
+<span class="w">    </span><span class="c1"># add below and override any default value</span>
+<span class="w">    </span><span class="c1"># you can also remove the ones you do not need</span>
+<span class="w">    </span><span class="nt">customPricingModel</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">CPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.031611&quot;</span>
+<span class="w">        </span><span class="nt">spotCPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.006655&quot;</span>
+<span class="w">        </span><span class="nt">RAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.004237&quot;</span>
+<span class="w">        </span><span class="nt">spotRAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.000892&quot;</span>
+<span class="w">        </span><span class="nt">GPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.95&quot;</span>
+<span class="w">        </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.00005479452&quot;</span>
+<span class="w">        </span><span class="nt">zoneNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">        </span><span class="nt">regionNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">        </span><span class="nt">internetNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.12&quot;</span>
+</code></pre></div>
+<p>After modifying your default IntegrationConfig in <code>multi-tenant-operator</code> namespace, a configmap named <code>opencost-custom-pricing</code> will be updated. You will be able to see updated pricing info in <code>mto-console</code>.</p>
 
 
 
@@ -3053,7 +3453,7 @@
         
       </main>
       
-        <style>
+<style>
     .svg-container {
         display: flex;
     }
@@ -3492,7 +3892,7 @@
         </div>
     </div>
 </footer>
-      
+
     </div>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
@@ -3580,7 +3980,7 @@
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
