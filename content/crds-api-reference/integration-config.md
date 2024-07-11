@@ -13,16 +13,26 @@ spec:
     console: true
     showback: true
     ingress:
-      IngressClassName: 'nginx'
-      Keycloak:
-        Host: tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud
-        TLSSecretName: tenant-operator-tls
-      Console:
-        Host: tenant-operator-console.apps.mycluster-ams.abcdef.cloud
-        TLSSecretName: tenant-operator-tls
-      Gateway:
-        Host: tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud
-        TLSSecretName: tenant-operator-tls
+      ingressClassName: 'nginx'
+      keycloak:
+        host: tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud
+        tlsSecretName: tenant-operator-tls
+      console:
+        host: tenant-operator-console.apps.mycluster-ams.abcdef.cloud
+        tlsSecretName: tenant-operator-tls
+      gateway:
+        host: tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud
+        tlsSecretName: tenant-operator-tls
+      customPricingModel:
+        CPU: "0.031611"
+        spotCPU: "0.006655"
+        RAM: "0.004237"
+        spotRAM: "0.000892"
+        GPU: "0.95"
+        storage: "0.00005479452"
+        zoneNetworkEgress: "0.01"
+        regionNetworkEgress: "0.01"
+        internetNetworkEgress: "0.12"
   accessControl:
     rbac:
       tenantRoles:
@@ -36,7 +46,6 @@ spec:
           viewer:
             clusterRoles:
               - view
-              - viewer
         custom:
         - labelSelector:
             matchExpressions:
@@ -54,7 +63,6 @@ spec:
               - custom-editor
           viewer:
             clusterRoles:
-              - custom-viewer
               - custom-view
     namespaceAccessPolicy:
       deny:
@@ -95,7 +103,7 @@ spec:
   integrations:
     keycloak:
       realm: mto
-      address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/
+      address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud
       clientName: mto-console
     argocd:
       clusterResourceWhitelist:
@@ -107,7 +115,7 @@ spec:
       namespace: openshift-operators
     vault:
       enabled: true
-      authMethod: kubernetes      #enum: {kubernetes:default, Token}
+      authMethod: kubernetes      #enum: {kubernetes:default, token}
       accessInfo: 
         accessorPath: oidc/
         address: https://vault.apps.prod.abcdefghi.kubeapp.cloud/
@@ -128,16 +136,16 @@ Following are the different components that can be used to configure multi-tenan
     console: true
     showback: true
     ingress:
-      IngressClassName: nginx
-      Keycloak:
-        Host: tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud
-        TLSSecretName: tenant-operator-tls
-      Console:
-        Host: tenant-operator-console.apps.mycluster-ams.abcdef.cloud
-        TLSSecretName: tenant-operator-tls
-      Gateway:
-        Host: tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud
-        TLSSecretName: tenant-operator-tls
+      ingressClassName: nginx
+      keycloak:
+        host: tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud
+        tlsSecretName: tenant-operator-tls
+      console:
+        host: tenant-operator-console.apps.mycluster-ams.abcdef.cloud
+        tlsSecretName: tenant-operator-tls
+      gateway:
+        host: tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud
+        tlsSecretName: tenant-operator-tls
 ```
 
 - `components.console:` Enables or disables the console GUI for MTO.
@@ -190,7 +198,6 @@ accessControl:
         viewer:
           clusterRoles:
             - view
-            - viewer
       custom:
       - labelSelector:
           matchExpressions:
@@ -208,7 +215,6 @@ accessControl:
             - custom-editor
         viewer:
           clusterRoles:
-            - custom-viewer
             - custom-view
   namespaceAccessPolicy:
     deny:
@@ -218,18 +224,18 @@ accessControl:
           - adam@stakater.com
           groups:
             - cluster-admins
-    privileged:
-      namespaces:
-        - ^default$
-        - ^openshift.*
-        - ^kube.*
-      serviceAccounts:
-        - ^system:serviceaccount:openshift.*
-        - ^system:serviceaccount:kube.*
-      users:
-        - ''
-      groups:
-        - cluster-admins
+  privileged:
+    namespaces:
+      - ^default$
+      - ^openshift.*
+      - ^kube.*
+    serviceAccounts:
+      - ^system:serviceaccount:openshift.*
+      - ^system:serviceaccount:kube.*
+    users:
+      - ''
+    groups:
+      - cluster-admins
 ```
 
 ### RBAC
@@ -240,7 +246,7 @@ RBAC is used to configure the roles that will be applied to each Tenant namespac
 
 TenantRoles are required within the IntegrationConfig, as they are used for defining what roles will be applied to each Tenant namespace. The field allows optional custom roles, that are then used to create RoleBindings for namespaces that match a labelSelector.
 
-> ⚠️ If you do not configure roles in any way, then the default OpenShift roles of `owner`, `edit`, and `view` will apply to Tenant members. Their details can be found [here](../reference-guides/custom-roles.md)
+> ⚠️ If you do not configure roles in any way, then the default OpenShift roles of `owner`, `edit`, and `view` will apply to Tenant members. Their details can be found [here](../how-to-guides/custom-roles.md)
 
 ```yaml
 rbac:
@@ -255,7 +261,6 @@ rbac:
       viewer:
         clusterRoles:
           - view
-          - viewer
     custom:
     - labelSelector:
         matchExpressions:
@@ -273,7 +278,6 @@ rbac:
           - custom-editor
       viewer:
         clusterRoles:
-          - custom-viewer
           - custom-view
 ```
 
@@ -428,7 +432,7 @@ Integrations are used to configure the integrations that MTO has with other tool
 integrations:
   keycloak:
     realm: mto
-    address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/
+    address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud
     clientName: mto-console
   argocd:
     clusterResourceWhitelist:
