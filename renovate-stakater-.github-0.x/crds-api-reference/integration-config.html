@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
@@ -1807,6 +1807,27 @@ You're not viewing the latest version.
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/integrating-external-keycloak.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrating External Keycloak
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2327,6 +2348,15 @@ You're not viewing the latest version.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keycloak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#argocd" class="md-nav__link">
     <span class="md-ellipsis">
       ArgoCD
@@ -2773,6 +2803,15 @@ You're not viewing the latest version.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keycloak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#argocd" class="md-nav__link">
     <span class="md-ellipsis">
       ArgoCD
@@ -2858,16 +2897,26 @@ You're not viewing the latest version.
 <span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">IngressClassName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nginx&#39;</span>
-<span class="w">      </span><span class="nt">Keycloak</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud</span>
-<span class="w">        </span><span class="nt">TLSSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
-<span class="w">      </span><span class="nt">Console</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-console.apps.mycluster-ams.abcdef.cloud</span>
-<span class="w">        </span><span class="nt">TLSSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
-<span class="w">      </span><span class="nt">Gateway</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud</span>
-<span class="w">        </span><span class="nt">TLSSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nginx&#39;</span>
+<span class="w">      </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">      </span><span class="nt">console</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-console.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">      </span><span class="nt">gateway</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">      </span><span class="nt">customPricingModel</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">CPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.031611&quot;</span>
+<span class="w">        </span><span class="nt">spotCPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.006655&quot;</span>
+<span class="w">        </span><span class="nt">RAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.004237&quot;</span>
+<span class="w">        </span><span class="nt">spotRAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.000892&quot;</span>
+<span class="w">        </span><span class="nt">GPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.95&quot;</span>
+<span class="w">        </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.00005479452&quot;</span>
+<span class="w">        </span><span class="nt">zoneNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">        </span><span class="nt">regionNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">        </span><span class="nt">internetNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.12&quot;</span>
 <span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">rbac</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">tenantRoles</span><span class="p">:</span>
@@ -2881,7 +2930,6 @@ You're not viewing the latest version.
 <span class="w">          </span><span class="nt">viewer</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">clusterRoles</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">view</span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">viewer</span>
 <span class="w">        </span><span class="nt">custom</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">labelSelector</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">matchExpressions</span><span class="p">:</span>
@@ -2899,7 +2947,6 @@ You're not viewing the latest version.
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-editor</span>
 <span class="w">          </span><span class="nt">viewer</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">clusterRoles</span><span class="p">:</span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-viewer</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-view</span>
 <span class="w">    </span><span class="nt">namespaceAccessPolicy</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">deny</span><span class="p">:</span>
@@ -2938,6 +2985,10 @@ You're not viewing the latest version.
 <span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/worker=</span>
 <span class="w">  </span><span class="nt">integrations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">      </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://keycloak.apps.prod.abcdefghi.kubeapp.cloud</span>
+<span class="w">      </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto-console</span>
 <span class="w">    </span><span class="nt">argocd</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tronador.stakater.com</span>
@@ -2948,7 +2999,7 @@ You're not viewing the latest version.
 <span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-operators</span>
 <span class="w">    </span><span class="nt">vault</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="nt">authMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span><span class="w">      </span><span class="c1">#enum: {kubernetes:default, Token}</span>
+<span class="w">      </span><span class="nt">authMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span><span class="w">      </span><span class="c1">#enum: {kubernetes:default, token}</span>
 <span class="w">      </span><span class="nt">accessInfo</span><span class="p">:</span><span class="w"> </span>
 <span class="w">        </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
 <span class="w">        </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://vault.apps.prod.abcdefghi.kubeapp.cloud/</span>
@@ -2965,16 +3016,16 @@ You're not viewing the latest version.
 <span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">IngressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
-<span class="w">      </span><span class="nt">Keycloak</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud</span>
-<span class="w">        </span><span class="nt">TLSSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
-<span class="w">      </span><span class="nt">Console</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-console.apps.mycluster-ams.abcdef.cloud</span>
-<span class="w">        </span><span class="nt">TLSSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
-<span class="w">      </span><span class="nt">Gateway</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">Host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud</span>
-<span class="w">        </span><span class="nt">TLSSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">      </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">      </span><span class="nt">console</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-console.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">      </span><span class="nt">gateway</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
 </code></pre></div>
 <ul>
 <li><code>components.console:</code> Enables or disables the console GUI for MTO.</li>
@@ -3027,7 +3078,6 @@ You're not viewing the latest version.
 <span class="w">        </span><span class="nt">viewer</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">clusterRoles</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">view</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">viewer</span>
 <span class="w">      </span><span class="nt">custom</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">labelSelector</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">matchExpressions</span><span class="p">:</span>
@@ -3045,7 +3095,6 @@ You're not viewing the latest version.
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-editor</span>
 <span class="w">        </span><span class="nt">viewer</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">clusterRoles</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-viewer</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-view</span>
 <span class="w">  </span><span class="nt">namespaceAccessPolicy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">deny</span><span class="p">:</span>
@@ -3055,25 +3104,25 @@ You're not viewing the latest version.
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adam@stakater.com</span>
 <span class="w">          </span><span class="nt">groups</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-admins</span>
-<span class="w">    </span><span class="nt">privileged</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^default$</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^openshift.*</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^kube.*</span>
-<span class="w">      </span><span class="nt">serviceAccounts</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift.*</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:kube.*</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;&#39;</span>
-<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-admins</span>
+<span class="w">  </span><span class="nt">privileged</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^default$</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^openshift.*</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^kube.*</span>
+<span class="w">    </span><span class="nt">serviceAccounts</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift.*</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:kube.*</span>
+<span class="w">    </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;&#39;</span>
+<span class="w">    </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-admins</span>
 </code></pre></div>
 <h3 id="rbac">RBAC<a class="headerlink" href="#rbac" title="Permanent link">#</a></h3>
 <p>RBAC is used to configure the roles that will be applied to each Tenant namespace. The field allows optional custom roles, that are then used to create RoleBindings for namespaces that match a labelSelector.</p>
 <h4 id="tenantroles">TenantRoles<a class="headerlink" href="#tenantroles" title="Permanent link">#</a></h4>
 <p>TenantRoles are required within the IntegrationConfig, as they are used for defining what roles will be applied to each Tenant namespace. The field allows optional custom roles, that are then used to create RoleBindings for namespaces that match a labelSelector.</p>
 <blockquote>
-<p>⚠️ If you do not configure roles in any way, then the default OpenShift roles of <code>owner</code>, <code>edit</code>, and <code>view</code> will apply to Tenant members. Their details can be found <a href="../reference-guides/custom-roles.md">here</a></p>
+<p>⚠️ If you do not configure roles in any way, then the default OpenShift roles of <code>owner</code>, <code>edit</code>, and <code>view</code> will apply to Tenant members. Their details can be found <a href="../how-to-guides/custom-roles.html">here</a></p>
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="nt">rbac</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">tenantRoles</span><span class="p">:</span>
@@ -3087,7 +3136,6 @@ You're not viewing the latest version.
 <span class="w">      </span><span class="nt">viewer</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">clusterRoles</span><span class="p">:</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">view</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">viewer</span>
 <span class="w">    </span><span class="nt">custom</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">labelSelector</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">matchExpressions</span><span class="p">:</span>
@@ -3105,7 +3153,6 @@ You're not viewing the latest version.
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-editor</span>
 <span class="w">      </span><span class="nt">viewer</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">clusterRoles</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-viewer</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-view</span>
 </code></pre></div>
 <h5 id="default">Default<a class="headerlink" href="#default" title="Permanent link">#</a></h5>
@@ -3195,7 +3242,7 @@ You're not viewing the latest version.
 </code></pre></div>
 <h3 id="namespaces-group-and-sandbox">Namespaces, group and sandbox<a class="headerlink" href="#namespaces-group-and-sandbox" title="Permanent link">#</a></h3>
 <p>We can use the <code>metadata.namespaces</code>, <code>metadata.group</code> and <code>metadata.sandbox</code> fields to automatically add <code>labels</code> and <code>annotations</code> to the <strong>Namespaces</strong> and <strong>Groups</strong> managed via MTO.</p>
-<p>If we want to add default <em>labels/annotations</em> to sandbox namespaces of tenants than we just simply add them in <code>openshift.project.labels</code>/<code>openshift.project.annotations</code> respectively.</p>
+<p>If we want to add default <em>labels/annotations</em> to sandbox namespaces of tenants than we just simply add them in <code>metadata.namespaces.labels</code>/<code>metadata.namespaces.annotations</code> respectively.</p>
 <p>Whenever a project is made it will have the labels and annotations as mentioned above.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Project</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project.openshift.io/v1</span>
@@ -3224,8 +3271,11 @@ You're not viewing the latest version.
 <h2 id="integrations">Integrations<a class="headerlink" href="#integrations" title="Permanent link">#</a></h2>
 <p>Integrations are used to configure the integrations that MTO has with other tools. Currently, MTO supports the following integrations:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">integrations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://keycloak.apps.prod.abcdefghi.kubeapp.cloud</span>
+<span class="w">    </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto-console</span>
 <span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bool</span>
 <span class="w">    </span><span class="nt">clusterResourceWhitelist</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tronador.stakater.com</span>
 <span class="w">        </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvironmentProvisioner</span>
@@ -3246,6 +3296,20 @@ You're not viewing the latest version.
 <span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span>
 <span class="w">      </span><span class="nt">ssoClient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
 </code></pre></div>
+<h3 id="keycloak">Keycloak<a class="headerlink" href="#keycloak" title="Permanent link">#</a></h3>
+<p><a href="https://www.keycloak.org/">Keycloak</a> is an open-source Identity and Access Management solution aimed at modern applications and services. It makes it easy to secure applications and services with little to no code.</p>
+<p>If a <code>Keycloak</code> instance is already set up within your cluster, configure it for MTO by enabling the following configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">keycloak</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">realm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">  </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/</span>
+<span class="w">  </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto-console</span>
+</code></pre></div>
+<ul>
+<li><code>keycloak.realm:</code> The realm in Keycloak where the client is configured.</li>
+<li><code>keycloak.address:</code> The address of the Keycloak instance.</li>
+<li><code>keycloak.clientName:</code> The name of the client in Keycloak.</li>
+</ul>
+<p>For more details around enabling Keycloak in MTO, visit <a href="../how-to-guides/integrating-external-keycloak.html">here</a></p>
 <h3 id="argocd">ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">#</a></h3>
 <p><a href="https://argoproj.github.io/argo-cd/">ArgoCD</a> is a declarative, GitOps continuous delivery tool for Kubernetes. It follows the GitOps pattern of using Git repositories as the source of truth for defining the desired application state. ArgoCD uses Kubernetes manifests and configures the applications on the cluster.</p>
 <p>If <code>argocd</code> is configured on a cluster, then ArgoCD configuration can be enabled.</p>
@@ -3306,39 +3370,39 @@ You're not viewing the latest version.
 </ul>
 <p>For more details around enabling Kubernetes auth in Vault, visit <a href="https://developer.hashicorp.com/vault/docs/auth/kubernetes">here</a></p>
 <p>The role created within Vault for Kubernetes authentication should have the following permissions:</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">path &quot;secret/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;sys/mounts&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;read&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;sys/mounts/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;managed-addons/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;read&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;auth/kubernetes/role/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;sys/auth&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;read&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;sys/policies/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;identity/group&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;identity/group-alias&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;identity/group/name/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;read&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
-<span class="l l-Scalar l-Scalar-Plain">path &quot;identity/group/id/*&quot; {</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">capabilities = [&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;]</span>
-<span class="l l-Scalar l-Scalar-Plain">}</span>
+<div class="highlight"><pre><span></span><code><span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;sys/mounts&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;read&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;sys/mounts/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;managed-addons/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;read&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;auth/kubernetes/role/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;sys/auth&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;read&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;sys/policies/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;identity/group&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;identity/group-alias&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;identity/group/name/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;read&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">&quot;identity/group/id/*&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div>
 <h3 id="custom-pricing-model">Custom Pricing Model<a class="headerlink" href="#custom-pricing-model" title="Permanent link">#</a></h3>
 <p>You can modify IntegrationConfig to customise the default pricing model. Here is what you need at <code>IntegrationConfig.spec.components</code>:</p>
@@ -3916,7 +3980,7 @@ You're not viewing the latest version.
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
