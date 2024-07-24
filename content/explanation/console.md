@@ -46,6 +46,48 @@ Here, admins have a bird's-eye view of all tenants, with the ability to delve in
 
 ![tenants](../images/tenants.png)
 
+### Tenants/Quota
+
+#### Viewing Quota in the Tenant Console
+
+In this view, users can access a dedicated tab to review the quota utilization for their Tenants. Within this tab, users have the option to toggle between two different views: **Aggregated Quota** and **Namespace Quota**.
+
+#### Aggregated Quota View
+
+![tenants](../images/tenantQuotaAggregatedView.png)
+This view provides users with an overview of the combined resource allocation and usage across all namespaces within their tenant. It offers a comprehensive look at the total limits and usage of resources such as CPU, memory, and other defined quotas. Users can easily monitor and manage resource distribution across their entire tenant environment from this aggregated perspective.
+
+#### Namespace Quota View
+
+![tenants](../images/tenantQuotaNamespaceView.png)
+Alternatively, users can opt to view quota settings on a per-namespace basis. This view allows users to focus specifically on the resource allocation and usage within individual namespaces. By selecting this option, users gain granular insights into the resource constraints and utilization for each namespace, facilitating more targeted management and optimization of resources at the namespace level.
+
+### Tenants/Utilization
+
+In the **Utilization** tab of the tenant console, users are presented with a detailed table listing all namespaces within their tenant. This table provides essential metrics for each namespace, including CPU and memory utilization. The metrics shown include:
+
+- **Cost:** The cost associated with CPU and memory utilization.
+- **Request Average:** The average amount of CPU and memory resources requested.
+- **Usage Average:** The average amount of CPU and memory resources used.
+- **Max:** The maximum value between CPU and memory requests and used resources, calculated every 30 seconds and averaged over the selected running minutes.
+
+Users can adjust the interval window using the provided selector to customize the time frame for the displayed data. This table allows users to quickly assess resource utilization across all namespaces, facilitating efficient resource management and cost tracking.
+
+![tenants](../images/tenantUtilizationNamespaces.png)
+
+Upon selecting a specific namespace from the utilization table, users are directed to a detailed view that includes CPU and memory utilization graphs along with a workload table. This detailed view provides:
+
+- **CPU and Memory Graphs:** Visual representations of the namespace's CPU and memory usage over time, enabling users to identify trends and potential issues at a glance.
+- **Workload Table:** A comprehensive list of all workloads within the selected namespace, including pods, deployments, and stateful-sets. The table displays key metrics for each workload, including:
+    - **Cost:** The cost associated with the workload's CPU and memory utilization.
+    - **Request Average:** The average amount of CPU and memory resources requested by the workload.
+    - **Usage Average:** The average amount of CPU and memory resources used by the workload.
+    - **Max:** The maximum value between CPU and memory requests and used resources, calculated every 30 seconds and averaged over the running minutes.
+
+This detailed view provides users with in-depth insights into resource utilization at the workload level, enabling precise monitoring and optimization of resource allocation within the selected namespace.
+
+![tenants](../images/tenantUtilizationNamespaceStats.png)
+
 ### Namespaces
 
 Users can view all the namespaces that belong to their tenant, offering a comprehensive perspective of the accessible namespaces for tenant members. This section also provides options for detailed exploration.
