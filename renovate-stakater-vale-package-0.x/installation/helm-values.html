@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-stakater-vale-package-0.x/tutorials/tenant/create-tenant.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-stakater-vale-package-0.x/installation/helm-values.html">
       
       
-        <link rel="prev" href="../../installation/basic-vs-enterprise-tier.html">
+        <link rel="prev" href="kubernetes.html">
       
       
-        <link rel="next" href="create-sandbox.html">
+        <link rel="next" href="basic-vs-enterprise-tier.html">
       
       
-      <link rel="icon" href="../../assets/images/favicon.svg">
+      <link rel="icon" href="../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
     
     
       
-        <title>Creating a Tenant - Multi Tenant Operator</title>
+        <title>Helm Chart Options - Multi Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -67,7 +67,7 @@
     
     
     
-   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -76,7 +76,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#creating-a-tenant" class="md-skip">
+        <a href="#helm-chart-options" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
             <div class="md-banner__inner md-grid md-typeset">
               
 You're not viewing the latest version.
-<a href="../../..">
+<a href="../..">
   <strong>Click here to go to latest.</strong>
 </a>
 
@@ -149,7 +149,7 @@ You're not viewing the latest version.
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../../index.html" title="Multi Tenant Operator"
+    <a href="../index.html" title="Multi Tenant Operator"
       class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       <!-- 
   
@@ -169,10 +169,10 @@ You're not viewing the latest version.
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="../../assets/images/logo-light.png#only-light" alt="logo" />
+          <img class="md-header__logo_light" src="../assets/images/logo-light.png#only-light" alt="logo" />
           
           
-          <img class="md-header__logo_dark" src="../../assets/images/logo-dark.png#only-dark" alt="logo" />
+          <img class="md-header__logo_dark" src="../assets/images/logo-dark.png#only-dark" alt="logo" />
           
           
           <div class="header-site-name">
@@ -891,7 +891,7 @@ You're not viewing the latest version.
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -921,7 +921,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../index.html" class="md-nav__link">
+      <a href="../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -938,17 +938,19 @@ You're not viewing the latest version.
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -962,7 +964,7 @@ You're not viewing the latest version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Installation
@@ -976,7 +978,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../installation/openshift.html" class="md-nav__link">
+      <a href="openshift.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -997,7 +999,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../installation/kubernetes.html" class="md-nav__link">
+      <a href="kubernetes.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1015,10 +1017,19 @@ You're not viewing the latest version.
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../installation/helm-values.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="helm-values.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1027,6 +1038,7 @@ You're not viewing the latest version.
   
 
       </a>
+      
     </li>
   
 
@@ -1039,7 +1051,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../installation/basic-vs-enterprise-tier.html" class="md-nav__link">
+      <a href="basic-vs-enterprise-tier.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1064,19 +1076,17 @@ You're not viewing the latest version.
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -1090,7 +1100,7 @@ You're not viewing the latest version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Tutorials
@@ -1101,19 +1111,17 @@ You're not viewing the latest version.
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -1127,7 +1135,7 @@ You're not viewing the latest version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             Configuring Tenants
@@ -1138,30 +1146,10 @@ You're not viewing the latest version.
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Creating a Tenant
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="create-tenant.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../tutorials/tenant/create-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1170,64 +1158,6 @@ You're not viewing the latest version.
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#setting-up-the-tenant" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setting Up the Tenant
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#verifying-the-tenant-creation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Verifying the Tenant Creation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#checking-user-permissions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Checking User Permissions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#adding-multiple-owners-to-a-tenant" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adding Multiple Owners to a Tenant
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1240,7 +1170,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="create-sandbox.html" class="md-nav__link">
+      <a href="../tutorials/tenant/create-sandbox.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1261,7 +1191,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="creating-namespaces.html" class="md-nav__link">
+      <a href="../tutorials/tenant/creating-namespaces.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1282,7 +1212,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="assigning-metadata.html" class="md-nav__link">
+      <a href="../tutorials/tenant/assigning-metadata.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1303,7 +1233,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="tenant-hibernation.html" class="md-nav__link">
+      <a href="../tutorials/tenant/tenant-hibernation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1324,7 +1254,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="deleting-tenant.html" class="md-nav__link">
+      <a href="../tutorials/tenant/deleting-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1388,7 +1318,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../distributing-resources/copying-resources.html" class="md-nav__link">
+      <a href="../tutorials/distributing-resources/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1409,7 +1339,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../distributing-resources/distributing-manifests.html" class="md-nav__link">
+      <a href="../tutorials/distributing-resources/distributing-manifests.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1515,7 +1445,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/custom-roles.html" class="md-nav__link">
+      <a href="../how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1536,7 +1466,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/extend-default-roles.html" class="md-nav__link">
+      <a href="../how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1600,7 +1530,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
+      <a href="../how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1621,7 +1551,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/deploying-templates.html" class="md-nav__link">
+      <a href="../how-to-guides/deploying-templates.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1642,7 +1572,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1663,7 +1593,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1684,7 +1614,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1705,7 +1635,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/copying-resources.html" class="md-nav__link">
+      <a href="../how-to-guides/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1769,7 +1699,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/keycloak.html" class="md-nav__link">
+      <a href="../how-to-guides/keycloak.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1790,7 +1720,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/custom-metrics.html" class="md-nav__link">
+      <a href="../how-to-guides/custom-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1811,7 +1741,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/graph-visualization.html" class="md-nav__link">
+      <a href="../how-to-guides/graph-visualization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1875,7 +1805,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1896,7 +1826,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1917,7 +1847,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1938,7 +1868,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/mattermost.html" class="md-nav__link">
+      <a href="../how-to-guides/mattermost.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1959,7 +1889,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/integrating-external-keycloak.html" class="md-nav__link">
+      <a href="../how-to-guides/integrating-external-keycloak.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2023,7 +1953,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
+      <a href="../how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2094,7 +2024,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../explanation/logs-metrics.html" class="md-nav__link">
+      <a href="../explanation/logs-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2115,7 +2045,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../explanation/template.html" class="md-nav__link">
+      <a href="../explanation/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2136,7 +2066,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../explanation/console.html" class="md-nav__link">
+      <a href="../explanation/console.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2157,7 +2087,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../explanation/templated-metadata-values.html" class="md-nav__link">
+      <a href="../explanation/templated-metadata-values.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2178,7 +2108,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../explanation/multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../explanation/multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2241,7 +2171,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../crds-api-reference/extensions.html" class="md-nav__link">
+      <a href="../crds-api-reference/extensions.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2262,7 +2192,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../crds-api-reference/integration-config.html" class="md-nav__link">
+      <a href="../crds-api-reference/integration-config.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2283,7 +2213,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../crds-api-reference/quota.html" class="md-nav__link">
+      <a href="../crds-api-reference/quota.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2304,7 +2234,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../crds-api-reference/tenant.html" class="md-nav__link">
+      <a href="../crds-api-reference/tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2325,7 +2255,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../crds-api-reference/template.html" class="md-nav__link">
+      <a href="../crds-api-reference/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2346,7 +2276,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../crds-api-reference/template-instance.html" class="md-nav__link">
+      <a href="../crds-api-reference/template-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2367,7 +2297,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../crds-api-reference/template-group-instance.html" class="md-nav__link">
+      <a href="../crds-api-reference/template-group-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2395,7 +2325,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../changelog.html" class="md-nav__link">
+      <a href="../changelog.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2415,7 +2345,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../eula.html" class="md-nav__link">
+      <a href="../eula.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2435,7 +2365,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting.html" class="md-nav__link">
+      <a href="../troubleshooting.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2470,50 +2400,6 @@ You're not viewing the latest version.
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#setting-up-the-tenant" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setting Up the Tenant
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#verifying-the-tenant-creation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Verifying the Tenant Creation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#checking-user-permissions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Checking User Permissions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#adding-multiple-owners-to-a-tenant" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adding Multiple Owners to a Tenant
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2530,88 +2416,117 @@ You're not viewing the latest version.
   
 
 
-<h1 id="creating-a-tenant">Creating a Tenant<a class="headerlink" href="#creating-a-tenant" title="Permanent link">#</a></h1>
-<p>Bill, a cluster admin, has been tasked by the CTO of Nordmart to set up a new tenant for Anna's team. Following the request, Bill proceeds to create a new tenant named bluesky in the Kubernetes cluster.</p>
-<h2 id="setting-up-the-tenant">Setting Up the Tenant<a class="headerlink" href="#setting-up-the-tenant" title="Permanent link">#</a></h2>
-<p>To establish the tenant, Bill crafts a Tenant Custom Resource (CR) with the necessary specifications:</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
-<span class="w">    </span><span class="nt">editors</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">john@aurora.org</span>
-<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="l l-Scalar l-Scalar-Plain">EOF</span>
-</code></pre></div>
-<p>In this configuration, Bill specifies <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#110;&#110;&#97;&#64;&#97;&#117;&#114;&#111;&#114;&#97;&#46;&#111;&#114;&#103;">&#97;&#110;&#110;&#97;&#64;&#97;&#117;&#114;&#111;&#114;&#97;&#46;&#111;&#114;&#103;</a> as the owner, giving her full administrative rights over the tenant. The editor role is assigned to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#111;&#104;&#110;&#64;&#97;&#117;&#114;&#111;&#114;&#97;&#46;&#111;&#114;&#103;">&#106;&#111;&#104;&#110;&#64;&#97;&#117;&#114;&#111;&#114;&#97;&#46;&#111;&#114;&#103;</a> and the group alpha, providing them with editing capabilities within the tenant's scope.</p>
-<h2 id="verifying-the-tenant-creation">Verifying the Tenant Creation<a class="headerlink" href="#verifying-the-tenant-creation" title="Permanent link">#</a></h2>
-<p>After creating the tenant, Bill checks its status to confirm it's active and operational:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>tenants.tenantoperator.stakater.com<span class="w"> </span>bluesky
-NAME<span class="w">       </span>STATE<span class="w">    </span>AGE
-bluesky<span class="w">    </span>Active<span class="w">   </span>3m
-</code></pre></div>
-<p>This output indicates that the tenant bluesky is successfully created and in an active state.</p>
-<h2 id="checking-user-permissions">Checking User Permissions<a class="headerlink" href="#checking-user-permissions" title="Permanent link">#</a></h2>
-<p>To ensure the roles and permissions are correctly assigned, Anna logs into the cluster to verify her capabilities:</p>
-<p><strong>Namespace Creation:</strong></p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>namespaces
-yes
-</code></pre></div>
-<p>Anna is confirmed to have the ability to create namespaces within the tenant's scope.</p>
-<p><strong>Cluster Resources Access:</strong></p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>get<span class="w"> </span>namespaces
-no
+<h1 id="helm-chart-options">Helm Chart Options<a class="headerlink" href="#helm-chart-options" title="Permanent link">#</a></h1>
+<p>Following options are available in the Helm Chart for Multi Tenant Operator:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kubernetes</span>
 
-kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>get<span class="w"> </span>persistentvolumes
-no
-</code></pre></div>
-<p>As expected, Anna does not have access to broader cluster resources outside the tenant's confines.</p>
-<p><strong>Tenant Resource Access:</strong></p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>get<span class="w"> </span>tenants.tenantoperator.stakater.com
-no
-</code></pre></div>
-<p>Access to the Tenant resource itself is also restricted, aligning with the principle of least privilege.</p>
-<h2 id="adding-multiple-owners-to-a-tenant">Adding Multiple Owners to a Tenant<a class="headerlink" href="#adding-multiple-owners-to-a-tenant" title="Permanent link">#</a></h2>
-<p>Later, if there's a need to grant administrative privileges to another user, such as Anthony, Bill can easily update the tenant's configuration to include multiple owners:</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt; EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<span class="c1"># bypassedGroups are the comma-separated names of Groups which are bypassed in Namespace and Rolebinding webhooks</span>
+<span class="nt">bypassedGroups</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;system:cluster-admins,system:masters&quot;</span>
+
+<span class="nt">replicaCount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+
+<span class="nt">operator</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/stakater/public/tenant-operator</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v0.12.62</span>
+<span class="w">    </span><span class="nt">pullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
+<span class="w">  </span><span class="nt">serviceAccount</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># Annotations to add to the service account</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">    </span><span class="c1"># The name of the service account to use.</span>
+<span class="w">    </span><span class="c1"># If not set and create is true, a name is generated using the fullname template</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;controller-manager&quot;</span>
+
+<span class="nt">imagePullSecrets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+
+<span class="nt">nameOverride</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="nt">fullnameOverride</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+
+<span class="nt">watchNamespaces</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+
+<span class="c1"># Webhook Configuration</span>
+<span class="nt">webhook</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">certificates</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">deployment</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># reloader.stakater.com/auto: &quot;true&quot;</span>
+
+<span class="nt">service</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+
+<span class="nt">podSecurityContext</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">runAsNonRoot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">securityContext</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">{}</span>
+<span class="w">  </span><span class="c1"># capabilities:</span>
+<span class="w">  </span><span class="c1">#   drop:</span>
+<span class="w">  </span><span class="c1">#   - ALL</span>
+<span class="w">  </span><span class="c1"># readOnlyRootFilesystem: true</span>
+<span class="w">  </span><span class="c1"># runAsNonRoot: true</span>
+<span class="w">  </span><span class="c1"># runAsUser: 1000</span>
+
+<span class="nt">resources</span><span class="p">:</span>
+
+<span class="w">  </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100m</span>
+<span class="w">    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Gi</span>
+<span class="w">  </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10m</span>
+<span class="w">    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200Mi</span>
+
+<span class="nt">nodeSelector</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+
+<span class="nt">tolerations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+
+<span class="nt">affinity</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+
+<span class="nt">integrationConfig</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># create: false</span>
 <span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
-<span class="w">    </span><span class="nt">editors</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">john@aurora.org</span>
+<span class="w">    </span><span class="nt">privileged</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^default$</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^openshift-.*</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^stakater-.*</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^kube-.*</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^redhat-.*</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^hive-.*</span>
+<span class="w">      </span><span class="nt">serviceAccounts</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:openshift-.*</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:stakater-.*</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:kube-.*</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:redhat-.*</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^system:serviceaccount:hive-.*</span>
 <span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="l l-Scalar l-Scalar-Plain">EOF</span>
+<span class="w">        </span><span class="c1"># - saap-cluster-admins</span>
+<span class="w">  </span><span class="nt">components</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="nt">userRoles</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">create</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="c1"># Extend tenant cluster manager role</span>
+<span class="nt">managerRoleExtendedRules</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">{}</span>
+<span class="w">  </span><span class="c1"># - apiGroups:</span>
+<span class="w">  </span><span class="c1">#   - user.openshift.io</span>
+<span class="w">  </span><span class="c1">#   resources:</span>
+<span class="w">  </span><span class="c1">#   - groups</span>
+<span class="w">  </span><span class="c1">#   verbs:</span>
+<span class="w">  </span><span class="c1">#   - create</span>
+<span class="w">  </span><span class="c1">#   - delete</span>
+<span class="w">  </span><span class="c1">#   - get</span>
+<span class="w">  </span><span class="c1">#   - list</span>
+<span class="w">  </span><span class="c1">#   - patch</span>
+<span class="w">  </span><span class="c1">#   - update</span>
+<span class="w">  </span><span class="c1">#   - watch</span>
 </code></pre></div>
-<p>With this update, both Anna and Anthony can administer the tenant bluesky, including the creation of namespaces:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>namespaces
-yes
-</code></pre></div>
-<p>This flexible approach allows Bill to manage tenant access control efficiently, ensuring that the team's operational needs are met while maintaining security and governance standards.</p>
 
 
 
@@ -2724,27 +2639,27 @@ yes
                 <div class="flex-2">
                     <div>
                         
-                        <img class="md-header__logo_light" src="../../assets/images/footer-logo-light.png#only-light"
+                        <img class="md-header__logo_light" src="../assets/images/footer-logo-light.png#only-light"
                             alt="logo" />
                         
                         
-                        <img src="../../assets/images/footer-logo-dark.png#only-dark" alt="logo" />
+                        <img src="../assets/images/footer-logo-dark.png#only-dark" alt="logo" />
                         
                     </div>
 
                     <div class="display-flex">
                         
-                        <img src="../../assets/images/CSA_dark.png#only-dark" alt="CSA" />
+                        <img src="../assets/images/CSA_dark.png#only-dark" alt="CSA" />
                         
                         
-                        <img src="../../assets/images/CSA_light.png#only-light" alt="CSA" />
+                        <img src="../assets/images/CSA_light.png#only-light" alt="CSA" />
                         
 
                         
-                        <img src="../../assets/images/HC_dark.png#only-dark" alt="HC" />
+                        <img src="../assets/images/HC_dark.png#only-dark" alt="HC" />
                         
                         
-                        <img src="../../assets/images/HC_light.png#only-light" alt="HC" />
+                        <img src="../assets/images/HC_light.png#only-light" alt="HC" />
                         
                     </div>
 
@@ -3166,10 +3081,10 @@ yes
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
