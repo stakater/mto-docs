@@ -24,7 +24,7 @@ This document contains instructions on installing, uninstalling and configuring 
 * Use `helm install` command to install MTO helm chart. Here, `bypassedGroups` has the names of groups which are designated as Cluster Admins in your cluster. For this example, we will use `system:masters`
 
 ```terminal
-$ helm install tenant-operator oci://ghcr.io/stakater/charts/multi-tenant-operator --version 0.11.0 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=system:masters'
+helm install tenant-operator oci://ghcr.io/stakater/charts/multi-tenant-operator --version 0.11.0 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=system:masters'
 ```
 
 !!! note
@@ -33,7 +33,7 @@ $ helm install tenant-operator oci://ghcr.io/stakater/charts/multi-tenant-operat
 Wait for the pods to be up
 
 ```terminal
-$ kubectl get pods -n multi-tenant-operator --watch
+kubectl get pods -n multi-tenant-operator --watch
 ```
 
 After all pods come in running state, you can move to next sections on [Licensing](./free-vs-paid-tier.md) and [Tutorials](../tutorials/tenant/create-tenant.md)
@@ -45,7 +45,7 @@ MTO can be uninstalled by Helm CLI if Helm was used to install it earlier.
 * Use `helm uninstall` command to remove the earlier created `Helm Release` in `multi-tenant-operator` namespace
 
 ```terminal
-$ helm uninstall tenant-operator --namespace multi-tenant-operator
+helm uninstall tenant-operator --namespace multi-tenant-operator
 ```
 
 ## Notes
