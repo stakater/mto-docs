@@ -15,7 +15,7 @@ This document contains instructions on installing, uninstalling and configuring 
     1. `quota-template-intconfig-server-cert` pointing to `multi-tenant-operator-quota-template-intconfig-webhook-service.{{ .Release.Namespace }}.svc.cluster.local`
     1. `webhook-server-cert` pointing to `multi-tenant-operator-webhook-service.{{ .Release.Namespace }}.svc.cluster.local`
 
-    If you are using [Cert Manager](https://cert-manager.io/docs/installation/), these certficates will be handled by templates in Helm Chart
+    If you are using [Cert Manager](https://cert-manager.io/docs/installation/), these certificates will be handled by templates in Helm Chart
 
 ## Installing via Helm CLI
 
