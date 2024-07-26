@@ -8,22 +8,28 @@
       
       
       
+        <link rel="canonical" href="https://docs.stakater.com/mto/main/installation/kubernetes.html">
       
       
+        <link rel="prev" href="openshift.html">
       
-      <link rel="icon" href="/mto/main/assets/images/favicon.svg">
+      
+        <link rel="next" href="helm-values.html">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
     
     
       
-        <title>Multi Tenant Operator</title>
+        <title>On Kubernetes - Multi Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="/mto/main/assets/stylesheets/main.3cba04c6.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
       
         
-        <link rel="stylesheet" href="/mto/main/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -42,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="/mto/main/stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("/mto/main",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -61,7 +67,16 @@
     
     
     
-  </head>
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -79,6 +94,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#on-kubernetes" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -90,7 +110,7 @@
             <div class="md-banner__inner md-grid md-typeset">
               
 You're not viewing the latest version.
-<a href="..//mto/main">
+<a href="../..">
   <strong>Click here to go to latest.</strong>
 </a>
 
@@ -129,7 +149,7 @@ You're not viewing the latest version.
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="/mto/main/index.html" title="Multi Tenant Operator"
+    <a href="../index.html" title="Multi Tenant Operator"
       class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       <!-- 
   
@@ -149,10 +169,10 @@ You're not viewing the latest version.
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="/mto/main/assets/images/logo-light.png#only-light" alt="logo" />
+          <img class="md-header__logo_light" src="../assets/images/logo-light.png#only-light" alt="logo" />
           
           
-          <img class="md-header__logo_dark" src="/mto/main/assets/images/logo-dark.png#only-dark" alt="logo" />
+          <img class="md-header__logo_dark" src="../assets/images/logo-dark.png#only-dark" alt="logo" />
           
           
           <div class="header-site-name">
@@ -871,7 +891,7 @@ You're not viewing the latest version.
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/mto/main/index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -901,7 +921,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/index.html" class="md-nav__link">
+      <a href="../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -918,17 +938,19 @@ You're not viewing the latest version.
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -942,7 +964,7 @@ You're not viewing the latest version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Installation
@@ -956,7 +978,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/installation/openshift.html" class="md-nav__link">
+      <a href="openshift.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -974,10 +996,30 @@ You're not viewing the latest version.
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/mto/main/installation/kubernetes.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    On Kubernetes
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="kubernetes.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -986,6 +1028,64 @@ You're not viewing the latest version.
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-via-helm-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing via Helm CLI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstall-via-helm-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uninstall via Helm CLI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -998,7 +1098,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/installation/helm-values.html" class="md-nav__link">
+      <a href="helm-values.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1019,7 +1119,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/installation/basic-vs-enterprise-tier.html" class="md-nav__link">
+      <a href="basic-vs-enterprise-tier.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1117,7 +1217,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/tutorials/tenant/create-tenant.html" class="md-nav__link">
+      <a href="../tutorials/tenant/create-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1138,7 +1238,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/tutorials/tenant/create-sandbox.html" class="md-nav__link">
+      <a href="../tutorials/tenant/create-sandbox.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1159,7 +1259,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/tutorials/tenant/creating-namespaces.html" class="md-nav__link">
+      <a href="../tutorials/tenant/creating-namespaces.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1180,7 +1280,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/tutorials/tenant/assigning-metadata.html" class="md-nav__link">
+      <a href="../tutorials/tenant/assigning-metadata.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1201,7 +1301,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/tutorials/tenant/tenant-hibernation.html" class="md-nav__link">
+      <a href="../tutorials/tenant/tenant-hibernation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1222,7 +1322,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/tutorials/tenant/deleting-tenant.html" class="md-nav__link">
+      <a href="../tutorials/tenant/deleting-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1286,7 +1386,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/tutorials/distributing-resources/copying-resources.html" class="md-nav__link">
+      <a href="../tutorials/distributing-resources/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1307,7 +1407,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/tutorials/distributing-resources/distributing-manifests.html" class="md-nav__link">
+      <a href="../tutorials/distributing-resources/distributing-manifests.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1413,7 +1513,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/how-to-guides/custom-roles.html" class="md-nav__link">
+      <a href="../how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1434,7 +1534,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/how-to-guides/extend-default-roles.html" class="md-nav__link">
+      <a href="../how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1498,7 +1598,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
+      <a href="../how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1519,7 +1619,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/how-to-guides/deploying-templates.html" class="md-nav__link">
+      <a href="../how-to-guides/deploying-templates.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1540,7 +1640,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1561,7 +1661,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1582,7 +1682,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1603,7 +1703,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/how-to-guides/copying-resources.html" class="md-nav__link">
+      <a href="../how-to-guides/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1667,7 +1767,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/how-to-guides/keycloak.html" class="md-nav__link">
+      <a href="../how-to-guides/keycloak.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1688,7 +1788,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/how-to-guides/custom-metrics.html" class="md-nav__link">
+      <a href="../how-to-guides/custom-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1709,7 +1809,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/how-to-guides/graph-visualization.html" class="md-nav__link">
+      <a href="../how-to-guides/graph-visualization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1773,7 +1873,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1794,7 +1894,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1815,7 +1915,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1836,7 +1936,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/how-to-guides/mattermost.html" class="md-nav__link">
+      <a href="../how-to-guides/mattermost.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1857,7 +1957,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/how-to-guides/integrating-external-keycloak.html" class="md-nav__link">
+      <a href="../how-to-guides/integrating-external-keycloak.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1921,7 +2021,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
+      <a href="../how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1992,7 +2092,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/explanation/logs-metrics.html" class="md-nav__link">
+      <a href="../explanation/logs-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2013,7 +2113,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/explanation/template.html" class="md-nav__link">
+      <a href="../explanation/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2034,7 +2134,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/explanation/console.html" class="md-nav__link">
+      <a href="../explanation/console.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2055,7 +2155,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/explanation/templated-metadata-values.html" class="md-nav__link">
+      <a href="../explanation/templated-metadata-values.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2076,7 +2176,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/explanation/multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../explanation/multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2139,7 +2239,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/crds-api-reference/extensions.html" class="md-nav__link">
+      <a href="../crds-api-reference/extensions.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2160,7 +2260,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/crds-api-reference/integration-config.html" class="md-nav__link">
+      <a href="../crds-api-reference/integration-config.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2181,7 +2281,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/crds-api-reference/quota.html" class="md-nav__link">
+      <a href="../crds-api-reference/quota.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2202,7 +2302,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/crds-api-reference/tenant.html" class="md-nav__link">
+      <a href="../crds-api-reference/tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2223,7 +2323,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/crds-api-reference/template.html" class="md-nav__link">
+      <a href="../crds-api-reference/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2244,7 +2344,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/crds-api-reference/template-instance.html" class="md-nav__link">
+      <a href="../crds-api-reference/template-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2265,7 +2365,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/crds-api-reference/template-group-instance.html" class="md-nav__link">
+      <a href="../crds-api-reference/template-group-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2293,7 +2393,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/changelog.html" class="md-nav__link">
+      <a href="../changelog.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2313,7 +2413,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/eula.html" class="md-nav__link">
+      <a href="../eula.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2333,7 +2433,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="/mto/main/troubleshooting.html" class="md-nav__link">
+      <a href="../troubleshooting.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2365,6 +2465,52 @@ You're not viewing the latest version.
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-via-helm-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing via Helm CLI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstall-via-helm-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uninstall via Helm CLI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2376,9 +2522,83 @@ You're not viewing the latest version.
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>4xx - Page does not exist or has restricted access or rights</h1>
-  <p>This page does not exist or may have been deprecated or moved. Please use the search to find anything in the documentation.</p>
+                  
 
+  
+  
+
+
+<h1 id="on-kubernetes">On Kubernetes<a class="headerlink" href="#on-kubernetes" title="Permanent link">#</a></h1>
+<p>This document contains instructions on installing, uninstalling and configuring Multi Tenant Operator on Kubernetes.</p>
+<ol>
+<li>
+<p><a href="#installing-via-helm-cli">Installing via Helm CLI</a></p>
+</li>
+<li>
+<p><a href="#uninstall-via-helm-cli">Uninstall</a></p>
+</li>
+</ol>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
+<ul>
+<li>A <strong>Kubernetes</strong> cluster (v1.24 or higher)</li>
+<li><a href="https://helm.sh/docs/intro/install/">Helm CLI</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/tools/">kubectl</a></li>
+<li>
+<p>To run on Kubernetes, two certificates are needed in the operator namespace for the operator to be up and running, named</p>
+<ol>
+<li><code>quota-template-intconfig-server-cert</code> pointing to <code>multi-tenant-operator-quota-template-intconfig-webhook-service.{{ .Release.Namespace }}.svc.cluster.local</code></li>
+<li><code>webhook-server-cert</code> pointing to <code>multi-tenant-operator-webhook-service.{{ .Release.Namespace }}.svc.cluster.local</code></li>
+</ol>
+<p>If you are using <a href="https://cert-manager.io/docs/installation/">Cert Manager</a>, these certificates will be handled by templates in Helm Chart</p>
+</li>
+</ul>
+<h2 id="installing-via-helm-cli">Installing via Helm CLI<a class="headerlink" href="#installing-via-helm-cli" title="Permanent link">#</a></h2>
+<ul>
+<li>
+<p>Public Helm Chart of MTO is available at <a href="https://github.com/orgs/stakater/packages/container/package/public/charts/multi-tenant-operator">Stakater GHCR Packages</a> and available Helm options can be seen at <a href="helm-values.html">MTO Helm Chart Options</a></p>
+</li>
+<li>
+<p>Use <code>helm install</code> command to install MTO helm chart. Here, <code>bypassedGroups</code> has the names of groups which are designated as Cluster Admins in your cluster. For this example, we will use <code>system:masters</code></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=system:masters&#39;
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is better to install MTO in its preferred namespace, <code>multi-tenant-operator</code></p>
+</div>
+<p>Wait for the pods to be up</p>
+<div class="highlight"><pre><span></span><code>kubectl get pods -n multi-tenant-operator --watch
+</code></pre></div>
+<p>After all pods come in running state, you can move to next sections on <a href="basic-vs-enterprise-tier.html">Licensing</a> and <a href="../tutorials/tenant/create-tenant.html">Tutorials</a></p>
+<h2 id="uninstall-via-helm-cli">Uninstall via Helm CLI<a class="headerlink" href="#uninstall-via-helm-cli" title="Permanent link">#</a></h2>
+<p>MTO can be uninstalled by Helm CLI if Helm was used to install it earlier.</p>
+<ul>
+<li>Use <code>helm uninstall</code> command to remove the earlier created <code>Helm Release</code> in <code>multi-tenant-operator</code> namespace</li>
+</ul>
+<div class="highlight"><pre><span></span><code>helm uninstall tenant-operator --namespace multi-tenant-operator
+</code></pre></div>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
+<ul>
+<li>For details on licensing of MTO please refer <a href="basic-vs-enterprise-tier.html">Basic vs Enterprise Tier</a>.</li>
+<li>For more details on how to use MTO please refer <a href="../tutorials/tenant/create-tenant.html">Tenant tutorial</a>.</li>
+<li>For details on how to extend your MTO manager ClusterRole please refer <a href="../how-to-guides/extend-default-roles.html">extend-default-clusterroles</a>.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
               </article>
             </div>
           
@@ -2476,27 +2696,27 @@ You're not viewing the latest version.
                 <div class="flex-2">
                     <div>
                         
-                        <img class="md-header__logo_light" src="/mto/main/assets/images/footer-logo-light.png#only-light"
+                        <img class="md-header__logo_light" src="../assets/images/footer-logo-light.png#only-light"
                             alt="logo" />
                         
                         
-                        <img src="/mto/main/assets/images/footer-logo-dark.png#only-dark" alt="logo" />
+                        <img src="../assets/images/footer-logo-dark.png#only-dark" alt="logo" />
                         
                     </div>
 
                     <div class="display-flex">
                         
-                        <img src="/mto/main/assets/images/CSA_dark.png#only-dark" alt="CSA" />
+                        <img src="../assets/images/CSA_dark.png#only-dark" alt="CSA" />
                         
                         
-                        <img src="/mto/main/assets/images/CSA_light.png#only-light" alt="CSA" />
+                        <img src="../assets/images/CSA_light.png#only-light" alt="CSA" />
                         
 
                         
-                        <img src="/mto/main/assets/images/HC_dark.png#only-dark" alt="HC" />
+                        <img src="../assets/images/HC_dark.png#only-dark" alt="HC" />
                         
                         
-                        <img src="/mto/main/assets/images/HC_light.png#only-light" alt="HC" />
+                        <img src="../assets/images/HC_light.png#only-light" alt="HC" />
                         
                     </div>
 
@@ -2918,11 +3138,13 @@ You're not viewing the latest version.
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": "/mto/main", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "/mto/main/assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="/mto/main/assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>
