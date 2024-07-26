@@ -10,7 +10,7 @@ This document contains instructions on installing, uninstalling and configuring 
 
 * A **Kubernetes** cluster (v1.24 or higher)
 * [Helm CLI](https://helm.sh/docs/intro/install/)
-* [Kubectl](https://kubernetes.io/docs/tasks/tools/)
+* [kubectl](https://kubernetes.io/docs/tasks/tools/)
 * To run on Kubernetes, two certificates are needed in the operator namespace for the operator to be up and running, named
     1. `quota-template-intconfig-server-cert` pointing to `multi-tenant-operator-quota-template-intconfig-webhook-service.{{ .Release.Namespace }}.svc.cluster.local`
     1. `webhook-server-cert` pointing to `multi-tenant-operator-webhook-service.{{ .Release.Namespace }}.svc.cluster.local`
