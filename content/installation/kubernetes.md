@@ -36,7 +36,7 @@ Wait for the pods to be up
 kubectl get pods -n multi-tenant-operator --watch
 ```
 
-After all pods come in running state, you can move to next sections on [Licensing](./free-vs-paid-tier.md) and [Tutorials](../tutorials/tenant/create-tenant.md)
+After all pods come in running state, you can move to next sections on [Licensing](./basic-vs-enterprise-tier.md) and [Tutorials](../tutorials/tenant/create-tenant.md)
 
 ## Uninstall via Helm CLI
 
@@ -50,6 +50,6 @@ helm uninstall tenant-operator --namespace multi-tenant-operator
 
 ## Notes
 
-* For details on licensing of MTO please refer [Free vs Paid Tier](./free-vs-paid-tier.md).
+* For details on licensing of MTO please refer [Basic vs Enterprise Tier](./basic-vs-enterprise-tier.md).
 * For more details on how to use MTO please refer [Tenant tutorial](../tutorials/tenant/create-tenant.md).
 * For details on how to extend your MTO manager ClusterRole please refer [extend-default-clusterroles](../how-to-guides/extend-default-roles.md).

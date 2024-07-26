@@ -159,6 +159,6 @@ You can uninstall MTO by following these steps:
 
 ## Notes
 
-* For details on licensing of MTO please refer [Free vs Paid Tier](./free-vs-paid-tier.md).
+* For details on licensing of MTO please refer [Basic vs Enterprise Tier](./basic-vs-enterprise-tier.md).
 * For more details on how to use MTO please refer [Tenant tutorial](../tutorials/tenant/create-tenant.md).
 * For details on how to extend your MTO manager ClusterRole please refer [extend-default-clusterroles](../how-to-guides/extend-default-roles.md).
