@@ -8,8 +8,6 @@ This document contains instructions on installing, uninstalling and configuring 
 
 1. [Enabling Console](#enabling-console)
 
-1. [License configuration](#license-configuration)
-
 1. [Uninstall](#uninstall-via-operatorhub-ui)
 
 ## Requirements

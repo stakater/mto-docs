@@ -1,8 +1,8 @@
 # Free vs Paid Tier
 
-Multi Tenant Operator offers two types of versions to the end customers. 
+Multi Tenant Operator offers two types of versions to the end customers
 
-* Free Tier (up to 2 Tenants) 
+* Free Tier (up to 2 Tenants)
 * Paid Tier
 
 ## License Configuration
