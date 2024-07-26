@@ -19,12 +19,12 @@ This document contains instructions on installing, uninstalling and configuring 
 
 ## Installing via Helm CLI
 
-* Public Helm Chart of MTO is available at [Stakater GHCR Packages](https://github.com/orgs/stakater/packages?q=tronador&tab=packages&q=tenant-operator)
+* Public Helm Chart of MTO is available at [Stakater GHCR Packages](https://github.com/orgs/stakater/packages/container/package/public%2Fcharts%2Fmulti-tenant-operator) and available Helm options can be seen at [MTO Helm Chart Options](./helm-values.md)
 
 * Use `helm install` command to install MTO helm chart. Here, `bypassedGroups` has the names of groups which are designated as Cluster Admins in your cluster. For this example, we will use `system:masters`
 
 ```terminal
-helm install tenant-operator oci://ghcr.io/stakater/charts/multi-tenant-operator --version 0.11.0 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=system:masters'
+helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=system:masters'
 ```
 
 !!! note
