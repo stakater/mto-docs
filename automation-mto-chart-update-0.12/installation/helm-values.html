@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://docs.stakater.com/mto/automation-mto-chart-update-0.12/installation/helm-values.html">
       
       
+        <link rel="prev" href="kubernetes.html">
+      
+      
+        <link rel="next" href="basic-vs-enterprise-tier.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
@@ -934,17 +938,19 @@ You're not viewing the latest version.
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -958,7 +964,7 @@ You're not viewing the latest version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Installation
@@ -977,6 +983,79 @@ You're not viewing the latest version.
   
   <span class="md-ellipsis">
     On OpenShift
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kubernetes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    On Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="helm-values.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Helm Chart Options
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="basic-vs-enterprise-tier.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic vs Enterprise Tier
   </span>
   
 
@@ -2349,7 +2428,7 @@ You're not viewing the latest version.
 <span class="nt">operator</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">repository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/stakater/public/tenant-operator</span>
-<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v0.12.60</span>
+<span class="w">    </span><span class="nt">tag</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v0.12.62</span>
 <span class="w">    </span><span class="nt">pullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
 <span class="w">  </span><span class="nt">serviceAccount</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># Annotations to add to the service account</span>
@@ -2358,8 +2437,7 @@ You're not viewing the latest version.
 <span class="w">    </span><span class="c1"># If not set and create is true, a name is generated using the fullname template</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;controller-manager&quot;</span>
 
-<span class="nt">imagePullSecrets</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">saap-dockerconfigjson</span>
+<span class="nt">imagePullSecrets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
 
 <span class="nt">nameOverride</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 <span class="nt">fullnameOverride</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
