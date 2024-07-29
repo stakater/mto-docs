@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/0.12/explanation/templated-metadata-values.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/0.12/installation/kubernetes.html">
       
       
-        <link rel="prev" href="console.html">
+        <link rel="prev" href="openshift.html">
       
       
-        <link rel="next" href="multi-tenancy-vault.html">
+        <link rel="next" href="helm-values.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Templated values in Labels and Annotations - Multi Tenant Operator</title>
+        <title>On Kubernetes - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#templated-values-in-labels-and-annotations" class="md-skip">
+        <a href="#on-kubernetes" class="md-skip">
           Skip to content
         </a>
       
@@ -938,17 +938,19 @@ You're not viewing the latest version.
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -962,7 +964,7 @@ You're not viewing the latest version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Installation
@@ -976,7 +978,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../installation/openshift.html" class="md-nav__link">
+      <a href="openshift.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -994,10 +996,30 @@ You're not viewing the latest version.
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../installation/kubernetes.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    On Kubernetes
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="kubernetes.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1006,6 +1028,64 @@ You're not viewing the latest version.
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-via-helm-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing via Helm CLI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstall-via-helm-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uninstall via Helm CLI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1018,7 +1098,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../installation/helm-values.html" class="md-nav__link">
+      <a href="helm-values.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1039,7 +1119,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../installation/basic-vs-enterprise-tier.html" class="md-nav__link">
+      <a href="basic-vs-enterprise-tier.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1974,19 +2054,17 @@ You're not viewing the latest version.
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -2000,7 +2078,7 @@ You're not viewing the latest version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Explanation
@@ -2014,7 +2092,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="logs-metrics.html" class="md-nav__link">
+      <a href="../explanation/logs-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2035,7 +2113,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="template.html" class="md-nav__link">
+      <a href="../explanation/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2056,7 +2134,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="console.html" class="md-nav__link">
+      <a href="../explanation/console.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2074,30 +2152,10 @@ You're not viewing the latest version.
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Templated values in Labels and Annotations
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="templated-metadata-values.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../explanation/templated-metadata-values.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2106,37 +2164,6 @@ You're not viewing the latest version.
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#supported-templated-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      Supported templated values
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2149,7 +2176,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../explanation/multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2448,9 +2475,36 @@ You're not viewing the latest version.
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-templated-values" class="md-nav__link">
+  <a href="#requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Supported templated values
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-via-helm-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing via Helm CLI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uninstall-via-helm-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uninstall via Helm CLI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
     </span>
   </a>
   
@@ -2474,25 +2528,61 @@ You're not viewing the latest version.
   
 
 
-<h1 id="templated-values-in-labels-and-annotations">Templated values in Labels and Annotations<a class="headerlink" href="#templated-values-in-labels-and-annotations" title="Permanent link">#</a></h1>
-<p>Templated values are placeholders in your configuration that get replaced with actual data when the CR is processed. Below is a list of currently supported templated values, their descriptions, and where they can be used.</p>
-<h2 id="supported-templated-values">Supported templated values<a class="headerlink" href="#supported-templated-values" title="Permanent link">#</a></h2>
+<h1 id="on-kubernetes">On Kubernetes<a class="headerlink" href="#on-kubernetes" title="Permanent link">#</a></h1>
+<p>This document contains instructions on installing, uninstalling and configuring Multi Tenant Operator on Kubernetes.</p>
+<ol>
+<li>
+<p><a href="#installing-via-helm-cli">Installing via Helm CLI</a></p>
+</li>
+<li>
+<p><a href="#uninstall-via-helm-cli">Uninstall</a></p>
+</li>
+</ol>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
+<ul>
+<li>A <strong>Kubernetes</strong> cluster (v1.24 or higher)</li>
+<li><a href="https://helm.sh/docs/intro/install/">Helm CLI</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/tools/">kubectl</a></li>
+<li>
+<p>To run on Kubernetes, two certificates are needed in the operator namespace for the operator to be up and running, named</p>
+<ol>
+<li><code>quota-template-intconfig-server-cert</code> pointing to <code>multi-tenant-operator-quota-template-intconfig-webhook-service.{{ .Release.Namespace }}.svc.cluster.local</code></li>
+<li><code>webhook-server-cert</code> pointing to <code>multi-tenant-operator-webhook-service.{{ .Release.Namespace }}.svc.cluster.local</code></li>
+</ol>
+<p>If you are using <a href="https://cert-manager.io/docs/installation/">Cert Manager</a>, these certificates will be handled by templates in Helm Chart</p>
+</li>
+</ul>
+<h2 id="installing-via-helm-cli">Installing via Helm CLI<a class="headerlink" href="#installing-via-helm-cli" title="Permanent link">#</a></h2>
 <ul>
 <li>
-<p><code>"{{ TENANT.USERNAME }}"</code></p>
-<ul>
-<li><strong>Description</strong>: The username associated with users specified in <a href="../tutorials/tenant/create-tenant.html">Tenant</a> under <code>Owners</code> and <code>Editors</code>.</li>
-<li><strong>Supported in CRs</strong>:<ul>
-<li><code>Tenant</code>: Under <code>sandboxMetadata.labels</code> and <code>sandboxMetadata.annotations</code>.</li>
-<li><code>IntegrationConfig</code>: Under <code>metadata.sandboxs.labels</code> and <code>metadata.sandboxs.annotations</code>.</li>
-</ul>
+<p>Public Helm Chart of MTO is available at <a href="https://github.com/orgs/stakater/packages/container/package/public/charts/multi-tenant-operator">Stakater GHCR Packages</a> and available Helm options can be seen at <a href="helm-values.html">MTO Helm Chart Options</a></p>
 </li>
-<li><strong>Example</strong>:</li>
+<li>
+<p>Use <code>helm install</code> command to install MTO helm chart. Here, <code>bypassedGroups</code> has the names of groups which are designated as Cluster Admins in your cluster. For this example, we will use <code>system:masters</code></p>
+</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">annotation</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">TENANT.USERNAME</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="w"> </span><span class="c1"># double quotes are required</span>
+<div class="highlight"><pre><span></span><code>helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=system:masters&#39;
 </code></pre></div>
-</li>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is better to install MTO in its preferred namespace, <code>multi-tenant-operator</code></p>
+</div>
+<p>Wait for the pods to be up</p>
+<div class="highlight"><pre><span></span><code>kubectl get pods -n multi-tenant-operator --watch
+</code></pre></div>
+<p>After all pods come in running state, you can move to next sections on <a href="basic-vs-enterprise-tier.html">Licensing</a> and <a href="../tutorials/tenant/create-tenant.html">Tutorials</a></p>
+<h2 id="uninstall-via-helm-cli">Uninstall via Helm CLI<a class="headerlink" href="#uninstall-via-helm-cli" title="Permanent link">#</a></h2>
+<p>MTO can be uninstalled by Helm CLI if Helm was used to install it earlier.</p>
+<ul>
+<li>Use <code>helm uninstall</code> command to remove the earlier created <code>Helm Release</code> in <code>multi-tenant-operator</code> namespace</li>
+</ul>
+<div class="highlight"><pre><span></span><code>helm uninstall tenant-operator --namespace multi-tenant-operator
+</code></pre></div>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
+<ul>
+<li>For details on licensing of MTO please refer <a href="basic-vs-enterprise-tier.html">Basic vs Enterprise Tier</a>.</li>
+<li>For more details on how to use MTO please refer <a href="../tutorials/tenant/create-tenant.html">Tenant tutorial</a>.</li>
+<li>For details on how to extend your MTO manager ClusterRole please refer <a href="../how-to-guides/extend-default-roles.html">extend-default-clusterroles</a>.</li>
 </ul>
 
 

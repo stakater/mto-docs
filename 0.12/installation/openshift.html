@@ -14,7 +14,7 @@
         <link rel="prev" href="../index.html">
       
       
-        <link rel="next" href="../tutorials/tenant/create-tenant.html">
+        <link rel="next" href="kubernetes.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
@@ -1077,15 +1077,6 @@ You're not viewing the latest version.
 </li>
       
         <li class="md-nav__item">
-  <a href="#license-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      License Configuration
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#uninstall-via-operatorhub-ui" class="md-nav__link">
     <span class="md-ellipsis">
       Uninstall via OperatorHub UI
@@ -1107,6 +1098,69 @@ You're not viewing the latest version.
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="kubernetes.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    On Kubernetes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="helm-values.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Helm Chart Options
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="basic-vs-enterprise-tier.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic vs Enterprise Tier
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2505,15 +2559,6 @@ You're not viewing the latest version.
 </li>
       
         <li class="md-nav__item">
-  <a href="#license-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      License Configuration
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#uninstall-via-operatorhub-ui" class="md-nav__link">
     <span class="md-ellipsis">
       Uninstall via OperatorHub UI
@@ -2562,15 +2607,12 @@ You're not viewing the latest version.
 <p><a href="#enabling-console">Enabling Console</a></p>
 </li>
 <li>
-<p><a href="#license-configuration">License configuration</a></p>
-</li>
-<li>
 <p><a href="#uninstall-via-operatorhub-ui">Uninstall</a></p>
 </li>
 </ol>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
 <ul>
-<li>An <strong>OpenShift</strong> cluster [v4.8 - v4.13]</li>
+<li>An <strong>OpenShift</strong> cluster [v4.8 - v4.15]</li>
 </ul>
 <h2 id="installing-via-operatorhub-ui">Installing via OperatorHub UI<a class="headerlink" href="#installing-via-operatorhub-ui" title="Permanent link">#</a></h2>
 <ul>
@@ -2691,24 +2733,6 @@ subscription.operators.coreos.com/tenant-operator<span class="w"> </span>created
 <ul>
 <li>Now the <code>InstallPlan</code> will be approved, and MTO console components will be installed.</li>
 </ul>
-<h2 id="license-configuration">License Configuration<a class="headerlink" href="#license-configuration" title="Permanent link">#</a></h2>
-<p>We offer a free license with installation, and you can create max 2 <a href="../tutorials/tenant/create-tenant.html">Tenants</a> with it.</p>
-<p>We offer a paid license as well. You need to have a configmap <code>license</code> created in MTO's namespace (multi-tenant-operator). To get this configmap, you can contact <a href="mailto:sales@stakater.com"><code>sales@stakater.com</code></a>. It would look like this:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">license</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
-<span class="nt">data</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">payload.json</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">    </span><span class="no">{</span>
-<span class="w">        </span><span class="no">&quot;metaData&quot;: {</span>
-<span class="w">            </span><span class="no">&quot;tier&quot; : &quot;paid&quot;,</span>
-<span class="w">            </span><span class="no">&quot;company&quot;: &quot;&lt;company name here&gt;&quot;</span>
-<span class="w">        </span><span class="no">}</span>
-<span class="w">    </span><span class="no">}</span>
-<span class="w">  </span><span class="nt">signature.base64.txt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;base64 signature here.&gt;</span>
-</code></pre></div>
 <h2 id="uninstall-via-operatorhub-ui">Uninstall via OperatorHub UI<a class="headerlink" href="#uninstall-via-operatorhub-ui" title="Permanent link">#</a></h2>
 <p>You can uninstall MTO by following these steps:</p>
 <ul>
@@ -2734,8 +2758,9 @@ subscription.operators.coreos.com/tenant-operator<span class="w"> </span>created
 </ul>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
 <ul>
+<li>For details on licensing of MTO please refer <a href="basic-vs-enterprise-tier.html">Basic vs Enterprise Tier</a>.</li>
 <li>For more details on how to use MTO please refer <a href="../tutorials/tenant/create-tenant.html">Tenant tutorial</a>.</li>
-<li>For more details on how to extend your MTO manager ClusterRole please refer <a href="../how-to-guides/extend-default-roles.html">extend-default-clusterroles</a>.</li>
+<li>For details on how to extend your MTO manager ClusterRole please refer <a href="../how-to-guides/extend-default-roles.html">extend-default-clusterroles</a>.</li>
 </ul>
 
 
