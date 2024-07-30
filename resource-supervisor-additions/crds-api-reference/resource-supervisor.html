@@ -2655,10 +2655,10 @@ If provided, it will update <a href="https://argo-cd.readthedocs.io/en/stable/us
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-dev</span>
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span><span class="w"> </span><span class="c1"># sleep each hour at min 10</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span><span class="w"> </span><span class="c1"># wakeup each hour at min 50</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span><span class="w"> </span><span class="c1"># wake up each hour at min 50</span>
 </code></pre></div>
 <h3 id="sleep">Sleep<a class="headerlink" href="#sleep" title="Permanent link">#</a></h3>
-<p>Applications will sleep instantly, and will wakeup when resource supervisor is deleted</p>
+<p>Applications will sleep instantly, and will wake up when resource supervisor is deleted</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -2676,7 +2676,7 @@ If provided, it will update <a href="https://argo-cd.readthedocs.io/en/stable/us
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
 <h3 id="sleep-at-given-cron-schedule">Sleep at given cron schedule<a class="headerlink" href="#sleep-at-given-cron-schedule" title="Permanent link">#</a></h3>
-<p>Applications will sleep at provided cron schedule, and will wakeup when resource supervisor is deleted</p>
+<p>Applications will sleep at provided cron schedule, and will wake up when resource supervisor is deleted</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
