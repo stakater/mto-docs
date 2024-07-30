@@ -2,14 +2,24 @@
 
 ## v0.12.x
 
-### v0.12.2x
+### v0.12.19
 
-#### Enhanced
+#### Fix
 
-- Added label selector support to Resource Supervisor to select many namespaces for hibernation.
-- Added sleep support to Resource Supervisor. It will allow user to not provide any schedule on Resource Supervisor and selected namespaces will be put to sleep instantly
-- Resource Supervisor Spec has been modified. `spec.hibernation` is now `spec.schedule`. `spec.namespaces` is changed from a list to an object which have labelSelector and list of namespaces. Look here for complete schema [Resource Supervisor](./crds-api-reference/resource-supervisor.md)
-- Resource Supervisor Status is modified. We have changed the way we used to group sleeping applications.
+- Fixed a recurring issue in the Extensions controller where status changes were triggering unnecessary reconciliation loops.
+- Resolved a visibility issue where labels and annotations for sandbox namespaces were not appearing in the extension's status.
+- Addressed an issue where AppProject was being deleted upon extension CR deletion, regardless of the `onDeletePurgeAppProject` field value.
+- Optimized memory usage for Keycloak to address high consumption issues.
+- Resolved an issue that was causing a panic in the Extension Controller when the IntegrationConfig (IC) was not present.
+- Fixed an issue where the status was not being correctly updated when the entire Metadata block was removed from the Tenant specification.
+
+### v0.12.13
+
+#### Fix
+
+- Resolved an issue that was preventing Vault from authenticating using the `kubernetes` authentication method.
+- Addressed an issue where changes to the IntegrationConfig were not updating the destination namespaces in ArgoCD's AppProject.
+- Fixed a problem where the tenant controller was preventing namespace deletion if it failed to delete external dependencies, such as Vault.
 
 ### v0.12.1
 
