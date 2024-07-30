@@ -32,12 +32,12 @@ spec:
     - bluesky-dev
   schedule:
     sleepSchedule: "10 * * * *" # sleep each hour at min 10
-    wakeSchedule: "50 * * * *" # wakeup each hour at min 50
+    wakeSchedule: "50 * * * *" # wake up each hour at min 50
 ```
 
 ### Sleep
 
-Applications will sleep instantly, and will wakeup when resource supervisor is deleted
+Applications will sleep instantly, and will wake up when resource supervisor is deleted
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta1
@@ -59,7 +59,7 @@ spec:
 
 ### Sleep at given cron schedule
 
-Applications will sleep at provided cron schedule, and will wakeup when resource supervisor is deleted
+Applications will sleep at provided cron schedule, and will wake up when resource supervisor is deleted
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta1
