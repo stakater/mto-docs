@@ -4,7 +4,7 @@ This document covers how to link Multi Tenant Operator with an [Amazon EKS (Elas
 
 ## Prerequisites
 
-- You need kubectl as well, with a minimum version of 1.18.3. If you need to install, see [Install Kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
+- You need kubectl as well, with a minimum version of 1.18.3. If you need to install, see [Install kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
 - To install MTO, you need Helm CLI as well. Visit [Installing Helm](https://helm.sh/docs/intro/install/) to get Helm CLI
 - You need to have a user in [AWS Console](https://console.aws.amazon.com/), which we will use as the administrator having enough permissions for accessing the cluster and creating groups with users
 - A running EKS Cluster. [Creating an EKS Cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html) provides a good tutorial to create a demo cluster
