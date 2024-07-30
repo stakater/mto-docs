@@ -2633,12 +2633,12 @@ If provided, it will update <a href="https://argo-cd.readthedocs.io/en/stable/us
 <p>Following namespaces will be ignored:</p>
 <ul>
 <li>with annotation <code>"hibernation.stakater.com/exclude": "true"</code></li>
-<li>whose name match with priviledged namespaces' regex specified in <a href="integration-config.html">IntegrationConfig</a></li>
+<li>whose name match with privileged namespaces' regex specified in <a href="integration-config.html">IntegrationConfig</a></li>
 <li>namespace where MTO is installed</li>
 </ul>
 <h2 id="supported-modes">Supported modes<a class="headerlink" href="#supported-modes" title="Permanent link">#</a></h2>
 <h3 id="hibernation-with-cron-schedule">Hibernation with cron schedule<a class="headerlink" href="#hibernation-with-cron-schedule" title="Permanent link">#</a></h3>
-<p>Applications will sleep and wakup at provided cron schedule</p>
+<p>Applications will sleep and wake up at provided cron schedule</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -2719,7 +2719,7 @@ If provided, it will update <a href="https://argo-cd.readthedocs.io/en/stable/us
 </code></pre></div>
 <p>It will sleep <code>bluesky-staging</code> namespace, and all those which have the specified labels.</p>
 <h3 id="example-2">Example 2<a class="headerlink" href="#example-2" title="Permanent link">#</a></h3>
-<p>If you provide Argo CD AppProject in spec, it will create syncWindow with <code>deny</code> policy</p>
+<p>If you provide Argo CD AppProject in spec, it will create <code>syncWindow</code> with <code>deny</code> policy</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -2740,7 +2740,7 @@ If provided, it will update <a href="https://argo-cd.readthedocs.io/en/stable/us
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 </code></pre></div>
-<p>It will sleep given namespaces, and create <code>deny</code> syncWindow on provided AppProjects</p>
+<p>It will sleep given namespaces, and create <code>deny</code> <code>syncWindow</code> on provided AppProjects</p>
 
 
 
