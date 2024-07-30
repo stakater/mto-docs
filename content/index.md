@@ -40,19 +40,19 @@ Multi Tenant Operator is also able to leverage existing OpenShift groups or exte
 
 Multi Tenant Operator extends the tenants permission model to HashiCorp Vault where it can create Vault paths and greatly ease the overhead of managing RBAC in Vault. Tenant users can manage their own secrets without the concern of someone else having access to their Vault paths.
 
-More details on [Vault Multitenancy](./tutorials/vault/enabling-multi-tenancy-vault.md)
+More details on [Vault Multitenancy](./how-to-guides/enabling-multi-tenancy-vault.md)
 
 ## ArgoCD Multitenancy
 
 Multi Tenant Operator is not only providing strong Multi Tenancy for the OpenShift internals but also extends the tenants permission model to ArgoCD were it can provision AppProjects and Allowed Repositories for your tenants greatly ease the overhead of managing RBAC in ArgoCD.
 
-More details on [ArgoCD Multitenancy](./tutorials/argocd/enabling-multi-tenancy-argocd.md)
+More details on [ArgoCD Multitenancy](./how-to-guides/enabling-multi-tenancy-argocd.md)
 
 ## Resource Management
 
 Multi Tenant Operator provides a mechanism for defining Resource Quotas at the tenant scope, meaning all namespaces belonging to a particular tenant share the defined quota, which is why you are able to safely enable dev teams to self serve their namespaces whilst being confident that they can only use the resources allocated based on budget and business needs.
 
-More details on [Quota](./how-to-guides/quota.md)
+More details on [Quota](./crds-api-reference/quota.md)
 
 ## Templates and Template distribution
 
@@ -67,7 +67,7 @@ Common use cases for namespace templates may be:
 * Deploying pre-populated databases with test data
 * Injecting new namespaces with optional credentials such as image pull secrets
 
-More details on [Distributing Template Resources](./reference-guides/deploying-templates.md)
+More details on [Distributing Template Resources](./how-to-guides/deploying-templates.md)
 
 ## MTO Console
 
@@ -92,7 +92,7 @@ More details on [Hibernation](./tutorials/tenant/tenant-hibernation.md#hibernati
 
 Multi Tenant Operator can manage Mattermost to create Teams for tenant users. All tenant users get a unique team and a list of predefined channels gets created. When a user is removed from the tenant, the user is also removed from the Mattermost team corresponding to tenant.
 
-More details on [Mattermost](./reference-guides/mattermost.md)
+More details on [Mattermost](./how-to-guides/mattermost.md)
 
 ## Remote Development Namespaces
 
@@ -104,7 +104,7 @@ More details on [Sandboxes](./tutorials/tenant/create-sandbox.md)
 
 Multi Tenant Operator supports cloning of secrets and configmaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide reference to secrets and configmaps. It uses a template group instance to distribute those secrets and namespaces in matching namespaces, even if namespaces belong to different tenants. If template instance is used then the resources will only be mapped if namespaces belong to same tenant.
 
-More details on [Distributing Secrets and ConfigMaps](./reference-guides/distributing-resources.md)
+More details on [Copying Secrets and ConfigMaps](./tutorials/distributing-resources/copying-resources.md)
 
 ## Self-Service
 

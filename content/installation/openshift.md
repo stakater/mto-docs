@@ -1,4 +1,4 @@
-# Installation
+# On OpenShift
 
 This document contains instructions on installing, uninstalling and configuring Multi Tenant Operator using OpenShift MarketPlace.
 
@@ -12,7 +12,7 @@ This document contains instructions on installing, uninstalling and configuring 
 
 ## Requirements
 
-* An **OpenShift** cluster [v4.8 - v4.13]
+* An **OpenShift** cluster [v4.8 - v4.15]
 
 ## Installing via OperatorHub UI
 
@@ -104,7 +104,7 @@ subscription.operators.coreos.com/tenant-operator created
 
 ![image](../images/to_installed_successful_pod.png)
 
-For more details and configurations check out [IntegrationConfig](../how-to-guides/integration-config.md).
+For more details and configurations check out [IntegrationConfig](../crds-api-reference/integration-config.md).
 
 ## Enabling Console
 
@@ -159,5 +159,6 @@ You can uninstall MTO by following these steps:
 
 ## Notes
 
-* For more details on how to use MTO please refer [Tenant tutorial](./tenant/create-tenant.md).
-* For more details on how to extend your MTO manager ClusterRole please refer [extend-admin-clusterrole](../reference-guides/admin-clusterrole.md).
+* For details on licensing of MTO please refer [Basic vs Enterprise Tier](./basic-vs-enterprise-tier.md).
+* For more details on how to use MTO please refer [Tenant tutorial](../tutorials/tenant/create-tenant.md).
+* For details on how to extend your MTO manager ClusterRole please refer [extend-default-clusterroles](../how-to-guides/extend-default-roles.md).

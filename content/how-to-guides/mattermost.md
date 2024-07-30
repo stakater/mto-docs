@@ -12,22 +12,24 @@ Bill wants some tenants to also have their own Mattermost Teams. To make sure th
 The label will enable the `mto-mattermost-integration-operator` to create and manage Mattermost Teams based on Tenants.
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1beta2
+apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
 metadata:
   name: sigma
   labels:
     stakater.com/mattermost: 'true'
 spec:
-  owners:
-    users:
-      - user
-  editors:
-    users:
-      - user1
   quota: medium
-  sandbox: false
+  accessControl:
+    owners:
+      users:
+        - user
+    editors:
+      users:
+        - user1
   namespaces:
+    sandboxes:
+      enabled: false
     withTenantPrefix:
       - dev
       - build

@@ -3,11 +3,11 @@ name: Push
 on:
   push:
     branches:
-      - 'main'
-      - '[0-9]+.[0-9]+'
+      - "main"
+      - "[0-9]+.[0-9]+"
 
 jobs:
   push:
-    uses: stakater/.github/.github/workflows/mkdocs_push_versioned_doc.yaml@v0.0.65
+    uses: stakater/.github/.github/workflows/mkdocs_push_versioned_doc.yaml@v0.0.79
     secrets:
       GH_TOKEN: ${{ secrets.STAKATER_GITHUB_TOKEN }}

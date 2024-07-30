@@ -48,7 +48,7 @@ resources:
       - Ingress
 ```
 
-Once the template has been created, Bill edits the [IntegrationConfig](../how-to-guides/integration-config.md) to add unique label to all tenant projects:
+Once the template has been created, Bill edits the [IntegrationConfig](../crds-api-reference/integration-config.md) to add unique label to all tenant projects:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta1
@@ -70,11 +70,11 @@ spec:
   privileged:
     namespaces:
       - default
-      - ^openshift-*
-      - ^kube-*
+      - ^openshift.*
+      - ^kube.*
     serviceAccounts:
-      - ^system:serviceaccount:openshift-*
-      - ^system:serviceaccount:kube-*
+      - ^system:serviceaccount:openshift.*
+      - ^system:serviceaccount:kube.*
 ```
 
 Bill has added a new label `tenant-network-policy: "true"` in project section of IntegrationConfig, now MTO will add that label in all tenant projects.

@@ -1,34 +1,38 @@
 # Create Sandbox Namespaces for Tenant Users
 
-## Assigning Users Sandbox Namespace
+Sandbox namespaces offer a personal development and testing space for users within a tenant. This guide covers how to enable and configure sandbox namespaces for tenant users, along with setting privacy and applying metadata specifically for these sandboxes.
 
-Bill assigned the ownership of `bluesky` to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, they'll have to ask `Bill` to enable `sandbox` functionality.
+## Enabling Sandbox Namespaces
 
-To enable that, Bill will just set `enabled: true` within the `sandboxConfig` field
+Bill has assigned the ownership of the tenant bluesky to Anna and Anthony. To provide them with their sandbox namespaces, he must enable the sandbox functionality in the tenant's configuration.
+
+To enable sandbox namespaces, Bill updates the Tenant Custom Resource (CR) with sandboxes.enabled: true:
 
 ```yaml
 kubectl apply -f - << EOF
-apiVersion: tenantoperator.stakater.com/v1beta2
+apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  owners:
-    users:
-    - anna@aurora.org
-    - anthony@aurora.org
-  editors:
-    users:
-    - john@aurora.org
-    groups:
-    - alpha
   quota: small
-  sandboxConfig:
-    enabled: true
+  accessControl:
+    owners:
+      users:
+        - anna@aurora.org
+        - anthony@aurora.org
+    editors:
+      users:
+        - john@aurora.org
+      groups:
+        - alpha
+  namespaces:
+    sandboxes:
+      enabled: true
 EOF
 ```
 
-With the above configuration `Anna` and `Anthony` will now have new sandboxes created
+This configuration automatically generates sandbox namespaces for Anna, Anthony, and even John (as an editor) with the naming convention `<tenantName>-<userName>-sandbox`.
 
 ```bash
 kubectl get namespaces
@@ -38,34 +42,36 @@ bluesky-anthony-aurora-sandbox   Active   5d5h
 bluesky-john-aurora-sandbox      Active   5d5h
 ```
 
-If Bill wants to make sure that only the sandbox owner can view his sandbox namespace, he can achieve this by setting `private: true` within the `sandboxConfig` filed.
+### Creating Private Sandboxes
 
-## Create Private Sandboxes
-
-Bill assigned the ownership of `bluesky` to `Anna` and `Anthony`. Now if the users want sandboxes to be made for them, they'll have to ask `Bill` to enable `sandbox` functionality. The Users also want to make sure that the sandboxes that are created for them are also only visible to the user they belong to. To enable that, Bill will just set `enabled: true` and `private: true` within the `sandboxConfig` field
+To address privacy concerns where users require their sandbox namespaces to be visible only to themselves, Bill can set the `sandboxes.private: true` in the Tenant CR:
 
 ```yaml
 kubectl apply -f - << EOF
-apiVersion: tenantoperator.stakater.com/v1beta2
+apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  owners:
-    users:
-    - anna@aurora.org
-    - anthony@aurora.org
-  editors:
-    users:
-    - john@aurora.org
-    groups:
-    - alpha
   quota: small
-  sandboxConfig:
-    enabled: true
-    private: true
+  accessControl:
+    owners:
+      users:
+        - anna@aurora.org
+        - anthony@aurora.org
+    editors:
+      users:
+        - john@aurora.org
+      groups:
+        - alpha
+  namespaces:
+    sandboxes:
+      enabled: true
+      private: true
 EOF
 ```
+
+With `private: true`, each sandbox namespace is accessible and visible only to its designated user, enhancing privacy and security.
 
 With the above configuration `Anna` and `Anthony` will now have new sandboxes created
 
@@ -85,34 +91,41 @@ NAME                             STATUS   AGE
 bluesky-anna-aurora-sandbox      Active   5d5h
 ```
 
-## Set metadata on sandbox namespaces
+## Applying Metadata to Sandbox Namespaces
 
-If you want to have a common metadata on all sandboxes, you can add `sandboxMetadata` to Tenant like below:
+For uniformity or to apply specific policies, Bill might need to add common metadata, such as labels or annotations, to all sandbox namespaces. This is achievable through the `namespaces.metadata.sandbox` configuration:
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1beta2
+kubectl apply -f - << EOF
+apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
 metadata:
   name: bluesky
 spec:
-  owners:
-    users:
-    - anna@aurora.org
-    - anthony@aurora.org
-  editors:
-    users:
-    - john@aurora.org
-    groups:
-    - alpha
   quota: small
-  sandboxConfig:
-    enabled: true
-    private: true
-  sandboxMetadata:
-    labels:
-      app.kubernetes.io/part-of: che.eclipse.org
-    annotations:
-      che.eclipse.org/username: "{{ TENANT.USERNAME }}" # templated placeholder
+  accessControl:
+    owners:
+      users:
+        - anna@aurora.org
+        - anthony@aurora.org
+    editors:
+      users:
+        - john@aurora.org
+      groups:
+        - alpha
+  namespaces:
+    sandboxes:
+      enabled: true
+      private: true
+    metadata:
+      sandbox:
+        labels:
+          app.kubernetes.io/part-of: che.eclipse.org
+        annotations:
+          che.eclipse.org/username: "{{ TENANT.USERNAME }}"
+EOF
 ```
 
-Note: In above Tenant, we have used a templated annotation value `"{{ TENANT.USERNAME }}"`. It will resolve to user of the respective sandbox namespace. For more info on it, see [here](../../reference-guides/templated-metadata-values.md)
+The templated annotation "{{ TENANT.USERNAME }}" dynamically inserts the username of the sandbox owner, personalizing the sandbox environment. This capability is particularly useful for integrating with other systems or applications that might utilize this metadata for configuration or access control.
+
+Through the examples demonstrated, Bill can efficiently manage sandbox namespaces for tenant users, ensuring they have the necessary resources for development and testing while maintaining privacy and organizational policies.
