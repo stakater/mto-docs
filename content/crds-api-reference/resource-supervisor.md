@@ -6,14 +6,14 @@ If provided, it will update [AppProject](https://argo-cd.readthedocs.io/en/stabl
 Following namespaces will be ignored:
 
 - with annotation `"hibernation.stakater.com/exclude": "true"`
-- whose name match with priviledged namespaces' regex specified in [IntegrationConfig](./integration-config.md)
+- whose name match with privileged namespaces' regex specified in [IntegrationConfig](./integration-config.md)
 - namespace where MTO is installed
 
 ## Supported modes
 
 ### Hibernation with cron schedule
 
-Applications will sleep and wakup at provided cron schedule
+Applications will sleep and wake up at provided cron schedule
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta1
@@ -112,7 +112,7 @@ It will sleep `bluesky-staging` namespace, and all those which have the specifie
 
 ### Example 2
 
-If you provide Argo CD AppProject in spec, it will create syncWindow with `deny` policy
+If you provide Argo CD AppProject in spec, it will create `syncWindow` with `deny` policy
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta1
@@ -136,4 +136,4 @@ spec:
     sleepSchedule: ""
 ```
 
-It will sleep given namespaces, and create `deny` syncWindow on provided AppProjects
+It will sleep given namespaces, and create `deny` `syncWindow` on provided AppProjects
