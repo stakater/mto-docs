@@ -2925,7 +2925,7 @@ You're not viewing the latest version.
 <p>Start by logging in to Azure from CLI by running the following command:</p>
 <div class="highlight"><pre><span></span><code>kubectl get pods
 </code></pre></div>
-<p>Executing the command will take you to a browser window where you can login from your test-admin-user.</p>
+<p>Executing the command will take you to a browser window where you can log in from your test-admin-user.</p>
 <p>Running <code>kubectl auth whoami</code> will show you the user info:</p>
 <div class="highlight"><pre><span></span><code>$ kubectl auth whoami
 
@@ -2950,7 +2950,7 @@ cert-manager-webhook-757c9d4bb7-wd9g8      1/1     Running   0          7m18s
 <h3 id="install-mto-using-helm">Install MTO using Helm<a class="headerlink" href="#install-mto-using-helm" title="Permanent link">#</a></h3>
 <p>Helm will be used to install MTO as it is the only available way of installing it on Kubernetes Clusters.</p>
 <p>Use helm install command to install MTO helm chart. Here, <code>bypassedGroups</code> has to be set as <code>system:masters</code> as it is used by masterclient of AKS and <code>&lt;mto-admins-id&gt;</code>as it is used by test-admin-user:</p>
-<div class="highlight"><pre><span></span><code>helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=system:masters\,&lt;mto-admins-id&gt;&#39;
+<div class="highlight"><pre><span></span><code>helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=&#39;system:masters\,&lt;mto-admins-id&gt;
 </code></pre></div>
 <p>Wait for the pods to come to a running state:</p>
 <div class="highlight"><pre><span></span><code>$ kubectl get pods -n multi-tenant-operator --watch
@@ -3067,11 +3067,11 @@ tenant-b-dev            Active   10m
 <p>AppDev is one of the previously created groups, its scope is limited to Tenant A namespaces as we mentioned its group ID in Tenant A. Start by clearing token of test-admin-user:</p>
 <div class="highlight"><pre><span></span><code>kubelogin remove-tokens
 </code></pre></div>
-<p>Use the aksdev user from appdev group to login to the cluster:</p>
+<p>Use the aksdev user from appdev group to log in to the cluster:</p>
 <div class="highlight"><pre><span></span><code>kubectl get pods
 </code></pre></div>
 <p>This will take you to devicelogin page. After entering the correct code, it will redirect you to Microsoft Login page, here you will enter the email and password of aksdev user created at the start of the article.</p>
-<p>After successful login, it will show you the output of your kubectl command:</p>
+<p>After successful log in, it will show you the output of your kubectl command:</p>
 <div class="highlight"><pre><span></span><code>Error from server (Forbidden): pods is forbidden: User &quot;aksdev@company.com&quot; cannot list resource &quot;pods&quot; in API group &quot;&quot; in the namespace &quot;default&quot;
 </code></pre></div>
 <p>This user does not have access to default namespace.</p>
@@ -3096,11 +3096,11 @@ Error from server (Forbidden): pods is forbidden: User &quot;aksdev@company.com&
 <p>Start by clearing token of appdev user:</p>
 <div class="highlight"><pre><span></span><code>kubelogin remove-tokens
 </code></pre></div>
-<p>Use the opssre user from opssre group to login to the cluster:</p>
+<p>Use the opssre user from opssre group to log in to the cluster:</p>
 <div class="highlight"><pre><span></span><code>kubectl get pods
 </code></pre></div>
 <p>This will take you to devicelogin page. After entering the correct code, it will redirect you to Microsoft Login page, here you will enter the email and password of opssre user created at the start of the article.</p>
-<p>After successful login, it will show you the output of your kubectl command:</p>
+<p>After successful log in, it will show you the output of your kubectl command:</p>
 <div class="highlight"><pre><span></span><code>Error from server (Forbidden): pods is forbidden: User &quot;opssre@company.com&quot; cannot list resource &quot;pods&quot; in API group &quot;&quot; in the namespace &quot;default&quot;
 </code></pre></div>
 <p>This user does not have access to default namespace</p>
