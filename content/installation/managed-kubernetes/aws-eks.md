@@ -13,15 +13,15 @@ This document covers how to link Multi Tenant Operator with an [Amazon EKS (Elas
 
 In this example, we have already set-up a small EKS cluster with the following node group specifications
 
-![Node Group](../images/eks-nodegroup.png)
+![Node Group](../../images/eks-nodegroup.png)
 
 We have access configuration set as both, EKS API and Configmap, so that admin can access the cluster using EKS API and map IAM users to our EKS cluster using `aws-auth` configmap.
 
-![EKS Access Config](../images/eks-access-config.png)
+![EKS Access Config](../../images/eks-access-config.png)
 
 And we have a policy `AmazonEKSClusterAdminPolicy` attached with our user which makes it a cluster admin. To be noted, the user is also added in the `cluster-admins` group which we will later use while installing MTO.
 
-![EKS Access Entry](../images/eks-access-entry.png)
+![EKS Access Entry](../../images/eks-access-entry.png)
 
 ## Installing Cert Manager and MTO
 

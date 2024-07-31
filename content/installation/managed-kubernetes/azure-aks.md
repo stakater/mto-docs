@@ -10,7 +10,6 @@ This document covers how to link Multi Tenant Operator with an [AKS (Azure Kuber
 - To install MTO, you need Helm CLI as well. Visit [Installing Helm](https://helm.sh/docs/intro/install/) to get Helm CLI
 - You need to have a user in [Azure Portal](https://portal.azure.com/signin/index/), which we will use as the administrator for creating clusters, users and groups with enough permissions for the respective tasks
 
-
 ## Create an Admin Group
 
 Start by creating an admin group which will later be used as the administrator of our AKS cluster. Log in to [Azure Portal](https://portal.azure.com/signin/index/) from CLI:
@@ -71,7 +70,7 @@ $ az ad group show --group mto-admins
 
 ## Create an AKS Cluster
 
-Create a Resource Group by using the az group create command in your preferred Azure location:
+Create a Resource Group by using the `az group create` command in your preferred Azure location:
 
 ```terminal
 az group create --name myResourceGroup --location westus2
@@ -88,8 +87,9 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 
 First, store the ID of your AKS cluster in a variable named AKS_ID:
 
 ```terminal
-$ AKS_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query id -o tsv)
+AKS_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query id -o tsv)
 ```
+
 Create your first test group named appdev using group command and assign its ID to APPDEV_ID variable:
 
 ```terminal
@@ -108,7 +108,7 @@ Create your second test group named opssre using the command and assign its ID t
 OPSSRE_ID=$(az ad group create --display-name opssre --mail-nickname opssre --query id -o tsv)
 ```
 
-Allow the opssre group to interact with the AKS cluster using Kubectl by assigning them the Azure Kubernetes Service Cluster User Role:
+Allow the opssre group to interact with the AKS cluster using kubectl by assigning them the Azure Kubernetes Service Cluster User Role:
 
 ```terminal
 az role assignment create --assignee $OPSSRE_ID --role "Azure Kubernetes Service Cluster User Role" --scope $AKS_ID
@@ -116,11 +116,9 @@ az role assignment create --assignee $OPSSRE_ID --role "Azure Kubernetes Service
 
 ### Create test users in `Entra ID`
 
-
 Set User Principal Name (UPN) and password for your users. The UPN must include the verified domain name of your tenant, for example user@company.com.
 
 Following command reads the UPN for the appdev group and stores it in the AAD_DEV_UPN variable:
-
 
 ```terminal
 echo "Please enter the UPN for application developers: " && read AAD_DEV_UPN
@@ -134,20 +132,19 @@ Following command reads the password for your user and stores it in the AAD_DEV_
 echo "Please enter the secure password for application developers: " && read AAD_DEV_PW
 ```
 
-Create the user AKS Dev using the previously created variables:
+Create the user `AKS Dev` using the previously created variables:
 
 ```terminal
 AKSDEV_ID=$(az ad user create --display-name "AKS Dev" --user-principal-name $AAD_DEV_UPN --password $AAD_DEV_PW --query id -o tsv)
 ```
 
-
-Add this user to the appdev group that was previously created:
+Add this user to the `appdev` group that was previously created:
 
 ```terminal
 az ad group member add --group appdev --member-id $AKSDEV_ID
 ```
 
-Repeat the steps for OPS SRE user. 
+Repeat the steps for `OPS SRE` user.
 
 The following command reads the UPN for your user and stores it in the AAD_SRE_UPN variable:
 
@@ -163,20 +160,20 @@ The following command reads the password for your user and stores it in the AAD_
 echo "Please enter the secure password for SREs: " && read AAD_SRE_PW
 ```
 
-Create the user AKS Dev using above variables
-# Create a user for the SRE role
+Create the user `AKS SRE` using above variables
 
 ```terminal
 AKSSRE_ID=$(az ad user create --display-name "AKS SRE" --user-principal-name $AAD_SRE_UPN --password $AAD_SRE_PW --query id -o tsv)
 ```
 
-Add this user to the opssre group that was previously created:
+Add this user to the `opssre` group that was previously created:
 
 ```terminal
 az ad group member add --group opssre --member-id $AKSSRE_ID
 ```
 
 ## Installing Cert Manager and MTO
+
 In this section, we will install Multi Tenant Operator (MTO) for tenancy between different users and groups. MTO has several webhooks which need certificates. For automated handling of certs, we will install Cert Manager as a prerequisite.
 
 Start by logging in to Azure from CLI by running the following command:
@@ -190,7 +187,7 @@ Executing the command will take you to a browser window where you can login from
 Running `kubectl auth whoami` will show you the user info:
 
 ```terminal
-kubectl auth whoami
+$ kubectl auth whoami
 
 ATTRIBUTE    VALUE
 Username     test-admin-user
