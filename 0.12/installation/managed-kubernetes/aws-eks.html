@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/0.12/crds-api-reference/template-instance.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/0.12/installation/managed-kubernetes/aws-eks.html">
       
       
-        <link rel="prev" href="template.html">
+        <link rel="prev" href="azure-aks.html">
       
       
-        <link rel="next" href="template-group-instance.html">
+        <link rel="next" href="../../tutorials/tenant/create-tenant.html">
       
       
-      <link rel="icon" href="../assets/images/favicon.svg">
+      <link rel="icon" href="../../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
     
     
       
-        <title>TemplateInstance - Multi Tenant Operator</title>
+        <title>Multi Tenant Operator in Amazon Elastic Kubernetes Service - Multi Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -67,7 +67,7 @@
     
     
     
-   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -76,7 +76,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#templateinstance" class="md-skip">
+        <a href="#multi-tenant-operator-in-amazon-elastic-kubernetes-service" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +110,7 @@
             <div class="md-banner__inner md-grid md-typeset">
               
 You're not viewing the latest version.
-<a href="../..">
+<a href="../../..">
   <strong>Click here to go to latest.</strong>
 </a>
 
@@ -149,7 +149,7 @@ You're not viewing the latest version.
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../index.html" title="Multi Tenant Operator"
+    <a href="../../index.html" title="Multi Tenant Operator"
       class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       <!-- 
   
@@ -169,10 +169,10 @@ You're not viewing the latest version.
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="../assets/images/logo-light.png#only-light" alt="logo" />
+          <img class="md-header__logo_light" src="../../assets/images/logo-light.png#only-light" alt="logo" />
           
           
-          <img class="md-header__logo_dark" src="../assets/images/logo-dark.png#only-dark" alt="logo" />
+          <img class="md-header__logo_dark" src="../../assets/images/logo-dark.png#only-dark" alt="logo" />
           
           
           <div class="header-site-name">
@@ -891,7 +891,7 @@ You're not viewing the latest version.
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -921,7 +921,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
+      <a href="../../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -938,17 +938,19 @@ You're not viewing the latest version.
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -962,7 +964,7 @@ You're not viewing the latest version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Installation
@@ -976,7 +978,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../installation/openshift.html" class="md-nav__link">
+      <a href="../openshift.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -997,7 +999,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../installation/kubernetes.html" class="md-nav__link">
+      <a href="../kubernetes.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1018,7 +1020,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../installation/helm-values.html" class="md-nav__link">
+      <a href="../helm-values.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1039,7 +1041,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../installation/basic-vs-enterprise-tier.html" class="md-nav__link">
+      <a href="../basic-vs-enterprise-tier.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1057,17 +1059,19 @@ You're not viewing the latest version.
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
         
           
           <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
@@ -1081,7 +1085,7 @@ You're not viewing the latest version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             Managed Kubernetes
@@ -1095,7 +1099,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../installation/managed-kubernetes/overview.html" class="md-nav__link">
+      <a href="overview.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1116,7 +1120,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../installation/managed-kubernetes/azure-aks.html" class="md-nav__link">
+      <a href="azure-aks.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1134,10 +1138,30 @@ You're not viewing the latest version.
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../installation/managed-kubernetes/aws-eks.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Multi Tenant Operator in Amazon Elastic Kubernetes Service
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="aws-eks.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1146,6 +1170,124 @@ You're not viewing the latest version.
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-an-eks-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up an EKS Cluster
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-cert-manager-and-mto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Cert Manager and MTO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#users-interaction-with-the-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Users Interaction with the Cluster
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Users Interaction with the Cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iam-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      IAM Users
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sso-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSO Users
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-tenant-for-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up Tenant for Users
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-tenant-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Tenant Namespaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iam-users-on-tenant-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      IAM Users on Tenant Namespaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sso-users-on-tenant-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSO Users on Tenant Namespaces
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1243,7 +1385,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/create-tenant.html" class="md-nav__link">
+      <a href="../../tutorials/tenant/create-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1264,7 +1406,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/create-sandbox.html" class="md-nav__link">
+      <a href="../../tutorials/tenant/create-sandbox.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1285,7 +1427,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/creating-namespaces.html" class="md-nav__link">
+      <a href="../../tutorials/tenant/creating-namespaces.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1306,7 +1448,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/assigning-metadata.html" class="md-nav__link">
+      <a href="../../tutorials/tenant/assigning-metadata.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1327,7 +1469,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/tenant-hibernation.html" class="md-nav__link">
+      <a href="../../tutorials/tenant/tenant-hibernation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1348,7 +1490,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/deleting-tenant.html" class="md-nav__link">
+      <a href="../../tutorials/tenant/deleting-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1412,7 +1554,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/distributing-resources/copying-resources.html" class="md-nav__link">
+      <a href="../../tutorials/distributing-resources/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1433,7 +1575,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/distributing-resources/distributing-manifests.html" class="md-nav__link">
+      <a href="../../tutorials/distributing-resources/distributing-manifests.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1539,7 +1681,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/custom-roles.html" class="md-nav__link">
+      <a href="../../how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1560,7 +1702,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/extend-default-roles.html" class="md-nav__link">
+      <a href="../../how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1624,7 +1766,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
+      <a href="../../how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1645,7 +1787,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/deploying-templates.html" class="md-nav__link">
+      <a href="../../how-to-guides/deploying-templates.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1666,7 +1808,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../../how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1687,7 +1829,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../../how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1708,7 +1850,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../../how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1729,7 +1871,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/copying-resources.html" class="md-nav__link">
+      <a href="../../how-to-guides/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1793,7 +1935,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/keycloak.html" class="md-nav__link">
+      <a href="../../how-to-guides/keycloak.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1814,7 +1956,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/custom-metrics.html" class="md-nav__link">
+      <a href="../../how-to-guides/custom-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1835,7 +1977,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/graph-visualization.html" class="md-nav__link">
+      <a href="../../how-to-guides/graph-visualization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1899,7 +2041,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
+      <a href="../../how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1920,7 +2062,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../../how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1941,7 +2083,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
+      <a href="../../how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1962,7 +2104,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/mattermost.html" class="md-nav__link">
+      <a href="../../how-to-guides/mattermost.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1983,7 +2125,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/integrating-external-keycloak.html" class="md-nav__link">
+      <a href="../../how-to-guides/integrating-external-keycloak.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2047,7 +2189,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
+      <a href="../../how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2118,7 +2260,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../explanation/logs-metrics.html" class="md-nav__link">
+      <a href="../../explanation/logs-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2139,7 +2281,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../explanation/template.html" class="md-nav__link">
+      <a href="../../explanation/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2160,7 +2302,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../explanation/console.html" class="md-nav__link">
+      <a href="../../explanation/console.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2181,7 +2323,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../explanation/templated-metadata-values.html" class="md-nav__link">
+      <a href="../../explanation/templated-metadata-values.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2202,7 +2344,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../explanation/multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../../explanation/multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2227,19 +2369,17 @@ You're not viewing the latest version.
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -2253,7 +2393,7 @@ You're not viewing the latest version.
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             CRDs API Reference
@@ -2267,7 +2407,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="quota.html" class="md-nav__link">
+      <a href="../../crds-api-reference/quota.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2288,7 +2428,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="tenant.html" class="md-nav__link">
+      <a href="../../crds-api-reference/tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2309,7 +2449,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="integration-config.html" class="md-nav__link">
+      <a href="../../crds-api-reference/integration-config.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2330,7 +2470,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="extensions.html" class="md-nav__link">
+      <a href="../../crds-api-reference/extensions.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2351,7 +2491,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="template.html" class="md-nav__link">
+      <a href="../../crds-api-reference/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2369,19 +2509,10 @@ You're not viewing the latest version.
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="template-instance.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../crds-api-reference/template-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2390,7 +2521,6 @@ You're not viewing the latest version.
   
 
       </a>
-      
     </li>
   
 
@@ -2403,7 +2533,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="template-group-instance.html" class="md-nav__link">
+      <a href="../../crds-api-reference/template-group-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2431,7 +2561,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../changelog.html" class="md-nav__link">
+      <a href="../../changelog.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2451,7 +2581,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../eula.html" class="md-nav__link">
+      <a href="../../eula.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2471,7 +2601,7 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting.html" class="md-nav__link">
+      <a href="../../troubleshooting.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2506,6 +2636,110 @@ You're not viewing the latest version.
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-an-eks-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up an EKS Cluster
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-cert-manager-and-mto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Cert Manager and MTO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#users-interaction-with-the-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Users Interaction with the Cluster
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Users Interaction with the Cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iam-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      IAM Users
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sso-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSO Users
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-tenant-for-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up Tenant for Users
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-tenant-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Tenant Namespaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iam-users-on-tenant-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      IAM Users on Tenant Namespaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sso-users-on-tenant-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSO Users on Tenant Namespaces
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2522,22 +2756,196 @@ You're not viewing the latest version.
   
 
 
-<h1 id="templateinstance">TemplateInstance<a class="headerlink" href="#templateinstance" title="Permanent link">#</a></h1>
-<p>Namespace scoped resource:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networkpolicy</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networkpolicy</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">parameters</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CIDR_IP</span>
-<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;172.17.0.0/16&quot;</span>
+<h1 id="multi-tenant-operator-in-amazon-elastic-kubernetes-service">Multi Tenant Operator in Amazon Elastic Kubernetes Service<a class="headerlink" href="#multi-tenant-operator-in-amazon-elastic-kubernetes-service" title="Permanent link">#</a></h1>
+<p>This document covers how to link Multi Tenant Operator with an <a href="https://aws.amazon.com/eks/">Amazon EKS (Elastic Kubernetes Service)</a> cluster.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
+<ul>
+<li>You need kubectl as well, with a minimum version of 1.18.3. If you need to install, see <a href="https://kubernetes.io/docs/tasks/tools/#kubectl">Install kubectl</a>.</li>
+<li>To install MTO, you need Helm CLI as well. Visit <a href="https://helm.sh/docs/intro/install/">Installing Helm</a> to get Helm CLI</li>
+<li>You need to have a user in <a href="https://console.aws.amazon.com/">AWS Console</a>, which we will use as the administrator having enough permissions for accessing the cluster and creating groups with users</li>
+<li>A running EKS Cluster. <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html">Creating an EKS Cluster</a> provides a good tutorial to create a demo cluster</li>
+</ul>
+<h2 id="setting-up-an-eks-cluster">Setting up an EKS Cluster<a class="headerlink" href="#setting-up-an-eks-cluster" title="Permanent link">#</a></h2>
+<p>In this example, we have already set-up a small EKS cluster with the following node group specifications</p>
+<p><a class="glightbox" href="../../images/eks-nodegroup.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Node Group" src="../../images/eks-nodegroup.png" /></a></p>
+<p>We have access configuration set as both, EKS API and Configmap, so that admin can access the cluster using EKS API and map IAM users to our EKS cluster using <code>aws-auth</code> configmap.</p>
+<p><a class="glightbox" href="../../images/eks-access-config.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="EKS Access Config" src="../../images/eks-access-config.png" /></a></p>
+<p>And we have a policy <code>AmazonEKSClusterAdminPolicy</code> attached with our user which makes it a cluster admin. To be noted, the user is also added in the <code>cluster-admins</code> group which we will later use while installing MTO.</p>
+<p><a class="glightbox" href="../../images/eks-access-entry.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="EKS Access Entry" src="../../images/eks-access-entry.png" /></a></p>
+<h2 id="installing-cert-manager-and-mto">Installing Cert Manager and MTO<a class="headerlink" href="#installing-cert-manager-and-mto" title="Permanent link">#</a></h2>
+<p>We, as cluster admins, will start by installing cert manager for automated handling of operator certs.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://github.com/cert-manager/cert-manager/releases/download/v1.14.4/cert-manager.yaml
 </code></pre></div>
-<p>TemplateInstance are used to keep track of resources created from Templates, which are being instantiated inside a Namespace.
-Generally, a TemplateInstance is created from a Template and then the TemplateInstances will not be updated when the Template changes later on. To change this behavior, it is possible to set <code>spec.sync: true</code> in a TemplateInstance. Setting this option, means to keep this TemplateInstance in sync with the underlying template (similar to Helm upgrade).</p>
+<p>Let's wait for the pods to be up.</p>
+<div class="highlight"><pre><span></span><code>NAME<span class="w">                                       </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE
+cert-manager-7fb948f468-wgcbx<span class="w">              </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>7m18s
+cert-manager-cainjector-75c5fc965c-wxtkp<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>7m18s
+cert-manager-webhook-757c9d4bb7-wd9g8<span class="w">      </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>7m18s
+</code></pre></div>
+<p>We will be using helm to install the operator, here we have set <code>bypassedGroups</code> as <code>cluster-admins</code> because our admin user is part of that group as seen in above screenshot.</p>
+<div class="highlight"><pre><span></span><code>helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=cluster-admins
+</code></pre></div>
+<p>We will wait for the pods to come in running state.</p>
+<div class="highlight"><pre><span></span><code>NAME<span class="w">                                                              </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE
+tenant-operator-namespace-controller-768f9459c4-758kb<span class="w">             </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>5m
+tenant-operator-pilot-controller-7c96f6589c-d979f<span class="w">                 </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>5m
+tenant-operator-resourcesupervisor-controller-566f59d57b-xbkws<span class="w">    </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>5m
+tenant-operator-template-quota-intconfig-controller-7fc99462dz6<span class="w">   </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>5m
+tenant-operator-templategroupinstance-controller-75cf68c872pljv<span class="w">   </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>5m
+tenant-operator-templateinstance-controller-d996b6fd-cx2dz<span class="w">        </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>5m
+tenant-operator-tenant-controller-57fb885c84-7ps92<span class="w">                </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>5m
+tenant-operator-webhook-5f8f675549-jv9n8<span class="w">                          </span><span class="m">2</span>/2<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>5m
+</code></pre></div>
+<h2 id="users-interaction-with-the-cluster">Users Interaction with the Cluster<a class="headerlink" href="#users-interaction-with-the-cluster" title="Permanent link">#</a></h2>
+<p>We will use two types of users to interact with the cluster, IAM users created via AWS Console and SSO Users.</p>
+<h3 id="iam-users">IAM Users<a class="headerlink" href="#iam-users" title="Permanent link">#</a></h3>
+<p>We have created a user named <code>test-benzema-mto</code> in AWS Console, with ARN <code>arn:aws:iam::&lt;account&gt;:user/test-benzema-mto</code>.
+This user has a policy attached to be able to get cluster info</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eks:DescribeCluster&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>We have mapped this user in <code>aws-auth</code> configmap in <code>kube-system</code> namespace.</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">mapUsers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iam-devteam</span>
+<span class="w">      </span><span class="nt">userarn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:iam::&lt;account&gt;:user/test-benzema-mto</span>
+<span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-benzema-mto</span>
+</code></pre></div>
+<p>Using this <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html">AWS guide</a>, we will ask the user to update its kubeconfig and try to access the cluster.</p>
+<p>Since we haven't attached any RBAC with this user at the moment, trying to access anything in the cluster would throw an error</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get svc
+
+Error from server (Forbidden): services is forbidden: User &quot;test-benzema-mto&quot; cannot list resource &quot;services&quot; in API group &quot;&quot; in the namespace &quot;default&quot;
+</code></pre></div>
+<h3 id="sso-users">SSO Users<a class="headerlink" href="#sso-users" title="Permanent link">#</a></h3>
+<p>For SSO Users, we will map a role <code>arn:aws:iam::&lt;account&gt;:role/aws-reserved/sso.amazonaws.com/eu-north-1/AWSReservedSSO_PowerUserAccess_b0ad9936c75e5bcc</code>, that is attached by default with Users on SSO login to the AWS console and <code>awscli</code>, in <code>aws-auth</code> configmap in <code>kube-system</code> namespace.</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">mapRoles</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sso-devteam</span>
+<span class="w">      </span><span class="nt">rolearn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:iam::&lt;account&gt;:role/AWSReservedSSO_PowerUserAccess_b0ad9936c75e5bcc</span>
+<span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sso-devteam:{{SessionName}}</span>
+</code></pre></div>
+<p>Since this user also doesn't have attached RBAC, trying to access anything in the cluster would throw an error</p>
+<div class="highlight"><pre><span></span><code>$ kubectl get svc
+
+Error from server (Forbidden): services is forbidden: User &quot;sso-devteam:random-user-stakater.com&quot; cannot list resource &quot;services&quot; in API group &quot;&quot; in the namespace &quot;default&quot;
+</code></pre></div>
+<h3 id="setting-up-tenant-for-users">Setting up Tenant for Users<a class="headerlink" href="#setting-up-tenant-for-users" title="Permanent link">#</a></h3>
+<p>Now, we will set tenants for the above-mentioned users.</p>
+<p>We will start by creating a <code>Quota CR</code> with some resource limits</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt;EOF</span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quota</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">limitrange</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">max</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">800m</span>
+<span class="w">      </span><span class="nt">min</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200m</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Container</span>
+<span class="w">  </span><span class="nt">resourcequota</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">hard</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">configmaps</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span>
+<span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8Gi&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">EOF</span>
+</code></pre></div>
+<p>Now, we will mention this <code>Quota</code> in two <code>Tenant</code> CRs</p>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt;EOF</span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-iam</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iam-devteam</span>
+<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<span class="l l-Scalar l-Scalar-Plain">EOF</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt;EOF</span>
+<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sso</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sso-devteam</span>
+<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<span class="l l-Scalar l-Scalar-Plain">EOF</span>
+</code></pre></div>
+<p>Notice that the only difference in both tenant specs are the groups.</p>
+<h3 id="accessing-tenant-namespaces">Accessing Tenant Namespaces<a class="headerlink" href="#accessing-tenant-namespaces" title="Permanent link">#</a></h3>
+<p>After the creation of <code>Tenant</code> CRs, now users can access namespaces in their respective tenants and preform create, update, delete functions.</p>
+<p>Listing the namespaces by cluster admin will show us the recently created tenant namespaces</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>namespaces
+
+NAME<span class="w">                    </span>STATUS<span class="w">   </span>AGE
+cert-manager<span class="w">            </span>Active<span class="w">   </span>8d
+default<span class="w">                 </span>Active<span class="w">   </span>9d
+kube-node-lease<span class="w">         </span>Active<span class="w">   </span>9d
+kube-public<span class="w">             </span>Active<span class="w">   </span>9d
+kube-system<span class="w">             </span>Active<span class="w">   </span>9d
+multi-tenant-operator<span class="w">   </span>Active<span class="w">   </span>8d
+random<span class="w">                  </span>Active<span class="w">   </span>8d
+tenant-iam-build<span class="w">        </span>Active<span class="w">   </span>5s
+tenant-iam-dev<span class="w">          </span>Active<span class="w">   </span>5s
+tenant-sso-build<span class="w">        </span>Active<span class="w">   </span>5s
+tenant-sso-dev<span class="w">          </span>Active<span class="w">   </span>5s
+</code></pre></div>
+<h3 id="iam-users-on-tenant-namespaces">IAM Users on Tenant Namespaces<a class="headerlink" href="#iam-users-on-tenant-namespaces" title="Permanent link">#</a></h3>
+<p>We will now try to deploy a pod from user <code>test-benzema-mto</code> in its tenant namespace <code>tenant-iam-dev</code></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>tenant-iam-dev
+
+pod/nginx<span class="w"> </span>created
+</code></pre></div>
+<p>And if we try the same operation in the other tenant with the same user, it will fail</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>tenant-sso-dev
+
+Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>pods<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;test-benzema-mto&quot;</span><span class="w"> </span>cannot<span class="w"> </span>create<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;pods&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>namespace<span class="w"> </span><span class="s2">&quot;tenant-sso-dev&quot;</span>
+</code></pre></div>
+<p>To be noted, <code>test-benzema-mto</code> can not list namespaces</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>namespaces
+
+Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>namespaces<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;test-benzema-mto&quot;</span><span class="w"> </span>cannot<span class="w"> </span>list<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;namespaces&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>scope
+</code></pre></div>
+<h3 id="sso-users-on-tenant-namespaces">SSO Users on Tenant Namespaces<a class="headerlink" href="#sso-users-on-tenant-namespaces" title="Permanent link">#</a></h3>
+<p>We will repeat the above operations for our SSO user <code>sso-devteam:random-user-stakater.com</code> as well</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>tenant-sso-dev
+
+pod/nginx<span class="w"> </span>created
+</code></pre></div>
+<p>Trying to do operations outside the scope of its own tenant will result in errors</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>tenant-iam-dev
+
+Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>pods<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;sso-devteam:random-user-stakater.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>create<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;pods&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>namespace<span class="w"> </span><span class="s2">&quot;tenant-iam-dev&quot;</span>
+</code></pre></div>
+<p>To be noted, <code>sso-devteam:random-user-stakater.com</code> can not list namespaces</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>namespaces
+
+Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>namespaces<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;sso-devteam:random-user-stakater.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>list<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;namespaces&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>scope
+</code></pre></div>
 
 
 
@@ -2650,27 +3058,27 @@ Generally, a TemplateInstance is created from a Template and then the TemplateIn
                 <div class="flex-2">
                     <div>
                         
-                        <img class="md-header__logo_light" src="../assets/images/footer-logo-light.png#only-light"
+                        <img class="md-header__logo_light" src="../../assets/images/footer-logo-light.png#only-light"
                             alt="logo" />
                         
                         
-                        <img src="../assets/images/footer-logo-dark.png#only-dark" alt="logo" />
+                        <img src="../../assets/images/footer-logo-dark.png#only-dark" alt="logo" />
                         
                     </div>
 
                     <div class="display-flex">
                         
-                        <img src="../assets/images/CSA_dark.png#only-dark" alt="CSA" />
+                        <img src="../../assets/images/CSA_dark.png#only-dark" alt="CSA" />
                         
                         
-                        <img src="../assets/images/CSA_light.png#only-light" alt="CSA" />
+                        <img src="../../assets/images/CSA_light.png#only-light" alt="CSA" />
                         
 
                         
-                        <img src="../assets/images/HC_dark.png#only-dark" alt="HC" />
+                        <img src="../../assets/images/HC_dark.png#only-dark" alt="HC" />
                         
                         
-                        <img src="../assets/images/HC_light.png#only-light" alt="HC" />
+                        <img src="../../assets/images/HC_light.png#only-light" alt="HC" />
                         
                     </div>
 
@@ -3092,10 +3500,10 @@ Generally, a TemplateInstance is created from a Template and then the TemplateIn
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
