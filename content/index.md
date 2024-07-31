@@ -9,20 +9,20 @@ head:
 
 [//]: # ( introduction.md, features.md)
 
-Kubernetes is designed to support a single tenant platform; OpenShift brings some improvements with its "Secure by default" concepts but it is still very complex to design and orchestrate all the moving parts involved in building a secure multi-tenant platform hence making it difficult for cluster admins to host multi-tenancy in a single OpenShift cluster. If multi-tenancy is achieved by sharing a cluster, it can have many advantages, e.g. efficient resource utilization, less configuration effort and easier sharing of cluster-internal resources among different tenants. OpenShift and all managed applications provide enough primitive resources to achieve multi-tenancy, but it requires professional skills and deep knowledge of OpenShift.
+Kubernetes is designed to support a single tenant platform; Managed Kubernetes Services (such as AKS, EKS, GKE and OpenShift) brings some improvements with their "Secure by default" concepts but it is still very complex to design and orchestrate all the moving parts involved in building a secure multi-tenant platform hence making it difficult for cluster admins to host multi-tenancy in a single Kubernetes cluster. If multi-tenancy is achieved by sharing a cluster, it can have many advantages, e.g. efficient resource utilization, less configuration effort and easier sharing of cluster's internal resources among different tenants. Kubernetes and all managed applications provide enough primitive resources to achieve multi-tenancy, but it requires professional skills and deep knowledge of the respective tool.
 
-This is where Multi Tenant Operator (MTO) comes in and provides easy to manage/configure multi-tenancy. MTO provides wrappers around OpenShift resources to provide a higher level of abstraction to users. With MTO admins can configure Network and Security Policies, Resource Quotas, Limit Ranges, RBAC for every tenant, which are automatically inherited by all the namespaces and users in the tenant. Depending on the user's role, they are free to operate within their tenants in complete autonomy.
+This is where Multi Tenant Operator (MTO) comes in and provides easy to manage/configure multi-tenancy. MTO provides wrappers around Kubernetes resources (depending on the version) to provide a higher level of abstraction to users. With MTO, admins can configure Network and Security Policies, Resource Quotas, Limit Ranges, RBAC for every tenant, which are automatically inherited by all the namespaces and users in the tenant. Depending on the user's role, they are free to operate within their tenants in complete autonomy.
 MTO supports initializing new tenants using GitOps management pattern. Changes can be managed via PRs just like a typical GitOps workflow, so tenants can request changes, add new users, or remove users.
 
 The idea of MTO is to use namespaces as independent sandboxes, where tenant applications can run independently of each other. Cluster admins shall configure MTO's custom resources, which then become a self-service system for tenants. This minimizes the efforts of the cluster admins.
 
-MTO enables cluster admins to host multiple tenants in a single OpenShift Cluster, i.e.:
+MTO enables cluster admins to host multiple tenants in a single Kubernetes Cluster, i.e.:
 
-* Share an **OpenShift cluster** with multiple tenants
+* Share a **Kubernetes cluster** with multiple tenants
 * Share **managed applications** with multiple tenants
 * Configure and manage tenants and their sandboxes
 
-MTO is also [OpenShift certified](https://catalog.redhat.com/software/operators/detail/618fa05e3adfdfc43f73b126)
+MTO is also [RedHat certified](https://catalog.redhat.com/software/operators/detail/618fa05e3adfdfc43f73b126)
 
 ## Features
 
@@ -34,7 +34,7 @@ RBAC is one of the most complicated and error-prone parts of Kubernetes. With Mu
 
 Multi Tenant Operator binds existing ClusterRoles to the Tenant's Namespaces used for managing access to the Namespaces and the resources they contain. You can also modify the default roles or create new roles to have full control and customize access control for your users and teams.
 
-Multi Tenant Operator is also able to leverage existing OpenShift groups or external groups synced from 3rd party identity management systems, for maintaining Tenant membership in your organization's current user management system.
+Multi Tenant Operator is also able to leverage existing groups in Kubernetes and OpenShift, or external groups synced from 3rd party identity management systems, for maintaining Tenant membership in your organization's current user management system.
 
 ## HashiCorp Vault Multitenancy
 
@@ -44,7 +44,7 @@ More details on [Vault Multitenancy](./how-to-guides/enabling-multi-tenancy-vaul
 
 ## ArgoCD Multitenancy
 
-Multi Tenant Operator is not only providing strong Multi Tenancy for the OpenShift internals but also extends the tenants permission model to ArgoCD were it can provision AppProjects and Allowed Repositories for your tenants greatly ease the overhead of managing RBAC in ArgoCD.
+Multi Tenant Operator is not only providing strong Multi Tenancy for the Kubernetes internals but also extends the tenants permission model to ArgoCD were it can provision AppProjects and Allowed Repositories for your tenants greatly ease the overhead of managing RBAC in ArgoCD.
 
 More details on [ArgoCD Multitenancy](./how-to-guides/enabling-multi-tenancy-argocd.md)
 
@@ -114,7 +114,7 @@ Also, by leveraging Multi Tenant Operator's templating mechanism, namespaces can
 
 ## Everything as Code/GitOps Ready
 
-Multi Tenant Operator is designed and built to be 100% OpenShift-native and to be configured and managed the same familiar way as native OpenShift resources so is perfect for modern shops that are dedicated to GitOps as it is fully configurable using Custom Resources.
+Multi Tenant Operator is designed and built to be 100% Kubernetes-native, and to be configured and managed the same familiar way as native Kubernetes resources so it's perfect for modern companies that are dedicated to GitOps as it is fully configurable using Custom Resources.
 
 ## Preventing Clusters Sprawl
 
