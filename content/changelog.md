@@ -34,7 +34,7 @@
 #### Enhanced
 
 - Updated Tenant CR to v1beta3, more details in [Tenant CRD](./crds-api-reference/tenant.md)
-- Added custom pricing support for Opencost, more details in [Opencost](./crds-api-reference/integration-config.md#Custom-Pricing-Model)
+- Added custom pricing support for Opencost, more details in [Opencost](./crds-api-reference/integration-config.md#custom-pricing-model)
 
 #### Fix
 
@@ -237,7 +237,7 @@
 
 ### v0.5.0
 
-- feat: Add support for tenant namespaces off-boarding. For more details check out [onDelete](./tutorials/tenant/deleting-tenant.md#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted)
+- feat: Add support for tenant namespaces off-boarding.
 - feat: Add tenant webhook for spec validation
 
 - fix: TemplateGroupInstance now cleans up leftover Template resources from namespaces that are no longer part of TGI namespace selector
@@ -460,7 +460,7 @@
 ### v0.2.32
 
 - refactor: Restructure integration config spec, more details in [relevant docs][def]
-- feat: Allow users to input custom regex in certain fields inside of integration config, more details in [relevant docs](./crds-api-reference/integration-config.md#openshift)
+- feat: Allow users to input custom regex in certain fields inside of integration config, more details in [relevant docs](./crds-api-reference/integration-config.md)
 
 ### v0.2.31
 

@@ -20,11 +20,7 @@ The Diagram shows how MTO enables ServiceAccounts to read secrets from Vault.
 
 This requires a running `RHSSO(RedHat Single Sign On)` instance integrated with Vault over [OIDC](https://developer.hashicorp.com/vault/docs/auth/jwt) login method.
 
-MTO integration with Vault and RHSSO provides a way for users to log in to Vault where they only have access to relevant tenant paths.
-
-Once both integrations are set up with [IntegrationConfig CR](../crds-api-reference/integration-config.md#rhsso-red-hat-single-sign-on), MTO links tenant users to specific client roles named after their tenant under Vault client in RHSSO.
-
-After that, MTO creates specific policies in Vault for its tenant users.
+MTO creates specific policies in Vault for its tenant users.
 
 Mapping of tenant roles to Vault is shown below
 
