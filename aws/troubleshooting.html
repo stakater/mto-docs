@@ -1051,6 +1051,112 @@ You're not viewing the latest version.
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Managed Kubernetes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Managed Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation/managed-kubernetes/overview.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation/managed-kubernetes/azure-aks.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi Tenant Operator in Microsoft Azure Kubernetes Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation/managed-kubernetes/aws-eks.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi Tenant Operator in Amazon Elastic Kubernetes Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2941,7 +3047,7 @@ If any CRD has a conversion webhook defined then that webhook should be removed 
 <h3 id="q-errors-in-replicaset-events-about-pods-not-being-able-to-schedule-on-openshift-because-scc-annotation-is-not-found">Q. Errors in ReplicaSet Events about pods not being able to schedule on OpenShift because scc annotation is not found<a class="headerlink" href="#q-errors-in-replicaset-events-about-pods-not-being-able-to-schedule-on-openshift-because-scc-annotation-is-not-found" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code>unable to find annotation openshift.io/sa.scc.uid-range
 </code></pre></div>
-<p><strong>Answer.</strong> OpenShift recently updated its process of handling SCC, and it's now managed by annotations like <code>openshift.io/sa.scc.uid-range</code> on the namespaces. Absence  of them wont let pods schedule. The fix for the above error is to make sure ServiceAccount <code>system:serviceaccount:openshift-infra.</code> regex is always mentioned in <code>Privileged.serviceAccounts</code> section of <code>IntegrationConfig</code>. This regex will allow operations from all <code>ServiceAccounts</code> present in <code>openshift-infra</code> namespace. More info at <a href="crds-api-reference/integration-config.html#privileged-serviceaccounts">Privileged Service Accounts</a></p>
+<p><strong>Answer.</strong> OpenShift recently updated its process of handling SCC, and it's now managed by annotations like <code>openshift.io/sa.scc.uid-range</code> on the namespaces. Absence  of them wont let pods schedule. The fix for the above error is to make sure ServiceAccount <code>system:serviceaccount:openshift-infra.</code> regex is always mentioned in <code>Privileged.serviceAccounts</code> section of <code>IntegrationConfig</code>. This regex will allow operations from all <code>ServiceAccounts</code> present in <code>openshift-infra</code> namespace. More info at <a href="crds-api-reference/integration-config.html#privileged">Privileged Service Accounts</a></p>
 <h2 id="namespace-admission-webhook">Namespace Admission Webhook<a class="headerlink" href="#namespace-admission-webhook" title="Permanent link">#</a></h2>
 <h3 id="q-error-received-while-performing-create-update-or-delete-action-on-namespace">Q. Error received while performing Create, Update or Delete action on Namespace<a class="headerlink" href="#q-error-received-while-performing-create-update-or-delete-action-on-namespace" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code>Cannot CREATE namespace test-john without label stakater.com/tenant
@@ -2962,7 +3068,7 @@ from server for: &quot;namespace.yaml&quot;: namespaces &quot;ns1&quot; is forbi
 <p>The fix is to create namespaces with <code>kubectl create</code> instead.</p>
 <h2 id="mto-argocd-integration">MTO - ArgoCD Integration<a class="headerlink" href="#mto-argocd-integration" title="Permanent link">#</a></h2>
 <h3 id="q-how-do-i-deploy-cluster-scoped-resource-via-the-argocd-integration">Q. How do I deploy cluster-scoped resource via the ArgoCD integration?<a class="headerlink" href="#q-how-do-i-deploy-cluster-scoped-resource-via-the-argocd-integration" title="Permanent link">#</a></h3>
-<p><strong>Answer.</strong> Multi-Tenant Operator's ArgoCD Integration allows configuration of which cluster-scoped resources can be deployed, both globally and on a per-tenant basis. For a global allow-list that applies to all tenants, you can add both resource <code>group</code> and  <code>kind</code> to the <a href="crds-api-reference/integration-config.html#argocd">IntegrationConfig's</a> <code>spec.integrations.argocd.clusterResourceWhitelist</code> field. Alternatively, you can set this up on a tenant level by configuring the same details within a <a href="crds-api-reference/tenant.html">Tenant's</a> <code>spec.integrations.argocd.appProject.clusterResourceWhitelist</code> field. For more details, check out the <a href="how-to-guides/enabling-multi-tenancy-argocd.html#allow-argocd-to-sync-certain-cluster-wide-resources">ArgoCD integration use cases</a></p>
+<p><strong>Answer.</strong> Multi-Tenant Operator's ArgoCD Integration allows configuration of which cluster-scoped resources can be deployed, both globally and on a per-tenant basis. For a global allow-list that applies to all tenants, you can add both resource <code>group</code> and  <code>kind</code> to the <a href="crds-api-reference/integration-config.html#argocd">IntegrationConfig's</a> <code>spec.integrations.argocd.clusterResourceWhitelist</code> field. Alternatively, you can set this up on a tenant level by configuring the same details within a <a href="crds-api-reference/tenant.html">Tenant's</a> <code>spec.integrations.argocd.appProject.clusterResourceWhitelist</code> field. For more details, check out the <a href="how-to-guides/enabling-multi-tenancy-argocd.html#allowing-argocd-to-sync-certain-cluster-wide-resources">ArgoCD integration use cases</a></p>
 <h3 id="q-invalidspecerror-application-repo-repo-is-not-permitted-in-project-project">Q. InvalidSpecError: application repo \&lt;repo&gt; is not permitted in project \&lt;project&gt;<a class="headerlink" href="#q-invalidspecerror-application-repo-repo-is-not-permitted-in-project-project" title="Permanent link">#</a></h3>
 <p><strong>Answer.</strong> The above error can occur if the ArgoCD Application is syncing from a source that is not allowed the referenced AppProject. To solve this, verify that you have referred to the correct project in the given ArgoCD Application, and that the repoURL used for the Application's source is valid. If the error still appears, you can add the URL to the relevant Tenant's <code>spec.integrations.argocd.sourceRepos</code> array.</p>
 <h2 id="mto-opencost">MTO - OpenCost<a class="headerlink" href="#mto-opencost" title="Permanent link">#</a></h2>
