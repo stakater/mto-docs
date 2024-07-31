@@ -2950,7 +2950,7 @@ cert-manager-webhook-757c9d4bb7-wd9g8      1/1     Running   0          7m18s
 <h3 id="install-mto-using-helm">Install MTO using Helm<a class="headerlink" href="#install-mto-using-helm" title="Permanent link">#</a></h3>
 <p>Helm will be used to install MTO as it is the only available way of installing it on Kubernetes Clusters.</p>
 <p>Use helm install command to install MTO helm chart. Here, <code>bypassedGroups</code> has to be set as <code>system:masters</code> as it is used by masterclient of AKS and <code>&lt;mto-admins-id&gt;</code>as it is used by test-admin-user:</p>
-<div class="highlight"><pre><span></span><code>helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=&#39;system:masters\,&lt;mto-admins-id&gt;
+<div class="highlight"><pre><span></span><code>helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=&#39;system:masters\,&lt;mto-admins-id&gt;&#39;
 </code></pre></div>
 <p>Wait for the pods to come to a running state:</p>
 <div class="highlight"><pre><span></span><code>$ kubectl get pods -n multi-tenant-operator --watch
