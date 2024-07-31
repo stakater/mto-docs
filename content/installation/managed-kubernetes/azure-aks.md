@@ -182,7 +182,7 @@ Start by logging in to Azure from CLI by running the following command:
 kubectl get pods
 ```
 
-Executing the command will take you to a browser window where you can login from your test-admin-user.
+Executing the command will take you to a browser window where you can log in from your test-admin-user.
 
 Running `kubectl auth whoami` will show you the user info:
 
@@ -223,7 +223,7 @@ Helm will be used to install MTO as it is the only available way of installing i
 Use helm install command to install MTO helm chart. Here, `bypassedGroups` has to be set as `system:masters` as it is used by masterclient of AKS and `<mto-admins-id>`as it is used by test-admin-user:
 
 ```terminal
-helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=system:masters\,<mto-admins-id>'
+helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups='system:masters\,<mto-admins-id>
 ```
 
 Wait for the pods to come to a running state:
@@ -367,7 +367,7 @@ AppDev is one of the previously created groups, its scope is limited to Tenant A
 kubelogin remove-tokens
 ```
 
-Use the aksdev user from appdev group to login to the cluster:
+Use the aksdev user from appdev group to log in to the cluster:
 
 ```terminal
 kubectl get pods
@@ -375,7 +375,7 @@ kubectl get pods
 
 This will take you to devicelogin page. After entering the correct code, it will redirect you to Microsoft Login page, here you will enter the email and password of aksdev user created at the start of the article.
 
-After successful login, it will show you the output of your kubectl command:
+After successful log in, it will show you the output of your kubectl command:
 
 ```terminal
 Error from server (Forbidden): pods is forbidden: User "aksdev@company.com" cannot list resource "pods" in API group "" in the namespace "default"
@@ -419,7 +419,7 @@ Start by clearing token of appdev user:
 kubelogin remove-tokens
 ```
 
-Use the opssre user from opssre group to login to the cluster:
+Use the opssre user from opssre group to log in to the cluster:
 
 ```terminal
 kubectl get pods
@@ -427,7 +427,7 @@ kubectl get pods
 
 This will take you to devicelogin page. After entering the correct code, it will redirect you to Microsoft Login page, here you will enter the email and password of opssre user created at the start of the article.
 
-After successful login, it will show you the output of your kubectl command:
+After successful log in, it will show you the output of your kubectl command:
 
 ```terminal
 Error from server (Forbidden): pods is forbidden: User "opssre@company.com" cannot list resource "pods" in API group "" in the namespace "default"
