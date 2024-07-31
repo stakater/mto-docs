@@ -223,7 +223,7 @@ Helm will be used to install MTO as it is the only available way of installing i
 Use helm install command to install MTO helm chart. Here, `bypassedGroups` has to be set as `system:masters` as it is used by masterclient of AKS and `<mto-admins-id>`as it is used by test-admin-user:
 
 ```terminal
-helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups='system:masters\,<mto-admins-id>
+helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups='system:masters\,<mto-admins-id>'
 ```
 
 Wait for the pods to come to a running state:
