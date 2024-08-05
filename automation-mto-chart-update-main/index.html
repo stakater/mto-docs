@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
     
     
       
@@ -324,7 +324,7 @@ You're not viewing the latest version.
                         </div>
                         <div class="dropdown-content-anchor-container">
                             <a href="https://docs.stakater.com/tronador"
-                                class="dropdown-item-link-text hover-underline">Tornador
+                                class="dropdown-item-link-text hover-underline">Tronador
                             </a>
                         </div>
                     </div>
@@ -343,13 +343,13 @@ You're not viewing the latest version.
                         </div>
                         <div class="dropdown-content-anchor-container">
                             <a href="https://www.stakater.com/openshift-as-a-service"
-                                class="dropdown-item-link-text hover-underline">Openshift
+                                class="dropdown-item-link-text hover-underline">OpenShift
                                 Consultancy</a>
                         </div>
                         <div class="dropdown-content-anchor-container">
                             <a href="https://www.stakater.com/secure-your-kubernetes-infrastructure"
                                 class="dropdown-item-link-text hover-underline">Secret
-                                Managment Service</a>
+                                Management Service</a>
                         </div>
                         <div class="dropdown-content-anchor-container">
                             <a href="https://www.stakater.com/kubernetes-consultancy"
@@ -377,7 +377,7 @@ You're not viewing the latest version.
                     <!-- Column 4 -->
                     <div class="dropdown-content-dev-links">
                         <div class="dropdown-content-dev-links-anchor-container">
-                            <a href="https://github.com/stakater/" class="dropdown-content-dev-links-anchor">Github</a>
+                            <a href="https://github.com/stakater/" class="dropdown-content-dev-links-anchor">GitHub</a>
                         </div>
                         <div class="dropdown-content-dev-links-anchor-container">
                             <a href="https://docs.stakater.com/"
@@ -1232,6 +1232,112 @@ You're not viewing the latest version.
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Managed Kubernetes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Managed Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation/managed-kubernetes/overview.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation/managed-kubernetes/azure-aks.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi Tenant Operator in Microsoft Azure Kubernetes Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation/managed-kubernetes/aws-eks.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi Tenant Operator in Amazon Elastic Kubernetes Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2343,11 +2449,32 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="crds-api-reference/extensions.html" class="md-nav__link">
+      <a href="crds-api-reference/quota.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Extensions
+    Quota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="crds-api-reference/tenant.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tenant
   </span>
   
 
@@ -2385,32 +2512,11 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="crds-api-reference/quota.html" class="md-nav__link">
+      <a href="crds-api-reference/extensions.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Quota
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="crds-api-reference/tenant.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Tenant
+    Extensions
   </span>
   
 
@@ -2741,28 +2847,28 @@ You're not viewing the latest version.
 
 
 <h1 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h1>
-<p>Kubernetes is designed to support a single tenant platform; OpenShift brings some improvements with its "Secure by default" concepts but it is still very complex to design and orchestrate all the moving parts involved in building a secure multi-tenant platform hence making it difficult for cluster admins to host multi-tenancy in a single OpenShift cluster. If multi-tenancy is achieved by sharing a cluster, it can have many advantages, e.g. efficient resource utilization, less configuration effort and easier sharing of cluster-internal resources among different tenants. OpenShift and all managed applications provide enough primitive resources to achieve multi-tenancy, but it requires professional skills and deep knowledge of OpenShift.</p>
-<p>This is where Multi Tenant Operator (MTO) comes in and provides easy to manage/configure multi-tenancy. MTO provides wrappers around OpenShift resources to provide a higher level of abstraction to users. With MTO admins can configure Network and Security Policies, Resource Quotas, Limit Ranges, RBAC for every tenant, which are automatically inherited by all the namespaces and users in the tenant. Depending on the user's role, they are free to operate within their tenants in complete autonomy.
+<p>Kubernetes is designed to support a single tenant platform; Managed Kubernetes Services (such as AKS, EKS, GKE and OpenShift) brings some improvements with their "Secure by default" concepts, but it is still very complex to design and orchestrate all the moving parts involved in building a secure multi-tenant platform hence making it difficult for cluster admins to host multi-tenancy in a single Kubernetes cluster. If multi-tenancy is achieved by sharing a cluster, it can have many advantages, e.g. efficient resource utilization, less configuration effort and easier sharing of cluster's internal resources among different tenants. Kubernetes and all managed applications provide enough primitive resources to achieve multi-tenancy, but it requires professional skills and deep knowledge of the respective tool.</p>
+<p>This is where Multi Tenant Operator (MTO) comes in and provides easy to manage/configure multi-tenancy. MTO provides wrappers around Kubernetes resources (depending on the version) to provide a higher level of abstraction to users. With MTO, admins can configure Network and Security Policies, Resource Quotas, Limit Ranges, RBAC for every tenant, which are automatically inherited by all the namespaces and users in the tenant. Depending on the user's role, they are free to operate within their tenants in complete autonomy.
 MTO supports initializing new tenants using GitOps management pattern. Changes can be managed via PRs just like a typical GitOps workflow, so tenants can request changes, add new users, or remove users.</p>
 <p>The idea of MTO is to use namespaces as independent sandboxes, where tenant applications can run independently of each other. Cluster admins shall configure MTO's custom resources, which then become a self-service system for tenants. This minimizes the efforts of the cluster admins.</p>
-<p>MTO enables cluster admins to host multiple tenants in a single OpenShift Cluster, i.e.:</p>
+<p>MTO enables cluster admins to host multiple tenants in a single Kubernetes Cluster, i.e.:</p>
 <ul>
-<li>Share an <strong>OpenShift cluster</strong> with multiple tenants</li>
+<li>Share a <strong>Kubernetes cluster</strong> with multiple tenants</li>
 <li>Share <strong>managed applications</strong> with multiple tenants</li>
 <li>Configure and manage tenants and their sandboxes</li>
 </ul>
-<p>MTO is also <a href="https://catalog.redhat.com/software/operators/detail/618fa05e3adfdfc43f73b126">OpenShift certified</a></p>
+<p>MTO is also <a href="https://catalog.redhat.com/software/operators/detail/618fa05e3adfdfc43f73b126">RedHat certified</a></p>
 <h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">#</a></h2>
 <p>The major features of Multi Tenant Operator (MTO) are described below.</p>
 <h2 id="kubernetes-multitenancy">Kubernetes Multitenancy<a class="headerlink" href="#kubernetes-multitenancy" title="Permanent link">#</a></h2>
 <p>RBAC is one of the most complicated and error-prone parts of Kubernetes. With Multi Tenant Operator, you can rest assured that RBAC is configured with the "least privilege" mindset and all rules are kept up-to-date with zero manual effort.</p>
 <p>Multi Tenant Operator binds existing ClusterRoles to the Tenant's Namespaces used for managing access to the Namespaces and the resources they contain. You can also modify the default roles or create new roles to have full control and customize access control for your users and teams.</p>
-<p>Multi Tenant Operator is also able to leverage existing OpenShift groups or external groups synced from 3rd party identity management systems, for maintaining Tenant membership in your organization's current user management system.</p>
+<p>Multi Tenant Operator is also able to leverage existing groups in Kubernetes and OpenShift, or external groups synced from 3rd party identity management systems, for maintaining Tenant membership in your organization's current user management system.</p>
 <h2 id="hashicorp-vault-multitenancy">HashiCorp Vault Multitenancy<a class="headerlink" href="#hashicorp-vault-multitenancy" title="Permanent link">#</a></h2>
 <p>Multi Tenant Operator extends the tenants permission model to HashiCorp Vault where it can create Vault paths and greatly ease the overhead of managing RBAC in Vault. Tenant users can manage their own secrets without the concern of someone else having access to their Vault paths.</p>
 <p>More details on <a href="how-to-guides/enabling-multi-tenancy-vault.html">Vault Multitenancy</a></p>
 <h2 id="argocd-multitenancy">ArgoCD Multitenancy<a class="headerlink" href="#argocd-multitenancy" title="Permanent link">#</a></h2>
-<p>Multi Tenant Operator is not only providing strong Multi Tenancy for the OpenShift internals but also extends the tenants permission model to ArgoCD were it can provision AppProjects and Allowed Repositories for your tenants greatly ease the overhead of managing RBAC in ArgoCD.</p>
+<p>Multi Tenant Operator is not only providing strong Multi Tenancy for the Kubernetes internals but also extends the tenants permission model to ArgoCD were it can provision AppProjects and Allowed Repositories for your tenants greatly ease the overhead of managing RBAC in ArgoCD.</p>
 <p>More details on <a href="how-to-guides/enabling-multi-tenancy-argocd.html">ArgoCD Multitenancy</a></p>
 <h2 id="resource-management">Resource Management<a class="headerlink" href="#resource-management" title="Permanent link">#</a></h2>
 <p>Multi Tenant Operator provides a mechanism for defining Resource Quotas at the tenant scope, meaning all namespaces belonging to a particular tenant share the defined quota, which is why you are able to safely enable dev teams to self serve their namespaces whilst being confident that they can only use the resources allocated based on budget and business needs.</p>
@@ -2801,7 +2907,7 @@ Furthermore, this functionality supports financial planning and budgeting by off
 <p>With Multi Tenant Operator, you can empower your users to safely provision namespaces for themselves and their teams (typically mapped to SSO groups). Team-owned namespaces and the resources inside them count towards the team's quotas rather than the user's individual limits and are automatically shared with all team members according to the access rules you configure in Multi Tenant Operator.</p>
 <p>Also, by leveraging Multi Tenant Operator's templating mechanism, namespaces can be provisioned and automatically pre-populated with any kind of resource or multiple resources such as network policies, docker pull secrets or even Helm charts etc</p>
 <h2 id="everything-as-codegitops-ready">Everything as Code/GitOps Ready<a class="headerlink" href="#everything-as-codegitops-ready" title="Permanent link">#</a></h2>
-<p>Multi Tenant Operator is designed and built to be 100% OpenShift-native and to be configured and managed the same familiar way as native OpenShift resources so is perfect for modern shops that are dedicated to GitOps as it is fully configurable using Custom Resources.</p>
+<p>Multi Tenant Operator is designed and built to be 100% Kubernetes-native, and to be configured and managed the same familiar way as native Kubernetes resources so it's perfect for modern companies that are dedicated to GitOps as it is fully configurable using Custom Resources.</p>
 <h2 id="preventing-clusters-sprawl">Preventing Clusters Sprawl<a class="headerlink" href="#preventing-clusters-sprawl" title="Permanent link">#</a></h2>
 <p>As companies look to further harness the power of cloud-native, they are adopting container technologies at rapid speed, increasing the number of clusters and workloads. As the number of Kubernetes clusters grows, this is an increasing work for the Ops team. When it comes to patching security issues or upgrading clusters, teams are doing five times the amount of work.</p>
 <p>With Multi Tenant Operator teams can share a single cluster with multiple teams, groups of users, or departments by saving operational and management efforts. This prevents you from Kubernetes cluster sprawl.</p>
@@ -2966,7 +3072,7 @@ Furthermore, this functionality supports financial planning and budgeting by off
                         </p>
                         <p class="md-footer-org-details-md">
 
-                            David Bagaers gata 26A, <br>
+                            David Bagares gata 26A, <br>
                             111 38 Stockholm, <br>
                             Sweden
 
@@ -3160,8 +3266,9 @@ Furthermore, this functionality supports financial planning and budgeting by off
                 <div class="flex-1"></div> -->
                 <div class="flex-1">
                     <!-- Social Links -->
+                    <!-- vale off -->
                     <div class="display-flex jscsa">
-                        <a href="https://github.com/stakater" class="svg-container" title="Github">
+                        <a href="https://github.com/stakater" class="svg-container" title="GitHub">
                             <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <defs>
 <style>
@@ -3181,7 +3288,7 @@ Furthermore, this functionality supports financial planning and budgeting by off
 </g>
 </svg>
                         </a>
-                        <a href="https://www.linkedin.com/company/stakater/" class="svg-container" title="Linkedin">
+                        <a href="https://www.linkedin.com/company/stakater/" class="svg-container" title="LinkedIn">
                             <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
 <defs>
 <style>
@@ -3274,6 +3381,7 @@ Furthermore, this functionality supports financial planning and budgeting by off
 </svg>
                         </a>
                     </div>
+                    <!-- vale on -->
                 </div>
             </div>
         </div>
