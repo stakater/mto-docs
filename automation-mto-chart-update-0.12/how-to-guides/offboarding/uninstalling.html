@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
     
     
       
@@ -1048,6 +1048,112 @@ You're not viewing the latest version.
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Managed Kubernetes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Managed Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/managed-kubernetes/overview.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/managed-kubernetes/azure-aks.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi Tenant Operator in Microsoft Azure Kubernetes Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/managed-kubernetes/aws-eks.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi Tenant Operator in Amazon Elastic Kubernetes Service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2214,11 +2320,32 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../crds-api-reference/extensions.html" class="md-nav__link">
+      <a href="../../crds-api-reference/quota.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Extensions
+    Quota
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../crds-api-reference/tenant.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tenant
   </span>
   
 
@@ -2256,32 +2383,11 @@ You're not viewing the latest version.
   
   
     <li class="md-nav__item">
-      <a href="../../crds-api-reference/quota.html" class="md-nav__link">
+      <a href="../../crds-api-reference/extensions.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Quota
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../crds-api-reference/tenant.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Tenant
+    Extensions
   </span>
   
 
@@ -2480,10 +2586,12 @@ You're not viewing the latest version.
 <p>You can uninstall MTO by following these steps:</p>
 <ul>
 <li>
-<p>Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set <code>spec.onDelete.cleanNamespaces</code> to <code>false</code> for all those tenants whose namespaces you want to retain, and <code>spec.onDelete.cleanAppProject</code> to <code>false</code> for all those tenants whose AppProject you want to retain. For more details check out <a href="../../tutorials/tenant/deleting-tenant.html#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted">onDelete</a></p>
+<p>Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not.
+For more details check out <a href="../../tutorials/tenant/deleting-tenant.html#configuration-for-retaining-resources">onDeletePurgeNamespaces</a>
+<a href="../../crds-api-reference/extensions.html#configuring-argocd-integration">onDeletePurgeAppProject</a></p>
 </li>
 <li>
-<p>In case you have enabled console, you will have to disable it first by navigating to <code>Search</code> -&gt; <code>IntegrationConfig</code> -&gt; <code>tenant-operator-config</code> and set <code>spec.provision.console</code> and <code>spec.provision.showback</code> to <code>false</code>.</p>
+<p>In case you have enabled console and showback, you will have to disable it first by navigating to <code>Search</code> -&gt; <code>IntegrationConfig</code> -&gt; <code>tenant-operator-config</code> and set <code>spec.components.console</code> and <code>spec.components.showback</code> to <code>false</code>.</p>
 </li>
 <li>
 <p>Remove IntegrationConfig CR from the cluster by navigating to <code>Search</code> -&gt; <code>IntegrationConfig</code> -&gt; <code>tenant-operator-config</code> and select <code>Delete</code> from actions dropdown.</p>
