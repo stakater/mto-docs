@@ -13,7 +13,7 @@ replicaCount: 1
 operator:
   image:
     repository: ghcr.io/stakater/public/tenant-operator
-    tag: v0.12.63
+    tag: v0.12.65
     pullPolicy: IfNotPresent
   serviceAccount:
     # Annotations to add to the service account
