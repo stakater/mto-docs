@@ -23,27 +23,6 @@ A web application demo of MTO is available on the [Multi Tenant Operator website
 
 Contact [`sales@stakater.com`](mailto:sales@stakater.com) to request a custom demo.
 
-## Enterprise License Configuration
-
-For the Enterprise version, you need to have a configmap `license` created in MTO's namespace `multi-tenant-operator`. You will get this configmap when purchasing the Enterprise version. It would look like this:
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: license
-  namespace: multi-tenant-operator
-data:
-  payload.json: |
-    {
-        "metaData": {
-            "tier" : "paid",
-            "company": "<company name here>"
-        }
-    }
-  signature.base64.txt: <base64 signature here>
-```
-
 ## Support
 
 See [Stakater Support](https://support.stakater.com/) for information about support for the Enterprise Version of MTO.
