@@ -36,7 +36,28 @@ Wait for the pods to be up
 kubectl get pods -n multi-tenant-operator --watch
 ```
 
-After all pods come in running state, you can move to next sections on [Licensing](./basic-vs-enterprise-tier.md) and [Tutorials](../tutorials/tenant/create-tenant.md)
+After all pods come in running state, you can follow [Tutorials](../tutorials/tenant/create-tenant.md).
+
+### Enterprise License Configuration
+
+For the Enterprise version, you need to have a configmap `license` created in MTO's namespace `multi-tenant-operator`. You will get this configmap when purchasing the Enterprise version. It would look like this:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: license
+  namespace: multi-tenant-operator
+data:
+  payload.json: |
+    {
+        "metaData": {
+            "tier" : "paid",
+            "company": "<company name here>"
+        }
+    }
+  signature.base64.txt: <base64 signature here>
+```
 
 ## Uninstall via Helm CLI
 
@@ -50,6 +71,6 @@ helm uninstall tenant-operator --namespace multi-tenant-operator
 
 ## Notes
 
-* For details on licensing of MTO please refer [Basic vs Enterprise Tier](./basic-vs-enterprise-tier.md).
+* For details on licensing of MTO please refer [Pricing](../pricing.md).
 * For more details on how to use MTO please refer [Tenant tutorial](../tutorials/tenant/create-tenant.md).
 * For details on how to extend your MTO manager ClusterRole please refer [extend-default-clusterroles](../how-to-guides/extend-default-roles.md).
