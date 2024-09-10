@@ -21,12 +21,12 @@ jobs:
       DOCKER_FILE_PATH: Dockerfile
     secrets:
       CONTAINER_REGISTRY_URL: ghcr.io/stakater
-      CONTAINER_REGISTRY_USERNAME: stakater-user
-      CONTAINER_REGISTRY_PASSWORD: ${{ secrets.STAKATER_GITHUB_TOKEN }}
+      CONTAINER_REGISTRY_USERNAME: ${{ github.actor }}
+      CONTAINER_REGISTRY_PASSWORD: ${{ secrets.GHCR_TOKEN }}
       SLACK_WEBHOOK_URL: ${{ secrets.STAKATER_DELIVERY_SLACK_WEBHOOK }}
-      DOCKER_SECRETS: GIT_AUTH_TOKEN=${{ secrets.STAKATER_GITHUB_TOKEN }}
+      DOCKER_SECRETS: GIT_AUTH_TOKEN=${{ secrets.PUBLISH_TOKEN }}
 
   deploy_doc:
     uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@v0.0.91
     secrets:
-      GH_TOKEN: ${{ secrets.STAKATER_GITHUB_TOKEN }}
+      GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
