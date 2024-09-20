@@ -6,6 +6,11 @@ edit_uri: blob/main/content/
 theme:
   favicon: assets/images/favicon.svg
 
+strict: true
+validation:
+  links:
+    anchors: warn
+
 extra:
   version:
     provider: mike
@@ -15,6 +20,13 @@ nav:
   - index.md
   - Installation:
       - installation/openshift.md
+      - installation/kubernetes.md
+      - installation/helm-values.md
+      - Managed Kubernetes:
+          - installation/managed-kubernetes/overview.md
+          - installation/managed-kubernetes/azure-aks.md
+          - installation/managed-kubernetes/aws-eks.md
+  - pricing.md
   - Tutorials:
       - Configuring Tenants:
           - tutorials/tenant/create-tenant.md
