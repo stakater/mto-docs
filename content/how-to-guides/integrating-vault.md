@@ -16,7 +16,7 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
    - Go to **Azure AD → App Registrations**.
 
 1. **Set up Optional Claims:**
-   - In the Azure AD App Registration for your Keycloak, configure an **optional claim** for you app configured with keycloak to include **group IDs** in the tokens.
+   - In the Azure AD App Registration for your Keycloak, configure an **optional claim** for the app configured with keycloak to include **group IDs** in the tokens.
 
    ![App Registrations setup showing how the group ID claim was added.](../images/azuread-groupClaim.png)
 
