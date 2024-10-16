@@ -15,7 +15,7 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
 1. **Navigate to Azure AD:**
    - Go to **Azure AD → App Registrations**.
 
-2. **Set up Optional Claims:**
+1. **Set up Optional Claims:**
    - In the Azure AD App Registration for your Keycloak, configure an **optional claim** for you app configured with keycloak to include **group IDs** in the tokens.
 
    ![App Registrations setup showing how the group ID claim was added.](../images/azuread-groupClaim.png)
@@ -96,7 +96,7 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
 1. **Patch the Tenant Spec:**
    - Modify the existing **Tenant** resource to include the Azure AD group IDs under `accessControl`. This will ensure the correct group-based RBAC is applied for Vault.
 
-2. **Example Patch for Tenant Spec:**
+1. **Example Patch for Tenant Spec:**
    Here’s an example of how to patch the **Tenant** with the group ID from Azure AD:
 
    ```yaml
