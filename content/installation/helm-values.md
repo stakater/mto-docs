@@ -13,7 +13,7 @@ replicaCount: 1
 operator:
   image:
     repository: ghcr.io/stakater/public/tenant-operator
-    tag: v0.12.64
+    tag: v1.0.0
     pullPolicy: IfNotPresent
   serviceAccount:
     # Annotations to add to the service account
@@ -89,9 +89,22 @@ integrationConfig:
         - ^system:serviceaccount:hive-.*
       groups:
         # - saap-cluster-admins
+      users:
+        # - saap-cluster-admin
   components:
     console: false
     showback: false
+    ingress:
+      # console:
+      #   host: console.saap.dev
+      #   tlsSecretName: mto-ssc
+      # gateway:
+      #   host: gateway.saap.dev
+      #   tlsSecretName: mto-ssc
+      # keycloak:
+      #   host: keycloak.saap.dev
+      #   tlsSecretName: mto-ssc
+      # ingressClassName: traefik
 
 userRoles:
   create: true
