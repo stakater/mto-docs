@@ -65,6 +65,7 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
    - **`owners.groups`** should be updated with the relevant Microsoft Entra ID group IDs to enforce access control based on the users’ group memberships.
 
    ![Group spec](../images/azuread-groupID.png)
+
 ## Conclusion
 
 By following these steps, you can successfully integrate Vault with Keycloak for OIDC authentication, using Microsoft Entra ID group IDs for access control. This configuration allows for granular, group-based permissions while working with the limitations of Microsoft Entra ID’s token output.
