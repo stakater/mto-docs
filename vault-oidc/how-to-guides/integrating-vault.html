@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.41">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
     
     
       
@@ -3646,9 +3646,9 @@ You're not viewing the latest version.
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-configure-azure-ad-to-include-group-ids-in-tokens" class="md-nav__link">
+  <a href="#step-1-configure-microsoft-entra-id-to-include-group-ids-in-tokens" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Configure Azure AD to Include Group IDs in Tokens
+      Step 1: Configure Microsoft Entra ID to Include Group IDs in Tokens
     </span>
   </a>
   
@@ -3673,9 +3673,9 @@ You're not viewing the latest version.
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-4-patch-tenant-spec-with-azure-ad-group-ids-for-rbac" class="md-nav__link">
+  <a href="#step-4-patch-tenant-spec-with-microsoft-entra-id-group-ids-for-rbac" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 4: Patch Tenant Spec with Azure AD Group IDs for RBAC
+      Step 4: Patch Tenant Spec with Microsoft Entra ID Group IDs for RBAC
     </span>
   </a>
   
@@ -3714,31 +3714,31 @@ You're not viewing the latest version.
 
 
 <h1 id="vault-oidc-integration-with-keycloak">Vault OIDC Integration with Keycloak<a class="headerlink" href="#vault-oidc-integration-with-keycloak" title="Permanent link">#</a></h1>
-<p>This guide provides step-by-step instructions for integrating <strong>Vault</strong> with <strong>Keycloak</strong> using <strong>Azure AD</strong> for OIDC-based authentication. The setup focuses on using <strong>group IDs</strong> for access control, as Azure AD only provides group IDs in its tokens, not group names.</p>
+<p>This guide provides step-by-step instructions for integrating <strong>Vault</strong> with <strong>Keycloak</strong> using <strong>Microsoft Entra ID</strong> for OIDC-based authentication. The setup focuses on using <strong>group IDs</strong> for access control, as Microsoft Entra ID only provides group IDs in its tokens, not group names.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
 <ul>
-<li>Azure Active Directory (Azure AD) configured for OIDC.</li>
-<li>Keycloak setup with an Identity Provider (IdP) pointing to Azure AD.</li>
+<li>Microsoft Entra ID configured for OIDC.</li>
+<li>Keycloak setup with an Identity Provider (IdP) pointing to Microsoft Entra ID.</li>
 <li>HashiCorp Vault installed and configured.</li>
 </ul>
 <h2 id="steps-to-implement-group-based-access-control-with-group-ids">Steps to Implement Group-Based Access Control with Group IDs<a class="headerlink" href="#steps-to-implement-group-based-access-control-with-group-ids" title="Permanent link">#</a></h2>
-<h3 id="step-1-configure-azure-ad-to-include-group-ids-in-tokens">Step 1: Configure Azure AD to Include Group IDs in Tokens<a class="headerlink" href="#step-1-configure-azure-ad-to-include-group-ids-in-tokens" title="Permanent link">#</a></h3>
+<h3 id="step-1-configure-microsoft-entra-id-to-include-group-ids-in-tokens">Step 1: Configure Microsoft Entra ID to Include Group IDs in Tokens<a class="headerlink" href="#step-1-configure-microsoft-entra-id-to-include-group-ids-in-tokens" title="Permanent link">#</a></h3>
 <ol>
-<li><strong>Navigate to Azure AD:</strong></li>
+<li><strong>Navigate to Microsoft Entra ID:</strong></li>
 <li>
-<p>Go to <strong>Azure AD → App Registrations</strong>.</p>
+<p>Go to <strong>Microsoft Entra ID → App Registrations</strong>.</p>
 </li>
 <li>
 <p><strong>Set up Optional Claims:</strong></p>
 </li>
-<li>In the Azure AD App Registration for your Keycloak, configure an <strong>optional claim</strong> for the app configured with keycloak to include <strong>group IDs</strong> in the tokens.</li>
+<li>In the Microsoft Entra ID App Registration for your Keycloak, configure an <strong>optional claim</strong> for the app configured with keycloak to include <strong>group IDs</strong> in the tokens.</li>
 </ol>
 <p><a class="glightbox" href="../images/azuread-groupClaim.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="App Registrations setup showing how the group ID claim was added." src="../images/azuread-groupClaim.png" /></a></p>
 <h3 id="step-2-create-an-attribute-importer-mapper-in-keycloak">Step 2: Create an Attribute Importer Mapper in Keycloak<a class="headerlink" href="#step-2-create-an-attribute-importer-mapper-in-keycloak" title="Permanent link">#</a></h3>
 <ol>
 <li><strong>Create Attribute Importer Mapper:</strong></li>
 </ol>
-<p>Use <code>IdentityProviderMapper</code> to configure the attribute importer that extracts the <strong>groups claim</strong> (containing group IDs) from the Azure AD token and stores it in the <code>groups</code> attribute in Keycloak:</p>
+<p>Use <code>IdentityProviderMapper</code> to configure the attribute importer that extracts the <strong>groups claim</strong> (containing group IDs) from the Microsoft Entra ID token and stores it in the <code>groups</code> attribute in Keycloak:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">identityprovider.keycloak.crossplane.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentityProviderMapper</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -3799,15 +3799,15 @@ You're not viewing the latest version.
 <li><strong><code>claim.name: groups</code></strong> specifies the claim name that Vault will use to retrieve the group IDs.</li>
 </ul>
 <p><a class="glightbox" href="../images/vault-client-attribute-mapper.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Keycloak Vault client mapper showing the user attribute forwarded as a token claim" src="../images/vault-client-attribute-mapper.png" /></a></p>
-<h3 id="step-4-patch-tenant-spec-with-azure-ad-group-ids-for-rbac">Step 4: Patch Tenant Spec with Azure AD Group IDs for RBAC<a class="headerlink" href="#step-4-patch-tenant-spec-with-azure-ad-group-ids-for-rbac" title="Permanent link">#</a></h3>
+<h3 id="step-4-patch-tenant-spec-with-microsoft-entra-id-group-ids-for-rbac">Step 4: Patch Tenant Spec with Microsoft Entra ID Group IDs for RBAC<a class="headerlink" href="#step-4-patch-tenant-spec-with-microsoft-entra-id-group-ids-for-rbac" title="Permanent link">#</a></h3>
 <ol>
 <li><strong>Patch the Tenant Spec:</strong></li>
 <li>
-<p>Modify the existing <strong>Tenant</strong> resource to include the Azure AD group IDs under <code>accessControl</code>. This will ensure the correct group-based RBAC is applied for Vault.</p>
+<p>Modify the existing <strong>Tenant</strong> resource to include the Microsoft Entra ID group IDs under <code>accessControl</code>. This will ensure the correct group-based RBAC is applied for Vault.</p>
 </li>
 <li>
 <p><strong>Example Patch for Tenant Spec:</strong>
-   Here’s an example of how to patch the <strong>Tenant</strong> with the group ID from Azure AD:</p>
+   Here’s an example of how to patch the <strong>Tenant</strong> with the group ID from Microsoft Entra ID:</p>
 </li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
@@ -3821,11 +3821,11 @@ You're not viewing the latest version.
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;object-id&gt;</span>
 </code></pre></div>
 <ul>
-<li><strong><code>owners.groups</code></strong> should be updated with the relevant Azure AD group IDs to enforce access control based on the users’ group memberships.</li>
+<li><strong><code>owners.groups</code></strong> should be updated with the relevant Microsoft Entra ID group IDs to enforce access control based on the users’ group memberships.</li>
 </ul>
 <p><a class="glightbox" href="../images/azuread-groupID.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Group spec" src="../images/azuread-groupID.png" /></a></p>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">#</a></h2>
-<p>By following these steps, you can successfully integrate Vault with Keycloak for OIDC authentication, using Azure AD group IDs for access control. This configuration allows for granular, group-based permissions while working with the limitations of Azure AD’s token output.</p>
+<p>By following these steps, you can successfully integrate Vault with Keycloak for OIDC authentication, using Microsoft Entra ID group IDs for access control. This configuration allows for granular, group-based permissions while working with the limitations of Microsoft Entra ID’s token output.</p>
 
 
 
