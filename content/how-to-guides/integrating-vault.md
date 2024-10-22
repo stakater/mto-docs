@@ -1,22 +1,22 @@
 # Vault OIDC Integration with Keycloak
 
-This guide provides step-by-step instructions for integrating **Vault** with **Keycloak** using **Azure AD** for OIDC-based authentication. The setup focuses on using **group IDs** for access control, as Azure AD only provides group IDs in its tokens, not group names.
+This guide provides step-by-step instructions for integrating **Vault** with **Keycloak** using **Microsoft Entra ID** for OIDC-based authentication. The setup focuses on using **group IDs** for access control, as Microsoft Entra ID only provides group IDs in its tokens, not group names.
 
 ## Prerequisites
 
-- Azure Active Directory (Azure AD) configured for OIDC.
-- Keycloak setup with an Identity Provider (IdP) pointing to Azure AD.
+- Microsoft Entra ID configured for OIDC.
+- Keycloak setup with an Identity Provider (IdP) pointing to Microsoft Entra ID.
 - HashiCorp Vault installed and configured.
 
 ## Steps to Implement Group-Based Access Control with Group IDs
 
-### Step 1: Configure Azure AD to Include Group IDs in Tokens
+### Step 1: Configure Microsoft Entra ID to Include Group IDs in Tokens
 
-1. **Navigate to Azure AD:**
-   - Go to **Azure AD → App Registrations**.
+1. **Navigate to Microsoft Entra ID:**
+   - Go to **Microsoft Entra ID → App Registrations**.
 
 1. **Set up Optional Claims:**
-   - In the Azure AD App Registration for your Keycloak, configure an **optional claim** for the app configured with keycloak to include **group IDs** in the tokens.
+   - In the Microsoft Entra ID App Registration for your Keycloak, configure an **optional claim** for the app configured with keycloak to include **group IDs** in the tokens.
 
    ![App Registrations setup showing how the group ID claim was added.](../images/azuread-groupClaim.png)
 
@@ -24,7 +24,7 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
 
 1. **Create Attribute Importer Mapper:**
 
-   Use `IdentityProviderMapper` to configure the attribute importer that extracts the **groups claim** (containing group IDs) from the Azure AD token and stores it in the `groups` attribute in Keycloak:
+   Use `IdentityProviderMapper` to configure the attribute importer that extracts the **groups claim** (containing group IDs) from the Microsoft Entra ID token and stores it in the `groups` attribute in Keycloak:
 
    ```yaml
    apiVersion: identityprovider.keycloak.crossplane.io/v1alpha1
@@ -91,13 +91,13 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
 
    ![Keycloak Vault client mapper showing the user attribute forwarded as a token claim](../images/vault-client-attribute-mapper.png)
 
-### Step 4: Patch Tenant Spec with Azure AD Group IDs for RBAC
+### Step 4: Patch Tenant Spec with Microsoft Entra ID Group IDs for RBAC
 
 1. **Patch the Tenant Spec:**
-   - Modify the existing **Tenant** resource to include the Azure AD group IDs under `accessControl`. This will ensure the correct group-based RBAC is applied for Vault.
+   - Modify the existing **Tenant** resource to include the Microsoft Entra ID group IDs under `accessControl`. This will ensure the correct group-based RBAC is applied for Vault.
 
 1. **Example Patch for Tenant Spec:**
-   Here’s an example of how to patch the **Tenant** with the group ID from Azure AD:
+   Here’s an example of how to patch the **Tenant** with the group ID from Microsoft Entra ID:
 
    ```yaml
    apiVersion: tenantoperator.stakater.com/v1beta3
@@ -111,9 +111,9 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
            - <object-id>
    ```
 
-   - **`owners.groups`** should be updated with the relevant Azure AD group IDs to enforce access control based on the users’ group memberships.
+   - **`owners.groups`** should be updated with the relevant Microsoft Entra ID group IDs to enforce access control based on the users’ group memberships.
 
    ![Group spec](../images/azuread-groupID.png)
 ## Conclusion
 
-By following these steps, you can successfully integrate Vault with Keycloak for OIDC authentication, using Azure AD group IDs for access control. This configuration allows for granular, group-based permissions while working with the limitations of Azure AD’s token output.
+By following these steps, you can successfully integrate Vault with Keycloak for OIDC authentication, using Microsoft Entra ID group IDs for access control. This configuration allows for granular, group-based permissions while working with the limitations of Microsoft Entra ID’s token output.
