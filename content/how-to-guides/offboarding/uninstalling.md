@@ -2,9 +2,11 @@
 
 You can uninstall MTO by following these steps:
 
-* Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set `spec.onDelete.cleanNamespaces` to `false` for all those tenants whose namespaces you want to retain, and `spec.onDelete.cleanAppProject` to `false` for all those tenants whose AppProject you want to retain. For more details check out [onDelete](../../tutorials/tenant/deleting-tenant.md#retaining-tenant-namespaces-and-appproject-when-a-tenant-is-being-deleted)
+* Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not.
+For more details check out [onDeletePurgeNamespaces](../../tutorials/tenant/deleting-tenant.md#configuration-for-retaining-resources)
+[onDeletePurgeAppProject](../../crds-api-reference/extensions.md#configuring-argocd-integration)
 
-* In case you have enabled console, you will have to disable it first by navigating to `Search` -> `IntegrationConfig` -> `tenant-operator-config` and set `spec.provision.console` and `spec.provision.showback` to `false`.
+* In case you have enabled console and showback, you will have to disable it first by navigating to `Search` -> `IntegrationConfig` -> `tenant-operator-config` and set `spec.components.console` and `spec.components.showback` to `false`.
 
 * Remove IntegrationConfig CR from the cluster by navigating to `Search` -> `IntegrationConfig` -> `tenant-operator-config` and select `Delete` from actions dropdown.
 
