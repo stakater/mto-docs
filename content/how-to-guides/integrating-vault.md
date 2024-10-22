@@ -38,14 +38,7 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
 
 1. **Create ProtocolMapper:**
 
-
     To configure the Protocol Mapper that forwards the groups attribute (containing group IDs) from the user's profile into the token, create a new mapper with the following settings as shown in the image:
-
-      - Mapper Type: User Attribute
-      - User Attribute: groups
-      - Claim Name: groups
-      - Multivalued: true
-      - JSON Type Label: String
 
    ![Keycloak Vault client mapper showing the user attribute forwarded as a token claim](../images/vault-client-attribute-mapper.png)
 
