@@ -7,6 +7,7 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
 - Microsoft Entra ID configured for OIDC.
 - Keycloak setup with an Identity Provider (IdP) pointing to Microsoft Entra ID.
 - HashiCorp Vault installed and configured.
+- [Vault Configured in IntegrationConfig](enabling-multi-tenancy-vault.md)
 
 ## Steps to Implement Group-Based Access Control with Group IDs
 
@@ -24,31 +25,12 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
 
 1. **Create Attribute Importer Mapper:**
 
-   Use `IdentityProviderMapper` to configure the attribute importer that extracts the **groups claim** (containing group IDs) from the Microsoft Entra ID token and stores it in the `groups` attribute in Keycloak:
+   To configure the groups claim from Microsoft Entra ID in Keycloak, create a new mapper with the following settings as shown in the image:
 
-   ```yaml
-   apiVersion: identityprovider.keycloak.crossplane.io/v1alpha1
-   kind: IdentityProviderMapper
-   metadata:
-     name: groups-attribute
-   spec:
-     deletionPolicy: Delete
-     forProvider:
-       extraConfig:
-         claim: groups
-         syncMode: FORCE
-         user.attribute: groups
-       identityProviderAlias: <idp-alias>
-       identityProviderMapper: oidc-user-attribute-idp-mapper
-       name: group-attribute
-       realmSelector:
-         matchLabels:
-           realmName: <realm-name>
-   ```
-
-   - **`claim: groups`** specifies that the group claim from the token should be used.
-   - **`user.attribute: groups`** stores the group IDs in the `groups` attribute for the user in Keycloak.
-   - **`syncMode: FORCE`** forces Keycloak to overwrite any existing attribute value for a user with the latest value from the Identity Provider.
+    - Mapper Type: User Attribute
+    - User Attribute: groups
+    - Claim: groups
+    - Sync Mode: FORCE
 
    ![Keycloak IdP Mapper showing how the group IDs claim is mapped to the user attribute.](../images/keycloak-idp-mapper.png)
 
@@ -56,47 +38,23 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
 
 1. **Create ProtocolMapper:**
 
-   Use `ProtocolMapper` to configure the mapper that forwards the `groups` attribute (which contains group IDs) from the user's profile into the token. This ensures that Vault receives the group IDs when processing tokens.
 
-   ```yaml
-   apiVersion: client.keycloak.crossplane.io/v1alpha1
-   kind: ProtocolMapper
-   metadata:
-     name: <mapper-name>
-   spec:
-     deletionPolicy: Delete
-     forProvider:
-       clientIdSelector:
-         matchLabels:
-           clientName: vault
-           realmName: <realm-name>
-       config:
-         jsonType.label: String
-         multivalued: 'true'
-         userinfo.token.claim: 'true'
-         introspection.token.claim: 'true'
-         id.token.claim: 'true'
-         user.attribute: groups
-         lightweight.claim: 'false'
-         claim.name: groups
-         access.token.claim: 'true'
-       name: groups-attribute
-       protocol: openid-connect
-       protocolMapper: oidc-usermodel-attribute-mapper
-       realmId: <realm-name>
-   ```
+    To configure the Protocol Mapper that forwards the groups attribute (containing group IDs) from the user's profile into the token, create a new mapper with the following settings as shown in the image:
 
-   - **`user.attribute: groups`** forwards the `groups` attribute to the token.
-   - **`claim.name: groups`** specifies the claim name that Vault will use to retrieve the group IDs.
+      - Mapper Type: User Attribute
+      - User Attribute: groups
+      - Claim Name: groups
+      - Multivalued: true
+      - JSON Type Label: String
 
    ![Keycloak Vault client mapper showing the user attribute forwarded as a token claim](../images/vault-client-attribute-mapper.png)
 
 ### Step 4: Patch Tenant Spec with Microsoft Entra ID Group IDs for RBAC
 
-1. **Patch the Tenant Spec:**
+1. **Add group IDs:**
    - Modify the existing **Tenant** resource to include the Microsoft Entra ID group IDs under `accessControl`. This will ensure the correct group-based RBAC is applied for Vault.
 
-1. **Example Patch for Tenant Spec:**
+1. **Example Tenant Spec:**
    Here’s an example of how to patch the **Tenant** with the group ID from Microsoft Entra ID:
 
    ```yaml
