@@ -3720,6 +3720,7 @@ You're not viewing the latest version.
 <li>Microsoft Entra ID configured for OIDC.</li>
 <li>Keycloak setup with an Identity Provider (IdP) pointing to Microsoft Entra ID.</li>
 <li>HashiCorp Vault installed and configured.</li>
+<li><a href="enabling-multi-tenancy-vault.html">Vault Configured in IntegrationConfig</a></li>
 </ul>
 <h2 id="steps-to-implement-group-based-access-control-with-group-ids">Steps to Implement Group-Based Access Control with Group IDs<a class="headerlink" href="#steps-to-implement-group-based-access-control-with-group-ids" title="Permanent link">#</a></h2>
 <h3 id="step-1-configure-microsoft-entra-id-to-include-group-ids-in-tokens">Step 1: Configure Microsoft Entra ID to Include Group IDs in Tokens<a class="headerlink" href="#step-1-configure-microsoft-entra-id-to-include-group-ids-in-tokens" title="Permanent link">#</a></h3>
@@ -3738,75 +3739,36 @@ You're not viewing the latest version.
 <ol>
 <li><strong>Create Attribute Importer Mapper:</strong></li>
 </ol>
-<p>Use <code>IdentityProviderMapper</code> to configure the attribute importer that extracts the <strong>groups claim</strong> (containing group IDs) from the Microsoft Entra ID token and stores it in the <code>groups</code> attribute in Keycloak:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">identityprovider.keycloak.crossplane.io/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IdentityProviderMapper</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">groups-attribute</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">deletionPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Delete</span>
-<span class="w">  </span><span class="nt">forProvider</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">extraConfig</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">claim</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">groups</span>
-<span class="w">      </span><span class="nt">syncMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FORCE</span>
-<span class="w">      </span><span class="nt">user.attribute</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">groups</span>
-<span class="w">    </span><span class="nt">identityProviderAlias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;idp-alias&gt;</span>
-<span class="w">    </span><span class="nt">identityProviderMapper</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc-user-attribute-idp-mapper</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">group-attribute</span>
-<span class="w">    </span><span class="nt">realmSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">realmName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;realm-name&gt;</span>
-</code></pre></div>
-<ul>
-<li><strong><code>claim: groups</code></strong> specifies that the group claim from the token should be used.</li>
-<li><strong><code>user.attribute: groups</code></strong> stores the group IDs in the <code>groups</code> attribute for the user in Keycloak.</li>
-<li><strong><code>syncMode: FORCE</code></strong> forces Keycloak to overwrite any existing attribute value for a user with the latest value from the Identity Provider.</li>
-</ul>
+<p>To configure the groups claim from Microsoft Entra ID in Keycloak, create a new mapper with the following settings as shown in the image:</p>
+<pre><code>- Mapper Type: User Attribute
+- User Attribute: groups
+- Claim: groups
+- Sync Mode: FORCE
+</code></pre>
 <p><a class="glightbox" href="../images/keycloak-idp-mapper.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Keycloak IdP Mapper showing how the group IDs claim is mapped to the user attribute." src="../images/keycloak-idp-mapper.png" /></a></p>
 <h3 id="step-3-set-up-a-mapper-for-vault-client-in-keycloak">Step 3: Set Up a Mapper for Vault Client in Keycloak<a class="headerlink" href="#step-3-set-up-a-mapper-for-vault-client-in-keycloak" title="Permanent link">#</a></h3>
 <ol>
-<li><strong>Create ProtocolMapper:</strong></li>
-</ol>
-<p>Use <code>ProtocolMapper</code> to configure the mapper that forwards the <code>groups</code> attribute (which contains group IDs) from the user's profile into the token. This ensures that Vault receives the group IDs when processing tokens.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">client.keycloak.crossplane.io/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ProtocolMapper</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;mapper-name&gt;</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">deletionPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Delete</span>
-<span class="w">  </span><span class="nt">forProvider</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">clientIdSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">clientName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
-<span class="w">        </span><span class="nt">realmName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;realm-name&gt;</span>
-<span class="w">    </span><span class="nt">config</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">jsonType.label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">String</span>
-<span class="w">      </span><span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span>
-<span class="w">      </span><span class="nt">userinfo.token.claim</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span>
-<span class="w">      </span><span class="nt">introspection.token.claim</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span>
-<span class="w">      </span><span class="nt">id.token.claim</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span>
-<span class="w">      </span><span class="nt">user.attribute</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">groups</span>
-<span class="w">      </span><span class="nt">lightweight.claim</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;false&#39;</span>
-<span class="w">      </span><span class="nt">claim.name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">groups</span>
-<span class="w">      </span><span class="nt">access.token.claim</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">groups-attribute</span>
-<span class="w">    </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openid-connect</span>
-<span class="w">    </span><span class="nt">protocolMapper</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc-usermodel-attribute-mapper</span>
-<span class="w">    </span><span class="nt">realmId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;realm-name&gt;</span>
-</code></pre></div>
+<li>
+<p><strong>Create ProtocolMapper:</strong></p>
+<p>To configure the Protocol Mapper that forwards the groups attribute (containing group IDs) from the user's profile into the token, create a new mapper with the following settings as shown in the image:</p>
 <ul>
-<li><strong><code>user.attribute: groups</code></strong> forwards the <code>groups</code> attribute to the token.</li>
-<li><strong><code>claim.name: groups</code></strong> specifies the claim name that Vault will use to retrieve the group IDs.</li>
+<li>Mapper Type: User Attribute</li>
+<li>User Attribute: groups</li>
+<li>Claim Name: groups</li>
+<li>Multivalued: true</li>
+<li>JSON Type Label: String</li>
 </ul>
+</li>
+</ol>
 <p><a class="glightbox" href="../images/vault-client-attribute-mapper.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Keycloak Vault client mapper showing the user attribute forwarded as a token claim" src="../images/vault-client-attribute-mapper.png" /></a></p>
 <h3 id="step-4-patch-tenant-spec-with-microsoft-entra-id-group-ids-for-rbac">Step 4: Patch Tenant Spec with Microsoft Entra ID Group IDs for RBAC<a class="headerlink" href="#step-4-patch-tenant-spec-with-microsoft-entra-id-group-ids-for-rbac" title="Permanent link">#</a></h3>
 <ol>
-<li><strong>Patch the Tenant Spec:</strong></li>
+<li><strong>Add group IDs:</strong></li>
 <li>
 <p>Modify the existing <strong>Tenant</strong> resource to include the Microsoft Entra ID group IDs under <code>accessControl</code>. This will ensure the correct group-based RBAC is applied for Vault.</p>
 </li>
 <li>
-<p><strong>Example Patch for Tenant Spec:</strong>
+<p><strong>Example Tenant Spec:</strong>
    Here’s an example of how to patch the <strong>Tenant</strong> with the group ID from Microsoft Entra ID:</p>
 </li>
 </ol>
