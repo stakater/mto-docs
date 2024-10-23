@@ -86,7 +86,7 @@ More details on [Showback](./explanation/console.md#showback)
 
 Multi Tenant Operator can downscale Deployments and StatefulSets in a tenant's Namespace according to a defined  sleep schedule. The Deployments and StatefulSets are brought back to their required replicas according to the provided wake schedule.
 
-More details on [Hibernation](./tutorials/tenant/tenant-hibernation.md#hibernating-a-tenant)
+More details on [Hibernation](./tutorials/tenant/tenant-hibernation.md#hibernating-a-tenant) and [ResourceSupervisor](./crds-api-reference/resource-supervisor.md)
 
 ## Mattermost Multitenancy
 

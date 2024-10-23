@@ -5,7 +5,7 @@ Implementing hibernation for tenants' namespaces efficiently manages cluster res
 ## Configuring Hibernation for Tenant Namespaces
 
 You can manage workloads in your cluster with MTO by implementing a hibernation schedule for your tenants.
-Hibernation downsizes the running Deployments and StatefulSets in a tenant’s namespace according to a defined cron schedule. You can set a hibernation schedule for your tenants by adding the ‘spec.hibernation’ field to the tenant's respective Custom Resource.
+Hibernation downsizes the running `Deployments` and `StatefulSets` in a tenant’s namespace according to a defined cron schedule. You can set a hibernation schedule for your tenants by adding the ‘spec.hibernation’ field to the tenant's respective Custom Resource.
 
 ```yaml
 hibernation:
@@ -18,22 +18,18 @@ hibernation:
 `spec.hibernation.wakeSchedule` accepts a cron expression indicating the time to wake the workloads in your tenant’s namespaces up.
 
 !!! note
-    Both sleep and wake schedules must be specified for your Hibernation schedule to be valid.
+    Both sleep and wake schedules must be specified for your tenant's hibernation schedule to be valid.
 
 Additionally, adding the `hibernation.stakater.com/exclude: 'true'` annotation to a namespace excludes it from hibernating.
 
 !!! note
     This is only true for hibernation applied via the Tenant Custom Resource, and does not apply for hibernation done by manually creating a ResourceSupervisor (details about that below).
 
-!!! note
-    This will not wake up an already sleeping namespace before the wake schedule.
-
 ## Resource Supervisor
 
 Adding a Hibernation Schedule to a Tenant creates an accompanying ResourceSupervisor Custom Resource.
-The Resource Supervisor stores the Hibernation schedules and manages the current and previous states of all the applications, whether they are sleeping or awake.
 
-When the sleep timer is activated, the Resource Supervisor controller stores the details of your applications (including the number of replicas, configurations, etc.) in the applications' namespaces and then puts your applications to sleep. When the wake timer is activated, the controller wakes up the applications using their stored details.
+When the sleep timer is activated, the Resource Supervisor puts your applications to sleep and store their previous state. When the wake timer is activated, it uses the stored state to bring them back to running state.
 
 Enabling ArgoCD support for Tenants will also hibernate applications in the tenants' `appProjects`.
 
@@ -41,21 +37,27 @@ Enabling ArgoCD support for Tenants will also hibernate applications in the tena
 apiVersion: tenantoperator.stakater.com/v1beta1
 kind: ResourceSupervisor
 metadata:
-  name: sigma
+  name: sigma-tenant
 spec:
   argocd:
     appProjects:
-      - sigma
+      - sigma-tenant
     namespace: openshift-gitops
-  hibernation:
+  schedule:
     sleepSchedule: 42 * * * *
     wakeSchedule: 45 * * * *
+
   namespaces:
+    labelSelector:
+      matchLabels:
+        stakater.com/current-tenant: sigma
+      matchExpressions: {}
+    names:
     - tenant-ns1
     - tenant-ns2
 ```
 
-> Currently, Hibernation is available only for StatefulSets and Deployments.
+> Currently, Hibernation is available only for `StatefulSets` and `Deployments`.
 
 ### Manual creation of ResourceSupervisor
 
@@ -81,10 +83,15 @@ spec:
     appProjects:
       - sample-app-project
     namespace: openshift-gitops
-  hibernation:
+  schedule:
     sleepSchedule: 42 * * * *
     wakeSchedule: 45 * * * *
+
   namespaces:
+    labelSelector:
+      matchLabels: {}
+      matchExpressions: {}
+    names:
     - ns1
     - ns2
 ```
@@ -106,9 +113,10 @@ spec:
   hibernation:
     sleepSchedule: "0 20 * * 1-5"  # Sleep at 8 PM on weekdays
     wakeSchedule: "0 8 * * 1-5"    # Wake at 8 AM on weekdays
-  owners:
-    users:
-      - user@example.com
+  accessControl:
+    owners:
+      users:
+        - user@example.com
   quota: medium
   namespaces:
     withoutTenantPrefix:
@@ -133,21 +141,31 @@ The ResourceSupervisor will look like this at 'running' time (as per the schedul
 apiVersion: tenantoperator.stakater.com/v1beta1
 kind: ResourceSupervisor
 metadata:
-  name: example
+  finalizers:
+  - tenantoperator.stakater.com/resourcesupervisor
+  generation: 1
+  name: sigma
+  ownerReferences:
+  - apiVersion: tenantoperator.stakater.com/v1beta3
+    blockOwnerDeletion: true
+    controller: true
+    kind: Tenant
+    name: sigma
 spec:
   argocd:
     appProjects: []
-    namespace: ''
-  hibernation:
+    namespace: ""
+  namespaces:
+    names:
+    - stage
+    - build
+    - dev
+  schedule:
     sleepSchedule: 0 20 * * 1-5
     wakeSchedule: 0 8 * * 1-5
-  namespaces:
-    - build
-    - stage
-    - dev
 status:
   currentStatus: running
-  nextReconcileTime: '2022-10-12T20:00:00Z'
+  nextReconcileTime: "2024-06-10T20:00:00Z"
 ```
 
 The ResourceSupervisor will look like this at 'sleeping' time (as per the schedule):
@@ -161,24 +179,30 @@ spec:
   argocd:
     appProjects: []
     namespace: ''
-  hibernation:
+  schedule:
     sleepSchedule: 0 20 * * 1-5
     wakeSchedule: 0 8 * * 1-5
   namespaces:
-    - build
-    - stage
-    - dev
+    labelSelector:
+      matchLabels: {}
+      matchExpressions: {}
+    names:
+      - build
+      - stage
+      - dev
 status:
   currentStatus: sleeping
-  nextReconcileTime: '2022-10-13T08:00:00Z'
-  sleepingApplications:
-    - Namespace: build
-      kind: Deployment
-      name: example
+  nextReconcileTime: '2024-06-11T08:00:00Z'
+  sleepingNamespaces:
+  - Namespace: build
+    sleepingApplications:
+    - kind: Deployment
+      name: Example
       replicas: 3
-    - Namespace: stage
-      kind: Deployment
-      name: example
+  - Namespace: stage
+    sleepingApplications:
+    - kind: Deployment
+      name: Example
       replicas: 3
 ```
 
@@ -193,18 +217,23 @@ spec:
   argocd:
     appProjects: []
     namespace: ''
-  hibernation:
+  schedule:
     sleepSchedule: 0 20 * * 1-5
     wakeSchedule: 0 8 * * 1-5
   namespaces:
-    - stage
-    - dev
+    labelSelector:
+      matchLabels: {}
+      matchExpressions: {}
+    names:
+      - stage
+      - dev
 status:
   currentStatus: sleeping
-  nextReconcileTime: '2022-10-13T08:00:00Z'
-  sleepingApplications:
-    - Namespace: stage
-      kind: Deployment
+  nextReconcileTime: '2024-07-12T08:00:00Z'
+  sleepingNamespaces:
+  - Namespace: build
+    sleepingApplications:
+    - kind: Deployment
       name: example
       replicas: 3
 ```
@@ -226,18 +255,28 @@ spec:
     appProjects:
       - test-app-project
     namespace: argocd-ns
-  hibernation:
+  schedule:
     sleepSchedule: 0 20 * * 1-5
     wakeSchedule: 0 8 * * 1-5
   namespaces:
-    - ns2
-    - ns4
+    labelSelector:
+      matchLabels: {}
+      matchExpressions: {}
+    names:
+      - ns2
+      - ns4
 status:
   currentStatus: sleeping
   nextReconcileTime: '2022-10-13T08:00:00Z'
-  sleepingApplications:
-    - Namespace: ns2
-      kind: Deployment
+  sleepingNamespaces:
+  - Namespace: build
+    sleepingApplications:
+    - kind: Deployment
+      name: test-deployment
+      replicas: 3
+    - kind: Deployment
       name: test-deployment
       replicas: 3
 ```
+
+For more info see [here](../../crds-api-reference/resource-supervisor.md)
