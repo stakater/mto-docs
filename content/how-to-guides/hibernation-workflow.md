@@ -48,7 +48,7 @@ Unlike "SLEEP" tab, hibernate requires an interval to be selected in order to do
 - User can create a hibernation interval with custom schedules for when the namespace should enter sleep mode and when it should wake up.
 - The schedules should be a cron value as it will be reflected below the input.
 - The schedule name after creation will append the tenant name to it's end indicating the tenant it belongs to for clarification.
-- Each interval is defined by a **Sleep Schedule** and a **Wake Schedule** in cron format **(e.g., "30 ** * * *" for 30 minutes past each hour)**.
+- Each interval is defined by a **Sleep Schedule** and a **Wake Schedule** in cron format (e.g., `"30 * * * *"` for 30 minutes past each hour).
 
 ![createInterval](../images/createInterval.png)
 
