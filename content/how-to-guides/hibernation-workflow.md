@@ -23,7 +23,7 @@ The "SLEEP" tab is active, indicating that namespaces can be put into sleep mode
 
 - The interface shows the "NAME" option selected instead of "LABELS".
 - Labels selection here will act as a filter for the table rows and allow user to filter the namespaces based on the applied/selected labels.
-- This allows users to select the namespaces by their names idividually, after being filtered based on the labels filter.
+- This allows users to select the namespaces by their names individually, after being filtered based on the labels filter.
 - The filter input accepts namespace names or partial matches to narrow down the list. Here, two filters are applied:
     - ```text stakater.com/kind:flux-system```
     - ```text stakater.com/quota:saap-quota-large```
