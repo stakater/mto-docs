@@ -142,6 +142,196 @@ You're not viewing the latest version.
   .md-header--scroll .md-search__form {
     border: none;
   }
+
+  .md-header__external-nav-links {
+    display: none;
+  }
+
+  .md-header__drawer-hamburger-icon {
+    display: none;
+  }
+
+  @media (max-width: 320px) {
+    .md-icon svg {
+      height: 0.8rem;
+      width: 0.8rem;
+    }
+
+    .md-header__title {
+      font-size: 0.5rem;
+    }
+
+    .md-header__logo_light {
+      height: 1rem;
+      width: 1rem;
+    }
+
+    .md-header__logo_dark {
+      height: 1rem;
+      width: 1rem;
+    }
+
+    .md-version {
+      border: 1px solid rgba(255, 255, 255, 0.8) !important;
+      border-radius: 6px !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      margin: 0 8px !important;
+      height: 16px !important;
+      width: 3rem !important;
+    }
+
+    .md-version__current {
+      color: #fff;
+      margin: 1rem !important;
+      font-size: 12px !important;
+    }
+  }
+
+  @media (min-width: 321px) and (max-width: 375px) {
+    .md-icon svg {
+      height: 0.8rem;
+      width: 0.8rem;
+    }
+
+    .md-header__title {
+      font-size: 0.7rem;
+    }
+
+    .md-header__logo_light {
+      height: 1rem;
+      width: 1rem;
+    }
+
+    .md-header__logo_dark {
+      height: 1rem;
+      width: 1rem;
+    }
+
+
+    .md-version {
+      border: 1px solid rgba(255, 255, 255, 0.8) !important;
+      border-radius: 6px !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      margin: 0 8px !important;
+      height: 16px !important;
+      width: 3rem !important;
+    }
+
+    .md-version__current {
+      color: #fff;
+      margin: 1rem !important;
+      font-size: 12px !important;
+    }
+  }
+
+  @media (min-width: 376px) and (max-width: 425px) {
+    .md-icon svg {
+      height: 0.8rem;
+      width: 0.8rem;
+    }
+
+    .md-header__title {
+      font-size: 0.7rem;
+    }
+
+    .md-header__logo_light {
+      height: 1.2rem;
+      width: 1.2rem;
+    }
+
+    .md-header__logo_dark {
+      height: 1.2rem;
+      width: 1.2rem;
+    }
+
+    .md-version {
+      border: 1px solid rgba(255, 255, 255, 0.8) !important;
+      border-radius: 6px !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      margin: 0 8px !important;
+      height: 16px !important;
+      width: 3rem !important;
+    }
+
+    .md-version__current {
+      color: #fff;
+      margin: 1rem !important;
+      font-size: 12px !important;
+    }
+  }
+
+  @media (min-width: 426px) and (max-width: 768px) {
+    .md-header__title {
+      font-size: 0.9rem;
+    }
+
+    .md-header__logo_light {
+      height: 1.4rem;
+      width: 1.4rem;
+    }
+
+    .md-header__logo_dark {
+      height: 1.4rem;
+      width: 1.4rem;
+    }
+
+    .md-header__contained-nav-links-container {
+      display: none;
+    }
+
+    .md-header__external-nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top: 1px solid lightgray;
+      padding: 4px;
+    }
+
+    .md-header__drawer-hamburger-icon {
+      display: flex;
+    }
+
+    .md-version {
+      border: 1px solid rgba(255, 255, 255, 0.8) !important;
+      border-radius: 6px !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      margin: 0 3rem !important;
+      height: 32px !important;
+      width: 4rem !important;
+    }
+
+    .md-version__current {
+      color: #fff;
+      margin: 1rem !important;
+      font-size: 16px !important;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .md-header__contained-nav-links-container {
+      display: none;
+    }
+
+    .md-header__external-nav-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top: 1px solid lightgray;
+      padding: 4px;
+    }
+
+    .md-header__drawer-hamburger-icon {
+      display: flex;
+    }
+  }
 </style>
 
 <!-- Header -->
@@ -160,7 +350,9 @@ You're not viewing the latest version.
     <!-- Button to open drawer -->
     <label class="md-header__button md-icon" for="__drawer">
       
-      <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg> -->
+      <div class="md-header__drawer-hamburger-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      </div>
     </label>
 
     <!-- Header title -->
@@ -185,7 +377,8 @@ You're not viewing the latest version.
     </div>
 
     <!-- Nav links -->
-    <style>
+    <div class="md-header__contained-nav-links-container">
+      <style>
     .md-header__nav-links {
         display: flex;
         align-items: center;
@@ -292,6 +485,226 @@ You're not viewing the latest version.
         font-weight: 600;
         color: #EA7845;
     }
+
+    .dropdown-arrow-sm {
+        display: none;
+    }
+
+    .dropdown-arrow {
+        display: flex;
+    }
+
+    @media (max-width: 320px) {
+        .custom-anchor {
+            font-size: 8px;
+        }
+
+        .md-header-ul-li {
+            margin-right: 12px;
+        }
+
+        .dropdown-arrow {
+            display: none;
+        }
+
+        .dropdown-arrow-sm {
+            display: flex;
+        }
+
+        /* dropdown styles */
+        .offerings-dropdown {
+            height: fit-content;
+            width: auto;
+        }
+
+        .dropdown-content-container {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            width: max-content;
+        }
+
+        .dropdown-content-column {
+            flex: 1;
+            float: left;
+            width: 90%;
+            padding: 0px;
+        }
+
+        .dropdown-content-column-title {
+            font-size: 8px;
+            font-weight: 600;
+            color: #EA7845;
+        }
+
+        .dropdown-content-anchor-container {
+            margin: 0.3rem 0;
+        }
+
+        .dropdown-item-link-text {
+            font-size: 8px;
+        }
+
+        .dropdown-content-dev-links {
+            width: 100%;
+            margin: 0.2rem 0;
+            padding: 0px;
+        }
+
+        .dropdown-content-dev-links-anchor-container {
+            margin: 0.5rem 0;
+        }
+
+        .dropdown-content-dev-links-anchor {
+            font-size: 10px;
+        }
+    }
+
+    @media (min-width: 321px) and (max-width: 375px) {
+        .custom-anchor {
+            font-size: 8px;
+        }
+
+        .dropdown-arrow {
+            display: none;
+        }
+
+        .dropdown-arrow-sm {
+            display: flex;
+        }
+
+        /* dropdown styles */
+        .offerings-dropdown {
+            height: fit-content;
+            width: auto;
+        }
+
+        .dropdown-content-container {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            width: max-content;
+        }
+
+        .dropdown-content-column {
+            flex: 1;
+            float: left;
+            width: 90%;
+            padding: 0px;
+        }
+
+        .dropdown-content-column-title {
+            font-size: 10px;
+            font-weight: 600;
+            color: #EA7845;
+        }
+
+        .dropdown-content-anchor-container {
+            margin: 0.3rem 0;
+        }
+
+        .dropdown-item-link-text {
+            font-size: 8px;
+        }
+
+        .dropdown-content-dev-links {
+            width: 100%;
+            margin: 0.2rem 0;
+            padding: 0px;
+        }
+
+        .dropdown-content-dev-links-anchor-container {
+            margin: 0.5rem 0;
+        }
+
+        .dropdown-content-dev-links-anchor {
+            font-size: 10px;
+        }
+    }
+
+    @media (min-width: 376px) and (max-width: 425px) {
+        .custom-anchor {
+            font-size: 10px;
+        }
+
+        .dropdown-arrow {
+            display: none;
+        }
+
+        .dropdown-arrow-sm {
+            display: flex;
+        }
+
+        /* dropdown styles */
+        .offerings-dropdown {
+            height: fit-content;
+            width: auto;
+        }
+
+        .dropdown-content-container {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            width: max-content;
+        }
+
+        .dropdown-content-column {
+            flex: 1;
+            float: left;
+            width: 90%;
+            padding: 0px;
+        }
+
+        .dropdown-content-column-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #EA7845;
+        }
+
+        .dropdown-content-anchor-container {
+            margin: 0.5rem 0;
+        }
+
+        .dropdown-item-link-text {
+            font-size: 10px;
+        }
+
+        .dropdown-content-dev-links {
+            width: 100%;
+            margin: 0.2rem 0;
+            padding: 0px;
+        }
+
+        .dropdown-content-dev-links-anchor-container {
+            margin: 0.5rem 0;
+        }
+
+        .dropdown-content-dev-links-anchor {
+            font-size: 12px;
+        }
+    }
+
+    @media (min-width: 426px) and (max-width: 768px) {
+        .custom-anchor {
+            font-size: 10px;
+        }
+
+        .dropdown-arrow {
+            display: none;
+        }
+
+        .dropdown-arrow-sm {
+            display: flex;
+        }
+
+        .offerings-dropdown {
+            width: auto;
+        }
+
+        .dropdown-item-link-text {
+            font-size: 14px;
+        }
+    }
 </style>
 
 
@@ -302,11 +715,18 @@ You're not viewing the latest version.
 
         <li class="dropdown">
             <a class="custom-anchor" href="#">Offerings
-                &nbsp;<span>
+                &nbsp;
+                <span class="dropdown-arrow">
                     <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path class="down-arrow" fill-rule="evenodd" clip-rule="evenodd" d="M6.79566 7.04528C6.58472 7.25596 6.29878 7.37429 6.00066 7.37429C5.70253 7.37429 5.4166 7.25596 5.20566 7.04528L0.962158 2.80328C0.751211 2.59224 0.632742 2.30604 0.632813 2.00764C0.632883 1.70925 0.751487 1.4231 0.962533 1.21216C1.17358 1.00121 1.45978 0.882742 1.75817 0.882813C2.05657 0.882883 2.34271 1.00149 2.55366 1.21253L6.00066 4.65953L9.44766 1.21253C9.65974 1.0075 9.94386 0.893973 10.2388 0.896397C10.5338 0.89882 10.816 1.017 11.0247 1.22549C11.2334 1.43397 11.3518 1.71608 11.3545 2.01106C11.3573 2.30603 11.244 2.59026 11.0392 2.80253L6.79641 7.04603L6.79566 7.04528Z"/>
 </svg>
-                </span></a>
+                </span>
+                <span class="dropdown-arrow-sm">
+                    <svg width="8" height="6" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path class="down-arrow" fill-rule="evenodd" clip-rule="evenodd" d="M6.79566 7.04528C6.58472 7.25596 6.29878 7.37429 6.00066 7.37429C5.70253 7.37429 5.4166 7.25596 5.20566 7.04528L0.962158 2.80328C0.751211 2.59224 0.632742 2.30604 0.632813 2.00764C0.632883 1.70925 0.751487 1.4231 0.962533 1.21216C1.17358 1.00121 1.45978 0.882742 1.75817 0.882813C2.05657 0.882883 2.34271 1.00149 2.55366 1.21253L6.00066 4.65953L9.44766 1.21253C9.65974 1.0075 9.94386 0.893973 10.2388 0.896397C10.5338 0.89882 10.816 1.017 11.0247 1.22549C11.2334 1.43397 11.3518 1.71608 11.3545 2.01106C11.3573 2.30603 11.244 2.59026 11.0392 2.80253L6.79641 7.04603L6.79566 7.04528Z"/>
+</svg>
+                </span>
+            </a>
             <div class="dropdown-menu dropdown-content offerings-dropdown">
                 <div class="dropdown-content-container">
                     <!-- Column 1 -->
@@ -664,6 +1084,8 @@ You're not viewing the latest version.
     });
   });
 </script>
+    </div>
+
 
     <!-- Color palette toggle -->
     
@@ -792,6 +1214,715 @@ You're not viewing the latest version.
   </div>
 </div>
     
+  </nav>
+
+  <nav class="md-header__inner md-header__external-nav-links md-grid" aria-label="Header">
+    <style>
+    .md-header__nav-links {
+        display: flex;
+        align-items: center;
+    }
+
+    .md-header-ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    .md-header-ul-li {
+        margin-right: 20px;
+    }
+
+    .custom-anchor {
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+    }
+
+    .dropdown {
+        position: relative;
+        margin-right: 20px;
+    }
+
+    .offerings-dropdown {
+        width: max-content;
+        height: max-content;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 4px;
+        margin: 12px 0px;
+        padding: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .more-dropdown {
+        width: 6rem;
+        height: 4rem;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 4px;
+        margin: 12px 0px;
+        padding: 14px;
+    }
+
+    .dropdown-content-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .dropdown-content-column {
+        flex: 1;
+        float: left;
+        width: 25%;
+        padding: 10px;
+    }
+
+    .dropdown-content-column-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #EA7845;
+    }
+
+    .dropdown-content-anchor-container {
+        margin: 1rem 0;
+    }
+
+    .disabled-anchor {
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .dropdown-content-dev-links {
+        flex: 1;
+        float: left;
+        width: 25%;
+        padding: 10px;
+        margin: 1rem 0;
+    }
+
+    .dropdown-content-dev-links-anchor-container {
+        display: flex;
+        justify-content: space-between;
+        margin: 1rem 0;
+    }
+
+    .dropdown-content-dev-links-anchor {
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        color: #EA7845;
+    }
+
+    .dropdown-arrow-sm {
+        display: none;
+    }
+
+    .dropdown-arrow {
+        display: flex;
+    }
+
+    @media (max-width: 320px) {
+        .custom-anchor {
+            font-size: 8px;
+        }
+
+        .md-header-ul-li {
+            margin-right: 12px;
+        }
+
+        .dropdown-arrow {
+            display: none;
+        }
+
+        .dropdown-arrow-sm {
+            display: flex;
+        }
+
+        /* dropdown styles */
+        .offerings-dropdown {
+            height: fit-content;
+            width: auto;
+        }
+
+        .dropdown-content-container {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            width: max-content;
+        }
+
+        .dropdown-content-column {
+            flex: 1;
+            float: left;
+            width: 90%;
+            padding: 0px;
+        }
+
+        .dropdown-content-column-title {
+            font-size: 8px;
+            font-weight: 600;
+            color: #EA7845;
+        }
+
+        .dropdown-content-anchor-container {
+            margin: 0.3rem 0;
+        }
+
+        .dropdown-item-link-text {
+            font-size: 8px;
+        }
+
+        .dropdown-content-dev-links {
+            width: 100%;
+            margin: 0.2rem 0;
+            padding: 0px;
+        }
+
+        .dropdown-content-dev-links-anchor-container {
+            margin: 0.5rem 0;
+        }
+
+        .dropdown-content-dev-links-anchor {
+            font-size: 10px;
+        }
+    }
+
+    @media (min-width: 321px) and (max-width: 375px) {
+        .custom-anchor {
+            font-size: 8px;
+        }
+
+        .dropdown-arrow {
+            display: none;
+        }
+
+        .dropdown-arrow-sm {
+            display: flex;
+        }
+
+        /* dropdown styles */
+        .offerings-dropdown {
+            height: fit-content;
+            width: auto;
+        }
+
+        .dropdown-content-container {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            width: max-content;
+        }
+
+        .dropdown-content-column {
+            flex: 1;
+            float: left;
+            width: 90%;
+            padding: 0px;
+        }
+
+        .dropdown-content-column-title {
+            font-size: 10px;
+            font-weight: 600;
+            color: #EA7845;
+        }
+
+        .dropdown-content-anchor-container {
+            margin: 0.3rem 0;
+        }
+
+        .dropdown-item-link-text {
+            font-size: 8px;
+        }
+
+        .dropdown-content-dev-links {
+            width: 100%;
+            margin: 0.2rem 0;
+            padding: 0px;
+        }
+
+        .dropdown-content-dev-links-anchor-container {
+            margin: 0.5rem 0;
+        }
+
+        .dropdown-content-dev-links-anchor {
+            font-size: 10px;
+        }
+    }
+
+    @media (min-width: 376px) and (max-width: 425px) {
+        .custom-anchor {
+            font-size: 10px;
+        }
+
+        .dropdown-arrow {
+            display: none;
+        }
+
+        .dropdown-arrow-sm {
+            display: flex;
+        }
+
+        /* dropdown styles */
+        .offerings-dropdown {
+            height: fit-content;
+            width: auto;
+        }
+
+        .dropdown-content-container {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            width: max-content;
+        }
+
+        .dropdown-content-column {
+            flex: 1;
+            float: left;
+            width: 90%;
+            padding: 0px;
+        }
+
+        .dropdown-content-column-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #EA7845;
+        }
+
+        .dropdown-content-anchor-container {
+            margin: 0.5rem 0;
+        }
+
+        .dropdown-item-link-text {
+            font-size: 10px;
+        }
+
+        .dropdown-content-dev-links {
+            width: 100%;
+            margin: 0.2rem 0;
+            padding: 0px;
+        }
+
+        .dropdown-content-dev-links-anchor-container {
+            margin: 0.5rem 0;
+        }
+
+        .dropdown-content-dev-links-anchor {
+            font-size: 12px;
+        }
+    }
+
+    @media (min-width: 426px) and (max-width: 768px) {
+        .custom-anchor {
+            font-size: 10px;
+        }
+
+        .dropdown-arrow {
+            display: none;
+        }
+
+        .dropdown-arrow-sm {
+            display: flex;
+        }
+
+        .offerings-dropdown {
+            width: auto;
+        }
+
+        .dropdown-item-link-text {
+            font-size: 14px;
+        }
+    }
+</style>
+
+
+<nav class="md-header__nav-links">
+    <ul class="md-header-ul">
+        <li class="md-header-ul-li"><a class="custom-anchor" href="#">Documentation</a></li>
+        <li class="md-header-ul-li"><a class="custom-anchor" href="https://www.stakater.com/">Stakater Home</a></li>
+
+        <li class="dropdown">
+            <a class="custom-anchor" href="#">Offerings
+                &nbsp;
+                <span class="dropdown-arrow">
+                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path class="down-arrow" fill-rule="evenodd" clip-rule="evenodd" d="M6.79566 7.04528C6.58472 7.25596 6.29878 7.37429 6.00066 7.37429C5.70253 7.37429 5.4166 7.25596 5.20566 7.04528L0.962158 2.80328C0.751211 2.59224 0.632742 2.30604 0.632813 2.00764C0.632883 1.70925 0.751487 1.4231 0.962533 1.21216C1.17358 1.00121 1.45978 0.882742 1.75817 0.882813C2.05657 0.882883 2.34271 1.00149 2.55366 1.21253L6.00066 4.65953L9.44766 1.21253C9.65974 1.0075 9.94386 0.893973 10.2388 0.896397C10.5338 0.89882 10.816 1.017 11.0247 1.22549C11.2334 1.43397 11.3518 1.71608 11.3545 2.01106C11.3573 2.30603 11.244 2.59026 11.0392 2.80253L6.79641 7.04603L6.79566 7.04528Z"/>
+</svg>
+                </span>
+                <span class="dropdown-arrow-sm">
+                    <svg width="8" height="6" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path class="down-arrow" fill-rule="evenodd" clip-rule="evenodd" d="M6.79566 7.04528C6.58472 7.25596 6.29878 7.37429 6.00066 7.37429C5.70253 7.37429 5.4166 7.25596 5.20566 7.04528L0.962158 2.80328C0.751211 2.59224 0.632742 2.30604 0.632813 2.00764C0.632883 1.70925 0.751487 1.4231 0.962533 1.21216C1.17358 1.00121 1.45978 0.882742 1.75817 0.882813C2.05657 0.882883 2.34271 1.00149 2.55366 1.21253L6.00066 4.65953L9.44766 1.21253C9.65974 1.0075 9.94386 0.893973 10.2388 0.896397C10.5338 0.89882 10.816 1.017 11.0247 1.22549C11.2334 1.43397 11.3518 1.71608 11.3545 2.01106C11.3573 2.30603 11.244 2.59026 11.0392 2.80253L6.79641 7.04603L6.79566 7.04528Z"/>
+</svg>
+                </span>
+            </a>
+            <div class="dropdown-menu dropdown-content offerings-dropdown">
+                <div class="dropdown-content-container">
+                    <!-- Column 1 -->
+                    <div class="dropdown-content-column">
+                        <h3 class="dropdown-content-column-title">Products</h3>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/saap-kubernetes-openshift"
+                                class="dropdown-item-link-text hover-underline">Stakater
+                                App
+                                Agility
+                                Platform (SAAP)</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/mto" class="dropdown-item-link-text hover-underline">Multi
+                                Tenant
+                                Operator</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://docs.stakater.com/tronador"
+                                class="dropdown-item-link-text hover-underline">Tronador
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Column 2 -->
+                    <div class="dropdown-content-column">
+                        <h3 class="dropdown-content-column-title">Services</h3>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/kubernetes-consultancy"
+                                class="dropdown-item-link-text hover-underline">Kubernetes
+                                Consultancy</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/kubernetes-platform-assessment"
+                                class="dropdown-item-link-text hover-underline">Platform
+                                Assessment</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/openshift-as-a-service"
+                                class="dropdown-item-link-text hover-underline">OpenShift
+                                Consultancy</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/secure-your-kubernetes-infrastructure"
+                                class="dropdown-item-link-text hover-underline">Secret
+                                Management Service</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://www.stakater.com/kubernetes-consultancy"
+                                class="dropdown-item-link-text hover-underline">Platform
+                                Engineering</a>
+                        </div>
+                    </div>
+                    <!-- Column 3 -->
+                    <div class="dropdown-content-column">
+                        <h3 class="dropdown-content-column-title">Open Source</h3>
+
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://github.com/stakater/Reloader"
+                                class="dropdown-item-link-text hover-underline">Reloader</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://github.com/stakater/IngressMonitorController"
+                                class="dropdown-item-link-text hover-underline">IMC</a>
+                        </div>
+                        <div class="dropdown-content-anchor-container">
+                            <a href="https://github.com/stakater/forecastle"
+                                class="dropdown-item-link-text hover-underline">Forecastle</a>
+                        </div>
+                    </div>
+                    <!-- Column 4 -->
+                    <div class="dropdown-content-dev-links">
+                        <div class="dropdown-content-dev-links-anchor-container">
+                            <a href="https://github.com/stakater/" class="dropdown-content-dev-links-anchor">GitHub</a>
+                        </div>
+                        <div class="dropdown-content-dev-links-anchor-container">
+                            <a href="https://docs.stakater.com/"
+                                class="dropdown-content-dev-links-anchor">Documentation</a>
+                        </div>
+                        <div class="dropdown-content-dev-links-anchor-container">
+                            <a href="https://employee.stakater.com/" class="dropdown-content-dev-links-anchor">Employee
+                                Handbook</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li class="md-header-ul-li"><a class="custom-anchor" href="https://www.stakater.com/blog">Blog</a></li>
+        <li class="md-header-ul-li"><a class="custom-anchor" href="https://www.stakater.com/white-papers">White
+                Papers</a></li>
+
+        <!-- <li class="dropdown">
+            <a class="custom-anchor" href="#">More
+                &nbsp;<span> -->
+        <!-- <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path class="down-arrow" fill-rule="evenodd" clip-rule="evenodd" d="M6.79566 7.04528C6.58472 7.25596 6.29878 7.37429 6.00066 7.37429C5.70253 7.37429 5.4166 7.25596 5.20566 7.04528L0.962158 2.80328C0.751211 2.59224 0.632742 2.30604 0.632813 2.00764C0.632883 1.70925 0.751487 1.4231 0.962533 1.21216C1.17358 1.00121 1.45978 0.882742 1.75817 0.882813C2.05657 0.882883 2.34271 1.00149 2.55366 1.21253L6.00066 4.65953L9.44766 1.21253C9.65974 1.0075 9.94386 0.893973 10.2388 0.896397C10.5338 0.89882 10.816 1.017 11.0247 1.22549C11.2334 1.43397 11.3518 1.71608 11.3545 2.01106C11.3573 2.30603 11.244 2.59026 11.0392 2.80253L6.79641 7.04603L6.79566 7.04528Z"/>
+</svg> -->
+        <!-- </span></a>
+            <div class="dropdown-menu dropdown-content more-dropdown">
+                <a class="custom-anchor" href="#">Item 1</a>
+                <a class="custom-anchor" href="#">Item 2</a>
+            </div>
+        </li> -->
+    </ul>
+</nav>
+
+<script>
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "visible") {
+      initializeDropdowns();
+    }
+  });
+
+  // Function to initialize dropdowns
+  function initializeDropdowns() {
+    // Set Documentation link as highlighted by default
+    var documentationLink = document.querySelector(".md-header__nav-links .custom-anchor:first-child");
+    documentationLink.style.color = "#EA7845";
+    documentationLink.classList.add("active");
+
+    // Get all elements with class "dropdown"
+    var dropdowns = document.querySelectorAll(".dropdown");
+
+    // Add mouseenter and mouseleave event listeners to each dropdown
+    dropdowns.forEach(function (dropdown) {
+      var dropdownContent = dropdown.querySelector(".dropdown-content");
+
+      dropdownContent.style.display = "none";
+
+      dropdown.addEventListener("mouseenter", function () {
+        // Hide other dropdowns before showing this one
+        closeOtherDropdowns(dropdowns, dropdown);
+        dropdownContent.style.display = "grid";
+      });
+
+      dropdown.addEventListener("mouseleave", function () {
+        // Dropdown stays open on mouse leave
+      });
+    });
+
+    // Event listener to close dropdowns on clicking outside
+    document.addEventListener("click", function (event) {
+      var isDropdown = event.target.closest(".dropdown");
+      var isAnchor = event.target.closest(".md-header__nav-links .custom-anchor:not(.dropdown .custom-anchor)");
+
+      // Check if the click is outside the header content
+      if (!isDropdown && !isAnchor) {
+        closeDropdowns(dropdowns);
+      }
+    });
+  }
+
+  // Function to close all dropdowns
+  function closeDropdowns(dropdowns) {
+    dropdowns.forEach(function (dropdown) {
+      var dropdownContent = dropdown.querySelector(".dropdown-content");
+      dropdownContent.style.display = "none";
+    });
+  }
+
+  // Function to close other dropdowns except the current one
+  function closeOtherDropdowns(dropdowns, currentDropdown) {
+    dropdowns.forEach(function (otherDropdown) {
+      var otherDropdownContent = otherDropdown.querySelector(".dropdown-content");
+      if (otherDropdown !== currentDropdown && otherDropdownContent.style.display === "grid") {
+        otherDropdownContent.style.display = "none";
+      }
+    });
+  }
+
+  // Call the function immediately on page load
+  initializeDropdowns();
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var customAnchorTags = document.querySelectorAll(".custom-anchor");
+    var dropdownAnchorTags = document.querySelectorAll(".dropdown .custom-anchor");
+    var documentationLink = document.querySelector(".md-header__nav-links .custom-anchor:first-child");
+    var anchorTags = document.querySelectorAll(".md-header__nav-links .custom-anchor:not(.dropdown .custom-anchor)");
+
+    // Function to reset all anchor tags (except Documentation) to default color
+    function resetAnchorColors() {
+      anchorTags.forEach(function (anchor) {
+        if (anchor !== documentationLink) {
+          anchor.style.color = "";
+          anchor.classList.remove("active");
+        }
+      });
+      dropdownAnchorTags.forEach(function (dropdownAnchor) {
+        dropdownAnchor.style.color = "";
+        dropdownAnchor.classList.remove("active");
+      })
+    }
+
+    // Highlight Documentation link by default
+    function highlightDocumentationLink() {
+      resetAnchorColors();
+      documentationLink.style.color = "#EA7845";
+      documentationLink.classList.add("active");
+    }
+
+    // Reset all anchor colors to default on page load
+    highlightDocumentationLink();
+
+    // Highlight anchor tag on click and on mouseenter, remove highlighting on mouseleave
+    anchorTags.forEach(function (anchor) {
+      anchor.addEventListener("click", function () {
+        // Reset all anchor colors to default
+        resetAnchorColors();
+
+        // Highlight the clicked anchor
+        anchor.style.color = "#EA7845";
+        anchor.classList.add("active");
+      });
+
+      anchor.addEventListener("mouseenter", function () {
+        // Highlight on mouse enter if not already active
+        if (!anchor.classList.contains("active")) {
+          anchor.style.color = "#EA7845";
+        }
+      });
+
+      anchor.addEventListener("mouseleave", function () {
+        // Check if the anchor is active before removing highlighting on mouse leave
+        if (!anchor.classList.contains("active")) {
+          anchor.style.color = "";
+        }
+      });
+    });
+
+    // Highlight Documentation link when returning to the page
+    window.addEventListener("focus", function () {
+      highlightDocumentationLink();
+    });
+
+    // Function to show or hide nav links based on scroll position
+    function toggleNavLinksVisibility() {
+      var scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+      // Check if the scroll position is at the top
+      if (scrollPosition === 0) {
+        // Set the visibility of customAnchorTags and anchorTags to ' '
+        anchorTags.forEach(function (anchor) {
+          anchor.style.display = '';
+        });
+        customAnchorTags.forEach(function (customAnchor) {
+          customAnchor.style.display = '';
+        });
+      } else {
+        // Otherwise, hide them
+        anchorTags.forEach(function (anchor) {
+          anchor.style.display = 'none';
+        });
+        customAnchorTags.forEach(function (customAnchor) {
+          customAnchor.style.display = 'none';
+        });
+      }
+    }
+
+    // Event listener for scroll events
+    window.addEventListener("scroll", function () {
+      toggleNavLinksVisibility();
+    });
+
+    // Event listener for footer anchor tags to prevent default behavior
+    var footerLinks = document.querySelectorAll(".md-footer-col-link");
+    footerLinks.forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        // Set nav-links visibility to false when a footer link is clicked
+        anchorTags.forEach(function (anchor) {
+          anchor.style.display = 'none';
+        })
+        customAnchorTags.forEach(function (customAnchor) {
+          customAnchor.style.display = 'none';
+        })
+      });
+    });
+
+    // Highlight anchor tag on click and on mouseenter, remove highlighting on mouseleave
+    anchorTags.forEach(function (anchor) {
+      anchor.addEventListener("click", function () {
+        // Remove previous highlighting
+        anchorTags.forEach(function (otherAnchor) {
+          otherAnchor.style.color = "";
+          otherAnchor.classList.remove("active");
+        });
+
+        // Highlight the clicked anchor
+        anchor.style.color = "#EA7845";
+        anchor.classList.add("active");
+      });
+
+      anchor.addEventListener("mouseenter", function () {
+        // Highlight on mouse enter
+        anchor.style.color = "#EA7845";
+      });
+
+      anchor.addEventListener("mouseleave", function () {
+        // Check if the anchor is active before removing highlighting on mouse leave
+        if (!anchor.classList.contains("active")) {
+          anchor.style.color = "";
+        }
+      });
+    });
+
+    // Highlight dropdown links on click and on mouseenter, remove highlighting on mouseleave
+    var dropdownLinks = document.querySelectorAll(".md-header__nav-links .dropdown .custom-anchor");
+    dropdownLinks.forEach(function (dropdownLink) {
+      dropdownLink.addEventListener("click", function () {
+
+        // Remove previous highlighting only for dropdown links
+        dropdownLinks.forEach(function (otherLink) {
+          otherLink.style.color = "";
+          otherLink.classList.remove("active");
+        });
+
+        // Close all dropdowns when a dropdown link is clicked
+        closeDropdowns();
+      });
+
+      dropdownLink.addEventListener("mouseenter", function () {
+        // Highlight on mouse enter
+        dropdownLink.style.color = "#EA7845";
+      });
+
+      dropdownLink.addEventListener("mouseleave", function () {
+        // Check if the dropdown link is active before removing highlighting on mouse leave
+        if (!dropdownLink.classList.contains("active")) {
+          dropdownLink.style.color = "";
+          dropdownLink.classList.remove("active");
+        }
+      });
+    });
+
+    // Function to close all dropdowns
+    function closeDropdowns() {
+      dropdowns.forEach(function (dropdown) {
+        var dropdownContent = dropdown.querySelector(".dropdown-content");
+        dropdownContent.style.display = "none";
+      });
+      dropdownLinks.forEach(function (dropdownLink) {
+        dropdownLink.style.color = "";
+        dropdownLink.classList.remove("active");
+      });
+    }
+
+    // Event listener to close dropdowns on clicking outside
+    document.addEventListener("click", function (event) {
+      var isDropdown = event.target.closest(".dropdown");
+      var isAnchor = event.target.closest(".md-header__nav-links .custom-anchor:not(.dropdown .custom-anchor)");
+
+      // Check if the click is outside the header content
+      if (!isDropdown && !isAnchor) {
+        closeDropdowns();
+      }
+    });
+  });
+</script>
   </nav>
 
   <!-- Navigation tabs (sticky) -->
@@ -1850,6 +2981,27 @@ You're not viewing the latest version.
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hibernation-workflow.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hibernation Workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2051,6 +3203,27 @@ You're not viewing the latest version.
   
   <span class="md-ellipsis">
     Integrating External Keycloak
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="integrating-vault.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrating Vault and Keycloak with Microsoft Entra ID
   </span>
   
 
@@ -2375,6 +3548,27 @@ You're not viewing the latest version.
   
   <span class="md-ellipsis">
     Integration Config
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../crds-api-reference/resource-supervisor.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resource Supervisor
   </span>
   
 
@@ -2716,10 +3910,6 @@ The label will enable the <code>mto-mattermost-integration-operator</code> to cr
         flex: 3;
     }
 
-    .flex-0-8 {
-        flex: 0.8;
-    }
-
     .margin-left-1 {
         margin-left: 1rem;
     }
@@ -2728,21 +3918,209 @@ The label will enable the <code>mto-mattermost-integration-operator</code> to cr
         margin-bottom: 1rem;
     }
 
+    .margin-top-16 {
+        margin-top: 1rem;
+    }
+
     .footer-content-container {
         width: 100%;
         margin: 0 14%;
     }
+
+    .footer-columns-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer-copyrights-media-link-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .footer-location-info-container {
+        display: block;
+    }
+
+    .footer-copy-rights-policy-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    /* Media Queries for Responsiveness */
+    @media (min-width: 320px) and (max-width: 375px) {
+        .csa-logo-dark {
+            width: 80px;
+            height: 40px;
+        }
+
+        .csa-logo-dark {
+            width: 80px;
+            height: 40px;
+        }
+
+        .hc-logo-dark {
+            height: 40px;
+            width: 100px;
+        }
+
+        .hc-logo-light {
+            height: 40px;
+            width: 100px;
+        }
+
+        .flex-2,
+        .flex-1 {
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-content-container {
+            margin: 0 5%;
+        }
+
+        .footer-columns-container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+
+        .logo-footer-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .collaborations-img-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 8px 0;
+        }
+
+        .footer-location-info-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-copyrights-media-link-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-copy-rights-policy-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    @media (min-width: 376px) and (max-width: 425px) {
+        .csa-logo-dark {
+            width: 80px;
+            height: 40px;
+        }
+
+        .csa-logo-dark {
+            width: 80px;
+            height: 40px;
+        }
+
+        .hc-logo-dark {
+            height: 40px;
+            width: 100px;
+        }
+
+        .hc-logo-light {
+            height: 40px;
+            width: 100px;
+        }
+
+        .flex-2,
+        .flex-1 {
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-content-container {
+            margin: 0 5%;
+        }
+
+        .footer-columns-container {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+
+        .logo-footer-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .collaborations-img-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 8px 0;
+        }
+
+        .footer-location-info-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-copyrights-media-link-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-copy-rights-policy-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    @media (min-width: 426px) and (max-width: 768px) {
+        .md-footer-col-title {
+            font-size: 14px;
+        }
+
+        .md-footer-col-link {
+            font-size: 12px;
+        }
+
+        .margin-bottom-16 {
+            margin-bottom: 0.5rem;
+        }
+    }
 </style>
+
 
 <footer class="md-footer">
     <div class="md-footer__inner mlr-auto" aria-label="Footer" >
         <!-- Footer content container-->
         <div class="footer-content-container">
             <!-- Flex-container with columns -->
-            <div class="display-flex jscc">
+            <div class="footer-columns-container">
                 <!-- Column 1 -->
                 <div class="flex-2">
-                    <div>
+                    <div class="logo-footer-container">
                         
                         <img class="md-header__logo_light" src="../assets/images/footer-logo-light.png#only-light"
                             alt="logo" />
@@ -2752,23 +4130,30 @@ The label will enable the <code>mto-mattermost-integration-operator</code> to cr
                         
                     </div>
 
-                    <div class="display-flex">
-                        
-                        <img src="../assets/images/CSA_dark.png#only-dark" alt="CSA" />
-                        
-                        
-                        <img src="../assets/images/CSA_light.png#only-light" alt="CSA" />
-                        
+                    <div class="collaborations-img-container">
+                        <div class="display-flex">
+                            
+                            <img class="csa-logo-dark"
+                                src="../assets/images/CSA_dark.png#only-dark" alt="CSA" />
+                            
+                            
+                            <img class="csa-logo-light"
+                                src="../assets/images/CSA_light.png#only-light"
+                                alt="CSA" />
+                            
 
-                        
-                        <img src="../assets/images/HC_dark.png#only-dark" alt="HC" />
-                        
-                        
-                        <img src="../assets/images/HC_light.png#only-light" alt="HC" />
-                        
+                            
+                            <img class="hc-logo-dark" src="../assets/images/HC_dark.png#only-dark"
+                                alt="HC" />
+                            
+                            
+                            <img class="hc-logo-light"
+                                src="../assets/images/HC_light.png#only-light" alt="HC" />
+                            
+                        </div>
                     </div>
 
-                    <div class="display-block">
+                    <div class="footer-location-info-container">
                         <p class="md-footer-col-title"><b>
                                 Org#
                             </b>
@@ -2780,7 +4165,7 @@ The label will enable the <code>mto-mattermost-integration-operator</code> to cr
                         </p>
                     </div>
 
-                    <div class="display-block">
+                    <div class="footer-location-info-container">
                         <p class="md-footer-col-title"><b>
 
                                 Address
@@ -2933,10 +4318,10 @@ The label will enable the <code>mto-mattermost-integration-operator</code> to cr
             </div>
 
             <!-- Copy Rights and Social Media Links -->
-            <div class="display-flex jscsb">
+            <div class="footer-copyrights-media-link-container">
                 <!-- Column 1 -->
                 <div class="flex-3">
-                    <div class="display-flex jscfs items-center">
+                    <div class="footer-copy-rights-policy-container display-flex jscfs items-center">
                         <div>
                             <p class="md-footer-base-content">
                                 <b>
@@ -2980,7 +4365,7 @@ The label will enable the <code>mto-mattermost-integration-operator</code> to cr
                 </div> -->
                 <!-- <div class="flex-1"></div>
                 <div class="flex-1"></div> -->
-                <div class="flex-1">
+                <div class="flex-1 margin-top-16">
                     <!-- Social Links -->
                     <!-- vale off -->
                     <div class="display-flex jscsa">
