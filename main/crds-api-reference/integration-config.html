@@ -4334,7 +4334,7 @@ You're not viewing the latest version.
 <span class="w">    </span><span class="nt">groups</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer-reader</span>
-<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/worker=</span>
 <span class="w">    </span><span class="nt">namespaces</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
@@ -4362,14 +4362,14 @@ You're not viewing the latest version.
 <span class="w">    </span><span class="nt">vault</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="nt">authMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span><span class="w">      </span><span class="c1">#enum: {kubernetes:default, token}</span>
-<span class="w">      </span><span class="nt">accessInfo</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">accessInfo</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
 <span class="w">        </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://vault.apps.prod.abcdefghi.kubeapp.cloud/</span>
 <span class="w">        </span><span class="nt">roleName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
-<span class="w">        </span><span class="nt">secretRef</span><span class="p">:</span><span class="w">       </span>
+<span class="w">        </span><span class="nt">secretRef</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
 <span class="w">          </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
-<span class="w">      </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">config</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">ssoClient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
 </code></pre></div>
 <p>Following are the different components that can be used to configure multi-tenancy in a cluster via Multi Tenant Operator.</p>
@@ -4413,7 +4413,7 @@ You're not viewing the latest version.
 </li>
 </ul>
 <p>Here's an example of how to generate the secrets required to configure MTO:</p>
-<p><strong>TLS Secret for Ingress:</strong>  </p>
+<p><strong>TLS Secret for Ingress:</strong></p>
 <p>Create a TLS secret containing your SSL/TLS certificate and key for secure communication. This secret will be used for the Console, Gateway, and Keycloak ingresses.</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>tls<span class="w"> </span>&lt;tls-secret-name&gt;<span class="w"> </span>--key<span class="o">=</span>&lt;path-to-key.pem&gt;<span class="w"> </span>--cert<span class="o">=</span>&lt;path-to-cert.pem&gt;
 </code></pre></div>
@@ -4573,7 +4573,7 @@ You're not viewing the latest version.
 <p><code>privileged.serviceAccounts:</code> Contains the list of <code>ServiceAccounts</code> ignored by MTO. MTO will not manage the <code>ServiceAccounts</code> in this list. Values in this list are regex patterns. For example, to ignore all <code>ServiceAccounts</code> starting with the <code>system:serviceaccount:openshift-</code> prefix, we can use <code>^system:serviceaccount:openshift-.*</code>; and to ignore a specific service account like <code>system:serviceaccount:builder</code> service account we can use <code>^system:serviceaccount:builder$.</code></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code>stakater</code>, <code>stakater.</code> and <code>stakater.*</code> will have the same effect. To check out the combinations, go to <a href="https://regex101.com/">Regex101</a>, select Golang, and type your expected regex and test string.  </p>
+<p><code>stakater</code>, <code>stakater.</code> and <code>stakater.*</code> will have the same effect. To check out the combinations, go to <a href="https://regex101.com/">Regex101</a>, select Golang, and type your expected regex and test string.</p>
 </div>
 <h5 id="users">Users<a class="headerlink" href="#users" title="Permanent link">#</a></h5>
 <p><code>privileged.users:</code> Contains the list of <code>users</code> ignored by MTO. MTO will not manage the <code>users</code> in this list. Values in this list are regex patterns.</p>
@@ -4648,14 +4648,14 @@ You're not viewing the latest version.
 <span class="w">  </span><span class="nt">vault</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">authMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span><span class="w">      </span><span class="c1">#enum: {kubernetes:default, Token}</span>
-<span class="w">    </span><span class="nt">accessInfo</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">accessInfo</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
 <span class="w">      </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://vault.apps.prod.abcdefghi.kubeapp.cloud/</span>
 <span class="w">      </span><span class="nt">roleName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
-<span class="w">      </span><span class="nt">secretRef</span><span class="p">:</span><span class="w">       </span>
+<span class="w">      </span><span class="nt">secretRef</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
 <span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
-<span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">config</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">ssoClient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
 </code></pre></div>
 <h3 id="keycloak">Keycloak<a class="headerlink" href="#keycloak" title="Permanent link">#</a></h3>
@@ -4696,14 +4696,14 @@ You're not viewing the latest version.
 <div class="highlight"><pre><span></span><code><span class="nt">vault</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">authMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span><span class="w">      </span><span class="c1">#enum: {kubernetes:default, token}</span>
-<span class="w">  </span><span class="nt">accessInfo</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">accessInfo</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
 <span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://vault.apps.prod.abcdefghi.kubeapp.cloud/</span>
 <span class="w">    </span><span class="nt">roleName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
 <span class="w">    </span><span class="nt">secretRef</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
 <span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
-<span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">config</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ssoClient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
 </code></pre></div>
 <p>If enabled, then admins have to specify the <code>authMethod</code> to be used for authentication. MTO supports two authentication methods:</p>
