@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.0.x
+
+### v1.0.0
+
+#### Feature
+
+- Added capacity planning feature on MTO Console to view resource usage of tenants based in their request and limits.
+- Added hibernation feature on MTO Console to view and manage hibernated namespaces and hibernate/unhibernate namespaces.
+
 ## v0.12.x
 
 ### v0.12.19
