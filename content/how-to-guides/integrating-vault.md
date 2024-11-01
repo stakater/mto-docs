@@ -1,4 +1,4 @@
-# Vault OIDC Integration with Keycloak
+# Integrating Vault and Keycloak with Microsoft Entra ID
 
 This guide provides step-by-step instructions for integrating **Vault** with **Keycloak** using **Microsoft Entra ID** for OIDC-based authentication. The setup focuses on using **group IDs** for access control, as Microsoft Entra ID only provides group IDs in its tokens, not group names.
 
