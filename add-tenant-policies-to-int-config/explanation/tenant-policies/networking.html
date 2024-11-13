@@ -3742,7 +3742,7 @@ You're not viewing the latest version.
 <span class="w">        </span><span class="nt">network</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">disableIntraTenantNetworking</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-<p>The flags works by deploying a set of <code>NetworPolicies</code> for each tenant which filteres incomming traffic comming from another tenants namespace. It allows all other traffic.</p>
+<p>The flags works by deploying a set of <code>NetworPolicies</code> for each tenant which filters incoming traffic coming from another tenants namespace. It allows all other traffic.</p>
 <p>The <code>NetworkPolicy</code> is as follows:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkPolicy</span>
@@ -3752,7 +3752,7 @@ You're not viewing the latest version.
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">podSelector</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"> </span><span class="c1"># The rule selects all pods</span>
 <span class="w">  </span><span class="nt">policyTypes</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span><span class="w"> </span><span class="c1"># We only filter incomming traffic</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ingress</span><span class="w"> </span><span class="c1"># We only filter incoming traffic</span>
 <span class="w">  </span><span class="nt">ingress</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">from</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespaceSelector</span><span class="p">:</span>
@@ -3763,7 +3763,7 @@ You're not viewing the latest version.
 <span class="w">          </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">stakater.com/tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${tenant}</span>
 </code></pre></div>
-<h4 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">#</a></h4>
+<h3 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">#</a></h3>
 <p><a class="glightbox" href="../../images/disableIntraTenantNetworkingDemo.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Disable intra-tenant networking demo" src="../../images/disableIntraTenantNetworkingDemo.gif" /></a></p>
 
 
