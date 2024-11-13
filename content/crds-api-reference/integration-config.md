@@ -125,6 +125,9 @@ spec:
           namespace: ''
       config:
         ssoClient: vault
+  tenantPolicies:
+    network:
+      disableIntraTenantNetworking: true
 ```
 
 Following are the different components that can be used to configure multi-tenancy in a cluster via Multi Tenant Operator.
@@ -605,3 +608,26 @@ components:
 ```
 
 After modifying your default IntegrationConfig in `multi-tenant-operator` namespace, a configmap named `opencost-custom-pricing` will be updated. You will be able to see updated pricing info in `mto-console`.
+
+## TenantPolicies
+
+`tenantPolicies` contains settings to configure additional tenant isolation.
+
+```yaml
+tenantPolicies:
+  network:
+    disableIntraTenantNetworking: true
+```
+
+### Network
+
+Configure how tenants are allowed to communicate
+
+```yaml
+network:
+  disableIntraTenantNetworking: true
+```
+
+- `disableIntraTenantNetworking`: (Default false) Disallow tenants communicating with other tenants by deploying NetworkPolicies.
+
+> ⚠️ This will disable **only** intra-tenant networking. In cases requiring stricter filtering, this setting should be turned off and the stricter NetworkPolicies deployed through [Templates](template.md) or manually. If you need help with your enterprise environment, do not hesitate to [contact us.](https://www.stakater.com/contact-us)
