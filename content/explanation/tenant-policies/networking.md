@@ -1,10 +1,8 @@
 # Networking tenant policies
 
-The networking tenant policies limits how tenants can communicate with each other.
-
+The networking tenant policies limit how tenants can communicate with each other.
 
 ## Disable intra-tenant networking
-
 
 ```yaml title="Integration Configuration"
 apiVersion: v1beta1
@@ -14,10 +12,9 @@ spec:
     tenantPolicies:
         network:
             disableIntraTenantNetworking: true
-
 ```
 
-The flags works by deploying a set of `NetworPolicies` for each tenant which filteres incomming traffic comming from another tenants namespace. It allows all other traffic.
+The flag works by deploying a set of `NetworPolicies` for each tenant which filters incoming traffic coming from another tenants namespace. It allows all other traffic.
 
 The `NetworkPolicy` is as follows:
 
@@ -30,7 +27,7 @@ metadata:
 spec:
   podSelector: {} # The rule selects all pods
   policyTypes:
-    - Ingress # We only filter incomming traffic
+    - Ingress # We only filter incoming traffic
   ingress:
     - from:
       - namespaceSelector:
@@ -42,5 +39,6 @@ spec:
           stakater.com/tenant: ${tenant}
 ```
 
-#### Demo
+### Demo
+
 ![Disable intra-tenant networking demo](../../images/disableIntraTenantNetworkingDemo.gif)
