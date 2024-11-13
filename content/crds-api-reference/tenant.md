@@ -121,3 +121,13 @@ Controls the creation and management of namespaces within the tenant:
 `desc` provides a human-readable description of the tenant, aiding in documentation and at-a-glance understanding of the tenant's purpose and configuration.
 
 > ⚠️ If same label or annotation key is being applied using different methods provided, then the highest precedence will be given to `namespaces.metadata.specific` followed by `namespaces.metadata.common` and in the end would be the ones applied from `openshift.project.labels`/`openshift.project.annotations` in `IntegrationConfig`
+
+## Storage
+
+```yaml title="
+storage:
+  storageClassWhitelist:
+    - staging-fast
+    - shared
+```
+* `storageClassWhitelist` can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the whitelist. If `storageClass` is not specified for a PersistentVolumeClaim, the default StorageClass (if set) will be evaluated as any other class name. If the default storageClass is not set, the evaluation will be deferred until a default storageClass is set. `""` is evaluated as any other class name, so if you are using it to manually bind to PersistentVolumes while using storageClassWhitelist you need to add  an empty string `""` to the tenants whitelist or it will get filtered.
