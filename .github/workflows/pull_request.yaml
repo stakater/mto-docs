@@ -13,7 +13,12 @@ jobs:
       MD_CONFIG: .github/md_config.json
       DOC_SRC: content README.md
       MD_LINT_CONFIG: .markdownlint.yaml
+  deploy_doc:
+    uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@v0.0.103
+    secrets:
+      GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
   build_container:
+    needs: deploy_doc
     if: ${{ github.base_ref == 'main' }}
     uses: stakater/.github/.github/workflows/pull_request_container_build.yaml@v0.0.103
     with:
@@ -25,8 +30,3 @@ jobs:
       CONTAINER_REGISTRY_PASSWORD: ${{ secrets.GHCR_TOKEN }}
       SLACK_WEBHOOK_URL: ${{ secrets.STAKATER_DELIVERY_SLACK_WEBHOOK }}
       DOCKER_SECRETS: GIT_AUTH_TOKEN=${{ secrets.PUBLISH_TOKEN }}
-
-  deploy_doc:
-    uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@v0.0.103
-    secrets:
-      GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
