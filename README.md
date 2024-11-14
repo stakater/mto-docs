@@ -1,16 +1,22 @@
 # Multi Tenant Operator Documentation
 
-Documentation for [Multi Tenant Operator](https://www.stakater.com/mto)
+This repository contains the source for the documentation for [Multi Tenant Operator](https://www.stakater.com/mto). It is built using [MkDocs](https://github.com/mkdocs/mkdocs) which is based on Python. It is also versioned using [mike](https://github.com/jimporter/mike).
 
-SAAP docs are built using [MkDocs](https://github.com/mkdocs/mkdocs) which is based on Python.
+## Latest doc version
+
+Before deploying or deleting a version, make sure to specify the correct latest version in the workflow files.
+
+Make sure the latest doc version is also specified in the versioned branches.
 
 ## GitHub Actions
 
-This repository has GitHub action workflow which checks the quality of the documentation and builds the Dockerfile image on Pull Requests. On a push to the main branch, it will create a GitHub release and push the built Dockerfile image to an image repository.
+This repository has [GitHub action workflow](./.github/workflows/) which checks the quality of the documentation and builds the [`Dockerfile`](./Dockerfile) image on Pull Requests. On a push to the `main` branch, it will create a GitHub release and push the built image to an image repository.
 
 ## How to make changes
 
-It is important to know that you should only make changes in `theme_override` and `content` directory. Also, be mindful of which `mkdocs.yml` file you change since there are more than one such files.
+Fork the repository and make a pull request.
+
+For MkDocs overrides, it is important to know that you should only make changes in the [`theme_override`](./theme_override/) and the [`content`](./content/) directory. Also, be mindful of only changing the [`theme_override/mkdocs.yml`](./theme_override/mkdocs.yml) file since there are more than one such file.
 
 ## Take update on git submodule
 
@@ -20,11 +26,11 @@ This project contains a git submodule and if you wish to take an update on it, y
 git submodule update --init --recursive --remote
 ```
 
-view `.gitmodules` file to see linked git submodules.
+View the [`.gitmodules`](./.gitmodules) file to see linked git submodules.
 
 ## Build locally
 
-There are at least three options to get fast continuous feedback during local development:
+There are at least two options to get fast continuous feedback during local development:
 
 1. Build and run the docs using the Dockerfile image
 1. Run the commands locally
@@ -59,29 +65,25 @@ Then run below script to prepare theme from local and common theme resources. It
 ./prepare_theme.sh
 ```
 
-Finally, serve the docs using the built-in web server which is based on Python http server - note that the production build will use Nginx instead:
+Finally, serve the docs using the built-in web server which is based on Python http server - note that the production build will use `nginx` instead:
 
 ```bash
-mkdocs serve
+mike serve
 ```
 
 or
 
 ```bash
-python3 -m mkdocs serve
+python3 -m mike serve
 ```
 
-if you want to make theme changes with live reload, you can use `--watch-theme` with serve like below:
-
-```bash
-mkdocs serve --watch-theme
-```
-
-Then, you can make changes in `content` or `dist/_theme` folder. Please note that `dist/_theme` is a build folder and any changes made here will be lost if you do not move them to theme_common or theme_override folder.
+Then, you can make changes in `content` or `dist/_theme` folder. Please note that `dist/_theme` is a build folder and any changes made here will be lost if you do not move them to the `theme_common` or the `theme_override` folder.
 
 ### QA Checks
 
-Markdown linting:
+You can run QA checks locally. They are also run as part of pull request builds.
+
+To run markdown linting:
 
 ```bash
 brew install markdownlint-cli
@@ -94,12 +96,4 @@ Spell checking:
 brew install vale
 vale sync
 vale content
-```
-
-## Use Tilt
-
-Install [Tilt](https://docs.tilt.dev/index.html), then run:
-
-```bash
-tilt up
 ```
