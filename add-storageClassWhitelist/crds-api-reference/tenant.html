@@ -3983,10 +3983,10 @@ You're not viewing the latest version.
 <h2 id="storage">Storage<a class="headerlink" href="#storage" title="Permanent link">#</a></h2>
 <p><code>yaml title="
 storage:
-  storageClassWhitelist:
+  allowedStorageClasses:
     - staging-fast
     - shared</code>
-* <code>storageClassWhitelist</code> can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the whitelist. If <code>storageClass</code> is not specified for a PersistentVolumeClaim, the default StorageClass (if set) will be evaluated as any other class name. If the default storageClass is not set, the evaluation will be deferred until a default storageClass is set. <code>""</code> is evaluated as any other class name, so if you are using it to manually bind to PersistentVolumes while using storageClassWhitelist you need to add  an empty string <code>""</code> to the tenants whitelist or it will get filtered.</p>
+* <code>allowedStorageClasses</code> can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the list. If <code>storageClass</code> is not specified for a PersistentVolumeClaim, the default StorageClass (if set) will be evaluated as any other class name. If the default storageClass is not set, the evaluation will be deferred until a default storageClass is set. <code>""</code> is evaluated as any other class name, so if you are using it to manually bind to PersistentVolumes while using storageClass filtering you need to add  an empty string <code>""</code> to the tenants allowedStorageClasses-list or it will get filtered.</p>
 
 
 
