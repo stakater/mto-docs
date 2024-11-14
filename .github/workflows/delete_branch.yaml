@@ -4,6 +4,8 @@ on: delete
 
 jobs:
   delete:
-    uses: stakater/.github/.github/workflows/branch_deleted.yaml@v0.0.98
+    uses: stakater/.github/.github/workflows/branch_deleted.yaml@v0.0.101
+    with:
+      LATEST_DOC_VERSION: "1.0"
     secrets:
       GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
