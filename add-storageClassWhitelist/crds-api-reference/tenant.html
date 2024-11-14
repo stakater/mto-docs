@@ -3981,12 +3981,14 @@ You're not viewing the latest version.
 <p>⚠️ If same label or annotation key is being applied using different methods provided, then the highest precedence will be given to <code>namespaces.metadata.specific</code> followed by <code>namespaces.metadata.common</code> and in the end would be the ones applied from <code>openshift.project.labels</code>/<code>openshift.project.annotations</code> in <code>IntegrationConfig</code></p>
 </blockquote>
 <h2 id="storage">Storage<a class="headerlink" href="#storage" title="Permanent link">#</a></h2>
-<p><code>yaml title="
+<p><code>yaml title="tenant.yaml".
 storage:
   allowedStorageClasses:
     - staging-fast
-    - shared</code>
-* <code>allowedStorageClasses</code> can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the list. If <code>storageClass</code> is not specified for a PersistentVolumeClaim, the default StorageClass (if set) will be evaluated as any other class name. If the default storageClass is not set, the evaluation will be deferred until a default storageClass is set. <code>""</code> is evaluated as any other class name, so if you are using it to manually bind to PersistentVolumes while using storageClass filtering you need to add  an empty string <code>""</code> to the tenants allowedStorageClasses-list or it will get filtered.</p>
+    - shared</code></p>
+<ul>
+<li><code>allowedStorageClasses</code> can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the list. If <code>storageClass</code> is not specified for a PersistentVolumeClaim, the default StorageClass (if set) will be evaluated as any other class name. If the default StorageClass is not set, the evaluation will be deferred until a default StorageClass is set. <code>""</code> is evaluated as any other class name, so if you are using it to manually bind to PersistentVolumes while using StorageClass filtering you need to add  an empty string <code>""</code> to the tenants allowedStorageClasses-list or it will get filtered.</li>
+</ul>
 
 
 
