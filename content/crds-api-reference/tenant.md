@@ -125,10 +125,10 @@ Controls the creation and management of namespaces within the tenant:
 ## Storage
 
 ```yaml title="tenant.yaml".
-storage:
-  allowedStorageClasses:
+storageClass:
+  allowed:
     - staging-fast
     - shared
 ```
 
-* `allowedStorageClasses` can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the list. If `storageClass` is not specified for a PersistentVolumeClaim, the default StorageClass (if set) will be evaluated as any other class name. If the default StorageClass is not set, the evaluation will be deferred until a default StorageClass is set. `""` is evaluated as any other class name, so if you are using it to manually bind to PersistentVolumes while using StorageClass filtering you need to add  an empty string `""` to the tenants allowedStorageClasses-list or it will get filtered.
+* `allowed` can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the list. If `storageClass` is not specified for a PersistentVolumeClaim, the default StorageClass (if set) will be evaluated as any other class name. If the default StorageClass is not set, the evaluation will be deferred until a default StorageClass is set. `""` is evaluated as any other class name, so if you are using it to manually bind to PersistentVolumes while using StorageClass filtering you need to add  an empty string `""` to the tenants allow-list or it will get filtered.
