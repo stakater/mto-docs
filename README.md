@@ -11,7 +11,7 @@ This repository has [GitHub action workflow](./.github/workflows/) which checks 
 1. Fork the repository
 1. Make a pull request
 1. Workflow will run QA checks, make sure all jobs have succeeded before requesting a review
-1. Pull requests builds are published for review on [`stakater.github.io/mto-docs/latest/`](https://stakater.github.io/mto-docs/latest/)
+1. Pull requests builds are published for review on `https://stakater.github.io/mto-docs/<branch-name>/`
 1. On merge of a pull request, the documentation is published on [`docs.stakater.com/mto/`](https://docs.stakater.com/mto/)
 
 > [!NOTE]
@@ -26,9 +26,9 @@ This repository has [GitHub action workflow](./.github/workflows/) which checks 
 > [!NOTE]
 > Make sure the latest doc version is also specified in the versioned branches.
 
-## Take update on git submodule
+### Update git submodule
 
-This project contains a git submodule and if you wish to take an update on it, you can use this command:
+This project contains a git submodule and if you need to update it, use this command:
 
 ```bash
 git submodule update --init --recursive --remote
@@ -98,7 +98,7 @@ brew install markdownlint-cli
 markdownlint -c .markdownlint.yaml content
 ```
 
-Spell checking:
+To run spell checking:
 
 ```bash
 brew install vale
