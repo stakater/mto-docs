@@ -11,7 +11,7 @@ This repository has [GitHub action workflow](./.github/workflows/) which checks 
 1. Fork the repository
 1. Make a pull request
 1. Workflow will run QA checks, make sure all jobs have succeeded before requesting a review
-1. Pull requests builds are published for review on [`stakater.github.io/mto-docs/`](https://stakater.github.io/mto-docs/)
+1. Pull requests builds are published for review on [`stakater.github.io/mto-docs/latest/`](https://stakater.github.io/mto-docs/latest/)
 1. On merge of a pull request, the documentation is published on [`docs.stakater.com/mto/`](https://docs.stakater.com/mto/)
 
 > [!NOTE]
