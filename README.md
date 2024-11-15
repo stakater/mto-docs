@@ -2,21 +2,29 @@
 
 This repository contains the source for the documentation for [Multi Tenant Operator](https://www.stakater.com/mto). It is built using [MkDocs](https://github.com/mkdocs/mkdocs) which is based on Python. It is also versioned using [mike](https://github.com/jimporter/mike).
 
-## Latest doc version
-
-Before deploying or deleting a version, make sure to specify the correct latest version in the workflow files.
-
-Make sure the latest doc version is also specified in the versioned branches.
-
 ## GitHub Actions
 
 This repository has [GitHub action workflow](./.github/workflows/) which checks the quality of the documentation and builds the [`Dockerfile`](./Dockerfile) image on Pull Requests. On a push to the `main` branch, it will create a GitHub release and push the built image to an image repository.
 
 ## How to make changes
 
-Fork the repository and make a pull request.
+1. Fork the repository
+1. Make a pull request
+1. Workflow will run QA checks, make sure all are green before requesting a review
+1. Pull requests builds are published for review on [stakater.github.io/mto-docs/](https://stakater.github.io/mto-docs/)
+1. On merge of a pull request, the documentation is published on [docs.stakater.com/mto/](https://docs.stakater.com/mto/)
 
-For MkDocs overrides, it is important to know that you should only make changes in the [`theme_override`](./theme_override/) and the [`content`](./content/) directory. Also, be mindful of only changing the [`theme_override/mkdocs.yml`](./theme_override/mkdocs.yml) file since there are more than one such file.
+> [!NOTE]
+> For MkDocs overrides, it is important to know that you should only make changes in the [`theme_override`](./theme_override/) and the [`content`](./content/) directory.
+>
+> [!NOTE]
+> Be mindful of only changing the [`theme_override/mkdocs.yml`](./theme_override/mkdocs.yml) file since there are more than one such file.
+>
+> [!NOTE]
+> Before deploying or deleting a version, make sure to specify the correct latest version in the workflow files.
+>
+> [!NOTE]
+> Make sure the latest doc version is also specified in the versioned branches.
 
 ## Take update on git submodule
 
