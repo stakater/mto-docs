@@ -1537,6 +1537,70 @@ This documentation comes from a pull request build and is unreleased, it is only
   
   
   
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tenant Policies
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Tenant Policies
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explanation/tenant-policies/networking.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Networking tenant policies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../explanation/logs-metrics.html" class="md-nav__link">
         
@@ -2178,6 +2242,10 @@ This documentation comes from a pull request build and is unreleased, it is only
 <span class="w">          </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">specific-annotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">specific-dev-value</span>
 <span class="w">  </span><span class="nt">desc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">tenant</span><span class="nv"> </span><span class="s">setup</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">v1beta3</span><span class="nv"> </span><span class="s">version.&quot;</span>
+<span class="w">  </span><span class="nt">storageClass</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">staging</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
 </code></pre></div>
 <h2 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">#</a></h2>
 <p>Structured access control is critical for managing roles and permissions within a tenant effectively. It divides users into three categories, each with customizable privileges. This design enables precise role-based access management.  </p>
@@ -2229,13 +2297,13 @@ This documentation comes from a pull request build and is unreleased, it is only
 <p>⚠️ If same label or annotation key is being applied using different methods provided, then the highest precedence will be given to <code>namespaces.metadata.specific</code> followed by <code>namespaces.metadata.common</code> and in the end would be the ones applied from <code>openshift.project.labels</code>/<code>openshift.project.annotations</code> in <code>IntegrationConfig</code></p>
 </blockquote>
 <h2 id="storage">Storage<a class="headerlink" href="#storage" title="Permanent link">#</a></h2>
-<p><code>yaml title="tenant.yaml".
-storage:
-  allowedStorageClasses:
-    - staging-fast
-    - shared</code></p>
+<div class="highlight"><pre><span></span><code><span class="nt">storageClass</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">allowed</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">staging-fast</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared</span>
+</code></pre></div>
 <ul>
-<li><code>allowedStorageClasses</code> can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the list. If <code>storageClass</code> is not specified for a PersistentVolumeClaim, the default StorageClass (if set) will be evaluated as any other class name. If the default StorageClass is not set, the evaluation will be deferred until a default StorageClass is set. <code>""</code> is evaluated as any other class name, so if you are using it to manually bind to PersistentVolumes while using StorageClass filtering you need to add  an empty string <code>""</code> to the tenants allowedStorageClasses-list or it will get filtered.</li>
+<li><code>allowed</code> can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the list. If <code>storageClass</code> is not specified for a PersistentVolumeClaim, the default StorageClass (if set) will be evaluated as any other class name. If the default StorageClass is not set, the evaluation will be deferred until a default StorageClass is set. <code>""</code> is evaluated as any other class name, so if you are using it to manually bind to PersistentVolumes while using StorageClass filtering you need to add  an empty string <code>""</code> to the tenants allow-list or it will get filtered.</li>
 </ul>
 
 
