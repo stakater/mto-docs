@@ -17,13 +17,10 @@ This repository has [GitHub action workflow](./.github/workflows/) which checks 
 > [!NOTE]
 > For MkDocs overrides, it is important to know that you should only make changes in the [`theme_override`](./theme_override/) and the [`content`](./content/) directory.
 >
-> [!NOTE]
 > Be mindful of only changing the [`theme_override/mkdocs.yml`](./theme_override/mkdocs.yml) file since there are more than one such file.
 >
-> [!NOTE]
 > Before deploying or deleting a version, make sure to specify the correct latest version in the workflow files.
 >
-> [!NOTE]
 > Make sure the latest doc version is also specified in the versioned branches.
 
 ### Update git submodule

@@ -8,19 +8,19 @@ on:
 
 jobs:
   doc_qa:
-    uses: stakater/.github/.github/workflows/pull_request_doc_qa.yaml@v0.0.103
+    uses: stakater/.github/.github/workflows/pull_request_doc_qa.yaml@v0.0.104
     with:
       MD_CONFIG: .github/md_config.json
       DOC_SRC: content README.md
       MD_LINT_CONFIG: .markdownlint.yaml
   deploy_doc:
-    uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@v0.0.103
+    uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@v0.0.104
     secrets:
       GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
   build_container:
     needs: deploy_doc
     if: ${{ github.base_ref == 'main' }}
-    uses: stakater/.github/.github/workflows/pull_request_container_build.yaml@v0.0.103
+    uses: stakater/.github/.github/workflows/pull_request_container_build.yaml@v0.0.104
     with:
       DOCKER_BUILD_CONTEXTS: content=https://github.com/stakater/mto-docs.git#pull-request-deployments
       DOCKER_FILE_PATH: Dockerfile
