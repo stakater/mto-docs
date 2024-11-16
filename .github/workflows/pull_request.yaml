@@ -14,7 +14,7 @@ jobs:
       DOC_SRC: content README.md
       MD_LINT_CONFIG: .markdownlint.yaml
   deploy_doc:
-    uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@version-update
+    uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@v0.0.104
     secrets:
       GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
   build_container:
