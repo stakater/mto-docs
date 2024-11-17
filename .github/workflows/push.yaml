@@ -4,11 +4,11 @@ on:
   push:
     branches:
       - "main"
-      - "[0-9]+.[0-9]+"
+      - "^[0-9]+.[0-9]+$"
 
 jobs:
   push:
-    uses: stakater/.github/.github/workflows/push_versioned_doc.yaml@v0.0.103
+    uses: stakater/.github/.github/workflows/push_versioned_doc.yaml@v0.0.105
     with:
       LATEST_DOC_VERSION: "1.0"
     secrets:
