@@ -3804,13 +3804,13 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Bill is a cluster admin running Azure Kubernetes Service that wants to make sure that specific tenants are restricted to use a certain set of nodes. To do this he can apply annotations defining a tenants namespaces <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector">nodeSelectors</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<h4 id="about-setting-nodeselector-on-namespace">About setting nodeSelector on namespace<a class="headerlink" href="#about-setting-nodeselector-on-namespace" title="Permanent link">#</a></h4>
+<h4 id="about-setting-nodeselector-on-namespace">About setting <code>nodeSelector</code> on namespace<a class="headerlink" href="#about-setting-nodeselector-on-namespace" title="Permanent link">#</a></h4>
 <p>For Kubernetes deployments  <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podnodeselector">PodNodeSelector admission controller</a> that is enabled by default in AKS but needs to be <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#how-do-i-turn-on-an-admission-controller">manually enabled</a> otherwise.</p>
 <p>The annotation is <code>scheduler.alpha.kubernetes.io/node-selector</code></p>
 <p>For OpenShift there is a similar feature that works by setting the annotation <code>openshift.io/node-selector</code>.</p>
 </div>
-<p>Bill needs to select what label he wants to use as a nodeSelector. In this case he wants to limit the <code>staging</code> tenant to only use nodes with label <code>agentpool</code> set to <code>small-pool</code>.</p>
-<p>Bill adds the nodeSelector annotation to all the namespaces for his <code>staging</code> tenant.</p>
+<p>Bill needs to select what label he wants to use as a node selector. In this case he wants to limit the <code>staging</code> tenant to only use nodes with label <code>agentpool</code> set to <code>small-pool</code>.</p>
+<p>Bill adds the node selector annotation to all the namespaces for his <code>staging</code> tenant.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>We have used the label <code>agentpool</code> in this example because it also demonstrates how one can limit a specific tenant to a certain <a href="https://learn.microsoft.com/en-us/azure/aks/create-node-pools">node pool in AKS</a> (<code>small-pool</code> in this case). Similar concepts exist for most cloud providers, but the exact labels might differ, consult your providers documentation for more details.</p>
