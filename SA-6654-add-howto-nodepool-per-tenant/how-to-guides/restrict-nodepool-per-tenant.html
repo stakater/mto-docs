@@ -3801,7 +3801,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <blockquote>
 <p>Available on OpenShift, Azure Kubernetes Service and self-hosted Kubernetes (where you have access to <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers">enable non-default admission controllers</a>)</p>
 </blockquote>
-<p>Bill is a cluster admin running Azure Kubernetes Service that wants to make sure that specific tenants are restricted to use a certain set of nodes. To do this he can apply annotations defining a tenants namespaces <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector">nodeSelectors</a>.</p>
+<p>Bill is a cluster admin running Azure Kubernetes Service that wants to make sure that specific tenants are restricted to use a certain set of nodes. To do this he can apply annotations defining a tenants namespaces <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector"><code>nodeSelectors</code></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <h4 id="about-setting-nodeselector-on-namespace">About setting <code>nodeSelector</code> on namespace<a class="headerlink" href="#about-setting-nodeselector-on-namespace" title="Permanent link">#</a></h4>
@@ -3833,7 +3833,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </code></pre></div>
 <p>This will set the annotation to all the tenants namespaces which in turn tells the <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podnodeselector">PodNodeSelector admission controller</a> that all workloads in the tenants namespaces should be placed on nodes with the label <code>agentpool=small-pool</code>.</p>
 <p>If Bill were to only want to limit a subset of a tenants namespaces he could use other fields in metadata as expected</p>
-<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production</span>
