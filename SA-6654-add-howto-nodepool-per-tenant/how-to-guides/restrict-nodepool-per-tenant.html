@@ -2768,17 +2768,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Restrict tenant workloads to specific nodes
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="restrict-nodepool-per-tenant.html" class="md-nav__link md-nav__link--active">
         
   
@@ -2788,36 +2777,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#about-setting-nodeselector-on-namespace" class="md-nav__link">
-    <span class="md-ellipsis">
-      About setting nodeSelector on namespace
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -3764,23 +3723,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#about-setting-nodeselector-on-namespace" class="md-nav__link">
-    <span class="md-ellipsis">
-      About setting nodeSelector on namespace
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -3803,11 +3745,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </blockquote>
 <p>Bill is a cluster admin running Azure Kubernetes Service that wants to make sure that specific tenants are restricted to use a certain set of nodes. To do this he can apply annotations defining a tenants namespaces <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector"><code>nodeSelectors</code></a>.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<h4 id="about-setting-nodeselector-on-namespace">About setting <code>nodeSelector</code> on namespace<a class="headerlink" href="#about-setting-nodeselector-on-namespace" title="Permanent link">#</a></h4>
-<p>For Kubernetes deployments  <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podnodeselector">PodNodeSelector admission controller</a> that is enabled by default in AKS but needs to be <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#how-do-i-turn-on-an-admission-controller">manually enabled</a> otherwise.</p>
-<p>The annotation is <code>scheduler.alpha.kubernetes.io/node-selector</code></p>
-<p>For OpenShift there is a similar feature that works by setting the annotation <code>openshift.io/node-selector</code>.</p>
+<p class="admonition-title">About setting <code>nodeSelector</code> on namespace</p>
+<p>For Kubernetes deployments <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podnodeselector">PodNodeSelector admission controller</a> that is enabled by default in AKS but needs to be <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#how-do-i-turn-on-an-admission-controller">manually enabled</a> otherwise. The annotation is <code>scheduler.alpha.kubernetes.io/node-selector</code>. For OpenShift there is a similar feature that works by setting the annotation <code>openshift.io/node-selector</code>.</p>
 </div>
 <p>Bill needs to select what label he wants to use as a node selector. In this case he wants to limit the <code>staging</code> tenant to only use nodes with label <code>agentpool</code> set to <code>small-pool</code>.</p>
 <p>Bill adds the node selector annotation to all the namespaces for his <code>staging</code> tenant.</p>
