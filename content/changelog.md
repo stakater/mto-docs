@@ -4,10 +4,24 @@
 
 ### v1.0.0
 
-#### Feature
+#### Features
 
-- Added capacity planning feature on MTO Console to view resource usage of tenants based in their request and limits.
-- Added hibernation feature on MTO Console to view and manage hibernated namespaces and hibernate/unhibernate namespaces.
+- Added [capacity planning](./explanation/console.md#capacity-planning) feature on MTO Console to view resource usage of tenants based in their request and limits.
+- Added [hibernation](./explanation/console.md#hibernation) feature on MTO Console to view and manage hibernated namespaces and hibernate/unhibernate namespaces.
+
+#### Fixes
+
+- increase retention period of prometheus to 7d
+- Change client for quota template ic pod to debug
+- Remove finalizers from namespace
+- Optimize cache for IC controller
+- Update configmap predicate to not compare data
+- Add basic implementation for pv-users
+- SA-6159 Remove limits from resources deployed via Pilot Controller
+- restructure and fixes for casbin rule creation
+- Add userifo support for database operations
+- Update image versions for Keycloak, Console, and Gateway
+- Add job to create user for casbin and embed configurations
 
 ## v0.12.x
 
