@@ -3813,7 +3813,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Bill adds the nodeSelector annotation to all the namespaces for his <code>staging</code> tenant.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We have used the label <code>agentpool</code> in this example because it simultaniously demonstrates how one can limit a specific tenant to a certain <a href="https://learn.microsoft.com/en-us/azure/aks/create-node-pools">nodepool in AKS</a> (<code>small-pool</code> in this case). Similar concepts exist for most cloud providers but the exact labels might differ, consult your providers documentation for more details.</p>
+<p>We have used the label <code>agentpool</code> in this example because it also demonstrates how one can limit a specific tenant to a certain <a href="https://learn.microsoft.com/en-us/azure/aks/create-node-pools">nodepool in AKS</a> (<code>small-pool</code> in this case). Similar concepts exist for most cloud providers, but the exact labels might differ, consult your providers documentation for more details.</p>
 </div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
@@ -3832,10 +3832,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">          </span><span class="nt">scheduler.alpha.kubernetes.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agentpool=small-pool</span>
 </code></pre></div>
 <p>This will set the annotation to all the tenants namespaces which in turn tells the <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podnodeselector">PodNodeSelector admission controller</a> that all workloads in the tenants namespaces should be placed on nodes with the label <code>agentpool=small-pool</code>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>We have used the label <code>agentpool</code> in this example because it simultaniously demonstrates how one can limit a specific tenant to a certain <a href="https://learn.microsoft.com/en-us/azure/aks/create-node-pools">nodepool in AKS</a> (<code>small-pool</code> in this case). Similar concepts exist for most cloud providers but the exact labels might differ, consult your providers documentation for more details.</p>
-</div>
 <p>If Bill were to only want to limit a subset of a tenants namespaces he could use other fields in metadata as expected</p>
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
