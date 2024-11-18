@@ -4,14 +4,8 @@
 
 Bill is a cluster admin running Azure Kubernetes Service that wants to make sure that specific tenants are restricted to use a certain set of nodes. To do this he can apply annotations defining a tenants namespaces [`nodeSelectors`](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector).
 
-!!! note
-    #### About setting `nodeSelector` on namespace
-
-    For Kubernetes deployments  [PodNodeSelector admission controller](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podnodeselector) that is enabled by default in AKS but needs to be [manually enabled](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#how-do-i-turn-on-an-admission-controller) otherwise.
-
-    The annotation is `scheduler.alpha.kubernetes.io/node-selector`
-
-    For OpenShift there is a similar feature that works by setting the annotation `openshift.io/node-selector`.
+!!! note "About setting `nodeSelector` on namespace"
+    For Kubernetes deployments [PodNodeSelector admission controller](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podnodeselector) that is enabled by default in AKS but needs to be [manually enabled](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#how-do-i-turn-on-an-admission-controller) otherwise. The annotation is `scheduler.alpha.kubernetes.io/node-selector`. For OpenShift there is a similar feature that works by setting the annotation `openshift.io/node-selector`.
 
 Bill needs to select what label he wants to use as a node selector. In this case he wants to limit the `staging` tenant to only use nodes with label `agentpool` set to `small-pool`.
 
