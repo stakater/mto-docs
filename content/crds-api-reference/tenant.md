@@ -85,6 +85,8 @@ These roles are obtained from [IntegrationConfig's TenantRoles field](integratio
 
 Users and groups are linked to these roles by specifying their usernames or group names in the respective fields under `owners`, `editors`, and `viewers`.
 
+For Vault OIDC login, specify group IDs in the respective group fields in the tenant spec.
+
 ## Quota
 
 The `quota` field sets the resource limits for the tenant, such as CPU and memory usage, to prevent any single tenant from consuming a disproportionate amount of resources. This mechanism ensures efficient resource allocation and fosters fair usage practices across all tenants.  
