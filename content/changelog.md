@@ -6,22 +6,25 @@
 
 #### Features
 
-- Added [capacity planning](./explanation/console.md#capacity-planning) feature on MTO Console to view resource usage of tenants based in their request and limits.
-- Added [hibernation](./explanation/console.md#hibernation) feature on MTO Console to view and manage hibernated namespaces and hibernate/unhibernate namespaces.
+- Added [capacity planning](./explanation/console.md#capacity-planning) feature on MTO Console to view resource usage of tenants based in their request and limits
+- Added [hibernation](./explanation/console.md#hibernation) feature on MTO Console to view and manage hibernated namespaces and hibernate/unhibernate namespaces
+
+#### Enhancements
+
+- Increased the retention period of Prometheus to seven days
+- Changed client for quota template IC pod to enable debugging
+- Removed finalizers from namespaces: Having finalizers on namespaces have caused problems in the past especially when MTO previously ran on the cluster but is removed afterwards, making namespaces stuck in deletion due to the presence of finalizers added by MTO
+- Optimize cache for IC controller: Updated IC controller to not cache full CM objects but only their metadata, optimizing the size of the actual cache being created
+- Added basic implementation for privileged users
+- Removed limits from resources deployed via Pilot Controller
+- Added user info support for database operations
+- Updated image versions for Keycloak, MTO Console, and MTO Gateway
+- Added job to create user for `Casbin` and embed configurations
 
 #### Fixes
 
-- increase retention period of prometheus to 7d
-- Change client for quota template ic pod to debug
-- Remove finalizers from namespace
-- Optimize cache for IC controller
-- Update configmap predicate to not compare data
-- Add basic implementation for pv-users
-- SA-6159 Remove limits from resources deployed via Pilot Controller
-- restructure and fixes for casbin rule creation
-- Add userifo support for database operations
-- Update image versions for Keycloak, Console, and Gateway
-- Add job to create user for casbin and embed configurations
+- Updated configmap predicate to not compare data
+- Restructure and fix `Casbin` rule creation: `Casbin` rules for privileged user and groups were missing that caused issue while accessing MTO Console
 
 ## v0.12.x
 
