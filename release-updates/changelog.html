@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
     
     
       
@@ -3669,6 +3669,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
+  <a href="#enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhancements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#fixes" class="md-nav__link">
     <span class="md-ellipsis">
       Fixes
@@ -4810,6 +4819,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
+  <a href="#enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhancements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#fixes" class="md-nav__link">
     <span class="md-ellipsis">
       Fixes
@@ -5868,22 +5886,25 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h3 id="v100">v1.0.0<a class="headerlink" href="#v100" title="Permanent link">#</a></h3>
 <h4 id="features">Features<a class="headerlink" href="#features" title="Permanent link">#</a></h4>
 <ul>
-<li>Added <a href="explanation/console.html#capacity-planning">capacity planning</a> feature on MTO Console to view resource usage of tenants based in their request and limits.</li>
-<li>Added <a href="explanation/console.html#hibernation">hibernation</a> feature on MTO Console to view and manage hibernated namespaces and hibernate/unhibernate namespaces.</li>
+<li>Added <a href="explanation/console.html#capacity-planning">capacity planning</a> feature on MTO Console to view resource usage of tenants based in their request and limits</li>
+<li>Added <a href="explanation/console.html#hibernation">hibernation</a> feature on MTO Console to view and manage hibernated namespaces and hibernate/unhibernate namespaces</li>
+</ul>
+<h4 id="enhancements">Enhancements<a class="headerlink" href="#enhancements" title="Permanent link">#</a></h4>
+<ul>
+<li>Increased the retention period of Prometheus to seven days</li>
+<li>Changed client for quota template IC pod to enable debugging</li>
+<li>Removed finalizers from namespaces: Having finalizers on namespaces have caused problems in the past especially when MTO previously ran on the cluster but is removed afterwards, making namespaces stuck in deletion due to the presence of finalizers added by MTO</li>
+<li>Optimize cache for IC controller: Updated IC controller to not cache full CM objects but only their metadata, optimizing the size of the actual cache being created</li>
+<li>Added basic implementation for privileged users</li>
+<li>Removed limits from resources deployed via Pilot Controller</li>
+<li>Added user info support for database operations</li>
+<li>Updated image versions for Keycloak, MTO Console, and MTO Gateway</li>
+<li>Added job to create user for <code>Casbin</code> and embed configurations</li>
 </ul>
 <h4 id="fixes">Fixes<a class="headerlink" href="#fixes" title="Permanent link">#</a></h4>
 <ul>
-<li>increase retention period of prometheus to 7d</li>
-<li>Change client for quota template ic pod to debug</li>
-<li>Remove finalizers from namespace</li>
-<li>Optimize cache for IC controller</li>
-<li>Update configmap predicate to not compare data</li>
-<li>Add basic implementation for pv-users</li>
-<li>SA-6159 Remove limits from resources deployed via Pilot Controller</li>
-<li>restructure and fixes for casbin rule creation</li>
-<li>Add userifo support for database operations</li>
-<li>Update image versions for Keycloak, Console, and Gateway</li>
-<li>Add job to create user for casbin and embed configurations</li>
+<li>Updated configmap predicate to not compare data</li>
+<li>Restructure and fix <code>Casbin</code> rule creation: <code>Casbin</code> rules for privileged user and groups were missing that caused issue while accessing MTO Console</li>
 </ul>
 <h2 id="v012x">v0.12.x<a class="headerlink" href="#v012x" title="Permanent link">#</a></h2>
 <h3 id="v01219">v0.12.19<a class="headerlink" href="#v01219" title="Permanent link">#</a></h3>
