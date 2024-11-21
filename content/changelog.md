@@ -13,7 +13,7 @@
 
 - Increased the retention period of Prometheus to seven days
 - Changed client for quota template IC pod to enable debugging
-- Removed finalizers from namespaces: Having finalizers on namespaces have caused problems in the past especially when MTO previously ran on the cluster but is removed afterwards, making namespaces stuck in deletion due to the presence of finalizers added by MTO
+- Removed finalizers from namespaces: Having finalizers on namespaces have caused problems in the past especially when MTO previously ran on the cluster but is removed afterward, making namespaces stuck in deletion due to the presence of finalizers added by MTO
 - Optimize cache for IC controller: Updated IC controller to not cache full CM objects but only their metadata, optimizing the size of the actual cache being created
 - Added basic implementation for privileged users
 - Removed limits from resources deployed via Pilot Controller
