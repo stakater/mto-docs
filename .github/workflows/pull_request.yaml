@@ -30,8 +30,3 @@ jobs:
       CONTAINER_REGISTRY_PASSWORD: ${{ secrets.GHCR_TOKEN }}
       SLACK_WEBHOOK_URL: ${{ secrets.STAKATER_DELIVERY_SLACK_WEBHOOK }}
       DOCKER_SECRETS: GIT_AUTH_TOKEN=${{ secrets.PUBLISH_TOKEN }}
-
-  deploy_doc:
-    uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@v0.0.108
-    secrets:
-      GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
