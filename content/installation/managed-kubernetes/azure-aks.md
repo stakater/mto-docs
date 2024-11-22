@@ -118,7 +118,7 @@ az role assignment create --assignee $OPSSRE_ID --role "Azure Kubernetes Service
 
 Set User Principal Name (UPN) and password for your users. The UPN must include the verified domain name of your tenant, for example `user@company.com`.
 
-Following command reads the UPN for the appdev group and stores it in the AAD_DEV_UPN variable:
+Following command reads the UPN for the appdev group and stores it in the `AAD_DEV_UPN` variable:
 
 ```terminal
 echo "Please enter the UPN for application developers: " && read AAD_DEV_UPN
@@ -146,7 +146,7 @@ az ad group member add --group appdev --member-id $AKSDEV_ID
 
 Repeat the steps for `OPS SRE` user.
 
-The following command reads the UPN for your user and stores it in the AAD_SRE_UPN variable:
+The following command reads the UPN for your user and stores it in the `AAD_SRE_UPN` variable:
 
 ```terminal
 echo "Please enter the UPN for SREs: " && read AAD_SRE_UPN

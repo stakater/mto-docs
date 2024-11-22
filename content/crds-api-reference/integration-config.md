@@ -88,7 +88,7 @@ spec:
     groups:
       labels:
         role: customer-reader
-      annotations: 
+      annotations:
         openshift.io/node-selector: node-role.kubernetes.io/worker=
     namespaces:
       labels:
@@ -116,15 +116,18 @@ spec:
     vault:
       enabled: true
       authMethod: kubernetes      #enum: {kubernetes:default, token}
-      accessInfo: 
+      accessInfo:
         accessorPath: oidc/
         address: https://vault.apps.prod.abcdefghi.kubeapp.cloud/
         roleName: mto
-        secretRef:       
+        secretRef:
           name: ''
           namespace: ''
-      config: 
+      config:
         ssoClient: vault
+  tenantPolicies:
+    network:
+      disableIntraTenantNetworking: true
 ```
 
 Following are the different components that can be used to configure multi-tenancy in a cluster via Multi Tenant Operator.
@@ -164,7 +167,7 @@ Following are the different components that can be used to configure multi-tenan
 
 Here's an example of how to generate the secrets required to configure MTO:
 
-**TLS Secret for Ingress:**  
+**TLS Secret for Ingress:**
 
 Create a TLS secret containing your SSL/TLS certificate and key for secure communication. This secret will be used for the Console, Gateway, and Keycloak ingresses.
 
@@ -354,7 +357,7 @@ For example:
 `privileged.serviceAccounts:` Contains the list of `ServiceAccounts` ignored by MTO. MTO will not manage the `ServiceAccounts` in this list. Values in this list are regex patterns. For example, to ignore all `ServiceAccounts` starting with the `system:serviceaccount:openshift-` prefix, we can use `^system:serviceaccount:openshift-.*`; and to ignore a specific service account like `system:serviceaccount:builder` service account we can use `^system:serviceaccount:builder$.`
 
 !!! note
-    `stakater`, `stakater.` and `stakater.*` will have the same effect. To check out the combinations, go to [Regex101](https://regex101.com/), select Golang, and type your expected regex and test string.  
+    `stakater`, `stakater.` and `stakater.*` will have the same effect. To check out the combinations, go to [Regex101](https://regex101.com/), select Golang, and type your expected regex and test string.
 
 ##### Users
 
@@ -445,14 +448,14 @@ integrations:
   vault:
     enabled: true
     authMethod: kubernetes      #enum: {kubernetes:default, Token}
-    accessInfo: 
+    accessInfo:
       accessorPath: oidc/
       address: https://vault.apps.prod.abcdefghi.kubeapp.cloud/
       roleName: mto
-      secretRef:       
+      secretRef:
         name: ''
         namespace: ''
-    config: 
+    config:
       ssoClient: vault
 ```
 
@@ -507,14 +510,14 @@ If `vault` is configured on a cluster, then Vault configuration can be enabled.
 vault:
   enabled: true
   authMethod: kubernetes      #enum: {kubernetes:default, token}
-  accessInfo: 
+  accessInfo:
     accessorPath: oidc/
     address: https://vault.apps.prod.abcdefghi.kubeapp.cloud/
     roleName: mto
     secretRef:
       name: ''
       namespace: ''
-  config: 
+  config:
     ssoClient: vault
 ```
 
@@ -605,3 +608,26 @@ components:
 ```
 
 After modifying your default IntegrationConfig in `multi-tenant-operator` namespace, a configmap named `opencost-custom-pricing` will be updated. You will be able to see updated pricing info in `mto-console`.
+
+## TenantPolicies
+
+`tenantPolicies` contains settings to configure additional tenant isolation.
+
+```yaml
+tenantPolicies:
+  network:
+    disableIntraTenantNetworking: true
+```
+
+### Network
+
+Configure how tenants are allowed to communicate
+
+```yaml
+network:
+  disableIntraTenantNetworking: true
+```
+
+- `disableIntraTenantNetworking`: (Default false) Disallow tenants communicating with other tenants by deploying NetworkPolicies.
+
+> ⚠️ This will disable **only** intra-tenant networking. In cases requiring stricter filtering, this setting should be turned off and the stricter NetworkPolicies deployed through [Templates](template.md) or manually. If you need help with your enterprise environment, do not hesitate to [contact us.](https://www.stakater.com/contact-us)
