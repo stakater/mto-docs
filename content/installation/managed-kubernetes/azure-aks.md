@@ -116,7 +116,7 @@ az role assignment create --assignee $OPSSRE_ID --role "Azure Kubernetes Service
 
 ### Create test users in `Entra ID`
 
-Set User Principal Name (UPN) and password for your users. The UPN must include the verified domain name of your tenant, for example user@company.com.
+Set User Principal Name (UPN) and password for your users. The UPN must include the verified domain name of your tenant, for example `user@company.com`.
 
 Following command reads the UPN for the appdev group and stores it in the AAD_DEV_UPN variable:
 
@@ -124,7 +124,7 @@ Following command reads the UPN for the appdev group and stores it in the AAD_DE
 echo "Please enter the UPN for application developers: " && read AAD_DEV_UPN
 ```
 
-For this scope of this blog, we will assume that the entered UPN was aksdev@company.com.
+For this scope of this blog, we will assume that the entered UPN was `aksdev@company.com`.
 
 Following command reads the password for your user and stores it in the AAD_DEV_PW variable:
 
@@ -152,7 +152,7 @@ The following command reads the UPN for your user and stores it in the AAD_SRE_U
 echo "Please enter the UPN for SREs: " && read AAD_SRE_UPN
 ```
 
-For this scope of this blog, we will assume that the entered UPN was opssre@company.com.
+For this scope of this blog, we will assume that the entered UPN was `opssre@company.com`.
 
 The following command reads the password for your user and stores it in the AAD_SRE_PW variable:
 
