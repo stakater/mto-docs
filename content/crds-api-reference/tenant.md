@@ -71,7 +71,7 @@ spec:
           annotations:
             specific-annotation: specific-dev-value
   desc: "This is a sample tenant setup for the v1beta3 version."
-  storageClass:
+  storageClasses:
     allowed:
       - staging
       - dev
@@ -129,7 +129,7 @@ Controls the creation and management of namespaces within the tenant:
 ## Storage
 
 ```yaml
-storageClass:
+storageClasses:
   allowed:
     - staging-fast
     - shared
