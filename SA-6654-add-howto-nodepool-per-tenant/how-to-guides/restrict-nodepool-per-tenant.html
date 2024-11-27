@@ -11,22 +11,22 @@
         <link rel="canonical" href="https://docs.stakater.com/mto/SA-6654-add-howto-nodepool-per-tenant/how-to-guides/restrict-nodepool-per-tenant.html">
       
       
-        <link rel="prev" href="extend-default-roles.html">
+        <link rel="prev" href="integrating-vault.html">
       
       
-        <link rel="next" href="configuring-multitenant-network-isolation.html">
+        <link rel="next" href="offboarding/uninstalling.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
     
     
       
-        <title>Restrict tenant workloads to specific nodes - Multi Tenant Operator</title>
+        <title>Restricting Tenant Workloads to Specific Nodes - Multi Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#restrict-tenant-workloads-to-specific-nodes" class="md-skip">
+        <a href="#restricting-tenant-workloads-to-specific-nodes" class="md-skip">
           Skip to content
         </a>
       
@@ -2036,7 +2036,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <a href="https://github.com/stakater/mto-docs" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -2719,19 +2719,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
         
           
           <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
@@ -2745,43 +2743,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             Resource Distribution
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="restrict-nodepool-per-tenant.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Restrict tenant workloads to specific nodes
-  </span>
-  
-
-      </a>
-      
-    </li>
-  
-
-              
             
               
                 
@@ -3217,6 +3184,198 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tenant Isolation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Tenant Isolation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Restricting Tenant Workloads to Specific Nodes
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="restrict-nodepool-per-tenant.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Restricting Tenant Workloads to Specific Nodes
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#azure-kubernetes-service-aks-node-pools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Kubernetes Service (AKS) Node Pools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Azure Kubernetes Service (AKS) Node Pools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      How To
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openshift" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenShift
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenShift">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      How To
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     
@@ -3227,10 +3386,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
         
           
-          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -3241,8 +3400,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
             <span class="md-nav__icon md-icon"></span>
             Offboarding
           </label>
@@ -3723,6 +3882,98 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#azure-kubernetes-service-aks-node-pools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Kubernetes Service (AKS) Node Pools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Azure Kubernetes Service (AKS) Node Pools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to" class="md-nav__link">
+    <span class="md-ellipsis">
+      How To
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#openshift" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenShift
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenShift">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      How To
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#result_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -3739,25 +3990,22 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="restrict-tenant-workloads-to-specific-nodes">Restrict tenant workloads to specific nodes<a class="headerlink" href="#restrict-tenant-workloads-to-specific-nodes" title="Permanent link">#</a></h1>
-<blockquote>
-<p>Available on OpenShift, Azure Kubernetes Service and self-hosted Kubernetes (where you have access to <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers">enable non-default admission controllers</a>)</p>
-</blockquote>
-<p>Bill is a cluster admin running Azure Kubernetes Service that wants to make sure that specific tenants are restricted to use a certain set of nodes. To do this he can apply annotations defining a tenants namespaces <a href="https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector"><code>nodeSelectors</code></a>.</p>
-<div class="admonition note">
-<p class="admonition-title">About setting <code>nodeSelector</code> on namespace</p>
-<p>For Kubernetes deployments <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podnodeselector">PodNodeSelector admission controller</a> that is enabled by default in AKS but needs to be <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#how-do-i-turn-on-an-admission-controller">manually enabled</a> otherwise. The annotation is <code>scheduler.alpha.kubernetes.io/node-selector</code>. For OpenShift there is a similar feature that works by setting the annotation <code>openshift.io/node-selector</code>.</p>
-</div>
-<p>Bill needs to select what label he wants to use as a node selector. In this case he wants to limit the <code>staging</code> tenant to only use nodes with label <code>agentpool</code> set to <code>small-pool</code>.</p>
-<p>Bill adds the node selector annotation to all the namespaces for his <code>staging</code> tenant.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>We have used the label <code>agentpool</code> in this example because it also demonstrates how one can limit a specific tenant to a certain <a href="https://learn.microsoft.com/en-us/azure/aks/create-node-pools">node pool in AKS</a> (<code>small-pool</code> in this case). Similar concepts exist for most cloud providers, but the exact labels might differ, consult your providers documentation for more details.</p>
-</div>
+<h1 id="restricting-tenant-workloads-to-specific-nodes">Restricting Tenant Workloads to Specific Nodes<a class="headerlink" href="#restricting-tenant-workloads-to-specific-nodes" title="Permanent link">#</a></h1>
+<p>Utilizing Kubernetes Node Selectors and the Multi-Tenant Operator's advanced templating capabilities allows administrators to restrict tenant workloads to specific nodes or node groups.</p>
+<hr />
+<h2 id="azure-kubernetes-service-aks-node-pools">Azure Kubernetes Service (AKS) Node Pools<a class="headerlink" href="#azure-kubernetes-service-aks-node-pools" title="Permanent link">#</a></h2>
+<p>To confine a tenant's workloads to a specific <a href="https://learn.microsoft.com/en-us/azure/aks/create-node-pools">AKS NodePool</a>, the <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podnodeselector">PodNodeSelector admission controller</a> can be used. This controller ensures all workloads in specified namespaces are scheduled on the designated node pool by setting the annotation <code>scheduler.alpha.kubernetes.io/node-selector</code> to <code>agentpool=&lt;nodepool_name&gt;</code>.</p>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h3>
+<ul>
+<li>An AKS cluster.</li>
+<li>An existing node pool, for example, one named <code>marketing-pool</code>.</li>
+</ul>
+<h3 id="how-to">How To<a class="headerlink" href="#how-to" title="Permanent link">#</a></h3>
+<p>To ensure all namespaces associated with the tenant <code>marketing</code> are scheduled on the <code>marketing-pool</code> node pool, the annotation <code>scheduler.alpha.kubernetes.io/node-selector</code> with value <code>agentpool=marketing-pool</code> is added to <code>tenant.spec.namespaces.metadata.common.annotations</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">staging</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">marketing</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># Some fields have been omitted for clarity</span>
 <span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">quota-sample</span>
@@ -3767,15 +4015,25 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beta</span>
 <span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">common</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">scheduler.alpha.kubernetes.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agentpool=small-pool</span>
+<span class="w">        </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span><span class="c1"># these annotations will be added to *all* of the tenants namespaces</span>
+<span class="w">          </span><span class="nt">scheduler.alpha.kubernetes.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agentpool=marketing-pool</span>
 </code></pre></div>
-<p>This will set the annotation to all the tenants namespaces which in turn tells the <a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#podnodeselector">PodNodeSelector admission controller</a> that all workloads in the tenants namespaces should be placed on nodes with the label <code>agentpool=small-pool</code>.</p>
-<p>If Bill were to only want to limit a subset of a tenants namespaces he could use other fields in metadata as expected</p>
+<h3 id="result">Result<a class="headerlink" href="#result" title="Permanent link">#</a></h3>
+<p>Once the <code>Tenant</code> resource is deployed, all workloads for the <code>marketing</code> tenant will be scheduled in the <code>marketing-pool</code> node pool.</p>
+<hr />
+<h2 id="openshift">OpenShift<a class="headerlink" href="#openshift" title="Permanent link">#</a></h2>
+<p>For OpenShift environments, workloads can be restricted to specific machine pools. This process is applicable across different OpenShift versions, though the method of creating the machine pool might vary. To restrict workloads, first create a machine pool and assign it a unique label. Then, use the annotation <code>openshift.io/node-selector</code> in the tenant’s namespaces, which ensures that workloads are scheduled on nodes with matching label key-value pairs.</p>
+<h3 id="prerequisites_1">Prerequisites<a class="headerlink" href="#prerequisites_1" title="Permanent link">#</a></h3>
+<ul>
+<li>A RedHat OpenShift cluster.</li>
+<li>A configured machine pool. Ensure the machine pool has a unique label, which can be added during creation or configured after creation. For instance, the machine pool in this example is labeled as <code>pool-name=marketing-pool</code>.</li>
+</ul>
+<h3 id="how-to_1">How To<a class="headerlink" href="#how-to_1" title="Permanent link">#</a></h3>
+<p>To restrict workloads for the tenant, add the annotation <code>openshift.io/node-selector</code> with a value of <code>pool-name=marketing-pool</code> to <code>tenant.spec.namespaces.metadata.common.annotations</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">marketing</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># Some fields have been omitted for clarity</span>
 <span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">quota-sample</span>
@@ -3784,18 +4042,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beta</span>
 <span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">sandbox</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">machine-pool=small-pool</span>
-<span class="w">      </span><span class="nt">specific</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespaces</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;prod&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">          </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">machine-pool=production</span>
+<span class="w">      </span><span class="nt">common</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span><span class="c1"># these annotations will be added to *all* of the tenants namespaces</span>
+<span class="w">          </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pool-name=marketing-pool</span>
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This example instead uses the label for <a href="https://docs.redhat.com/en/documentation/red_hat_openshift_service_on_aws/4/html/cluster_administration/manage-nodes-using-machine-pools">OpenShift Container Platform on AWS</a>. The label <code>machine-pool</code> needs to be <a href="https://docs.redhat.com/en/documentation/red_hat_openshift_service_on_aws/4/html/cluster_administration/manage-nodes-using-machine-pools#rosa-adding-node-labels_rosa-managing-worker-nodes">set on the machine pool</a> for it to work.</p>
-</div>
+<h3 id="result_1">Result<a class="headerlink" href="#result_1" title="Permanent link">#</a></h3>
+<p>When depoloyed, this configuration ensures that all workloads in the tenant's namespaces are scheduled on nodes in the <code>marketing-pool</code>.</p>
 
 
 
