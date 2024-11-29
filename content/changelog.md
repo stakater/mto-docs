@@ -26,6 +26,23 @@
 - Updated configmap predicate to not compare data
 - Restructure and fix `Casbin` rule creation: `Casbin` rules for privileged user and groups were missing that caused issue while accessing MTO Console
 
+#### Components
+
+| Name | Tag | Image |
+| --- | --- | --- |
+| `tenant-operator`       | v1.0.0       | `ghcr.io/stakater/public/tenant-operator`       |
+| `mto-console`           | 1.0.134      | `ghcr.io/stakater/mto-console`                  |
+| `mto-gateway`           | 1.0.118      | `ghcr.io/stakater/mto-gateway`                  |
+| `keycloak`              | 24.0.5       | `ghcr.io/stakater/mto/keycloak`                 |
+| `kube-state-metrics`    | v2.8.0       | `ghcr.io/stakater/mto/kube-state-metrics`       |
+| `postgresql-15`         | 1-15         | `ghcr.io/stakater/mto/postgresql-15`            |
+| `showback`              | v0.0.12      | `ghcr.io/stakater/showback`                     |
+| `configmap-reload`      | v0.13.0      | `ghcr.io/jimmidyson/configmap-reload`           |
+| `kube-rbac-proxy`       | v0.11.0      | `gcr.io/kubebuilder/kube-rbac-proxy`            |
+| `kubecost-cost-model`   | 1.108.0      | `quay.io/kubecost1/kubecost-cost-model`         |
+| `prometheus`            | v2.41.0      | `quay.io/prometheus/prometheus`                 |
+| `pushgateway`           | v1.5.1       | `quay.io/prometheus/pushgateway`                |
+
 ## v0.12.x
 
 ### v0.12.19
