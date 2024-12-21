@@ -74,7 +74,7 @@ Multi Tenant Operator can downscale Deployments and StatefulSets in a tenant's N
 
 More details on [Hibernation](./tutorials/tenant/tenant-hibernation.md#hibernating-a-tenant) and [ResourceSupervisor](./crds-api-reference/resource-supervisor.md)
 
-#### Capacity Planning:
+#### Capacity Planning
 
 Provides tools to forecast and allocate resources effectively, ensuring optimal usage and preventing over-provisioning.
 
