@@ -1,4 +1,4 @@
-# Multi Tenant Operator in Microsoft Azure Kubernetes Service
+# On AKS
 
 This document covers how to link Multi Tenant Operator with an [AKS (Azure Kubernetes Service)](https://azure.microsoft.com/en-us/products/kubernetes-service/) cluster.
 
