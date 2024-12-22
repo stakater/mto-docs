@@ -1,6 +1,8 @@
 # On OpenShift
 
-This document contains instructions on installing, uninstalling and configuring Multi Tenant Operator using OpenShift MarketPlace.
+MTO is [RedHat Certified](https://catalog.redhat.com/software/operators/detail/618fa05e3adfdfc43f73b126) operator available on the Red Hat MarketPlace.
+
+This document contains instructions on installing, uninstalling and configuring Multi Tenant Operator on OpenShift.
 
 1. [OpenShift OperatorHub UI](#installing-via-operatorhub-ui)
 
