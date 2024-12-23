@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/main/how-to-guides/deploying-templates.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/main/architecture/components.html">
       
       
-        <link rel="prev" href="configuring-multitenant-network-isolation.html">
-      
-      
-        <link rel="next" href="resource-sync-by-tgi.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
@@ -22,7 +18,7 @@
     
     
       
-        <title>Distributing Resources in Namespaces - Multi Tenant Operator</title>
+        <title>Components - Multi Tenant Operator</title>
       
     
     
@@ -93,11 +89,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
-      
-        
-        <a href="#distributing-resources-in-namespaces" class="md-skip">
-          Skip to content
-        </a>
       
     </div>
     <div data-md-component="announce">
@@ -2637,19 +2628,17 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -2663,7 +2652,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             How-to Guides
@@ -2712,7 +2701,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="custom-roles.html" class="md-nav__link">
+      <a href="../how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2733,7 +2722,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="extend-default-roles.html" class="md-nav__link">
+      <a href="../how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2759,19 +2748,17 @@ This documentation is either for an old version, or for the unreleased 'main' ve
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
         
           
           <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
@@ -2785,7 +2772,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_2">
             <span class="md-nav__icon md-icon"></span>
             Resource Distribution
@@ -2799,7 +2786,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="configuring-multitenant-network-isolation.html" class="md-nav__link">
+      <a href="../how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2817,30 +2804,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Distributing Resources in Namespaces
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="deploying-templates.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../how-to-guides/deploying-templates.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2849,79 +2816,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#deploying-template-to-namespaces-via-templategroupinstances" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deploying Template to Namespaces via TemplateGroupInstances
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deploying Template to Namespaces via TemplateGroupInstances">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#templategroupinstance-for-multiple-tenants" class="md-nav__link">
-    <span class="md-ellipsis">
-      TemplateGroupInstance for multiple Tenants
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templategroupinstance-for-all-tenants" class="md-nav__link">
-    <span class="md-ellipsis">
-      TemplateGroupInstance for all Tenants
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deploying-template-to-a-namespace-via-templateinstance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deploying Template to a Namespace via TemplateInstance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#passing-parameters-to-template-via-templateinstance-templategroupinstance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Passing Parameters to Template via TemplateInstance, TemplateGroupInstance
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2934,7 +2828,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2955,7 +2849,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2976,7 +2870,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2997,7 +2891,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="copying-resources.html" class="md-nav__link">
+      <a href="../how-to-guides/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3061,7 +2955,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="keycloak.html" class="md-nav__link">
+      <a href="../how-to-guides/keycloak.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3082,7 +2976,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="custom-metrics.html" class="md-nav__link">
+      <a href="../how-to-guides/custom-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3103,7 +2997,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="graph-visualization.html" class="md-nav__link">
+      <a href="../how-to-guides/graph-visualization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3124,7 +3018,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="hibernation-workflow.html" class="md-nav__link">
+      <a href="../how-to-guides/hibernation-workflow.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3188,7 +3082,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="enabling-multi-tenancy-argocd.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3209,7 +3103,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="enabling-multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3230,7 +3124,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="enabling-openshift-dev-workspace.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3251,7 +3145,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="mattermost.html" class="md-nav__link">
+      <a href="../how-to-guides/mattermost.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3272,7 +3166,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="integrating-external-keycloak.html" class="md-nav__link">
+      <a href="../how-to-guides/integrating-external-keycloak.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3293,7 +3187,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="integrating-vault.html" class="md-nav__link">
+      <a href="../how-to-guides/integrating-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3357,7 +3251,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="restrict-nodepool-per-tenant.html" class="md-nav__link">
+      <a href="../how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3421,7 +3315,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="offboarding/uninstalling.html" class="md-nav__link">
+      <a href="../how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3950,67 +3844,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#deploying-template-to-namespaces-via-templategroupinstances" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deploying Template to Namespaces via TemplateGroupInstances
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deploying Template to Namespaces via TemplateGroupInstances">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#templategroupinstance-for-multiple-tenants" class="md-nav__link">
-    <span class="md-ellipsis">
-      TemplateGroupInstance for multiple Tenants
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templategroupinstance-for-all-tenants" class="md-nav__link">
-    <span class="md-ellipsis">
-      TemplateGroupInstance for all Tenants
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deploying-template-to-a-namespace-via-templateinstance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deploying Template to a Namespace via TemplateInstance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#passing-parameters-to-template-via-templateinstance-templategroupinstance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Passing Parameters to Template via TemplateInstance, TemplateGroupInstance
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -4028,182 +3861,9 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
 
-<h1 id="distributing-resources-in-namespaces">Distributing Resources in Namespaces<a class="headerlink" href="#distributing-resources-in-namespaces" title="Permanent link">#</a></h1>
-<p>Multi Tenant Operator has two Custom Resources which can cover this need using the <code>Template</code> CR, depending upon the conditions and preference.</p>
-<ol>
-<li>TemplateGroupInstance</li>
-<li>TemplateInstance</li>
-</ol>
-<h2 id="deploying-template-to-namespaces-via-templategroupinstances">Deploying Template to Namespaces via TemplateGroupInstances<a class="headerlink" href="#deploying-template-to-namespaces-via-templategroupinstances" title="Permanent link">#</a></h2>
-<p>Bill, the cluster admin, wants to deploy a docker pull secret in namespaces where certain labels exists.</p>
-<p>First, Bill creates a template:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret</span>
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
-<span class="w">      </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="w">      </span><span class="nt">data</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">.dockercfg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eyAKICAiaHR0cHM6IC8vaW5kZXguZG9ja2VyLmlvL3YxLyI6IHsgImF1dGgiOiAiYzNSaGEyRjBaWEk2VjI5M1YyaGhkRUZIY21WaGRGQmhjM04zYjNKayJ9Cn0K</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/dockercfg</span>
-</code></pre></div>
-<p>Once the template has been created, Bill makes a <code>TemplateGroupInstance</code> referring to the <code>Template</code> he wants to deploy with <code>MatchLabels</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-group-instance</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<p>Afterward, Bill can see that secrets have been successfully created in all label matching namespaces.</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-secret<span class="w"> </span>-n<span class="w"> </span>bluesky-anna-aurora-sandbox
-NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
-docker-secret<span class="w">    </span>Active<span class="w">   </span>3m
+  <h1>Components</h1>
 
-kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-secret<span class="w"> </span>-n<span class="w"> </span>alpha-dave-aurora-sandbox
-NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
-docker-secret<span class="w">    </span>Active<span class="w">   </span>2m
-</code></pre></div>
-<p><code>TemplateGroupInstance</code> can also target specific tenants or all tenant namespaces under a single YAML definition.</p>
-<h3 id="templategroupinstance-for-multiple-tenants">TemplateGroupInstance for multiple Tenants<a class="headerlink" href="#templategroupinstance-for-multiple-tenants" title="Permanent link">#</a></h3>
-<p>It can be done by using the <code>matchExpressions</code> field, dividing the tenant label in key and values.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-group-instance</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater.com/tenant</span>
-<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">      </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beta</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<h3 id="templategroupinstance-for-all-tenants">TemplateGroupInstance for all Tenants<a class="headerlink" href="#templategroupinstance-for-all-tenants" title="Permanent link">#</a></h3>
-<p>This can also be done by using the <code>matchExpressions</code> field, using just the tenant label key <code>stakater.com/tenant</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-group-instance</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater.com/tenant</span>
-<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Exists</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<h2 id="deploying-template-to-a-namespace-via-templateinstance">Deploying Template to a Namespace via TemplateInstance<a class="headerlink" href="#deploying-template-to-a-namespace-via-templateinstance" title="Permanent link">#</a></h2>
-<p>Anna wants to deploy a docker pull secret in her namespace.</p>
-<p>First Anna asks Bill, the cluster admin, to create a template of the secret for her:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
-<span class="w">      </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="w">      </span><span class="nt">data</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">.dockercfg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eyAKICAiaHR0cHM6IC8vaW5kZXguZG9ja2VyLmlvL3YxLyI6IHsgImF1dGgiOiAiYzNSaGEyRjBaWEk2VjI5M1YyaGhkRUZIY21WaGRGQmhjM04zYjNKayJ9Cn0K</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/dockercfg</span>
-</code></pre></div>
-<p>Once the template has been created, Anna creates a <code>TemplateInstance</code> in her namespace referring to the <code>Template</code> she wants to deploy:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret-instance</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-anna-aurora-sandbox</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<p>Once this is created, Anna can see that the secret has been successfully applied.</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-secret<span class="w"> </span>-n<span class="w"> </span>bluesky-anna-aurora-sandbox
-NAME<span class="w">                  </span>STATE<span class="w">    </span>AGE
-docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
-</code></pre></div>
-<h2 id="passing-parameters-to-template-via-templateinstance-templategroupinstance">Passing Parameters to Template via TemplateInstance, TemplateGroupInstance<a class="headerlink" href="#passing-parameters-to-template-via-templateinstance-templategroupinstance" title="Permanent link">#</a></h2>
-<p>Anna wants to deploy a LimitRange resource to certain namespaces.</p>
-<p>First Anna asks Bill, the cluster admin, to create template with parameters for LimitRange for her:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions</span>
-<span class="nt">parameters</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Name of the parameter</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_LIMIT</span>
-<span class="w">    </span><span class="c1"># The default value of the parameter</span>
-<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_REQUESTS</span>
-<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.5&quot;</span>
-<span class="w">    </span><span class="c1"># If a parameter is required the template instance will need to set it</span>
-<span class="w">    </span><span class="c1"># required: true</span>
-<span class="w">    </span><span class="c1"># Make sure only values are entered for this parameter</span>
-<span class="w">    </span><span class="nt">validation</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;^[0-9]*\\.?[0-9]+$&quot;</span>
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitRange</span>
-<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-limit-range-${namespace}</span>
-<span class="w">      </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">default</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${{DEFAULT_CPU_LIMIT}}&quot;</span>
-<span class="w">            </span><span class="nt">defaultRequest</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${{DEFAULT_CPU_REQUESTS}}&quot;</span>
-<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Container</span>
-</code></pre></div>
-<p>Afterward, Anna creates a <code>TemplateInstance</code> in her namespace referring to the <code>Template</code> she wants to deploy:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions-instance</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-anna-aurora-sandbox</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">parameters</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_LIMIT</span>
-<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.5&quot;</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_REQUESTS</span>
-<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
-</code></pre></div>
-<p>If she wants to distribute the same Template over multiple namespaces, she can use <code>TemplateGroupInstance</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions-tgi</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater.com/tenant</span>
-<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">      </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beta</span>
-<span class="nt">parameters</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_LIMIT</span>
-<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.5&quot;</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_REQUESTS</span>
-<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
-</code></pre></div>
+
 
 
 
