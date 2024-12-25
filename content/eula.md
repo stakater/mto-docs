@@ -1,4 +1,4 @@
-# Multi Tenant Operator End User License Agreement
+# EULA
 
 Last revision date: 12 December 2022
 

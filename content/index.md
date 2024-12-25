@@ -5,7 +5,7 @@ head:
       content: SEO plugin
 ---
 
-# Introduction
+# Overview
 
 [//]: # ( introduction.md, features.md)
 
@@ -21,3 +21,7 @@ Clusters can be shared in various ways:
 These scenarios are collectively referred to as multi-tenancy. While Kubernetes and many managed applications provide foundational resources to achieve multi-tenancy, leveraging these primitives requires professional expertise and deep knowledge of the platform.
 
 The Multi-Tenant Operator (MTO) builds on Kubernetes' capabilities, simplifying the orchestration of secure and efficient multi-tenancy. By addressing the unique needs of shared clusters, MTO helps cluster administrators overcome the inherent complexities of multi-tenancy, enabling them to harness its full potential.
+
+## Installation
+
+Refer to the [installation guide](./installation/overview.md) for setting up MTO.
