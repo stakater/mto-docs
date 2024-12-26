@@ -1,4 +1,4 @@
-# Helm Chart Options
+# Helm Chart
 
 Following options are available in the Helm Chart for Multi Tenant Operator:
 
