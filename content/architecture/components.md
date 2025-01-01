@@ -1,0 +1,23 @@
+# MTO Components
+
+MTO consists of multiple controllers and componenets that work together to provide the functionality of the system. The following is a list of the components that make up the MTO system:
+
+| Name | Type | Description |
+|------|------|-------------|
+| Tenant Controller | Controller | The Tenant Controller is responsible for managing the creation, deletion, and updating of tenants in the cluster via [Tenant CRD](../crds-api-reference/tenant.md). |
+| Namespace Controller | Controller | The Namespace Controller is responsible for managing the creation, deletion, and updating of namespaces in the cluster. |
+| Resource Supervisor Controller | Controller | The Resource Supervisor Controller is responsible for managing sleep and hibernation of namespaces in the cluster via [ResourceSupervisor CRD](../crds-api-reference/resource-supervisor.md). |
+| Extensions Controller | Controller | The Extensions Controller enhances MTO's functionality by allowing integration with external services,Currently supports integration with ArgoCD, enabling you to synchronize your repositories and configure AppProjects directly through MTO. It manages extensions via [Extension CRD](../crds-api-reference/extensions.md). |
+| Template Quota Integeration Config Controller | Controller | The Template Quota Integeration Config Controller manages 3 different CRDs in one controller, [Template CRD](../crds-api-reference/template.md), [Quota CRD](../crds-api-reference/quota.md), and [IntegrationConfig CRD](../crds-api-reference/integration-config.md). |
+| TemplateInstance Controller | Controller | The TemplateInstance Controller is responsible for managing the creation, deletion, and updating of TemplateInstances in the cluster via [TemplateInstance CRD](../crds-api-reference/template-instance.md). |
+| TemplateGroupInstance Controller | Controller | The TemplateGroupInstance Controller is responsible for managing the creation, deletion, and updating of TemplateGroupInstances in the cluster via [TemplateGroupInstance CRD](../crds-api-reference/template-group-instance.md). |
+| Webhook Controller | Controller | The Webhook Controller is responsible for managing webhook requests from MTO's resources. |
+| Pilot Controller | Controller | The Pilot Controller is responsible provisioning and managing the lifecycle of MTO-Console and it's dependencies. |
+| Keycloak | Service | Keycloak is an open-source identity and access management solution that provides authentication and authorization services for the MTO Console that can be provisioned via Pilot Controller or can be deployed and managed externally following this guide [External Keycloak](../how-to-guides/integrating-external-keycloak.md). |
+| Postgresql | Service | Postgresql is an open-source relational database that acts as a caching layer and stores the data for the MTO Console. It is also provisioned via Pilot Controller and is managed internally. |
+| Opencost-Gateway | Service | Opencost is an open-source cost management solution that provides cost tracking and reporting for the resources deployed on the cluster. It is also provisioned via Pilot Controller and is managed internally. |
+| Prometheus-Server | Service | Prometheus is an open-source monitoring and alerting solution that provides metrics and monitoring for the resources deployed on the cluster. It is also provisioned via Pilot Controller and is managed internally. |
+| Kube-State-Metrics | Service | Kube-State-Metrics is a service that listens to the Kubernetes API server and generates metrics about the state of the objects in the cluster. It is also provisioned via Pilot Controller and is managed internally. |
+| Showback | Cronjob | The Showback Cronjob is responsible for generating showback reports based on the resources present on the cluster by querying the Opencost-Gateway and storing the reports in the Postgresql database that can be viewed in the MTO Console on the [Showback page](../explanation/console.md#showback). |
+| MTO-Gateway | Service | The MTO-Gateway is the backend service that provides the REST API for the MTO-Console. |
+| MTO-Console | Service | The MTO-Console is the user interface for the MTO system that provides a web-based interface for managing tenants, namespaces, sleep, and more. Details about the MTO-Console can be found [here](../explanation/console.md). |
