@@ -14,7 +14,7 @@
         <link rel="prev" href="../installation/helm.html">
       
       
-        <link rel="next" href="components.html">
+        <link rel="next" href="../pricing.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
@@ -2371,17 +2371,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    MTO Architecture
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="architecture.html" class="md-nav__link md-nav__link--active">
         
   
@@ -2392,75 +2381,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
       </a>
       
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#mto-core" class="md-nav__link">
-    <span class="md-ellipsis">
-      MTO Core
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mto-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      MTO UI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-features" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Features
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="components.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MTO Components
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -4012,41 +3932,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#mto-core" class="md-nav__link">
-    <span class="md-ellipsis">
-      MTO Core
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mto-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      MTO UI
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-features" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Features
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -4064,38 +3949,105 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="mto-architecture">MTO Architecture<a class="headerlink" href="#mto-architecture" title="Permanent link">#</a></h1>
-<p>The Multi-Tenant Operator (MTO) is a comprehensive system designed to manage multi-tenancy in Kubernetes environments. It consists of two major components: MTO Core and MTO UI, each fulfilling distinct roles in the lifecycle management of tenants.</p>
+<p>The Multi-Tenant Operator (MTO) is a comprehensive system designed to manage multi-tenancy in Kubernetes environments. Following is the architecture of the MTO:</p>
 <p><a class="glightbox" href="../images/architecture.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="architecture" src="../images/architecture.png" /></a></p>
-<h2 id="mto-core">MTO Core<a class="headerlink" href="#mto-core" title="Permanent link">#</a></h2>
-<p>The MTO Core contains a suite of controllers responsible for orchestrating tenant lifecycle operations:</p>
-<ul>
-<li><strong>Tenant Controller</strong>: Handles the creation and management of tenants, ensuring consistent provisioning.</li>
-<li><strong>Namespace Controller</strong>: Manages tenant-specific namespaces and enforces isolation.</li>
-<li><strong>Resource Supervisor Controller</strong>: Oversees sleep and hibernation for tenants and namespaces.</li>
-<li><strong>Extensions Controller</strong>: Provides support for extensibility by enabling integration with additional services.</li>
-<li><strong>Template Quota Integration Config Controller</strong>: Handles predifined templates, ensures quota enforcement, and manages integration configurations.</li>
-<li><strong>Template Instance Controller</strong>: Manages the lifecycle of resource instances based on predefined templates.</li>
-<li><strong>Template Group Instance Controller</strong> Manages the lifecycle of resource instances deployed as a group in multiple namespaces based on predefined templates.</li>
-<li><strong>Webhook</strong>: Manages webhooks for automation and event-driven processes.</li>
-<li><strong>Pilot Controller</strong>: Acts as an interface between the MTO Core and other components, facilitating provisioning tasks.</li>
-</ul>
-<h2 id="mto-ui">MTO UI<a class="headerlink" href="#mto-ui" title="Permanent link">#</a></h2>
-<p>The MTO UI layer provides a user-friendly interface for interacting with the MTO system and integrates key services to enhance functionality:</p>
-<ul>
-<li><strong>MTO Console &amp; API Gateway</strong>: Enable users to manage tenants, resources, and configurations efficiently.</li>
-<li><strong>Keycloak</strong>: Manages authentication and authorization, ensuring secure access control.</li>
-<li><strong>Prometheus</strong>: Monitors system health, resource usage, and performance metrics.</li>
-<li><strong>OpenCost</strong>: Provides cost visibility for tenant-specific resource consumption.</li>
-<li><strong>ShowBack</strong>: Generates detailed reports on tenant usage and resource allocation.</li>
-<li><strong>PostgreSQL</strong>: Acts as the central data store for tenant configurations, usage data, and other critical information.</li>
-</ul>
-<h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">#</a></h2>
-<ul>
-<li><strong>Extensibility</strong>: The architecture allows integration with external tools and services to adapt to diverse use cases.</li>
-<li><strong>Scalability</strong>: Designed to manage multiple tenants effectively, scaling with growing workloads.</li>
-<li><strong>Observability</strong>: Prometheus and OpenCost provide robust monitoring and cost-tracking capabilities.</li>
-<li><strong>Security</strong>: Keycloak ensures secure authentication and access management across the system.</li>
-</ul>
+<p>MTO consists of multiple controllers and componenets that work together to provide the functionality of the system. The following is a list of the components that make up the MTO system:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tenant Controller</td>
+<td>Deployment</td>
+<td>The Tenant Controller is responsible for managing the creation, deletion, and updating of tenants in the cluster via <a href="../crds-api-reference/tenant.html">Tenant CRD</a>.</td>
+</tr>
+<tr>
+<td>Namespace Controller</td>
+<td>Deployment</td>
+<td>The Namespace Controller is responsible for managing the creation, deletion, and updating of namespaces in the cluster.</td>
+</tr>
+<tr>
+<td>Resource Supervisor Deployment</td>
+<td>Deployment</td>
+<td>The Resource Supervisor Controller is responsible for managing sleep and hibernation of namespaces in the cluster via <a href="../crds-api-reference/resource-supervisor.html">ResourceSupervisor CRD</a>.</td>
+</tr>
+<tr>
+<td>Extensions Controller</td>
+<td>Deployment</td>
+<td>The Extensions Controller enhances MTO's functionality by allowing integration with external services,Currently supports integration with ArgoCD, enabling you to synchronize your repositories and configure AppProjects directly through MTO. It manages extensions via <a href="../crds-api-reference/extensions.html">Extension CRD</a>.</td>
+</tr>
+<tr>
+<td>Template Quota Integeration Config Controller</td>
+<td>Deployment</td>
+<td>The Template Quota Integeration Config Controller manages 3 different CRDs in one controller, <a href="../crds-api-reference/template.html">Template CRD</a>, <a href="../crds-api-reference/quota.html">Quota CRD</a>, and <a href="../crds-api-reference/integration-config.html">IntegrationConfig CRD</a>.</td>
+</tr>
+<tr>
+<td>TemplateInstance Controller</td>
+<td>Deployment</td>
+<td>The TemplateInstance Controller is responsible for managing the creation, deletion, and updating of TemplateInstances in the cluster via <a href="../crds-api-reference/template-instance.html">TemplateInstance CRD</a>.</td>
+</tr>
+<tr>
+<td>TemplateGroupInstance Controller</td>
+<td>Deployment</td>
+<td>The TemplateGroupInstance Controller is responsible for managing the creation, deletion, and updating of TemplateGroupInstances in the cluster via <a href="../crds-api-reference/template-group-instance.html">TemplateGroupInstance CRD</a>.</td>
+</tr>
+<tr>
+<td>Webhook</td>
+<td>Deployment</td>
+<td>The Webhook is responsible for managing webhook requests from MTO's resources.</td>
+</tr>
+<tr>
+<td>Pilot Controller</td>
+<td>Deployment</td>
+<td>The Pilot Controller is responsible provisioning and managing the lifecycle of MTO-Console and it's dependencies.</td>
+</tr>
+<tr>
+<td>Keycloak</td>
+<td>Deployment</td>
+<td>Keycloak is an open-source identity and access management solution that provides authentication and authorization services for the MTO Console that can be provisioned via Pilot Controller or can be deployed and managed externally following this guide <a href="../how-to-guides/integrating-external-keycloak.html">External Keycloak</a>.</td>
+</tr>
+<tr>
+<td>Postgresql</td>
+<td>StatefulSet</td>
+<td>Postgresql is an open-source relational database that acts as a caching layer and stores the data for the MTO Console. It is also provisioned via Pilot Controller and is managed internally.</td>
+</tr>
+<tr>
+<td>Opencost-Gateway</td>
+<td>Deployment</td>
+<td>Opencost is an open-source cost management solution that provides cost tracking and reporting for the resources deployed on the cluster. It is also provisioned via Pilot Controller and is managed internally.</td>
+</tr>
+<tr>
+<td>Prometheus-Server</td>
+<td>Deployment</td>
+<td>Prometheus is an open-source monitoring and alerting solution that provides metrics and monitoring for the resources deployed on the cluster. It is also provisioned via Pilot Controller and is managed internally.</td>
+</tr>
+<tr>
+<td>Kube-State-Metrics</td>
+<td>Deployment</td>
+<td>Kube-State-Metrics is a service that listens to the Kubernetes API server and generates metrics about the state of the objects in the cluster. It is also provisioned via Pilot Controller and is managed internally.</td>
+</tr>
+<tr>
+<td>Showback</td>
+<td>Cronjob</td>
+<td>The Showback Cronjob is responsible for generating showback reports based on the resources present on the cluster by querying the Opencost-Gateway and storing the reports in the Postgresql database that can be viewed in the MTO Console on the <a href="../explanation/console.html#showback">Showback page</a>.</td>
+</tr>
+<tr>
+<td>MTO-Gateway</td>
+<td>Deployment</td>
+<td>The MTO-Gateway is the backend service that provides the REST API for the MTO-Console.</td>
+</tr>
+<tr>
+<td>MTO-Console</td>
+<td>Deployment</td>
+<td>The MTO-Console is the user interface for the MTO system that provides a web-based interface for managing tenants, namespaces, sleep, and more. Details about the MTO-Console can be found <a href="../explanation/console.html">here</a>.</td>
+</tr>
+</tbody>
+</table>
 
 
 
