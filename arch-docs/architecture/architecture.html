@@ -4068,28 +4068,34 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p><a class="glightbox" href="../images/architecture.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="architecture" src="../images/architecture.png" /></a></p>
 <h2 id="mto-core">MTO Core<a class="headerlink" href="#mto-core" title="Permanent link">#</a></h2>
 <p>The MTO Core contains a suite of controllers responsible for orchestrating tenant lifecycle operations:</p>
-<p><strong>Tenant Controller</strong>: Handles the creation and management of tenants, ensuring consistent provisioning.
-<strong>Namespace Controller</strong>: Manages tenant-specific namespaces and enforces isolation.
-<strong>Resource Supervisor Controller</strong>: Oversees sleep and hibernation for tenants and namespaces.
-<strong>Extensions Controller</strong>: Provides support for extensibility by enabling integration with additional services.
-<strong>Template Quota Integration Config Controller</strong>: Handles predifined templates, ensures quota enforcement, and manages integration configurations.
-<strong>Template Instance Controller</strong>: Manages the lifecycle of resource instances based on predefined templates.
-<strong>Template Group Instance Controller</strong> Manages the lifecycle of resource instances deployed as a group in multiple namespaces based on predefined templates.
-<strong>Webhook Controller</strong>: Manages webhooks for automation and event-driven processes.
-<strong>Pilot Controller</strong>: Acts as an interface between the MTO Core and other components, facilitating provisioning tasks.</p>
+<ul>
+<li><strong>Tenant Controller</strong>: Handles the creation and management of tenants, ensuring consistent provisioning.</li>
+<li><strong>Namespace Controller</strong>: Manages tenant-specific namespaces and enforces isolation.</li>
+<li><strong>Resource Supervisor Controller</strong>: Oversees sleep and hibernation for tenants and namespaces.</li>
+<li><strong>Extensions Controller</strong>: Provides support for extensibility by enabling integration with additional services.</li>
+<li><strong>Template Quota Integration Config Controller</strong>: Handles predifined templates, ensures quota enforcement, and manages integration configurations.</li>
+<li><strong>Template Instance Controller</strong>: Manages the lifecycle of resource instances based on predefined templates.</li>
+<li><strong>Template Group Instance Controller</strong> Manages the lifecycle of resource instances deployed as a group in multiple namespaces based on predefined templates.</li>
+<li><strong>Webhook Controller</strong>: Manages webhooks for automation and event-driven processes.</li>
+<li><strong>Pilot Controller</strong>: Acts as an interface between the MTO Core and other components, facilitating provisioning tasks.</li>
+</ul>
 <h2 id="mto-ui">MTO UI<a class="headerlink" href="#mto-ui" title="Permanent link">#</a></h2>
 <p>The MTO UI layer provides a user-friendly interface for interacting with the MTO system and integrates key services to enhance functionality:</p>
-<p><strong>MTO Console &amp; API Gateway</strong>: Enable users to manage tenants, resources, and configurations efficiently.
-<strong>Keycloak</strong>: Manages authentication and authorization, ensuring secure access control.
-<strong>Prometheus</strong>: Monitors system health, resource usage, and performance metrics.
-<strong>OpenCost</strong>: Provides cost visibility for tenant-specific resource consumption.
-<strong>ShowBack</strong>: Generates detailed reports on tenant usage and resource allocation.
-<strong>PostgreSQL</strong>: Acts as the central data store for tenant configurations, usage data, and other critical information.</p>
+<ul>
+<li><strong>MTO Console &amp; API Gateway</strong>: Enable users to manage tenants, resources, and configurations efficiently.</li>
+<li><strong>Keycloak</strong>: Manages authentication and authorization, ensuring secure access control.</li>
+<li><strong>Prometheus</strong>: Monitors system health, resource usage, and performance metrics.</li>
+<li><strong>OpenCost</strong>: Provides cost visibility for tenant-specific resource consumption.</li>
+<li><strong>ShowBack</strong>: Generates detailed reports on tenant usage and resource allocation.</li>
+<li><strong>PostgreSQL</strong>: Acts as the central data store for tenant configurations, usage data, and other critical information.</li>
+</ul>
 <h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">#</a></h2>
-<p><strong>Extensibility</strong>: The architecture allows integration with external tools and services to adapt to diverse use cases.
-<strong>Scalability</strong>: Designed to manage multiple tenants effectively, scaling with growing workloads.
-<strong>Observability</strong>: Prometheus and OpenCost provide robust monitoring and cost-tracking capabilities.
-<strong>Security</strong>: Keycloak ensures secure authentication and access management across the system.</p>
+<ul>
+<li><strong>Extensibility</strong>: The architecture allows integration with external tools and services to adapt to diverse use cases.</li>
+<li><strong>Scalability</strong>: Designed to manage multiple tenants effectively, scaling with growing workloads.</li>
+<li><strong>Observability</strong>: Prometheus and OpenCost provide robust monitoring and cost-tracking capabilities.</li>
+<li><strong>Security</strong>: Keycloak ensures secure authentication and access management across the system.</li>
+</ul>
 
 
 
