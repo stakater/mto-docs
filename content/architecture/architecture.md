@@ -15,7 +15,7 @@ The MTO Core contains a suite of controllers responsible for orchestrating tenan
 - **Template Quota Integration Config Controller**: Handles predifined templates, ensures quota enforcement, and manages integration configurations.
 - **Template Instance Controller**: Manages the lifecycle of resource instances based on predefined templates.
 - **Template Group Instance Controller** Manages the lifecycle of resource instances deployed as a group in multiple namespaces based on predefined templates.
-- **Webhook Controller**: Manages webhooks for automation and event-driven processes.
+- **Webhook**: Manages webhooks for automation and event-driven processes.
 - **Pilot Controller**: Acts as an interface between the MTO Core and other components, facilitating provisioning tasks.
 
 ## MTO UI
