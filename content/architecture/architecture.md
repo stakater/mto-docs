@@ -4,7 +4,7 @@ The Multi-Tenant Operator (MTO) is a comprehensive system designed to manage mul
 
 ![architecture](../images/architecture.png)
 
-MTO consists of multiple controllers and componenets that work together to provide the functionality of the system. The following is a list of the components that make up the MTO system:
+MTO consists of multiple controllers and components that work together to provide the functionality of the system. The following is a list of the components that make up the MTO system:
 
 | Name | Type | Description |
 |------|------|-------------|
@@ -12,7 +12,7 @@ MTO consists of multiple controllers and componenets that work together to provi
 | Namespace Controller | Deployment | The Namespace Controller is responsible for managing the creation, deletion, and updating of namespaces in the cluster. |
 | Resource Supervisor Deployment | Deployment | The Resource Supervisor Controller is responsible for managing sleep and hibernation of namespaces in the cluster via [ResourceSupervisor CRD](../crds-api-reference/resource-supervisor.md). |
 | Extensions Controller | Deployment | The Extensions Controller enhances MTO's functionality by allowing integration with external services,Currently supports integration with ArgoCD, enabling you to synchronize your repositories and configure AppProjects directly through MTO. It manages extensions via [Extension CRD](../crds-api-reference/extensions.md). |
-| Template Quota Integeration Config Controller | Deployment | The Template Quota Integeration Config Controller manages 3 different CRDs in one controller, [Template CRD](../crds-api-reference/template.md), [Quota CRD](../crds-api-reference/quota.md), and [IntegrationConfig CRD](../crds-api-reference/integration-config.md). |
+| Template Quota Integration Config Controller | Deployment | The Template Quota Integration Config Controller manages 3 different CRDs in one controller, [Template CRD](../crds-api-reference/template.md), [Quota CRD](../crds-api-reference/quota.md), and [IntegrationConfig CRD](../crds-api-reference/integration-config.md). |
 | TemplateInstance Controller | Deployment | The TemplateInstance Controller is responsible for managing the creation, deletion, and updating of TemplateInstances in the cluster via [TemplateInstance CRD](../crds-api-reference/template-instance.md). |
 | TemplateGroupInstance Controller | Deployment | The TemplateGroupInstance Controller is responsible for managing the creation, deletion, and updating of TemplateGroupInstances in the cluster via [TemplateGroupInstance CRD](../crds-api-reference/template-group-instance.md). |
 | Webhook | Deployment | The Webhook is responsible for managing webhook requests from MTO's resources. |
