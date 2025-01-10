@@ -50,7 +50,7 @@ jobs:
       - name: Build testcafe tests
         working-directory: ./testcafe
         run: |
-          docker build -t testcafe-tests .
+          docker build -t testcafe-tests --build-arg PR_BRANCH='new_value' .
       - name: Run Docker container to run tests
         run: |
           docker run --rm --network="host" --name myapp-testcafe-container testcafe-tests:latest

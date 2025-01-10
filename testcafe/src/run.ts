@@ -6,14 +6,17 @@ const searchInput = Selector('input.md-search__input').withAttribute('placeholde
 const searchResultItem = Selector('li.md-search-result__item');
 const searchLabel = Selector('label.md-header__button.md-icon').withAttribute('for', '__search');
 
-
+// TODO: Need to provide the PR branch for the site both here and below:
+// Just set it as env var in the Dockerfile!
+// http://127.0.0.1:8080/add-tests/#
+// http://127.0.0.1:8080/add-tests/index.html
 fixture("Verify site")
     .page`${'http://127.0.0.1:8080/'}`
     .skipJsErrors();
 
 test('Verify index file exists', async t => {
     await t
-        .navigateTo('http://127.0.0.1:8080/index.html');
+        .navigateTo('http://127.0.0.1:8080/latest/index.html');
 })
 
 test('Search for existence of incorrectly rendered fenced code blocks', async (t) => {
