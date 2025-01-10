@@ -1,10 +1,10 @@
 FROM node:22-alpine
 WORKDIR testcafe
 
-ENV XDG_DOWNLOAD_DIR=/opt/JDownloader/Downloads
+ARG CURRENT_BRANCH
 
-ARG PR_BRANCH
-ENV [key]=[value]
+ENV CURRENT_BRANCH=$CURRENT_BRANCH
+ENV XDG_DOWNLOAD_DIR=/opt/JDownloader/Downloads
 
 COPY src src
 COPY package.json package.json

@@ -32,8 +32,12 @@ jobs:
       DOCKER_SECRETS: GIT_AUTH_TOKEN=${{ secrets.PUBLISH_TOKEN }}
   test:
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: [
+      build,
+      deploy_doc
+    ]
     env:
+      CURRENT_BRANCH: ${{ needs.deploy_doc.outputs.CURRENT_BRANCH }}
       IMAGE_PATH: ${{ needs.build.outputs.IMAGE_PATH }}
     steps:
       - name: Checkout repository
@@ -50,7 +54,7 @@ jobs:
       - name: Build testcafe tests
         working-directory: ./testcafe
         run: |
-          docker build -t testcafe-tests --build-arg PR_BRANCH='new_value' .
+          docker build -t testcafe-tests --build-arg CURRENT_BRANCH=${{ env.CURRENT_BRANCH }} .
       - name: Run Docker container to run tests
         run: |
           docker run --rm --network="host" --name myapp-testcafe-container testcafe-tests:latest

@@ -1,4 +1,4 @@
-import { fixture, Selector } from "testcafe";
+import { fixture, path, Selector } from "testcafe";
 
 const consentControlsDiv = Selector('.md-consent__controls');
 const acceptButton = consentControlsDiv.find('button').withText('Accept');
@@ -6,17 +6,13 @@ const searchInput = Selector('input.md-search__input').withAttribute('placeholde
 const searchResultItem = Selector('li.md-search-result__item');
 const searchLabel = Selector('label.md-header__button.md-icon').withAttribute('for', '__search');
 
-// TODO: Need to provide the PR branch for the site both here and below:
-// Just set it as env var in the Dockerfile!
-// http://127.0.0.1:8080/add-tests/#
-// http://127.0.0.1:8080/add-tests/index.html
 fixture("Verify site")
-    .page`${'http://127.0.0.1:8080/'}`
+    .page`${path.join('http://127.0.0.1:8080/', process.env.CURRENT_BRANCH, '/#')}`
     .skipJsErrors();
 
 test('Verify index file exists', async t => {
     await t
-        .navigateTo('http://127.0.0.1:8080/latest/index.html');
+        .navigateTo`${path.join('http://127.0.0.1:8080/', process.env.CURRENT_BRANCH, '/index.html')}`;
 })
 
 test('Search for existence of incorrectly rendered fenced code blocks', async (t) => {
