@@ -6,7 +6,7 @@ const acceptButton = consentControlsDiv.find('button').withText('Accept');
 const searchInput = Selector('input.md-search__input').withAttribute('placeholder', 'Search');
 const searchResultItem = Selector('li.md-search-result__item');
 const searchLabel = Selector('label.md-header__button.md-icon').withAttribute('for', '__search');
-const currentBranch = <string>process.env.CURRENT_BRANCH
+const currentBranch = <string>process.env.CURRENT_BRANCH;
 
 fixture("Verify site")
     .page`${path.join('http://127.0.0.1:8080/', currentBranch, '/#')}`
