@@ -17,7 +17,7 @@ jobs:
     uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@v0.0.112
     secrets:
       GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
-  build:
+  build_container:
     needs: deploy_doc
     if: ${{ github.base_ref == 'main' }}
     uses: stakater/.github/.github/workflows/pull_request_container_build.yaml@v0.0.112
@@ -33,12 +33,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     needs: [
-      build,
+      build_container,
       deploy_doc
     ]
     env:
       CURRENT_BRANCH: ${{ needs.deploy_doc.outputs.CURRENT_BRANCH }}
-      IMAGE_PATH: ${{ needs.build.outputs.IMAGE_PATH }}
+      IMAGE_PATH: ${{ needs.build_container.outputs.IMAGE_PATH }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
