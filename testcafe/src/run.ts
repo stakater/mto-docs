@@ -6,14 +6,15 @@ const acceptButton = consentControlsDiv.find('button').withText('Accept');
 const searchInput = Selector('input.md-search__input').withAttribute('placeholder', 'Search');
 const searchResultItem = Selector('li.md-search-result__item');
 const searchLabel = Selector('label.md-header__button.md-icon').withAttribute('for', '__search');
+const currentBranch = <string>process.env.CURRENT_BRANCH
 
 fixture("Verify site")
-    .page`${path.join('http://127.0.0.1:8080/', <string>process.env.CURRENT_BRANCH, '/#')}`
+    .page`${path.join('http://127.0.0.1:8080/', currentBranch, '/#')}`
     .skipJsErrors();
 
 test('Verify index file exists', async t => {
     await t
-        .navigateTo(`${path.join('http://127.0.0.1:8080/', <string>process.env.CURRENT_BRANCH, '/index.html')}`);
+        .navigateTo(`${path.join('http://127.0.0.1:8080/', currentBranch, '/index.html')}`);
 })
 
 test('Search for existence of incorrectly rendered fenced code blocks', async (t) => {
