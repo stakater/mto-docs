@@ -43,7 +43,7 @@ If the user needs to be added immediately and it is not feasible to wait for nex
 
 ## Pod Creation Error
 
-### Q. Errors in ReplicaSet Events about pods not being able to schedule on OpenShift because scc annotation is not found
+### Q. Errors in ReplicaSet Events about pods not being able to schedule on OpenShift because SCC annotation is not found
 
 ```terminal
 unable to find annotation openshift.io/sa.scc.uid-range
