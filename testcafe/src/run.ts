@@ -1,5 +1,4 @@
 import { fixture, Selector } from "testcafe";
-import path from "path";
 
 const consentControlsDiv = Selector('.md-consent__controls');
 const acceptButton = consentControlsDiv.find('button').withText('Accept');
@@ -9,12 +8,12 @@ const searchLabel = Selector('label.md-header__button.md-icon').withAttribute('f
 const currentBranch = <string>process.env.CURRENT_BRANCH;
 
 fixture("Verify site")
-    .page`${path.join('http://127.0.0.1:8080/', currentBranch, '/#')}`
+    .page`${'http://127.0.0.1:8080/'.concat(currentBranch, '/#')}`
     .skipJsErrors();
 
 test('Verify index file exists', async t => {
     await t
-        .navigateTo(`${path.join('http://127.0.0.1:8080/', currentBranch, '/index.html')}`);
+        .navigateTo(`${'http://127.0.0.1:8080/'.concat(currentBranch, '/index.html')}`);
 })
 
 test('Search for existence of incorrectly rendered fenced code blocks', async (t) => {
