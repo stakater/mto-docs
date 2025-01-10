@@ -53,7 +53,7 @@ Multi Tenant Operator will pick up the credentials from the mentioned namespace 
 
 Afterward, Bill can see that manifests in the chart have been successfully created in all label matching namespaces.
 
-## Deploying Helm Chart to Namespaces via TemplateGroupInstances from HTTPS Registry
+## Deploying Helm Chart to Namespaces via TemplateGroupInstances from `HTTPS` Registry
 
 Bill, the cluster admin, wants to deploy a helm chart from `HTTPS` registry in namespaces where certain labels exists.
 

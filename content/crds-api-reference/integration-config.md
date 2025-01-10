@@ -502,7 +502,7 @@ argocd:
 
 ### Vault
 
-[Vault](https://www.vaultproject.io/) is used to secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data using a UI, CLI, or HTTP API.
+[Vault](https://www.vaultproject.io/) is used to secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data using a UI, CLI, or http API.
 
 If `vault` is configured on a cluster, then Vault configuration can be enabled.
 
