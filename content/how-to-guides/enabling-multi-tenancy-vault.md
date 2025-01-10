@@ -1,6 +1,6 @@
 # Configuring Vault in IntegrationConfig
 
-[Vault](https://www.vaultproject.io/) is used to secure, store and tightly control access to tokens, passwords, certificates, and encryption keys for protecting secrets and other sensitive data using a UI, CLI, or HTTP API.
+[Vault](https://www.vaultproject.io/) is used to secure, store and tightly control access to tokens, passwords, certificates, and encryption keys for protecting secrets and other sensitive data using a UI, CLI, or http API.
 
 To enable Vault multi-tenancy, a role has to be created in Vault under [Kubernetes authentication](https://developer.hashicorp.com/vault/docs/auth/kubernetes) with the following permissions:
 
