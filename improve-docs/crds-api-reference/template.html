@@ -2385,7 +2385,28 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         
   
   <span class="md-ellipsis">
-    Overview
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/concepts.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concepts
   </span>
   
 
@@ -3908,6 +3929,24 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#how-it-works_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      How It Works
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-cases_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Cases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#example_2" class="md-nav__link">
     <span class="md-ellipsis">
       Example
@@ -4228,6 +4267,24 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#how-it-works_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      How It Works
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-cases_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Cases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#example_2" class="md-nav__link">
     <span class="md-ellipsis">
       Example
@@ -4347,7 +4404,7 @@ Also, you can define custom variables in <code>Template</code> and <code>Templat
 </ul>
 <h4 id="use-cases_1">Use Cases<a class="headerlink" href="#use-cases_1" title="Permanent link">#</a></h4>
 <ul>
-<li>Best for complex resource setups with interdependencies (e.g., a microservice with a Deployment, Service, Ingress, and ConfigMap).</li>
+<li>Best for complex resource setups with interdependencies (e.g., a microservice with a Deployment, Service, Ingress, and Configmap).</li>
 <li>Useful for resources requiring advanced templating logic or modular packaging.</li>
 <li>Great for managing third-party tools or applications (e.g., deploying Prometheus, Keycloak, or databases).</li>
 </ul>
@@ -4368,6 +4425,15 @@ Also, you can define custom variables in <code>Template</code> and <code>Templat
 </code></pre></div>
 <h3 id="3-resource-mapping">3. Resource Mapping<a class="headerlink" href="#3-resource-mapping" title="Permanent link">#</a></h3>
 <p>This approach maps secrets and configmaps from one tenant's namespace to another tenant's namespace, or within a tenant's namespace.</p>
+<h4 id="how-it-works_2">How It Works<a class="headerlink" href="#how-it-works_2" title="Permanent link">#</a></h4>
+<ul>
+<li>The template contains mappings to pre-existing resources.</li>
+</ul>
+<h4 id="use-cases_2">Use Cases<a class="headerlink" href="#use-cases_2" title="Permanent link">#</a></h4>
+<ul>
+<li>Ideal for maintaining consistency across shared resources without duplicating definitions.</li>
+<li>Best when resources already exist.</li>
+</ul>
 <h4 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">#</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
