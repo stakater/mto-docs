@@ -86,7 +86,7 @@ This method integrates Helm charts into the template, allowing you to leverage H
 
 #### Use Cases
 
-* Best for complex resource setups with interdependencies (e.g., a microservice with a Deployment, Service, Ingress, and ConfigMap).
+* Best for complex resource setups with interdependencies (e.g., a microservice with a Deployment, Service, Ingress, and Configmap).
 * Useful for resources requiring advanced templating logic or modular packaging.
 * Great for managing third-party tools or applications (e.g., deploying Prometheus, Keycloak, or databases).
 
@@ -111,6 +111,15 @@ resources:
 ### 3. Resource Mapping
 
 This approach maps secrets and configmaps from one tenant's namespace to another tenant's namespace, or within a tenant's namespace.
+
+#### How It Works
+
+* The template contains mappings to pre-existing resources.
+
+#### Use Cases
+
+* Ideal for maintaining consistency across shared resources without duplicating definitions.
+* Best when resources already exist.
 
 #### Example
 
