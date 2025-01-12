@@ -1,6 +1,6 @@
 # On EKS
 
-This document covers how to link Multi Tenant Operator with an [Amazon EKS (Elastic Kubernetes Service)](https://aws.amazon.com/eks/) cluster.
+This document covers how to deploy Multi Tenant Operator with an [Amazon EKS (Elastic Kubernetes Service)](https://aws.amazon.com/eks/) cluster.
 
 ## Prerequisites
 
