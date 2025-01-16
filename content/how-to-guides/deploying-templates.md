@@ -35,7 +35,7 @@ kind: TemplateGroupInstance
 metadata:
   name: docker-secret-group-instance
 spec:
-  template: docker-pull-secret
+  template: docker-secret
   selector:
     matchLabels:
       kind: build
@@ -66,7 +66,7 @@ kind: TemplateGroupInstance
 metadata:
   name: docker-secret-group-instance
 spec:
-  template: docker-pull-secret
+  template: docker-secret
   selector:
     matchExpressions:
     - key: stakater.com/tenant
@@ -87,7 +87,7 @@ kind: TemplateGroupInstance
 metadata:
   name: docker-secret-group-instance
 spec:
-  template: docker-pull-secret
+  template: docker-secret
   selector:
     matchExpressions:
     - key: stakater.com/tenant
