@@ -4167,11 +4167,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="template-instance-ti">Template Instance (TI)<a class="headerlink" href="#template-instance-ti" title="Permanent link">#</a></h2>
 <p>A <strong>Template Instance</strong> is a concrete implementation of a <strong>Template</strong>, created with specific parameters tailored for a particular tenant or use case. It generates actual Kubernetes resources based on the defined template.</p>
 <h2 id="template-group-instance-tgi">Template Group Instance (TGI)<a class="headerlink" href="#template-group-instance-tgi" title="Permanent link">#</a></h2>
-<p>A <strong>Template Group Instance</strong> is a collection of <strong>Template Instances</strong> that are deployed together as a unified set of configurations. It simplifies managing multiple interdependent resources for complex tenant setups.</p>
+<p>A <strong>Template Group Instance</strong> works on a particular set of namespaces based on the mentioned labels, taking <strong>Template</strong> as a reference for the resources to be deployed. It simplifies managing multiple interdependent resources for complex tenant setups.</p>
 <h2 id="extensions">Extensions<a class="headerlink" href="#extensions" title="Permanent link">#</a></h2>
-<p><strong>Extensions</strong> enhance MTO functionality by integrating external services like ArgoCD. They allow seamless synchronization of repositories and configuration of AppProjects for tenants, extending multi-tenant workflows.</p>
+<p><strong>Extensions</strong> enhance MTO functionality by integrating external services like ArgoCD. They allow seamless configuration of AppProjects for tenants, extending multi-tenant workflows.</p>
 <h2 id="resource-supervisor">Resource Supervisor<a class="headerlink" href="#resource-supervisor" title="Permanent link">#</a></h2>
-<p>The <strong>Resource Supervisor</strong> manages the hibernation of deployments and stateful sets, enabling scheduled scaling down during inactivity and scaling up during active periods, optimizing resource utilization and reducing costs.</p>
+<p>The <strong>Resource Supervisor</strong> manages the hibernation of deployments and stateful sets, enabling scaling down during user defined schedule or by manual trigger, optimizing resource utilization and reducing costs.</p>
 
 
 

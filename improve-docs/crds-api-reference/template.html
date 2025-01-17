@@ -3965,15 +3965,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#mandatory-and-optional-templates" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mandatory and Optional Templates
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -4303,15 +4294,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#mandatory-and-optional-templates" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mandatory and Optional Templates
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -4334,8 +4316,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Templates are used to initialize Namespaces, share common resources across namespaces, and map secrets/configmaps from one namespace to other namespaces.</p>
 <p>They are tracked by TemplateInstances in each Namespace they are applied to.</p>
 <p>They can contain pre-defined parameters such as <code>${namespace}</code>/<code>${tenant}</code> or user-defined <code>${MY_PARAMETER}</code> that can be specified within an <code>TemplateInstance</code>.</p>
-<p>// TODO: Clarify text in second sentence.
-Also, you can define custom variables in <code>Template</code> and <code>TemplateInstance</code>. The parameters defined in <code>TemplateInstance</code> are overwritten the values defined in <code>Template</code>.</p>
+<p>Also, you can define custom variables in <code>Template</code> and <code>TemplateInstance</code>. The parameters defined in <code>Templates</code> are overwritten the values defined in <code>TemplateInstance</code> and <code>TemplateGroupInstance</code>.</p>
 <h2 id="specification">Specification<a class="headerlink" href="#specification" title="Permanent link">#</a></h2>
 <p><code>Template</code> Custom Resource (CR) supports three key methods for defining and managing resources: <code>manifests</code>, <code>helm</code>, and <code>resource mapping</code>. Let’s dive into each method, their differences, and their use cases:</p>
 <h3 id="1-manifests">1. Manifests<a class="headerlink" href="#1-manifests" title="Permanent link">#</a></h3>
@@ -4343,11 +4324,11 @@ Also, you can define custom variables in <code>Template</code> and <code>Templat
 <h4 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h4>
 <ul>
 <li>The template includes the actual YAML specifications of resources like <code>Deployment</code>, <code>Service</code>, <code>ConfigMap</code>, etc.</li>
-<li>These manifests are applied as-is or with minor parameter substitutions (e.g., names, labels, or annotations). // TODO: Is it completely true?</li>
+<li>These manifests are applied as-is or with minor parameter substitutions (e.g., names, labels, annotations or user defined parameters).</li>
 </ul>
 <h4 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">#</a></h4>
 <ul>
-<li>Best for straightforward and simple resources where you don’t need advanced templating logic or dependency management.</li>
+<li>Best for straightforward and simple resources where you don't need advanced templating logic or dependency management.</li>
 <li>Ideal when the resource definitions are static or have minimal customization needs.</li>
 </ul>
 <h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">#</a></h4>
@@ -4398,8 +4379,8 @@ Also, you can define custom variables in <code>Template</code> and <code>Templat
 <p>This method integrates Helm charts into the template, allowing you to leverage Helm's templating capabilities and package management.</p>
 <h4 id="how-it-works_1">How It Works<a class="headerlink" href="#how-it-works_1" title="Permanent link">#</a></h4>
 <ul>
-<li>The template references a Helm chart (local or remote). // TODO: Does local make any sense here?</li>
-<li>Values for the Helm chart can be passed as parameters within the template.</li>
+<li>The <code>Template</code> references a Helm chart.</li>
+<li>Values for the Helm chart can be passed by the <code>values</code> field.</li>
 <li>The Helm chart generates the necessary Kubernetes resources dynamically at runtime.</li>
 </ul>
 <h4 id="use-cases_1">Use Cases<a class="headerlink" href="#use-cases_1" title="Permanent link">#</a></h4>
@@ -4427,7 +4408,7 @@ Also, you can define custom variables in <code>Template</code> and <code>Templat
 <p>This approach maps secrets and configmaps from one tenant's namespace to another tenant's namespace, or within a tenant's namespace.</p>
 <h4 id="how-it-works_2">How It Works<a class="headerlink" href="#how-it-works_2" title="Permanent link">#</a></h4>
 <ul>
-<li>The template contains mappings to pre-existing resources.</li>
+<li>The template contains mappings to pre-existing resources (secrets and configmaps only).</li>
 </ul>
 <h4 id="use-cases_2">Use Cases<a class="headerlink" href="#use-cases_2" title="Permanent link">#</a></h4>
 <ul>
@@ -4448,8 +4429,6 @@ Also, you can define custom variables in <code>Template</code> and <code>Templat
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configmap-c1</span>
 <span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-n2</span>
 </code></pre></div>
-<h2 id="mandatory-and-optional-templates">Mandatory and Optional Templates<a class="headerlink" href="#mandatory-and-optional-templates" title="Permanent link">#</a></h2>
-<p>Templates can either be mandatory or optional. By default, all Templates are optional. Cluster Admins can make Templates mandatory by adding them to the <code>spec.templateInstances</code> array within the Tenant configuration. All Templates listed in <code>spec.templateInstances</code> will always be instantiated within every <code>Namespace</code> that is created for the respective Tenant.</p>
 
 
 
