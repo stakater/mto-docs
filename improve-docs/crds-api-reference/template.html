@@ -4316,7 +4316,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Templates are used to initialize Namespaces, share common resources across namespaces, and map secrets/configmaps from one namespace to other namespaces.</p>
 <p>They are tracked by TemplateInstances in each Namespace they are applied to.</p>
 <p>They can contain pre-defined parameters such as <code>${namespace}</code>/<code>${tenant}</code> or user-defined <code>${MY_PARAMETER}</code> that can be specified within an <code>TemplateInstance</code>.</p>
-<p>Also, you can define custom variables in <code>Template</code> and <code>TemplateInstance</code>. The parameters defined in <code>Templates</code> are overwritten the values defined in <code>TemplateInstance</code> and <code>TemplateGroupInstance</code>.</p>
+<p>Also, you can define custom variables in <code>Template</code>, <code>TemplateInstance</code> and <code>TemplateGroupInstance</code>. The parameters defined in <code>Templates</code> are overwritten the values defined in <code>TemplateInstance</code> and <code>TemplateGroupInstance</code>.</p>
 <h2 id="specification">Specification<a class="headerlink" href="#specification" title="Permanent link">#</a></h2>
 <p><code>Template</code> Custom Resource (CR) supports three key methods for defining and managing resources: <code>manifests</code>, <code>helm</code>, and <code>resource mapping</code>. Let’s dive into each method, their differences, and their use cases:</p>
 <h3 id="1-manifests">1. Manifests<a class="headerlink" href="#1-manifests" title="Permanent link">#</a></h3>
@@ -4324,7 +4324,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h4 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h4>
 <ul>
 <li>The template includes the actual YAML specifications of resources like <code>Deployment</code>, <code>Service</code>, <code>ConfigMap</code>, etc.</li>
-<li>These manifests are applied as-is or with minor parameter substitutions (e.g., names, labels, annotations or user defined parameters).</li>
+<li>These manifests are applied as-is or with minor parameter substitutions (e.g., dynamically populated <code>{tenant}</code> and <code>{namespace}</code> variables wherever added or user defined parameters).</li>
 </ul>
 <h4 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">#</a></h4>
 <ul>
