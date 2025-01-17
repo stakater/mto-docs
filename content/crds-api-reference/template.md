@@ -6,8 +6,7 @@ They are tracked by TemplateInstances in each Namespace they are applied to.
 
 They can contain pre-defined parameters such as `${namespace}`/`${tenant}` or user-defined `${MY_PARAMETER}` that can be specified within an `TemplateInstance`.
 
-// TODO: Clarify text in second sentence.
-Also, you can define custom variables in `Template` and `TemplateInstance`. The parameters defined in `TemplateInstance` are overwritten the values defined in `Template`.
+Also, you can define custom variables in `Template` and `TemplateInstance`. The parameters defined in `Templates` are overwritten the values defined in `TemplateInstance` and `TemplateGroupInstance`.
 
 ## Specification
 
@@ -20,11 +19,11 @@ This approach uses raw Kubernetes manifests (YAML files) that specify resources 
 #### How It Works
 
 * The template includes the actual YAML specifications of resources like `Deployment`, `Service`, `ConfigMap`, etc.
-* These manifests are applied as-is or with minor parameter substitutions (e.g., names, labels, or annotations). // TODO: Is it completely true?
+* These manifests are applied as-is or with minor parameter substitutions (e.g., names, labels, annotations or user defined parameters).
 
 #### Use Cases
 
-* Best for straightforward and simple resources where you don’t need advanced templating logic or dependency management.
+* Best for straightforward and simple resources where you don't need advanced templating logic or dependency management.
 * Ideal when the resource definitions are static or have minimal customization needs.
 
 #### Example
@@ -80,8 +79,8 @@ This method integrates Helm charts into the template, allowing you to leverage H
 
 #### How It Works
 
-* The template references a Helm chart (local or remote). // TODO: Does local make any sense here?
-* Values for the Helm chart can be passed as parameters within the template.
+* The `Template` references a Helm chart.
+* Values for the Helm chart can be passed by the `values` field.
 * The Helm chart generates the necessary Kubernetes resources dynamically at runtime.
 
 #### Use Cases
@@ -114,7 +113,7 @@ This approach maps secrets and configmaps from one tenant's namespace to another
 
 #### How It Works
 
-* The template contains mappings to pre-existing resources.
+* The template contains mappings to pre-existing resources (secrets and configmaps only).
 
 #### Use Cases
 
@@ -137,7 +136,3 @@ resources:
       - name: configmap-c1
         namespace: namespace-n2
 ```
-
-## Mandatory and Optional Templates
-
-Templates can either be mandatory or optional. By default, all Templates are optional. Cluster Admins can make Templates mandatory by adding them to the `spec.templateInstances` array within the Tenant configuration. All Templates listed in `spec.templateInstances` will always be instantiated within every `Namespace` that is created for the respective Tenant.

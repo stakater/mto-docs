@@ -20,12 +20,12 @@ A **Template Instance** is a concrete implementation of a **Template**, created 
 
 ## Template Group Instance (TGI)
 
-A **Template Group Instance** is a collection of **Template Instances** that are deployed together as a unified set of configurations. It simplifies managing multiple interdependent resources for complex tenant setups.
+A **Template Group Instance** works on a particular set of namespaces based on the mentioned labels, taking **Template** as a reference for the resources to be deployed. It simplifies managing multiple interdependent resources for complex tenant setups.
 
 ## Extensions
 
-**Extensions** enhance MTO functionality by integrating external services like ArgoCD. They allow seamless synchronization of repositories and configuration of AppProjects for tenants, extending multi-tenant workflows.
+**Extensions** enhance MTO functionality by integrating external services like ArgoCD. They allow seamless configuration of AppProjects for tenants, extending multi-tenant workflows.
 
 ## Resource Supervisor
 
-The **Resource Supervisor** manages the hibernation of deployments and stateful sets, enabling scheduled scaling down during inactivity and scaling up during active periods, optimizing resource utilization and reducing costs.
+The **Resource Supervisor** manages the hibernation of deployments and stateful sets, enabling scaling down during user defined schedule or by manual trigger, optimizing resource utilization and reducing costs.
