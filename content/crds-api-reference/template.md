@@ -6,7 +6,7 @@ They are tracked by TemplateInstances in each Namespace they are applied to.
 
 They can contain pre-defined parameters such as `${namespace}`/`${tenant}` or user-defined `${MY_PARAMETER}` that can be specified within an `TemplateInstance`.
 
-Also, you can define custom variables in `Template` and `TemplateInstance`. The parameters defined in `Templates` are overwritten the values defined in `TemplateInstance` and `TemplateGroupInstance`.
+Also, you can define custom variables in `Template`, `TemplateInstance` and `TemplateGroupInstance`. The parameters defined in `Templates` are overwritten the values defined in `TemplateInstance` and `TemplateGroupInstance`.
 
 ## Specification
 
@@ -19,7 +19,7 @@ This approach uses raw Kubernetes manifests (YAML files) that specify resources 
 #### How It Works
 
 * The template includes the actual YAML specifications of resources like `Deployment`, `Service`, `ConfigMap`, etc.
-* These manifests are applied as-is or with minor parameter substitutions (e.g., names, labels, annotations or user defined parameters).
+* These manifests are applied as-is or with minor parameter substitutions (e.g., dynamically populated `{tenant}` and `{namespace}` variables wherever added or user defined parameters).
 
 #### Use Cases
 
