@@ -1,22 +1,32 @@
 # Template
 
-## Cluster scoped resource
+Templates are used to initialize Namespaces, share common resources across namespaces, and map secrets/configmaps from one namespace to other namespaces.
+
+They can contain pre-defined parameters such as `${namespace}`/`${tenant}`.
+
+Also, you can define custom variables in `Template`, `TemplateInstance` and `TemplateGroupInstance`. The parameters defined in `Templates` are overwritten the values defined in `TemplateInstance` and `TemplateGroupInstance`.
+
+## Specification
+
+`Template` Custom Resource (CR) supports three key methods for defining and managing resources: `manifests`, `helm`, and `resource mapping`. Let’s dive into each method, their differences, and their use cases:
+
+### 1. Manifests
+
+This approach uses raw Kubernetes manifests (YAML files) that specify resources directly in the template.
+
+#### How It Works
+
+* The template includes the actual YAML specifications of resources like `Deployment`, `Service`, `ConfigMap`, etc.
+* These manifests are applied as-is or with minor parameter substitutions (e.g., dynamically populated `{tenant}` and `{namespace}` variables wherever added or user defined parameters).
+
+#### Use Cases
+
+* Best for straightforward and simple resources where you don't need advanced templating logic or dependency management.
+* Ideal when the resource definitions are static or have minimal customization needs.
+
+#### Example
 
 ```yaml
-apiVersion: tenantoperator.stakater.com/v1alpha1
-kind: Template
-metadata:
-  name: redis
-resources:
-  helm:
-    releaseName: redis
-    chart:
-      repository:
-        name: redis
-        repoUrl: https://charts.bitnami.com/bitnami
-    values: |
-      redisPort: 6379
----
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Template
 metadata:
@@ -59,7 +69,58 @@ resources:
           ports:
           - protocol: TCP
             port: 5978
----
+```
+
+### 2. Helm
+
+This method integrates Helm charts into the template, allowing you to leverage Helm's templating capabilities and package management.
+
+#### How It Works
+
+* The `Template` references a Helm chart.
+* Values for the Helm chart can be passed by the `values` field.
+* The Helm chart generates the necessary Kubernetes resources dynamically at runtime.
+
+#### Use Cases
+
+* Best for complex resource setups with interdependencies (e.g., a microservice with a Deployment, Service, Ingress, and Configmap).
+* Useful for resources requiring advanced templating logic or modular packaging.
+* Great for managing third-party tools or applications (e.g., deploying Prometheus, Keycloak, or databases).
+
+#### Example
+
+```yaml
+apiVersion: tenantoperator.stakater.com/v1alpha1
+kind: Template
+metadata:
+  name: redis
+resources:
+  helm:
+    releaseName: redis
+    chart:
+      repository:
+        name: redis
+        repoUrl: https://charts.bitnami.com/bitnami
+    values: |
+      redisPort: 6379
+```
+
+### 3. Resource Mapping
+
+This approach maps secrets and configmaps from one tenant's namespace to another tenant's namespace, or within a tenant's namespace.
+
+#### How It Works
+
+* The template contains mappings to pre-existing resources (secrets and configmaps only).
+
+#### Use Cases
+
+* Ideal for maintaining consistency across shared resources without duplicating definitions.
+* Best when resources already exist.
+
+#### Example
+
+```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
 kind: Template
 metadata:
@@ -73,21 +134,3 @@ resources:
       - name: configmap-c1
         namespace: namespace-n2
 ```
-
-Templates are used to initialize Namespaces, share common resources across namespaces, and map secrets/configmaps from one namespace to other namespaces.
-
-* They either contain one or more Kubernetes manifests, a reference to secrets/configmaps, or a Helm chart.
-* They are being tracked by TemplateInstances in each Namespace they are applied to.
-* They can contain pre-defined parameters such as ${namespace}/${tenant} or user-defined ${MY_PARAMETER} that can be specified within an TemplateInstance.
-
-Also, you can define custom variables in `Template` and `TemplateInstance` . The parameters defined in `TemplateInstance` are overwritten the values defined in `Template` .
-
-Manifest Templates: The easiest option to define a Template is by specifying an array of Kubernetes manifests which should be applied when the Template is being instantiated.
-
-Helm Chart Templates: Instead of manifests, a Template can specify a Helm chart that will be installed (using Helm template) when the Template is being instantiated.
-
-Resource Mapping Templates: A template can be used to map secrets and configmaps from one tenant's namespace to another tenant's namespace, or within a tenant's namespace.
-
-## Mandatory and Optional Templates
-
-Templates can either be mandatory or optional. By default, all Templates are optional. Cluster Admins can make Templates mandatory by adding them to the `spec.templateInstances` array within the Tenant configuration. All Templates listed in `spec.templateInstances` will always be instantiated within every `Namespace` that is created for the respective Tenant.
