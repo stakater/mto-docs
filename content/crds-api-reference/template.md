@@ -2,9 +2,7 @@
 
 Templates are used to initialize Namespaces, share common resources across namespaces, and map secrets/configmaps from one namespace to other namespaces.
 
-They are tracked by TemplateInstances in each Namespace they are applied to.
-
-They can contain pre-defined parameters such as `${namespace}`/`${tenant}` or user-defined `${MY_PARAMETER}` that can be specified within an `TemplateInstance`.
+They can contain pre-defined parameters such as `${namespace}`/`${tenant}`.
 
 Also, you can define custom variables in `Template`, `TemplateInstance` and `TemplateGroupInstance`. The parameters defined in `Templates` are overwritten the values defined in `TemplateInstance` and `TemplateGroupInstance`.
 
