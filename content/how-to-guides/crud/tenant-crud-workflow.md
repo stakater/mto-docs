@@ -4,7 +4,7 @@
 
 ## Overview
 
-The tenant creation process involves a multi-step drawer interface. This document outlines the validation checks and the criteria for progressing through these steps.
+The tenant creation process involves a multistep drawer interface. This document outlines the validation checks and the criteria for progressing through these steps.
 
 ## Step 1: Enter Primary Info
 
@@ -159,8 +159,8 @@ The Metadata tab is divided into three sub-tabs:
 
 ### Error Handling
 
-- The "Without Tenant Prefix" input validates namespace uniqueness and displays an error if the namespace already exists.
-- Namespaces in the accordions are being verified before being addedif they already exists they are not added and shown with an error message on the input
+- The "Without Tenant Prefix" input validates namespace uniqueness and displays an error if the namespace already exist.
+- Namespaces in the accordions are being verified before being adde. If they already exist they are not added and shown with an error message on the input.
 - No validation errors occur for annotations or labels as they are free-form inputs.
 
 ### Completion
@@ -181,4 +181,4 @@ The update process follows a similar flow to the create process. However, the ke
 
 ## Delete
 
-By clicking on the delete option in the tenants table the user will be able to perform delete operation and it may take a short while to delete the tenant.
+By clicking on the delete option in the tenants table the user will be able to perform delete operation, and it may take a short while to delete the tenant.
