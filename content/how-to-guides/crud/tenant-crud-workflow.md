@@ -4,7 +4,7 @@
 
 ## Overview
 
-The tenant creation process involves a three step drawer interface. This document outlines the validation checks and the criteria for progressing through these steps.
+The tenant creation process involves a three-step drawer interface. This document outlines the validation checks and the criteria for progressing through these steps.
 
 ## Step 1: Enter Primary Info
 
