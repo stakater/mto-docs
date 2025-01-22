@@ -159,7 +159,7 @@ The Metadata tab is divided into three sub-tabs:
 
 ### Error Handling
 
-- The "Without Tenant Prefix" input validates namespace uniqueness and displays an error if the namespace already exist.
+- The "Without Tenant Prefix" input validates namespace uniqueness and displays an error if the namespace already exists.
 - Namespaces in the accordions are being verified before being adde. If they already exist they are not added and shown with an error message on the input.
 - No validation errors occur for annotations or labels as they are free-form inputs.
 
