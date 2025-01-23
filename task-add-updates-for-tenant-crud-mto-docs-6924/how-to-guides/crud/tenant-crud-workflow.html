@@ -4227,10 +4227,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <ul>
 <li>The tenant name must conform to the following regex pattern:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">isValidTenantName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">inputValue</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">regex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/^[a-z0-9]+(-[a-z0-9]+)*$/</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">regex</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">inputValue</span><span class="p">);</span>
-<span class="w">    </span><span class="p">};</span>
+<div class="highlight"><pre><span></span><code>    /^[a-z0-9]+(-[a-z0-9]+)*$/
 </code></pre></div>
 <ul>
 <li>This ensures that tenant names consist of lowercase alphanumeric characters and hyphens, and do not start or end with a hyphen.</li>
