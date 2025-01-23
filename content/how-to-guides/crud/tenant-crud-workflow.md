@@ -17,11 +17,8 @@ The first step in creating a tenant is to provide a name for the tenant. Users m
 - Regex Validation
     - The tenant name must conform to the following regex pattern:
 
-    ```typescript
-        export const isValidTenantName = (inputValue: string): boolean => {
-            const regex = /^[a-z0-9]+(-[a-z0-9]+)*$/;
-            return regex.test(inputValue);
-        };
+    ```regex
+        /^[a-z0-9]+(-[a-z0-9]+)*$/
     ```
 
     - This ensures that tenant names consist of lowercase alphanumeric characters and hyphens, and do not start or end with a hyphen.
