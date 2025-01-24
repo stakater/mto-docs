@@ -1,4 +1,4 @@
-# On EKS
+# Install MTO on EKS
 
 This document covers how to deploy Multi Tenant Operator with an [Amazon EKS (Elastic Kubernetes Service)](https://aws.amazon.com/eks/) cluster.
 
@@ -13,7 +13,7 @@ This document covers how to deploy Multi Tenant Operator with an [Amazon EKS (El
 - [AWS Elastic Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/load-balancer-getting-started.html) must be configured
 
 - Following components must be installed and configured on cluster before installation
-    
+
     * NGINX Ingress Controller
     * CertManager
     * CertManager's ClusterIssuer for Let's Encrypt
@@ -21,7 +21,7 @@ This document covers how to deploy Multi Tenant Operator with an [Amazon EKS (El
     * EBS CSI Driver
     * Storage Class for EBS
     * Wildcard DNS Record Entry
-    * Wild Card Certificate
+    * Wildcard Certificate
 
     [MTO prerequisites installation guide](./mto-prereq-installation.md) provides a detailed walkthrough of dependency installation
 
@@ -106,4 +106,4 @@ kubectl get routes -n multi-tenant-operator
 
 ## What's Next
 
-MTO installation has been completed. Now we can [create our first tenant using MTO](./create-tenants.md)
+MTO installation has been completed. Now we can [create our first tenant on EKS using MTO](./create-tenants.md).
