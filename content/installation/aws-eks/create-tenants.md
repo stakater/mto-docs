@@ -2,7 +2,7 @@
 This document provides detailed insights on creating MTO Tenants on EKS cluster.
 
 ## Prerequisites
-MTO must be installed on EKS cluster. [MTO EKS installation guide](./aws-eks.md) provides a detailed walkthrough of MTO installation on EKS.
+MTO must be installed on EKS cluster. [MTO EKS installation guide](./mto-installation.md) provides a detailed walkthrough of MTO installation on EKS.
 
 
 ## Users Interaction with the Cluster
@@ -225,7 +225,7 @@ Error from server (Forbidden): namespaces is forbidden: User "sso-devteam:random
   {"console":true,"showback":true}
   ```
 
-  If console is set to false then [enable the MTO Console](./aws-eks.md#enable-mto-console) before proceeding to next step
+  If console is set to false then [enable the MTO Console](./mto-installation.md#enable-mto-console) before proceeding to next step
 
 - A KeyCloak user with same username as AWS IAM user should be created. Follow our [Setting Up User Access in Keycloak for MTO Console](../../how-to-guides/keycloak.md) to create a KeyCloak user.
 
