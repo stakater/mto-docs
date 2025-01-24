@@ -62,7 +62,7 @@ kubectl apply -f <FILENAME>.yaml
 
 ### 5. Create `ClusterIssuer` for Let's Encrypt
 
-Create a yaml file with following the CR definition and replace `<AWS_ACCESS_KEY_ID>`, `<REGION>`, `<BASE_DOMAIN>` with their values
+Create a YAML file with following the CR definition and replace `<AWS_ACCESS_KEY_ID>`, `<REGION>`, `<BASE_DOMAIN>` with their values
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -90,7 +90,7 @@ spec:
 
 ```
 
-Apply yaml file using following command
+Apply YAML file using following command
 
 ```bash
 kubectl apply -f <FILENAME>.yaml
@@ -202,4 +202,4 @@ spec:
 
 ## What's Next?
 
-All prerequistes have been installed and configured. Now MTO can be installed on the EKS Cluster. See [EKS MTO Installation Guide](./mto-installation.md)
+All the required have been installed and configured. Now MTO can be installed on the EKS Cluster. See [EKS MTO Installation Guide](./mto-installation.md)

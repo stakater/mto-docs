@@ -234,7 +234,7 @@ Error from server (Forbidden): namespaces is forbidden: User "sso-devteam:random
 
 ### MTO Console Login
 
-Use the following command to get URL of MTO Console. 
+Use the following command to get URL of MTO Console
 
 ```bash
 kubectl get routes -n multi-tenant-operator
