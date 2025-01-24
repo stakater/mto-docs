@@ -4387,7 +4387,7 @@ aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span cla
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>&lt;FILENAME&gt;.yaml
 </code></pre></div>
 <h3 id="5-create-clusterissuer-for-lets-encrypt">5. Create <code>ClusterIssuer</code> for Let's Encrypt<a class="headerlink" href="#5-create-clusterissuer-for-lets-encrypt" title="Permanent link">#</a></h3>
-<p>Create a yaml file with following the CR definition and replace <code>&lt;AWS_ACCESS_KEY_ID&gt;</code>, <code>&lt;REGION&gt;</code>, <code>&lt;BASE_DOMAIN&gt;</code> with their values</p>
+<p>Create a YAML file with following the CR definition and replace <code>&lt;AWS_ACCESS_KEY_ID&gt;</code>, <code>&lt;REGION&gt;</code>, <code>&lt;BASE_DOMAIN&gt;</code> with their values</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIssuer</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -4411,7 +4411,7 @@ aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span cla
 <span class="w">          </span><span class="nt">dnsZones</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;BASE_DOMAIN&gt;</span>
 </code></pre></div>
-<p>Apply yaml file using following command</p>
+<p>Apply YAML file using following command</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>&lt;FILENAME&gt;.yaml
 </code></pre></div>
 <h3 id="6-install-aws-ebs-csi-driver">6. Install AWS EBS CSI Driver<a class="headerlink" href="#6-install-aws-ebs-csi-driver" title="Permanent link">#</a></h3>
@@ -4507,7 +4507,7 @@ aws<span class="w"> </span>elbv2<span class="w"> </span>describe-load-balancers<
 </tbody>
 </table>
 <h2 id="whats-next">What's Next?<a class="headerlink" href="#whats-next" title="Permanent link">#</a></h2>
-<p>All prerequistes have been installed and configured. Now MTO can be installed on the EKS Cluster. See <a href="mto-installation.html">EKS MTO Installation Guide</a></p>
+<p>All the required have been installed and configured. Now MTO can be installed on the EKS Cluster. See <a href="mto-installation.html">EKS MTO Installation Guide</a></p>
 
 
 
