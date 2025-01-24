@@ -1,9 +1,10 @@
 # Create tenants on EKS Cluster using MTO
+
 This document provides detailed insights on creating MTO Tenants on EKS cluster.
 
 ## Prerequisites
-MTO must be installed on EKS cluster. [MTO EKS installation guide](./mto-installation.md) provides a detailed walkthrough of MTO installation on EKS.
 
+MTO must be installed on EKS cluster. [MTO EKS installation guide](./mto-installation.md) provides a detailed walk-through of MTO installation on EKS.
 
 ## Users Interaction with the Cluster
 
@@ -214,6 +215,7 @@ Error from server (Forbidden): namespaces is forbidden: User "sso-devteam:random
 ## Using MTO Console
 
 ### Prerequisites
+
 - Ensure that MTO Console is enabled by running the following command
 
   ```bash
@@ -221,13 +223,14 @@ Error from server (Forbidden): namespaces is forbidden: User "sso-devteam:random
   ```
 
   Console should be set to true
+
   ```json
   {"console":true,"showback":true}
   ```
 
   If console is set to false then [enable the MTO Console](./mto-installation.md#enable-mto-console) before proceeding to next step
 
-- A KeyCloak user with same username as AWS IAM user should be created. Follow our [Setting Up User Access in Keycloak for MTO Console](../../how-to-guides/keycloak.md) to create a KeyCloak user.
+- **A Keycloak user with same username as AWS IAM user** should be created. Follow our [Setting Up User Access in Keycloak for MTO Console](../../how-to-guides/keycloak.md) guide to create a Keycloak user.
 
 ### MTO Console Login
 
@@ -239,18 +242,17 @@ kubectl get routes -n multi-tenant-operator
 
 Output
 
-```
+```bash
 NAME                             HOST/PORT              PATH     SERVICES                    PORT    TERMINATION     WILDCARD
 tenant-operator-console-ncm2k    console.<SUBDOMAIN>      /      tenant-operator-console     http    edge/Redirect   None
 tenant-operator-gateway-6kbxz    gateway.<SUBDOMAIN>      /      tenant-operator-gateway     http    edge/Redirect   None
 tenant-operator-keycloak-mt6sl   keycloak.<SUBDOMAIN>     /      tenant-operator-keycloak    <all>   edge/Redirect   None
-
 ```
 
-Open the URL and Login with the KeyCloak user credentials.
+Open the URL and Login with the Keycloak user credentials.
 
 ![MTO Console Login Page](../../images/mto-console-login.png)
 
-Dashboard will open after the successfuly login. Now you can navigate different tenants and namespaces using MTO Console
+Dashboard will open after the successful login. Now you can navigate different tenants and namespaces using MTO Console
 
 ![MTO Console Dashboard](../../images/mto-console-dasboard.png)

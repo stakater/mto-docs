@@ -1,6 +1,6 @@
 # MTO Prerequisites Installation Guide
 
-This document provides detailed walkthrough of installation of different MTO dependencies. 
+This document provides detailed walk-through of installation of different MTO dependencies.
 
 ## Prerequisites
 
@@ -11,11 +11,11 @@ This document provides detailed walkthrough of installation of different MTO dep
 - [AWS Route 53 DNS](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/setting-up-route-53.html) or similar DNS service must be configured
 - [AWS Elastic Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/load-balancer-getting-started.html) must be configured
 
-## Installation 
+## Installation
 
 ### 1. Login to EKS Cluster with IAM User
 
-Execute the following snippet in your terminal with appropriate values. This snippet will configure the AWS Credentials set the aws context to the specified cluster. See [Manage access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for more details about access keys
+Execute the following snippet in your terminal with appropriate values. This snippet will configure the AWS Credentials and set the kubernetes context to the specified cluster. See [Manage access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for more details about access keys
 
 ```bash
 aws configure set region <AWS_REGION>
@@ -38,9 +38,10 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main
 ```bash
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.13.1/cert-manager.yaml
 ```
+
 ### 4. Create Let's Encrypt Access Key Secret
 
-Create a yaml file with the following spec and replace `AWS_SECRET_ACCESS_KEY` with its value
+Create a YAML file with the following spec and replace `AWS_SECRET_ACCESS_KEY` with its value
 
 ```yaml
 kind: Secret
@@ -53,9 +54,9 @@ stringData:
 type: Opaque
 ```
 
-Apply yaml file using following command
+Apply YAML file using following command
 
-```
+```bash
 kubectl apply -f <FILENAME>.yaml
 ```
 
@@ -91,7 +92,7 @@ spec:
 
 Apply yaml file using following command
 
-```
+```bash
 kubectl apply -f <FILENAME>.yaml
 ```
 
@@ -101,13 +102,13 @@ The [Amazon Elastic Block Store (Amazon EBS) Container Storage Interface (CSI) d
 
 Execute the following command to install EBS CSI Driver
 
-```
+```bash
 kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.38"
 ```
 
 ### 7. Create Storage Class for EBS
 
-Apply the following yaml to create a storage class for EBS
+Apply the following YAML to create a storage class for EBS
 
 ```yaml
 apiVersion: storage.k8s.io/v1
@@ -143,7 +144,7 @@ aws route53 list-hosted-zones-by-name --dns-name <BASE_DOMAIN> --query "HostedZo
 aws elbv2 describe-load-balancers --query "LoadBalancers[0].CanonicalHostedZoneId" --output text
 ```
 
-Create a json file with following data and replace values 
+Create a JSON file with following data and replace values
 
 ```json
 {
@@ -173,7 +174,7 @@ aws route53 change-resource-record-sets --hosted-zone-id <HOSTED_ZONE_ID> --chan
 
 ### 9. Create Wildcard Certificate
 
-This certificate can be used by all the application under the given subdomain. MTO will use this certificate to secure MTO Console and KeyCloak
+This certificate can be used by all the application under the given subdomain. MTO will use this certificate to secure MTO Console and Keycloak
 
 Apply the following YAML after replacing values
 
@@ -193,14 +194,12 @@ spec:
   - *.<SUBDOMAIN>.<BASE_DOMAIN>
 ```
 
-
 | Parameter                     | Description   |
 | ------                        | ------        |
 | `<CERTIFICATE_NAME>`          | Name of the certificate to be generated  |
 | `<NAMESPACE>`                 | Namespace where generated certificate and secret will be placed. Use same namespace as MTO or copy the generated secret to MTO namespace if MTO is installed in different namespace  |
 | `<CERTIFICATE_SECRET_NAME>`   | Certificate secret will be generated with this name. This secret can be used in MTO CR to enable SSL on MTO components  |
 
-
 ## What's Next?
 
-All the prerequistes have been installed and configured. Now MTO can be installed on the EKS Cluster. See [EKS MTO Installation Guid](./mto-installation.md)
+All prerequistes have been installed and configured. Now MTO can be installed on the EKS Cluster. See [EKS MTO Installation Guide](./mto-installation.md)

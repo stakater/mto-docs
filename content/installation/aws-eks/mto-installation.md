@@ -14,16 +14,16 @@ This document covers how to deploy Multi Tenant Operator with an [Amazon EKS (El
 
 - Following components must be installed and configured on cluster before installation
 
-    * NGINX Ingress Controller
-    * CertManager
-    * CertManager's ClusterIssuer for Let's Encrypt
-    * Let's Encrypt Secret
-    * EBS CSI Driver
-    * Storage Class for EBS
-    * Wildcard DNS Record Entry
-    * Wildcard Certificate
+    - NGINX Ingress Controller
+    - Certmanager
+    - Certmanager's ClusterIssuer for Let's Encrypt
+    - Let's Encrypt Secret
+    - EBS CSI Driver
+    - Storage Class for EBS
+    - Wildcard DNS Record Entry
+    - Wildcard Certificate
 
-    [MTO prerequisites installation guide](./mto-prereq-installation.md) provides a detailed walkthrough of dependency installation
+    Follow our [MTO prerequisites installation guide](./mto-prereq-installation.md) to install these dependencies on EKS Cluster
 
 ## Setting up an EKS Cluster
 
