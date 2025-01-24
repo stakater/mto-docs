@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://docs.stakater.com/mto/sa-6903-eks-docs-update/installation/aws-eks/create-tenants.html">
       
       
-        <link rel="prev" href="mto-installation.html">
+        <link rel="prev" href="mto-prereq-installation.html">
       
       
         <link rel="next" href="../kubernetes.html">
@@ -2315,11 +2315,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="mto-prereq-installation.html" class="md-nav__link">
+      <a href="mto-installation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    MTO Prerequisites Installation Guide
+    Install MTO on EKS
   </span>
   
 
@@ -2336,11 +2336,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="mto-installation.html" class="md-nav__link">
+      <a href="mto-prereq-installation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Install MTO on EKS
+    MTO Prerequisites Installation Guide
   </span>
   
 
@@ -4342,7 +4342,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h1 id="create-tenants-on-eks-cluster-using-mto">Create tenants on EKS Cluster using MTO<a class="headerlink" href="#create-tenants-on-eks-cluster-using-mto" title="Permanent link">#</a></h1>
 <p>This document provides detailed insights on creating MTO Tenants on EKS cluster.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
-<p>MTO must be installed on EKS cluster. <a href="mto-installation.html">MTO EKS installation guide</a> provides a detailed walkthrough of MTO installation on EKS.</p>
+<p>MTO must be installed on EKS cluster. <a href="mto-installation.html">MTO EKS installation guide</a> provides a detailed walk-through of MTO installation on EKS.</p>
 <h2 id="users-interaction-with-the-cluster">Users Interaction with the Cluster<a class="headerlink" href="#users-interaction-with-the-cluster" title="Permanent link">#</a></h2>
 <p>We will use two types of users to interact with the cluster, IAM users created via AWS Console and SSO Users.</p>
 <h3 id="iam-users">IAM Users<a class="headerlink" href="#iam-users" title="Permanent link">#</a></h3>
@@ -4500,26 +4500,26 @@ Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> 
 </ul>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>integrationconfig<span class="w"> </span>tenant-operator-config<span class="w"> </span>-o<span class="o">=</span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.components}&#39;</span><span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
 </code></pre></div>
-<p>Console should be set to true
-  <div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;console&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;showback&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span>
-</code></pre></div></p>
+<p>Console should be set to true</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;console&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;showback&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span>
+</code></pre></div>
 <p>If console is set to false then <a href="mto-installation.html#enable-mto-console">enable the MTO Console</a> before proceeding to next step</p>
 <ul>
-<li>A KeyCloak user with same username as AWS IAM user should be created. Follow our <a href="../../how-to-guides/keycloak.html">Setting Up User Access in Keycloak for MTO Console</a> to create a KeyCloak user.</li>
+<li><strong>A Keycloak user with same username as AWS IAM user</strong> should be created. Follow our <a href="../../how-to-guides/keycloak.html">Setting Up User Access in Keycloak for MTO Console</a> guide to create a Keycloak user.</li>
 </ul>
 <h3 id="mto-console-login">MTO Console Login<a class="headerlink" href="#mto-console-login" title="Permanent link">#</a></h3>
 <p>Use the following command to get URL of MTO Console. </p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>routes<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
 </code></pre></div>
 <p>Output</p>
-<div class="highlight"><pre><span></span><code>NAME                             HOST/PORT              PATH     SERVICES                    PORT    TERMINATION     WILDCARD
-tenant-operator-console-ncm2k    console.&lt;SUBDOMAIN&gt;      /      tenant-operator-console     http    edge/Redirect   None
-tenant-operator-gateway-6kbxz    gateway.&lt;SUBDOMAIN&gt;      /      tenant-operator-gateway     http    edge/Redirect   None
-tenant-operator-keycloak-mt6sl   keycloak.&lt;SUBDOMAIN&gt;     /      tenant-operator-keycloak    &lt;all&gt;   edge/Redirect   None
+<div class="highlight"><pre><span></span><code>NAME<span class="w">                             </span>HOST/PORT<span class="w">              </span>PATH<span class="w">     </span>SERVICES<span class="w">                    </span>PORT<span class="w">    </span>TERMINATION<span class="w">     </span>WILDCARD
+tenant-operator-console-ncm2k<span class="w">    </span>console.&lt;SUBDOMAIN&gt;<span class="w">      </span>/<span class="w">      </span>tenant-operator-console<span class="w">     </span>http<span class="w">    </span>edge/Redirect<span class="w">   </span>None
+tenant-operator-gateway-6kbxz<span class="w">    </span>gateway.&lt;SUBDOMAIN&gt;<span class="w">      </span>/<span class="w">      </span>tenant-operator-gateway<span class="w">     </span>http<span class="w">    </span>edge/Redirect<span class="w">   </span>None
+tenant-operator-keycloak-mt6sl<span class="w">   </span>keycloak.&lt;SUBDOMAIN&gt;<span class="w">     </span>/<span class="w">      </span>tenant-operator-keycloak<span class="w">    </span>&lt;all&gt;<span class="w">   </span>edge/Redirect<span class="w">   </span>None
 </code></pre></div>
-<p>Open the URL and Login with the KeyCloak user credentials.</p>
+<p>Open the URL and Login with the Keycloak user credentials.</p>
 <p><a class="glightbox" href="../../images/mto-console-login.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MTO Console Login Page" src="../../images/mto-console-login.png" /></a></p>
-<p>Dashboard will open after the successfuly login. Now you can navigate different tenants and namespaces using MTO Console</p>
+<p>Dashboard will open after the successful login. Now you can navigate different tenants and namespaces using MTO Console</p>
 <p><a class="glightbox" href="../../images/mto-console-dasboard.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MTO Console Dashboard" src="../../images/mto-console-dasboard.png" /></a></p>
 
 
