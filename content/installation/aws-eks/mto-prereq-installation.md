@@ -203,4 +203,4 @@ spec:
 
 ## What's Next?
 
-All the prerequistes have been installed and configured. Now MTO can be installed on the EKS Cluster. See [EKS MTO Installation Guid](./mto-installation.md.md)
+All the prerequistes have been installed and configured. Now MTO can be installed on the EKS Cluster. See [EKS MTO Installation Guid](./mto-installation.md)
