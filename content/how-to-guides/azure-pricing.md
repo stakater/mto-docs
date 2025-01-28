@@ -101,11 +101,12 @@ az billing account list --query "[].{name:name, displayName:displayName}"
 **Grant billing access to your Service Principal**
 To call the Price Sheet API the service principal you created above needs to be granted the EnrollmentReader billing role. You can do this by following [this Azure guide](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/assign-roles-azure-service-principals#assign-enrollment-account-role-permission-to-the-spn) and using the [Role Assignments API reference page](https://learn.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/role-assignments/put?tabs=HTTP).
 
-Assigning a billing role isn't directly supported in the `az` CLI yet, so the process is quite involved. To simplify this you can use the `bash` script [below](https://www.opencost.io/docs/configuration/azure#script-to-assign-billing-role) to collect the details of your service principal, construct the PUT request and send it with curl.
+Assigning a billing role isn't directly supported in the `az` CLI yet, so the process is quite involved. To simplify this, you can use the `Bash` script [below](./azure-pricing.md#script-to-assign-billing-role) to collect the details of your service principal, construct the PUT request and send it with curl.
 
 Save the script to a file named `assign-billing-role.bash` and run it:
 
-```bash
+<!-- ignore -->
+```Bash
 export SP_NAME=OpenCostAccess
 export BILLING_ACCOUNT_ID=<your billing account ID>
 chmod u+x assign-billing-role.bash
