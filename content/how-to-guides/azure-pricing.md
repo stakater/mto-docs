@@ -12,8 +12,9 @@ For Azure pricing configuration, OpenCost needs access to the Microsoft Azure Bi
 
 Follow the steps below to create a custom Azure role and secret to access the Azure Rate Card API:
 
-**Create a Custom Azure role**
-Start by creating an Azure role definition. Below is an example definition, replace YOUR_SUBSCRIPTION_ID with the ID of the subscription containing your Kubernetes cluster. [(How to find your subscription ID.)](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription)
+### Create a Custom Azure role
+
+Start by creating an Azure role definition. Below is an example definition, replace `YOUR_SUBSCRIPTION_ID` with the ID of the subscription containing your Kubernetes cluster. [(How to find your subscription ID.)](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription)
 
 ```json
 {
@@ -33,7 +34,7 @@ Start by creating an Azure role definition. Below is an example definition, repl
 }
 ```
 
-Save this into a file called myrole.json
+Save this into a file called `myrole.json`
 
 Next, you'll want to register that role with Azure:
 
@@ -41,7 +42,8 @@ Next, you'll want to register that role with Azure:
 az role definition create --verbose --role-definition @myrole.json
 ```
 
-Create an Azure Service Principal
+### Create an Azure Service Principal
+
 Next, create an Azure Service Principal.
 
 ```bash
@@ -50,8 +52,9 @@ az ad sp create-for-rbac --name "OpenCostAccess" --role "OpenCostRole" --scope "
 
 Keep this information which is used in the `service-key.json` below.
 
-Supply Azure Service Principal details to OpenCost
-Create a file called service-key.json and update it with the Service Principal details from the above steps:
+### Supply Azure Service Principal details to OpenCost
+
+Create a file called `service-key.json` and update it with the Service Principal details from the above steps:
 
 ```json
 {
@@ -73,6 +76,8 @@ Next, create a secret for the Azure Service Principal
 kubectl create secret generic azure-service-key -n opencost --from-file=service-key.json
 ```
 
+### Update the IntegrationConfig
+
 Finally, update the IntegrationConfig with the Azure pricing model:
 
 ```yaml
@@ -91,14 +96,16 @@ The Rate Card prices retrieved with the setup above are the standard prices for 
 
 > **Note**: Calling the Price Sheet API uses the service principal secret created above - those steps are prerequisites for this section.
 
-**Find your billing account ID**
+### Find your billing account ID
+
 You can find your billing account ID in the Azure portal, or using the `az` CLI:
 
 ```bash
 az billing account list --query "[].{name:name, displayName:displayName}"
 ```
 
-**Grant billing access to your Service Principal**
+### Grant billing access to your Service Principal
+
 To call the Price Sheet API the service principal you created above needs to be granted the EnrollmentReader billing role. You can do this by following [this Azure guide](https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/assign-roles-azure-service-principals#assign-enrollment-account-role-permission-to-the-spn) and using the [Role Assignments API reference page](https://learn.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/role-assignments/put?tabs=HTTP).
 
 Assigning a billing role isn't directly supported in the `az` CLI yet, so the process is quite involved. To simplify this, you can use the `Bash` script [below](./azure-pricing.md#script-to-assign-billing-role) to collect the details of your service principal, construct the PUT request and send it with curl.
@@ -112,10 +119,12 @@ chmod u+x assign-billing-role.bash
 ./assign-billing-role.bash
 ```
 
-**Find the offer ID for your subscription**
+### Find the offer ID for your subscription
+
 As well as the billing account ID, OpenCost also needs the offer ID for your subscription to query the price sheet. You can find this on the [subscription page in the Azure portal](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription).
 
-**Configure OpenCost to use the Price Sheet API**
+### Configure OpenCost to use the Price Sheet API
+
 The billing account and offer ID need to be passed to OpenCost in environment variables. To do this, create a secret with the following values:
 
 ```bash
@@ -194,7 +203,7 @@ The following values can be found in the Azure Portal under *Cost Management > E
 `<STORAGE_CONTAINER>` is the name that you chose for the exported cost report when you set it up. This is the name of the container where the CSV cost reports are saved in your Storage account.
 `<CONTAINER_PATH>` should be used if there is more than one billing report that is exported to the configured container. The path provided should have only one billing export because OpenCost will retrieve the most recent billing report for a given month found within the path. If this configuration is not used, it should be set to an empty string "".
 `<CLOUD>` is the value which denotes the cloud where the storage account exists. Possible values are public and gov. The default is public if an empty string is provided.
-Set these values to the Azure array in the cloud-integration.json file:
+Set these values to the Azure array in the `cloud-integration.json` file:
 
 ```json
 {
