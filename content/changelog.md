@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.0.x
+## v1.1.x
 
 ### v1.1.0
 
@@ -24,6 +24,7 @@
 - Fix for IC controller where reconciliation request was triggered with added user's name.
 - Fix a bug in Vault policies where editor role had incorrect permissions.
 - Fix a bug in sandbox creations where sandbox namespaces were not being created if there were only groups in the tenant.
+- Fix for IC controller where it would not reconcile if the cluster had too many Configmaps, making the informer cache too big to be watched.
 
 #### Components
 
@@ -36,10 +37,11 @@
 | `keycloak`              | 24.0.5              | `ghcr.io/stakater/public/mto/keycloak`           |
 | `kube-state-metrics`    | v2.8.0              | `ghcr.io/stakater/public/mto/kube-state-metrics` |
 | `postgresql`            | 15.0.0-debian-11-r1 | `ghcr.io/stakater/public/mto/postgresql`         |
-| `kube-rbac-proxy`       | v0.11.0             | `ghcr.io/stakater/public/mto/kube-rbac-proxy`    |
+| `kube-rbac-proxy`       | v0.16.0             | `ghcr.io/stakater/public/mto/kube-rbac-proxy`    |
 | `opencost`              | 1.113.0             | `ghcr.io/stakater/public/mto/opencost`           |
 | `prometheus`            | 2.55.1-debian-12-r4 | `ghcr.io/stakater/public/mto/prometheus`         |
-| `pushgateway`           | v1.5.1              | `ghcr.io/stakater/public/mto/pushgateway`        |
+
+## v1.0.x
 
 ### v1.0.0
 
