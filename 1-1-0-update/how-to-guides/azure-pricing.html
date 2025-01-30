@@ -4430,7 +4430,7 @@ chmod<span class="w"> </span>u+x<span class="w"> </span>assign-billing-role.bash
 <span class="c1"># Generate a unique name for the assignment.</span>
 <span class="nv">ROLE_ASSIGNMENT_NAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>uuidgen<span class="k">)</span><span class="s2">&quot;</span>
 
-<span class="c1"># Work out the SP id and tenant id from the name.</span>
+<span class="c1"># Work out the SP ID and tenant ID from the name.</span>
 <span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>SP_ID<span class="w"> </span>TENANT_ID<span class="w"> </span>&lt;<span class="w"> </span>&lt;<span class="o">(</span>az<span class="w"> </span>ad<span class="w"> </span>sp<span class="w"> </span>list<span class="w"> </span>--display-name<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SP_NAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;[0].{id:id,tenantId:appOwnerOrganizationId}&#39;</span><span class="w"> </span>-o<span class="w"> </span>tsv<span class="o">)</span>
 
 <span class="c1"># Get bearer token for talking to API.</span>
