@@ -116,7 +116,7 @@
 #### Enhanced
 
 - Updated Tenant CR to v1beta3, more details in [Tenant CRD](./crds-api-reference/tenant.md)
-- Added custom pricing support for Opencost, more details in [Opencost](./crds-api-reference/integration-config.md#custom-pricing-model)
+- Added custom pricing support for Opencost, more details in [Opencost](./crds-api-reference/integration-config.md#custom-pricing)
 
 #### Fix
 
