@@ -10,19 +10,19 @@
 - Added option to disable `Intra-tenant Networking` via [Integration Config](./crds-api-reference/integration-config.`md`#TenantPolicies).
 - Added [Storage class per tenant](./crds-api-reference/tenant.md#Storage) support via Tenant CR.
 - Added option to override component images.
-- Added support to add/update `Casbin` policies via `tenant-operator-casbin-config` ConfigMap.
+- Added support to add/update `Casbin` policies via `tenant-operator-casbin-config` Configmap.
 
 #### Enhancements
 
 - Refactor `Casbin` model handling to use embedded files and simplify configuration.
-- Switched to Bitnami images from RedHat images.
+- Switched to `Bitnami` images from `RedHat` images.
 - Dependencies upgrade to kubernetes 1.29.8 and controller-runtime 0.17.6.
 
 #### Fixes
 
 - Fix components under IC for tenant-operator chart.
 - Fix for IC controller where reconciliation request was triggered with added user's name.
-- Fix a bug in vault policies where editor role had incorrect permissions.
+- Fix a bug in Vault policies where editor role had incorrect permissions.
 - Fix a bug in sandbox creations where sandbox namespaces were not being created if there were only groups in the tenant.
 
 #### Components
