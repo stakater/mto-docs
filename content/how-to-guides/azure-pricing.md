@@ -166,7 +166,7 @@ fi
 # Generate a unique name for the assignment.
 ROLE_ASSIGNMENT_NAME="$(uuidgen)"
 
-# Work out the SP id and tenant id from the name.
+# Work out the SP ID and tenant ID from the name.
 read -r SP_ID TENANT_ID < <(az ad sp list --display-name "${SP_NAME}" --query '[0].{id:id,tenantId:appOwnerOrganizationId}' -o tsv)
 
 # Get bearer token for talking to API.
