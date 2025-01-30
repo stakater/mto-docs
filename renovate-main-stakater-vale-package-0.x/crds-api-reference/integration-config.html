@@ -3316,6 +3316,27 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/azure-pricing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure Pricing Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3894,6 +3915,30 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-pricing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Pricing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azure-pricing-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Pricing Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -4116,15 +4161,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         
       </ul>
     </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#custom-pricing-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Custom Pricing Model
-    </span>
-  </a>
   
 </li>
         
@@ -4289,6 +4325,30 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-pricing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Pricing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azure-pricing-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Pricing Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -4514,15 +4574,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#custom-pricing-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Custom Pricing Model
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -4581,6 +4632,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">  </span><span class="nt">components</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">showbackOpts</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">custom</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">CPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.031611&quot;</span>
+<span class="w">        </span><span class="nt">spotCPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.006655&quot;</span>
+<span class="w">        </span><span class="nt">RAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.004237&quot;</span>
+<span class="w">        </span><span class="nt">spotRAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.000892&quot;</span>
+<span class="w">        </span><span class="nt">GPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.95&quot;</span>
+<span class="w">        </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.00005479452&quot;</span>
+<span class="w">        </span><span class="nt">zoneNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">        </span><span class="nt">regionNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">        </span><span class="nt">internetNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.12&quot;</span>
+<span class="w">      </span><span class="nt">azurePricingSecretRef</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure-pricing</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
 <span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nginx&#39;</span>
 <span class="w">      </span><span class="nt">keycloak</span><span class="p">:</span>
@@ -4592,16 +4657,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">      </span><span class="nt">gateway</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud</span>
 <span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
-<span class="w">      </span><span class="nt">customPricingModel</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">CPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.031611&quot;</span>
-<span class="w">        </span><span class="nt">spotCPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.006655&quot;</span>
-<span class="w">        </span><span class="nt">RAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.004237&quot;</span>
-<span class="w">        </span><span class="nt">spotRAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.000892&quot;</span>
-<span class="w">        </span><span class="nt">GPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.95&quot;</span>
-<span class="w">        </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.00005479452&quot;</span>
-<span class="w">        </span><span class="nt">zoneNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
-<span class="w">        </span><span class="nt">regionNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
-<span class="w">        </span><span class="nt">internetNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.12&quot;</span>
 <span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">rbac</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">tenantRoles</span><span class="p">:</span>
@@ -4703,6 +4758,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">components</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">showbackOpts</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">custom</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">CPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.031611&quot;</span>
+<span class="w">        </span><span class="nt">spotCPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.006655&quot;</span>
+<span class="w">        </span><span class="nt">RAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.004237&quot;</span>
+<span class="w">        </span><span class="nt">spotRAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.000892&quot;</span>
+<span class="w">        </span><span class="nt">GPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.95&quot;</span>
+<span class="w">        </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.00005479452&quot;</span>
+<span class="w">        </span><span class="nt">zoneNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">        </span><span class="nt">regionNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">        </span><span class="nt">internetNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.12&quot;</span>
+<span class="w">      </span><span class="nt">azurePricingSecretRef</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure-pricing</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
 <span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
 <span class="w">      </span><span class="nt">keycloak</span><span class="p">:</span>
@@ -4737,6 +4806,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
 </ul>
 </li>
+<li><code>components.showbackOpts:</code> Configures the showback feature with the following options:<ul>
+<li><code>custom:</code> Custom pricing model for showback.</li>
+<li><code>azurePricingSecretRef:</code> Secret reference for Azure pricing model.</li>
+</ul>
+</li>
 </ul>
 <p>Here's an example of how to generate the secrets required to configure MTO:</p>
 <p><strong>TLS Secret for Ingress:</strong></p>
@@ -4745,13 +4819,41 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </code></pre></div>
 <p>Integration config will be managing the following resources required for console GUI:</p>
 <ul>
-<li><code>MTO Postgresql</code> resources.</li>
-<li><code>MTO Prometheus</code> resources.</li>
-<li><code>MTO Opencost</code> resources.</li>
+<li><code>Postgresql</code> resources.</li>
+<li><code>Prometheus</code> resources.</li>
+<li><code>Opencost</code> resources.</li>
 <li><code>MTO Console, Gateway, Keycloak</code> resources.</li>
 <li><code>Showback</code> cronjob.</li>
 </ul>
 <p>Details on console GUI and showback can be found <a href="../explanation/console.html">here</a></p>
+<h3 id="custom-pricing">Custom Pricing<a class="headerlink" href="#custom-pricing" title="Permanent link">#</a></h3>
+<p>You can modify IntegrationConfig to customise the default pricing model. Here is what you need at <code>IntegrationConfig.spec.components</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
+<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
+<span class="w">    </span><span class="nt">showbackOpts</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># add below and override any default value</span>
+<span class="w">      </span><span class="c1"># you can also remove the ones you do not need</span>
+<span class="w">      </span><span class="nt">custom</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">CPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.031611&quot;</span>
+<span class="w">        </span><span class="nt">spotCPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.006655&quot;</span>
+<span class="w">        </span><span class="nt">RAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.004237&quot;</span>
+<span class="w">        </span><span class="nt">spotRAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.000892&quot;</span>
+<span class="w">        </span><span class="nt">GPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.95&quot;</span>
+<span class="w">        </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.00005479452&quot;</span>
+<span class="w">        </span><span class="nt">zoneNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">        </span><span class="nt">regionNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">        </span><span class="nt">internetNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.12&quot;</span>
+</code></pre></div>
+<p>After modifying your default IntegrationConfig in <code>multi-tenant-operator</code> namespace, a configmap named <code>opencost-custom-pricing</code> will be updated. You will be able to see updated pricing info in <code>mto-console</code>.</p>
+<h3 id="azure-pricing-model">Azure Pricing Model<a class="headerlink" href="#azure-pricing-model" title="Permanent link">#</a></h3>
+<p>MTO supports Azure pricing model via the <code>showbackOpts.azurePricingSecretRef</code> field. Following 3 types of pricing are supported:</p>
+<ul>
+<li><a href="https://www.opencost.io/docs/configuration/azure#azure-pricing-configuration"><code>Azure Pricing Configuration</code></a></li>
+<li><a href="https://www.opencost.io/docs/configuration/azure#customer-specific-pricing"><code>Customer-specific pricing</code></a></li>
+<li><a href="https://www.opencost.io/docs/configuration/azure#azure-cloud-costs"><code>Azure Cloud Costs</code></a></li>
+</ul>
+<p>More details on Azure pricing can be found <a href="../how-to-guides/azure-pricing.html">here</a>.</p>
 <h2 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nt">accessControl</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">rbac</span><span class="p">:</span>
@@ -5092,25 +5194,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="custom-pricing-model">Custom Pricing Model<a class="headerlink" href="#custom-pricing-model" title="Permanent link">#</a></h3>
-<p>You can modify IntegrationConfig to customise the default pricing model. Here is what you need at <code>IntegrationConfig.spec.components</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
-<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
-<span class="w">    </span><span class="c1"># add below and override any default value</span>
-<span class="w">    </span><span class="c1"># you can also remove the ones you do not need</span>
-<span class="w">    </span><span class="nt">customPricingModel</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">CPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.031611&quot;</span>
-<span class="w">        </span><span class="nt">spotCPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.006655&quot;</span>
-<span class="w">        </span><span class="nt">RAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.004237&quot;</span>
-<span class="w">        </span><span class="nt">spotRAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.000892&quot;</span>
-<span class="w">        </span><span class="nt">GPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.95&quot;</span>
-<span class="w">        </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.00005479452&quot;</span>
-<span class="w">        </span><span class="nt">zoneNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
-<span class="w">        </span><span class="nt">regionNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
-<span class="w">        </span><span class="nt">internetNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.12&quot;</span>
-</code></pre></div>
-<p>After modifying your default IntegrationConfig in <code>multi-tenant-operator</code> namespace, a configmap named <code>opencost-custom-pricing</code> will be updated. You will be able to see updated pricing info in <code>mto-console</code>.</p>
 <h2 id="tenantpolicies">TenantPolicies<a class="headerlink" href="#tenantpolicies" title="Permanent link">#</a></h2>
 <p><code>tenantPolicies</code> contains settings to configure additional tenant isolation.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">tenantPolicies</span><span class="p">:</span>
