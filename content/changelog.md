@@ -23,7 +23,7 @@
 - Fix components under IC for tenant-operator chart.
 - Fix for IC controller where reconciliation request was triggered with added user's name.
 - Fix a bug in vault policies where editor role had incorrect permissions.
-- Fix a bug in sandbox creations where sandbox namespaces were not being created if there was only groups in the tenant.
+- Fix a bug in sandbox creations where sandbox namespaces were not being created if there were only groups in the tenant.
 
 #### Components
 
