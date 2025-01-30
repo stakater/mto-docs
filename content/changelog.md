@@ -2,6 +2,45 @@
 
 ## v1.0.x
 
+### v1.1.0
+
+#### Features
+
+- Added [Azure Pricing](./how-to-guides/azure-pricing.md) support for Opencost via [Integration Config](./crds-api-reference/integration-config.md#azure-pricing-model).
+- Added option to disable `Intra-tenant Networking` via [Integration Config](./crds-api-reference/integration-config.`md`#TenantPolicies).
+- Added [Storage class per tenant](./crds-api-reference/tenant.md#Storage) support via Tenant CR.
+- Added option to override component images.
+- Added support to add/update `Casbin` policies via `tenant-operator-casbin-config` ConfigMap.
+
+#### Enhancements
+
+- Refactor `Casbin` model handling to use embedded files and simplify configuration.
+- Switched to Bitnami images from RedHat images.
+- Dependencies upgrade to kubernetes 1.29.8 and controller-runtime 0.17.6.
+
+#### Fixes
+
+- Fix components under IC for tenant-operator chart.
+- Fix for IC controller where reconciliation request was triggered with added user's name.
+- Fix a bug in vault policies where editor role had incorrect permissions.
+- Fix a bug in sandbox creations where sandbox namespaces were not being created if there was only groups in the tenant.
+
+#### Components
+
+| Name | Tag | Image |
+| --- | --- | --- |
+| `tenant-operator`       | v1.1.0              | `ghcr.io/stakater/public/mto/tenant-operator`    |
+| `mto-console`           | 1.0.147             | `ghcr.io/stakater/public/mto/mto-console`        |
+| `mto-gateway`           | 1.0.134             | `ghcr.io/stakater/public/mto/mto-gateway`        |
+| `showback`              | v0.0.15             | `ghcr.io/stakater/public/mto/showback`           |
+| `keycloak`              | 24.0.5              | `ghcr.io/stakater/public/mto/keycloak`           |
+| `kube-state-metrics`    | v2.8.0              | `ghcr.io/stakater/public/mto/kube-state-metrics` |
+| `postgresql`            | 15.0.0-debian-11-r1 | `ghcr.io/stakater/public/mto/postgresql`         |
+| `kube-rbac-proxy`       | v0.11.0             | `ghcr.io/stakater/public/mto/kube-rbac-proxy`    |
+| `opencost`              | 1.113.0             | `ghcr.io/stakater/public/mto/opencost`           |
+| `prometheus`            | 2.55.1-debian-12-r4 | `ghcr.io/stakater/public/mto/prometheus`         |
+| `pushgateway`           | v1.5.1              | `ghcr.io/stakater/public/mto/pushgateway`        |
+
 ### v1.0.0
 
 #### Features

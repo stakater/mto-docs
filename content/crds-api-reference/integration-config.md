@@ -198,9 +198,9 @@ kubectl -n multi-tenant-operator create secret tls <tls-secret-name> --key=<path
 
 Integration config will be managing the following resources required for console GUI:
 
-- `MTO Postgresql` resources.
-- `MTO Prometheus` resources.
-- `MTO Opencost` resources.
+- `Postgresql` resources.
+- `Prometheus` resources.
+- `Opencost` resources.
 - `MTO Console, Gateway, Keycloak` resources.
 - `Showback` cronjob.
 
