@@ -4458,13 +4458,15 @@ chmod<span class="w"> </span>u+x<span class="w"> </span>assign-billing-role.bash
 </code></pre></div>
 <h2 id="azure-cloud-costs">Azure Cloud Costs<a class="headerlink" href="#azure-cloud-costs" title="Permanent link">#</a></h2>
 <p>The following values can be found in the Azure Portal under <em>Cost Management &gt; Exports</em>, or Storage accounts:</p>
-<p><code>&lt;SUBSCRIPTION_ID&gt;</code> is the Subscription ID belonging to the Storage account which stores your exported Azure cost report data.
-<code>&lt;STORAGE_ACCOUNT&gt;</code> is the name of the Storage account where the exported Azure cost report data is being stored.
-<code>&lt;STORAGE_ACCESS_KEY&gt;</code> can be found by selecting Access Keys from the navigation sidebar then selecting Show keys. Using either of the two keys will work.
-<code>&lt;STORAGE_CONTAINER&gt;</code> is the name that you chose for the exported cost report when you set it up. This is the name of the container where the CSV cost reports are saved in your Storage account.
-<code>&lt;CONTAINER_PATH&gt;</code> should be used if there is more than one billing report that is exported to the configured container. The path provided should have only one billing export because OpenCost will retrieve the most recent billing report for a given month found within the path. If this configuration is not used, it should be set to an empty string "".
-<code>&lt;CLOUD&gt;</code> is the value which denotes the cloud where the storage account exists. Possible values are public and gov. The default is public if an empty string is provided.
-Set these values to the Azure array in the <code>cloud-integration.json</code> file:</p>
+<ul>
+<li><code>&lt;SUBSCRIPTION_ID&gt;</code> is the Subscription ID belonging to the Storage account which stores your exported Azure cost report data.</li>
+<li><code>&lt;STORAGE_ACCOUNT&gt;</code> is the name of the Storage account where the exported Azure cost report data is being stored.</li>
+<li><code>&lt;STORAGE_ACCESS_KEY&gt;</code> can be found by selecting Access Keys from the navigation sidebar then selecting Show keys. Using either of the two keys will work.</li>
+<li><code>&lt;STORAGE_CONTAINER&gt;</code> is the name that you chose for the exported cost report when you set it up. This is the name of the container where the CSV cost reports are saved in your Storage account.</li>
+<li><code>&lt;CONTAINER_PATH&gt;</code> should be used if there is more than one billing report that is exported to the configured container. The path provided should have only one billing export because OpenCost will retrieve the most recent billing report for a given month found within the path. If this configuration is not used, it should be set to an empty string "".</li>
+<li><code>&lt;CLOUD&gt;</code> is the value which denotes the cloud where the storage account exists. Possible values are public and gov. The default is public if an empty string is provided.</li>
+</ul>
+<p>Set these values to the Azure array in the <code>cloud-integration.json</code> file:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;azure&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
