@@ -105,8 +105,7 @@ Assigning a billing role isn't directly supported in the `az` CLI yet, so the pr
 
 Save the script to a file named `assign-billing-role.bash` and run it:
 
-<!-- ignore -->
-```Bash
+```bash
 export SP_NAME=OpenCostAccess
 export BILLING_ACCOUNT_ID=<your billing account ID>
 chmod u+x assign-billing-role.bash
