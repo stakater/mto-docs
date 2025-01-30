@@ -7,8 +7,8 @@
 #### Features
 
 - Added [Azure Pricing](./how-to-guides/azure-pricing.md) support for Opencost via [Integration Config](./crds-api-reference/integration-config.md#azure-pricing-model).
-- Added option to disable `Intra-tenant Networking` via [Integration Config](./crds-api-reference/integration-config.`md`#TenantPolicies).
-- Added [Storage class per tenant](./crds-api-reference/tenant.md#Storage) support via Tenant CR.
+- Added option to disable `Intra-tenant Networking` via [Integration Config](./crds-api-reference/integration-config.md#tenantpolicies).
+- Added [Storage class per tenant](./crds-api-reference/tenant.md#storage) support via Tenant CR.
 - Added option to override component images.
 - Added support to add/update `Casbin` policies via `tenant-operator-casbin-config` Configmap.
 
