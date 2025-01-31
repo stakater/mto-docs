@@ -70,7 +70,8 @@ Create a file called `service-key.json` and update it with the Service Principal
 
 Next, create a secret for the Azure Service Principal
 
-> **Note**: When managing the service account key as a Kubernetes secret, the secret must reference the service account key JSON file, and that file must be named `service-key.json`.
+!!! note
+    When managing the service account key as a Kubernetes secret, the secret must reference the service account key JSON file, and that file must be named `service-key.json`.
 
 ```bash
 kubectl create secret generic azure-service-key -n opencost --from-file=service-key.json
@@ -94,7 +95,8 @@ components:
 
 The Rate Card prices retrieved with the setup above are the standard prices for Azure resources offered to all customers. If your organisation has an Enterprise Agreement or Partner Agreement with Azure you may have discounts for some of the resources used by your clusters. In that case you can configure OpenCost to use the [Consumption Price Sheet API](https://learn.microsoft.com/en-us/rest/api/consumption/) to request prices specifically for your billing account.
 
-> **Note**: Calling the Price Sheet API uses the service principal secret created above - those steps are prerequisites for this section.
+!!! note
+    Calling the Price Sheet API uses the service principal secret created above - those steps are prerequisites for this section.
 
 ### Find your billing account ID
 
