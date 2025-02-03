@@ -33,7 +33,7 @@ eksctl create cluster \
     --managed
 ```
 
-Set the kubernetes context to the specified cluster. 
+Set the kubernetes context to the specified cluster.
 
 ```bash
 # Update the current context
