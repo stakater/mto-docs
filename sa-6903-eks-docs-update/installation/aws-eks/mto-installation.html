@@ -4294,16 +4294,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>This document covers how to deploy Multi Tenant Operator with an <a href="https://aws.amazon.com/eks/">Amazon EKS (Elastic Kubernetes Service)</a> cluster.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
 <ol>
-<li><a href="https://kubernetes.io/docs/tasks/tools/#kubectl">kubectl</a> 1.18.3 or later.</li>
-<li><a href="https://helm.sh/docs/intro/install/">Helm CLI</a></li>
-<li>An EKS Cluster. See <a href="mto-prereq-installation.html#setting-up-cluster">Setting up Cluster</a> create and configure EKS cluster</li>
-<li>A DNS service </li>
+<li><a href="https://eksctl.io/installation/"><code>eksctl</code></a> to create and manage EKS cluster. See <a href="mto-prereq-installation.html#setting-up-cluster">Setting up Cluster</a> to create and configure an EKS cluster</li>
+<li><a href="https://kubernetes.io/docs/tasks/tools/#kubectl"><code>kubectl</code></a> 1.18.3 or later to interact with Kubernetes cluster</li>
+<li><a href="https://helm.sh/docs/intro/install/">Helm CLI</a> to install MTO chart</li>
+<li>A DNS service to make MTO console accessible via domain name</li>
 <li>
 <p>Following components must be installed and configured on cluster before installation</p>
-<p>[x] Ingress Controller
-[x] Cert Manager
-[x] Wildcard Certificate
-[ ] Storage Class (if MTO Console is enabled)</p>
+<ul>
+<li>[x] Ingress Controller</li>
+<li>[x] Cert Manager</li>
+<li>[x] Wildcard Certificate</li>
+<li>[ ] Storage Class (if MTO Console is enabled)</li>
+</ul>
 <p>Follow our <a href="mto-prereq-installation.html">MTO prerequisites installation guide</a> to install these dependencies on EKS Cluster</p>
 </li>
 </ol>
@@ -4363,7 +4365,7 @@ tenant-operator-webhook-5f8f675549-jv9n8<span class="w">                        
 </tr>
 <tr>
 <td><code>&lt;SECRET_NAME&gt;</code></td>
-<td>Name of the secret that should be used as TLS secret.</td>
+<td>Name of the secret that should be used as TLS secret</td>
 </tr>
 </tbody>
 </table>

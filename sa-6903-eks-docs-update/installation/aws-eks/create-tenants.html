@@ -2507,9 +2507,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#mto-console-login" class="md-nav__link">
+  <a href="#mto-console-log-in" class="md-nav__link">
     <span class="md-ellipsis">
-      MTO Console Login
+      MTO Console Log In
     </span>
   </a>
   
@@ -4390,9 +4390,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#mto-console-login" class="md-nav__link">
+  <a href="#mto-console-log-in" class="md-nav__link">
     <span class="md-ellipsis">
-      MTO Console Login
+      MTO Console Log In
     </span>
   </a>
   
@@ -4459,7 +4459,7 @@ Output:
 }
 </code></pre></div>
 <p>We have created a user named <code>falcon@nordmart.com</code> in AWS Console, with ARN <code>arn:aws:iam::630742778131:user/falcon@nordmart.com</code>.</p>
-<p>Create a json file to attach the policy. This policy will allow the user to access the cluster.
+<p>Create a JSON file to attach the policy. This policy will allow the user to access the cluster.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
@@ -4471,16 +4471,16 @@ Output:
 <span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-Attach a policy to user</p>
+<p>Attach a policy to user</p>
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>put-user-policy<span class="w"> </span>--user-name<span class="w"> </span><span class="nv">$name</span><span class="w"> </span>--policy-document<span class="w"> </span>file://policy.json<span class="w"> </span>--policy-name<span class="w"> </span>ClusterAccess
 </code></pre></div>
 <p>Add user to <code>logistics-owner</code> group</p>
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>add-user-to-group<span class="w"> </span>--user-name<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span><span class="w"> </span>--group-name<span class="w"> </span><span class="s2">&quot;logistics-owner&quot;</span>
 </code></pre></div>
-<p>Generate the access keys that can be used to login into the cluster. Executing the following command will provide the Access Key Id and Access Secret Key Id that can be used to login
+<p>Generate the access keys that can be used to log in into the cluster. Executing the following command will provide the Access Key Id and Access Secret Key Id that can be used to log in</p>
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>create-access-key<span class="w"> </span>--user-name<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span>
-</code></pre></div></p>
-<p>Use the following command to map this user in <code>aws-auth</code> configmap in <code>kube-system</code> namespace. </p>
+</code></pre></div>
+<p>Use the following command to map this user in <code>aws-auth</code> configmap in <code>kube-system</code> namespace.</p>
 <div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>create<span class="w"> </span>iamidentitymapping<span class="w"> </span>--cluster<span class="w"> </span><span class="s2">&quot;&lt;CLUSTER_NAME&gt;&quot;</span><span class="w"> </span><span class="se">\ </span>
 <span class="w">                                 </span>--region<span class="w"> </span><span class="s2">&quot;&lt;AWS_REGION&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">                                 </span>--arn<span class="w"> </span><span class="s2">&quot;&lt;USER_ARN&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
@@ -4615,7 +4615,7 @@ Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> 
 <ul>
 <li><strong>A Keycloak user with same username as AWS IAM user</strong> should be created. Follow our <a href="../../how-to-guides/keycloak.html">Setting Up User Access in Keycloak for MTO Console</a> guide to create a Keycloak user.</li>
 </ul>
-<h3 id="mto-console-login">MTO Console Login<a class="headerlink" href="#mto-console-login" title="Permanent link">#</a></h3>
+<h3 id="mto-console-log-in">MTO Console Log In<a class="headerlink" href="#mto-console-log-in" title="Permanent link">#</a></h3>
 <p>List the ingresses to access the URL of MTO Console</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>ingress<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
 
@@ -4624,7 +4624,7 @@ tenant-operator-console<span class="w">    </span>nginx<span class="w">   </span
 tenant-operator-gateway<span class="w">    </span>nginx<span class="w">   </span>gateway.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
 tenant-operator-keycloak<span class="w">   </span>nginx<span class="w">   </span>keycloak.iinhdnh6.demo.kubeapp.cloud<span class="w">   </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>24m
 </code></pre></div>
-<p>Open the URL and Login with the Keycloak user credentials.</p>
+<p>Open the URL and Log In with the Keycloak user credentials.</p>
 <p><a class="glightbox" href="../../images/mto-console-login.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MTO Console Login Page" src="../../images/mto-console-login.png" /></a></p>
 <p>Dashboard will open after the successful login. Now you can navigate different tenants and namespaces using MTO Console</p>
 <p><a class="glightbox" href="../../images/mto-console-dasboard.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MTO Console Dashboard" src="../../images/mto-console-dasboard.png" /></a></p>

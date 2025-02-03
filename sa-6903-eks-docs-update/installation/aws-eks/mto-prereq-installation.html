@@ -4452,16 +4452,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <ol>
 <li><a href="https://eksctl.io/installation/"><code>eksctl</code></a></li>
 <li><a href="https://kubernetes.io/docs/tasks/tools/#kubectl"><code>kubectl</code></a> (1.18.3 or later).</li>
-<li><a href="https://helm.sh/docs/intro/install/">Helm CLI</a></li>
 <li>A DNS service (Route53 will be used for this tutorial)</li>
 </ol>
 <h2 id="setting-up-cluster">Setting up Cluster<a class="headerlink" href="#setting-up-cluster" title="Permanent link">#</a></h2>
 <p>Execute the following snippet in your terminal with appropriate values. This snippet will configure the AWS Credentials. See <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html">Manage access keys for IAM users</a> for more details about access keys</p>
-<p><div class="highlight"><pre><span></span><code>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>region<span class="w"> </span>&lt;AWS_REGION&gt;
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>region<span class="w"> </span>&lt;AWS_REGION&gt;
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span>&lt;AWS_ACCESS_KEY_ID&gt;
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span>&lt;AWS_SECRET_ACCESS_KEY&gt;
 </code></pre></div>
-Use the following command to create an EKS cluster if it doesn't exist</p>
+<p>Use the following command to create an EKS cluster if it doesn't exist</p>
 <div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--name<span class="w"> </span>&lt;CLUSTER_NAME&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--region<span class="w"> </span>&lt;AWS_REGION&gt;<span class="w"> </span><span class="se">\</span>
@@ -4477,15 +4476,15 @@ Use the following command to create an EKS cluster if it doesn't exist</p>
 aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span class="w"> </span>--name<span class="w"> </span>&lt;CLUSTER_NAME&gt;<span class="w"> </span>--region<span class="w"> </span>&lt;AWS_REGION&gt;
 </code></pre></div>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
-<p>Following steps can be used to configure an EKS cluster for MTO installation. Alternatively, <a href="#">install-mto-prereqs.sh</a> script can be used automate these steps</p>
+<p>Following steps can be used to configure an EKS cluster for MTO installation. Alternatively, <a href="#installation"><code>install-mto-prereqs.sh</code></a> script can be used automate these steps</p>
 <h3 id="1-install-nginx-ingress-controller">1. Install NGINX Ingress Controller<a class="headerlink" href="#1-install-nginx-ingress-controller" title="Permanent link">#</a></h3>
-<p>NGINX ingress controller can be installed using </p>
+<p>NGINX ingress controller can be installed using</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/aws/deploy.yaml
 </code></pre></div>
 <h3 id="2-install-cert-manager">2. Install Cert Manager<a class="headerlink" href="#2-install-cert-manager" title="Permanent link">#</a></h3>
-<p>Cert Manager can be installed by running the following command 
+<p>Cert Manager can be installed by running the following command</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://github.com/cert-manager/cert-manager/releases/download/v1.13.1/cert-manager.yaml
-</code></pre></div></p>
+</code></pre></div>
 <h3 id="3-create-lets-encrypt-access-key-secret">3. Create Let's Encrypt Access Key Secret<a class="headerlink" href="#3-create-lets-encrypt-access-key-secret" title="Permanent link">#</a></h3>
 <p>Create a YAML file with the following spec and replace <code>AWS_SECRET_ACCESS_KEY</code> with its value</p>
 <div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
