@@ -11,18 +11,18 @@
         <link rel="canonical" href="https://docs.stakater.com/mto/sa-6903-eks-docs-update/installation/aws-eks/create-tenants.html">
       
       
-        <link rel="prev" href="mto-prereq-installation.html">
+        <link rel="prev" href="mto-installation.html">
       
       
         <link rel="next" href="../kubernetes.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.1">
     
     
       
-        <title>Create tenants on EKS Cluster using MTO - Multi Tenant Operator</title>
+        <title>Validation - Multi Tenant Operator</title>
       
     
     
@@ -2058,6 +2058,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Overview
+    
   </span>
   
 
@@ -2088,6 +2089,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     About
+    
   </span>
   
 
@@ -2113,6 +2115,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Key Features
+    
   </span>
   
 
@@ -2134,6 +2137,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Use Cases
+    
   </span>
   
 
@@ -2155,6 +2159,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Benefits
+    
   </span>
   
 
@@ -2195,6 +2200,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Installation
+    
   </span>
   
 
@@ -2220,6 +2226,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Overview
+    
   </span>
   
 
@@ -2241,6 +2248,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     On OpenShift
+    
   </span>
   
 
@@ -2262,6 +2270,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     On AKS
+    
   </span>
   
 
@@ -2294,7 +2303,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             
   
   <span class="md-ellipsis">
-    EKS Installation
+    On EKS
+    
   </span>
   
 
@@ -2304,7 +2314,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
-            EKS Installation
+            On EKS
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2315,11 +2325,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="mto-installation.html" class="md-nav__link">
+      <a href="mto-prereq-installation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Install MTO on EKS
+    Prerequistes
+    
   </span>
   
 
@@ -2336,11 +2347,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="mto-prereq-installation.html" class="md-nav__link">
+      <a href="mto-installation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    MTO Prerequisites Installation Guide
+    Installation
+    
   </span>
   
 
@@ -2370,7 +2382,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
           
   
   <span class="md-ellipsis">
-    Create tenants on EKS Cluster using MTO
+    Validation
+    
   </span>
   
 
@@ -2381,7 +2394,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         
   
   <span class="md-ellipsis">
-    Create tenants on EKS Cluster using MTO
+    Validation
+    
   </span>
   
 
@@ -2414,28 +2428,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#users-interaction-with-the-cluster" class="md-nav__link">
+  <a href="#user-interaction-with-the-cluster" class="md-nav__link">
     <span class="md-ellipsis">
-      Users Interaction with the Cluster
+      User Interaction with the Cluster
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Users Interaction with the Cluster">
+    <nav class="md-nav" aria-label="User Interaction with the Cluster">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#iam-users" class="md-nav__link">
+  <a href="#creating-iam-users" class="md-nav__link">
     <span class="md-ellipsis">
-      IAM Users
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sso-users" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSO Users
+      Creating IAM Users
     </span>
   </a>
   
@@ -2460,18 +2465,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#iam-users-on-tenant-namespaces" class="md-nav__link">
+  <a href="#logistics-users-on-tenant-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
-      IAM Users on Tenant Namespaces
+      Logistics Users on Tenant Namespaces
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#sso-users-on-tenant-namespaces" class="md-nav__link">
+  <a href="#retail-users-on-tenant-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
-      SSO Users on Tenant Namespaces
+      Retail Users on Tenant Namespaces
     </span>
   </a>
   
@@ -2544,6 +2549,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     On Kubernetes
+    
   </span>
   
 
@@ -2565,6 +2571,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Helm Chart
+    
   </span>
   
 
@@ -2603,6 +2610,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Architecture
+    
   </span>
   
 
@@ -2628,6 +2636,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Architecture
+    
   </span>
   
 
@@ -2649,6 +2658,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Concepts
+    
   </span>
   
 
@@ -2677,6 +2687,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Pricing
+    
   </span>
   
 
@@ -2707,6 +2718,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Tutorials
+    
   </span>
   
 
@@ -2742,6 +2754,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Configuring Tenants
+    
   </span>
   
 
@@ -2767,6 +2780,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Creating a Tenant
+    
   </span>
   
 
@@ -2788,6 +2802,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Create Sandbox Namespaces for Tenant Users
+    
   </span>
   
 
@@ -2809,6 +2824,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Creating Namespaces through Tenant Custom Resource
+    
   </span>
   
 
@@ -2830,6 +2846,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Assigning Metadata in Tenant Custom Resources
+    
   </span>
   
 
@@ -2851,6 +2868,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Hibernating a Tenant
+    
   </span>
   
 
@@ -2872,6 +2890,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Deleting a Tenant While Preserving Resources
+    
   </span>
   
 
@@ -2911,6 +2930,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Interacting with Templates
+    
   </span>
   
 
@@ -2936,6 +2956,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Copying Secrets and Configmaps across Tenant Namespaces via TGI
+    
   </span>
   
 
@@ -2957,6 +2978,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Distributing Resources in Namespaces
+    
   </span>
   
 
@@ -3003,6 +3025,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     How-to Guides
+    
   </span>
   
 
@@ -3038,6 +3061,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     RBAC
+    
   </span>
   
 
@@ -3063,6 +3087,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Changing the default access level for tenant owners
+    
   </span>
   
 
@@ -3084,6 +3109,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Extending the default access level for tenant members
+    
   </span>
   
 
@@ -3123,6 +3149,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Resource Distribution
+    
   </span>
   
 
@@ -3148,6 +3175,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Configuring Multi-Tenant Isolation with Network Policy Template
+    
   </span>
   
 
@@ -3169,6 +3197,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Distributing Resources in Namespaces
+    
   </span>
   
 
@@ -3190,6 +3219,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Sync Resources Deployed by TemplateGroupInstance
+    
   </span>
   
 
@@ -3211,6 +3241,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Distributing Secrets Using Sealed Secrets Template
+    
   </span>
   
 
@@ -3232,6 +3263,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Deploying Private Helm Chart to Multiple Namespaces
+    
   </span>
   
 
@@ -3253,6 +3285,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Propagate Secrets from Parent to Descendant namespaces
+    
   </span>
   
 
@@ -3292,6 +3325,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Console
+    
   </span>
   
 
@@ -3317,6 +3351,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Setting Up User Access in Keycloak for MTO Console
+    
   </span>
   
 
@@ -3338,6 +3373,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Custom Metrics Support
+    
   </span>
   
 
@@ -3359,6 +3395,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Graph Visualization on MTO Console
+    
   </span>
   
 
@@ -3380,6 +3417,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Hibernation Workflow
+    
   </span>
   
 
@@ -3419,6 +3457,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Integrations
+    
   </span>
   
 
@@ -3444,6 +3483,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Enabling Multi-Tenancy in ArgoCD
+    
   </span>
   
 
@@ -3465,6 +3505,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Configuring Vault in IntegrationConfig
+    
   </span>
   
 
@@ -3486,6 +3527,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Enabling DevWorkspace for Tenant's sandbox in OpenShift
+    
   </span>
   
 
@@ -3507,6 +3549,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Creating Mattermost Teams for your tenant
+    
   </span>
   
 
@@ -3528,6 +3571,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Integrating External Keycloak
+    
   </span>
   
 
@@ -3549,6 +3593,29 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Integrating Vault and Keycloak with Microsoft Entra ID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to-guides/azure-pricing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure Pricing Model
+    
   </span>
   
 
@@ -3588,6 +3655,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Tenant Isolation
+    
   </span>
   
 
@@ -3613,6 +3681,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Restricting Tenant Workloads to Specific Nodes
+    
   </span>
   
 
@@ -3652,6 +3721,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Offboarding
+    
   </span>
   
 
@@ -3677,6 +3747,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Uninstall via OperatorHub UI on OpenShift
+    
   </span>
   
 
@@ -3723,6 +3794,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Explanation
+    
   </span>
   
 
@@ -3758,6 +3830,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Tenant Policies
+    
   </span>
   
 
@@ -3783,6 +3856,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Networking tenant policies
+    
   </span>
   
 
@@ -3812,6 +3886,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Metrics and Logs
+    
   </span>
   
 
@@ -3833,6 +3908,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Understanding and Utilizing Template
+    
   </span>
   
 
@@ -3854,6 +3930,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     MTO Console
+    
   </span>
   
 
@@ -3875,6 +3952,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Templated values in Labels and Annotations
+    
   </span>
   
 
@@ -3896,6 +3974,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Multi-Tenancy in Vault
+    
   </span>
   
 
@@ -3934,6 +4013,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     CRDs API Reference
+    
   </span>
   
 
@@ -3959,6 +4039,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Quota
+    
   </span>
   
 
@@ -3980,6 +4061,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Tenant
+    
   </span>
   
 
@@ -4001,6 +4083,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Extensions
+    
   </span>
   
 
@@ -4022,6 +4105,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Template
+    
   </span>
   
 
@@ -4043,6 +4127,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     TemplateInstance
+    
   </span>
   
 
@@ -4064,6 +4149,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     TemplateGroupInstance
+    
   </span>
   
 
@@ -4085,6 +4171,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Integration Config
+    
   </span>
   
 
@@ -4106,6 +4193,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Resource Supervisor
+    
   </span>
   
 
@@ -4134,6 +4222,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Changelog
+    
   </span>
   
 
@@ -4154,6 +4243,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     EULA
+    
   </span>
   
 
@@ -4174,6 +4264,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Troubleshooting Guide
+    
   </span>
   
 
@@ -4220,28 +4311,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#users-interaction-with-the-cluster" class="md-nav__link">
+  <a href="#user-interaction-with-the-cluster" class="md-nav__link">
     <span class="md-ellipsis">
-      Users Interaction with the Cluster
+      User Interaction with the Cluster
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Users Interaction with the Cluster">
+    <nav class="md-nav" aria-label="User Interaction with the Cluster">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#iam-users" class="md-nav__link">
+  <a href="#creating-iam-users" class="md-nav__link">
     <span class="md-ellipsis">
-      IAM Users
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sso-users" class="md-nav__link">
-    <span class="md-ellipsis">
-      SSO Users
+      Creating IAM Users
     </span>
   </a>
   
@@ -4266,18 +4348,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#iam-users-on-tenant-namespaces" class="md-nav__link">
+  <a href="#logistics-users-on-tenant-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
-      IAM Users on Tenant Namespaces
+      Logistics Users on Tenant Namespaces
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#sso-users-on-tenant-namespaces" class="md-nav__link">
+  <a href="#retail-users-on-tenant-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
-      SSO Users on Tenant Namespaces
+      Retail Users on Tenant Namespaces
     </span>
   </a>
   
@@ -4335,19 +4417,49 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
                   
 
+
   
   
 
 
 <h1 id="create-tenants-on-eks-cluster-using-mto">Create tenants on EKS Cluster using MTO<a class="headerlink" href="#create-tenants-on-eks-cluster-using-mto" title="Permanent link">#</a></h1>
-<p>This document provides detailed insights on creating MTO Tenants on EKS cluster.</p>
+<p>This document provides detailed insights on creating MTO Tenants on EKS cluster. In this tutorial we will assume setup 2 tenants named logistics and retail for an imaginary ecommerce company.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
 <p>MTO must be installed on EKS cluster. <a href="mto-installation.html">MTO EKS installation guide</a> provides a detailed walk-through of MTO installation on EKS.</p>
-<h2 id="users-interaction-with-the-cluster">Users Interaction with the Cluster<a class="headerlink" href="#users-interaction-with-the-cluster" title="Permanent link">#</a></h2>
+<h2 id="user-interaction-with-the-cluster">User Interaction with the Cluster<a class="headerlink" href="#user-interaction-with-the-cluster" title="Permanent link">#</a></h2>
 <p>We will use two types of users to interact with the cluster, IAM users created via AWS Console and SSO Users.</p>
-<h3 id="iam-users">IAM Users<a class="headerlink" href="#iam-users" title="Permanent link">#</a></h3>
-<p>We have created a user named <code>test-benzema-mto</code> in AWS Console, with ARN <code>arn:aws:iam::&lt;account&gt;:user/test-benzema-mto</code>.
-This user has a policy attached to be able to get cluster info</p>
+<h3 id="creating-iam-users">Creating IAM Users<a class="headerlink" href="#creating-iam-users" title="Permanent link">#</a></h3>
+<p>We will create a group named <code>logistics-owner</code> and then add a user to that group.
+To create a group named <code>logistics-owner</code> use the following command</p>
+<div class="highlight"><pre><span></span><code>$ aws iam create-group --group-name logistics-owner
+
+Output:
+{
+    &quot;Group&quot;: {
+        &quot;Path&quot;: &quot;/&quot;,
+        &quot;GroupName&quot;: &quot;logistics-owner&quot;,
+        &quot;GroupId&quot;: &quot;AGPAZFWZTAEJYEKE56O3P&quot;,
+        &quot;Arn&quot;: &quot;arn:aws:iam::630742778131:group/logistics-owner&quot;,
+        &quot;CreateDate&quot;: &quot;2025-02-03T13:08:56Z&quot;
+    }
+}
+</code></pre></div>
+<p>Create a user named <code>falcon@nordmart.com</code></p>
+<div class="highlight"><pre><span></span><code>$ aws iam create-user --user-name falcon@nordmart.com
+
+Output:
+{
+    &quot;User&quot;: {
+        &quot;Path&quot;: &quot;/&quot;,
+        &quot;UserName&quot;: &quot;falcon@nordmart.com&quot;,
+        &quot;UserId&quot;: &quot;AIDAZFWZTAEJ7ILHDKLLD&quot;,
+        &quot;Arn&quot;: &quot;arn:aws:iam::630742778131:user/falcon@nordmart.com&quot;,
+        &quot;CreateDate&quot;: &quot;2025-02-03T13:09:51Z&quot;
+    }
+}
+</code></pre></div>
+<p>We have created a user named <code>falcon@nordmart.com</code> in AWS Console, with ARN <code>arn:aws:iam::630742778131:user/falcon@nordmart.com</code>.</p>
+<p>Create a json file to attach the policy. This policy will allow the user to access the cluster.
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
@@ -4359,32 +4471,29 @@ This user has a policy attached to be able to get cluster info</p>
 <span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>We have mapped this user in <code>aws-auth</code> configmap in <code>kube-system</code> namespace.</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">mapUsers</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iam-devteam</span>
-<span class="w">      </span><span class="nt">userarn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:iam::&lt;account&gt;:user/test-benzema-mto</span>
-<span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-benzema-mto</span>
+Attach a policy to user</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>put-user-policy<span class="w"> </span>--user-name<span class="w"> </span><span class="nv">$name</span><span class="w"> </span>--policy-document<span class="w"> </span>file://policy.json<span class="w"> </span>--policy-name<span class="w"> </span>ClusterAccess
 </code></pre></div>
-<p>Using this <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html">AWS guide</a>, we will ask the user to update its kubeconfig and try to access the cluster.</p>
+<p>Add user to <code>logistics-owner</code> group</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>add-user-to-group<span class="w"> </span>--user-name<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span><span class="w"> </span>--group-name<span class="w"> </span><span class="s2">&quot;logistics-owner&quot;</span>
+</code></pre></div>
+<p>Generate the access keys that can be used to login into the cluster. Executing the following command will provide the Access Key Id and Access Secret Key Id that can be used to login
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>create-access-key<span class="w"> </span>--user-name<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span>
+</code></pre></div></p>
+<p>Use the following command to map this user in <code>aws-auth</code> configmap in <code>kube-system</code> namespace. </p>
+<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>create<span class="w"> </span>iamidentitymapping<span class="w"> </span>--cluster<span class="w"> </span><span class="s2">&quot;&lt;CLUSTER_NAME&gt;&quot;</span><span class="w"> </span><span class="se">\ </span>
+<span class="w">                                 </span>--region<span class="w"> </span><span class="s2">&quot;&lt;AWS_REGION&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                                 </span>--arn<span class="w"> </span><span class="s2">&quot;&lt;USER_ARN&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                                 </span>--username<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                                 </span>--group<span class="w"> </span><span class="s2">&quot;logistics-dev&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                                 </span>--no-duplicate-arns
+</code></pre></div>
 <p>Since we haven't attached any RBAC with this user at the moment, trying to access anything in the cluster would throw an error</p>
 <div class="highlight"><pre><span></span><code>$ kubectl get svc
 
-Error from server (Forbidden): services is forbidden: User &quot;test-benzema-mto&quot; cannot list resource &quot;services&quot; in API group &quot;&quot; in the namespace &quot;default&quot;
+Error from server (Forbidden): services is forbidden: User &quot;falcon@nordmart.com&quot; cannot list resource &quot;services&quot; in API group &quot;&quot; in the namespace &quot;default&quot;
 </code></pre></div>
-<h3 id="sso-users">SSO Users<a class="headerlink" href="#sso-users" title="Permanent link">#</a></h3>
-<p>For SSO Users, we will map a role <code>arn:aws:iam::&lt;account&gt;:role/aws-reserved/sso.amazonaws.com/eu-north-1/AWSReservedSSO_PowerUserAccess_b0ad9936c75e5bcc</code>, that is attached by default with Users on SSO login to the AWS console and <code>awscli</code>, in <code>aws-auth</code> configmap in <code>kube-system</code> namespace.</p>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">mapRoles</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sso-devteam</span>
-<span class="w">      </span><span class="nt">rolearn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:iam::&lt;account&gt;:role/AWSReservedSSO_PowerUserAccess_b0ad9936c75e5bcc</span>
-<span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sso-devteam:{{SessionName}}</span>
-</code></pre></div>
-<p>Since this user also doesn't have attached RBAC, trying to access anything in the cluster would throw an error</p>
-<div class="highlight"><pre><span></span><code>$ kubectl get svc
-
-Error from server (Forbidden): services is forbidden: User &quot;sso-devteam:random-user-stakater.com&quot; cannot list resource &quot;services&quot; in API group &quot;&quot; in the namespace &quot;default&quot;
-</code></pre></div>
+<p>Repeat the same steps to create a group and a user for retail tenant.</p>
 <h3 id="setting-up-tenant-for-users">Setting up Tenant for Users<a class="headerlink" href="#setting-up-tenant-for-users" title="Permanent link">#</a></h3>
 <p>Now, we will set tenants for the above-mentioned users.</p>
 <p>We will start by creating a <code>Quota CR</code> with some resource limits</p>
@@ -4412,7 +4521,7 @@ Error from server (Forbidden): services is forbidden: User &quot;sso-devteam:ran
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-iam</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logistics</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
@@ -4420,8 +4529,8 @@ Error from server (Forbidden): services is forbidden: User &quot;sso-devteam:ran
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iam-devteam</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">falcon@nordmart.com</span>
 <span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
 <span class="l l-Scalar l-Scalar-Plain">EOF</span>
 </code></pre></div>
@@ -4429,7 +4538,7 @@ Error from server (Forbidden): services is forbidden: User &quot;sso-devteam:ran
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sso</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">retail</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
@@ -4437,12 +4546,12 @@ Error from server (Forbidden): services is forbidden: User &quot;sso-devteam:ran
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 <span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sso-devteam</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bear@nordmart.com</span>
 <span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
 <span class="l l-Scalar l-Scalar-Plain">EOF</span>
 </code></pre></div>
-<p>Notice that the only difference in both tenant specs are the groups.</p>
+<p>Notice that the only difference in both tenant specs are the users.</p>
 <h3 id="accessing-tenant-namespaces">Accessing Tenant Namespaces<a class="headerlink" href="#accessing-tenant-namespaces" title="Permanent link">#</a></h3>
 <p>After the creation of <code>Tenant</code> CRs, now users can access namespaces in their respective tenants and preform create, update, delete functions.</p>
 <p>Listing the namespaces by cluster admin will show us the recently created tenant namespaces</p>
@@ -4456,66 +4565,64 @@ kube-public<span class="w">             </span>Active<span class="w">   </span>9
 kube-system<span class="w">             </span>Active<span class="w">   </span>9d
 multi-tenant-operator<span class="w">   </span>Active<span class="w">   </span>8d
 random<span class="w">                  </span>Active<span class="w">   </span>8d
-tenant-iam-build<span class="w">        </span>Active<span class="w">   </span>5s
-tenant-iam-dev<span class="w">          </span>Active<span class="w">   </span>5s
-tenant-sso-build<span class="w">        </span>Active<span class="w">   </span>5s
-tenant-sso-dev<span class="w">          </span>Active<span class="w">   </span>5s
+logistics-dev<span class="w">           </span>Active<span class="w">   </span>5s
+logistics-build<span class="w">         </span>Active<span class="w">   </span>5s
+retail-dev<span class="w">              </span>Active<span class="w">   </span>5s
+retail-build<span class="w">            </span>Active<span class="w">   </span>5s
 </code></pre></div>
-<h3 id="iam-users-on-tenant-namespaces">IAM Users on Tenant Namespaces<a class="headerlink" href="#iam-users-on-tenant-namespaces" title="Permanent link">#</a></h3>
-<p>We will now try to deploy a pod from user <code>test-benzema-mto</code> in its tenant namespace <code>tenant-iam-dev</code></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>tenant-iam-dev
+<h3 id="logistics-users-on-tenant-namespaces">Logistics Users on Tenant Namespaces<a class="headerlink" href="#logistics-users-on-tenant-namespaces" title="Permanent link">#</a></h3>
+<p>We will now try to deploy a pod from user <code>falcon@nordmart.com</code> in its tenant namespace <code>tenant-iam-dev</code></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>logistics-dev
 
 pod/nginx<span class="w"> </span>created
 </code></pre></div>
 <p>And if we try the same operation in the other tenant with the same user, it will fail</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>tenant-sso-dev
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>retail-dev
 
-Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>pods<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;test-benzema-mto&quot;</span><span class="w"> </span>cannot<span class="w"> </span>create<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;pods&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>namespace<span class="w"> </span><span class="s2">&quot;tenant-sso-dev&quot;</span>
+Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>pods<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>create<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;pods&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>namespace<span class="w"> </span><span class="s2">&quot;retail-dev&quot;</span>
 </code></pre></div>
-<p>To be noted, <code>test-benzema-mto</code> can not list namespaces</p>
+<p>To be noted, <code>falcon@nordmart.com</code> can not list namespaces</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>namespaces
 
-Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>namespaces<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;test-benzema-mto&quot;</span><span class="w"> </span>cannot<span class="w"> </span>list<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;namespaces&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>scope
+Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>namespaces<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>list<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;namespaces&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>scope
 </code></pre></div>
-<h3 id="sso-users-on-tenant-namespaces">SSO Users on Tenant Namespaces<a class="headerlink" href="#sso-users-on-tenant-namespaces" title="Permanent link">#</a></h3>
-<p>We will repeat the above operations for our SSO user <code>sso-devteam:random-user-stakater.com</code> as well</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>tenant-sso-dev
+<h3 id="retail-users-on-tenant-namespaces">Retail Users on Tenant Namespaces<a class="headerlink" href="#retail-users-on-tenant-namespaces" title="Permanent link">#</a></h3>
+<p>We will repeat the above operations for our SSO user <code>bear@nordmart.com</code> as well</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>retail-dev
 
 pod/nginx<span class="w"> </span>created
 </code></pre></div>
 <p>Trying to do operations outside the scope of its own tenant will result in errors</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>tenant-iam-dev
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>retail-dev
 
-Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>pods<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;sso-devteam:random-user-stakater.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>create<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;pods&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>namespace<span class="w"> </span><span class="s2">&quot;tenant-iam-dev&quot;</span>
+Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>pods<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;bear@nordmart.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>create<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;pods&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>namespace<span class="w"> </span><span class="s2">&quot;tenant-iam-dev&quot;</span>
 </code></pre></div>
-<p>To be noted, <code>sso-devteam:random-user-stakater.com</code> can not list namespaces</p>
+<p>To be noted, <code>bear@nordmart.com</code> can not list namespaces</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>namespaces
 
-Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>namespaces<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;sso-devteam:random-user-stakater.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>list<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;namespaces&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>scope
+Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>namespaces<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;bear@nordmart.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>list<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;namespaces&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>scope
 </code></pre></div>
 <h2 id="using-mto-console">Using MTO Console<a class="headerlink" href="#using-mto-console" title="Permanent link">#</a></h2>
 <h3 id="prerequisites_1">Prerequisites<a class="headerlink" href="#prerequisites_1" title="Permanent link">#</a></h3>
 <ul>
 <li>Ensure that MTO Console is enabled by running the following command</li>
 </ul>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>integrationconfig<span class="w"> </span>tenant-operator-config<span class="w"> </span>-o<span class="o">=</span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.components}&#39;</span><span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
-</code></pre></div>
-<p>Console should be set to true</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">&quot;console&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&quot;showback&quot;</span><span class="p">:</span><span class="kc">true</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>integrationconfig<span class="w"> </span>tenant-operator-config<span class="w"> </span>-o<span class="o">=</span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.components}&#39;</span><span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
+
+<span class="o">{</span><span class="s2">&quot;console&quot;</span>:true,<span class="s2">&quot;showback&quot;</span>:true<span class="o">}</span>
 </code></pre></div>
 <p>If console is set to false then <a href="mto-installation.html#enable-mto-console">enable the MTO Console</a> before proceeding to next step</p>
 <ul>
 <li><strong>A Keycloak user with same username as AWS IAM user</strong> should be created. Follow our <a href="../../how-to-guides/keycloak.html">Setting Up User Access in Keycloak for MTO Console</a> guide to create a Keycloak user.</li>
 </ul>
 <h3 id="mto-console-login">MTO Console Login<a class="headerlink" href="#mto-console-login" title="Permanent link">#</a></h3>
-<p>Use the following command to get URL of MTO Console</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>routes<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
-</code></pre></div>
-<p>Output</p>
-<div class="highlight"><pre><span></span><code>NAME<span class="w">                             </span>HOST/PORT<span class="w">              </span>PATH<span class="w">     </span>SERVICES<span class="w">                    </span>PORT<span class="w">    </span>TERMINATION<span class="w">     </span>WILDCARD
-tenant-operator-console-ncm2k<span class="w">    </span>console.&lt;SUBDOMAIN&gt;<span class="w">      </span>/<span class="w">      </span>tenant-operator-console<span class="w">     </span>http<span class="w">    </span>edge/Redirect<span class="w">   </span>None
-tenant-operator-gateway-6kbxz<span class="w">    </span>gateway.&lt;SUBDOMAIN&gt;<span class="w">      </span>/<span class="w">      </span>tenant-operator-gateway<span class="w">     </span>http<span class="w">    </span>edge/Redirect<span class="w">   </span>None
-tenant-operator-keycloak-mt6sl<span class="w">   </span>keycloak.&lt;SUBDOMAIN&gt;<span class="w">     </span>/<span class="w">      </span>tenant-operator-keycloak<span class="w">    </span>&lt;all&gt;<span class="w">   </span>edge/Redirect<span class="w">   </span>None
+<p>List the ingresses to access the URL of MTO Console</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>ingress<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
+
+NAME<span class="w">                       </span>CLASS<span class="w">   </span>HOSTS<span class="w">                                  </span>ADDRESS<span class="w">                                                                          </span>PORTS<span class="w">     </span>AGE
+tenant-operator-console<span class="w">    </span>nginx<span class="w">   </span>console.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
+tenant-operator-gateway<span class="w">    </span>nginx<span class="w">   </span>gateway.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
+tenant-operator-keycloak<span class="w">   </span>nginx<span class="w">   </span>keycloak.iinhdnh6.demo.kubeapp.cloud<span class="w">   </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>24m
 </code></pre></div>
 <p>Open the URL and Login with the Keycloak user credentials.</p>
 <p><a class="glightbox" href="../../images/mto-console-login.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MTO Console Login Page" src="../../images/mto-console-login.png" /></a></p>
@@ -5229,7 +5336,7 @@ tenant-operator-keycloak-mt6sl<span class="w">   </span>keycloak.&lt;SUBDOMAIN&g
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      <script src="../../assets/javascripts/bundle.5090c770.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

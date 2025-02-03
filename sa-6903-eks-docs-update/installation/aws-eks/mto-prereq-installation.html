@@ -11,18 +11,18 @@
         <link rel="canonical" href="https://docs.stakater.com/mto/sa-6903-eks-docs-update/installation/aws-eks/mto-prereq-installation.html">
       
       
-        <link rel="prev" href="mto-installation.html">
+        <link rel="prev" href="../azure-aks.html">
       
       
-        <link rel="next" href="create-tenants.html">
+        <link rel="next" href="mto-installation.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.1">
     
     
       
-        <title>MTO Prerequisites Installation Guide - Multi Tenant Operator</title>
+        <title>Prerequistes - Multi Tenant Operator</title>
       
     
     
@@ -2058,6 +2058,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Overview
+    
   </span>
   
 
@@ -2088,6 +2089,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     About
+    
   </span>
   
 
@@ -2113,6 +2115,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Key Features
+    
   </span>
   
 
@@ -2134,6 +2137,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Use Cases
+    
   </span>
   
 
@@ -2155,6 +2159,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Benefits
+    
   </span>
   
 
@@ -2195,6 +2200,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Installation
+    
   </span>
   
 
@@ -2220,6 +2226,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Overview
+    
   </span>
   
 
@@ -2241,6 +2248,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     On OpenShift
+    
   </span>
   
 
@@ -2262,6 +2270,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     On AKS
+    
   </span>
   
 
@@ -2294,7 +2303,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             
   
   <span class="md-ellipsis">
-    EKS Installation
+    On EKS
+    
   </span>
   
 
@@ -2304,30 +2314,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
-            EKS Installation
+            On EKS
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="mto-installation.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Install MTO on EKS
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -2349,7 +2338,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
           
   
   <span class="md-ellipsis">
-    MTO Prerequisites Installation Guide
+    Prerequistes
+    
   </span>
   
 
@@ -2360,7 +2350,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         
   
   <span class="md-ellipsis">
-    MTO Prerequisites Installation Guide
+    Prerequistes
+    
   </span>
   
 
@@ -2393,6 +2384,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
+  <a href="#setting-up-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up Cluster
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       Installation
@@ -2403,81 +2403,72 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-login-to-eks-cluster-with-iam-user" class="md-nav__link">
+  <a href="#1-install-nginx-ingress-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Login to EKS Cluster with IAM User
+      1. Install NGINX Ingress Controller
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-install-nginx-ingress-controller" class="md-nav__link">
+  <a href="#2-install-cert-manager" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Install NGINX Ingress Controller
+      2. Install Cert Manager
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-install-cert-manager" class="md-nav__link">
+  <a href="#3-create-lets-encrypt-access-key-secret" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Install Cert Manager
+      3. Create Let's Encrypt Access Key Secret
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-create-lets-encrypt-access-key-secret" class="md-nav__link">
+  <a href="#4-create-clusterissuer-for-lets-encrypt" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Create Let's Encrypt Access Key Secret
+      4. Create ClusterIssuer for Let's Encrypt
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-create-clusterissuer-for-lets-encrypt" class="md-nav__link">
+  <a href="#5-install-aws-ebs-csi-driver" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Create ClusterIssuer for Let's Encrypt
+      5. Install AWS EBS CSI Driver
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-install-aws-ebs-csi-driver" class="md-nav__link">
+  <a href="#6-create-storage-class-for-ebs" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Install AWS EBS CSI Driver
+      6. Create Storage Class for EBS
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#7-create-storage-class-for-ebs" class="md-nav__link">
+  <a href="#7-create-wildcard-dns-record" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Create Storage Class for EBS
+      7. Create Wildcard DNS Record
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#8-create-wildcard-dns-record" class="md-nav__link">
+  <a href="#8-create-wildcard-certificate" class="md-nav__link">
     <span class="md-ellipsis">
-      8. Create Wildcard DNS Record
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#9-create-wildcard-certificate" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Create Wildcard Certificate
+      8. Create Wildcard Certificate
     </span>
   </a>
   
@@ -2513,11 +2504,34 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
+      <a href="mto-installation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="create-tenants.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Create tenants on EKS Cluster using MTO
+    Validation
+    
   </span>
   
 
@@ -2547,6 +2561,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     On Kubernetes
+    
   </span>
   
 
@@ -2568,6 +2583,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Helm Chart
+    
   </span>
   
 
@@ -2606,6 +2622,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Architecture
+    
   </span>
   
 
@@ -2631,6 +2648,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Architecture
+    
   </span>
   
 
@@ -2652,6 +2670,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Concepts
+    
   </span>
   
 
@@ -2680,6 +2699,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Pricing
+    
   </span>
   
 
@@ -2710,6 +2730,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Tutorials
+    
   </span>
   
 
@@ -2745,6 +2766,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Configuring Tenants
+    
   </span>
   
 
@@ -2770,6 +2792,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Creating a Tenant
+    
   </span>
   
 
@@ -2791,6 +2814,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Create Sandbox Namespaces for Tenant Users
+    
   </span>
   
 
@@ -2812,6 +2836,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Creating Namespaces through Tenant Custom Resource
+    
   </span>
   
 
@@ -2833,6 +2858,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Assigning Metadata in Tenant Custom Resources
+    
   </span>
   
 
@@ -2854,6 +2880,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Hibernating a Tenant
+    
   </span>
   
 
@@ -2875,6 +2902,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Deleting a Tenant While Preserving Resources
+    
   </span>
   
 
@@ -2914,6 +2942,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Interacting with Templates
+    
   </span>
   
 
@@ -2939,6 +2968,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Copying Secrets and Configmaps across Tenant Namespaces via TGI
+    
   </span>
   
 
@@ -2960,6 +2990,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Distributing Resources in Namespaces
+    
   </span>
   
 
@@ -3006,6 +3037,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     How-to Guides
+    
   </span>
   
 
@@ -3041,6 +3073,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     RBAC
+    
   </span>
   
 
@@ -3066,6 +3099,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Changing the default access level for tenant owners
+    
   </span>
   
 
@@ -3087,6 +3121,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Extending the default access level for tenant members
+    
   </span>
   
 
@@ -3126,6 +3161,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Resource Distribution
+    
   </span>
   
 
@@ -3151,6 +3187,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Configuring Multi-Tenant Isolation with Network Policy Template
+    
   </span>
   
 
@@ -3172,6 +3209,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Distributing Resources in Namespaces
+    
   </span>
   
 
@@ -3193,6 +3231,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Sync Resources Deployed by TemplateGroupInstance
+    
   </span>
   
 
@@ -3214,6 +3253,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Distributing Secrets Using Sealed Secrets Template
+    
   </span>
   
 
@@ -3235,6 +3275,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Deploying Private Helm Chart to Multiple Namespaces
+    
   </span>
   
 
@@ -3256,6 +3297,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Propagate Secrets from Parent to Descendant namespaces
+    
   </span>
   
 
@@ -3295,6 +3337,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Console
+    
   </span>
   
 
@@ -3320,6 +3363,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Setting Up User Access in Keycloak for MTO Console
+    
   </span>
   
 
@@ -3341,6 +3385,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Custom Metrics Support
+    
   </span>
   
 
@@ -3362,6 +3407,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Graph Visualization on MTO Console
+    
   </span>
   
 
@@ -3383,6 +3429,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Hibernation Workflow
+    
   </span>
   
 
@@ -3422,6 +3469,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Integrations
+    
   </span>
   
 
@@ -3447,6 +3495,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Enabling Multi-Tenancy in ArgoCD
+    
   </span>
   
 
@@ -3468,6 +3517,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Configuring Vault in IntegrationConfig
+    
   </span>
   
 
@@ -3489,6 +3539,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Enabling DevWorkspace for Tenant's sandbox in OpenShift
+    
   </span>
   
 
@@ -3510,6 +3561,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Creating Mattermost Teams for your tenant
+    
   </span>
   
 
@@ -3531,6 +3583,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Integrating External Keycloak
+    
   </span>
   
 
@@ -3552,6 +3605,29 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Integrating Vault and Keycloak with Microsoft Entra ID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-to-guides/azure-pricing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure Pricing Model
+    
   </span>
   
 
@@ -3591,6 +3667,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Tenant Isolation
+    
   </span>
   
 
@@ -3616,6 +3693,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Restricting Tenant Workloads to Specific Nodes
+    
   </span>
   
 
@@ -3655,6 +3733,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Offboarding
+    
   </span>
   
 
@@ -3680,6 +3759,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Uninstall via OperatorHub UI on OpenShift
+    
   </span>
   
 
@@ -3726,6 +3806,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Explanation
+    
   </span>
   
 
@@ -3761,6 +3842,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Tenant Policies
+    
   </span>
   
 
@@ -3786,6 +3868,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Networking tenant policies
+    
   </span>
   
 
@@ -3815,6 +3898,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Metrics and Logs
+    
   </span>
   
 
@@ -3836,6 +3920,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Understanding and Utilizing Template
+    
   </span>
   
 
@@ -3857,6 +3942,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     MTO Console
+    
   </span>
   
 
@@ -3878,6 +3964,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Templated values in Labels and Annotations
+    
   </span>
   
 
@@ -3899,6 +3986,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Multi-Tenancy in Vault
+    
   </span>
   
 
@@ -3937,6 +4025,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     CRDs API Reference
+    
   </span>
   
 
@@ -3962,6 +4051,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Quota
+    
   </span>
   
 
@@ -3983,6 +4073,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Tenant
+    
   </span>
   
 
@@ -4004,6 +4095,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Extensions
+    
   </span>
   
 
@@ -4025,6 +4117,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Template
+    
   </span>
   
 
@@ -4046,6 +4139,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     TemplateInstance
+    
   </span>
   
 
@@ -4067,6 +4161,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     TemplateGroupInstance
+    
   </span>
   
 
@@ -4088,6 +4183,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Integration Config
+    
   </span>
   
 
@@ -4109,6 +4205,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Resource Supervisor
+    
   </span>
   
 
@@ -4137,6 +4234,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Changelog
+    
   </span>
   
 
@@ -4157,6 +4255,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     EULA
+    
   </span>
   
 
@@ -4177,6 +4276,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Troubleshooting Guide
+    
   </span>
   
 
@@ -4223,6 +4323,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
+  <a href="#setting-up-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up Cluster
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       Installation
@@ -4233,81 +4342,72 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-login-to-eks-cluster-with-iam-user" class="md-nav__link">
+  <a href="#1-install-nginx-ingress-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Login to EKS Cluster with IAM User
+      1. Install NGINX Ingress Controller
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-install-nginx-ingress-controller" class="md-nav__link">
+  <a href="#2-install-cert-manager" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Install NGINX Ingress Controller
+      2. Install Cert Manager
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-install-cert-manager" class="md-nav__link">
+  <a href="#3-create-lets-encrypt-access-key-secret" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Install Cert Manager
+      3. Create Let's Encrypt Access Key Secret
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-create-lets-encrypt-access-key-secret" class="md-nav__link">
+  <a href="#4-create-clusterissuer-for-lets-encrypt" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Create Let's Encrypt Access Key Secret
+      4. Create ClusterIssuer for Let's Encrypt
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-create-clusterissuer-for-lets-encrypt" class="md-nav__link">
+  <a href="#5-install-aws-ebs-csi-driver" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Create ClusterIssuer for Let's Encrypt
+      5. Install AWS EBS CSI Driver
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-install-aws-ebs-csi-driver" class="md-nav__link">
+  <a href="#6-create-storage-class-for-ebs" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Install AWS EBS CSI Driver
+      6. Create Storage Class for EBS
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#7-create-storage-class-for-ebs" class="md-nav__link">
+  <a href="#7-create-wildcard-dns-record" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Create Storage Class for EBS
+      7. Create Wildcard DNS Record
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#8-create-wildcard-dns-record" class="md-nav__link">
+  <a href="#8-create-wildcard-certificate" class="md-nav__link">
     <span class="md-ellipsis">
-      8. Create Wildcard DNS Record
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#9-create-wildcard-certificate" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Create Wildcard Certificate
+      8. Create Wildcard Certificate
     </span>
   </a>
   
@@ -4341,38 +4441,52 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
                   
 
+
   
   
 
 
 <h1 id="mto-prerequisites-installation-guide">MTO Prerequisites Installation Guide<a class="headerlink" href="#mto-prerequisites-installation-guide" title="Permanent link">#</a></h1>
-<p>This document provides detailed walk-through of installation of different MTO dependencies.</p>
+<p>This document provides detailed walk-through of installation of different MTO dependencies. Alternatively, you can use our</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
-<ul>
-<li>You need kubectl as well, with a minimum version of 1.18.3. If you need to install, see <a href="https://kubernetes.io/docs/tasks/tools/#kubectl">Install kubectl</a>.</li>
-<li>To install MTO, you need Helm CLI as well. Visit <a href="https://helm.sh/docs/intro/install/">Installing Helm</a> to get Helm CLI</li>
-<li>You need to have a user in <a href="https://console.aws.amazon.com/">AWS Console</a>, which we will use as the administrator having enough permissions for accessing the cluster and creating groups with users</li>
-<li>A running EKS Cluster. <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html">Creating an EKS Cluster</a> provides a good tutorial to create a demo cluster</li>
-<li><a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/setting-up-route-53.html">AWS Route 53 DNS</a> or similar DNS service must be configured</li>
-<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/load-balancer-getting-started.html">AWS Elastic Load Balancer</a> must be configured</li>
-</ul>
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
-<h3 id="1-login-to-eks-cluster-with-iam-user">1. Login to EKS Cluster with IAM User<a class="headerlink" href="#1-login-to-eks-cluster-with-iam-user" title="Permanent link">#</a></h3>
-<p>Execute the following snippet in your terminal with appropriate values. This snippet will configure the AWS Credentials and set the kubernetes context to the specified cluster. See <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html">Manage access keys for IAM users</a> for more details about access keys</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>region<span class="w"> </span>&lt;AWS_REGION&gt;
+<ol>
+<li><a href="https://eksctl.io/installation/"><code>eksctl</code></a></li>
+<li><a href="https://kubernetes.io/docs/tasks/tools/#kubectl"><code>kubectl</code></a> (1.18.3 or later).</li>
+<li><a href="https://helm.sh/docs/intro/install/">Helm CLI</a></li>
+<li>A DNS service (Route53 will be used for this tutorial)</li>
+</ol>
+<h2 id="setting-up-cluster">Setting up Cluster<a class="headerlink" href="#setting-up-cluster" title="Permanent link">#</a></h2>
+<p>Execute the following snippet in your terminal with appropriate values. This snippet will configure the AWS Credentials. See <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html">Manage access keys for IAM users</a> for more details about access keys</p>
+<p><div class="highlight"><pre><span></span><code>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>region<span class="w"> </span>&lt;AWS_REGION&gt;
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span>&lt;AWS_ACCESS_KEY_ID&gt;
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span>&lt;AWS_SECRET_ACCESS_KEY&gt;
-
+</code></pre></div>
+Use the following command to create an EKS cluster if it doesn't exist</p>
+<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--name<span class="w"> </span>&lt;CLUSTER_NAME&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--region<span class="w"> </span>&lt;AWS_REGION&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--nodegroup-name<span class="w"> </span>standard-workers<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--node-type<span class="w"> </span>t3.xlarge<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--nodes<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--nodes-min<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--nodes-max<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--managed
+</code></pre></div>
+<p>Set the kubernetes context to the specified cluster. </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Update the current context</span>
 aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span class="w"> </span>--name<span class="w"> </span>&lt;CLUSTER_NAME&gt;<span class="w"> </span>--region<span class="w"> </span>&lt;AWS_REGION&gt;
 </code></pre></div>
-<h3 id="2-install-nginx-ingress-controller">2. Install NGINX Ingress Controller<a class="headerlink" href="#2-install-nginx-ingress-controller" title="Permanent link">#</a></h3>
-<p>Following command will install NGINX ingress controller on EKS cluster</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
+<p>Following steps can be used to configure an EKS cluster for MTO installation. Alternatively, <a href="#">install-mto-prereqs.sh</a> script can be used automate these steps</p>
+<h3 id="1-install-nginx-ingress-controller">1. Install NGINX Ingress Controller<a class="headerlink" href="#1-install-nginx-ingress-controller" title="Permanent link">#</a></h3>
+<p>NGINX ingress controller can be installed using </p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/aws/deploy.yaml
 </code></pre></div>
-<h3 id="3-install-cert-manager">3. Install Cert Manager<a class="headerlink" href="#3-install-cert-manager" title="Permanent link">#</a></h3>
+<h3 id="2-install-cert-manager">2. Install Cert Manager<a class="headerlink" href="#2-install-cert-manager" title="Permanent link">#</a></h3>
+<p>Cert Manager can be installed by running the following command 
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://github.com/cert-manager/cert-manager/releases/download/v1.13.1/cert-manager.yaml
-</code></pre></div>
-<h3 id="4-create-lets-encrypt-access-key-secret">4. Create Let's Encrypt Access Key Secret<a class="headerlink" href="#4-create-lets-encrypt-access-key-secret" title="Permanent link">#</a></h3>
+</code></pre></div></p>
+<h3 id="3-create-lets-encrypt-access-key-secret">3. Create Let's Encrypt Access Key Secret<a class="headerlink" href="#3-create-lets-encrypt-access-key-secret" title="Permanent link">#</a></h3>
 <p>Create a YAML file with the following spec and replace <code>AWS_SECRET_ACCESS_KEY</code> with its value</p>
 <div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -4386,7 +4500,7 @@ aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span cla
 <p>Apply YAML file using following command</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>&lt;FILENAME&gt;.yaml
 </code></pre></div>
-<h3 id="5-create-clusterissuer-for-lets-encrypt">5. Create <code>ClusterIssuer</code> for Let's Encrypt<a class="headerlink" href="#5-create-clusterissuer-for-lets-encrypt" title="Permanent link">#</a></h3>
+<h3 id="4-create-clusterissuer-for-lets-encrypt">4. Create <code>ClusterIssuer</code> for Let's Encrypt<a class="headerlink" href="#4-create-clusterissuer-for-lets-encrypt" title="Permanent link">#</a></h3>
 <p>Create a YAML file with following the CR definition and replace <code>&lt;AWS_ACCESS_KEY_ID&gt;</code>, <code>&lt;REGION&gt;</code>, <code>&lt;BASE_DOMAIN&gt;</code> with their values</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIssuer</span>
@@ -4414,12 +4528,12 @@ aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span cla
 <p>Apply YAML file using following command</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>&lt;FILENAME&gt;.yaml
 </code></pre></div>
-<h3 id="6-install-aws-ebs-csi-driver">6. Install AWS EBS CSI Driver<a class="headerlink" href="#6-install-aws-ebs-csi-driver" title="Permanent link">#</a></h3>
+<h3 id="5-install-aws-ebs-csi-driver">5. Install AWS EBS CSI Driver<a class="headerlink" href="#5-install-aws-ebs-csi-driver" title="Permanent link">#</a></h3>
 <p>The <a href="https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html">Amazon Elastic Block Store (Amazon EBS) Container Storage Interface (CSI) driver</a> manages the lifecycle of Amazon EBS volumes as storage for the Kubernetes Volumes that you create. The Amazon EBS CSI driver makes Amazon EBS volumes for these types of Kubernetes volumes: generic ephemeral volumes and persistent volumes.</p>
 <p>Execute the following command to install EBS CSI Driver</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.38&quot;</span>
 </code></pre></div>
-<h3 id="7-create-storage-class-for-ebs">7. Create Storage Class for EBS<a class="headerlink" href="#7-create-storage-class-for-ebs" title="Permanent link">#</a></h3>
+<h3 id="6-create-storage-class-for-ebs">6. Create Storage Class for EBS<a class="headerlink" href="#6-create-storage-class-for-ebs" title="Permanent link">#</a></h3>
 <p>Apply the following YAML to create a storage class for EBS</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StorageClass</span>
@@ -4433,7 +4547,7 @@ aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span cla
 <span class="nt">parameters</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gp3</span>
 </code></pre></div>
-<h3 id="8-create-wildcard-dns-record">8. Create Wildcard DNS Record<a class="headerlink" href="#8-create-wildcard-dns-record" title="Permanent link">#</a></h3>
+<h3 id="7-create-wildcard-dns-record">7. Create Wildcard DNS Record<a class="headerlink" href="#7-create-wildcard-dns-record" title="Permanent link">#</a></h3>
 <p>Retrieve NGINX ingress controller external IP using following command</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>ingress-nginx-controller<span class="w"> </span>-n<span class="w"> </span>ingress-nginx<span class="w"> </span>-o<span class="w"> </span>yaml
 </code></pre></div>
@@ -4452,7 +4566,7 @@ aws<span class="w"> </span>elbv2<span class="w"> </span>describe-load-balancers<
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UPSERT&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;ResourceRecordSet&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*.&lt;SUBDOMAIN&gt;.&lt;BASE_DOMAIN&gt;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*.&lt;FULL_SUBDOMAIN&gt;&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;AliasTarget&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="nt">&quot;HostedZoneId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;HOSTED_ZONE_LB_ID&gt;&quot;</span><span class="p">,</span>
@@ -4467,7 +4581,7 @@ aws<span class="w"> </span>elbv2<span class="w"> </span>describe-load-balancers<
 <p>Updated the DNS record with the following command</p>
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>route53<span class="w"> </span>change-resource-record-sets<span class="w"> </span>--hosted-zone-id<span class="w"> </span>&lt;HOSTED_ZONE_ID&gt;<span class="w"> </span>--change-batch<span class="w"> </span>file://change-batch.json
 </code></pre></div>
-<h3 id="9-create-wildcard-certificate">9. Create Wildcard Certificate<a class="headerlink" href="#9-create-wildcard-certificate" title="Permanent link">#</a></h3>
+<h3 id="8-create-wildcard-certificate">8. Create Wildcard Certificate<a class="headerlink" href="#8-create-wildcard-certificate" title="Permanent link">#</a></h3>
 <p>This certificate can be used by all the application under the given subdomain. MTO will use this certificate to secure MTO Console and Keycloak</p>
 <p>Apply the following YAML after replacing values</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1</span>
@@ -4480,9 +4594,9 @@ aws<span class="w"> </span>elbv2<span class="w"> </span>describe-load-balancers<
 <span class="w">  </span><span class="nt">issuerRef</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">letsencrypt-production</span>
 <span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIssuer</span>
-<span class="w">  </span><span class="nt">commonName</span><span class="p">:</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.&lt;SUBDOMAIN&gt;.&lt;BASE_DOMAIN&gt;</span>
+<span class="w">  </span><span class="nt">commonName</span><span class="p">:</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.&lt;FULL_SUBDOMAIN&gt;</span>
 <span class="w">  </span><span class="nt">dnsNames</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.&lt;SUBDOMAIN&gt;.&lt;BASE_DOMAIN&gt;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.&lt;FULL_SUBDOMAIN&gt;</span>
 </code></pre></div>
 <table>
 <thead>
@@ -4497,12 +4611,16 @@ aws<span class="w"> </span>elbv2<span class="w"> </span>describe-load-balancers<
 <td>Name of the certificate to be generated</td>
 </tr>
 <tr>
+<td><code>&lt;FULL_SUBDOMAIN&gt;</code></td>
+<td>DNS Subdomain of EKS cluster</td>
+</tr>
+<tr>
 <td><code>&lt;NAMESPACE&gt;</code></td>
-<td>Namespace where generated certificate and secret will be placed. Use same namespace as MTO or copy the generated secret to MTO namespace if MTO is installed in different namespace</td>
+<td>Namespace where generated certificate and secret will be placed. Use same namespace as MTO or copy the generated secret to MTO's namespace if MTO is installed in different namespace</td>
 </tr>
 <tr>
 <td><code>&lt;CERTIFICATE_SECRET_NAME&gt;</code></td>
-<td>Certificate secret will be generated with this name. This secret can be used in MTO CR to enable SSL on MTO components</td>
+<td>Certificate secret will be generated with this name. This secret can be used in MTO's CR to enable SSL on MTO components</td>
 </tr>
 </tbody>
 </table>
@@ -5216,7 +5334,7 @@ aws<span class="w"> </span>elbv2<span class="w"> </span>describe-load-balancers<
     <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      <script src="../../assets/javascripts/bundle.5090c770.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
