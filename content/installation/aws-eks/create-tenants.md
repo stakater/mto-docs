@@ -49,7 +49,8 @@ Output:
 
 We have created a user named `falcon@nordmart.com` in AWS Console, with ARN `arn:aws:iam::630742778131:user/falcon@nordmart.com`.
 
-Create a json file to attach the policy. This policy will allow the user to access the cluster.
+Create a JSON file to attach the policy. This policy will allow the user to access the cluster.
+
 ```json
 {
     "Statement": [
@@ -62,6 +63,7 @@ Create a json file to attach the policy. This policy will allow the user to acce
     "Version": "2012-10-17"
 }
 ```
+
 Attach a policy to user
 
 ```bash
@@ -74,12 +76,13 @@ Add user to `logistics-owner` group
 aws iam add-user-to-group --user-name "falcon@nordmart.com" --group-name "logistics-owner"
 ```
 
-Generate the access keys that can be used to login into the cluster. Executing the following command will provide the Access Key Id and Access Secret Key Id that can be used to login
+Generate the access keys that can be used to log in into the cluster. Executing the following command will provide the Access Key Id and Access Secret Key Id that can be used to log in
+
 ```bash
 aws iam create-access-key --user-name "falcon@nordmart.com"
 ```
 
-Use the following command to map this user in `aws-auth` configmap in `kube-system` namespace. 
+Use the following command to map this user in `aws-auth` configmap in `kube-system` namespace.
 
 ```bash
 eksctl create iamidentitymapping --cluster "<CLUSTER_NAME>" \ 
@@ -260,7 +263,7 @@ Error from server (Forbidden): namespaces is forbidden: User "bear@nordmart.com"
 
 - **A Keycloak user with same username as AWS IAM user** should be created. Follow our [Setting Up User Access in Keycloak for MTO Console](../../how-to-guides/keycloak.md) guide to create a Keycloak user.
 
-### MTO Console Login
+### MTO Console Log In
 
 List the ingresses to access the URL of MTO Console
 
@@ -274,7 +277,7 @@ tenant-operator-keycloak   nginx   keycloak.iinhdnh6.demo.kubeapp.cloud   ae51c1
 
 ```
 
-Open the URL and Login with the Keycloak user credentials.
+Open the URL and Log In with the Keycloak user credentials.
 
 ![MTO Console Login Page](../../images/mto-console-login.png)
 

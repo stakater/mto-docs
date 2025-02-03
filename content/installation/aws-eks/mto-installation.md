@@ -4,16 +4,16 @@ This document covers how to deploy Multi Tenant Operator with an [Amazon EKS (El
 
 ## Prerequisites
 
-1. [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) 1.18.3 or later.
-1. [Helm CLI](https://helm.sh/docs/intro/install/)
-1. An EKS Cluster. See [Setting up Cluster](./mto-prereq-installation.md#setting-up-cluster) create and configure EKS cluster
-1. A DNS service 
+1. [`eksctl`](https://eksctl.io/installation/) to create and manage EKS cluster. See [Setting up Cluster](./mto-prereq-installation.md#setting-up-cluster) to create and configure an EKS cluster
+1. [`kubectl`](https://kubernetes.io/docs/tasks/tools/#kubectl) 1.18.3 or later to interact with Kubernetes cluster
+1. [Helm CLI](https://helm.sh/docs/intro/install/) to install MTO chart
+1. A DNS service to make MTO console accessible via domain name
 1. Following components must be installed and configured on cluster before installation
 
-    [x] Ingress Controller
-    [x] Cert Manager
-    [x] Wildcard Certificate
-    [ ] Storage Class (if MTO Console is enabled)
+    - [x] Ingress Controller
+    - [x] Cert Manager
+    - [x] Wildcard Certificate
+    - [ ] Storage Class (if MTO Console is enabled)
 
     Follow our [MTO prerequisites installation guide](./mto-prereq-installation.md) to install these dependencies on EKS Cluster
 
@@ -73,8 +73,7 @@ kubectl patch integrationconfig tenant-operator-config \
 Placeholder         | Description
 ------------        |------------
 `<FULL_SUBDOMAIN>`  | Full subdomain of the EKS cluster e.g. `iinhdnh6.demo.kubeapp.cloud`
-`<SECRET_NAME>`     | Name of the secret that should be used as TLS secret. 
-
+`<SECRET_NAME>`     | Name of the secret that should be used as TLS secret
 
 Wait for the pods to be ready with the following command
 

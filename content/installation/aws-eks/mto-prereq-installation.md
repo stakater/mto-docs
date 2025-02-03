@@ -6,7 +6,6 @@ This document provides detailed walk-through of installation of different MTO de
 
 1. [`eksctl`](https://eksctl.io/installation/)
 1. [`kubectl`](https://kubernetes.io/docs/tasks/tools/#kubectl) (1.18.3 or later).
-1. [Helm CLI](https://helm.sh/docs/intro/install/)
 1. A DNS service (Route53 will be used for this tutorial)
 
 ## Setting up Cluster
@@ -19,6 +18,7 @@ aws configure set aws_access_key_id <AWS_ACCESS_KEY_ID>
 aws configure set aws_secret_access_key <AWS_SECRET_ACCESS_KEY>
 
 ```
+
 Use the following command to create an EKS cluster if it doesn't exist
 
 ```bash
@@ -40,21 +40,22 @@ Set the kubernetes context to the specified cluster.
 aws eks update-kubeconfig --name <CLUSTER_NAME> --region <AWS_REGION>
 ```
 
-
 ## Installation
 
-Following steps can be used to configure an EKS cluster for MTO installation. Alternatively, [install-mto-prereqs.sh](#) script can be used automate these steps
+Following steps can be used to configure an EKS cluster for MTO installation. Alternatively, [`install-mto-prereqs.sh`](#installation) script can be used automate these steps
 
 ### 1. Install NGINX Ingress Controller
 
-NGINX ingress controller can be installed using 
+NGINX ingress controller can be installed using
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/aws/deploy.yaml
 ```
 
 ### 2. Install Cert Manager
-Cert Manager can be installed by running the following command 
+
+Cert Manager can be installed by running the following command
+
 ```bash
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.13.1/cert-manager.yaml
 ```
