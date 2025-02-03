@@ -1,43 +1,21 @@
-# Install MTO on EKS
+# MTO EKS Installation
 
 This document covers how to deploy Multi Tenant Operator with an [Amazon EKS (Elastic Kubernetes Service)](https://aws.amazon.com/eks/) cluster.
 
 ## Prerequisites
 
-- You need kubectl as well, with a minimum version of 1.18.3. If you need to install, see [Install kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
-- To install MTO, you need Helm CLI as well. Visit [Installing Helm](https://helm.sh/docs/intro/install/) to get Helm CLI
-- You need to have a user in [AWS Console](https://console.aws.amazon.com/), which we will use as the administrator having enough permissions for accessing the cluster and creating groups with users
-- A running EKS Cluster. [Creating an EKS Cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html) provides a good tutorial to create a demo cluster
-- [AWS Route 53 DNS](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/setting-up-route-53.html) or similar DNS service must be configured
+1. [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) 1.18.3 or later.
+1. [Helm CLI](https://helm.sh/docs/intro/install/)
+1. An EKS Cluster. See [Setting up Cluster](./mto-prereq-installation.md#setting-up-cluster) create and configure EKS cluster
+1. A DNS service 
+1. Following components must be installed and configured on cluster before installation
 
-- [AWS Elastic Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/load-balancer-getting-started.html) must be configured
-
-- Following components must be installed and configured on cluster before installation
-
-    - NGINX Ingress Controller
-    - Certmanager
-    - Certmanager's ClusterIssuer for Let's Encrypt
-    - Let's Encrypt Secret
-    - EBS CSI Driver
-    - Storage Class for EBS
-    - Wildcard DNS Record Entry
-    - Wildcard Certificate
+    [x] Ingress Controller
+    [x] Cert Manager
+    [x] Wildcard Certificate
+    [ ] Storage Class (if MTO Console is enabled)
 
     Follow our [MTO prerequisites installation guide](./mto-prereq-installation.md) to install these dependencies on EKS Cluster
-
-## Setting up an EKS Cluster
-
-In this example, we have already set-up a small EKS cluster with the following node group specifications
-
-![Node Group](../../images/eks-nodegroup.png)
-
-We have access configuration set as both, EKS API and Configmap, so that admin can access the cluster using EKS API and map IAM users to our EKS cluster using `aws-auth` configmap.
-
-![EKS Access Config](../../images/eks-access-config.png)
-
-And we have a policy `AmazonEKSClusterAdminPolicy` attached with our user which makes it a cluster admin. To be noted, the user is also added in the `cluster-admins` group which we will later use while installing MTO.
-
-![EKS Access Entry](../../images/eks-access-entry.png)
 
 ## Installing MTO
 
@@ -92,16 +70,28 @@ kubectl patch integrationconfig tenant-operator-config \
 }"
 ```
 
+Placeholder         | Description
+------------        |------------
+`<FULL_SUBDOMAIN>`  | Full subdomain of the EKS cluster e.g. `iinhdnh6.demo.kubeapp.cloud`
+`<SECRET_NAME>`     | Name of the secret that should be used as TLS secret. 
+
+
 Wait for the pods to be ready with the following command
 
 ```bash
 kubectl wait --for=condition=ready pod -n multi-tenant-operator --all --timeout=300s
 ```
 
-List the routes to access the URL of MTO Console
+List the ingresses to access the URL of MTO Console
 
 ```bash
-kubectl get routes -n multi-tenant-operator
+kubectl get ingress -n multi-tenant-operator
+
+NAME                       CLASS   HOSTS                                  ADDRESS                                                                          PORTS     AGE
+tenant-operator-console    nginx   console.iinhdnh6.demo.kubeapp.cloud    ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com   80, 443   23m
+tenant-operator-gateway    nginx   gateway.iinhdnh6.demo.kubeapp.cloud    ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com   80, 443   23m
+tenant-operator-keycloak   nginx   keycloak.iinhdnh6.demo.kubeapp.cloud   ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com   80, 443   24m
+
 ```
 
 ## What's Next
