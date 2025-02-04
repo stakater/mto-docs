@@ -2392,6 +2392,15 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#setting-up-tenant-for-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up Tenant for Users
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4313,6 +4322,15 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#setting-up-tenant-for-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up Tenant for Users
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4442,25 +4460,25 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <p>First, store the ID of your AKS cluster in a variable named AKS_ID:</p>
 <div class="highlight"><pre><span></span><code>AKS_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query id -o tsv)
 </code></pre></div>
-<p>Create your first test group named appdev using group command and assign its ID to APPDEV_ID variable:</p>
+<p>Create your first test group named <code>appdev</code> using group command and assign its ID to <code>APPDEV_ID</code> variable:</p>
 <div class="highlight"><pre><span></span><code>APPDEV_ID=$(az ad group create --display-name appdev --mail-nickname appdev --query id -o tsv)
 </code></pre></div>
-<p>Allow the appdev group to interact with the AKS cluster using kubectl by assigning them the Azure Kubernetes Service Cluster User Role:</p>
+<p>Allow the <code>appdev</code> group to interact with the AKS cluster using kubectl by assigning them the Azure Kubernetes Service Cluster User Role:</p>
 <div class="highlight"><pre><span></span><code>az role assignment create --assignee $APPDEV_ID --role &quot;Azure Kubernetes Service Cluster User Role&quot; --scope $AKS_ID
 </code></pre></div>
-<p>Create your second test group named opssre using the command and assign its ID to the OPSSRE_ID variable:</p>
+<p>Create your second test group named <code>opssre</code> using the command and assign its ID to the <code>OPSSRE_ID</code> variable:</p>
 <div class="highlight"><pre><span></span><code>OPSSRE_ID=$(az ad group create --display-name opssre --mail-nickname opssre --query id -o tsv)
 </code></pre></div>
-<p>Allow the opssre group to interact with the AKS cluster using kubectl by assigning them the Azure Kubernetes Service Cluster User Role:</p>
+<p>Allow the <code>opssre</code> group to interact with the AKS cluster using kubectl by assigning them the Azure Kubernetes Service Cluster User Role:</p>
 <div class="highlight"><pre><span></span><code>az role assignment create --assignee $OPSSRE_ID --role &quot;Azure Kubernetes Service Cluster User Role&quot; --scope $AKS_ID
 </code></pre></div>
 <h3 id="create-test-users-in-entra-id">Create test users in <code>Entra ID</code><a class="headerlink" href="#create-test-users-in-entra-id" title="Permanent link">#</a></h3>
 <p>Set User Principal Name (UPN) and password for your users. The UPN must include the verified domain name of your tenant, for example <code>user@company.com</code>.</p>
-<p>Following command reads the UPN for the appdev group and stores it in the <code>AAD_DEV_UPN</code> variable:</p>
+<p>Following command reads the UPN for the <code>appdev</code> group and stores it in the <code>AAD_DEV_UPN</code> variable:</p>
 <div class="highlight"><pre><span></span><code>echo &quot;Please enter the UPN for application developers: &quot; &amp;&amp; read AAD_DEV_UPN
 </code></pre></div>
 <p>For this scope of this blog, we will assume that the entered UPN was <code>aksdev@company.com</code>.</p>
-<p>Following command reads the password for your user and stores it in the AAD_DEV_PW variable:</p>
+<p>Following command reads the password for your user and stores it in the <code>AAD_DEV_PW</code> variable:</p>
 <div class="highlight"><pre><span></span><code>echo &quot;Please enter the secure password for application developers: &quot; &amp;&amp; read AAD_DEV_PW
 </code></pre></div>
 <p>Create the user <code>AKS Dev</code> using the previously created variables:</p>
@@ -4512,7 +4530,7 @@ cert-manager-webhook-757c9d4bb7-wd9g8      1/1     Running   0          7m18s
 </code></pre></div>
 <h3 id="install-mto-using-helm">Install MTO using Helm<a class="headerlink" href="#install-mto-using-helm" title="Permanent link">#</a></h3>
 <p>Helm will be used to install MTO as it is the only available way of installing it on Kubernetes Clusters.</p>
-<p>Use helm install command to install MTO helm chart. Here, <code>bypassedGroups</code> has to be set as <code>system:masters</code> as it is used by masterclient of AKS and <code>&lt;mto-admins-id&gt;</code>as it is used by test-admin-user:</p>
+<p>Use helm install command to install MTO helm chart. Here, <code>bypassedGroups</code> has to be set as <code>system:masters</code> as it is used by <code>masterclient</code> of AKS and <code>&lt;mto-admins-id&gt;</code>as it is used by the <code>test-admin-user</code>:</p>
 <div class="highlight"><pre><span></span><code>helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=&#39;system:masters\,&lt;mto-admins-id&gt;&#39;
 </code></pre></div>
 <p>Wait for the pods to come to a running state:</p>
@@ -4528,8 +4546,8 @@ tenant-operator-templateinstance-controller-d996b6fd-cx2dz        2/2     Runnin
 tenant-operator-tenant-controller-57fb885c84-7ps92                2/2     Running   0          2m
 tenant-operator-webhook-5f8f675549-jv9n8                          2/2     Running   0          2m
 </code></pre></div>
-<p>Setting up Tenant for Users
-Start by getting IDs for opssre and appdev groups by running <code>az ad group show</code> command:</p>
+<h3 id="setting-up-tenant-for-users">Setting up Tenant for Users<a class="headerlink" href="#setting-up-tenant-for-users" title="Permanent link">#</a></h3>
+<p>Start by getting IDs for <code>opssre</code> and <code>appdev</code> groups by running <code>az ad group show</code> command:</p>
 <div class="highlight"><pre><span></span><code>$ az ad group show --group appdev
 
 {
@@ -4573,7 +4591,7 @@ spec:
       configmaps: &quot;10&quot;
 EOF
 </code></pre></div>
-<p>Now, mention this <code>Quota</code> in two <code>Tenant</code> CRs, with opssre and appdev group IDs in the groups section of spec:</p>
+<p>Now, mention this <code>Quota</code> in two <code>Tenant</code> CRs, with <code>opssre</code> and <code>appdev</code> group IDs in the groups section of spec:</p>
 <div class="highlight"><pre><span></span><code>$ kubectl apply -f - &lt;&lt;EOF
 apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
@@ -4630,10 +4648,10 @@ tenant-b-dev            Active   10m
 <p>AppDev is one of the previously created groups, its scope is limited to Tenant A namespaces as we mentioned its group ID in Tenant A. Start by clearing token of test-admin-user:</p>
 <div class="highlight"><pre><span></span><code>kubelogin remove-tokens
 </code></pre></div>
-<p>Use the aksdev user from appdev group to log in to the cluster:</p>
+<p>Use the <code>aksdev</code> user from <code>appdev</code> group to log in to the cluster:</p>
 <div class="highlight"><pre><span></span><code>kubectl get pods
 </code></pre></div>
-<p>This will take you to devicelogin page. After entering the correct code, it will redirect you to Microsoft Login page, here you will enter the email and password of aksdev user created at the start of the article.</p>
+<p>This will take you to device login page. After entering the correct code, it will redirect you to Microsoft Login page, here you will enter the email and password of <code>aksdev</code> user created at the start of the article.</p>
 <p>After successful log in, it will show you the output of your kubectl command:</p>
 <div class="highlight"><pre><span></span><code>Error from server (Forbidden): pods is forbidden: User &quot;aksdev@company.com&quot; cannot list resource &quot;pods&quot; in API group &quot;&quot; in the namespace &quot;default&quot;
 </code></pre></div>
@@ -4656,13 +4674,13 @@ Error from server (Forbidden): pods is forbidden: User &quot;aksdev@company.com&
 <p>This operation fails with an error showing strict controls in their Tenants.</p>
 <h3 id="opssre-group">OpsSre group<a class="headerlink" href="#opssre-group" title="Permanent link">#</a></h3>
 <p>OpsSre is the second group created at the start of this article, its scope is limited to Tenant B namespaces as we mentioned its group ID in Tenant B.</p>
-<p>Start by clearing token of appdev user:</p>
+<p>Start by clearing token of <code>appdev</code> user:</p>
 <div class="highlight"><pre><span></span><code>kubelogin remove-tokens
 </code></pre></div>
-<p>Use the opssre user from opssre group to log in to the cluster:</p>
+<p>Use the <code>opssre</code> user from <code>opssre</code> group to log in to the cluster:</p>
 <div class="highlight"><pre><span></span><code>kubectl get pods
 </code></pre></div>
-<p>This will take you to devicelogin page. After entering the correct code, it will redirect you to Microsoft Login page, here you will enter the email and password of opssre user created at the start of the article.</p>
+<p>This will take you to device login page. After entering the correct code, it will redirect you to Microsoft Login page, here you will enter the email and password of <code>opssre</code> user created at the start of the article.</p>
 <p>After successful log in, it will show you the output of your kubectl command:</p>
 <div class="highlight"><pre><span></span><code>Error from server (Forbidden): pods is forbidden: User &quot;opssre@company.com&quot; cannot list resource &quot;pods&quot; in API group &quot;&quot; in the namespace &quot;default&quot;
 </code></pre></div>

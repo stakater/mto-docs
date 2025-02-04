@@ -4382,7 +4382,7 @@ This user has a policy attached to be able to get cluster info</p>
 <span class="w">      </span><span class="nt">userarn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:iam::&lt;account&gt;:user/test-benzema-mto</span>
 <span class="w">      </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-benzema-mto</span>
 </code></pre></div>
-<p>Using this <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html">AWS guide</a>, we will ask the user to update its kubeconfig and try to access the cluster.</p>
+<p>Using this <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html">AWS guide</a>, we will ask the user to update its <code>kubeconfig</code> and try to access the cluster.</p>
 <p>Since we haven't attached any RBAC with this user at the moment, trying to access anything in the cluster would throw an error</p>
 <div class="highlight"><pre><span></span><code>$ kubectl get svc
 
