@@ -1,0 +1,76 @@
+site_name: Multi Tenant Operator
+docs_dir: content
+site_url: https://docs.stakater.com/mto/
+repo_url: https://github.com/stakater/mto-docs
+edit_uri: blob/main/content/
+theme:
+  favicon: assets/images/favicon.svg
+
+strict: true
+validation:
+  links:
+    anchors: warn
+
+extra:
+  version:
+    provider: mike
+    default: latest
+
+nav:
+    - index.md
+    - Tutorials:
+      - tutorials/installation.md
+      - Create your first Tenant:
+        - tutorials/tenant/create-tenant.md
+#        - tutorials/tenant/assign-quota-tenant.md
+        - tutorials/tenant/create-sandbox.md
+        - tutorials/tenant/creating-namespaces.md
+        - tutorials/tenant/assigning-metadata.md
+        - tutorials/tenant/tenant-hibernation.md
+#        - tutorials/tenant/custom-rbac.md
+        - tutorials/tenant/deleting-tenant.md
+      - "Template: Definition and Usage Guide":
+        - tutorials/template/template.md
+#        - tutorials/template/template-instance.md
+#        - tutorials/template/template-group-instance.md
+      - ArgoCD Multi-tenancy:
+        - tutorials/argocd/enabling-multi-tenancy-argocd.md
+      - Vault Multi-Tenancy:
+#        - tutorials/vault/why-vault-multi-tenancy.md
+        - tutorials/vault/enabling-multi-tenancy-vault.md
+    - How-to Guides:
+      - how-to-guides/tenant.md
+      - how-to-guides/integration-config.md
+      - how-to-guides/quota.md
+      - how-to-guides/template.md
+      - how-to-guides/template-instance.md
+      - how-to-guides/template-group-instance.md
+      - Offboarding:
+        - how-to-guides/offboarding/uninstalling.md
+    - Reference guides:
+#      - reference-guides/add-remove-namespace-gitops.md
+      - reference-guides/admin-clusterrole.md
+      - reference-guides/configuring-multitenant-network-isolation.md
+      - reference-guides/custom-roles.md
+      - reference-guides/deploying-templates.md
+      - reference-guides/distributing-resources.md
+      - reference-guides/distributing-secrets.md
+      - reference-guides/resource-sync-by-tgi.md
+      - reference-guides/distributing-secrets-using-sealed-secret-template.md
+      - reference-guides/extend-default-roles.md
+      - reference-guides/integrationconfig.md
+      - reference-guides/mattermost.md
+      - reference-guides/secret-distribution.md
+    - Explanation:
+      - explanation/why-argocd-multi-tenancy.md
+#      - explanation/why-vault-multi-tenancy.md
+    - faq.md
+#    - FAQ:
+#      - faq/index.md
+    - changelog.md
+    - eula.md
+    - troubleshooting.md
+plugins:
+    - search
+    - mermaid2
+    - glightbox
