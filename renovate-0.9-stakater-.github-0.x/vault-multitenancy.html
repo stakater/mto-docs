@@ -3280,7 +3280,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="vault-multitenancy">Vault Multitenancy<a class="headerlink" href="#vault-multitenancy" title="Permanent link">#</a></h1>
-<p>HashiCorp Vault is an identity-based secret and encryption management system. Vault validates and authorizes a system's clients (users, machines, apps) before providing them access to secrets or stored sensitive data.</p>
+<p>Hashicorp Vault is an identity-based secret and encryption management system. Vault validates and authorizes a system's clients (users, machines, apps) before providing them access to secrets or stored sensitive data.</p>
 <h2 id="vault-integration-in-multi-tenant-operator">Vault integration in Multi Tenant Operator<a class="headerlink" href="#vault-integration-in-multi-tenant-operator" title="Permanent link">#</a></h2>
 <h3 id="service-account-auth-in-vault">Service Account Auth in Vault<a class="headerlink" href="#service-account-auth-in-vault" title="Permanent link">#</a></h3>
 <p>MTO enables the <a href="https://www.Vaultproject.io/docs/auth/kubernetes">Kubernetes auth method</a> which can be used to authenticate with Vault using a Kubernetes Service Account Token. When enabled, for every tenant namespace, MTO automatically creates policies and roles that allow the service accounts present in those namespaces to <strong>read</strong> secrets at tenant's path in Vault. The name of the role is the same as <strong>namespace</strong> name.</p>
