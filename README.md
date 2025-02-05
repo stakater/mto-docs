@@ -47,7 +47,7 @@ Then access the docs on [`localhost:8080`](localhost:8080).
 
 ### Run commands locally
 
-Use [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html) to set up Python virtual environment.
+Use [`virtualenvwrapper`](https://virtualenvwrapper.readthedocs.io/en/latest/install.html) to set up Python virtual environment.
 
 Install [Python 3](https://www.python.org/downloads/).
 
@@ -59,7 +59,7 @@ Then run below script to prepare theme from local and common theme resources. It
 ./prepare_theme.sh
 ```
 
-Finally, serve the docs using the built-in web server which is based on Python http server - note that the production build will use Nginx instead:
+Finally, serve the docs using the built-in web server which is based on Python http server - note that the production build will use nginx instead:
 
 ```bash
 mkdocs serve
@@ -77,7 +77,7 @@ if you want to make theme changes with live reload, you can use `--watch-theme` 
 mkdocs serve --watch-theme
 ```
 
-Then, you can make changes in `content` or `dist/_theme` folder. Please note that `dist/_theme` is a build folder and any changes made here will be lost if you do not move them to theme_common or theme_override folder.
+Then, you can make changes in `content` or `dist/_theme` folder. Please note that `dist/_theme` is a build folder and any changes made here will be lost if you do not move them to `theme_common` or `theme_override` folder.
 
 ### QA Checks
 
