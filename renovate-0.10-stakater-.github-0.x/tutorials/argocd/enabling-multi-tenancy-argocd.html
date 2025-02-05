@@ -2474,9 +2474,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prevent-argocd-from-syncing-certain-namespaced-resources" class="md-nav__link">
+  <a href="#prevent-argocd-from-syncing-certain-name-spaced-resources" class="md-nav__link">
     <span class="md-ellipsis">
-      Prevent ArgoCD from syncing certain namespaced resources
+      Prevent ArgoCD from syncing certain name-spaced resources
     </span>
   </a>
   
@@ -3585,9 +3585,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prevent-argocd-from-syncing-certain-namespaced-resources" class="md-nav__link">
+  <a href="#prevent-argocd-from-syncing-certain-name-spaced-resources" class="md-nav__link">
     <span class="md-ellipsis">
-      Prevent ArgoCD from syncing certain namespaced resources
+      Prevent ArgoCD from syncing certain name-spaced resources
     </span>
   </a>
   
@@ -3740,7 +3740,7 @@ openshift-operators<span class="w">   </span>sigma<span class="w">        </span
 </code></pre></div>
 <p>Users belonging to the Sigma group will now only see applications created by them in the ArgoCD frontend now:</p>
 <p><a class="glightbox" href="../../images/argocd.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="image" src="../../images/argocd.png" /></a></p>
-<h2 id="prevent-argocd-from-syncing-certain-namespaced-resources">Prevent ArgoCD from syncing certain namespaced resources<a class="headerlink" href="#prevent-argocd-from-syncing-certain-namespaced-resources" title="Permanent link">#</a></h2>
+<h2 id="prevent-argocd-from-syncing-certain-name-spaced-resources">Prevent ArgoCD from syncing certain name-spaced resources<a class="headerlink" href="#prevent-argocd-from-syncing-certain-name-spaced-resources" title="Permanent link">#</a></h2>
 <p>Bill wants tenants to not be able to sync <code>ResourceQuota</code> and <code>LimitRange</code> resources to their namespaces. To do this correctly, Bill will specify these resources to blacklist in the ArgoCD portion of the <a href="../../how-to-guides/integration-config.html">IntegrationConfig</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
