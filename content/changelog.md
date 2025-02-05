@@ -89,7 +89,7 @@
 
 #### Feature
 
-- Added support for configuring external keycloak in integrationconfig.
+- Added support for configuring external keycloak in `integrationconfig`.
 - Added free tier support that allows creation of 2 tenants without license.
 
 ## v0.10.x
@@ -188,7 +188,7 @@
 
 ### v0.8.3
 
-- fix: Reconcile namespaces when the group spec for tenants is changed, so new rolebindings can be created for them
+- fix: Reconcile namespaces when the group spec for tenants is changed, so new `rolebindings` can be created for them
 
 ### v0.8.1
 
@@ -268,7 +268,7 @@
 
 ### v0.5.3
 
-- fix: Add support for parameters in Helm chartRepository in templates
+- fix: Add support for parameters in Helm `chartRepository` in templates
 
 ### v0.5.2
 
