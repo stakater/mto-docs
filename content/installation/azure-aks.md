@@ -362,7 +362,7 @@ Notice that MTO has created two namespaces under each tenant.
 
 ### AppDev group
 
-AppDev is one of the previously created groups, its scope is limited to Tenant A namespaces as we mentioned its group ID in Tenant A. Start by clearing token of test-admin-user:
+AppDev is one of the previously created groups, its scope is limited to Tenant A namespaces as we mentioned its group ID in Tenant A. Start by clearing token of `test-admin-user`:
 
 ```terminal
 kubelogin remove-tokens
