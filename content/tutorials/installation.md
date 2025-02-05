@@ -3,10 +3,8 @@
 This document contains instructions on installing, uninstalling and configuring Multi Tenant Operator using OpenShift MarketPlace.
 
 1. [OpenShift OperatorHub UI](#installing-via-operatorhub-ui)
-
-2. [CLI/GitOps](#installing-via-cli-or-gitops)
-
-3. [Uninstall](#uninstall-via-operatorhub-ui)
+1. [CLI/GitOps](#installing-via-cli-or-gitops)
+1. [Uninstall](#uninstall-via-operatorhub-ui)
 
 ## Requirements
 
