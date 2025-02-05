@@ -6,7 +6,7 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
 
 - Microsoft Entra ID configured for OIDC.
 - Keycloak setup with an Identity Provider (IDP) pointing to Microsoft Entra ID.
-- HashiCorp Vault installed and configured.
+- Hashicorp Vault installed and configured.
 - [Vault Configured in IntegrationConfig](enabling-multi-tenancy-vault.md)
 
 ## Steps to Implement Group-Based Access Control with Group IDs
