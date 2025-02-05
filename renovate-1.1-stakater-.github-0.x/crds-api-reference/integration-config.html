@@ -4896,11 +4896,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </code></pre></div>
 <p>Integration config will be managing the following resources required for console GUI:</p>
 <ul>
-<li><code>Postgresql</code> resources.</li>
-<li><code>Prometheus</code> resources.</li>
-<li><code>Opencost</code> resources.</li>
-<li><code>MTO Console, Gateway, Keycloak</code> resources.</li>
-<li><code>Showback</code> cronjob.</li>
+<li><code>Postgresql</code> resources</li>
+<li><code>Prometheus</code> resources</li>
+<li><code>Opencost</code> resources</li>
+<li><code>MTO Console, Gateway, Keycloak</code> resources</li>
+<li><code>Showback</code> cron-job</li>
 </ul>
 <p>Details on console GUI and showback can be found <a href="../explanation/console.html">here</a></p>
 <h3 id="custom-pricing">Custom Pricing<a class="headerlink" href="#custom-pricing" title="Permanent link">#</a></h3>
@@ -5023,9 +5023,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">custom-view</span>
 </code></pre></div>
 <h5 id="default">Default<a class="headerlink" href="#default" title="Permanent link">#</a></h5>
-<p>This field contains roles that will be used to create default roleBindings for each namespace that belongs to tenants. These roleBindings are only created for a namespace if that namespace isn't already matched by the <code>custom</code> field below it. Therefore, it is required to have at least one role mentioned within each of its three subfields: <code>owner</code>, <code>editor</code>, and <code>viewer</code>. These 3 subfields also correspond to the member fields of the <a href="tenant.html#tenant">Tenant CR</a></p>
+<p>This field contains roles that will be used to create default <code>roleBindings</code> for each namespace that belongs to tenants. These <code>roleBindings</code> are only created for a namespace if that namespace isn't already matched by the <code>custom</code> field below it. Therefore, it is required to have at least one role mentioned within each of its three subfields: <code>owner</code>, <code>editor</code>, and <code>viewer</code>. These 3 subfields also correspond to the member fields of the <a href="tenant.html#tenant">Tenant CR</a></p>
 <h5 id="custom">Custom<a class="headerlink" href="#custom" title="Permanent link">#</a></h5>
-<p>An array of custom roles. Similar to the <code>default</code> field, you can mention roles within this field as well. However, the custom roles also require the use of a <code>labelSelector</code> for each iteration within the array. The roles mentioned here will only apply to the namespaces that are matched by the labelSelector. If a namespace is matched by 2 different labelSelectors, then both roles will apply to it. Additionally, roles can be skipped within the labelSelector. These missing roles are then inherited from the <code>default</code> roles field . For example, if the following custom roles arrangement is used:</p>
+<p>An array of custom roles. Similar to the <code>default</code> field, you can mention roles within this field as well. However, the custom roles also require the use of a <code>labelSelector</code> for each iteration within the array. The roles mentioned here will only apply to the namespaces that are matched by the <code>labelSelector</code>. If a namespace is matched by 2 different <code>labelSelectors</code>, then both roles will apply to it. Additionally, roles can be skipped within the <code>labelSelector</code>. These missing roles are then inherited from the <code>default</code> roles field . For example, if the following custom roles arrangement is used:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">custom</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">labelSelector</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">matchExpressions</span><span class="p">:</span>
@@ -5083,7 +5083,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h5 id="users">Users<a class="headerlink" href="#users" title="Permanent link">#</a></h5>
 <p><code>privileged.users:</code> Contains the list of <code>users</code> ignored by MTO. MTO will not manage the <code>users</code> in this list. Values in this list are regex patterns.</p>
 <h5 id="groups">Groups<a class="headerlink" href="#groups" title="Permanent link">#</a></h5>
-<p><code>privileged.groups:</code> Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of privilegedNamespaces.</p>
+<p><code>privileged.groups:</code> Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of <code>privilegedNamespaces</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>User <code>kube:admin</code> is bypassed by default to perform operations as a cluster admin, this includes operations on all the namespaces.</p>
