@@ -45,18 +45,18 @@ Owner is an admin of a tenant with some restrictions. It has privilege to see al
 
 ### Resources Permissions
 
-* CRUD access on Template, TemplateInstance and TemplateGroupInstance of MTO custom resources
-* CRUD access on ImageStreamTags in `Project`
-* Get access on CustomResourceDefinitions in `Project`
-* Get, list, watch access on Builds, BuildConfigs in `Project`
+* CRUD access on `Template`, `TemplateInstance` and `TemplateGroupInstance` of MTO custom resources
+* CRUD access on `ImageStreamTags` in `Project`
+* Get access on `CustomResourceDefinitions` in `Project`
+* Get, list, watch access on `Builds`, `BuildConfigs` in `Project`
 * CRUD access on following resources in `Project`:
-    * Prometheuses
-    * Prometheusrules
-    * ServiceMonitors
-    * PodMonitors
-    * ThanosRulers
-* Permission to create Namespaces.
-* Restricted to perform actions on cluster resource Quotas and Limits.
+    * `Prometheuses`
+    * `Prometheusrules`
+    * `ServiceMonitors`
+    * `PodMonitors`
+    * `ThanosRulers`
+* Permission to create `Namespaces`
+* Restricted to perform actions on cluster resource `Quotas` and `Limits`
 
 ## 2. Editor
 
@@ -98,7 +98,7 @@ Edit role will have edit access on their `Projects`, but they wont have access o
     * deletecollection
     * patch
     * update
-* Build, BuildConfig, BuildLog, DeploymentConfig, Deployment, ConfigMap, ImageStream , ImageStreamImage and ImageStreamMapping access in `Project`
+* `Build`, `BuildConfig`, `BuildLog`, `DeploymentConfig`, `Deployment`, `ConfigMap`, `ImageStream`, `ImageStreamImage` and `ImageStreamMapping` access in `Project`:
     * get
     * list
     * watch
@@ -111,7 +111,7 @@ Edit role will have edit access on their `Projects`, but they wont have access o
 ### Resources Permissions
 
 * CRUD access on Template, TemplateInstance and TemplateGroupInstance of MTO custom resources
-* Job, CronJob, Task, Trigger and Pipeline access in `Project`
+* Job, CronJob, Task, Trigger and Pipeline access in `Project`:
     * get
     * list
     * watch
@@ -121,7 +121,7 @@ Edit role will have edit access on their `Projects`, but they wont have access o
     * patch
     * update
 * Get access on projects
-* Route and NetworkPolicies access in `Project`
+* Route and NetworkPolicies access in `Project`:
     * get
     * list
     * watch
@@ -130,7 +130,7 @@ Edit role will have edit access on their `Projects`, but they wont have access o
     * deletecollection
     * patch
     * update
-* Template, ReplicaSet, StatefulSet and DaemonSet access in `Project`
+* `Template`, `ReplicaSet`, `StatefulSet` and `DaemonSet` access in `Project`:
     * get
     * list
     * watch
@@ -139,7 +139,7 @@ Edit role will have edit access on their `Projects`, but they wont have access o
     * deletecollection
     * patch
     * update
-* CRUD access on all Projects related to
+* CRUD access on all Projects related to:
     * Elasticsearch
     * Logging
     * Kibana
@@ -149,12 +149,12 @@ Edit role will have edit access on their `Projects`, but they wont have access o
     * Tekton.dev
 * Get access on CustomResourceDefinitions in `Project`
 * Edit and view permission on `jenkins.build.openshift.io`
-* InstallPlan access in `Project`
+* InstallPlan access in `Project`:
     * get
     * list
     * watch
     * delete
-* Subscription and PackageManifest access in `Project`
+* Subscription and PackageManifest access in `Project`:
     * get
     * list
     * watch
@@ -187,11 +187,11 @@ Viewer role will only have view access on their `Project`.
 
 ### Builds ,Pods , PVC Permissions
 
-* Pod, PodDisruptionBudget and PVC access in `Project`
+* `Pod`, `PodDisruptionBudget` and `PVC` access in `Project`:
     * get
     * list
     * watch
-* Build, BuildConfig, BuildLog, DeploymentConfig, ConfigMap, ImageStream, ImageStreamImage and ImageStreamMapping access in `Project`
+* `Build`, `BuildConfig`, `BuildLog`, `DeploymentConfig`, `ConfigMap`, `ImageStream`, `ImageStreamImage` and `ImageStreamMapping` access in `Project`:
     * get
     * list
     * watch
@@ -220,8 +220,8 @@ Viewer role will only have view access on their `Project`.
     * Jaeger
     * Kiali
     * Tekton.dev
-* Get, list, watch access on ImageStream, ImageStreamImage and ImageStreamMapping in `Project`
-* Get access on CustomResourceDefinition in `Project`
+* Get, list, watch access on `ImageStream`, `ImageStreamImage` and `ImageStreamMapping` in `Project`
+* Get access on `CustomResourceDefinition` in `Project`
 * View permission on `Jenkins.Build.Openshift.io`
 * Subscription, PackageManifest and InstallPlan access in `Project`
     * get

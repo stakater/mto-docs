@@ -107,7 +107,7 @@ Users belonging to the Sigma group will now only see applications created by the
 
 ![image](./../images/argocd.png)
 
-## Prevent ArgoCD from syncing certain namespaced resources
+## Prevent ArgoCD from syncing certain name-spaced resources
 
 Bill wants tenants to not be able to sync `ResourceQuota` and `LimitRange` resources to their namespaces. To do this correctly, Bill will specify these resources to blacklist in the ArgoCD portion of the [IntegrationConfig](./../integration-config.md):
 
@@ -149,7 +149,7 @@ spec:
 
 ## Allow ArgoCD to sync certain cluster-wide resources
 
-Bill now wants tenants to be able to sync the `Environment` cluster scoped resource to the cluster. To do this correctly, Bill will specify the resource to whitelist in the ArgoCD portion of the Integration Config's Spec:
+Bill now wants tenants to be able to sync the `Environment` cluster scoped resource to the cluster. To do this correctly, Bill will specify the resource to deny list in the ArgoCD portion of the Integration Config's Spec:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
