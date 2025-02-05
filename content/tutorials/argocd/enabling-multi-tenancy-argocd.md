@@ -131,7 +131,7 @@ Users belonging to the Sigma group will now only see applications created by the
 
 ![image](../../images/argocd.png)
 
-## Prevent ArgoCD from syncing certain namespaced resources
+## Prevent ArgoCD from syncing certain name-spaced resources
 
 Bill wants tenants to not be able to sync `ResourceQuota` and `LimitRange` resources to their namespaces. To do this correctly, Bill will specify these resources to blacklist in the ArgoCD portion of the [IntegrationConfig](../../how-to-guides/integration-config.md):
 

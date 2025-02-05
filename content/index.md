@@ -36,9 +36,9 @@ Multi Tenant Operator binds existing ClusterRoles to the Tenant's Namespaces use
 
 Multi Tenant Operator is also able to leverage existing OpenShift groups or external groups synced from 3rd party identity management systems, for maintaining Tenant membership in your organization's current user management system.
 
-## HashiCorp Vault Multitenancy
+## Hashicorp Vault Multitenancy
 
-Multi Tenant Operator extends the tenants permission model to HashiCorp Vault where it can create Vault paths and greatly ease the overhead of managing RBAC in Vault. Tenant users can manage their own secrets without the concern of someone else having access to their Vault paths.
+Multi Tenant Operator extends the tenants permission model to Hashicorp Vault where it can create Vault paths and greatly ease the overhead of managing RBAC in Vault. Tenant users can manage their own secrets without the concern of someone else having access to their Vault paths.
 
 More details on [Vault Multitenancy](./tutorials/vault/enabling-multi-tenancy-vault.md)
 
@@ -104,7 +104,7 @@ More details on [Sandboxes](./tutorials/tenant/create-sandbox.md)
 
 Multi Tenant Operator supports cloning of secrets and configmaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide reference to secrets and configmaps. It uses a template group instance to distribute those secrets and namespaces in matching namespaces, even if namespaces belong to different tenants. If template instance is used then the resources will only be mapped if namespaces belong to same tenant.
 
-More details on [Distributing Secrets and ConfigMaps](./reference-guides/distributing-resources.md)
+More details on [Distributing Secrets and Configmaps](./reference-guides/distributing-resources.md)
 
 ## Self-Service
 
@@ -138,7 +138,7 @@ Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience
 
 * **Integration with External Identity Management**: MTO seamlessly integrates with external identity management systems, allowing administrators to leverage existing groups for maintaining tenant membership.
 
-* **Enhanced Security with Vault Multitenancy**: Through MTO, the permission model extends to both HashiCorp Vault and ArgoCD, empowering administrators to manage RBAC in both systems seamlessly. This ensures tenant users can securely manage their own secrets in Vault and maintain control over their deployments with ArgoCD.
+* **Enhanced Security with Vault Multitenancy**: Through MTO, the permission model extends to both Hashicorp Vault and ArgoCD, empowering administrators to manage RBAC in both systems seamlessly. This ensures tenant users can securely manage their own secrets in Vault and maintain control over their deployments with ArgoCD.
 
 ### DevOps Engineer
 
@@ -156,7 +156,7 @@ Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience
 
 * **Self-Service Namespace Provisioning**: With MTO, developers can safely provision namespaces for themselves and their teams, promoting agility and reducing dependency on platform administrators.
 
-* **Prepopulated Development Environments**: MTO's templating mechanism enables automatic prepopulation of namespaces with resources such as network policies or Helm charts, providing developers with ready-to-use development environments.
+* **Pre-populated Development Environments**: MTO's templating mechanism enables automatic pre-population of namespaces with resources such as network policies or Helm charts, providing developers with ready-to-use development environments.
 
 * **Native Kubernetes Experience**: Developers can work with MTO without the need for additional management layers or customized binaries, ensuring a seamless and familiar Kubernetes experience.
 
