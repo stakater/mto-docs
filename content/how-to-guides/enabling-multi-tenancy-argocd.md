@@ -127,7 +127,7 @@ Users belonging to the tenant group will now see only applications created by th
 !!! note
     For ArgoCD Multi Tenancy to work properly, any default roles or policies attached to all users must be removed.
 
-## Preventing ArgoCD from Syncing Certain Namespaced Resources
+## Preventing ArgoCD from Syncing Certain Name-spaced Resources
 
 To prevent tenants from syncing ResourceQuota and LimitRange resources to their namespaces, administrators can specify these resources in the blacklist section of the ArgoCD configuration in the [IntegrationConfig](../crds-api-reference/integration-config.md):
 
