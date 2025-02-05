@@ -162,7 +162,7 @@ The worker-pool labels dropdown is used to filter the table data and graph based
 
 If the label is specific for any worker node, selecting the label will filter the specific worker nodes containing the label and update the graph based on the filtered results.
 
-To clear the filter you can remove applied labels and choose **Apply Filter** action. If no label is selected, it will ask you to **PROCEED** or **CANCEL**. If you choose to proceed the filters will be cleared returing the table and graph to default view.
+To clear the filter you can remove applied labels and choose **Apply Filter** action. If no label is selected, it will ask you to **PROCEED** or **CANCEL**. If you choose to proceed the filters will be cleared returning the table and graph to default view.
 
 ![worker-pool-filtered](../images/worker_pool_filtered.png)
 
@@ -178,7 +178,7 @@ This table provides a breakdown of the resource requests from different tenants,
 
 Administrators have overarching access to the console, including the ability to view all namespaces and tenants. They have exclusive access to the IntegrationConfig, allowing them to view all the settings and integrations.
 
-![integrationConfig](../images/integrationConfig.png)
+![integration Config](../images/integrationConfig.png)
 
 ### Tenant Users
 
