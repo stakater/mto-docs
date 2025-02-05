@@ -5,8 +5,8 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
 ## Prerequisites
 
 - Microsoft Entra ID configured for OIDC.
-- Keycloak setup with an Identity Provider (IdP) pointing to Microsoft Entra ID.
-- HashiCorp Vault installed and configured.
+- Keycloak setup with an Identity Provider (IDP) pointing to Microsoft Entra ID.
+- Hashicorp Vault installed and configured.
 - [Vault Configured in IntegrationConfig](enabling-multi-tenancy-vault.md)
 
 ## Steps to Implement Group-Based Access Control with Group IDs
@@ -32,7 +32,7 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
     - Claim: groups
     - Sync Mode: FORCE
 
-   ![Keycloak IdP Mapper showing how the group IDs claim is mapped to the user attribute.](../images/keycloak-idp-mapper.png)
+   ![Keycloak IDP Mapper showing how the group IDs claim is mapped to the user attribute.](../images/keycloak-idp-mapper.png)
 
 ### Step 3: Set Up a Mapper for Vault Client in Keycloak
 

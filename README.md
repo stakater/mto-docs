@@ -58,7 +58,7 @@ Then access the docs on [`localhost:8080`](localhost:8080).
 
 ### Run commands locally
 
-Use [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html) to set up Python virtual environment.
+Use [`virtualenvwrapper`](https://virtualenvwrapper.readthedocs.io/en/latest/install.html) to set up Python virtual environment.
 
 Install [Python 3](https://www.python.org/downloads/).
 
