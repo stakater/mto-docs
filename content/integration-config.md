@@ -141,11 +141,11 @@ tenantRoles:
 
 ### Default
 
-This field contains roles that will be used to create default roleBindings for each namespace that belongs to tenants. These roleBindings are only created for a namespace if that namespaces isn't already matched by the `custom` field below it. Therefore, it is required to have at least one role mentioned within each of its three subfields: `owner`, `editor`, and `viewer`. These 3 subfields also correspond to the member fields of the [Tenant CR](./customresources.md#_2-tenant)
+This field contains roles that will be used to create default `roleBindings` for each namespace that belongs to tenants. These `roleBindings` are only created for a namespace if that namespaces isn't already matched by the `custom` field below it. Therefore, it is required to have at least one role mentioned within each of its three subfields: `owner`, `editor`, and `viewer`. These 3 subfields also correspond to the member fields of the [Tenant CR](./customresources.md)
 
 ### Custom
 
-An array of custom roles. Similar to the `default` field, you can mention roles within this field as well. However, the custom roles also require the use of a `labelSelector` for each iteration within the array. The roles mentioned here will only apply to the namespaces that are matched by the labelSelector. If a namespace is matched by 2 different labelSelectors, then both roles will apply to it. Additionally, roles can be skipped within the labelSelector. These missing roles are then inherited from the `default` roles field . For example, if the following custom roles arrangement is used:
+An array of custom roles. Similar to the `default` field, you can mention roles within this field as well. However, the custom roles also require the use of a `labelSelector` for each iteration within the array. The roles mentioned here will only apply to the namespaces that are matched by the `labelSelector`. If a namespace is matched by 2 different `labelSelectors`, then both roles will apply to it. Additionally, roles can be skipped within the `labelSelector`. These missing roles are then inherited from the `default` roles field . For example, if the following custom roles arrangement is used:
 
 ```yaml
 custom:
@@ -341,7 +341,7 @@ If enabled, than admins have to provide secret and URL of RHSSO.
 
 ## Vault
 
-[Vault](https://www.vaultproject.io/) is used to secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data using a UI, CLI, or HTTP API.
+[Vault](https://www.vaultproject.io/) is used to secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data using a UI, CLI, or http API.
 
 If `vault` is configured on a cluster, then Vault configuration can be enabled.
 

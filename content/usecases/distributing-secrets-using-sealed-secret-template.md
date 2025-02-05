@@ -71,7 +71,7 @@ spec:
 
 Bill has added support for a new label `distribute-image-pull-secret: true"` for tenant projects/namespaces, now MTO will add that label depending on the used field.
 
-Finally Bill creates a `TemplateGroupInstance` which will deploy the sealed secrets using the newly created project label and template.
+Finally Bill creates a `TemplateGroupInstance` which will deploy the Sealed Secrets using the newly created project label and template.
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
@@ -86,4 +86,4 @@ spec:
   sync: true
 ```
 
-MTO will now deploy the sealed secrets mentioned in `Template` to namespaces which have the mentioned label. The rest of the work to deploy secret from a sealed secret has to be done by Sealed Secrets Controller.
+MTO will now deploy the Sealed Secrets mentioned in `Template` to namespaces which have the mentioned label. The rest of the work to deploy secret from a Sealed Secret has to be done by Sealed Secrets Controller.

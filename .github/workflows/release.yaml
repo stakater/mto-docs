@@ -3,22 +3,22 @@ name: Release
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
 
 jobs:
   create_release:
-    uses: stakater/.github/.github/workflows/release_template.yaml@v0.0.38
+    uses: stakater/.github/.github/workflows/release_template.yaml@v0.0.117
     secrets:
       SLACK_WEBHOOK_URL: ${{ secrets.STAKATER_DELIVERY_SLACK_WEBHOOK }}
   build_container:
-    uses: stakater/.github/.github/workflows/push_container_only.yaml@v0.0.38
+    uses: stakater/.github/.github/workflows/push_container_only.yaml@v0.0.117
     with:
       DOCKER_BUILD_CONTEXTS: content=https://github.com/stakater/mto-docs.git#gh-pages
       DOCKER_FILE_PATH: Dockerfile
     secrets:
-      CONTAINER_REGISTRY_URL: ${{ secrets.STAKATER_NEXUS_PREPROD_REGISTRY }}
-      CONTAINER_REGISTRY_USERNAME: ${{ secrets.STAKATER_NEXUS_PREPROD_USERNAME }}
-      CONTAINER_REGISTRY_PASSWORD: ${{ secrets.STAKATER_NEXUS_PREPROD_PASSWORD }}
+      CONTAINER_REGISTRY_URL: ghcr.io/stakater
+      CONTAINER_REGISTRY_USERNAME: ${{ github.actor }}
+      CONTAINER_REGISTRY_PASSWORD: ${{ secrets.GHCR_TOKEN }}
       SLACK_WEBHOOK_URL: ${{ secrets.STAKATER_DELIVERY_SLACK_WEBHOOK }}
-      GH_TOKEN: ${{ secrets.STAKATER_GITHUB_TOKEN }}
-      DOCKER_SECRETS: GIT_AUTH_TOKEN=${{ secrets.STAKATER_GITHUB_TOKEN }}
+      GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+      DOCKER_SECRETS: GIT_AUTH_TOKEN=${{ secrets.PUBLISH_TOKEN }}
