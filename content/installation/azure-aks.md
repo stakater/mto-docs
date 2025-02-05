@@ -126,7 +126,7 @@ echo "Please enter the UPN for application developers: " && read AAD_DEV_UPN
 
 For this scope of this blog, we will assume that the entered UPN was `aksdev@company.com`.
 
-Following command reads the password for your user and stores it in the AAD_DEV_PW variable:
+Following command reads the password for your user and stores it in the `AAD_DEV_PW` variable:
 
 ```terminal
 echo "Please enter the secure password for application developers: " && read AAD_DEV_PW
@@ -220,7 +220,7 @@ cert-manager-webhook-757c9d4bb7-wd9g8      1/1     Running   0          7m18s
 
 Helm will be used to install MTO as it is the only available way of installing it on Kubernetes Clusters.
 
-Use helm install command to install MTO helm chart. Here, `bypassedGroups` has to be set as `system:masters` as it is used by `masterclient` of AKS and `<mto-admins-id>`as it is used by test-admin-user:
+Use helm install command to install MTO helm chart. Here, `bypassedGroups` has to be set as `system:masters` as it is used by `masterclient` of AKS and `<mto-admins-id>`as it is used by `test-admin-user`:
 
 ```terminal
 helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups='system:masters\,<mto-admins-id>'
