@@ -70,7 +70,7 @@ Error Handling on step 1 is based on the following factors
 
 The second step allows users to configure access control for the tenant. This step is optional and provides three tabs for managing user roles: Owners, Editors, and Viewers.
 
-If the user has some data entered into the step 2 section tabs, the skip option will be disabled. Otherwise user can perform skip action by clicking on the Skip button.
+If the user has some data entered into the step 2 section tabs, the skip option will be disabled. Otherwise, user can perform skip action by clicking on the Skip button.
 
 ### Input Fields and Listing Behavior
 
