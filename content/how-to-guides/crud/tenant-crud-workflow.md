@@ -168,7 +168,7 @@ The Metadata tab is divided into three sub-tabs:
 
 ### YAML View
 
-![yaml](../../images/YamlView.png)
+![YAML](../../images/YamlView.png)
 
 - A YAML representation of the configuration can be previewed using the **Show YAML** button before creation.
 
