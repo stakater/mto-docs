@@ -81,7 +81,7 @@ If the user has some data entered into the step 2 section tabs, the skip option 
     - The input fields also act as filters for existing values.
     - If the entered value does not already exist in the list, it can be added.
 - Listing Added Values
-    - Values entered into the input fields are displayed as a scrollable list below the fields.
+    - Values entered into the input fields are displayed as a scroll list below the fields.
     - Each added value is displayed with a remove button ("X") to allow easy deletion.
 
 ### Key Features
@@ -89,7 +89,7 @@ If the user has some data entered into the step 2 section tabs, the skip option 
 - Optional Configuration: Users can skip this step by clicking the Skip button.
 - Filtering: As users type into the input fields, existing values matching the input are shown as suggestions for quick selection.
 - Add New Values: If the entered value is not in the existing list, users can add it by confirming the input.
-- Scroll Support: The lists are scrollable, ensuring all entries are accessible even when the list grows long.
+- Scroll Support: The lists have scroll view, ensuring all entries are accessible even when the list grows long.
 
 ### Navigating to the Next Step
 
@@ -121,7 +121,7 @@ The third step allows users to optionally configure namespaces and metadata for 
         - Filters data and validates input to check for existing namespaces.
         - Displays an error if the namespace already exists (as shown in the UI).
 - List Behavior:
-    - Added namespaces are displayed in a scrollable list below the input fields.
+    - Added namespaces are displayed in a scroll list below the input fields.
     - Each namespace is displayed with a remove button ("X") for easy deletion.
 
 ### Metadata
@@ -135,7 +135,7 @@ The Metadata tab is divided into three sub-tabs:
 - Both tabs allow users to add annotations and labels using Key and Value input fields.
 - Inputs act as filters for existing values.
 - No validation is required for these fields.
-- Added annotations and labels are displayed in a scrollable list with remove buttons ("X") for easy deletion.
+- Added annotations and labels are displayed in a scroll list with remove buttons ("X") for easy deletion.
 
 #### Specific Tab
 
@@ -146,7 +146,7 @@ The Metadata tab is divided into three sub-tabs:
     - Namespaces: Users can add and filter namespaces. Each namespace is verified before being added to the list.
     - Annotations: Key-value pairs that act as filters for listed values.
     - Labels: Key-value pairs that act as filters for listed values.
-- Each field displays added values in a scrollable list with remove buttons ("X") for easy deletion.
+- Each field displays added values in a scroll list with remove buttons ("X") for easy deletion.
 
 ### Key Features
 
@@ -154,7 +154,7 @@ The Metadata tab is divided into three sub-tabs:
 - Filtering and Validation:
     - Inputs filter data based on existing values.
     - Namespace inputs validate entries to ensure uniqueness.
-- Scroll Support: All lists are scrollable, ensuring accessibility for large datasets.
+- Scroll Support: All lists have scroll view, ensuring accessibility for large datasets.
 
 ### Error Handling
 
@@ -168,7 +168,7 @@ The Metadata tab is divided into three sub-tabs:
 
 ### YAML View
 
-![yamlView](../../images/YamlView.png)
+![yaml](../../images/YamlView.png)
 
 - A YAML representation of the configuration can be previewed using the **Show YAML** button before creation.
 
