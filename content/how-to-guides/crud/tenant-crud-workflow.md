@@ -25,7 +25,7 @@ The first step in creating a tenant is to provide a name for the tenant. Users m
 
 - Uniqueness Check
     - The tenant name must be unique.
-    - When the Next button is clicked, a verification API call is made to the backend to confirm the name does not already exist. If the name is already taken, an error is displayed, and the user must choose a different name.
+    - When tenant name is entered and user stops typing the tenant name is verified of it's uniqueness through an API call to the backend for confirmation that the name does not already exist. If the name is unique the Next button is enabled and user can click on it. If the name is already taken, an error is displayed, and the user must choose a different name.
 
 ### Quota Details
 
@@ -69,6 +69,8 @@ Error Handling on step 1 is based on the following factors
 ![tenantCreationStep2](../../images/tenantCreationStep2.png)
 
 The second step allows users to configure access control for the tenant. This step is optional and provides three tabs for managing user roles: Owners, Editors, and Viewers.
+
+If the user has some data entered into the step 2 section tabs, the skip option will be disabled. Otherwise user can perform skip action by clicking on the Skip button.
 
 ### Input Fields and Listing Behavior
 
