@@ -12,6 +12,20 @@ spec:
   components:
     console: true
     showback: true
+    showbackOpts:
+      custom:
+        CPU: "0.031611"
+        spotCPU: "0.006655"
+        RAM: "0.004237"
+        spotRAM: "0.000892"
+        GPU: "0.95"
+        storage: "0.00005479452"
+        zoneNetworkEgress: "0.01"
+        regionNetworkEgress: "0.01"
+        internetNetworkEgress: "0.12"
+      azurePricingSecretRef:
+        name: azure-pricing
+        namespace: multi-tenant-operator
     ingress:
       ingressClassName: 'nginx'
       keycloak:
@@ -23,16 +37,6 @@ spec:
       gateway:
         host: tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud
         tlsSecretName: tenant-operator-tls
-      customPricingModel:
-        CPU: "0.031611"
-        spotCPU: "0.006655"
-        RAM: "0.004237"
-        spotRAM: "0.000892"
-        GPU: "0.95"
-        storage: "0.00005479452"
-        zoneNetworkEgress: "0.01"
-        regionNetworkEgress: "0.01"
-        internetNetworkEgress: "0.12"
   accessControl:
     rbac:
       tenantRoles:
@@ -138,6 +142,20 @@ Following are the different components that can be used to configure multi-tenan
   components:
     console: true
     showback: true
+    showbackOpts:
+      custom:
+        CPU: "0.031611"
+        spotCPU: "0.006655"
+        RAM: "0.004237"
+        spotRAM: "0.000892"
+        GPU: "0.95"
+        storage: "0.00005479452"
+        zoneNetworkEgress: "0.01"
+        regionNetworkEgress: "0.01"
+        internetNetworkEgress: "0.12"
+      azurePricingSecretRef:
+        name: azure-pricing
+        namespace: multi-tenant-operator
     ingress:
       ingressClassName: nginx
       keycloak:
@@ -164,6 +182,9 @@ Following are the different components that can be used to configure multi-tenan
     - `keycloak:` Settings for the Keycloak's ingress.
         - `host:` hostname for the Keycloak's ingress.
         - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the Keycloak's ingress.
+- `components.showbackOpts:` Configures the showback feature with the following options:
+    - `custom:` Custom pricing model for showback.
+    - `azurePricingSecretRef:` Secret reference for Azure pricing model.
 
 Here's an example of how to generate the secrets required to configure MTO:
 
@@ -177,13 +198,48 @@ kubectl -n multi-tenant-operator create secret tls <tls-secret-name> --key=<path
 
 Integration config will be managing the following resources required for console GUI:
 
-- `MTO Postgresql` resources.
-- `MTO Prometheus` resources.
-- `MTO Opencost` resources.
-- `MTO Console, Gateway, Keycloak` resources.
-- `Showback` cronjob.
+- `Postgresql` resources
+- `Prometheus` resources
+- `Opencost` resources
+- `MTO Console, Gateway, Keycloak` resources
+- `Showback` cron job
 
 Details on console GUI and showback can be found [here](../explanation/console.md)
+
+### Custom Pricing
+
+You can modify IntegrationConfig to customise the default pricing model. Here is what you need at `IntegrationConfig.spec.components`:
+
+```yaml
+components:
+    console: true # should be enabled
+    showback: true # should be enabled
+    showbackOpts:
+      # add below and override any default value
+      # you can also remove the ones you do not need
+      custom:
+        CPU: "0.031611"
+        spotCPU: "0.006655"
+        RAM: "0.004237"
+        spotRAM: "0.000892"
+        GPU: "0.95"
+        storage: "0.00005479452"
+        zoneNetworkEgress: "0.01"
+        regionNetworkEgress: "0.01"
+        internetNetworkEgress: "0.12"
+```
+
+After modifying your default IntegrationConfig in `multi-tenant-operator` namespace, a configmap named `opencost-custom-pricing` will be updated. You will be able to see updated pricing info in `mto-console`.
+
+### Azure Pricing Model
+
+MTO supports Azure pricing model via the `showbackOpts.azurePricingSecretRef` field. Following 3 types of pricing are supported:
+
+- [`Azure Pricing Configuration`](https://www.opencost.io/docs/configuration/azure#azure-pricing-configuration)
+- [`Customer-specific pricing`](https://www.opencost.io/docs/configuration/azure#customer-specific-pricing)
+- [`Azure Cloud Costs`](https://www.opencost.io/docs/configuration/azure#azure-cloud-costs)
+
+More details on Azure pricing can be found [here](../how-to-guides/azure-pricing.md).
 
 ## Access Control
 
@@ -286,11 +342,11 @@ rbac:
 
 ##### Default
 
-This field contains roles that will be used to create default roleBindings for each namespace that belongs to tenants. These roleBindings are only created for a namespace if that namespace isn't already matched by the `custom` field below it. Therefore, it is required to have at least one role mentioned within each of its three subfields: `owner`, `editor`, and `viewer`. These 3 subfields also correspond to the member fields of the [Tenant CR](./tenant.md#tenant)
+This field contains roles that will be used to create default `roleBindings` for each namespace that belongs to tenants. These `roleBindings` are only created for a namespace if that namespace isn't already matched by the `custom` field below it. Therefore, it is required to have at least one role mentioned within each of its three subfields: `owner`, `editor`, and `viewer`. These 3 subfields also correspond to the member fields of the [Tenant CR](./tenant.md#tenant)
 
 ##### Custom
 
-An array of custom roles. Similar to the `default` field, you can mention roles within this field as well. However, the custom roles also require the use of a `labelSelector` for each iteration within the array. The roles mentioned here will only apply to the namespaces that are matched by the labelSelector. If a namespace is matched by 2 different labelSelectors, then both roles will apply to it. Additionally, roles can be skipped within the labelSelector. These missing roles are then inherited from the `default` roles field . For example, if the following custom roles arrangement is used:
+An array of custom roles. Similar to the `default` field, you can mention roles within this field as well. However, the custom roles also require the use of a `labelSelector` for each iteration within the array. The roles mentioned here will only apply to the namespaces that are matched by the labelSelector. If a namespace is matched by 2 different `labelSelectors`, then both roles will apply to it. Additionally, roles can be skipped within the labelSelector. These missing roles are then inherited from the `default` roles field . For example, if the following custom roles arrangement is used:
 
 ```yaml
 custom:
@@ -365,7 +421,7 @@ For example:
 
 ##### Groups
 
-`privileged.groups:` Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of privilegedNamespaces.
+`privileged.groups:` Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of `privilegedNamespaces`.
 
 !!! note
     User `kube:admin` is bypassed by default to perform operations as a cluster admin, this includes operations on all the namespaces.
@@ -584,30 +640,6 @@ path "identity/group/id/*" {
   capabilities = ["create", "read", "update", "patch", "delete", "list"]
 }
 ```
-
-### Custom Pricing Model
-
-You can modify IntegrationConfig to customise the default pricing model. Here is what you need at `IntegrationConfig.spec.components`:
-
-```yaml
-components:
-    console: true # should be enabled
-    showback: true # should be enabled
-    # add below and override any default value
-    # you can also remove the ones you do not need
-    customPricingModel:
-        CPU: "0.031611"
-        spotCPU: "0.006655"
-        RAM: "0.004237"
-        spotRAM: "0.000892"
-        GPU: "0.95"
-        storage: "0.00005479452"
-        zoneNetworkEgress: "0.01"
-        regionNetworkEgress: "0.01"
-        internetNetworkEgress: "0.12"
-```
-
-After modifying your default IntegrationConfig in `multi-tenant-operator` namespace, a configmap named `opencost-custom-pricing` will be updated. You will be able to see updated pricing info in `mto-console`.
 
 ## TenantPolicies
 

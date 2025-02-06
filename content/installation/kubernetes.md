@@ -19,7 +19,7 @@ This document contains instructions on installing, uninstalling and configuring 
 
 ## Installing via Helm CLI
 
-* Public Helm Chart of MTO is available at [Stakater GHCR Packages](https://github.com/orgs/stakater/packages/container/package/public/charts/multi-tenant-operator) and available Helm options can be seen at [MTO Helm Chart Options](./helm.md)
+* Public Helm Chart of MTO is available at [Stakater ghcr Packages](https://github.com/orgs/stakater/packages/container/package/public/charts/multi-tenant-operator) and available Helm options can be seen at [MTO Helm Chart Options](./helm.md)
 
 * Use `helm install` command to install MTO helm chart. Here, `bypassedGroups` has the names of groups which are designated as Cluster Admins in your cluster. For this example, we will use `system:masters`
 

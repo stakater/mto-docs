@@ -1,5 +1,46 @@
 # Changelog
 
+## v1.1.x
+
+### v1.1.0
+
+#### Features
+
+- Added [Azure Pricing](./how-to-guides/azure-pricing.md) support for Opencost via [Integration Config](./crds-api-reference/integration-config.md#azure-pricing-model).
+- Added option to disable `Intra-tenant Networking` via [Integration Config](./crds-api-reference/integration-config.md#tenantpolicies).
+- Added [Storage class per tenant](./crds-api-reference/tenant.md#storage) support via Tenant CR.
+- Added option to override component images.
+- Added support to add/update `Casbin` policies via `tenant-operator-casbin-config` Configmap.
+
+#### Enhancements
+
+- Refactor `Casbin` model handling to use embedded files and simplify configuration.
+- Switched to `Bitnami` images from `RedHat` images.
+- Dependencies upgrade to kubernetes 1.29.8 and controller-runtime 0.17.6.
+
+#### Fixes
+
+- Fix components under IC for tenant-operator chart.
+- Fix for IC controller where reconciliation request was triggered with added user's name.
+- Fix a bug in Vault policies where editor role had incorrect permissions.
+- Fix a bug in sandbox creations where sandbox namespaces were not being created if there were only groups in the tenant.
+- Fix for IC controller where it would not reconcile if the cluster had too many Configmaps, making the informer cache too big to be watched.
+
+#### Components
+
+| Name | Tag | Image |
+| --- | --- | --- |
+| `tenant-operator`       | v1.1.0              | `ghcr.io/stakater/public/mto/tenant-operator`    |
+| `mto-console`           | 1.0.147             | `ghcr.io/stakater/public/mto/mto-console`        |
+| `mto-gateway`           | 1.0.134             | `ghcr.io/stakater/public/mto/mto-gateway`        |
+| `showback`              | v0.0.15             | `ghcr.io/stakater/public/mto/showback`           |
+| `keycloak`              | 24.0.5              | `ghcr.io/stakater/public/mto/keycloak`           |
+| `kube-state-metrics`    | v2.8.0              | `ghcr.io/stakater/public/mto/kube-state-metrics` |
+| `postgresql`            | 15.0.0-debian-11-r1 | `ghcr.io/stakater/public/mto/postgresql`         |
+| `kube-rbac-proxy`       | v0.16.0             | `ghcr.io/stakater/public/mto/kube-rbac-proxy`    |
+| `opencost`              | 1.113.0             | `ghcr.io/stakater/public/mto/opencost`           |
+| `prometheus`            | 2.55.1-debian-12-r4 | `ghcr.io/stakater/public/mto/prometheus`         |
+
 ## v1.0.x
 
 ### v1.0.0
@@ -77,7 +118,7 @@
 #### Enhanced
 
 - Updated Tenant CR to v1beta3, more details in [Tenant CRD](./crds-api-reference/tenant.md)
-- Added custom pricing support for Opencost, more details in [Opencost](./crds-api-reference/integration-config.md#custom-pricing-model)
+- Added custom pricing support for Opencost, more details in [Opencost](./crds-api-reference/integration-config.md#custom-pricing)
 
 #### Fix
 
@@ -89,7 +130,7 @@
 
 #### Feature
 
-- Added support for configuring external keycloak in integrationconfig.
+- Added support for configuring external keycloak in `integrationconfig`.
 - Added free tier support that allows creation of 2 tenants without license.
 
 ## v0.10.x
@@ -188,7 +229,7 @@
 
 ### v0.8.3
 
-- fix: Reconcile namespaces when the group spec for tenants is changed, so new rolebindings can be created for them
+- fix: Reconcile namespaces when the group spec for tenants is changed, so new `rolebindings` can be created for them
 
 ### v0.8.1
 
@@ -268,7 +309,7 @@
 
 ### v0.5.3
 
-- fix: Add support for parameters in Helm chartRepository in templates
+- fix: Add support for parameters in Helm `chartRepository` in templates
 
 ### v0.5.2
 
