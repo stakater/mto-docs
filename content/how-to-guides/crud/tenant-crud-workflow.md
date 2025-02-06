@@ -25,7 +25,7 @@ The first step in creating a tenant is to provide a name for the tenant. Users m
 
 - Uniqueness Check
     - The tenant name must be unique.
-    - When tenant name is entered and user stops typing the tenant name is verified of it's uniqueness through an API call to the backend for confirmation that the name does not already exist. If the name is unique the Next button is enabled and user can click on it. If the name is already taken, an error is displayed, and the user must choose a different name.
+    - When tenant name is entered and user stops typing the tenant name is verified of its uniqueness through an API call to the backend for confirmation that the name does not already exist. If the name is unique the Next button is enabled and user can click on it. If the name is already taken, an error is displayed, and the user must choose a different name.
 
 ### Quota Details
 
