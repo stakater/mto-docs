@@ -24,7 +24,7 @@ The quota creation process allows administrators to define resource limits and o
 
     - This ensures that quota names consist of lowercase alphanumeric characters and hyphens, and do not start or end with a hyphen.
     - The metadata section in the drawer while creating a quota is to provide a name for the quota. Users must ensure the quota name meets the specified
-    criteria. Also the quota name should not already exist in order to create a new quota.
+    criteria. Also, the quota name should not already exist in order to create a new quota.
 
 ### Step 2: Resource Quota
 
