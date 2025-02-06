@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/main/how-to-guides/azure-pricing.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/main/how-to-guides/crud/tenant-crud-workflow.html">
       
       
-        <link rel="prev" href="integrating-vault.html">
+        <link rel="prev" href="../hibernation-workflow.html">
       
       
-        <link rel="next" href="restrict-nodepool-per-tenant.html">
+        <link rel="next" href="../enabling-multi-tenancy-argocd.html">
       
       
-      <link rel="icon" href="../assets/images/favicon.svg">
+      <link rel="icon" href="../../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
     
     
       
-        <title>Azure Pricing Model - Multi Tenant Operator</title>
+        <title>Tenant - Multi Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.d7758b05.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7758b05.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -67,7 +67,7 @@
     
     
     
-   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -76,7 +76,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#azure-pricing-model" class="md-skip">
+        <a href="#tenant" class="md-skip">
           Skip to content
         </a>
       
@@ -110,12 +110,12 @@
             <div class="md-banner__inner md-grid md-typeset">
               
 This documentation is either for an old version, or for the unreleased 'main' version.
-<a href="../..">
+<a href="../../..">
   <strong>Click here to go to the latest version.</strong>
 </a>
 
             </div>
-            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL(".."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
           </aside>
         
       </div>
@@ -339,7 +339,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../index.html" title="Multi Tenant Operator"
+    <a href="../../index.html" title="Multi Tenant Operator"
       class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       <!-- 
   
@@ -361,10 +361,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="../assets/images/logo-light.png#only-light" alt="logo" />
+          <img class="md-header__logo_light" src="../../assets/images/logo-light.png#only-light" alt="logo" />
           
           
-          <img class="md-header__logo_dark" src="../assets/images/logo-dark.png#only-dark" alt="logo" />
+          <img class="md-header__logo_dark" src="../../assets/images/logo-dark.png#only-dark" alt="logo" />
           
           
           <div class="header-site-name">
@@ -2022,7 +2022,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -2052,7 +2052,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
+      <a href="../../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2109,7 +2109,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../about/key-features.html" class="md-nav__link">
+      <a href="../../about/key-features.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2131,7 +2131,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../about/use-cases.html" class="md-nav__link">
+      <a href="../../about/use-cases.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2153,7 +2153,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../about/benefits.html" class="md-nav__link">
+      <a href="../../about/benefits.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2218,7 +2218,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/overview.html" class="md-nav__link">
+      <a href="../../installation/overview.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2240,7 +2240,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/openshift.html" class="md-nav__link">
+      <a href="../../installation/openshift.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2262,7 +2262,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/azure-aks.html" class="md-nav__link">
+      <a href="../../installation/azure-aks.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2284,7 +2284,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/aws-eks.html" class="md-nav__link">
+      <a href="../../installation/aws-eks.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2306,7 +2306,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/kubernetes.html" class="md-nav__link">
+      <a href="../../installation/kubernetes.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2328,7 +2328,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/helm.html" class="md-nav__link">
+      <a href="../../installation/helm.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2393,7 +2393,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../architecture/architecture.html" class="md-nav__link">
+      <a href="../../architecture/architecture.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2415,7 +2415,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../architecture/concepts.html" class="md-nav__link">
+      <a href="../../architecture/concepts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2444,7 +2444,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../pricing.html" class="md-nav__link">
+      <a href="../../pricing.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2537,7 +2537,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/create-tenant.html" class="md-nav__link">
+      <a href="../../tutorials/tenant/create-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2559,7 +2559,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/create-sandbox.html" class="md-nav__link">
+      <a href="../../tutorials/tenant/create-sandbox.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2581,7 +2581,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/creating-namespaces.html" class="md-nav__link">
+      <a href="../../tutorials/tenant/creating-namespaces.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2603,7 +2603,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/assigning-metadata.html" class="md-nav__link">
+      <a href="../../tutorials/tenant/assigning-metadata.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2625,7 +2625,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/tenant-hibernation.html" class="md-nav__link">
+      <a href="../../tutorials/tenant/tenant-hibernation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2647,7 +2647,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/tenant/deleting-tenant.html" class="md-nav__link">
+      <a href="../../tutorials/tenant/deleting-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2713,7 +2713,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/distributing-resources/copying-resources.html" class="md-nav__link">
+      <a href="../../tutorials/distributing-resources/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2735,7 +2735,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../tutorials/distributing-resources/distributing-manifests.html" class="md-nav__link">
+      <a href="../../tutorials/distributing-resources/distributing-manifests.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2846,7 +2846,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="custom-roles.html" class="md-nav__link">
+      <a href="../custom-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2868,7 +2868,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="extend-default-roles.html" class="md-nav__link">
+      <a href="../extend-default-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2934,7 +2934,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="configuring-multitenant-network-isolation.html" class="md-nav__link">
+      <a href="../configuring-multitenant-network-isolation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2956,7 +2956,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="deploying-templates.html" class="md-nav__link">
+      <a href="../deploying-templates.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2978,7 +2978,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../resource-sync-by-tgi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3000,7 +3000,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3022,7 +3022,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../deploying-private-helm-charts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3044,7 +3044,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="copying-resources.html" class="md-nav__link">
+      <a href="../copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3110,7 +3110,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="keycloak.html" class="md-nav__link">
+      <a href="../keycloak.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3132,7 +3132,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="custom-metrics.html" class="md-nav__link">
+      <a href="../custom-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3154,7 +3154,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="graph-visualization.html" class="md-nav__link">
+      <a href="../graph-visualization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3176,77 +3176,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="hibernation-workflow.html" class="md-nav__link">
+      <a href="../hibernation-workflow.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Hibernation Workflow
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    CRUD
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_4">
-            <span class="md-nav__icon md-icon"></span>
-            CRUD
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="crud/tenant-crud-workflow.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Tenant
     
   </span>
   
@@ -3281,14 +3215,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Integrations
+    CRUD
     
   </span>
   
@@ -3296,144 +3230,12 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_4">
             <span class="md-nav__icon md-icon"></span>
-            Integrations
+            CRUD
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="enabling-multi-tenancy-argocd.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Enabling Multi-Tenancy in ArgoCD
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="enabling-multi-tenancy-vault.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Configuring Vault in IntegrationConfig
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="enabling-openshift-dev-workspace.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Enabling DevWorkspace for Tenant's sandbox in OpenShift
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="mattermost.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Creating Mattermost Teams for your tenant
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="integrating-external-keycloak.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Integrating External Keycloak
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="integrating-vault.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Integrating Vault and Keycloak with Microsoft Entra ID
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -3455,7 +3257,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
           
   
   <span class="md-ellipsis">
-    Azure Pricing Model
+    Tenant
     
   </span>
   
@@ -3463,11 +3265,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="azure-pricing.html" class="md-nav__link md-nav__link--active">
+      <a href="tenant-crud-workflow.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Azure Pricing Model
+    Tenant
     
   </span>
   
@@ -3492,46 +3294,64 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#azure-pricing-configuration" class="md-nav__link">
+  <a href="#create" class="md-nav__link">
     <span class="md-ellipsis">
-      Azure Pricing Configuration
+      Create
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Azure Pricing Configuration">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-enter-primary-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Enter Primary Info
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Enter Primary Info">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-a-custom-azure-role" class="md-nav__link">
+  <a href="#validation-criteria" class="md-nav__link">
     <span class="md-ellipsis">
-      Create a Custom Azure role
+      Validation Criteria
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-an-azure-service-principal" class="md-nav__link">
+  <a href="#quota-details" class="md-nav__link">
     <span class="md-ellipsis">
-      Create an Azure Service Principal
+      Quota Details
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#supply-azure-service-principal-details-to-opencost" class="md-nav__link">
+  <a href="#enabling-the-next-button" class="md-nav__link">
     <span class="md-ellipsis">
-      Supply Azure Service Principal details to OpenCost
+      Enabling the Next Button
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#update-the-integrationconfig" class="md-nav__link">
+  <a href="#error-handling" class="md-nav__link">
     <span class="md-ellipsis">
-      Update the IntegrationConfig
+      Error Handling
     </span>
   </a>
   
@@ -3543,55 +3363,46 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#customer-specific-pricing" class="md-nav__link">
+  <a href="#step-2-access-control-optional" class="md-nav__link">
     <span class="md-ellipsis">
-      Customer-specific pricing
+      Step 2: Access Control (Optional)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Customer-specific pricing">
+    <nav class="md-nav" aria-label="Step 2: Access Control (Optional)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#find-your-billing-account-id" class="md-nav__link">
+  <a href="#input-fields-and-listing-behavior" class="md-nav__link">
     <span class="md-ellipsis">
-      Find your billing account ID
+      Input Fields and Listing Behavior
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#grant-billing-access-to-your-service-principal" class="md-nav__link">
+  <a href="#key-features" class="md-nav__link">
     <span class="md-ellipsis">
-      Grant billing access to your Service Principal
+      Key Features
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#find-the-offer-id-for-your-subscription" class="md-nav__link">
+  <a href="#navigating-to-the-next-step" class="md-nav__link">
     <span class="md-ellipsis">
-      Find the offer ID for your subscription
+      Navigating to the Next Step
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#configure-opencost-to-use-the-price-sheet-api" class="md-nav__link">
+  <a href="#error-handling_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Configure OpenCost to use the Price Sheet API
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#script-to-assign-billing-role" class="md-nav__link">
-    <span class="md-ellipsis">
-      Script to assign billing role
+      Error Handling
     </span>
   </a>
   
@@ -3603,18 +3414,111 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#azure-cloud-costs" class="md-nav__link">
+  <a href="#step-3-namespace-optional" class="md-nav__link">
     <span class="md-ellipsis">
-      Azure Cloud Costs
+      Step 3: Namespace (Optional)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Namespace (Optional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-and-sandbox-tabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common and Sandbox Tabs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specific-tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specific Tab
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-features_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Completion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yaml-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      YAML View
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#delete" class="md-nav__link">
     <span class="md-ellipsis">
-      Conclusion
+      Delete
     </span>
   </a>
   
@@ -3624,6 +3528,204 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Integrations
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            Integrations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enabling-multi-tenancy-argocd.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enabling Multi-Tenancy in ArgoCD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enabling-multi-tenancy-vault.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring Vault in IntegrationConfig
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enabling-openshift-dev-workspace.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enabling DevWorkspace for Tenant's sandbox in OpenShift
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mattermost.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Mattermost Teams for your tenant
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrating-external-keycloak.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrating External Keycloak
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrating-vault.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrating Vault and Keycloak with Microsoft Entra ID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-pricing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure Pricing Model
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -3680,7 +3782,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="restrict-nodepool-per-tenant.html" class="md-nav__link">
+      <a href="../restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3746,7 +3848,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="offboarding/uninstalling.html" class="md-nav__link">
+      <a href="../offboarding/uninstalling.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3855,7 +3957,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../explanation/tenant-policies/networking.html" class="md-nav__link">
+      <a href="../../explanation/tenant-policies/networking.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3885,7 +3987,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../explanation/logs-metrics.html" class="md-nav__link">
+      <a href="../../explanation/logs-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3907,7 +4009,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../explanation/template.html" class="md-nav__link">
+      <a href="../../explanation/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3929,7 +4031,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../explanation/console.html" class="md-nav__link">
+      <a href="../../explanation/console.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3951,7 +4053,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../explanation/templated-metadata-values.html" class="md-nav__link">
+      <a href="../../explanation/templated-metadata-values.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3973,7 +4075,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../explanation/multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../../explanation/multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4038,7 +4140,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/quota.html" class="md-nav__link">
+      <a href="../../crds-api-reference/quota.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4060,7 +4162,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/tenant.html" class="md-nav__link">
+      <a href="../../crds-api-reference/tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4082,7 +4184,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/extensions.html" class="md-nav__link">
+      <a href="../../crds-api-reference/extensions.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4104,7 +4206,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/template.html" class="md-nav__link">
+      <a href="../../crds-api-reference/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4126,7 +4228,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/template-instance.html" class="md-nav__link">
+      <a href="../../crds-api-reference/template-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4148,7 +4250,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/template-group-instance.html" class="md-nav__link">
+      <a href="../../crds-api-reference/template-group-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4170,7 +4272,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/integration-config.html" class="md-nav__link">
+      <a href="../../crds-api-reference/integration-config.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4192,7 +4294,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../crds-api-reference/resource-supervisor.html" class="md-nav__link">
+      <a href="../../crds-api-reference/resource-supervisor.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4221,7 +4323,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../changelog.html" class="md-nav__link">
+      <a href="../../changelog.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4242,7 +4344,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../eula.html" class="md-nav__link">
+      <a href="../../eula.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4263,7 +4365,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting.html" class="md-nav__link">
+      <a href="../../troubleshooting.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4306,46 +4408,64 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#azure-pricing-configuration" class="md-nav__link">
+  <a href="#create" class="md-nav__link">
     <span class="md-ellipsis">
-      Azure Pricing Configuration
+      Create
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Azure Pricing Configuration">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-enter-primary-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Enter Primary Info
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Enter Primary Info">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-a-custom-azure-role" class="md-nav__link">
+  <a href="#validation-criteria" class="md-nav__link">
     <span class="md-ellipsis">
-      Create a Custom Azure role
+      Validation Criteria
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-an-azure-service-principal" class="md-nav__link">
+  <a href="#quota-details" class="md-nav__link">
     <span class="md-ellipsis">
-      Create an Azure Service Principal
+      Quota Details
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#supply-azure-service-principal-details-to-opencost" class="md-nav__link">
+  <a href="#enabling-the-next-button" class="md-nav__link">
     <span class="md-ellipsis">
-      Supply Azure Service Principal details to OpenCost
+      Enabling the Next Button
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#update-the-integrationconfig" class="md-nav__link">
+  <a href="#error-handling" class="md-nav__link">
     <span class="md-ellipsis">
-      Update the IntegrationConfig
+      Error Handling
     </span>
   </a>
   
@@ -4357,55 +4477,46 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#customer-specific-pricing" class="md-nav__link">
+  <a href="#step-2-access-control-optional" class="md-nav__link">
     <span class="md-ellipsis">
-      Customer-specific pricing
+      Step 2: Access Control (Optional)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Customer-specific pricing">
+    <nav class="md-nav" aria-label="Step 2: Access Control (Optional)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#find-your-billing-account-id" class="md-nav__link">
+  <a href="#input-fields-and-listing-behavior" class="md-nav__link">
     <span class="md-ellipsis">
-      Find your billing account ID
+      Input Fields and Listing Behavior
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#grant-billing-access-to-your-service-principal" class="md-nav__link">
+  <a href="#key-features" class="md-nav__link">
     <span class="md-ellipsis">
-      Grant billing access to your Service Principal
+      Key Features
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#find-the-offer-id-for-your-subscription" class="md-nav__link">
+  <a href="#navigating-to-the-next-step" class="md-nav__link">
     <span class="md-ellipsis">
-      Find the offer ID for your subscription
+      Navigating to the Next Step
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#configure-opencost-to-use-the-price-sheet-api" class="md-nav__link">
+  <a href="#error-handling_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Configure OpenCost to use the Price Sheet API
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#script-to-assign-billing-role" class="md-nav__link">
-    <span class="md-ellipsis">
-      Script to assign billing role
+      Error Handling
     </span>
   </a>
   
@@ -4417,18 +4528,111 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#azure-cloud-costs" class="md-nav__link">
+  <a href="#step-3-namespace-optional" class="md-nav__link">
     <span class="md-ellipsis">
-      Azure Cloud Costs
+      Step 3: Namespace (Optional)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Namespace (Optional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-and-sandbox-tabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common and Sandbox Tabs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specific-tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specific Tab
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-features_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Completion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yaml-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      YAML View
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
+  <a href="#delete" class="md-nav__link">
     <span class="md-ellipsis">
-      Conclusion
+      Delete
     </span>
   </a>
   
@@ -4453,222 +4657,181 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
 
-<h1 id="azure-pricing-model">Azure Pricing Model<a class="headerlink" href="#azure-pricing-model" title="Permanent link">#</a></h1>
-<p>MTO supports Azure pricing model via the <code>integrationConfig.components.showbackOpts.azurePricingSecretRef</code> field. Following 3 types of pricing are supported:</p>
+<h1 id="tenant">Tenant<a class="headerlink" href="#tenant" title="Permanent link">#</a></h1>
+<h2 id="create">Create<a class="headerlink" href="#create" title="Permanent link">#</a></h2>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
+<p>The tenant creation process involves a three-step drawer interface. This document outlines the validation checks and the criteria for progressing through these steps.</p>
+<h2 id="step-1-enter-primary-info">Step 1: Enter Primary Info<a class="headerlink" href="#step-1-enter-primary-info" title="Permanent link">#</a></h2>
+<p><a class="glightbox" href="../../images/tenantCreationStep1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="tenantCreationStep1" src="../../images/tenantCreationStep1.png" /></a></p>
+<p>The first step in creating a tenant is to provide a name for the tenant. Users must ensure the tenant name meets the specified criteria. The Next button remains disabled until the entered tenant name passes validation and a quota is selected.</p>
+<h3 id="validation-criteria">Validation Criteria<a class="headerlink" href="#validation-criteria" title="Permanent link">#</a></h3>
 <ul>
-<li><a href="https://www.opencost.io/docs/configuration/azure#azure-pricing-configuration"><code>Azure Pricing Configuration</code></a></li>
-<li><a href="https://www.opencost.io/docs/configuration/azure#customer-specific-pricing"><code>Customer-specific pricing</code></a></li>
-<li><a href="https://www.opencost.io/docs/configuration/azure#azure-cloud-costs"><code>Azure Cloud Costs</code></a></li>
-</ul>
-<h2 id="azure-pricing-configuration">Azure Pricing Configuration<a class="headerlink" href="#azure-pricing-configuration" title="Permanent link">#</a></h2>
-<p>For Azure pricing configuration, OpenCost needs access to the Microsoft Azure Billing Rate Card API to access accurate pricing data for your Kubernetes resources.</p>
-<p>Follow the steps below to create a custom Azure role and secret to access the Azure Rate Card API:</p>
-<h3 id="create-a-custom-azure-role">Create a Custom Azure role<a class="headerlink" href="#create-a-custom-azure-role" title="Permanent link">#</a></h3>
-<p>Start by creating an Azure role definition. Below is an example definition, replace <code>YOUR_SUBSCRIPTION_ID</code> with the ID of the subscription containing your Kubernetes cluster. <a href="https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription">(How to find your subscription ID.)</a></p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OpenCostRole&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;IsCustom&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Rate Card query role&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Actions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;Microsoft.Compute/virtualMachines/vmSizes/read&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;Microsoft.Resources/subscriptions/locations/read&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;Microsoft.Resources/providers/read&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;Microsoft.ContainerService/containerServices/read&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s2">&quot;Microsoft.Commerce/RateCard/read&quot;</span>
-<span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;AssignableScopes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="s2">&quot;/subscriptions/YOUR_SUBSCRIPTION_ID&quot;</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Save this into a file called <code>myrole.json</code></p>
-<p>Next, you'll want to register that role with Azure:</p>
-<div class="highlight"><pre><span></span><code>az<span class="w"> </span>role<span class="w"> </span>definition<span class="w"> </span>create<span class="w"> </span>--verbose<span class="w"> </span>--role-definition<span class="w"> </span>@myrole.json
-</code></pre></div>
-<h3 id="create-an-azure-service-principal">Create an Azure Service Principal<a class="headerlink" href="#create-an-azure-service-principal" title="Permanent link">#</a></h3>
-<p>Next, create an Azure Service Principal.</p>
-<div class="highlight"><pre><span></span><code>az<span class="w"> </span>ad<span class="w"> </span>sp<span class="w"> </span>create-for-rbac<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;OpenCostAccess&quot;</span><span class="w"> </span>--role<span class="w"> </span><span class="s2">&quot;OpenCostRole&quot;</span><span class="w"> </span>--scope<span class="w"> </span><span class="s2">&quot;/subscriptions/YOUR_SUBSCRIPTION_ID&quot;</span><span class="w"> </span>--output<span class="w"> </span>json
-</code></pre></div>
-<p>Keep this information which is used in the <code>service-key.json</code> below.</p>
-<h3 id="supply-azure-service-principal-details-to-opencost">Supply Azure Service Principal details to OpenCost<a class="headerlink" href="#supply-azure-service-principal-details-to-opencost" title="Permanent link">#</a></h3>
-<p>Create a file called <code>service-key.json</code> and update it with the Service Principal details from the above steps:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;subscriptionId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Azure Subscription ID&gt;&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;serviceKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;appId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Azure AD App ID&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OpenCostAccess&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Azure AD Client Secret&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;tenant&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Azure AD Tenant ID&gt;&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Next, create a secret for the Azure Service Principal</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>When managing the service account key as a Kubernetes secret, the secret must reference the service account key JSON file, and that file must be named <code>service-key.json</code>.</p>
-</div>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>azure-service-key<span class="w"> </span>-n<span class="w"> </span>opencost<span class="w"> </span>--from-file<span class="o">=</span>service-key.json
-</code></pre></div>
-<h3 id="update-the-integrationconfig">Update the IntegrationConfig<a class="headerlink" href="#update-the-integrationconfig" title="Permanent link">#</a></h3>
-<p>Finally, update the IntegrationConfig with the Azure pricing model:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
-<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
-<span class="w">    </span><span class="nt">showbackOpts</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">azurePricingSecretRef</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure-service-key</span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
-</code></pre></div>
-<h2 id="customer-specific-pricing">Customer-specific pricing<a class="headerlink" href="#customer-specific-pricing" title="Permanent link">#</a></h2>
-<p>The Rate Card prices retrieved with the setup above are the standard prices for Azure resources offered to all customers. If your organisation has an Enterprise Agreement or Partner Agreement with Azure you may have discounts for some of the resources used by your clusters. In that case you can configure OpenCost to use the <a href="https://learn.microsoft.com/en-us/rest/api/consumption/">Consumption Price Sheet API</a> to request prices specifically for your billing account.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Calling the Price Sheet API uses the service principal secret created above - those steps are prerequisites for this section.</p>
-</div>
-<h3 id="find-your-billing-account-id">Find your billing account ID<a class="headerlink" href="#find-your-billing-account-id" title="Permanent link">#</a></h3>
-<p>You can find your billing account ID in the Azure portal, or using the <code>az</code> CLI:</p>
-<div class="highlight"><pre><span></span><code>az<span class="w"> </span>billing<span class="w"> </span>account<span class="w"> </span>list<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;[].{name:name, displayName:displayName}&quot;</span>
-</code></pre></div>
-<h3 id="grant-billing-access-to-your-service-principal">Grant billing access to your Service Principal<a class="headerlink" href="#grant-billing-access-to-your-service-principal" title="Permanent link">#</a></h3>
-<p>To call the Price Sheet API the service principal you created above needs to be granted the EnrollmentReader billing role. You can do this by following <a href="https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/assign-roles-azure-service-principals#assign-enrollment-account-role-permission-to-the-spn">this Azure guide</a> and using the <a href="https://learn.microsoft.com/en-us/rest/api/billing/2019-10-01-preview/role-assignments/put?tabs=HTTP">Role Assignments API reference page</a>.</p>
-<p>Assigning a billing role isn't directly supported in the <code>az</code> CLI yet, so the process is quite involved. To simplify this, you can use the <code>Bash</code> script <a href="azure-pricing.html#script-to-assign-billing-role">below</a> to collect the details of your service principal, construct the PUT request and send it with curl.</p>
-<p>Save the script to a file named <code>assign-billing-role.bash</code> and run it:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">SP_NAME</span><span class="o">=</span>OpenCostAccess
-<span class="nb">export</span><span class="w"> </span><span class="nv">BILLING_ACCOUNT_ID</span><span class="o">=</span>&lt;your<span class="w"> </span>billing<span class="w"> </span>account<span class="w"> </span>ID&gt;
-chmod<span class="w"> </span>u+x<span class="w"> </span>assign-billing-role.bash
-./assign-billing-role.bash
-</code></pre></div>
-<h3 id="find-the-offer-id-for-your-subscription">Find the offer ID for your subscription<a class="headerlink" href="#find-the-offer-id-for-your-subscription" title="Permanent link">#</a></h3>
-<p>As well as the billing account ID, OpenCost also needs the offer ID for your subscription to query the price sheet. You can find this on the <a href="https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription">subscription page in the Azure portal</a>.</p>
-<h3 id="configure-opencost-to-use-the-price-sheet-api">Configure OpenCost to use the Price Sheet API<a class="headerlink" href="#configure-opencost-to-use-the-price-sheet-api" title="Permanent link">#</a></h3>
-<p>The billing account and offer ID need to be passed to OpenCost in environment variables. To do this, create a secret with the following values:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>customer-specific-pricing<span class="w"> </span>-n<span class="w"> </span>opencost<span class="w"> </span>--from-literal<span class="o">=</span>azure-billing-account<span class="o">=</span>&lt;your<span class="w"> </span>billing<span class="w"> </span>account<span class="w"> </span>ID&gt;<span class="w"> </span>--from-literal<span class="o">=</span>azure-offer-id<span class="o">=</span>&lt;your<span class="w"> </span>offer<span class="w"> </span>ID&gt;
-</code></pre></div>
-<p>Finally, update the IntegrationConfig with the Azure pricing model:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
-<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
-<span class="w">    </span><span class="nt">showbackOpts</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">azurePricingSecretRef</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer-specific-pricing</span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
-</code></pre></div>
-<h3 id="script-to-assign-billing-role">Script to assign billing role<a class="headerlink" href="#script-to-assign-billing-role" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-
-<span class="c1"># Helper to assign the billing EnrollmentReader role to a service principal</span>
-<span class="c1"># Needs SP name and billing account name variables set</span>
-
-<span class="nb">set</span><span class="w"> </span>-euo<span class="w"> </span>pipefail
-
-<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SP_NAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SP_NAME is not set&quot;</span>
-<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
-<span class="k">fi</span>
-
-<span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">BILLING_ACCOUNT_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;BILLING_ACCOUNT_ID is not set&quot;</span>
-<span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
-<span class="k">fi</span>
-
-<span class="c1"># Generate a unique name for the assignment.</span>
-<span class="nv">ROLE_ASSIGNMENT_NAME</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>uuidgen<span class="k">)</span><span class="s2">&quot;</span>
-
-<span class="c1"># Work out the SP ID and tenant ID from the name.</span>
-<span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>SP_ID<span class="w"> </span>TENANT_ID<span class="w"> </span>&lt;<span class="w"> </span>&lt;<span class="o">(</span>az<span class="w"> </span>ad<span class="w"> </span>sp<span class="w"> </span>list<span class="w"> </span>--display-name<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">SP_NAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;[0].{id:id,tenantId:appOwnerOrganizationId}&#39;</span><span class="w"> </span>-o<span class="w"> </span>tsv<span class="o">)</span>
-
-<span class="c1"># Get bearer token for talking to API.</span>
-<span class="nv">ACCESS_TOKEN</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>az<span class="w"> </span>account<span class="w"> </span>get-access-token<span class="w"> </span>--query<span class="w"> </span>accessToken<span class="w"> </span>-o<span class="w"> </span>tsv<span class="k">)</span><span class="s2">&quot;</span>
-
-<span class="nv">URL</span><span class="o">=</span><span class="s2">&quot;https://management.azure.com/providers/Microsoft.Billing/billingAccounts/</span><span class="si">${</span><span class="nv">BILLING_ACCOUNT_ID</span><span class="si">}</span><span class="s2">/billingRoleAssignments/</span><span class="si">${</span><span class="nv">ROLE_ASSIGNMENT_NAME</span><span class="si">}</span><span class="s2">?api-version=2019-10-01-preview&quot;</span>
-
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Creating EnrollmentReader role assignment for SP </span><span class="si">${</span><span class="nv">SP_NAME</span><span class="si">}</span><span class="s2"> (</span><span class="si">${</span><span class="nv">SP_ID</span><span class="si">}</span><span class="s2">) in billing account </span><span class="si">${</span><span class="nv">BILLING_ACCOUNT_ID</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Role assignment name: </span><span class="si">${</span><span class="nv">ROLE_ASSIGNMENT_NAME</span><span class="si">}</span><span class="s2">&quot;</span>
-
-<span class="c1"># This is the role definition ID for EnrollmentReader</span>
-<span class="nv">ENROLLMENT_READER_ROLE</span><span class="o">=</span><span class="s2">&quot;24f8edb6-1668-4659-b5e2-40bb5f3a7d7e&quot;</span>
-<span class="nv">RESPONSE</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>--silent<span class="w"> </span>--show-error<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">URL</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
--H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="si">${</span><span class="nv">ACCESS_TOKEN</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
--H<span class="w"> </span><span class="s2">&quot;Content-type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
--d<span class="w"> </span><span class="s2">&quot;{</span>
-<span class="s2">  \&quot;properties\&quot;: {</span>
-<span class="s2">    \&quot;principalId\&quot;: \&quot;</span><span class="si">${</span><span class="nv">SP_ID</span><span class="si">}</span><span class="s2">\&quot;,</span>
-<span class="s2">    \&quot;principalTenantId\&quot;: \&quot;</span><span class="si">${</span><span class="nv">TENANT_ID</span><span class="si">}</span><span class="s2">\&quot;,</span>
-<span class="s2">    \&quot;roleDefinitionId\&quot;: \&quot;/providers/Microsoft.Billing/billingAccounts/</span><span class="si">${</span><span class="nv">BILLING_ACCOUNT_ID</span><span class="si">}</span><span class="s2">/billingRoleDefinitions/</span><span class="si">${</span><span class="nv">ENROLLMENT_READER_ROLE</span><span class="si">}</span><span class="s2">\&quot;</span>
-<span class="s2">  }</span>
-<span class="s2">}&quot;</span><span class="k">)</span><span class="s2">&quot;</span>
-
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Response: </span><span class="si">${</span><span class="nv">RESPONSE</span><span class="si">}</span><span class="s2">&quot;</span>
-</code></pre></div>
-<h2 id="azure-cloud-costs">Azure Cloud Costs<a class="headerlink" href="#azure-cloud-costs" title="Permanent link">#</a></h2>
-<p>The following values can be found in the Azure Portal under <em>Cost Management &gt; Exports</em>, or Storage accounts:</p>
+<li>
+<p>Regex Validation</p>
 <ul>
-<li><code>&lt;SUBSCRIPTION_ID&gt;</code> is the Subscription ID belonging to the Storage account which stores your exported Azure cost report data.</li>
-<li><code>&lt;STORAGE_ACCOUNT&gt;</code> is the name of the Storage account where the exported Azure cost report data is being stored.</li>
-<li><code>&lt;STORAGE_ACCESS_KEY&gt;</code> can be found by selecting Access Keys from the navigation sidebar then selecting Show keys. Using either of the two keys will work.</li>
-<li><code>&lt;STORAGE_CONTAINER&gt;</code> is the name that you chose for the exported cost report when you set it up. This is the name of the container where the CSV cost reports are saved in your Storage account.</li>
-<li><code>&lt;CONTAINER_PATH&gt;</code> should be used if there is more than one billing report that is exported to the configured container. The path provided should have only one billing export because OpenCost will retrieve the most recent billing report for a given month found within the path. If this configuration is not used, it should be set to an empty string "".</li>
-<li><code>&lt;CLOUD&gt;</code> is the value which denotes the cloud where the storage account exists. Possible values are public and gov. The default is public if an empty string is provided.</li>
+<li>The tenant name must conform to the following regex pattern:</li>
 </ul>
-<p>Set these values to the Azure array in the <code>cloud-integration.json</code> file:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;azure&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;subscriptionID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;SUBSCRIPTON_ID&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;STORAGE_ACCOUNT&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;container&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;STORAGE_CONTAINER&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;CONTAINER_PATH&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;cloud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;CLOUD&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;authorizer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;accessKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;STORAGE_ACCESS_KEY&gt;&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;STORAGE_ACCOUNT&gt;&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;authorizerType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AzureAccessKey&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;subscriptionID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;SUBSCRIPTION_ID&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;STORAGE_ACCOUNT&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;container&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;EXPORT_CONTAINER&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;cloud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;CLOUD&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;authorizer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;accessKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;ACCOUNT_ACCESS_KEY&gt;&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;STORAGE_ACCOUNT&gt;&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;authorizerType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AzureAccessKey&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code>    /^[a-z0-9]+(-[a-z0-9]+)*$/
 </code></pre></div>
-<p>Load the <code>cloud-integration.json</code> into a Kubernetes secret in your opencost namespace.</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>cloud-costs<span class="w"> </span>--from-file<span class="o">=</span>./cloud-integration.json<span class="w"> </span>--namespace<span class="w"> </span>opencost
+<ul>
+<li>This ensures that tenant names consist of lowercase alphanumeric characters and hyphens, and do not start or end with a hyphen.</li>
+</ul>
+</li>
+<li>
+<p>Uniqueness Check</p>
+<ul>
+<li>The tenant name must be unique.</li>
+<li>When tenant name is entered and user stops typing the tenant name is verified of its uniqueness through an API call to the backend for confirmation that the name does not already exist. If the name is unique the Next button is enabled and user can click on it. If the name is already taken, an error is displayed, and the user must choose a different name.</li>
+</ul>
+</li>
+</ul>
+<h3 id="quota-details">Quota Details<a class="headerlink" href="#quota-details" title="Permanent link">#</a></h3>
+<p>The selected quota defines resource limits for the tenant. Example quota details are shown in JSON format as well as a toggle button to view them as YAML:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">resourcequota</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">hard</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">configmaps</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;50&#39;</span>
+<span class="w">    </span><span class="nt">requests.cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;50&#39;</span>
+<span class="w">    </span><span class="nt">requests.memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5Gi</span>
+<span class="w">    </span><span class="nt">secrets</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;50&#39;</span>
+<span class="w">    </span><span class="nt">services</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;050&#39;</span>
+<span class="w">    </span><span class="nt">services.loadbalancers</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1&#39;</span>
+<span class="nt">limitrange</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="w">      </span><span class="nt">max</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1&#39;</span>
+<span class="w">        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span>
+<span class="w">      </span><span class="nt">min</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100m</span>
+<span class="w">        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50Mi</span>
 </code></pre></div>
-<p>Update your IntegrationConfig to use the Cloud Costs pricing model:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
-<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
-<span class="w">    </span><span class="nt">showbackOpts</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">azurePricingSecretRef</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cloud-costs</span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
-</code></pre></div>
-<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">#</a></h2>
-<p>In this guide, we have seen how to configure OpenCost to use Azure pricing model. We have seen how to configure Azure Pricing Configuration, Customer-specific pricing, and Azure Cloud Costs. To enable all three pricing models, you can create a single secret with all the required values and update the IntegrationConfig to use the secret.</p>
-<p>for example:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>azure-pricing<span class="w"> </span>-n<span class="w"> </span>opencost<span class="w"> </span>--from-file<span class="o">=</span>service-key.json<span class="w"> </span>--from-literal<span class="o">=</span>azure-billing-account<span class="o">=</span>&lt;your<span class="w"> </span>billing<span class="w"> </span>account<span class="w"> </span>ID&gt;<span class="w"> </span>--from-literal<span class="o">=</span>azure-offer-id<span class="o">=</span>&lt;your<span class="w"> </span>offer<span class="w"> </span>ID&gt;<span class="w"> </span>--from-file<span class="o">=</span>./cloud-integration.json
-</code></pre></div>
-<p>Update the IntegrationConfig to use the secret:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
-<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
-<span class="w">    </span><span class="nt">showbackOpts</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">azurePricingSecretRef</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure-pricing</span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
-</code></pre></div>
-<p>For more information, refer to the <a href="https://www.opencost.io/docs/configuration/azure">OpenCost documentation</a>.</p>
+<h3 id="enabling-the-next-button">Enabling the Next Button<a class="headerlink" href="#enabling-the-next-button" title="Permanent link">#</a></h3>
+<p>The Next button becomes enabled only when
+    - The entered tenant name passes both regex validation and the uniqueness check.
+    - A quota is selected from the dropdown menu.</p>
+<h3 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">#</a></h3>
+<p>Error Handling on step 1 is based on the following factors</p>
+<ul>
+<li>If the tenant name fails regex validation, an inline error message indicates the naming rule.</li>
+<li>If the tenant name already exists, the user is prompted to enter a new name.</li>
+</ul>
+<h2 id="step-2-access-control-optional">Step 2: Access Control (Optional)<a class="headerlink" href="#step-2-access-control-optional" title="Permanent link">#</a></h2>
+<p><a class="glightbox" href="../../images/tenantCreationStep2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="tenantCreationStep2" src="../../images/tenantCreationStep2.png" /></a></p>
+<p>The second step allows users to configure access control for the tenant. This step is optional and provides three tabs for managing user roles: Owners, Editors, and Viewers.</p>
+<p>If the user has some data entered into the step 2 section tabs, the skip option will be disabled. Otherwise, user can perform skip action by clicking on the Skip button.</p>
+<h3 id="input-fields-and-listing-behavior">Input Fields and Listing Behavior<a class="headerlink" href="#input-fields-and-listing-behavior" title="Permanent link">#</a></h3>
+<ul>
+<li>Input Fields
+    -Each tab (Owners, Editors, and Viewers) contains two input fields:
+        - Users: Allows adding individual users.
+        - Groups: Allows adding groups.<ul>
+<li>The input fields also act as filters for existing values.</li>
+<li>If the entered value does not already exist in the list, it can be added.</li>
+</ul>
+</li>
+<li>Listing Added Values<ul>
+<li>Values entered into the input fields are displayed as a scroll list below the fields.</li>
+<li>Each added value is displayed with a remove button ("X") to allow easy deletion.</li>
+</ul>
+</li>
+</ul>
+<h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">#</a></h3>
+<ul>
+<li>Optional Configuration: Users can skip this step by clicking the Skip button.</li>
+<li>Filtering: As users type into the input fields, existing values matching the input are shown as suggestions for quick selection.</li>
+<li>Add New Values: If the entered value is not in the existing list, users can add it by confirming the input.</li>
+<li>Scroll Support: The lists have scroll view, ensuring all entries are accessible even when the list grows long.</li>
+</ul>
+<h3 id="navigating-to-the-next-step">Navigating to the Next Step<a class="headerlink" href="#navigating-to-the-next-step" title="Permanent link">#</a></h3>
+<ul>
+<li>Users can proceed to the next step by clicking the Next button.</li>
+<li>The Next button is always enabled for this step as it is optional.</li>
+</ul>
+<h3 id="error-handling_1">Error Handling<a class="headerlink" href="#error-handling_1" title="Permanent link">#</a></h3>
+<p>No specific validations are required for this step since it is optional. However, users can remove or adjust entries as needed using the provided interface.</p>
+<h2 id="step-3-namespace-optional">Step 3: Namespace (Optional)<a class="headerlink" href="#step-3-namespace-optional" title="Permanent link">#</a></h2>
+<p>The third step allows users to optionally configure namespaces and metadata for the tenant. This step consists of two tabs:</p>
+<h3 id="namespace">Namespace<a class="headerlink" href="#namespace" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../../images/tenantCreationStep3NamespaceTab.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="tenantCreationStep3NamespaceTab" src="../../images/tenantCreationStep3NamespaceTab.png" /></a></p>
+<ul>
+<li>Toggles:<ul>
+<li>Enable Sandbox: Activates the sandbox environment for the tenant.</li>
+<li>Private Sandbox: Makes the sandbox environment private.</li>
+<li>On Delete Purge Namespaces: Ensures namespaces are purged upon deletion.</li>
+</ul>
+</li>
+<li>Input Fields:<ul>
+<li>With Tenant Prefix:<ul>
+<li>Allows users to add namespaces with a tenant prefix.</li>
+<li>Filters data based on existing namespaces.</li>
+</ul>
+</li>
+<li>Without Tenant Prefix:<ul>
+<li>Allows users to add namespaces without a tenant prefix.</li>
+<li>Filters data and validates input to check for existing namespaces.</li>
+<li>Displays an error if the namespace already exists (as shown in the UI).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>List Behavior:<ul>
+<li>Added namespaces are displayed in a scroll list below the input fields.</li>
+<li>Each namespace is displayed with a remove button ("X") for easy deletion.</li>
+</ul>
+</li>
+</ul>
+<h3 id="metadata">Metadata<a class="headerlink" href="#metadata" title="Permanent link">#</a></h3>
+<p>The Metadata tab is divided into three sub-tabs:</p>
+<h4 id="common-and-sandbox-tabs">Common and Sandbox Tabs<a class="headerlink" href="#common-and-sandbox-tabs" title="Permanent link">#</a></h4>
+<p><a class="glightbox" href="../../images/tenantCreationStep3MetadataCommonSandboxTab.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="tenantCreationStep3MetadataCommonSandboxTab" src="../../images/tenantCreationStep3MetadataCommonSandboxTab.png" /></a></p>
+<ul>
+<li>Both tabs allow users to add annotations and labels using Key and Value input fields.</li>
+<li>Inputs act as filters for existing values.</li>
+<li>No validation is required for these fields.</li>
+<li>Added annotations and labels are displayed in a scroll list with remove buttons ("X") for easy deletion.</li>
+</ul>
+<h4 id="specific-tab">Specific Tab<a class="headerlink" href="#specific-tab" title="Permanent link">#</a></h4>
+<p><a class="glightbox" href="../../images/tenantCreationStep3MetadataSpecificTab.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="tenantCreationStep3MetadataSpecificTab" src="../../images/tenantCreationStep3MetadataSpecificTab.png" /></a></p>
+<ul>
+<li>Includes an Add Accordion button.</li>
+<li>Each accordion contains the following fields:<ul>
+<li>Namespaces: Users can add and filter namespaces. Each namespace is verified before being added to the list.</li>
+<li>Annotations: Key-value pairs that act as filters for listed values.</li>
+<li>Labels: Key-value pairs that act as filters for listed values.</li>
+</ul>
+</li>
+<li>Each field displays added values in a scroll list with remove buttons ("X") for easy deletion.</li>
+</ul>
+<h3 id="key-features_1">Key Features<a class="headerlink" href="#key-features_1" title="Permanent link">#</a></h3>
+<ul>
+<li>Optional Configuration: Users can skip this step by clicking the Create button directly.</li>
+<li>Filtering and Validation:<ul>
+<li>Inputs filter data based on existing values.</li>
+<li>Namespace inputs validate entries to ensure uniqueness.</li>
+</ul>
+</li>
+<li>Scroll Support: All lists have scroll view, ensuring accessibility for large datasets.</li>
+</ul>
+<h3 id="error-handling_2">Error Handling<a class="headerlink" href="#error-handling_2" title="Permanent link">#</a></h3>
+<ul>
+<li>The "Without Tenant Prefix" input validates namespace uniqueness and displays an error if the namespace already exists.</li>
+<li>Namespaces in the accordions are being verified before being added. If they already exist they are not added and shown with an error message on the input.</li>
+<li>No validation errors occur for annotations or labels as they are free-form inputs.</li>
+</ul>
+<h3 id="completion">Completion<a class="headerlink" href="#completion" title="Permanent link">#</a></h3>
+<ul>
+<li>Users finalize the tenant creation process by clicking the Create button.</li>
+</ul>
+<h3 id="yaml-view">YAML View<a class="headerlink" href="#yaml-view" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../../images/YamlView.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="YAML" src="../../images/YamlView.png" /></a></p>
+<ul>
+<li>A YAML representation of the configuration can be previewed using the <strong>Show YAML</strong> button before creation.</li>
+</ul>
+<h2 id="update">Update<a class="headerlink" href="#update" title="Permanent link">#</a></h2>
+<p>User can click on the edit button in the table under the action items to open the drawer with all the pre-populated tenant configurations.</p>
+<p>The update process follows a similar flow to the create process. However, the key difference is that the <strong>tenant name</strong> in <strong>Step-1</strong> cannot be edited or updated. All other steps and configurations remain the same, allowing users to modify access control, namespaces, and metadata as needed.</p>
+<h2 id="delete">Delete<a class="headerlink" href="#delete" title="Permanent link">#</a></h2>
+<p>By clicking on the delete option in the tenants table the user will be able to perform delete operation, and it may take a short while to delete the tenant.</p>
 
 
 
@@ -4962,11 +5125,11 @@ chmod<span class="w"> </span>u+x<span class="w"> </span>assign-billing-role.bash
                 <div class="flex-2">
                     <div class="logo-footer-container">
                         
-                        <img class="md-header__logo_light" src="../assets/images/footer-logo-light.png#only-light"
+                        <img class="md-header__logo_light" src="../../assets/images/footer-logo-light.png#only-light"
                             alt="logo" />
                         
                         
-                        <img src="../assets/images/footer-logo-dark.png#only-dark" alt="logo" />
+                        <img src="../../assets/images/footer-logo-dark.png#only-dark" alt="logo" />
                         
                     </div>
 
@@ -4974,21 +5137,21 @@ chmod<span class="w"> </span>u+x<span class="w"> </span>assign-billing-role.bash
                         <div class="display-flex">
                             
                             <img class="csa-logo-dark"
-                                src="../assets/images/CSA_dark.png#only-dark" alt="CSA" />
+                                src="../../assets/images/CSA_dark.png#only-dark" alt="CSA" />
                             
                             
                             <img class="csa-logo-light"
-                                src="../assets/images/CSA_light.png#only-light"
+                                src="../../assets/images/CSA_light.png#only-light"
                                 alt="CSA" />
                             
 
                             
-                            <img class="hc-logo-dark" src="../assets/images/HC_dark.png#only-dark"
+                            <img class="hc-logo-dark" src="../../assets/images/HC_dark.png#only-dark"
                                 alt="HC" />
                             
                             
                             <img class="hc-logo-light"
-                                src="../assets/images/HC_light.png#only-light" alt="HC" />
+                                src="../../assets/images/HC_light.png#only-light" alt="HC" />
                             
                         </div>
                     </div>
@@ -5376,10 +5539,10 @@ chmod<span class="w"> </span>u+x<span class="w"> </span>assign-billing-role.bash
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.f13b1293.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f13b1293.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
