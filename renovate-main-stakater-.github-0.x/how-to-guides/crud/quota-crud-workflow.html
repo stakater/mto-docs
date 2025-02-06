@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-stakater-.github-0.x/tutorials/tenant/deleting-tenant.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-stakater-.github-0.x/how-to-guides/crud/quota-crud-workflow.html">
       
       
-        <link rel="prev" href="tenant-hibernation.html">
+        <link rel="prev" href="tenant-crud-workflow.html">
       
       
-        <link rel="next" href="../distributing-resources/copying-resources.html">
+        <link rel="next" href="../enabling-multi-tenancy-argocd.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.svg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Deleting a Tenant While Preserving Resources - Multi Tenant Operator</title>
+        <title>Quota - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deleting-a-tenant-while-preserving-resources" class="md-skip">
+        <a href="#quota" class="md-skip">
           Skip to content
         </a>
       
@@ -2463,19 +2463,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -2490,7 +2488,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Tutorials
@@ -2501,19 +2499,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1" >
         
           
           <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
@@ -2528,7 +2524,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_1">
             <span class="md-nav__icon md-icon"></span>
             Configuring Tenants
@@ -2542,7 +2538,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="create-tenant.html" class="md-nav__link">
+      <a href="../../tutorials/tenant/create-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2564,7 +2560,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="create-sandbox.html" class="md-nav__link">
+      <a href="../../tutorials/tenant/create-sandbox.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2586,7 +2582,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="creating-namespaces.html" class="md-nav__link">
+      <a href="../../tutorials/tenant/creating-namespaces.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2608,7 +2604,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="assigning-metadata.html" class="md-nav__link">
+      <a href="../../tutorials/tenant/assigning-metadata.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2630,7 +2626,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="tenant-hibernation.html" class="md-nav__link">
+      <a href="../../tutorials/tenant/tenant-hibernation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2649,31 +2645,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Deleting a Tenant While Preserving Resources
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="deleting-tenant.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../tutorials/tenant/deleting-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2683,61 +2658,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#configuration-for-retaining-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configuration for Retaining Resources
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuration for Retaining Resources">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#default-behavior" class="md-nav__link">
-    <span class="md-ellipsis">
-      Default Behavior
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deleting-the-tenant" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deleting the Tenant
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2794,7 +2714,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../distributing-resources/copying-resources.html" class="md-nav__link">
+      <a href="../../tutorials/distributing-resources/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2816,7 +2736,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../distributing-resources/distributing-manifests.html" class="md-nav__link">
+      <a href="../../tutorials/distributing-resources/distributing-manifests.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2850,17 +2770,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -2875,7 +2797,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             How-to Guides
@@ -2925,7 +2847,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/custom-roles.html" class="md-nav__link">
+      <a href="../custom-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2947,7 +2869,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/extend-default-roles.html" class="md-nav__link">
+      <a href="../extend-default-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3013,7 +2935,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
+      <a href="../configuring-multitenant-network-isolation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3035,7 +2957,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/deploying-templates.html" class="md-nav__link">
+      <a href="../deploying-templates.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3057,7 +2979,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../resource-sync-by-tgi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3079,7 +3001,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3101,7 +3023,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../deploying-private-helm-charts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3123,7 +3045,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/copying-resources.html" class="md-nav__link">
+      <a href="../copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3189,7 +3111,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/keycloak.html" class="md-nav__link">
+      <a href="../keycloak.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3211,7 +3133,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/custom-metrics.html" class="md-nav__link">
+      <a href="../custom-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3233,7 +3155,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/graph-visualization.html" class="md-nav__link">
+      <a href="../graph-visualization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3255,7 +3177,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/hibernation-workflow.html" class="md-nav__link">
+      <a href="../hibernation-workflow.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3282,17 +3204,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" checked>
         
           
           <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
@@ -3307,7 +3231,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_4">
             <span class="md-nav__icon md-icon"></span>
             CRUD
@@ -3321,7 +3245,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/crud/tenant-crud-workflow.html" class="md-nav__link">
+      <a href="tenant-crud-workflow.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3340,10 +3264,31 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../how-to-guides/crud/quota-crud-workflow.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quota
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="quota-crud-workflow.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -3353,6 +3298,115 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-resource-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Resource Quota
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-limit-range-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Limit Range (Optional)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#final-step-save-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Final Step: Save Quota
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3409,7 +3463,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
+      <a href="../enabling-multi-tenancy-argocd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3431,7 +3485,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../enabling-multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3453,7 +3507,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
+      <a href="../enabling-openshift-dev-workspace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3475,7 +3529,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/mattermost.html" class="md-nav__link">
+      <a href="../mattermost.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3497,7 +3551,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/integrating-external-keycloak.html" class="md-nav__link">
+      <a href="../integrating-external-keycloak.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3519,7 +3573,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/integrating-vault.html" class="md-nav__link">
+      <a href="../integrating-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3541,7 +3595,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/azure-pricing.html" class="md-nav__link">
+      <a href="../azure-pricing.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3607,7 +3661,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
+      <a href="../restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3673,7 +3727,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
+      <a href="../offboarding/uninstalling.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4233,19 +4287,64 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configuration-for-retaining-resources" class="md-nav__link">
+  <a href="#create" class="md-nav__link">
     <span class="md-ellipsis">
-      Configuration for Retaining Resources
+      Create
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Configuration for Retaining Resources">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overview">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#default-behavior" class="md-nav__link">
+  <a href="#step-1-metadata" class="md-nav__link">
     <span class="md-ellipsis">
-      Default Behavior
+      Step 1: Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-resource-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Resource Quota
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-limit-range-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Limit Range (Optional)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#final-step-save-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Final Step: Save Quota
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
     </span>
   </a>
   
@@ -4257,9 +4356,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#deleting-the-tenant" class="md-nav__link">
+  <a href="#update" class="md-nav__link">
     <span class="md-ellipsis">
-      Deleting the Tenant
+      Update
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
     </span>
   </a>
   
@@ -4284,41 +4392,108 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="deleting-a-tenant-while-preserving-resources">Deleting a Tenant While Preserving Resources<a class="headerlink" href="#deleting-a-tenant-while-preserving-resources" title="Permanent link">#</a></h1>
-<p>When managing tenant lifecycles within Kubernetes, certain scenarios require the deletion of a tenant without removing associated namespaces or ArgoCD AppProjects. This ensures that resources and configurations tied to the tenant remain intact for archival or transition purposes.</p>
-<h2 id="configuration-for-retaining-resources">Configuration for Retaining Resources<a class="headerlink" href="#configuration-for-retaining-resources" title="Permanent link">#</a></h2>
-<p>Bill decides to decommission the bluesky tenant but needs to preserve all related namespaces for continuity. To achieve this, he adjusts the Tenant Custom Resource (CR) to prevent the automatic cleanup of these resources upon tenant deletion.</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt; EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prod</span>
-<span class="w">    </span><span class="nt">onDeletePurgeNamespaces</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="l l-Scalar l-Scalar-Plain">EOF</span>
+<h1 id="quota">Quota<a class="headerlink" href="#quota" title="Permanent link">#</a></h1>
+<h2 id="create">Create<a class="headerlink" href="#create" title="Permanent link">#</a></h2>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
+<p>The quota creation process allows administrators to define resource limits and optional configurations for containers and pods. This document outlines the steps to create a new quota, including the metadata, resource quota, and limit range configurations.</p>
+<h3 id="step-1-metadata">Step 1: Metadata<a class="headerlink" href="#step-1-metadata" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../../images/quotaCreationMetadata.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="quotaCreationMetadata" src="../../images/quotaCreationMetadata.png" /></a></p>
+<ul>
+<li>
+<p>Name Field</p>
+<ul>
+<li>The name field is mandatory and must be unique.</li>
+<li>If the name already exists, an inline error message is displayed.</li>
+</ul>
+</li>
+<li>
+<p>Error Handling</p>
+<ul>
+<li>Regex Validation</li>
+<li>The quota name must conform to the following regex pattern:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>    /^[a-z0-9]+(-[a-z0-9]+)*$/
 </code></pre></div>
-<p>With the <code>onDeletePurgeNamespaces</code> fields set to false, Bill ensures that the deletion of the bluesky tenant does not trigger the removal of its namespaces. This setup is crucial for cases where the retention of environment setups and deployments is necessary post-tenant deletion.</p>
-<h3 id="default-behavior">Default Behavior<a class="headerlink" href="#default-behavior" title="Permanent link">#</a></h3>
-<p>It's important to note the default behavior of the Tenant Operator regarding resource cleanup:</p>
-<p>Namespaces: By default, <code>onDeletePurgeNamespaces</code> is set to false, implying that namespaces are not automatically deleted with the tenant unless explicitly configured.</p>
-<h2 id="deleting-the-tenant">Deleting the Tenant<a class="headerlink" href="#deleting-the-tenant" title="Permanent link">#</a></h2>
-<p>Once the Tenant CR is configured as desired, Bill can proceed to delete the bluesky tenant:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>tenant<span class="w"> </span>bluesky
-</code></pre></div>
-<p>This command removes the tenant resource from the cluster while leaving the specified namespaces untouched, adhering to the configured <code>onDeletePurgeNamespaces</code> policies. This approach provides flexibility in managing the lifecycle of tenant resources, catering to various operational strategies and compliance requirements.</p>
+<ul>
+<li>This ensures that quota names consist of lowercase alphanumeric characters and hyphens, and do not start or end with a hyphen.</li>
+<li>The metadata section in the drawer while creating a quota is to provide a name for the quota. Users must ensure the quota name meets the specified
+criteria. Also, the quota name should not already exist in order to create a new quota.</li>
+</ul>
+</li>
+</ul>
+<h3 id="step-2-resource-quota">Step 2: Resource Quota<a class="headerlink" href="#step-2-resource-quota" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../../images/quotaCreationResourceQuota.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="quotaCreationResourceQuota" src="../../images/quotaCreationResourceQuota.png" /></a></p>
+<ol>
+<li>Adding Resources</li>
+<li>The <strong>Resource</strong> dropdown allows the selection of resource types such as:<ul>
+<li>CPU Requests</li>
+<li>Memory Requests</li>
+<li>Config Maps</li>
+<li>Secrets</li>
+<li>Services</li>
+<li>Load Balancer Services</li>
+</ul>
+</li>
+<li>
+<p>Enter the corresponding <strong>Value</strong> for the selected resource.</p>
+</li>
+<li>
+<p>Error Handling</p>
+</li>
+<li>
+<p>If an invalid format is entered in the <strong>Value</strong> field, an inline error message is displayed.</p>
+</li>
+<li>
+<p>Add Resource Button:</p>
+</li>
+<li>Allows users to add multiple resources sequentially.</li>
+</ol>
+<h3 id="step-3-limit-range-optional">Step 3: Limit Range (Optional)<a class="headerlink" href="#step-3-limit-range-optional" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../../images/quotaCreationLimitRange.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="quotaCreationLimitRange" src="../../images/quotaCreationLimitRange.png" /></a></p>
+<p>The limit range section provides optional configurations for containers and pods. It includes:</p>
+<ol>
+<li>Container</li>
+<li>
+<p>Configure limits for container resources by entering:</p>
+<ul>
+<li><strong>Min</strong> and <strong>Max</strong> values for resource types.</li>
+<li><strong>Default Request</strong> and <strong>Default Limit</strong> values.</li>
+</ul>
+</li>
+<li>
+<p>Pod</p>
+</li>
+<li>
+<p>Similar to the container section, allows configuration for pod-level resources.</p>
+</li>
+<li>
+<p>Error Handling</p>
+</li>
+<li>No validation errors occur unless an invalid value is entered.</li>
+<li>Inline errors guide users in correcting their inputs.</li>
+</ol>
+<h3 id="final-step-save-quota">Final Step: Save Quota<a class="headerlink" href="#final-step-save-quota" title="Permanent link">#</a></h3>
+<ol>
+<li>Add Quota Button</li>
+<li>
+<p>Once all configurations are completed, users can click the <strong>Add Quota</strong> button to save the quota.</p>
+</li>
+<li>
+<p>Completion</p>
+</li>
+<li>The system validates all input fields before saving.</li>
+<li>A confirmation message is displayed once the quota is successfully created.</li>
+</ol>
+<h3 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h3>
+<ul>
+<li>The entire quota creation process is intuitive, with inline validation to guide users.</li>
+<li>Optional configurations like "Limit Range" allow flexibility based on use cases.</li>
+</ul>
+<h2 id="update">Update<a class="headerlink" href="#update" title="Permanent link">#</a></h2>
+<p>User can click on the edit button in the table under the action items to open the drawer with all the pre-populated quota configurations.</p>
+<p>The update process follows a similar flow to the create process. However, the key difference is that the <strong>quota name</strong> in <strong>Step-1</strong> cannot be edited or updated. All other steps and configurations remain the same, allowing users to modify resource quota, limit range values as needed.</p>
+<h2 id="delete">Delete<a class="headerlink" href="#delete" title="Permanent link">#</a></h2>
+<p>By clicking on the delete option in the quota table the user will be able to perform delete operation, a confirmation modal will open which will prompt the user to delete or cancel operation.</p>
 
 
 
