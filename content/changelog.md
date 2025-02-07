@@ -420,7 +420,7 @@
 ### v0.2.32
 
 - refactor: Restructure integration config spec, more details in [relevant docs][def]
-- feat: Allow users to input custom regex in certain fields inside of integration config, more details in [relevant docs](./how-to-guides/integration-config.md#openshift)
+- feat: Allow users to input custom regex in certain fields inside of integration config, more details in [relevant docs](./how-to-guides/integration-config.md)
 
 ### v0.2.31
 
