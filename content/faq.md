@@ -8,7 +8,7 @@
 unable to find annotation openshift.io/sa.scc.uid-range
 ```
 
-**Answer.** OpenShift recently updated its process of handling SCC, and it's now managed by annotations like `openshift.io/sa.scc.uid-range` on the namespaces. Absence  of them wont let pods schedule. The fix for the above error is to make sure ServiceAccount `system:serviceaccount:openshift-infra.` regex is always mentioned in `Privileged.serviceAccounts` section of `IntegrationConfig`. This regex will allow operations from all `ServiceAccounts` present in `openshift-infra` namespace. More info at [Privileged Service Accounts](./how-to-guides/integration-config.md#privileged-serviceaccounts)
+**Answer.** OpenShift recently updated its process of handling SCC, and it's now managed by annotations like `openshift.io/sa.scc.uid-range` on the namespaces. Absence  of them wont let pods schedule. The fix for the above error is to make sure ServiceAccount `system:serviceaccount:openshift-infra.` regex is always mentioned in `Privileged.serviceAccounts` section of `IntegrationConfig`. This regex will allow operations from all `ServiceAccounts` present in `openshift-infra` namespace. More info at [Privileged Service Accounts](./how-to-guides/integration-config.md)
 
 ## Namespace Admission Webhook
 
