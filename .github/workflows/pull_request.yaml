@@ -14,6 +14,9 @@ jobs:
       DOC_SRC: content README.md
       MD_LINT_CONFIG: .markdownlint.yaml
   deploy_doc:
+    concurrency:
+      group: pull_request_versioned_doc
+      cancel-in-progress: false
     uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@v0.0.122
     secrets:
       GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
