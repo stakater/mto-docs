@@ -26,6 +26,18 @@
 - Fix a bug in sandbox creations where sandbox namespaces were not being created if there were only groups in the tenant.
 - Fix for IC controller where it would not reconcile if the cluster had too many Configmaps, making the informer cache too big to be watched.
 
+#### Pre-Upgrade Checklist
+
+Before upgrading to v1.1.0, perform the following steps:
+
+- Disable `console` in the integration config.
+- Remove the `tenant-operator-casbin-config` ConfigMap from the `multi-tenant-operator` namespace, if it exists.
+
+#### Post-Upgrade Checklist
+
+- Enable `console` in the integration config. [Link](./installation/openshift.md#enabling-console)
+- If the `prometheus-server` pod is failing, ensure that only one `prometheus-server` deployment exists in the `multi-tenant-operator` namespace. If multiple deployments exist, delete the older one.
+
 #### Components
 
 | Name | Tag | Image |
