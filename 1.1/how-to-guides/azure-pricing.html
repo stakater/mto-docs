@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.d7758b05.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.8608ea7d.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -4441,7 +4441,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <p class="admonition-title">Note</p>
 <p>When managing the service account key as a Kubernetes secret, the secret must reference the service account key JSON file, and that file must be named <code>service-key.json</code>.</p>
 </div>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>azure-service-key<span class="w"> </span>-n<span class="w"> </span>opencost<span class="w"> </span>--from-file<span class="o">=</span>service-key.json
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>azure-service-key<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>--from-file<span class="o">=</span>service-key.json
 </code></pre></div>
 <h3 id="update-the-integrationconfig">Update the IntegrationConfig<a class="headerlink" href="#update-the-integrationconfig" title="Permanent link">#</a></h3>
 <p>Finally, update the IntegrationConfig with the Azure pricing model:</p>
@@ -4476,7 +4476,7 @@ chmod<span class="w"> </span>u+x<span class="w"> </span>assign-billing-role.bash
 <p>As well as the billing account ID, OpenCost also needs the offer ID for your subscription to query the price sheet. You can find this on the <a href="https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-subscription">subscription page in the Azure portal</a>.</p>
 <h3 id="configure-opencost-to-use-the-price-sheet-api">Configure OpenCost to use the Price Sheet API<a class="headerlink" href="#configure-opencost-to-use-the-price-sheet-api" title="Permanent link">#</a></h3>
 <p>The billing account and offer ID need to be passed to OpenCost in environment variables. To do this, create a secret with the following values:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>customer-specific-pricing<span class="w"> </span>-n<span class="w"> </span>opencost<span class="w"> </span>--from-literal<span class="o">=</span>azure-billing-account<span class="o">=</span>&lt;your<span class="w"> </span>billing<span class="w"> </span>account<span class="w"> </span>ID&gt;<span class="w"> </span>--from-literal<span class="o">=</span>azure-offer-id<span class="o">=</span>&lt;your<span class="w"> </span>offer<span class="w"> </span>ID&gt;
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>customer-specific-pricing<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>--from-literal<span class="o">=</span>azure-billing-account<span class="o">=</span>&lt;your<span class="w"> </span>billing<span class="w"> </span>account<span class="w"> </span>ID&gt;<span class="w"> </span>--from-literal<span class="o">=</span>azure-offer-id<span class="o">=</span>&lt;your<span class="w"> </span>offer<span class="w"> </span>ID&gt;
 </code></pre></div>
 <p>Finally, update the IntegrationConfig with the Azure pricing model:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
@@ -4591,7 +4591,7 @@ chmod<span class="w"> </span>u+x<span class="w"> </span>assign-billing-role.bash
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">#</a></h2>
 <p>In this guide, we have seen how to configure OpenCost to use Azure pricing model. We have seen how to configure Azure Pricing Configuration, Customer-specific pricing, and Azure Cloud Costs. To enable all three pricing models, you can create a single secret with all the required values and update the IntegrationConfig to use the secret.</p>
 <p>for example:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>azure-pricing<span class="w"> </span>-n<span class="w"> </span>opencost<span class="w"> </span>--from-file<span class="o">=</span>service-key.json<span class="w"> </span>--from-literal<span class="o">=</span>azure-billing-account<span class="o">=</span>&lt;your<span class="w"> </span>billing<span class="w"> </span>account<span class="w"> </span>ID&gt;<span class="w"> </span>--from-literal<span class="o">=</span>azure-offer-id<span class="o">=</span>&lt;your<span class="w"> </span>offer<span class="w"> </span>ID&gt;<span class="w"> </span>--from-file<span class="o">=</span>./cloud-integration.json
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>azure-pricing<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>--from-file<span class="o">=</span>service-key.json<span class="w"> </span>--from-literal<span class="o">=</span>azure-billing-account<span class="o">=</span>&lt;your<span class="w"> </span>billing<span class="w"> </span>account<span class="w"> </span>ID&gt;<span class="w"> </span>--from-literal<span class="o">=</span>azure-offer-id<span class="o">=</span>&lt;your<span class="w"> </span>offer<span class="w"> </span>ID&gt;<span class="w"> </span>--from-file<span class="o">=</span>./cloud-integration.json
 </code></pre></div>
 <p>Update the IntegrationConfig to use the secret:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
