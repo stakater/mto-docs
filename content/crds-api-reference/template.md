@@ -100,10 +100,45 @@ resources:
     chart:
       repository:
         name: redis
+        version: 14.6.0
         repoUrl: https://charts.bitnami.com/bitnami
+        username:
+          key: username
+          name: redis-creds
+          namespace: namespace-n1
+        password:
+          key: password
+          name: redis-creds
+          namespace: namespace-n1
+    setValues:
+      - name: port
+        value: '6379'
+        forceString: false
     values: |
       redisPort: 6379
 ```
+
+A brief explanation of the fields in the Helm section:
+
+* `releaseName`: The name of the Helm release.
+* `chart`: The Helm chart details.
+    * `repository`: The Helm repository details.
+        * `name`: The name of the Helm repository.
+        * `version`: The version of the Helm chart.
+        * `repoUrl`: The URL of the Helm repository.
+    * `username`: A reference to the secret containing the username for the Helm repository in case the chart is in a private repository.
+        * `key`: The key in the secret containing the username.
+        * `name`: The name of the secret containing the username.
+        * `namespace`: The namespace of the secret containing the username.
+    * `password`: A reference to the secret containing the password for the Helm repository in case the chart is in a private repository.
+        * `key`: The key in the secret containing the password.
+        * `name`: The name of the secret containing the password.
+        * `namespace`: The namespace of the secret containing the password.
+* `setValues`: The values to set in the Helm chart.
+    * `name`: The name of the value.
+    * `value`: The value to set.
+    * `forceString`: Whether to use `--set` or `--set-string` when setting the value. Default is `false` (use `--set`).
+* `values`: The values file for the Helm chart.
 
 ### 3. Resource Mapping
 

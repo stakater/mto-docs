@@ -202,7 +202,7 @@ Integration config will be managing the following resources required for console
 - `Prometheus` resources
 - `Opencost` resources
 - `MTO Console, Gateway, Keycloak` resources
-- `Showback` cron job
+- `Showback` cron-job
 
 Details on console GUI and showback can be found [here](../explanation/console.md)
 
@@ -346,7 +346,7 @@ This field contains roles that will be used to create default `roleBindings` for
 
 ##### Custom
 
-An array of custom roles. Similar to the `default` field, you can mention roles within this field as well. However, the custom roles also require the use of a `labelSelector` for each iteration within the array. The roles mentioned here will only apply to the namespaces that are matched by the labelSelector. If a namespace is matched by 2 different `labelSelectors`, then both roles will apply to it. Additionally, roles can be skipped within the labelSelector. These missing roles are then inherited from the `default` roles field . For example, if the following custom roles arrangement is used:
+An array of custom roles. Similar to the `default` field, you can mention roles within this field as well. However, the custom roles also require the use of a `labelSelector` for each iteration within the array. The roles mentioned here will only apply to the namespaces that are matched by the `labelSelector`. If a namespace is matched by 2 different `labelSelectors`, then both roles will apply to it. Additionally, roles can be skipped within the `labelSelector`. These missing roles are then inherited from the `default` roles field . For example, if the following custom roles arrangement is used:
 
 ```yaml
 custom:

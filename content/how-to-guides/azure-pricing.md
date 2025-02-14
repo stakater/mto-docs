@@ -74,7 +74,7 @@ Next, create a secret for the Azure Service Principal
     When managing the service account key as a Kubernetes secret, the secret must reference the service account key JSON file, and that file must be named `service-key.json`.
 
 ```bash
-kubectl create secret generic azure-service-key -n opencost --from-file=service-key.json
+kubectl create secret generic azure-service-key -n multi-tenant-operator --from-file=service-key.json
 ```
 
 ### Update the IntegrationConfig
@@ -130,7 +130,7 @@ As well as the billing account ID, OpenCost also needs the offer ID for your sub
 The billing account and offer ID need to be passed to OpenCost in environment variables. To do this, create a secret with the following values:
 
 ```bash
-kubectl create secret generic customer-specific-pricing -n opencost --from-literal=azure-billing-account=<your billing account ID> --from-literal=azure-offer-id=<your offer ID>
+kubectl create secret generic customer-specific-pricing -n multi-tenant-operator --from-literal=azure-billing-account=<your billing account ID> --from-literal=azure-offer-id=<your offer ID>
 ```
 
 Finally, update the IntegrationConfig with the Azure pricing model:
@@ -266,7 +266,7 @@ In this guide, we have seen how to configure OpenCost to use Azure pricing model
 for example:
 
 ```bash
-kubectl create secret generic azure-pricing -n opencost --from-file=service-key.json --from-literal=azure-billing-account=<your billing account ID> --from-literal=azure-offer-id=<your offer ID> --from-file=./cloud-integration.json
+kubectl create secret generic azure-pricing -n multi-tenant-operator --from-file=service-key.json --from-literal=azure-billing-account=<your billing account ID> --from-literal=azure-offer-id=<your offer ID> --from-file=./cloud-integration.json
 ```
 
 Update the IntegrationConfig to use the secret:
