@@ -4585,10 +4585,55 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">    </span><span class="nt">chart</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">repository</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span>
+<span class="w">        </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14.6.0</span>
 <span class="w">        </span><span class="nt">repoUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://charts.bitnami.com/bitnami</span>
+<span class="w">        </span><span class="nt">username</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">username</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis-creds</span>
+<span class="w">          </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-n1</span>
+<span class="w">        </span><span class="nt">password</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis-creds</span>
+<span class="w">          </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-n1</span>
+<span class="w">    </span><span class="nt">setValues</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">port</span>
+<span class="w">        </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;6379&#39;</span>
+<span class="w">        </span><span class="nt">forceString</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">      </span><span class="no">redisPort: 6379</span>
 </code></pre></div>
+<p>A brief explanation of the fields in the Helm section:</p>
+<ul>
+<li><code>releaseName</code>: The name of the Helm release.</li>
+<li><code>chart</code>: The Helm chart details.<ul>
+<li><code>repository</code>: The Helm repository details.<ul>
+<li><code>name</code>: The name of the Helm repository.</li>
+<li><code>version</code>: The version of the Helm chart.</li>
+<li><code>repoUrl</code>: The URL of the Helm repository.</li>
+</ul>
+</li>
+<li><code>username</code>: A reference to the secret containing the username for the Helm repository in case the chart is in a private repository.<ul>
+<li><code>key</code>: The key in the secret containing the username.</li>
+<li><code>name</code>: The name of the secret containing the username.</li>
+<li><code>namespace</code>: The namespace of the secret containing the username.</li>
+</ul>
+</li>
+<li><code>password</code>: A reference to the secret containing the password for the Helm repository in case the chart is in a private repository.<ul>
+<li><code>key</code>: The key in the secret containing the password.</li>
+<li><code>name</code>: The name of the secret containing the password.</li>
+<li><code>namespace</code>: The namespace of the secret containing the password.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>setValues</code>: The values to set in the Helm chart.<ul>
+<li><code>name</code>: The name of the value.</li>
+<li><code>value</code>: The value to set.</li>
+<li><code>forceString</code>: Whether to use <code>--set</code> or <code>--set-string</code> when setting the value. Default is <code>false</code> (use <code>--set</code>).</li>
+</ul>
+</li>
+<li><code>values</code>: The values file for the Helm chart.</li>
+</ul>
 <h3 id="3-resource-mapping">3. Resource Mapping<a class="headerlink" href="#3-resource-mapping" title="Permanent link">#</a></h3>
 <p>This approach maps secrets and configmaps from one tenant's namespace to another tenant's namespace, or within a tenant's namespace.</p>
 <h4 id="how-it-works_2">How It Works<a class="headerlink" href="#how-it-works_2" title="Permanent link">#</a></h4>

@@ -4165,6 +4165,24 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
+  <a href="#pre-upgrade-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Upgrade Checklist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-upgrade-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Post-Upgrade Checklist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#components" class="md-nav__link">
     <span class="md-ellipsis">
       Components
@@ -5392,6 +5410,24 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
+  <a href="#pre-upgrade-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Upgrade Checklist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-upgrade-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Post-Upgrade Checklist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#components" class="md-nav__link">
     <span class="md-ellipsis">
       Components
@@ -6536,6 +6572,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li>Fix a bug in Vault policies where editor role had incorrect permissions.</li>
 <li>Fix a bug in sandbox creations where sandbox namespaces were not being created if there were only groups in the tenant.</li>
 <li>Fix for IC controller where it would not reconcile if the cluster had too many Configmaps, making the informer cache too big to be watched.</li>
+</ul>
+<h4 id="pre-upgrade-checklist">Pre-Upgrade Checklist<a class="headerlink" href="#pre-upgrade-checklist" title="Permanent link">#</a></h4>
+<p>Before upgrading to v1.1.0, perform the following steps:</p>
+<ul>
+<li>Disable <code>console</code> in the integration config.</li>
+<li>Remove the <code>tenant-operator-casbin-config</code> Configmap from the <code>multi-tenant-operator</code> namespace, if it exists.</li>
+</ul>
+<h4 id="post-upgrade-checklist">Post-Upgrade Checklist<a class="headerlink" href="#post-upgrade-checklist" title="Permanent link">#</a></h4>
+<ul>
+<li>Enable <code>console</code> in the integration config. <a href="installation/openshift.html#enabling-console">Link</a></li>
+<li>If the <code>prometheus-server</code> pod is failing, ensure that only one <code>prometheus-server</code> deployment exists in the <code>multi-tenant-operator</code> namespace. If multiple deployments exist, delete the older one.</li>
 </ul>
 <h4 id="components">Components<a class="headerlink" href="#components" title="Permanent link">#</a></h4>
 <table>
