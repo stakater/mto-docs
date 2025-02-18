@@ -90,25 +90,25 @@ First, store the ID of your AKS cluster in a variable named AKS_ID:
 AKS_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query id -o tsv)
 ```
 
-Create your first test group named appdev using group command and assign its ID to APPDEV_ID variable:
+Create your first test group named `appdev` using group command and assign its ID to `APPDEV_ID` variable:
 
 ```terminal
 APPDEV_ID=$(az ad group create --display-name appdev --mail-nickname appdev --query id -o tsv)
 ```
 
-Allow the appdev group to interact with the AKS cluster using kubectl by assigning them the Azure Kubernetes Service Cluster User Role:
+Allow the `appdev` group to interact with the AKS cluster using kubectl by assigning them the Azure Kubernetes Service Cluster User Role:
 
 ```terminal
 az role assignment create --assignee $APPDEV_ID --role "Azure Kubernetes Service Cluster User Role" --scope $AKS_ID
 ```
 
-Create your second test group named opssre using the command and assign its ID to the OPSSRE_ID variable:
+Create your second test group named `opssre` using the command and assign its ID to the `OPSSRE_ID` variable:
 
 ```terminal
 OPSSRE_ID=$(az ad group create --display-name opssre --mail-nickname opssre --query id -o tsv)
 ```
 
-Allow the opssre group to interact with the AKS cluster using kubectl by assigning them the Azure Kubernetes Service Cluster User Role:
+Allow the `opssre` group to interact with the AKS cluster using kubectl by assigning them the Azure Kubernetes Service Cluster User Role:
 
 ```terminal
 az role assignment create --assignee $OPSSRE_ID --role "Azure Kubernetes Service Cluster User Role" --scope $AKS_ID
@@ -118,7 +118,7 @@ az role assignment create --assignee $OPSSRE_ID --role "Azure Kubernetes Service
 
 Set User Principal Name (UPN) and password for your users. The UPN must include the verified domain name of your tenant, for example `user@company.com`.
 
-Following command reads the UPN for the appdev group and stores it in the `AAD_DEV_UPN` variable:
+Following command reads the UPN for the `appdev` group and stores it in the `AAD_DEV_UPN` variable:
 
 ```terminal
 echo "Please enter the UPN for application developers: " && read AAD_DEV_UPN
@@ -126,7 +126,7 @@ echo "Please enter the UPN for application developers: " && read AAD_DEV_UPN
 
 For this scope of this blog, we will assume that the entered UPN was `aksdev@company.com`.
 
-Following command reads the password for your user and stores it in the AAD_DEV_PW variable:
+Following command reads the password for your user and stores it in the `AAD_DEV_PW` variable:
 
 ```terminal
 echo "Please enter the secure password for application developers: " && read AAD_DEV_PW
@@ -220,7 +220,7 @@ cert-manager-webhook-757c9d4bb7-wd9g8      1/1     Running   0          7m18s
 
 Helm will be used to install MTO as it is the only available way of installing it on Kubernetes Clusters.
 
-Use helm install command to install MTO helm chart. Here, `bypassedGroups` has to be set as `system:masters` as it is used by masterclient of AKS and `<mto-admins-id>`as it is used by test-admin-user:
+Use helm install command to install MTO helm chart. Here, `bypassedGroups` has to be set as `system:masters` as it is used by `masterclient` of AKS and `<mto-admins-id>`as it is used by `test-admin-user`:
 
 ```terminal
 helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups='system:masters\,<mto-admins-id>'
@@ -242,8 +242,9 @@ tenant-operator-tenant-controller-57fb885c84-7ps92                2/2     Runnin
 tenant-operator-webhook-5f8f675549-jv9n8                          2/2     Running   0          2m
 ```
 
-Setting up Tenant for Users
-Start by getting IDs for opssre and appdev groups by running `az ad group show` command:
+### Setting up Tenant for Users
+
+Start by getting IDs for `opssre` and `appdev` groups by running `az ad group show` command:
 
 ```terminal
 $ az ad group show --group appdev
@@ -295,7 +296,7 @@ spec:
 EOF
 ```
 
-Now, mention this `Quota` in two `Tenant` CRs, with opssre and appdev group IDs in the groups section of spec:
+Now, mention this `Quota` in two `Tenant` CRs, with `opssre` and `appdev` group IDs in the groups section of spec:
 
 ```terminal
 $ kubectl apply -f - <<EOF
@@ -361,19 +362,19 @@ Notice that MTO has created two namespaces under each tenant.
 
 ### AppDev group
 
-AppDev is one of the previously created groups, its scope is limited to Tenant A namespaces as we mentioned its group ID in Tenant A. Start by clearing token of test-admin-user:
+AppDev is one of the previously created groups, its scope is limited to Tenant A namespaces as we mentioned its group ID in Tenant A. Start by clearing token of `test-admin-user`:
 
 ```terminal
 kubelogin remove-tokens
 ```
 
-Use the aksdev user from appdev group to log in to the cluster:
+Use the `aksdev` user from `appdev` group to log in to the cluster:
 
 ```terminal
 kubectl get pods
 ```
 
-This will take you to devicelogin page. After entering the correct code, it will redirect you to Microsoft Login page, here you will enter the email and password of aksdev user created at the start of the article.
+This will take you to device login page. After entering the correct code, it will redirect you to Microsoft Login page, here you will enter the email and password of `aksdev` user created at the start of the article.
 
 After successful log in, it will show you the output of your kubectl command:
 
@@ -413,19 +414,19 @@ This operation fails with an error showing strict controls in their Tenants.
 
 OpsSre is the second group created at the start of this article, its scope is limited to Tenant B namespaces as we mentioned its group ID in Tenant B.
 
-Start by clearing token of appdev user:
+Start by clearing token of `appdev` user:
 
 ```terminal
 kubelogin remove-tokens
 ```
 
-Use the opssre user from opssre group to log in to the cluster:
+Use the `opssre` user from `opssre` group to log in to the cluster:
 
 ```terminal
 kubectl get pods
 ```
 
-This will take you to devicelogin page. After entering the correct code, it will redirect you to Microsoft Login page, here you will enter the email and password of opssre user created at the start of the article.
+This will take you to device login page. After entering the correct code, it will redirect you to Microsoft Login page, here you will enter the email and password of `opssre` user created at the start of the article.
 
 After successful log in, it will show you the output of your kubectl command:
 

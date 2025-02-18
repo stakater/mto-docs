@@ -50,7 +50,7 @@ Unlike "SLEEP" tab, hibernate requires an interval to be selected in order to do
 - The schedule name after creation will append the tenant name to it's end indicating the tenant it belongs to for clarification.
 - Each interval is defined by a **Sleep Schedule** and a **Wake Schedule** in cron format (e.g., `"30 * * * *"` for 30 minutes past each hour).
 
-![createInterval](../images/createInterval.png)
+![create Interval](../images/createInterval.png)
 
 ### Selecting an Interval
 
