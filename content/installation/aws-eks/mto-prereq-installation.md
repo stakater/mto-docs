@@ -44,9 +44,9 @@ aws eks update-kubeconfig --name <CLUSTER_NAME> --region <AWS_REGION>
 
 Following steps can be used to configure an EKS cluster for MTO installation. Alternatively, [`install-mto-prereqs.sh`](#installation) script can be used automate these steps
 
-### 1. Install NGINX Ingress Controller
+### 1. Install `nginx` Ingress Controller
 
-NGINX ingress controller can be installed using
+`nginx` ingress controller can be installed using
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/aws/deploy.yaml
@@ -147,7 +147,7 @@ parameters:
 
 ### 7. Create Wildcard DNS Record
 
-Retrieve NGINX ingress controller external IP using following command
+Retrieve `nginx` ingress controller external IP using following command
 
 ```bash
 kubectl get svc ingress-nginx-controller -n ingress-nginx -o yaml
@@ -218,7 +218,7 @@ spec:
 | Parameter                     | Description   |
 | ------                        | ------        |
 | `<CERTIFICATE_NAME>`          | Name of the certificate to be generated  |
-| `<FULL_SUBDOMAIN>`            | DNS Subdomain of EKS cluster
+| `<FULL_SUBDOMAIN>`            | DNS Subdomain of EKS cluster |
 | `<NAMESPACE>`                 | Namespace where generated certificate and secret will be placed. Use same namespace as MTO or copy the generated secret to MTO's namespace if MTO is installed in different namespace  |
 | `<CERTIFICATE_SECRET_NAME>`   | Certificate secret will be generated with this name. This secret can be used in MTO's CR to enable SSL on MTO components  |
 
