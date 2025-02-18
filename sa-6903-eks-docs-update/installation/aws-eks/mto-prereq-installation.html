@@ -2405,7 +2405,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
           <li class="md-nav__item">
   <a href="#1-install-nginx-ingress-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Install NGINX Ingress Controller
+      1. Install nginx Ingress Controller
     </span>
   </a>
   
@@ -4432,7 +4432,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
           <li class="md-nav__item">
   <a href="#1-install-nginx-ingress-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Install NGINX Ingress Controller
+      1. Install nginx Ingress Controller
     </span>
   </a>
   
@@ -4565,8 +4565,8 @@ aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span cla
 </code></pre></div>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
 <p>Following steps can be used to configure an EKS cluster for MTO installation. Alternatively, <a href="#installation"><code>install-mto-prereqs.sh</code></a> script can be used automate these steps</p>
-<h3 id="1-install-nginx-ingress-controller">1. Install NGINX Ingress Controller<a class="headerlink" href="#1-install-nginx-ingress-controller" title="Permanent link">#</a></h3>
-<p>NGINX ingress controller can be installed using</p>
+<h3 id="1-install-nginx-ingress-controller">1. Install <code>nginx</code> Ingress Controller<a class="headerlink" href="#1-install-nginx-ingress-controller" title="Permanent link">#</a></h3>
+<p><code>nginx</code> ingress controller can be installed using</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/aws/deploy.yaml
 </code></pre></div>
 <h3 id="2-install-cert-manager">2. Install Cert Manager<a class="headerlink" href="#2-install-cert-manager" title="Permanent link">#</a></h3>
@@ -4635,7 +4635,7 @@ aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span cla
 <span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gp3</span>
 </code></pre></div>
 <h3 id="7-create-wildcard-dns-record">7. Create Wildcard DNS Record<a class="headerlink" href="#7-create-wildcard-dns-record" title="Permanent link">#</a></h3>
-<p>Retrieve NGINX ingress controller external IP using following command</p>
+<p>Retrieve <code>nginx</code> ingress controller external IP using following command</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>ingress-nginx-controller<span class="w"> </span>-n<span class="w"> </span>ingress-nginx<span class="w"> </span>-o<span class="w"> </span>yaml
 </code></pre></div>
 <p>External IP should be available at <code>status &gt; loadBalanacer &gt; ingress[0] &gt; hostname</code>. Execute the command again after sometime if hostname is not available</p>
