@@ -218,7 +218,7 @@ spec:
 | Parameter                     | Description   |
 | ------                        | ------        |
 | `<CERTIFICATE_NAME>`          | Name of the certificate to be generated  |
-`<FULL_SUBDOMAIN>`              | DNS Subdomain of EKS cluster
+| `<FULL_SUBDOMAIN>`            | DNS Subdomain of EKS cluster
 | `<NAMESPACE>`                 | Namespace where generated certificate and secret will be placed. Use same namespace as MTO or copy the generated secret to MTO's namespace if MTO is installed in different namespace  |
 | `<CERTIFICATE_SECRET_NAME>`   | Certificate secret will be generated with this name. This secret can be used in MTO's CR to enable SSL on MTO components  |
 
