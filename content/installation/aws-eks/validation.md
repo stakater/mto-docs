@@ -1,4 +1,4 @@
-# Create tenants on EKS Cluster using MTO
+# MTO Validation Guide
 
 This document provides detailed insights on creating MTO Tenants on EKS cluster. In this tutorial we will assume setup 2 tenants named logistics and retail for an imaginary ecommerce company.
 
