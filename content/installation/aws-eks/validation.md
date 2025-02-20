@@ -2,15 +2,7 @@
 
 This document provides detailed insights on creating MTO Tenants on EKS cluster. In this tutorial we will assume setup 2 tenants named logistics and retail for an imaginary ecommerce company.
 
-## Prerequisites
-
-MTO must be installed on EKS cluster. [MTO EKS installation guide](./mto-installation.md) provides a detailed walk-through of MTO installation on EKS.
-
-## User Interaction with the Cluster
-
-We will use two types of users to interact with the cluster, IAM users created via AWS Console and SSO Users.
-
-### Creating IAM Users
+### Creating AWS IAM Users
 
 We will create a group named `logistics-owner` and then add a user to that group.
 To create a group named `logistics-owner` use the following command

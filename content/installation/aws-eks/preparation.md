@@ -24,7 +24,7 @@ If you already have an EKS 1.28+ cluster that meets the [Cluster Requirements](#
 
 However, if you don’t have an existing cluster, follow this step-by-step guide to create and configure one properly for MTO installation.
 
-### Create AKS Cluster
+### Create EKS Cluster
 
 Execute the following snippet in your terminal with appropriate values. This snippet will configure the AWS Credentials. See [Manage access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for more details about access keys
 
