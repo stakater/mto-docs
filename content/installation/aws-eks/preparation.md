@@ -244,6 +244,12 @@ A wildcard certificate allows all applications under a given subdomain to use a 
 
 1. Apply the Wildcard Certificate Configuration
 
+Create a file named `wildcard-certificate.yaml` and replace the placeholders with the appropriate values:
+- <CERTIFICATE_NAME> - Name of the certificate to be generated.
+- <FULL_SUBDOMAIN> - DNS subdomain for which the wildcard certificate will be issued.
+- <NAMESPACE> - Namespace where the certificate and secret will be created. If MTO is installed in a different namespace, manually copy the generated secret.
+- <CERTIFICATE_SECRET_NAME> - Name of the secret that will store the generated certificate. This secret will be used in MTO’s configuration to enable SSL for MTO components.
+
 ```yaml
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -260,12 +266,19 @@ spec:
   - *.<FULL_SUBDOMAIN>
 ```
 
-| Parameter                     | Description   |
-| ------                        | ------        |
-| `<CERTIFICATE_NAME>`          | Name of the certificate to be generated  |
-| `<FULL_SUBDOMAIN>`            | DNS Subdomain of EKS cluster |
-| `<NAMESPACE>`                 | Namespace where generated certificate and secret will be placed. Use same namespace as MTO or copy the generated secret to MTO's namespace if MTO is installed in different namespace  |
-| `<CERTIFICATE_SECRET_NAME>`   | Certificate secret will be generated with this name. This secret can be used in MTO's CR to enable SSL on MTO components  |
+1. Apply the certificate configuration using the following command:
+
+```bash
+kubectl apply -f wildcard-certificate.yaml
+```
+
+1. Verify Certificate Creation
+
+After applying the configuration, check if the certificate has been issued successfully:
+
+```bash
+kubectl apply -f wildcard-certificate.yaml
+```
 
 ## What's Next?
 
