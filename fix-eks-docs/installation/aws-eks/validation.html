@@ -2522,18 +2522,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#logistics-users-on-tenant-namespaces" class="md-nav__link">
+  <a href="#logistics-user-on-tenant-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
-      Logistics Users on Tenant Namespaces
+      Logistics User on Tenant Namespaces
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#retail-users-on-tenant-namespaces" class="md-nav__link">
+  <a href="#retail-user-on-tenant-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
-      Retail Users on Tenant Namespaces
+      Retail User on Tenant Namespaces
     </span>
   </a>
   
@@ -4550,18 +4550,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#logistics-users-on-tenant-namespaces" class="md-nav__link">
+  <a href="#logistics-user-on-tenant-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
-      Logistics Users on Tenant Namespaces
+      Logistics User on Tenant Namespaces
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#retail-users-on-tenant-namespaces" class="md-nav__link">
+  <a href="#retail-user-on-tenant-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
-      Retail Users on Tenant Namespaces
+      Retail User on Tenant Namespaces
     </span>
   </a>
   
@@ -4697,39 +4697,39 @@ Output:
 </code></pre></div>
 <h3 id="2-create-tenants">2. Create Tenants<a class="headerlink" href="#2-create-tenants" title="Permanent link">#</a></h3>
 <p>Now, we will create 2 tenants <code>logistics</code> and <code>retail</code> with one user each</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt;EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logistics</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">falcon@nordmart.com</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="l l-Scalar l-Scalar-Plain">EOF</span>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">apiVersion: tenantoperator.stakater.com/v1beta3</span>
+<span class="s">kind: Tenant</span>
+<span class="s">metadata:</span>
+<span class="s">  name: logistics</span>
+<span class="s">spec:</span>
+<span class="s">  namespaces:</span>
+<span class="s">    withTenantPrefix:</span>
+<span class="s">    - dev</span>
+<span class="s">    - build</span>
+<span class="s">  accessControl:</span>
+<span class="s">    owners:</span>
+<span class="s">      users:</span>
+<span class="s">      - falcon@nordmart.com</span>
+<span class="s">  quota: small</span>
+<span class="s">EOF</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt;EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">retail</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bear@nordmart.com</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="l l-Scalar l-Scalar-Plain">EOF</span>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">apiVersion: tenantoperator.stakater.com/v1beta3</span>
+<span class="s">kind: Tenant</span>
+<span class="s">metadata:</span>
+<span class="s">  name: retail</span>
+<span class="s">spec:</span>
+<span class="s">  namespaces:</span>
+<span class="s">    withTenantPrefix:</span>
+<span class="s">    - dev</span>
+<span class="s">    - build</span>
+<span class="s">  accessControl:</span>
+<span class="s">    owners:</span>
+<span class="s">      users:</span>
+<span class="s">      - bear@nordmart.com</span>
+<span class="s">  quota: small</span>
+<span class="s">EOF</span>
 </code></pre></div>
 <p>Notice that the only difference in both tenant specs are the users.</p>
 <p>After the creation of <code>Tenant</code> CRs, now users can access namespaces in their respective tenants and preform create, update, delete functions.</p>
@@ -4761,10 +4761,10 @@ retail-build<span class="w">            </span>Active<span class="w">   </span>5
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="nv">$AWS_ACCESS_KEY_ID</span>
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="nv">$AWS_SECRET_ACCESS_KEY</span>
 
-aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span class="w"> </span>--name<span class="w"> </span><span class="nv">$EKS_CLUSTER_NAME</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$AWS_REGION</span>
+aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span class="w"> </span>--name<span class="w"> </span>&lt;EKS_CLUSTER_NAME&gt;<span class="w"> </span>--region<span class="w"> </span><span class="nv">$AWS_REGION</span>
 </code></pre></div>
 <h2 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">#</a></h2>
-<h3 id="logistics-users-on-tenant-namespaces">Logistics Users on Tenant Namespaces<a class="headerlink" href="#logistics-users-on-tenant-namespaces" title="Permanent link">#</a></h3>
+<h3 id="logistics-user-on-tenant-namespaces">Logistics User on Tenant Namespaces<a class="headerlink" href="#logistics-user-on-tenant-namespaces" title="Permanent link">#</a></h3>
 <p>We will now try to deploy a pod from user <code>falcon@nordmart.com</code> in its tenant namespace <code>logistics-dev</code></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>logistics-dev
 
@@ -4780,7 +4780,7 @@ Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> 
 
 Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>namespaces<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>list<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;namespaces&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>scope
 </code></pre></div>
-<h3 id="retail-users-on-tenant-namespaces">Retail Users on Tenant Namespaces<a class="headerlink" href="#retail-users-on-tenant-namespaces" title="Permanent link">#</a></h3>
+<h3 id="retail-user-on-tenant-namespaces">Retail User on Tenant Namespaces<a class="headerlink" href="#retail-user-on-tenant-namespaces" title="Permanent link">#</a></h3>
 <p>We will repeat the above operations for our SSO user <code>bear@nordmart.com</code> as well</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>retail-dev
 

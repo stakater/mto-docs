@@ -4755,11 +4755,13 @@ aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span cla
 <ol>
 <li>
 <p>Apply the Wildcard Certificate Configuration</p>
-<p>Create a file named <code>wildcard-certificate.yaml</code> and replace the placeholders with the appropriate values:
-- <code>&lt;CERTIFICATE_NAME&gt;</code> - Name of the certificate to be generated.
-- <code>&lt;FULL_SUBDOMAIN&gt;</code> - DNS subdomain for which the wildcard certificate will be issued.
-- <code>&lt;NAMESPACE&gt;</code> - Namespace where the certificate and secret will be created. If MTO is installed in a different namespace, manually copy the generated secret.
-- <code>&lt;CERTIFICATE_SECRET_NAME&gt;</code> - Name of the secret that will store the generated certificate. This secret will be used in MTO’s configuration to enable SSL for MTO components.</p>
+<p>Create a file named <code>wildcard-certificate.yaml</code> and replace the placeholders with the appropriate values:</p>
+<ul>
+<li><code>&lt;CERTIFICATE_NAME&gt;</code> - Name of the certificate to be generated.</li>
+<li><code>&lt;FULL_SUBDOMAIN&gt;</code> - DNS subdomain for which the wildcard certificate will be issued.</li>
+<li><code>&lt;NAMESPACE&gt;</code> - Namespace where the certificate and secret will be created. If MTO is installed in a different namespace, manually copy the generated secret.</li>
+<li><code>&lt;CERTIFICATE_SECRET_NAME&gt;</code> - Name of the secret that will store the generated certificate. This secret will be used in MTO’s configuration to enable SSL for MTO components.</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Certificate</span>
 <span class="nt">metadata</span><span class="p">:</span>
