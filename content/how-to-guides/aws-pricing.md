@@ -138,7 +138,7 @@ Set these values into the AWS array in the `cloud-integration.json`:
 - `<ATHENA_TABLE>` is the name of the table created by the Athena setup The table name is typically the database name with the leading `athenacurcfn_` removed (but is not available as a CloudFormation stack resource).
 - `<ATHENA_WORKGROUP>` is the `workgroup` assigned to be used with Athena. Default value is Primary.
 - `<ATHENA_PROJECT_ID>` is the AWS AccountID where the Athena CUR is. For example: 530337586277.
-- `<MASTER_PAYER_ARN>` is an optional value which should be set if you are using a multi-account billing set-up and are not accessing Athena through the primary account. It should be set to the ARN of the role in the management (formerly master payer) account, for example: `arn:aws:iam::530337586275:role/OpenCostRole`.
+- `<MASTER_PAYER_ARN>` is an optional value which should be set if you are using a multi-account billing set-up and are not accessing Athena through the primary account. It should be set to the ARN of the role in the management (formerly `master` payer) account, for example: `arn:aws:iam::530337586275:role/OpenCostRole`.
 
 ```json
 {
