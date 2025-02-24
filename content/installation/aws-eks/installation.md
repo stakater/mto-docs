@@ -1,28 +1,18 @@
-# MTO EKS Installation
+# MTO Installation Guide
 
-This document covers how to deploy Multi Tenant Operator with an [Amazon EKS (Elastic Kubernetes Service)](https://aws.amazon.com/eks/) cluster.
+Once the [necessary preparations](./preparation.md) are complete, you can proceed with the installation section.
 
-## Prerequisites
+The installation process consists of two steps:
 
-1. [`eksctl`](https://eksctl.io/installation/) to create and manage EKS cluster. See [Setting up Cluster](./mto-prereq-installation.md#setting-up-cluster) to create and configure an EKS cluster
-1. [`kubectl`](https://kubernetes.io/docs/tasks/tools/#kubectl) 1.18.3 or later to interact with Kubernetes cluster
-1. [Helm CLI](https://helm.sh/docs/intro/install/) to install MTO chart
-1. A DNS service to make MTO console accessible via domain name
-1. Following components must be installed and configured on cluster before installation
+1. [Install MTO Core](#install-mto-core)
+1. [Enable MTO Console](#enable-mto-console)
 
-    - [x] Ingress Controller
-    - [x] Cert Manager
-    - [x] Wildcard Certificate
-    - [ ] Storage Class (if MTO Console is enabled)
-
-    Follow our [MTO prerequisites installation guide](./mto-prereq-installation.md) to install these dependencies on EKS Cluster
-
-## Installing MTO
+## Install MTO Core
 
 We will be using helm to install the operator, here we have set `bypassedGroups` as `cluster-admins` because our admin user is part of that group as seen in above screenshot.
 
 ```bash
-helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=cluster-admins
+helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 1.1.0 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=cluster-admins
 ```
 
 We will wait for the pods to come in running state.
@@ -95,4 +85,4 @@ tenant-operator-keycloak   nginx   keycloak.iinhdnh6.demo.kubeapp.cloud   ae51c1
 
 ## What's Next
 
-MTO installation has been completed. Now we can [create our first tenant on EKS using MTO](./create-tenants.md).
+Now lets [create our first tenant on EKS](./validation.md).
