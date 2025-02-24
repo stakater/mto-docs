@@ -7,6 +7,7 @@ This document provides detailed insights on creating MTO Tenants on EKS cluster.
 ### 1. Create a User
 
 Create a user with username `falcon@nordmart.com`
+
 ```sh
 $ aws iam create-user --user-name falcon@nordmart.com
 
@@ -55,7 +56,7 @@ Executing the following command will provide the Access Key Id and Access Secret
 aws iam create-access-key --user-name "falcon@nordmart.com"
 ```
 
-### 4. Grant IAM users access to Kubernetes with a ConfigMap
+### 4. Grant IAM users access to Kubernetes with a `ConfigMap`
 
 Use the following command to map this user in `aws-auth` configmap in `kube-system` namespace.
 
@@ -71,7 +72,7 @@ Repeat the same steps to create another user `bear@nordmart.com` for retail tena
 
 ## Setting up Tenants
 
-Now, we will create tenants for above created users. 
+Now, we will create tenants for above created users.
 
 ### 1. Create a Quota
 
@@ -97,6 +98,7 @@ spec:
       memory: "8Gi"
 EOF
 ```
+
 ### 2. Create Tenants
 
 Now, we will create 2 tenants `logistics` and `retail` with one user each

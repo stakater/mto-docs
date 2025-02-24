@@ -5,6 +5,7 @@ This document provides a detailed walkthrough of the preparation steps required 
 ## Cluster Requirements
 
 An EKS 1.28+ cluster with the following components:
+
 - Valid certificates for MTO Gateway, MTO Console, and MTO Keycloak
 - A default storage class
 - An Ingress controller
@@ -13,6 +14,7 @@ An EKS 1.28+ cluster with the following components:
 ## Local Setup Requirements
 
 The installation machine must have:
+
 - Helm installed
 - kubectl installed
 
@@ -57,7 +59,7 @@ aws eks update-kubeconfig --name <CLUSTER_NAME> --region <AWS_REGION>
 
 ### Install Ingress Controller
 
-To install NGINX Ingress Controller, run the following command:
+To install nginx Ingress Controller, run the following command:
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/aws/deploy.yaml
@@ -88,7 +90,7 @@ Replace <AWS_SECRET_ACCESS_KEY> with your actual AWS secret key.
 To enable automatic SSL certificate issuance using Let’s Encrypt, you need to create a ClusterIssuer resource in Kubernetes. This issuer will use Route 53 DNS-01 challenge to validate domain ownership and issue certificates.
 
 1. Create a YAML file named `letsencrypt-clusterissuer.yaml` for the ClusterIssuer with the following content. Replace the placeholders with your actual values:
-    
+
     - `<AWS_ACCESS_KEY_ID>`: Your AWS Access Key ID.
     - `<REGION>`: The AWS region where your Route 53 hosted zone is located (e.g., us-east-1).
     - `<BASE_DOMAIN>`: Your base domain (e.g., example.com).
@@ -118,7 +120,7 @@ To enable automatic SSL certificate issuance using Let’s Encrypt, you need to 
               dnsZones:
                 - <BASE_DOMAIN>  # Replace with your base domain
     ```
-    
+
 
 1. Apply the YAML file to your cluster:
 
@@ -134,7 +136,7 @@ To enable automatic SSL certificate issuance using Let’s Encrypt, you need to 
 
 ### Install AWS EBS CSI Driver
 
-The Amazon EBS CSI Driver enables Kubernetes to manage Amazon Elastic Block Store (EBS) volumes, handling their lifecycle as persistent storage for workloads. 
+The Amazon EBS CSI Driver enables Kubernetes to manage Amazon Elastic Block Store (EBS) volumes, handling their lifecycle as persistent storage for workloads.
 
 To install the AWS EBS CSI Driver, execute the following command:
 
@@ -180,17 +182,20 @@ kubectl get pods -n kube-system | grep ebs
 
 ### Create Wildcard DNS Record
 
-To ensure proper routing for applications, you need to create a wildcard DNS record that points to the NGINX Ingress Controller’s external IP. Follow these steps:
+To ensure proper routing for applications, you need to create a wildcard DNS record that points to the nginx Ingress Controller’s external IP. Follow these steps:
 
 1. Retrieve the Ingress Controller's External IP
-    Run the following command to get the external IP of the NGINX Ingress Controller:
+    Run the following command to get the external IP of the nginx Ingress Controller:
+
     ```bash
     kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath="{.status.loadBalancer.ingress[0].hostname}"
     ```
+    
     If the hostname is not available, wait for a few minutes and re-run the command.
 
 1. Retrieve Hosted Zone and Load Balancer IDs
     Run the following commands to retrieve the Route 53 Hosted Zone ID and Load Balancer Hosted Zone ID:
+    
     ```bash
     # Retrieve Hosted Zone ID
     HOSTED_ZONE_ID=$(aws route53 list-hosted-zones-by-name --dns-name <BASE_DOMAIN> --query "HostedZones[0].Id" --output text | cut -d '/' -f3)
@@ -200,7 +205,8 @@ To ensure proper routing for applications, you need to create a wildcard DNS rec
     ```
 
 1. Create a JSON File for the DNS Update
-    Create a file named change-batch.json and update the placeholders:
+    Create a file named `change-batch.json` and update the placeholders:
+    
     - `<FULL_SUBDOMAIN>` – Your subdomain (e.g., apps.example.com)
     - `<HOSTED_ZONE_LB_ID>` – Hosted Zone Load Balancer ID from Step 2
     - `<EXTERNAL_IP>` – External IP retrieved in Step 1
@@ -225,18 +231,20 @@ To ensure proper routing for applications, you need to create a wildcard DNS rec
     }
     ```
 
-1. Update the DNS Record in Route 53
-    Apply the DNS update using the following command:
+1. Update the DNS Record in Route 53 by using the following command
+
     ```bash
     aws route53 change-resource-record-sets --hosted-zone-id $HOSTED_ZONE_ID --change-batch file://change-batch.json
     ```
 
 1. Verify DNS Configuration
     Check if the DNS record has been propagated correctly:
+    
     ```bash
     nslookup <YOUR_DOMAIN>
     ```
-    Once the record is updated, traffic will be properly routed to the NGINX Ingress Controller.
+    
+    Once the record is updated, traffic will be properly routed to the nginx Ingress Controller.
 
 ### Create Wildcard Certificate
 
