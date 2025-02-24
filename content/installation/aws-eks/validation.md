@@ -1,38 +1,14 @@
-# Create tenants on EKS Cluster using MTO
+# MTO Validation Guide
 
-This document provides detailed insights on creating MTO Tenants on EKS cluster. In this tutorial we will assume setup 2 tenants named logistics and retail for an imaginary ecommerce company.
+This document provides detailed insights on creating MTO Tenants on EKS cluster. In this tutorial we will setup 2 tenants named logistics and retail for an imaginary ecommerce company.
 
-## Prerequisites
+## Create & Configure IAM Users
 
-MTO must be installed on EKS cluster. [MTO EKS installation guide](./mto-installation.md) provides a detailed walk-through of MTO installation on EKS.
+### 1. Create a User
 
-## User Interaction with the Cluster
+Create a user with username `falcon@nordmart.com`
 
-We will use two types of users to interact with the cluster, IAM users created via AWS Console and SSO Users.
-
-### Creating IAM Users
-
-We will create a group named `logistics-owner` and then add a user to that group.
-To create a group named `logistics-owner` use the following command
-
-```terminal
-$ aws iam create-group --group-name logistics-owner
-
-Output:
-{
-    "Group": {
-        "Path": "/",
-        "GroupName": "logistics-owner",
-        "GroupId": "AGPAZFWZTAEJYEKE56O3P",
-        "Arn": "arn:aws:iam::630742778131:group/logistics-owner",
-        "CreateDate": "2025-02-03T13:08:56Z"
-    }
-}
-```
-
-Create a user named `falcon@nordmart.com`
-
-```terminal
+```sh
 $ aws iam create-user --user-name falcon@nordmart.com
 
 Output:
@@ -47,9 +23,11 @@ Output:
 }
 ```
 
-We have created a user named `falcon@nordmart.com` in AWS Console, with ARN `arn:aws:iam::630742778131:user/falcon@nordmart.com`.
+We have created an IAM user named `falcon@nordmart.com`, with ARN `arn:aws:iam::630742778131:user/falcon@nordmart.com`.
 
-Create a JSON file to attach the policy. This policy will allow the user to access the cluster.
+### 2. Attach cluster access policy
+
+Create a AWS JSON policy file. This policy will allow the user to access the cluster.
 
 ```json
 {
@@ -64,52 +42,43 @@ Create a JSON file to attach the policy. This policy will allow the user to acce
 }
 ```
 
-Attach a policy to user
+Attach a policy to user by running the following command
 
 ```bash
-aws iam put-user-policy --user-name $name --policy-document file://policy.json --policy-name ClusterAccess
+aws iam put-user-policy --user-name falcon@nordmart.com --policy-document file://policy.json --policy-name ClusterAccess
 ```
 
-Add user to `logistics-owner` group
+### 3. Generating Access Keys
 
-```bash
-aws iam add-user-to-group --user-name "falcon@nordmart.com" --group-name "logistics-owner"
-```
-
-Generate the access keys that can be used to log in into the cluster. Executing the following command will provide the Access Key Id and Access Secret Key Id that can be used to log in
+Executing the following command will provide the Access Key Id and Access Secret Key Id that can be used to log in later
 
 ```bash
 aws iam create-access-key --user-name "falcon@nordmart.com"
 ```
 
+### 4. Grant IAM users access to Kubernetes with a `ConfigMap`
+
 Use the following command to map this user in `aws-auth` configmap in `kube-system` namespace.
 
 ```bash
-eksctl create iamidentitymapping --cluster "<CLUSTER_NAME>" \ 
+eksctl create iamidentitymapping --cluster "<CLUSTER_NAME>" \
                                  --region "<AWS_REGION>" \
                                  --arn "<USER_ARN>" \
                                  --username "falcon@nordmart.com" \
-                                 --group "logistics-dev" \
                                  --no-duplicate-arns
 ```
 
-Since we haven't attached any RBAC with this user at the moment, trying to access anything in the cluster would throw an error
+Repeat the same steps to create another user `bear@nordmart.com` for retail tenant.
 
-```terminal
-$ kubectl get svc
+## Setting up Tenants
 
-Error from server (Forbidden): services is forbidden: User "falcon@nordmart.com" cannot list resource "services" in API group "" in the namespace "default"
-```
+Now, we will create tenants for above created users.
 
-Repeat the same steps to create a group and a user for retail tenant.
-
-### Setting up Tenant for Users
-
-Now, we will set tenants for the above-mentioned users.
+### 1. Create a Quota
 
 We will start by creating a `Quota CR` with some resource limits
 
-```yaml
+```sh
 kubectl apply -f - <<EOF
 apiVersion: tenantoperator.stakater.com/v1beta1
 kind: Quota
@@ -130,9 +99,11 @@ spec:
 EOF
 ```
 
-Now, we will mention this `Quota` in two `Tenant` CRs
+### 2. Create Tenants
 
-```yaml
+Now, we will create 2 tenants `logistics` and `retail` with one user each
+
+```sh
 kubectl apply -f - <<EOF
 apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
@@ -151,7 +122,7 @@ spec:
 EOF
 ```
 
-```yaml
+```sh
 kubectl apply -f - <<EOF
 apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
@@ -172,13 +143,11 @@ EOF
 
 Notice that the only difference in both tenant specs are the users.
 
-### Accessing Tenant Namespaces
-
 After the creation of `Tenant` CRs, now users can access namespaces in their respective tenants and preform create, update, delete functions.
 
 Listing the namespaces by cluster admin will show us the recently created tenant namespaces
 
-```bash
+```sh
 $ kubectl get namespaces
 
 NAME                    STATUS   AGE
@@ -195,9 +164,29 @@ retail-dev              Active   5s
 retail-build            Active   5s
 ```
 
-### Logistics Users on Tenant Namespaces
+## Switching to different User in EKS Cluster
 
-We will now try to deploy a pod from user `falcon@nordmart.com` in its tenant namespace `tenant-iam-dev`
+Set the following environment variables from the access keys generated in [previous steps](#3-generating-access-keys)
+
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_REGION` (optional)
+
+Execute the following command to update the kube context
+
+```sh
+aws configure set region $AWS_REGION
+aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+
+aws eks update-kubeconfig --name <EKS_CLUSTER_NAME> --region $AWS_REGION
+```
+
+## Validation
+
+### Logistics User on Tenant Namespaces
+
+We will now try to deploy a pod from user `falcon@nordmart.com` in its tenant namespace `logistics-dev`
 
 ```bash
 $ kubectl run nginx --image nginx -n logistics-dev
@@ -221,7 +210,7 @@ $ kubectl get namespaces
 Error from server (Forbidden): namespaces is forbidden: User "falcon@nordmart.com" cannot list resource "namespaces" in API group "" at the cluster scope
 ```
 
-### Retail Users on Tenant Namespaces
+### Retail User on Tenant Namespaces
 
 We will repeat the above operations for our SSO user `bear@nordmart.com` as well
 
@@ -236,7 +225,7 @@ Trying to do operations outside the scope of its own tenant will result in error
 ```bash
 $ kubectl run nginx --image nginx -n retail-dev
 
-Error from server (Forbidden): pods is forbidden: User "bear@nordmart.com" cannot create resource "pods" in API group "" in the namespace "tenant-iam-dev"
+Error from server (Forbidden): pods is forbidden: User "bear@nordmart.com" cannot create resource "pods" in API group "" in the namespace "retail-dev"
 ```
 
 To be noted, `bear@nordmart.com` can not list namespaces
@@ -259,7 +248,7 @@ Error from server (Forbidden): namespaces is forbidden: User "bear@nordmart.com"
   {"console":true,"showback":true}
   ```
 
-  If console is set to false then [enable the MTO Console](./mto-installation.md#enable-mto-console) before proceeding to next step
+  If console is set to false then [enable the MTO Console](./installation.md#enable-mto-console) before proceeding to next step
 
 - **A Keycloak user with same username as AWS IAM user** should be created. Follow our [Setting Up User Access in Keycloak for MTO Console](../../how-to-guides/keycloak.md) guide to create a Keycloak user.
 
