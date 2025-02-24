@@ -8,21 +8,21 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-stakater-vale-package-0.x/installation/aws-eks/create-tenants.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-stakater-vale-package-0.x/installation/aws-eks/preparation.html">
       
       
-        <link rel="prev" href="mto-installation.html">
+        <link rel="prev" href="../azure-aks.html">
       
       
-        <link rel="next" href="../kubernetes.html">
+        <link rel="next" href="installation.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
     
     
       
-        <title>Validation - Multi Tenant Operator</title>
+        <title>Preparation - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#create-tenants-on-eks-cluster-using-mto" class="md-skip">
+        <a href="#mto-preparation-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -2322,50 +2322,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="mto-prereq-installation.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Prerequistes
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="mto-installation.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Installation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -2382,7 +2338,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
           
   
   <span class="md-ellipsis">
-    Validation
+    Preparation
     
   </span>
   
@@ -2390,11 +2346,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="create-tenants.html" class="md-nav__link md-nav__link--active">
+      <a href="preparation.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Validation
+    Preparation
     
   </span>
   
@@ -2419,64 +2375,109 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#cluster-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Prerequisites
+      Cluster Requirements
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#user-interaction-with-the-cluster" class="md-nav__link">
+  <a href="#local-setup-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      User Interaction with the Cluster
+      Local Setup Requirements
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="User Interaction with the Cluster">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-creating-and-configuring-an-eks-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional: Creating and Configuring an EKS Cluster
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional: Creating and Configuring an EKS Cluster">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#creating-iam-users" class="md-nav__link">
+  <a href="#create-eks-cluster" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating IAM Users
+      Create EKS Cluster
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#setting-up-tenant-for-users" class="md-nav__link">
+  <a href="#install-ingress-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting up Tenant for Users
+      Install Ingress Controller
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#accessing-tenant-namespaces" class="md-nav__link">
+  <a href="#install-certmanager" class="md-nav__link">
     <span class="md-ellipsis">
-      Accessing Tenant Namespaces
+      Install Certmanager
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#logistics-users-on-tenant-namespaces" class="md-nav__link">
+  <a href="#create-lets-encrypt-access-key-secret" class="md-nav__link">
     <span class="md-ellipsis">
-      Logistics Users on Tenant Namespaces
+      Create Let's Encrypt Access Key Secret
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#retail-users-on-tenant-namespaces" class="md-nav__link">
+  <a href="#create-clusterissuer-for-lets-encrypt" class="md-nav__link">
     <span class="md-ellipsis">
-      Retail Users on Tenant Namespaces
+      Create ClusterIssuer for Let's Encrypt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-aws-ebs-csi-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install AWS EBS CSI Driver
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-storage-class-for-ebs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Storage Class for EBS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-wildcard-dns-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Wildcard DNS Record
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-wildcard-certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Wildcard Certificate
     </span>
   </a>
   
@@ -2488,35 +2489,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-mto-console" class="md-nav__link">
+  <a href="#whats-next" class="md-nav__link">
     <span class="md-ellipsis">
-      Using MTO Console
+      What's Next?
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Using MTO Console">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#prerequisites_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mto-console-log-in" class="md-nav__link">
-    <span class="md-ellipsis">
-      MTO Console Log In
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2524,6 +2501,50 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="installation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="validation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validation
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -4390,64 +4411,109 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#cluster-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Prerequisites
+      Cluster Requirements
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#user-interaction-with-the-cluster" class="md-nav__link">
+  <a href="#local-setup-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      User Interaction with the Cluster
+      Local Setup Requirements
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="User Interaction with the Cluster">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-creating-and-configuring-an-eks-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional: Creating and Configuring an EKS Cluster
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional: Creating and Configuring an EKS Cluster">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#creating-iam-users" class="md-nav__link">
+  <a href="#create-eks-cluster" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating IAM Users
+      Create EKS Cluster
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#setting-up-tenant-for-users" class="md-nav__link">
+  <a href="#install-ingress-controller" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting up Tenant for Users
+      Install Ingress Controller
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#accessing-tenant-namespaces" class="md-nav__link">
+  <a href="#install-certmanager" class="md-nav__link">
     <span class="md-ellipsis">
-      Accessing Tenant Namespaces
+      Install Certmanager
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#logistics-users-on-tenant-namespaces" class="md-nav__link">
+  <a href="#create-lets-encrypt-access-key-secret" class="md-nav__link">
     <span class="md-ellipsis">
-      Logistics Users on Tenant Namespaces
+      Create Let's Encrypt Access Key Secret
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#retail-users-on-tenant-namespaces" class="md-nav__link">
+  <a href="#create-clusterissuer-for-lets-encrypt" class="md-nav__link">
     <span class="md-ellipsis">
-      Retail Users on Tenant Namespaces
+      Create ClusterIssuer for Let's Encrypt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-aws-ebs-csi-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install AWS EBS CSI Driver
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-storage-class-for-ebs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Storage Class for EBS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-wildcard-dns-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Wildcard DNS Record
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-wildcard-certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Wildcard Certificate
     </span>
   </a>
   
@@ -4459,35 +4525,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-mto-console" class="md-nav__link">
+  <a href="#whats-next" class="md-nav__link">
     <span class="md-ellipsis">
-      Using MTO Console
+      What's Next?
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Using MTO Console">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#prerequisites_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mto-console-log-in" class="md-nav__link">
-    <span class="md-ellipsis">
-      MTO Console Log In
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4510,212 +4552,245 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="create-tenants-on-eks-cluster-using-mto">Create tenants on EKS Cluster using MTO<a class="headerlink" href="#create-tenants-on-eks-cluster-using-mto" title="Permanent link">#</a></h1>
-<p>This document provides detailed insights on creating MTO Tenants on EKS cluster. In this tutorial we will assume setup 2 tenants named logistics and retail for an imaginary ecommerce company.</p>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
-<p>MTO must be installed on EKS cluster. <a href="mto-installation.html">MTO EKS installation guide</a> provides a detailed walk-through of MTO installation on EKS.</p>
-<h2 id="user-interaction-with-the-cluster">User Interaction with the Cluster<a class="headerlink" href="#user-interaction-with-the-cluster" title="Permanent link">#</a></h2>
-<p>We will use two types of users to interact with the cluster, IAM users created via AWS Console and SSO Users.</p>
-<h3 id="creating-iam-users">Creating IAM Users<a class="headerlink" href="#creating-iam-users" title="Permanent link">#</a></h3>
-<p>We will create a group named <code>logistics-owner</code> and then add a user to that group.
-To create a group named <code>logistics-owner</code> use the following command</p>
-<div class="highlight"><pre><span></span><code>$ aws iam create-group --group-name logistics-owner
-
-Output:
-{
-    &quot;Group&quot;: {
-        &quot;Path&quot;: &quot;/&quot;,
-        &quot;GroupName&quot;: &quot;logistics-owner&quot;,
-        &quot;GroupId&quot;: &quot;AGPAZFWZTAEJYEKE56O3P&quot;,
-        &quot;Arn&quot;: &quot;arn:aws:iam::630742778131:group/logistics-owner&quot;,
-        &quot;CreateDate&quot;: &quot;2025-02-03T13:08:56Z&quot;
-    }
-}
+<h1 id="mto-preparation-guide">MTO Preparation Guide<a class="headerlink" href="#mto-preparation-guide" title="Permanent link">#</a></h1>
+<p>This document provides a detailed walk through of the preparation steps required for MTO installation.</p>
+<h2 id="cluster-requirements">Cluster Requirements<a class="headerlink" href="#cluster-requirements" title="Permanent link">#</a></h2>
+<p>An EKS 1.28+ cluster with the following components:</p>
+<ul>
+<li>Valid certificates for MTO Gateway, MTO Console, and MTO Keycloak</li>
+<li>A default storage class</li>
+<li>An Ingress controller</li>
+<li>DNS entries configured for MTO Gateway, MTO Console, and MTO Keycloak</li>
+</ul>
+<h2 id="local-setup-requirements">Local Setup Requirements<a class="headerlink" href="#local-setup-requirements" title="Permanent link">#</a></h2>
+<p>The installation machine must have:</p>
+<ul>
+<li>Helm installed</li>
+<li>kubectl installed</li>
+</ul>
+<p>Once these preparations are complete, you can proceed with the <a href="installation.html">installation section</a>.</p>
+<h2 id="optional-creating-and-configuring-an-eks-cluster">Optional: Creating and Configuring an EKS Cluster<a class="headerlink" href="#optional-creating-and-configuring-an-eks-cluster" title="Permanent link">#</a></h2>
+<p>If you already have an EKS 1.28+ cluster that meets the <a href="#cluster-requirements">Cluster Requirements</a> you can skip this section and proceed directly to the Installation Guide.</p>
+<p>However, if you don’t have an existing cluster, follow this step-by-step guide to create and configure one properly for MTO installation.</p>
+<h3 id="create-eks-cluster">Create EKS Cluster<a class="headerlink" href="#create-eks-cluster" title="Permanent link">#</a></h3>
+<p>Execute the following snippet in your terminal with appropriate values. This snippet will configure the AWS Credentials. See <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html">Manage access keys for IAM users</a> for more details about access keys</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>region<span class="w"> </span>&lt;AWS_REGION&gt;
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span>&lt;AWS_ACCESS_KEY_ID&gt;
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span>&lt;AWS_SECRET_ACCESS_KEY&gt;
 </code></pre></div>
-<p>Create a user named <code>falcon@nordmart.com</code></p>
-<div class="highlight"><pre><span></span><code>$ aws iam create-user --user-name falcon@nordmart.com
-
-Output:
-{
-    &quot;User&quot;: {
-        &quot;Path&quot;: &quot;/&quot;,
-        &quot;UserName&quot;: &quot;falcon@nordmart.com&quot;,
-        &quot;UserId&quot;: &quot;AIDAZFWZTAEJ7ILHDKLLD&quot;,
-        &quot;Arn&quot;: &quot;arn:aws:iam::630742778131:user/falcon@nordmart.com&quot;,
-        &quot;CreateDate&quot;: &quot;2025-02-03T13:09:51Z&quot;
-    }
-}
+<p>Use the following command to create an EKS cluster if it doesn't exist</p>
+<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--name<span class="w"> </span>&lt;CLUSTER_NAME&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--region<span class="w"> </span>&lt;AWS_REGION&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--nodegroup-name<span class="w"> </span>standard-workers<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--node-type<span class="w"> </span>t3.xlarge<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--nodes<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--nodes-min<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--nodes-max<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--managed
 </code></pre></div>
-<p>We have created a user named <code>falcon@nordmart.com</code> in AWS Console, with ARN <code>arn:aws:iam::630742778131:user/falcon@nordmart.com</code>.</p>
-<p>Create a JSON file to attach the policy. This policy will allow the user to access the cluster.</p>
+<p>Set the kubernetes context to the specified cluster.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Update the current context</span>
+aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span class="w"> </span>--name<span class="w"> </span>&lt;CLUSTER_NAME&gt;<span class="w"> </span>--region<span class="w"> </span>&lt;AWS_REGION&gt;
+</code></pre></div>
+<h3 id="install-ingress-controller">Install Ingress Controller<a class="headerlink" href="#install-ingress-controller" title="Permanent link">#</a></h3>
+<p>To install nginx Ingress Controller, run the following command:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/aws/deploy.yaml
+</code></pre></div>
+<h3 id="install-certmanager">Install Certmanager<a class="headerlink" href="#install-certmanager" title="Permanent link">#</a></h3>
+<p>To install Cert-Manager, execute the following command:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://github.com/cert-manager/cert-manager/releases/download/v1.13.1/cert-manager.yaml
+</code></pre></div>
+<h3 id="create-lets-encrypt-access-key-secret">Create Let's Encrypt Access Key Secret<a class="headerlink" href="#create-lets-encrypt-access-key-secret" title="Permanent link">#</a></h3>
+<p>To configure Let's Encrypt with AWS, create the Kubernetes Secret using the following command:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>letsencrypt-production-key<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--namespace<span class="w"> </span>cert-manager<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--from-literal<span class="o">=</span><span class="nv">aws_secret_access_key</span><span class="o">=</span>&lt;AWS_SECRET_ACCESS_KEY&gt;
+</code></pre></div>
+<p>Replace <AWS_SECRET_ACCESS_KEY> with your actual AWS secret key.</p>
+<h3 id="create-clusterissuer-for-lets-encrypt">Create <code>ClusterIssuer</code> for Let's Encrypt<a class="headerlink" href="#create-clusterissuer-for-lets-encrypt" title="Permanent link">#</a></h3>
+<p>To enable automatic SSL certificate issuance using Let’s Encrypt, you need to create a ClusterIssuer resource in Kubernetes. This issuer will use Route 53 DNS-01 challenge to validate domain ownership and issue certificates.</p>
+<ol>
+<li>
+<p>Create a YAML file named <code>letsencrypt-clusterissuer.yaml</code> for the ClusterIssuer with the following content. Replace the placeholders with your actual values:</p>
+<ul>
+<li><code>&lt;AWS_ACCESS_KEY_ID&gt;</code>: Your AWS Access Key ID.</li>
+<li><code>&lt;REGION&gt;</code>: The AWS region where your Route 53 hosted zone is located (e.g., us-east-1).</li>
+<li><code>&lt;BASE_DOMAIN&gt;</code>: Your base domain (e.g., example.com).</li>
+<li><code>&lt;EMAIL&gt;</code>: Your email address for Let's Encrypt notifications.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIssuer</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">letsencrypt-production</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">acme</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;EMAIL&gt;</span><span class="w">  </span><span class="c1"># Replace with your email address</span>
+<span class="w">    </span><span class="nt">preferredChain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ISRG Root X1</span>
+<span class="w">    </span><span class="nt">privateKeySecretRef</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">issuer-account-key</span>
+<span class="w">    </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;https://acme-v02.api.letsencrypt.org/directory&#39;</span>
+<span class="w">    </span><span class="nt">solvers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">dns01</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">route53</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">accessKeyID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;AWS_ACCESS_KEY_ID&gt;</span><span class="w">  </span><span class="c1"># Replace with your AWS Access Key ID</span>
+<span class="w">            </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;REGION&gt;</span><span class="w">  </span><span class="c1"># Replace with your AWS region</span>
+<span class="w">            </span><span class="nt">secretAccessKeySecretRef</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws_secret_access_key</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">letsencrypt-production-key</span>
+<span class="w">        </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">dnsZones</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;BASE_DOMAIN&gt;</span><span class="w">  </span><span class="c1"># Replace with your base domain</span>
+</code></pre></div>
+</li>
+<li>
+<p>Apply the YAML file to your cluster:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>letsencrypt-clusterissuer.yaml
+</code></pre></div>
+</li>
+<li>
+<p>Run the following command to ensure the ClusterIssuer is ready:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>clusterissuer<span class="w"> </span>letsencrypt-production
+</code></pre></div>
+</li>
+</ol>
+<h3 id="install-aws-ebs-csi-driver">Install AWS EBS CSI Driver<a class="headerlink" href="#install-aws-ebs-csi-driver" title="Permanent link">#</a></h3>
+<p>The Amazon EBS CSI Driver enables Kubernetes to manage Amazon Elastic Block Store (EBS) volumes, handling their lifecycle as persistent storage for workloads.</p>
+<p>To install the AWS EBS CSI Driver, execute the following command:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">&quot;github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.38&quot;</span>
+</code></pre></div>
+<p>Once installed, verify that the driver is running by checking the pods in the kube-system namespace:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ebs
+</code></pre></div>
+<h3 id="create-storage-class-for-ebs">Create Storage Class for EBS<a class="headerlink" href="#create-storage-class-for-ebs" title="Permanent link">#</a></h3>
+<ol>
+<li>
+<p>Create a file named <code>storage-class.yaml</code> and add the following content:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage.k8s.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StorageClass</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">storageclass.kubernetes.io/is-default-class</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ebs-sc</span>
+<span class="nt">provisioner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ebs.csi.aws.com</span>
+<span class="nt">volumeBindingMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WaitForFirstConsumer</span>
+<span class="nt">parameters</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gp3</span>
+</code></pre></div>
+</li>
+<li>
+<p>Apply the configuration using the following command:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>storage-class.yaml
+</code></pre></div>
+</li>
+<li>
+<p>Verify that the StorageClass has been created:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>storageclass
+</code></pre></div>
+</li>
+</ol>
+<h3 id="create-wildcard-dns-record">Create Wildcard DNS Record<a class="headerlink" href="#create-wildcard-dns-record" title="Permanent link">#</a></h3>
+<p>To ensure proper routing for applications, you need to create a wildcard DNS record that points to the nginx Ingress Controller’s external IP. Follow these steps:</p>
+<ol>
+<li>
+<p>Retrieve the Ingress Controller's External IP
+    Run the following command to get the external IP of the nginx Ingress Controller:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>ingress-nginx-controller<span class="w"> </span>-n<span class="w"> </span>ingress-nginx<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.status.loadBalancer.ingress[0].hostname}&quot;</span>
+</code></pre></div>
+<p>If the hostname is not available, wait for a few minutes and re-run the command.</p>
+</li>
+<li>
+<p>Retrieve Hosted Zone and Load Balancer IDs
+    Run the following commands to retrieve the Route 53 Hosted Zone ID and Load Balancer Hosted Zone ID:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Retrieve Hosted Zone ID</span>
+<span class="nv">HOSTED_ZONE_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>route53<span class="w"> </span>list-hosted-zones-by-name<span class="w"> </span>--dns-name<span class="w"> </span>&lt;BASE_DOMAIN&gt;<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;HostedZones[0].Id&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="w"> </span>-f3<span class="k">)</span>
+
+<span class="c1"># Retrieve Hosted Zone Load Balancer ID</span>
+<span class="nv">HOSTED_ZONE_LB_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>elbv2<span class="w"> </span>describe-load-balancers<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;LoadBalancers[0].CanonicalHostedZoneId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Create a JSON File for the DNS Update
+    Create a file named <code>change-batch.json</code> and update the placeholders:</p>
+<ul>
+<li><code>&lt;FULL_SUBDOMAIN&gt;</code> – Your subdomain (e.g., apps.example.com)</li>
+<li><code>&lt;HOSTED_ZONE_LB_ID&gt;</code> – Hosted Zone Load Balancer ID from Step 2</li>
+<li><code>&lt;EXTERNAL_IP&gt;</code> – External IP retrieved in Step 1</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eks:DescribeCluster&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span>
+<span class="w">  </span><span class="nt">&quot;Comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Update wildcard DNS record to point to NGINX Ingress ELB&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Changes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UPSERT&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;ResourceRecordSet&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*.&lt;FULL_SUBDOMAIN&gt;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;AliasTarget&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;HostedZoneId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;HOSTED_ZONE_LB_ID&gt;&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;DNSName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;EXTERNAL_IP&gt;&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;EvaluateTargetHealth&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Attach a policy to user</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>put-user-policy<span class="w"> </span>--user-name<span class="w"> </span><span class="nv">$name</span><span class="w"> </span>--policy-document<span class="w"> </span>file://policy.json<span class="w"> </span>--policy-name<span class="w"> </span>ClusterAccess
+</li>
+<li>
+<p>Update the DNS Record in Route 53 by using the following command</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>route53<span class="w"> </span>change-resource-record-sets<span class="w"> </span>--hosted-zone-id<span class="w"> </span><span class="nv">$HOSTED_ZONE_ID</span><span class="w"> </span>--change-batch<span class="w"> </span>file://change-batch.json
 </code></pre></div>
-<p>Add user to <code>logistics-owner</code> group</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>add-user-to-group<span class="w"> </span>--user-name<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span><span class="w"> </span>--group-name<span class="w"> </span><span class="s2">&quot;logistics-owner&quot;</span>
+</li>
+<li>
+<p>Verify DNS Configuration
+    Check if the DNS record has been propagated correctly:</p>
+<div class="highlight"><pre><span></span><code>nslookup<span class="w"> </span>&lt;YOUR_DOMAIN&gt;
 </code></pre></div>
-<p>Generate the access keys that can be used to log in into the cluster. Executing the following command will provide the Access Key Id and Access Secret Key Id that can be used to log in</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>create-access-key<span class="w"> </span>--user-name<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span>
-</code></pre></div>
-<p>Use the following command to map this user in <code>aws-auth</code> configmap in <code>kube-system</code> namespace.</p>
-<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>create<span class="w"> </span>iamidentitymapping<span class="w"> </span>--cluster<span class="w"> </span><span class="s2">&quot;&lt;CLUSTER_NAME&gt;&quot;</span><span class="w"> </span><span class="se">\ </span>
-<span class="w">                                 </span>--region<span class="w"> </span><span class="s2">&quot;&lt;AWS_REGION&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">                                 </span>--arn<span class="w"> </span><span class="s2">&quot;&lt;USER_ARN&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">                                 </span>--username<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">                                 </span>--group<span class="w"> </span><span class="s2">&quot;logistics-dev&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">                                 </span>--no-duplicate-arns
-</code></pre></div>
-<p>Since we haven't attached any RBAC with this user at the moment, trying to access anything in the cluster would throw an error</p>
-<div class="highlight"><pre><span></span><code>$ kubectl get svc
-
-Error from server (Forbidden): services is forbidden: User &quot;falcon@nordmart.com&quot; cannot list resource &quot;services&quot; in API group &quot;&quot; in the namespace &quot;default&quot;
-</code></pre></div>
-<p>Repeat the same steps to create a group and a user for retail tenant.</p>
-<h3 id="setting-up-tenant-for-users">Setting up Tenant for Users<a class="headerlink" href="#setting-up-tenant-for-users" title="Permanent link">#</a></h3>
-<p>Now, we will set tenants for the above-mentioned users.</p>
-<p>We will start by creating a <code>Quota CR</code> with some resource limits</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt;EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quota</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">limitrange</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">limits</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">max</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">800m</span>
-<span class="w">      </span><span class="nt">min</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200m</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Container</span>
-<span class="w">  </span><span class="nt">resourcequota</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">hard</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">configmaps</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10&quot;</span>
-<span class="w">      </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8Gi&quot;</span>
-<span class="l l-Scalar l-Scalar-Plain">EOF</span>
-</code></pre></div>
-<p>Now, we will mention this <code>Quota</code> in two <code>Tenant</code> CRs</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt;EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logistics</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">falcon@nordmart.com</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="l l-Scalar l-Scalar-Plain">EOF</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt;EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">retail</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bear@nordmart.com</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="l l-Scalar l-Scalar-Plain">EOF</span>
-</code></pre></div>
-<p>Notice that the only difference in both tenant specs are the users.</p>
-<h3 id="accessing-tenant-namespaces">Accessing Tenant Namespaces<a class="headerlink" href="#accessing-tenant-namespaces" title="Permanent link">#</a></h3>
-<p>After the creation of <code>Tenant</code> CRs, now users can access namespaces in their respective tenants and preform create, update, delete functions.</p>
-<p>Listing the namespaces by cluster admin will show us the recently created tenant namespaces</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>namespaces
-
-NAME<span class="w">                    </span>STATUS<span class="w">   </span>AGE
-cert-manager<span class="w">            </span>Active<span class="w">   </span>8d
-default<span class="w">                 </span>Active<span class="w">   </span>9d
-kube-node-lease<span class="w">         </span>Active<span class="w">   </span>9d
-kube-public<span class="w">             </span>Active<span class="w">   </span>9d
-kube-system<span class="w">             </span>Active<span class="w">   </span>9d
-multi-tenant-operator<span class="w">   </span>Active<span class="w">   </span>8d
-random<span class="w">                  </span>Active<span class="w">   </span>8d
-logistics-dev<span class="w">           </span>Active<span class="w">   </span>5s
-logistics-build<span class="w">         </span>Active<span class="w">   </span>5s
-retail-dev<span class="w">              </span>Active<span class="w">   </span>5s
-retail-build<span class="w">            </span>Active<span class="w">   </span>5s
-</code></pre></div>
-<h3 id="logistics-users-on-tenant-namespaces">Logistics Users on Tenant Namespaces<a class="headerlink" href="#logistics-users-on-tenant-namespaces" title="Permanent link">#</a></h3>
-<p>We will now try to deploy a pod from user <code>falcon@nordmart.com</code> in its tenant namespace <code>tenant-iam-dev</code></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>logistics-dev
-
-pod/nginx<span class="w"> </span>created
-</code></pre></div>
-<p>And if we try the same operation in the other tenant with the same user, it will fail</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>retail-dev
-
-Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>pods<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>create<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;pods&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>namespace<span class="w"> </span><span class="s2">&quot;retail-dev&quot;</span>
-</code></pre></div>
-<p>To be noted, <code>falcon@nordmart.com</code> can not list namespaces</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>namespaces
-
-Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>namespaces<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>list<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;namespaces&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>scope
-</code></pre></div>
-<h3 id="retail-users-on-tenant-namespaces">Retail Users on Tenant Namespaces<a class="headerlink" href="#retail-users-on-tenant-namespaces" title="Permanent link">#</a></h3>
-<p>We will repeat the above operations for our SSO user <code>bear@nordmart.com</code> as well</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>retail-dev
-
-pod/nginx<span class="w"> </span>created
-</code></pre></div>
-<p>Trying to do operations outside the scope of its own tenant will result in errors</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>retail-dev
-
-Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>pods<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;bear@nordmart.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>create<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;pods&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>namespace<span class="w"> </span><span class="s2">&quot;tenant-iam-dev&quot;</span>
-</code></pre></div>
-<p>To be noted, <code>bear@nordmart.com</code> can not list namespaces</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>namespaces
-
-Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>namespaces<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;bear@nordmart.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>list<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;namespaces&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>scope
-</code></pre></div>
-<h2 id="using-mto-console">Using MTO Console<a class="headerlink" href="#using-mto-console" title="Permanent link">#</a></h2>
-<h3 id="prerequisites_1">Prerequisites<a class="headerlink" href="#prerequisites_1" title="Permanent link">#</a></h3>
+<p>Once the record is updated, traffic will be properly routed to the nginx Ingress Controller.</p>
+</li>
+</ol>
+<h3 id="create-wildcard-certificate">Create Wildcard Certificate<a class="headerlink" href="#create-wildcard-certificate" title="Permanent link">#</a></h3>
+<p>A wildcard certificate allows all applications under a given subdomain to use a single SSL certificate. MTO will use this certificate to secure the MTO Console, MTO Gateway, and MTO Keycloak.</p>
+<ol>
+<li>
+<p>Apply the Wildcard Certificate Configuration</p>
+<p>Create a file named <code>wildcard-certificate.yaml</code> and replace the placeholders with the appropriate values:</p>
 <ul>
-<li>Ensure that MTO Console is enabled by running the following command</li>
+<li><code>&lt;CERTIFICATE_NAME&gt;</code> - Name of the certificate to be generated.</li>
+<li><code>&lt;FULL_SUBDOMAIN&gt;</code> - DNS subdomain for which the wildcard certificate will be issued.</li>
+<li><code>&lt;NAMESPACE&gt;</code> - Namespace where the certificate and secret will be created. If MTO is installed in a different namespace, manually copy the generated secret.</li>
+<li><code>&lt;CERTIFICATE_SECRET_NAME&gt;</code> - Name of the secret that will store the generated certificate. This secret will be used in MTO’s configuration to enable SSL for MTO components.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>integrationconfig<span class="w"> </span>tenant-operator-config<span class="w"> </span>-o<span class="o">=</span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.components}&#39;</span><span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
-
-<span class="o">{</span><span class="s2">&quot;console&quot;</span>:true,<span class="s2">&quot;showback&quot;</span>:true<span class="o">}</span>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Certificate</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;CERTIFICATE_NAME&gt;</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;NAMESPACE&gt;</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;CERTIFICATE_SECRET_NAME&gt;</span>
+<span class="w">  </span><span class="nt">issuerRef</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">letsencrypt-production</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIssuer</span>
+<span class="w">  </span><span class="nt">commonName</span><span class="p">:</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.&lt;FULL_SUBDOMAIN&gt;</span>
+<span class="w">  </span><span class="nt">dnsNames</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.&lt;FULL_SUBDOMAIN&gt;</span>
 </code></pre></div>
-<p>If console is set to false then <a href="mto-installation.html#enable-mto-console">enable the MTO Console</a> before proceeding to next step</p>
-<ul>
-<li><strong>A Keycloak user with same username as AWS IAM user</strong> should be created. Follow our <a href="../../how-to-guides/keycloak.html">Setting Up User Access in Keycloak for MTO Console</a> guide to create a Keycloak user.</li>
-</ul>
-<h3 id="mto-console-log-in">MTO Console Log In<a class="headerlink" href="#mto-console-log-in" title="Permanent link">#</a></h3>
-<p>List the ingresses to access the URL of MTO Console</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>ingress<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
-
-NAME<span class="w">                       </span>CLASS<span class="w">   </span>HOSTS<span class="w">                                  </span>ADDRESS<span class="w">                                                                          </span>PORTS<span class="w">     </span>AGE
-tenant-operator-console<span class="w">    </span>nginx<span class="w">   </span>console.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
-tenant-operator-gateway<span class="w">    </span>nginx<span class="w">   </span>gateway.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
-tenant-operator-keycloak<span class="w">   </span>nginx<span class="w">   </span>keycloak.iinhdnh6.demo.kubeapp.cloud<span class="w">   </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>24m
+</li>
+<li>
+<p>Apply the certificate configuration using the following command:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>wildcard-certificate.yaml
 </code></pre></div>
-<p>Open the URL and Log In with the Keycloak user credentials.</p>
-<p><a class="glightbox" href="../../images/mto-console-login.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MTO Console Login Page" src="../../images/mto-console-login.png" /></a></p>
-<p>Dashboard will open after the successful login. Now you can navigate different tenants and namespaces using MTO Console</p>
-<p><a class="glightbox" href="../../images/mto-console-dasboard.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MTO Console Dashboard" src="../../images/mto-console-dasboard.png" /></a></p>
+</li>
+<li>
+<p>Verify Certificate Creation</p>
+<p>After applying the configuration, check if the certificate has been issued successfully:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>--for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span>Ready<span class="w"> </span>certificate/&lt;CERTIFICATE_NAME&gt;<span class="w"> </span>-n<span class="w"> </span>&lt;NAMESPACE&gt;<span class="w"> </span>--timeout<span class="o">=</span>300s
+</code></pre></div>
+</li>
+</ol>
+<h2 id="whats-next">What's Next?<a class="headerlink" href="#whats-next" title="Permanent link">#</a></h2>
+<p>All the required components have been installed and configured. Now MTO can be installed on the EKS Cluster. See <a href="installation.html">EKS MTO Installation Guide</a></p>
 
 
 
