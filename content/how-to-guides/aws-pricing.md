@@ -2,9 +2,9 @@
 
 MTO supports AWS pricing model via the `integrationConfig.components.showbackOpts.cloudIntegrationSecretRef` field. Following 3 types of pricing are supported:
 
-- [Cost Allocation](https://opencost.io/docs/configuration/aws#cost-allocation)
-- [AWS Cloud Costs](https://opencost.io/docs/configuration/aws#aws-cloud-costs)
-- [AWS Spot Instance Datafeed](https://opencost.io/docs/configuration/aws#aws-spot-instance-data-feed)
+- [`Cost Allocation`](https://opencost.io/docs/configuration/aws#cost-allocation)
+- [`AWS Cloud Costs`](https://opencost.io/docs/configuration/aws#aws-cloud-costs)
+- [`AWS Spot Instance Datafeed`](https://opencost.io/docs/configuration/aws#aws-spot-instance-data-feed)
 
 ## Cost Allocation
 
@@ -12,7 +12,7 @@ OpenCost will automatically read the node information `node.spec.providerID` to 
 
 OpenCost will request pricing data from the `us-east-1` region for your `node_region` using the template:
 
-```
+```url
 https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/${node_region}/index.json
 ```
 
@@ -25,7 +25,6 @@ Following AWS services that are involved in the process of integration.
 **Amazon Athena**: Analytics service which queries the CUR S3 bucket for your AWS cloud spending, then outputs data to a separate S3 bucket. Opencost uses Athena to query for the bill data to perform reconciliation. Athena is technically optional for AWS cloud integration, but as a result, Opencost will only provide unreconciled costs (on-demand public rates).
 
 **S3 bucket**: Cloud object storage tool which both CURs and Athena output cost data to. Opencost needs access to these buckets in order to read that data.
-
 
 ### Step 1: Setting up a CUR
 
@@ -123,9 +122,9 @@ Attach the following policy to the same role or user. Use a user if you intend t
 ### Step 4: Generate Access Keys
 
 1. Navigate to the AWS IAM Console.
-1. select Access Management > Users from the left navigation. 
-1. Find the Kubecost User and select Security credentials > Create access key. 
-1. Follow along to receive the Access Key ID and Secret Access Key (AWS will not provide you the Secret Access Key in the future, so make sure you save this value). 
+1. select Access Management > Users from the left navigation.
+1. Find the OpenCost User and select Security credentials > Create access key.
+1. Follow along to receive the Access Key ID and Secret Access Key (AWS will not provide you the Secret Access Key in the future, so make sure you save this value).
 
 ### Step 5: Create cloud integration secret
 
@@ -137,7 +136,7 @@ Set these values into the AWS array in the `cloud-integration.json`:
 - `<ATHENA_REGION>` is the AWS region Athena is running in
 - `<ATHENA_DATABASE>` is the name of the database created by the Athena setup. The Athena database name is available as the value (physical id) of `AWSCURDatabase` in the `CloudFormation` stack created in [step 2](#step-2-setting-up-athena).
 - `<ATHENA_TABLE>` is the name of the table created by the Athena setup The table name is typically the database name with the leading `athenacurcfn_` removed (but is not available as a CloudFormation stack resource).
-- `<ATHENA_WORKGROUP>` is the workgroup assigned to be used with Athena. Default value is Primary.
+- `<ATHENA_WORKGROUP>` is the `workgroup` assigned to be used with Athena. Default value is Primary.
 - `<ATHENA_PROJECT_ID>` is the AWS AccountID where the Athena CUR is. For example: 530337586277.
 - `<MASTER_PAYER_ARN>` is an optional value which should be set if you are using a multi-account billing set-up and are not accessing Athena through the primary account. It should be set to the ARN of the role in the management (formerly master payer) account, for example: `arn:aws:iam::530337586275:role/OpenCostRole`.
 
@@ -223,10 +222,10 @@ Create a `service-key.json` and replace the values with the keys created in [ste
 Create a Kubernetes secret
 
 ```sh
-$ kubectl create secret generic <SECRET_NAME> --from-file=service-key.json --namespace multi-tenant-operator
+kubectl create secret generic <SECRET_NAME> --from-file=service-key.json --namespace multi-tenant-operator
 ```
 
-The data feed will provide specific pricing information about any Spot instances in your account on an hourly basis. After setting this up, the bucket information can be provided through options in the IntegrationConfig via `integrationConfig.components.showbackOpts.custom` object. 
+The data feed will provide specific pricing information about any Spot instances in your account on an hourly basis. After setting this up, the bucket information can be provided through options in the IntegrationConfig via `integrationConfig.components.showbackOpts.custom` object.
 
 - `awsSpotDataBucket` - The name of the S3 bucket Spot Instance Data Feed is publishing to.
 - `awsSpotDataRegion` - The region configured for Spot Instance Data Feed
@@ -300,9 +299,10 @@ components:
 
 ## References
 
-For more information, refer to the 
-- [OpenCost documentation](https://www.opencost.io/docs/configuration/aws).
-- [Kubecost documentation](https://docs.kubecost.com/install-and-configure/install/cloud-integration/aws-cloud-integrations)
-- [Creating Cost and Usage Reports](https://docs.aws.amazon.com/cur/latest/userguide/creating-cur.html)
-- [Setting up Athena using AWS CloudFormation templates](https://docs.aws.amazon.com/cur/latest/userguide/use-athena-cf.html)
-- [Assign IAM roles to Kubernetes service accounts](https://docs.aws.amazon.com/eks/latest/userguide/associate-service-account-role.html)
+For more information, refer to the following resources
+
+- [`OpenCost documentation`](https://www.opencost.io/docs/configuration/aws).
+- [`Kubecost documentation`](https://docs.kubecost.com/install-and-configure/install/cloud-integration/aws-cloud-integrations)
+- [`Creating Cost and Usage Reports`](https://docs.aws.amazon.com/cur/latest/userguide/creating-cur.html)
+- [`Setting up Athena using AWS CloudFormation templates`](https://docs.aws.amazon.com/cur/latest/userguide/use-athena-cf.html)
+- [`Assign IAM roles to Kubernetes service accounts`](https://docs.aws.amazon.com/eks/latest/userguide/associate-service-account-role.html)

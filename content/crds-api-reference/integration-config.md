@@ -261,9 +261,9 @@ More details on Azure pricing can be found [here](../how-to-guides/azure-pricing
 
 MTO supports AWS pricing model via the `integrationConfig.components.showbackOpts.cloudIntegrationSecretRef` field. Following 3 types of pricing are supported:
 
-- [Cost Allocation](https://opencost.io/docs/configuration/aws#cost-allocation)
-- [AWS Cloud Costs](https://opencost.io/docs/configuration/aws#aws-cloud-costs)
-- [AWS Spot Instance Datafeed](https://opencost.io/docs/configuration/aws#aws-spot-instance-data-feed)
+- [`Cost Allocation`](https://opencost.io/docs/configuration/aws#cost-allocation)
+- [`AWS Cloud Costs`](https://opencost.io/docs/configuration/aws#aws-cloud-costs)
+- [`AWS Spot Instance Datafeed`](https://opencost.io/docs/configuration/aws#aws-spot-instance-data-feed)
 
 More details on AWS pricing can be found [here](../how-to-guides/aws-pricing.md).
 
