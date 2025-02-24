@@ -4378,9 +4378,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h1 id="aws-pricing-model">AWS Pricing Model<a class="headerlink" href="#aws-pricing-model" title="Permanent link">#</a></h1>
 <p>MTO supports AWS pricing model via the <code>integrationConfig.components.showbackOpts.cloudIntegrationSecretRef</code> field. Following 3 types of pricing are supported:</p>
 <ul>
-<li><a href="https://opencost.io/docs/configuration/aws#cost-allocation">Cost Allocation</a></li>
-<li><a href="https://opencost.io/docs/configuration/aws#aws-cloud-costs">AWS Cloud Costs</a></li>
-<li><a href="https://opencost.io/docs/configuration/aws#aws-spot-instance-data-feed">AWS Spot Instance Datafeed</a></li>
+<li><a href="https://opencost.io/docs/configuration/aws#cost-allocation"><code>Cost Allocation</code></a></li>
+<li><a href="https://opencost.io/docs/configuration/aws#aws-cloud-costs"><code>AWS Cloud Costs</code></a></li>
+<li><a href="https://opencost.io/docs/configuration/aws#aws-spot-instance-data-feed"><code>AWS Spot Instance Datafeed</code></a></li>
 </ul>
 <h2 id="cost-allocation">Cost Allocation<a class="headerlink" href="#cost-allocation" title="Permanent link">#</a></h2>
 <p>OpenCost will automatically read the node information <code>node.spec.providerID</code> to determine the cloud service provider (CSP) in use. If it detects the CSP is AWS, it will attempt to pull the AWS on-demand pricing from the configured public API URL with no further configuration required.</p>
@@ -4480,9 +4480,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h3 id="step-4-generate-access-keys">Step 4: Generate Access Keys<a class="headerlink" href="#step-4-generate-access-keys" title="Permanent link">#</a></h3>
 <ol>
 <li>Navigate to the AWS IAM Console.</li>
-<li>select Access Management &gt; Users from the left navigation. </li>
-<li>Find the Kubecost User and select Security credentials &gt; Create access key. </li>
-<li>Follow along to receive the Access Key ID and Secret Access Key (AWS will not provide you the Secret Access Key in the future, so make sure you save this value). </li>
+<li>select Access Management &gt; Users from the left navigation.</li>
+<li>Find the OpenCost User and select Security credentials &gt; Create access key.</li>
+<li>Follow along to receive the Access Key ID and Secret Access Key (AWS will not provide you the Secret Access Key in the future, so make sure you save this value).</li>
 </ol>
 <h3 id="step-5-create-cloud-integration-secret">Step 5: Create cloud integration secret<a class="headerlink" href="#step-5-create-cloud-integration-secret" title="Permanent link">#</a></h3>
 <p>Set these values into the AWS array in the <code>cloud-integration.json</code>:</p>
@@ -4493,7 +4493,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><code>&lt;ATHENA_REGION&gt;</code> is the AWS region Athena is running in</li>
 <li><code>&lt;ATHENA_DATABASE&gt;</code> is the name of the database created by the Athena setup. The Athena database name is available as the value (physical id) of <code>AWSCURDatabase</code> in the <code>CloudFormation</code> stack created in <a href="#step-2-setting-up-athena">step 2</a>.</li>
 <li><code>&lt;ATHENA_TABLE&gt;</code> is the name of the table created by the Athena setup The table name is typically the database name with the leading <code>athenacurcfn_</code> removed (but is not available as a CloudFormation stack resource).</li>
-<li><code>&lt;ATHENA_WORKGROUP&gt;</code> is the workgroup assigned to be used with Athena. Default value is Primary.</li>
+<li><code>&lt;ATHENA_WORKGROUP&gt;</code> is the <code>workgroup</code> assigned to be used with Athena. Default value is Primary.</li>
 <li><code>&lt;ATHENA_PROJECT_ID&gt;</code> is the AWS AccountID where the Athena CUR is. For example: 530337586277.</li>
 <li><code>&lt;MASTER_PAYER_ARN&gt;</code> is an optional value which should be set if you are using a multi-account billing set-up and are not accessing Athena through the primary account. It should be set to the ARN of the role in the management (formerly master payer) account, for example: <code>arn:aws:iam::530337586275:role/OpenCostRole</code>.</li>
 </ul>
@@ -4561,9 +4561,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="p">}</span>
 </code></pre></div>
 <p>Create a Kubernetes secret</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>&lt;SECRET_NAME&gt;<span class="w"> </span>--from-file<span class="o">=</span>service-key.json<span class="w"> </span>--namespace<span class="w"> </span>multi-tenant-operator
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>&lt;SECRET_NAME&gt;<span class="w"> </span>--from-file<span class="o">=</span>service-key.json<span class="w"> </span>--namespace<span class="w"> </span>multi-tenant-operator
 </code></pre></div>
-<p>The data feed will provide specific pricing information about any Spot instances in your account on an hourly basis. After setting this up, the bucket information can be provided through options in the IntegrationConfig via <code>integrationConfig.components.showbackOpts.custom</code> object. </p>
+<p>The data feed will provide specific pricing information about any Spot instances in your account on an hourly basis. After setting this up, the bucket information can be provided through options in the IntegrationConfig via <code>integrationConfig.components.showbackOpts.custom</code> object.</p>
 <ul>
 <li><code>awsSpotDataBucket</code> - The name of the S3 bucket Spot Instance Data Feed is publishing to.</li>
 <li><code>awsSpotDataRegion</code> - The region configured for Spot Instance Data Feed</li>
@@ -4628,12 +4628,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">      </span><span class="nt">projectID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;012345678901&quot;</span>
 </code></pre></div>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
-<p>For more information, refer to the 
-- <a href="https://www.opencost.io/docs/configuration/aws">OpenCost documentation</a>.
-- <a href="https://docs.kubecost.com/install-and-configure/install/cloud-integration/aws-cloud-integrations">Kubecost documentation</a>
-- <a href="https://docs.aws.amazon.com/cur/latest/userguide/creating-cur.html">Creating Cost and Usage Reports</a>
-- <a href="https://docs.aws.amazon.com/cur/latest/userguide/use-athena-cf.html">Setting up Athena using AWS CloudFormation templates</a>
-- <a href="https://docs.aws.amazon.com/eks/latest/userguide/associate-service-account-role.html">Assign IAM roles to Kubernetes service accounts</a></p>
+<p>For more information, refer to the following resources</p>
+<ul>
+<li><a href="https://www.opencost.io/docs/configuration/aws"><code>OpenCost documentation</code></a>.</li>
+<li><a href="https://docs.kubecost.com/install-and-configure/install/cloud-integration/aws-cloud-integrations"><code>Kubecost documentation</code></a></li>
+<li><a href="https://docs.aws.amazon.com/cur/latest/userguide/creating-cur.html"><code>Creating Cost and Usage Reports</code></a></li>
+<li><a href="https://docs.aws.amazon.com/cur/latest/userguide/use-athena-cf.html"><code>Setting up Athena using AWS CloudFormation templates</code></a></li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/associate-service-account-role.html"><code>Assign IAM roles to Kubernetes service accounts</code></a></li>
+</ul>
 
 
 
