@@ -252,7 +252,7 @@ A wildcard certificate allows all applications under a given subdomain to use a 
 1. Apply the Wildcard Certificate Configuration
 
     Create a file named `wildcard-certificate.yaml` and replace the placeholders with the appropriate values:
-    
+
     - `<CERTIFICATE_NAME>` - Name of the certificate to be generated.
     - `<FULL_SUBDOMAIN>` - DNS subdomain for which the wildcard certificate will be issued.
     - `<NAMESPACE>` - Namespace where the certificate and secret will be created. If MTO is installed in a different namespace, manually copy the generated secret.
