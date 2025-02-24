@@ -122,7 +122,7 @@ Attach the following policy to the same role or user. Use a user if you intend t
 ### Step 4: Generate Access Keys
 
 1. Navigate to the AWS IAM Console.
-1. select Access Management > Users from the left navigation.
+1. Select Access Management > Users from the left navigation.
 1. Find the OpenCost User and select Security credentials > Create access key.
 1. Follow along to receive the Access Key ID and Secret Access Key (AWS will not provide you the Secret Access Key in the future, so make sure you save this value).
 
