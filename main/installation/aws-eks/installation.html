@@ -8,17 +8,17 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/main/installation/aws-eks/mto-installation.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/main/installation/aws-eks/installation.html">
       
       
-        <link rel="prev" href="mto-prereq-installation.html">
+        <link rel="prev" href="preparation.html">
       
       
-        <link rel="next" href="create-tenants.html">
+        <link rel="next" href="validation.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
     
     
       
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mto-eks-installation" class="md-skip">
+        <a href="#mto-installation-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -2324,11 +2324,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="mto-prereq-installation.html" class="md-nav__link">
+      <a href="preparation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Prerequistes
+    Preparation
     
   </span>
   
@@ -2367,7 +2367,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="mto-installation.html" class="md-nav__link md-nav__link--active">
+      <a href="installation.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -2396,18 +2396,9 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#install-mto-core" class="md-nav__link">
     <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installing-mto" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installing MTO
+      Install MTO Core
     </span>
   </a>
   
@@ -2447,7 +2438,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="create-tenants.html" class="md-nav__link">
+      <a href="validation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4323,18 +4314,9 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#install-mto-core" class="md-nav__link">
     <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installing-mto" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installing MTO
+      Install MTO Core
     </span>
   </a>
   
@@ -4377,28 +4359,16 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
 
-<h1 id="mto-eks-installation">MTO EKS Installation<a class="headerlink" href="#mto-eks-installation" title="Permanent link">#</a></h1>
-<p>This document covers how to deploy Multi Tenant Operator with an <a href="https://aws.amazon.com/eks/">Amazon EKS (Elastic Kubernetes Service)</a> cluster.</p>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
+<h1 id="mto-installation-guide">MTO Installation Guide<a class="headerlink" href="#mto-installation-guide" title="Permanent link">#</a></h1>
+<p>Once the <a href="preparation.html">necessary preparations</a> are complete, you can proceed with the installation section.</p>
+<p>The installation process consists of two steps:</p>
 <ol>
-<li><a href="https://eksctl.io/installation/"><code>eksctl</code></a> to create and manage EKS cluster. See <a href="mto-prereq-installation.html#setting-up-cluster">Setting up Cluster</a> to create and configure an EKS cluster</li>
-<li><a href="https://kubernetes.io/docs/tasks/tools/#kubectl"><code>kubectl</code></a> 1.18.3 or later to interact with Kubernetes cluster</li>
-<li><a href="https://helm.sh/docs/intro/install/">Helm CLI</a> to install MTO chart</li>
-<li>A DNS service to make MTO console accessible via domain name</li>
-<li>
-<p>Following components must be installed and configured on cluster before installation</p>
-<ul>
-<li>[x] Ingress Controller</li>
-<li>[x] Cert Manager</li>
-<li>[x] Wildcard Certificate</li>
-<li>[ ] Storage Class (if MTO Console is enabled)</li>
-</ul>
-<p>Follow our <a href="mto-prereq-installation.html">MTO prerequisites installation guide</a> to install these dependencies on EKS Cluster</p>
-</li>
+<li><a href="#install-mto-core">Install MTO Core</a></li>
+<li><a href="#enable-mto-console">Enable MTO Console</a></li>
 </ol>
-<h2 id="installing-mto">Installing MTO<a class="headerlink" href="#installing-mto" title="Permanent link">#</a></h2>
+<h2 id="install-mto-core">Install MTO Core<a class="headerlink" href="#install-mto-core" title="Permanent link">#</a></h2>
 <p>We will be using helm to install the operator, here we have set <code>bypassedGroups</code> as <code>cluster-admins</code> because our admin user is part of that group as seen in above screenshot.</p>
-<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>tenant-operator<span class="w"> </span>oci://ghcr.io/stakater/public/charts/multi-tenant-operator<span class="w"> </span>--version<span class="w"> </span><span class="m">0</span>.12.62<span class="w"> </span>--namespace<span class="w"> </span>multi-tenant-operator<span class="w"> </span>--create-namespace<span class="w"> </span>--set<span class="w"> </span><span class="nv">bypassedGroups</span><span class="o">=</span>cluster-admins
+<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>tenant-operator<span class="w"> </span>oci://ghcr.io/stakater/public/charts/multi-tenant-operator<span class="w"> </span>--version<span class="w"> </span><span class="m">1</span>.1.0<span class="w"> </span>--namespace<span class="w"> </span>multi-tenant-operator<span class="w"> </span>--create-namespace<span class="w"> </span>--set<span class="w"> </span><span class="nv">bypassedGroups</span><span class="o">=</span>cluster-admins
 </code></pre></div>
 <p>We will wait for the pods to come in running state.</p>
 <div class="highlight"><pre><span></span><code>NAME<span class="w">                                                              </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE
@@ -4468,7 +4438,7 @@ tenant-operator-gateway<span class="w">    </span>nginx<span class="w">   </span
 tenant-operator-keycloak<span class="w">   </span>nginx<span class="w">   </span>keycloak.iinhdnh6.demo.kubeapp.cloud<span class="w">   </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>24m
 </code></pre></div>
 <h2 id="whats-next">What's Next<a class="headerlink" href="#whats-next" title="Permanent link">#</a></h2>
-<p>MTO installation has been completed. Now we can <a href="create-tenants.html">create our first tenant on EKS using MTO</a>.</p>
+<p>Now lets <a href="validation.html">create our first tenant on EKS</a>.</p>
 
 
 
