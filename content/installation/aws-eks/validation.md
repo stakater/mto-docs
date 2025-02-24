@@ -103,7 +103,7 @@ EOF
 
 Now, we will create 2 tenants `logistics` and `retail` with one user each
 
-```yaml
+```sh
 kubectl apply -f - <<EOF
 apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
@@ -122,7 +122,7 @@ spec:
 EOF
 ```
 
-```yaml
+```sh
 kubectl apply -f - <<EOF
 apiVersion: tenantoperator.stakater.com/v1beta3
 kind: Tenant
@@ -179,12 +179,12 @@ aws configure set region $AWS_REGION
 aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
 aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
 
-aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --region $AWS_REGION
+aws eks update-kubeconfig --name <EKS_CLUSTER_NAME> --region $AWS_REGION
 ```
 
 ## Validation
 
-### Logistics Users on Tenant Namespaces
+### Logistics User on Tenant Namespaces
 
 We will now try to deploy a pod from user `falcon@nordmart.com` in its tenant namespace `logistics-dev`
 
@@ -210,7 +210,7 @@ $ kubectl get namespaces
 Error from server (Forbidden): namespaces is forbidden: User "falcon@nordmart.com" cannot list resource "namespaces" in API group "" at the cluster scope
 ```
 
-### Retail Users on Tenant Namespaces
+### Retail User on Tenant Namespaces
 
 We will repeat the above operations for our SSO user `bear@nordmart.com` as well
 
