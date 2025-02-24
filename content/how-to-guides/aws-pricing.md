@@ -174,7 +174,7 @@ components:
   showback: true # should be enabled
   customPricingEnabled: false # should be set to false
   showbackOpts:
-    cloudIntegrationSecretRef:
+    cloudPricingSecretRef:
       name: <SECRET_NAME>
       namespace: multi-tenant-operator
 ```
@@ -260,7 +260,7 @@ components:
       awsSpotDataPrefix: "spot_pricing_prefix"
       projectID: "012345678901"
 
-    cloudIntegrationSecretRef:
+    cloudPricingSecretRef:
       name: <SECRET_NAME>
       namespace: multi-tenant-operator
 ```
