@@ -164,7 +164,7 @@ Create a Kubernetes secret using following command
 kubectl create secret generic <SECRET_NAME> --from-file=cloud-integration.json -n multi-tenant-operator
 ```
 
-### Step 5: Update the Integration Config
+### Step 6: Update the Integration Config
 
 Provide the secret name MTO's Integration Config
 
