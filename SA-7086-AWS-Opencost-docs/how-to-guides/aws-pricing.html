@@ -3634,13 +3634,13 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#aws-spot-instance-data-feed-pricing" class="md-nav__link">
+  <a href="#aws-spot-instance-pricing" class="md-nav__link">
     <span class="md-ellipsis">
-      AWS Spot Instance Data Feed Pricing
+      AWS Spot Instance Pricing
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="AWS Spot Instance Data Feed Pricing">
+    <nav class="md-nav" aria-label="AWS Spot Instance Pricing">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4388,13 +4388,13 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#aws-spot-instance-data-feed-pricing" class="md-nav__link">
+  <a href="#aws-spot-instance-pricing" class="md-nav__link">
     <span class="md-ellipsis">
-      AWS Spot Instance Data Feed Pricing
+      AWS Spot Instance Pricing
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="AWS Spot Instance Data Feed Pricing">
+    <nav class="md-nav" aria-label="AWS Spot Instance Pricing">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4470,15 +4470,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>MTO supports AWS pricing model via the <code>integrationConfig.components.showbackOpts.cloudIntegrationSecretRef</code> field. Following 3 types of pricing are supported:</p>
 <ul>
 <li><a href="#aws-standard-pricing"><code>AWS Standard Pricing</code></a></li>
-<li><a href="#aws-spot-instance-data-feed-pricing"><code>AWS Spot Instance Datafeed</code></a></li>
+<li><a href="#aws-spot-instance-pricing"><code>AWS Spot Instance Datafeed</code></a></li>
 </ul>
 <h2 id="aws-standard-pricing">AWS Standard Pricing<a class="headerlink" href="#aws-standard-pricing" title="Permanent link">#</a></h2>
 <p>OpenCost will automatically read the node information <code>node.spec.providerID</code> to determine the cloud service provider (CSP) in use. If it detects the CSP is AWS, it will attempt to pull the AWS on-demand pricing from the configured public API URL with no further configuration required.</p>
 <p>OpenCost will request pricing data from the <code>us-east-1</code> region for your <code>node_region</code> using the template:</p>
 <div class="highlight"><pre><span></span><code>https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/${node_region}/index.json
 </code></pre></div>
-<h2 id="aws-spot-instance-data-feed-pricing">AWS Spot Instance Data Feed Pricing<a class="headerlink" href="#aws-spot-instance-data-feed-pricing" title="Permanent link">#</a></h2>
-<p>To enable the AWS Spot data feed, subscribe to AWS Spot Instance Data Feed with the following command</p>
+<h2 id="aws-spot-instance-pricing">AWS Spot Instance Pricing<a class="headerlink" href="#aws-spot-instance-pricing" title="Permanent link">#</a></h2>
+<p>To enable the AWS Spot Instance pricing, subscribe to AWS Spot Instance Data Feed with the following command</p>
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>ec2<span class="w"> </span>create-spot-datafeed-subscription<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--bucket<span class="w"> </span>&lt;BUCKET_NAME&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="o">[</span>--prefix<span class="w"> </span>&lt;BUCKET_PREFIX&gt;<span class="o">]</span>
