@@ -11,6 +11,8 @@ The installation process consists of two steps:
 
 We will be using helm to install the operator, here we have set `bypassedGroups` as `cluster-admins` because our admin user is part of that group as seen in above screenshot.
 
+TODO admin user is part of that group as seen in above screenshot? its missing in preparation section?
+
 ```bash
 helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 1.1.0 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=cluster-admins
 ```
@@ -82,6 +84,11 @@ tenant-operator-gateway    nginx   gateway.iinhdnh6.demo.kubeapp.cloud    ae51c1
 tenant-operator-keycloak   nginx   keycloak.iinhdnh6.demo.kubeapp.cloud   ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com   80, 443   24m
 
 ```
+
+TODO login as admin in the console? and show some content?
+TODO nothing needs to be done in the IC?
+TODO nothing needs to be done in the mto keycloak?
+TODO enable showback and console?
 
 ## What's Next
 
