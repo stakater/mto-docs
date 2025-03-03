@@ -8,21 +8,21 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-stakater-.github-0.x/how-to-guides/graph-visualization.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-stakater-.github-0.x/console/tenants.html">
       
       
-        <link rel="prev" href="custom-metrics.html">
+        <link rel="prev" href="dashboard.html">
       
       
-        <link rel="next" href="hibernation-workflow.html">
+        <link rel="next" href="namespaces.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
     
     
       
-        <title>Graph Visualization on MTO Console - Multi Tenant Operator</title>
+        <title>Tenants - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#graph-visualization-on-mto-console" class="md-skip">
+        <a href="#tenants" class="md-skip">
           Skip to content
         </a>
       
@@ -2530,19 +2530,573 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Navigating Console
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Navigating Console
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
   
   
     <li class="md-nav__item">
-      <a href="../pricing.html" class="md-nav__link">
+      <a href="overview.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Pricing
+    Overview
     
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dashboard
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Tenants
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="tenants.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Tenants
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#live-yaml-and-graph-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      Live YAML and Graph View
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tenant-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tenant Quota
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tenant Quota">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aggregated-quota-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aggregated Quota View
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-quota-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespace Quota View
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tenant-utilization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tenant Utilization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Tenant
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Tenant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-enter-primary-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Enter Primary Info
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Enter Primary Info">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validation-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quota-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quota Details
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabling-the-next-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enabling the Next Button
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-access-control-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Access Control (Optional)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-fields-and-listing-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input Fields and Listing Behavior
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigating-to-the-next-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      Navigating to the Next Step
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-namespace-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Namespace (Optional)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-and-sandbox-tabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common and Sandbox Tabs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specific-tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specific Tab
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-features_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Completion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yaml-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      YAML View
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Tenant
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Tenant
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="namespaces.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Namespaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hibernation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hibernation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="showback.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Showback
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quotas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quotas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="templates.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Templates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="capacity-planning.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Capacity Planning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="configuration.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2858,19 +3412,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -2885,7 +3437,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             How-to Guides
@@ -2935,7 +3487,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="custom-roles.html" class="md-nav__link">
+      <a href="../how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2957,7 +3509,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="extend-default-roles.html" class="md-nav__link">
+      <a href="../how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3023,7 +3575,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="configuring-multitenant-network-isolation.html" class="md-nav__link">
+      <a href="../how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3045,7 +3597,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="deploying-templates.html" class="md-nav__link">
+      <a href="../how-to-guides/deploying-templates.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3067,7 +3619,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3089,7 +3641,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3111,7 +3663,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3133,7 +3685,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="copying-resources.html" class="md-nav__link">
+      <a href="../how-to-guides/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3160,26 +3712,24 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
         
           
           <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Console
+    Integrations
     
   </span>
   
@@ -3187,10 +3737,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_3">
             <span class="md-nav__icon md-icon"></span>
-            Console
+            Integrations
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -3201,11 +3751,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="keycloak.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Setting Up User Access in Keycloak for MTO Console
+    Enabling Multi-Tenancy in ArgoCD
     
   </span>
   
@@ -3223,48 +3773,16 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="custom-metrics.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Custom Metrics Support
+    Configuring Vault in IntegrationConfig
     
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="graph-visualization.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Graph Visualization on MTO Console
-    
-  </span>
-  
-
-      </a>
-      
     </li>
   
 
@@ -3277,11 +3795,99 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="hibernation-workflow.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Hibernation Workflow
+    Enabling DevWorkspace for Tenant's sandbox in OpenShift
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/mattermost.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Creating Mattermost Teams for your tenant
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/integrating-external-keycloak.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrating External Keycloak
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/integrating-vault.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Integrating Vault and Keycloak with Microsoft Entra ID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/azure-pricing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure Pricing Model
     
   </span>
   
@@ -3321,7 +3927,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             
   
   <span class="md-ellipsis">
-    CRUD
+    Tenant Isolation
     
   </span>
   
@@ -3332,7 +3938,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_4">
             <span class="md-nav__icon md-icon"></span>
-            CRUD
+            Tenant Isolation
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -3343,33 +3949,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="crud/tenant-crud-workflow.html" class="md-nav__link">
+      <a href="../how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Tenant
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="crud/quota-crud-workflow.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Quota
+    Restricting Tenant Workloads to Specific Nodes
     
   </span>
   
@@ -3409,7 +3993,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             
   
   <span class="md-ellipsis">
-    Integrations
+    Offboarding
     
   </span>
   
@@ -3419,270 +4003,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_5">
-            <span class="md-nav__icon md-icon"></span>
-            Integrations
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="enabling-multi-tenancy-argocd.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Enabling Multi-Tenancy in ArgoCD
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="enabling-multi-tenancy-vault.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Configuring Vault in IntegrationConfig
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="enabling-openshift-dev-workspace.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Enabling DevWorkspace for Tenant's sandbox in OpenShift
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="mattermost.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Creating Mattermost Teams for your tenant
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="integrating-external-keycloak.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Integrating External Keycloak
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="integrating-vault.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Integrating Vault and Keycloak with Microsoft Entra ID
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="azure-pricing.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Azure Pricing Model
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Tenant Isolation
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_6">
-            <span class="md-nav__icon md-icon"></span>
-            Tenant Isolation
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="restrict-nodepool-per-tenant.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Restricting Tenant Workloads to Specific Nodes
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Offboarding
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_7">
             <span class="md-nav__icon md-icon"></span>
             Offboarding
           </label>
@@ -3695,7 +4015,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="offboarding/uninstalling.html" class="md-nav__link">
+      <a href="../how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3713,6 +4033,28 @@ This documentation is for a pull request deployment and is unreleased, it is onl
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/custom-metrics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Metrics Support
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -3861,28 +4203,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Understanding and Utilizing Template
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../explanation/console.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MTO Console
     
   </span>
   
@@ -4170,6 +4490,27 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
+      <a href="../pricing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pricing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../changelog.html" class="md-nav__link">
         
   
@@ -4248,6 +4589,281 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#live-yaml-and-graph-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      Live YAML and Graph View
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tenant-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tenant Quota
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tenant Quota">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aggregated-quota-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      Aggregated Quota View
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-quota-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespace Quota View
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tenant-utilization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tenant Utilization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Tenant
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Tenant">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-enter-primary-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Enter Primary Info
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Enter Primary Info">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validation-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quota-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quota Details
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabling-the-next-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enabling the Next Button
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-access-control-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Access Control (Optional)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-fields-and-listing-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input Fields and Listing Behavior
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigating-to-the-next-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      Navigating to the Next Step
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-namespace-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Namespace (Optional)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-and-sandbox-tabs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common and Sandbox Tabs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specific-tab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specific Tab
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-features_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Completion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yaml-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      YAML View
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Tenant
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Tenant
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -4265,7 +4881,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="graph-visualization-on-mto-console">Graph Visualization on MTO Console<a class="headerlink" href="#graph-visualization-on-mto-console" title="Permanent link">#</a></h1>
+<h1 id="tenants">Tenants<a class="headerlink" href="#tenants" title="Permanent link">#</a></h1>
+<p>Here, admins have a bird's-eye view of all tenants, with the ability to delve into each one for detailed examination and management. This section is pivotal for observing the distribution and organization of tenants within the system. More information on each tenant can be accessed by clicking the view option against each tenant name.</p>
+<p><a class="glightbox" href="../images/tenants.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="tenants" src="../images/tenants.png" /></a></p>
+<h2 id="live-yaml-and-graph-view">Live YAML and Graph View<a class="headerlink" href="#live-yaml-and-graph-view" title="Permanent link">#</a></h2>
+<p>In the MTO Console, each resource section is equipped with a "View" button, revealing the live YAML configuration for complete information on the resource. For Tenant resources, a supplementary "Graph" option is available, illustrating the relationships and dependencies of all resources under a Tenant. This dual-view approach empowers users with both the detailed control of YAML and the holistic oversight of the graph view.</p>
+<p><a class="glightbox" href="../images/tenants_graph.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="tenants-graph" src="../images/tenants_graph.png" /></a></p>
 <p>Effortlessly associate tenants with their respective resources using the enhanced graph feature on the MTO Console. This dynamic graph illustrates the relationships between tenants and the resources they create, encompassing both MTO's proprietary resources and native Kubernetes/OpenShift elements.</p>
 <p>Example Graph:</p>
 <pre class="mermaid"><code>  graph LR;
@@ -4289,6 +4910,210 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li>Click on <code>Graph</code> tab on the tenant details page.
 <a class="glightbox" href="../images/graph-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Tenant Graph" src="../images/graph-3.png" /></a></li>
 </ul>
+<h2 id="tenant-quota">Tenant Quota<a class="headerlink" href="#tenant-quota" title="Permanent link">#</a></h2>
+<p>In this view, users can access a dedicated tab to review the quota utilization for their Tenants. Within this tab, users have the option to toggle between two different views: <strong>Aggregated Quota</strong> and <strong>Namespace Quota</strong>.</p>
+<h3 id="aggregated-quota-view">Aggregated Quota View<a class="headerlink" href="#aggregated-quota-view" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../images/tenantQuotaAggregatedView.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="tenants" src="../images/tenantQuotaAggregatedView.png" /></a>
+This view provides users with an overview of the combined resource allocation and usage across all namespaces within their tenant. It offers a comprehensive look at the total limits and usage of resources such as CPU, memory, and other defined quotas. Users can easily monitor and manage resource distribution across their entire tenant environment from this aggregated perspective.</p>
+<h3 id="namespace-quota-view">Namespace Quota View<a class="headerlink" href="#namespace-quota-view" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../images/tenantQuotaNamespaceView.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="tenants" src="../images/tenantQuotaNamespaceView.png" /></a>
+Alternatively, users can opt to view quota settings on a per-namespace basis. This view allows users to focus specifically on the resource allocation and usage within individual namespaces. By selecting this option, users gain granular insights into the resource constraints and utilization for each namespace, facilitating more targeted management and optimization of resources at the namespace level.</p>
+<h2 id="tenant-utilization">Tenant Utilization<a class="headerlink" href="#tenant-utilization" title="Permanent link">#</a></h2>
+<p>In the <strong>Utilization</strong> tab of the tenant console, users are presented with a detailed table listing all namespaces within their tenant. This table provides essential metrics for each namespace, including CPU and memory utilization. The metrics shown include:</p>
+<ul>
+<li><strong>Cost:</strong> The cost associated with CPU and memory utilization.</li>
+<li><strong>Request Average:</strong> The average amount of CPU and memory resources requested.</li>
+<li><strong>Usage Average:</strong> The average amount of CPU and memory resources used.</li>
+<li><strong>Max:</strong> The maximum value between CPU and memory requests and used resources, calculated every 30 seconds and averaged over the selected running minutes.</li>
+</ul>
+<p>Users can adjust the interval window using the provided selector to customize the time frame for the displayed data. This table allows users to quickly assess resource utilization across all namespaces, facilitating efficient resource management and cost tracking.</p>
+<p><a class="glightbox" href="../images/tenantUtilizationNamespaces.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="tenants" src="../images/tenantUtilizationNamespaces.png" /></a></p>
+<p>Upon selecting a specific namespace from the utilization table, users are directed to a detailed view that includes CPU and memory utilization graphs along with a workload table. This detailed view provides:</p>
+<ul>
+<li><strong>CPU and Memory Graphs:</strong> Visual representations of the namespace's CPU and memory usage over time, enabling users to identify trends and potential issues at a glance.</li>
+<li><strong>Workload Table:</strong> A comprehensive list of all workloads within the selected namespace, including pods, deployments, and stateful-sets. The table displays key metrics for each workload, including:<ul>
+<li><strong>Cost:</strong> The cost associated with the workload's CPU and memory utilization.</li>
+<li><strong>Request Average:</strong> The average amount of CPU and memory resources requested by the workload.</li>
+<li><strong>Usage Average:</strong> The average amount of CPU and memory resources used by the workload.</li>
+<li><strong>Max:</strong> The maximum value between CPU and memory requests and used resources, calculated every 30 seconds and averaged over the running minutes.</li>
+</ul>
+</li>
+</ul>
+<p>This detailed view provides users with in-depth insights into resource utilization at the workload level, enabling precise monitoring and optimization of resource allocation within the selected namespace.</p>
+<p><a class="glightbox" href="../images/tenantUtilizationNamespaceStats.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="tenants" src="../images/tenantUtilizationNamespaceStats.png" /></a></p>
+<h2 id="create-tenant">Create Tenant<a class="headerlink" href="#create-tenant" title="Permanent link">#</a></h2>
+<p>The tenant creation process involves a three-step drawer interface. This document outlines the validation checks and the criteria for progressing through these steps.</p>
+<h3 id="step-1-enter-primary-info">Step 1: Enter Primary Info<a class="headerlink" href="#step-1-enter-primary-info" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../images/tenantCreationStep1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="tenantCreationStep1" src="../images/tenantCreationStep1.png" /></a></p>
+<p>The first step in creating a tenant is to provide a name for the tenant. Users must ensure the tenant name meets the specified criteria. The Next button remains disabled until the entered tenant name passes validation and a quota is selected.</p>
+<h4 id="validation-criteria">Validation Criteria<a class="headerlink" href="#validation-criteria" title="Permanent link">#</a></h4>
+<ul>
+<li>
+<p>Regex Validation</p>
+<ul>
+<li>The tenant name must conform to the following regex pattern:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>    /^[a-z0-9]+(-[a-z0-9]+)*$/
+</code></pre></div>
+<ul>
+<li>This ensures that tenant names consist of lowercase alphanumeric characters and hyphens, and do not start or end with a hyphen.</li>
+</ul>
+</li>
+<li>
+<p>Uniqueness Check</p>
+<ul>
+<li>The tenant name must be unique.</li>
+<li>When tenant name is entered and user stops typing the tenant name is verified of its uniqueness through an API call to the backend for confirmation that the name does not already exist. If the name is unique the Next button is enabled and user can click on it. If the name is already taken, an error is displayed, and the user must choose a different name.</li>
+</ul>
+</li>
+</ul>
+<h3 id="quota-details">Quota Details<a class="headerlink" href="#quota-details" title="Permanent link">#</a></h3>
+<p>The selected quota defines resource limits for the tenant. Example quota details are shown in JSON format as well as a toggle button to view them as YAML:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">resourcequota</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">hard</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">configmaps</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;50&#39;</span>
+<span class="w">    </span><span class="nt">requests.cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;50&#39;</span>
+<span class="w">    </span><span class="nt">requests.memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5Gi</span>
+<span class="w">    </span><span class="nt">secrets</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;50&#39;</span>
+<span class="w">    </span><span class="nt">services</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;050&#39;</span>
+<span class="w">    </span><span class="nt">services.loadbalancers</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1&#39;</span>
+<span class="nt">limitrange</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<span class="w">      </span><span class="nt">max</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;1&#39;</span>
+<span class="w">        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span>
+<span class="w">      </span><span class="nt">min</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100m</span>
+<span class="w">        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50Mi</span>
+</code></pre></div>
+<h3 id="enabling-the-next-button">Enabling the Next Button<a class="headerlink" href="#enabling-the-next-button" title="Permanent link">#</a></h3>
+<p>The Next button becomes enabled only when
+    - The entered tenant name passes both regex validation and the uniqueness check.
+    - A quota is selected from the dropdown menu.</p>
+<h3 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">#</a></h3>
+<p>Error Handling on step 1 is based on the following factors</p>
+<ul>
+<li>If the tenant name fails regex validation, an inline error message indicates the naming rule.</li>
+<li>If the tenant name already exists, the user is prompted to enter a new name.</li>
+</ul>
+<h3 id="step-2-access-control-optional">Step 2: Access Control (Optional)<a class="headerlink" href="#step-2-access-control-optional" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../images/tenantCreationStep2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="tenantCreationStep2" src="../images/tenantCreationStep2.png" /></a></p>
+<p>The second step allows users to configure access control for the tenant. This step is optional and provides three tabs for managing user roles: Owners, Editors, and Viewers.</p>
+<p>If the user has some data entered into the step 2 section tabs, the skip option will be disabled. Otherwise, user can perform skip action by clicking on the Skip button.</p>
+<h3 id="input-fields-and-listing-behavior">Input Fields and Listing Behavior<a class="headerlink" href="#input-fields-and-listing-behavior" title="Permanent link">#</a></h3>
+<ul>
+<li>Input Fields
+    -Each tab (Owners, Editors, and Viewers) contains two input fields:
+        - Users: Allows adding individual users.
+        - Groups: Allows adding groups.<ul>
+<li>The input fields also act as filters for existing values.</li>
+<li>If the entered value does not already exist in the list, it can be added.</li>
+</ul>
+</li>
+<li>Listing Added Values<ul>
+<li>Values entered into the input fields are displayed as a scroll list below the fields.</li>
+<li>Each added value is displayed with a remove button ("X") to allow easy deletion.</li>
+</ul>
+</li>
+</ul>
+<h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">#</a></h3>
+<ul>
+<li>Optional Configuration: Users can skip this step by clicking the Skip button.</li>
+<li>Filtering: As users type into the input fields, existing values matching the input are shown as suggestions for quick selection.</li>
+<li>Add New Values: If the entered value is not in the existing list, users can add it by confirming the input.</li>
+<li>Scroll Support: The lists have scroll view, ensuring all entries are accessible even when the list grows long.</li>
+</ul>
+<h3 id="navigating-to-the-next-step">Navigating to the Next Step<a class="headerlink" href="#navigating-to-the-next-step" title="Permanent link">#</a></h3>
+<ul>
+<li>Users can proceed to the next step by clicking the Next button.</li>
+<li>The Next button is always enabled for this step as it is optional.</li>
+</ul>
+<h3 id="error-handling_1">Error Handling<a class="headerlink" href="#error-handling_1" title="Permanent link">#</a></h3>
+<p>No specific validations are required for this step since it is optional. However, users can remove or adjust entries as needed using the provided interface.</p>
+<h3 id="step-3-namespace-optional">Step 3: Namespace (Optional)<a class="headerlink" href="#step-3-namespace-optional" title="Permanent link">#</a></h3>
+<p>The third step allows users to optionally configure namespaces and metadata for the tenant. This step consists of two tabs:</p>
+<h3 id="namespace">Namespace<a class="headerlink" href="#namespace" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../images/tenantCreationStep3NamespaceTab.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="tenantCreationStep3NamespaceTab" src="../images/tenantCreationStep3NamespaceTab.png" /></a></p>
+<ul>
+<li>Toggles:<ul>
+<li>Enable Sandbox: Activates the sandbox environment for the tenant.</li>
+<li>Private Sandbox: Makes the sandbox environment private.</li>
+<li>On Delete Purge Namespaces: Ensures namespaces are purged upon deletion.</li>
+</ul>
+</li>
+<li>Input Fields:<ul>
+<li>With Tenant Prefix:<ul>
+<li>Allows users to add namespaces with a tenant prefix.</li>
+<li>Filters data based on existing namespaces.</li>
+</ul>
+</li>
+<li>Without Tenant Prefix:<ul>
+<li>Allows users to add namespaces without a tenant prefix.</li>
+<li>Filters data and validates input to check for existing namespaces.</li>
+<li>Displays an error if the namespace already exists (as shown in the UI).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>List Behavior:<ul>
+<li>Added namespaces are displayed in a scroll list below the input fields.</li>
+<li>Each namespace is displayed with a remove button ("X") for easy deletion.</li>
+</ul>
+</li>
+</ul>
+<h3 id="metadata">Metadata<a class="headerlink" href="#metadata" title="Permanent link">#</a></h3>
+<p>The Metadata tab is divided into three sub-tabs:</p>
+<h4 id="common-and-sandbox-tabs">Common and Sandbox Tabs<a class="headerlink" href="#common-and-sandbox-tabs" title="Permanent link">#</a></h4>
+<p><a class="glightbox" href="../images/tenantCreationStep3MetadataCommonSandboxTab.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="tenantCreationStep3MetadataCommonSandboxTab" src="../images/tenantCreationStep3MetadataCommonSandboxTab.png" /></a></p>
+<ul>
+<li>Both tabs allow users to add annotations and labels using Key and Value input fields.</li>
+<li>Inputs act as filters for existing values.</li>
+<li>No validation is required for these fields.</li>
+<li>Added annotations and labels are displayed in a scroll list with remove buttons ("X") for easy deletion.</li>
+</ul>
+<h4 id="specific-tab">Specific Tab<a class="headerlink" href="#specific-tab" title="Permanent link">#</a></h4>
+<p><a class="glightbox" href="../images/tenantCreationStep3MetadataSpecificTab.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="tenantCreationStep3MetadataSpecificTab" src="../images/tenantCreationStep3MetadataSpecificTab.png" /></a></p>
+<ul>
+<li>Includes an Add Accordion button.</li>
+<li>Each accordion contains the following fields:<ul>
+<li>Namespaces: Users can add and filter namespaces. Each namespace is verified before being added to the list.</li>
+<li>Annotations: Key-value pairs that act as filters for listed values.</li>
+<li>Labels: Key-value pairs that act as filters for listed values.</li>
+</ul>
+</li>
+<li>Each field displays added values in a scroll list with remove buttons ("X") for easy deletion.</li>
+</ul>
+<h3 id="key-features_1">Key Features<a class="headerlink" href="#key-features_1" title="Permanent link">#</a></h3>
+<ul>
+<li>Optional Configuration: Users can skip this step by clicking the Create button directly.</li>
+<li>Filtering and Validation:<ul>
+<li>Inputs filter data based on existing values.</li>
+<li>Namespace inputs validate entries to ensure uniqueness.</li>
+</ul>
+</li>
+<li>Scroll Support: All lists have scroll view, ensuring accessibility for large datasets.</li>
+</ul>
+<h3 id="error-handling_2">Error Handling<a class="headerlink" href="#error-handling_2" title="Permanent link">#</a></h3>
+<ul>
+<li>The "Without Tenant Prefix" input validates namespace uniqueness and displays an error if the namespace already exists.</li>
+<li>Namespaces in the accordions are being verified before being added. If they already exist they are not added and shown with an error message on the input.</li>
+<li>No validation errors occur for annotations or labels as they are free-form inputs.</li>
+</ul>
+<h3 id="completion">Completion<a class="headerlink" href="#completion" title="Permanent link">#</a></h3>
+<ul>
+<li>Users finalize the tenant creation process by clicking the Create button.</li>
+</ul>
+<h3 id="yaml-view">YAML View<a class="headerlink" href="#yaml-view" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../images/YamlView.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="YAML" src="../images/YamlView.png" /></a></p>
+<ul>
+<li>A YAML representation of the configuration can be previewed using the <strong>Show YAML</strong> button before creation.</li>
+</ul>
+<h2 id="update-tenant">Update Tenant<a class="headerlink" href="#update-tenant" title="Permanent link">#</a></h2>
+<p>User can click on the edit button in the table under the action items to open the drawer with all the pre-populated tenant configurations.</p>
+<p>The update process follows a similar flow to the create process. However, the key difference is that the <strong>tenant name</strong> in <strong>Step-1</strong> cannot be edited or updated. All other steps and configurations remain the same, allowing users to modify access control, namespaces, and metadata as needed.</p>
+<h2 id="delete-tenant">Delete Tenant<a class="headerlink" href="#delete-tenant" title="Permanent link">#</a></h2>
+<p>By clicking on the delete option in the tenants table the user will be able to perform delete operation, and it may take a short while to delete the tenant.</p>
 
 
 
@@ -4999,7 +5824,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

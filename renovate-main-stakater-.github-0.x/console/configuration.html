@@ -8,21 +8,21 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-stakater-.github-0.x/how-to-guides/hibernation-workflow.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-stakater-.github-0.x/console/configuration.html">
       
       
-        <link rel="prev" href="graph-visualization.html">
+        <link rel="prev" href="capacity-planning.html">
       
       
-        <link rel="next" href="crud/tenant-crud-workflow.html">
+        <link rel="next" href="../tutorials/tenant/create-tenant.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
     
     
       
-        <title>Hibernation Workflow - Multi Tenant Operator</title>
+        <title>Configuration - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hibernation-workflow" class="md-skip">
+        <a href="#configuration" class="md-skip">
           Skip to content
         </a>
       
@@ -2530,19 +2530,495 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Navigating Console
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Navigating Console
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
   
   
     <li class="md-nav__item">
-      <a href="../pricing.html" class="md-nav__link">
+      <a href="overview.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Pricing
+    Overview
     
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="dashboard.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dashboard
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tenants.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tenants
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="namespaces.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Namespaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="hibernation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hibernation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="showback.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Showback
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="quotas.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quotas
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="templates.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Templates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="capacity-planning.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Capacity Planning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="configuration.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#user-roles-and-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Roles and Permissions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User Roles and Permissions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#administrators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Administrators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tenant-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tenant Users
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#caching-and-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caching and Database
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-and-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication and Authorization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication and Authorization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keycloak-for-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keycloak for Authentication
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Keycloak for Authentication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-as-persistent-storage-for-keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      PostgreSQL as Persistent Storage for Keycloak
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PostgreSQL as Persistent Storage for Keycloak">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#benefits_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-module-for-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Built-in module for Authorization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in module for Authorization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#benefits_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-user-access-in-keycloak-for-mto-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up User Access in Keycloak for MTO Console
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Up User Access in Keycloak for MTO Console">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-keycloak-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Keycloak Console
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-new-users-in-keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding new Users in Keycloak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-mto-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing MTO Console
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#granting-access-to-tenant-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Granting Access to Tenant Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verifying Access
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2858,19 +3334,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -2885,7 +3359,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             How-to Guides
@@ -2935,7 +3409,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="custom-roles.html" class="md-nav__link">
+      <a href="../how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2957,7 +3431,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="extend-default-roles.html" class="md-nav__link">
+      <a href="../how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3023,7 +3497,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="configuring-multitenant-network-isolation.html" class="md-nav__link">
+      <a href="../how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3045,7 +3519,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="deploying-templates.html" class="md-nav__link">
+      <a href="../how-to-guides/deploying-templates.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3067,7 +3541,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3089,7 +3563,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3111,7 +3585,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3133,7 +3607,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="copying-resources.html" class="md-nav__link">
+      <a href="../how-to-guides/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3160,26 +3634,24 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
         
           
           <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Console
+    Integrations
     
   </span>
   
@@ -3187,10 +3659,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_3">
             <span class="md-nav__icon md-icon"></span>
-            Console
+            Integrations
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -3201,11 +3673,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="keycloak.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Setting Up User Access in Keycloak for MTO Console
+    Enabling Multi-Tenancy in ArgoCD
     
   </span>
   
@@ -3223,11 +3695,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="custom-metrics.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Custom Metrics Support
+    Configuring Vault in IntegrationConfig
     
   </span>
   
@@ -3245,11 +3717,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="graph-visualization.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Graph Visualization on MTO Console
+    Enabling DevWorkspace for Tenant's sandbox in OpenShift
     
   </span>
   
@@ -3264,155 +3736,85 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Hibernation Workflow
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="hibernation-workflow.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../how-to-guides/mattermost.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Hibernation Workflow
+    Creating Mattermost Teams for your tenant
     
   </span>
   
 
       </a>
-      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/integrating-external-keycloak.html" class="md-nav__link">
         
-
   
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
+  <span class="md-ellipsis">
+    Integrating External Keycloak
     
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#sleep-tab" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sleep Tab
-    </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Sleep Tab">
-      <ul class="md-nav__list">
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/integrating-vault.html" class="md-nav__link">
         
-          <li class="md-nav__item">
-  <a href="#sleep-namespace-by-labels" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sleep Namespace by Labels
-    </span>
-  </a>
   
-</li>
+  <span class="md-ellipsis">
+    Integrating Vault and Keycloak with Microsoft Entra ID
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/azure-pricing.html" class="md-nav__link">
         
-          <li class="md-nav__item">
-  <a href="#sleep-namespace-by-name" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sleep Namespace by Name
-    </span>
-  </a>
   
-</li>
-        
-      </ul>
-    </nav>
+  <span class="md-ellipsis">
+    Azure Pricing Model
+    
+  </span>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hibernation-tab" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hibernation Tab
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Hibernation Tab">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#creating-an-interval" class="md-nav__link">
-    <span class="md-ellipsis">
-      Creating an Interval
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#selecting-an-interval" class="md-nav__link">
-    <span class="md-ellipsis">
-      Selecting an Interval
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hibernate-namespace-by-labels" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hibernate Namespace by Labels
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hibernate-namespace-by-name" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hibernate Namespace by Name
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#common-elements-for-both-tabs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Elements for Both Tabs
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
+
+      </a>
     </li>
   
 
@@ -3447,7 +3849,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             
   
   <span class="md-ellipsis">
-    CRUD
+    Tenant Isolation
     
   </span>
   
@@ -3458,7 +3860,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_4">
             <span class="md-nav__icon md-icon"></span>
-            CRUD
+            Tenant Isolation
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -3469,33 +3871,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="crud/tenant-crud-workflow.html" class="md-nav__link">
+      <a href="../how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Tenant
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="crud/quota-crud-workflow.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Quota
+    Restricting Tenant Workloads to Specific Nodes
     
   </span>
   
@@ -3535,7 +3915,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             
   
   <span class="md-ellipsis">
-    Integrations
+    Offboarding
     
   </span>
   
@@ -3545,270 +3925,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_5">
-            <span class="md-nav__icon md-icon"></span>
-            Integrations
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="enabling-multi-tenancy-argocd.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Enabling Multi-Tenancy in ArgoCD
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="enabling-multi-tenancy-vault.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Configuring Vault in IntegrationConfig
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="enabling-openshift-dev-workspace.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Enabling DevWorkspace for Tenant's sandbox in OpenShift
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="mattermost.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Creating Mattermost Teams for your tenant
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="integrating-external-keycloak.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Integrating External Keycloak
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="integrating-vault.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Integrating Vault and Keycloak with Microsoft Entra ID
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="azure-pricing.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Azure Pricing Model
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_6" >
-        
-          
-          <label class="md-nav__link" for="__nav_7_6" id="__nav_7_6_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Tenant Isolation
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_6">
-            <span class="md-nav__icon md-icon"></span>
-            Tenant Isolation
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="restrict-nodepool-per-tenant.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Restricting Tenant Workloads to Specific Nodes
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_7_7" id="__nav_7_7_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Offboarding
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_7">
             <span class="md-nav__icon md-icon"></span>
             Offboarding
           </label>
@@ -3821,7 +3937,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="offboarding/uninstalling.html" class="md-nav__link">
+      <a href="../how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3839,6 +3955,28 @@ This documentation is for a pull request deployment and is unreleased, it is onl
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/custom-metrics.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Metrics Support
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -3987,28 +4125,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Understanding and Utilizing Template
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../explanation/console.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MTO Console
     
   </span>
   
@@ -4296,6 +4412,27 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
+      <a href="../pricing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pricing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../changelog.html" class="md-nav__link">
         
   
@@ -4381,28 +4518,28 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sleep-tab" class="md-nav__link">
+  <a href="#user-roles-and-permissions" class="md-nav__link">
     <span class="md-ellipsis">
-      Sleep Tab
+      User Roles and Permissions
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Sleep Tab">
+    <nav class="md-nav" aria-label="User Roles and Permissions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sleep-namespace-by-labels" class="md-nav__link">
+  <a href="#administrators" class="md-nav__link">
     <span class="md-ellipsis">
-      Sleep Namespace by Labels
+      Administrators
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#sleep-namespace-by-name" class="md-nav__link">
+  <a href="#tenant-users" class="md-nav__link">
     <span class="md-ellipsis">
-      Sleep Namespace by Name
+      Tenant Users
     </span>
   </a>
   
@@ -4414,46 +4551,38 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#hibernation-tab" class="md-nav__link">
+  <a href="#caching-and-database" class="md-nav__link">
     <span class="md-ellipsis">
-      Hibernation Tab
+      Caching and Database
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Hibernation Tab">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-and-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication and Authorization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication and Authorization">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#creating-an-interval" class="md-nav__link">
+  <a href="#keycloak-for-authentication" class="md-nav__link">
     <span class="md-ellipsis">
-      Creating an Interval
+      Keycloak for Authentication
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Keycloak for Authentication">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#selecting-an-interval" class="md-nav__link">
+  <a href="#benefits" class="md-nav__link">
     <span class="md-ellipsis">
-      Selecting an Interval
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hibernate-namespace-by-labels" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hibernate Namespace by Labels
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hibernate-namespace-by-name" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hibernate Namespace by Name
+      Benefits
     </span>
   </a>
   
@@ -4463,13 +4592,117 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#common-elements-for-both-tabs" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-as-persistent-storage-for-keycloak" class="md-nav__link">
     <span class="md-ellipsis">
-      Common Elements for Both Tabs
+      PostgreSQL as Persistent Storage for Keycloak
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="PostgreSQL as Persistent Storage for Keycloak">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#benefits_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#built-in-module-for-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Built-in module for Authorization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in module for Authorization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#benefits_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-user-access-in-keycloak-for-mto-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up User Access in Keycloak for MTO Console
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Up User Access in Keycloak for MTO Console">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-keycloak-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Keycloak Console
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-new-users-in-keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding new Users in Keycloak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-mto-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing MTO Console
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#granting-access-to-tenant-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Granting Access to Tenant Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verifying Access
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4492,95 +4725,115 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="hibernation-workflow">Hibernation Workflow<a class="headerlink" href="#hibernation-workflow" title="Permanent link">#</a></h1>
-<p>The main purpose of the Hibernation workflow is, controlling resource consumption dynamically while enabling efficient management of namespaces based on their usage patterns and requirements.</p>
-<h2 id="sleep-tab">Sleep Tab<a class="headerlink" href="#sleep-tab" title="Permanent link">#</a></h2>
-<p>The "SLEEP" tab is active, indicating that namespaces can be put into sleep mode based on certain criteria.</p>
-<h3 id="sleep-namespace-by-labels">Sleep Namespace by Labels<a class="headerlink" href="#sleep-namespace-by-labels" title="Permanent link">#</a></h3>
+<h1 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">#</a></h1>
+<h2 id="user-roles-and-permissions">User Roles and Permissions<a class="headerlink" href="#user-roles-and-permissions" title="Permanent link">#</a></h2>
+<h3 id="administrators">Administrators<a class="headerlink" href="#administrators" title="Permanent link">#</a></h3>
+<p>Administrators have overarching access to the console, including the ability to view all namespaces and tenants. They have exclusive access to the IntegrationConfig, allowing them to view all the settings and integrations.</p>
+<p><a class="glightbox" href="../images/integrationConfig.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="integration Config" src="../images/integrationConfig.png" /></a></p>
+<h3 id="tenant-users">Tenant Users<a class="headerlink" href="#tenant-users" title="Permanent link">#</a></h3>
+<p>Regular tenant users can monitor and manage their allocated resources. However, they do not have access to the IntegrationConfig and cannot view resources across different tenants, ensuring data privacy and operational integrity.</p>
+<h2 id="caching-and-database">Caching and Database<a class="headerlink" href="#caching-and-database" title="Permanent link">#</a></h2>
+<p>MTO integrates a dedicated database to streamline resource management. Now, all resources managed by MTO are efficiently stored in a Postgres database, enhancing the MTO Console's ability to efficiently retrieve all the resources for optimal presentation.</p>
+<p>The implementation of this feature is facilitated by the Bootstrap controller, streamlining the deployment process. This controller creates the PostgreSQL Database, establishes a service for inter-pod communication, and generates a secret to ensure secure connectivity to the database.</p>
+<p>Furthermore, the introduction of a dedicated cache layer ensures that there is no added burden on the Kube API server when responding to MTO Console requests. This enhancement not only improves response times but also contributes to a more efficient and responsive resource management system.</p>
+<h2 id="authentication-and-authorization">Authentication and Authorization<a class="headerlink" href="#authentication-and-authorization" title="Permanent link">#</a></h2>
+<h3 id="keycloak-for-authentication">Keycloak for Authentication<a class="headerlink" href="#keycloak-for-authentication" title="Permanent link">#</a></h3>
+<p>MTO Console incorporates Keycloak, a leading authentication module, to manage user access securely and efficiently. Keycloak is provisioned automatically by our controllers, setting up a new realm, client, and a default user named <code>mto</code>.</p>
+<h4 id="benefits">Benefits<a class="headerlink" href="#benefits" title="Permanent link">#</a></h4>
 <ul>
-<li>The interface allows namespaces to be put to sleep based on "LABELS". In this view, the "LABELS" option is selected.</li>
-<li>This approach allows filtering of namespaces using Kubernetes labels. Users can input label selectors in the text box to search amongst the available labels and target specific namespaces based on the unique labels.</li>
-<li>
-<p>In the example below are the selected labels:</p>
+<li>Industry Standard: Offers robust, reliable authentication in line with industry standards.</li>
+<li>Integration with Existing Systems: Enables easy linkage with existing Active Directories or SSO systems, avoiding the need for redundant user management.</li>
+<li>Administrative Control: Grants administrators full authority over user access to the console, enhancing security and operational integrity.</li>
+</ul>
+<h3 id="postgresql-as-persistent-storage-for-keycloak">PostgreSQL as Persistent Storage for Keycloak<a class="headerlink" href="#postgresql-as-persistent-storage-for-keycloak" title="Permanent link">#</a></h3>
+<p>MTO Console leverages PostgreSQL as the persistent storage solution for Keycloak, enhancing the reliability and flexibility of the authentication system.</p>
+<p>It offers benefits such as enhanced data reliability, easy data export and import.</p>
+<h4 id="benefits_1">Benefits<a class="headerlink" href="#benefits_1" title="Permanent link">#</a></h4>
 <ul>
-<li><code>text kubernetes.io/metadata.name:stakater-tronador</code></li>
-<li><code>text stakater.com/quota:saap-quota-large</code></li>
+<li>Persistent Data Storage: By using PostgreSQL, Keycloak's data, including realms, clients, and user information, is preserved even in the event of a pod restart. This ensures continuous availability and stability of the authentication system.</li>
+<li>Data Exportability: Customers can easily export Keycloak configurations and data from the PostgreSQL database.</li>
+<li>Transferability Across Environments: The exported data can be conveniently imported into another cluster or Keycloak instance, facilitating smooth transitions and backups.</li>
+<li>No Data Loss: Ensures that critical authentication data is not lost during system updates or maintenance.</li>
+<li>Operational Flexibility: Provides customers with greater control over their authentication data, enabling them to manage and migrate their configurations as needed.</li>
 </ul>
-</li>
-<li>
-<p>After applying the label filters, <code>stakater-tronador</code> appears in the list of matching namespaces. The "Sleeping" column shows no indication of sleep state, suggesting it isn't yet asleep.</p>
-</li>
-<li>Users can click on the <strong>Update</strong> button to put the filtered namespace rows to sleep based on labels selected. As this will then be reflected in the table below and the main table.</li>
-</ul>
-<p><a class="glightbox" href="../images/sleepByLabels.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="sleepByLabels" src="../images/sleepByLabels.png" /></a></p>
-<h3 id="sleep-namespace-by-name">Sleep Namespace by Name<a class="headerlink" href="#sleep-namespace-by-name" title="Permanent link">#</a></h3>
+<h3 id="built-in-module-for-authorization">Built-in module for Authorization<a class="headerlink" href="#built-in-module-for-authorization" title="Permanent link">#</a></h3>
+<p>The MTO Console is equipped with an authorization module, designed to manage access rights intelligently and securely.</p>
+<h4 id="benefits_2">Benefits<a class="headerlink" href="#benefits_2" title="Permanent link">#</a></h4>
 <ul>
-<li>The interface shows the "NAME" option selected instead of "LABELS".</li>
-<li>Labels selection here will act as a filter for the table rows and allow user to filter the namespaces based on the applied/selected labels.</li>
-<li>This allows users to select the namespaces by their names individually, after being filtered based on the labels filter.</li>
-<li>The filter input accepts namespace names or partial matches to narrow down the list. Here, two filters are applied:<ul>
-<li><code>text stakater.com/kind:flux-system</code></li>
-<li><code>text stakater.com/quota:saap-quota-large</code></li>
+<li>User and Tenant Based: Authorization decisions are made based on the user's membership in specific tenants, ensuring appropriate access control.</li>
+<li>Role-Specific Access: The module considers the roles assigned to users, granting permissions accordingly to maintain operational integrity.</li>
+<li>Elevated Privileges for Admins: Users identified as administrators or members of the clusterAdminGroups are granted comprehensive permissions across the console.</li>
+<li>Database Caching: Authorization decisions are cached in the database, reducing reliance on the Kubernetes API server.</li>
+<li>Faster, Reliable Access: This caching mechanism ensures quicker and more reliable access for users, enhancing the overall responsiveness of the MTO Console.</li>
 </ul>
-</li>
-<li>The filtered result displays <code>flux-system</code> as a match. A checkbox is provided next to the namespace, likely allowing selection for sleep actions.</li>
-<li>Users can click on the <strong>Update</strong> button to put the filtered namespace rows to sleep based on namespaces selected by name. As this will then be reflected in the table below and the main Hibernation table.</li>
-</ul>
-<p><a class="glightbox" href="../images/sleepByName.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="sleepByName" src="../images/sleepByName.png" /></a></p>
+<h2 id="setting-up-user-access-in-keycloak-for-mto-console">Setting Up User Access in Keycloak for MTO Console<a class="headerlink" href="#setting-up-user-access-in-keycloak-for-mto-console" title="Permanent link">#</a></h2>
+<p>This guide walks you through the process of adding new users in Keycloak and granting them access to Multi Tenant Operator (MTO) Console.</p>
+<h3 id="accessing-keycloak-console">Accessing Keycloak Console<a class="headerlink" href="#accessing-keycloak-console" title="Permanent link">#</a></h3>
 <ul>
-<li>Another example can be seen where the <code>stakater.com/tenant:alpha</code> is selected and rows based on the selected labels are filtered.</li>
-<li>User can select the namespaces individually by name to put them to sleep.</li>
+<li>Log in to the OpenShift Console.</li>
+<li>Go to the 'Routes' section within the 'multi-tenant-operator' namespace.</li>
 </ul>
-<p><a class="glightbox" href="../images/sleepByNameSelection.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="sleepByNameSelection" src="../images/sleepByNameSelection.png" /></a></p>
-<h2 id="hibernation-tab">Hibernation Tab<a class="headerlink" href="#hibernation-tab" title="Permanent link">#</a></h2>
-<p>The "HIBERNATE" tab is active, indicating that namespaces can be put into hibernation mode based on selected schedule.</p>
-<p>Unlike "SLEEP" tab, hibernate requires an interval to be selected in order to do any action on the tab.</p>
-<h3 id="creating-an-interval">Creating an Interval<a class="headerlink" href="#creating-an-interval" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../images/routes.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="routes" src="../images/routes.png" /></a></p>
 <ul>
-<li>User can create a hibernation interval with custom schedules for when the namespace should enter sleep mode and when it should wake up.</li>
-<li>The schedules should be a cron value as it will be reflected below the input.</li>
-<li>The schedule name after creation will append the tenant name to it's end indicating the tenant it belongs to for clarification.</li>
-<li>Each interval is defined by a <strong>Sleep Schedule</strong> and a <strong>Wake Schedule</strong> in cron format (e.g., <code>"30 * * * *"</code> for 30 minutes past each hour).</li>
+<li>Click on the Keycloak console link provided in the Routes.</li>
+<li>Login using the admin credentials (default: admin/admin).</li>
 </ul>
-<p><a class="glightbox" href="../images/createInterval.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="create Interval" src="../images/createInterval.png" /></a></p>
-<h3 id="selecting-an-interval">Selecting an Interval<a class="headerlink" href="#selecting-an-interval" title="Permanent link">#</a></h3>
+<h3 id="adding-new-users-in-keycloak">Adding new Users in Keycloak<a class="headerlink" href="#adding-new-users-in-keycloak" title="Permanent link">#</a></h3>
 <ul>
-<li>Before applying hibernation to any namespace, an interval must be selected</li>
-<li>This selection is mandatory; without choosing an interval, the hibernation action cannot proceed, ensuring a clear and structured schedule is always in place.</li>
+<li>In the Keycloak console, switch to the <code>mto</code> realm.</li>
 </ul>
-<p><a class="glightbox" href="../images/selectCreatedInterval.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="selectCreatedInterval" src="../images/selectCreatedInterval.png" /></a></p>
-<h3 id="hibernate-namespace-by-labels">Hibernate Namespace by Labels<a class="headerlink" href="#hibernate-namespace-by-labels" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../images/realm.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="realm" src="../images/realm.png" /></a></p>
 <ul>
-<li>The interface allows namespaces to be put to hibernation state based on "LABELS". In this view, the "LABELS" option is selected.</li>
-<li>This approach allows filtering of namespaces using Kubernetes labels. Users can input label selectors in the text box to search amongst the available labels and target specific namespaces based on the unique labels.</li>
-<li>In the example below are the selected labels: <code>text stakater.com/kind.stakater-forecastle</code>.</li>
-<li>After applying the label filters, <code>stakater-forecastle</code> appears in the list of matching namespaces. The "Hibernated" column shows no indication of hibernation state, suggesting it isn't yet hibernated.</li>
-<li>Users can click on the <strong>Update</strong> button to hibernate the namespace based on labels selected. As this will then be reflected in the table below and the main table.</li>
+<li>Go to the <code>Users</code> section in the <code>mto</code> realm.</li>
+<li>Follow the prompts to add a new user.</li>
 </ul>
-<p><a class="glightbox" href="../images/hibernateByLabels.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="hibernateByLabels" src="../images/hibernateByLabels.png" /></a></p>
+<p><a class="glightbox" href="../images/keycloak-new-user.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="keycloak-new-user" src="../images/keycloak-new-user.png" /></a></p>
 <ul>
-<li>After the filtered namespaces are hibernated the hibernation interval can be seen in the column and value can be read by hovering over the interval.</li>
+<li>Once you add a new user, here is how the Users section would look like</li>
 </ul>
-<p><a class="glightbox" href="../images/hibernateByLabelsApplied.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="hibernateByLabelsApplied" src="../images/hibernateByLabelsApplied.png" /></a></p>
-<h3 id="hibernate-namespace-by-name">Hibernate Namespace by Name<a class="headerlink" href="#hibernate-namespace-by-name" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../images/keycloak-users.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="keycloak-users" src="../images/keycloak-users.png" /></a></p>
+<h3 id="accessing-mto-console">Accessing MTO Console<a class="headerlink" href="#accessing-mto-console" title="Permanent link">#</a></h3>
 <ul>
-<li>The interface shows the "NAME" option selected instead of "LABELS".</li>
-<li>Labels selection here will act as a filter for the table rows and allow user to filter the namespaces based on the applied/selected labels.</li>
-<li>The filter input accepts namespace names or partial matches to narrow down the list. Here, one filters are applied: <code>text stakater.com/kind:flux-reloader</code></li>
-<li>The filtered result displays <code>stakater-reloader</code> as a match. A checkbox is provided next to the namespace, likely allowing selection for hibernating the namespace.</li>
-<li>Users can click on the <strong>Update</strong> button to put the filtered namespace rows to sleep based on namespaces selected by name. As this will then be reflected in the table below and the main Hibernation table.</li>
+<li>Go back to the OpenShift Console, navigate to the Routes section, and get the URL for the MTO Console.</li>
+<li>Open the MTO Console URL and log in with the newly added user credentials.</li>
 </ul>
-<p><a class="glightbox" href="../images/hibernateByName.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="hibernateByName" src="../images/hibernateByName.png" /></a></p>
+<p>Now, at this point, a user will be authenticated to the MTO Console. But in order to get access to view any Tenant resources, the user will need to be part of a Tenant.</p>
+<h3 id="granting-access-to-tenant-resources">Granting Access to Tenant Resources<a class="headerlink" href="#granting-access-to-tenant-resources" title="Permanent link">#</a></h3>
 <ul>
-<li>After the selected namespaces are hibernated the hibernation interval can be seen in the column and value can be read by hovering over the interval.</li>
+<li>Open Tenant CR: In the OpenShift cluster, locate and open the Tenant Custom Resource (CR) that you wish to give access to. You will see a YAML file similar to the following example:</li>
 </ul>
-<p><a class="glightbox" href="../images/hibernateByNameApplied.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="hibernateByNameApplied" src="../images/hibernateByNameApplied.png" /></a></p>
-<h2 id="common-elements-for-both-tabs">Common Elements for Both Tabs<a class="headerlink" href="#common-elements-for-both-tabs" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arsenal</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gabriel@arsenal.com</span>
+<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arsenal</span>
+<span class="w">    </span><span class="nt">editors</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hakimi@arsenal.com</span>
+<span class="w">    </span><span class="nt">viewers</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">neymar@arsenal.com</span>
+</code></pre></div>
 <ul>
-<li>Sleep and Hibernate Tabs: Users can toggle between "SLEEP" and "HIBERNATE" actions, indicating separate states or behaviors for namespaces.</li>
-<li>Rows per page selection: Users can adjust how many namespaces are displayed on the page, with a default of 5 in this view.</li>
-<li>Update Button: Located at the bottom, allowing users to apply the changes made, such as putting the selected namespaces to sleep.</li>
+<li>Edit Tenant CR: Add the newly created user's email to the appropriate section (owners, editors, viewers) in the Tenant CR. For example, if you have created a user <code>john@arsenal.com</code> and wish to add them as an editor, the edited section would look like this:</li>
 </ul>
+<div class="highlight"><pre><span></span><code><span class="nt">editors</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">users</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gabriel@arsenal.com</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">benzema@arsenal.com</span>
+</code></pre></div>
+<ul>
+<li>Save Changes: Save and apply the changes to the Tenant CR.</li>
+</ul>
+<h3 id="verifying-access">Verifying Access<a class="headerlink" href="#verifying-access" title="Permanent link">#</a></h3>
+<p>Once the above steps are completed, you should be able to access the MTO Console now and see alpha Tenant's details along with all the other resources such as namespaces and templates that John has access to.</p>
 
 
 
@@ -5291,7 +5544,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
