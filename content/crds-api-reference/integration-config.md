@@ -204,7 +204,7 @@ Integration config will be managing the following resources required for console
 - `MTO Console, Gateway, Keycloak` resources
 - `Showback` cron-job
 
-Details on console GUI and showback can be found [here](../explanation/console.md)
+Details on console GUI and showback can be found [here](../console/overview.md)
 
 ### Custom Pricing
 

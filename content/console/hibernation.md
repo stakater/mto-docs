@@ -1,6 +1,23 @@
-# Hibernation Workflow
+# Hibernation
 
 The main purpose of the Hibernation workflow is, controlling resource consumption dynamically while enabling efficient management of namespaces based on their usage patterns and requirements.
+
+## Namespace List
+
+Displays a list of namespaces associated with a selected tenant. The tenant filter allows users to view namespaces relevant to a specific tenant.
+
+### Status Columns
+
+- Sleeping: Indicates whether a namespace is currently in a "sleep" state, with a checkmark appearing for namespaces that are set to sleep.
+- Hibernated: Shows whether a namespace is in a "hibernated" state, marked similarly to the sleeping state.
+- Hibernation Interval: Provides details about the schedule for sleep and wake intervals for specific namespaces. The schedule is represented in a format like "Sleep Schedule: At 11 minutes past the hour, Wake Schedule: At 15 minutes past the hour."
+
+### Actions and Filters
+
+- APPLY SLEEP / HIBERNATE: A button to initiate the sleep or hibernation action based on the selected namespaces and applied filters.
+- Schedule Filters: Allows filtering namespaces by their hibernation schedule.
+
+![hibernation-table](../images/hibernation_table.png)
 
 ## Sleep Tab
 
