@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-stakater-vale-package-0.x/how-to-guides/extend-default-roles.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-stakater-vale-package-0.x/console/quotas.html">
       
       
-        <link rel="prev" href="custom-roles.html">
+        <link rel="prev" href="showback.html">
       
       
-        <link rel="next" href="configuring-multitenant-network-isolation.html">
+        <link rel="next" href="templates.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Extending the default access level for tenant members - Multi Tenant Operator</title>
+        <title>Quotas - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#extending-the-default-access-level-for-tenant-members" class="md-skip">
+        <a href="#quotas" class="md-skip">
           Skip to content
         </a>
       
@@ -2530,17 +2530,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -2555,7 +2557,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Navigating Console
@@ -2569,7 +2571,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/overview.html" class="md-nav__link">
+      <a href="overview.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2591,7 +2593,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/dashboard.html" class="md-nav__link">
+      <a href="dashboard.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2613,7 +2615,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/tenants.html" class="md-nav__link">
+      <a href="tenants.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2635,7 +2637,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/namespaces.html" class="md-nav__link">
+      <a href="namespaces.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2657,7 +2659,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/hibernation.html" class="md-nav__link">
+      <a href="hibernation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2679,7 +2681,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/showback.html" class="md-nav__link">
+      <a href="showback.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2698,10 +2700,31 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../console/quotas.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Quotas
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="quotas.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -2711,6 +2734,106 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Quota
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Quota">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-resource-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Resource Quota
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-limit-range-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Limit Range (Optional)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#final-step-save-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Final Step: Save Quota
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Quota
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Quota
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2723,7 +2846,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/templates.html" class="md-nav__link">
+      <a href="templates.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2745,7 +2868,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/capacity-planning.html" class="md-nav__link">
+      <a href="capacity-planning.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2767,7 +2890,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/configuration.html" class="md-nav__link">
+      <a href="configuration.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3100,19 +3223,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -3127,7 +3248,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             How-to Guides
@@ -3138,19 +3259,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
         
           
           <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
@@ -3165,7 +3284,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_1">
             <span class="md-nav__icon md-icon"></span>
             RBAC
@@ -3179,7 +3298,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="custom-roles.html" class="md-nav__link">
+      <a href="../how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3198,19 +3317,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="extend-default-roles.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3220,7 +3330,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-      
     </li>
   
 
@@ -3277,7 +3386,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="configuring-multitenant-network-isolation.html" class="md-nav__link">
+      <a href="../how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3299,7 +3408,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="deploying-templates.html" class="md-nav__link">
+      <a href="../how-to-guides/deploying-templates.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3321,7 +3430,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3343,7 +3452,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3365,7 +3474,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3387,7 +3496,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="copying-resources.html" class="md-nav__link">
+      <a href="../how-to-guides/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3453,7 +3562,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="enabling-multi-tenancy-argocd.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-multi-tenancy-argocd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3475,7 +3584,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="enabling-multi-tenancy-vault.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-multi-tenancy-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3497,7 +3606,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="enabling-openshift-dev-workspace.html" class="md-nav__link">
+      <a href="../how-to-guides/enabling-openshift-dev-workspace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3519,7 +3628,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="mattermost.html" class="md-nav__link">
+      <a href="../how-to-guides/mattermost.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3541,7 +3650,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="integrating-external-keycloak.html" class="md-nav__link">
+      <a href="../how-to-guides/integrating-external-keycloak.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3563,7 +3672,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="integrating-vault.html" class="md-nav__link">
+      <a href="../how-to-guides/integrating-vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3585,7 +3694,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="azure-pricing.html" class="md-nav__link">
+      <a href="../how-to-guides/azure-pricing.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3651,7 +3760,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="restrict-nodepool-per-tenant.html" class="md-nav__link">
+      <a href="../how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3717,7 +3826,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="offboarding/uninstalling.html" class="md-nav__link">
+      <a href="../how-to-guides/offboarding/uninstalling.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3747,7 +3856,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="custom-metrics.html" class="md-nav__link">
+      <a href="../how-to-guides/custom-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4291,6 +4400,92 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Quota
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create Quota">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-resource-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Resource Quota
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-limit-range-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Limit Range (Optional)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#final-step-save-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Final Step: Save Quota
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#update-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Quota
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete Quota
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -4308,29 +4503,109 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="extending-the-default-access-level-for-tenant-members">Extending the default access level for tenant members<a class="headerlink" href="#extending-the-default-access-level-for-tenant-members" title="Permanent link">#</a></h1>
-<p>Bill as the cluster admin wants to extend the default access for tenant members. As an admin of an OpenShift Cluster, Bill can extend the admin, edit, and view ClusterRole using aggregation. Bill will first create a ClusterRole with privileges to resources which Bill wants to extend. Bill will add the aggregation label to the newly created ClusterRole for extending the default ClusterRoles.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRole</span>
-<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rbac.authorization.k8s.io/v1</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extend-admin-role</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">rbac.authorization.k8s.io/aggregate-to-admin</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;true&#39;</span>
-<span class="nt">rules</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">verbs</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">create</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">update</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">delete</span>
-<span class="w">    </span><span class="nt">apiGroups</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user.openshift.io</span>
-<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">groups</span>
+<h1 id="quotas">Quotas<a class="headerlink" href="#quotas" title="Permanent link">#</a></h1>
+<p>MTO's Quotas are crucial for managing resource allocation. In this section, administrators can assess the quotas assigned to each tenant, ensuring a balanced distribution of resources in line with operational requirements.</p>
+<p><a class="glightbox" href="../images/quotas.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="quotas" src="../images/quotas.png" /></a></p>
+<h2 id="create-quota">Create Quota<a class="headerlink" href="#create-quota" title="Permanent link">#</a></h2>
+<p>The quota creation process allows administrators to define resource limits and optional configurations for containers and pods. This document outlines the steps to create a new quota, including the metadata, resource quota, and limit range configurations.</p>
+<h3 id="step-1-metadata">Step 1: Metadata<a class="headerlink" href="#step-1-metadata" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../images/quotaCreationMetadata.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="quotaCreationMetadata" src="../images/quotaCreationMetadata.png" /></a></p>
+<ul>
+<li>
+<p>Name Field</p>
+<ul>
+<li>The name field is mandatory and must be unique.</li>
+<li>If the name already exists, an inline error message is displayed.</li>
+</ul>
+</li>
+<li>
+<p>Error Handling</p>
+<ul>
+<li>Regex Validation</li>
+<li>The quota name must conform to the following regex pattern:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>    /^[a-z0-9]+(-[a-z0-9]+)*$/
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You can learn more about <code>aggregated-cluster-roles</code> <a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#aggregated-clusterroles">here</a></p>
-</div>
+<ul>
+<li>This ensures that quota names consist of lowercase alphanumeric characters and hyphens, and do not start or end with a hyphen.</li>
+<li>The metadata section in the drawer while creating a quota is to provide a name for the quota. Users must ensure the quota name meets the specified
+criteria. Also, the quota name should not already exist in order to create a new quota.</li>
+</ul>
+</li>
+</ul>
+<h3 id="step-2-resource-quota">Step 2: Resource Quota<a class="headerlink" href="#step-2-resource-quota" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../images/quotaCreationResourceQuota.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="quotaCreationResourceQuota" src="../images/quotaCreationResourceQuota.png" /></a></p>
+<ol>
+<li>Adding Resources</li>
+<li>The <strong>Resource</strong> dropdown allows the selection of resource types such as:<ul>
+<li>CPU Requests</li>
+<li>Memory Requests</li>
+<li>Config Maps</li>
+<li>Secrets</li>
+<li>Services</li>
+<li>Load Balancer Services</li>
+</ul>
+</li>
+<li>
+<p>Enter the corresponding <strong>Value</strong> for the selected resource.</p>
+</li>
+<li>
+<p>Error Handling</p>
+</li>
+<li>
+<p>If an invalid format is entered in the <strong>Value</strong> field, an inline error message is displayed.</p>
+</li>
+<li>
+<p>Add Resource Button:</p>
+</li>
+<li>Allows users to add multiple resources sequentially.</li>
+</ol>
+<h3 id="step-3-limit-range-optional">Step 3: Limit Range (Optional)<a class="headerlink" href="#step-3-limit-range-optional" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../images/quotaCreationLimitRange.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="quotaCreationLimitRange" src="../images/quotaCreationLimitRange.png" /></a></p>
+<p>The limit range section provides optional configurations for containers and pods. It includes:</p>
+<ol>
+<li>Container</li>
+<li>
+<p>Configure limits for container resources by entering:</p>
+<ul>
+<li><strong>Min</strong> and <strong>Max</strong> values for resource types.</li>
+<li><strong>Default Request</strong> and <strong>Default Limit</strong> values.</li>
+</ul>
+</li>
+<li>
+<p>Pod</p>
+</li>
+<li>
+<p>Similar to the container section, allows configuration for pod-level resources.</p>
+</li>
+<li>
+<p>Error Handling</p>
+</li>
+<li>No validation errors occur unless an invalid value is entered.</li>
+<li>Inline errors guide users in correcting their inputs.</li>
+</ol>
+<h3 id="final-step-save-quota">Final Step: Save Quota<a class="headerlink" href="#final-step-save-quota" title="Permanent link">#</a></h3>
+<ol>
+<li>Add Quota Button</li>
+<li>
+<p>Once all configurations are completed, users can click the <strong>Add Quota</strong> button to save the quota.</p>
+</li>
+<li>
+<p>Completion</p>
+</li>
+<li>The system validates all input fields before saving.</li>
+<li>A confirmation message is displayed once the quota is successfully created.</li>
+</ol>
+<h3 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h3>
+<ul>
+<li>The entire quota creation process is intuitive, with inline validation to guide users.</li>
+<li>Optional configurations like "Limit Range" allow flexibility based on use cases.</li>
+</ul>
+<h2 id="update-quota">Update Quota<a class="headerlink" href="#update-quota" title="Permanent link">#</a></h2>
+<p>User can click on the edit button in the table under the action items to open the drawer with all the pre-populated quota configurations.</p>
+<p>The update process follows a similar flow to the create process. However, the key difference is that the <strong>quota name</strong> in <strong>Step-1</strong> cannot be edited or updated. All other steps and configurations remain the same, allowing users to modify resource quota, limit range values as needed.</p>
+<h2 id="delete-quota">Delete Quota<a class="headerlink" href="#delete-quota" title="Permanent link">#</a></h2>
+<p>By clicking on the delete option in the quota table the user will be able to perform delete operation, a confirmation modal will open which will prompt the user to delete or cancel operation.</p>
 
 
 
