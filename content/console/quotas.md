@@ -10,7 +10,7 @@ The quota creation process allows administrators to define resource limits and o
 
 ### Step 1: Metadata
 
-![quotaCreationMetadata](../../images/quotaCreationMetadata.png)
+![quotaCreationMetadata](../images/quotaCreationMetadata.png)
 
 - Name Field
     - The name field is mandatory and must be unique.
@@ -30,7 +30,7 @@ The quota creation process allows administrators to define resource limits and o
 
 ### Step 2: Resource Quota
 
-![quotaCreationResourceQuota](../../images/quotaCreationResourceQuota.png)
+![quotaCreationResourceQuota](../images/quotaCreationResourceQuota.png)
 
 1. Adding Resources
    - The **Resource** dropdown allows the selection of resource types such as:
@@ -50,7 +50,7 @@ The quota creation process allows administrators to define resource limits and o
 
 ### Step 3: Limit Range (Optional)
 
-![quotaCreationLimitRange](../../images/quotaCreationLimitRange.png)
+![quotaCreationLimitRange](../images/quotaCreationLimitRange.png)
 
 The limit range section provides optional configurations for containers and pods. It includes:
 

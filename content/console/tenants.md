@@ -87,7 +87,7 @@ The tenant creation process involves a three-step drawer interface. This documen
 
 ### Step 1: Enter Primary Info
 
-![tenantCreationStep1](../../images/tenantCreationStep1.png)
+![tenantCreationStep1](../images/tenantCreationStep1.png)
 
 The first step in creating a tenant is to provide a name for the tenant. Users must ensure the tenant name meets the specified criteria. The Next button remains disabled until the entered tenant name passes validation and a quota is selected.
 
@@ -145,7 +145,7 @@ Error Handling on step 1 is based on the following factors
 
 ### Step 2: Access Control (Optional)
 
-![tenantCreationStep2](../../images/tenantCreationStep2.png)
+![tenantCreationStep2](../images/tenantCreationStep2.png)
 
 The second step allows users to configure access control for the tenant. This step is optional and provides three tabs for managing user roles: Owners, Editors, and Viewers.
 
@@ -185,7 +185,7 @@ The third step allows users to optionally configure namespaces and metadata for 
 
 ### Namespace
 
-![tenantCreationStep3NamespaceTab](../../images/tenantCreationStep3NamespaceTab.png)
+![tenantCreationStep3NamespaceTab](../images/tenantCreationStep3NamespaceTab.png)
 
 - Toggles:
     - Enable Sandbox: Activates the sandbox environment for the tenant.
@@ -209,7 +209,7 @@ The Metadata tab is divided into three sub-tabs:
 
 #### Common and Sandbox Tabs
 
-![tenantCreationStep3MetadataCommonSandboxTab](../../images/tenantCreationStep3MetadataCommonSandboxTab.png)
+![tenantCreationStep3MetadataCommonSandboxTab](../images/tenantCreationStep3MetadataCommonSandboxTab.png)
 
 - Both tabs allow users to add annotations and labels using Key and Value input fields.
 - Inputs act as filters for existing values.
@@ -218,7 +218,7 @@ The Metadata tab is divided into three sub-tabs:
 
 #### Specific Tab
 
-![tenantCreationStep3MetadataSpecificTab](../../images/tenantCreationStep3MetadataSpecificTab.png)
+![tenantCreationStep3MetadataSpecificTab](../images/tenantCreationStep3MetadataSpecificTab.png)
 
 - Includes an Add Accordion button.
 - Each accordion contains the following fields:
@@ -247,7 +247,7 @@ The Metadata tab is divided into three sub-tabs:
 
 ### YAML View
 
-![YAML](../../images/YamlView.png)
+![YAML](../images/YamlView.png)
 
 - A YAML representation of the configuration can be previewed using the **Show YAML** button before creation.
 
