@@ -256,7 +256,7 @@ More details on Azure pricing can be found [here](../how-to-guides/azure-pricing
 MTO supports AWS pricing model via the `integrationConfig.components.showbackOpts.cloudIntegrationSecretRef` field. Following 2 types of pricing are supported:
 
 - [`AWS Standard Pricing`](../how-to-guides/aws-pricing.md#aws-standard-pricing)
-- [`AWS Spot Instance Pricing`](../how-to-guides/aws-pricing.md#aws-spot-instance-data-feed-pricing)
+- [`AWS Spot Instance Pricing`](../how-to-guides/aws-pricing.md#aws-spot-instance-pricing)
 
 More details on AWS pricing can be found [here](../how-to-guides/aws-pricing.md).
 
