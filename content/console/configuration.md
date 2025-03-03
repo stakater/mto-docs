@@ -64,33 +64,33 @@ This guide walks you through the process of adding new users in Keycloak and gra
 
 ### Accessing Keycloak Console
 
-* Log in to the OpenShift Console.
-* Go to the 'Routes' section within the 'multi-tenant-operator' namespace.
+- Log in to the OpenShift Console.
+- Go to the 'Routes' section within the 'multi-tenant-operator' namespace.
 
 ![routes](../images/routes.png)
 
-* Click on the Keycloak console link provided in the Routes.
-* Login using the admin credentials (default: admin/admin).
+- Click on the Keycloak console link provided in the Routes.
+- Login using the admin credentials (default: admin/admin).
 
 ### Adding new Users in Keycloak
 
-* In the Keycloak console, switch to the `mto` realm.
+- In the Keycloak console, switch to the `mto` realm.
 
 ![realm](../images/realm.png)
 
-* Go to the `Users` section in the `mto` realm.
-* Follow the prompts to add a new user.
+- Go to the `Users` section in the `mto` realm.
+- Follow the prompts to add a new user.
 
 ![keycloak-new-user](../images/keycloak-new-user.png)
 
-* Once you add a new user, here is how the Users section would look like
+- Once you add a new user, here is how the Users section would look like
 
 ![keycloak-users](../images/keycloak-users.png)
 
 ### Accessing MTO Console
 
-* Go back to the OpenShift Console, navigate to the Routes section, and get the URL for the MTO Console.
-* Open the MTO Console URL and log in with the newly added user credentials.
+- Go back to the OpenShift Console, navigate to the Routes section, and get the URL for the MTO Console.
+- Open the MTO Console URL and log in with the newly added user credentials.
 
 Now, at this point, a user will be authenticated to the MTO Console. But in order to get access to view any Tenant resources, the user will need to be part of a Tenant.
 
