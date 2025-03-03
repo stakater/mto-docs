@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
     
     
       
@@ -4943,10 +4943,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">        </span><span class="nt">awsSpotDataPrefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;spot_pricing_prefix&quot;</span>
 <span class="w">        </span><span class="nt">projectID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;012345678901&quot;</span>
 
-<span class="w">      </span><span class="nt">azurePricingSecretRef</span><span class="p">:</span><span class="w"> </span><span class="c1"># Depricated. Use cloudPricingSecretRef instead</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure-pricing</span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
-
 <span class="w">      </span><span class="nt">cloudPricingSecretRef</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secret-name</span>
 <span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
@@ -5076,7 +5072,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">        </span><span class="nt">zoneNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
 <span class="w">        </span><span class="nt">regionNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
 <span class="w">        </span><span class="nt">internetNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.12&quot;</span>
-<span class="w">      </span><span class="nt">azurePricingSecretRef</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cloudPricingSecretRef</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure-pricing</span>
 <span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
 <span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
@@ -5115,7 +5111,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
 <li><code>components.showbackOpts:</code> Configures the showback feature with the following options:<ul>
 <li><code>custom:</code> Custom pricing model for showback.</li>
-<li><code>azurePricingSecretRef:</code> Secret reference for Azure pricing model.</li>
 <li><code>cloudPricingSecretRef:</code> Secret reference for AWS / Azure Pricing model.</li>
 <li><code>opencostServiceRoleArn</code>: Role ARN to be used by OpenCost gateway's service account</li>
 </ul>
@@ -5156,19 +5151,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </code></pre></div>
 <p>After modifying your default IntegrationConfig in <code>multi-tenant-operator</code> namespace, a configmap named <code>opencost-custom-pricing</code> will be updated. You will be able to see updated pricing info in <code>mto-console</code>.</p>
 <h3 id="azure-pricing-model">Azure Pricing Model<a class="headerlink" href="#azure-pricing-model" title="Permanent link">#</a></h3>
-<p>MTO supports Azure pricing model via the <code>showbackOpts.azurePricingSecretRef</code> field. Following 3 types of pricing are supported:</p>
+<p>MTO supports Azure pricing model via the <code>showbackOpts.cloudIntegrationSecretRef</code> field. Following 2 types of pricing are supported:</p>
 <ul>
-<li><a href="https://www.opencost.io/docs/configuration/azure#azure-pricing-configuration"><code>Azure Pricing Configuration</code></a></li>
-<li><a href="https://www.opencost.io/docs/configuration/azure#customer-specific-pricing"><code>Customer-specific pricing</code></a></li>
-<li><a href="https://www.opencost.io/docs/configuration/azure#azure-cloud-costs"><code>Azure Cloud Costs</code></a></li>
+<li>[<code>Azure Standard Pricing</code>](../how-to-guides/azure-pricing.md#azure-standard-pricing</li>
+<li><a href="../how-to-guides/azure-pricing.html#customer-specific-pricing"><code>Customer-specific pricing</code></a></li>
 </ul>
 <p>More details on Azure pricing can be found <a href="../how-to-guides/azure-pricing.html">here</a>.</p>
 <h3 id="aws-pricing-model">AWS Pricing Model<a class="headerlink" href="#aws-pricing-model" title="Permanent link">#</a></h3>
-<p>MTO supports AWS pricing model via the <code>integrationConfig.components.showbackOpts.cloudIntegrationSecretRef</code> field. Following 3 types of pricing are supported:</p>
+<p>MTO supports AWS pricing model via the <code>integrationConfig.components.showbackOpts.cloudIntegrationSecretRef</code> field. Following 2 types of pricing are supported:</p>
 <ul>
-<li><a href="https://opencost.io/docs/configuration/aws#cost-allocation"><code>Cost Allocation</code></a></li>
-<li><a href="https://opencost.io/docs/configuration/aws#aws-cloud-costs"><code>AWS Cloud Costs</code></a></li>
-<li><a href="https://opencost.io/docs/configuration/aws#aws-spot-instance-data-feed"><code>AWS Spot Instance Datafeed</code></a></li>
+<li><a href="../how-to-guides/aws-pricing.html#aws-standard-pricing"><code>AWS Standard Pricing</code></a></li>
+<li><a href="../how-to-guides/aws-pricing.html#aws-spot-instance-data-feed-pricing"><code>AWS Spot Instance Datafeed</code></a></li>
 </ul>
 <p>More details on AWS pricing can be found <a href="../how-to-guides/aws-pricing.html">here</a>.</p>
 <h2 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">#</a></h2>
@@ -6238,7 +6231,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
