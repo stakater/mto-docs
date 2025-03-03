@@ -2,9 +2,8 @@
 
 MTO supports Azure pricing model via the `integrationConfig.components.showbackOpts.azurePricingSecretRef` field. Following 3 types of pricing are supported:
 
-- [`Azure Pricing Configuration`](https://www.opencost.io/docs/configuration/azure#azure-pricing-configuration)
-- [`Customer-specific pricing`](https://www.opencost.io/docs/configuration/azure#customer-specific-pricing)
-- [`Azure Cloud Costs`](https://www.opencost.io/docs/configuration/azure#azure-cloud-costs)
+- [`Azure Pricing Configuration`](#azure-standard-pricing)
+- [`Customer-specific pricing`](#customer-specific-pricing)
 
 ## Azure Standard Pricing
 

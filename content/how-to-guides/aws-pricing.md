@@ -15,9 +15,9 @@ OpenCost will request pricing data from the `us-east-1` region for your `node_re
 https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/${node_region}/index.json
 ```
 
-## AWS Spot Instance Data Feed Pricing
+## AWS Spot Instance Pricing
 
-To enable the AWS Spot data feed, subscribe to AWS Spot Instance Data Feed with the following command
+To enable the AWS Spot Instance pricing, subscribe to AWS Spot Instance Data Feed with the following command
 
 ```sh
 aws ec2 create-spot-datafeed-subscription \
