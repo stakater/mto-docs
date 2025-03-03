@@ -19,8 +19,6 @@ Displays a list of namespaces associated with a selected tenant. The tenant filt
 
 ![hibernation-table](../images/hibernation_table.png)
 
-You can find more detail on how Hibernation works here: [Hibernation Workflow](../how-to-guides/hibernation-workflow.md)
-
 ## Sleep Tab
 
 The "SLEEP" tab is active, indicating that namespaces can be put into sleep mode based on certain criteria.

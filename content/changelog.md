@@ -59,8 +59,8 @@ Before upgrading to v1.1.0, perform the following steps:
 
 #### Features
 
-- Added [capacity planning](./explanation/console.md#capacity-planning) feature on MTO Console to view resource usage of tenants based in their request and limits
-- Added [hibernation](./explanation/console.md#hibernation) feature on MTO Console to view and manage hibernated namespaces and hibernate/unhibernate namespaces
+- Added [capacity planning](./console/capacity-planning.md) feature on MTO Console to view resource usage of tenants based in their request and limits
+- Added [hibernation](./console/hibernation.md) feature on MTO Console to view and manage hibernated namespaces and hibernate/unhibernate namespaces
 
 #### Enhancements
 
