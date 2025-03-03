@@ -17,7 +17,7 @@ https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/${node
 
 ## AWS Spot Instance Data Feed Pricing
 
-To enable the AWS Spot data feed, subscribe to AWS Spot Instance Datafeed with the following command
+To enable the AWS Spot data feed, subscribe to AWS Spot Instance Data Feed with the following command
 
 ```sh
 aws ec2 create-spot-datafeed-subscription \
@@ -44,7 +44,7 @@ Before you choose an Amazon S3 bucket for the data feed, consider the following:
 
 - If you delete your data feed subscription, Amazon EC2 doesn't remove the read and write permissions for the AWS data feed account on either the bucket or the data files. You must remove these permissions yourself.
 
-- If you encrypt your Amazon S3 bucket using server-side encryption with a AWS KMS key stored in AWS Key Management Service (SSE-KMS), you must use a customer managed key. For more information, see Amazon S3 bucket server-side encryption in the Amazon CloudWatch Logs User Guide.
+- If you encrypt your Amazon S3 bucket using server-side encryption with an AWS KMS key stored in AWS Key Management Service (SSE-KMS), you must use a customer managed key. For more information, see Amazon S3 bucket server-side encryption in the Amazon CloudWatch Logs User Guide.
 
 ### Configure an IAM Policy
 
@@ -75,7 +75,14 @@ Before you choose an Amazon S3 bucket for the data feed, consider the following:
 
 ### Option 1: Service Keys
 
-Create a `service-key.json` and replace the values with the keys created in [step 4](#step-4-generate-access-keys)
+Generate Access Keys with following steps
+
+1. Navigate to the AWS IAM Console.
+1. Select Access Management > Users from the left navigation.
+1. Find the OpenCost User and select Security credentials > Create access key.
+1. Follow along to receive the Access Key ID and Secret Access Key (AWS will not provide you the Secret Access Key in the future, so make sure you save this value).
+
+Create a `service-key.json` and replace the values with the user access keys
 
 ```json
 {
@@ -84,11 +91,14 @@ Create a `service-key.json` and replace the values with the keys created in [ste
 }
 ```
 
-Create a Kubernetes secret
+Create a Kubernetes secret with the following command
 
 ```sh
 kubectl create secret generic <SECRET_NAME> --from-file=service-key.json --namespace multi-tenant-operator
 ```
+
+!!! note
+    When managing the service account key as a Kubernetes secret, the secret must reference the service account key JSON file, and that file must be named `service-key.json`.
 
 The data feed will provide specific pricing information about any Spot instances in your account on an hourly basis. After setting this up, the bucket information can be provided through options in the IntegrationConfig via `integrationConfig.components.showbackOpts.custom` object.
 
@@ -136,7 +146,7 @@ After creating the role and policy, attach the role ARN as an annotation to the 
 kubectl annotate serviceaccounts -n multi-tenant-operator tenant-operator-opencost-gateway eks.amazonaws.com/role-arn=<ROLE_ARN>
 ```
 
-Apply the IntegrationConfig with current spot bucket datafeed information
+Apply the IntegrationConfig with current spot bucket data feed information
 
 Example:
 
@@ -172,3 +182,4 @@ For more information, refer to the following resources
 - [`Kubecost documentation`](https://docs.kubecost.com/install-and-configure/install/cloud-integration/aws-cloud-integrations)
 - [`Assign IAM roles to Kubernetes service accounts`](https://docs.aws.amazon.com/eks/latest/userguide/associate-service-account-role.html)
 - [`Track your Spot Instance costs using the Spot Instance data feed`](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html)
+- [`Manage access keys from IAM users`](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
