@@ -75,6 +75,10 @@ spec:
     allowed:
       - staging
       - dev
+  ingressClasses:
+    allowed:
+      - nginx
+      - trafeik
 ```
 
 ## Access Control
