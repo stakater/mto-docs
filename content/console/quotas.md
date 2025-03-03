@@ -1,8 +1,10 @@
-# Quota
+# Quotas
 
-## Create
+MTO's Quotas are crucial for managing resource allocation. In this section, administrators can assess the quotas assigned to each tenant, ensuring a balanced distribution of resources in line with operational requirements.
 
-## Overview
+![quotas](../images/quotas.png)
+
+## Create Quota
 
 The quota creation process allows administrators to define resource limits and optional configurations for containers and pods. This document outlines the steps to create a new quota, including the metadata, resource quota, and limit range configurations.
 
@@ -78,12 +80,12 @@ The limit range section provides optional configurations for containers and pods
 - The entire quota creation process is intuitive, with inline validation to guide users.
 - Optional configurations like "Limit Range" allow flexibility based on use cases.
 
-## Update
+## Update Quota
 
 User can click on the edit button in the table under the action items to open the drawer with all the pre-populated quota configurations.
 
 The update process follows a similar flow to the create process. However, the key difference is that the **quota name** in **Step-1** cannot be edited or updated. All other steps and configurations remain the same, allowing users to modify resource quota, limit range values as needed.
 
-## Delete
+## Delete Quota
 
 By clicking on the delete option in the quota table the user will be able to perform delete operation, a confirmation modal will open which will prompt the user to delete or cancel operation.

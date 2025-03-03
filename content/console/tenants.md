@@ -1,18 +1,97 @@
-# Tenant
+# Tenants
 
-## Create
+Here, admins have a bird's-eye view of all tenants, with the ability to delve into each one for detailed examination and management. This section is pivotal for observing the distribution and organization of tenants within the system. More information on each tenant can be accessed by clicking the view option against each tenant name.
 
-## Overview
+![tenants](../images/tenants.png)
+
+## Live YAML and Graph View
+
+In the MTO Console, each resource section is equipped with a "View" button, revealing the live YAML configuration for complete information on the resource. For Tenant resources, a supplementary "Graph" option is available, illustrating the relationships and dependencies of all resources under a Tenant. This dual-view approach empowers users with both the detailed control of YAML and the holistic oversight of the graph view.
+
+You can find more details on graph visualization here: [Graph Visualization](../how-to-guides/graph-visualization.md)
+
+![tenants-graph](../images/tenants_graph.png)
+
+Effortlessly associate tenants with their respective resources using the enhanced graph feature on the MTO Console. This dynamic graph illustrates the relationships between tenants and the resources they create, encompassing both MTO's proprietary resources and native Kubernetes/OpenShift elements.
+
+Example Graph:
+
+```mermaid
+  graph LR;
+      A(alpha)-->B(dev);
+      A-->C(prod);
+      B-->D(limitrange);
+      B-->E(owner-rolebinding);
+      B-->F(editor-rolebinding);
+      B-->G(viewer-rolebinding);
+      C-->H(limitrange);
+      C-->I(owner-rolebinding);
+      C-->J(editor-rolebinding);
+      C-->K(viewer-rolebinding);
+```
+
+Explore with an intuitive graph that showcases the relationships between tenants and their resources. The MTO Console's graph feature simplifies the understanding of complex structures, providing you with a visual representation of your tenant's organization.
+
+To view the graph of your tenant, follow the steps below:
+
+- Navigate to `Tenants` page on the MTO Console using the left navigation bar.
+![Tenants](../images/graph-1.png)
+- Click on `View` of the tenant for which you want to view the graph.
+![Tenant View](../images/graph-2.png)
+- Click on `Graph` tab on the tenant details page.
+![Tenant Graph](../images/graph-3.png)
+
+## Tenant Quota
+
+In this view, users can access a dedicated tab to review the quota utilization for their Tenants. Within this tab, users have the option to toggle between two different views: **Aggregated Quota** and **Namespace Quota**.
+
+### Aggregated Quota View
+
+![tenants](../images/tenantQuotaAggregatedView.png)
+This view provides users with an overview of the combined resource allocation and usage across all namespaces within their tenant. It offers a comprehensive look at the total limits and usage of resources such as CPU, memory, and other defined quotas. Users can easily monitor and manage resource distribution across their entire tenant environment from this aggregated perspective.
+
+### Namespace Quota View
+
+![tenants](../images/tenantQuotaNamespaceView.png)
+Alternatively, users can opt to view quota settings on a per-namespace basis. This view allows users to focus specifically on the resource allocation and usage within individual namespaces. By selecting this option, users gain granular insights into the resource constraints and utilization for each namespace, facilitating more targeted management and optimization of resources at the namespace level.
+
+## Tenant Utilization
+
+In the **Utilization** tab of the tenant console, users are presented with a detailed table listing all namespaces within their tenant. This table provides essential metrics for each namespace, including CPU and memory utilization. The metrics shown include:
+
+- **Cost:** The cost associated with CPU and memory utilization.
+- **Request Average:** The average amount of CPU and memory resources requested.
+- **Usage Average:** The average amount of CPU and memory resources used.
+- **Max:** The maximum value between CPU and memory requests and used resources, calculated every 30 seconds and averaged over the selected running minutes.
+
+Users can adjust the interval window using the provided selector to customize the time frame for the displayed data. This table allows users to quickly assess resource utilization across all namespaces, facilitating efficient resource management and cost tracking.
+
+![tenants](../images/tenantUtilizationNamespaces.png)
+
+Upon selecting a specific namespace from the utilization table, users are directed to a detailed view that includes CPU and memory utilization graphs along with a workload table. This detailed view provides:
+
+- **CPU and Memory Graphs:** Visual representations of the namespace's CPU and memory usage over time, enabling users to identify trends and potential issues at a glance.
+- **Workload Table:** A comprehensive list of all workloads within the selected namespace, including pods, deployments, and stateful-sets. The table displays key metrics for each workload, including:
+    - **Cost:** The cost associated with the workload's CPU and memory utilization.
+    - **Request Average:** The average amount of CPU and memory resources requested by the workload.
+    - **Usage Average:** The average amount of CPU and memory resources used by the workload.
+    - **Max:** The maximum value between CPU and memory requests and used resources, calculated every 30 seconds and averaged over the running minutes.
+
+This detailed view provides users with in-depth insights into resource utilization at the workload level, enabling precise monitoring and optimization of resource allocation within the selected namespace.
+
+![tenants](../images/tenantUtilizationNamespaceStats.png)
+
+## Create Tenant
 
 The tenant creation process involves a three-step drawer interface. This document outlines the validation checks and the criteria for progressing through these steps.
 
-## Step 1: Enter Primary Info
+### Step 1: Enter Primary Info
 
 ![tenantCreationStep1](../../images/tenantCreationStep1.png)
 
 The first step in creating a tenant is to provide a name for the tenant. Users must ensure the tenant name meets the specified criteria. The Next button remains disabled until the entered tenant name passes validation and a quota is selected.
 
-### Validation Criteria
+#### Validation Criteria
 
 - Regex Validation
     - The tenant name must conform to the following regex pattern:
@@ -64,7 +143,7 @@ Error Handling on step 1 is based on the following factors
 - If the tenant name fails regex validation, an inline error message indicates the naming rule.
 - If the tenant name already exists, the user is prompted to enter a new name.
 
-## Step 2: Access Control (Optional)
+### Step 2: Access Control (Optional)
 
 ![tenantCreationStep2](../../images/tenantCreationStep2.png)
 
@@ -100,7 +179,7 @@ If the user has some data entered into the step 2 section tabs, the skip option 
 
 No specific validations are required for this step since it is optional. However, users can remove or adjust entries as needed using the provided interface.
 
-## Step 3: Namespace (Optional)
+### Step 3: Namespace (Optional)
 
 The third step allows users to optionally configure namespaces and metadata for the tenant. This step consists of two tabs:
 
@@ -172,12 +251,12 @@ The Metadata tab is divided into three sub-tabs:
 
 - A YAML representation of the configuration can be previewed using the **Show YAML** button before creation.
 
-## Update
+## Update Tenant
 
 User can click on the edit button in the table under the action items to open the drawer with all the pre-populated tenant configurations.
 
 The update process follows a similar flow to the create process. However, the key difference is that the **tenant name** in **Step-1** cannot be edited or updated. All other steps and configurations remain the same, allowing users to modify access control, namespaces, and metadata as needed.
 
-## Delete
+## Delete Tenant
 
 By clicking on the delete option in the tenants table the user will be able to perform delete operation, and it may take a short while to delete the tenant.
