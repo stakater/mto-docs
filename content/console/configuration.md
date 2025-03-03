@@ -96,7 +96,7 @@ Now, at this point, a user will be authenticated to the MTO Console. But in orde
 
 ### Granting Access to Tenant Resources
 
-* Open Tenant CR: In the OpenShift cluster, locate and open the Tenant Custom Resource (CR) that you wish to give access to. You will see a YAML file similar to the following example:
+- Open Tenant CR: In the OpenShift cluster, locate and open the Tenant Custom Resource (CR) that you wish to give access to. You will see a YAML file similar to the following example:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta3
@@ -119,7 +119,7 @@ spec:
         - neymar@arsenal.com
 ```
 
-* Edit Tenant CR: Add the newly created user's email to the appropriate section (owners, editors, viewers) in the Tenant CR. For example, if you have created a user `john@arsenal.com` and wish to add them as an editor, the edited section would look like this:
+- Edit Tenant CR: Add the newly created user's email to the appropriate section (owners, editors, viewers) in the Tenant CR. For example, if you have created a user `john@arsenal.com` and wish to add them as an editor, the edited section would look like this:
 
 ```yaml
 editors:
@@ -128,7 +128,7 @@ editors:
     - benzema@arsenal.com
 ```
 
-* Save Changes: Save and apply the changes to the Tenant CR.
+- Save Changes: Save and apply the changes to the Tenant CR.
 
 ### Verifying Access
 
