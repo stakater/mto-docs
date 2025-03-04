@@ -339,7 +339,7 @@ Before upgrading to v1.1.0, perform the following steps:
 - fix: TemplateGroupInstance now cleans up leftover Template resources from namespaces that are no longer part of TGI namespace selector
 - fix: Fixed hibernation sync issue
 
-- enhance: Update tenant spec for applying common/specific namespace labels/annotations. For more details check out [commonMetadata & SpecificMetadata](./tutorials/tenant/assigning-metadata.md)
+- enhance: Update tenant spec for applying common/specific namespace labels/annotations. For more details check out [commonMetadata & SpecificMetadata](./kubernetes-resources/tenant/assign-metadata.md)
 - enhance: Add support for multi-pod architecture for Operator-Hub
 
 - chore: Remove conversion webhook for Quota and Tenant
@@ -349,7 +349,7 @@ Before upgrading to v1.1.0, perform the following steps:
 ### v0.4.7
 
 - feat: Add hibernation of StatefulSets and Deployments based on a timer
-- feat: [New custom resource](./tutorials/tenant/tenant-hibernation.md) that handles hibernation
+- feat: [New custom resource](./kubernetes-resource/tenant/hibernate-tenant.md) that handles hibernation
 
 ### v0.4.6
 
@@ -540,7 +540,7 @@ Before upgrading to v1.1.0, perform the following steps:
 
 ### v0.3.1
 
-- feat: Add ability to create ArgoCD AppProjects per tenant, more details in [relevant docs](./how-to-guides/enabling-multi-tenancy-argocd.md)
+- feat: Add ability to create ArgoCD AppProjects per tenant, more details in [relevant docs](./integrations/argocd.md)
 
 ### v0.3.0
 
