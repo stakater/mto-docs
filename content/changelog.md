@@ -349,7 +349,7 @@ Before upgrading to v1.1.0, perform the following steps:
 ### v0.4.7
 
 - feat: Add hibernation of StatefulSets and Deployments based on a timer
-- feat: [New custom resource](./kubernetes-resource/tenant/hibernate-tenant.md) that handles hibernation
+- feat: [New custom resource](./kubernetes-resources/tenant/hibernate-tenant.md) that handles hibernation
 
 ### v0.4.6
 
