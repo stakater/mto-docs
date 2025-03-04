@@ -1,4 +1,4 @@
-# Deleting a Tenant While Preserving Resources
+# Delete a Tenant
 
 When managing tenant lifecycles within Kubernetes, certain scenarios require the deletion of a tenant without removing associated namespaces or ArgoCD AppProjects. This ensures that resources and configurations tied to the tenant remain intact for archival or transition purposes.
 

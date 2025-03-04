@@ -1,4 +1,4 @@
-# Create Sandbox Namespaces for Tenant Users
+# Create Sandbox Namespaces
 
 Sandbox namespaces offer a personal development and testing space for users within a tenant. This guide covers how to enable and configure sandbox namespaces for tenant users, along with setting privacy and applying metadata specifically for these sandboxes.
 

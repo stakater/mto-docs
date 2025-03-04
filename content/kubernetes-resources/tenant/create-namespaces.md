@@ -1,4 +1,4 @@
-# Creating Namespaces through Tenant Custom Resource
+# Create Namespaces
 
 Bill, tasked with structuring namespaces for different environments within a tenant, utilizes the Tenant Custom Resource (CR) to streamline this process efficiently. Here's how Bill can orchestrate the creation of `dev`, `build`, and `production` environments for the tenant members directly through the Tenant CR.
 

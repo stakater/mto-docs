@@ -1,4 +1,4 @@
-# Assigning Metadata in Tenant Custom Resources
+# Assign Metadata
 
 In the v1beta3 version of the Tenant Custom Resource (CR), metadata assignment has been refined to offer granular control over labels and annotations across different namespaces associated with a tenant. This functionality enables precise and flexible management of metadata, catering to both general and specific needs.
 

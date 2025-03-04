@@ -1,4 +1,4 @@
-# Hibernating a Tenant
+# Hibernate a Tenant
 
 Implementing hibernation for tenants' namespaces efficiently manages cluster resources by temporarily reducing workload activities during off-peak hours. This guide demonstrates how to configure hibernation schedules for tenant namespaces, leveraging Tenant and ResourceSupervisor for precise control.
 

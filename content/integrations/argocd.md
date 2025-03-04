@@ -1,6 +1,4 @@
-# Enabling Multi-Tenancy in ArgoCD
-
-## ArgoCD integration in Multi Tenant Operator
+# ArgoCD
 
 With the Multi-Tenant Operator (MTO), cluster administrators can configure multi-tenancy within their cluster. The integration of ArgoCD with MTO allows for the configuration of multi-tenancy in ArgoCD applications and AppProjects.
 
