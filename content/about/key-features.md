@@ -12,6 +12,8 @@ Multi Tenant Operator binds existing ClusterRoles to the Tenant's Namespaces use
 
 Multi Tenant Operator is also able to leverage existing groups in Kubernetes and OpenShift, or external groups synced from 3rd party identity management systems, for maintaining Tenant membership in your organization's current user management system.
 
+More details on [Tenant](../kubernetes-resources/tenant/tenant-overview.md)
+
 ### Templates and Template distribution
 
 Multi Tenant Operator allows admins/users to define templates for namespaces, so that others can instantiate these templates to provision namespaces with batteries loaded. A template could pre-populate a namespace for certain use cases or with basic tooling required. Templates allow you to define Kubernetes manifests, Helm chart and more to be applied when the template is used to create a namespace.
@@ -31,7 +33,7 @@ More details on [Distributing Template Resources](../how-to-guides/deploying-tem
 
 Multi Tenant Operator provides a mechanism for defining Resource Quotas at the tenant scope, meaning all namespaces belonging to a particular tenant share the defined quota, which is why you are able to safely enable dev teams to self serve their namespaces whilst being confident that they can only use the resources allocated based on budget and business needs.
 
-More details on [Quota](../crds-api-reference/quota.md)
+More details on [Quota](../kubernetes-resources/quota.md)
 
 ## FinOps Features
 
