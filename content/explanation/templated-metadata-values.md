@@ -5,7 +5,7 @@ Templated values are placeholders in your configuration that get replaced with a
 ## Supported templated values
 
 - `"{{ TENANT.USERNAME }}"`
-    - **Description**: The username associated with users specified in [Tenant](../tutorials/tenant/create-tenant.md) under `Owners` and `Editors`.
+    - **Description**: The username associated with users specified in [Tenant](../kubernetes-resources/tenant/tenant-overview.md) under `Owners` and `Editors`.
     - **Supported in CRs**:
         - `Tenant`: Under `sandboxMetadata.labels` and `sandboxMetadata.annotations`.
         - `IntegrationConfig`: Under `metadata.sandboxs.labels` and `metadata.sandboxs.annotations`.
