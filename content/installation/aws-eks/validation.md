@@ -250,7 +250,7 @@ Error from server (Forbidden): namespaces is forbidden: User "bear@nordmart.com"
 
   If console is set to false then [enable the MTO Console](./installation.md#enable-mto-console) before proceeding to next step
 
-- **A Keycloak user with same username as AWS IAM user** should be created. Follow our [Setting Up User Access in Keycloak for MTO Console](../../how-to-guides/keycloak.md) guide to create a Keycloak user.
+- **A Keycloak user with same username as AWS IAM user** should be created. Follow our [Setting Up User Access in Keycloak for MTO Console](../../console/configuration.md#setting-up-user-access-in-keycloak-for-mto-console) guide to create a Keycloak user.
 
 ### MTO Console Log In
 

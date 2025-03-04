@@ -40,7 +40,7 @@ More details on [Quota](../crds-api-reference/quota.md)
 The showback functionality in Multi Tenant Operator (MTO) Console is a significant feature designed to enhance the management of resources and costs in multi-tenant Kubernetes environments. This feature focuses on accurately tracking the usage of resources by each tenant, and/or namespace, enabling organizations to monitor and optimize their expenditures.
 Furthermore, this functionality supports financial planning and budgeting by offering a clear view of operational costs associated with each tenant. This can be particularly beneficial for organizations that chargeback internal departments or external clients based on resource usage, ensuring that billing is fair and reflective of actual consumption.
 
-More details on [Showback](../explanation/console.md#showback)
+More details on [Showback](../console/showback.md)
 
 ### Hibernation
 
@@ -78,7 +78,7 @@ More details on [Mattermost](../how-to-guides/mattermost.md)
 
 Multi Tenant Operator Console is a comprehensive user interface designed for both administrators and tenant users to manage multi-tenant environments. The MTO Console simplifies the complexity involved in handling various aspects of tenants and their related resources. It serves as a centralized monitoring hub, offering insights into the current state of tenants, namespaces, templates and quotas. It is designed to provide a quick summary/snapshot of MTO's status and facilitates easier interaction with various resources such as tenants, namespaces, templates, and quotas.
 
-More details on [Console](../explanation/console.md)
+More details on [Console](../console/overview.md)
 
 ### Remote Development Namespaces
 
