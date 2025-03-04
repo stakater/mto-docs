@@ -6,9 +6,9 @@
 
 #### Features
 
-- Added [Azure Pricing](./how-to-guides/azure-pricing.md) support for Opencost via [Integration Config](./crds-api-reference/integration-config.md#azure-pricing-model).
-- Added option to disable `Intra-tenant Networking` via [Integration Config](./crds-api-reference/integration-config.md#tenantpolicies).
-- Added [Storage class per tenant](./crds-api-reference/tenant.md#storage) support via Tenant CR.
+- Added [Azure Pricing](./how-to-guides/azure-pricing.md) support for Opencost via [Integration Config](./kubernetes-resources/integration-config.md#azure-pricing-model).
+- Added option to disable `Intra-tenant Networking` via [Integration Config](./kubernetes-resources/integration-config.md#tenantpolicies).
+- Added [Storage class per tenant](./kubernetes-resources/tenant.md#storage) support via Tenant CR.
 - Added option to override component images.
 - Added support to add/update `Casbin` policies via `tenant-operator-casbin-config` Configmap.
 
@@ -129,8 +129,8 @@ Before upgrading to v1.1.0, perform the following steps:
 
 #### Enhanced
 
-- Updated Tenant CR to v1beta3, more details in [Tenant CRD](./crds-api-reference/tenant.md)
-- Added custom pricing support for Opencost, more details in [Opencost](./crds-api-reference/integration-config.md#custom-pricing)
+- Updated Tenant CR to v1beta3, more details in [Tenant CRD](./kubernetes-resources/tenant/tenant-overview.md)
+- Added custom pricing support for Opencost, more details in [Opencost](./kubernetes-resources/integration-config.md#custom-pricing)
 
 #### Fix
 
@@ -250,7 +250,7 @@ Before upgrading to v1.1.0, perform the following steps:
 ### v0.8.0
 
 - feat: Allow custom roles for each tenant via label selector, more details in [custom roles document](./how-to-guides/custom-roles.md)
-    - Roles mapping is a required field in [MTO's IntegrationConfig](./crds-api-reference/integration-config.md). By default, it will always be filled with OpenShift's admin/edit/view roles
+    - Roles mapping is a required field in [MTO's IntegrationConfig](./kubernetes-resources/integration-config.md). By default, it will always be filled with OpenShift's admin/edit/view roles
     - Ensure that mentioned roles exist within the cluster
     - Remove coupling with OpenShift's built-in admin/edit/view roles
 - feat: Removed coupling of ResourceSupervisor and Tenant resources
@@ -290,7 +290,7 @@ Before upgrading to v1.1.0, perform the following steps:
 - feat: Allow creation of namespaces without tenant prefix from within tenant spec
 - fix: Webhook changes will now be updated without manual intervention
 - maintain: Updated Tenant CR version from v1beta1 to v1beta2. Conversion webhook is added to facilitate transition to new version
-    - see [Tenant spec](./crds-api-reference/tenant.md) for updated spec
+    - see [Tenant spec](./kubernetes-resources/tenant/tenant-overview.md) for updated spec
 - enhance: Better automated testing
 
 ## v0.6.x
@@ -426,7 +426,7 @@ Before upgrading to v1.1.0, perform the following steps:
 
 ### v0.3.24
 
-- feat: Add feature to allow ArgoCD to sync specific cluster scoped custom resources, configurable via Integration Config. More details in [relevant docs](./crds-api-reference/integration-config.md#argocd)
+- feat: Add feature to allow ArgoCD to sync specific cluster scoped custom resources, configurable via Integration Config. More details in [relevant docs](./kubernetes-resources/integration-config.md#argocd)
 
 ### v0.3.23
 
@@ -463,8 +463,8 @@ Before upgrading to v1.1.0, perform the following steps:
 
 > ⚠️ ApiVersion `v1alpha1` of Tenant and Quota custom resources has been deprecated and is scheduled to be removed in the future. The following links contain the updated structure of both resources
 >
-> - [Quota v1beta1](./crds-api-reference/quota.md)
-> - [Tenant v1beta1](./crds-api-reference/tenant.md)
+> - [Quota v1beta1](./kubernetes-resources/quota.md)
+> - [Tenant v1beta1](./kubernetes-resources/tenant/tenant-overview.md)
 
 ### v0.3.18
 
@@ -534,7 +534,7 @@ Before upgrading to v1.1.0, perform the following steps:
 
 ### v0.3.2
 
-- refactor: Restructure Quota CR, more details in [relevant docs](./crds-api-reference/quota.md)
+- refactor: Restructure Quota CR, more details in [relevant docs](./kubernetes-resources/quota.md)
 - feat: Add support for adding LimitRanges in Quota
 - feat: Add conversion webhook to convert existing v1alpha1 versions of quota to v1beta1
 
@@ -550,16 +550,16 @@ Before upgrading to v1.1.0, perform the following steps:
 
 ### v0.2.33
 
-- refactor: Restructure Tenant spec, more details in [relevant docs](./crds-api-reference/tenant.md)
+- refactor: Restructure Tenant spec, more details in [relevant docs](./kubernetes-resources/tenant/tenant-overview.md)
 - feat: Add conversion webhook to convert existing v1alpha1 versions of tenant to v1beta1
 
 ### v0.2.32
 
 - refactor: Restructure integration config spec, more details in [relevant docs][def]
-- feat: Allow users to input custom regex in certain fields inside of integration config, more details in [relevant docs](./crds-api-reference/integration-config.md)
+- feat: Allow users to input custom regex in certain fields inside of integration config, more details in [relevant docs](./kubernetes-resources/integration-config.md)
 
 ### v0.2.31
 
 - feat: Add limit range for `kube-RBAC-proxy`
 
-[def]: ./crds-api-reference/integration-config.md
+[def]: ./kubernetes-resources/integration-config.md
