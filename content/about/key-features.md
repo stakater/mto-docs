@@ -60,7 +60,7 @@ Provides tools to forecast and allocate resources effectively, ensuring optimal 
 
 Multi Tenant Operator extends the tenants permission model to Hashicorp Vault where it can create Vault paths and greatly ease the overhead of managing RBAC in Vault. Tenant users can manage their own secrets without the concern of someone else having access to their Vault paths.
 
-More details on [Vault Multitenancy](../how-to-guides/enabling-multi-tenancy-vault.md)
+More details on [Vault Multitenancy](../integrations/vault/vault.md)
 
 ### ArgoCD Multitenancy
 
