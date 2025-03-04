@@ -48,7 +48,7 @@ More details on [Showback](../console/showback.md)
 
 Multi Tenant Operator can downscale Deployments and StatefulSets in a tenant's Namespace according to a defined  sleep schedule. The Deployments and StatefulSets are brought back to their required replicas according to the provided wake schedule.
 
-More details on [Hibernation](../tutorials/tenant/tenant-hibernation.md#hibernating-a-tenant) and [ResourceSupervisor](../crds-api-reference/resource-supervisor.md)
+More details on [Hibernation](../kubernetes-resources/tenant/hibernate-tenant.md) and [ResourceSupervisor](../kubernetes-resources/resource-supervisor.md)
 
 ### Capacity Planning
 
@@ -66,13 +66,13 @@ More details on [Vault Multitenancy](../how-to-guides/enabling-multi-tenancy-vau
 
 Multi Tenant Operator is not only providing strong Multi Tenancy for the Kubernetes internals but also extends the tenants permission model to ArgoCD were it can provision AppProjects and Allowed Repositories for your tenants greatly ease the overhead of managing RBAC in ArgoCD.
 
-More details on [ArgoCD Multitenancy](../how-to-guides/enabling-multi-tenancy-argocd.md)
+More details on [ArgoCD Multitenancy](../integrations/argocd.md)
 
 ### Mattermost Multitenancy
 
 Multi Tenant Operator can manage Mattermost to create Teams for tenant users. All tenant users get a unique team and a list of predefined channels gets created. When a user is removed from the tenant, the user is also removed from the Mattermost team corresponding to tenant.
 
-More details on [Mattermost](../how-to-guides/mattermost.md)
+More details on [Mattermost](../integrations/mattermost.md)
 
 ## Developer and Platform Productivity Features
 
@@ -86,7 +86,7 @@ More details on [Console](../console/overview.md)
 
 Multi Tenant Operator can be configured to automatically provision a namespace in the cluster for every member of the specific tenant, that will also be preloaded with any selected templates and consume the same pool of resources from the tenants quota creating safe remote dev namespaces that teams can use as scratch namespace for rapid prototyping and development. So, every developer gets a Kubernetes-based cloud development environment that feel like working on localhost.
 
-More details on [Sandboxes](../tutorials/tenant/create-sandbox.md)
+More details on [Sandboxes](../kubernetes-resources/tenant/create-sandbox.md)
 
 ## Security Features
 
