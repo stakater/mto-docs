@@ -279,4 +279,4 @@ status:
       replicas: 3
 ```
 
-For more info see [here](../../crds-api-reference/resource-supervisor.md)
+For more info see [here](../../resource-supervisor.md)

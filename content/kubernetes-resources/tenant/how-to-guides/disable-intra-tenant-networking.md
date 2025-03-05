@@ -37,4 +37,4 @@ spec:
 
 ### Demo
 
-![Disable intra-tenant networking demo](../../images/disableIntraTenantNetworkingDemo.gif)
+![Disable intra-tenant networking demo](../../../images/disableIntraTenantNetworkingDemo.gif)
