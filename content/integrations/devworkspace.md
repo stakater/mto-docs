@@ -117,4 +117,4 @@ spec:
         che.eclipse.org/username: "{{ TENANT.USERNAME }}"
 ```
 
- For more info on templated value `"{{ TENANT.USERNAME }}"`, see [here](../kubernetes-resources/tenant/how-to-guides/templated-metadata-values.md)
+ For more info on templated value `"{{ TENANT.USERNAME }}"`, see [here](../kubernetes-resources/template/how-to-guides/templated-metadata-values.md)

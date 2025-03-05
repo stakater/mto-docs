@@ -7,7 +7,7 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
 - Microsoft Entra ID configured for OIDC.
 - Keycloak setup with an Identity Provider (IDP) pointing to Microsoft Entra ID.
 - Hashicorp Vault installed and configured.
-- [Vault Configured in IntegrationConfig](enabling-multi-tenancy-vault.md)
+- [Vault Configured in IntegrationConfig](./vault-ic.md)
 
 ## Steps to Implement Group-Based Access Control with Group IDs
 
@@ -32,7 +32,7 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
     - Claim: groups
     - Sync Mode: FORCE
 
-   ![Keycloak IDP Mapper showing how the group IDs claim is mapped to the user attribute.](../images/keycloak-idp-mapper.png)
+   ![Keycloak IDP Mapper showing how the group IDs claim is mapped to the user attribute.](../../images/keycloak-idp-mapper.png)
 
 ### Step 3: Set Up a Mapper for Vault Client in Keycloak
 
@@ -40,7 +40,7 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
 
     To configure the Protocol Mapper that forwards the groups attribute (containing group IDs) from the user's profile into the token, create a new mapper with the following settings as shown in the image:
 
-   ![Keycloak Vault client mapper showing the user attribute forwarded as a token claim](../images/vault-client-attribute-mapper.png)
+   ![Keycloak Vault client mapper showing the user attribute forwarded as a token claim](../../images/vault-client-attribute-mapper.png)
 
 ### Step 4: Patch Tenant Spec with Microsoft Entra ID Group IDs for RBAC
 
@@ -64,7 +64,7 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
 
    - **`owners.groups`** should be updated with the relevant Microsoft Entra ID group IDs to enforce access control based on the users’ group memberships.
 
-   ![Group spec](../images/azuread-groupID.png)
+   ![Group spec](../../images/azuread-groupID.png)
 
 ## Conclusion
 

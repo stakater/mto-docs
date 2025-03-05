@@ -44,7 +44,7 @@ If Bill (the cluster admin) has Vault configured in his cluster, then he can tak
 
 MTO automatically creates Vault secret paths for tenants, where tenant members can securely save their secrets. It also authorizes tenant members to access these secrets via OIDC.
 
-Bill would first have to integrate Vault with MTO by adding the details in IntegrationConfig. For more [details](../crds-api-reference/integration-config.md#vault)
+Bill would first have to integrate Vault with MTO by adding the details in IntegrationConfig. For more [details](../../kubernetes-resources/integration-config.md#vault)
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta1
