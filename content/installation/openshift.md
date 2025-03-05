@@ -106,7 +106,7 @@ subscription.operators.coreos.com/tenant-operator created
 
 ![image](../images/to_installed_successful_pod.png)
 
-For more details and configurations check out [IntegrationConfig](../crds-api-reference/integration-config.md).
+For more details and configurations check out [IntegrationConfig](../kubernetes-resources/integration-config.md).
 
 ## Enabling Console
 
@@ -145,7 +145,7 @@ spec:
 
 You can uninstall MTO by following these steps:
 
-* Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set `spec.onDelete.cleanNamespaces` to `false` for all those tenants whose namespaces you want to retain, and `spec.onDelete.cleanAppProject` to `false` for all those tenants whose AppProject you want to retain. For more details check out [onDelete](../tutorials/tenant/deleting-tenant.md)
+* Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set `spec.onDelete.cleanNamespaces` to `false` for all those tenants whose namespaces you want to retain, and `spec.onDelete.cleanAppProject` to `false` for all those tenants whose AppProject you want to retain. For more details check out [onDelete](../kubernetes-resources/tenant/how-to-guides/deleting-tenant.md)
 
 * After making the required changes open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
 
@@ -163,4 +163,4 @@ You can uninstall MTO by following these steps:
 
 * For details on licensing of MTO please refer [Pricing](../pricing.md).
 * For more details on how to use MTO please refer [Tenant tutorial](../tutorials/tenant/create-tenant.md).
-* For details on how to extend your MTO manager ClusterRole please refer [extend-default-clusterroles](../how-to-guides/extend-default-roles.md).
+* For details on how to extend your MTO manager ClusterRole please refer [extend-default-clusterroles](../kubernetes-resources/tenant/how-to-guides/extend-default-roles.md).

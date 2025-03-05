@@ -3,8 +3,8 @@
 You can uninstall MTO by following these steps:
 
 * Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not.
-For more details check out [onDeletePurgeNamespaces](../../tutorials/tenant/deleting-tenant.md#configuration-for-retaining-resources)
-[onDeletePurgeAppProject](../../crds-api-reference/extensions.md#configuring-argocd-integration)
+For more details check out [onDeletePurgeNamespaces](../kubernetes-resources/tenant/how-to-guides/delete-tenant.md#configuration-for-retaining-resources)
+[onDeletePurgeAppProject](../kubernetes-resources/extensions.md#configuring-argocd-integration)
 
 * In case you have enabled console and showback, you will have to disable it first by navigating to `Search` -> `IntegrationConfig` -> `tenant-operator-config` and set `spec.components.console` and `spec.components.showback` to `false`.
 
@@ -24,5 +24,5 @@ For more details check out [onDeletePurgeNamespaces](../../tutorials/tenant/dele
 
 ## Notes
 
-* For more details on how to use MTO please refer [Tenant's tutorial](../../tutorials/tenant/create-tenant.md).
-* For more details on how to extend your MTO manager ClusterRole please refer [extend-default-clusterroles](../../how-to-guides/extend-default-roles.md).
+* For more details on how to use MTO please refer [Tenant's tutorial](../kubernetes-resources/tenant/how-to-guides/create-tenant.md).
+* For more details on how to extend your MTO manager ClusterRole please refer [extend-default-clusterroles](../kubernetes-resources/tenant/how-to-guides/extend-default-roles.md).
