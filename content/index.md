@@ -5,7 +5,7 @@ head:
       content: SEO plugin
 ---
 
-# Welcome to the Docs!
+# Welcome to the Docs
 
 [//]: # ( introduction.md, features.md)
 

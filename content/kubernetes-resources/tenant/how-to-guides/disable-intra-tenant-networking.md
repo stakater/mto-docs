@@ -35,6 +35,6 @@ spec:
           stakater.com/tenant: ${tenant}
 ```
 
-### Demo
+## Demo
 
 ![Disable intra-tenant networking demo](../../../images/disableIntraTenantNetworkingDemo.gif)
