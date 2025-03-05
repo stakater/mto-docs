@@ -1,10 +1,13 @@
 # MTO Validation Guide
 
-This document provides detailed insights on creating MTO Tenants on EKS cluster. In this tutorial we will setup 2 tenants named logistics and retail for an imaginary ecommerce company.
+In this guide, we will set up **two tenants**—**Logistics** and **Retail**—for an imaginary e-commerce company, each with one user.
 
-## Create & Configure IAM Users
+- **Falcon** will be the user assigned to the **Logistics** tenant.  
+- **Bear** will be the user assigned to the **Retail** tenant.
 
-### 1. Create a User
+## 1. Create & Configure AWS IAM Users & Groups
+
+### 1. Create a user
 
 Create a user with username `falcon@nordmart.com`
 
@@ -23,9 +26,7 @@ Output:
 }
 ```
 
-We have created an IAM user named `falcon@nordmart.com`, with ARN `arn:aws:iam::630742778131:user/falcon@nordmart.com`.
-
-### 2. Attach cluster access policy
+### 2. Attach cluster access policy to user
 
 Create a AWS JSON policy file. This policy will allow the user to access the cluster.
 
@@ -48,7 +49,7 @@ Attach a policy to user by running the following command
 aws iam put-user-policy --user-name falcon@nordmart.com --policy-document file://policy.json --policy-name ClusterAccess
 ```
 
-### 3. Generating Access Keys
+### 3. Generate access key for the user
 
 Executing the following command will provide the Access Key Id and Access Secret Key Id that can be used to log in later
 
@@ -56,7 +57,7 @@ Executing the following command will provide the Access Key Id and Access Secret
 aws iam create-access-key --user-name "falcon@nordmart.com"
 ```
 
-### 4. Grant IAM users access to Kubernetes with a `ConfigMap`
+### 4. Grant user access to Kubernetes via `ConfigMap`
 
 Use the following command to map this user in `aws-auth` configmap in `kube-system` namespace.
 
@@ -70,13 +71,9 @@ eksctl create iamidentitymapping --cluster "<CLUSTER_NAME>" \
 
 Repeat the same steps to create another user `bear@nordmart.com` for retail tenant.
 
-## Setting up Tenants
+## 2. Create MTO Quota
 
-Now, we will create tenants for above created users.
-
-### 1. Create a Quota
-
-We will start by creating a `Quota CR` with some resource limits
+As cluster admin create a `Quota CR` with some resource limits:
 
 ```sh
 kubectl apply -f - <<EOF
@@ -99,9 +96,9 @@ spec:
 EOF
 ```
 
-### 2. Create Tenants
+## 3. Create MTO Tenants
 
-Now, we will create 2 tenants `logistics` and `retail` with one user each
+As cluster admin create 2 tenants `logistics` and `retail` with one user each:
 
 ```sh
 kubectl apply -f - <<EOF
@@ -143,9 +140,9 @@ EOF
 
 Notice that the only difference in both tenant specs are the users.
 
-After the creation of `Tenant` CRs, now users can access namespaces in their respective tenants and preform create, update, delete functions.
+## 4. List namespaces as cluster admin
 
-Listing the namespaces by cluster admin will show us the recently created tenant namespaces
+Listing the namespaces as cluster admin will show following namespaces:
 
 ```sh
 $ kubectl get namespaces
@@ -164,7 +161,9 @@ retail-dev              Active   5s
 retail-build            Active   5s
 ```
 
-## Switching to different User in EKS Cluster
+## 5. Validate Falcon permissions 
+
+### 1. Switch to falcon
 
 Set the following environment variables from the access keys generated in [previous steps](#3-generating-access-keys)
 
@@ -182,9 +181,7 @@ aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
 aws eks update-kubeconfig --name <EKS_CLUSTER_NAME> --region $AWS_REGION
 ```
 
-## Validation
-
-### Logistics User on Tenant Namespaces
+### 2. Check cli permissions
 
 We will now try to deploy a pod from user `falcon@nordmart.com` in its tenant namespace `logistics-dev`
 
@@ -210,7 +207,13 @@ $ kubectl get namespaces
 Error from server (Forbidden): namespaces is forbidden: User "falcon@nordmart.com" cannot list resource "namespaces" in API group "" at the cluster scope
 ```
 
-### Retail User on Tenant Namespaces
+### 3. Check console permissions
+
+...
+
+## 6. Validate Bear permissions
+
+TODO: what is meant by SSO user here?
 
 We will repeat the above operations for our SSO user `bear@nordmart.com` as well
 
@@ -239,6 +242,9 @@ Error from server (Forbidden): namespaces is forbidden: User "bear@nordmart.com"
 ## Using MTO Console
 
 ### Prerequisites
+
+TODO: What is this? This should be done at the time of installation
+TODO: Why show admin view here? We should show tenant memmber view screenshots; and 
 
 - Ensure that MTO Console is enabled by running the following command
 
