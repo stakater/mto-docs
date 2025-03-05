@@ -14,7 +14,7 @@ These service accounts are required to have `stakater.com/vault-access: true` la
 
 The Diagram shows how MTO enables ServiceAccounts to read secrets from Vault.
 
-![image](../images/mto-vault-k8s-auth-workflow.png)
+![image](../../images/mto-vault-k8s-auth-workflow.png)
 
 ### User OIDC Auth in Vault
 
@@ -33,4 +33,4 @@ Mapping of tenant roles to Vault is shown below
 
 A simple user login workflow is shown in the diagram below.
 
-![image](../images/mto-vault-integration-user-workflow.png)
+![image](../../images/mto-vault-integration-user-workflow.png)
