@@ -6,7 +6,7 @@
 
 #### Features
 
-- Added [Azure Pricing](./how-to-guides/azure-pricing.md) support for Opencost via [Integration Config](./kubernetes-resources/integration-config.md#azure-pricing-model).
+- Added [Azure Pricing](./integrations/azure-pricing.md) support for Opencost via [Integration Config](./kubernetes-resources/integration-config.md#azure-pricing-model).
 - Added option to disable `Intra-tenant Networking` via [Integration Config](./kubernetes-resources/integration-config.md#tenantpolicies).
 - Added [Storage class per tenant](./kubernetes-resources/tenant/tenant-overview.md#storage) support via Tenant CR.
 - Added option to override component images.
@@ -170,7 +170,7 @@ Before upgrading to v1.1.0, perform the following steps:
 - `TemplateGroupInstance` controller now ensures that its underlying resources are force-synced when a namespace is created or deleted.
 - Optimizations were made to ensure the reconciler in the TGI controller runs only once per watch event, reducing reconcile times.
 - The `TemplateGroupInstance` reconcile flow has been refined to process only the namespace for which the event was received, streamlining resource creation/deletion and improving overall efficiency.
-- Introduced new metrics to enhance the monitoring capabilities of the operator. Details at [TGI Metrics Explanation](./explanation/logs-metrics.md)
+- Introduced new metrics to enhance the monitoring capabilities of the operator. Details at [TGI Metrics Explanation](./architecture/logs-metrics.md)
 
 ### v0.10.0
 
@@ -208,7 +208,7 @@ Before upgrading to v1.1.0, perform the following steps:
 - fix: ValidatingWebhookConfiguration CRs are now owned by OLM, to handle cleanup upon operator uninstall
 - enhance: TemplateGroupInstance CRs now actively watch the resources they apply, and perform functions to make sure they are in sync with the state mentioned in their respective Templates
 
-> More information about TemplateGroupInstance's sync at [Sync Resources Deployed by TemplateGroupInstance](./how-to-guides/resource-sync-by-tgi.md)
+> More information about TemplateGroupInstance's sync at [Sync Resources Deployed by TemplateGroupInstance](./kubernetes-resources/template/how-to-guides/resource-sync-by-tgi.md)
 
 ### v0.9.2
 
@@ -249,7 +249,7 @@ Before upgrading to v1.1.0, perform the following steps:
 
 ### v0.8.0
 
-- feat: Allow custom roles for each tenant via label selector, more details in [custom roles document](./how-to-guides/custom-roles.md)
+- feat: Allow custom roles for each tenant via label selector, more details in [custom roles document](./kubernetes-resources/tenant/how-to-guides//custom-roles.md)
     - Roles mapping is a required field in [MTO's IntegrationConfig](./kubernetes-resources/integration-config.md). By default, it will always be filled with OpenShift's admin/edit/view roles
     - Ensure that mentioned roles exist within the cluster
     - Remove coupling with OpenShift's built-in admin/edit/view roles
@@ -339,7 +339,7 @@ Before upgrading to v1.1.0, perform the following steps:
 - fix: TemplateGroupInstance now cleans up leftover Template resources from namespaces that are no longer part of TGI namespace selector
 - fix: Fixed hibernation sync issue
 
-- enhance: Update tenant spec for applying common/specific namespace labels/annotations. For more details check out [commonMetadata & SpecificMetadata](./kubernetes-resources/tenant/assign-metadata.md)
+- enhance: Update tenant spec for applying common/specific namespace labels/annotations. For more details check out [commonMetadata & SpecificMetadata](./kubernetes-resources/tenant/how-to-guides/assign-metadata.md)
 - enhance: Add support for multi-pod architecture for Operator-Hub
 
 - chore: Remove conversion webhook for Quota and Tenant
@@ -349,7 +349,7 @@ Before upgrading to v1.1.0, perform the following steps:
 ### v0.4.7
 
 - feat: Add hibernation of StatefulSets and Deployments based on a timer
-- feat: [New custom resource](./kubernetes-resources/tenant/hibernate-tenant.md) that handles hibernation
+- feat: [New custom resource](./kubernetes-resources/tenant/how-to-guides/hibernate-tenant.md) that handles hibernation
 
 ### v0.4.6
 

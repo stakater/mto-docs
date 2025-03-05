@@ -27,7 +27,7 @@ Common use cases for namespace templates may be:
 * Deploying pre-populated databases with test data
 * Injecting new namespaces with optional credentials such as image pull secrets
 
-More details on [Distributing Template Resources](../how-to-guides/deploying-templates.md)
+More details on [Distributing Template Resources](../kubernetes-resources/template/how-to-guides/deploying-templates.md)
 
 ### Resource Management
 
@@ -48,7 +48,7 @@ More details on [Showback](../console/showback.md)
 
 Multi Tenant Operator can downscale Deployments and StatefulSets in a tenant's Namespace according to a defined  sleep schedule. The Deployments and StatefulSets are brought back to their required replicas according to the provided wake schedule.
 
-More details on [Hibernation](../kubernetes-resources/tenant/hibernate-tenant.md) and [ResourceSupervisor](../kubernetes-resources/resource-supervisor.md)
+More details on [Hibernation](../kubernetes-resources/tenant/how-to-guides/hibernate-tenant.md) and [ResourceSupervisor](../kubernetes-resources/resource-supervisor.md)
 
 ### Capacity Planning
 
@@ -86,7 +86,7 @@ More details on [Console](../console/overview.md)
 
 Multi Tenant Operator can be configured to automatically provision a namespace in the cluster for every member of the specific tenant, that will also be preloaded with any selected templates and consume the same pool of resources from the tenants quota creating safe remote dev namespaces that teams can use as scratch namespace for rapid prototyping and development. So, every developer gets a Kubernetes-based cloud development environment that feel like working on localhost.
 
-More details on [Sandboxes](../kubernetes-resources/tenant/create-sandbox.md)
+More details on [Sandboxes](../kubernetes-resources/tenant/how-to-guides/create-sandbox.md)
 
 ## Security Features
 
@@ -94,7 +94,7 @@ More details on [Sandboxes](../kubernetes-resources/tenant/create-sandbox.md)
 
 Multi Tenant Operator supports cloning of secrets and configmaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide reference to secrets and configmaps. It uses a template group instance to distribute those secrets and namespaces in matching namespaces, even if namespaces belong to different tenants. If template instance is used then the resources will only be mapped if namespaces belong to same tenant.
 
-More details on [Copying Secrets and Configmaps](../tutorials/distributing-resources/copying-resources.md)
+More details on [Copying Secrets and Configmaps](../kubernetes-resources/template/how-to-guides/copying-resources.md)
 
 ### Self-Service
 

@@ -10,4 +10,4 @@ To enable custom metrics and view them in your OpenShift cluster, you need to fo
 - To ensure that the metrics are being scraped for the namespace, navigate to `Observe` -> `Targets` in the OpenShift console. You should see the namespace in the list of targets.
 - To view the custom metrics, navigate to `Observe` -> `Metrics` in the OpenShift console. You should see the custom metrics for templates, template instances and template group instances in the list of metrics.
 
-Details of metrics can be found at [Metrics and Logs](../explanation/logs-metrics.md)
+Details of metrics can be found at [Metrics and Logs](./logs-metrics.md)
