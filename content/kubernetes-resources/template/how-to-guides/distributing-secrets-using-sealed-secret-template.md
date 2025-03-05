@@ -29,7 +29,7 @@ resources:
 ```
 
 Once the template has been created, Bill has to edit the `Tenant` to add unique label to namespaces in which the secret has to be deployed.
-For this, he can use the support for [common](../tutorials/tenant/assigning-metadata.md#distributing-common-labels-and-annotations) and [specific](../tutorials/tenant/assigning-metadata.md#distributing-specific-labels-and-annotations) labels across namespaces.
+For this, he can use the support for [common](../../tenant/how-to-guides/assign-metadata.md#distributing-common-labels-and-annotations) and [specific](../../tenant/assign-metadata.md#distributing-specific-labels-and-annotations) labels across namespaces.
 
 Bill has to specify a label on namespaces in which he needs the secret. He can add it to all namespaces inside a tenant or some specific namespaces depending on the use case.
 

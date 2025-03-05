@@ -48,7 +48,7 @@ resources:
       - Ingress
 ```
 
-Once the template has been created, Bill edits the [IntegrationConfig](../crds-api-reference/integration-config.md) to add unique label to all tenant projects:
+Once the template has been created, Bill edits the [IntegrationConfig](../../integration-config.md) to add unique label to all tenant projects:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta1
