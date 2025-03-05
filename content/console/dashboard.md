@@ -31,5 +31,5 @@ components:
 
 Once the above configuration is set on the IntegrationConfig, MTO would start provisioning the required resources for MTO Console to be ready. In a few moments, you should be able to see the Console Ingress in the `multi-tenant-operator` namespace which gives you access to the Console.
 
-For more details on the configuration, please visit [here](../crds-api-reference/integration-config.md).
+For more details on the configuration, please visit [here](../kubernetes-resources/integration-config.md).
 ![dashboard](../images/dashboard.png)

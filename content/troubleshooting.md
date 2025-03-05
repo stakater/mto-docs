@@ -49,7 +49,7 @@ If the user needs to be added immediately and it is not feasible to wait for nex
 unable to find annotation openshift.io/sa.scc.uid-range
 ```
 
-**Answer.** OpenShift recently updated its process of handling SCC, and it's now managed by annotations like `openshift.io/sa.scc.uid-range` on the namespaces. Absence  of them wont let pods schedule. The fix for the above error is to make sure ServiceAccount `system:serviceaccount:openshift-infra.` regex is always mentioned in `Privileged.serviceAccounts` section of `IntegrationConfig`. This regex will allow operations from all `ServiceAccounts` present in `openshift-infra` namespace. More info at [Privileged Service Accounts](./crds-api-reference/integration-config.md#privileged)
+**Answer.** OpenShift recently updated its process of handling SCC, and it's now managed by annotations like `openshift.io/sa.scc.uid-range` on the namespaces. Absence  of them wont let pods schedule. The fix for the above error is to make sure ServiceAccount `system:serviceaccount:openshift-infra.` regex is always mentioned in `Privileged.serviceAccounts` section of `IntegrationConfig`. This regex will allow operations from all `ServiceAccounts` present in `openshift-infra` namespace. More info at [Privileged Service Accounts](./kubernetes-resources/integration-config.md#privileged)
 
 ## Namespace Admission Webhook
 
@@ -59,7 +59,7 @@ unable to find annotation openshift.io/sa.scc.uid-range
 Cannot CREATE namespace test-john without label stakater.com/tenant
 ```
 
-**Answer.** Error occurs when a user is trying to perform create, update, delete action on a namespace without the required `stakater.com/tenant` label. This label is used by the operator to see that authorized users can perform that action on the namespace. Just add the label with the tenant name so that MTO knows which tenant the namespace belongs to, and who is authorized to perform create/update/delete operations. For more details please refer to [Namespace use-case](./tutorials/tenant/creating-namespaces.md).
+**Answer.** Error occurs when a user is trying to perform create, update, delete action on a namespace without the required `stakater.com/tenant` label. This label is used by the operator to see that authorized users can perform that action on the namespace. Just add the label with the tenant name so that MTO knows which tenant the namespace belongs to, and who is authorized to perform create/update/delete operations. For more details please refer to [Namespace use-case](./kubernetes-resources/tenant/how-to-guides/create-namespaces.md).
 
 ### Q. Error received while performing Create, Update or Delete action on OpenShift Project
 
@@ -88,7 +88,7 @@ The fix is to create namespaces with `kubectl create` instead.
 
 ### Q. How do I deploy cluster-scoped resource via the ArgoCD integration?
 
-**Answer.** Multi-Tenant Operator's ArgoCD Integration allows configuration of which cluster-scoped resources can be deployed, both globally and on a per-tenant basis. For a global allow-list that applies to all tenants, you can add both resource `group` and  `kind` to the [IntegrationConfig's](./crds-api-reference/integration-config.md#argocd) `spec.integrations.argocd.clusterResourceWhitelist` field. Alternatively, you can set this up on a tenant level by configuring the same details within a [Tenant's](./crds-api-reference/tenant.md) `spec.integrations.argocd.appProject.clusterResourceWhitelist` field. For more details, check out the [ArgoCD integration use cases](./how-to-guides/enabling-multi-tenancy-argocd.md#allowing-argocd-to-sync-certain-cluster-wide-resources)
+**Answer.** Multi-Tenant Operator's ArgoCD Integration allows configuration of which cluster-scoped resources can be deployed, both globally and on a per-tenant basis. For a global allow-list that applies to all tenants, you can add both resource `group` and  `kind` to the [IntegrationConfig's](./kubernetes-resources/integration-config.md#argocd) `spec.integrations.argocd.clusterResourceWhitelist` field. Alternatively, you can set this up on a tenant level by configuring the same details within a [Tenant's](./kubernetes-resources/tenant/tenant-overview.md) `spec.integrations.argocd.appProject.clusterResourceWhitelist` field. For more details, check out the [ArgoCD integration use cases](./integrations/argocd.md#allowing-argocd-to-sync-certain-cluster-wide-resources)
 
 ### Q. InvalidSpecError: application repo \<repo\> is not permitted in project \<project\>
 
