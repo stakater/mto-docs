@@ -1,8 +1,4 @@
-# Networking tenant policies
-
-The networking tenant policies limit how tenants can communicate with each other.
-
-## Disable intra-tenant networking
+# Disable intra-tenant networking
 
 ```yaml title="Integration Configuration"
 apiVersion: v1beta1

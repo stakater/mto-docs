@@ -1,4 +1,4 @@
-# Integrating External Keycloak
+# Keycloak
 
 MTO Console uses Keycloak for authentication and authorization. By default, the MTO Console uses an internal Keycloak instance that is provisioned by the Multi Tenant Operator in its own namespace. However, you can also integrate an external Keycloak instance with the MTO Console.
 
