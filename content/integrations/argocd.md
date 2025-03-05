@@ -2,7 +2,7 @@
 
 With the Multi-Tenant Operator (MTO), cluster administrators can configure multi-tenancy within their cluster. The integration of ArgoCD with MTO allows for the configuration of multi-tenancy in ArgoCD applications and AppProjects.
 
-MTO can be configured to create AppProjects for each tenant. These AppProjects enable tenants to create ArgoCD Applications that can be synced to namespaces owned by them. Cluster admins can blacklist certain namespace resources and allow specific cluster-scoped resources as needed (see the NamespaceResourceBlacklist and ClusterResourceWhitelist sections in [Integration Config docs](../crds-api-reference/integration-config.md) and [Tenant Custom Resource docs](../crds-api-reference/tenant.md)).
+MTO can be configured to create AppProjects for each tenant. These AppProjects enable tenants to create ArgoCD Applications that can be synced to namespaces owned by them. Cluster admins can blacklist certain namespace resources and allow specific cluster-scoped resources as needed (see the NamespaceResourceBlacklist and ClusterResourceWhitelist sections in [Integration Config docs](../kubernetes-resources/integration-config.md) and [Tenant Custom Resource docs](../kubernetes-resources/tenant//tenant-overview.md)).
 
 Note that ArgoCD integration in MTO is optional.
 
@@ -22,7 +22,7 @@ We have set a default ArgoCD configuration in Multi Tenant Operator that fulfils
 
 ## Creating ArgoCD AppProjects for your tenant
 
-To ensure each tenant has their own ArgoCD AppProjects, administrators must first specify the ArgoCD namespace in the [IntegrationConfig](../crds-api-reference/integration-config.md):
+To ensure each tenant has their own ArgoCD AppProjects, administrators must first specify the ArgoCD namespace in the [IntegrationConfig](../kubernetes-resources/integration-config.md):
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta1
@@ -127,7 +127,7 @@ Users belonging to the tenant group will now see only applications created by th
 
 ## Preventing ArgoCD from Syncing Certain Name-spaced Resources
 
-To prevent tenants from syncing ResourceQuota and LimitRange resources to their namespaces, administrators can specify these resources in the blacklist section of the ArgoCD configuration in the [IntegrationConfig](../crds-api-reference/integration-config.md):
+To prevent tenants from syncing ResourceQuota and LimitRange resources to their namespaces, administrators can specify these resources in the blacklist section of the ArgoCD configuration in the [IntegrationConfig](../kubernetes-resources/integration-config.md):
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta1

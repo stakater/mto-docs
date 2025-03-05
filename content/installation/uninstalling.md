@@ -12,11 +12,11 @@ For more details check out [onDeletePurgeNamespaces](../kubernetes-resources/ten
 
 * After making the required changes open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
 
-![image](../../images/installed-operators.png)
+![image](../images/installed-operators.png)
 
 * Now click on uninstall and confirm uninstall.
 
-![image](../../images/uninstall-from-ui.png)
+![image](../images/uninstall-from-ui.png)
 
 * Now the operator has been uninstalled.
 

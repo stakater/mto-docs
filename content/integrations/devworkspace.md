@@ -48,7 +48,7 @@ spec:
           che.eclipse.org/username: "{{ TENANT.USERNAME }}"
 ```
 
-It will create sandbox namespaces and also apply the `sandboxMetadata` for owners and editors. Notice the template `{{ TENANT.USERNAME }}`, it will resolve the username as value of the corresponding annotation. For more info on templated value, see [here](../explanation/templated-metadata-values.md)
+It will create sandbox namespaces and also apply the `sandboxMetadata` for owners and editors. Notice the template `{{ TENANT.USERNAME }}`, it will resolve the username as value of the corresponding annotation. For more info on templated value, see [here](../kubernetes-resources/template/how-to-guides/templated-metadata-values.md)
 
 ## Automate sandbox metadata for all Tenant users via IntegrationConfig CR
 
@@ -117,4 +117,4 @@ spec:
         che.eclipse.org/username: "{{ TENANT.USERNAME }}"
 ```
 
- For more info on templated value `"{{ TENANT.USERNAME }}"`, see [here](../explanation/templated-metadata-values.md)
+ For more info on templated value `"{{ TENANT.USERNAME }}"`, see [here](../kubernetes-resources/tenant/how-to-guides/templated-metadata-values.md)
