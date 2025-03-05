@@ -239,7 +239,7 @@ MTO supports Azure pricing model via the `showbackOpts.azurePricingSecretRef` fi
 - [`Customer-specific pricing`](https://www.opencost.io/docs/configuration/azure#customer-specific-pricing)
 - [`Azure Cloud Costs`](https://www.opencost.io/docs/configuration/azure#azure-cloud-costs)
 
-More details on Azure pricing can be found [here](../how-to-guides/azure-pricing.md).
+More details on Azure pricing can be found [here](../integrations/azure-pricing.md).
 
 ## Access Control
 
@@ -305,7 +305,7 @@ RBAC is used to configure the roles that will be applied to each Tenant namespac
 
 TenantRoles are required within the IntegrationConfig, as they are used for defining what roles will be applied to each Tenant namespace. The field allows optional custom roles, that are then used to create RoleBindings for namespaces that match a labelSelector.
 
-> ⚠️ If you do not configure roles in any way, then the default OpenShift roles of `owner`, `edit`, and `view` will apply to Tenant members. Their details can be found [here](../how-to-guides/custom-roles.md)
+> ⚠️ If you do not configure roles in any way, then the default OpenShift roles of `owner`, `edit`, and `view` will apply to Tenant members. Their details can be found [here](../kubernetes-resources/tenant/how-to-guides/custom-roles.md)
 
 ```yaml
 rbac:
@@ -342,7 +342,7 @@ rbac:
 
 ##### Default
 
-This field contains roles that will be used to create default `roleBindings` for each namespace that belongs to tenants. These `roleBindings` are only created for a namespace if that namespace isn't already matched by the `custom` field below it. Therefore, it is required to have at least one role mentioned within each of its three subfields: `owner`, `editor`, and `viewer`. These 3 subfields also correspond to the member fields of the [Tenant CR](./tenant.md#tenant)
+This field contains roles that will be used to create default `roleBindings` for each namespace that belongs to tenants. These `roleBindings` are only created for a namespace if that namespace isn't already matched by the `custom` field below it. Therefore, it is required to have at least one role mentioned within each of its three subfields: `owner`, `editor`, and `viewer`. These 3 subfields also correspond to the member fields of the [Tenant CR](./tenant/tenant-overview.md)
 
 ##### Custom
 
@@ -532,7 +532,7 @@ keycloak:
 - `keycloak.address:` The address of the Keycloak instance.
 - `keycloak.clientName:` The name of the client in Keycloak.
 
-For more details around enabling Keycloak in MTO, visit [here](../how-to-guides/integrating-external-keycloak.md)
+For more details around enabling Keycloak in MTO, visit [here](../integrations/keycloak.md)
 
 ### ArgoCD
 
@@ -662,4 +662,4 @@ network:
 
 - `disableIntraTenantNetworking`: (Default false) Disallow tenants communicating with other tenants by deploying NetworkPolicies.
 
-> ⚠️ This will disable **only** intra-tenant networking. In cases requiring stricter filtering, this setting should be turned off and the stricter NetworkPolicies deployed through [Templates](template.md) or manually. If you need help with your enterprise environment, do not hesitate to [contact us.](https://www.stakater.com/contact-us)
+> ⚠️ This will disable **only** intra-tenant networking. In cases requiring stricter filtering, this setting should be turned off and the stricter NetworkPolicies deployed through [Templates](./template/template.md) or manually. If you need help with your enterprise environment, do not hesitate to [contact us.](https://www.stakater.com/contact-us)
