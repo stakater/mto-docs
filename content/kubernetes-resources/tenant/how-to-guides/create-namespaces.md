@@ -64,7 +64,7 @@ Following the creation, the MTO dynamically assigns roles to Anna and other tena
 
 ## Incorporating Existing Namespaces into the Tenant via ArgoCD
 
-For teams practicing GitOps, existing namespaces can be seamlessly integrated into the [Tenant](../../crds-api-reference/tenant.md) structure by appending the tenant label to the namespace's manifest within the GitOps repository. This approach allows for efficient, automated management of namespace affiliations and access controls, ensuring a cohesive tenant ecosystem.
+For teams practicing GitOps, existing namespaces can be seamlessly integrated into the [Tenant](../../tenant/tenant-overview.md) structure by appending the tenant label to the namespace's manifest within the GitOps repository. This approach allows for efficient, automated management of namespace affiliations and access controls, ensuring a cohesive tenant ecosystem.
 
 ### Add Existing Namespaces to Tenant via GitOps
 
