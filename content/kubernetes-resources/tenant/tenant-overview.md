@@ -81,7 +81,7 @@ spec:
 
 Structured access control is critical for managing roles and permissions within a tenant effectively. It divides users into three categories, each with customizable privileges. This design enables precise role-based access management.  
 
-These roles are obtained from [IntegrationConfig's TenantRoles field](integration-config.md#tenantroles).
+These roles are obtained from [IntegrationConfig's TenantRoles field](../integration-config.md#tenantroles).
   
 * `Owners`: Have full administrative rights, including resource management and namespace creation. Their roles are crucial for high-level management tasks.
 * `Editors`: Granted permissions to modify resources, enabling them to support day-to-day operations without full administrative access.
@@ -93,7 +93,7 @@ Users and groups are linked to these roles by specifying their usernames or grou
 
 The `quota` field sets the resource limits for the tenant, such as CPU and memory usage, to prevent any single tenant from consuming a disproportionate amount of resources. This mechanism ensures efficient resource allocation and fosters fair usage practices across all tenants.  
 
-For more information on quotas, please refer [here](./quota.md).
+For more information on quotas, please refer [here](../quota.md).
 
 ## Namespaces
 
