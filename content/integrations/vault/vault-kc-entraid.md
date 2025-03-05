@@ -19,7 +19,7 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
 1. **Set up Optional Claims:**
    - In the Microsoft Entra ID App Registration for your Keycloak, configure an **optional claim** for the app configured with keycloak to include **group IDs** in the tokens.
 
-   ![App Registrations setup showing how the group ID claim was added.](../images/azuread-groupClaim.png)
+   ![App Registrations setup showing how the group ID claim was added.](../../images/azuread-groupClaim.png)
 
 ### Step 2: Create an Attribute Importer Mapper in Keycloak
 
