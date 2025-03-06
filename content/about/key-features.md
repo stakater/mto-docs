@@ -12,6 +12,8 @@ Multi Tenant Operator binds existing ClusterRoles to the Tenant's Namespaces use
 
 Multi Tenant Operator is also able to leverage existing groups in Kubernetes and OpenShift, or external groups synced from 3rd party identity management systems, for maintaining Tenant membership in your organization's current user management system.
 
+More details on [Tenant](../kubernetes-resources/tenant/tenant-overview.md)
+
 ### Templates and Template distribution
 
 Multi Tenant Operator allows admins/users to define templates for namespaces, so that others can instantiate these templates to provision namespaces with batteries loaded. A template could pre-populate a namespace for certain use cases or with basic tooling required. Templates allow you to define Kubernetes manifests, Helm chart and more to be applied when the template is used to create a namespace.
@@ -25,13 +27,13 @@ Common use cases for namespace templates may be:
 * Deploying pre-populated databases with test data
 * Injecting new namespaces with optional credentials such as image pull secrets
 
-More details on [Distributing Template Resources](../how-to-guides/deploying-templates.md)
+More details on [Distributing Template Resources](../kubernetes-resources/template/how-to-guides/deploying-templates.md)
 
 ### Resource Management
 
 Multi Tenant Operator provides a mechanism for defining Resource Quotas at the tenant scope, meaning all namespaces belonging to a particular tenant share the defined quota, which is why you are able to safely enable dev teams to self serve their namespaces whilst being confident that they can only use the resources allocated based on budget and business needs.
 
-More details on [Quota](../crds-api-reference/quota.md)
+More details on [Quota](../kubernetes-resources/quota.md)
 
 ## FinOps Features
 
@@ -40,13 +42,13 @@ More details on [Quota](../crds-api-reference/quota.md)
 The showback functionality in Multi Tenant Operator (MTO) Console is a significant feature designed to enhance the management of resources and costs in multi-tenant Kubernetes environments. This feature focuses on accurately tracking the usage of resources by each tenant, and/or namespace, enabling organizations to monitor and optimize their expenditures.
 Furthermore, this functionality supports financial planning and budgeting by offering a clear view of operational costs associated with each tenant. This can be particularly beneficial for organizations that chargeback internal departments or external clients based on resource usage, ensuring that billing is fair and reflective of actual consumption.
 
-More details on [Showback](../explanation/console.md#showback)
+More details on [Showback](../console/showback.md)
 
 ### Hibernation
 
 Multi Tenant Operator can downscale Deployments and StatefulSets in a tenant's Namespace according to a defined  sleep schedule. The Deployments and StatefulSets are brought back to their required replicas according to the provided wake schedule.
 
-More details on [Hibernation](../tutorials/tenant/tenant-hibernation.md#hibernating-a-tenant) and [ResourceSupervisor](../crds-api-reference/resource-supervisor.md)
+More details on [Hibernation](../kubernetes-resources/tenant/how-to-guides/hibernate-tenant.md) and [ResourceSupervisor](../kubernetes-resources/resource-supervisor.md)
 
 ### Capacity Planning
 
@@ -58,19 +60,19 @@ Provides tools to forecast and allocate resources effectively, ensuring optimal 
 
 Multi Tenant Operator extends the tenants permission model to Hashicorp Vault where it can create Vault paths and greatly ease the overhead of managing RBAC in Vault. Tenant users can manage their own secrets without the concern of someone else having access to their Vault paths.
 
-More details on [Vault Multitenancy](../how-to-guides/enabling-multi-tenancy-vault.md)
+More details on [Vault Multitenancy](../integrations/vault/vault.md)
 
 ### ArgoCD Multitenancy
 
 Multi Tenant Operator is not only providing strong Multi Tenancy for the Kubernetes internals but also extends the tenants permission model to ArgoCD were it can provision AppProjects and Allowed Repositories for your tenants greatly ease the overhead of managing RBAC in ArgoCD.
 
-More details on [ArgoCD Multitenancy](../how-to-guides/enabling-multi-tenancy-argocd.md)
+More details on [ArgoCD Multitenancy](../integrations/argocd.md)
 
 ### Mattermost Multitenancy
 
 Multi Tenant Operator can manage Mattermost to create Teams for tenant users. All tenant users get a unique team and a list of predefined channels gets created. When a user is removed from the tenant, the user is also removed from the Mattermost team corresponding to tenant.
 
-More details on [Mattermost](../how-to-guides/mattermost.md)
+More details on [Mattermost](../integrations/mattermost.md)
 
 ## Developer and Platform Productivity Features
 
@@ -78,13 +80,13 @@ More details on [Mattermost](../how-to-guides/mattermost.md)
 
 Multi Tenant Operator Console is a comprehensive user interface designed for both administrators and tenant users to manage multi-tenant environments. The MTO Console simplifies the complexity involved in handling various aspects of tenants and their related resources. It serves as a centralized monitoring hub, offering insights into the current state of tenants, namespaces, templates and quotas. It is designed to provide a quick summary/snapshot of MTO's status and facilitates easier interaction with various resources such as tenants, namespaces, templates, and quotas.
 
-More details on [Console](../explanation/console.md)
+More details on [Console](../console/overview.md)
 
 ### Remote Development Namespaces
 
 Multi Tenant Operator can be configured to automatically provision a namespace in the cluster for every member of the specific tenant, that will also be preloaded with any selected templates and consume the same pool of resources from the tenants quota creating safe remote dev namespaces that teams can use as scratch namespace for rapid prototyping and development. So, every developer gets a Kubernetes-based cloud development environment that feel like working on localhost.
 
-More details on [Sandboxes](../tutorials/tenant/create-sandbox.md)
+More details on [Sandboxes](../kubernetes-resources/tenant/how-to-guides/create-sandbox.md)
 
 ## Security Features
 
@@ -92,7 +94,7 @@ More details on [Sandboxes](../tutorials/tenant/create-sandbox.md)
 
 Multi Tenant Operator supports cloning of secrets and configmaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide reference to secrets and configmaps. It uses a template group instance to distribute those secrets and namespaces in matching namespaces, even if namespaces belong to different tenants. If template instance is used then the resources will only be mapped if namespaces belong to same tenant.
 
-More details on [Copying Secrets and Configmaps](../tutorials/distributing-resources/copying-resources.md)
+More details on [Copying Secrets and Configmaps](../kubernetes-resources/template/how-to-guides/copying-resources.md)
 
 ### Self-Service
 

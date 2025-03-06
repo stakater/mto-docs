@@ -6,9 +6,9 @@
 
 #### Features
 
-- Added [Azure Pricing](./how-to-guides/azure-pricing.md) support for Opencost via [Integration Config](./crds-api-reference/integration-config.md#azure-pricing-model).
-- Added option to disable `Intra-tenant Networking` via [Integration Config](./crds-api-reference/integration-config.md#tenantpolicies).
-- Added [Storage class per tenant](./crds-api-reference/tenant.md#storage) support via Tenant CR.
+- Added [Azure Pricing](./integrations/azure-pricing.md) support for Opencost via [Integration Config](./kubernetes-resources/integration-config.md#azure-pricing-model).
+- Added option to disable `Intra-tenant Networking` via [Integration Config](./kubernetes-resources/integration-config.md#tenantpolicies).
+- Added [Storage class per tenant](./kubernetes-resources/tenant/tenant-overview.md#storage) support via Tenant CR.
 - Added option to override component images.
 - Added support to add/update `Casbin` policies via `tenant-operator-casbin-config` Configmap.
 
@@ -59,8 +59,8 @@ Before upgrading to v1.1.0, perform the following steps:
 
 #### Features
 
-- Added [capacity planning](./explanation/console.md#capacity-planning) feature on MTO Console to view resource usage of tenants based in their request and limits
-- Added [hibernation](./explanation/console.md#hibernation) feature on MTO Console to view and manage hibernated namespaces and hibernate/unhibernate namespaces
+- Added [capacity planning](./console/capacity-planning.md) feature on MTO Console to view resource usage of tenants based in their request and limits
+- Added [hibernation](./console/hibernation.md) feature on MTO Console to view and manage hibernated namespaces and hibernate/unhibernate namespaces
 
 #### Enhancements
 
@@ -129,8 +129,8 @@ Before upgrading to v1.1.0, perform the following steps:
 
 #### Enhanced
 
-- Updated Tenant CR to v1beta3, more details in [Tenant CRD](./crds-api-reference/tenant.md)
-- Added custom pricing support for Opencost, more details in [Opencost](./crds-api-reference/integration-config.md#custom-pricing)
+- Updated Tenant CR to v1beta3, more details in [Tenant CRD](./kubernetes-resources/tenant/tenant-overview.md)
+- Added custom pricing support for Opencost, more details in [Opencost](./kubernetes-resources/integration-config.md#custom-pricing)
 
 #### Fix
 
@@ -170,7 +170,7 @@ Before upgrading to v1.1.0, perform the following steps:
 - `TemplateGroupInstance` controller now ensures that its underlying resources are force-synced when a namespace is created or deleted.
 - Optimizations were made to ensure the reconciler in the TGI controller runs only once per watch event, reducing reconcile times.
 - The `TemplateGroupInstance` reconcile flow has been refined to process only the namespace for which the event was received, streamlining resource creation/deletion and improving overall efficiency.
-- Introduced new metrics to enhance the monitoring capabilities of the operator. Details at [TGI Metrics Explanation](./explanation/logs-metrics.md)
+- Introduced new metrics to enhance the monitoring capabilities of the operator. Details at [TGI Metrics Explanation](./architecture/logs-metrics.md)
 
 ### v0.10.0
 
@@ -208,7 +208,7 @@ Before upgrading to v1.1.0, perform the following steps:
 - fix: ValidatingWebhookConfiguration CRs are now owned by OLM, to handle cleanup upon operator uninstall
 - enhance: TemplateGroupInstance CRs now actively watch the resources they apply, and perform functions to make sure they are in sync with the state mentioned in their respective Templates
 
-> More information about TemplateGroupInstance's sync at [Sync Resources Deployed by TemplateGroupInstance](./how-to-guides/resource-sync-by-tgi.md)
+> More information about TemplateGroupInstance's sync at [Sync Resources Deployed by TemplateGroupInstance](./kubernetes-resources/template/how-to-guides/resource-sync-by-tgi.md)
 
 ### v0.9.2
 
@@ -249,8 +249,8 @@ Before upgrading to v1.1.0, perform the following steps:
 
 ### v0.8.0
 
-- feat: Allow custom roles for each tenant via label selector, more details in [custom roles document](./how-to-guides/custom-roles.md)
-    - Roles mapping is a required field in [MTO's IntegrationConfig](./crds-api-reference/integration-config.md). By default, it will always be filled with OpenShift's admin/edit/view roles
+- feat: Allow custom roles for each tenant via label selector, more details in [custom roles document](./kubernetes-resources/tenant/how-to-guides//custom-roles.md)
+    - Roles mapping is a required field in [MTO's IntegrationConfig](./kubernetes-resources/integration-config.md). By default, it will always be filled with OpenShift's admin/edit/view roles
     - Ensure that mentioned roles exist within the cluster
     - Remove coupling with OpenShift's built-in admin/edit/view roles
 - feat: Removed coupling of ResourceSupervisor and Tenant resources
@@ -290,7 +290,7 @@ Before upgrading to v1.1.0, perform the following steps:
 - feat: Allow creation of namespaces without tenant prefix from within tenant spec
 - fix: Webhook changes will now be updated without manual intervention
 - maintain: Updated Tenant CR version from v1beta1 to v1beta2. Conversion webhook is added to facilitate transition to new version
-    - see [Tenant spec](./crds-api-reference/tenant.md) for updated spec
+    - see [Tenant spec](./kubernetes-resources/tenant/tenant-overview.md) for updated spec
 - enhance: Better automated testing
 
 ## v0.6.x
@@ -339,7 +339,7 @@ Before upgrading to v1.1.0, perform the following steps:
 - fix: TemplateGroupInstance now cleans up leftover Template resources from namespaces that are no longer part of TGI namespace selector
 - fix: Fixed hibernation sync issue
 
-- enhance: Update tenant spec for applying common/specific namespace labels/annotations. For more details check out [commonMetadata & SpecificMetadata](./tutorials/tenant/assigning-metadata.md)
+- enhance: Update tenant spec for applying common/specific namespace labels/annotations. For more details check out [commonMetadata & SpecificMetadata](./kubernetes-resources/tenant/how-to-guides/assign-metadata.md)
 - enhance: Add support for multi-pod architecture for Operator-Hub
 
 - chore: Remove conversion webhook for Quota and Tenant
@@ -349,7 +349,7 @@ Before upgrading to v1.1.0, perform the following steps:
 ### v0.4.7
 
 - feat: Add hibernation of StatefulSets and Deployments based on a timer
-- feat: [New custom resource](./tutorials/tenant/tenant-hibernation.md) that handles hibernation
+- feat: [New custom resource](./kubernetes-resources/tenant/how-to-guides/hibernate-tenant.md) that handles hibernation
 
 ### v0.4.6
 
@@ -426,7 +426,7 @@ Before upgrading to v1.1.0, perform the following steps:
 
 ### v0.3.24
 
-- feat: Add feature to allow ArgoCD to sync specific cluster scoped custom resources, configurable via Integration Config. More details in [relevant docs](./crds-api-reference/integration-config.md#argocd)
+- feat: Add feature to allow ArgoCD to sync specific cluster scoped custom resources, configurable via Integration Config. More details in [relevant docs](./kubernetes-resources/integration-config.md#argocd)
 
 ### v0.3.23
 
@@ -463,8 +463,8 @@ Before upgrading to v1.1.0, perform the following steps:
 
 > ⚠️ ApiVersion `v1alpha1` of Tenant and Quota custom resources has been deprecated and is scheduled to be removed in the future. The following links contain the updated structure of both resources
 >
-> - [Quota v1beta1](./crds-api-reference/quota.md)
-> - [Tenant v1beta1](./crds-api-reference/tenant.md)
+> - [Quota v1beta1](./kubernetes-resources/quota.md)
+> - [Tenant v1beta1](./kubernetes-resources/tenant/tenant-overview.md)
 
 ### v0.3.18
 
@@ -534,13 +534,13 @@ Before upgrading to v1.1.0, perform the following steps:
 
 ### v0.3.2
 
-- refactor: Restructure Quota CR, more details in [relevant docs](./crds-api-reference/quota.md)
+- refactor: Restructure Quota CR, more details in [relevant docs](./kubernetes-resources/quota.md)
 - feat: Add support for adding LimitRanges in Quota
 - feat: Add conversion webhook to convert existing v1alpha1 versions of quota to v1beta1
 
 ### v0.3.1
 
-- feat: Add ability to create ArgoCD AppProjects per tenant, more details in [relevant docs](./how-to-guides/enabling-multi-tenancy-argocd.md)
+- feat: Add ability to create ArgoCD AppProjects per tenant, more details in [relevant docs](./integrations/argocd.md)
 
 ### v0.3.0
 
@@ -550,16 +550,16 @@ Before upgrading to v1.1.0, perform the following steps:
 
 ### v0.2.33
 
-- refactor: Restructure Tenant spec, more details in [relevant docs](./crds-api-reference/tenant.md)
+- refactor: Restructure Tenant spec, more details in [relevant docs](./kubernetes-resources/tenant/tenant-overview.md)
 - feat: Add conversion webhook to convert existing v1alpha1 versions of tenant to v1beta1
 
 ### v0.2.32
 
 - refactor: Restructure integration config spec, more details in [relevant docs][def]
-- feat: Allow users to input custom regex in certain fields inside of integration config, more details in [relevant docs](./crds-api-reference/integration-config.md)
+- feat: Allow users to input custom regex in certain fields inside of integration config, more details in [relevant docs](./kubernetes-resources/integration-config.md)
 
 ### v0.2.31
 
 - feat: Add limit range for `kube-RBAC-proxy`
 
-[def]: ./crds-api-reference/integration-config.md
+[def]: ./kubernetes-resources/integration-config.md
