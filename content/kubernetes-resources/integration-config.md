@@ -246,8 +246,8 @@ After modifying your default IntegrationConfig in `multi-tenant-operator` namesp
 
 MTO supports Azure pricing model via the `showbackOpts.cloudIntegrationSecretRef` field. Following 2 types of pricing are supported:
 
-- [`Azure Standard Pricing`](../how-to-guides/azure-pricing.md#azure-standard-pricing
-- [`Customer-specific pricing`](../how-to-guides/azure-pricing.md#customer-specific-pricing)
+- [`Azure Standard Pricing`](../integrations/azure-pricing.md#azure-standard-pricing)
+- [`Customer-specific pricing`](../integrations/azure-pricing.md#customer-specific-pricing)
 
 More details on Azure pricing can be found [here](../integrations/azure-pricing.md).
 
@@ -255,10 +255,10 @@ More details on Azure pricing can be found [here](../integrations/azure-pricing.
 
 MTO supports AWS pricing model via the `integrationConfig.components.showbackOpts.cloudIntegrationSecretRef` field. Following 2 types of pricing are supported:
 
-- [`AWS Standard Pricing`](../how-to-guides/aws-pricing.md#aws-standard-pricing)
-- [`AWS Spot Instance Pricing`](../how-to-guides/aws-pricing.md#aws-spot-instance-pricing)
+- [`AWS Standard Pricing`](../integrations/aws-pricing.md#aws-standard-pricing)
+- [`AWS Spot Instance Pricing`](../integrations/aws-pricing.md#aws-spot-instance-pricing)
 
-More details on AWS pricing can be found [here](../how-to-guides/aws-pricing.md).
+More details on AWS pricing can be found [here](../integrations/aws-pricing.md).
 
 ## Access Control
 
