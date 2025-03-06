@@ -150,4 +150,4 @@ ingressClasses:
   - traefik
 ```
 
-* `allowed` can be used to limit a tenant to only being able to create an Ingress with IngressClasses in the list. `""` is evaluated as any other class name, so if you are using it while using IngressClass filtering you need to add an empty string `""` to the tenants allow-list, or it will get filtered.
+* `allowed` can be used to limit a tenant to only being able to create an Ingress with IngressClasses in the list. `""` is evaluated as any other class name, so if you are using it while using IngressClass filtering you need to add an empty string `""` to the tenants allow-list, or it will get filtered. If IngressClass is not provided then it is treated as `""`.
