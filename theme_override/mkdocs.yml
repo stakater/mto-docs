@@ -22,6 +22,11 @@ nav:
       - about/key-features.md
       - about/use-cases.md
       - about/benefits.md
+  - Architecture:
+      - architecture/architecture.md
+      - architecture/concepts.md
+      - architecture/custom-metrics.md
+      - architecture/logs-metrics.md      
   - Installation:
       - installation/overview.md
       - installation/openshift.md
@@ -32,9 +37,7 @@ nav:
           - Validation: 'installation/aws-eks/validation.md'
       - installation/kubernetes.md
       - installation/helm.md
-  - Architecture:
-      - architecture/architecture.md
-      - architecture/concepts.md
+      - installation/uninstalling.md
   - Navigating Console:
       - console/overview.md
       - console/dashboard.md
@@ -46,58 +49,49 @@ nav:
       - console/templates.md
       - console/capacity-planning.md
       - console/configuration.md
-  - Tutorials:
-      - Configuring Tenants:
-          - tutorials/tenant/create-tenant.md
-          - tutorials/tenant/create-sandbox.md
-          - tutorials/tenant/creating-namespaces.md
-          - tutorials/tenant/assigning-metadata.md
-          - tutorials/tenant/tenant-hibernation.md
-          - tutorials/tenant/deleting-tenant.md
-      - Interacting with Templates:
-          - tutorials/distributing-resources/copying-resources.md
-          - tutorials/distributing-resources/distributing-manifests.md
-  - How-to Guides:
-      - RBAC:
-          - how-to-guides/custom-roles.md
-          - how-to-guides/extend-default-roles.md
-      - Resource Distribution:
-          - how-to-guides/configuring-multitenant-network-isolation.md
-          - how-to-guides/deploying-templates.md
-          - how-to-guides/resource-sync-by-tgi.md
-          - how-to-guides/distributing-secrets-using-sealed-secret-template.md
-          - how-to-guides/deploying-private-helm-charts.md
-          - how-to-guides/copying-resources.md
-      - Integrations:
-          - how-to-guides/enabling-multi-tenancy-argocd.md
-          - how-to-guides/enabling-multi-tenancy-vault.md
-          - how-to-guides/enabling-openshift-dev-workspace.md
-          - how-to-guides/mattermost.md
-          - how-to-guides/integrating-external-keycloak.md
-          - how-to-guides/integrating-vault.md
-          - how-to-guides/azure-pricing.md
-          - how-to-guides/aws-pricing.md
-      - Tenant Isolation:
-          - how-to-guides/restrict-nodepool-per-tenant.md
-      - Offboarding:
-          - how-to-guides/offboarding/uninstalling.md
-      - how-to-guides/custom-metrics.md
-  - Explanation:
-      - Tenant Policies:
-          - explanation/tenant-policies/networking.md
-      - explanation/logs-metrics.md
-      - explanation/template.md
-      - explanation/templated-metadata-values.md
-      - explanation/multi-tenancy-vault.md
-  - CRDs API Reference:
-      - crds-api-reference/quota.md
-      - crds-api-reference/tenant.md
-      - crds-api-reference/extensions.md
-      - crds-api-reference/template.md
-      - crds-api-reference/template-instance.md
-      - crds-api-reference/template-group-instance.md
-      - crds-api-reference/integration-config.md
-      - crds-api-reference/resource-supervisor.md
+  - Kubernetes Resources:
+      - kubernetes-resources/quota.md
+      - Tenant:
+          - kubernetes-resources/tenant/tenant-overview.md
+          - How-to Guides:
+              - kubernetes-resources/tenant/how-to-guides/create-tenant.md
+              - kubernetes-resources/tenant/how-to-guides/create-namespaces.md         
+              - kubernetes-resources/tenant/how-to-guides/create-sandbox.md
+              - kubernetes-resources/tenant/how-to-guides/assign-metadata.md
+              - kubernetes-resources/tenant/how-to-guides/hibernate-tenant.md
+              - kubernetes-resources/tenant/how-to-guides/restrict-nodepool-per-tenant.md
+              - kubernetes-resources/tenant/how-to-guides/disable-intra-tenant-networking.md
+              - kubernetes-resources/tenant/how-to-guides/custom-roles.md
+              - kubernetes-resources/tenant/how-to-guides/extend-default-roles.md
+              - kubernetes-resources/tenant/how-to-guides/delete-tenant.md
+      - kubernetes-resources/extensions.md
+      - Template:
+          - kubernetes-resources/template/template.md
+          - kubernetes-resources/template/template-instance.md
+          - kubernetes-resources/template/template-group-instance.md
+          - How-to Guides:
+              - kubernetes-resources/template/how-to-guides/copying-resources.md
+              - kubernetes-resources/template/how-to-guides/copying-resources-2.md
+              - kubernetes-resources/template/how-to-guides/distributing-manifests.md
+              - kubernetes-resources/template/how-to-guides/configuring-multitenant-network-isolation.md
+              - kubernetes-resources/template/how-to-guides/deploying-templates.md
+              - kubernetes-resources/template/how-to-guides/resource-sync-by-tgi.md                            
+              - kubernetes-resources/template/how-to-guides/distributing-secrets-using-sealed-secret-template.md
+              - kubernetes-resources/template/how-to-guides/deploying-private-helm-charts.md
+              - kubernetes-resources/template/how-to-guides/templated-metadata-values.md
+              - kubernetes-resources/template/how-to-guides/template-default-params.md
+      - kubernetes-resources/integration-config.md
+      - kubernetes-resources/resource-supervisor.md
+  - Integrations:
+      - integrations/argocd.md
+      - Vault:
+          - integrations/vault/vault.md
+          - integrations/vault/vault-ic.md
+          - integrations/vault/vault-kc-entraid.md
+      - integrations/devworkspace.md
+      - integrations/mattermost.md
+      - integrations/keycloak.md
+      - integrations/azure-pricing.md
   - pricing.md
   - changelog.md
   - eula.md
