@@ -242,7 +242,7 @@ components:
 
 After modifying your default IntegrationConfig in `multi-tenant-operator` namespace, a configmap named `opencost-custom-pricing` will be updated. You will be able to see updated pricing info in `mto-console`.
 
-### Azure Pricing Model
+### Azure Pricing
 
 MTO supports Azure pricing model via the `showbackOpts.cloudIntegrationSecretRef` field. Following 2 types of pricing are supported:
 
@@ -251,7 +251,7 @@ MTO supports Azure pricing model via the `showbackOpts.cloudIntegrationSecretRef
 
 More details on Azure pricing can be found [here](../integrations/azure-pricing.md).
 
-### AWS Pricing Model
+### AWS Pricing
 
 MTO supports AWS pricing model via the `integrationConfig.components.showbackOpts.cloudIntegrationSecretRef` field. Following 2 types of pricing are supported:
 
