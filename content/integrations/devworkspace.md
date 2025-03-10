@@ -1,4 +1,4 @@
-# Enabling DevWorkspace for Tenant's sandbox in OpenShift
+# DevWorkspace
 
 ## DevWorkspaces metadata via Multi Tenant Operator
 
