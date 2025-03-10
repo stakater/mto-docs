@@ -21,7 +21,7 @@ This ensures that tenants can only use the ingress controllers that are explicit
 
 ### Demo
 
-![Ingress Class Demo](../../images/ingress-class-demo.gif)
+![Ingress Class Demo](../../../images/ingress-class-demo.gif)
 
 ## Ingress Sharding on OpenShift Container Platform
 
