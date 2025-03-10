@@ -1,4 +1,4 @@
-# Creating Mattermost Teams for your tenant
+# Mattermost
 
 ## Requirements
 
