@@ -1,6 +1,6 @@
 # On AKS
 
-This document covers how to deploy Multi Tenant Operator with an [AKS (Azure Kubernetes Service)](https://azure.microsoft.com/en-us/products/kubernetes-service/) cluster.
+This document covers how to deploy Multi Tenant Operator with an AKS (Azure Kubernetes Service) cluster.
 
 ## Prerequisites
 

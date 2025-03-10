@@ -6,7 +6,7 @@
 
 #### Features
 
-- Added [Azure Pricing](./integrations/azure-pricing.md) support for Opencost via [Integration Config](./kubernetes-resources/integration-config.md#azure-pricing-model).
+- Added [Azure Pricing](./integrations/azure-pricing.md) support for Opencost via [Integration Config](./kubernetes-resources/integration-config.md#azure-pricing).
 - Added option to disable `Intra-tenant Networking` via [Integration Config](./kubernetes-resources/integration-config.md#tenantpolicies).
 - Added [Storage class per tenant](./kubernetes-resources/tenant/tenant-overview.md#storage) support via Tenant CR.
 - Added option to override component images.
