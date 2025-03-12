@@ -4474,14 +4474,16 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <ul>
 <li><code>allowed</code> restricts a tenant to creating pods only with the specified <code>priorityClasse</code>. The empty string <code>""</code> is treated like any other <code>priorityClass</code> name. If you use it while filtering PodPriorityClasses, you must include <code>""</code> in the tenant's allow-list, or it will be filtered out. If no PodPriorityClass is specified for a resource, it will be treated as <code>""</code>.</li>
 </ul>
-<p>The following resources will be watched for PodPriorityClasses:
-* Pods
-* Deployments
-* StatefulSets
-* ReplicaSets
-* Jobs
-* CronJobs
-* DaemonSets</p>
+<p>The following resources will be watched for PodPriorityClasses:</p>
+<ul>
+<li>Pods</li>
+<li>Deployments</li>
+<li>StatefulSets</li>
+<li>ReplicaSets</li>
+<li>Jobs</li>
+<li>CronJobs</li>
+<li>Daemonsets</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="nt">podPriorityClasses</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high-priority</span>
