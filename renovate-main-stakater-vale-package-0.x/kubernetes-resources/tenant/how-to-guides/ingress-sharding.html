@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-stakater-vale-package-0.x/kubernetes-resources/tenant/how-to-guides/hibernate-tenant.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-stakater-vale-package-0.x/kubernetes-resources/tenant/how-to-guides/ingress-sharding.html">
       
       
-        <link rel="prev" href="assign-metadata.html">
+        <link rel="prev" href="disable-intra-tenant-networking.html">
       
       
-        <link rel="next" href="restrict-nodepool-per-tenant.html">
+        <link rel="next" href="custom-roles.html">
       
       
       <link rel="icon" href="../../../assets/images/favicon.svg">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Hibernate a Tenant - Multi Tenant Operator</title>
+        <title>Ingress Sharding - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hibernate-a-tenant" class="md-skip">
+        <a href="#ingress-sharding" class="md-skip">
           Skip to content
         </a>
       
@@ -3105,31 +3105,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Hibernate a Tenant
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="hibernate-tenant.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="hibernate-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3139,88 +3118,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#configuring-hibernation-for-tenant-namespaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configuring Hibernation for Tenant Namespaces
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resource-supervisor" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resource Supervisor
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Resource Supervisor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#manual-creation-of-resourcesupervisor" class="md-nav__link">
-    <span class="md-ellipsis">
-      Manual creation of ResourceSupervisor
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#freeing-up-unused-resources-with-hibernation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Freeing up unused resources with hibernation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hibernating-a-tenant" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hibernating a tenant
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hibernating-namespaces-andor-argocd-applications-with-resourcesupervisor" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hibernating namespaces and/or ArgoCD Applications with ResourceSupervisor
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3274,10 +3171,31 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="ingress-sharding.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Ingress Sharding
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="ingress-sharding.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -3287,6 +3205,76 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ingress-sharding-on-kubernetes-using-mto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingress Sharding on Kubernetes using MTO
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ingress Sharding on Kubernetes using MTO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Demo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ingress-sharding-on-openshift-container-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingress Sharding on OpenShift Container Platform
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ingress Sharding on OpenShift Container Platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4219,28 +4207,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#configuring-hibernation-for-tenant-namespaces" class="md-nav__link">
+  <a href="#ingress-sharding-on-kubernetes-using-mto" class="md-nav__link">
     <span class="md-ellipsis">
-      Configuring Hibernation for Tenant Namespaces
+      Ingress Sharding on Kubernetes using MTO
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resource-supervisor" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resource Supervisor
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Resource Supervisor">
+    <nav class="md-nav" aria-label="Ingress Sharding on Kubernetes using MTO">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#manual-creation-of-resourcesupervisor" class="md-nav__link">
+  <a href="#demo" class="md-nav__link">
     <span class="md-ellipsis">
-      Manual creation of ResourceSupervisor
+      Demo
     </span>
   </a>
   
@@ -4252,29 +4231,26 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#freeing-up-unused-resources-with-hibernation" class="md-nav__link">
+  <a href="#ingress-sharding-on-openshift-container-platform" class="md-nav__link">
     <span class="md-ellipsis">
-      Freeing up unused resources with hibernation
+      Ingress Sharding on OpenShift Container Platform
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ingress Sharding on OpenShift Container Platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#hibernating-a-tenant" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hibernating a tenant
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hibernating-namespaces-andor-argocd-applications-with-resourcesupervisor" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hibernating namespaces and/or ArgoCD Applications with ResourceSupervisor
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4297,247 +4273,37 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="hibernate-a-tenant">Hibernate a Tenant<a class="headerlink" href="#hibernate-a-tenant" title="Permanent link">#</a></h1>
-<p>Implementing hibernation for tenants' namespaces efficiently manages cluster resources by temporarily reducing workload activities during off-peak hours. This guide demonstrates how to configure hibernation schedules for tenant namespaces, leveraging Tenant and ResourceSupervisor for precise control.</p>
-<h2 id="configuring-hibernation-for-tenant-namespaces">Configuring Hibernation for Tenant Namespaces<a class="headerlink" href="#configuring-hibernation-for-tenant-namespaces" title="Permanent link">#</a></h2>
-<p>You can manage workloads in your cluster with MTO by implementing a hibernation schedule for your tenants.
-Hibernation downsizes the running <code>Deployments</code> and <code>StatefulSets</code> in a tenant’s namespace according to a defined cron schedule. You can set a hibernation schedule for your tenants by adding the ‘spec.hibernation’ field to the tenant's respective Custom Resource.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">hibernation</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">23 * * * *</span>
-<span class="w">  </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">26 * * * *</span>
-</code></pre></div>
-<p><code>spec.hibernation.sleepSchedule</code> accepts a cron expression indicating the time to put the workloads in your tenant’s namespaces to sleep.</p>
-<p><code>spec.hibernation.wakeSchedule</code> accepts a cron expression indicating the time to wake the workloads in your tenant’s namespaces up.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Both sleep and wake schedules must be specified for your tenant's hibernation schedule to be valid.</p>
-</div>
-<p>Additionally, adding the <code>hibernation.stakater.com/exclude: 'true'</code> annotation to a namespace excludes it from hibernating.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is only true for hibernation applied via the Tenant Custom Resource, and does not apply for hibernation done by manually creating a ResourceSupervisor (details about that below).</p>
-</div>
-<h2 id="resource-supervisor">Resource Supervisor<a class="headerlink" href="#resource-supervisor" title="Permanent link">#</a></h2>
-<p>Adding a Hibernation Schedule to a Tenant creates an accompanying ResourceSupervisor Custom Resource.</p>
-<p>When the sleep timer is activated, the Resource Supervisor puts your applications to sleep and store their previous state. When the wake timer is activated, it uses the stored state to bring them back to running state.</p>
-<p>Enabling ArgoCD support for Tenants will also hibernate applications in the tenants' <code>appProjects</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma-tenant</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma-tenant</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-gitops</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42 * * * *</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45 * * * *</span>
-
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">stakater.com/current-tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-ns1</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-ns2</span>
-</code></pre></div>
-<blockquote>
-<p>Currently, Hibernation is available only for <code>StatefulSets</code> and <code>Deployments</code>.</p>
-</blockquote>
-<h3 id="manual-creation-of-resourcesupervisor">Manual creation of ResourceSupervisor<a class="headerlink" href="#manual-creation-of-resourcesupervisor" title="Permanent link">#</a></h3>
-<p>Hibernation can also be applied by creating a ResourceSupervisor resource manually.
-The ResourceSupervisor definition will contain the hibernation cron schedule, the names of the namespaces to be hibernated, and the names of the ArgoCD AppProjects whose ArgoCD Applications have to be hibernated (as per the given schedule).</p>
-<p>This method can be used to hibernate:</p>
-<ul>
-<li>Some specific namespaces and AppProjects in a tenant</li>
-<li>A set of namespaces and AppProjects belonging to different tenants</li>
-<li>Namespaces and AppProjects belonging to a tenant that the cluster admin is not a member of</li>
-<li>Non-tenant namespaces and ArgoCD AppProjects</li>
-</ul>
-<p>As an example, the following ResourceSupervisor could be created manually, to apply hibernation explicitly to the 'ns1' and 'ns2' namespaces, and to the 'sample-app-project' AppProject.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernator</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample-app-project</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-gitops</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42 * * * *</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45 * * * *</span>
-
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns1</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns2</span>
-</code></pre></div>
-<h2 id="freeing-up-unused-resources-with-hibernation">Freeing up unused resources with hibernation<a class="headerlink" href="#freeing-up-unused-resources-with-hibernation" title="Permanent link">#</a></h2>
-<h2 id="hibernating-a-tenant">Hibernating a tenant<a class="headerlink" href="#hibernating-a-tenant" title="Permanent link">#</a></h2>
-<p>Bill is a cluster administrator who wants to free up unused cluster resources at nighttime, in an effort to reduce costs (when the cluster isn't being used).</p>
-<p>First, Bill creates a tenant with the <code>hibernation</code> schedules mentioned in the spec, or adds the hibernation field to an existing tenant:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
+<h1 id="ingress-sharding">Ingress Sharding<a class="headerlink" href="#ingress-sharding" title="Permanent link">#</a></h1>
+<h2 id="ingress-sharding-on-kubernetes-using-mto">Ingress Sharding on Kubernetes using MTO<a class="headerlink" href="#ingress-sharding-on-kubernetes-using-mto" title="Permanent link">#</a></h2>
+<div class="highlight"><span class="filename">Tenant</span><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">hibernation</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0</span><span class="nv"> </span><span class="s">20</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5&quot;</span><span class="w">  </span><span class="c1"># Sleep at 8 PM on weekdays</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5&quot;</span><span class="w">    </span><span class="c1"># Wake at 8 AM on weekdays</span>
-<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user@example.com</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">medium</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">withoutTenantPrefix</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stage</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="c1"># other fields</span>
+<span class="w">  </span><span class="nt">ingressClasses</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik</span>
 </code></pre></div>
-<p>The schedules above will put all the <code>Deployments</code> and <code>StatefulSets</code> within the tenant's namespaces to sleep, by reducing their pod count to 0 at 8 PM every weekday. At 8 AM on weekdays, the namespaces will then wake up by restoring their applications' previous pod counts.</p>
-<p>Bill can verify this behaviour by checking the newly created ResourceSupervisor resource at run time:</p>
-<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>get<span class="w"> </span>ResourceSupervisor<span class="w"> </span>-A
-NAME<span class="w">           </span>AGE
-sigma<span class="w">          </span>5m
-</code></pre></div>
-<p>The ResourceSupervisor will look like this at 'running' time (as per the schedule):</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<p>The <code>ingressClasses</code> field in the Tenant specification is used to filter and control which ingress classes are allowed for the tenant. By specifying an <code>allowed</code> list, you can restrict the creation of ingress resources to only those with the specified ingress class names. In the example above, only ingress resources with the class names <code>nginx</code> and <code>traefik</code> are permitted for the tenant.</p>
+<p>This ensures that tenants can only use the ingress controllers that are explicitly allowed, providing better control and security over the ingress resources within the Kubernetes cluster.</p>
+<h3 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../../../images/ingress-class-demo.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ingress Class Demo" src="../../../images/ingress-class-demo.gif" /></a></p>
+<h2 id="ingress-sharding-on-openshift-container-platform">Ingress Sharding on OpenShift Container Platform<a class="headerlink" href="#ingress-sharding-on-openshift-container-platform" title="Permanent link">#</a></h2>
+<p>You can use Ingress sharding, also known as router sharding, to distribute a set of routes across multiple routers by adding labels to routes, namespaces, or both. The Ingress Controller uses a corresponding set of selectors to admit only the routes that have a specified label. Each Ingress shard comprises the routes that are filtered using a given selection expression.</p>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">#</a></h3>
+<p>An Ingress Controller <code>finops-router</code> is configured with the label selector to handle the routes in tenant <code>finops</code></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">operator.openshift.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IngressController</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">finalizers</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/resourcesupervisor</span>
-<span class="w">  </span><span class="nt">generation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma</span>
-<span class="w">  </span><span class="nt">ownerReferences</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
-<span class="w">    </span><span class="nt">blockOwnerDeletion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">controller</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">finops-router</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-ingress-operator</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stage</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 20 * * 1-5</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 8 * * 1-5</span>
-<span class="nt">status</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">currentStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">running</span>
-<span class="w">  </span><span class="nt">nextReconcileTime</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2024-06-10T20:00:00Z&quot;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespaceSelector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">stakater.com/tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">finops</span>
 </code></pre></div>
-<p>The ResourceSupervisor will look like this at 'sleeping' time (as per the schedule):</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 20 * * 1-5</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 8 * * 1-5</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stage</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="nt">status</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">currentStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleeping</span>
-<span class="w">  </span><span class="nt">nextReconcileTime</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2024-06-11T08:00:00Z&#39;</span>
-<span class="w">  </span><span class="nt">sleepingNamespaces</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">    </span><span class="nt">sleepingApplications</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example</span>
-<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stage</span>
-<span class="w">    </span><span class="nt">sleepingApplications</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example</span>
-<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-</code></pre></div>
-<p>Bill wants to prevent the <code>build</code> namespace from going to sleep, so he can add the <code>hibernation.stakater.com/exclude: 'true'</code> annotation to it. The ResourceSupervisor will now look like this after reconciling:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 20 * * 1-5</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 8 * * 1-5</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stage</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="nt">status</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">currentStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleeping</span>
-<span class="w">  </span><span class="nt">nextReconcileTime</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2024-07-12T08:00:00Z&#39;</span>
-<span class="w">  </span><span class="nt">sleepingNamespaces</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">    </span><span class="nt">sleepingApplications</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
-<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-</code></pre></div>
-<h2 id="hibernating-namespaces-andor-argocd-applications-with-resourcesupervisor">Hibernating namespaces and/or ArgoCD Applications with ResourceSupervisor<a class="headerlink" href="#hibernating-namespaces-andor-argocd-applications-with-resourcesupervisor" title="Permanent link">#</a></h2>
-<p>Bill, the cluster administrator, wants to hibernate a collection of namespaces and AppProjects belonging to multiple different tenants. He can do so by creating a ResourceSupervisor manually, specifying the hibernation schedule in its spec, the namespaces and ArgoCD Applications that need to be hibernated as per the mentioned schedule.
-Bill can also use the same method to hibernate some namespaces and ArgoCD Applications that do not belong to any tenant on his cluster.</p>
-<p>The example given below will hibernate the ArgoCD Applications in the 'test-app-project' AppProject; and it will also hibernate the 'ns2' and 'ns4' namespaces.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-resource-supervisor</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-app-project</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-ns</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 20 * * 1-5</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 8 * * 1-5</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns2</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns4</span>
-<span class="nt">status</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">currentStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleeping</span>
-<span class="w">  </span><span class="nt">nextReconcileTime</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2022-10-13T08:00:00Z&#39;</span>
-<span class="w">  </span><span class="nt">sleepingNamespaces</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">    </span><span class="nt">sleepingApplications</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-deployment</span>
-<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-deployment</span>
-<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-</code></pre></div>
-<p>For more info see <a href="../../resource-supervisor.html">here</a></p>
 
 
 
