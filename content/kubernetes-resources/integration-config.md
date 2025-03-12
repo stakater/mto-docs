@@ -23,9 +23,19 @@ spec:
         zoneNetworkEgress: "0.01"
         regionNetworkEgress: "0.01"
         internetNetworkEgress: "0.12"
-      azurePricingSecretRef:
-        name: azure-pricing
+        spotLabel: "kops.k8s.io/instancegroup"
+        spotLabelValue: "spotinstance-nodes"
+        awsSpotDataRegion: "us-east-2"
+        awsSpotDataBucket: "my-spot-bucket"
+        awsSpotDataPrefix: "spot_pricing_prefix"
+        projectID: "012345678901"
+
+      cloudPricingSecretRef:
+        name: secret-name
         namespace: multi-tenant-operator
+      
+      opencostServiceRoleArn: arn:aws:iam::123456789012:role/S3Access
+
     ingress:
       ingressClassName: 'nginx'
       keycloak:
@@ -153,7 +163,7 @@ Following are the different components that can be used to configure multi-tenan
         zoneNetworkEgress: "0.01"
         regionNetworkEgress: "0.01"
         internetNetworkEgress: "0.12"
-      azurePricingSecretRef:
+      cloudPricingSecretRef:
         name: azure-pricing
         namespace: multi-tenant-operator
     ingress:
@@ -184,7 +194,8 @@ Following are the different components that can be used to configure multi-tenan
         - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the Keycloak's ingress.
 - `components.showbackOpts:` Configures the showback feature with the following options:
     - `custom:` Custom pricing model for showback.
-    - `azurePricingSecretRef:` Secret reference for Azure pricing model.
+    - `cloudPricingSecretRef:` Secret reference for AWS / Azure Pricing model.
+    - `opencostServiceRoleArn`: Role ARN to be used by OpenCost gateway's service account
 
 Here's an example of how to generate the secrets required to configure MTO:
 
@@ -231,15 +242,23 @@ components:
 
 After modifying your default IntegrationConfig in `multi-tenant-operator` namespace, a configmap named `opencost-custom-pricing` will be updated. You will be able to see updated pricing info in `mto-console`.
 
-### Azure Pricing Model
+### Azure Pricing
 
-MTO supports Azure pricing model via the `showbackOpts.azurePricingSecretRef` field. Following 3 types of pricing are supported:
+MTO supports Azure pricing model via the `showbackOpts.cloudIntegrationSecretRef` field. Following 2 types of pricing are supported:
 
-- [`Azure Pricing Configuration`](https://www.opencost.io/docs/configuration/azure#azure-pricing-configuration)
-- [`Customer-specific pricing`](https://www.opencost.io/docs/configuration/azure#customer-specific-pricing)
-- [`Azure Cloud Costs`](https://www.opencost.io/docs/configuration/azure#azure-cloud-costs)
+- [`Azure Standard Pricing`](../integrations/azure-pricing.md#azure-standard-pricing)
+- [`Customer-specific pricing`](../integrations/azure-pricing.md#customer-specific-pricing)
 
 More details on Azure pricing can be found [here](../integrations/azure-pricing.md).
+
+### AWS Pricing
+
+MTO supports AWS pricing model via the `integrationConfig.components.showbackOpts.cloudIntegrationSecretRef` field. Following 2 types of pricing are supported:
+
+- [`AWS Standard Pricing`](../integrations/aws-pricing.md#aws-standard-pricing)
+- [`AWS Spot Instance Pricing`](../integrations/aws-pricing.md#aws-spot-instance-pricing)
+
+More details on AWS pricing can be found [here](../integrations/aws-pricing.md).
 
 ## Access Control
 

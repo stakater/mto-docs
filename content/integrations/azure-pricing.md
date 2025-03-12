@@ -1,12 +1,11 @@
 # Azure Pricing
 
-MTO supports Azure pricing model via the `integrationConfig.components.showbackOpts.azurePricingSecretRef` field. Following 3 types of pricing are supported:
+MTO supports Azure pricing model via the `integrationConfig.components.showbackOpts.cloudPricingSecretRef` field. Following 3 types of pricing are supported:
 
-- [`Azure Pricing Configuration`](https://www.opencost.io/docs/configuration/azure#azure-pricing-configuration)
-- [`Customer-specific pricing`](https://www.opencost.io/docs/configuration/azure#customer-specific-pricing)
-- [`Azure Cloud Costs`](https://www.opencost.io/docs/configuration/azure#azure-cloud-costs)
+- [`Azure Standard Pricing`](#azure-standard-pricing)
+- [`Customer-specific pricing`](#customer-specific-pricing)
 
-## Azure Pricing Configuration
+## Azure Standard Pricing
 
 For Azure pricing configuration, OpenCost needs access to the Microsoft Azure Billing Rate Card API to access accurate pricing data for your Kubernetes resources.
 
@@ -86,7 +85,7 @@ components:
     console: true # should be enabled
     showback: true # should be enabled
     showbackOpts:
-      azurePricingSecretRef:
+      cloudPricingSecretRef:
         name: azure-service-key
         namespace: multi-tenant-operator
 ```
@@ -140,7 +139,7 @@ components:
     console: true # should be enabled
     showback: true # should be enabled
     showbackOpts:
-      azurePricingSecretRef:
+      cloudPricingSecretRef:
         name: customer-specific-pricing
         namespace: multi-tenant-operator
 ```
@@ -195,70 +194,6 @@ RESPONSE="$(curl --silent --show-error -X PUT "${URL}" \
 echo "Response: ${RESPONSE}"
 ```
 
-## Azure Cloud Costs
-
-The following values can be found in the Azure Portal under *Cost Management > Exports*, or Storage accounts:
-
-- `<SUBSCRIPTION_ID>` is the Subscription ID belonging to the Storage account which stores your exported Azure cost report data.
-- `<STORAGE_ACCOUNT>` is the name of the Storage account where the exported Azure cost report data is being stored.
-- `<STORAGE_ACCESS_KEY>` can be found by selecting Access Keys from the navigation sidebar then selecting Show keys. Using either of the two keys will work.
-- `<STORAGE_CONTAINER>` is the name that you chose for the exported cost report when you set it up. This is the name of the container where the CSV cost reports are saved in your Storage account.
-- `<CONTAINER_PATH>` should be used if there is more than one billing report that is exported to the configured container. The path provided should have only one billing export because OpenCost will retrieve the most recent billing report for a given month found within the path. If this configuration is not used, it should be set to an empty string "".
-- `<CLOUD>` is the value which denotes the cloud where the storage account exists. Possible values are public and gov. The default is public if an empty string is provided.
-
-Set these values to the Azure array in the `cloud-integration.json` file:
-
-```json
-{
-  "azure": {
-    "storage": [
-      {
-        "subscriptionID": "<SUBSCRIPTON_ID>",
-        "account": "<STORAGE_ACCOUNT>",
-        "container": "<STORAGE_CONTAINER>",
-        "path": "<CONTAINER_PATH>",
-        "cloud": "<CLOUD>",
-        "authorizer": {
-          "accessKey": "<STORAGE_ACCESS_KEY>",
-          "account": "<STORAGE_ACCOUNT>",
-          "authorizerType": "AzureAccessKey"
-        }
-      },
-      {
-        "subscriptionID": "<SUBSCRIPTION_ID>",
-        "account": "<STORAGE_ACCOUNT>",
-        "container": "<EXPORT_CONTAINER>",
-        "path": "",
-        "cloud": "<CLOUD>",
-        "authorizer": {
-          "accessKey": "<ACCOUNT_ACCESS_KEY>",
-          "account": "<STORAGE_ACCOUNT>",
-          "authorizerType": "AzureAccessKey"
-        }
-      }
-    ]
-  }
-}
-```
-
-Load the `cloud-integration.json` into a Kubernetes secret in your opencost namespace.
-
-```bash
-kubectl create secret generic cloud-costs --from-file=./cloud-integration.json --namespace opencost
-```
-
-Update your IntegrationConfig to use the Cloud Costs pricing model:
-
-```yaml
-components:
-    console: true # should be enabled
-    showback: true # should be enabled
-    showbackOpts:
-      azurePricingSecretRef:
-        name: cloud-costs
-        namespace: multi-tenant-operator
-```
-
 ## Conclusion
 
 In this guide, we have seen how to configure OpenCost to use Azure pricing model. We have seen how to configure Azure Pricing Configuration, Customer-specific pricing, and Azure Cloud Costs. To enable all three pricing models, you can create a single secret with all the required values and update the IntegrationConfig to use the secret.
@@ -276,7 +211,7 @@ components:
     console: true # should be enabled
     showback: true # should be enabled
     showbackOpts:
-      azurePricingSecretRef:
+      cloudPricingSecretRef:
         name: azure-pricing
         namespace: multi-tenant-operator
 ```
