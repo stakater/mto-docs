@@ -75,6 +75,10 @@ spec:
     allowed:
       - staging
       - dev
+  ingressClasses:
+    allowed:
+      - nginx
+      - trafeik
 ```
 
 ## Access Control
@@ -136,3 +140,17 @@ storageClasses:
 ```
 
 * `allowed` can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the list. If `storageClass` is not specified for a PersistentVolumeClaim, the default StorageClass (if set) will be evaluated as any other class name. If the default StorageClass is not set, the evaluation will be deferred until a default StorageClass is set. `""` is evaluated as any other class name, so if you are using it to manually bind to PersistentVolumes while using StorageClass filtering you need to add  an empty string `""` to the tenants allow-list or it will get filtered.
+
+## Ingress
+
+!!! note
+    This field is applicable only for Kubernetes. For more information, refer to the [Ingress Sharding Guide](../tenant/how-to-guides/ingress-sharding.md).
+
+* `allowed` restricts a tenant to creating Ingress resources only with the specified IngressClasses. The empty string `""` is treated like any other IngressClass name. If you use it while filtering IngressClasses, you must include `""` in the tenant's allow-list, or it will be filtered out. If no IngressClass is specified for an Ingress resource, it will be treated as `""`.
+
+```yaml
+ingressClasses:
+  allowed:
+  - nginx
+  - traefik
+```
