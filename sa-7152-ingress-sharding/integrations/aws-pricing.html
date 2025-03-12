@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/sa-7152-ingress-sharding/kubernetes-resources/tenant/how-to-guides/ingress-filtering.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/sa-7152-ingress-sharding/integrations/aws-pricing.html">
       
       
-        <link rel="prev" href="disable-intra-tenant-networking.html">
+        <link rel="prev" href="azure-pricing.html">
       
       
-        <link rel="next" href="custom-roles.html">
+        <link rel="next" href="../pricing.html">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="icon" href="../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
     
     
       
-        <title>Ingress Class Filtering - Multi Tenant Operator</title>
+        <title>AWS Pricing - Multi Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.8608ea7d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -67,7 +67,7 @@
     
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -76,7 +76,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ingress-class-filtering" class="md-skip">
+        <a href="#aws-pricing" class="md-skip">
           Skip to content
         </a>
       
@@ -340,7 +340,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../../../index.html" title="Multi Tenant Operator"
+    <a href="../index.html" title="Multi Tenant Operator"
       class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       <!-- 
   
@@ -362,10 +362,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="../../../assets/images/logo-light.png#only-light" alt="logo" />
+          <img class="md-header__logo_light" src="../assets/images/logo-light.png#only-light" alt="logo" />
           
           
-          <img class="md-header__logo_dark" src="../../../assets/images/logo-dark.png#only-dark" alt="logo" />
+          <img class="md-header__logo_dark" src="../assets/images/logo-dark.png#only-dark" alt="logo" />
           
           
           <div class="header-site-name">
@@ -2023,7 +2023,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -2053,7 +2053,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../index.html" class="md-nav__link">
+      <a href="../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2110,7 +2110,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../about/key-features.html" class="md-nav__link">
+      <a href="../about/key-features.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2132,7 +2132,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../about/use-cases.html" class="md-nav__link">
+      <a href="../about/use-cases.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2154,7 +2154,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../about/benefits.html" class="md-nav__link">
+      <a href="../about/benefits.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2219,7 +2219,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/architecture.html" class="md-nav__link">
+      <a href="../architecture/architecture.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2241,7 +2241,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/concepts.html" class="md-nav__link">
+      <a href="../architecture/concepts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2263,7 +2263,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/custom-metrics.html" class="md-nav__link">
+      <a href="../architecture/custom-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2285,7 +2285,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/logs-metrics.html" class="md-nav__link">
+      <a href="../architecture/logs-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2350,7 +2350,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/overview.html" class="md-nav__link">
+      <a href="../installation/overview.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2372,7 +2372,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/openshift.html" class="md-nav__link">
+      <a href="../installation/openshift.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2394,7 +2394,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/azure-aks.html" class="md-nav__link">
+      <a href="../installation/azure-aks.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2452,7 +2452,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/aws-eks/preparation.html" class="md-nav__link">
+      <a href="../installation/aws-eks/preparation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2474,7 +2474,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/aws-eks/installation.html" class="md-nav__link">
+      <a href="../installation/aws-eks/installation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2496,7 +2496,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/aws-eks/validation.html" class="md-nav__link">
+      <a href="../installation/aws-eks/validation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2526,7 +2526,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/kubernetes.html" class="md-nav__link">
+      <a href="../installation/kubernetes.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2548,7 +2548,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/helm.html" class="md-nav__link">
+      <a href="../installation/helm.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2570,7 +2570,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/uninstalling.html" class="md-nav__link">
+      <a href="../installation/uninstalling.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2635,7 +2635,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/overview.html" class="md-nav__link">
+      <a href="../console/overview.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2657,7 +2657,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/dashboard.html" class="md-nav__link">
+      <a href="../console/dashboard.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2679,7 +2679,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/tenants.html" class="md-nav__link">
+      <a href="../console/tenants.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2701,7 +2701,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/namespaces.html" class="md-nav__link">
+      <a href="../console/namespaces.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2723,7 +2723,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/hibernation.html" class="md-nav__link">
+      <a href="../console/hibernation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2745,7 +2745,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/showback.html" class="md-nav__link">
+      <a href="../console/showback.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2767,7 +2767,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/quotas.html" class="md-nav__link">
+      <a href="../console/quotas.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2789,7 +2789,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/templates.html" class="md-nav__link">
+      <a href="../console/templates.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2811,7 +2811,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/capacity-planning.html" class="md-nav__link">
+      <a href="../console/capacity-planning.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2833,7 +2833,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/configuration.html" class="md-nav__link">
+      <a href="../console/configuration.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2859,19 +2859,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -2886,7 +2884,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Kubernetes Resources
@@ -2900,7 +2898,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../quota.html" class="md-nav__link">
+      <a href="../kubernetes-resources/quota.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2919,19 +2917,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
         
           
           <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
@@ -2946,7 +2942,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_2">
             <span class="md-nav__icon md-icon"></span>
             Tenant
@@ -2960,7 +2956,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant-overview.html" class="md-nav__link">
+      <a href="../kubernetes-resources/tenant/tenant-overview.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2979,19 +2975,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_2" >
         
           
           <label class="md-nav__link" for="__nav_6_2_2" id="__nav_6_2_2_label" tabindex="0">
@@ -3006,7 +3000,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_2_2">
             <span class="md-nav__icon md-icon"></span>
             How-to Guides
@@ -3020,7 +3014,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="create-tenant.html" class="md-nav__link">
+      <a href="../kubernetes-resources/tenant/how-to-guides/create-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3042,7 +3036,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="create-namespaces.html" class="md-nav__link">
+      <a href="../kubernetes-resources/tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3064,7 +3058,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="create-sandbox.html" class="md-nav__link">
+      <a href="../kubernetes-resources/tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3086,7 +3080,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="assign-metadata.html" class="md-nav__link">
+      <a href="../kubernetes-resources/tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3108,7 +3102,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="hibernate-tenant.html" class="md-nav__link">
+      <a href="../kubernetes-resources/tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3130,7 +3124,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="restrict-nodepool-per-tenant.html" class="md-nav__link">
+      <a href="../kubernetes-resources/tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3152,7 +3146,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="disable-intra-tenant-networking.html" class="md-nav__link">
+      <a href="../kubernetes-resources/tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3171,110 +3165,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Ingress Class Filtering
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="ingress-filtering.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../kubernetes-resources/tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Ingress Class Filtering
+    Ingress Sharding
     
   </span>
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#ingress-sharding-on-kubernetes-using-mto" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ingress Sharding on Kubernetes using MTO
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ingress Sharding on Kubernetes using MTO">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#demo" class="md-nav__link">
-    <span class="md-ellipsis">
-      Demo
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ingress-sharding-on-openshift-container-platform" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ingress Sharding on OpenShift Container Platform
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Ingress Sharding on OpenShift Container Platform">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3287,7 +3190,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="custom-roles.html" class="md-nav__link">
+      <a href="../kubernetes-resources/tenant/how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3309,7 +3212,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="extend-default-roles.html" class="md-nav__link">
+      <a href="../kubernetes-resources/tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3331,7 +3234,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="delete-tenant.html" class="md-nav__link">
+      <a href="../kubernetes-resources/tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3369,7 +3272,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../extensions.html" class="md-nav__link">
+      <a href="../kubernetes-resources/extensions.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3427,7 +3330,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template/template.html" class="md-nav__link">
+      <a href="../kubernetes-resources/template/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3449,7 +3352,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template/template-instance.html" class="md-nav__link">
+      <a href="../kubernetes-resources/template/template-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3471,7 +3374,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template/template-group-instance.html" class="md-nav__link">
+      <a href="../kubernetes-resources/template/template-group-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3529,7 +3432,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template/how-to-guides/copying-resources.html" class="md-nav__link">
+      <a href="../kubernetes-resources/template/how-to-guides/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3551,7 +3454,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template/how-to-guides/copying-resources-2.html" class="md-nav__link">
+      <a href="../kubernetes-resources/template/how-to-guides/copying-resources-2.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3573,7 +3476,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template/how-to-guides/distributing-manifests.html" class="md-nav__link">
+      <a href="../kubernetes-resources/template/how-to-guides/distributing-manifests.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3595,7 +3498,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template/how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
+      <a href="../kubernetes-resources/template/how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3617,7 +3520,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template/how-to-guides/deploying-templates.html" class="md-nav__link">
+      <a href="../kubernetes-resources/template/how-to-guides/deploying-templates.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3639,7 +3542,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template/how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../kubernetes-resources/template/how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3661,7 +3564,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template/how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../kubernetes-resources/template/how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3683,7 +3586,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template/how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../kubernetes-resources/template/how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3705,7 +3608,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template/how-to-guides/templated-metadata-values.html" class="md-nav__link">
+      <a href="../kubernetes-resources/template/how-to-guides/templated-metadata-values.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3727,7 +3630,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template/how-to-guides/template-default-params.html" class="md-nav__link">
+      <a href="../kubernetes-resources/template/how-to-guides/template-default-params.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3765,7 +3668,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integration-config.html" class="md-nav__link">
+      <a href="../kubernetes-resources/integration-config.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3787,7 +3690,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../resource-supervisor.html" class="md-nav__link">
+      <a href="../kubernetes-resources/resource-supervisor.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3813,17 +3716,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -3838,7 +3743,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Integrations
@@ -3852,7 +3757,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/argocd.html" class="md-nav__link">
+      <a href="argocd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3910,7 +3815,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/vault/vault.html" class="md-nav__link">
+      <a href="vault/vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3932,7 +3837,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/vault/vault-ic.html" class="md-nav__link">
+      <a href="vault/vault-ic.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3954,7 +3859,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
+      <a href="vault/vault-kc-entraid.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3984,7 +3889,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/devworkspace.html" class="md-nav__link">
+      <a href="devworkspace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4006,7 +3911,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/mattermost.html" class="md-nav__link">
+      <a href="mattermost.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4028,7 +3933,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/keycloak.html" class="md-nav__link">
+      <a href="keycloak.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4050,7 +3955,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/azure-pricing.html" class="md-nav__link">
+      <a href="azure-pricing.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4060,6 +3965,140 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    AWS Pricing
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="aws-pricing.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    AWS Pricing
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#aws-standard-pricing" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Standard Pricing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-spot-instance-pricing" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Spot Instance Pricing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS Spot Instance Pricing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-s3-bucket-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Amazon S3 bucket requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-an-iam-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure an IAM Policy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-1-service-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 1: Service Keys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-irsa-iam-roles-for-service-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 2: IRSA (IAM Roles for Service Accounts)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4079,7 +4118,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../pricing.html" class="md-nav__link">
+      <a href="../pricing.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4100,7 +4139,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../changelog.html" class="md-nav__link">
+      <a href="../changelog.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4121,7 +4160,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../eula.html" class="md-nav__link">
+      <a href="../eula.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4142,7 +4181,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../troubleshooting.html" class="md-nav__link">
+      <a href="../troubleshooting.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4185,19 +4224,55 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ingress-sharding-on-kubernetes-using-mto" class="md-nav__link">
+  <a href="#aws-standard-pricing" class="md-nav__link">
     <span class="md-ellipsis">
-      Ingress Sharding on Kubernetes using MTO
+      AWS Standard Pricing
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Ingress Sharding on Kubernetes using MTO">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aws-spot-instance-pricing" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Spot Instance Pricing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AWS Spot Instance Pricing">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#demo" class="md-nav__link">
+  <a href="#amazon-s3-bucket-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Demo
+      Amazon S3 bucket requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-an-iam-policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure an IAM Policy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-1-service-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 1: Service Keys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-irsa-iam-roles-for-service-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 2: IRSA (IAM Roles for Service Accounts)
     </span>
   </a>
   
@@ -4209,26 +4284,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#ingress-sharding-on-openshift-container-platform" class="md-nav__link">
+  <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
-      Ingress Sharding on OpenShift Container Platform
+      References
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Ingress Sharding on OpenShift Container Platform">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4251,37 +4311,168 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="ingress-class-filtering">Ingress Class Filtering<a class="headerlink" href="#ingress-class-filtering" title="Permanent link">#</a></h1>
-<h2 id="ingress-sharding-on-kubernetes-using-mto">Ingress Sharding on Kubernetes using MTO<a class="headerlink" href="#ingress-sharding-on-kubernetes-using-mto" title="Permanent link">#</a></h2>
-<div class="highlight"><span class="filename">Tenant</span><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># other fields</span>
-<span class="w">  </span><span class="nt">ingressClasses</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik</span>
+<h1 id="aws-pricing">AWS Pricing<a class="headerlink" href="#aws-pricing" title="Permanent link">#</a></h1>
+<p>MTO supports AWS pricing model via the <code>integrationConfig.components.showbackOpts.cloudIntegrationSecretRef</code> field. Following 3 types of pricing are supported:</p>
+<ul>
+<li><a href="#aws-standard-pricing"><code>AWS Standard Pricing</code></a></li>
+<li><a href="#aws-spot-instance-pricing"><code>AWS Spot Instance Datafeed</code></a></li>
+</ul>
+<h2 id="aws-standard-pricing">AWS Standard Pricing<a class="headerlink" href="#aws-standard-pricing" title="Permanent link">#</a></h2>
+<p>OpenCost will automatically read the node information <code>node.spec.providerID</code> to determine the cloud service provider (CSP) in use. If it detects the CSP is AWS, it will attempt to pull the AWS on-demand pricing from the configured public API URL with no further configuration required.</p>
+<p>OpenCost will request pricing data from the <code>us-east-1</code> region for your <code>node_region</code> using the template:</p>
+<div class="highlight"><pre><span></span><code>https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/${node_region}/index.json
 </code></pre></div>
-<p>The <code>ingressClasses</code> field in the Tenant specification is used to filter and control which ingress classes are allowed for the tenant. By specifying an <code>allowed</code> list, you can restrict the creation of ingress resources to only those with the specified ingress class names. In the example above, only ingress resources with the class names <code>nginx</code> and <code>traefik</code> are permitted for the tenant.</p>
-<p>This ensures that tenants can only use the ingress controllers that are explicitly allowed, providing better control and security over the ingress resources within the Kubernetes cluster.</p>
-<h3 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">#</a></h3>
-<p><a class="glightbox" href="../../../images/ingress-class-demo.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ingress Class Demo" src="../../../images/ingress-class-demo.gif" /></a></p>
-<h2 id="ingress-sharding-on-openshift-container-platform">Ingress Sharding on OpenShift Container Platform<a class="headerlink" href="#ingress-sharding-on-openshift-container-platform" title="Permanent link">#</a></h2>
-<p>You can use Ingress sharding, also known as router sharding, to distribute a set of routes across multiple routers by adding labels to routes, namespaces, or both. The Ingress Controller uses a corresponding set of selectors to admit only the routes that have a specified label. Each Ingress shard comprises the routes that are filtered using a given selection expression.</p>
-<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">#</a></h3>
-<p>An Ingress Controller <code>finops-router</code> is configured with the label selector to handle the routes in tenant <code>finops</code></p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">operator.openshift.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IngressController</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">finops-router</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-ingress-operator</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespaceSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">stakater.com/tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">finops</span>
+<h2 id="aws-spot-instance-pricing">AWS Spot Instance Pricing<a class="headerlink" href="#aws-spot-instance-pricing" title="Permanent link">#</a></h2>
+<p>To enable the AWS Spot Instance pricing, subscribe to AWS Spot Instance Data Feed with the following command</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>ec2<span class="w"> </span>create-spot-datafeed-subscription<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--bucket<span class="w"> </span>&lt;BUCKET_NAME&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="o">[</span>--prefix<span class="w"> </span>&lt;BUCKET_PREFIX&gt;<span class="o">]</span>
 </code></pre></div>
+<ul>
+<li><code>&lt;BUCKET_NAME&gt;</code> — Name of the bucket Amazon S3 bucket to store the data feed files</li>
+<li><code>&lt;BUCKET_PREFIX&gt;</code> — Optional prefix directory in which data feed files will be stored</li>
+</ul>
+<h3 id="amazon-s3-bucket-requirements">Amazon S3 bucket requirements<a class="headerlink" href="#amazon-s3-bucket-requirements" title="Permanent link">#</a></h3>
+<p>When you subscribe to the data feed, you must specify an Amazon S3 bucket to store the data feed files.</p>
+<p>Before you choose an Amazon S3 bucket for the data feed, consider the following:</p>
+<ul>
+<li>
+<p>You must have <code>FULL_CONTROL</code> permission to the bucket. If you're the bucket owner, you have this permission by default. Otherwise, the bucket owner must grant your AWS account this permission.</p>
+</li>
+<li>
+<p>When you subscribe to a data feed, these permissions are used to update the bucket ACL to give the AWS data feed account <code>FULL_CONTROL</code> permission. The AWS data feed account writes data feed files to the bucket. If your account doesn't have the required permissions, the data feed files cannot be written to the bucket. For more information, see Logs sent to Amazon S3 in the Amazon CloudWatch Logs User Guide.</p>
+</li>
+<li>
+<p>If you update the ACL and remove the permissions for the AWS data feed account, the data feed files cannot be written to the bucket. You must resubscribe to the data feed to receive the data feed files.</p>
+</li>
+<li>
+<p>Each data feed file has its own ACL (separate from the ACL for the bucket). The bucket owner has <code>FULL_CONTROL</code> permission to the data files. The AWS data feed account has read and write permissions.</p>
+</li>
+<li>
+<p>If you delete your data feed subscription, Amazon EC2 doesn't remove the read and write permissions for the AWS data feed account on either the bucket or the data files. You must remove these permissions yourself.</p>
+</li>
+<li>
+<p>If you encrypt your Amazon S3 bucket using server-side encryption with an AWS KMS key stored in AWS Key Management Service (SSE-KMS), you must use a customer managed key. For more information, see Amazon S3 bucket server-side encryption in the Amazon CloudWatch Logs User Guide.</p>
+</li>
+</ul>
+<h3 id="configure-an-iam-policy">Configure an IAM Policy<a class="headerlink" href="#configure-an-iam-policy" title="Permanent link">#</a></h3>
+<ul>
+<li>Create a user or role for OpenCost with access to the spot feed bucket. Attach the policy below to the role/user and replace <code>&lt;BUCKET_NAME&gt;</code> with your spot bucket name</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;s3:ListAllMyBuckets&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;s3:ListBucket&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;s3:HeadBucket&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;s3:HeadObject&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;s3:List*&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;s3:Get*&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;arn:aws:s3:::&lt;BUCKET_NAME&gt;&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;Sid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SpotDataAccess&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="option-1-service-keys">Option 1: Service Keys<a class="headerlink" href="#option-1-service-keys" title="Permanent link">#</a></h3>
+<p>Generate Access Keys with following steps</p>
+<ol>
+<li>Navigate to the AWS IAM Console.</li>
+<li>Select Access Management &gt; Users from the left navigation.</li>
+<li>Find the OpenCost User and select Security credentials &gt; Create access key.</li>
+<li>Follow along to receive the Access Key ID and Secret Access Key (AWS will not provide you the Secret Access Key in the future, so make sure you save this value).</li>
+</ol>
+<p>Create a <code>service-key.json</code> and replace the values with the user access keys</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;aws_access_key_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;ACCESS_KEY_ID&gt;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;aws_secret_access_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;SECRET_ACCESS_KEY&gt;&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Create a Kubernetes secret with the following command</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>&lt;SECRET_NAME&gt;<span class="w"> </span>--from-file<span class="o">=</span>service-key.json<span class="w"> </span>--namespace<span class="w"> </span>multi-tenant-operator
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When managing the service account key as a Kubernetes secret, the secret must reference the service account key JSON file, and that file must be named <code>service-key.json</code>.</p>
+</div>
+<p>The data feed will provide specific pricing information about any Spot instances in your account on an hourly basis. After setting this up, the bucket information can be provided through options in the IntegrationConfig via <code>integrationConfig.components.showbackOpts.custom</code> object.</p>
+<ul>
+<li><code>awsSpotDataBucket</code> - The name of the S3 bucket Spot Instance Data Feed is publishing to.</li>
+<li><code>awsSpotDataRegion</code> - The region configured for Spot Instance Data Feed</li>
+<li><code>awsSpotDataPrefix</code> - The prefix (if any) configured for Spot Instance Data Feed</li>
+<li><code>projectID</code> - The AWS Account ID</li>
+<li><code>&lt;SECRET_NAME&gt;</code> - Name of the service key secret created in previous step</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
+<span class="w">  </span><span class="nt">showbackOpts</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">custom</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;AWS</span><span class="nv"> </span><span class="s">Provider</span><span class="nv"> </span><span class="s">Configuration.</span><span class="nv"> </span><span class="s">Provides</span><span class="nv"> </span><span class="s">default</span><span class="nv"> </span><span class="s">values</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">instance</span><span class="nv"> </span><span class="s">type</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">spot</span><span class="nv"> </span><span class="s">information</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">found.&quot;</span>
+<span class="w">      </span><span class="nt">CPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.031611&quot;</span>
+<span class="w">      </span><span class="nt">spotCPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.006655&quot;</span>
+<span class="w">      </span><span class="nt">RAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.004237&quot;</span>
+<span class="w">      </span><span class="nt">GPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.95&quot;</span>
+<span class="w">      </span><span class="nt">spotRAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.000892&quot;</span>
+<span class="w">      </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.000138888889&quot;</span>
+<span class="w">      </span><span class="nt">zoneNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">      </span><span class="nt">regionNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">      </span><span class="nt">internetNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.143&quot;</span>
+<span class="w">      </span><span class="nt">spotLabel</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;kops.k8s.io/instancegroup&quot;</span>
+<span class="w">      </span><span class="nt">spotLabelValue</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;spotinstance-nodes&quot;</span>
+<span class="w">      </span><span class="nt">awsSpotDataRegion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;us-east-2&quot;</span>
+<span class="w">      </span><span class="nt">awsSpotDataBucket</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-spot-bucket&quot;</span>
+<span class="w">      </span><span class="nt">awsSpotDataPrefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;spot_pricing_prefix&quot;</span>
+<span class="w">      </span><span class="nt">projectID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;012345678901&quot;</span>
+
+<span class="w">    </span><span class="nt">cloudPricingSecretRef</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;SECRET_NAME&gt;</span>
+<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
+</code></pre></div>
+<h3 id="option-2-irsa-iam-roles-for-service-accounts">Option 2: IRSA (IAM Roles for Service Accounts)<a class="headerlink" href="#option-2-irsa-iam-roles-for-service-accounts" title="Permanent link">#</a></h3>
+<p>After creating the role and policy, attach the role ARN as an annotation to the opencost gateway account via following command</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>annotate<span class="w"> </span>serviceaccounts<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>tenant-operator-opencost-gateway<span class="w"> </span>eks.amazonaws.com/role-arn<span class="o">=</span>&lt;ROLE_ARN&gt;
+</code></pre></div>
+<p>Apply the IntegrationConfig with current spot bucket data feed information</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
+<span class="w">  </span><span class="nt">showbackOpts</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">custom</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;AWS</span><span class="nv"> </span><span class="s">Provider</span><span class="nv"> </span><span class="s">Configuration.</span><span class="nv"> </span><span class="s">Provides</span><span class="nv"> </span><span class="s">default</span><span class="nv"> </span><span class="s">values</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">if</span><span class="nv"> </span><span class="s">instance</span><span class="nv"> </span><span class="s">type</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">spot</span><span class="nv"> </span><span class="s">information</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">found.&quot;</span>
+<span class="w">      </span><span class="nt">CPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.031611&quot;</span>
+<span class="w">      </span><span class="nt">spotCPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.006655&quot;</span>
+<span class="w">      </span><span class="nt">RAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.004237&quot;</span>
+<span class="w">      </span><span class="nt">GPU</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.95&quot;</span>
+<span class="w">      </span><span class="nt">spotRAM</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.000892&quot;</span>
+<span class="w">      </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.000138888889&quot;</span>
+<span class="w">      </span><span class="nt">zoneNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">      </span><span class="nt">regionNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.01&quot;</span>
+<span class="w">      </span><span class="nt">internetNetworkEgress</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.143&quot;</span>
+<span class="w">      </span><span class="nt">spotLabel</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;kops.k8s.io/instancegroup&quot;</span>
+<span class="w">      </span><span class="nt">spotLabelValue</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;spotinstance-nodes&quot;</span>
+<span class="w">      </span><span class="nt">awsSpotDataRegion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;us-east-2&quot;</span>
+<span class="w">      </span><span class="nt">awsSpotDataBucket</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-spot-bucket&quot;</span>
+<span class="w">      </span><span class="nt">awsSpotDataPrefix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;spot_pricing_prefix&quot;</span>
+<span class="w">      </span><span class="nt">projectID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;012345678901&quot;</span>
+</code></pre></div>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<p>For more information, refer to the following resources</p>
+<ul>
+<li><a href="https://www.opencost.io/docs/configuration/aws"><code>OpenCost documentation</code></a></li>
+<li><a href="https://docs.kubecost.com/install-and-configure/install/cloud-integration/aws-cloud-integrations"><code>Kubecost documentation</code></a></li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/associate-service-account-role.html"><code>Assign IAM roles to Kubernetes service accounts</code></a></li>
+<li><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html"><code>Track your Spot Instance costs using the Spot Instance data feed</code></a></li>
+<li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html"><code>Manage access keys from IAM users</code></a></li>
+</ul>
 
 
 
@@ -4575,11 +4766,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 <div class="flex-2">
                     <div class="logo-footer-container">
                         
-                        <img class="md-header__logo_light" src="../../../assets/images/footer-logo-light.png#only-light"
+                        <img class="md-header__logo_light" src="../assets/images/footer-logo-light.png#only-light"
                             alt="logo" />
                         
                         
-                        <img src="../../../assets/images/footer-logo-dark.png#only-dark" alt="logo" />
+                        <img src="../assets/images/footer-logo-dark.png#only-dark" alt="logo" />
                         
                     </div>
 
@@ -4587,21 +4778,21 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                         <div class="display-flex">
                             
                             <img class="csa-logo-dark"
-                                src="../../../assets/images/CSA_dark.png#only-dark" alt="CSA" />
+                                src="../assets/images/CSA_dark.png#only-dark" alt="CSA" />
                             
                             
                             <img class="csa-logo-light"
-                                src="../../../assets/images/CSA_light.png#only-light"
+                                src="../assets/images/CSA_light.png#only-light"
                                 alt="CSA" />
                             
 
                             
-                            <img class="hc-logo-dark" src="../../../assets/images/HC_dark.png#only-dark"
+                            <img class="hc-logo-dark" src="../assets/images/HC_dark.png#only-dark"
                                 alt="HC" />
                             
                             
                             <img class="hc-logo-light"
-                                src="../../../assets/images/HC_light.png#only-light" alt="HC" />
+                                src="../assets/images/HC_light.png#only-light" alt="HC" />
                             
                         </div>
                     </div>
@@ -4989,10 +5180,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

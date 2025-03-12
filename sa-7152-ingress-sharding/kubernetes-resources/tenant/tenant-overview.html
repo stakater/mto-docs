@@ -3278,11 +3278,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="how-to-guides/ingress-filtering.html" class="md-nav__link">
+      <a href="how-to-guides/ingress-sharding.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Ingress Class Filtering
+    Ingress Sharding
     
   </span>
   
@@ -4078,6 +4078,28 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/aws-pricing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Pricing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4414,14 +4436,16 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><code>allowed</code> can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the list. If <code>storageClass</code> is not specified for a PersistentVolumeClaim, the default StorageClass (if set) will be evaluated as any other class name. If the default StorageClass is not set, the evaluation will be deferred until a default StorageClass is set. <code>""</code> is evaluated as any other class name, so if you are using it to manually bind to PersistentVolumes while using StorageClass filtering you need to add  an empty string <code>""</code> to the tenants allow-list or it will get filtered.</li>
 </ul>
 <h2 id="ingress">Ingress<a class="headerlink" href="#ingress" title="Permanent link">#</a></h2>
+<p><code>ingressClasses.allowed</code> restricts a tenant to creating Ingress resources only with the specified IngressClasses. The empty string <code>""</code> is treated like any other IngressClass name. If you use it while filtering IngressClasses, you must include <code>""</code> in the tenant's allow-list, or it will be filtered out. If no IngressClass is specified for an Ingress resource, it will be treated as <code>""</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>This field is applicable only for Kubernetes. For more information, refer to the <a href="how-to-guides/ingress-sharding.html">Ingress Sharding Guide</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">ingressClasses</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik</span>
 </code></pre></div>
-<ul>
-<li><code>allowed</code> can be used to limit a tenant to only being able to create an Ingress with IngressClasses in the list. <code>""</code> is evaluated as any other class name, so if you are using it while using IngressClass filtering you need to add an empty string <code>""</code> to the tenants allow-list, or it will get filtered. If IngressClass is not provided then it is treated as <code>""</code>.</li>
-</ul>
 
 
 

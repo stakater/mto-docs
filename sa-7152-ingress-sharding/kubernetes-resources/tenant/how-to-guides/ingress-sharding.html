@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/sa-7152-ingress-sharding/kubernetes-resources/resource-supervisor.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/sa-7152-ingress-sharding/kubernetes-resources/tenant/how-to-guides/ingress-sharding.html">
       
       
-        <link rel="prev" href="integration-config.html">
+        <link rel="prev" href="disable-intra-tenant-networking.html">
       
       
-        <link rel="next" href="../integrations/argocd.html">
+        <link rel="next" href="custom-roles.html">
       
       
-      <link rel="icon" href="../assets/images/favicon.svg">
+      <link rel="icon" href="../../../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
     
     
       
-        <title>Resource Supervisor - Multi Tenant Operator</title>
+        <title>Ingress Sharding - Multi Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -67,7 +67,7 @@
     
     
     
-   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -76,7 +76,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#resource-supervisor" class="md-skip">
+        <a href="#ingress-sharding" class="md-skip">
           Skip to content
         </a>
       
@@ -340,7 +340,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../index.html" title="Multi Tenant Operator"
+    <a href="../../../index.html" title="Multi Tenant Operator"
       class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       <!-- 
   
@@ -362,10 +362,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="../assets/images/logo-light.png#only-light" alt="logo" />
+          <img class="md-header__logo_light" src="../../../assets/images/logo-light.png#only-light" alt="logo" />
           
           
-          <img class="md-header__logo_dark" src="../assets/images/logo-dark.png#only-dark" alt="logo" />
+          <img class="md-header__logo_dark" src="../../../assets/images/logo-dark.png#only-dark" alt="logo" />
           
           
           <div class="header-site-name">
@@ -2023,7 +2023,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../../../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -2053,7 +2053,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
+      <a href="../../../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2110,7 +2110,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../about/key-features.html" class="md-nav__link">
+      <a href="../../../about/key-features.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2132,7 +2132,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../about/use-cases.html" class="md-nav__link">
+      <a href="../../../about/use-cases.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2154,7 +2154,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../about/benefits.html" class="md-nav__link">
+      <a href="../../../about/benefits.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2219,7 +2219,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../architecture/architecture.html" class="md-nav__link">
+      <a href="../../../architecture/architecture.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2241,7 +2241,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../architecture/concepts.html" class="md-nav__link">
+      <a href="../../../architecture/concepts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2263,7 +2263,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../architecture/custom-metrics.html" class="md-nav__link">
+      <a href="../../../architecture/custom-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2285,7 +2285,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../architecture/logs-metrics.html" class="md-nav__link">
+      <a href="../../../architecture/logs-metrics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2350,7 +2350,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../installation/overview.html" class="md-nav__link">
+      <a href="../../../installation/overview.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2372,7 +2372,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../installation/openshift.html" class="md-nav__link">
+      <a href="../../../installation/openshift.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2394,7 +2394,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../installation/azure-aks.html" class="md-nav__link">
+      <a href="../../../installation/azure-aks.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2452,7 +2452,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../installation/aws-eks/preparation.html" class="md-nav__link">
+      <a href="../../../installation/aws-eks/preparation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2474,7 +2474,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../installation/aws-eks/installation.html" class="md-nav__link">
+      <a href="../../../installation/aws-eks/installation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2496,7 +2496,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../installation/aws-eks/validation.html" class="md-nav__link">
+      <a href="../../../installation/aws-eks/validation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2526,7 +2526,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../installation/kubernetes.html" class="md-nav__link">
+      <a href="../../../installation/kubernetes.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2548,7 +2548,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../installation/helm.html" class="md-nav__link">
+      <a href="../../../installation/helm.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2570,7 +2570,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../installation/uninstalling.html" class="md-nav__link">
+      <a href="../../../installation/uninstalling.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2635,7 +2635,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/overview.html" class="md-nav__link">
+      <a href="../../../console/overview.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2657,7 +2657,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/dashboard.html" class="md-nav__link">
+      <a href="../../../console/dashboard.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2679,7 +2679,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/tenants.html" class="md-nav__link">
+      <a href="../../../console/tenants.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2701,7 +2701,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/namespaces.html" class="md-nav__link">
+      <a href="../../../console/namespaces.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2723,7 +2723,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/hibernation.html" class="md-nav__link">
+      <a href="../../../console/hibernation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2745,7 +2745,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/showback.html" class="md-nav__link">
+      <a href="../../../console/showback.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2767,7 +2767,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/quotas.html" class="md-nav__link">
+      <a href="../../../console/quotas.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2789,7 +2789,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/templates.html" class="md-nav__link">
+      <a href="../../../console/templates.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2811,7 +2811,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/capacity-planning.html" class="md-nav__link">
+      <a href="../../../console/capacity-planning.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2833,7 +2833,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/configuration.html" class="md-nav__link">
+      <a href="../../../console/configuration.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2900,7 +2900,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="quota.html" class="md-nav__link">
+      <a href="../../quota.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2919,17 +2919,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
         
           
           <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
@@ -2944,7 +2946,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_2">
             <span class="md-nav__icon md-icon"></span>
             Tenant
@@ -2958,7 +2960,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="tenant/tenant-overview.html" class="md-nav__link">
+      <a href="../tenant-overview.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2977,17 +2979,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_2" checked>
         
           
           <label class="md-nav__link" for="__nav_6_2_2" id="__nav_6_2_2_label" tabindex="0">
@@ -3002,7 +3006,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_2_2">
             <span class="md-nav__icon md-icon"></span>
             How-to Guides
@@ -3016,7 +3020,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="tenant/how-to-guides/create-tenant.html" class="md-nav__link">
+      <a href="create-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3038,7 +3042,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
+      <a href="create-namespaces.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3060,7 +3064,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
+      <a href="create-sandbox.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3082,7 +3086,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
+      <a href="assign-metadata.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3104,7 +3108,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
+      <a href="hibernate-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3126,7 +3130,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
+      <a href="restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3148,7 +3152,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
+      <a href="disable-intra-tenant-networking.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3167,10 +3171,31 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Ingress Sharding
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="ingress-sharding.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -3180,6 +3205,76 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ingress-sharding-on-kubernetes-using-mto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingress Sharding on Kubernetes using MTO
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ingress Sharding on Kubernetes using MTO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Demo
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ingress-sharding-on-openshift-container-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingress Sharding on OpenShift Container Platform
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ingress Sharding on OpenShift Container Platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3192,7 +3287,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="tenant/how-to-guides/custom-roles.html" class="md-nav__link">
+      <a href="custom-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3214,7 +3309,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
+      <a href="extend-default-roles.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3236,7 +3331,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
+      <a href="delete-tenant.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3274,7 +3369,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="extensions.html" class="md-nav__link">
+      <a href="../../extensions.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3332,7 +3427,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="template/template.html" class="md-nav__link">
+      <a href="../../template/template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3354,7 +3449,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="template/template-instance.html" class="md-nav__link">
+      <a href="../../template/template-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3376,7 +3471,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="template/template-group-instance.html" class="md-nav__link">
+      <a href="../../template/template-group-instance.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3434,7 +3529,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="template/how-to-guides/copying-resources.html" class="md-nav__link">
+      <a href="../../template/how-to-guides/copying-resources.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3456,7 +3551,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="template/how-to-guides/copying-resources-2.html" class="md-nav__link">
+      <a href="../../template/how-to-guides/copying-resources-2.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3478,7 +3573,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="template/how-to-guides/distributing-manifests.html" class="md-nav__link">
+      <a href="../../template/how-to-guides/distributing-manifests.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3500,7 +3595,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="template/how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
+      <a href="../../template/how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3522,7 +3617,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="template/how-to-guides/deploying-templates.html" class="md-nav__link">
+      <a href="../../template/how-to-guides/deploying-templates.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3544,7 +3639,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="template/how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../../template/how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3566,7 +3661,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="template/how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../../template/how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3588,7 +3683,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="template/how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../../template/how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3610,7 +3705,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="template/how-to-guides/templated-metadata-values.html" class="md-nav__link">
+      <a href="../../template/how-to-guides/templated-metadata-values.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3632,7 +3727,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="template/how-to-guides/template-default-params.html" class="md-nav__link">
+      <a href="../../template/how-to-guides/template-default-params.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3670,7 +3765,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="integration-config.html" class="md-nav__link">
+      <a href="../../integration-config.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3689,31 +3784,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Resource Supervisor
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="resource-supervisor.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../resource-supervisor.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3723,103 +3797,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#supported-modes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Supported modes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Supported modes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hibernation-with-cron-schedule" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hibernation with cron schedule
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sleep" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sleep
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sleep-at-given-cron-schedule" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sleep at given cron schedule
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#more-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      More examples
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="More examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example 1
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example 2
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3875,7 +3852,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/argocd.html" class="md-nav__link">
+      <a href="../../../integrations/argocd.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3933,7 +3910,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/vault/vault.html" class="md-nav__link">
+      <a href="../../../integrations/vault/vault.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3955,7 +3932,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/vault/vault-ic.html" class="md-nav__link">
+      <a href="../../../integrations/vault/vault-ic.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3977,7 +3954,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
+      <a href="../../../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4007,7 +3984,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/devworkspace.html" class="md-nav__link">
+      <a href="../../../integrations/devworkspace.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4029,7 +4006,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/mattermost.html" class="md-nav__link">
+      <a href="../../../integrations/mattermost.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4051,7 +4028,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/keycloak.html" class="md-nav__link">
+      <a href="../../../integrations/keycloak.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4073,7 +4050,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/azure-pricing.html" class="md-nav__link">
+      <a href="../../../integrations/azure-pricing.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4095,7 +4072,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/aws-pricing.html" class="md-nav__link">
+      <a href="../../../integrations/aws-pricing.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4124,7 +4101,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../pricing.html" class="md-nav__link">
+      <a href="../../../pricing.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4145,7 +4122,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../changelog.html" class="md-nav__link">
+      <a href="../../../changelog.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4166,7 +4143,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../eula.html" class="md-nav__link">
+      <a href="../../../eula.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4187,7 +4164,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting.html" class="md-nav__link">
+      <a href="../../../troubleshooting.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4230,37 +4207,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-modes" class="md-nav__link">
+  <a href="#ingress-sharding-on-kubernetes-using-mto" class="md-nav__link">
     <span class="md-ellipsis">
-      Supported modes
+      Ingress Sharding on Kubernetes using MTO
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Supported modes">
+    <nav class="md-nav" aria-label="Ingress Sharding on Kubernetes using MTO">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#hibernation-with-cron-schedule" class="md-nav__link">
+  <a href="#demo" class="md-nav__link">
     <span class="md-ellipsis">
-      Hibernation with cron schedule
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sleep" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sleep
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sleep-at-given-cron-schedule" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sleep at given cron schedule
+      Demo
     </span>
   </a>
   
@@ -4272,28 +4231,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#more-examples" class="md-nav__link">
+  <a href="#ingress-sharding-on-openshift-container-platform" class="md-nav__link">
     <span class="md-ellipsis">
-      More examples
+      Ingress Sharding on OpenShift Container Platform
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="More examples">
+    <nav class="md-nav" aria-label="Ingress Sharding on OpenShift Container Platform">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-1" class="md-nav__link">
+  <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
-      Example 1
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example 2
+      Example
     </span>
   </a>
   
@@ -4323,120 +4273,37 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="resource-supervisor">Resource Supervisor<a class="headerlink" href="#resource-supervisor" title="Permanent link">#</a></h1>
-<p>Supports hibernation of <code>deployments</code> and <code>statefulsets</code> for given namespaces via names and/or label selectors.
-If provided, it will update <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#creating-projects">AppProject</a> instance with <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync_windows/">SyncWindow</a> to deny sync to selected namespaces.</p>
-<p>Following namespaces will be ignored:</p>
-<ul>
-<li>with annotation <code>"hibernation.stakater.com/exclude": "true"</code></li>
-<li>whose name match with privileged namespaces' regex specified in <a href="integration-config.html">IntegrationConfig</a></li>
-<li>namespace where MTO is installed</li>
-</ul>
-<h2 id="supported-modes">Supported modes<a class="headerlink" href="#supported-modes" title="Permanent link">#</a></h2>
-<h3 id="hibernation-with-cron-schedule">Hibernation with cron schedule<a class="headerlink" href="#hibernation-with-cron-schedule" title="Permanent link">#</a></h3>
-<p>Applications will sleep and wake up at provided cron schedule</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<h1 id="ingress-sharding">Ingress Sharding<a class="headerlink" href="#ingress-sharding" title="Permanent link">#</a></h1>
+<h2 id="ingress-sharding-on-kubernetes-using-mto">Ingress Sharding on Kubernetes using MTO<a class="headerlink" href="#ingress-sharding-on-kubernetes-using-mto" title="Permanent link">#</a></h2>
+<div class="highlight"><span class="filename">Tenant</span><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rs-example1</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-dev</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span><span class="w"> </span><span class="c1"># sleep each hour at min 10</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;50</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span><span class="w"> </span><span class="c1"># wake up each hour at min 50</span>
+<span class="w">  </span><span class="c1"># other fields</span>
+<span class="w">  </span><span class="nt">ingressClasses</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik</span>
 </code></pre></div>
-<h3 id="sleep">Sleep<a class="headerlink" href="#sleep" title="Permanent link">#</a></h3>
-<p>Applications will sleep instantly, and will wake up when resource supervisor is deleted</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<p>The <code>ingressClasses</code> field in the Tenant specification is used to filter and control which ingress classes are allowed for the tenant. By specifying an <code>allowed</code> list, you can restrict the creation of ingress resources to only those with the specified ingress class names. In the example above, only ingress resources with the class names <code>nginx</code> and <code>traefik</code> are permitted for the tenant.</p>
+<p>This ensures that tenants can only use the ingress controllers that are explicitly allowed, providing better control and security over the ingress resources within the Kubernetes cluster.</p>
+<h3 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">#</a></h3>
+<p><a class="glightbox" href="../../../images/ingress-class-demo.gif" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Ingress Class Demo" src="../../../images/ingress-class-demo.gif" /></a></p>
+<h2 id="ingress-sharding-on-openshift-container-platform">Ingress Sharding on OpenShift Container Platform<a class="headerlink" href="#ingress-sharding-on-openshift-container-platform" title="Permanent link">#</a></h2>
+<p>You can use Ingress sharding, also known as router sharding, to distribute a set of routes across multiple routers by adding labels to routes, namespaces, or both. The Ingress Controller uses a corresponding set of selectors to admit only the routes that have a specified label. Each Ingress shard comprises the routes that are filtered using a given selection expression.</p>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">#</a></h3>
+<p>An Ingress Controller <code>finops-router</code> is configured with the label selector to handle the routes in tenant <code>finops</code></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">operator.openshift.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IngressController</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rs-example2</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">finops-router</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-ingress-operator</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-dev</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-</code></pre></div>
-<h3 id="sleep-at-given-cron-schedule">Sleep at given cron schedule<a class="headerlink" href="#sleep-at-given-cron-schedule" title="Permanent link">#</a></h3>
-<p>Applications will sleep at provided cron schedule, and will wake up when resource supervisor is deleted</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rs-example3</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-dev</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">2</span><span class="nv"> </span><span class="s">2025&quot;</span><span class="w"> </span><span class="c1"># sleep on 1st February 2025</span>
-</code></pre></div>
-<h2 id="more-examples">More examples<a class="headerlink" href="#more-examples" title="Permanent link">#</a></h2>
-<h3 id="example-1">Example 1<a class="headerlink" href="#example-1" title="Permanent link">#</a></h3>
-<p>labelSelector's <code>matchLabels</code> and <code>matchExpressions</code> is <code>AND</code> operation. Here is an example with it:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rs-example4</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespaceSelector</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">stakater.com/current-tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
-<span class="w">        </span><span class="nt">stakater.com/kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;private-sandbox&quot;</span><span class="p p-Indicator">,</span><span class="nt"> operator</span><span class="p">:</span><span class="w"> </span><span class="nv">In</span><span class="w"> </span><span class="p p-Indicator">,</span><span class="nt"> values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;true&quot;</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="p p-Indicator">}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-staging</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">        </span><span class="nt">stakater.com/tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">finops</span>
 </code></pre></div>
-<p>It will sleep <code>bluesky-staging</code> namespace, and all those which have the specified labels.</p>
-<h3 id="example-2">Example 2<a class="headerlink" href="#example-2" title="Permanent link">#</a></h3>
-<p>If you provide Argo CD AppProject in spec, it will create <code>syncWindow</code> with <code>deny</code> policy</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rs-example4</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-apps</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-apps2</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;customer-argocd-projects&quot;</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-staging</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-dev</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
-</code></pre></div>
-<p>It will sleep given namespaces, and create <code>deny</code> <code>syncWindow</code> on provided AppProjects</p>
 
 
 
@@ -4730,11 +4597,11 @@ If provided, it will update <a href="https://argo-cd.readthedocs.io/en/stable/us
                 <div class="flex-2">
                     <div class="logo-footer-container">
                         
-                        <img class="md-header__logo_light" src="../assets/images/footer-logo-light.png#only-light"
+                        <img class="md-header__logo_light" src="../../../assets/images/footer-logo-light.png#only-light"
                             alt="logo" />
                         
                         
-                        <img src="../assets/images/footer-logo-dark.png#only-dark" alt="logo" />
+                        <img src="../../../assets/images/footer-logo-dark.png#only-dark" alt="logo" />
                         
                     </div>
 
@@ -4742,21 +4609,21 @@ If provided, it will update <a href="https://argo-cd.readthedocs.io/en/stable/us
                         <div class="display-flex">
                             
                             <img class="csa-logo-dark"
-                                src="../assets/images/CSA_dark.png#only-dark" alt="CSA" />
+                                src="../../../assets/images/CSA_dark.png#only-dark" alt="CSA" />
                             
                             
                             <img class="csa-logo-light"
-                                src="../assets/images/CSA_light.png#only-light"
+                                src="../../../assets/images/CSA_light.png#only-light"
                                 alt="CSA" />
                             
 
                             
-                            <img class="hc-logo-dark" src="../assets/images/HC_dark.png#only-dark"
+                            <img class="hc-logo-dark" src="../../../assets/images/HC_dark.png#only-dark"
                                 alt="HC" />
                             
                             
                             <img class="hc-logo-light"
-                                src="../assets/images/HC_light.png#only-light" alt="HC" />
+                                src="../../../assets/images/HC_light.png#only-light" alt="HC" />
                             
                         </div>
                     </div>
@@ -5144,10 +5011,10 @@ If provided, it will update <a href="https://argo-cd.readthedocs.io/en/stable/us
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

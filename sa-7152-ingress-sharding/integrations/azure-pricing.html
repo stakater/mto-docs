@@ -14,7 +14,7 @@
         <link rel="prev" href="keycloak.html">
       
       
-        <link rel="next" href="../pricing.html">
+        <link rel="next" href="aws-pricing.html">
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
@@ -3168,11 +3168,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/ingress-filtering.html" class="md-nav__link">
+      <a href="../kubernetes-resources/tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Ingress Class Filtering
+    Ingress Sharding
     
   </span>
   
@@ -4005,13 +4005,13 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#azure-pricing-configuration" class="md-nav__link">
+  <a href="#azure-standard-pricing" class="md-nav__link">
     <span class="md-ellipsis">
-      Azure Pricing Configuration
+      Azure Standard Pricing
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Azure Pricing Configuration">
+    <nav class="md-nav" aria-label="Azure Standard Pricing">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4116,15 +4116,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#azure-cloud-costs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Azure Cloud Costs
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       Conclusion
@@ -4137,6 +4128,28 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="aws-pricing.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Pricing
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -4262,13 +4275,13 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#azure-pricing-configuration" class="md-nav__link">
+  <a href="#azure-standard-pricing" class="md-nav__link">
     <span class="md-ellipsis">
-      Azure Pricing Configuration
+      Azure Standard Pricing
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Azure Pricing Configuration">
+    <nav class="md-nav" aria-label="Azure Standard Pricing">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -4373,15 +4386,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#azure-cloud-costs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Azure Cloud Costs
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       Conclusion
@@ -4410,13 +4414,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="azure-pricing">Azure Pricing<a class="headerlink" href="#azure-pricing" title="Permanent link">#</a></h1>
-<p>MTO supports Azure pricing model via the <code>integrationConfig.components.showbackOpts.azurePricingSecretRef</code> field. Following 3 types of pricing are supported:</p>
+<p>MTO supports Azure pricing model via the <code>integrationConfig.components.showbackOpts.cloudPricingSecretRef</code> field. Following 3 types of pricing are supported:</p>
 <ul>
-<li><a href="https://www.opencost.io/docs/configuration/azure#azure-pricing-configuration"><code>Azure Pricing Configuration</code></a></li>
-<li><a href="https://www.opencost.io/docs/configuration/azure#customer-specific-pricing"><code>Customer-specific pricing</code></a></li>
-<li><a href="https://www.opencost.io/docs/configuration/azure#azure-cloud-costs"><code>Azure Cloud Costs</code></a></li>
+<li><a href="#azure-standard-pricing"><code>Azure Standard Pricing</code></a></li>
+<li><a href="#customer-specific-pricing"><code>Customer-specific pricing</code></a></li>
 </ul>
-<h2 id="azure-pricing-configuration">Azure Pricing Configuration<a class="headerlink" href="#azure-pricing-configuration" title="Permanent link">#</a></h2>
+<h2 id="azure-standard-pricing">Azure Standard Pricing<a class="headerlink" href="#azure-standard-pricing" title="Permanent link">#</a></h2>
 <p>For Azure pricing configuration, OpenCost needs access to the Microsoft Azure Billing Rate Card API to access accurate pricing data for your Kubernetes resources.</p>
 <p>Follow the steps below to create a custom Azure role and secret to access the Azure Rate Card API:</p>
 <h3 id="create-a-custom-azure-role">Create a Custom Azure role<a class="headerlink" href="#create-a-custom-azure-role" title="Permanent link">#</a></h3>
@@ -4471,7 +4474,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
 <span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
 <span class="w">    </span><span class="nt">showbackOpts</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">azurePricingSecretRef</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cloudPricingSecretRef</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure-service-key</span>
 <span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
 </code></pre></div>
@@ -4505,7 +4508,7 @@ chmod<span class="w"> </span>u+x<span class="w"> </span>assign-billing-role.bash
 <span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
 <span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
 <span class="w">    </span><span class="nt">showbackOpts</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">azurePricingSecretRef</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cloudPricingSecretRef</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customer-specific-pricing</span>
 <span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
 </code></pre></div>
@@ -4556,60 +4559,6 @@ chmod<span class="w"> </span>u+x<span class="w"> </span>assign-billing-role.bash
 
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Response: </span><span class="si">${</span><span class="nv">RESPONSE</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
-<h2 id="azure-cloud-costs">Azure Cloud Costs<a class="headerlink" href="#azure-cloud-costs" title="Permanent link">#</a></h2>
-<p>The following values can be found in the Azure Portal under <em>Cost Management &gt; Exports</em>, or Storage accounts:</p>
-<ul>
-<li><code>&lt;SUBSCRIPTION_ID&gt;</code> is the Subscription ID belonging to the Storage account which stores your exported Azure cost report data.</li>
-<li><code>&lt;STORAGE_ACCOUNT&gt;</code> is the name of the Storage account where the exported Azure cost report data is being stored.</li>
-<li><code>&lt;STORAGE_ACCESS_KEY&gt;</code> can be found by selecting Access Keys from the navigation sidebar then selecting Show keys. Using either of the two keys will work.</li>
-<li><code>&lt;STORAGE_CONTAINER&gt;</code> is the name that you chose for the exported cost report when you set it up. This is the name of the container where the CSV cost reports are saved in your Storage account.</li>
-<li><code>&lt;CONTAINER_PATH&gt;</code> should be used if there is more than one billing report that is exported to the configured container. The path provided should have only one billing export because OpenCost will retrieve the most recent billing report for a given month found within the path. If this configuration is not used, it should be set to an empty string "".</li>
-<li><code>&lt;CLOUD&gt;</code> is the value which denotes the cloud where the storage account exists. Possible values are public and gov. The default is public if an empty string is provided.</li>
-</ul>
-<p>Set these values to the Azure array in the <code>cloud-integration.json</code> file:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;azure&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;subscriptionID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;SUBSCRIPTON_ID&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;STORAGE_ACCOUNT&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;container&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;STORAGE_CONTAINER&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;CONTAINER_PATH&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;cloud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;CLOUD&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;authorizer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;accessKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;STORAGE_ACCESS_KEY&gt;&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;STORAGE_ACCOUNT&gt;&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;authorizerType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AzureAccessKey&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;subscriptionID&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;SUBSCRIPTION_ID&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;STORAGE_ACCOUNT&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;container&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;EXPORT_CONTAINER&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;cloud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;CLOUD&gt;&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;authorizer&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;accessKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;ACCOUNT_ACCESS_KEY&gt;&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;account&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;STORAGE_ACCOUNT&gt;&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;authorizerType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AzureAccessKey&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Load the <code>cloud-integration.json</code> into a Kubernetes secret in your opencost namespace.</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>cloud-costs<span class="w"> </span>--from-file<span class="o">=</span>./cloud-integration.json<span class="w"> </span>--namespace<span class="w"> </span>opencost
-</code></pre></div>
-<p>Update your IntegrationConfig to use the Cloud Costs pricing model:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
-<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
-<span class="w">    </span><span class="nt">showbackOpts</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">azurePricingSecretRef</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cloud-costs</span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
-</code></pre></div>
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">#</a></h2>
 <p>In this guide, we have seen how to configure OpenCost to use Azure pricing model. We have seen how to configure Azure Pricing Configuration, Customer-specific pricing, and Azure Cloud Costs. To enable all three pricing models, you can create a single secret with all the required values and update the IntegrationConfig to use the secret.</p>
 <p>for example:</p>
@@ -4620,7 +4569,7 @@ chmod<span class="w"> </span>u+x<span class="w"> </span>assign-billing-role.bash
 <span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
 <span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span><span class="c1"># should be enabled</span>
 <span class="w">    </span><span class="nt">showbackOpts</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">azurePricingSecretRef</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">cloudPricingSecretRef</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure-pricing</span>
 <span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
 </code></pre></div>
