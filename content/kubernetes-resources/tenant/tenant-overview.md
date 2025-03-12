@@ -143,11 +143,14 @@ storageClasses:
 
 ## Ingress
 
+`ingressClasses.allowed` restricts a tenant to creating Ingress resources only with the specified IngressClasses. The empty string `""` is treated like any other IngressClass name. If you use it while filtering IngressClasses, you must include `""` in the tenant's allow-list, or it will be filtered out. If no IngressClass is specified for an Ingress resource, it will be treated as `""`.
+
+!!! note
+  This field is applicable only for Kubernetes. For more information, refer to the [Ingress Sharding Guide](../tenant/how-to-guides/ingress-sharding.md).
+
 ```yaml
 ingressClasses:
   allowed:
   - nginx
   - traefik
 ```
-
-* `allowed` can be used to limit a tenant to only being able to create an Ingress with IngressClasses in the list. `""` is evaluated as any other class name, so if you are using it while using IngressClass filtering you need to add an empty string `""` to the tenants allow-list, or it will get filtered. If IngressClass is not provided then it is treated as `""`.

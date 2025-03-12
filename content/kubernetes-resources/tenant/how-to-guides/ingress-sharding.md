@@ -1,4 +1,4 @@
-# Ingress Class Filtering
+# Ingress Sharding
 
 ## Ingress Sharding on Kubernetes using MTO
 
