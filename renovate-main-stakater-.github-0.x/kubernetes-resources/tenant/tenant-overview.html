@@ -3063,6 +3063,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingress
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3252,6 +3261,28 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   <span class="md-ellipsis">
     Disable intra-tenant networking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="how-to-guides/ingress-sharding.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ingress Sharding
     
   </span>
   
@@ -4242,6 +4273,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingress
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4332,6 +4372,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">staging</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
+<span class="w">  </span><span class="nt">ingressClasses</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trafeik</span>
 </code></pre></div>
 <h2 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">#</a></h2>
 <p>Structured access control is critical for managing roles and permissions within a tenant effectively. It divides users into three categories, each with customizable privileges. This design enables precise role-based access management.  </p>
@@ -4391,6 +4435,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <ul>
 <li><code>allowed</code> can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the list. If <code>storageClass</code> is not specified for a PersistentVolumeClaim, the default StorageClass (if set) will be evaluated as any other class name. If the default StorageClass is not set, the evaluation will be deferred until a default StorageClass is set. <code>""</code> is evaluated as any other class name, so if you are using it to manually bind to PersistentVolumes while using StorageClass filtering you need to add  an empty string <code>""</code> to the tenants allow-list or it will get filtered.</li>
 </ul>
+<h2 id="ingress">Ingress<a class="headerlink" href="#ingress" title="Permanent link">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This field is applicable only for Kubernetes. For more information, refer to the <a href="how-to-guides/ingress-sharding.html">Ingress Sharding Guide</a>.</p>
+</div>
+<ul>
+<li><code>allowed</code> restricts a tenant to creating Ingress resources only with the specified IngressClasses. The empty string <code>""</code> is treated like any other IngressClass name. If you use it while filtering IngressClasses, you must include <code>""</code> in the tenant's allow-list, or it will be filtered out. If no IngressClass is specified for an Ingress resource, it will be treated as <code>""</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">ingressClasses</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">allowed</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik</span>
+</code></pre></div>
 
 
 
