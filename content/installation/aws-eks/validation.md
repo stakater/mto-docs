@@ -261,7 +261,7 @@ A Keycloak user with same username as IAM user needs to be created for MTO Conso
 
 1. Navigate to Keycloak and Login using default credentials `admin/admin`
 
-1. Change the Realm from master to mto
+1. Change the Realm from `master` to `mto`
 
 1. Navigate to Users and Click Add User
 
