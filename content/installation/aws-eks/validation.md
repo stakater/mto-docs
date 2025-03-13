@@ -161,11 +161,11 @@ retail-dev              Active   5s
 retail-build            Active   5s
 ```
 
-## 5. Validate Falcon permissions 
+## 5. Validate Falcon permissions
 
 ### 5.1. Switch to falcon
 
-Set the following environment variables from the access keys generated in [previous steps](#3-generating-access-keys)
+Set the following environment variables from the access keys generated in [previous steps](#13-generate-access-key-for-the-user)
 
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
@@ -181,7 +181,7 @@ aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
 aws eks update-kubeconfig --name <EKS_CLUSTER_NAME> --region $AWS_REGION
 ```
 
-### 5.2. Check cli permissions
+### 5.2. Check CLI permissions
 
 We will now try to deploy a pod from user `falcon@nordmart.com` in its tenant namespace `logistics-dev`
 
@@ -257,9 +257,9 @@ tenant-operator-keycloak   nginx   keycloak.iinhdnh6.demo.kubeapp.cloud   ae51c1
 
 ### 7.1. Create Keycloak User
 
-A KeyCloak user with same username as iam user needs to be created for MTO Console. In this section we will create a KeyCloak user for Logistics tenant
+A Keycloak user with same username as IAM user needs to be created for MTO Console. In this section we will create a Keycloak user for Logistics tenant
 
-1. Navigate to KeyCloak and Login using default credentials `admin/admin`
+1. Navigate to Keycloak and Login using default credentials `admin/admin`
 
 1. Change the Realm from master to mto
 
@@ -272,7 +272,6 @@ A KeyCloak user with same username as iam user needs to be created for MTO Conso
 1. Navigate to Credentials tab and set a password
 
   ![keycloak password](../../images/keycloak-user-password.png)
-
 
 ### 7.2. MTO Console Log In
 

@@ -85,7 +85,7 @@ tenant-operator-keycloak   nginx   keycloak.iinhdnh6.demo.kubeapp.cloud   ae51c1
 
 ## MTO Console Admin Login
 
-Patch the following integration config to give previledged access to MTO's default admin user
+Patch the following integration config to give privileged access to MTO's default admin user
 
 ```bash
 kubectl patch integrationconfigs.tenantoperator.stakater.com -n multi-tenant-operator tenant-operator-config --type=merge --patch "{
@@ -105,7 +105,7 @@ Open the Console URL and Log In with the admin user. Default username and passwo
 
 ![MTO Console Login Page](../../images/mto-console-login.png)
 
-Dashboard will open after the successful login. Currently we donot have any tenants
+Dashboard will open after the successful login. Currently we don't have any tenants
 
 ![MTO Console Dashboard](../../images/mto-console-dashboard-0-tenants.png)
 
