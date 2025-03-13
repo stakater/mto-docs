@@ -2667,6 +2667,30 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="6. Validate Bear permissions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-switch-to-bear" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Switch to bear
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-check-cli-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Check CLI permissions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -4427,6 +4451,30 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="6. Validate Bear permissions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-switch-to-bear" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Switch to bear
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-check-cli-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Check CLI permissions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -4639,6 +4687,21 @@ Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> 
 Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>namespaces<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>list<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;namespaces&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>scope
 </code></pre></div>
 <h2 id="6-validate-bear-permissions">6. Validate Bear permissions<a class="headerlink" href="#6-validate-bear-permissions" title="Permanent link">#</a></h2>
+<h3 id="61-switch-to-bear">6.1. Switch to bear<a class="headerlink" href="#61-switch-to-bear" title="Permanent link">#</a></h3>
+<p>Set the following environment variables from the access keys generated in <a href="#13-generate-access-key-for-the-user">previous steps</a></p>
+<ul>
+<li><code>AWS_ACCESS_KEY_ID</code></li>
+<li><code>AWS_SECRET_ACCESS_KEY</code></li>
+<li><code>AWS_REGION</code> (optional)</li>
+</ul>
+<p>Execute the following command to update the kube context</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>region<span class="w"> </span><span class="nv">$AWS_REGION</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="nv">$AWS_ACCESS_KEY_ID</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="nv">$AWS_SECRET_ACCESS_KEY</span>
+
+aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span class="w"> </span>--name<span class="w"> </span>&lt;EKS_CLUSTER_NAME&gt;<span class="w"> </span>--region<span class="w"> </span><span class="nv">$AWS_REGION</span>
+</code></pre></div>
+<h3 id="62-check-cli-permissions">6.2. Check CLI permissions<a class="headerlink" href="#62-check-cli-permissions" title="Permanent link">#</a></h3>
 <p>We will repeat the above operations for our retail user <code>bear@nordmart.com</code> as well</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>retail-dev
 
@@ -4655,11 +4718,8 @@ Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> 
 Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>namespaces<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;bear@nordmart.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>list<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;namespaces&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>scope
 </code></pre></div>
 <h2 id="7-mto-console-login-using-logistics-user">7. MTO Console Login using Logistics User<a class="headerlink" href="#7-mto-console-login-using-logistics-user" title="Permanent link">#</a></h2>
-<ul>
-<li>Ensure that MTO Console is enabled by running the following command</li>
-</ul>
+<p>Ensure that MTO Console is enabled by running the following command</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>integrationconfig<span class="w"> </span>tenant-operator-config<span class="w"> </span>-o<span class="o">=</span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.components}&#39;</span><span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
-
 <span class="o">{</span><span class="s2">&quot;console&quot;</span>:true,<span class="s2">&quot;showback&quot;</span>:true<span class="o">}</span>
 </code></pre></div>
 <p>List the ingresses to access the URL of MTO Console</p>
@@ -4684,13 +4744,13 @@ tenant-operator-keycloak<span class="w">   </span>nginx<span class="w">   </span
 </li>
 <li>
 <p>Provide a username, this username must be same as IAM username <code>falcon@nordmart.com</code> in our case</p>
+<p><a class="glightbox" href="../../images/keycloak-create-falcon-user.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Create Falcon User" src="../../images/keycloak-create-falcon-user.png" /></a></p>
+</li>
+<li>
+<p>Navigate to Credentials tab and set a password</p>
+<p><a class="glightbox" href="../../images/keycloak-user-password.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="keycloak password" src="../../images/keycloak-user-password.png" /></a></p>
 </li>
 </ol>
-<p><a class="glightbox" href="../../images/keycloak-create-falcon-user.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Create Falcon User" src="../../images/keycloak-create-falcon-user.png" /></a></p>
-<ol>
-<li>Navigate to Credentials tab and set a password</li>
-</ol>
-<p><a class="glightbox" href="../../images/keycloak-user-password.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="keycloak password" src="../../images/keycloak-user-password.png" /></a></p>
 <h3 id="72-mto-console-log-in">7.2. MTO Console Log In<a class="headerlink" href="#72-mto-console-log-in" title="Permanent link">#</a></h3>
 <p>Navigate to MTO Console URL and Log In with the Keycloak user credentials.</p>
 <p><a class="glightbox" href="../../images/mto-console-login.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MTO Console Login Page" src="../../images/mto-console-login.png" /></a></p>
