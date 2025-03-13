@@ -209,6 +209,26 @@ Error from server (Forbidden): namespaces is forbidden: User "falcon@nordmart.co
 
 ## 6. Validate Bear permissions
 
+### 6.1. Switch to bear
+
+Set the following environment variables from the access keys generated in [previous steps](#13-generate-access-key-for-the-user)
+
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_REGION` (optional)
+
+Execute the following command to update the kube context
+
+```sh
+aws configure set region $AWS_REGION
+aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+
+aws eks update-kubeconfig --name <EKS_CLUSTER_NAME> --region $AWS_REGION
+```
+
+### 6.2. Check CLI permissions
+
 We will repeat the above operations for our retail user `bear@nordmart.com` as well
 
 ```bash
@@ -235,13 +255,12 @@ Error from server (Forbidden): namespaces is forbidden: User "bear@nordmart.com"
 
 ## 7. MTO Console Login using Logistics User
 
-- Ensure that MTO Console is enabled by running the following command
+Ensure that MTO Console is enabled by running the following command
 
-  ```bash
-  $ kubectl get integrationconfig tenant-operator-config -o=jsonpath='{.spec.components}' -n multi-tenant-operator
-
-  {"console":true,"showback":true}
-  ```
+```bash
+$ kubectl get integrationconfig tenant-operator-config -o=jsonpath='{.spec.components}' -n multi-tenant-operator
+{"console":true,"showback":true}
+```
 
 List the ingresses to access the URL of MTO Console
 
@@ -267,11 +286,11 @@ A Keycloak user with same username as IAM user needs to be created for MTO Conso
 
 1. Provide a username, this username must be same as IAM username `falcon@nordmart.com` in our case
 
-  ![Create Falcon User](../../images/keycloak-create-falcon-user.png)
+    ![Create Falcon User](../../images/keycloak-create-falcon-user.png)
 
 1. Navigate to Credentials tab and set a password
 
-  ![keycloak password](../../images/keycloak-user-password.png)
+    ![keycloak password](../../images/keycloak-user-password.png)
 
 ### 7.2. MTO Console Log In
 
