@@ -7,7 +7,7 @@ In this guide, we will set up **two tenants**—**Logistics** and **Retail**—f
 
 ## 1. Create & Configure AWS IAM Users & Groups
 
-### 1. Create a user
+### 1.1. Create a user
 
 Create a user with username `falcon@nordmart.com`
 
@@ -26,7 +26,7 @@ Output:
 }
 ```
 
-### 2. Attach cluster access policy to user
+### 1.2. Attach cluster access policy to user
 
 Create a AWS JSON policy file. This policy will allow the user to access the cluster.
 
@@ -49,7 +49,7 @@ Attach a policy to user by running the following command
 aws iam put-user-policy --user-name falcon@nordmart.com --policy-document file://policy.json --policy-name ClusterAccess
 ```
 
-### 3. Generate access key for the user
+### 1.3. Generate access key for the user
 
 Executing the following command will provide the Access Key Id and Access Secret Key Id that can be used to log in later
 
@@ -57,7 +57,7 @@ Executing the following command will provide the Access Key Id and Access Secret
 aws iam create-access-key --user-name "falcon@nordmart.com"
 ```
 
-### 4. Grant user access to Kubernetes via `ConfigMap`
+### 1.4. Grant user access to Kubernetes via `ConfigMap`
 
 Use the following command to map this user in `aws-auth` configmap in `kube-system` namespace.
 
@@ -163,7 +163,7 @@ retail-build            Active   5s
 
 ## 5. Validate Falcon permissions 
 
-### 1. Switch to falcon
+### 5.1. Switch to falcon
 
 Set the following environment variables from the access keys generated in [previous steps](#3-generating-access-keys)
 
@@ -181,7 +181,7 @@ aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
 aws eks update-kubeconfig --name <EKS_CLUSTER_NAME> --region $AWS_REGION
 ```
 
-### 2. Check cli permissions
+### 5.2. Check cli permissions
 
 We will now try to deploy a pod from user `falcon@nordmart.com` in its tenant namespace `logistics-dev`
 
@@ -207,15 +207,9 @@ $ kubectl get namespaces
 Error from server (Forbidden): namespaces is forbidden: User "falcon@nordmart.com" cannot list resource "namespaces" in API group "" at the cluster scope
 ```
 
-### 3. Check console permissions
-
-...
-
 ## 6. Validate Bear permissions
 
-TODO: what is meant by SSO user here?
-
-We will repeat the above operations for our SSO user `bear@nordmart.com` as well
+We will repeat the above operations for our retail user `bear@nordmart.com` as well
 
 ```bash
 $ kubectl run nginx --image nginx -n retail-dev
@@ -239,12 +233,7 @@ $ kubectl get namespaces
 Error from server (Forbidden): namespaces is forbidden: User "bear@nordmart.com" cannot list resource "namespaces" in API group "" at the cluster scope
 ```
 
-## Using MTO Console
-
-### Prerequisites
-
-TODO: What is this? This should be done at the time of installation
-TODO: Why show admin view here? We should show tenant memmber view screenshots; and 
+## 7. MTO Console Login using Logistics User
 
 - Ensure that MTO Console is enabled by running the following command
 
@@ -253,12 +242,6 @@ TODO: Why show admin view here? We should show tenant memmber view screenshots; 
 
   {"console":true,"showback":true}
   ```
-
-  If console is set to false then [enable the MTO Console](./installation.md#enable-mto-console) before proceeding to next step
-
-- **A Keycloak user with same username as AWS IAM user** should be created. Follow our [Setting Up User Access in Keycloak for MTO Console](../../console/configuration.md#setting-up-user-access-in-keycloak-for-mto-console) guide to create a Keycloak user.
-
-### MTO Console Log In
 
 List the ingresses to access the URL of MTO Console
 
@@ -272,10 +255,31 @@ tenant-operator-keycloak   nginx   keycloak.iinhdnh6.demo.kubeapp.cloud   ae51c1
 
 ```
 
-Open the URL and Log In with the Keycloak user credentials.
+### 7.1. Create Keycloak User
+
+A KeyCloak user with same username as iam user needs to be created for MTO Console. In this section we will create a KeyCloak user for Logistics tenant
+
+1. Navigate to KeyCloak and Login using default credentials `admin/admin`
+
+1. Change the Realm from master to mto
+
+1. Navigate to Users and Click Add User
+
+1. Provide a username, this username must be same as IAM username `falcon@nordmart.com` in our case
+
+  ![Create Falcon User](../../images/keycloak-create-falcon-user.png)
+
+1. Navigate to Credentials tab and set a password
+
+  ![keycloak password](../../images/keycloak-user-password.png)
+
+
+### 7.2. MTO Console Log In
+
+Navigate to MTO Console URL and Log In with the Keycloak user credentials.
 
 ![MTO Console Login Page](../../images/mto-console-login.png)
 
 Dashboard will open after the successful login. Now you can navigate different tenants and namespaces using MTO Console
 
-![MTO Console Dashboard](../../images/mto-console-dasboard.png)
+![MTO Console Dashboard](../../images/mto-console-falcon-dashboard.png)
