@@ -173,6 +173,12 @@ kubectl get pods -n kube-system | grep ebs
     kubectl apply -f storage-class.yaml
     ```
 
+1. Set the storage class as default storage class using the following command
+
+    ```bash
+    kubectl patch storageclass ebs-sc -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
+    ```
+
 1. Verify that the StorageClass has been created:
 
     ```bash
