@@ -1,6 +1,6 @@
 # Azure Pricing
 
-MTO supports Azure pricing model via the `integrationConfig.components.showbackOpts.cloudPricingSecretRef` field. Following 3 types of pricing are supported:
+MTO supports Azure pricing model via the `integrationConfig.components.showbackOpts.cloudPricingSecretRef` field. Following 2 types of pricing are supported:
 
 - [`Azure Standard Pricing`](#azure-standard-pricing)
 - [`Customer-specific pricing`](#customer-specific-pricing)

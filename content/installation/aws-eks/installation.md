@@ -109,9 +109,6 @@ Dashboard will open after the successful login. Currently we don't have any tena
 
 ![MTO Console Dashboard](../../images/mto-console-dashboard-0-tenants.png)
 
-<!-- TODO login as admin in the console? and show some content? No tenants are created until this point so no content yet-->
-<!-- TODO nothing needs to be done in the mto keycloak? No -->
-
 ## What's Next
 
 Now lets [create our first tenant on EKS](./validation.md).
