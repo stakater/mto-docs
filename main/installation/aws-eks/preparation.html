@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
     
       
@@ -4550,6 +4550,11 @@ aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span cla
 <li>
 <p>Apply the configuration using the following command:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>storage-class.yaml
+</code></pre></div>
+</li>
+<li>
+<p>Set the storage class as default storage class using the following command</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>patch<span class="w"> </span>storageclass<span class="w"> </span>ebs-sc<span class="w"> </span>-p<span class="w"> </span><span class="s1">&#39;{&quot;metadata&quot;: {&quot;annotations&quot;:{&quot;storageclass.kubernetes.io/is-default-class&quot;:&quot;true&quot;}}}&#39;</span>
 </code></pre></div>
 </li>
 <li>
