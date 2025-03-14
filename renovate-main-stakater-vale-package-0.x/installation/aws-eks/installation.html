@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
     
       
@@ -2546,6 +2546,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
+  <a href="#mto-console-admin-login" class="md-nav__link">
+    <span class="md-ellipsis">
+      MTO Console Admin Login
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#whats-next" class="md-nav__link">
     <span class="md-ellipsis">
       What's Next
@@ -4202,6 +4211,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
+  <a href="#mto-console-admin-login" class="md-nav__link">
+    <span class="md-ellipsis">
+      MTO Console Admin Login
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#whats-next" class="md-nav__link">
     <span class="md-ellipsis">
       What's Next
@@ -4237,8 +4255,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><a href="#enable-mto-console">Enable MTO Console</a></li>
 </ol>
 <h2 id="install-mto-core">Install MTO Core<a class="headerlink" href="#install-mto-core" title="Permanent link">#</a></h2>
-<p>We will be using helm to install the operator, here we have set <code>bypassedGroups</code> as <code>cluster-admins</code> because our admin user is part of that group as seen in above screenshot.</p>
-<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>tenant-operator<span class="w"> </span>oci://ghcr.io/stakater/public/charts/multi-tenant-operator<span class="w"> </span>--version<span class="w"> </span><span class="m">1</span>.1.0<span class="w"> </span>--namespace<span class="w"> </span>multi-tenant-operator<span class="w"> </span>--create-namespace<span class="w"> </span>--set<span class="w"> </span><span class="nv">bypassedGroups</span><span class="o">=</span>cluster-admins
+<p>We will be using helm to install the operator.</p>
+<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>tenant-operator<span class="w"> </span>oci://ghcr.io/stakater/public/charts/multi-tenant-operator<span class="w"> </span>--version<span class="w"> </span><span class="m">1</span>.1.0<span class="w"> </span>--namespace<span class="w"> </span>multi-tenant-operator<span class="w"> </span>--create-namespace
 </code></pre></div>
 <p>We will wait for the pods to come in running state.</p>
 <div class="highlight"><pre><span></span><code>NAME<span class="w">                                                              </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE
@@ -4300,13 +4318,31 @@ tenant-operator-webhook-5f8f675549-jv9n8<span class="w">                        
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>--for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span>ready<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>--all<span class="w"> </span>--timeout<span class="o">=</span>300s
 </code></pre></div>
 <p>List the ingresses to access the URL of MTO Console</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>ingress<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
+<div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>ingress<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
 
 NAME<span class="w">                       </span>CLASS<span class="w">   </span>HOSTS<span class="w">                                  </span>ADDRESS<span class="w">                                                                          </span>PORTS<span class="w">     </span>AGE
 tenant-operator-console<span class="w">    </span>nginx<span class="w">   </span>console.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
 tenant-operator-gateway<span class="w">    </span>nginx<span class="w">   </span>gateway.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
 tenant-operator-keycloak<span class="w">   </span>nginx<span class="w">   </span>keycloak.iinhdnh6.demo.kubeapp.cloud<span class="w">   </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>24m
 </code></pre></div>
+<h2 id="mto-console-admin-login">MTO Console Admin Login<a class="headerlink" href="#mto-console-admin-login" title="Permanent link">#</a></h2>
+<p>Patch the following integration config to give privileged access to MTO's default admin user</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>patch<span class="w"> </span>integrationconfigs.tenantoperator.stakater.com<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>tenant-operator-config<span class="w"> </span>--type<span class="o">=</span>merge<span class="w"> </span>--patch<span class="w"> </span><span class="s2">&quot;{</span>
+<span class="s2">    \&quot;spec\&quot;: {</span>
+<span class="s2">        \&quot;accessControl\&quot;: {</span>
+<span class="s2">            \&quot;privileged\&quot;: {</span>
+<span class="s2">                \&quot;users\&quot;: [</span>
+<span class="s2">                    \&quot;mto@stakater.com\&quot;</span>
+<span class="s2">                ]</span>
+<span class="s2">            }</span>
+<span class="s2">        }</span>
+<span class="s2">    }</span>
+<span class="s2">}&quot;</span>
+</code></pre></div>
+<p>Open the Console URL and Log In with the admin user. Default username and password is <code>mto</code></p>
+<p><a class="glightbox" href="../../images/mto-console-login.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MTO Console Login Page" src="../../images/mto-console-login.png" /></a></p>
+<p>Dashboard will open after the successful login. Currently we don't have any tenants</p>
+<p><a class="glightbox" href="../../images/mto-console-dashboard-0-tenants.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MTO Console Dashboard" src="../../images/mto-console-dashboard-0-tenants.png" /></a></p>
 <h2 id="whats-next">What's Next<a class="headerlink" href="#whats-next" title="Permanent link">#</a></h2>
 <p>Now lets <a href="validation.html">create our first tenant on EKS</a>.</p>
 
