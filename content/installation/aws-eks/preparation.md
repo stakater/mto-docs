@@ -5,6 +5,7 @@ This document provides a detailed walk through of the preparation steps required
 ## Cluster Requirements
 
 An EKS 1.28+ cluster with the following components:
+
 - A default storage class
 - An Ingress controller
 - Valid certificates for MTO Gateway, MTO Console, and MTO Keycloak
