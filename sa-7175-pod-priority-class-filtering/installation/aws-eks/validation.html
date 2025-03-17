@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
     
       
@@ -2550,46 +2550,46 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-configure-iam-users" class="md-nav__link">
+  <a href="#1-create-configure-aws-iam-users-groups" class="md-nav__link">
     <span class="md-ellipsis">
-      Create &amp; Configure IAM Users
+      1. Create &amp; Configure AWS IAM Users &amp; Groups
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Create &amp; Configure IAM Users">
+    <nav class="md-nav" aria-label="1. Create &amp; Configure AWS IAM Users &amp; Groups">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-create-a-user" class="md-nav__link">
+  <a href="#11-create-a-user" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Create a User
+      1.1. Create a user
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-attach-cluster-access-policy" class="md-nav__link">
+  <a href="#12-attach-cluster-access-policy-to-user" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Attach cluster access policy
+      1.2. Attach cluster access policy to user
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-generating-access-keys" class="md-nav__link">
+  <a href="#13-generate-access-key-for-the-user" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Generating Access Keys
+      1.3. Generate access key for the user
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-grant-iam-users-access-to-kubernetes-with-a-configmap" class="md-nav__link">
+  <a href="#14-grant-user-access-to-kubernetes-via-configmap" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Grant IAM users access to Kubernetes with a ConfigMap
+      1.4. Grant user access to Kubernetes via ConfigMap
     </span>
   </a>
   
@@ -2601,28 +2601,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#setting-up-tenants" class="md-nav__link">
+  <a href="#2-create-keycloak-user-for-mto-console" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting up Tenants
+      2. Create Keycloak user for MTO Console
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Setting up Tenants">
+    <nav class="md-nav" aria-label="2. Create Keycloak user for MTO Console">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-create-a-quota" class="md-nav__link">
+  <a href="#21-create-keycloak-user" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Create a Quota
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-create-tenants" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Create Tenants
+      2.1. Create Keycloak User
     </span>
   </a>
   
@@ -2634,37 +2625,64 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#switching-to-different-user-in-eks-cluster" class="md-nav__link">
+  <a href="#3-create-mto-quota" class="md-nav__link">
     <span class="md-ellipsis">
-      Switching to different User in EKS Cluster
+      3. Create MTO Quota
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#validation" class="md-nav__link">
+  <a href="#4-create-mto-tenants" class="md-nav__link">
     <span class="md-ellipsis">
-      Validation
+      4. Create MTO Tenants
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Validation">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-list-namespaces-as-cluster-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. List namespaces as cluster admin
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-validate-falcon-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Validate Falcon permissions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Validate Falcon permissions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#logistics-user-on-tenant-namespaces" class="md-nav__link">
+  <a href="#61-switch-to-falcon" class="md-nav__link">
     <span class="md-ellipsis">
-      Logistics User on Tenant Namespaces
+      6.1. Switch to falcon
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#retail-user-on-tenant-namespaces" class="md-nav__link">
+  <a href="#62-check-cli-permissions" class="md-nav__link">
     <span class="md-ellipsis">
-      Retail User on Tenant Namespaces
+      6.2. Check CLI permissions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-validate-console-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3. Validate Console permissions
     </span>
   </a>
   
@@ -2676,28 +2694,37 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-mto-console" class="md-nav__link">
+  <a href="#7-validate-bear-permissions" class="md-nav__link">
     <span class="md-ellipsis">
-      Using MTO Console
+      7. Validate Bear permissions
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Using MTO Console">
+    <nav class="md-nav" aria-label="7. Validate Bear permissions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#71-switch-to-bear" class="md-nav__link">
     <span class="md-ellipsis">
-      Prerequisites
+      7.1. Switch to bear
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#mto-console-log-in" class="md-nav__link">
+  <a href="#72-check-cli-permissions" class="md-nav__link">
     <span class="md-ellipsis">
-      MTO Console Log In
+      7.2. Check CLI permissions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-validate-console-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3. Validate Console permissions
     </span>
   </a>
   
@@ -2705,6 +2732,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-mto-console-login-using-logistics-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. MTO Console Login using Logistics User
+    </span>
+  </a>
   
 </li>
       
@@ -4316,46 +4352,46 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-configure-iam-users" class="md-nav__link">
+  <a href="#1-create-configure-aws-iam-users-groups" class="md-nav__link">
     <span class="md-ellipsis">
-      Create &amp; Configure IAM Users
+      1. Create &amp; Configure AWS IAM Users &amp; Groups
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Create &amp; Configure IAM Users">
+    <nav class="md-nav" aria-label="1. Create &amp; Configure AWS IAM Users &amp; Groups">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-create-a-user" class="md-nav__link">
+  <a href="#11-create-a-user" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Create a User
+      1.1. Create a user
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-attach-cluster-access-policy" class="md-nav__link">
+  <a href="#12-attach-cluster-access-policy-to-user" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Attach cluster access policy
+      1.2. Attach cluster access policy to user
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-generating-access-keys" class="md-nav__link">
+  <a href="#13-generate-access-key-for-the-user" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Generating Access Keys
+      1.3. Generate access key for the user
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-grant-iam-users-access-to-kubernetes-with-a-configmap" class="md-nav__link">
+  <a href="#14-grant-user-access-to-kubernetes-via-configmap" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Grant IAM users access to Kubernetes with a ConfigMap
+      1.4. Grant user access to Kubernetes via ConfigMap
     </span>
   </a>
   
@@ -4367,28 +4403,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#setting-up-tenants" class="md-nav__link">
+  <a href="#2-create-keycloak-user-for-mto-console" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting up Tenants
+      2. Create Keycloak user for MTO Console
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Setting up Tenants">
+    <nav class="md-nav" aria-label="2. Create Keycloak user for MTO Console">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-create-a-quota" class="md-nav__link">
+  <a href="#21-create-keycloak-user" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Create a Quota
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-create-tenants" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Create Tenants
+      2.1. Create Keycloak User
     </span>
   </a>
   
@@ -4400,37 +4427,64 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#switching-to-different-user-in-eks-cluster" class="md-nav__link">
+  <a href="#3-create-mto-quota" class="md-nav__link">
     <span class="md-ellipsis">
-      Switching to different User in EKS Cluster
+      3. Create MTO Quota
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#validation" class="md-nav__link">
+  <a href="#4-create-mto-tenants" class="md-nav__link">
     <span class="md-ellipsis">
-      Validation
+      4. Create MTO Tenants
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Validation">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-list-namespaces-as-cluster-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. List namespaces as cluster admin
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-validate-falcon-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Validate Falcon permissions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Validate Falcon permissions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#logistics-user-on-tenant-namespaces" class="md-nav__link">
+  <a href="#61-switch-to-falcon" class="md-nav__link">
     <span class="md-ellipsis">
-      Logistics User on Tenant Namespaces
+      6.1. Switch to falcon
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#retail-user-on-tenant-namespaces" class="md-nav__link">
+  <a href="#62-check-cli-permissions" class="md-nav__link">
     <span class="md-ellipsis">
-      Retail User on Tenant Namespaces
+      6.2. Check CLI permissions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-validate-console-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3. Validate Console permissions
     </span>
   </a>
   
@@ -4442,28 +4496,37 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-mto-console" class="md-nav__link">
+  <a href="#7-validate-bear-permissions" class="md-nav__link">
     <span class="md-ellipsis">
-      Using MTO Console
+      7. Validate Bear permissions
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Using MTO Console">
+    <nav class="md-nav" aria-label="7. Validate Bear permissions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#71-switch-to-bear" class="md-nav__link">
     <span class="md-ellipsis">
-      Prerequisites
+      7.1. Switch to bear
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#mto-console-log-in" class="md-nav__link">
+  <a href="#72-check-cli-permissions" class="md-nav__link">
     <span class="md-ellipsis">
-      MTO Console Log In
+      7.2. Check CLI permissions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-validate-console-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3. Validate Console permissions
     </span>
   </a>
   
@@ -4471,6 +4534,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-mto-console-login-using-logistics-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. MTO Console Login using Logistics User
+    </span>
+  </a>
   
 </li>
       
@@ -4494,9 +4566,13 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="mto-validation-guide">MTO Validation Guide<a class="headerlink" href="#mto-validation-guide" title="Permanent link">#</a></h1>
-<p>This document provides detailed insights on creating MTO Tenants on EKS cluster. In this tutorial we will setup 2 tenants named logistics and retail for an imaginary ecommerce company.</p>
-<h2 id="create-configure-iam-users">Create &amp; Configure IAM Users<a class="headerlink" href="#create-configure-iam-users" title="Permanent link">#</a></h2>
-<h3 id="1-create-a-user">1. Create a User<a class="headerlink" href="#1-create-a-user" title="Permanent link">#</a></h3>
+<p>In this guide, we will set up <strong>two tenants</strong>—<strong>Logistics</strong> and <strong>Retail</strong>—for an imaginary e-commerce company, each with one user.</p>
+<ul>
+<li><strong>Falcon</strong> will be the user assigned to the <strong>Logistics</strong> tenant.  </li>
+<li><strong>Bear</strong> will be the user assigned to the <strong>Retail</strong> tenant.</li>
+</ul>
+<h2 id="1-create-configure-aws-iam-users-groups">1. Create &amp; Configure AWS IAM Users &amp; Groups<a class="headerlink" href="#1-create-configure-aws-iam-users-groups" title="Permanent link">#</a></h2>
+<h3 id="11-create-a-user">1.1. Create a user<a class="headerlink" href="#11-create-a-user" title="Permanent link">#</a></h3>
 <p>Create a user with username <code>falcon@nordmart.com</code></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>iam<span class="w"> </span>create-user<span class="w"> </span>--user-name<span class="w"> </span>falcon@nordmart.com
 
@@ -4511,8 +4587,7 @@ Output:
 <span class="w">    </span><span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div>
-<p>We have created an IAM user named <code>falcon@nordmart.com</code>, with ARN <code>arn:aws:iam::630742778131:user/falcon@nordmart.com</code>.</p>
-<h3 id="2-attach-cluster-access-policy">2. Attach cluster access policy<a class="headerlink" href="#2-attach-cluster-access-policy" title="Permanent link">#</a></h3>
+<h3 id="12-attach-cluster-access-policy-to-user">1.2. Attach cluster access policy to user<a class="headerlink" href="#12-attach-cluster-access-policy-to-user" title="Permanent link">#</a></h3>
 <p>Create a AWS JSON policy file. This policy will allow the user to access the cluster.</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
@@ -4528,11 +4603,11 @@ Output:
 <p>Attach a policy to user by running the following command</p>
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>put-user-policy<span class="w"> </span>--user-name<span class="w"> </span>falcon@nordmart.com<span class="w"> </span>--policy-document<span class="w"> </span>file://policy.json<span class="w"> </span>--policy-name<span class="w"> </span>ClusterAccess
 </code></pre></div>
-<h3 id="3-generating-access-keys">3. Generating Access Keys<a class="headerlink" href="#3-generating-access-keys" title="Permanent link">#</a></h3>
+<h3 id="13-generate-access-key-for-the-user">1.3. Generate access key for the user<a class="headerlink" href="#13-generate-access-key-for-the-user" title="Permanent link">#</a></h3>
 <p>Executing the following command will provide the Access Key Id and Access Secret Key Id that can be used to log in later</p>
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>create-access-key<span class="w"> </span>--user-name<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span>
 </code></pre></div>
-<h3 id="4-grant-iam-users-access-to-kubernetes-with-a-configmap">4. Grant IAM users access to Kubernetes with a <code>ConfigMap</code><a class="headerlink" href="#4-grant-iam-users-access-to-kubernetes-with-a-configmap" title="Permanent link">#</a></h3>
+<h3 id="14-grant-user-access-to-kubernetes-via-configmap">1.4. Grant user access to Kubernetes via <code>ConfigMap</code><a class="headerlink" href="#14-grant-user-access-to-kubernetes-via-configmap" title="Permanent link">#</a></h3>
 <p>Use the following command to map this user in <code>aws-auth</code> configmap in <code>kube-system</code> namespace.</p>
 <div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>create<span class="w"> </span>iamidentitymapping<span class="w"> </span>--cluster<span class="w"> </span><span class="s2">&quot;&lt;CLUSTER_NAME&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">                                 </span>--region<span class="w"> </span><span class="s2">&quot;&lt;AWS_REGION&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
@@ -4541,10 +4616,43 @@ Output:
 <span class="w">                                 </span>--no-duplicate-arns
 </code></pre></div>
 <p>Repeat the same steps to create another user <code>bear@nordmart.com</code> for retail tenant.</p>
-<h2 id="setting-up-tenants">Setting up Tenants<a class="headerlink" href="#setting-up-tenants" title="Permanent link">#</a></h2>
-<p>Now, we will create tenants for above created users.</p>
-<h3 id="1-create-a-quota">1. Create a Quota<a class="headerlink" href="#1-create-a-quota" title="Permanent link">#</a></h3>
-<p>We will start by creating a <code>Quota CR</code> with some resource limits</p>
+<h2 id="2-create-keycloak-user-for-mto-console">2. Create Keycloak user for MTO Console<a class="headerlink" href="#2-create-keycloak-user-for-mto-console" title="Permanent link">#</a></h2>
+<h3 id="21-create-keycloak-user">2.1. Create Keycloak User<a class="headerlink" href="#21-create-keycloak-user" title="Permanent link">#</a></h3>
+<p>A Keycloak user with same username as IAM user needs to be created for MTO Console. In this section we will create a Keycloak user for Logistics tenant</p>
+<p>Ensure that MTO Console is enabled by executing the following command</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>integrationconfig<span class="w"> </span>tenant-operator-config<span class="w"> </span>-o<span class="o">=</span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.components}&#39;</span><span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
+<span class="o">{</span><span class="s2">&quot;console&quot;</span>:true,<span class="s2">&quot;showback&quot;</span>:true<span class="o">}</span>
+</code></pre></div>
+<p>List the ingresses to access the URL of MTO Console</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>ingress<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
+
+NAME<span class="w">                       </span>CLASS<span class="w">   </span>HOSTS<span class="w">                                  </span>ADDRESS<span class="w">                                                                          </span>PORTS<span class="w">     </span>AGE
+tenant-operator-console<span class="w">    </span>nginx<span class="w">   </span>console.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
+tenant-operator-gateway<span class="w">    </span>nginx<span class="w">   </span>gateway.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
+tenant-operator-keycloak<span class="w">   </span>nginx<span class="w">   </span>keycloak.iinhdnh6.demo.kubeapp.cloud<span class="w">   </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>24m
+</code></pre></div>
+<ol>
+<li>
+<p>Navigate to Keycloak and Login using default credentials <code>admin/admin</code></p>
+</li>
+<li>
+<p>Change the Realm from <code>master</code> to <code>mto</code></p>
+</li>
+<li>
+<p>Navigate to Users and Click Add User</p>
+</li>
+<li>
+<p>Provide a username, this username must be same as IAM username <code>falcon@nordmart.com</code> in our case</p>
+<p><a class="glightbox" href="../../images/keycloak-create-falcon-user.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Create Falcon User" src="../../images/keycloak-create-falcon-user.png" /></a></p>
+</li>
+<li>
+<p>Navigate to Credentials tab and set a password</p>
+<p><a class="glightbox" href="../../images/keycloak-user-password.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="keycloak password" src="../../images/keycloak-user-password.png" /></a></p>
+</li>
+</ol>
+<p>Repeat the same steps to create another user <code>bear@nordmart.com</code></p>
+<h2 id="3-create-mto-quota">3. Create MTO Quota<a class="headerlink" href="#3-create-mto-quota" title="Permanent link">#</a></h2>
+<p>As cluster admin create a <code>Quota CR</code> with some resource limits:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
 <span class="s">apiVersion: tenantoperator.stakater.com/v1beta1</span>
 <span class="s">kind: Quota</span>
@@ -4564,8 +4672,8 @@ Output:
 <span class="s">      memory: &quot;8Gi&quot;</span>
 <span class="s">EOF</span>
 </code></pre></div>
-<h3 id="2-create-tenants">2. Create Tenants<a class="headerlink" href="#2-create-tenants" title="Permanent link">#</a></h3>
-<p>Now, we will create 2 tenants <code>logistics</code> and <code>retail</code> with one user each</p>
+<h2 id="4-create-mto-tenants">4. Create MTO Tenants<a class="headerlink" href="#4-create-mto-tenants" title="Permanent link">#</a></h2>
+<p>As cluster admin create 2 tenants <code>logistics</code> and <code>retail</code> with one user each:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
 <span class="s">apiVersion: tenantoperator.stakater.com/v1beta3</span>
 <span class="s">kind: Tenant</span>
@@ -4601,8 +4709,8 @@ Output:
 <span class="s">EOF</span>
 </code></pre></div>
 <p>Notice that the only difference in both tenant specs are the users.</p>
-<p>After the creation of <code>Tenant</code> CRs, now users can access namespaces in their respective tenants and preform create, update, delete functions.</p>
-<p>Listing the namespaces by cluster admin will show us the recently created tenant namespaces</p>
+<h2 id="5-list-namespaces-as-cluster-admin">5. List namespaces as cluster admin<a class="headerlink" href="#5-list-namespaces-as-cluster-admin" title="Permanent link">#</a></h2>
+<p>Listing the namespaces as cluster admin will show following namespaces:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>namespaces
 
 NAME<span class="w">                    </span>STATUS<span class="w">   </span>AGE
@@ -4618,8 +4726,9 @@ logistics-build<span class="w">         </span>Active<span class="w">   </span>5
 retail-dev<span class="w">              </span>Active<span class="w">   </span>5s
 retail-build<span class="w">            </span>Active<span class="w">   </span>5s
 </code></pre></div>
-<h2 id="switching-to-different-user-in-eks-cluster">Switching to different User in EKS Cluster<a class="headerlink" href="#switching-to-different-user-in-eks-cluster" title="Permanent link">#</a></h2>
-<p>Set the following environment variables from the access keys generated in <a href="#3-generating-access-keys">previous steps</a></p>
+<h2 id="6-validate-falcon-permissions">6. Validate Falcon permissions<a class="headerlink" href="#6-validate-falcon-permissions" title="Permanent link">#</a></h2>
+<h3 id="61-switch-to-falcon">6.1. Switch to falcon<a class="headerlink" href="#61-switch-to-falcon" title="Permanent link">#</a></h3>
+<p>Set the following environment variables from the access keys generated in <a href="#13-generate-access-key-for-the-user">previous steps</a></p>
 <ul>
 <li><code>AWS_ACCESS_KEY_ID</code></li>
 <li><code>AWS_SECRET_ACCESS_KEY</code></li>
@@ -4632,8 +4741,7 @@ aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set
 
 aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span class="w"> </span>--name<span class="w"> </span>&lt;EKS_CLUSTER_NAME&gt;<span class="w"> </span>--region<span class="w"> </span><span class="nv">$AWS_REGION</span>
 </code></pre></div>
-<h2 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">#</a></h2>
-<h3 id="logistics-user-on-tenant-namespaces">Logistics User on Tenant Namespaces<a class="headerlink" href="#logistics-user-on-tenant-namespaces" title="Permanent link">#</a></h3>
+<h3 id="62-check-cli-permissions">6.2. Check CLI permissions<a class="headerlink" href="#62-check-cli-permissions" title="Permanent link">#</a></h3>
 <p>We will now try to deploy a pod from user <code>falcon@nordmart.com</code> in its tenant namespace <code>logistics-dev</code></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>logistics-dev
 
@@ -4649,8 +4757,28 @@ Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> 
 
 Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>namespaces<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>list<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;namespaces&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>scope
 </code></pre></div>
-<h3 id="retail-user-on-tenant-namespaces">Retail User on Tenant Namespaces<a class="headerlink" href="#retail-user-on-tenant-namespaces" title="Permanent link">#</a></h3>
-<p>We will repeat the above operations for our SSO user <code>bear@nordmart.com</code> as well</p>
+<h3 id="63-validate-console-permissions">6.3. Validate Console permissions<a class="headerlink" href="#63-validate-console-permissions" title="Permanent link">#</a></h3>
+<p>Navigate to MTO Console URL and Log In with the Keycloak user credentials.</p>
+<p><a class="glightbox" href="../../images/mto-console-login.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MTO Console Login Page" src="../../images/mto-console-login.png" /></a></p>
+<p>Dashboard will open after the successful login. Now you can navigate different tenants and namespaces using MTO Console</p>
+<p><a class="glightbox" href="../../images/mto-console-bear-dashboard.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MTO Console Dashboard" src="../../images/mto-console-bear-dashboard.png" /></a></p>
+<h2 id="7-validate-bear-permissions">7. Validate Bear permissions<a class="headerlink" href="#7-validate-bear-permissions" title="Permanent link">#</a></h2>
+<h3 id="71-switch-to-bear">7.1. Switch to bear<a class="headerlink" href="#71-switch-to-bear" title="Permanent link">#</a></h3>
+<p>Set the following environment variables from the access keys generated in <a href="#13-generate-access-key-for-the-user">previous steps</a></p>
+<ul>
+<li><code>AWS_ACCESS_KEY_ID</code></li>
+<li><code>AWS_SECRET_ACCESS_KEY</code></li>
+<li><code>AWS_REGION</code> (optional)</li>
+</ul>
+<p>Execute the following command to update the kube context</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>region<span class="w"> </span><span class="nv">$AWS_REGION</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="nv">$AWS_ACCESS_KEY_ID</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="nv">$AWS_SECRET_ACCESS_KEY</span>
+
+aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span class="w"> </span>--name<span class="w"> </span>&lt;EKS_CLUSTER_NAME&gt;<span class="w"> </span>--region<span class="w"> </span><span class="nv">$AWS_REGION</span>
+</code></pre></div>
+<h3 id="72-check-cli-permissions">7.2. Check CLI permissions<a class="headerlink" href="#72-check-cli-permissions" title="Permanent link">#</a></h3>
+<p>We will repeat the above operations for our retail user <code>bear@nordmart.com</code> as well</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>run<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx<span class="w"> </span>-n<span class="w"> </span>retail-dev
 
 pod/nginx<span class="w"> </span>created
@@ -4665,20 +4793,16 @@ Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> 
 
 Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Forbidden<span class="o">)</span>:<span class="w"> </span>namespaces<span class="w"> </span>is<span class="w"> </span>forbidden:<span class="w"> </span>User<span class="w"> </span><span class="s2">&quot;bear@nordmart.com&quot;</span><span class="w"> </span>cannot<span class="w"> </span>list<span class="w"> </span>resource<span class="w"> </span><span class="s2">&quot;namespaces&quot;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>API<span class="w"> </span>group<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>cluster<span class="w"> </span>scope
 </code></pre></div>
-<h2 id="using-mto-console">Using MTO Console<a class="headerlink" href="#using-mto-console" title="Permanent link">#</a></h2>
-<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h3>
-<ul>
-<li>Ensure that MTO Console is enabled by running the following command</li>
-</ul>
+<h3 id="73-validate-console-permissions">7.3. Validate Console permissions<a class="headerlink" href="#73-validate-console-permissions" title="Permanent link">#</a></h3>
+<p>Navigate to MTO Console URL and Log In with the Keycloak user credentials.</p>
+<p><a class="glightbox" href="../../images/mto-console-login.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MTO Console Login Page" src="../../images/mto-console-login.png" /></a></p>
+<p>Dashboard will open after the successful login. Now you can navigate different tenants and namespaces using MTO Console</p>
+<p><a class="glightbox" href="../../images/mto-console-bear-dashboard.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MTO Console Dashboard" src="../../images/mto-console-bear-dashboard.png" /></a></p>
+<h2 id="8-mto-console-login-using-logistics-user">8. MTO Console Login using Logistics User<a class="headerlink" href="#8-mto-console-login-using-logistics-user" title="Permanent link">#</a></h2>
+<p>Ensure that MTO Console is enabled by running the following command</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>integrationconfig<span class="w"> </span>tenant-operator-config<span class="w"> </span>-o<span class="o">=</span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.components}&#39;</span><span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
-
 <span class="o">{</span><span class="s2">&quot;console&quot;</span>:true,<span class="s2">&quot;showback&quot;</span>:true<span class="o">}</span>
 </code></pre></div>
-<p>If console is set to false then <a href="installation.html#enable-mto-console">enable the MTO Console</a> before proceeding to next step</p>
-<ul>
-<li><strong>A Keycloak user with same username as AWS IAM user</strong> should be created. Follow our <a href="../../console/configuration.html#setting-up-user-access-in-keycloak-for-mto-console">Setting Up User Access in Keycloak for MTO Console</a> guide to create a Keycloak user.</li>
-</ul>
-<h3 id="mto-console-log-in">MTO Console Log In<a class="headerlink" href="#mto-console-log-in" title="Permanent link">#</a></h3>
 <p>List the ingresses to access the URL of MTO Console</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>ingress<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
 
@@ -4687,10 +4811,6 @@ tenant-operator-console<span class="w">    </span>nginx<span class="w">   </span
 tenant-operator-gateway<span class="w">    </span>nginx<span class="w">   </span>gateway.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
 tenant-operator-keycloak<span class="w">   </span>nginx<span class="w">   </span>keycloak.iinhdnh6.demo.kubeapp.cloud<span class="w">   </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>24m
 </code></pre></div>
-<p>Open the URL and Log In with the Keycloak user credentials.</p>
-<p><a class="glightbox" href="../../images/mto-console-login.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MTO Console Login Page" src="../../images/mto-console-login.png" /></a></p>
-<p>Dashboard will open after the successful login. Now you can navigate different tenants and namespaces using MTO Console</p>
-<p><a class="glightbox" href="../../images/mto-console-dasboard.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MTO Console Dashboard" src="../../images/mto-console-dasboard.png" /></a></p>
 
 
 
