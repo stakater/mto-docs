@@ -1,6 +1,6 @@
 # AWS Pricing
 
-MTO supports AWS pricing model via the `integrationConfig.components.showbackOpts.cloudIntegrationSecretRef` field. Following 3 types of pricing are supported:
+MTO supports AWS pricing model via the `integrationConfig.components.showbackOpts.cloudIntegrationSecretRef` field. Following 2 types of pricing are supported:
 
 - [`AWS Standard Pricing`](#aws-standard-pricing)
 - [`AWS Spot Instance Datafeed`](#aws-spot-instance-pricing)

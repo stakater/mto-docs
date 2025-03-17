@@ -9,10 +9,10 @@ The installation process consists of two steps:
 
 ## Install MTO Core
 
-We will be using helm to install the operator, here we have set `bypassedGroups` as `cluster-admins` because our admin user is part of that group as seen in above screenshot.
+We will be using helm to install the operator.
 
 ```bash
-helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 1.1.0 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=cluster-admins
+helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 1.1.0 --namespace multi-tenant-operator --create-namespace
 ```
 
 We will wait for the pods to come in running state.
@@ -74,7 +74,7 @@ kubectl wait --for=condition=ready pod -n multi-tenant-operator --all --timeout=
 List the ingresses to access the URL of MTO Console
 
 ```bash
-kubectl get ingress -n multi-tenant-operator
+> kubectl get ingress -n multi-tenant-operator
 
 NAME                       CLASS   HOSTS                                  ADDRESS                                                                          PORTS     AGE
 tenant-operator-console    nginx   console.iinhdnh6.demo.kubeapp.cloud    ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com   80, 443   23m
@@ -82,6 +82,32 @@ tenant-operator-gateway    nginx   gateway.iinhdnh6.demo.kubeapp.cloud    ae51c1
 tenant-operator-keycloak   nginx   keycloak.iinhdnh6.demo.kubeapp.cloud   ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com   80, 443   24m
 
 ```
+
+## MTO Console Admin Login
+
+Patch the following integration config to give privileged access to MTO's default admin user
+
+```bash
+kubectl patch integrationconfigs.tenantoperator.stakater.com -n multi-tenant-operator tenant-operator-config --type=merge --patch "{
+    \"spec\": {
+        \"accessControl\": {
+            \"privileged\": {
+                \"users\": [
+                    \"mto@stakater.com\"
+                ]
+            }
+        }
+    }
+}"
+```
+
+Open the Console URL and Log In with the admin user. Default username and password is `mto`
+
+![MTO Console Login Page](../../images/mto-console-login.png)
+
+Dashboard will open after the successful login. Currently we don't have any tenants
+
+![MTO Console Dashboard](../../images/mto-console-dashboard-0-tenants.png)
 
 ## What's Next
 
