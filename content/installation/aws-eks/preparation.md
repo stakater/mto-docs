@@ -6,10 +6,13 @@ This document provides a detailed walk through of the preparation steps required
 
 An EKS 1.28+ cluster with the following components:
 
-- Valid certificates for MTO Gateway, MTO Console, and MTO Keycloak
 - A default storage class
 - An Ingress controller
-- DNS entries configured for MTO Gateway, MTO Console, and MTO Keycloak
+- Valid certificates for MTO Gateway, MTO Console, and MTO Keycloak
+
+DNS entries configured for MTO Gateway, MTO Console, and MTO Keycloak
+
+A user with **cluster administrator privileges**.
 
 ## Local Setup Requirements
 

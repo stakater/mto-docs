@@ -313,24 +313,3 @@ Navigate to MTO Console URL and Log In with the Keycloak user credentials.
 Dashboard will open after the successful login. Now you can navigate different tenants and namespaces using MTO Console
 
 ![MTO Console Dashboard](../../images/mto-console-bear-dashboard.png)
-
-## 8. MTO Console Login using Logistics User
-
-Ensure that MTO Console is enabled by running the following command
-
-```bash
-$ kubectl get integrationconfig tenant-operator-config -o=jsonpath='{.spec.components}' -n multi-tenant-operator
-{"console":true,"showback":true}
-```
-
-List the ingresses to access the URL of MTO Console
-
-```bash
-kubectl get ingress -n multi-tenant-operator
-
-NAME                       CLASS   HOSTS                                  ADDRESS                                                                          PORTS     AGE
-tenant-operator-console    nginx   console.iinhdnh6.demo.kubeapp.cloud    ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com   80, 443   23m
-tenant-operator-gateway    nginx   gateway.iinhdnh6.demo.kubeapp.cloud    ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com   80, 443   23m
-tenant-operator-keycloak   nginx   keycloak.iinhdnh6.demo.kubeapp.cloud   ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com   80, 443   24m
-
-```
