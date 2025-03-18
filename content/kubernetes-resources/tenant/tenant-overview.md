@@ -79,6 +79,11 @@ spec:
     allowed:
       - nginx
       - trafeik
+  serviceAccounts:
+    denied:
+      - service-user-1
+      - service-user-2
+
 ```
 
 ## Access Control
@@ -153,4 +158,25 @@ ingressClasses:
   allowed:
   - nginx
   - traefik
+```
+
+## Service Accounts
+
+* `denied` restricts the tenant from using the specified service accounts in pods, deployments, and other resources. The empty string `""` or no service account name is provided then it is treated as `default` service account name. `default` must be added to denied list if you want to block pods / pod controllers with default or empty service account
+
+The creation of following resources will be blocked if a denied service account is provided:
+
+* Pods
+* Deployments
+* StatefulSets
+* ReplicaSets
+* Jobs
+* CronJobs
+* Daemonsets
+
+```yaml
+serviceAccounts:
+  denied:
+    - service-user-1
+    - service-user-2
 ```
