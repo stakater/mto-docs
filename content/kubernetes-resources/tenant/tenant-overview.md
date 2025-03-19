@@ -147,7 +147,7 @@ storageClasses:
 
 ## Ingress
 
-The `ingressClasses` field allows you to specify which ingress classes are permitted for use within the tenant which helps in simulating ingress sharding 
+The `ingressClasses` field allows you to specify which ingress classes are permitted for use within the tenant which helps in simulating ingress sharding
 
 !!! note
     This field is applicable only for Kubernetes. For more information, refer to the [Ingress Sharding Guide](../tenant/how-to-guides/ingress-sharding.md).
