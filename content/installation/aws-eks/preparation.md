@@ -299,4 +299,4 @@ A wildcard certificate allows all applications under a given subdomain to use a 
 
 ## What's Next?
 
-All the required components have been installed and configured. Now MTO can be installed on the EKS Cluster. See [EKS MTO Installation Guide](../shared/installation.md)
+All the required components have been installed and configured. Now MTO can be installed on the EKS Cluster. See [EKS MTO Installation Guide](./installation.md)
