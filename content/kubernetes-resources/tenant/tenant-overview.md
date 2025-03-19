@@ -79,6 +79,10 @@ spec:
     allowed:
       - nginx
       - trafeik
+  imageRegistries:
+    allowed:
+      - ghcr.io
+      - docker.io
 ```
 
 ## Access Control
@@ -143,6 +147,8 @@ storageClasses:
 
 ## Ingress
 
+The `ingressClasses` field allows you to specify which ingress classes are permitted for use within the tenant which helps in simulating ingress sharding 
+
 !!! note
     This field is applicable only for Kubernetes. For more information, refer to the [Ingress Sharding Guide](../tenant/how-to-guides/ingress-sharding.md).
 
@@ -153,4 +159,17 @@ ingressClasses:
   allowed:
   - nginx
   - traefik
+```
+
+## Image Registries
+
+The `imageRegistries` field allows you to specify which container image registries are permitted for use within the tenant. This ensures that only trusted sources are used for pulling container images, enhancing security and compliance.
+
+* `allowed`: Specifies the registries that the tenant is authorized to use. Any attempt to pull images from registries not included in this list will be blocked. To allow the tenant to pull images without specifying a registry name, the empty string "" must be included in the allowed list, enabling access to the container runtime's default registry.
+
+```yaml
+imageRegistries:
+  allowed:
+    - ghcr.io
+    - docker.io
 ```
