@@ -8,6 +8,12 @@ The Capacity Planning feature in the app provides insights into resource usage a
 
 This part will allow users to group nodes based on their labels, to change how the data should be visualized for them.
 
+To add a node filter, user will be asked to provide a name and node labels in form of [MatchExpressions](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#resources-that-support-set-based-requirements).
+
+![add-node-filter](../images/add-node-filter.png)
+
+After creation, node filters will look like this.
+
 ![node-filters](../images/node-filtering-capacity-planning.png)
 
 On clicking any of the node filters, the data in the next two parts will change accordingly.
