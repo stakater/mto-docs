@@ -2828,18 +2828,27 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#a-tenant-requests-vs-cluster-capacity" class="md-nav__link">
+  <a href="#a-node-filtering-based-on-labels" class="md-nav__link">
     <span class="md-ellipsis">
-      a. Tenant Requests vs. Cluster Capacity
+      a. Node filtering based on Labels
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#b-quota-requests-vs-cluster-capacity" class="md-nav__link">
+  <a href="#b-tenant-requests-vs-cluster-capacity" class="md-nav__link">
     <span class="md-ellipsis">
-      b. Quota Requests vs. Cluster Capacity
+      b. Tenant Requests vs. Cluster Capacity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-quota-requests-vs-cluster-capacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      c. Quota Requests vs. Cluster Capacity
     </span>
   </a>
   
@@ -4148,18 +4157,27 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#a-tenant-requests-vs-cluster-capacity" class="md-nav__link">
+  <a href="#a-node-filtering-based-on-labels" class="md-nav__link">
     <span class="md-ellipsis">
-      a. Tenant Requests vs. Cluster Capacity
+      a. Node filtering based on Labels
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#b-quota-requests-vs-cluster-capacity" class="md-nav__link">
+  <a href="#b-tenant-requests-vs-cluster-capacity" class="md-nav__link">
     <span class="md-ellipsis">
-      b. Quota Requests vs. Cluster Capacity
+      b. Tenant Requests vs. Cluster Capacity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-quota-requests-vs-cluster-capacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      c. Quota Requests vs. Cluster Capacity
     </span>
   </a>
   
@@ -4210,18 +4228,22 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <h1 id="capacity-planning">Capacity Planning<a class="headerlink" href="#capacity-planning" title="Permanent link">#</a></h1>
 <p>The Capacity Planning feature in the app provides insights into resource usage and allocation across the cluster to help manage computing resources efficiently. It consists of three main sections:</p>
 <h2 id="1-graphical-representation">1. Graphical Representation<a class="headerlink" href="#1-graphical-representation" title="Permanent link">#</a></h2>
-<h3 id="a-tenant-requests-vs-cluster-capacity">a. Tenant Requests vs. Cluster Capacity<a class="headerlink" href="#a-tenant-requests-vs-cluster-capacity" title="Permanent link">#</a></h3>
+<h3 id="a-node-filtering-based-on-labels">a. Node filtering based on Labels<a class="headerlink" href="#a-node-filtering-based-on-labels" title="Permanent link">#</a></h3>
+<p>This part will allow users to group nodes based on their labels, to change how the data should be visualized for them.</p>
+<p>To add a node filter, user will be asked to provide a name and node labels in form of <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#resources-that-support-set-based-requirements">MatchExpressions</a>.</p>
+<p><a class="glightbox" href="../images/add-node-filter.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="add-node-filter" src="../images/add-node-filter.png" /></a></p>
+<p>After creation, node filters will look like this.</p>
+<p><a class="glightbox" href="../images/node-filtering-capacity-planning.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="node-filters" src="../images/node-filtering-capacity-planning.png" /></a></p>
+<p>On clicking any of the node filters, the data in the next two parts will change accordingly.</p>
+<p><a class="glightbox" href="../images/node-filtering-capacity-planning-selected.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="selected-node-filters" src="../images/node-filtering-capacity-planning-selected.png" /></a></p>
+<h3 id="b-tenant-requests-vs-cluster-capacity">b. Tenant Requests vs. Cluster Capacity<a class="headerlink" href="#b-tenant-requests-vs-cluster-capacity" title="Permanent link">#</a></h3>
 <p>This section displays bar charts that compare the current resource requests from tenants (like CPU and memory) with the total available cluster capacity. The charts visually represent how much of the cluster’s resources are currently being utilized versus what is available, helping identify over-utilization or under-utilization scenarios.</p>
-<h3 id="b-quota-requests-vs-cluster-capacity">b. Quota Requests vs. Cluster Capacity<a class="headerlink" href="#b-quota-requests-vs-cluster-capacity" title="Permanent link">#</a></h3>
+<h3 id="c-quota-requests-vs-cluster-capacity">c. Quota Requests vs. Cluster Capacity<a class="headerlink" href="#c-quota-requests-vs-cluster-capacity" title="Permanent link">#</a></h3>
 <p>Similar to the tenant requests, this section compares the quota requests against the total cluster capacity. It allows administrators to see if the quota assigned is in line with the cluster's actual capacity.</p>
 <p><a class="glightbox" href="../images/capacity_planning.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="capacity-planning" src="../images/capacity_planning.png" /></a></p>
 <h2 id="2-worker-pool-details">2. Worker-pool Details<a class="headerlink" href="#2-worker-pool-details" title="Permanent link">#</a></h2>
 <p>A detailed table lists the worker nodes in the cluster, displaying each node’s CPU and memory capacity along with various labels that indicate the node’s configuration and role (e.g., worker, infra). This information helps in identifying resource distribution across nodes and managing workloads accordingly.</p>
 <p><a class="glightbox" href="../images/worker_pool.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="worker-pool" src="../images/worker_pool.png" /></a></p>
-<p>The worker-pool labels dropdown is used to filter the table data and graph based on the selected labels. If the selected label is common amongst the worker nodes, the filtered result is a list of all the worker nodes that contain the selected labels and update graph for filtered worker nodes.</p>
-<p>If the label is specific for any worker node, selecting the label will filter the specific worker nodes containing the label and update the graph based on the filtered results.</p>
-<p>To clear the filter you can remove applied labels and choose <strong>Apply Filter</strong> action. If no label is selected, it will ask you to <strong>PROCEED</strong> or <strong>CANCEL</strong>. If you choose to proceed the filters will be cleared returning the table and graph to default view.</p>
-<p><a class="glightbox" href="../images/worker_pool_filtered.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="worker-pool-filtered" src="../images/worker_pool_filtered.png" /></a></p>
 <h2 id="3-request-details">3. Request Details<a class="headerlink" href="#3-request-details" title="Permanent link">#</a></h2>
 <p>This table provides a breakdown of the resource requests from different tenants, displaying both the requested resources (CPU and memory) and the allocated quotas. It helps to monitor if tenant requests align with the quotas set for each tenant, ensuring optimal resource management.</p>
 <p><a class="glightbox" href="../images/request_details.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="request-details" src="../images/request_details.png" /></a></p>
