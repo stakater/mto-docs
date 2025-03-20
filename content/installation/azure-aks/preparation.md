@@ -79,7 +79,6 @@ az aks create --resource-group "<RESOURCE_GROUP_NAME>" --name "<CLUSTER_NAME>" \
               --generate-ssh-keys
 ```
 
-
 Set the kubernetes context to the specified cluster.
 
 ```bash
