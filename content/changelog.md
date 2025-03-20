@@ -1,5 +1,36 @@
 # Changelog
 
+## v1.2.x
+
+### v1.2.0
+
+- Newly released on Redhat OperatorHub for OpenShift 4.17 and 4.18 as well.
+
+#### Features
+
+- Added the option to select [Ingress class per tenant](./kubernetes-resources/tenant/tenant-overview.md#ingress) via Tenant CR
+- Added CRUD for [Quota](./console/quotas.md) and [Tenant](./console/tenants.md) CR via console.
+- Added support for [AWS CloudCosts integration in Opencost](./integrations/aws-pricing.md)
+- Added support for [node label filtering on Capacity Planning page](./console/capacity-planning.md)
+
+#### Enhancements
+
+- Addition of percentage column in Cost Analysis data for better insights.
+- Keycloak upgrade from `24.0.5` to `25.0.6`.
+- Minor dependencies upgrade.
+
+#### Pre-Upgrade Checklist
+
+Before upgrading to v1.2.0, perform the following steps:
+
+- Disable `console` in the integration config.
+
+#### Post-Upgrade Checklist
+
+- Enable `console` in the integration config. [Link](./installation/openshift.md#enabling-console)
+- Delete `PersistentVolumeClaim` named `postgresql-data-mto-postgresql-0` and Pod named `mto-postgresql-0` for keycloak to reconfigure itself on the newer version.
+- Delete all pods in `multi-tenant-operator` namespace having `controller` in their name so data can be populated into the console again.
+
 ## v1.1.x
 
 ### v1.1.0
