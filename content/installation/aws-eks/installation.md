@@ -111,4 +111,4 @@ Dashboard will open after the successful login. Currently we don't have any tena
 
 ## What's Next
 
-Now lets [create our first tenant on AKS](./validation.md).
+Now lets [create our first tenant on EKS](./validation.md).
