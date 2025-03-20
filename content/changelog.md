@@ -4,7 +4,7 @@
 
 ### v1.2.0
 
-- Newly released on Redhat OperatorHub for OpenShift 4.17 and 4.18 as well.
+- Newly released on RedHat OperatorHub for OpenShift 4.17 and 4.18 as well.
 
 #### Features
 
@@ -29,7 +29,7 @@ Before upgrading to v1.2.0, perform the following steps:
 
 - Enable `console` in the integration config. [Link](./installation/openshift.md#enabling-console)
 - Delete `PersistentVolumeClaim` named `postgresql-data-mto-postgresql-0` and Pod named `mto-postgresql-0` for keycloak to reconfigure itself on the newer version.
-- Delete all pods in `multi-tenant-operator` namespace having `controller` in their name so data can be populated into the console again.
+- Delete all pods in `multi-tenant-operator` namespace having `controller` in their name, so data can be populated into the console again.
 
 ## v1.1.x
 
