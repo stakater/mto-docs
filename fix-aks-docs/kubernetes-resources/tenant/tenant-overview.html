@@ -4455,7 +4455,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><code>allowed</code> can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the list. If <code>storageClass</code> is not specified for a PersistentVolumeClaim, the default StorageClass (if set) will be evaluated as any other class name. If the default StorageClass is not set, the evaluation will be deferred until a default StorageClass is set. <code>""</code> is evaluated as any other class name, so if you are using it to manually bind to PersistentVolumes while using StorageClass filtering you need to add  an empty string <code>""</code> to the tenants allow-list or it will get filtered.</li>
 </ul>
 <h2 id="ingress">Ingress<a class="headerlink" href="#ingress" title="Permanent link">#</a></h2>
-<p>The <code>ingressClasses</code> field allows you to specify which ingress classes are permitted for use within the tenant which helps in simulating ingress sharding</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This field is applicable only for Kubernetes. For more information, refer to the <a href="how-to-guides/ingress-sharding.html">Ingress Sharding Guide</a>.</p>
