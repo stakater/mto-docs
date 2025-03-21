@@ -4429,7 +4429,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="cluster-requirements">Cluster Requirements<a class="headerlink" href="#cluster-requirements" title="Permanent link">#</a></h2>
 <p>An AKS cluster with the following components:</p>
 <ul>
-<li>A default storage class</li>
 <li>An Ingress controller</li>
 <li>Valid certificates for MTO Gateway, MTO Console, and MTO Keycloak</li>
 </ul>
@@ -4472,9 +4471,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">              </span>--enable-aad<span class="w"> </span>--aad-admin-group-object-ids<span class="w"> </span><span class="s2">&quot;&lt;ADMIN_GROUP_ID&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">              </span>--generate-ssh-keys
 </code></pre></div>
+<p>Run the following command to install Azure AKS CLI to install <code>kubectl</code> and other dependencies if they are not installed</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>aks<span class="w"> </span>install-cli
+</code></pre></div>
 <p>Set the kubernetes context to the specified cluster.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Update the current context</span>
-az<span class="w"> </span>aks<span class="w"> </span>get-credentials<span class="w"> </span>--resource-group<span class="w"> </span><span class="s2">&quot;&lt;RESOURCE_GROUP_NAME&gt;&quot;</span><span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;&lt;CLUSTER_NAME&gt;&quot;</span><span class="w"> </span>--admin<span class="sb">```</span>
+az<span class="w"> </span>aks<span class="w"> </span>get-credentials<span class="w"> </span>--resource-group<span class="w"> </span><span class="s2">&quot;&lt;RESOURCE_GROUP_NAME&gt;&quot;</span><span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;&lt;CLUSTER_NAME&gt;&quot;</span><span class="w"> </span>--admin
 </code></pre></div>
 <h3 id="install-ingress-controller">Install Ingress Controller<a class="headerlink" href="#install-ingress-controller" title="Permanent link">#</a></h3>
 <p>To install nginx Ingress Controller, run the following command:</p>
@@ -4543,7 +4545,7 @@ az<span class="w"> </span>aks<span class="w"> </span>get-credentials<span class=
 <li>
 <p>Retrieve the Ingress Controller's External IP
     Run the following command to get the external IP of the nginx Ingress Controller:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>ingress-nginx-controller<span class="w"> </span>-n<span class="w"> </span>ingress-nginx<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.status.loadBalancer.ingress[0].hostname}&quot;</span>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>ingress-nginx-controller<span class="w"> </span>-n<span class="w"> </span>ingress-nginx<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.status.loadBalancer.ingress[0].ip}&quot;</span>
 </code></pre></div>
 <p>If the hostname is not available, wait for a few minutes and re-run the command.</p>
 </li>
@@ -4566,18 +4568,19 @@ az<span class="w"> </span>aks<span class="w"> </span>get-credentials<span class=
 <li><code>&lt;EXTERNAL_IP&gt;</code> – External IP retrieved in Step 1</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;Comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Update wildcard DNS record to point to NGINX Ingress ELB&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Update wildcard DNS record to point to AKS Ingress Controller&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;Changes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UPSERT&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;ResourceRecordSet&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*.&lt;FULL_SUBDOMAIN&gt;&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;AliasTarget&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;HostedZoneId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;HOSTED_ZONE_LB_ID&gt;&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;DNSName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;EXTERNAL_IP&gt;&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;EvaluateTargetHealth&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
-<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">&quot;TTL&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ResourceRecords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;EXTERNAL_IP&gt;&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">]</span>
@@ -4619,9 +4622,9 @@ az<span class="w"> </span>aks<span class="w"> </span>get-credentials<span class=
 <span class="w">  </span><span class="nt">issuerRef</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">letsencrypt-production</span>
 <span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIssuer</span>
-<span class="w">  </span><span class="nt">commonName</span><span class="p">:</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.&lt;FULL_SUBDOMAIN&gt;</span>
+<span class="w">  </span><span class="nt">commonName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*.&lt;FULL_SUBDOMAIN&gt;&quot;</span>
 <span class="w">  </span><span class="nt">dnsNames</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.&lt;FULL_SUBDOMAIN&gt;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*.&lt;FULL_SUBDOMAIN&gt;&quot;</span>
 </code></pre></div>
 </li>
 <li>

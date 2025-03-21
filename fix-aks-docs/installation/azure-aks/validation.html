@@ -4537,7 +4537,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">                    </span>--password<span class="w"> </span><span class="s2">&quot;&lt;PASSWORD&gt;&quot;</span><span class="w"> </span>
 </code></pre></div>
 <p>Fetch the user id with following command</p>
-<div class="highlight"><pre><span></span><code><span class="nv">ad_user_id</span><span class="o">=</span><span class="k">$(</span>az<span class="w"> </span>ad<span class="w"> </span>user<span class="w"> </span>show<span class="w"> </span>--id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$username</span><span class="s2">&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;id&quot;</span><span class="w"> </span>--output<span class="w"> </span>tsv<span class="k">)</span>
+<div class="highlight"><pre><span></span><code><span class="nv">ad_user_id</span><span class="o">=</span><span class="k">$(</span>az<span class="w"> </span>ad<span class="w"> </span>user<span class="w"> </span>show<span class="w"> </span>--id<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;id&quot;</span><span class="w"> </span>--output<span class="w"> </span>tsv<span class="k">)</span>
 </code></pre></div>
 <p>Add user to <code>logistics</code> group</p>
 <div class="highlight"><pre><span></span><code>az<span class="w"> </span>ad<span class="w"> </span>group<span class="w"> </span>member<span class="w"> </span>add<span class="w"> </span>--group<span class="w"> </span><span class="s2">&quot;logistics&quot;</span><span class="w"> </span>--member-id<span class="w"> </span><span class="s2">&quot;&lt;USER_ID&gt;&quot;</span>
@@ -4655,8 +4655,11 @@ retail-build<span class="w">            </span>Active<span class="w">   </span>5
 </code></pre></div>
 <h2 id="6-validate-falcon-permissions">6. Validate Falcon permissions<a class="headerlink" href="#6-validate-falcon-permissions" title="Permanent link">#</a></h2>
 <h3 id="61-switch-to-falcon">6.1. Switch to falcon<a class="headerlink" href="#61-switch-to-falcon" title="Permanent link">#</a></h3>
-<p>Run the Azure CLI login command to interactively login as <code>bear@nordmart.com</code>. Running the following command will open browser for interactive login</p>
+<p>Run the Azure CLI login command to interactively login as <code>falcon@nordmart.com</code>. Running the following command will open browser for interactive login</p>
 <div class="highlight"><pre><span></span><code>az<span class="w"> </span>login
+</code></pre></div>
+<p>Run the following command to update the kubecontext with logged in user</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>aks<span class="w"> </span>get-credentials<span class="w"> </span>--resource-group<span class="w"> </span><span class="s2">&quot;&lt;RESOURCE_GROUP_NAME&gt;&quot;</span><span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;&lt;CLUSTER_NAME&gt;&quot;</span>
 </code></pre></div>
 <h3 id="62-check-cli-permissions">6.2. Check CLI permissions<a class="headerlink" href="#62-check-cli-permissions" title="Permanent link">#</a></h3>
 <p>We will now try to deploy a pod from user <code>falcon@nordmart.com</code> in its tenant namespace <code>logistics-dev</code></p>
