@@ -190,7 +190,7 @@ Run the Azure CLI login command to interactively login as `falcon@nordmart.com`.
 az login
 ```
 
-Run the following command to update the kubecontext with logged in user
+Run the following command to update the `kubectl` context with logged-in user
 
 ```bash
 az aks get-credentials --resource-group "<RESOURCE_GROUP_NAME>" --name "<CLUSTER_NAME>"
