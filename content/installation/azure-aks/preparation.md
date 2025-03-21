@@ -6,7 +6,6 @@ This document provides a detailed walk through of the preparation steps required
 
 An AKS cluster with the following components:
 
-- A default storage class
 - An Ingress controller
 - Valid certificates for MTO Gateway, MTO Console, and MTO Keycloak
 
@@ -79,11 +78,17 @@ az aks create --resource-group "<RESOURCE_GROUP_NAME>" --name "<CLUSTER_NAME>" \
               --generate-ssh-keys
 ```
 
+Run the following command to install Azure AKS CLI to install `kubectl` and other dependencies if they are not installed
+
+```bash
+az aks install-cli
+```
+
 Set the kubernetes context to the specified cluster.
 
 ```bash
 # Update the current context
-az aks get-credentials --resource-group "<RESOURCE_GROUP_NAME>" --name "<CLUSTER_NAME>" --admin```
+az aks get-credentials --resource-group "<RESOURCE_GROUP_NAME>" --name "<CLUSTER_NAME>" --admin
 ```
 
 ### Install Ingress Controller
@@ -170,7 +175,7 @@ To ensure proper routing for applications, you need to create a wildcard DNS rec
     Run the following command to get the external IP of the nginx Ingress Controller:
 
     ```bash
-    kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath="{.status.loadBalancer.ingress[0].hostname}"
+    kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath="{.status.loadBalancer.ingress[0].ip}"
     ```
 
     If the hostname is not available, wait for a few minutes and re-run the command.
@@ -195,18 +200,19 @@ To ensure proper routing for applications, you need to create a wildcard DNS rec
 
     ```json
     {
-      "Comment": "Update wildcard DNS record to point to NGINX Ingress ELB",
+      "Comment": "Update wildcard DNS record to point to AKS Ingress Controller",
       "Changes": [
         {
           "Action": "UPSERT",
           "ResourceRecordSet": {
             "Name": "*.<FULL_SUBDOMAIN>",
             "Type": "A",
-            "AliasTarget": {
-              "HostedZoneId": "<HOSTED_ZONE_LB_ID>",
-              "DNSName": "<EXTERNAL_IP>",
-              "EvaluateTargetHealth": false
-            }
+            "TTL": 300,
+            "ResourceRecords": [
+              {
+                "Value": "<EXTERNAL_IP>"
+              }
+            ]
           }
         }
       ]
@@ -252,9 +258,9 @@ A wildcard certificate allows all applications under a given subdomain to use a 
       issuerRef:
         name: letsencrypt-production
         kind: ClusterIssuer
-      commonName: *.<FULL_SUBDOMAIN>
+      commonName: "*.<FULL_SUBDOMAIN>"
       dnsNames:
-      - *.<FULL_SUBDOMAIN>
+      - "*.<FULL_SUBDOMAIN>"
     ```
 
 1. Apply the certificate configuration using the following command:

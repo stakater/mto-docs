@@ -38,7 +38,7 @@ az ad user create --display-name "Golden Falcon" \
 Fetch the user id with following command
 
 ```bash
-ad_user_id=$(az ad user show --id "$username" --query "id" --output tsv)
+ad_user_id=$(az ad user show --id "falcon@nordmart.com" --query "id" --output tsv)
 ```
 
 Add user to `logistics` group
@@ -184,10 +184,16 @@ retail-build            Active   5s
 
 ### 6.1. Switch to falcon
 
-Run the Azure CLI login command to interactively login as `bear@nordmart.com`. Running the following command will open browser for interactive login
+Run the Azure CLI login command to interactively login as `falcon@nordmart.com`. Running the following command will open browser for interactive login
 
 ```bash
 az login
+```
+
+Run the following command to update the kubecontext with logged in user
+
+```bash
+az aks get-credentials --resource-group "<RESOURCE_GROUP_NAME>" --name "<CLUSTER_NAME>"
 ```
 
 ### 6.2. Check CLI permissions

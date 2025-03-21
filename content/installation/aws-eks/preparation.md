@@ -278,9 +278,9 @@ A wildcard certificate allows all applications under a given subdomain to use a 
       issuerRef:
         name: letsencrypt-production
         kind: ClusterIssuer
-      commonName: *.<FULL_SUBDOMAIN>
+      commonName: "*.<FULL_SUBDOMAIN>"
       dnsNames:
-      - *.<FULL_SUBDOMAIN>
+      - "*.<FULL_SUBDOMAIN>"
     ```
 
 1. Apply the certificate configuration using the following command:
