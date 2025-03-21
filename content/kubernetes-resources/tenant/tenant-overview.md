@@ -79,6 +79,10 @@ spec:
     allowed:
       - nginx
       - trafeik
+  
+  podPriorityClasses:
+    allowed:
+      - high-priority
 ```
 
 ## Access Control
@@ -153,4 +157,24 @@ ingressClasses:
   allowed:
   - nginx
   - traefik
+```
+
+## Pod Priority Classes
+
+* `allowed` restricts a tenant to creating pods only with the specified `priorityClasse`. The empty string `""` is treated like any other `priorityClass` name. If you use it while filtering PodPriorityClasses, you must include `""` in the tenant's allow-list, or it will be filtered out. If no PodPriorityClass is specified for a resource, it will be treated as `""`.
+
+The following resources will be watched for PodPriorityClasses:
+
+* Pods
+* Deployments
+* StatefulSets
+* ReplicaSets
+* Jobs
+* CronJobs
+* Daemonsets
+
+```yaml
+podPriorityClasses:
+  allowed:
+    - high-priority
 ```
