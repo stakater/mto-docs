@@ -18,7 +18,7 @@ More details on [Tenant](../kubernetes-resources/tenant/tenant-overview.md)
 
 Multi Tenant Operator allows admins/users to define templates for namespaces, so that others can instantiate these templates to provision namespaces with batteries loaded. A template could pre-populate a namespace for certain use cases or with basic tooling required. Templates allow you to define Kubernetes manifests, Helm charts, and more to be applied when the template is used to create a namespace.
 
-It also allows the parameterization of these templates for flexibility and ease of use. It also provides the option to enforce the presence of templates in one tenant's or all tenants' namespaces for configuring secure defaults.
+It also allows the parametrization of these templates for flexibility and ease of use. It also provides the option to enforce the presence of templates in one tenant's or all tenants' namespaces for configuring secure defaults.
 
 Common use cases for namespace templates may be:
 
