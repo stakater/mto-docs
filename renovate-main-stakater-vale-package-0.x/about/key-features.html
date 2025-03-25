@@ -2183,7 +2183,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
           <li class="md-nav__item">
   <a href="#templates-and-template-distribution" class="md-nav__link">
     <span class="md-ellipsis">
-      Templates and Template distribution
+      Templates and Template Distribution
     </span>
   </a>
   
@@ -2256,27 +2256,27 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#hashicorp-vault-multitenancy" class="md-nav__link">
+  <a href="#hashicorp-vault-multi-tenancy" class="md-nav__link">
     <span class="md-ellipsis">
-      Hashicorp Vault Multitenancy
+      Hashicorp Vault Multi-tenancy
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#argocd-multitenancy" class="md-nav__link">
+  <a href="#argocd-multi-tenancy" class="md-nav__link">
     <span class="md-ellipsis">
-      ArgoCD Multitenancy
+      ArgoCD Multi-tenancy
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#mattermost-multitenancy" class="md-nav__link">
+  <a href="#mattermost-multi-tenancy" class="md-nav__link">
     <span class="md-ellipsis">
-      Mattermost Multitenancy
+      Mattermost Multi-tenancy
     </span>
   </a>
   
@@ -2373,9 +2373,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#preventing-clusters-sprawl" class="md-nav__link">
+  <a href="#preventing-cluster-sprawl" class="md-nav__link">
     <span class="md-ellipsis">
-      Preventing Clusters Sprawl
+      Preventing Cluster Sprawl
     </span>
   </a>
   
@@ -4343,7 +4343,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
           <li class="md-nav__item">
   <a href="#templates-and-template-distribution" class="md-nav__link">
     <span class="md-ellipsis">
-      Templates and Template distribution
+      Templates and Template Distribution
     </span>
   </a>
   
@@ -4416,27 +4416,27 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#hashicorp-vault-multitenancy" class="md-nav__link">
+  <a href="#hashicorp-vault-multi-tenancy" class="md-nav__link">
     <span class="md-ellipsis">
-      Hashicorp Vault Multitenancy
+      Hashicorp Vault Multi-tenancy
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#argocd-multitenancy" class="md-nav__link">
+  <a href="#argocd-multi-tenancy" class="md-nav__link">
     <span class="md-ellipsis">
-      ArgoCD Multitenancy
+      ArgoCD Multi-tenancy
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#mattermost-multitenancy" class="md-nav__link">
+  <a href="#mattermost-multi-tenancy" class="md-nav__link">
     <span class="md-ellipsis">
-      Mattermost Multitenancy
+      Mattermost Multi-tenancy
     </span>
   </a>
   
@@ -4533,9 +4533,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#preventing-clusters-sprawl" class="md-nav__link">
+  <a href="#preventing-cluster-sprawl" class="md-nav__link">
     <span class="md-ellipsis">
-      Preventing Clusters Sprawl
+      Preventing Cluster Sprawl
     </span>
   </a>
   
@@ -4579,63 +4579,63 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="core-features">Core Features<a class="headerlink" href="#core-features" title="Permanent link">#</a></h2>
 <h3 id="kubernetes-multitenancy">Kubernetes Multitenancy<a class="headerlink" href="#kubernetes-multitenancy" title="Permanent link">#</a></h3>
 <p>RBAC is one of the most complicated and error-prone parts of Kubernetes. With Multi Tenant Operator, you can rest assured that RBAC is configured with the "least privilege" mindset and all rules are kept up-to-date with zero manual effort.</p>
-<p>Multi Tenant Operator binds existing ClusterRoles to the Tenant's Namespaces used for managing access to the Namespaces and the resources they contain. You can also modify the default roles or create new roles to have full control and customize access control for your users and teams.</p>
-<p>Multi Tenant Operator is also able to leverage existing groups in Kubernetes and OpenShift, or external groups synced from 3rd party identity management systems, for maintaining Tenant membership in your organization's current user management system.</p>
+<p>Multi Tenant Operator binds existing ClusterRoles to the Tenant's namespaces used for managing access to the namespaces and the resources they contain. You can also modify the default roles or create new roles to have full control and customize access control for your users and teams.</p>
+<p>Multi Tenant Operator is also able to leverage existing groups in Kubernetes and OpenShift, or external groups synced from third-party identity management systems, for maintaining tenant membership in your organization's current user management system.</p>
 <p>More details on <a href="../kubernetes-resources/tenant/tenant-overview.html">Tenant</a></p>
-<h3 id="templates-and-template-distribution">Templates and Template distribution<a class="headerlink" href="#templates-and-template-distribution" title="Permanent link">#</a></h3>
-<p>Multi Tenant Operator allows admins/users to define templates for namespaces, so that others can instantiate these templates to provision namespaces with batteries loaded. A template could pre-populate a namespace for certain use cases or with basic tooling required. Templates allow you to define Kubernetes manifests, Helm chart and more to be applied when the template is used to create a namespace.</p>
-<p>It also allows the parameterizing of these templates for flexibility and ease of use. It also provides the option to enforce the presence of templates in one tenant's or all the tenants' namespaces for configuring secure defaults.</p>
+<h3 id="templates-and-template-distribution">Templates and Template Distribution<a class="headerlink" href="#templates-and-template-distribution" title="Permanent link">#</a></h3>
+<p>Multi Tenant Operator allows admins/users to define templates for namespaces, so that others can instantiate these templates to provision namespaces with batteries loaded. A template could pre-populate a namespace for certain use cases or with basic tooling required. Templates allow you to define Kubernetes manifests, Helm charts, and more to be applied when the template is used to create a namespace.</p>
+<p>It also allows the parametrization of these templates for flexibility and ease of use. It also provides the option to enforce the presence of templates in one tenant's or all tenants' namespaces for configuring secure defaults.</p>
 <p>Common use cases for namespace templates may be:</p>
 <ul>
-<li>Adding networking policies for multitenancy</li>
+<li>Adding networking policies for multi-tenancy</li>
 <li>Adding development tooling to a namespace</li>
 <li>Deploying pre-populated databases with test data</li>
 <li>Injecting new namespaces with optional credentials such as image pull secrets</li>
 </ul>
 <p>More details on <a href="../kubernetes-resources/template/how-to-guides/deploying-templates.html">Distributing Template Resources</a></p>
 <h3 id="resource-management">Resource Management<a class="headerlink" href="#resource-management" title="Permanent link">#</a></h3>
-<p>Multi Tenant Operator provides a mechanism for defining Resource Quotas at the tenant scope, meaning all namespaces belonging to a particular tenant share the defined quota, which is why you are able to safely enable dev teams to self serve their namespaces whilst being confident that they can only use the resources allocated based on budget and business needs.</p>
+<p>Multi Tenant Operator provides a mechanism for defining Resource Quotas at the tenant scope, meaning all namespaces belonging to a particular tenant share the defined quota. This enables you to safely enable dev teams to self-serve their namespaces while being confident that they can only use the resources allocated based on budget and business needs.</p>
 <p>More details on <a href="../kubernetes-resources/quota.html">Quota</a></p>
 <h2 id="finops-features">FinOps Features<a class="headerlink" href="#finops-features" title="Permanent link">#</a></h2>
 <h3 id="showback">Showback<a class="headerlink" href="#showback" title="Permanent link">#</a></h3>
-<p>The showback functionality in Multi Tenant Operator (MTO) Console is a significant feature designed to enhance the management of resources and costs in multi-tenant Kubernetes environments. This feature focuses on accurately tracking the usage of resources by each tenant, and/or namespace, enabling organizations to monitor and optimize their expenditures.
-Furthermore, this functionality supports financial planning and budgeting by offering a clear view of operational costs associated with each tenant. This can be particularly beneficial for organizations that chargeback internal departments or external clients based on resource usage, ensuring that billing is fair and reflective of actual consumption.</p>
+<p>The showback functionality in Multi Tenant Operator (MTO) Console is a significant feature designed to enhance the management of resources and costs in multi-tenant Kubernetes environments. This feature focuses on accurately tracking the usage of resources by each tenant and/or namespace, enabling organizations to monitor and optimize their expenditures.</p>
+<p>Furthermore, this functionality supports financial planning and budgeting by offering a clear view of operational costs associated with each tenant. This can be particularly beneficial for organizations that chargeback internal departments or external clients based on resource usage, ensuring that billing is fair and reflective of actual consumption.</p>
 <p>More details on <a href="../console/showback.html">Showback</a></p>
 <h3 id="hibernation">Hibernation<a class="headerlink" href="#hibernation" title="Permanent link">#</a></h3>
-<p>Multi Tenant Operator can downscale Deployments and StatefulSets in a tenant's Namespace according to a defined  sleep schedule. The Deployments and StatefulSets are brought back to their required replicas according to the provided wake schedule.</p>
+<p>Multi Tenant Operator can downscale Deployments and StatefulSets in a tenant's namespace according to a defined sleep schedule. The Deployments and StatefulSets are brought back to their required replicas according to the provided wake schedule.</p>
 <p>More details on <a href="../kubernetes-resources/tenant/how-to-guides/hibernate-tenant.html">Hibernation</a> and <a href="../kubernetes-resources/resource-supervisor.html">ResourceSupervisor</a></p>
 <h3 id="capacity-planning">Capacity Planning<a class="headerlink" href="#capacity-planning" title="Permanent link">#</a></h3>
 <p>Provides tools to forecast and allocate resources effectively, ensuring optimal usage and preventing over-provisioning.</p>
 <h2 id="integration-features">Integration Features<a class="headerlink" href="#integration-features" title="Permanent link">#</a></h2>
-<h3 id="hashicorp-vault-multitenancy">Hashicorp Vault Multitenancy<a class="headerlink" href="#hashicorp-vault-multitenancy" title="Permanent link">#</a></h3>
-<p>Multi Tenant Operator extends the tenants permission model to Hashicorp Vault where it can create Vault paths and greatly ease the overhead of managing RBAC in Vault. Tenant users can manage their own secrets without the concern of someone else having access to their Vault paths.</p>
-<p>More details on <a href="../integrations/vault/vault.html">Vault Multitenancy</a></p>
-<h3 id="argocd-multitenancy">ArgoCD Multitenancy<a class="headerlink" href="#argocd-multitenancy" title="Permanent link">#</a></h3>
-<p>Multi Tenant Operator is not only providing strong Multi Tenancy for the Kubernetes internals but also extends the tenants permission model to ArgoCD were it can provision AppProjects and Allowed Repositories for your tenants greatly ease the overhead of managing RBAC in ArgoCD.</p>
-<p>More details on <a href="../integrations/argocd.html">ArgoCD Multitenancy</a></p>
-<h3 id="mattermost-multitenancy">Mattermost Multitenancy<a class="headerlink" href="#mattermost-multitenancy" title="Permanent link">#</a></h3>
-<p>Multi Tenant Operator can manage Mattermost to create Teams for tenant users. All tenant users get a unique team and a list of predefined channels gets created. When a user is removed from the tenant, the user is also removed from the Mattermost team corresponding to tenant.</p>
+<h3 id="hashicorp-vault-multi-tenancy">Hashicorp Vault Multi-tenancy<a class="headerlink" href="#hashicorp-vault-multi-tenancy" title="Permanent link">#</a></h3>
+<p>Multi Tenant Operator extends the tenant's permission model to Hashicorp Vault where it can create Vault paths and greatly ease the overhead of managing RBAC in Vault. Tenant users can manage their own secrets without the concern of someone else having access to their Vault paths.</p>
+<p>More details on <a href="../integrations/vault/vault.html">Vault Multi-tenancy</a></p>
+<h3 id="argocd-multi-tenancy">ArgoCD Multi-tenancy<a class="headerlink" href="#argocd-multi-tenancy" title="Permanent link">#</a></h3>
+<p>Multi Tenant Operator not only provides strong multi-tenancy for the Kubernetes internals but also extends the tenant's permission model to ArgoCD where it can provision AppProjects and Allowed Repositories for your tenants, greatly easing the overhead of managing RBAC in ArgoCD.</p>
+<p>More details on <a href="../integrations/argocd.html">ArgoCD Multi-tenancy</a></p>
+<h3 id="mattermost-multi-tenancy">Mattermost Multi-tenancy<a class="headerlink" href="#mattermost-multi-tenancy" title="Permanent link">#</a></h3>
+<p>Multi Tenant Operator can manage Mattermost to create teams for tenant users. All tenant users get a unique team and a list of predefined channels gets created. When a user is removed from the tenant, the user is also removed from the Mattermost team corresponding to the tenant.</p>
 <p>More details on <a href="../integrations/mattermost.html">Mattermost</a></p>
 <h2 id="developer-and-platform-productivity-features">Developer and Platform Productivity Features<a class="headerlink" href="#developer-and-platform-productivity-features" title="Permanent link">#</a></h2>
 <h3 id="mto-console">MTO Console<a class="headerlink" href="#mto-console" title="Permanent link">#</a></h3>
-<p>Multi Tenant Operator Console is a comprehensive user interface designed for both administrators and tenant users to manage multi-tenant environments. The MTO Console simplifies the complexity involved in handling various aspects of tenants and their related resources. It serves as a centralized monitoring hub, offering insights into the current state of tenants, namespaces, templates and quotas. It is designed to provide a quick summary/snapshot of MTO's status and facilitates easier interaction with various resources such as tenants, namespaces, templates, and quotas.</p>
+<p>Multi Tenant Operator Console is a comprehensive user interface designed for both administrators and tenant users to manage multi-tenant environments. The MTO Console simplifies the complexity involved in handling various aspects of tenants and their related resources. It serves as a centralized monitoring hub, offering insights into the current state of tenants, namespaces, templates, and quotas. It is designed to provide a quick summary/snapshot of MTO's status and facilitates easier interaction with various resources such as tenants, namespaces, templates, and quotas.</p>
 <p>More details on <a href="../console/overview.html">Console</a></p>
 <h3 id="remote-development-namespaces">Remote Development Namespaces<a class="headerlink" href="#remote-development-namespaces" title="Permanent link">#</a></h3>
-<p>Multi Tenant Operator can be configured to automatically provision a namespace in the cluster for every member of the specific tenant, that will also be preloaded with any selected templates and consume the same pool of resources from the tenants quota creating safe remote dev namespaces that teams can use as scratch namespace for rapid prototyping and development. So, every developer gets a Kubernetes-based cloud development environment that feel like working on localhost.</p>
+<p>Multi Tenant Operator can be configured to automatically provision a namespace in the cluster for every member of the specific tenant. This namespace will be preloaded with any selected templates and consume the same pool of resources from the tenant's quota, creating safe remote dev namespaces that teams can use as scratch namespaces for rapid prototyping and development. So, every developer gets a Kubernetes-based cloud development environment that feels like working on localhost.</p>
 <p>More details on <a href="../kubernetes-resources/tenant/how-to-guides/create-sandbox.html">Sandboxes</a></p>
 <h2 id="security-features">Security Features<a class="headerlink" href="#security-features" title="Permanent link">#</a></h2>
 <h3 id="cross-namespace-resource-distribution">Cross Namespace Resource Distribution<a class="headerlink" href="#cross-namespace-resource-distribution" title="Permanent link">#</a></h3>
-<p>Multi Tenant Operator supports cloning of secrets and configmaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide reference to secrets and configmaps. It uses a template group instance to distribute those secrets and namespaces in matching namespaces, even if namespaces belong to different tenants. If template instance is used then the resources will only be mapped if namespaces belong to same tenant.</p>
+<p>Multi Tenant Operator supports cloning of secrets and configmaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide references to secrets and configmaps. It uses a template group instance to distribute those secrets and configmaps in matching namespaces, even if namespaces belong to different tenants. If a template instance is used, then the resources will only be mapped if namespaces belong to the same tenant.</p>
 <p>More details on <a href="../kubernetes-resources/template/how-to-guides/copying-resources.html">Copying Secrets and Configmaps</a></p>
 <h3 id="self-service">Self-Service<a class="headerlink" href="#self-service" title="Permanent link">#</a></h3>
 <p>With Multi Tenant Operator, you can empower your users to safely provision namespaces for themselves and their teams (typically mapped to SSO groups). Team-owned namespaces and the resources inside them count towards the team's quotas rather than the user's individual limits and are automatically shared with all team members according to the access rules you configure in Multi Tenant Operator.</p>
-<p>Also, by leveraging Multi Tenant Operator's templating mechanism, namespaces can be provisioned and automatically pre-populated with any kind of resource or multiple resources such as network policies, docker pull secrets or even Helm charts etc</p>
+<p>Also, by leveraging Multi Tenant Operator's templating mechanism, namespaces can be provisioned and automatically pre-populated with any kind of resource or multiple resources such as network policies, docker pull secrets, or even Helm charts, etc.</p>
 <h2 id="operational-features">Operational Features<a class="headerlink" href="#operational-features" title="Permanent link">#</a></h2>
 <h3 id="everything-as-codegitops-ready">Everything as Code/GitOps Ready<a class="headerlink" href="#everything-as-codegitops-ready" title="Permanent link">#</a></h3>
-<p>Multi Tenant Operator is designed and built to be 100% Kubernetes-native, and to be configured and managed the same familiar way as native Kubernetes resources so it's perfect for modern companies that are dedicated to GitOps as it is fully configurable using Custom Resources.</p>
-<h3 id="preventing-clusters-sprawl">Preventing Clusters Sprawl<a class="headerlink" href="#preventing-clusters-sprawl" title="Permanent link">#</a></h3>
-<p>As companies look to further harness the power of cloud-native, they are adopting container technologies at rapid speed, increasing the number of clusters and workloads. As the number of Kubernetes clusters grows, this is an increasing work for the Ops team. When it comes to patching security issues or upgrading clusters, teams are doing five times the amount of work.</p>
-<p>With Multi Tenant Operator teams can share a single cluster with multiple teams, groups of users, or departments by saving operational and management efforts. This prevents you from Kubernetes cluster sprawl.</p>
+<p>Multi Tenant Operator is designed and built to be 100% Kubernetes-native, and to be configured and managed the same familiar way as native Kubernetes resources, so it's perfect for modern companies that are dedicated to GitOps as it is fully configurable using Custom Resources.</p>
+<h3 id="preventing-cluster-sprawl">Preventing Cluster Sprawl<a class="headerlink" href="#preventing-cluster-sprawl" title="Permanent link">#</a></h3>
+<p>As companies look to further harness the power of cloud-native, they are adopting container technologies at rapid speed, increasing the number of clusters and workloads. As the number of Kubernetes clusters grows, this is an increasing workload for the Ops team. When it comes to patching security issues or upgrading clusters, teams are doing five times the amount of work.</p>
+<p>With Multi Tenant Operator, teams can share a single cluster with multiple teams, groups of users, or departments by saving operational and management efforts. This prevents you from Kubernetes cluster sprawl.</p>
 <h3 id="native-experience">Native Experience<a class="headerlink" href="#native-experience" title="Permanent link">#</a></h3>
 <p>Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience without introducing additional management layers, plugins, or customized binaries.</p>
 

@@ -4066,10 +4066,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="helm-chart">Helm Chart<a class="headerlink" href="#helm-chart" title="Permanent link">#</a></h1>
-<p>Following options are available in the Helm Chart for Multi Tenant Operator:</p>
+<p>The following options are available in the Helm Chart for Multi Tenant Operator:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kubernetes</span>
 
-<span class="c1"># bypassedGroups are the comma-separated names of Groups which are bypassed in Namespace and Rolebinding webhooks</span>
+<span class="c1"># bypassedGroups are the comma-separated names of groups which are bypassed in Namespace and RoleBinding webhooks</span>
 <span class="nt">bypassedGroups</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;system:cluster-admins,system:masters&quot;</span>
 
 <span class="nt">replicaCount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
@@ -4082,7 +4082,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">  </span><span class="nt">serviceAccount</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># Annotations to add to the service account</span>
 <span class="w">    </span><span class="nt">annotations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="c1"># The name of the service account to use.</span>
+<span class="w">    </span><span class="c1"># The name of the service account to use</span>
 <span class="w">    </span><span class="c1"># If not set and create is true, a name is generated using the fullname template</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;controller-manager&quot;</span>
 
@@ -4120,7 +4120,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">  </span><span class="c1"># runAsUser: 1000</span>
 
 <span class="nt">resources</span><span class="p">:</span>
-
 <span class="w">  </span><span class="nt">limits</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100m</span>
 <span class="w">    </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Gi</span>
