@@ -1,11 +1,11 @@
 # Helm Chart
 
-Following options are available in the Helm Chart for Multi Tenant Operator:
+The following options are available in the Helm Chart for Multi Tenant Operator:
 
 ```yaml
 platform: Kubernetes
 
-# bypassedGroups are the comma-separated names of Groups which are bypassed in Namespace and Rolebinding webhooks
+# bypassedGroups are the comma-separated names of groups which are bypassed in Namespace and RoleBinding webhooks
 bypassedGroups: "system:cluster-admins,system:masters"
 
 replicaCount: 1
@@ -18,7 +18,7 @@ operator:
   serviceAccount:
     # Annotations to add to the service account
     annotations: {}
-    # The name of the service account to use.
+    # The name of the service account to use
     # If not set and create is true, a name is generated using the fullname template
     name: "controller-manager"
 
@@ -56,7 +56,6 @@ securityContext:
   # runAsUser: 1000
 
 resources:
-
   limits:
     cpu: 100m
     memory: 2Gi

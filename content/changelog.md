@@ -182,11 +182,11 @@ Before upgrading to v1.1.0, perform the following steps:
 
 #### Fix
 
-- Fixed broken logs for namespace webhook where username and namespace were interchangeably used after a recent update
+- Fixed broken logs for namespace webhook where username and namespace were used interchangeably after a recent update
 
 #### Enhanced
 
-- Made log messages more elaborative and consistent on one format for namespace webhook
+- Made log messages more elaborate and consistent in one format for namespace webhook
 
 ### v0.10.5
 
