@@ -4297,14 +4297,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="on-kubernetes">On Kubernetes<a class="headerlink" href="#on-kubernetes" title="Permanent link">#</a></h1>
-<p>This document contains instructions on installing, uninstalling and configuring Multi Tenant Operator on Kubernetes.</p>
+<p>This document contains instructions for installing, uninstalling, and configuring Multi Tenant Operator on Kubernetes.</p>
 <ol>
-<li>
-<p><a href="#installing-via-helm-cli">Installing via Helm CLI</a></p>
-</li>
-<li>
-<p><a href="#uninstall-via-helm-cli">Uninstall</a></p>
-</li>
+<li><a href="#installing-via-helm-cli">Installing via Helm CLI</a></li>
+<li><a href="#uninstall-via-helm-cli">Uninstall</a></li>
 </ol>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">#</a></h2>
 <ul>
@@ -4312,21 +4308,21 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><a href="https://helm.sh/docs/intro/install/">Helm CLI</a></li>
 <li><a href="https://kubernetes.io/docs/tasks/tools/">kubectl</a></li>
 <li>
-<p>To run on Kubernetes, two certificates are needed in the operator namespace for the operator to be up and running, named</p>
+<p>To run on Kubernetes, two certificates are needed in the operator namespace for the operator to be up and running, named:</p>
 <ol>
 <li><code>quota-template-intconfig-server-cert</code> pointing to <code>multi-tenant-operator-quota-template-intconfig-webhook-service.{{ .Release.Namespace }}.svc.cluster.local</code></li>
 <li><code>webhook-server-cert</code> pointing to <code>multi-tenant-operator-webhook-service.{{ .Release.Namespace }}.svc.cluster.local</code></li>
 </ol>
-<p>If you are using <a href="https://cert-manager.io/docs/installation/">Cert Manager</a>, these certificates will be handled by templates in Helm Chart</p>
+<p>If you are using <a href="https://cert-manager.io/docs/installation/">Cert Manager</a>, these certificates will be handled by templates in the Helm Chart</p>
 </li>
 </ul>
 <h2 id="installing-via-helm-cli">Installing via Helm CLI<a class="headerlink" href="#installing-via-helm-cli" title="Permanent link">#</a></h2>
 <ul>
 <li>
-<p>Public Helm Chart of MTO is available at <a href="https://github.com/orgs/stakater/packages/container/package/public/charts/multi-tenant-operator">Stakater ghcr Packages</a> and available Helm options can be seen at <a href="helm.html">MTO Helm Chart Options</a></p>
+<p>The public Helm Chart for MTO is available at <a href="https://github.com/orgs/stakater/packages/container/package/public/charts/multi-tenant-operator">Stakater ghcr Packages</a>, and available Helm options can be seen at <a href="helm.html">MTO Helm Chart Options</a></p>
 </li>
 <li>
-<p>Use <code>helm install</code> command to install MTO helm chart. Here, <code>bypassedGroups</code> has the names of groups which are designated as Cluster Admins in your cluster. For this example, we will use <code>system:masters</code></p>
+<p>Use the <code>helm install</code> command to install the MTO helm chart. Here, <code>bypassedGroups</code> has the names of groups which are designated as Cluster Admins in your cluster. For this example, we will use <code>system:masters</code></p>
 </li>
 </ul>
 <div class="highlight"><pre><span></span><code>helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=system:masters&#39;
@@ -4335,12 +4331,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p class="admonition-title">Note</p>
 <p>It is better to install MTO in its preferred namespace, <code>multi-tenant-operator</code></p>
 </div>
-<p>Wait for the pods to be up</p>
+<p>Wait for the pods to be up:</p>
 <div class="highlight"><pre><span></span><code>kubectl get pods -n multi-tenant-operator --watch
 </code></pre></div>
-<p>After all pods come in running state, you can follow <a href="../kubernetes-resources/tenant/how-to-guides/create-tenant.html">Tutorials</a>.</p>
+<p>After all pods come in running state, you can follow the <a href="../kubernetes-resources/tenant/how-to-guides/create-tenant.html">Tutorials</a>.</p>
 <h3 id="enterprise-license-configuration">Enterprise License Configuration<a class="headerlink" href="#enterprise-license-configuration" title="Permanent link">#</a></h3>
-<p>For the Enterprise version, you need to have a configmap <code>license</code> created in MTO's namespace <code>multi-tenant-operator</code>. You will get this configmap when purchasing the Enterprise version. It would look like this:</p>
+<p>For the Enterprise version, you need to have a configmap named <code>license</code> created in MTO's namespace <code>multi-tenant-operator</code>. You will get this configmap when purchasing the Enterprise version. It would look like this:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -4357,17 +4353,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">  </span><span class="nt">signature.base64.txt</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;base64 signature here&gt;</span>
 </code></pre></div>
 <h2 id="uninstall-via-helm-cli">Uninstall via Helm CLI<a class="headerlink" href="#uninstall-via-helm-cli" title="Permanent link">#</a></h2>
-<p>MTO can be uninstalled by Helm CLI if Helm was used to install it earlier.</p>
+<p>MTO can be uninstalled using Helm CLI if Helm was used to install it earlier.</p>
 <ul>
-<li>Use <code>helm uninstall</code> command to remove the earlier created <code>Helm Release</code> in <code>multi-tenant-operator</code> namespace</li>
+<li>Use the <code>helm uninstall</code> command to remove the previously created <code>Helm Release</code> in the <code>multi-tenant-operator</code> namespace:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>helm uninstall tenant-operator --namespace multi-tenant-operator
 </code></pre></div>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
 <ul>
-<li>For details on licensing of MTO please refer <a href="../pricing.html">Pricing</a>.</li>
-<li>For more details on how to use MTO please refer <a href="../kubernetes-resources/tenant/how-to-guides/create-tenant.html">Tenant tutorial</a>.</li>
-<li>For details on how to extend your MTO manager ClusterRole please refer <a href="../kubernetes-resources/tenant/how-to-guides/extend-default-roles.html">extend-default-clusterroles</a>.</li>
+<li>For details on licensing of MTO, please refer to <a href="../pricing.html">Pricing</a>.</li>
+<li>For more details on how to use MTO, please refer to the <a href="../kubernetes-resources/tenant/how-to-guides/create-tenant.html">Tenant tutorial</a>.</li>
+<li>For details on how to extend your MTO manager ClusterRole, please refer to <a href="../kubernetes-resources/tenant/how-to-guides/extend-default-roles.html">extend-default-clusterroles</a>.</li>
 </ul>
 
 
