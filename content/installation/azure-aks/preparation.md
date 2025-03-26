@@ -4,9 +4,8 @@ This document provides a detailed walk through of the preparation steps required
 
 ## Cluster Requirements
 
-An EKS 1.28+ cluster with the following components:
+An AKS cluster with the following components:
 
-- A default storage class
 - An Ingress controller
 - Valid certificates for MTO Gateway, MTO Console, and MTO Keycloak
 
@@ -23,41 +22,73 @@ The installation machine must have:
 
 Once these preparations are complete, you can proceed with the [installation section](./installation.md).
 
-## Optional: Creating and Configuring an EKS Cluster
+## Optional: Creating and Configuring an AKS Cluster
 
-If you already have an EKS 1.28+ cluster that meets the [Cluster Requirements](#cluster-requirements) you can skip this section and proceed directly to the Installation Guide.
+If you already have an AKS cluster that meets the [Cluster Requirements](#cluster-requirements) you can skip this section and proceed directly to the Installation Guide.
 
 However, if you don’t have an existing cluster, follow this step-by-step guide to create and configure one properly for MTO installation.
 
-### Create EKS Cluster
+### Configure Admin Group
 
-Execute the following snippet in your terminal with appropriate values. This snippet will configure the AWS Credentials. See [Manage access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for more details about access keys
+Execute the following snippet in your terminal with appropriate values. This snippet will configure the Azure CLI. See [Register a Microsoft Entra app and create a service principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html) for more details about access keys
 
 ```bash
-aws configure set region <AWS_REGION>
-aws configure set aws_access_key_id <AWS_ACCESS_KEY_ID>
-aws configure set aws_secret_access_key <AWS_SECRET_ACCESS_KEY>
+az login --service-principal --username "<SERVICE_PRINCIPAL_APP_ID>" --password "<SERVICE_PRINCIPAL_PASSWORD>" --tenant "<SERVICE_PRINCIPAL_TENANT_ID>"
 ```
 
-Use the following command to create an EKS cluster if it doesn't exist
+Create a group called `mto-admins`:
 
 ```bash
-eksctl create cluster \
-    --name <CLUSTER_NAME> \
-    --region <AWS_REGION> \
-    --nodegroup-name standard-workers \
-    --node-type t3.xlarge \
-    --nodes 1 \
-    --nodes-min 1 \
-    --nodes-max 3 \
-    --managed
+az ad group create --display-name mto-admins --mail-nickname mto-admins
+```
+
+Fetch the service principal user id
+
+```bash
+SP_USER_ID=$(az ad sp show --id "$(az account show --query user.name -o tsv)" --query id -o tsv)
+```
+
+Add user to `mto-admins` group
+
+```bash
+az ad group member add --group mto-admins --member-id "$SP_USER_ID"
+```
+
+Fetch the admin group id by executing the following command. This value will be used when creating AKS cluster
+
+```bash
+ADMIN_GROUP_ID=$(az ad group show --group mto-admins --query id -o tsv)
+```
+
+### Create AKS Cluster
+
+Create a resource group using following command
+
+```bash
+az group create --name "<RESOURCE_GROUP_NAME>" --location westus2
+```
+
+Create AKS cluster
+
+```bash
+az aks create --resource-group "<RESOURCE_GROUP_NAME>" --name "<CLUSTER_NAME>" \
+              --node-count 1 --vm-set-type VirtualMachineScaleSets \
+              --enable-cluster-autoscaler --min-count 1 --max-count 3 \
+              --enable-aad --aad-admin-group-object-ids "<ADMIN_GROUP_ID>" \
+              --generate-ssh-keys
+```
+
+Run the following command to install Azure AKS CLI to install `kubectl` and other dependencies if they are not installed
+
+```bash
+az aks install-cli
 ```
 
 Set the kubernetes context to the specified cluster.
 
 ```bash
 # Update the current context
-aws eks update-kubeconfig --name <CLUSTER_NAME> --region <AWS_REGION>
+az aks get-credentials --resource-group "<RESOURCE_GROUP_NAME>" --name "<CLUSTER_NAME>" --admin
 ```
 
 ### Install Ingress Controller
@@ -136,58 +167,6 @@ To enable automatic SSL certificate issuance using Let’s Encrypt, you need to 
     kubectl get clusterissuer letsencrypt-production
     ```
 
-### Install AWS EBS CSI Driver
-
-The Amazon EBS CSI Driver enables Kubernetes to manage Amazon Elastic Block Store (EBS) volumes, handling their lifecycle as persistent storage for workloads.
-
-To install the AWS EBS CSI Driver, execute the following command:
-
-```bash
-kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.38"
-```
-
-Once installed, verify that the driver is running by checking the pods in the kube-system namespace:
-
-```bash
-kubectl get pods -n kube-system | grep ebs
-```
-
-### Create Storage Class for EBS
-
-1. Create a file named `storage-class.yaml` and add the following content:
-
-    ```yaml
-    apiVersion: storage.k8s.io/v1
-    kind: StorageClass
-    metadata:
-      annotations:
-        storageclass.kubernetes.io/is-default-class: "true"
-    metadata:
-      name: ebs-sc
-    provisioner: ebs.csi.aws.com
-    volumeBindingMode: WaitForFirstConsumer
-    parameters:
-      type: gp3
-    ```
-
-1. Apply the configuration using the following command:
-
-    ```bash
-    kubectl apply -f storage-class.yaml
-    ```
-
-1. Set the storage class as default storage class using the following command
-
-    ```bash
-    kubectl patch storageclass ebs-sc -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
-    ```
-
-1. Verify that the StorageClass has been created:
-
-    ```bash
-    kubectl get storageclass
-    ```
-
 ### Create Wildcard DNS Record
 
 To ensure proper routing for applications, you need to create a wildcard DNS record that points to the nginx Ingress Controller’s external IP. Follow these steps:
@@ -196,7 +175,7 @@ To ensure proper routing for applications, you need to create a wildcard DNS rec
     Run the following command to get the external IP of the nginx Ingress Controller:
 
     ```bash
-    kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath="{.status.loadBalancer.ingress[0].hostname}"
+    kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath="{.status.loadBalancer.ingress[0].ip}"
     ```
 
     If the hostname is not available, wait for a few minutes and re-run the command.
@@ -221,18 +200,19 @@ To ensure proper routing for applications, you need to create a wildcard DNS rec
 
     ```json
     {
-      "Comment": "Update wildcard DNS record to point to NGINX Ingress ELB",
+      "Comment": "Update wildcard DNS record to point to AKS Ingress Controller",
       "Changes": [
         {
           "Action": "UPSERT",
           "ResourceRecordSet": {
             "Name": "*.<FULL_SUBDOMAIN>",
             "Type": "A",
-            "AliasTarget": {
-              "HostedZoneId": "<HOSTED_ZONE_LB_ID>",
-              "DNSName": "<EXTERNAL_IP>",
-              "EvaluateTargetHealth": false
-            }
+            "TTL": 300,
+            "ResourceRecords": [
+              {
+                "Value": "<EXTERNAL_IP>"
+              }
+            ]
           }
         }
       ]
@@ -299,4 +279,4 @@ A wildcard certificate allows all applications under a given subdomain to use a 
 
 ## What's Next?
 
-All the required components have been installed and configured. Now MTO can be installed on the EKS Cluster. See [EKS MTO Installation Guide](./installation.md)
+All the required components have been installed and configured. Now MTO can be installed on the EKS Cluster. See [AKS MTO Installation Guide](./installation.md)
