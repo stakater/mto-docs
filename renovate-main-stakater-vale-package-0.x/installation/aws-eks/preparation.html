@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-stakater-vale-package-0.x/installation/aws-eks/preparation.html">
       
       
-        <link rel="prev" href="../azure-aks.html">
+        <link rel="prev" href="../azure-aks/validation.html">
       
       
         <link rel="next" href="installation.html">
@@ -2373,9 +2373,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   
-    <li class="md-nav__item">
-      <a href="../azure-aks.html" class="md-nav__link">
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     On AKS
@@ -2383,7 +2393,85 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            On AKS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-aks/preparation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prepration
+    
+  </span>
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-aks/installation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../azure-aks/validation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -4580,9 +4668,9 @@ aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span cla
 <span class="w">  </span><span class="nt">issuerRef</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">letsencrypt-production</span>
 <span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIssuer</span>
-<span class="w">  </span><span class="nt">commonName</span><span class="p">:</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.&lt;FULL_SUBDOMAIN&gt;</span>
+<span class="w">  </span><span class="nt">commonName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*.&lt;FULL_SUBDOMAIN&gt;&quot;</span>
 <span class="w">  </span><span class="nt">dnsNames</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.&lt;FULL_SUBDOMAIN&gt;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*.&lt;FULL_SUBDOMAIN&gt;&quot;</span>
 </code></pre></div>
 </li>
 <li>

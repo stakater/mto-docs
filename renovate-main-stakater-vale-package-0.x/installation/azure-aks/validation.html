@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-stakater-vale-package-0.x/installation/aws-eks/validation.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-stakater-vale-package-0.x/installation/azure-aks/validation.html">
       
       
         <link rel="prev" href="installation.html">
       
       
-        <link rel="next" href="../kubernetes.html">
+        <link rel="next" href="../aws-eks/preparation.html">
       
       
       <link rel="icon" href="../../assets/images/favicon.svg">
@@ -2371,17 +2371,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
         
           
           <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
@@ -2396,122 +2398,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             On AKS
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../azure-aks/preparation.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Prepration
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../azure-aks/installation.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Installation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../azure-aks/validation.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Validation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    On EKS
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            On EKS
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2526,7 +2416,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         
   
   <span class="md-ellipsis">
-    Preparation
+    Prepration
     
   </span>
   
@@ -2616,46 +2506,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-create-configure-aws-iam-users-groups" class="md-nav__link">
+  <a href="#1-create-configure-azure-users-groups" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Create &amp; Configure AWS IAM Users &amp; Groups
+      1. Create &amp; Configure Azure Users &amp; Groups
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. Create &amp; Configure AWS IAM Users &amp; Groups">
+    <nav class="md-nav" aria-label="1. Create &amp; Configure Azure Users &amp; Groups">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#11-create-a-user" class="md-nav__link">
     <span class="md-ellipsis">
       1.1. Create a user
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12-attach-cluster-access-policy-to-user" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.2. Attach cluster access policy to user
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-generate-access-key-for-the-user" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.3. Generate access key for the user
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#14-grant-user-access-to-kubernetes-via-configmap" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.4. Grant user access to Kubernetes via ConfigMap
     </span>
   </a>
   
@@ -2805,6 +2668,116 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    On EKS
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            On EKS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-eks/preparation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Preparation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-eks/installation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-eks/validation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Validation
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -4364,46 +4337,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-create-configure-aws-iam-users-groups" class="md-nav__link">
+  <a href="#1-create-configure-azure-users-groups" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Create &amp; Configure AWS IAM Users &amp; Groups
+      1. Create &amp; Configure Azure Users &amp; Groups
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. Create &amp; Configure AWS IAM Users &amp; Groups">
+    <nav class="md-nav" aria-label="1. Create &amp; Configure Azure Users &amp; Groups">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#11-create-a-user" class="md-nav__link">
     <span class="md-ellipsis">
       1.1. Create a user
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12-attach-cluster-access-policy-to-user" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.2. Attach cluster access policy to user
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-generate-access-key-for-the-user" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.3. Generate access key for the user
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#14-grant-user-access-to-kubernetes-via-configmap" class="md-nav__link">
-    <span class="md-ellipsis">
-      1.4. Grant user access to Kubernetes via ConfigMap
     </span>
   </a>
   
@@ -4574,51 +4520,29 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><strong>Falcon</strong> will be the user assigned to the <strong>Logistics</strong> tenant.  </li>
 <li><strong>Bear</strong> will be the user assigned to the <strong>Retail</strong> tenant.</li>
 </ul>
-<h2 id="1-create-configure-aws-iam-users-groups">1. Create &amp; Configure AWS IAM Users &amp; Groups<a class="headerlink" href="#1-create-configure-aws-iam-users-groups" title="Permanent link">#</a></h2>
+<h2 id="1-create-configure-azure-users-groups">1. Create &amp; Configure Azure Users &amp; Groups<a class="headerlink" href="#1-create-configure-azure-users-groups" title="Permanent link">#</a></h2>
 <h3 id="11-create-a-user">1.1. Create a user<a class="headerlink" href="#11-create-a-user" title="Permanent link">#</a></h3>
+<p>Fetch the cluster ID using following command. We will use cluster ID to assign role to our logistics group</p>
+<div class="highlight"><pre><span></span><code><span class="nv">AKS_ID</span><span class="o">=</span><span class="k">$(</span>az<span class="w"> </span>aks<span class="w"> </span>show<span class="w"> </span>--resource-group<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$RG_NAME</span><span class="s2">&quot;</span><span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CLUSTER_NAME</span><span class="s2">&quot;</span><span class="w"> </span>--query<span class="w"> </span>id<span class="w"> </span>-o<span class="w"> </span>tsv<span class="k">)</span>
+</code></pre></div>
+<p>Create an active directory group named <code>logistics</code></p>
+<div class="highlight"><pre><span></span><code><span class="nv">GROUP_ID</span><span class="o">=</span><span class="k">$(</span>az<span class="w"> </span>ad<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--display-name<span class="w"> </span><span class="s2">&quot;logistics&quot;</span><span class="w"> </span>--mail-nickname<span class="w"> </span><span class="s2">&quot;logistics&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;id&quot;</span><span class="w"> </span>--output<span class="w"> </span>tsv<span class="k">)</span>
+</code></pre></div>
+<p>Assign Azure Kubernetes Service Cluster User Role to <code>logistics</code> group</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>role<span class="w"> </span>assignment<span class="w"> </span>create<span class="w"> </span>--assignee<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GROUP_ID</span><span class="s2">&quot;</span><span class="w"> </span>--role<span class="w"> </span><span class="s2">&quot;Azure Kubernetes Service Cluster User Role&quot;</span><span class="w"> </span>--scope<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$AKS_ID</span><span class="s2">&quot;</span>
+</code></pre></div>
 <p>Create a user with username <code>falcon@nordmart.com</code></p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>iam<span class="w"> </span>create-user<span class="w"> </span>--user-name<span class="w"> </span>falcon@nordmart.com
-
-Output:
-<span class="o">{</span>
-<span class="w">    </span><span class="s2">&quot;User&quot;</span>:<span class="w"> </span><span class="o">{</span>
-<span class="w">        </span><span class="s2">&quot;Path&quot;</span>:<span class="w"> </span><span class="s2">&quot;/&quot;</span>,
-<span class="w">        </span><span class="s2">&quot;UserName&quot;</span>:<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span>,
-<span class="w">        </span><span class="s2">&quot;UserId&quot;</span>:<span class="w"> </span><span class="s2">&quot;AIDAZFWZTAEJ7ILHDKLLD&quot;</span>,
-<span class="w">        </span><span class="s2">&quot;Arn&quot;</span>:<span class="w"> </span><span class="s2">&quot;arn:aws:iam::630742778131:user/falcon@nordmart.com&quot;</span>,
-<span class="w">        </span><span class="s2">&quot;CreateDate&quot;</span>:<span class="w"> </span><span class="s2">&quot;2025-02-03T13:09:51Z&quot;</span>
-<span class="w">    </span><span class="o">}</span>
-<span class="o">}</span>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>ad<span class="w"> </span>user<span class="w"> </span>create<span class="w"> </span>--display-name<span class="w"> </span><span class="s2">&quot;Golden Falcon&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--user-principal-name<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">                    </span>--password<span class="w"> </span><span class="s2">&quot;&lt;PASSWORD&gt;&quot;</span><span class="w"> </span>
 </code></pre></div>
-<h3 id="12-attach-cluster-access-policy-to-user">1.2. Attach cluster access policy to user<a class="headerlink" href="#12-attach-cluster-access-policy-to-user" title="Permanent link">#</a></h3>
-<p>Create a AWS JSON policy file. This policy will allow the user to access the cluster.</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eks:DescribeCluster&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">&quot;Resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span>
-<span class="p">}</span>
+<p>Fetch the user id with following command</p>
+<div class="highlight"><pre><span></span><code><span class="nv">ad_user_id</span><span class="o">=</span><span class="k">$(</span>az<span class="w"> </span>ad<span class="w"> </span>user<span class="w"> </span>show<span class="w"> </span>--id<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;id&quot;</span><span class="w"> </span>--output<span class="w"> </span>tsv<span class="k">)</span>
 </code></pre></div>
-<p>Attach a policy to user by running the following command</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>put-user-policy<span class="w"> </span>--user-name<span class="w"> </span>falcon@nordmart.com<span class="w"> </span>--policy-document<span class="w"> </span>file://policy.json<span class="w"> </span>--policy-name<span class="w"> </span>ClusterAccess
+<p>Add user to <code>logistics</code> group</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>ad<span class="w"> </span>group<span class="w"> </span>member<span class="w"> </span>add<span class="w"> </span>--group<span class="w"> </span><span class="s2">&quot;logistics&quot;</span><span class="w"> </span>--member-id<span class="w"> </span><span class="s2">&quot;&lt;USER_ID&gt;&quot;</span>
 </code></pre></div>
-<h3 id="13-generate-access-key-for-the-user">1.3. Generate access key for the user<a class="headerlink" href="#13-generate-access-key-for-the-user" title="Permanent link">#</a></h3>
-<p>Executing the following command will provide the Access Key Id and Access Secret Key Id that can be used to log in later</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>create-access-key<span class="w"> </span>--user-name<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span>
-</code></pre></div>
-<h3 id="14-grant-user-access-to-kubernetes-via-configmap">1.4. Grant user access to Kubernetes via <code>ConfigMap</code><a class="headerlink" href="#14-grant-user-access-to-kubernetes-via-configmap" title="Permanent link">#</a></h3>
-<p>Use the following command to map this user in <code>aws-auth</code> configmap in <code>kube-system</code> namespace.</p>
-<div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>create<span class="w"> </span>iamidentitymapping<span class="w"> </span>--cluster<span class="w"> </span><span class="s2">&quot;&lt;CLUSTER_NAME&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">                                 </span>--region<span class="w"> </span><span class="s2">&quot;&lt;AWS_REGION&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">                                 </span>--arn<span class="w"> </span><span class="s2">&quot;&lt;USER_ARN&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">                                 </span>--username<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">                                 </span>--no-duplicate-arns
-</code></pre></div>
-<p>Repeat the same steps to create another user <code>bear@nordmart.com</code> for retail tenant.</p>
+<p>Repeat the same steps to create another group <code>retail</code> with user <code>bear@nordmart.com</code> for retail tenant.</p>
 <h2 id="2-create-keycloak-user-for-mto-console">2. Create Keycloak user for MTO Console<a class="headerlink" href="#2-create-keycloak-user-for-mto-console" title="Permanent link">#</a></h2>
 <h3 id="21-create-keycloak-user">2.1. Create Keycloak User<a class="headerlink" href="#21-create-keycloak-user" title="Permanent link">#</a></h3>
 <p>A Keycloak user with same username as IAM user needs to be created for MTO Console. In this section we will create a Keycloak user for Logistics tenant</p>
@@ -4731,18 +4655,11 @@ retail-build<span class="w">            </span>Active<span class="w">   </span>5
 </code></pre></div>
 <h2 id="6-validate-falcon-permissions">6. Validate Falcon permissions<a class="headerlink" href="#6-validate-falcon-permissions" title="Permanent link">#</a></h2>
 <h3 id="61-switch-to-falcon">6.1. Switch to falcon<a class="headerlink" href="#61-switch-to-falcon" title="Permanent link">#</a></h3>
-<p>Set the following environment variables from the access keys generated in <a href="#13-generate-access-key-for-the-user">previous steps</a></p>
-<ul>
-<li><code>AWS_ACCESS_KEY_ID</code></li>
-<li><code>AWS_SECRET_ACCESS_KEY</code></li>
-<li><code>AWS_REGION</code> (optional)</li>
-</ul>
-<p>Execute the following command to update the kube context</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>region<span class="w"> </span><span class="nv">$AWS_REGION</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="nv">$AWS_ACCESS_KEY_ID</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="nv">$AWS_SECRET_ACCESS_KEY</span>
-
-aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span class="w"> </span>--name<span class="w"> </span>&lt;EKS_CLUSTER_NAME&gt;<span class="w"> </span>--region<span class="w"> </span><span class="nv">$AWS_REGION</span>
+<p>Run the Azure CLI login command to interactively login as <code>falcon@nordmart.com</code>. Running the following command will open browser for interactive login</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>login
+</code></pre></div>
+<p>Run the following command to update the <code>kubectl</code> context with logged-in user</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>aks<span class="w"> </span>get-credentials<span class="w"> </span>--resource-group<span class="w"> </span><span class="s2">&quot;&lt;RESOURCE_GROUP_NAME&gt;&quot;</span><span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;&lt;CLUSTER_NAME&gt;&quot;</span>
 </code></pre></div>
 <h3 id="62-check-cli-permissions">6.2. Check CLI permissions<a class="headerlink" href="#62-check-cli-permissions" title="Permanent link">#</a></h3>
 <p>We will now try to deploy a pod from user <code>falcon@nordmart.com</code> in its tenant namespace <code>logistics-dev</code></p>
@@ -4767,18 +4684,8 @@ Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> 
 <p><a class="glightbox" href="../../images/mto-console-bear-dashboard.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MTO Console Dashboard" src="../../images/mto-console-bear-dashboard.png" /></a></p>
 <h2 id="7-validate-bear-permissions">7. Validate Bear permissions<a class="headerlink" href="#7-validate-bear-permissions" title="Permanent link">#</a></h2>
 <h3 id="71-switch-to-bear">7.1. Switch to bear<a class="headerlink" href="#71-switch-to-bear" title="Permanent link">#</a></h3>
-<p>Set the following environment variables from the access keys generated in <a href="#13-generate-access-key-for-the-user">previous steps</a></p>
-<ul>
-<li><code>AWS_ACCESS_KEY_ID</code></li>
-<li><code>AWS_SECRET_ACCESS_KEY</code></li>
-<li><code>AWS_REGION</code> (optional)</li>
-</ul>
-<p>Execute the following command to update the kube context</p>
-<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>region<span class="w"> </span><span class="nv">$AWS_REGION</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="nv">$AWS_ACCESS_KEY_ID</span>
-aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="nv">$AWS_SECRET_ACCESS_KEY</span>
-
-aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span class="w"> </span>--name<span class="w"> </span>&lt;EKS_CLUSTER_NAME&gt;<span class="w"> </span>--region<span class="w"> </span><span class="nv">$AWS_REGION</span>
+<p>Run the Azure CLI login command to interactively login as <code>bear@nordmart.com</code>. Running the following command will open browser for interactive login</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>login
 </code></pre></div>
 <h3 id="72-check-cli-permissions">7.2. Check CLI permissions<a class="headerlink" href="#72-check-cli-permissions" title="Permanent link">#</a></h3>
 <p>We will repeat the above operations for our retail user <code>bear@nordmart.com</code> as well</p>
