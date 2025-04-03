@@ -37,7 +37,7 @@ If a user is added to tenant resource, and the user does not exist in RHSSO, the
 
 If the user does not exist in RHSSO, then MTO does not create the tenant access for Vault in RHSSO.
 
-The user now needs to go to Vault, and sign up using OIDC. Then the user needs to wait for MTO to reconcile the updated tenant (reconciliation period is currently 1 hour). After reconciliation, MTO will add relevant access for the user in RHSSO.
+The user now needs to go to Vault and sign up using OIDC. Then the user needs to wait for MTO to reconcile the updated tenant (reconciliation period is currently 1 hour). After reconciliation, MTO will add relevant access for the user in RHSSO.
 
 If the user needs to be added immediately and it is not feasible to wait for next MTO reconciliation, then: add a label or annotation to the user, or restart the Tenant controller pod to force immediate reconciliation.
 
