@@ -31,7 +31,7 @@
 Before upgrading to v1.1.0, perform the following steps:
 
 - Disable `console` in the integration config.
-- Remove the `tenant-operator-casbin-config` ConfigMap from the `multi-tenant-operator` namespace, if it exists.
+- Remove the `tenant-operator-casbin-config` configmap from the `multi-tenant-operator` namespace, if it exists.
 
 #### Post-Upgrade Checklist
 
