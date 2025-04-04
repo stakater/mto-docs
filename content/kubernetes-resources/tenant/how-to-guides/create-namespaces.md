@@ -73,7 +73,7 @@ Using GitOps as your preferred development workflow, you can add existing namesp
 To add an existing namespace to your tenant via GitOps:
 
 1. Migrate the namespace resource to the GitOps-monitored repository
-1. Amend the namespace manifest to include the tenant label: tenantoperator.stakater.com/tenant: <TENANT_NAME>.
+1. Amend the namespace manifest to include the tenant label: `tenantoperator.stakater.com/tenant: <TENANT_NAME>`
 1. Synchronize the GitOps repository with the cluster to propagate the changes
 1. Validate that the tenant users now have appropriate access to the integrated namespace
 
