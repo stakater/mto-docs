@@ -4,7 +4,7 @@
 
 `MTO-Mattermost-Integration-Operator`
 
-Please contact stakater to install the Mattermost integration operator before following the below mentioned steps.
+Please contact Stakater to install the Mattermost integration operator before following the below mentioned steps.
 
 ## Steps to enable integration
 
