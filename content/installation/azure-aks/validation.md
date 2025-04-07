@@ -5,71 +5,49 @@ In this guide, we will set up **two tenants**—**Logistics** and **Retail**—f
 - **Falcon** will be the user assigned to the **Logistics** tenant.  
 - **Bear** will be the user assigned to the **Retail** tenant.
 
-## 1. Create & Configure AWS IAM Users & Groups
+## 1. Create & Configure Azure Users & Groups
 
 ### 1.1. Create a user
 
+Fetch the cluster ID using following command. We will use cluster ID to assign role to our logistics group
+
+```bash
+AKS_ID=$(az aks show --resource-group "$RG_NAME" --name "$CLUSTER_NAME" --query id -o tsv)
+```
+
+Create an active directory group named `logistics`
+
+```bash
+GROUP_ID=$(az ad group create --display-name "logistics" --mail-nickname "logistics" --query "id" --output tsv)
+```
+
+Assign Azure Kubernetes Service Cluster User Role to `logistics` group
+
+```bash
+az role assignment create --assignee "$GROUP_ID" --role "Azure Kubernetes Service Cluster User Role" --scope "$AKS_ID"
+```
+
 Create a user with username `falcon@nordmart.com`
 
-```sh
-$ aws iam create-user --user-name falcon@nordmart.com
-
-Output:
-{
-    "User": {
-        "Path": "/",
-        "UserName": "falcon@nordmart.com",
-        "UserId": "AIDAZFWZTAEJ7ILHDKLLD",
-        "Arn": "arn:aws:iam::630742778131:user/falcon@nordmart.com",
-        "CreateDate": "2025-02-03T13:09:51Z"
-    }
-}
+```bash
+az ad user create --display-name "Golden Falcon" \
+                    --user-principal-name "falcon@nordmart.com" \
+                    --password "<PASSWORD>" 
 ```
 
-### 1.2. Attach cluster access policy to user
-
-Create a AWS JSON policy file. This policy will allow the user to access the cluster.
-
-```json
-{
-    "Statement": [
-        {
-            "Action": "eks:DescribeCluster",
-            "Effect": "Allow",
-            "Resource": "*"
-        }
-    ],
-    "Version": "2012-10-17"
-}
-```
-
-Attach a policy to user by running the following command
+Fetch the user id with following command
 
 ```bash
-aws iam put-user-policy --user-name falcon@nordmart.com --policy-document file://policy.json --policy-name ClusterAccess
+ad_user_id=$(az ad user show --id "falcon@nordmart.com" --query "id" --output tsv)
 ```
 
-### 1.3. Generate access key for the user
-
-Executing the following command will provide the Access Key Id and Access Secret Key Id that can be used to log in later
+Add user to `logistics` group
 
 ```bash
-aws iam create-access-key --user-name "falcon@nordmart.com"
+az ad group member add --group "logistics" --member-id "<USER_ID>"
 ```
 
-### 1.4. Grant user access to Kubernetes via `ConfigMap`
-
-Use the following command to map this user in `aws-auth` configmap in `kube-system` namespace.
-
-```bash
-eksctl create iamidentitymapping --cluster "<CLUSTER_NAME>" \
-                                 --region "<AWS_REGION>" \
-                                 --arn "<USER_ARN>" \
-                                 --username "falcon@nordmart.com" \
-                                 --no-duplicate-arns
-```
-
-Repeat the same steps to create another user `bear@nordmart.com` for retail tenant.
+Repeat the same steps to create another group `retail` with user `bear@nordmart.com` for retail tenant.
 
 ## 2. Create Keycloak user for MTO Console
 
@@ -206,20 +184,16 @@ retail-build            Active   5s
 
 ### 6.1. Switch to falcon
 
-Set the following environment variables from the access keys generated in [previous steps](#13-generate-access-key-for-the-user)
+Run the Azure CLI login command to interactively login as `falcon@nordmart.com`. Running the following command will open browser for interactive login
 
-- `AWS_ACCESS_KEY_ID`
-- `AWS_SECRET_ACCESS_KEY`
-- `AWS_REGION` (optional)
+```bash
+az login
+```
 
-Execute the following command to update the kube context
+Run the following command to update the `kubectl` context with logged-in user
 
-```sh
-aws configure set region $AWS_REGION
-aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-
-aws eks update-kubeconfig --name <EKS_CLUSTER_NAME> --region $AWS_REGION
+```bash
+az aks get-credentials --resource-group "<RESOURCE_GROUP_NAME>" --name "<CLUSTER_NAME>"
 ```
 
 ### 6.2. Check CLI permissions
@@ -262,20 +236,10 @@ Dashboard will open after the successful login. Now you can navigate different t
 
 ### 7.1. Switch to bear
 
-Set the following environment variables from the access keys generated in [previous steps](#13-generate-access-key-for-the-user)
+Run the Azure CLI login command to interactively login as `bear@nordmart.com`. Running the following command will open browser for interactive login
 
-- `AWS_ACCESS_KEY_ID`
-- `AWS_SECRET_ACCESS_KEY`
-- `AWS_REGION` (optional)
-
-Execute the following command to update the kube context
-
-```sh
-aws configure set region $AWS_REGION
-aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-
-aws eks update-kubeconfig --name <EKS_CLUSTER_NAME> --region $AWS_REGION
+```bash
+az login
 ```
 
 ### 7.2. Check CLI permissions
