@@ -79,7 +79,10 @@ spec:
     allowed:
       - nginx
       - trafeik
-  
+  serviceAccounts:
+    denied:
+      - service-user-1
+      - service-user-2
   podPriorityClasses:
     allowed:
       - high-priority
@@ -159,6 +162,27 @@ ingressClasses:
   - traefik
 ```
 
+## Service Accounts
+
+* `denied` restricts the tenant from using the specified service accounts in pods, deployments, and other resources. The empty string `""` or no service account name is provided then it is treated as `default` service account name. `default` must be added to denied list if you want to block pods / pod controllers with default or empty service account
+
+Following resources will be watched for service account field:
+
+* Pods
+* Deployments
+* StatefulSets
+* ReplicaSets
+* Jobs
+* CronJobs
+* Daemonsets
+
+```yaml
+serviceAccounts:
+  denied:
+    - service-user-1
+    - service-user-2
+```
+
 ## Pod Priority Classes
 
 * `allowed` restricts a tenant to creating pods only with the specified `priorityClasse`. The empty string `""` is treated like any other `priorityClass` name. If you use it while filtering PodPriorityClasses, you must include `""` in the tenant's allow-list, or it will be filtered out. If no PodPriorityClass is specified for a resource, it will be treated as `""`.
@@ -174,6 +198,7 @@ The following resources will be watched for PodPriorityClasses:
 * Daemonsets
 
 ```yaml
+
 podPriorityClasses:
   allowed:
     - high-priority
