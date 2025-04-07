@@ -3145,6 +3145,15 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
+  <a href="#service-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Accounts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pod-priority-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Pod Priority Classes
@@ -4405,6 +4414,15 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
+  <a href="#service-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Accounts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pod-priority-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Pod Priority Classes
@@ -4507,7 +4525,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trafeik</span>
-
+<span class="w">  </span><span class="nt">serviceAccounts</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">denied</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-1</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-2</span>
 <span class="w">  </span><span class="nt">podPriorityClasses</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high-priority</span>
@@ -4582,6 +4603,25 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <span class="w">  </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik</span>
+</code></pre></div>
+<h2 id="service-accounts">Service Accounts<a class="headerlink" href="#service-accounts" title="Permanent link">#</a></h2>
+<ul>
+<li><code>denied</code> restricts the tenant from using the specified service accounts in pods, deployments, and other resources. The empty string <code>""</code> or no service account name is provided then it is treated as <code>default</code> service account name. <code>default</code> must be added to denied list if you want to block pods / pod controllers with default or empty service account</li>
+</ul>
+<p>Following resources will be watched for service account field:</p>
+<ul>
+<li>Pods</li>
+<li>Deployments</li>
+<li>StatefulSets</li>
+<li>ReplicaSets</li>
+<li>Jobs</li>
+<li>CronJobs</li>
+<li>Daemonsets</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">serviceAccounts</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">denied</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-1</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-2</span>
 </code></pre></div>
 <h2 id="pod-priority-classes">Pod Priority Classes<a class="headerlink" href="#pod-priority-classes" title="Permanent link">#</a></h2>
 <ul>
