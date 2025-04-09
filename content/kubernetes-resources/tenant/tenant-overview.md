@@ -79,10 +79,13 @@ spec:
     allowed:
       - nginx
       - trafeik
-  imageRegistries:
+  serviceAccounts:
+    denied:
+      - service-user-1
+      - service-user-2
+  podPriorityClasses:
     allowed:
-      - ghcr.io
-      - docker.io
+      - high-priority
 ```
 
 ## Access Control
@@ -147,8 +150,6 @@ storageClasses:
 
 ## Ingress
 
-The `ingressClasses` field allows you to specify which ingress classes are permitted for use within the tenant which helps in simulating ingress sharding
-
 !!! note
     This field is applicable only for Kubernetes. For more information, refer to the [Ingress Sharding Guide](../tenant/how-to-guides/ingress-sharding.md).
 
@@ -161,15 +162,44 @@ ingressClasses:
   - traefik
 ```
 
-## Image Registries
+## Service Accounts
 
-The `imageRegistries` field allows you to specify which container image registries are permitted for use within the tenant. This ensures that only trusted sources are used for pulling container images, enhancing security and compliance.
+* `denied` restricts the tenant from using the specified service accounts in pods, deployments, and other resources. The empty string `""` or no service account name is provided then it is treated as `default` service account name. `default` must be added to denied list if you want to block pods / pod controllers with default or empty service account
 
-* `allowed`: Specifies the registries that the tenant is authorized to use. Any attempt to pull images from registries not included in this list will be blocked. To allow the tenant to pull images without specifying a registry name, the empty string "" must be included in the allowed list, enabling access to the container runtime's default registry.
+Following resources will be watched for service account field:
+
+* Pods
+* Deployments
+* StatefulSets
+* ReplicaSets
+* Jobs
+* CronJobs
+* Daemonsets
 
 ```yaml
-imageRegistries:
+serviceAccounts:
+  denied:
+    - service-user-1
+    - service-user-2
+```
+
+## Pod Priority Classes
+
+* `allowed` restricts a tenant to creating pods only with the specified `priorityClasse`. The empty string `""` is treated like any other `priorityClass` name. If you use it while filtering PodPriorityClasses, you must include `""` in the tenant's allow-list, or it will be filtered out. If no PodPriorityClass is specified for a resource, it will be treated as `""`.
+
+The following resources will be watched for PodPriorityClasses:
+
+* Pods
+* Deployments
+* StatefulSets
+* ReplicaSets
+* Jobs
+* CronJobs
+* Daemonsets
+
+```yaml
+
+podPriorityClasses:
   allowed:
-    - ghcr.io
-    - docker.io
+    - high-priority
 ```

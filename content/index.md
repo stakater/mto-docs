@@ -11,7 +11,7 @@ head:
 
 Sharing Kubernetes clusters can significantly reduce costs and streamline administration. It enables efficient resource utilization, reduces configuration overhead, and simplifies the sharing of internal cluster resources among tenants. However, achieving secure and functional multi-tenancy presents challenges such as ensuring security, maintaining fairness, and mitigating the impact of noisy neighbors.
 
-Kubernetes is inherently designed as a single-tenant platform. Managed Kubernetes services like AKS, EKS, GKE, and OpenShift have improved security through "secure by default" concepts, but designing and orchestrating all the moving parts required for a secure multi-tenant platform remains a complex task. This complexity makes it challenging for cluster administrators to host multiple tenants effectively within a single cluster.
+Kubernetes is inherently designed as a single-tenant platform. Managed Kubernetes services like AKS, EKS, GKE, and OpenShift have improved security through "secure by default" concepts, but designing and orchestrating all the moving parts required for a secure multi-tenant platform remains a complex task. This complexity makes it challenging for cluster administrators to effectively host multiple tenants within a single cluster.
 
 Clusters can be shared in various ways:
 

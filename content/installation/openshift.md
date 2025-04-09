@@ -14,7 +14,7 @@ This document contains instructions on installing, uninstalling and configuring 
 
 ## Requirements
 
-* An **OpenShift** cluster [v4.8 - v4.15]
+* An **OpenShift** cluster [v4.8 - v4.18]
 
 ## Installing via OperatorHub UI
 

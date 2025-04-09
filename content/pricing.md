@@ -13,9 +13,9 @@ The difference between the versions are highlighted here:
 | Feature | Basic | Enterprise |
 | :- | :-: | :-: |
 | Number of possible Tenants | Two (2) | Unlimited |
-| Support | Community support through [community Slack](https://stakater-community.slack.com/archives/C07HS5V9P6G) | Stakater dedicated support with Key Account Manager to build strong relationships and strong understanding of your requirements and needs |
-| Custom development requests | Not possible | Possible through support requests, which will be prioritized |
-| Price | Free | Pricing available on the [Multi Tenant Operator website](https://www.stakater.com/mto) |
+| Support | Community support through [community Slack](https://stakater-community.slack.com/archives/C07HS5V9P6G) | Choose among three support tiers |
+| Custom development requests | Not possible | Possible through support requests |
+| Price | Free | Contact [`sales@stakater.com`](mailto:sales@stakater.com) |
 
 ## Demo
 
