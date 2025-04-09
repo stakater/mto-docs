@@ -8,28 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/sa-7221-image-registries-docs/kubernetes-resources/template/how-to-guides/distributing-secrets-using-sealed-secret-template.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/sa-7221-image-registries-docs/installation/azure-aks/preparation.html">
       
       
-        <link rel="prev" href="resource-sync-by-tgi.html">
+        <link rel="prev" href="../openshift.html">
       
       
-        <link rel="next" href="deploying-private-helm-charts.html">
+        <link rel="next" href="installation.html">
       
       
-      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="icon" href="../../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
     
     
       
-        <title>Distributing Secrets Using Sealed Secrets Template - Multi Tenant Operator</title>
+        <title>Prepration - Multi Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -67,7 +67,7 @@
     
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
     html.glightbox-open { overflow: initial; height: 100%; }
     .gslide-title { margin-top: 0px; user-select: text; }
     .gslide-desc { color: #666; user-select: text; }
@@ -76,7 +76,7 @@
     .gdesc-inner { font-size: 0.75rem; }
     body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
     body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#distributing-secrets-using-sealed-secrets-template" class="md-skip">
+        <a href="#mto-preparation-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -340,7 +340,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../../../index.html" title="Multi Tenant Operator"
+    <a href="../../index.html" title="Multi Tenant Operator"
       class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       <!-- 
   
@@ -362,10 +362,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="../../../assets/images/logo-light.png#only-light" alt="logo" />
+          <img class="md-header__logo_light" src="../../assets/images/logo-light.png#only-light" alt="logo" />
           
           
-          <img class="md-header__logo_dark" src="../../../assets/images/logo-dark.png#only-dark" alt="logo" />
+          <img class="md-header__logo_dark" src="../../assets/images/logo-dark.png#only-dark" alt="logo" />
           
           
           <div class="header-site-name">
@@ -2023,7 +2023,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -2053,7 +2053,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../index.html" class="md-nav__link">
+      <a href="../../index.html" class="md-nav__link">
         
   
   
@@ -2113,7 +2113,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../about/key-features.html" class="md-nav__link">
+      <a href="../../about/key-features.html" class="md-nav__link">
         
   
   
@@ -2136,7 +2136,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../about/use-cases.html" class="md-nav__link">
+      <a href="../../about/use-cases.html" class="md-nav__link">
         
   
   
@@ -2159,7 +2159,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../about/benefits.html" class="md-nav__link">
+      <a href="../../about/benefits.html" class="md-nav__link">
         
   
   
@@ -2227,7 +2227,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/architecture.html" class="md-nav__link">
+      <a href="../../architecture/architecture.html" class="md-nav__link">
         
   
   
@@ -2250,7 +2250,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/custom-metrics.html" class="md-nav__link">
+      <a href="../../architecture/custom-metrics.html" class="md-nav__link">
         
   
   
@@ -2273,7 +2273,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/logs-metrics.html" class="md-nav__link">
+      <a href="../../architecture/logs-metrics.html" class="md-nav__link">
         
   
   
@@ -2300,18 +2300,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -2327,7 +2329,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Installation
@@ -2341,7 +2343,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/overview.html" class="md-nav__link">
+      <a href="../overview.html" class="md-nav__link">
         
   
   
@@ -2364,7 +2366,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/openshift.html" class="md-nav__link">
+      <a href="../openshift.html" class="md-nav__link">
         
   
   
@@ -2384,18 +2386,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
         
           
           <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
@@ -2411,7 +2415,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             On AKS
@@ -2422,10 +2426,32 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../installation/azure-aks/preparation.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Prepration
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="preparation.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2436,6 +2462,142 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cluster-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cluster Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-setup-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local Setup Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-creating-and-configuring-an-aks-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional: Creating and Configuring an AKS Cluster
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional: Creating and Configuring an AKS Cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-admin-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure Admin Group
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-aks-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create AKS Cluster
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-ingress-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Ingress Controller
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-certmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Certmanager
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-lets-encrypt-access-key-secret" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Let's Encrypt Access Key Secret
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-clusterissuer-for-lets-encrypt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create ClusterIssuer for Let's Encrypt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-wildcard-dns-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Wildcard DNS Record
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-wildcard-certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Wildcard Certificate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      What's Next?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2448,7 +2610,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/azure-aks/installation.html" class="md-nav__link">
+      <a href="installation.html" class="md-nav__link">
         
   
   
@@ -2471,7 +2633,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/azure-aks/validation.html" class="md-nav__link">
+      <a href="validation.html" class="md-nav__link">
         
   
   
@@ -2540,7 +2702,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/aws-eks/preparation.html" class="md-nav__link">
+      <a href="../aws-eks/preparation.html" class="md-nav__link">
         
   
   
@@ -2563,7 +2725,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/aws-eks/installation.html" class="md-nav__link">
+      <a href="../aws-eks/installation.html" class="md-nav__link">
         
   
   
@@ -2586,7 +2748,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/aws-eks/validation.html" class="md-nav__link">
+      <a href="../aws-eks/validation.html" class="md-nav__link">
         
   
   
@@ -2617,7 +2779,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/kubernetes.html" class="md-nav__link">
+      <a href="../kubernetes.html" class="md-nav__link">
         
   
   
@@ -2640,7 +2802,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/helm.html" class="md-nav__link">
+      <a href="../helm.html" class="md-nav__link">
         
   
   
@@ -2708,7 +2870,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/overview.html" class="md-nav__link">
+      <a href="../../console/overview.html" class="md-nav__link">
         
   
   
@@ -2731,7 +2893,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/dashboard.html" class="md-nav__link">
+      <a href="../../console/dashboard.html" class="md-nav__link">
         
   
   
@@ -2754,7 +2916,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/tenants.html" class="md-nav__link">
+      <a href="../../console/tenants.html" class="md-nav__link">
         
   
   
@@ -2777,7 +2939,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/namespaces.html" class="md-nav__link">
+      <a href="../../console/namespaces.html" class="md-nav__link">
         
   
   
@@ -2800,7 +2962,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/hibernation.html" class="md-nav__link">
+      <a href="../../console/hibernation.html" class="md-nav__link">
         
   
   
@@ -2823,7 +2985,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/showback.html" class="md-nav__link">
+      <a href="../../console/showback.html" class="md-nav__link">
         
   
   
@@ -2846,7 +3008,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/quotas.html" class="md-nav__link">
+      <a href="../../console/quotas.html" class="md-nav__link">
         
   
   
@@ -2869,7 +3031,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/templates.html" class="md-nav__link">
+      <a href="../../console/templates.html" class="md-nav__link">
         
   
   
@@ -2892,7 +3054,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/capacity-planning.html" class="md-nav__link">
+      <a href="../../console/capacity-planning.html" class="md-nav__link">
         
   
   
@@ -2915,7 +3077,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/configuration.html" class="md-nav__link">
+      <a href="../../console/configuration.html" class="md-nav__link">
         
   
   
@@ -2983,7 +3145,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/concepts.html" class="md-nav__link">
+      <a href="../../architecture/concepts.html" class="md-nav__link">
         
   
   
@@ -3006,7 +3168,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../quota.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/quota.html" class="md-nav__link">
         
   
   
@@ -3029,7 +3191,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../tenant/tenant-overview.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/tenant-overview.html" class="md-nav__link">
         
   
   
@@ -3052,7 +3214,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../extensions.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/extensions.html" class="md-nav__link">
         
   
   
@@ -3075,7 +3237,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../template.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/template/template.html" class="md-nav__link">
         
   
   
@@ -3098,7 +3260,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../template-instance.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/template/template-instance.html" class="md-nav__link">
         
   
   
@@ -3121,7 +3283,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../template-group-instance.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/template/template-group-instance.html" class="md-nav__link">
         
   
   
@@ -3144,7 +3306,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integration-config.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/integration-config.html" class="md-nav__link">
         
   
   
@@ -3167,7 +3329,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../resource-supervisor.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -3194,20 +3356,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -3223,7 +3383,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             How-to Guides
@@ -3275,7 +3435,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../tenant/how-to-guides/create-tenant.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/create-tenant.html" class="md-nav__link">
         
   
   
@@ -3298,7 +3458,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
         
   
   
@@ -3321,7 +3481,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
         
   
   
@@ -3344,7 +3504,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
         
   
   
@@ -3367,7 +3527,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
         
   
   
@@ -3390,7 +3550,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   
@@ -3413,7 +3573,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
         
   
   
@@ -3436,7 +3596,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
         
   
   
@@ -3459,7 +3619,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../tenant/how-to-guides/custom-roles.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   
@@ -3482,7 +3642,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   
@@ -3505,7 +3665,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
         
   
   
@@ -3533,20 +3693,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
         
           
           <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
@@ -3562,7 +3720,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
             Template
@@ -3576,7 +3734,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="copying-resources.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/template/how-to-guides/copying-resources.html" class="md-nav__link">
         
   
   
@@ -3599,7 +3757,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="copying-resources-2.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/template/how-to-guides/copying-resources-2.html" class="md-nav__link">
         
   
   
@@ -3622,7 +3780,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="distributing-manifests.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/template/how-to-guides/distributing-manifests.html" class="md-nav__link">
         
   
   
@@ -3645,7 +3803,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="configuring-multitenant-network-isolation.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/template/how-to-guides/configuring-multitenant-network-isolation.html" class="md-nav__link">
         
   
   
@@ -3668,7 +3826,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="deploying-templates.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/template/how-to-guides/deploying-templates.html" class="md-nav__link">
         
   
   
@@ -3691,7 +3849,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/template/how-to-guides/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   
@@ -3711,19 +3869,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="distributing-secrets-using-sealed-secret-template.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../kubernetes-resources/template/how-to-guides/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   
@@ -3734,7 +3883,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-      
     </li>
   
 
@@ -3747,7 +3895,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/template/how-to-guides/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   
@@ -3770,7 +3918,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="templated-metadata-values.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/template/how-to-guides/templated-metadata-values.html" class="md-nav__link">
         
   
   
@@ -3793,7 +3941,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="template-default-params.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/template/how-to-guides/template-default-params.html" class="md-nav__link">
         
   
   
@@ -3869,7 +4017,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/argocd.html" class="md-nav__link">
+      <a href="../../integrations/argocd.html" class="md-nav__link">
         
   
   
@@ -3930,7 +4078,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/vault/vault.html" class="md-nav__link">
+      <a href="../../integrations/vault/vault.html" class="md-nav__link">
         
   
   
@@ -3953,7 +4101,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/vault/vault-ic.html" class="md-nav__link">
+      <a href="../../integrations/vault/vault-ic.html" class="md-nav__link">
         
   
   
@@ -3976,7 +4124,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
+      <a href="../../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
         
   
   
@@ -4007,7 +4155,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/devworkspace.html" class="md-nav__link">
+      <a href="../../integrations/devworkspace.html" class="md-nav__link">
         
   
   
@@ -4030,7 +4178,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/mattermost.html" class="md-nav__link">
+      <a href="../../integrations/mattermost.html" class="md-nav__link">
         
   
   
@@ -4053,7 +4201,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/keycloak.html" class="md-nav__link">
+      <a href="../../integrations/keycloak.html" class="md-nav__link">
         
   
   
@@ -4076,7 +4224,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/azure-pricing.html" class="md-nav__link">
+      <a href="../../integrations/azure-pricing.html" class="md-nav__link">
         
   
   
@@ -4099,7 +4247,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/aws-pricing.html" class="md-nav__link">
+      <a href="../../integrations/aws-pricing.html" class="md-nav__link">
         
   
   
@@ -4129,7 +4277,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../pricing.html" class="md-nav__link">
+      <a href="../../pricing.html" class="md-nav__link">
         
   
   
@@ -4151,7 +4299,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../changelog.html" class="md-nav__link">
+      <a href="../../changelog.html" class="md-nav__link">
         
   
   
@@ -4173,7 +4321,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../eula.html" class="md-nav__link">
+      <a href="../../eula.html" class="md-nav__link">
         
   
   
@@ -4195,7 +4343,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../troubleshooting.html" class="md-nav__link">
+      <a href="../../troubleshooting.html" class="md-nav__link">
         
   
   
@@ -4232,6 +4380,128 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cluster-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cluster Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-setup-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local Setup Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-creating-and-configuring-an-aks-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional: Creating and Configuring an AKS Cluster
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional: Creating and Configuring an AKS Cluster">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-admin-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure Admin Group
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-aks-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create AKS Cluster
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-ingress-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Ingress Controller
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-certmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Certmanager
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-lets-encrypt-access-key-secret" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Let's Encrypt Access Key Secret
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-clusterissuer-for-lets-encrypt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create ClusterIssuer for Let's Encrypt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-wildcard-dns-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Wildcard DNS Record
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-wildcard-certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Wildcard Certificate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      What's Next?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -4249,82 +4519,223 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="distributing-secrets-using-sealed-secrets-template">Distributing Secrets Using Sealed Secrets Template<a class="headerlink" href="#distributing-secrets-using-sealed-secrets-template" title="Permanent link">#</a></h1>
-<p>Bill is a cluster admin who wants to provide a mechanism for distributing secrets in multiple namespaces. For this, he wants to use <a href="https://github.com/bitnami-labs/sealed-secrets#sealed-secrets-for-kubernetes">Sealed Secrets</a> as the solution by adding them to MTO Template CR</p>
-<p>First, Bill creates a Template in which Sealed Secret is mentioned:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sealed-secret</span>
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SealedSecret</span>
-<span class="w">    </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bitnami.com/v1alpha1</span>
-<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysecret</span>
-<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">encryptedData</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">.dockerconfigjson</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AgBy3i4OJSWK+PiTySYZZA9rO43cGDEq.....</span>
-<span class="w">      </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/dockerconfigjson</span>
-<span class="w">        </span><span class="c1"># this is an example of labels and annotations that will be added to the output secret</span>
-<span class="w">        </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">            </span><span class="s">&quot;jenkins.io/credentials-type&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">usernamePassword</span>
-<span class="w">          </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">            </span><span class="s">&quot;jenkins.io/credentials-description&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">credentials from Kubernetes</span>
+<h1 id="mto-preparation-guide">MTO Preparation Guide<a class="headerlink" href="#mto-preparation-guide" title="Permanent link">#</a></h1>
+<p>This document provides a detailed walk through of the preparation steps required for MTO installation.</p>
+<h2 id="cluster-requirements">Cluster Requirements<a class="headerlink" href="#cluster-requirements" title="Permanent link">#</a></h2>
+<p>An AKS cluster with the following components:</p>
+<ul>
+<li>An Ingress controller</li>
+<li>Valid certificates for MTO Gateway, MTO Console, and MTO Keycloak</li>
+</ul>
+<p>DNS entries configured for MTO Gateway, MTO Console, and MTO Keycloak</p>
+<p>A user with <strong>cluster administrator privileges</strong>.</p>
+<h2 id="local-setup-requirements">Local Setup Requirements<a class="headerlink" href="#local-setup-requirements" title="Permanent link">#</a></h2>
+<p>The installation machine must have:</p>
+<ul>
+<li>Helm installed</li>
+<li>kubectl installed</li>
+</ul>
+<p>Once these preparations are complete, you can proceed with the <a href="installation.html">installation section</a>.</p>
+<h2 id="optional-creating-and-configuring-an-aks-cluster">Optional: Creating and Configuring an AKS Cluster<a class="headerlink" href="#optional-creating-and-configuring-an-aks-cluster" title="Permanent link">#</a></h2>
+<p>If you already have an AKS cluster that meets the <a href="#cluster-requirements">Cluster Requirements</a> you can skip this section and proceed directly to the Installation Guide.</p>
+<p>However, if you don’t have an existing cluster, follow this step-by-step guide to create and configure one properly for MTO installation.</p>
+<h3 id="configure-admin-group">Configure Admin Group<a class="headerlink" href="#configure-admin-group" title="Permanent link">#</a></h3>
+<p>Execute the following snippet in your terminal with appropriate values. This snippet will configure the Azure CLI. See <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html">Register a Microsoft Entra app and create a service principal</a> for more details about access keys</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>login<span class="w"> </span>--service-principal<span class="w"> </span>--username<span class="w"> </span><span class="s2">&quot;&lt;SERVICE_PRINCIPAL_APP_ID&gt;&quot;</span><span class="w"> </span>--password<span class="w"> </span><span class="s2">&quot;&lt;SERVICE_PRINCIPAL_PASSWORD&gt;&quot;</span><span class="w"> </span>--tenant<span class="w"> </span><span class="s2">&quot;&lt;SERVICE_PRINCIPAL_TENANT_ID&gt;&quot;</span>
 </code></pre></div>
-<p>Once the template has been created, Bill has to edit the <code>Tenant</code> to add unique label to namespaces in which the secret has to be deployed.
-For this, he can use the support for <a href="../../tenant/how-to-guides/assign-metadata.html#distributing-common-labels-and-annotations">common</a> and <a href="../../tenant/how-to-guides/assign-metadata.html#distributing-specific-labels-and-annotations">specific</a> labels across namespaces.</p>
-<p>Bill has to specify a label on namespaces in which he needs the secret. He can add it to all namespaces inside a tenant or some specific namespaces depending on the use case.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<p>Create a group called <code>mto-admins</code>:</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>ad<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--display-name<span class="w"> </span>mto-admins<span class="w"> </span>--mail-nickname<span class="w"> </span>mto-admins
+</code></pre></div>
+<p>Fetch the service principal user id</p>
+<div class="highlight"><pre><span></span><code><span class="nv">SP_USER_ID</span><span class="o">=</span><span class="k">$(</span>az<span class="w"> </span>ad<span class="w"> </span>sp<span class="w"> </span>show<span class="w"> </span>--id<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>az<span class="w"> </span>account<span class="w"> </span>show<span class="w"> </span>--query<span class="w"> </span>user.name<span class="w"> </span>-o<span class="w"> </span>tsv<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>--query<span class="w"> </span>id<span class="w"> </span>-o<span class="w"> </span>tsv<span class="k">)</span>
+</code></pre></div>
+<p>Add user to <code>mto-admins</code> group</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>ad<span class="w"> </span>group<span class="w"> </span>member<span class="w"> </span>add<span class="w"> </span>--group<span class="w"> </span>mto-admins<span class="w"> </span>--member-id<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SP_USER_ID</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p>Fetch the admin group id by executing the following command. This value will be used when creating AKS cluster</p>
+<div class="highlight"><pre><span></span><code><span class="nv">ADMIN_GROUP_ID</span><span class="o">=</span><span class="k">$(</span>az<span class="w"> </span>ad<span class="w"> </span>group<span class="w"> </span>show<span class="w"> </span>--group<span class="w"> </span>mto-admins<span class="w"> </span>--query<span class="w"> </span>id<span class="w"> </span>-o<span class="w"> </span>tsv<span class="k">)</span>
+</code></pre></div>
+<h3 id="create-aks-cluster">Create AKS Cluster<a class="headerlink" href="#create-aks-cluster" title="Permanent link">#</a></h3>
+<p>Create a resource group using following command</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>group<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;&lt;RESOURCE_GROUP_NAME&gt;&quot;</span><span class="w"> </span>--location<span class="w"> </span>westus2
+</code></pre></div>
+<p>Create AKS cluster</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>aks<span class="w"> </span>create<span class="w"> </span>--resource-group<span class="w"> </span><span class="s2">&quot;&lt;RESOURCE_GROUP_NAME&gt;&quot;</span><span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;&lt;CLUSTER_NAME&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>--node-count<span class="w"> </span><span class="m">1</span><span class="w"> </span>--vm-set-type<span class="w"> </span>VirtualMachineScaleSets<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>--enable-cluster-autoscaler<span class="w"> </span>--min-count<span class="w"> </span><span class="m">1</span><span class="w"> </span>--max-count<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>--enable-aad<span class="w"> </span>--aad-admin-group-object-ids<span class="w"> </span><span class="s2">&quot;&lt;ADMIN_GROUP_ID&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>--generate-ssh-keys
+</code></pre></div>
+<p>Run the following command to install Azure AKS CLI to install <code>kubectl</code> and other dependencies if they are not installed</p>
+<div class="highlight"><pre><span></span><code>az<span class="w"> </span>aks<span class="w"> </span>install-cli
+</code></pre></div>
+<p>Set the kubernetes context to the specified cluster.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Update the current context</span>
+az<span class="w"> </span>aks<span class="w"> </span>get-credentials<span class="w"> </span>--resource-group<span class="w"> </span><span class="s2">&quot;&lt;RESOURCE_GROUP_NAME&gt;&quot;</span><span class="w"> </span>--name<span class="w"> </span><span class="s2">&quot;&lt;CLUSTER_NAME&gt;&quot;</span><span class="w"> </span>--admin
+</code></pre></div>
+<h3 id="install-ingress-controller">Install Ingress Controller<a class="headerlink" href="#install-ingress-controller" title="Permanent link">#</a></h3>
+<p>To install nginx Ingress Controller, run the following command:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/aws/deploy.yaml
+</code></pre></div>
+<h3 id="install-certmanager">Install Certmanager<a class="headerlink" href="#install-certmanager" title="Permanent link">#</a></h3>
+<p>To install Cert-Manager, execute the following command:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://github.com/cert-manager/cert-manager/releases/download/v1.13.1/cert-manager.yaml
+</code></pre></div>
+<h3 id="create-lets-encrypt-access-key-secret">Create Let's Encrypt Access Key Secret<a class="headerlink" href="#create-lets-encrypt-access-key-secret" title="Permanent link">#</a></h3>
+<p>To configure Let's Encrypt with AWS, create the Kubernetes Secret using the following command:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>letsencrypt-production-key<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--namespace<span class="w"> </span>cert-manager<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--from-literal<span class="o">=</span><span class="nv">aws_secret_access_key</span><span class="o">=</span>&lt;AWS_SECRET_ACCESS_KEY&gt;
+</code></pre></div>
+<p>Replace <AWS_SECRET_ACCESS_KEY> with your actual AWS secret key.</p>
+<h3 id="create-clusterissuer-for-lets-encrypt">Create <code>ClusterIssuer</code> for Let's Encrypt<a class="headerlink" href="#create-clusterissuer-for-lets-encrypt" title="Permanent link">#</a></h3>
+<p>To enable automatic SSL certificate issuance using Let’s Encrypt, you need to create a ClusterIssuer resource in Kubernetes. This issuer will use Route 53 DNS-01 challenge to validate domain ownership and issue certificates.</p>
+<ol>
+<li>
+<p>Create a YAML file named <code>letsencrypt-clusterissuer.yaml</code> for the ClusterIssuer with the following content. Replace the placeholders with your actual values:</p>
+<ul>
+<li><code>&lt;AWS_ACCESS_KEY_ID&gt;</code>: Your AWS Access Key ID.</li>
+<li><code>&lt;REGION&gt;</code>: The AWS region where your Route 53 hosted zone is located (e.g., us-east-1).</li>
+<li><code>&lt;BASE_DOMAIN&gt;</code>: Your base domain (e.g., example.com).</li>
+<li><code>&lt;EMAIL&gt;</code>: Your email address for Let's Encrypt notifications.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIssuer</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">letsencrypt-production</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
-<span class="w">    </span><span class="nt">editors</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">john@aurora.org</span>
-<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prod</span>
-<span class="w">    </span><span class="nt">withoutTenantPrefix</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">specific</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-test-namespace</span>
-<span class="w">          </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">distribute-image-pull-secret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="nt">common</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">distribute-image-pull-secret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">acme</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;EMAIL&gt;</span><span class="w">  </span><span class="c1"># Replace with your email address</span>
+<span class="w">    </span><span class="nt">preferredChain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ISRG Root X1</span>
+<span class="w">    </span><span class="nt">privateKeySecretRef</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">issuer-account-key</span>
+<span class="w">    </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;https://acme-v02.api.letsencrypt.org/directory&#39;</span>
+<span class="w">    </span><span class="nt">solvers</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">dns01</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">route53</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">accessKeyID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;AWS_ACCESS_KEY_ID&gt;</span><span class="w">  </span><span class="c1"># Replace with your AWS Access Key ID</span>
+<span class="w">            </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;REGION&gt;</span><span class="w">  </span><span class="c1"># Replace with your AWS region</span>
+<span class="w">            </span><span class="nt">secretAccessKeySecretRef</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws_secret_access_key</span>
+<span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">letsencrypt-production-key</span>
+<span class="w">        </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">dnsZones</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;BASE_DOMAIN&gt;</span><span class="w">  </span><span class="c1"># Replace with your base domain</span>
 </code></pre></div>
-<p>Bill has added support for a new label <code>distribute-image-pull-secret: true"</code> for tenant projects/namespaces, now MTO will add that label depending on the used field.</p>
-<p>Finally, Bill creates a <code>TemplateGroupInstance</code> which will deploy the Sealed Secrets using the newly created project label and template:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateGroupInstance</span>
+</li>
+<li>
+<p>Apply the YAML file to your cluster:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>letsencrypt-clusterissuer.yaml
+</code></pre></div>
+</li>
+<li>
+<p>Run the following command to ensure the ClusterIssuer is ready:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>clusterissuer<span class="w"> </span>letsencrypt-production
+</code></pre></div>
+</li>
+</ol>
+<h3 id="create-wildcard-dns-record">Create Wildcard DNS Record<a class="headerlink" href="#create-wildcard-dns-record" title="Permanent link">#</a></h3>
+<p>To ensure proper routing for applications, you need to create a wildcard DNS record that points to the nginx Ingress Controller’s external IP. Follow these steps:</p>
+<ol>
+<li>
+<p>Retrieve the Ingress Controller's External IP
+    Run the following command to get the external IP of the nginx Ingress Controller:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>ingress-nginx-controller<span class="w"> </span>-n<span class="w"> </span>ingress-nginx<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.status.loadBalancer.ingress[0].ip}&quot;</span>
+</code></pre></div>
+<p>If the hostname is not available, wait for a few minutes and re-run the command.</p>
+</li>
+<li>
+<p>Retrieve Hosted Zone and Load Balancer IDs
+    Run the following commands to retrieve the Route 53 Hosted Zone ID and Load Balancer Hosted Zone ID:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Retrieve Hosted Zone ID</span>
+<span class="nv">HOSTED_ZONE_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>route53<span class="w"> </span>list-hosted-zones-by-name<span class="w"> </span>--dns-name<span class="w"> </span>&lt;BASE_DOMAIN&gt;<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;HostedZones[0].Id&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="w"> </span>-f3<span class="k">)</span>
+
+<span class="c1"># Retrieve Hosted Zone Load Balancer ID</span>
+<span class="nv">HOSTED_ZONE_LB_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>elbv2<span class="w"> </span>describe-load-balancers<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;LoadBalancers[0].CanonicalHostedZoneId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+</code></pre></div>
+</li>
+<li>
+<p>Create a JSON File for the DNS Update
+    Create a file named <code>change-batch.json</code> and update the placeholders:</p>
+<ul>
+<li><code>&lt;FULL_SUBDOMAIN&gt;</code> – Your subdomain (e.g., apps.example.com)</li>
+<li><code>&lt;HOSTED_ZONE_LB_ID&gt;</code> – Hosted Zone Load Balancer ID from Step 2</li>
+<li><code>&lt;EXTERNAL_IP&gt;</code> – External IP retrieved in Step 1</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;Comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Update wildcard DNS record to point to AKS Ingress Controller&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;Changes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UPSERT&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;ResourceRecordSet&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*.&lt;FULL_SUBDOMAIN&gt;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;TTL&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ResourceRecords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;EXTERNAL_IP&gt;&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>Update the DNS Record in Route 53 by using the following command</p>
+<div class="highlight"><pre><span></span><code>aws<span class="w"> </span>route53<span class="w"> </span>change-resource-record-sets<span class="w"> </span>--hosted-zone-id<span class="w"> </span><span class="nv">$HOSTED_ZONE_ID</span><span class="w"> </span>--change-batch<span class="w"> </span>file://change-batch.json
+</code></pre></div>
+</li>
+<li>
+<p>Verify DNS Configuration
+    Check if the DNS record has been propagated correctly:</p>
+<div class="highlight"><pre><span></span><code>nslookup<span class="w"> </span>&lt;YOUR_DOMAIN&gt;
+</code></pre></div>
+<p>Once the record is updated, traffic will be properly routed to the nginx Ingress Controller.</p>
+</li>
+</ol>
+<h3 id="create-wildcard-certificate">Create Wildcard Certificate<a class="headerlink" href="#create-wildcard-certificate" title="Permanent link">#</a></h3>
+<p>A wildcard certificate allows all applications under a given subdomain to use a single SSL certificate. MTO will use this certificate to secure the MTO Console, MTO Gateway, and MTO Keycloak.</p>
+<ol>
+<li>
+<p>Apply the Wildcard Certificate Configuration</p>
+<p>Create a file named <code>wildcard-certificate.yaml</code> and replace the placeholders with the appropriate values:</p>
+<ul>
+<li><code>&lt;CERTIFICATE_NAME&gt;</code> - Name of the certificate to be generated.</li>
+<li><code>&lt;FULL_SUBDOMAIN&gt;</code> - DNS subdomain for which the wildcard certificate will be issued.</li>
+<li><code>&lt;NAMESPACE&gt;</code> - Namespace where the certificate and secret will be created. If MTO is installed in a different namespace, manually copy the generated secret.</li>
+<li><code>&lt;CERTIFICATE_SECRET_NAME&gt;</code> - Name of the secret that will store the generated certificate. This secret will be used in MTO’s configuration to enable SSL for MTO components.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Certificate</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sealed-secret</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;CERTIFICATE_NAME&gt;</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;NAMESPACE&gt;</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sealed-secret</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">distribute-image-pull-secret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;CERTIFICATE_SECRET_NAME&gt;</span>
+<span class="w">  </span><span class="nt">issuerRef</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">letsencrypt-production</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIssuer</span>
+<span class="w">  </span><span class="nt">commonName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*.&lt;FULL_SUBDOMAIN&gt;&quot;</span>
+<span class="w">  </span><span class="nt">dnsNames</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;*.&lt;FULL_SUBDOMAIN&gt;&quot;</span>
 </code></pre></div>
-<p>MTO will now deploy the Sealed Secrets mentioned in <code>Template</code> to namespaces which have the mentioned label. The rest of the work to deploy secret from a Sealed Secret has to be done by Sealed Secrets Controller.</p>
+</li>
+<li>
+<p>Apply the certificate configuration using the following command:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>wildcard-certificate.yaml
+</code></pre></div>
+</li>
+<li>
+<p>Verify Certificate Creation</p>
+<p>After applying the configuration, check if the certificate has been issued successfully:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>--for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span>Ready<span class="w"> </span>certificate/&lt;CERTIFICATE_NAME&gt;<span class="w"> </span>-n<span class="w"> </span>&lt;NAMESPACE&gt;<span class="w"> </span>--timeout<span class="o">=</span>300s
+</code></pre></div>
+</li>
+</ol>
+<h2 id="whats-next">What's Next?<a class="headerlink" href="#whats-next" title="Permanent link">#</a></h2>
+<p>All the required components have been installed and configured. Now MTO can be installed on the EKS Cluster. See <a href="installation.html">AKS MTO Installation Guide</a></p>
 
 
 
@@ -4618,11 +5029,11 @@ For this, he can use the support for <a href="../../tenant/how-to-guides/assign-
                 <div class="flex-2">
                     <div class="logo-footer-container">
                         
-                        <img class="md-header__logo_light" src="../../../assets/images/footer-logo-light.png#only-light"
+                        <img class="md-header__logo_light" src="../../assets/images/footer-logo-light.png#only-light"
                             alt="logo" />
                         
                         
-                        <img src="../../../assets/images/footer-logo-dark.png#only-dark" alt="logo" />
+                        <img src="../../assets/images/footer-logo-dark.png#only-dark" alt="logo" />
                         
                     </div>
 
@@ -4630,21 +5041,21 @@ For this, he can use the support for <a href="../../tenant/how-to-guides/assign-
                         <div class="display-flex">
                             
                             <img class="csa-logo-dark"
-                                src="../../../assets/images/CSA_dark.png#only-dark" alt="CSA" />
+                                src="../../assets/images/CSA_dark.png#only-dark" alt="CSA" />
                             
                             
                             <img class="csa-logo-light"
-                                src="../../../assets/images/CSA_light.png#only-light"
+                                src="../../assets/images/CSA_light.png#only-light"
                                 alt="CSA" />
                             
 
                             
-                            <img class="hc-logo-dark" src="../../../assets/images/HC_dark.png#only-dark"
+                            <img class="hc-logo-dark" src="../../assets/images/HC_dark.png#only-dark"
                                 alt="HC" />
                             
                             
                             <img class="hc-logo-light"
-                                src="../../../assets/images/HC_light.png#only-light" alt="HC" />
+                                src="../../assets/images/HC_light.png#only-light" alt="HC" />
                             
                         </div>
                     </div>
@@ -5035,10 +5446,10 @@ For this, he can use the support for <a href="../../tenant/how-to-guides/assign-
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
