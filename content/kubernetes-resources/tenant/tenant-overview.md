@@ -79,13 +79,20 @@ spec:
     allowed:
       - nginx
       - trafeik
+
   serviceAccounts:
     denied:
       - service-user-1
       - service-user-2
+
   podPriorityClasses:
     allowed:
       - high-priority
+
+  imageRegistries:
+    allowed:
+      - ghcr.io
+      - docker.io
 ```
 
 ## Access Control
@@ -187,7 +194,7 @@ serviceAccounts:
 
 * `allowed` restricts a tenant to creating pods only with the specified `priorityClasse`. The empty string `""` is treated like any other `priorityClass` name. If you use it while filtering PodPriorityClasses, you must include `""` in the tenant's allow-list, or it will be filtered out. If no PodPriorityClass is specified for a resource, it will be treated as `""`.
 
-The following resources will be watched for PodPriorityClasses:
+Following resources will be watched for PodPriorityClasses:
 
 * Pods
 * Deployments
@@ -202,4 +209,27 @@ The following resources will be watched for PodPriorityClasses:
 podPriorityClasses:
   allowed:
     - high-priority
+```
+
+## Image Registries
+
+The `imageRegistries` field allows you to specify which container image registries are permitted for use within the tenant. This ensures that only trusted sources are used for pulling container images, enhancing security and compliance.
+
+* `allowed`: Specifies the registries that the tenant is authorized to use. Any attempt to pull images from registries not included in this list will be blocked. To allow the tenant to pull images without specifying a registry name, the empty string "" must be included in the allowed list, enabling access to the container runtime's default registry.
+
+Following resources will be watched for image registries:
+
+* Pods
+* Deployments
+* StatefulSets
+* ReplicaSets
+* Jobs
+* CronJobs
+* Daemonsets
+
+```yaml
+imageRegistries:
+  allowed:
+    - ghcr.io
+    - docker.io
 ```
