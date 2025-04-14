@@ -3162,6 +3162,15 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#image-registries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Registries
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4431,6 +4440,15 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#image-registries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Registries
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4525,13 +4543,20 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trafeik</span>
+
 <span class="w">  </span><span class="nt">serviceAccounts</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">denied</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-1</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-2</span>
+
 <span class="w">  </span><span class="nt">podPriorityClasses</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high-priority</span>
+
+<span class="w">  </span><span class="nt">imageRegistries</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker.io</span>
 </code></pre></div>
 <h2 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">#</a></h2>
 <p>Structured access control is critical for managing roles and permissions within a tenant effectively. It divides users into three categories, each with customizable privileges. This design enables precise role-based access management.  </p>
@@ -4627,7 +4652,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <ul>
 <li><code>allowed</code> restricts a tenant to creating pods only with the specified <code>priorityClasse</code>. The empty string <code>""</code> is treated like any other <code>priorityClass</code> name. If you use it while filtering PodPriorityClasses, you must include <code>""</code> in the tenant's allow-list, or it will be filtered out. If no PodPriorityClass is specified for a resource, it will be treated as <code>""</code>.</li>
 </ul>
-<p>The following resources will be watched for PodPriorityClasses:</p>
+<p>Following resources will be watched for PodPriorityClasses:</p>
 <ul>
 <li>Pods</li>
 <li>Deployments</li>
@@ -4640,6 +4665,26 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <div class="highlight"><pre><span></span><code><span class="nt">podPriorityClasses</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high-priority</span>
+</code></pre></div>
+<h2 id="image-registries">Image Registries<a class="headerlink" href="#image-registries" title="Permanent link">#</a></h2>
+<p>The <code>imageRegistries</code> field allows you to specify which container image registries are permitted for use within the tenant. This ensures that only trusted sources are used for pulling container images, enhancing security and compliance.</p>
+<ul>
+<li><code>allowed</code>: Specifies the registries that the tenant is authorized to use. Any attempt to pull images from registries not included in this list will be blocked. To allow the tenant to pull images without specifying a registry name, the empty string "" must be included in the allowed list, enabling access to the container runtime's default registry.</li>
+</ul>
+<p>Following resources will be watched for image registries:</p>
+<ul>
+<li>Pods</li>
+<li>Deployments</li>
+<li>StatefulSets</li>
+<li>ReplicaSets</li>
+<li>Jobs</li>
+<li>CronJobs</li>
+<li>Daemonsets</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">imageRegistries</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">allowed</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker.io</span>
 </code></pre></div>
 
 
