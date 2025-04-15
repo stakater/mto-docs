@@ -542,16 +542,16 @@ integrations:
         namespace: ''
     config:
       ssoClient: vault
-          policies:
-        - name: CustomPolicy
-          rules:
-            - capabilities:
-                - read
-                - list
-              path: testPath
-          tenantRoles:
-            - viewer
-            - editor
+    policies:
+      - name: CustomPolicy
+        rules:
+          - capabilities:
+              - read
+              - list
+            path: testPath
+        tenantRoles:
+          - viewer
+          - editor
 ```
 
 ### Keycloak
