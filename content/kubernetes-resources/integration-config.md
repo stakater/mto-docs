@@ -139,6 +139,16 @@ spec:
           namespace: ''
       config:
         ssoClient: vault
+      policies:
+        - name: CustomPolicy
+          rules:
+            - capabilities:
+                - read
+                - list
+              path: testPath
+          tenantRoles:
+            - viewer
+            - editor
   tenantPolicies:
     network:
       disableIntraTenantNetworking: true
@@ -532,6 +542,16 @@ integrations:
         namespace: ''
     config:
       ssoClient: vault
+    policies:
+      - name: CustomPolicy
+        rules:
+          - capabilities:
+              - read
+              - list
+            path: testPath
+        tenantRoles:
+          - viewer
+          - editor
 ```
 
 ### Keycloak
@@ -594,6 +614,16 @@ vault:
       namespace: ''
   config:
     ssoClient: vault
+  policies:
+    - name: CustomPolicy
+      rules:
+        - capabilities:
+            - read
+            - list
+          path: testPath
+      tenantRoles:
+        - viewer
+        - editor
 ```
 
 If enabled, then admins have to specify the `authMethod` to be used for authentication. MTO supports two authentication methods:
@@ -621,6 +651,8 @@ If `authMethod` is set to `token`, then admins have to specify the following fie
     - `namespace:` Namespace of the secret containing Vault token.
 
 For more details around enabling Kubernetes auth in Vault, visit [here](https://developer.hashicorp.com/vault/docs/auth/kubernetes)
+
+#### Vault Policies
 
 The role created within Vault for Kubernetes authentication should have the following permissions:
 
@@ -658,6 +690,40 @@ path "identity/group/name/*" {
 path "identity/group/id/*" {
   capabilities = ["create", "read", "update", "patch", "delete", "list"]
 }
+```
+
+##### Custom Policies
+
+You can create custom policies for all of your tenants. The policies are created within Vault and are then assigned to the tenant roles specified in the `tenantRoles` field.
+
+- `name:` Name of the policy to be created within Vault.
+- `rules:` Rules to be applied to the policy. The rules are specified in the same format as the Vault policy language.
+    - `capabilities:` Capabilities to be applied to the policy. The capabilities can be `create`, `read`, `update`, `patch`, `delete`, `list`.
+    - `path:` Path to which the capabilities will be applied.
+- `tenantRoles` is an array of roles to which the policy will be assigned. The roles are specified in the same format as the Tenant CR. i.e. `viewer`, `editor`, `owner`.
+
+Example:
+
+```yaml
+  policies:
+    - name: CustomEditor
+      rules:
+        - capabilities:
+            - read
+            - list
+            - patch
+            - update
+          path: testPath
+      tenantRoles:
+        - editor
+    - name: CustomViewer
+      rules:
+        - capabilities:
+            - read
+            - list
+          path: testPath
+      tenantRoles:
+        - viewer
 ```
 
 ## TenantPolicies
