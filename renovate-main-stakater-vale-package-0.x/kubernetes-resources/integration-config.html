@@ -3457,6 +3457,30 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#vault-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vault Policies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vault Policies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Policies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4824,6 +4848,30 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#vault-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vault Policies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vault Policies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Policies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5015,6 +5063,16 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">          </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
 <span class="w">      </span><span class="nt">config</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">ssoClient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
+<span class="w">      </span><span class="nt">policies</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomPolicy</span>
+<span class="w">          </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">capabilities</span><span class="p">:</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+<span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">list</span>
+<span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">testPath</span>
+<span class="w">          </span><span class="nt">tenantRoles</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">viewer</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">editor</span>
 <span class="w">  </span><span class="nt">tenantPolicies</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">network</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">disableIntraTenantNetworking</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -5358,6 +5416,16 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
 <span class="w">    </span><span class="nt">config</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">ssoClient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
+<span class="w">    </span><span class="nt">policies</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomPolicy</span>
+<span class="w">        </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">capabilities</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">list</span>
+<span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">testPath</span>
+<span class="w">        </span><span class="nt">tenantRoles</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">viewer</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">editor</span>
 </code></pre></div>
 <h3 id="keycloak">Keycloak<a class="headerlink" href="#keycloak" title="Permanent link">#</a></h3>
 <p><a href="https://www.keycloak.org/">Keycloak</a> is an open-source Identity and Access Management solution aimed at modern applications and services. It makes it easy to secure applications and services with little to no code.</p>
@@ -5406,6 +5474,16 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&#39;</span>
 <span class="w">  </span><span class="nt">config</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ssoClient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
+<span class="w">  </span><span class="nt">policies</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomPolicy</span>
+<span class="w">      </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">capabilities</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">list</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">testPath</span>
+<span class="w">      </span><span class="nt">tenantRoles</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">viewer</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">editor</span>
 </code></pre></div>
 <p>If enabled, then admins have to specify the <code>authMethod</code> to be used for authentication. MTO supports two authentication methods:</p>
 <ul>
@@ -5432,6 +5510,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
 </ul>
 <p>For more details around enabling Kubernetes auth in Vault, visit <a href="https://developer.hashicorp.com/vault/docs/auth/kubernetes">here</a></p>
+<h4 id="vault-policies">Vault Policies<a class="headerlink" href="#vault-policies" title="Permanent link">#</a></h4>
 <p>The role created within Vault for Kubernetes authentication should have the following permissions:</p>
 <div class="highlight"><pre><span></span><code><span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/*&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
@@ -5466,6 +5545,38 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="err">path</span><span class="w"> </span><span class="s2">&quot;identity/group/id/*&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;patch&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
 <span class="p">}</span>
+</code></pre></div>
+<h5 id="custom-policies">Custom Policies<a class="headerlink" href="#custom-policies" title="Permanent link">#</a></h5>
+<p>You can create custom policies for all of your tenants. The policies are created within Vault and are then assigned to the tenant roles specified in the <code>tenantRoles</code> field.</p>
+<ul>
+<li><code>name:</code> Name of the policy to be created within Vault.</li>
+<li><code>rules:</code> Rules to be applied to the policy. The rules are specified in the same format as the Vault policy language.<ul>
+<li><code>capabilities:</code> Capabilities to be applied to the policy. The capabilities can be <code>create</code>, <code>read</code>, <code>update</code>, <code>patch</code>, <code>delete</code>, <code>list</code>.</li>
+<li><code>path:</code> Path to which the capabilities will be applied.</li>
+</ul>
+</li>
+<li><code>tenantRoles</code> is an array of roles to which the policy will be assigned. The roles are specified in the same format as the Tenant CR. i.e. <code>viewer</code>, <code>editor</code>, <code>owner</code>.</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">policies</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomEditor</span>
+<span class="w">      </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">capabilities</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">list</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">patch</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">update</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">testPath</span>
+<span class="w">      </span><span class="nt">tenantRoles</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">editor</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CustomViewer</span>
+<span class="w">      </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">capabilities</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">list</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">testPath</span>
+<span class="w">      </span><span class="nt">tenantRoles</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">viewer</span>
 </code></pre></div>
 <h2 id="tenantpolicies">TenantPolicies<a class="headerlink" href="#tenantpolicies" title="Permanent link">#</a></h2>
 <p><code>tenantPolicies</code> contains settings to configure additional tenant isolation.</p>
