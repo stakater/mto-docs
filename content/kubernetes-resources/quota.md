@@ -3,7 +3,7 @@
 Underlying implementation of Quota CR in OpenShift differs from rest of the Kubernetes distributions. In OpenShift, MTO relies on [ClusterResourceQuota CR](https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1) to do the calculations and link with the tenant. However, in other distributions, MTO creates underlying [ResourceQuota CRs](https://kubernetes.io/docs/concepts/policy/resource-quotas/) in every Tenant namespace which are aggregated at the time of resource admission for calculations.
 
 !!! note
-    Quota CR in Kubernetes in a preview feature, which can malfunction to allow more resources than the allowed count in its spec when the webhook is under load. Feel free to contact [Stakater Support](https://support.stakater.com/) if you'd like us to make this feature stable as per your needs.
+    Quota CR in Kubernetes in a preview feature, which can malfunction to allow more resources than the allowed count in its spec when the webhook is under load. Feel free to contact [Stakater Support](https://support.stakater.com/) if you have questions.
 
 Using Multi Tenant Operator, the cluster-admin can set and enforce cluster resource quotas and limit ranges for tenants.
 
