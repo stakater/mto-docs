@@ -165,7 +165,7 @@ resources:
     secrets:
       - name: secret-s1
         namespace: namespace-n1
-    configmaps:
+    configMaps:
       - name: configmap-c1
         namespace: namespace-n2
 ```
