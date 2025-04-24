@@ -2,6 +2,10 @@
 
 ## v1.2.x
 
+### v1.2.1
+
+- Re-certified v1.2.0 for OpenShift versions as v1.2.1, with open value in versions. From now on, MTO will be available automatically on every new OpenShift version.
+
 ### v1.2.0
 
 - Newly released on RedHat OperatorHub for OpenShift 4.17 and 4.18 as well.
