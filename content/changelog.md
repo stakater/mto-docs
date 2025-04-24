@@ -59,7 +59,7 @@ Before upgrading to v1.2.0, perform the following steps:
 - Fix for IC controller where reconciliation request was triggered with added user's name.
 - Fix a bug in Vault policies where editor role had incorrect permissions.
 - Fix a bug in sandbox creations where sandbox namespaces were not being created if there were only groups in the tenant.
-- Fix for IC controller where it would not reconcile if the cluster had too many Configmaps, making the informer cache too big to be watched.
+- Fix for IC controller where it would not reconcile if the cluster had too many ConfigMaps, making the informer cache too big to be watched.
 
 #### Pre-Upgrade Checklist
 
@@ -310,7 +310,7 @@ Before upgrading to v1.1.0, perform the following steps:
 
 ### v0.7.2
 
-- feat: Add support to map secrets/configmaps from one namespace to other namespaces using TI. Secrets/configmaps will only be mapped if their namespaces belong to same Tenant
+- feat: Add support to map secrets/ConfigMaps from one namespace to other namespaces using TI. Secrets/ConfigMaps will only be mapped if their namespaces belong to same Tenant
 
 ### v0.7.1
 
@@ -320,7 +320,7 @@ Before upgrading to v1.1.0, perform the following steps:
 
 ### v0.7.0
 
-- feat: Add support to map secrets/configmaps from one namespace to other namespaces using TGI. Resources can be mapped from one Tenant's namespaces to some other Tenant's namespaces
+- feat: Add support to map secrets/ConfigMaps from one namespace to other namespaces using TGI. Resources can be mapped from one Tenant's namespaces to some other Tenant's namespaces
 - feat: Allow creation of sandboxes that are private to the user
 - feat: Allow creation of namespaces without tenant prefix from within tenant spec
 - fix: Webhook changes will now be updated without manual intervention

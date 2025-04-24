@@ -1,6 +1,6 @@
 # Template
 
-Templates are used to initialize Namespaces, share common resources across namespaces, and map secrets/configmaps from one namespace to other namespaces.
+Templates are used to initialize Namespaces, share common resources across namespaces, and map secrets/ConfigMaps from one namespace to other namespaces.
 
 They can contain pre-defined parameters such as `${namespace}`/`${tenant}`.
 
@@ -142,11 +142,11 @@ A brief explanation of the fields in the Helm section:
 
 ### 3. Resource Mapping
 
-This approach maps secrets and configmaps from one tenant's namespace to another tenant's namespace, or within a tenant's namespace.
+This approach maps secrets and ConfigMaps from one tenant's namespace to another tenant's namespace, or within a tenant's namespace.
 
 #### How It Works
 
-* The template contains mappings to pre-existing resources (secrets and configmaps only).
+* The template contains mappings to pre-existing resources (secrets and ConfigMaps only).
 
 #### Use Cases
 
@@ -165,7 +165,7 @@ resources:
     secrets:
       - name: secret-s1
         namespace: namespace-n1
-    configMaps:
+    ConfigMaps:
       - name: configmap-c1
         namespace: namespace-n2
 ```
