@@ -59,7 +59,7 @@ aws iam create-access-key --user-name "falcon@nordmart.com"
 
 ### 1.4. Grant user access to Kubernetes via `ConfigMap`
 
-Use the following command to map this user in `aws-auth` configmap in `kube-system` namespace.
+Use the following command to map this user in `aws-auth` ConfigMap in `kube-system` namespace.
 
 ```bash
 eksctl create iamidentitymapping --cluster "<CLUSTER_NAME>" \

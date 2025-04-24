@@ -40,7 +40,7 @@ After all pods come in running state, you can follow [Tutorials](../kubernetes-r
 
 ### Enterprise License Configuration
 
-For the Enterprise version, you need to have a configmap `license` created in MTO's namespace `multi-tenant-operator`. You will get this configmap when purchasing the Enterprise version. It would look like this:
+For the Enterprise version, you need to have a ConfigMap `license` created in MTO's namespace `multi-tenant-operator`. You will get this ConfigMap when purchasing the Enterprise version. It would look like this:
 
 ```yaml
 apiVersion: v1

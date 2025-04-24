@@ -45,7 +45,7 @@ Before upgrading to v1.2.0, perform the following steps:
 - Added option to disable `Intra-tenant Networking` via [Integration Config](./kubernetes-resources/integration-config.md#tenantpolicies).
 - Added [Storage class per tenant](./kubernetes-resources/tenant/tenant-overview.md#storage) support via Tenant CR.
 - Added option to override component images.
-- Added support to add/update `Casbin` policies via `tenant-operator-casbin-config` Configmap.
+- Added support to add/update `Casbin` policies via `tenant-operator-casbin-config` ConfigMap.
 
 #### Enhancements
 
@@ -66,7 +66,7 @@ Before upgrading to v1.2.0, perform the following steps:
 Before upgrading to v1.1.0, perform the following steps:
 
 - Disable `console` in the integration config.
-- Remove the `tenant-operator-casbin-config` Configmap from the `multi-tenant-operator` namespace, if it exists.
+- Remove the `tenant-operator-casbin-config` ConfigMap from the `multi-tenant-operator` namespace, if it exists.
 
 #### Post-Upgrade Checklist
 
@@ -111,7 +111,7 @@ Before upgrading to v1.1.0, perform the following steps:
 
 #### Fixes
 
-- Updated configmap predicate to not compare data
+- Updated ConfigMap predicate to not compare data
 - Restructure and fix `Casbin` rule creation: `Casbin` rules for privileged user and groups were missing that caused issue while accessing MTO Console
 
 #### Components
@@ -125,7 +125,7 @@ Before upgrading to v1.1.0, perform the following steps:
 | `kube-state-metrics`    | v2.8.0       | `ghcr.io/stakater/mto/kube-state-metrics`       |
 | `postgresql-15`         | 1-15         | `ghcr.io/stakater/mto/postgresql-15`            |
 | `showback`              | v0.0.12      | `ghcr.io/stakater/showback`                     |
-| `configmap-reload`      | v0.13.0      | `ghcr.io/jimmidyson/configmap-reload`           |
+| `configMap-reload`      | v0.13.0      | `ghcr.io/jimmidyson/ConfigMap-reload`           |
 | `kube-rbac-proxy`       | v0.11.0      | `gcr.io/kubebuilder/kube-rbac-proxy`            |
 | `kubecost-cost-model`   | 1.108.0      | `quay.io/kubecost1/kubecost-cost-model`         |
 | `prometheus`            | v2.41.0      | `quay.io/prometheus/prometheus`                 |

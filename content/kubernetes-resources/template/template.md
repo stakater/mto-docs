@@ -83,7 +83,7 @@ This method integrates Helm charts into the template, allowing you to leverage H
 
 #### Use Cases
 
-* Best for complex resource setups with interdependencies (e.g., a microservice with a Deployment, Service, Ingress, and Configmap).
+* Best for complex resource setups with interdependencies (e.g., a microservice with a Deployment, Service, Ingress, and ConfigMap).
 * Useful for resources requiring advanced templating logic or modular packaging.
 * Great for managing third-party tools or applications (e.g., deploying Prometheus, Keycloak, or databases).
 
@@ -166,6 +166,6 @@ resources:
       - name: secret-s1
         namespace: namespace-n1
     ConfigMaps:
-      - name: configmap-c1
+      - name: ConfigMap-c1
         namespace: namespace-n2
 ```
