@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -3741,7 +3741,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   <span class="md-ellipsis">
-    Copying Secrets and Configmaps across Tenant Namespaces via TGI
+    Copying Secrets and ConfigMaps across Tenant Namespaces via TGI
     
   </span>
   
@@ -4613,7 +4613,7 @@ Output:
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>iam<span class="w"> </span>create-access-key<span class="w"> </span>--user-name<span class="w"> </span><span class="s2">&quot;falcon@nordmart.com&quot;</span>
 </code></pre></div>
 <h3 id="14-grant-user-access-to-kubernetes-via-configmap">1.4. Grant user access to Kubernetes via <code>ConfigMap</code><a class="headerlink" href="#14-grant-user-access-to-kubernetes-via-configmap" title="Permanent link">#</a></h3>
-<p>Use the following command to map this user in <code>aws-auth</code> configmap in <code>kube-system</code> namespace.</p>
+<p>Use the following command to map this user in <code>aws-auth</code> ConfigMap in <code>kube-system</code> namespace.</p>
 <div class="highlight"><pre><span></span><code>eksctl<span class="w"> </span>create<span class="w"> </span>iamidentitymapping<span class="w"> </span>--cluster<span class="w"> </span><span class="s2">&quot;&lt;CLUSTER_NAME&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">                                 </span>--region<span class="w"> </span><span class="s2">&quot;&lt;AWS_REGION&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">                                 </span>--arn<span class="w"> </span><span class="s2">&quot;&lt;USER_ARN&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
