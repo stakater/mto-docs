@@ -23,7 +23,7 @@ spec:
     hard:
       requests.cpu: '5'
       requests.memory: '5Gi'
-      ConfigMaps: "10"
+      configmaps: "10"
       secrets: "10"
       services: "10"
       services.loadbalancers: "2"

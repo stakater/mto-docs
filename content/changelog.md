@@ -125,7 +125,7 @@ Before upgrading to v1.1.0, perform the following steps:
 | `kube-state-metrics`    | v2.8.0       | `ghcr.io/stakater/mto/kube-state-metrics`       |
 | `postgresql-15`         | 1-15         | `ghcr.io/stakater/mto/postgresql-15`            |
 | `showback`              | v0.0.12      | `ghcr.io/stakater/showback`                     |
-| `configMap-reload`      | v0.13.0      | `ghcr.io/jimmidyson/ConfigMap-reload`           |
+| `configmap-reload`      | v0.13.0      | `ghcr.io/jimmidyson/configmap-reload`           |
 | `kube-rbac-proxy`       | v0.11.0      | `gcr.io/kubebuilder/kube-rbac-proxy`            |
 | `kubecost-cost-model`   | 1.108.0      | `quay.io/kubecost1/kubecost-cost-model`         |
 | `prometheus`            | v2.41.0      | `quay.io/prometheus/prometheus`                 |

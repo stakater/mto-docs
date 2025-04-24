@@ -132,7 +132,7 @@ spec:
       type: Container
   resourcequota:
     hard:
-      ConfigMaps: "10"
+      configmaps: "10"
       memory: "8Gi"
 EOF
 ```

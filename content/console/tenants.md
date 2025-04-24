@@ -111,7 +111,7 @@ The selected quota defines resource limits for the tenant. Example quota details
 ```yaml
 resourcequota:
   hard:
-    ConfigMaps: '50'
+    configmaps: '50'
     requests.cpu: '50'
     requests.memory: 5Gi
     secrets: '50'
