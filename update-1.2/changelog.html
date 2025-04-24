@@ -6721,7 +6721,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li>Added option to disable <code>Intra-tenant Networking</code> via <a href="kubernetes-resources/integration-config.html#tenantpolicies">Integration Config</a>.</li>
 <li>Added <a href="kubernetes-resources/tenant/tenant-overview.html#storage">Storage class per tenant</a> support via Tenant CR.</li>
 <li>Added option to override component images.</li>
-<li>Added support to add/update <code>Casbin</code> policies via <code>tenant-operator-casbin-config</code> Configmap.</li>
+<li>Added support to add/update <code>Casbin</code> policies via <code>tenant-operator-casbin-config</code> ConfigMap.</li>
 </ul>
 <h4 id="enhancements_1">Enhancements<a class="headerlink" href="#enhancements_1" title="Permanent link">#</a></h4>
 <ul>
@@ -6741,7 +6741,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Before upgrading to v1.1.0, perform the following steps:</p>
 <ul>
 <li>Disable <code>console</code> in the integration config.</li>
-<li>Remove the <code>tenant-operator-casbin-config</code> Configmap from the <code>multi-tenant-operator</code> namespace, if it exists.</li>
+<li>Remove the <code>tenant-operator-casbin-config</code> ConfigMap from the <code>multi-tenant-operator</code> namespace, if it exists.</li>
 </ul>
 <h4 id="post-upgrade-checklist_1">Post-Upgrade Checklist<a class="headerlink" href="#post-upgrade-checklist_1" title="Permanent link">#</a></h4>
 <ul>
@@ -6831,7 +6831,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </ul>
 <h4 id="fixes_1">Fixes<a class="headerlink" href="#fixes_1" title="Permanent link">#</a></h4>
 <ul>
-<li>Updated configmap predicate to not compare data</li>
+<li>Updated ConfigMap predicate to not compare data</li>
 <li>Restructure and fix <code>Casbin</code> rule creation: <code>Casbin</code> rules for privileged user and groups were missing that caused issue while accessing MTO Console</li>
 </ul>
 <h4 id="components_1">Components<a class="headerlink" href="#components_1" title="Permanent link">#</a></h4>
@@ -6880,9 +6880,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <td><code>ghcr.io/stakater/showback</code></td>
 </tr>
 <tr>
-<td><code>configmap-reload</code></td>
+<td><code>configMap-reload</code></td>
 <td>v0.13.0</td>
-<td><code>ghcr.io/jimmidyson/configmap-reload</code></td>
+<td><code>ghcr.io/jimmidyson/ConfigMap-reload</code></td>
 </tr>
 <tr>
 <td><code>kube-rbac-proxy</code></td>
