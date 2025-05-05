@@ -81,13 +81,13 @@ This detailed view provides users with in-depth insights into resource utilizati
 
 ## Create Tenant
 
-The tenant creation process involves a three-step drawer interface. This document outlines the validation checks and the criteria for progressing through these steps.
+The tenant creation process involves a drawer interface with a sidebar navigation. This document outlines the validation checks and the criteria for progressing through tenant creation.
 
-### Step 1: Enter Primary Info
+### Tenant Overview
 
-![tenantCreationStep1](../images/tenantCreationStep1.png)
+![tenantOverview](../images/tenantOverview.png)
 
-The first step in creating a tenant is to provide a name for the tenant. Users must ensure the tenant name meets the specified criteria. The Next button remains disabled until the entered tenant name passes validation and a quota is selected.
+The name of the tenant is an important requirement in tenant creation process. Users must ensure the tenant name meets the specified criteria. The Create button remains disabled until the entered tenant name passes validation and a quota is selected.
 
 #### Validation Criteria
 
@@ -102,52 +102,32 @@ The first step in creating a tenant is to provide a name for the tenant. Users m
 
 - Uniqueness Check
     - The tenant name must be unique.
-    - When tenant name is entered and user stops typing the tenant name is verified of its uniqueness through an API call to the backend for confirmation that the name does not already exist. If the name is unique the Next button is enabled and user can click on it. If the name is already taken, an error is displayed, and the user must choose a different name.
+    - When tenant name is entered and user stops typing the tenant name is verified of its uniqueness through an API call to the backend for confirmation that the name does not already exist. If the name is unique the Create button is enabled and user can click on it. If the name is already taken, an error is displayed, and the user must choose a different name.
 
 ### Quota Details
 
-The selected quota defines resource limits for the tenant. Example quota details are shown in JSON format as well as a toggle button to view them as YAML:
+The selected quota defines resource limits for the tenant.
 
-```yaml
-resourcequota:
-  hard:
-    configmaps: '50'
-    requests.cpu: '50'
-    requests.memory: 5Gi
-    secrets: '50'
-    services: '050'
-    services.loadbalancers: '1'
-limitrange:
-  limits:
-    - type: Pod
-      max:
-        cpu: '1'
-        memory: 1Gi
-      min:
-        cpu: 100m
-        memory: 50Mi
-```
+### Enabling the Create Button
 
-### Enabling the Next Button
-
-The Next button becomes enabled only when
+The Create button becomes enabled only when
     - The entered tenant name passes both regex validation and the uniqueness check.
     - A quota is selected from the dropdown menu.
 
 ### Error Handling
 
-Error Handling on step 1 is based on the following factors
+Error Handling on tenant overview is based on the following factors
 
 - If the tenant name fails regex validation, an inline error message indicates the naming rule.
 - If the tenant name already exists, the user is prompted to enter a new name.
 
-### Step 2: Access Control (Optional)
+### Access Control (Optional)
 
-![tenantCreationStep2](../images/tenantCreationStep2.png)
+![tenantAccessControl](../images/tenantAccessControl.png)
 
-The second step allows users to configure access control for the tenant. This step is optional and provides three tabs for managing user roles: Owners, Editors, and Viewers.
+This section allows users to configure access control for the tenant. This section is optional and provides three tabs for managing user roles: Owners, Editors, and Viewers.
 
-If the user has some data entered into the step 2 section tabs, the skip option will be disabled. Otherwise, user can perform skip action by clicking on the Skip button.
+The user can either enter some data in each tab or choose to skip this section.
 
 ### Input Fields and Listing Behavior
 
@@ -163,27 +143,27 @@ If the user has some data entered into the step 2 section tabs, the skip option 
 
 ### Key Features
 
-- Optional Configuration: Users can skip this step by clicking the Skip button.
+- Optional Configuration: Users can skip this section.
 - Filtering: As users type into the input fields, existing values matching the input are shown as suggestions for quick selection.
 - Add New Values: If the entered value is not in the existing list, users can add it by confirming the input.
 - Scroll Support: The lists have scroll view, ensuring all entries are accessible even when the list grows long.
 
-### Navigating to the Next Step
+### Navigating to the Namespace (Optional) section
 
-- Users can proceed to the next step by clicking the Next button.
-- The Next button is always enabled for this step as it is optional.
+- Users can proceed to the namespace section by selecting the Namespace (Optional) in navigation item in sidebar.
+- The Create button is always enabled for this section as it is optional.
 
 ### Error Handling
 
-No specific validations are required for this step since it is optional. However, users can remove or adjust entries as needed using the provided interface.
+No specific validations are required for this section since it is optional. However, users can remove or adjust entries as needed using the provided interface.
 
-### Step 3: Namespace (Optional)
+### Namespace (Optional)
 
-The third step allows users to optionally configure namespaces and metadata for the tenant. This step consists of two tabs:
+This section allows users to optionally configure namespaces and metadata for the tenant. This section consists of two tabs:
 
 ### Namespace
 
-![tenantCreationStep3NamespaceTab](../images/tenantCreationStep3NamespaceTab.png)
+![tenantNamespaceTab](../images/tenantNamespaceTab.png)
 
 - Toggles:
     - Enable Sandbox: Activates the sandbox environment for the tenant.
@@ -203,20 +183,20 @@ The third step allows users to optionally configure namespaces and metadata for 
 
 ### Metadata
 
-The Metadata tab is divided into three sub-tabs:
+The Metadata tab has 3 main sections:
 
 #### Common and Sandbox Tabs
 
-![tenantCreationStep3MetadataCommonSandboxTab](../images/tenantCreationStep3MetadataCommonSandboxTab.png)
+![tenantMetadataCommonSandboxTab](../images/tenantMetadataCommonSandboxTab.png)
 
-- Both tabs allow users to add annotations and labels using Key and Value input fields.
+- Both sections allow users to add annotations and labels using Key and Value input fields.
 - Inputs act as filters for existing values.
 - No validation is required for these fields.
 - Added annotations and labels are displayed in a scroll list with remove buttons ("X") for easy deletion.
 
 #### Specific Tab
 
-![tenantCreationStep3MetadataSpecificTab](../images/tenantCreationStep3MetadataSpecificTab.png)
+![tenantMetadataSpecificTab](../images/tenantMetadataSpecificTab.png)
 
 - Includes an Add Accordion button.
 - Each accordion contains the following fields:
@@ -227,7 +207,7 @@ The Metadata tab is divided into three sub-tabs:
 
 ### Key Features
 
-- Optional Configuration: Users can skip this step by clicking the Create button directly.
+- Optional Configuration: Users can skip this section.
 - Filtering and Validation:
     - Inputs filter data based on existing values.
     - Namespace inputs validate entries to ensure uniqueness.
@@ -247,13 +227,13 @@ The Metadata tab is divided into three sub-tabs:
 
 ![YAML](../images/YamlView.png)
 
-- A YAML representation of the configuration can be previewed using the **Show YAML** button before creation.
+- A YAML representation of the configuration can be previewed as user clicks on the last navigation item in the sidebar creation or update.
 
 ## Update Tenant
 
 User can click on the edit button in the table under the action items to open the drawer with all the pre-populated tenant configurations.
 
-The update process follows a similar flow to the create process. However, the key difference is that the **tenant name** in **Step-1** cannot be edited or updated. All other steps and configurations remain the same, allowing users to modify access control, namespaces, and metadata as needed.
+The update process follows a similar flow to the create process. However, the key difference is that the **tenant name** in **Tenant Overview** cannot be edited or updated. All other sections and configurations remain the same, allowing users to modify access control, namespaces, and metadata as needed.
 
 ## Delete Tenant
 
