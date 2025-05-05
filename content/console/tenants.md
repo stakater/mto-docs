@@ -85,7 +85,7 @@ The tenant creation process involves a drawer interface with a sidebar navigatio
 
 ### Tenant Overview
 
-![tenantOverview](../images/tenantOverview.png)
+![tenant-overview](../images/tenant-overview.png)
 
 The name of the tenant is an important requirement in tenant creation process. Users must ensure the tenant name meets the specified criteria. The Create button remains disabled until the entered tenant name passes validation and a quota is selected.
 
