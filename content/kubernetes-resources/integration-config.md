@@ -753,6 +753,6 @@ network:
 
 > ⚠️ This will disable **only** intra-tenant networking. In cases requiring stricter filtering, this setting should be turned off and the stricter NetworkPolicies deployed through [Templates](./template/template.md) or manually. If you need help with your enterprise environment, do not hesitate to [contact us.](https://www.stakater.com/contact-us)
 
-- `disableNodePortServices`: (Default false) Disallow creation of services of type `NodePort` accross all namespaces
+- `disableNodePortServices`: (Default false) Disallow creation of services of type `NodePort` across all namespaces.
 
-- `disableHostPorts`: (Default false) Disallow the creation of containers with `hostPort` defined in it
+- `disableHostPorts`: (Default false) Disallow the creation of containers with `hostPort` defined in it.
