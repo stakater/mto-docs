@@ -130,7 +130,7 @@
 
 ### v0.7.2
 
-- feat: Add support to map secrets/configmaps from one namespace to other namespaces using TI. Secrets/configmaps will only be mapped if their namespaces belong to same Tenant
+- feat: Add support to map secrets/ConfigMaps from one namespace to other namespaces using TI. Secrets/ConfigMaps will only be mapped if their namespaces belong to same Tenant
 
 ### v0.7.1
 
@@ -140,7 +140,7 @@
 
 ### v0.7.0
 
-- feat: Add support to map secrets/configmaps from one namespace to other namespaces using TGI. Resources can be mapped from one Tenant's namespaces to some other Tenant's namespaces
+- feat: Add support to map secrets/ConfigMaps from one namespace to other namespaces using TGI. Resources can be mapped from one Tenant's namespaces to some other Tenant's namespaces
 - feat: Allow creation of sandboxes that are private to the user
 - feat: Allow creation of namespaces without tenant prefix from within tenant spec
 - fix: Webhook changes will now be updated without manual intervention
