@@ -1,6 +1,6 @@
 # Template
 
-Templates are used to initialize Namespaces, share common resources across namespaces, and map secrets/configmaps from one namespace to other namespaces.
+Templates are used to initialize Namespaces, share common resources across namespaces, and map secrets/ConfigMaps from one namespace to other namespaces.
 
 They can contain pre-defined parameters such as `${namespace}`/`${tenant}`.
 
@@ -83,7 +83,7 @@ This method integrates Helm charts into the template, allowing you to leverage H
 
 #### Use Cases
 
-* Best for complex resource setups with interdependencies (e.g., a microservice with a Deployment, Service, Ingress, and Configmap).
+* Best for complex resource setups with interdependencies (e.g., a microservice with a Deployment, Service, Ingress, and ConfigMap).
 * Useful for resources requiring advanced templating logic or modular packaging.
 * Great for managing third-party tools or applications (e.g., deploying Prometheus, Keycloak, or databases).
 
@@ -142,11 +142,11 @@ A brief explanation of the fields in the Helm section:
 
 ### 3. Resource Mapping
 
-This approach maps secrets and configmaps from one tenant's namespace to another tenant's namespace, or within a tenant's namespace.
+This approach maps secrets and ConfigMaps from one tenant's namespace to another tenant's namespace, or within a tenant's namespace.
 
 #### How It Works
 
-* The template contains mappings to pre-existing resources (secrets and configmaps only).
+* The template contains mappings to pre-existing resources (secrets and ConfigMaps only).
 
 #### Use Cases
 

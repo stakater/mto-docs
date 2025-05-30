@@ -15,7 +15,7 @@ In this example, we have already set-up a small EKS cluster with the following n
 
 ![Node Group](../images/eks-nodegroup.png)
 
-We have access configuration set as both, EKS API and Configmap, so that admin can access the cluster using EKS API and map IAM users to our EKS cluster using `aws-auth` configmap.
+We have access configuration set as both, EKS API and ConfigMap, so that admin can access the cluster using EKS API and map IAM users to our EKS cluster using `aws-auth` ConfigMap.
 
 ![EKS Access Config](../images/eks-access-config.png)
 
@@ -82,7 +82,7 @@ This user has a policy attached to be able to get cluster info
 }
 ```
 
-We have mapped this user in `aws-auth` configmap in `kube-system` namespace.
+We have mapped this user in `aws-auth` ConfigMap in `kube-system` namespace.
 
 ```yaml
   mapUsers:
@@ -104,7 +104,7 @@ Error from server (Forbidden): services is forbidden: User "test-benzema-mto" ca
 
 ### SSO Users
 
-For SSO Users, we will map a role `arn:aws:iam::<account>:role/aws-reserved/sso.amazonaws.com/eu-north-1/AWSReservedSSO_PowerUserAccess_b0ad9936c75e5bcc`, that is attached by default with Users on SSO login to the AWS console and `awscli`, in `aws-auth` configmap in `kube-system` namespace.
+For SSO Users, we will map a role `arn:aws:iam::<account>:role/aws-reserved/sso.amazonaws.com/eu-north-1/AWSReservedSSO_PowerUserAccess_b0ad9936c75e5bcc`, that is attached by default with Users on SSO login to the AWS console and `awscli`, in `aws-auth` ConfigMap in `kube-system` namespace.
 
 ```yaml
   mapRoles:
