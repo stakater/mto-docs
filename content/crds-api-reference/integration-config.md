@@ -604,4 +604,4 @@ components:
         internetNetworkEgress: "0.12"
 ```
 
-After modifying your default IntegrationConfig in `multi-tenant-operator` namespace, a configmap named `opencost-custom-pricing` will be updated. You will be able to see updated pricing info in `mto-console`.
+After modifying your default IntegrationConfig in `multi-tenant-operator` namespace, a ConfigMap named `opencost-custom-pricing` will be updated. You will be able to see updated pricing info in `mto-console`.
