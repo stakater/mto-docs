@@ -1,4 +1,4 @@
-# Copying Secrets and Configmaps across Tenant Namespaces via TGI
+# Copying Secrets and ConfigMaps across Tenant Namespaces via TGI
 
 Bill is a cluster admin who wants to map a `docker-pull-secret`, present in a `build` namespace, in tenant namespaces where certain labels exists.
 
