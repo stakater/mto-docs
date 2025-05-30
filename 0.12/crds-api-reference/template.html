@@ -2591,7 +2591,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   <span class="md-ellipsis">
-    Copying Secrets and Configmaps across Tenant Namespaces via TGI
+    Copying Secrets and ConfigMaps across Tenant Namespaces via TGI
     
   </span>
   
@@ -3939,16 +3939,16 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">configmap-c1</span>
 <span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-n2</span>
 </code></pre></div>
-<p>Templates are used to initialize Namespaces, share common resources across namespaces, and map secrets/configmaps from one namespace to other namespaces.</p>
+<p>Templates are used to initialize Namespaces, share common resources across namespaces, and map secrets/ConfigMaps from one namespace to other namespaces.</p>
 <ul>
-<li>They either contain one or more Kubernetes manifests, a reference to secrets/configmaps, or a Helm chart.</li>
+<li>They either contain one or more Kubernetes manifests, a reference to secrets/ConfigMaps, or a Helm chart.</li>
 <li>They are being tracked by TemplateInstances in each Namespace they are applied to.</li>
 <li>They can contain pre-defined parameters such as ${namespace}/${tenant} or user-defined ${MY_PARAMETER} that can be specified within an TemplateInstance.</li>
 </ul>
 <p>Also, you can define custom variables in <code>Template</code> and <code>TemplateInstance</code> . The parameters defined in <code>TemplateInstance</code> are overwritten the values defined in <code>Template</code> .</p>
 <p>Manifest Templates: The easiest option to define a Template is by specifying an array of Kubernetes manifests which should be applied when the Template is being instantiated.</p>
 <p>Helm Chart Templates: Instead of manifests, a Template can specify a Helm chart that will be installed (using Helm template) when the Template is being instantiated.</p>
-<p>Resource Mapping Templates: A template can be used to map secrets and configmaps from one tenant's namespace to another tenant's namespace, or within a tenant's namespace.</p>
+<p>Resource Mapping Templates: A template can be used to map secrets and ConfigMaps from one tenant's namespace to another tenant's namespace, or within a tenant's namespace.</p>
 <h2 id="mandatory-and-optional-templates">Mandatory and Optional Templates<a class="headerlink" href="#mandatory-and-optional-templates" title="Permanent link">#</a></h2>
 <p>Templates can either be mandatory or optional. By default, all Templates are optional. Cluster Admins can make Templates mandatory by adding them to the <code>spec.templateInstances</code> array within the Tenant configuration. All Templates listed in <code>spec.templateInstances</code> will always be instantiated within every <code>Namespace</code> that is created for the respective Tenant.</p>
 
