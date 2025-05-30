@@ -2750,7 +2750,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   <span class="md-ellipsis">
-    Copying Secrets and Configmaps across Tenant Namespaces via TGI
+    Copying Secrets and ConfigMaps across Tenant Namespaces via TGI
     
   </span>
   
@@ -6561,7 +6561,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li>Added option to disable <code>Intra-tenant Networking</code> via <a href="crds-api-reference/integration-config.html#tenantpolicies">Integration Config</a>.</li>
 <li>Added <a href="crds-api-reference/tenant.html#storage">Storage class per tenant</a> support via Tenant CR.</li>
 <li>Added option to override component images.</li>
-<li>Added support to add/update <code>Casbin</code> policies via <code>tenant-operator-casbin-config</code> Configmap.</li>
+<li>Added support to add/update <code>Casbin</code> policies via <code>tenant-operator-casbin-config</code> ConfigMap.</li>
 </ul>
 <h4 id="enhancements">Enhancements<a class="headerlink" href="#enhancements" title="Permanent link">#</a></h4>
 <ul>
@@ -6575,13 +6575,13 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li>Fix for IC controller where reconciliation request was triggered with added user's name.</li>
 <li>Fix a bug in Vault policies where editor role had incorrect permissions.</li>
 <li>Fix a bug in sandbox creations where sandbox namespaces were not being created if there were only groups in the tenant.</li>
-<li>Fix for IC controller where it would not reconcile if the cluster had too many Configmaps, making the informer cache too big to be watched.</li>
+<li>Fix for IC controller where it would not reconcile if the cluster had too many ConfigMaps, making the informer cache too big to be watched.</li>
 </ul>
 <h4 id="pre-upgrade-checklist">Pre-Upgrade Checklist<a class="headerlink" href="#pre-upgrade-checklist" title="Permanent link">#</a></h4>
 <p>Before upgrading to v1.1.0, perform the following steps:</p>
 <ul>
 <li>Disable <code>console</code> in the integration config.</li>
-<li>Remove the <code>tenant-operator-casbin-config</code> configmap from the <code>multi-tenant-operator</code> namespace, if it exists.</li>
+<li>Remove the <code>tenant-operator-casbin-config</code> ConfigMap from the <code>multi-tenant-operator</code> namespace, if it exists.</li>
 </ul>
 <h4 id="post-upgrade-checklist">Post-Upgrade Checklist<a class="headerlink" href="#post-upgrade-checklist" title="Permanent link">#</a></h4>
 <ul>
@@ -6671,7 +6671,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </ul>
 <h4 id="fixes_1">Fixes<a class="headerlink" href="#fixes_1" title="Permanent link">#</a></h4>
 <ul>
-<li>Updated configmap predicate to not compare data</li>
+<li>Updated ConfigMap predicate to not compare data</li>
 <li>Restructure and fix <code>Casbin</code> rule creation: <code>Casbin</code> rules for privileged user and groups were missing that caused issue while accessing MTO Console</li>
 </ul>
 <h4 id="components_1">Components<a class="headerlink" href="#components_1" title="Permanent link">#</a></h4>
@@ -6917,7 +6917,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </ul>
 <h3 id="v072">v0.7.2<a class="headerlink" href="#v072" title="Permanent link">#</a></h3>
 <ul>
-<li>feat: Add support to map secrets/configmaps from one namespace to other namespaces using TI. Secrets/configmaps will only be mapped if their namespaces belong to same Tenant</li>
+<li>feat: Add support to map secrets/ConfigMaps from one namespace to other namespaces using TI. Secrets/ConfigMaps will only be mapped if their namespaces belong to same Tenant</li>
 </ul>
 <h3 id="v071">v0.7.1<a class="headerlink" href="#v071" title="Permanent link">#</a></h3>
 <ul>
@@ -6927,7 +6927,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </ul>
 <h3 id="v070">v0.7.0<a class="headerlink" href="#v070" title="Permanent link">#</a></h3>
 <ul>
-<li>feat: Add support to map secrets/configmaps from one namespace to other namespaces using TGI. Resources can be mapped from one Tenant's namespaces to some other Tenant's namespaces</li>
+<li>feat: Add support to map secrets/ConfigMaps from one namespace to other namespaces using TGI. Resources can be mapped from one Tenant's namespaces to some other Tenant's namespaces</li>
 <li>feat: Allow creation of sandboxes that are private to the user</li>
 <li>feat: Allow creation of namespaces without tenant prefix from within tenant spec</li>
 <li>fix: Webhook changes will now be updated without manual intervention</li>
