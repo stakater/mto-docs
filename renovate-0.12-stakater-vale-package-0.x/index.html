@@ -2778,7 +2778,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   <span class="md-ellipsis">
-    Copying Secrets and Configmaps across Tenant Namespaces via TGI
+    Copying Secrets and ConfigMaps across Tenant Namespaces via TGI
     
   </span>
   
@@ -4171,8 +4171,8 @@ Furthermore, this functionality supports financial planning and budgeting by off
 <p>Multi Tenant Operator can be configured to automatically provision a namespace in the cluster for every member of the specific tenant, that will also be preloaded with any selected templates and consume the same pool of resources from the tenants quota creating safe remote dev namespaces that teams can use as scratch namespace for rapid prototyping and development. So, every developer gets a Kubernetes-based cloud development environment that feel like working on localhost.</p>
 <p>More details on <a href="tutorials/tenant/create-sandbox.html">Sandboxes</a></p>
 <h2 id="cross-namespace-resource-distribution">Cross Namespace Resource Distribution<a class="headerlink" href="#cross-namespace-resource-distribution" title="Permanent link">#</a></h2>
-<p>Multi Tenant Operator supports cloning of secrets and configmaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide reference to secrets and configmaps. It uses a template group instance to distribute those secrets and namespaces in matching namespaces, even if namespaces belong to different tenants. If template instance is used then the resources will only be mapped if namespaces belong to same tenant.</p>
-<p>More details on <a href="tutorials/distributing-resources/copying-resources.html">Copying Secrets and Configmaps</a></p>
+<p>Multi Tenant Operator supports cloning of secrets and ConfigMaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide reference to secrets and ConfigMaps. It uses a template group instance to distribute those secrets and namespaces in matching namespaces, even if namespaces belong to different tenants. If template instance is used then the resources will only be mapped if namespaces belong to same tenant.</p>
+<p>More details on <a href="tutorials/distributing-resources/copying-resources.html">Copying Secrets and ConfigMaps</a></p>
 <h2 id="self-service">Self-Service<a class="headerlink" href="#self-service" title="Permanent link">#</a></h2>
 <p>With Multi Tenant Operator, you can empower your users to safely provision namespaces for themselves and their teams (typically mapped to SSO groups). Team-owned namespaces and the resources inside them count towards the team's quotas rather than the user's individual limits and are automatically shared with all team members according to the access rules you configure in Multi Tenant Operator.</p>
 <p>Also, by leveraging Multi Tenant Operator's templating mechanism, namespaces can be provisioned and automatically pre-populated with any kind of resource or multiple resources such as network policies, docker pull secrets or even Helm charts etc</p>

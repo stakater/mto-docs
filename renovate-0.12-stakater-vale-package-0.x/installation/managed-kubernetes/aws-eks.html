@@ -2736,7 +2736,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   <span class="md-ellipsis">
-    Copying Secrets and Configmaps across Tenant Namespaces via TGI
+    Copying Secrets and ConfigMaps across Tenant Namespaces via TGI
     
   </span>
   
@@ -4038,7 +4038,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="setting-up-an-eks-cluster">Setting up an EKS Cluster<a class="headerlink" href="#setting-up-an-eks-cluster" title="Permanent link">#</a></h2>
 <p>In this example, we have already set-up a small EKS cluster with the following node group specifications</p>
 <p><a class="glightbox" href="../../images/eks-nodegroup.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Node Group" src="../../images/eks-nodegroup.png" /></a></p>
-<p>We have access configuration set as both, EKS API and Configmap, so that admin can access the cluster using EKS API and map IAM users to our EKS cluster using <code>aws-auth</code> configmap.</p>
+<p>We have access configuration set as both, EKS API and ConfigMap, so that admin can access the cluster using EKS API and map IAM users to our EKS cluster using <code>aws-auth</code> ConfigMap.</p>
 <p><a class="glightbox" href="../../images/eks-access-config.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="EKS Access Config" src="../../images/eks-access-config.png" /></a></p>
 <p>And we have a policy <code>AmazonEKSClusterAdminPolicy</code> attached with our user which makes it a cluster admin. To be noted, the user is also added in the <code>cluster-admins</code> group which we will later use while installing MTO.</p>
 <p><a class="glightbox" href="../../images/eks-access-entry.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="EKS Access Entry" src="../../images/eks-access-entry.png" /></a></p>
@@ -4082,7 +4082,7 @@ This user has a policy attached to be able to get cluster info</p>
 <span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>We have mapped this user in <code>aws-auth</code> configmap in <code>kube-system</code> namespace.</p>
+<p>We have mapped this user in <code>aws-auth</code> ConfigMap in <code>kube-system</code> namespace.</p>
 <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">mapUsers</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">groups</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">iam-devteam</span>
@@ -4096,7 +4096,7 @@ This user has a policy attached to be able to get cluster info</p>
 Error from server (Forbidden): services is forbidden: User &quot;test-benzema-mto&quot; cannot list resource &quot;services&quot; in API group &quot;&quot; in the namespace &quot;default&quot;
 </code></pre></div>
 <h3 id="sso-users">SSO Users<a class="headerlink" href="#sso-users" title="Permanent link">#</a></h3>
-<p>For SSO Users, we will map a role <code>arn:aws:iam::&lt;account&gt;:role/aws-reserved/sso.amazonaws.com/eu-north-1/AWSReservedSSO_PowerUserAccess_b0ad9936c75e5bcc</code>, that is attached by default with Users on SSO login to the AWS console and <code>awscli</code>, in <code>aws-auth</code> configmap in <code>kube-system</code> namespace.</p>
+<p>For SSO Users, we will map a role <code>arn:aws:iam::&lt;account&gt;:role/aws-reserved/sso.amazonaws.com/eu-north-1/AWSReservedSSO_PowerUserAccess_b0ad9936c75e5bcc</code>, that is attached by default with Users on SSO login to the AWS console and <code>awscli</code>, in <code>aws-auth</code> ConfigMap in <code>kube-system</code> namespace.</p>
 <div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">mapRoles</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">groups</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sso-devteam</span>
