@@ -4581,7 +4581,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <div class="highlight"><pre><span></span><code><span class="nt">redisPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6379</span>
 </code></pre></div>
 <h4 id="resource-mappings">Resource Mappings<a class="headerlink" href="#resource-mappings" title="Permanent link">#</a></h4>
-<p>The Resource Mappings section allows you to define mappings for Kubernetes resources such as Secrets and ConfigMaps, enabling advanced or custom deployment scenarios. This is useful for referencing or distributing existing resources across different namespaces.</p>
+<p>The Resource Mappings section allows you to define mappings for Kubernetes resources such as Secrets and configmaps, enabling advanced or custom deployment scenarios. This is useful for referencing or distributing existing resources across different namespaces.</p>
 <p><a class="glightbox" href="../images/templateResourceMappings.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="templateResourceMappings" src="../images/templateResourceMappings.png" /></a></p>
 <ul>
 <li><strong>Resource Type Dropdown:</strong> Select the type of resource you want to map. The available options typically include<ul>
@@ -4594,12 +4594,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><strong>Listing and Removal:</strong> Added mappings are displayed in separate sections for Secrets and configmaps. Each mapping is shown as a tag (e.g., secret-s1 (namespace-n1) or configmap-c1 (namespace-n2)). Click the "X" on a tag to remove a mapping from the template.</li>
 </ul>
 <h4 id="manifests">Manifests<a class="headerlink" href="#manifests" title="Permanent link">#</a></h4>
-<p>The Manifests section allows you to add raw Kubernetes manifests directly to your template. This is useful for provisioning standard Kubernetes resources such as Deployments, Services, ConfigMaps, Secrets, NetworkPolicies, and more, using YAML definitions.</p>
+<p>The Manifests section allows you to add raw Kubernetes manifests directly to your template. This is useful for provisioning standard Kubernetes resources such as Deployments, Services, configmaps, Secrets, NetworkPolicies, and more, using YAML definitions.</p>
 <p><a class="glightbox" href="../images/templateManifestResource.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="templateManifestResource" src="../images/templateManifestResource.png" /></a></p>
 <ul>
 <li><strong>YAML Editor:</strong> Enter one or more Kubernetes resource definitions in YAML format. Each manifest should follow standard Kubernetes syntax and can include any supported resource kind.</li>
 <li><strong>Multi-Resource Support:</strong> You can define multiple resources in a single template by listing them under the manifests:** key as a YAML array.</li>
-<li><strong>Parameterisation:</strong> You may use template parameters (defined in the Parameters section) within your manifests for dynamic substitution at deployment time. For example, ${PARAM_NAME} can be used as a placeholder for values provided during instantiation.</li>
+<li><strong>Parameterization:</strong> You may use template parameters (defined in the Parameters section) within your manifests for dynamic substitution at deployment time. For example, ${PARAM_NAME} can be used as a placeholder for values provided during instantiation.</li>
 <li><strong>Validation:</strong><ul>
 <li>The editor provides basic YAML validation to help ensure your manifests are correctly formatted before adding the template.</li>
 <li>If any parameter added to the manifest is missing from the added parameters list in the template and is set to required will result in an error on the top of the manifest indicating the user to add that parameter to the list.</li>
