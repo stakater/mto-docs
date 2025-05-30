@@ -2749,7 +2749,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   <span class="md-ellipsis">
-    Copying Secrets and Configmaps across Tenant Namespaces via TGI
+    Copying Secrets and ConfigMaps across Tenant Namespaces via TGI
     
   </span>
   
@@ -4502,7 +4502,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
 
 <h1 id="template">Template<a class="headerlink" href="#template" title="Permanent link">#</a></h1>
-<p>Templates are used to initialize Namespaces, share common resources across namespaces, and map secrets/configmaps from one namespace to other namespaces.</p>
+<p>Templates are used to initialize Namespaces, share common resources across namespaces, and map secrets/ConfigMaps from one namespace to other namespaces.</p>
 <p>They can contain pre-defined parameters such as <code>${namespace}</code>/<code>${tenant}</code>.</p>
 <p>Also, you can define custom variables in <code>Template</code>, <code>TemplateInstance</code> and <code>TemplateGroupInstance</code>. The parameters defined in <code>Templates</code> are overwritten the values defined in <code>TemplateInstance</code> and <code>TemplateGroupInstance</code>.</p>
 <h2 id="specification">Specification<a class="headerlink" href="#specification" title="Permanent link">#</a></h2>
@@ -4573,7 +4573,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </ul>
 <h4 id="use-cases_1">Use Cases<a class="headerlink" href="#use-cases_1" title="Permanent link">#</a></h4>
 <ul>
-<li>Best for complex resource setups with interdependencies (e.g., a microservice with a Deployment, Service, Ingress, and Configmap).</li>
+<li>Best for complex resource setups with interdependencies (e.g., a microservice with a Deployment, Service, Ingress, and ConfigMap).</li>
 <li>Useful for resources requiring advanced templating logic or modular packaging.</li>
 <li>Great for managing third-party tools or applications (e.g., deploying Prometheus, Keycloak, or databases).</li>
 </ul>
@@ -4638,10 +4638,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li><code>values</code>: The values file for the Helm chart.</li>
 </ul>
 <h3 id="3-resource-mapping">3. Resource Mapping<a class="headerlink" href="#3-resource-mapping" title="Permanent link">#</a></h3>
-<p>This approach maps secrets and configmaps from one tenant's namespace to another tenant's namespace, or within a tenant's namespace.</p>
+<p>This approach maps secrets and ConfigMaps from one tenant's namespace to another tenant's namespace, or within a tenant's namespace.</p>
 <h4 id="how-it-works_2">How It Works<a class="headerlink" href="#how-it-works_2" title="Permanent link">#</a></h4>
 <ul>
-<li>The template contains mappings to pre-existing resources (secrets and configmaps only).</li>
+<li>The template contains mappings to pre-existing resources (secrets and ConfigMaps only).</li>
 </ul>
 <h4 id="use-cases_2">Use Cases<a class="headerlink" href="#use-cases_2" title="Permanent link">#</a></h4>
 <ul>
