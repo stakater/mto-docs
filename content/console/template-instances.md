@@ -25,10 +25,10 @@ By default selected type is Template Instance. But it can be modified to Templat
 
 ### Instance Configuration
 
-- Select Instance / Group Instance: Choose Template Instance from the dropdown.
-- Select Template: Pick the template you want to instantiate (e.g., docker-pull-secret).
-- Select Namespace: Choose the target namespace where the resources will be deployed (e.g., arsenal-dev).
-- Keep resources in sync with template: (Optional) Check this box to ensure that resources deployed by this instance remain synchronized with any updates to the template.
+- **Select Instance / Group Instance:** Choose Template Instance from the dropdown.
+- **Select Template:** Pick the template you want to instantiate (e.g., docker-pull-secret).
+- **Select Namespace:** Choose the target namespace where the resources will be deployed (e.g., arsenal-dev).
+- **Keep resources in sync with template:** (Optional) Check this box to ensure that resources deployed by this instance remain synchronized with any updates to the template.
 
 Click Submit to create the Template Instance.
 
@@ -36,13 +36,13 @@ Click Submit to create the Template Instance.
 
 The new Template Instance will appear in the list with the following columns:
 
-- Name: The name of the Template Instance.
-- Template: The template used for the instance.
-- Namespace: The target namespace.
-- Status: Indicates if the instance is deployed (e.g., green check for deployed).
-- Sync: Shows if the resources are kept in sync with the template.
-- Created At: Timestamp of instance creation.
-- Actions: Three-dot menu for additional actions (e.g., view YAML, edit, delete).
+- **Name:** The name of the Template Instance.
+- **Template:** The template used for the instance.
+- **Namespace:** The target namespace.
+- **Status:** Indicates if the instance is deployed (e.g., green check for deployed).
+- **Sync:** Shows if the resources are kept in sync with the template.
+- **Created At:** Timestamp of instance creation.
+- **Actions:** Three-dot menu for additional actions (e.g., view YAML, edit, delete).
 
 ## YAML View
 
