@@ -102,9 +102,9 @@ More details on [Sandboxes](./tutorials/tenant/create-sandbox.md)
 
 ## Cross Namespace Resource Distribution
 
-Multi Tenant Operator supports cloning of secrets and configmaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide reference to secrets and configmaps. It uses a template group instance to distribute those secrets and namespaces in matching namespaces, even if namespaces belong to different tenants. If template instance is used then the resources will only be mapped if namespaces belong to same tenant.
+Multi Tenant Operator supports cloning of secrets and ConfigMaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide reference to secrets and ConfigMaps. It uses a template group instance to distribute those secrets and namespaces in matching namespaces, even if namespaces belong to different tenants. If template instance is used then the resources will only be mapped if namespaces belong to same tenant.
 
-More details on [Distributing Secrets and Configmaps](./reference-guides/distributing-resources.md)
+More details on [Distributing Secrets and ConfigMaps](./reference-guides/distributing-resources.md)
 
 ## Self-Service
 
@@ -160,7 +160,7 @@ Multi Tenant Operator provides multi-tenancy with a native Kubernetes experience
 
 * **Native Kubernetes Experience**: Developers can work with MTO without the need for additional management layers or customized binaries, ensuring a seamless and familiar Kubernetes experience.
 
-* **Cross-Namespace Resource Distribution**: MTO supports cloning of secrets and configmaps across namespaces, allowing developers to access resources easily while maintaining isolation between tenants.
+* **Cross-Namespace Resource Distribution**: MTO supports cloning of secrets and ConfigMaps across namespaces, allowing developers to access resources easily while maintaining isolation between tenants.
 
 * **Self-Managing Secrets in Vault Integration**: Leveraging MTO's capabilities, tenants enabled with Vault integration gain independent access to designated secrets paths tailored to their permissions. This empowers individual members to interact autonomously with Vault, ensuring seamless utilization of sensitive information without any cross-tenant interference or dependency.
 
