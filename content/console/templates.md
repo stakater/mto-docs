@@ -75,7 +75,7 @@ The Manifests section allows you to add raw Kubernetes manifests directly to you
 
 - **YAML Editor:** Enter one or more Kubernetes resource definitions in YAML format. Each manifest should follow standard Kubernetes syntax and can include any supported resource kind.
 - **Multi-Resource Support:** You can define multiple resources in a single template by listing them under the manifests:** key as a YAML array.
-- **Parameterization:** You may use template parameters (defined in the Parameters section) within your manifests for dynamic substitution at deployment time. For example, ${PARAM_NAME} can be used as a placeholder for values provided during instantiation.
+- **Parameters:** You may use template parameters (defined in the Parameters section) within your manifests for dynamic substitution at deployment time. For example, ${PARAM_NAME} can be used as a placeholder for values provided during instantiation.
 - **Validation:**
     - The editor provides basic YAML validation to help ensure your manifests are correctly formatted before adding the template.
     - If any parameter added to the manifest is missing from the added parameters list in the template and is set to required will result in an error on the top of the manifest indicating the user to add that parameter to the list.
