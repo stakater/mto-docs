@@ -1,12 +1,12 @@
 # Templates
 
-The Templates section acts as a repository for standardized resource deployment patterns, which can be utilized to maintain consistency and reliability across tenant environments. Few examples include provisioning specific k8s manifests, helm charts, secrets or configmaps across a set of namespaces.
+The Templates section acts as a repository for standardized resource deployment patterns, which can be utilized to maintain consistency and reliability across tenant environments. Few examples include provisioning specific k8s manifests, Helm charts, Secrets or ConfigMaps across a set of namespaces.
 
 ![templates](../images/templates.png)
 
 ## Create Template
 
-The template creation process in the MTO Console is designed to be intuitive and flexible, allowing users to define reusable deployment patterns for resources such as Kubernetes manifests, Helm charts, secrets, or configmaps. The process is presented in a drawer interface and consists of several key sections:
+The template creation process in the MTO Console is designed to be intuitive and flexible, allowing users to define reusable deployment patterns for resources such as Kubernetes manifests, Helm charts, Secrets, or ConfigMaps. The process is presented in a drawer interface and consists of several key sections:
 
 ### Template Info
 
@@ -56,20 +56,20 @@ redisPort: 6379
 
 #### Resource Mappings
 
-The Resource Mappings section allows you to define mappings for Kubernetes resources such as Secrets and configmaps, enabling advanced or custom deployment scenarios. This is useful for referencing or distributing existing resources across different namespaces.
+The Resource Mappings section allows you to define mappings for Kubernetes resources such as Secrets and ConfigMaps, enabling advanced or custom deployment scenarios. This is useful for referencing or distributing existing resources across different namespaces.
 
 ![templateResourceMappings](../images/templateResourceMappings.png)
 
 - **Resource Type Dropdown:** Select the type of resource you want to map. The available options typically include
     - Secrets
-    - configmaps
+    - ConfigMaps
 - **Name & Namespace:** Enter the name of the resource and the target namespace where it should be mapped.
 - **Add Button:** Click Add to include the mapping in your template. Each mapping will appear as a tag below the input fields showing the resource name and its associated namespace.
-- **Listing and Removal:** Added mappings are displayed in separate sections for Secrets and configmaps. Each mapping is shown as a tag (e.g., secret-s1 (namespace-n1) or configmap-c1 (namespace-n2)). Click the "X" on a tag to remove a mapping from the template.
+- **Listing and Removal:** Added mappings are displayed in separate sections for Secrets and ConfigMaps. Each mapping is shown as a tag (e.g., `secret-s1` (`namespace-n1`) or `configmap-c1` (`namespace-n2`)). Click the "X" on a tag to remove a mapping from the template.
 
 #### Manifests
 
-The Manifests section allows you to add raw Kubernetes manifests directly to your template. This is useful for provisioning standard Kubernetes resources such as Deployments, Services, configmaps, Secrets, NetworkPolicies, and more, using YAML definitions.
+The Manifests section allows you to add raw Kubernetes manifests directly to your template. This is useful for provisioning standard Kubernetes resources such as Deployments, Services, ConfigMaps, Secrets, NetworkPolicies, and more, using YAML definitions.
 
 ![templateManifestResource](../images/templateManifestResource.png)
 
