@@ -4,6 +4,13 @@ Template Instances in the MTO Console allow users to deploy standardized resourc
 
 ![templateInstances](../images/templateInstances.png)
 
+## Details Section
+
+By clicking on the Template Instance name user can be directed to the details section of the selected Template Instance.
+It has breadcrumb to redirect user back to the Template Instances table.
+
+![templateInstanceDetails](../images/templateInstanceDetails.png)
+
 ## Create Template Instance
 
 ![templateInstanceCrudDrawer](../images/templateInstanceCrudDrawer.png)
