@@ -102,9 +102,9 @@ More details on [Sandboxes](./tutorials/tenant/create-sandbox.md)
 
 ## Cross Namespace Resource Distribution
 
-Multi Tenant Operator supports cloning of secrets and configmaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide reference to secrets and configmaps. It uses a template group instance to distribute those secrets and namespaces in matching namespaces, even if namespaces belong to different tenants. If template instance is used then the resources will only be mapped if namespaces belong to same tenant.
+Multi Tenant Operator supports cloning of secrets and ConfigMaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide reference to secrets and ConfigMaps. It uses a template group instance to distribute those secrets and namespaces in matching namespaces, even if namespaces belong to different tenants. If template instance is used then the resources will only be mapped if namespaces belong to same tenant.
 
-More details on [Distributing Secrets and Configmaps](./reference-guides/distributing-resources.md)
+More details on [Distributing Secrets and ConfigMaps](./reference-guides/distributing-resources.md)
 
 ## Self-Service
 
