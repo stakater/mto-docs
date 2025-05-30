@@ -93,9 +93,9 @@ More details on [Sandboxes](../kubernetes-resources/tenant/how-to-guides/create-
 
 ### Cross Namespace Resource Distribution
 
-Multi Tenant Operator supports cloning of secrets and configmaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide references to secrets and configmaps. It uses a template group instance to distribute those secrets and configmaps in matching namespaces, even if namespaces belong to different tenants. If a template instance is used, then the resources will only be mapped if namespaces belong to the same tenant.
+Multi Tenant Operator supports cloning of secrets and ConfigMaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide references to secrets and ConfigMaps. It uses a template group instance to distribute those secrets and ConfigMaps in matching namespaces, even if namespaces belong to different tenants. If a template instance is used, then the resources will only be mapped if namespaces belong to the same tenant.
 
-More details on [Copying Secrets and Configmaps](../kubernetes-resources/template/how-to-guides/copying-resources.md)
+More details on [Copying Secrets and ConfigMaps](../kubernetes-resources/template/how-to-guides/copying-resources.md)
 
 ### Self-Service
 
