@@ -40,7 +40,7 @@ resources:
       redisPort: 6379
 ```
 
-She can also use `resourceMapping` field to copy over secrets and configmaps from one namespace to others.
+She can also use `resourceMapping` field to copy over secrets and ConfigMaps from one namespace to others.
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1alpha1
