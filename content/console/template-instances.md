@@ -1,6 +1,6 @@
 # Template Instances
 
-Template Instances in the MTO Console allow users to deploy standardized resource configurations, such as Kubernetes manifests, Helm charts, secrets, or configmaps, into specific namespaces. By using Template Instances, organizations can ensure consistency, repeatability, and compliance across multiple environments. Each instance is based on a predefined template and can be managed, synchronized, or removed as needed, making it easy to propagate best practices and updates throughout your infrastructure.
+Template Instances in the MTO Console allow users to deploy standardized resource configurations, such as Kubernetes manifests, Helm charts, Secrets, or ConfigMaps, into specific namespaces. By using Template Instances, organizations can ensure consistency, repeatability, and compliance across multiple environments. Each instance is based on a predefined template and can be managed, synchronized, or removed as needed, making it easy to propagate best practices and updates throughout your infrastructure.
 
 ![template-instances](../images/templateInstances.png)
 

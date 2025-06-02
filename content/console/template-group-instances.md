@@ -1,6 +1,6 @@
 # Template Group Instances
 
-Template Group Instances in the MTO Console allow users to deploy standardized resource configurations, such as Kubernetes manifests, Helm charts, secrets, or configmaps, into multiple namespaces that match specific label selectors. By using Template Group Instances, organizations can ensure consistency, repeatability, and compliance across multiple environments. Each group instance is based on a predefined template and can be managed, synchronized, or removed as needed, making it easy to propagate best practices and updates throughout your infrastructure.
+Template Group Instances in the MTO Console allow users to deploy standardized resource configurations, such as Kubernetes manifests, Helm charts, Secrets, or ConfigMaps, into multiple namespaces that match specific label selectors. By using Template Group Instances, organizations can ensure consistency, repeatability, and compliance across multiple environments. Each group instance is based on a predefined template and can be managed, synchronized, or removed as needed, making it easy to propagate best practices and updates throughout your infrastructure.
 
 ![templateGroupInstances](../images/templateGroupInstances.png)
 
