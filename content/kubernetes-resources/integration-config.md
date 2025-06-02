@@ -152,6 +152,8 @@ spec:
   tenantPolicies:
     network:
       disableIntraTenantNetworking: true
+      disableNodePortServices: true
+      disableHostPorts: true
 ```
 
 Following are the different components that can be used to configure multi-tenancy in a cluster via Multi Tenant Operator.
@@ -743,8 +745,14 @@ Configure how tenants are allowed to communicate
 ```yaml
 network:
   disableIntraTenantNetworking: true
+  disableNodePortServices: true
+  disableHostPorts: true
 ```
 
 - `disableIntraTenantNetworking`: (Default false) Disallow tenants communicating with other tenants by deploying NetworkPolicies.
 
 > ⚠️ This will disable **only** intra-tenant networking. In cases requiring stricter filtering, this setting should be turned off and the stricter NetworkPolicies deployed through [Templates](./template/template.md) or manually. If you need help with your enterprise environment, do not hesitate to [contact us.](https://www.stakater.com/contact-us)
+
+- `disableNodePortServices`: (Default false) Disallow creation of services of type `NodePort` across all namespaces.
+
+- `disableHostPorts`: (Default false) Disallow the creation of containers with `hostPort` defined in it.
