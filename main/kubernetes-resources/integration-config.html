@@ -5121,6 +5121,8 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <span class="w">  </span><span class="nt">tenantPolicies</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">network</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">disableIntraTenantNetworking</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">disableNodePortServices</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">disableHostPorts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 <p>Following are the different components that can be used to configure multi-tenancy in a cluster via Multi Tenant Operator.</p>
 <h2 id="components">Components<a class="headerlink" href="#components" title="Permanent link">#</a></h2>
@@ -5633,6 +5635,8 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <p>Configure how tenants are allowed to communicate</p>
 <div class="highlight"><pre><span></span><code><span class="nt">network</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">disableIntraTenantNetworking</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">disableNodePortServices</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">disableHostPorts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 <ul>
 <li><code>disableIntraTenantNetworking</code>: (Default false) Disallow tenants communicating with other tenants by deploying NetworkPolicies.</li>
@@ -5640,6 +5644,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <blockquote>
 <p>⚠️ This will disable <strong>only</strong> intra-tenant networking. In cases requiring stricter filtering, this setting should be turned off and the stricter NetworkPolicies deployed through <a href="template/template.html">Templates</a> or manually. If you need help with your enterprise environment, do not hesitate to <a href="https://www.stakater.com/contact-us">contact us.</a></p>
 </blockquote>
+<ul>
+<li>
+<p><code>disableNodePortServices</code>: (Default false) Disallow creation of services of type <code>NodePort</code> across all namespaces.</p>
+</li>
+<li>
+<p><code>disableHostPorts</code>: (Default false) Disallow the creation of containers with <code>hostPort</code> defined in it.</p>
+</li>
+</ul>
 
 
 
