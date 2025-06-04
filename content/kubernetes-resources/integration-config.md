@@ -751,7 +751,7 @@ network:
 
 - `disableIntraTenantNetworking`: (Default false) Disallow tenants communicating with other tenants by deploying NetworkPolicies.
 
-> ⚠️ This will disable **only** intra-tenant networking. In cases requiring stricter filtering, this setting should be turned off and the stricter NetworkPolicies deployed through [Templates](./template/template.md) or manually. If you need help with your enterprise environment, do not hesitate to [contact us.](https://www.stakater.com/contact-us)
+> ⚠️ This will disable **only** intra-tenant networking. It will **not** block service discovery through DNS queries; tenants may still resolve services in other namespaces via DNS, but network traffic will be blocked. In cases requiring stricter filtering, this setting should be turned off and the stricter NetworkPolicies deployed through [Templates](./template/template.md) or manually. If you need help with your enterprise environment, do not hesitate to [contact us.](https://www.stakater.com/contact-us)
 
 - `disableNodePortServices`: (Default false) Disallow creation of services of type `NodePort` across all namespaces.
 
