@@ -5643,7 +5643,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><code>disableIntraTenantNetworking</code>: (Default false) Disallow tenants communicating with other tenants by deploying NetworkPolicies.</li>
 </ul>
 <blockquote>
-<p>⚠️ This will disable <strong>only</strong> intra-tenant networking. In cases requiring stricter filtering, this setting should be turned off and the stricter NetworkPolicies deployed through <a href="template/template.html">Templates</a> or manually. If you need help with your enterprise environment, do not hesitate to <a href="https://www.stakater.com/contact-us">contact us.</a></p>
+<p>⚠️ This will disable <strong>only</strong> intra-tenant networking. It will <strong>not</strong> block service discovery through DNS queries; tenants may still resolve services in other namespaces via DNS, but network traffic will be blocked. In cases requiring stricter filtering, this setting should be turned off and the stricter NetworkPolicies deployed through <a href="template/template.html">Templates</a> or manually. If you need help with your enterprise environment, do not hesitate to <a href="https://www.stakater.com/contact-us">contact us.</a></p>
 </blockquote>
 <ul>
 <li>
