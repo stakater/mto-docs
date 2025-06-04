@@ -39,7 +39,7 @@ After all pods come in running state, you can follow the [Tutorials](../kubernet
 
 ### Enterprise License Configuration
 
-For the Enterprise version, you need to have a configmap named `license` created in MTO's namespace `multi-tenant-operator`. You will get this configmap when purchasing the Enterprise version. It would look like this:
+For the Enterprise version, you need to have a ConfigMap named `license` created in MTO's namespace `multi-tenant-operator`. You will get this ConfigMap when purchasing the Enterprise version. It would look like this:
 
 ```yaml
 apiVersion: v1
