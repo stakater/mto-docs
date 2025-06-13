@@ -5005,6 +5005,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
 
 <span class="w">      </span><span class="nt">opencostServiceRoleArn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:iam::123456789012:role/S3Access</span>
+<span class="w">      </span><span class="nt">retentionPeriod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7d</span>
 
 <span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;nginx&#39;</span>
@@ -5144,6 +5145,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">      </span><span class="nt">cloudPricingSecretRef</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">azure-pricing</span>
 <span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
+
+<span class="w">      </span><span class="nt">opencostServiceRoleArn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:iam::123456789012:role/S3Access</span>
+<span class="w">      </span><span class="nt">retentionPeriod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7d</span>
 <span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
 <span class="w">      </span><span class="nt">keycloak</span><span class="p">:</span>
@@ -5182,6 +5186,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><code>custom:</code> Custom pricing model for showback.</li>
 <li><code>cloudPricingSecretRef:</code> Secret reference for AWS / Azure Pricing model.</li>
 <li><code>opencostServiceRoleArn</code>: Role ARN to be used by OpenCost gateway's service account</li>
+<li><code>retentionPeriod</code>: Retention period to configure <code>--storage.tsdb.retention.time</code> parameter of MTO Prometheus Deployment</li>
 </ul>
 </li>
 </ul>
