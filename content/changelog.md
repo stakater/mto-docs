@@ -15,7 +15,7 @@
 #### Enhancements
 
 - Retention Period is now configurable via [Integration Config CR](./kubernetes-resources/integration-config.md#network)
-- Dynamic provisioning of global vault-policies
+- Dynamic provisioning of global Vault policies
 - Error reporting via status conditions in namespace controller
 - Error reporting via status conditions in tenant controller
 - Error reporting via status conditions in integration config controller
