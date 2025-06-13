@@ -6936,25 +6936,23 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h3 id="v130">v1.3.0<a class="headerlink" href="#v130" title="Permanent link">#</a></h3>
 <h4 id="features">Features<a class="headerlink" href="#features" title="Permanent link">#</a></h4>
 <ul>
-<li>Option to only allow pods with specific priorty classes via Tenant CR.</li>
-<li>Option to deny services with specific service accounts via Tenant CR.</li>
-<li>Option to only allow pods with specified image registries via Tenant CR.</li>
-<li>Option to block nodeport services via Integration Config CR.</li>
-<li>Option to block pods with hostports via Integration Config CR.</li>
+<li>Option to deny services with specific service accounts via <a href="kubernetes-resources/tenant/tenant-overview.html#service-accounts">Tenant CR</a></li>
+<li>Option to only allow pods with specific priorty classes via <a href="kubernetes-resources/tenant/tenant-overview.html#pod-priority-classes">Tenant CR</a></li>
+<li>Option to only allow pods with specified image registries via <a href="kubernetes-resources/tenant/tenant-overview.html#image-registries">Tenant CR</a></li>
+<li>Option to block nodeport services via <a href="kubernetes-resources/integration-config.html#network">Integration Config CR</a></li>
+<li>Option to block pods with hostports via <a href="kubernetes-resources/integration-config.html#network">Integration Config CR</a></li>
 </ul>
 <h4 id="enhancements">Enhancements<a class="headerlink" href="#enhancements" title="Permanent link">#</a></h4>
 <ul>
-<li>Retention Period is now configurable via Integration Config CR.</li>
+<li>Retention Period is now configurable via <a href="kubernetes-resources/integration-config.html#network">Integration Config CR</a></li>
 <li>Dynamic provisioning of global vault-policies</li>
 <li>Error reporting via status conditions in namespace controller</li>
 <li>Error reporting via status conditions in tenant controller</li>
 <li>Error reporting via status conditions in integration config controller</li>
-<li>Remove kube rbac proxy</li>
+<li>Removed kube rbac proxy</li>
 </ul>
 <h4 id="bug-fixes">Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">#</a></h4>
 <ul>
-<li>Fixed rendering of custom roles for IC</li>
-<li>Quota fixes</li>
 <li>Fixed keycloak token expiring in pilot controller</li>
 </ul>
 <h2 id="v12x">v1.2.x<a class="headerlink" href="#v12x" title="Permanent link">#</a></h2>
