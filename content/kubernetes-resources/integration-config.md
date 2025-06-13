@@ -35,6 +35,7 @@ spec:
         namespace: multi-tenant-operator
       
       opencostServiceRoleArn: arn:aws:iam::123456789012:role/S3Access
+      retentionPeriod: 7d
 
     ingress:
       ingressClassName: 'nginx'
@@ -178,6 +179,9 @@ Following are the different components that can be used to configure multi-tenan
       cloudPricingSecretRef:
         name: azure-pricing
         namespace: multi-tenant-operator
+
+      opencostServiceRoleArn: arn:aws:iam::123456789012:role/S3Access
+      retentionPeriod: 7d
     ingress:
       ingressClassName: nginx
       keycloak:
@@ -208,6 +212,7 @@ Following are the different components that can be used to configure multi-tenan
     - `custom:` Custom pricing model for showback.
     - `cloudPricingSecretRef:` Secret reference for AWS / Azure Pricing model.
     - `opencostServiceRoleArn`: Role ARN to be used by OpenCost gateway's service account
+    - `retentionPeriod`: Retention period to configure `--storage.tsdb.retention.time` parameter of MTO Prometheus Deployment
 
 Here's an example of how to generate the secrets required to configure MTO:
 
