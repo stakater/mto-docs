@@ -6937,10 +6937,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h4 id="features">Features<a class="headerlink" href="#features" title="Permanent link">#</a></h4>
 <ul>
 <li>Option to deny services with specific service accounts via <a href="kubernetes-resources/tenant/tenant-overview.html#service-accounts">Tenant CR</a></li>
-<li>Option to only allow pods with specific priorty classes via <a href="kubernetes-resources/tenant/tenant-overview.html#pod-priority-classes">Tenant CR</a></li>
+<li>Option to only allow pods with specific priority classes via <a href="kubernetes-resources/tenant/tenant-overview.html#pod-priority-classes">Tenant CR</a></li>
 <li>Option to only allow pods with specified image registries via <a href="kubernetes-resources/tenant/tenant-overview.html#image-registries">Tenant CR</a></li>
-<li>Option to block nodeport services via <a href="kubernetes-resources/integration-config.html#network">Integration Config CR</a></li>
-<li>Option to block pods with hostports via <a href="kubernetes-resources/integration-config.html#network">Integration Config CR</a></li>
+<li>Option to block services of type nodeport via <a href="kubernetes-resources/integration-config.html#network">Integration Config CR</a></li>
+<li>Option to block pods with host ports via <a href="kubernetes-resources/integration-config.html#network">Integration Config CR</a></li>
 </ul>
 <h4 id="enhancements">Enhancements<a class="headerlink" href="#enhancements" title="Permanent link">#</a></h4>
 <ul>
@@ -6949,7 +6949,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li>Error reporting via status conditions in namespace controller</li>
 <li>Error reporting via status conditions in tenant controller</li>
 <li>Error reporting via status conditions in integration config controller</li>
-<li>Removed kube rbac proxy</li>
+<li>Removed kube RBAC proxy</li>
 </ul>
 <h4 id="bug-fixes">Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">#</a></h4>
 <ul>
