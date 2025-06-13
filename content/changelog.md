@@ -6,26 +6,24 @@
 
 #### Features
 
-* Option to only allow pods with specific priorty classes via Tenant CR.
-* Option to deny services with specific service accounts via Tenant CR.
-* Option to only allow pods with specified image registries via Tenant CR.
-* Option to block nodeport services via Integration Config CR.
-* Option to block pods with hostports via Integration Config CR.
+- Option to deny services with specific service accounts via [Tenant CR](./kubernetes-resources/tenant/tenant-overview.md#service-accounts)
+- Option to only allow pods with specific priorty classes via [Tenant CR](./kubernetes-resources/tenant/tenant-overview.md#pod-priority-classes)
+- Option to only allow pods with specified image registries via [Tenant CR](./kubernetes-resources/tenant/tenant-overview.md#image-registries)
+- Option to block nodeport services via [Integration Config CR](./kubernetes-resources/integration-config.md#network)
+- Option to block pods with hostports via [Integration Config CR](./kubernetes-resources/integration-config.md#network)
 
 #### Enhancements
 
-* Retention Period is now configurable via Integration Config CR.
-* Dynamic provisioning of global vault-policies
-* Error reporting via status conditions in namespace controller
-* Error reporting via status conditions in tenant controller
-* Error reporting via status conditions in integration config controller
-* Remove kube rbac proxy
+- Retention Period is now configurable via [Integration Config CR](./kubernetes-resources/integration-config.md#network)
+- Dynamic provisioning of global vault-policies
+- Error reporting via status conditions in namespace controller
+- Error reporting via status conditions in tenant controller
+- Error reporting via status conditions in integration config controller
+- Removed kube rbac proxy
 
 #### Bug Fixes
 
-* Fixed rendering of custom roles for IC
-* Quota fixes
-* Fixed keycloak token expiring in pilot controller
+- Fixed keycloak token expiring in pilot controller
 
 ## v1.2.x
 
