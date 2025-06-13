@@ -9,7 +9,7 @@
 - Option to deny services with specific service accounts via [Tenant CR](./kubernetes-resources/tenant/tenant-overview.md#service-accounts)
 - Option to only allow pods with specific priority classes via [Tenant CR](./kubernetes-resources/tenant/tenant-overview.md#pod-priority-classes)
 - Option to only allow pods with specified image registries via [Tenant CR](./kubernetes-resources/tenant/tenant-overview.md#image-registries)
-- Option to block services of type nodeport via [Integration Config CR](./kubernetes-resources/integration-config.md#network)
+- Option to block services of type NodePort via [Integration Config CR](./kubernetes-resources/integration-config.md#network)
 - Option to block pods with host ports via [Integration Config CR](./kubernetes-resources/integration-config.md#network)
 
 #### Enhancements
