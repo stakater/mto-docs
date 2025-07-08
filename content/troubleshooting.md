@@ -100,7 +100,7 @@ The fix is to create namespaces with `kubectl create` instead.
 
 **Answer.** The `mto-showback-*` pods are used to calculate the cost of the resources used by each tenant. These pods are created by the Multi-Tenant Operator and are scheduled to run every 10 minutes. If the pods are failing, it is likely that the operator's necessary to calculate cost are not present in the cluster. To solve this, you can navigate to `Operators` -> `Installed Operators` in the OpenShift console and check if the MTO-OpenCost and MTO-Prometheus operators are installed. If they are in a pending state, you can manually approve them to install them in the cluster.
 
-## MTO - KeyCloak
+## MTO - Keycloak
 
 ### Q. What causes the Keycloak pod to fail after enabling the console in the integration configuration?
 
