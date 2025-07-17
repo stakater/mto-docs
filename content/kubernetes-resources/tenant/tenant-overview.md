@@ -93,6 +93,15 @@ spec:
     allowed:
       - ghcr.io
       - docker.io
+  
+  hostValidationConfig:
+    allowed:
+      - gateway.saap.dev
+      - console.sapp.dev
+      - *.saap.prod
+    allowedRegex: ^[a-zA-Z0-9-]+\.saap\.dev$
+    denyWildcards: false
+
 ```
 
 ## Access Control
@@ -233,3 +242,13 @@ imageRegistries:
     - ghcr.io
     - docker.io
 ```
+
+## Hostname Validation
+
+The `hostValidationConfig` field allows you to specify rules for the validation of hostnames in ingresses and routes.
+
+* `allowed`: Specifies a list of allowed hostnames. Any wildcards used in this field will be compared as is. Use `allowedRegex` field for pattern matching.
+
+* `allowedRegex`: Specifies a regex that will be used to validate the hostname. Hostnames matching the regex will be allowed.
+
+* `denyWildcards`: Use of wildcards in ingress hostnames will be restricted if field is set to true
