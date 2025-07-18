@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -4503,6 +4503,30 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#mto-keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      MTO - Keycloak
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MTO - Keycloak">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-what-causes-the-keycloak-pod-to-fail-after-enabling-the-console-in-the-integration-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q. What causes the Keycloak pod to fail after enabling the console in the integration configuration?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4767,6 +4791,30 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#mto-keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      MTO - Keycloak
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MTO - Keycloak">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-what-causes-the-keycloak-pod-to-fail-after-enabling-the-console-in-the-integration-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q. What causes the Keycloak pod to fail after enabling the console in the integration configuration?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4846,6 +4894,9 @@ from server for: &quot;namespace.yaml&quot;: namespaces &quot;ns1&quot; is forbi
 <h2 id="mto-opencost">MTO - OpenCost<a class="headerlink" href="#mto-opencost" title="Permanent link">#</a></h2>
 <h3 id="q-why-are-there-mto-showback-pods-failing-in-my-cluster">Q. Why are there <code>mto-showback-*</code> pods failing in my cluster?<a class="headerlink" href="#q-why-are-there-mto-showback-pods-failing-in-my-cluster" title="Permanent link">#</a></h3>
 <p><strong>Answer.</strong> The <code>mto-showback-*</code> pods are used to calculate the cost of the resources used by each tenant. These pods are created by the Multi-Tenant Operator and are scheduled to run every 10 minutes. If the pods are failing, it is likely that the operator's necessary to calculate cost are not present in the cluster. To solve this, you can navigate to <code>Operators</code> -&gt; <code>Installed Operators</code> in the OpenShift console and check if the MTO-OpenCost and MTO-Prometheus operators are installed. If they are in a pending state, you can manually approve them to install them in the cluster.</p>
+<h2 id="mto-keycloak">MTO - Keycloak<a class="headerlink" href="#mto-keycloak" title="Permanent link">#</a></h2>
+<h3 id="q-what-causes-the-keycloak-pod-to-fail-after-enabling-the-console-in-the-integration-configuration">Q. What causes the Keycloak pod to fail after enabling the console in the integration configuration?<a class="headerlink" href="#q-what-causes-the-keycloak-pod-to-fail-after-enabling-the-console-in-the-integration-configuration" title="Permanent link">#</a></h3>
+<p><strong>Answer.</strong> The Keycloak pod requires a functional PostgreSQL database to start successfully. Since the PostgreSQL pod may take some time to become ready, Keycloak will continue to fail until the database is fully operational — this process can take up to 5 minutes.</p>
 
 
 
@@ -5559,7 +5610,7 @@ from server for: &quot;namespace.yaml&quot;: namespaces &quot;ns1&quot; is forbi
       <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="assets/javascripts/bundle.56ea9cef.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
