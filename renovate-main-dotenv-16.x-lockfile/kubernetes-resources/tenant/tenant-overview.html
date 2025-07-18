@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -3218,6 +3218,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#hostname-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hostname Validation
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4496,6 +4505,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#hostname-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hostname Validation
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4604,6 +4622,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker.io</span>
+
+<span class="w">  </span><span class="nt">hostValidationConfig</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.saap.dev</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">console.saap.dev</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.saap.prod</span>
+<span class="w">    </span><span class="nt">allowedRegex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^[a-zA-Z0-9-]+\.saap\.dev$</span>
+<span class="w">    </span><span class="nt">denyWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <h2 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">#</a></h2>
 <p>Structured access control is critical for managing roles and permissions within a tenant effectively. It divides users into three categories, each with customizable privileges. This design enables precise role-based access management.  </p>
@@ -4733,6 +4759,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker.io</span>
 </code></pre></div>
+<h2 id="hostname-validation">Hostname Validation<a class="headerlink" href="#hostname-validation" title="Permanent link">#</a></h2>
+<p>The <code>hostValidationConfig</code> field allows you to specify rules for the validation of hostnames in ingresses and routes.</p>
+<ul>
+<li>
+<p><code>allowed</code>: Specifies a list of allowed hostnames. Any wildcards used in this field will be compared as is. Use <code>allowedRegex</code> field for pattern matching.</p>
+</li>
+<li>
+<p><code>allowedRegex</code>: Specifies a regex that will be used to validate the hostname. Hostnames matching the regex will be allowed.</p>
+</li>
+<li>
+<p><code>denyWildcards</code>: Use of wildcards in ingress hostnames will be restricted if field is set to true</p>
+</li>
+</ul>
 
 
 
@@ -5446,7 +5485,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
