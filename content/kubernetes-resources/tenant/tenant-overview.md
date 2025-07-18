@@ -97,7 +97,7 @@ spec:
   hostValidationConfig:
     allowed:
       - gateway.saap.dev
-      - console.sapp.dev
+      - console.saap.dev
       - *.saap.prod
     allowedRegex: ^[a-zA-Z0-9-]+\.saap\.dev$
     denyWildcards: false
