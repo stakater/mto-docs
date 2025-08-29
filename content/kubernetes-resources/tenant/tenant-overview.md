@@ -162,7 +162,12 @@ storageClasses:
     - shared
 ```
 
-* `allowed` can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the list. If `storageClass` is not specified for a PersistentVolumeClaim, the default StorageClass (if set) will be evaluated as any other class name. If the default StorageClass is not set, the evaluation will be deferred until a default StorageClass is set. `""` is evaluated as any other class name, so if you are using it to manually bind to PersistentVolumes while using StorageClass filtering you need to add  an empty string `""` to the tenants allow-list or it will get filtered.
+* `allowed` can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the list.  
+  The evaluation works as follows:
+    * If the `storageClass`-field set when creating a PersistentVolumeClaim, it is evaluated directly.
+    * If, instead, the `volumeName` is provided, the operator looks at the corresponding PersistentVolume to determine its class.
+    * If no `storageClass` or `volumeName` is provided, the evaluation is deferred until a default storage class is set.
+    * An empty string for `storageClass` (vs. null) is treated as the literal value `""`
 
 ## Ingress
 
