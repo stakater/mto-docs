@@ -4689,9 +4689,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <ul>
 <li><code>allowed</code> can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the list.<br />
   The evaluation works as follows:<ul>
-<li>If the <code>storageClass</code>-field set when creating a PersistentVolumeClaim, it is evaluated directly. </li>
+<li>If the <code>storageClass</code>-field set when creating a PersistentVolumeClaim, it is evaluated directly.</li>
 <li>If, instead, the <code>volumeName</code> is provided, the operator looks at the corresponding PersistentVolume to determine its class.</li>
-<li>If no <code>storageClass</code> or <code>volumeName</code> is provided, the evaluation is deferred until a default storageClass is set.</li>
+<li>If no <code>storageClass</code> or <code>volumeName</code> is provided, the evaluation is deferred until a default storage class is set.</li>
 <li>An empty string for <code>storageClass</code> (vs. null) is treated as the literal value <code>""</code></li>
 </ul>
 </li>
