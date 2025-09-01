@@ -67,7 +67,6 @@ graph TD
 * **KV v2 path template:** `secret/tenants/<tenant>/<env>/<namespace>/<app>/<name>`
 * **Default environment:** `prod` (configurable).
 * **Granularity modes:**
-
   * `namespace` (default, simplest): one role per tenant namespace.
   * `app` (optional, tighter): one role per app SA.
 * **Opt‑in scaffolding**: annotate Deployments/SS/CronJobs to auto‑generate ExternalSecrets.
