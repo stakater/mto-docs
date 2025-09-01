@@ -96,44 +96,202 @@ kubectl -n mto-system create secret generic openbao-credentials \
 ### 7.3 Create OpenBaoIntegration CR
 
 ```yaml
+# OpenBaoIntegration: wires your MTO tenants to an existing OpenBao (Vault-compatible) cluster.
+# - Ensures Bao auth backends for workloads (Kubernetes) and humans (OIDC/JWT).
+# - Sets up per-tenant policies/roles and (optionally) External Secrets Operator objects.
+# - KV (secrets) enabled by default; other engines (Transit/PKI/Database) are sketched but off.
 apiVersion: security.mto.stakater.com/v1alpha1
 kind: OpenBaoIntegration
 metadata:
-  name: cluster-default
+  name: cluster-default                 # One per cluster (typical). Keep in mto-system.
   namespace: mto-system
+
 spec:
-  baseURL: https://bao.example.com:8200
-  credentialsRef: { name: openbao-credentials }
+  # --- How the operator connects to your OpenBao endpoint(s) ---
+  connection:
+    # Single endpoint for now; keep this lean. (Future: endpoints[] if needed.)
+    url: https://bao.example.com:8200
 
+    # Bao operator token (least-privilege policy). Secret MUST be in the same namespace as this CR.
+    tokenSecretRef:
+      name: openbao-credentials         # kubectl -n mto-system create secret generic openbao-credentials --from-literal=token=...
+      key: token
+
+    # OPTIONAL: provide a custom CA if Bao uses a private CA.
+    # caBundleSecretRef:
+    #   name: bao-ca
+    #   key: ca.crt
+
+    # OPTIONAL: dev-only. Don’t disable TLS verification in production.
+    # insecureSkipVerify: false
+
+  # --- What parts of Bao auth the operator should manage (on Bao’s side) ---
   manageAuth:
-    kubernetes: Ensure      # Off|Ensure
-    oidc: Ensure            # Off|Ensure
+    kubernetes: Ensure                  # Off | Ensure  → mount/configure auth/kubernetes for workload SAs
+    oidc: Ensure                        # Off | Ensure  → mount/configure auth/oidc (or jwt) for human users
 
+  # --- Where OIDC settings come from (your SSO extension publishes this contract) ---
   sso:
-    source: FromClusterSSO  # FromClusterSSO|FromBindingSecret|Inline
-    ref: { name: default }
+    source: FromClusterSSO              # FromClusterSSO | FromBindingSecret | Inline
+    ref:
+      name: default                     # Name of ClusterSSO (or Secret if using FromBindingSecret)
+    # inline:                            # Fallback if you don’t use the SSO extension (not recommended)
+    #   issuer: https://dex.mto.svc.cluster.local
+    #   clientID: vault-openbao
+    #   clientSecretRef: { name: sso-openbao-client, namespace: mto-system, key: clientSecret }
+    #   groupsClaim: groups
 
+  # --- Tenancy model + defaults used in path templates, roles, etc. ---
+  tenancy:
+    mode: path                          # path | namespace (path = works on OSS; namespace for enterprise builds later)
+    defaults:
+      env: prod                         # Default environment if apps don’t specify mto.secrets/env
+
+  # --- Naming & path templates (reused by engines below) ---
   layout:
-    pathTemplate: "secret/tenants/{{ .tenant }}/{{ .env }}/{{ .namespace }}/{{ .app }}/{{ .name }}"
-    defaultEnv: "prod"
+    templates:
+      # KV v2 path schema: tenant → env → namespace → app → name
+      kv: "secret/tenants/{{ .tenant }}/{{ .env }}/{{ .namespace }}/{{ .app }}/{{ .name }}"
 
+      # Transit key naming (used if Transit engine is enabled)
+      transitKey: "ten-{{ .tenant }}-{{ .namespace }}-{{ .app }}"
+
+      # Per-tenant PKI mount path (used if PKI engine is enabled)
+      pkiMount: "pki/tenants/{{ .tenant }}"
+
+  # --- RBAC granularity for workload access (Kubernetes auth roles) ---
   rbac:
-    granularity: namespace  # namespace|app
-    tokenTTL: 1h
+    granularity: namespace              # namespace (default, simpler) | app (tighter; more roles)
+    tokenTTL: 1h                        # SA-issued Bao tokens TTL
     tokenMaxTTL: 4h
 
-  injection:
-    mode: external-secrets   # external-secrets|csi|none
-    secretStore:
-      perNamespace: true
-      nameTemplate: "openbao"
+  # --- Engines define which Bao capabilities to expose. KV is on; others are examples (off). ---
+  engines:
+    # 1) KV (secrets) — enabled by default
+    - name: kv
+      type: kv-v2
+      enabled: true
 
+      # Mount strategy: using a shared cluster mount "secret" (works everywhere). No destructive ops.
+      strategy:
+        scope: cluster                  # cluster = one shared mount (secret); tenant = per-tenant mount
+        mount:
+          path: secret                  # i.e., /v1/secret (kv v2)
+          manage: Adopt                 # Off | Adopt | Ensure → Adopt uses if present; Ensure creates if missing
+
+      # Policy presets:
+      # - admin: RW under the tenant path (create/update/patch/delete/read/list on data; read/list/delete on metadata)
+      # - viewer: RO under the tenant path (read/list on data+metadata)
+      policies:
+        presets: [admin, viewer]
+        # extras: []                    # (Optional) Additional HCL rules if you need finer control
+
+      # How apps get secrets:
+      injection:
+        mode: external-secrets          # external-secrets | csi | none
+        secretStore:
+          perNamespace: true            # Create one SecretStore per tenant namespace
+          nameTemplate: "openbao"       # SecretStore name (kept simple for predictability)
+
+      # Use the kv template declared in layout.templates.kv
+      layoutRef: kv
+
+    # 2) Transit (envelope encryption, signing) — OPTIONAL (disabled)
+    - name: transit
+      type: transit
+      enabled: false
+
+      strategy:
+        scope: cluster
+        mount:
+          path: transit
+          manage: Adopt
+
+      transit:
+        autoCreateKeyPerApp: true       # Create a key per app automatically on Day-1
+        keyNameTemplate: "{{ .layout.transitKey }}"
+        keyConfig:
+          type: aes256-gcm96
+          convergent_encryption: false
+
+      policies:
+        presets: [admin]                # Typically admins control encrypt/decrypt; app tokens may get sign/verify if needed
+
+      injection:
+        mode: none                      # Transit is usually consumed directly via Bao API from app code
+
+    # 3) PKI (per-tenant CA/issuer) — OPTIONAL (disabled)
+    - name: pki
+      type: pki
+      enabled: false
+
+      strategy:
+        scope: tenant                   # Each tenant gets its own PKI mount/CA (nice isolation)
+        mount:
+          pathTemplate: "{{ .layout.pkiMount }}"
+          manage: Ensure
+
+      pki:
+        maxLeaseTTL: 8760h              # 1 year CA TTL
+        intermediate: true              # Act as intermediate signed by your platform root (external to this operator)
+        roles:
+          - nameTemplate: "{{ .tenant }}-svc"
+            allowed_domains:
+              - "{{ .namespace }}.svc.cluster.local"
+            allow_subdomains: true
+            max_ttl: 720h
+
+      # Optional glue to cert-manager so apps can request certs via a native K8s Issuer
+      injection:
+        certManager:
+          enabled: true
+          issuerKind: Issuer            # Issuer | ClusterIssuer
+          nameTemplate: "{{ .tenant }}-pki"
+          authRoleNameTemplate: "ten-{{ .tenant }}-pki"
+
+    # 4) Database (dynamic DB users) — OPTIONAL (disabled)
+    #    Example shows how to declare a shared "database" mount and per-tenant roles.
+    - name: database
+      type: database
+      enabled: false
+
+      strategy:
+        scope: cluster
+        mount:
+          path: database
+          manage: Adopt
+
+      database:
+        connections:
+          - name: "pg-main"
+            plugin_name: "postgresql-database-plugin"
+            # DSN for the root/admin DB connection lives in a Secret you manage
+            dsnSecretRef:
+              name: db-root-dsn
+              namespace: mto-system
+              key: dsn
+            tenantRoles:
+              - nameTemplate: "{{ .tenant }}-app-ro"
+                creation_statements: |
+                  CREATE ROLE "{{name}}" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}';
+                  GRANT SELECT ON ALL TABLES IN SCHEMA public TO "{{name}}";
+                default_ttl: "1h"
+                max_ttl: "4h"
+
+      injection:
+        mode: none                      # Apps fetch short-lived DB creds at runtime via Bao API
+
+  # --- App-level scaffolding: only create ExternalSecrets when apps opt in via annotations ---
   scaffolding:
-    mode: OnAnnotation       # None|OnAnnotation
+    mode: OnAnnotation                  # None | OnAnnotation
     annotations:
-      enable: "mto.secrets/enable"
-      keys:   "mto.secrets/keys"
-      env:    "mto.secrets/env"
+      enable: "mto.secrets/enable"      # "true" to enable for the workload
+      keys:   "mto.secrets/keys"        # comma-separated logical keys (e.g., "db,api,license")
+      env:    "mto.secrets/env"         # optional: override env per workload (defaults.tenancy.env otherwise)
+
+  # --- Safety guardrails: avoid destructive operations in production by default ---
+  safety:
+    destructiveOps: false               # If true, allows explicit delete flows (normally off)
 ```
 
 > Tenant namespaces are typically created/selected by the **Tenant CR** in MTO. OBX detects them automatically.
@@ -447,13 +605,6 @@ volumes:
     volumeAttributes:
       secretProviderClass: <generated-name>
 ```
-
----
-
-## 14) Change Log & ADRs (suggested)
-
-* Keep a short **CHANGELOG** (controller flags & CR schema changes).
-* Add ADRs: path schema choice, OnAnnotation scaffolding, non‑destructive reconcile policy, namespace vs app granularity.
 
 ---
 
