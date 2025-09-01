@@ -578,7 +578,3 @@ volumes:
     volumeAttributes:
       secretProviderClass: <generated-name>
 ```
-
----
-
-**Done.** One guide for both roles. Install it, annotate apps, and if you’re hacking on OBX, you’ve got the internals too.
