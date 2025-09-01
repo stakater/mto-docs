@@ -401,7 +401,6 @@ Tenant.status.integrations.openbao:
 * **NetworkPolicies:** restrict egress to Bao from only needed namespaces.
 * **KMS/etcd encryption:** enable if using ESO to encrypt K8s Secrets at rest.
 * **Observability:** Prometheus metrics
-
   * `openbao_reconcile_seconds{kind=...,result=...}`
   * `openbao_api_requests_total{path=...,status=...}`
   * `openbao_secretstore_status{namespace=...,ready=0|1}`
@@ -497,23 +496,14 @@ path "secret/metadata/tenants/{{tenant}}/{{env}}/{{namespace}}/*" {
 }
 ```
 
-### 11.5 CRD (spec) highlights
-
-* `manageAuth.kubernetes|oidc: Off|Ensure`
-* `sso.source: FromClusterSSO|FromBindingSecret|Inline`
-* `layout.pathTemplate` & `defaultEnv`
-* `rbac.granularity: namespace|app`
-* `injection.mode: external-secrets|csi|none`
-* `scaffolding.mode: None|OnAnnotation`
-
-### 11.6 Testing strategy (TDD/e2e)
+### 11.5 Testing strategy (TDD/e2e)
 
 * **Unit:** golden tests for renderers (HCL/JSON) with fixtures across tenant/ns/app/env.
 * **Envtest:** controller-runtime fake API server; verify SecretStore/ExternalSecrets creation on annotations.
 * **Kind e2e:** spin Bao (dev), ESO, Dex (from SSO), apply OBX + Tenant; assert SA login, OIDC login, KV access.
 * **Fault injection:** rotate Dex client secret & Kubernetes CA; assert non‑destructive reconcile.
 
-### 11.7 Performance notes
+### 11.6 Performance notes
 
 * Avoid listing across all namespaces; restrict informers to tenant‑selected namespaces.
 * Batch Bao API calls where safe; exponental backoff on 429/5xx.
@@ -521,13 +511,7 @@ path "secret/metadata/tenants/{{tenant}}/{{env}}/{{namespace}}/*" {
 
 ---
 
-## 12) Configuration Reference (Full)
-
-See `spec` block in §7.3; all fields documented inline. Consider publishing an **OpenAPI schema** with descriptions to enable validation and UX hints.
-
----
-
-## 13) Appendices
+## 12) Appendices
 
 ### Appendix A — OBX Bao Policy (least privilege)
 
