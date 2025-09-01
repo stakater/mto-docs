@@ -28,18 +28,19 @@ The OpenBao Extension (OBX) integrates **OpenBao** (Vault‑compatible) with **M
 ```mermaid
 graph TD
   subgraph Cluster
-    MTO[MTO Core]
-    OBX[OpenBao Extension]
-    SSO[SSO Extension (Dex/Keycloak)]
-    ESO[External Secrets Operator]
+    MTO["MTO Core"];
+    OBX["OpenBao Extension"];
+    SSO["SSO Extension<br/>(Dex/Keycloak)"];
+    ESO["External Secrets Operator"];
   end
-  BAO[(OpenBao)]
+  BAO["OpenBao"];
+  WORK["Workloads"];
 
-  MTO -->|Tenant CR| OBX
-  SSO -->|issuer + client + groupsClaim| OBX
-  OBX -->|auth/kubernetes + auth/oidc + policies/roles| BAO
-  ESO -->|SecretStore/ExternalSecret| BAO
-  BAO -->|tokens/kv| Workloads
+  MTO -->|Tenant CR| OBX;
+  SSO -->|"issuer + client + groupsClaim"| OBX;
+  OBX -->|"auth/kubernetes + auth/oidc + policies/roles"| BAO;
+  ESO -->|"SecretStore / ExternalSecret"| BAO;
+  BAO -->|"tokens / kv"| WORK;
 ```
 
 ---
