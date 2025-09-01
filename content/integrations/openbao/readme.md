@@ -1,182 +1,29 @@
-# MTO OpenBao Extension
+# MTO OpenBao Extension — Combined Guide (Platform + Developer)
 
-> **Goal:** Enable each MTO Tenant to use OpenBao (HashiCorp Vault–compatible) for secrets, crypto, and PKI with minimal setup. Workloads use **Kubernetes auth**; humans use **OIDC** (via your SSO extension such as Dex). The extension is **integrational**: it wires Bao to your cluster and tenants; it does **not** operate the Bao cluster itself.
-
----
-
-## Who is this for?
-
-Platform engineers running **MTO** who want: per‑tenant secret isolation, developer self‑service with **External Secrets Operator (ESO)** or **CSI Secrets Store**, and audited human access via **OIDC**.
+> **Purpose:** A single source of truth for deploying, operating, and extending the **MTO OpenBao Extension (OBX)**. It serves both **platform engineers** (how to install/use) and **developers** (how it works under the hood).
 
 ---
 
-## What you get
+## 1) What is it?
 
-* Per‑tenant **KV v2** path prefixes (and optional **Transit/PKI** prefixes).
-* Bao **policies** and **roles** enforcing least privilege by tenant/namespace/app.
-* Two auth backends wired for you:
-  * **Kubernetes** (workloads via ServiceAccounts).
-  * **OIDC/JWT** (humans via SSO; Dex/Keycloak/Entra).
-* Optional app‑level scaffolding: annotate Deployments to auto‑create **ExternalSecrets**.
-* Minimal, greppable **Tenant.status** updates (ready, paths, roles, groups).
+The OpenBao Extension (OBX) integrates **OpenBao** (Vault‑compatible) with **MTO Tenants** to deliver:
 
----
+* Per‑tenant **KV v2** secret isolation (and optional **Transit** / **PKI** prefixes).
+* **Kubernetes auth** for workloads (ServiceAccounts) and **OIDC/JWT** for humans (via SSO extension, e.g., Dex/Keycloak/Entra).
+* Optional app‑level auto‑scaffolding via **External Secrets Operator (ESO)** or **CSI Secrets Store**.
 
-## Before you begin (prerequisites)
-
-### 1) A reachable OpenBao instance
-
-* Bao URL (e.g., `https://bao.example.com:8200`) with a **scoped management token**.
-* Storage/HA, unseal, backups are **out of scope** for this extension.
-
-**Recommended Bao policy for the operator token** (least privilege):
-
-```hcl
-# Manage specific auth mounts (create/patch but not delete)
-path "sys/auth"            { capabilities = ["read", "list", "update"] }
-path "sys/auth/*"          { capabilities = ["read", "list", "update"] }
-
-# Manage policies used by tenants
-path "sys/policies/acl/*"  { capabilities = ["create", "read", "update", "list"] }
-
-# Manage roles for kubernetes & oidc mounts
-path "auth/*/role/*"       { capabilities = ["create", "read", "update", "list"] }
-
-# Identity groups & aliases for OIDC groups → Bao policies
-path "identity/group"      { capabilities = ["create", "read", "update", "list"] }
-path "identity/group/*"    { capabilities = ["create", "read", "update", "list"] }
-path "identity/group-alias"   { capabilities = ["create", "read", "update", "list"] }
-path "identity/group-alias/*" { capabilities = ["create", "read", "update", "list"] }
-
-# Tenant KV paths only (no blanket secret powers)
-path "secret/*"            { capabilities = ["read", "list"] }
-path "secret/data/tenants/*"     { capabilities = ["create","update","patch","delete","read","list"] }
-path "secret/metadata/tenants/*" { capabilities = ["read","list","delete"] }
-```
-
-### 2) SSO extension installed (Dex or other)
-
-* Install **MTO SSO extension** and configure your IdP. It will publish one of:
-  * **ClusterSSO** status with `issuer`, `groupsClaim`, `clients.openbao.clientID/SecretRef`, and tenant **groupPatterns**; or
-  * A labeled **Secret** containing the above ("service binding" style).
-
-### 3) (Optional) External Secrets Operator (ESO)
-
-* If using ESO, have the CRDs/controller installed.
-
-### 4) Kubernetes version & namespaces
-
-* Kubernetes ≥ 1.25 (RBAC, SA tokens). Ensure your **tenant namespaces** exist or are managed by MTO.
-
-### 5) Network / TLS
-
-* Pods that will contact Bao must be allowed by **NetworkPolicies**.
-* Bao must present a CA chain trusted by those pods (or pass CA via SecretStore spec).
+> OBX **does not** install or operate the Bao cluster; it wires Bao to your MTO tenants.
 
 ---
 
-## Quick start (TL;DR)
+## 2) Audience
 
-1. **Install the extension** (Helm or Kustomize; replace placeholders):
-
-```bash
-# Namespace for operators
-kubectl create ns mto-system || true
-
-# Helm (example)
-helm upgrade --install mto-openbao-extension \
-  oci://<your-registry>/mto-openbao-extension \
-  -n mto-system \
-  -f values.yaml
-```
-
-2. **Provide the Bao token** (scoped policy above):
-
-```bash
-kubectl -n mto-system create secret generic openbao-credentials \
-  --from-literal=token=<BAO_OPERATOR_TOKEN>
-```
-
-3. **Create the integration CR** (minimal):
-
-```yaml
-apiVersion: security.mto.stakater.com/v1alpha1
-kind: OpenBaoIntegration
-metadata:
-  name: cluster-default
-  namespace: mto-system
-spec:
-  baseURL: https://bao.example.com:8200
-  credentialsRef:
-    name: openbao-credentials
-  manageAuth:
-    kubernetes: Ensure
-    oidc: Ensure
-  sso:
-    source: FromClusterSSO
-    ref:
-      name: default
-  layout:
-    pathTemplate: "secret/tenants/{{ .tenant }}/{{ .env }}/{{ .namespace }}/{{ .app }}/{{ .name }}"
-    defaultEnv: "prod"
-  rbac:
-    granularity: namespace   # or: app
-  injection:
-    mode: external-secrets
-    secretStore:
-      perNamespace: true
-      nameTemplate: "openbao"
-  scaffolding:
-    mode: OnAnnotation
-    annotations:
-      enable: "mto.secrets/enable"
-      keys: "mto.secrets/keys"
-      env: "mto.secrets/env"
-```
-
-4. **Create or label tenant namespaces** (done by MTO Tenant CR). Ensure your tenant CR selects these namespaces.
-
-5. **Annotate an app to consume secrets** (ESO path wiring auto‑generated):
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: api
-  namespace: acme-payments
-  annotations:
-    mto.secrets/enable: "true"
-    mto.secrets/keys: "db,api"
-    mto.secrets/env: "prod"
-spec:
-  template:
-    spec:
-      serviceAccountName: api-sa
-      containers:
-        - name: api
-          image: your/image
-          envFrom:
-            - secretRef: { name: api-db }    # created by ESO
-            - secretRef: { name: api-api }   # created by ESO
-```
-
-6. **Put the actual secret values in Bao** (from CI or humans with OIDC):
-
-```
-# Example path schema
-secret/tenants/acme/prod/acme-payments/api/db
-  └─ username=…
-  └─ password=…
-
-secret/tenants/acme/prod/acme-payments/api/api
-  └─ value=…
-```
-
-ESO will sync them into `api-db` and `api-api` Kubernetes Secrets.
+* **Platform engineers:** Install/configure, define policies, enable tenants/app teams, troubleshoot.
+* **Developers of OBX:** Understand controllers, Day‑0/1/2 flows, CRDs, idempotency and tests.
 
 ---
 
-## Architecture (at a glance)
+## 3) Architecture
 
 ```mermaid
 graph TD
@@ -197,192 +44,342 @@ graph TD
 
 ---
 
-## How it works (Day‑0 / Day‑1 / Day‑2)
+## 4) Scope & Boundaries
 
-### Day‑0 (cluster bootstrap)
-
-1. OBX (the extension) ensures Bao **auth/kubernetes** mounted & configured.
-2. OBX reads SSO contract → ensures Bao **auth/oidc** (issuer, client, groups claim, role).
-3. No destructive changes: mounts are created/patched, **not** deleted.
-
-### Day‑1 (tenant onboarding)
-
-1. For each Tenant selected namespace, OBX creates:
-
-   * **Policies**: `<tenant>-admin`, `<tenant>-viewer`, and namespace/app scoped variants.
-   * **Kubernetes auth Roles** bound to SAs in that namespace.
-   * **SecretStore** (ESO) in that namespace pointing at Bao.
-2. For human access, OBX creates **identity groups** and **group‑aliases** mapping IdP group names → Bao policies.
-3. If **scaffolding OnAnnotation**: when apps are annotated, OBX generates **ExternalSecrets** for listed keys.
-
-### Day‑2 (operations)
-
-* React to SSO rotations (client secret/JWKS); patch `auth/oidc` config.
-* Rotate Kubernetes CA/endpoint on cluster changes.
-* Metrics: reconcile duration, Bao API latency, error codes, SecretStore health.
-* Garbage‑collect ExternalSecrets on opt‑out (no Bao data deletion by default).
+* **OBX manages (on Bao):** `auth/kubernetes`, `auth/oidc|jwt`, tenant policies, roles, identity groups & aliases, and optional SecretStore/ESO objects in Kubernetes.
+* **SSO extension manages:** Your IdP (Dex/Keycloak/Entra) & publishes an SSO **contract** (issuer, groupsClaim, `openbao` clientID/secret, group patterns) via CR **status** or a labeled **Secret**.
+* **Out of scope:** Operating Bao (HA, storage, unseal, backup/restore, DR).
 
 ---
 
-## Configuration reference (spec fields)
+## 5) Prerequisites
+
+1. **OpenBao** reachable (`https://bao.example.com:8200`) and a **scoped management token** (least privilege; see Appendix A policy).
+2. **SSO extension** installed and configured; publishes **issuer**, **groupsClaim**, and `openbao` client.
+3. **External Secrets Operator** (if using ESO mode), or **CSI Secrets Store** if using CSI.
+4. **Network/TLS**: Pods allowed to egress to Bao; trust chain available.
+
+---
+
+## 6) Path Schema & Conventions
+
+* **KV v2 path template:** `secret/tenants/<tenant>/<env>/<namespace>/<app>/<name>`
+* **Default environment:** `prod` (configurable).
+* **Granularity modes:**
+
+  * `namespace` (default, simplest): one role per tenant namespace.
+  * `app` (optional, tighter): one role per app SA.
+* **Opt‑in scaffolding**: annotate Deployments/SS/CronJobs to auto‑generate ExternalSecrets.
+
+---
+
+## 7) Install (Platform Engineer)
+
+### 7.1 Create namespace & install controller
+
+```bash
+kubectl create ns mto-system || true
+helm upgrade --install mto-openbao-extension \
+  oci://<your-registry>/mto-openbao-extension \
+  -n mto-system \
+  -f values.yaml
+```
+
+### 7.2 Provide Bao credentials (scoped)
+
+```bash
+kubectl -n mto-system create secret generic openbao-credentials \
+  --from-literal=token=<BAO_OPERATOR_TOKEN>
+```
+
+### 7.3 Create OpenBaoIntegration CR
 
 ```yaml
+apiVersion: security.mto.stakater.com/v1alpha1
+kind: OpenBaoIntegration
+metadata:
+  name: cluster-default
+  namespace: mto-system
 spec:
-  baseURL: <string>                # Bao URL
-  credentialsRef:                  # Secret with .data.token
-    name: openbao-credentials
-    namespace: mto-system
+  baseURL: https://bao.example.com:8200
+  credentialsRef: { name: openbao-credentials }
 
-  manageAuth:                      # What the operator manages on Bao
-    kubernetes: Off|Ensure         # default: Ensure
-    oidc:       Off|Ensure         # default: Ensure
+  manageAuth:
+    kubernetes: Ensure      # Off|Ensure
+    oidc: Ensure            # Off|Ensure
 
   sso:
-    source: FromClusterSSO|FromBindingSecret|Inline
-    ref:                           # name of ClusterSSO or Secret
-      name: default
-    inline:                        # fallback if source=Inline
-      issuer: https://dex...
-      clientID: vault-openbao
-      clientSecretRef:
-        name: sso-openbao-client
-        namespace: mto-system
-      groupsClaim: groups
+    source: FromClusterSSO  # FromClusterSSO|FromBindingSecret|Inline
+    ref: { name: default }
 
   layout:
     pathTemplate: "secret/tenants/{{ .tenant }}/{{ .env }}/{{ .namespace }}/{{ .app }}/{{ .name }}"
-    defaultEnv: prod
+    defaultEnv: "prod"
 
   rbac:
-    granularity: namespace|app     # default: namespace
+    granularity: namespace  # namespace|app
     tokenTTL: 1h
     tokenMaxTTL: 4h
 
   injection:
-    mode: external-secrets|csi|none
+    mode: external-secrets   # external-secrets|csi|none
     secretStore:
-      perNamespace: true           # create one SecretStore per tenant ns
-      nameTemplate: openbao
+      perNamespace: true
+      nameTemplate: "openbao"
 
   scaffolding:
-    mode: None|OnAnnotation        # default: OnAnnotation
+    mode: OnAnnotation       # None|OnAnnotation
     annotations:
-      enable: mto.secrets/enable
-      keys:   mto.secrets/keys
-      env:    mto.secrets/env
+      enable: "mto.secrets/enable"
+      keys:   "mto.secrets/keys"
+      env:    "mto.secrets/env"
 ```
 
----
-
-## Usage patterns
-
-### A) With External Secrets Operator (recommended)
-
-* Pros: cached K8s Secret (resilience to Bao hiccups), simple Pod consumption.
-* Cons: secrets at rest in etcd (encrypted at rest recommended).
-
-**Per‑namespace SecretStore** is created by OBX. You only **annotate apps** and **write values** in Bao.
-
-### B) With CSI Secrets Store (no Secret at rest)
-
-* Pros: mounts directly in Pod volumes; no Secret in etcd.
-* Cons: online dependency on Bao at Pod start; different consumption model.
-* OBX can provision **SecretProviderClass** templates per app/keys when `injection.mode: csi`.
-
-### C) Direct Bao API (advanced)
-
-* Apps call Bao with short‑lived tokens via Kubernetes auth. No ESO/CSI objects needed. You manage code‑level fetch/renew.
+> Tenant namespaces are typically created/selected by the **Tenant CR** in MTO. OBX detects them automatically.
 
 ---
 
-## Human access via OIDC
+## 8) Using it (Platform Engineer & App Teams)
 
-* Your SSO extension publishes the **issuer**, **openbao client**, and **groupsClaim**.
-* OBX configures Bao `auth/oidc`, creates **identity groups** `<tenant>-admins/viewers`, and maps IdP group names via **group‑aliases**.
-* Result: humans sign in to Bao UI/CLI, get policies for their tenant paths.
-
----
-
-## Observability
-
-* Controller exposes Prometheus metrics:
-
-  * `openbao_reconcile_seconds{kind=...,result=...}`
-  * `openbao_api_requests_total{path=...,status=...}`
-  * `openbao_secretstore_status{namespace=...,ready=0|1}`
-* Optional: emit K8s Events on auth mount/role/policy changes.
-
----
-
-## Security notes
-
-* **Operator token**: use the least‑privilege Bao policy shown above. **Do not** use root.
-* **No destructive defaults**: mounts/policies are created/updated, never deleted automatically.
-* **NetworkPolicies**: restrict egress to Bao endpoint from only allowed namespaces.
-* **KMS/etcd encryption**: if using ESO, enable Kubernetes secrets encryption at rest.
-
----
-
-## Troubleshooting
-
-| Symptom                    | Likely cause                      | Fix                                                                       |
-| -------------------------- | --------------------------------- | ------------------------------------------------------------------------- |
-| `SecretStore` not Ready    | Wrong Bao URL/CA or token         | Check CA chain; rotate token; see controller logs.                        |
-| OIDC login fails           | SSO issuer/redirect URIs mismatch | Verify SSO contract; update `auth/oidc/config`; confirm redirect URIs.    |
-| App Secrets not created    | Missing annotations or keys       | Add `mto.secrets/enable: "true"` and list keys; confirm ESO is installed. |
-| `permission denied` in Pod | SA not bound to correct Bao role  | Ensure namespace/app role exists; check policy path schema; re‑annotate.  |
-| Drift after SSO rotation   | Client secret changed             | OBX reconciles automatically if using SecretRef; otherwise re‑apply CR.   |
-
----
-
-## FAQ
-
-* **Do I need Bao namespaces?** No. The extension isolates by **path + policy**. If your Bao build supports namespaces, you can nest everything in per‑tenant namespaces later.
-* **Can I restrict to app‑level policies?** Yes: set `rbac.granularity: app`.
-* **Will the operator delete my data?** No. ExternalSecrets may be GC’d on opt‑out; Bao data is left intact by default.
-* **Do I have to use ESO?** No. You can choose `csi` or direct Bao API.
-
----
-
-## Uninstall / cleanup
-
-1. Remove or scale down the controller:
-
-```bash
-helm uninstall mto-openbao-extension -n mto-system
-```
-
-2. (Optional) Manually remove Bao objects if desired (policies, roles, groups). The extension does not auto‑delete them.
-
----
-
-## Appendix A — Path schema & examples
-
-**Template:** `secret/tenants/<tenant>/<env>/<namespace>/<app>/<name>`
-
-**Example (tenant `acme`):**
-
-```
-secret/tenants/acme/prod/acme-payments/api/db       # username/password
-secret/tenants/acme/prod/acme-payments/api/api      # value
-secret/tenants/acme/staging/acme-web/fe/oauth       # client_id/secret
-```
-
----
-
-## Appendix B — Annotations cheat‑sheet
+### 8.1 Annotate an app to consume secrets (ESO mode)
 
 ```yaml
 metadata:
   annotations:
     mto.secrets/enable: "true"
     mto.secrets/keys:   "db,api,license"
-    mto.secrets/env:    "prod"   # optional; defaults to spec.layout.defaultEnv
+    mto.secrets/env:    "prod"    # optional, overrides defaultEnv
+```
+
+OBX creates **ExternalSecret** objects per key which project Bao values into K8s Secrets (ESO sync).
+
+### 8.2 Write secrets to Bao (humans via OIDC or CI bots)
+
+```
+secret/tenants/acme/prod/acme-payments/api/db
+  ├─ username=...
+  └─ password=...
+
+secret/tenants/acme/prod/acme-payments/api/api
+  └─ value=...
+```
+
+### 8.3 Consume in Pods
+
+```yaml
+envFrom:
+  - secretRef: { name: api-db }
+  - secretRef: { name: api-api }
+```
+
+> **Alternative:** Use CSI Secrets Store (`injection.mode: csi`) or call Bao directly with Kubernetes auth tokens.
+
+---
+
+## 9) Lifecycle — Day‑0 / Day‑1 / Day‑2
+
+### 9.1 By Auth Backend × Scope
+
+#### Kubernetes Auth (workloads)
+
+* **Day‑0 (cluster):** OBX ensures `auth/kubernetes` mounted+configured (kube host & CA).
+* **Day‑1 (tenant/ns/app):**
+
+  * Policies `<tenant>-admin`/`-viewer` and namespace/app‑scoped variants.
+  * Roles bound to SAs: `ten-<tenant>-ns-<ns>-rw` (namespace granularity) or per‑app roles.
+  * Per‑namespace **SecretStore** for ESO.
+  * On app annotation, **ExternalSecrets** are created per key.
+* **Day‑2 (ops):** rotate CA/endpoint, adjust TTLs, reconcile drift, GC ExternalSecrets on opt‑out (no Bao data deletion by default).
+
+#### OIDC/JWT Auth (humans)
+
+* **Day‑0 (cluster):** OBX reads SSO contract → ensures `auth/oidc` (or `auth/jwt`) with `issuer`, `clientID/secret`, `groupsClaim`, `redirectURIs`.
+* **Day‑1 (tenant):** Create **identity groups** `<tenant>-admins/viewers` and **group‑aliases** mapping IdP groups to these, then attach policies.
+* **Day‑2 (ops):** react to client secret/JWKS rotations; support group rename migrations with grace windows.
+
+### 9.2 Status reporting
+
+Minimal and greppable:
+
+```yaml
+Tenant.status.integrations.openbao:
+  ready: true
+  kvPathPrefix: "secret/tenants/<tenant>/"
+  auth:
+    kubernetes:
+      roles: ["ten-<tenant>-ns-<ns>-rw"]
+    oidc:
+      groups:
+        admin: "tenant-<tenant>-admins"
+        viewer: "tenant-<tenant>-viewers"
+  layout: "secret/tenants/{{ .tenant }}/{{ .env }}/{{ .namespace }}/{{ .app }}/{{ .name }}"
+  lastSyncTime: <RFC3339>
 ```
 
 ---
 
-## Appendix C — Example ExternalSecret (generated)
+## 10) Operations & Security (Platform Engineer)
+
+* **Least privilege:** use an OBX token with policy in Appendix A. Never use root.
+* **No destructive defaults:** OBX creates/patches; it does not delete auth mounts nor secret data.
+* **NetworkPolicies:** restrict egress to Bao from only needed namespaces.
+* **KMS/etcd encryption:** enable if using ESO to encrypt K8s Secrets at rest.
+* **Observability:** Prometheus metrics
+
+  * `openbao_reconcile_seconds{kind=...,result=...}`
+  * `openbao_api_requests_total{path=...,status=...}`
+  * `openbao_secretstore_status{namespace=...,ready=0|1}`
+
+### Troubleshooting
+
+| Symptom                  | Cause                               | Fix                                                            |
+| ------------------------ | ----------------------------------- | -------------------------------------------------------------- |
+| SecretStore not Ready    | Bad Bao URL/CA/token                | Verify CA chain & token; check OBX logs.                       |
+| OIDC login error         | Issuer/redirect mismatch            | Verify SSO contract & Bao `auth/oidc` config.                  |
+| Pod `permission denied`  | SA not bound / policy path mismatch | Inspect role/policy; confirm namespace/app mode.               |
+| Secrets not created      | Missing annotations/keys            | Add annotations or switch to `injection.mode: csi`/direct API. |
+| Drift after SSO rotation | Client secret changed               | OBX reconciles if SecretRef used; otherwise reapply CR.        |
+
+---
+
+## 11) Developer Guide (How it Works)
+
+### 11.1 Controllers (reconcilers)
+
+* **ClusterAuthReconciler**
+
+  * Inputs: `OpenBaoIntegration`, SSO contract (ClusterSSO/Secret)
+  * Ensures: `auth/kubernetes`, `auth/oidc|jwt` config; emits clusterAuth ready status
+  * Non‑destructive: never deletes mounts
+* **TenantBaoReconciler**
+
+  * Inputs: `Tenant` CR, `OpenBaoIntegration`
+  * Ensures per‑tenant policies, identity groups, group‑aliases
+  * For each tenant namespace: K8s auth roles + SecretStore (ESO mode)
+* **AppSecretReconciler**
+
+  * Watches: Deployments/StatefulSets/CronJobs in tenant namespaces
+  * On `mto.secrets/enable: "true"`: generate/update ExternalSecrets per `mto.secrets/keys`
+
+### 11.2 Watches & scale hygiene
+
+* Watch **only** namespaces selected by the Tenant CR.
+* Filter on relevant annotations/labels to reduce churn.
+* Use **idempotent** upserts; tolerate out‑of‑order events.
+
+### 11.3 Drift & deletion policy
+
+* **Auth mounts:** create/patch only; never delete automatically.
+* **Policies/Roles/Groups:** patch on drift; deletion behind a feature flag with safeguard (rare).
+* **ExternalSecrets:** GC on annotation removal (soft‑delete window recommended).
+
+### 11.4 Templates (renderers)
+
+* **Policy HCL — namespace RW:**
+
+```hcl
+path "secret/data/tenants/{{tenant}}/{{env}}/{{namespace}}/*" {
+  capabilities = ["create","update","patch","delete","read","list"]
+}
+path "secret/metadata/tenants/{{tenant}}/{{env}}/{{namespace}}/*" {
+  capabilities = ["read","list","delete"]
+}
+```
+
+* **Role JSON — namespace RW:**
+
+```json
+{
+  "bound_service_account_names": ["*"],
+  "bound_service_account_namespaces": ["{{namespace}}"],
+  "policies": ["ten-{{tenant}}-ns-{{namespace}}-rw"],
+  "token_ttl": "1h",
+  "token_max_ttl": "4h"
+}
+```
+
+* **OIDC config & role (human-default):**
+
+```json
+{
+  "oidc_discovery_url": "https://dex.mto.svc.cluster.local",
+  "oidc_client_id": "vault-openbao",
+  "oidc_client_secret": "<from Secret>",
+  "default_role": "human-default",
+  "bound_issuer": "https://dex.mto.svc.cluster.local"
+}
+```
+
+```json
+{
+  "user_claim": "email",
+  "groups_claim": "groups",
+  "allowed_redirect_uris": [
+    "https://bao.example.com/ui/vault/auth/oidc/oidc/callback",
+    "https://bao.example.com/v1/auth/oidc/oidc/callback"
+  ]
+}
+```
+
+### 11.5 CRD (spec) highlights
+
+* `manageAuth.kubernetes|oidc: Off|Ensure`
+* `sso.source: FromClusterSSO|FromBindingSecret|Inline`
+* `layout.pathTemplate` & `defaultEnv`
+* `rbac.granularity: namespace|app`
+* `injection.mode: external-secrets|csi|none`
+* `scaffolding.mode: None|OnAnnotation`
+
+### 11.6 Testing strategy (TDD/e2e)
+
+* **Unit:** golden tests for renderers (HCL/JSON) with fixtures across tenant/ns/app/env.
+* **Envtest:** controller-runtime fake API server; verify SecretStore/ExternalSecrets creation on annotations.
+* **Kind e2e:** spin Bao (dev), ESO, Dex (from SSO), apply OBX + Tenant; assert SA login, OIDC login, KV access.
+* **Fault injection:** rotate Dex client secret & Kubernetes CA; assert non‑destructive reconcile.
+
+### 11.7 Performance notes
+
+* Avoid listing across all namespaces; restrict informers to tenant‑selected namespaces.
+* Batch Bao API calls where safe; exponental backoff on 429/5xx.
+* Metrics for reconcile duration and Bao API latency; feature flag for sampling rate.
+
+---
+
+## 12) Configuration Reference (Full)
+
+See `spec` block in §7.3; all fields documented inline. Consider publishing an **OpenAPI schema** with descriptions to enable validation and UX hints.
+
+---
+
+## 13) Appendices
+
+### Appendix A — OBX Bao Policy (least privilege)
+
+```hcl
+path "sys/auth"            { capabilities = ["read", "list", "update"] }
+path "sys/auth/*"          { capabilities = ["read", "list", "update"] }
+path "sys/policies/acl/*"  { capabilities = ["create", "read", "update", "list"] }
+path "auth/*/role/*"       { capabilities = ["create", "read", "update", "list"] }
+path "identity/group"      { capabilities = ["create", "read", "update", "list"] }
+path "identity/group/*"    { capabilities = ["create", "read", "update", "list"] }
+path "identity/group-alias"   { capabilities = ["create", "read", "update", "list"] }
+path "identity/group-alias/*" { capabilities = ["create", "read", "update", "list"] }
+path "secret/*"            { capabilities = ["read", "list"] }
+path "secret/data/tenants/*"     { capabilities = ["create","update","patch","delete","read","list"] }
+path "secret/metadata/tenants/*" { capabilities = ["read","list","delete"] }
+```
+
+### Appendix B — Annotations cheat‑sheet
+
+```yaml
+metadata:
+  annotations:
+    mto.secrets/enable: "true"
+    mto.secrets/keys:   "db,api,license"
+    mto.secrets/env:    "prod"
+```
+
+### Appendix C — Example ExternalSecret (generated)
 
 ```yaml
 apiVersion: external-secrets.io/v1beta1
@@ -405,12 +402,9 @@ spec:
         property: password
 ```
 
----
-
-## Appendix D — Example RBAC granularity (app‑level policy)
+### Appendix D — App‑level RBAC (optional, tighter)
 
 ```hcl
-# RW only for a single app path
 path "secret/data/tenants/{{tenant}}/{{env}}/{{namespace}}/{{app}}/*" {
   capabilities = ["create","update","patch","delete","read","list"]
 }
@@ -419,6 +413,29 @@ path "secret/metadata/tenants/{{tenant}}/{{env}}/{{namespace}}/{{app}}/*" {
 }
 ```
 
+### Appendix E — CSI Secrets Store (outline)
+
+* Switch `injection.mode: csi`.
+* OBX renders a `SecretProviderClass` per annotated app/keys.
+* Pods mount volume:
+
+```yaml
+volumes:
+- name: bao-secrets
+  csi:
+    driver: secrets-store.csi.k8s.io
+    readOnly: true
+    volumeAttributes:
+      secretProviderClass: <generated-name>
+```
+
 ---
 
-**You’re set.** Create your Tenant, annotate apps, and start writing secrets to OpenBao. The extension handles the wiring; you control the data.
+## 14) Change Log & ADRs (suggested)
+
+* Keep a short **CHANGELOG** (controller flags & CR schema changes).
+* Add ADRs: path schema choice, OnAnnotation scaffolding, non‑destructive reconcile policy, namespace vs app granularity.
+
+---
+
+**Done.** One guide for both roles. Install it, annotate apps, and if you’re hacking on OBX, you’ve got the internals too.
