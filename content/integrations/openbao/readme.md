@@ -405,16 +405,6 @@ Tenant.status.integrations.openbao:
   * `openbao_api_requests_total{path=...,status=...}`
   * `openbao_secretstore_status{namespace=...,ready=0|1}`
 
-### Troubleshooting
-
-| Symptom                  | Cause                               | Fix                                                            |
-| ------------------------ | ----------------------------------- | -------------------------------------------------------------- |
-| SecretStore not Ready    | Bad Bao URL/CA/token                | Verify CA chain & token; check OBX logs.                       |
-| OIDC login error         | Issuer/redirect mismatch            | Verify SSO contract & Bao `auth/oidc` config.                  |
-| Pod `permission denied`  | SA not bound / policy path mismatch | Inspect role/policy; confirm namespace/app mode.               |
-| Secrets not created      | Missing annotations/keys            | Add annotations or switch to `injection.mode: csi`/direct API. |
-| Drift after SSO rotation | Client secret changed               | OBX reconciles if SecretRef used; otherwise reapply CR.        |
-
 ---
 
 ## 11) Developer Guide (How it Works)
