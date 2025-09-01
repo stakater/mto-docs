@@ -1,4 +1,4 @@
-# MTO OpenBao Extension — Combined Guide (Platform + Developer)
+# MTO OpenBao Extension
 
 > **Purpose:** A single source of truth for deploying, operating, and extending the **MTO OpenBao Extension (OBX)**. It serves both **platform engineers** (how to install/use) and **developers** (how it works under the hood).
 
