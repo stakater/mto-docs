@@ -139,6 +139,11 @@ spec:
     #   clientID: vault-openbao
     #   clientSecretRef: { name: sso-openbao-client, namespace: mto-system, key: clientSecret }
     #   groupsClaim: groups
+    #
+    # NOTE: SSO extension should publish group patterns for tenant roles, e.g.:
+    #   owner:  "tenant-{{ .tenant }}-owners"
+    #   editor: "tenant-{{ .tenant }}-editors"
+    #   viewer: "tenant-{{ .tenant }}-viewers"
 
   # --- Tenancy model + defaults used in path templates, roles, etc. ---
   tenancy:
@@ -164,6 +169,14 @@ spec:
     tokenTTL: 1h                        # SA-issued Bao tokens TTL
     tokenMaxTTL: 4h
 
+  # ---- Default mapping from MTO Tenant roles → Bao policy presets (or 'none') ----
+  # Applies to **human users via OIDC** (identity groups & aliases).
+  # Allowed targets: 'admin' | 'editor' | 'viewer' | 'none'
+  humanRoleMapping:
+    owner:  admin                  # Owners get full admin preset
+    editor: editor                 # Editors get edit preset (RW but no delete)
+    viewer: none                   # Some customers want viewers to have 0 access; set to 'viewer' if RO is desired
+
   # --- Engines define which Bao capabilities to expose. KV is on; others are examples (off). ---
   engines:
     # 1) KV (secrets) — enabled by default
@@ -178,12 +191,18 @@ spec:
           path: secret                  # i.e., /v1/secret (kv v2)
           manage: Adopt                 # Off | Adopt | Ensure → Adopt uses if present; Ensure creates if missing
 
-      # Policy presets:
-      # - admin: RW under the tenant path (create/update/patch/delete/read/list on data; read/list/delete on metadata)
-      # - viewer: RO under the tenant path (read/list on data+metadata)
+      # Policy presets define exact capabilities. Operator renders HCL based on these:
+      #   admin  → data: [create,update,patch,delete,read,list]; metadata: [read,list,delete]
+      #   editor → data: [create,update,patch,read,list];       metadata: [read,list]            (no deletes)
+      #   viewer → data: [read,list];                           metadata: [read,list]
       policies:
-        presets: [admin, viewer]
-        # extras: []                    # (Optional) Additional HCL rules if you need finer control
+        presets: [admin, editor, viewer]
+        # extras: []                 # OPTIONAL: append custom HCL rules if you need finer control
+
+      # Per-engine override of the human role mapping (optional).
+      # Useful if, for example, viewers should have RO to PKI UI but no KV access, etc.
+      humanRoleMappingOverride:
+        viewer: none               # Explicitly keep viewers without KV access (matches top-level; shown for clarity)
 
       # How apps get secrets:
       injection:
