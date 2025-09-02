@@ -92,15 +92,15 @@ kubectl -n mto-system create secret generic openbao-credentials \
   --from-literal=token=<BAO_OPERATOR_TOKEN>
 ```
 
-### 7.3 Create OpenBaoIntegration CR
+### 7.3 Create OpenBaoExtension CR
 
 ```yaml
-# OpenBaoIntegration: wires your MTO tenants to an existing OpenBao (Vault-compatible) cluster.
+# OpenBaoExtension: wires your MTO tenants to an existing OpenBao (Vault-compatible) cluster.
 # - Ensures Bao auth backends for workloads (Kubernetes) and humans (OIDC/JWT).
 # - Sets up per-tenant policies/roles and (optionally) External Secrets Operator objects.
 # - KV (secrets) enabled by default; other engines (Transit/PKI/Database) are sketched but off.
 apiVersion: security.mto.stakater.com/v1alpha1
-kind: OpenBaoIntegration
+kind: OpenBaoExtension
 metadata:
   name: cluster-default                 # One per cluster (typical). Keep in mto-system.
   namespace: mto-system
@@ -432,12 +432,12 @@ Tenant.status.integrations.openbao:
 
 * **ClusterAuthReconciler**
 
-  * Inputs: `OpenBaoIntegration`, SSO contract (ClusterSSO/Secret)
+  * Inputs: `OpenBaoExtension`, SSO contract (ClusterSSO/Secret)
   * Ensures: `auth/kubernetes`, `auth/oidc|jwt` config; emits clusterAuth ready status
   * Non‑destructive: never deletes mounts
 * **TenantBaoReconciler**
 
-  * Inputs: `Tenant` CR, `OpenBaoIntegration`
+  * Inputs: `Tenant` CR, `OpenBaoExtension`
   * Ensures per‑tenant policies, identity groups, group‑aliases
   * For each tenant namespace: K8s auth roles + SecretStore (ESO mode)
 * **AppSecretReconciler**
