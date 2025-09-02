@@ -392,25 +392,6 @@ envFrom:
 | **Namespace** | —                                                                                                                                                                           | (No extra objects; humans inherit tenant policies.) Optional finer split: `<ten>-ns-<ns>-admins/viewers` for very large tenants.                                                                                                                                                                           | Update aliases if namespace-scoped human roles are used.                                                          |
 | **App**       | —                                                                                                                                                                           | (Usually nothing.) If you run “app operators” needing human OIDC tokens, bind additional RO policies if needed.                                                                                                                                                                                            | N/A                                                                                                               |
 
-### 9.2 Status reporting
-
-Minimal and greppable:
-
-```yaml
-Tenant.status.integrations.openbao:
-  ready: true
-  kvPathPrefix: "secret/tenants/<tenant>/"
-  auth:
-    kubernetes:
-      roles: ["ten-<tenant>-ns-<ns>-rw"]
-    oidc:
-      groups:
-        admin: "tenant-<tenant>-admins"
-        viewer: "tenant-<tenant>-viewers"
-  layout: "secret/tenants/{{ .tenant }}/{{ .env }}/{{ .namespace }}/{{ .app }}/{{ .name }}"
-  lastSyncTime: <RFC3339>
-```
-
 ---
 
 ## 10) Operations & Security (Platform Engineer)
