@@ -309,7 +309,7 @@ spec:
 
   # --- Safety guardrails: avoid destructive operations in production by default ---
   safety:
-    destructiveOps: false               # If true, allows explicit delete flows (normally off)
+      deletionProtection: true  # Never DELETE OpenBao control-plane resources (auth/engine mounts, policies, roles, identity groups/aliases); create/update only. KV secret data is never deleted.
 ```
 
 > Tenant namespaces are typically created/selected by the **Tenant CR** in MTO. OBX detects them automatically.
