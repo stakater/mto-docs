@@ -146,8 +146,6 @@ spec:
       # Logical KV path (operator maps to data/ & metadata/ endpoints internally)
       kv: "secret/tenants/{{ .tenant }}/{{ .env }}/{{ .namespace }}/{{ .app }}/{{ .name }}"
 
-#      todo: add support for Transit and PKI later
-
   # --- RBAC granularity for workload access (Kubernetes auth roles) ---
   rbac:
     roleScope: namespace              # namespace | app
