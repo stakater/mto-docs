@@ -392,6 +392,98 @@ envFrom:
 | **Namespace** | —                                                                                                                                                                           | (No extra objects; humans inherit tenant policies.) Optional finer split: `<ten>-ns-<ns>-admins/viewers` for very large tenants.                                                                                                                                                                           | Update aliases if namespace-scoped human roles are used.                                                          |
 | **App**       | —                                                                                                                                                                           | (Usually nothing.) If you run “app operators” needing human OIDC tokens, bind additional RO policies if needed.                                                                                                                                                                                            | N/A                                                                                                               |
 
+### 9.2 Status reporting
+
+#### 9.2.1 Status in OpenBaoExtension
+
+Minimal and greppable:
+
+```yaml
+status:
+  observedGeneration: 1
+  phase: Ready
+  conditions:
+    - type: Ready
+      status: "True"
+      reason: AllTenantsReconciled
+      message: All tenants have been successfully reconciled with OpenBao.
+      lastTransitionTime: "2025-09-02T20:00:00Z"
+    - type: OpenBaoConnectionEstablished
+      status: "True"
+      reason: ConnectionSuccessful
+      message: Successfully connected to OpenBao at https://bao.example.com:8200.
+      lastTransitionTime: "2025-09-02T19:58:30Z"
+    - type: SSOBackendReconciled
+      status: "True"
+      reason: AuthBackendEnabled
+      message: OIDC and Kubernetes auth backends are configured and enabled.
+      lastTransitionTime: "2025-09-02T19:59:00Z"
+  tenantStatus:
+    totalTenants: 15
+    reconciledTenants: 15
+    failedTenants: 0
+    failures:
+      - tenant: "my-tenant-1"
+        namespace: "my-app-namespace"
+        error: "Failed to create policy for service account 'my-app-sa': permission denied"
+        lastErrorTime: "2025-09-02T19:00:00Z"
+```
+
+#### 9.2.2 OpenBaoTenantStatus (status-only report CRD)
+
+Per-tenant health/report object for the MTO OpenBao extension—no secrets, no writes to Tenant.status, just a clean, kubectl-friendly summary.
+
+##### Why this pattern
+
+* Mirrors community practice (e.g., PolicyReport, VulnerabilityReport).
+* Keeps operational state separate from business CRDs.
+* Low-cardinality, safe to scrape and alert on.
+
+##### What it covers (minimal)
+
+* Standard Conditions: Ready, AuthKubernetesReady, AuthOIDCReady.
+* KV summary: path prefix + ESO counts (ready/notReady) + managed ExternalSecrets.
+* Auth rollup: SA roles present, OIDC issuer resolved.
+* Timestamps & last error (if any).
+
+```yaml
+apiVersion: security.mto.stakater.com/v1alpha1
+kind: OpenBaoTenantStatus
+metadata:
+  name: acme
+  labels:
+    mto.stakater.com/tenant: acme
+  ownerReferences:                # optional: if Tenant is cluster-scoped, for GC
+    - apiVersion: tenancy.mto.stakater.com/v1alpha1
+      kind: Tenant
+      name: acme
+      uid: "d1f3c0a1-..."
+      controller: true
+      blockOwnerDeletion: false
+spec:
+  tenantRef:
+    name: acme
+    uid: "d1f3c0a1-..."
+status:
+  conditions:
+    - type: Ready               ; status: "True"  ; reason: AllEnginesReady
+    - type: AuthKubernetesReady ; status: "True"  ; reason: MountedAndConfigured
+    - type: AuthOIDCReady       ; status: "True"  ; reason: MountedAndConfigured
+  kv:
+    ready: true
+    pathPrefix: "secret/tenants/acme/"
+    secretStores:   { ready: 4, notReady: 0 }
+    externalSecrets: { managed: 28, ready: 27 }
+  kubernetesAuth:
+    ready: true
+    roles: ["ten-acme-ns-payments-rw","ten-acme-ns-ml-rw"]
+  oidc:
+    ready: true
+    issuer: "https://dex.mto.svc.cluster.local"
+    groupsClaim: "groups"
+  lastSyncTime: "2025-09-03T09:10:00Z"
+```
+
 ---
 
 ## 10) Operations & Security (Platform Engineer)
