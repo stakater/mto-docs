@@ -94,6 +94,115 @@ kubectl -n mto-system create secret generic openbao-credentials \
 
 ### 7.3 Create OpenBaoExtension CR
 
+#### Iteration # 1
+
+```yaml
+apiVersion: security.mto.stakater.com/v1alpha1
+kind: OpenBaoIntegration
+metadata:
+  name: openbao-integration
+  namespace: mto-system
+
+spec:
+  server:
+    url: https://bao.example.com:8200
+    tokenSecretRef:
+      name: openbao-credentials
+      key: token
+
+  # --- What parts of Bao auth the operator should manage ---
+  authManagement:
+    kubernetes: ensure                  # off | ensure  → mount/configure auth/kubernetes for workload SAs
+    oidc: ensure                        # off | ensure  → mount/configure auth/oidc (or jwt) for human users
+
+  # --- Where OIDC settings come from (your SSO extension publishes this contract) ---
+  sso:
+    mode: cluster              # cluster | secret | inline | disabled
+    clusterRef:
+      name: default
+    roleResolution:
+      # Evaluate per-tenant: extract {{ .tenant }} from matched group; do not cross tenants.
+      # If multiple groups match within the same tenant, apply tieBreakStrategy.
+      claim: groups
+      patterns:
+        - role: owner
+          match: "tenant-{{ .tenant }}-owners"
+        - role: editor
+          match: "tenant-{{ .tenant }}-editors"
+        - role: viewer
+          match: "tenant-{{ .tenant }}-viewers"
+      tieBreakStrategy: highest   # highest | lowest | deny -> deny = no role if >1 match.
+      fallback: deny
+
+  # --- Tenancy model + defaults used in path templates, roles, etc. ---
+  tenancy:
+    mode: path                 # path | namespace (path = works on OSS; namespace for enterprise builds later)
+    defaults:
+      env: prod
+
+  # --- Naming & path templates (reused by engines below) ---
+  layout:
+    templates:
+      # Logical KV path (operator maps to data/ & metadata/ endpoints internally)
+      kv: "secret/tenants/{{ .tenant }}/{{ .env }}/{{ .namespace }}/{{ .app }}/{{ .name }}"
+
+#      todo: add support for Transit and PKI later
+
+  # --- RBAC granularity for workload access (Kubernetes auth roles) ---
+  rbac:
+    roleScope: namespace              # namespace | app
+    token:
+      ttl: 1h
+      maxTTL: 4h
+      #renewable: true
+
+  # Bao policy roles: admin | editor | viewer | none
+  tenantRoleMapping:
+    # data: [create,update,patch,delete,read,list]; metadata: [read,list,delete]
+    owner:  admin
+    # data: [create,update,patch,read,list];        metadata: [read,list]
+    editor: editor
+    # data: [read,list];                            metadata: [read,list]
+    viewer: viewer
+
+  engines:
+    - name: kv
+      type: kv-v2
+      layoutRef: kv
+      enabled: true
+
+      # Mount strategy: using a shared cluster mount "secret" (works everywhere). No destructive ops.
+      strategy:
+        scope: cluster                  # cluster = one shared mount (secret); tenant = per-tenant mount
+        mount:
+          path: secret                  # i.e., /v1/secret (kv-v2)
+          manage: adopt                 # off | adopt | ensure → adopt uses if present; ensure creates if missing
+
+      policies:
+        presets: [admin, editor, viewer, none]
+
+      # How apps get secrets:
+      projection:
+        mode: external-secrets          # external-secrets | csi | none
+        secretStore:
+          scope: namespace              # namespace | cluster
+          name: openbao
+
+  # --- App-level scaffolding: only create ExternalSecrets when apps opt in via annotations ---
+  scaffolding:
+    mode: on-annotation                  # none | on-annotation
+    annotations:
+      enable: "mto.secrets/enable"      # "true" to enable for the workload
+      keys:   "mto.secrets/keys"        # comma-separated logical keys (e.g., "db,api,license")
+      env:    "mto.secrets/env"         # optional: override env per workload (tenancy.defaults.env otherwise)
+
+  # --- Safety guardrails: avoid destructive operations in production by default ---
+  safety:
+    allowDeletes: false                 # in kv-v2, by default "delete" hides a version of the secret. "destroy" deletes it.
+```
+
+#### Iteration # 2
+
 ```yaml
 # OpenBaoExtension: wires your MTO tenants to an existing OpenBao (Vault-compatible) cluster.
 # - Ensures Bao auth backends for workloads (Kubernetes) and humans (OIDC/JWT).
