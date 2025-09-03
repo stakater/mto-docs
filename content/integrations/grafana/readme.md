@@ -72,7 +72,7 @@ flowchart TD
   ResB:::isolation
   ResN:::isolation
   classDef isolation color:#333333fill:#f6ffe7,stroke:#3FB950,stroke-width:2px
-````
+```
 
 ---
 
@@ -170,10 +170,11 @@ spec:
     annotations:
       enable: "mto.grafana/disabled"
       tenant: "mto.grafana/tenant"
+  deletionPolicy: Delete   # or Orphan
 ```
 
 > GEX uses the Grafana HTTP API to manage configuration directly in the Grafana database.
-> See Appendix 11.5 for how SSO modes map to this API.
+> See [Appendix 11.5](#115-sso-modes) for how SSO modes map to this API.
 
 ---
 
@@ -304,26 +305,29 @@ kubectl annotate grafanaextension cluster-default gex.force-reconcile=true --ove
 * Enforce strict group patterns to prevent cross-tenant access.
 * Grafana API calls are retried with backoff and respect tenant scaling. If Grafana API rate-limits are hit, reconciliation is delayed.
 
+### 9.5 RBAC minimum
+
+- Read (get/list/watch) Tenant (cluster-scoped).
+- Read (get/list/watch) GrafanaDashboard, GrafanaDatasource in spec.watchNamespace.
+- Read Secrets for Grafana admin/API credentials in the referenced namespace.
+- No access to arbitrary tenant namespaces.
+
 ---
 
 ## 10) Developer Guide (How it Works)
 
 ### 10.1 Controllers (Reconcilers)
 
-* **ClusterAuthReconciler**
-
-  * Inputs: `GrafanaExtension`, SSO contract
-  * Ensures Grafana OIDC configuration matches cluster settings
-
 * **TenantOrgReconciler**
-
-  * Inputs: Tenant CRs
-  * Creates/updates Grafana orgs, maps MTO roles to Grafana roles
+  * Watches: `Tenant` (cluster-scoped)
+  * Ensures: matching Grafana org exists; applies role mapping/membership as configured.
 
 * **AppResourceReconciler**
+  * Watches: `GrafanaDashboard`, `GrafanaDatasource` in the namespace that Grafana lives 
+  * Ensures: resources are provisioned to the correct set of orgs (default = all orgs; annotations can restrict/disable).
 
-  * Watches: `GrafanaDashboards` and `GrafanaDatasources`
-  * Syncs annotated resources into correct tenant orgs
+* **ClusterAuthReconciler**
+  * Ensures: SSO settings via `/api/v1/sso-settings` align with selected mode (cluster/secret/inline/disabled).
 
 ---
 
@@ -348,21 +352,29 @@ sequenceDiagram
 
 ### 10.3 Watches & Scale Hygiene
 
-* Watch **only namespaces** selected by the Tenant CR.
-* Filter on annotations (`mto.grafana/*`) to reduce churn.
-* Use idempotent upserts; tolerate out-of-order events.
-* Cache Grafana API responses to avoid repeated full listings.
+**Watch model (strict & intentional):***
+
+* Tenant CRs: cluster-scoped watch (names + members). No tenant namespace watches.
+
+* Grafana resources: watch only the spec.watchNamespace for GrafanaDashboard and GrafanaDatasource.
+
+* Reconcile triggers:
+
+  * Tenant add/update/delete → (create/update/delete) Grafana org per `deletionPolicy`.
+
+  * `GrafanaDashboard`/`Datasource` add/update/delete → propagate to target org set (default all; honor annotations).
+
+* Periodic light sync with Grafana API for drift detection (org inventory, resource presence).
 
 ---
 
 ### 10.4 Drift & Deletion Policy
 
-* If an annotation is removed → resource is removed from tenant org (configurable).
-* If a tenant CR is deleted → deletion policy applies:
-
+* Trigger: Tenant CR deletion.
+* Behavior:
 ```yaml
 spec:
-  deletionPolicy: Delete   # Delete tenant org
+  deletionPolicy: Delete   # Delete org in Grafana
   # or
   deletionPolicy: Orphan   # Leave org in Grafana
 ```
@@ -446,6 +458,23 @@ enabled = false  # must be disabled; isolation breaks otherwise
 
 * `GrafanaExtension` schema (fields documented above).
 
+| Field  | Description |
+| ------ | ----------- |
+| spec.server.url | Service url to Grafana |
+| spec.server.authSecretRef.namespace | Service url to Grafana |
+| spec.server.authSecretRef.name | Service url to Grafana |
+| spec.sso.mode | Selected mode on how to configure sso. See [Appendix 11.5](#115-sso-modes) |
+| spec.sso.clusterRef | See [Appendix 11.5](#115-sso-modes) |
+| spec.sso.roleResolution.claim | JSON node in OAuth Access Token, that holds user roles/groups |
+| spec.sso.patterns[] | Mapping of OAuth Roles to Grafana Roles |
+| spec.sso.tieBreakStrategy | If a user matches against multiple roles, which role should be assigned. Possible values: `highest` (default)- the role with highest permission is assigned. `lowest` - the role with lowest permission is assigned. `deny` - user is denies any roles, i.e. abort. |
+| spec.sso.fallback | Default role when there is no match. Possible values: `deny` (default) - deny access. `allow` - user is granted the default role. `<rolename>` - user is assigned `<rolename>` rights. |
+| spec.sso.tenantRoleMapping | Map `spec.sso.patterns[]` to Grafana Roles |
+| spec.sso.scaffolding | Allows GEX to detect other CRs based on the annotations |
+| spec.sso.scaffolding.mode | `OnAnnotation` (default) - Scaffolding is triggered or configured based on the presence and values of specific annotations. Possible other values: `Always` (Not supported), `Never` (Not supported), or `OnLabel` (Not supported) |
+| spec.sso.scaffolding.annotations | Annotations to look for |
+| spec.sso.deletionPolicy | See [Appendix 10.4](#104-drift--deletion-policy) |
+
 ---
 
 ### 11.4 Lifecycle Examples (Day-0 / Day-1 story)
@@ -474,12 +503,12 @@ enabled = false  # must be disabled; isolation breaks otherwise
 
 ### 11.5 SSO modes
 
-| Mode     | Where config comes from          | Use case / Best for                                   |
-| -------- | -------------------------------- | ----------------------------------------------------- |
-| cluster  | `SSOExtension` CR (`clusterRef`) | Standard setup, DRY, auto-rotation                    |
-| secret   | External Secret                  | BYO IdP config, no SSOExtension                       |
-| inline   | Inline in CR (`idp:` block)      | Simple setups, GitOps friendly (careful with secrets) |
-| disabled | None                             | Dev/test, legacy                                      |
+| Mode | Where config comes from | Use case / Best for |
+| ---- | ----------------------- | ------------------- |
+| cluster | `SSOExtension` CR (`clusterRef`) | Standard setup, DRY, auto-rotation |
+| secret | External Secret | BYO IdP config, no SSOExtension |
+| inline | Inline in CR (`idp:` block) | Simple setups, GitOps friendly (careful with secrets) |
+| disabled | None | Dev/test, legacy |
 
 > Regardless of how GEX obtains SSO config, it always applies it via the Grafana HTTP API.
 > This ensures dynamic updates without requiring Grafana restarts or CR modifications.
