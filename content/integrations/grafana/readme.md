@@ -90,7 +90,7 @@ flowchart TD
 * **Out of scope:**
 
   * Operating Grafana (resources, storage, backup/restore, version upgrades).
-  * Grafana plugins or dashboards not annotated for GEX.
+  * Grafana resources (plugins, dashboards, etc...) that are not provisioned through GEX i.e. installed directly into Grafana by user with [correct permissions][1]
 
 > GEX configures Grafana via the HTTP API. It does not modify Grafana Operator CRDs, avoiding installation lifecycle conflicts.
 
@@ -135,16 +135,11 @@ metadata:
 spec:
   server:
     url: http://grafana.telemetry.svc.cluster.local:3000
+    namespace: telemetry
     authSecretRef:
-      namespace: telemetry
-      name: grafana-admin-credentials   # created by grafana operator
+      name: grafana-admin-credentials
 
   sso:
-    # Modes:
-    # cluster  -> read SSO contract from SSO extension CR
-    # secret   -> read contract from a SecretRef
-    # inline   -> values directly in GrafanaExtension spec
-    # disabled -> skip SSO integration (not recommended)
     mode: cluster
     clusterRef:
       name: default
@@ -170,7 +165,7 @@ spec:
     annotations:
       enable: "mto.grafana/disabled"
       tenant: "mto.grafana/tenant"
-  deletionPolicy: Delete   # or Orphan
+  deletionPolicy: Delete
 ```
 
 > GEX uses the Grafana HTTP API to manage configuration directly in the Grafana database.
@@ -241,7 +236,7 @@ status:
   phase: Ready
   grafana:
     version: 10.4.0
-    url: https://grafana.example.com
+    url: http://grafana.telemetry.svc.cluster.local
   sso:
     provider: keycloak
     mode: cluster
@@ -254,7 +249,7 @@ status:
     - type: GrafanaConnectionEstablished
       status: "True"
       reason: ConnectionSuccessful
-      message: Connected to Grafana at https://grafana.example.com
+      message: Connected to Grafana at http://grafana.telemetry.svc.cluster.local
     - type: SSOConfigured
       status: "True"
       reason: AuthEnabled
@@ -343,7 +338,7 @@ sequenceDiagram
     GEX->>API: Create or update Org
     GEX->>API: Configure users & roles
     API-->>GEX: Org + user config OK
-    GEX->>API: Apply datasources, dashboards, folders
+    GEX->>API: Apply resources (datasources, dashboards, folders)
     API-->>GEX: Resources synced
     GEX-->>TenantCR: Status updated (Ready/Failed)
 ```
@@ -414,6 +409,10 @@ spec:
 * **Org** → Grafana organisation = tenant isolation boundary.
 * **SSO contract** → Published by SSO extension, consumed by GEX.
 * **Tenant CR** → Defines tenants in MTO.
+* **SSO** → Single Sign-On = user only sign in once
+* **DRY** → Don't Repeat Yourself
+* **BYO** → Bring Your Own
+* **IdP** → Identity Provider
 
 ### 11.1.1 What is **multi-org mode** in Grafana?
 
@@ -461,8 +460,8 @@ enabled = false  # must be disabled; isolation breaks otherwise
 | Field  | Description |
 | ------ | ----------- |
 | spec.server.url | Service url to Grafana |
-| spec.server.authSecretRef.namespace | Service url to Grafana |
-| spec.server.authSecretRef.name | Service url to Grafana |
+| spec.server.namespace | Namespace that Grafana instance lives in. |
+| spec.server.authSecretRef.name | Name of **Secret** that holds admin credentials to Grafana. This is _usually_ created by Grafana Operator |
 | spec.sso.mode | Selected mode on how to configure sso. See [Appendix 11.5](#115-sso-modes) |
 | spec.sso.clusterRef | See [Appendix 11.5](#115-sso-modes) |
 | spec.sso.roleResolution.claim | JSON node in OAuth Access Token, that holds user roles/groups |
@@ -513,55 +512,74 @@ enabled = false  # must be disabled; isolation breaks otherwise
 > Regardless of how GEX obtains SSO config, it always applies it via the Grafana HTTP API.
 > This ensures dynamic updates without requiring Grafana restarts or CR modifications.
 
-#### 11.5.1 Mode = cluster (recommended)
+* **mode = cluster** (recommended)
 
-```yaml
-  sso:
-    mode: cluster
-    clusterRef:
-      name: default
-    roleResolution:
-      claim: groups
-      patterns:
-        - role: owner
-          match: "tenant-{{ .tenant }}-owners"
-        - role: editor
-          match: "tenant-{{ .tenant }}-editors"
-        - role: viewer
-          match: "tenant-{{ .tenant }}-viewers"
-```
+  ```yaml
+    sso:
+      mode: cluster
+      clusterRef:
+        name: default
+      roleResolution:
+        claim: groups
+        patterns:
+          - role: owner
+            match: "tenant-{{ .tenant }}-owners"
+          - role: editor
+            match: "tenant-{{ .tenant }}-editors"
+          - role: viewer
+            match: "tenant-{{ .tenant }}-viewers"
+  ```
 
-#### 11.5.2 Mode = secret
+* **mode = secret**
 
-```yaml
-  sso:
-    mode: secret
-    secretRef:
-      namespace: sso-system
-      name: grafana-sso-credentials
-```
+  ```yaml
+    sso:
+      mode: secret
+      secretRef:
+        namespace: sso-system
+        name: grafana-sso-credentials
+  ```
 
-Expected Secret format:
+  Expected Secret format:
 
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: grafana-sso-credentials
-  namespace: sso-system
-stringData:
-  issuer: https://idp.example.com
-  clientID: grafana
-  clientSecret: supersecret
-  groupsClaim: groups
-```
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: grafana-sso-credentials
+    namespace: sso-system
+  stringData:
+    issuer: https://idp.example.com
+    clientID: grafana
+    clientSecret: supersecret
+    groupsClaim: groups
+  ```
 
-#### 11.5.3 Mode = inline
+* **mode = inline**
 
-```yaml
-  sso:
-    mode: inline
-    idp:
-      issuer: https://idp.example.com
-      clientID: grafana
-```
+  ```yaml
+    sso:
+      mode: inline
+      idp:
+        issuer: https://idp.example.com
+        clientID: grafana
+        clientSecret: abc123
+  ```
+
+* **mode = disabled**
+  
+  Skips SSO configuration entirely.
+  
+  Grafana will continue using its existing auth config.
+
+  This is useful only for development or legacy clusters.
+
+  ```yaml
+    sso:
+      mode: disabled
+  ```
+
+
+##
+
+[1]: <https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/#organization-roles> "Roles and Permissions"
