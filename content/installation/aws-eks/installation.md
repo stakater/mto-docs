@@ -12,22 +12,10 @@ The installation process consists of two steps:
 We will be using helm to install the operator.
 
 ```bash
-helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 1.1.0 --namespace multi-tenant-operator --create-namespace
+helm install tenant-operator oci://ghcr.io/stakater/public/charts/tenant-operator --namespace multi-tenant-operator --create-namespace
 ```
 
 We will wait for the pods to come in running state.
-
-```bash
-NAME                                                              READY   STATUS    RESTARTS   AGE
-tenant-operator-namespace-controller-768f9459c4-758kb             2/2     Running   0          5m
-tenant-operator-pilot-controller-7c96f6589c-d979f                 2/2     Running   0          5m
-tenant-operator-resourcesupervisor-controller-566f59d57b-xbkws    2/2     Running   0          5m
-tenant-operator-template-quota-intconfig-controller-7fc99462dz6   2/2     Running   0          5m
-tenant-operator-templategroupinstance-controller-75cf68c872pljv   2/2     Running   0          5m
-tenant-operator-templateinstance-controller-d996b6fd-cx2dz        2/2     Running   0          5m
-tenant-operator-tenant-controller-57fb885c84-7ps92                2/2     Running   0          5m
-tenant-operator-webhook-5f8f675549-jv9n8                          2/2     Running   0          5m
-```
 
 ## Enable MTO Console
 
