@@ -1,8 +1,8 @@
 # Changelog
 
-## v1.3.x
+## v1.4.x
 
-### v1.3.0
+### v1.4.0
 
 #### Features
 
