@@ -12,7 +12,7 @@ To switch to 1.4.x version from earlier minor versions, following migration guid
 
 1. Delete the old resources after child resources have been adopted by the new CRs.
 
-1. If you are using GitOps, for all of the Templating related resources, please change `apiVersion` field from `tenantoperator.stakater.com/v1alpha1` to `templates.stakater.com/v1alpha1`. For `TemplateGroupInstance` resources, please also rename the `Kind` field to `ClusterTemplateInstance`.
+1. If you are using GitOps, for all the Templating related resources, please change `apiVersion` field from `tenantoperator.stakater.com/v1alpha1` to `templates.stakater.com/v1alpha1`. For `TemplateGroupInstance` resources, please also rename the `Kind` field to `ClusterTemplateInstance`.
 
 This migration is of non-destructive nature because resources are transferred to the new CRs via code, so when you delete the old CRs, they will not delete child resources with them.
 
