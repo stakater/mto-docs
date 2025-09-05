@@ -519,15 +519,6 @@ enabled = false  # must be disabled; isolation breaks otherwise
       mode: cluster
       clusterRef:
         name: default
-      roleResolution:
-        claim: groups
-        patterns:
-          - role: owner
-            match: "tenant-{{ .tenant }}-owners"
-          - role: editor
-            match: "tenant-{{ .tenant }}-editors"
-          - role: viewer
-            match: "tenant-{{ .tenant }}-viewers"
   ```
 
 * **mode = secret**
@@ -536,7 +527,6 @@ enabled = false  # must be disabled; isolation breaks otherwise
     sso:
       mode: secret
       secretRef:
-        namespace: sso-system
         name: grafana-sso-credentials
   ```
 
@@ -547,7 +537,7 @@ enabled = false  # must be disabled; isolation breaks otherwise
   kind: Secret
   metadata:
     name: grafana-sso-credentials
-    namespace: sso-system
+    namespace: telemetry
   stringData:
     issuer: https://idp.example.com
     clientID: grafana
