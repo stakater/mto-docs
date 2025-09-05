@@ -1,5 +1,38 @@
 # Changelog
 
+## v1.4.x
+
+To switch to 1.4.x version from earlier minor versions, following migration guide needs to be followed:
+
+1. Uninstall `Multi Tenant Operator` Operator from your cluster for safe migration.
+
+1. Reinstall with the newer version. For OpenShift, change the channel to `release-1.4` in Subscription. For Kubernetes, change the helm chart version to 1.4.x.
+
+1. All the old `Templates`, `TemplateInstances` and `TemplateGroupInstances` will create duplicate resources with the new `API Groups`. `TemplateGroupInstances` will be duplicated to `ClusterTemplateInstances`.
+
+1. Delete the old resources after child resources have been adopted by the new CRs.
+
+1. If you are using GitOps, for all the Templating related resources, please change `apiVersion` field from `tenantoperator.stakater.com/v1alpha1` to `templates.stakater.com/v1alpha1`. For `TemplateGroupInstance` resources, please also rename the `Kind` field to `ClusterTemplateInstance`.
+
+This migration is of non-destructive nature because resources are transferred to the new CRs via code, so when you delete the old CRs, they will not delete child resources with them.
+
+### v1.4.0
+
+#### Features
+
+- Separation of [Template Operator](https://docs.stakater.com/template-operator/latest/index.html) as a child operator
+- Renaming of `Template Group Instance` CR to `Cluster Template Instance` for clarity
+- Transferring `Template`, `TemplateInstance` and `ClusterTemplateInstance` CRs to a separate API Group `templates.stakater.com`
+- Added [HostValidationConfig](https://docs.stakater.com/mto/main/kubernetes-resources/tenant/tenant-overview.html#hostname-validation) for validation of host names in `Ingresses` and `Routes`.
+
+#### Enhancements
+
+- Separation of all Database related functions in a separate controller called `database-controller`
+
+#### Bug Fixes
+
+- RBAC fixes for Node Filters page on MTO Console
+
 ## v1.3.x
 
 ### v1.3.0
@@ -230,14 +263,14 @@ Before upgrading to v1.1.0, perform the following steps:
 - `TemplateGroupInstance` controller now ensures that its underlying resources are force-synced when a namespace is created or deleted.
 - Optimizations were made to ensure the reconciler in the TGI controller runs only once per watch event, reducing reconcile times.
 - The `TemplateGroupInstance` reconcile flow has been refined to process only the namespace for which the event was received, streamlining resource creation/deletion and improving overall efficiency.
-- Introduced new metrics to enhance the monitoring capabilities of the operator. Details at [TGI Metrics Explanation](./architecture/logs-metrics.md)
+- Introduced new metrics to enhance the monitoring capabilities of the operator.
 
 ### v0.10.0
 
 #### Feature
 
 - Added support for caching for MTO Console using PostgreSQL as caching layer.
-- Added support for custom metrics with Template, Template Instance and Template Group Instance.
+- Added support for custom metrics with Template, Template Instance and Cluster Template Instance.
 - Graph visualization of Tenant and its associated resources on MTO Console.
 - Tenant and Admin level authz/authn support within MTO Console and Gateway.
 - Now in MTO console you can view cost of different Tenant resources with different date, resource type and additional filters.
@@ -267,8 +300,6 @@ Before upgrading to v1.1.0, perform the following steps:
 - enhance: Removed Quota's default support of adding it to Tenant CR in `spec.quota`, if `quota.tenantoperator.stakater.com/is-default: "true"` annotation is present
 - fix: ValidatingWebhookConfiguration CRs are now owned by OLM, to handle cleanup upon operator uninstall
 - enhance: TemplateGroupInstance CRs now actively watch the resources they apply, and perform functions to make sure they are in sync with the state mentioned in their respective Templates
-
-> More information about TemplateGroupInstance's sync at [Sync Resources Deployed by TemplateGroupInstance](./kubernetes-resources/template/how-to-guides/resource-sync-by-tgi.md)
 
 ### v0.9.2
 

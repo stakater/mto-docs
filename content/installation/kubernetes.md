@@ -10,20 +10,18 @@ This document contains instructions for installing, uninstalling, and configurin
 * A **Kubernetes** cluster (v1.24 or higher)
 * [Helm CLI](https://helm.sh/docs/intro/install/)
 * [kubectl](https://kubernetes.io/docs/tasks/tools/)
-* To run on Kubernetes, two certificates are needed in the operator namespace for the operator to be up and running, named:
-    1. `quota-template-intconfig-server-cert` pointing to `multi-tenant-operator-quota-template-intconfig-webhook-service.{{ .Release.Namespace }}.svc.cluster.local`
-    1. `webhook-server-cert` pointing to `multi-tenant-operator-webhook-service.{{ .Release.Namespace }}.svc.cluster.local`
+* [Cert Manager](https://cert-manager.io/docs/installation/) installed in the cluster.
 
-    If you are using [Cert Manager](https://cert-manager.io/docs/installation/), these certificates will be handled by templates in the Helm Chart
+  To run on Kubernetes, two certificates are needed in the operator namespace for the operator to be up and running. These certificates will be handled by Certificate CRs of [Cert Manager](https://cert-manager.io/docs/) in the Helm Chart.
 
 ## Installing via Helm CLI
 
-* The public Helm Chart for MTO is available at [Stakater ghcr Packages](https://github.com/orgs/stakater/packages/container/package/public/charts/multi-tenant-operator), and available Helm options can be seen at [MTO Helm Chart Options](./helm.md)
+* The public Helm Chart for MTO is available at [Stakater ghcr Packages](https://github.com/orgs/stakater/packages/container/package/public/charts/multi-tenant-operator).
 
-* Use the `helm install` command to install the MTO helm chart. Here, `bypassedGroups` has the names of groups which are designated as Cluster Admins in your cluster. For this example, we will use `system:masters`
+* Use the `helm install` command to install the MTO helm chart. Here, `webhook.manager.env.bypassedGroups` has the names of groups which are designated as Cluster Admins in your cluster. For this example, we will use `system:masters`
 
 ```terminal
-helm install tenant-operator oci://ghcr.io/stakater/public/charts/multi-tenant-operator --version 0.12.62 --namespace multi-tenant-operator --create-namespace --set bypassedGroups=system:masters'
+helm install tenant-operator oci://ghcr.io/stakater/public/charts/tenant-operator --namespace multi-tenant-operator --create-namespace --set 'webhook.manager.env.bypassedGroups=system:masters'
 ```
 
 !!! note
