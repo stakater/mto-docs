@@ -2,6 +2,20 @@
 
 ## v1.4.x
 
+To switch to 1.4.x version from earlier minor versions, following migration guide needs to be followed:
+
+1. Uninstall `Multi Tenant Operator` Operator from your cluster for safe migration.
+
+1. Reinstall with the newer version. For Openshift, change the channel to `release-1.4` in Subscription. For Kubernetes, change the helm chart version to 1.4.x.
+
+1. All the old `Templates`, `TemplateInstances` and `TemplateGroupInstances` will create duplicate resources with the new `API Groups`. `TemplateGroupInstances` will be duplicated to `ClusterTemplateInstances`.
+
+1. Delete the old resources after child resources have been adopted by the new CRs.
+
+1. If you are using GitOps, for all of the Templating related resources, please change `apiVersion` field from `tenantoperator.stakater.com/v1alpha1` to `templates.stakater.com/v1alpha1`. For `TemplateGroupInstance` resources, please also rename the `Kind` field to `ClusterTemplateInstance`.
+
+This migration is of non-destructive nature because resources are transferred to the new CRs via code, so when you delete the old CRs, they will not delete child resources with them.
+
 ### v1.4.0
 
 #### Features
