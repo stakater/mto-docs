@@ -554,6 +554,7 @@ enabled = false  # must be disabled; isolation breaks otherwise
         issuer: https://idp.example.com
         clientID: grafana
         clientSecret: abc123
+        redirectUri: https://grafana.external.url/login/generic_oauth
   ```
 
 * **mode = disabled**
