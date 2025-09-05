@@ -6657,7 +6657,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Delete the old resources after child resources have been adopted by the new CRs.</p>
 </li>
 <li>
-<p>If you are using GitOps, for all of the Templating related resources, please change <code>apiVersion</code> field from <code>tenantoperator.stakater.com/v1alpha1</code> to <code>templates.stakater.com/v1alpha1</code>. For <code>TemplateGroupInstance</code> resources, please also rename the <code>Kind</code> field to <code>ClusterTemplateInstance</code>.</p>
+<p>If you are using GitOps, for all the Templating related resources, please change <code>apiVersion</code> field from <code>tenantoperator.stakater.com/v1alpha1</code> to <code>templates.stakater.com/v1alpha1</code>. For <code>TemplateGroupInstance</code> resources, please also rename the <code>Kind</code> field to <code>ClusterTemplateInstance</code>.</p>
 </li>
 </ol>
 <p>This migration is of non-destructive nature because resources are transferred to the new CRs via code, so when you delete the old CRs, they will not delete child resources with them.</p>
