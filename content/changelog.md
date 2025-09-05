@@ -6,7 +6,7 @@ To switch to 1.4.x version from earlier minor versions, following migration guid
 
 1. Uninstall `Multi Tenant Operator` Operator from your cluster for safe migration.
 
-1. Reinstall with the newer version. For Openshift, change the channel to `release-1.4` in Subscription. For Kubernetes, change the helm chart version to 1.4.x.
+1. Reinstall with the newer version. For OpenShift, change the channel to `release-1.4` in Subscription. For Kubernetes, change the helm chart version to 1.4.x.
 
 1. All the old `Templates`, `TemplateInstances` and `TemplateGroupInstances` will create duplicate resources with the new `API Groups`. `TemplateGroupInstances` will be duplicated to `ClusterTemplateInstances`.
 
