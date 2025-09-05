@@ -234,12 +234,6 @@ The operator continuously updates the `status` field of the `GrafanaExtension` C
 status:
   observedGeneration: 2
   phase: Ready
-  grafana:
-    version: 10.4.0
-    url: http://grafana.telemetry.svc.cluster.local
-  sso:
-    provider: keycloak
-    mode: cluster
   conditions:
     - type: Ready
       status: "True"
