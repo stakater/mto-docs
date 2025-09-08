@@ -20,7 +20,7 @@ This migration is of non-destructive nature because resources are transferred to
 
 #### Enhancements
 
-- Updated Console image to have the latest design for `Showback Export functionality`, letting users to download CSV with usage data of their Tenant namespaces.
+- Updated Console image to have the latest design for `Showback Export functionality`, letting users download CSV with usage data of their Tenant namespaces.
 
 #### Bug Fixes
 
