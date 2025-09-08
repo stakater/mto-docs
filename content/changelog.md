@@ -16,6 +16,23 @@ To switch to 1.4.x version from earlier minor versions, following migration guid
 
 This migration is of non-destructive nature because resources are transferred to the new CRs via code, so when you delete the old CRs, they will not delete child resources with them.
 
+### v1.4.2
+
+#### Enhancements
+
+- Updated Console image to have the latest design for `Showback Export functionality`, letting users download CSV with usage data of their Tenant namespaces.
+
+#### Bug Fixes
+
+- Fix authorization issues for Template UI in Console.
+- Fix YAML rendering of resources in Console.
+
+### v1.4.1
+
+#### Enhancements
+
+- Added `storageclasses` to Tenant status for tracking of available `Storage Classes` for a tenant
+
 ### v1.4.0
 
 #### Features
