@@ -179,6 +179,26 @@ spec:
       policies:
         presets: [admin, editor, viewer, none]
 
+      # ---- GLOBAL shared KV subtree (read by many; written by a designated owner tenant) ----
+      shared:
+        enabled: true
+        layoutRef: sharedKv              # Use the shared template above: "secret/shared/{{ .name }}"
+
+        # Who OWNS and WRITES the shared subtree (humans via OIDC or CI under this tenant):
+        ownerTenantRef:
+          name: platform                 # e.g., your “platform” tenant that manages global secrets
+
+        # Who may CONSUME the shared subtree (read-only by default)
+        consumers:
+          tenantSelector: "*"            # "*" = all tenants; or a label selector like 'mto.team in (shop)'
+          workloads:
+            mode: ro                     # ro | none → extend k8s auth roles with RO to shared/*
+          humans:
+            mapping:                     # owner/editor/viewer of consuming tenants → preset or none (for shared only)
+              owner:  viewer             # human owners/editors get RO to shared/*
+              editor: viewer
+              viewer: none               # human viewers have no shared access by default
+
       # How apps get secrets:
       projection:
         mode: external-secrets          # external-secrets | csi | none
