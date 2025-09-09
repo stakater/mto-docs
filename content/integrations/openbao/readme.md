@@ -289,7 +289,7 @@ spec:
   # ---- Default mapping from MTO Tenant human roles → Bao policy presets (or 'none') ----
   # Controls what **humans via OIDC** get for the tenant-private space; workloads are unaffected.
   # Allowed targets per role: 'admin' | 'editor' | 'viewer' | 'none'
-  humanRoleMapping:
+  tenantRoleMapping:
     owner:  admin                        # Owners → full admin (RW + delete)
     editor: editor                       # Editors → RW (no delete)
     viewer: none                         # Viewers → no access by default (set to 'viewer' for RO if you want it)
@@ -329,11 +329,10 @@ spec:
           tenantSelector: "*"            # "*" = all tenants; or a label selector like 'mto.team in (shop)'
           workloads:
             mode: ro                     # ro | none → extend k8s auth roles with RO to shared/*
-          humans:
-            mapping:                     # owner/editor/viewer of consuming tenants → preset or none (for shared only)
-              owner:  viewer             # human owners/editors get RO to shared/*
-              editor: viewer
-              viewer: none               # human viewers have no shared access by default
+          tenantRoleMapping:
+            owner:  viewer             # human owners/editors get RO to shared/*
+            editor: viewer
+            viewer: none               # human viewers have no shared access by default
 
       # How apps receive secrets (ESO recommended; CSI supported)
       injection:
