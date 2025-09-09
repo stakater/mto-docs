@@ -98,7 +98,7 @@ kubectl -n mto-system create secret generic openbao-credentials \
 
 ```yaml
 apiVersion: security.mto.stakater.com/v1alpha1
-kind: OpenBaoIntegration
+kind: OpenBaoExtension
 metadata:
   name: openbao-integration
   namespace: mto-system
@@ -222,12 +222,12 @@ spec:
 #### Iteration # 2
 
 ```yaml
-# OpenBaoIntegration — wires MTO tenants to an existing OpenBao (Vault-compatible) cluster.
+# OpenBaoExtension — wires MTO tenants to an existing OpenBao (Vault-compatible) cluster.
 # - Ensures Bao auth backends (Kubernetes for workloads, OIDC for humans)
 # - Creates per-tenant policies/roles and optional ESO scaffolding
 # - Supports a GLOBAL shared KV subtree owned by a designated “platform” (or similar) tenant
 apiVersion: security.mto.stakater.com/v1alpha1
-kind: OpenBaoIntegration
+kind: OpenBaoExtension
 metadata:
   name: cluster-default                 # Typically one per cluster
   namespace: mto-system
