@@ -163,6 +163,19 @@ spec:
     # data: [read,list];                            metadata: [read,list]
     viewer: viewer
 
+  # --- Optional: override capability sets for tiers (applies cluster-wide) ---
+  # If you omit this block, built-ins are used:
+  #   admin:  [create, read, update, delete, list]
+  #   editor: [create, read, update, list]      (no delete)
+  #   viewer: [read, list]
+  policyOverrides:
+    editor:
+      capabilities: [create, read, update, list]
+    viewer:
+      capabilities: [read, list]
+    admin:
+      capabilities: [create, read, update, delete, list]
+      
   engines:
     - name: kv
       type: kv-v2
