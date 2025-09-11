@@ -1,12 +1,69 @@
-# Dex IdP Operator
+# Dex IdP Extension
 
-> **Purpose:** A single source of truth for deploying, operating, and extending the **Dex IdP Operator (Dex)**. It serves both **platform engineers** (how to install/use) and **developers** (how it works under the hood).
+> **Purpose:** A single source of truth for deploying, operating, and extending the **Dex IdP Extension (Dex)**. It serves both **platform engineers** (how to install/use) and **developers** (how it works under the hood).
+
+## 0) Questions that must be discussed/answered first
+
+### Client Creation
+
+How would the Extension create clients?
+
+- API Request
+  - Pros
+    - It's up to the user to handle it themself, minimizing development time
+  - Cons
+    - Not very DRY.
+    - Adds boilerplate code to every Extension usage
+- Annotate `Tenant` CR
+  - Pros
+    - One place to look for it
+    - Requires Cloud Platform Admin to add it
+  - Cons
+    - Requires Cloud Platform Admin to add it
+    - IT would be added to every namespace, if we don't specify which namespace to add it to
+- Annotate `Namespace` CR
+  - Pros
+    - One place to look for it
+    - Requires Tenant Owner to add it
+  - Cons
+    - Not really the place i would look for it
+- Annotate `Secret` CR
+  - Pros
+    - One place to look for it
+    - Requires Tenant Owner or Editor to add it
+    - One Client = One Secret
+  - Cons
+    - ??
+- `Secret` CR Type
+  - Pros
+    - One place to look for it
+    - Requires Tenant Owner to add it
+  - Cons
+    - Depends on how complicated it is to do this
+
+### Client Secret layout
+
+- For discussion, what do the client need from Dex for their application?
+- What do Dex need from the user?
+
+```
+kind: Secret
+apiVersion: v1
+metadata:
+  name: my-oidc-secret
+  namespace: default
+data:
+  clientId: bar
+  clientSecret: secret
+  redirectUri: https://...
+type: Opaque
+```
 
 ---
 
 ## 1) What is it?
 
-The **Dex IdP Operator** automates the deployment and lifecycle management of [Dex](https://dexidp.io), an **OpenID Connect (OIDC) identity provider** for Kubernetes platforms.  
+The **Dex IdP Extension** automates the deployment and lifecycle management of [Dex](https://dexidp.io), an **OpenID Connect (OIDC) identity provider** for Kubernetes platforms.  
 
 It enables:
 
@@ -19,8 +76,8 @@ It enables:
 
 ## 2) Audience
 
-* **Platform engineers:** Install/configure Dex Operator, define policies, manage Dex clients, manage connectors, troubleshoot authentication issues.
-* **Developers of Dex Operator:** Understand controller logic, reconciliation flows, CRDs, templates, idempotency, testing.
+* **Platform engineers:** Install/configure Dex Extension, define policies, manage Dex clients, manage connectors, troubleshoot authentication issues.
+* **Developers of Dex Extension:** Understand controller logic, reconciliation flows, CRDs, templates, idempotency, testing.
 * **Tenant/App teams:** Consume Dex-issued credentials via annotations and secrets for their applications.
 
 ---
@@ -31,13 +88,13 @@ It enables:
 ---
 config:
   layout: dagre
-title: Dex Operator
+title: Dex Extension
 ---
 flowchart TD
 
     subgraph Kubernetes Cluster
-      subgraph dex-operator [dex-operator namespace]
-        Operator[Dex Operator Controller]
+      subgraph dex-extension [dex-extension namespace]
+        Extension[Dex Extension Controller]
         DexCR[Dex CR]
       end
 
@@ -52,9 +109,9 @@ flowchart TD
       end
     end
 
-    DexCR --> Operator
-    Operator --> DexAPI
-    Operator --> Secret
+    DexCR --> Extension
+    Extension --> DexAPI
+    Extension --> Secret
     App --> Secret
 ````
 
@@ -62,7 +119,7 @@ flowchart TD
 
 ## 4) Scope & Boundaries
 
-* **Dex Operator manages:**
+* **Dex Extension manages:**
 
   * Dex CR lifecycle.
   * Dex clients (create/update/delete).
@@ -82,7 +139,7 @@ flowchart TD
 
 * **CRDs installed**: Dex CRDs applied by the Helm chart.
 * **Network/TLS**: Pods must be able to reach Dex; CA trust chain available.
-* **RBAC**: Operator has cluster-scoped read-only access to `Tenants` (if used), and namespaced access to create `Secrets`.
+* **RBAC**: Extension has cluster-scoped read-only access to `Tenants` (if used), and namespaced access to create `Secrets`.
 
 ---
 
@@ -91,14 +148,14 @@ flowchart TD
 ### 6.1 Create namespace & install controller
 
 ```bash
-kubectl create ns dex-operator || true
-helm upgrade --install dex-operator \
-  oci://<your-registry>/dex-operator \
-  -n dex-operator \
+kubectl create ns dex-extension || true
+helm upgrade --install dex-extension \
+  oci://<your-registry>/dex-extension \
+  -n dex-extension \
   -f values.yaml
 ```
 
-> The `values.yaml` should minimally configure operator RBAC, Dex API access, and resource requests. A reference sample is provided in the Helm chart.
+> The `values.yaml` should minimally configure extension RBAC, Dex API access, and resource requests. A reference sample is provided in the Helm chart.
 
 ### 6.2 Create Dex CR
 
@@ -109,7 +166,10 @@ metadata:
   name: dex
   namespace: dex-instance
 spec:
-  config: {}   # Dex config block (connectors, static clients, etc.)
+  config:
+    # Secret that holds Dex IdP config (connectors, static clients, etc.)
+    name: "my-dex-config"
+    key: "config.yaml"
   
   deployment:
     metadata: {}
@@ -162,8 +222,8 @@ spec:
 
 ### 7.1 Behavior Summary
 
-* Creating a `Dex` CR triggers the operator to deploy and manage Dex.
-* When tenants/apps are annotated with `dex.stakater.com/client-secret-name`, the operator provisions a Dex client and writes its credentials to a Kubernetes `Secret` in the tenant’s namespace:
+* Creating a `Dex` CR triggers the extension to deploy and manage Dex.
+* When tenants/apps are annotated with `dex.stakater.com/client-secret-name`, the extension provisions a Dex client and writes its credentials to a Kubernetes `Secret` in the tenant’s namespace:
 
   * The **client name** is the name of the annotated CR.
   * The **Secret name** is the value of the annotation.
@@ -174,11 +234,11 @@ spec:
 
 ## 8) Lifecycle
 
-The Dex Operator supports **Day-0 (platform setup), Day-1 (tenant onboarding), and Day-2 (ongoing operations)** scenarios.  
+The Dex Extension supports **Day-0 (platform setup), Day-1 (tenant onboarding), and Day-2 (ongoing operations)** scenarios.  
 
 ### 8.1 Status reporting
 
-The operator updates the `status` field of the `Dex` CR with:
+The extension updates the `status` field of the `Dex` CR with:
 
 * `Available`: Dex API reachable.
 * `Clients`: Count of managed clients.
@@ -196,7 +256,7 @@ sequenceDiagram
     participant PE as Platform Engineer
     participant TO as Tenant Owner
     participant CR as Dex CR
-    participant OP as Dex Operator
+    participant OP as Dex Extension
     participant Dex as Dex API
     participant K8s as Kubernetes Secret
 
@@ -235,19 +295,19 @@ sequenceDiagram
 
 * **Day-0 (Platform setup):**
 
-  * Deploy Dex Operator via Helm.
+  * Deploy Dex Extension via Helm.
   * Create `Dex` CR with base configuration and connectors.
 
 * **Day-1 (Tenant onboarding):**
 
   * Tenant team annotates Grafana datasource with `dex.stakater.com/client-secret-name=grafana-creds`.
-  * Dex Operator provisions Dex client and Secret automatically.
+  * Dex Extension provisions Dex client and Secret automatically.
 
 * **Day-2 (Ongoing):**
 
-  * Operator detects drift (missing client, stale Secret).
+  * Extension detects drift (missing client, stale Secret).
   * Reconciliation repairs state.
-  * Tenant offboarding → Operator deletes Dex client (or orphans if specified).
+  * Tenant offboarding → Extension deletes Dex client (or orphans if specified).
 
 ---
 
@@ -256,16 +316,16 @@ sequenceDiagram
 ### 9.1 Access Control
 
 * Credentials to Dex API stored in Kubernetes Secrets.
-* Secret rotation is handled automatically by the operator.
+* Secret rotation is handled automatically by the extension.
 
 ### 9.2 Auditability
 
-* Dex Operator emits Kubernetes **Events** on reconciliation actions.
+* Dex Extension emits Kubernetes **Events** on reconciliation actions.
 * Prometheus metrics exposed for monitoring:
 
-  * `dex_operator_reconcile_duration_seconds`
-  * `dex_operator_reconcile_failures_total`
-  * `dex_operator_managed_clients_total`
+  * `dex_extension_reconcile_duration_seconds`
+  * `dex_extension_reconcile_failures_total`
+  * `dex_extension_managed_clients_total`
 
 ### 9.3 Failure Recovery
 
@@ -281,7 +341,7 @@ sequenceDiagram
 * Never enable `insecureSkipVerify` in production.
 * Always reference client secrets via `SecretRef`, never inline.
 * Validate connector configurations against strict patterns.
-* RBAC principle of least privilege for Operator’s ServiceAccount.
+* RBAC principle of least privilege for Extension’s ServiceAccount.
 
 ### 9.5 RBAC minimum
 
@@ -306,7 +366,7 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
   participant CR as Dex CR
-  participant OP as Dex Operator
+  participant OP as Dex Extension
   participant Dex as Dex API
   participant K8s as Kubernetes Secret
 
@@ -342,7 +402,7 @@ spec:
 ```
 
 * Drift detection ensures Dex API state matches CRD spec.
-* Operator corrects differences on next reconciliation.
+* Extension corrects differences on next reconciliation.
 
 ---
 
@@ -385,7 +445,7 @@ spec:
 
 * **Dex status\:Unavailable** → Check Dex API URL and credentials.
 * **Secrets not created** → Verify tenant annotation matches scaffolding mode.
-* **Reconcile loops failing** → Inspect Dex Operator logs for API errors.
+* **Reconcile loops failing** → Inspect Dex Extension logs for API errors.
 
 ---
 
@@ -474,21 +534,3 @@ spec:
 ```
 
 ---
-
-### 11.6 Lifecycle Examples
-
-* **Day-0 (Platform setup):**
-
-  * Deploy Dex Operator via Helm.
-  * Create `Dex` CR with base configuration and connectors.
-
-* **Day-1 (Tenant onboarding):**
-
-  * Tenant team annotates Grafana datasource with `dex.stakater.com/client-secret-name=grafana-creds`.
-  * Dex Operator provisions Dex client and Secret automatically.
-
-* **Day-2 (Ongoing):**
-
-  * Operator detects drift (missing client, stale Secret).
-  * Reconciliation repairs state.
-  * Tenant offboarding → Operator deletes Dex client (or orphans if specified).
