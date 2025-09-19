@@ -457,9 +457,9 @@ enabled = false  # must be disabled; isolation breaks otherwise
 | spec.server.namespace | Namespace that Grafana instance lives in. |
 | spec.server.authSecretRef.name | Name of **Secret** that holds admin credentials to Grafana. This is _usually_ created by Grafana Operator |
 | spec.sso.mode | Selected mode on how to configure sso. See [Appendix 11.5](#115-sso-modes) |
-| spec.roleMapping.[admin|owner|editor|viewer] | The configuration of MTO-roles to Grafana Roles |
-| spec.roleMapping.[admin|owner|editor|viewer].grafanaRole | Which Grafana Role to map to |
-| spec.roleMapping.[admin|owner|editor|viewer].pattern | The partial string of the group claim to match to. Separate values with \|\| (OR condition)  |
+| spec.roleMapping.[admin\|owner\|editor\|viewer] | The configuration of MTO-roles to Grafana Roles |
+| spec.roleMapping.[admin\|owner\|editor\|viewer].grafanaRole | Which Grafana Role to map to |
+| spec.roleMapping.[admin\|owner\|editor\|viewer].pattern | The partial string of the group claim to match to. Separate values with \|\| (OR condition)  |
 | spec.roleMapping.tieBreakStrategy | If a user matches against multiple roles, which role should be assigned. Possible values: `highest` (default)- the role with highest permission is assigned. `lowest` - the role with lowest permission is assigned. `deny` - user is denies any roles, i.e. abort. |
 | spec.roleMapping.fallback | Default role when there is no match. Possible values: `deny` (default) - deny access. `allow` - user is granted the default role. `<rolename>` - user is assigned `<rolename>` rights. |
 | spec.sso.scaffolding | Allows GEX to detect other CRs based on the annotations |
