@@ -143,19 +143,19 @@ spec:
     mode: cluster
     clusterRef:
       name: default
-    roleResolution:
-      # The matching is against the group claims, if any groups contains matches against the string
-      patterns:
-        owner: "{{ .tenantName }}-owners"
-        editor: "{{ .tenantName }}-editors"
-        viewer: "{{ .tenantName }}-viewers"
-      tieBreakStrategy: highest
-      fallback: deny
 
-  tenantRoleMapping:
-    owner:  admin
-    editor: editor
-    viewer: none
+  roleMapping:
+    owner:
+      grafanaRole: admin
+      pattern: owners-group
+    editor:
+      grafanaRole: editor
+      pattern: editors-group
+    viewer:
+      grafanaRole: viewer
+      pattern: viewers-group
+    tieBreakStrategy: highest
+    fallback: deny
 
   scaffolding:
     mode: OnAnnotation
@@ -454,12 +454,11 @@ enabled = false  # must be disabled; isolation breaks otherwise
 | spec.server.namespace | Namespace that Grafana instance lives in. |
 | spec.server.authSecretRef.name | Name of **Secret** that holds admin credentials to Grafana. This is _usually_ created by Grafana Operator |
 | spec.sso.mode | Selected mode on how to configure sso. See [Appendix 11.5](#115-sso-modes) |
-| spec.sso.clusterRef | See [Appendix 11.5](#115-sso-modes) |
-| spec.sso.roleResolution.claim | JSON node in OAuth Access Token, that holds user roles/groups |
-| spec.sso.patterns[] | Mapping of OAuth Roles to Grafana Roles |
-| spec.sso.tieBreakStrategy | If a user matches against multiple roles, which role should be assigned. Possible values: `highest` (default)- the role with highest permission is assigned. `lowest` - the role with lowest permission is assigned. `deny` - user is denies any roles, i.e. abort. |
-| spec.sso.fallback | Default role when there is no match. Possible values: `deny` (default) - deny access. `allow` - user is granted the default role. `<rolename>` - user is assigned `<rolename>` rights. |
-| spec.sso.tenantRoleMapping | Map `spec.sso.patterns[]` to Grafana Roles |
+| spec.roleMapping.[owner|editor|viewer] | The configuration of MTO-roles to Grafana Roles |
+| spec.roleMapping.[owner|editor|viewer].grafanaRole | Which Grafana Role to map to |
+| spec.roleMapping.[owner|editor|viewer].pattern | The partial string of the group claim to match to |
+| spec.roleMapping.tieBreakStrategy | If a user matches against multiple roles, which role should be assigned. Possible values: `highest` (default)- the role with highest permission is assigned. `lowest` - the role with lowest permission is assigned. `deny` - user is denies any roles, i.e. abort. |
+| spec.roleMapping.fallback | Default role when there is no match. Possible values: `deny` (default) - deny access. `allow` - user is granted the default role. `<rolename>` - user is assigned `<rolename>` rights. |
 | spec.sso.scaffolding | Allows GEX to detect other CRs based on the annotations |
 | spec.sso.scaffolding.mode | `OnAnnotation` (default) - Scaffolding is triggered or configured based on the presence and values of specific annotations. Possible other values: `Always` (Not supported), `Never` (Not supported), or `OnLabel` (Not supported) |
 | spec.sso.scaffolding.annotations | Annotations to look for |
