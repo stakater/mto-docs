@@ -144,14 +144,11 @@ spec:
     clusterRef:
       name: default
     roleResolution:
-      claim: groups
+      # The matching is against the group claims, if any groups contains matches against the string
       patterns:
-        - role: owner
-          match: "tenant-{{ .tenant }}-owners"
-        - role: editor
-          match: "tenant-{{ .tenant }}-editors"
-        - role: viewer
-          match: "tenant-{{ .tenant }}-viewers"
+        owner: "{{ .tenantName }}-owners"
+        editor: "{{ .tenantName }}-editors"
+        viewer: "{{ .tenantName }}-viewers"
       tieBreakStrategy: highest
       fallback: deny
 
