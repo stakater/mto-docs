@@ -498,22 +498,12 @@ enabled = false  # must be disabled; isolation breaks otherwise
 
 | Mode | Where config comes from | Use case / Best for |
 | ---- | ----------------------- | ------------------- |
-| cluster | `SSOExtension` CR (`clusterRef`) | Standard setup, DRY, auto-rotation |
 | secret | External Secret | BYO IdP config, no SSOExtension |
 | inline | Inline in CR (`idp:` block) | Simple setups, GitOps friendly (careful with secrets) |
 | disabled | None | Dev/test, legacy |
 
 > Regardless of how GEX obtains SSO config, it always applies it via the Grafana HTTP API.
 > This ensures dynamic updates without requiring Grafana restarts or CR modifications.
-
-* **mode = cluster** (recommended)
-
-  ```yaml
-    sso:
-      mode: cluster
-      clusterRef:
-        name: default
-  ```
 
 * **mode = secret**
 
@@ -536,7 +526,16 @@ enabled = false  # must be disabled; isolation breaks otherwise
     issuer: https://idp.example.com
     clientID: grafana
     clientSecret: supersecret
-    groupsClaim: groups
+
+    scope: (default is: openid email profile groups offline_access)
+    idTokenAattributeName: (optional, default is: id_token)
+    emailAttributePath: (default is: email )
+    loginAttributePath: (default is: preferred_username )
+    nameAttributePath: (default is: full_name )
+    emailAttributeName: (optional, default is: email:primary )
+    authUrl: (optional, default is: {{ issuer }}/dex/auth )
+    tokenUrl: (optional, default is: {{ issuer }}/dex/token )
+    apiUrl: (optional, default is: {{ issuer }}/dex/api )  
   ```
 
 * **mode = inline**
@@ -549,6 +548,16 @@ enabled = false  # must be disabled; isolation breaks otherwise
         clientID: grafana
         clientSecret: abc123
         redirectUri: https://grafana.external.url/login/generic_oauth
+
+        scope: (default is: openid email profile groups offline_access)
+        idTokenAattributeName: (optional, default is: id_token)
+        emailAttributePath: (default is: email )
+        loginAttributePath: (default is: preferred_username )
+        nameAttributePath: (default is: full_name )
+        emailAttributeName: (optional, default is: email:primary )
+        authUrl: (optional, default is: {{ issuer }}/dex/auth )
+        tokenUrl: (optional, default is: {{ issuer }}/dex/token )
+        apiUrl: (optional, default is: {{ issuer }}/dex/api )  
   ```
 
 * **mode = disabled**
