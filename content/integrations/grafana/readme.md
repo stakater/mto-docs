@@ -134,10 +134,8 @@ metadata:
 
 spec:
   server:
-    url: http://grafana.telemetry.svc.cluster.local:3000
+    name: grafana-instance
     namespace: telemetry
-    authSecretRef:
-      name: grafana-admin-credentials
 
   sso:
     mode: cluster
@@ -453,9 +451,8 @@ enabled = false  # must be disabled; isolation breaks otherwise
 
 | Field  | Description |
 | ------ | ----------- |
-| spec.server.url | Service url to Grafana |
+| spec.server.name | Name of the Grafana instance |
 | spec.server.namespace | Namespace that Grafana instance lives in. |
-| spec.server.authSecretRef.name | Name of **Secret** that holds admin credentials to Grafana. This is _usually_ created by Grafana Operator |
 | spec.sso.mode | Selected mode on how to configure sso. See [Appendix 11.5](#115-sso-modes) |
 | spec.roleMapping.[admin\|owner\|editor\|viewer] | The configuration of MTO-roles to Grafana Roles |
 | spec.roleMapping.[admin\|owner\|editor\|viewer].grafanaRole | Which Grafana Role to map to |
