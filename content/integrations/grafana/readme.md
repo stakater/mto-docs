@@ -138,9 +138,20 @@ spec:
     namespace: telemetry
 
   sso:
-    mode: cluster
-    clusterRef:
-      name: default
+    mode: inline
+    issuer: https://idp.example.com
+    clientID: grafana
+    clientSecret: abc123
+    redirectUri: https://grafana.external.url/login/generic_oauth
+    scope: openid email profile groups offline_access
+    idTokenAattributeName: id_token
+    emailAttributePath: email
+    loginAttributePath: preferred_username
+    nameAttributePath: full_name
+    emailAttributeName: email:primary
+    authUrl: https://idp.example.com/dex/auth
+    tokenUrl: https://idp.example.com/dex/token
+    apiUrl: https://idp.example.com/dex/api
 
   roleMapping:
     admin:
