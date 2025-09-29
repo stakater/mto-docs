@@ -159,14 +159,14 @@ spec:
       pattern: clusteradmin || cluster-admin
     owner:
       grafanaRole: admin
-      pattern: owners-group
+      pattern: tenant-{{ .Tenant }}-{{ .Role }}s
     editor:
       grafanaRole: editor
-      pattern: editors-group
+      pattern: tenant-{{ .Tenant }}-{{ .Role }}s
     viewer:
       grafanaRole: viewer
-      pattern: viewers-group
-    tieBreakStrategy: highest
+      pattern: tenant-{{ .Tenant }}-{{ .Role }}s
+    tieBreakStrategy: highest 
     fallback: deny
 
   scaffolding:
