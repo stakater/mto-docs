@@ -145,6 +145,7 @@ spec:
     redirectUri: https://grafana.external.url/login/generic_oauth
     scope: openid email profile groups offline_access
     idTokenAattributeName: id_token
+    roleAttributePath: groups
     emailAttributePath: email
     loginAttributePath: preferred_username
     nameAttributePath: full_name
@@ -534,15 +535,16 @@ enabled = false  # must be disabled; isolation breaks otherwise
     clientID: grafana
     clientSecret: supersecret
 
-    scope: (default is: openid email profile groups offline_access)
-    idTokenAattributeName: (optional, default is: id_token)
-    emailAttributePath: (default is: email )
-    loginAttributePath: (default is: preferred_username )
-    nameAttributePath: (default is: full_name )
-    emailAttributeName: (optional, default is: email:primary )
-    authUrl: (optional, default is: {{ issuer }}/dex/auth )
-    tokenUrl: (optional, default is: {{ issuer }}/dex/token )
-    apiUrl: (optional, default is: {{ issuer }}/dex/api )  
+    scope: openid email profile groups offline_access # (default is: openid email profile groups offline_access )
+    idTokenAattributeName: id_token # (optional, default is: id_token )
+    roleAttributePath: groups # (default is: groups , usually either `groups` or `roles`)
+    emailAttributePath: email # (default is: email )
+    loginAttributePath: preferred_username # (default is: preferred_username )
+    nameAttributePath: full_name # (default is: full_name )
+    emailAttributeName: email:primary (optional, default is: email:primary )
+    authUrl: https://idp.example.com)/dex/auth # (optional, default is: {{ issuer }}/dex/auth )
+    tokenUrl: https://idp.example.com)/dex/token # (optional, default is: {{ issuer }}/dex/token )
+    apiUrl: https://idp.example.com)/dex/api # (optional, default is: {{ issuer }}/dex/api )
   ```
 
 * **mode = inline**
@@ -556,15 +558,16 @@ enabled = false  # must be disabled; isolation breaks otherwise
         clientSecret: abc123
         redirectUri: https://grafana.external.url/login/generic_oauth
 
-        scope: (default is: openid email profile groups offline_access)
-        idTokenAattributeName: (optional, default is: id_token)
-        emailAttributePath: (default is: email )
-        loginAttributePath: (default is: preferred_username )
-        nameAttributePath: (default is: full_name )
-        emailAttributeName: (optional, default is: email:primary )
-        authUrl: (optional, default is: {{ issuer }}/dex/auth )
-        tokenUrl: (optional, default is: {{ issuer }}/dex/token )
-        apiUrl: (optional, default is: {{ issuer }}/dex/api )  
+    scope: openid email profile groups offline_access # (default is: openid email profile groups offline_access )
+    idTokenAattributeName: id_token # (optional, default is: id_token )
+    roleAttributePath: groups # (default is: groups , usually either `groups` or `roles`)
+    emailAttributePath: email # (default is: email )
+    loginAttributePath: preferred_username # (default is: preferred_username )
+    nameAttributePath: full_name # (default is: full_name )
+    emailAttributeName: email:primary (optional, default is: email:primary )
+    authUrl: https://idp.example.com)/dex/auth # (optional, default is: {{ issuer }}/dex/auth )
+    tokenUrl: https://idp.example.com)/dex/token # (optional, default is: {{ issuer }}/dex/token )
+    apiUrl: https://idp.example.com)/dex/api # (optional, default is: {{ issuer }}/dex/api )
   ```
 
 * **mode = disabled**
