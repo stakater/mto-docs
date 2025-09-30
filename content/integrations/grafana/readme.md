@@ -513,6 +513,9 @@ enabled = false  # must be disabled; isolation breaks otherwise
 > Regardless of how GEX obtains SSO config, it always applies it via the Grafana HTTP API.
 > This ensures dynamic updates without requiring Grafana restarts or CR modifications.
 
+If your IdP doesn't supply `groups` and/or `roles`, or want to only use username, you can set `roleAttributePath` do the same value as `loginAttributePath`.
+The extension will use the value as a single-user group/role then.
+
 * **mode = secret**
 
   ```yaml
