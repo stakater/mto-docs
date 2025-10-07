@@ -45,12 +45,6 @@ Furthermore, this functionality supports financial planning and budgeting by off
 
 More details on [Showback](../console/showback.md)
 
-### Hibernation
-
-Multi Tenant Operator can downscale Deployments and StatefulSets in a tenant's namespace according to a defined sleep schedule. The Deployments and StatefulSets are brought back to their required replicas according to the provided wake schedule.
-
-More details on [Hibernation](../kubernetes-resources/tenant/how-to-guides/hibernate-tenant.md) and [ResourceSupervisor](../kubernetes-resources/resource-supervisor.md)
-
 ### Capacity Planning
 
 Provides tools to forecast and allocate resources effectively, ensuring optimal usage and preventing over-provisioning.
