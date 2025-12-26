@@ -19,7 +19,7 @@ spec:
 
 Notes:
 
-- The operator inspects image references used by Pods and controllers (Pods, Deployments, StatefulSets, ReplicaSets, Jobs, CronJobs, DaemonSets).
+- The operator inspects image references used by Pods and controllers (Pods, Deployments, StatefulSets, ReplicaSets, Jobs, CronJobs, Daemonsets).
 - To allow images that omit an explicit registry (i.e., rely on the container runtime default), include the empty string `""` in the `allowed` list.
 
 ### Example

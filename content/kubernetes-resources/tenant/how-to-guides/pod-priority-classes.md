@@ -18,7 +18,7 @@ spec:
 
 ### Notes
 
-The operator will validate the `priorityClassName` field on workloads and controllers (Pods, Deployments, StatefulSets, ReplicaSets, Jobs, CronJobs, DaemonSets). The empty string (`""`) is treated as a valid priorityClass name — include `""` in `allowed` if you want to permit resources that omit a priority class.
+The operator will validate the `priorityClassName` field on workloads and controllers (Pods, Deployments, StatefulSets, ReplicaSets, Jobs, CronJobs, Daemonsets). The empty string (`""`) is treated as a valid `priorityClass` name — include `""` in `allowed` if you want to permit resources that omit a priority class.
 
 ### Example
 

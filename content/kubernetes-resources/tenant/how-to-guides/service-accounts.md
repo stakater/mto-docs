@@ -19,7 +19,7 @@ spec:
 
 ### Notes
 
-- The operator watches these fields on resources that create pods (Pods, Deployments, StatefulSets, ReplicaSets, Jobs, CronJobs, DaemonSets).
+- The operator watches these fields on resources that create pods (Pods, Deployments, StatefulSets, ReplicaSets, Jobs, CronJobs, Daemonsets).
 - If a pod does not specify a service account (or specifies an empty string), it is treated as the `default` service account. To block pods that rely on the default service account, add `default` to the `denied` list.
 
 This mechanism prevents tenants from running workloads under service accounts you consider untrusted or that have excessive privileges.
