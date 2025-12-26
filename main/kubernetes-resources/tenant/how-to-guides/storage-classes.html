@@ -5,31 +5,31 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/main/kubernetes-resources/resource-supervisor.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/main/kubernetes-resources/tenant/how-to-guides/storage-classes.html">
       
       
-        <link rel="prev" href="integration-config.html">
+        <link rel="prev" href="host-validation.html">
       
       
-        <link rel="next" href="tenant/how-to-guides/create-tenant.html">
+        <link rel="next" href="pod-priority-classes.html">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.svg">
+      <link rel="icon" href="../../../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
-        <title>Resource Supervisor - Multi Tenant Operator</title>
+        <title>Restricting Storage Classes per Tenant - Multi Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -66,7 +66,7 @@
 
     
     
-  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#resource-supervisor" class="md-skip">
+        <a href="#restricting-storage-classes-per-tenant" class="md-skip">
           Skip to content
         </a>
       
@@ -110,12 +110,12 @@
             <div class="md-banner__inner md-grid md-typeset">
               
 This documentation is either for an old version, or for the unreleased 'main' version.
-<a href="../..">
+<a href="../../../..">
   <strong>Click here to go to the latest version.</strong>
 </a>
 
             </div>
-            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL(".."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
+            <script>var el=document.querySelector("[data-md-component=outdated]"),base=new URL("../../.."),outdated=__md_get("__outdated",sessionStorage,base);!0===outdated&&el&&(el.hidden=!1)</script>
           </aside>
         
       </div>
@@ -339,7 +339,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../index.html" title="Multi Tenant Operator" class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../../../index.html" title="Multi Tenant Operator" class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       <!-- 
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -360,10 +360,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="../assets/images/logo-light.png#only-light" alt="logo">
+          <img class="md-header__logo_light" src="../../../assets/images/logo-light.png#only-light" alt="logo">
           
           
-          <img class="md-header__logo_dark" src="../assets/images/logo-dark.png#only-dark" alt="logo">
+          <img class="md-header__logo_dark" src="../../../assets/images/logo-dark.png#only-dark" alt="logo">
           
           
           <div class="header-site-name">
@@ -1987,7 +1987,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../../../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
@@ -2017,7 +2017,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
+      <a href="../../../index.html" class="md-nav__link">
         
   
   
@@ -2091,7 +2091,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../about/key-features.html" class="md-nav__link">
+      <a href="../../../about/key-features.html" class="md-nav__link">
         
   
   
@@ -2119,7 +2119,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../about/use-cases.html" class="md-nav__link">
+      <a href="../../../about/use-cases.html" class="md-nav__link">
         
   
   
@@ -2147,7 +2147,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../about/benefits.html" class="md-nav__link">
+      <a href="../../../about/benefits.html" class="md-nav__link">
         
   
   
@@ -2229,7 +2229,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../architecture/architecture.html" class="md-nav__link">
+      <a href="../../../architecture/architecture.html" class="md-nav__link">
         
   
   
@@ -2311,7 +2311,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/overview.html" class="md-nav__link">
+      <a href="../../../installation/overview.html" class="md-nav__link">
         
   
   
@@ -2339,7 +2339,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/openshift.html" class="md-nav__link">
+      <a href="../../../installation/openshift.html" class="md-nav__link">
         
   
   
@@ -2414,7 +2414,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/azure-aks/preparation.html" class="md-nav__link">
+      <a href="../../../installation/azure-aks/preparation.html" class="md-nav__link">
         
   
   
@@ -2442,7 +2442,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/azure-aks/installation.html" class="md-nav__link">
+      <a href="../../../installation/azure-aks/installation.html" class="md-nav__link">
         
   
   
@@ -2470,7 +2470,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/azure-aks/validation.html" class="md-nav__link">
+      <a href="../../../installation/azure-aks/validation.html" class="md-nav__link">
         
   
   
@@ -2553,7 +2553,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/aws-eks/preparation.html" class="md-nav__link">
+      <a href="../../../installation/aws-eks/preparation.html" class="md-nav__link">
         
   
   
@@ -2581,7 +2581,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/aws-eks/installation.html" class="md-nav__link">
+      <a href="../../../installation/aws-eks/installation.html" class="md-nav__link">
         
   
   
@@ -2609,7 +2609,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/aws-eks/validation.html" class="md-nav__link">
+      <a href="../../../installation/aws-eks/validation.html" class="md-nav__link">
         
   
   
@@ -2645,7 +2645,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/kubernetes.html" class="md-nav__link">
+      <a href="../../../installation/kubernetes.html" class="md-nav__link">
         
   
   
@@ -2673,7 +2673,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../installation/uninstalling.html" class="md-nav__link">
+      <a href="../../../installation/uninstalling.html" class="md-nav__link">
         
   
   
@@ -2755,7 +2755,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../console/overview.html" class="md-nav__link">
+      <a href="../../../console/overview.html" class="md-nav__link">
         
   
   
@@ -2783,7 +2783,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../console/dashboard.html" class="md-nav__link">
+      <a href="../../../console/dashboard.html" class="md-nav__link">
         
   
   
@@ -2811,7 +2811,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../console/tenants.html" class="md-nav__link">
+      <a href="../../../console/tenants.html" class="md-nav__link">
         
   
   
@@ -2839,7 +2839,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../console/namespaces.html" class="md-nav__link">
+      <a href="../../../console/namespaces.html" class="md-nav__link">
         
   
   
@@ -2867,7 +2867,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../console/hibernation.html" class="md-nav__link">
+      <a href="../../../console/hibernation.html" class="md-nav__link">
         
   
   
@@ -2895,7 +2895,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../console/showback.html" class="md-nav__link">
+      <a href="../../../console/showback.html" class="md-nav__link">
         
   
   
@@ -2923,7 +2923,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../console/quotas.html" class="md-nav__link">
+      <a href="../../../console/quotas.html" class="md-nav__link">
         
   
   
@@ -2951,7 +2951,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../console/templates.html" class="md-nav__link">
+      <a href="../../../console/templates.html" class="md-nav__link">
         
   
   
@@ -2979,7 +2979,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../console/template-instances.html" class="md-nav__link">
+      <a href="../../../console/template-instances.html" class="md-nav__link">
         
   
   
@@ -3007,7 +3007,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../console/cluster-template-instances.html" class="md-nav__link">
+      <a href="../../../console/cluster-template-instances.html" class="md-nav__link">
         
   
   
@@ -3035,7 +3035,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../console/capacity-planning.html" class="md-nav__link">
+      <a href="../../../console/capacity-planning.html" class="md-nav__link">
         
   
   
@@ -3063,7 +3063,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../console/configuration.html" class="md-nav__link">
+      <a href="../../../console/configuration.html" class="md-nav__link">
         
   
   
@@ -3071,6 +3071,200 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     
   
     Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes Resources
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Kubernetes Resources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/concepts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quota.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quota
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tenant-overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tenant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extensions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extensions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integration-config.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Integration Config
   
 
     
@@ -3108,17 +3302,17 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Kubernetes Resources
+    How-to Guides
   
 
     
@@ -3129,12 +3323,12 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Kubernetes Resources
+    How-to Guides
   
 
           </label>
@@ -3147,14 +3341,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../architecture/concepts.html" class="md-nav__link">
+      <a href="create-tenant.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Concepts
+    Create a Tenant
   
 
     
@@ -3175,14 +3369,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="quota.html" class="md-nav__link">
+      <a href="create-namespaces.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Quota
+    Create Namespaces
   
 
     
@@ -3203,14 +3397,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="tenant/tenant-overview.html" class="md-nav__link">
+      <a href="create-sandbox.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Tenant
+    Create Sandbox Namespaces
   
 
     
@@ -3231,14 +3425,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="extensions.html" class="md-nav__link">
+      <a href="assign-metadata.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Extensions
+    Assign Metadata
   
 
     
@@ -3259,14 +3453,126 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="integration-config.html" class="md-nav__link">
+      <a href="hibernate-tenant.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Integration Config
+    Hibernate a Tenant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="restrict-nodepool-per-tenant.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restricting Tenant Workloads to Specific Nodes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="disable-intra-tenant-networking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disable intra-tenant networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ingress-sharding.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ingress Sharding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="host-validation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restricting Hostname per Tenant
   
 
     
@@ -3303,7 +3609,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Resource Supervisor
+    Restricting Storage Classes per Tenant
   
 
     
@@ -3314,14 +3620,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="resource-supervisor.html" class="md-nav__link md-nav__link--active">
+      <a href="storage-classes.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    Resource Supervisor
+    Restricting Storage Classes per Tenant
   
 
     
@@ -3349,22 +3655,22 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-modes" class="md-nav__link">
+  <a href="#restricting-persistentvolumeclaims-to-approved-storageclasses" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Supported modes
+        Restricting PersistentVolumeClaims to approved StorageClasses
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Supported modes">
+    <nav class="md-nav" aria-label="Restricting PersistentVolumeClaims to approved StorageClasses">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#hibernation-with-cron-schedule" class="md-nav__link">
+  <a href="#notes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hibernation with cron schedule
+        Notes
       
     </span>
   </a>
@@ -3372,10 +3678,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
         
           <li class="md-nav__item">
-  <a href="#sleep" class="md-nav__link">
+  <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sleep
+        Example
       
     </span>
   </a>
@@ -3383,38 +3689,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
         
           <li class="md-nav__item">
-  <a href="#sleep-at-given-cron-schedule" class="md-nav__link">
+  <a href="#behavior" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sleep at given cron schedule
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#more-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        More examples
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="More examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example 1
+        Behavior
       
     </span>
   </a>
@@ -3422,10 +3700,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-2" class="md-nav__link">
+  <a href="#demo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example 2
+        Demo
       
     </span>
   </a>
@@ -3446,60 +3724,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
-        
-          
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    How-to Guides
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    How-to Guides
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
               
                 
   
@@ -3507,14 +3731,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="tenant/how-to-guides/create-tenant.html" class="md-nav__link">
+      <a href="pod-priority-classes.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Create a Tenant
+    Restricting Pod Priority Classes per Tenant
   
 
     
@@ -3535,14 +3759,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
+      <a href="service-accounts.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Create Namespaces
+    Restricting Service Accounts per Tenant
   
 
     
@@ -3563,14 +3787,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
+      <a href="image-registries.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Create Sandbox Namespaces
+    Restricting Image Registries per Tenant
   
 
     
@@ -3591,147 +3815,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Assign Metadata
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hibernate a Tenant
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Restricting Tenant Workloads to Specific Nodes
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Disable intra-tenant networking
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Ingress Sharding
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="tenant/how-to-guides/custom-roles.html" class="md-nav__link">
+      <a href="custom-roles.html" class="md-nav__link">
         
   
   
@@ -3759,7 +3843,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
+      <a href="extend-default-roles.html" class="md-nav__link">
         
   
   
@@ -3787,7 +3871,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
+      <a href="delete-tenant.html" class="md-nav__link">
         
   
   
@@ -3815,7 +3899,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="tenant/how-to-guides/templated-metadata-values.html" class="md-nav__link">
+      <a href="templated-metadata-values.html" class="md-nav__link">
         
   
   
@@ -3897,7 +3981,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../integrations/argocd.html" class="md-nav__link">
+      <a href="../../../integrations/argocd.html" class="md-nav__link">
         
   
   
@@ -3972,7 +4056,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../integrations/vault/vault.html" class="md-nav__link">
+      <a href="../../../integrations/vault/vault.html" class="md-nav__link">
         
   
   
@@ -4000,7 +4084,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../integrations/vault/vault-ic.html" class="md-nav__link">
+      <a href="../../../integrations/vault/vault-ic.html" class="md-nav__link">
         
   
   
@@ -4028,7 +4112,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
+      <a href="../../../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
         
   
   
@@ -4064,7 +4148,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../integrations/devworkspace.html" class="md-nav__link">
+      <a href="../../../integrations/devworkspace.html" class="md-nav__link">
         
   
   
@@ -4092,7 +4176,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../integrations/mattermost.html" class="md-nav__link">
+      <a href="../../../integrations/mattermost.html" class="md-nav__link">
         
   
   
@@ -4120,7 +4204,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../integrations/keycloak.html" class="md-nav__link">
+      <a href="../../../integrations/keycloak.html" class="md-nav__link">
         
   
   
@@ -4148,7 +4232,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../integrations/azure-pricing.html" class="md-nav__link">
+      <a href="../../../integrations/azure-pricing.html" class="md-nav__link">
         
   
   
@@ -4176,7 +4260,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../integrations/aws-pricing.html" class="md-nav__link">
+      <a href="../../../integrations/aws-pricing.html" class="md-nav__link">
         
   
   
@@ -4210,8 +4294,90 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dependencies
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dependencies
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../pricing.html" class="md-nav__link">
+      <a href="../../../operators/dependencies.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi Tenant Operator Dependencies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pricing.html" class="md-nav__link">
         
   
   
@@ -4238,7 +4404,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../changelog.html" class="md-nav__link">
+      <a href="../../../changelog.html" class="md-nav__link">
         
   
   
@@ -4265,7 +4431,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../eula.html" class="md-nav__link">
+      <a href="../../../eula.html" class="md-nav__link">
         
   
   
@@ -4292,7 +4458,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting.html" class="md-nav__link">
+      <a href="../../../troubleshooting.html" class="md-nav__link">
         
   
   
@@ -4341,22 +4507,22 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#supported-modes" class="md-nav__link">
+  <a href="#restricting-persistentvolumeclaims-to-approved-storageclasses" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Supported modes
+        Restricting PersistentVolumeClaims to approved StorageClasses
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Supported modes">
+    <nav class="md-nav" aria-label="Restricting PersistentVolumeClaims to approved StorageClasses">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#hibernation-with-cron-schedule" class="md-nav__link">
+  <a href="#notes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Hibernation with cron schedule
+        Notes
       
     </span>
   </a>
@@ -4364,10 +4530,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
         
           <li class="md-nav__item">
-  <a href="#sleep" class="md-nav__link">
+  <a href="#example" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sleep
+        Example
       
     </span>
   </a>
@@ -4375,38 +4541,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
         
           <li class="md-nav__item">
-  <a href="#sleep-at-given-cron-schedule" class="md-nav__link">
+  <a href="#behavior" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sleep at given cron schedule
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#more-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        More examples
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="More examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example 1
+        Behavior
       
     </span>
   </a>
@@ -4414,10 +4552,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
         
           <li class="md-nav__item">
-  <a href="#example-2" class="md-nav__link">
+  <a href="#demo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example 2
+        Demo
       
     </span>
   </a>
@@ -4449,120 +4587,61 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 
 
-<h1 id="resource-supervisor">Resource Supervisor<a class="headerlink" href="#resource-supervisor" title="Permanent link">#</a></h1>
-<p>Supports hibernation of <code>deployments</code> and <code>statefulsets</code> for given namespaces via names and/or label selectors.
-If provided, it will update <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/projects/#creating-projects">AppProject</a> instance with <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync_windows/">SyncWindow</a> to deny sync to selected namespaces.</p>
-<p>Following namespaces will be ignored:</p>
+<h1 id="restricting-storage-classes-per-tenant">Restricting Storage Classes per Tenant<a class="headerlink" href="#restricting-storage-classes-per-tenant" title="Permanent link">#</a></h1>
+<h2 id="restricting-persistentvolumeclaims-to-approved-storageclasses">Restricting PersistentVolumeClaims to approved StorageClasses<a class="headerlink" href="#restricting-persistentvolumeclaims-to-approved-storageclasses" title="Permanent link">#</a></h2>
+<p>Use the <code>storageClasses.allowed</code> field in the <code>Tenant</code> Custom Resource to limit which StorageClasses a tenant may request when creating PersistentVolumeClaims (PVCs).</p>
+<div class="highlight"><span class="filename">Tenant</span><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># other fields</span>
+<span class="w">  </span><span class="nt">storageClasses</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">staging-fast</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared</span>
+</code></pre></div>
+<h3 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h3>
 <ul>
-<li>with annotation <code>"hibernation.stakater.com/exclude": "true"</code></li>
-<li>whose name match with privileged namespaces' regex specified in <a href="integration-config.html">IntegrationConfig</a></li>
-<li>namespace where MTO is installed</li>
+<li>If the PVC specifies a <code>storageClass</code> explicitly, that value is checked against the allow-list.</li>
+<li>If the PVC references a <code>volumeName</code>, the operator inspects the corresponding <code>PersistentVolume</code> to determine its class.</li>
+<li>If the PVC omits both <code>storageClass</code> and <code>volumeName</code>, evaluation is deferred until a default StorageClass is set in the cluster.</li>
+<li>An empty string (<code>""</code>) is treated as a literal StorageClass name; include <code>""</code> in the allow-list if you want to permit PVCs that omit a storage class.</li>
 </ul>
-<h2 id="supported-modes">Supported modes<a class="headerlink" href="#supported-modes" title="Permanent link">#</a></h2>
-<h3 id="hibernation-with-cron-schedule">Hibernation with cron schedule<a class="headerlink" href="#hibernation-with-cron-schedule" title="Permanent link">#</a></h3>
-<p>Applications will sleep and wake up at provided cron schedule</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">#</a></h3>
+<p>Allowed PVC (requests <code>staging-fast</code>, which is in the allow-list):</p>
+<div class="highlight"><span class="filename">Allowed PVC</span><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rs-example1</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pvc-allowed</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-dev</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"10</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w"> </span><span class="c1"># sleep each hour at min 10</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"50</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w"> </span><span class="c1"># wake up each hour at min 50</span>
+<span class="w">  </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">staging-fast</span>
+<span class="w">  </span><span class="nt">accessModes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteOnce</span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span>
 </code></pre></div>
-<h3 id="sleep">Sleep<a class="headerlink" href="#sleep" title="Permanent link">#</a></h3>
-<p>Applications will sleep instantly, and will wake up when resource supervisor is deleted</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<p>Denied PVC (requests <code>untrusted-storage</code>, not in the allow-list):</p>
+<div class="highlight"><span class="filename">Denied PVC</span><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rs-example2</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pvc-denied</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-dev</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">  </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">untrusted-storage</span>
+<span class="w">  </span><span class="nt">accessModes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteOnce</span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1Gi</span>
 </code></pre></div>
-<h3 id="sleep-at-given-cron-schedule">Sleep at given cron schedule<a class="headerlink" href="#sleep-at-given-cron-schedule" title="Permanent link">#</a></h3>
-<p>Applications will sleep at provided cron schedule, and will wake up when resource supervisor is deleted</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rs-example3</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-dev</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">2</span><span class="nv"> </span><span class="s">2025"</span><span class="w"> </span><span class="c1"># sleep on 1st February 2025</span>
-</code></pre></div>
-<h2 id="more-examples">More examples<a class="headerlink" href="#more-examples" title="Permanent link">#</a></h2>
-<h3 id="example-1">Example 1<a class="headerlink" href="#example-1" title="Permanent link">#</a></h3>
-<p>labelSelector's <code>matchLabels</code> and <code>matchExpressions</code> is <code>AND</code> operation. Here is an example with it:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rs-example4</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">stakater.com/current-tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
-<span class="w">        </span><span class="nt">stakater.com/kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> key</span><span class="p">:</span><span class="w"> </span><span class="s">"private-sandbox"</span><span class="p p-Indicator">,</span><span class="nt"> operator</span><span class="p">:</span><span class="w"> </span><span class="nv">In</span><span class="w"> </span><span class="p p-Indicator">,</span><span class="nt"> values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"true"</span><span class="p p-Indicator">]</span><span class="w"> </span><span class="p p-Indicator">}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-staging</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
-</code></pre></div>
-<p>It will sleep <code>bluesky-staging</code> namespace, and all those which have the specified labels.</p>
-<h3 id="example-2">Example 2<a class="headerlink" href="#example-2" title="Permanent link">#</a></h3>
-<p>If you provide Argo CD AppProject in spec, it will create <code>syncWindow</code> with <code>deny</code> policy</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rs-example4</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-apps</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-apps2</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">"customer-argocd-projects"</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-staging</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-dev</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
-</code></pre></div>
-<p>It will sleep given namespaces, and create <code>deny</code> <code>syncWindow</code> on provided AppProjects</p>
+<h3 id="behavior">Behavior<a class="headerlink" href="#behavior" title="Permanent link">#</a></h3>
+<ul>
+<li>A PVC that requests an allowed StorageClass will be accepted and provisioned as normal.</li>
+<li>A PVC that requests a StorageClass not present in <code>storageClasses.allowed</code> will be rejected by the operator or admission policy.</li>
+</ul>
+<h3 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">#</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../images/storage-validation.gif" data-desc-position="bottom"><img alt="Storage Class Validation" src="../../../images/storage-validation.gif"></a></p>
 
 
 
@@ -4856,27 +4935,27 @@ If provided, it will update <a href="https://argo-cd.readthedocs.io/en/stable/us
                 <div class="flex-2">
                     <div class="logo-footer-container">
                         
-                        <img class="md-header__logo_light" src="../assets/images/footer-logo-light.png#only-light" alt="logo">
+                        <img class="md-header__logo_light" src="../../../assets/images/footer-logo-light.png#only-light" alt="logo">
                         
                         
-                        <img src="../assets/images/footer-logo-dark.png#only-dark" alt="logo">
+                        <img src="../../../assets/images/footer-logo-dark.png#only-dark" alt="logo">
                         
                     </div>
 
                     <div class="collaborations-img-container">
                         <div class="display-flex">
                             
-                            <img class="csa-logo-dark" src="../assets/images/CSA_dark.png#only-dark" alt="CSA">
+                            <img class="csa-logo-dark" src="../../../assets/images/CSA_dark.png#only-dark" alt="CSA">
                             
                             
-                            <img class="csa-logo-light" src="../assets/images/CSA_light.png#only-light" alt="CSA">
+                            <img class="csa-logo-light" src="../../../assets/images/CSA_light.png#only-light" alt="CSA">
                             
 
                             
-                            <img class="hc-logo-dark" src="../assets/images/HC_dark.png#only-dark" alt="HC">
+                            <img class="hc-logo-dark" src="../../../assets/images/HC_dark.png#only-dark" alt="HC">
                             
                             
-                            <img class="hc-logo-light" src="../assets/images/HC_light.png#only-light" alt="HC">
+                            <img class="hc-logo-light" src="../../../assets/images/HC_light.png#only-light" alt="HC">
                             
                         </div>
                     </div>
@@ -5268,10 +5347,10 @@ If provided, it will update <a href="https://argo-cd.readthedocs.io/en/stable/us
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   
