@@ -1,4 +1,4 @@
-# Pod Priority Classes
+# Restricting Pod Priority Classes per Tenant
 
 ## Restricting allowed Pod PriorityClasses for tenant workloads
 

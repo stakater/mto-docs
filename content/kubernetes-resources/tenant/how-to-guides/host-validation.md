@@ -1,4 +1,4 @@
-# Hostname Validation
+# Restricting Hostname per Tenant
 
 ## Controlling allowed hostnames for Ingresses and Routes
 

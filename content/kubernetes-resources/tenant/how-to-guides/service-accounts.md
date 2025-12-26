@@ -1,4 +1,4 @@
-# Service Accounts
+# Restricting Service Accounts per Tenant
 
 ## Denying use of specific service accounts inside a tenant
 

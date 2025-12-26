@@ -1,4 +1,4 @@
-# Image Registries
+# Restricting Image Registries per Tenant
 
 ## Allowing only approved container registries for tenant images
 

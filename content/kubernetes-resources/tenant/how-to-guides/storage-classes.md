@@ -1,4 +1,4 @@
-# Storage Classes
+# Restricting Storage Classes per Tenant
 
 ## Restricting PersistentVolumeClaims to approved StorageClasses
 
