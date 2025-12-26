@@ -22,7 +22,7 @@
     
     
       
-        <title>Storage Classes - Multi Tenant Operator</title>
+        <title>Restricting Storage Classes per Tenant - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#storage-classes" class="md-skip">
+        <a href="#restricting-storage-classes-per-tenant" class="md-skip">
           Skip to content
         </a>
       
@@ -3573,7 +3573,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hostname Validation
+    Restricting Hostname per Tenant
   
 
     
@@ -3610,7 +3610,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Storage Classes
+    Restricting Storage Classes per Tenant
   
 
     
@@ -3628,7 +3628,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Storage Classes
+    Restricting Storage Classes per Tenant
   
 
     
@@ -3739,7 +3739,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Pod Priority Classes
+    Restricting Pod Priority Classes per Tenant
   
 
     
@@ -3767,7 +3767,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Service Accounts
+    Restricting Service Accounts per Tenant
   
 
     
@@ -3795,7 +3795,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Image Registries
+    Restricting Image Registries per Tenant
   
 
     
@@ -4588,7 +4588,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="storage-classes">Storage Classes<a class="headerlink" href="#storage-classes" title="Permanent link">#</a></h1>
+<h1 id="restricting-storage-classes-per-tenant">Restricting Storage Classes per Tenant<a class="headerlink" href="#restricting-storage-classes-per-tenant" title="Permanent link">#</a></h1>
 <h2 id="restricting-persistentvolumeclaims-to-approved-storageclasses">Restricting PersistentVolumeClaims to approved StorageClasses<a class="headerlink" href="#restricting-persistentvolumeclaims-to-approved-storageclasses" title="Permanent link">#</a></h2>
 <p>Use the <code>storageClasses.allowed</code> field in the <code>Tenant</code> Custom Resource to limit which StorageClasses a tenant may request when creating PersistentVolumeClaims (PVCs).</p>
 <div class="highlight"><span class="filename">Tenant</span><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>

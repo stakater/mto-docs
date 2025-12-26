@@ -22,7 +22,7 @@
     
     
       
-        <title>Pod Priority Classes - Multi Tenant Operator</title>
+        <title>Restricting Pod Priority Classes per Tenant - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pod-priority-classes" class="md-skip">
+        <a href="#restricting-pod-priority-classes-per-tenant" class="md-skip">
           Skip to content
         </a>
       
@@ -3573,7 +3573,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hostname Validation
+    Restricting Hostname per Tenant
   
 
     
@@ -3601,7 +3601,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Storage Classes
+    Restricting Storage Classes per Tenant
   
 
     
@@ -3638,7 +3638,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Pod Priority Classes
+    Restricting Pod Priority Classes per Tenant
   
 
     
@@ -3656,7 +3656,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Pod Priority Classes
+    Restricting Pod Priority Classes per Tenant
   
 
     
@@ -3767,7 +3767,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Service Accounts
+    Restricting Service Accounts per Tenant
   
 
     
@@ -3795,7 +3795,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Image Registries
+    Restricting Image Registries per Tenant
   
 
     
@@ -4588,7 +4588,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="pod-priority-classes">Pod Priority Classes<a class="headerlink" href="#pod-priority-classes" title="Permanent link">#</a></h1>
+<h1 id="restricting-pod-priority-classes-per-tenant">Restricting Pod Priority Classes per Tenant<a class="headerlink" href="#restricting-pod-priority-classes-per-tenant" title="Permanent link">#</a></h1>
 <h2 id="restricting-allowed-pod-priorityclasses-for-tenant-workloads">Restricting allowed Pod PriorityClasses for tenant workloads<a class="headerlink" href="#restricting-allowed-pod-priorityclasses-for-tenant-workloads" title="Permanent link">#</a></h2>
 <p>Use the <code>podPriorityClasses.allowed</code> field in the <code>Tenant</code> CR to restrict which priority classes tenant workloads may use. This ensures that only approved priority classes are used so cluster QoS and scheduling policies remain predictable.</p>
 <div class="highlight"><span class="filename">Tenant</span><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>

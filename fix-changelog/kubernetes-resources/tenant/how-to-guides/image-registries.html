@@ -22,7 +22,7 @@
     
     
       
-        <title>Image Registries - Multi Tenant Operator</title>
+        <title>Restricting Image Registries per Tenant - Multi Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#image-registries" class="md-skip">
+        <a href="#restricting-image-registries-per-tenant" class="md-skip">
           Skip to content
         </a>
       
@@ -3573,7 +3573,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hostname Validation
+    Restricting Hostname per Tenant
   
 
     
@@ -3601,7 +3601,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Storage Classes
+    Restricting Storage Classes per Tenant
   
 
     
@@ -3629,7 +3629,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Pod Priority Classes
+    Restricting Pod Priority Classes per Tenant
   
 
     
@@ -3657,7 +3657,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Service Accounts
+    Restricting Service Accounts per Tenant
   
 
     
@@ -3694,7 +3694,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Image Registries
+    Restricting Image Registries per Tenant
   
 
     
@@ -3712,7 +3712,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Image Registries
+    Restricting Image Registries per Tenant
   
 
     
@@ -4566,7 +4566,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="image-registries">Image Registries<a class="headerlink" href="#image-registries" title="Permanent link">#</a></h1>
+<h1 id="restricting-image-registries-per-tenant">Restricting Image Registries per Tenant<a class="headerlink" href="#restricting-image-registries-per-tenant" title="Permanent link">#</a></h1>
 <h2 id="allowing-only-approved-container-registries-for-tenant-images">Allowing only approved container registries for tenant images<a class="headerlink" href="#allowing-only-approved-container-registries-for-tenant-images" title="Permanent link">#</a></h2>
 <p>Use the <code>imageRegistries.allowed</code> field in the <code>Tenant</code> CR to limit which container registries tenants can pull images from. This policy reduces the risk of pulling images from untrusted registries and supports compliance with organizational supply-chain rules.</p>
 <div class="highlight"><span class="filename">Tenant</span><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
