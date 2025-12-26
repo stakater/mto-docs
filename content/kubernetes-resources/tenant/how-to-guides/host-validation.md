@@ -80,3 +80,7 @@ spec:
 
 - The first Ingress will be accepted because `app1.saap.dev` matches `allowedRegex`.
 - The second Ingress will be rejected by the operator (or by its admission checks) because `evil.example.com` does not match the `hostValidationConfig` policy.
+
+### Demo
+
+![Ingress Host Validation](../../../images/host-validation.gif)

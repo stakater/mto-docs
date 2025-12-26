@@ -56,3 +56,7 @@ spec:
 
 - The first Pod will be accepted because `ghcr.io` is explicitly allowed.
 - The second Pod will be rejected by the operator (or by admission policy enforced by the operator) because its image registry `untrusted.io` is not in `imageRegistries.allowed`.
+
+### Demo
+
+![Image Registry Validation](../../../images/image-registry-validation.gif)

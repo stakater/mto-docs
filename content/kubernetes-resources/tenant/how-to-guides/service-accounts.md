@@ -58,3 +58,7 @@ spec:
 
 - The first Pod will be accepted when `safe-sa` is not listed in `serviceAccounts.denied`.
 - The second Pod will be rejected or blocked by the operator if `service-user-1` appears in `serviceAccounts.denied`.
+
+### Demo
+
+![Service Account Validation](../../../images/service-account-validation.gif)

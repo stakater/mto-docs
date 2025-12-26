@@ -62,3 +62,7 @@ spec:
 
 - A PVC that requests an allowed StorageClass will be accepted and provisioned as normal.
 - A PVC that requests a StorageClass not present in `storageClasses.allowed` will be rejected by the operator or admission policy.
+
+### Demo
+
+![Storage Class Validation](../../../images/storage-validation.gif)

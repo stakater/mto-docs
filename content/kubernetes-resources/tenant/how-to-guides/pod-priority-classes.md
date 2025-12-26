@@ -54,3 +54,7 @@ spec:
 
 - The first Pod will be accepted because `high-priority` is in `podPriorityClasses.allowed`.
 - The second Pod will be rejected by the operator if `low-priority` is not present in the allow-list.
+
+### Demo
+
+![Pod Priority Classes Demo](../../../images/pod-priority.gif)
