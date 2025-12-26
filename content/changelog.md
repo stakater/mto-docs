@@ -1,5 +1,36 @@
 # Changelog
 
+## v1.5.x
+
+To upgrade to version 1.5.x from earlier minor versions, follow this migration guide:
+
+1. Uninstall the `Multi Tenant Operator` from your cluster to ensure a safe migration.
+
+1. Reinstall with the newer version:
+    - For OpenShift: Update the channel to `release-1.5` in your Subscription.
+    - For Kubernetes: Update the Helm chart version to 1.5.x.
+
+1. Migrate `ResourceSupervisor` CRs to `ClusterResourceSupervisor`. Refer to [Setup ClusterResourceSupervisor](https://docs.stakater.com/hibernation-operator/latest/how-to-guides/create-cluster-resource-supervisor.html) for detailed instructions.
+
+### v1.5.1
+
+#### Bug Fixes
+
+- Fixed namespace metadata not being applied during tenant namespace creation.
+- Visual improvements and bug fixes in MTO Console.
+
+### v1.5.0
+
+#### Features
+
+- Separation of [Hibernation Operator](https://docs.stakater.com/hibernation-operator/latest/index.html) as a standalone child operator.
+- Split `ResourceSupervisor` CRD into [`ClusterResourceSupervisor`](https://docs.stakater.com/hibernation-operator/latest/kubernetes-resources/cluster-resource-supervisor.html) and [`ResourceSupervisor`](https://docs.stakater.com/hibernation-operator/latest/kubernetes-resources/resource-supervisor.html) for improved resource scope management.
+- Migrated `*ResourceSupervisor` CRDs to the `hibernation.stakater.com` API Group.
+
+#### Enhancements
+
+- Path-based routing for MTO Console.
+
 ## v1.4.x
 
 To switch to 1.4.x version from earlier minor versions, following migration guide needs to be followed:
