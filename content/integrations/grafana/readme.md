@@ -659,4 +659,4 @@ sequenceDiagram
 
 ## References
 
-[1]: <https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/#organization-roles> "Roles and Permissions"
+- [1](<https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/#organization-roles> "Roles and Permissions")
