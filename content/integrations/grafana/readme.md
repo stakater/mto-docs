@@ -586,7 +586,77 @@ enabled = false  # must be disabled; isolation breaks otherwise
       mode: disabled
   ```
 
+---
 
-##
+## Authentication and Authorization Flow
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor U as User (Browser)
+  participant G as Grafana
+  participant D as Dex (OIDC Provider)
+  participant K as Keycloak (IdP + Authorization)
+  participant L as LDAP (User Directory)
+
+  rect rgb(245,245,245)
+    note over K,L: One-time setup (admin)
+    K->>L: Configure LDAP federation (bind, user search, group sync)
+    K->>K: Define roles (realm/client) + group→role mappings
+    K->>K: Add protocol mappers (roles/groups/email/name claims)
+    D->>K: Configure Dex OIDC connector to Keycloak (client + redirect URIs)
+    G->>D: Configure Grafana OIDC (client id/secret, endpoints, scopes)
+  end
+
+  rect rgb(235,248,255)
+    note over U,G: Runtime: user logs in
+    U->>G: Open Grafana / Login
+    G-->>U: Redirect to Dex /authorize (OIDC Auth Code)
+    U->>D: GET /authorize?client_id=grafana&...
+    D-->>U: Redirect to Keycloak /authorize (upstream IdP)
+    U->>K: GET /authorize?client_id=dex&...
+
+    note over K,L: Authentication against LDAP
+    K->>U: Show login page (or SSO)
+    U->>K: Submit username/password
+    K->>L: Validate credentials / bind as user
+    L-->>K: Auth OK + user attributes/groups
+
+    note over K: Authorization resolution
+    K->>K: Evaluate mappings (LDAP groups → Keycloak groups/roles)
+    K->>K: Issue tokens (ID/Access/Refresh) with role/group claims
+    K-->>U: Redirect back to Dex with auth code
+    U->>D: GET /callback?code=...
+    D->>K: Exchange code for tokens (token endpoint)
+    K-->>D: Tokens (claims: roles/groups/etc.)
+
+    note over D: Optional claim normalization / passthrough
+    D->>D: Map/forward claims (e.g., groups, email, roles)
+    D-->>U: Redirect back to Grafana with Dex auth code
+    U->>G: GET /login/generic_oauth?code=...
+    G->>D: Exchange code for tokens (Dex token endpoint)
+    D-->>G: Tokens (OIDC)
+
+    note over G: Grafana provisioning + mapping
+    G->>G: Create/update user (first login or sync)
+    G->>G: Map token claims → Grafana org/team/role (Admin/Editor/Viewer)
+    G-->>U: Session established, dashboards visible per role
+  end
+
+  rect rgb(255,245,235)
+    note over U,G: During usage: enforcement
+    U->>G: Request dashboards / APIs
+    G->>G: Enforce Grafana RBAC (org/team/permissions)
+    G-->>U: Allow/deny based on mapped role
+
+    note over K,D: Permission changes over time
+    K->>K: Admin updates role mappings (or LDAP group membership changes)
+    L-->>K: Updated groups (sync or on-demand)
+    note over U,G: New permissions take effect on new token
+    U->>G: Re-login / refresh token
+  end
+```
+
+## References
 
 [1]: <https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/#organization-roles> "Roles and Permissions"
