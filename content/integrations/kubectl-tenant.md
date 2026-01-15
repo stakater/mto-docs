@@ -6,7 +6,7 @@ A kubectl plugin that provides tenant-scoped access to cluster resources managed
 
 Kubernetes RBAC has a fundamental limitation: when granting `list` permissions on cluster-scoped resources, users can see *all* resources of that type, not just those belonging to their tenant. The kubectl-tenant plugin solves this by reading the Tenant CR status and filtering results to show only resources the tenant is permitted to access.
 
-**Source Code:** [github.com/stakater/kubectl-tenant](https://github.com/stakater/kubectl-tenant)
+**Source Code:** [GitHub.com/Stakater/kubectl-tenant](https://github.com/stakater/kubectl-tenant)
 
 ## Installation
 
@@ -63,7 +63,7 @@ List all storage classes for a tenant:
 kubectl tenant get storageclasses my-tenant
 ```
 
-```
+```bash
 NAME                  PROVISIONER             AGE
 my-tenant-fast        kubernetes.io/aws-ebs   30d
 my-tenant-standard    kubernetes.io/gp2       30d
@@ -75,7 +75,7 @@ List all namespaces for a tenant:
 kubectl tenant get namespaces my-tenant
 ```
 
-```
+```bash
 NAME                  AGE
 my-tenant-prod        45d
 my-tenant-staging     45d
@@ -90,18 +90,18 @@ Get a specific storage class:
 kubectl tenant get storageclasses my-tenant my-tenant-fast
 ```
 
-```
+```bash
 NAME                  PROVISIONER             AGE
 my-tenant-fast        kubernetes.io/aws-ebs   30d
 ```
 
 ## How It Works
 
-1. Reads the specified Tenant CR from `tenantoperator.stakater.com/v1beta3`
-2. Extracts permitted resources from the tenant's status fields
-3. Fetches and returns only those resources the tenant can access
+- Reads the specified Tenant CR from `tenantoperator.stakater.com/v1beta3`
+- Extracts permitted resources from the tenant's status fields
+- Fetches and returns only those resources the tenant can access
 
-## Roadmap
+## Future Roadmap
 
 Future versions may include support for additional cluster-scoped resources:
 
