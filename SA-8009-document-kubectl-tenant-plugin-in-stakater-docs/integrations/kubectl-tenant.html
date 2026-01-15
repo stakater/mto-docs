@@ -4357,10 +4357,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#roadmap" class="md-nav__link">
+  <a href="#future-roadmap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Roadmap
+        Future Roadmap
       
     </span>
   </a>
@@ -4705,10 +4705,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#roadmap" class="md-nav__link">
+  <a href="#future-roadmap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Roadmap
+        Future Roadmap
       
     </span>
   </a>
@@ -4739,7 +4739,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>A kubectl plugin that provides tenant-scoped access to cluster resources managed by Multi Tenant Operator.</p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
 <p>Kubernetes RBAC has a fundamental limitation: when granting <code>list</code> permissions on cluster-scoped resources, users can see <em>all</em> resources of that type, not just those belonging to their tenant. The kubectl-tenant plugin solves this by reading the Tenant CR status and filtering results to show only resources the tenant is permitted to access.</p>
-<p><strong>Source Code:</strong> <a href="https://github.com/stakater/kubectl-tenant">github.com/stakater/kubectl-tenant</a></p>
+<p><strong>Source Code:</strong> <a href="https://github.com/stakater/kubectl-tenant">GitHub.com/Stakater/kubectl-tenant</a></p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
 <p>Download the binary for your platform from <a href="https://github.com/stakater/kubectl-tenant/releases">GitHub Releases</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Download for your OS/Arch</span>
@@ -4805,32 +4805,32 @@ mv<span class="w"> </span>kubectl-tenant<span class="w"> </span>/usr/local/bin/
 <p>List all storage classes for a tenant:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>storageclasses<span class="w"> </span>my-tenant
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>NAME                  PROVISIONER             AGE
-my-tenant-fast        kubernetes.io/aws-ebs   30d
-my-tenant-standard    kubernetes.io/gp2       30d
+<div class="highlight"><pre><span></span><code>NAME<span class="w">                  </span>PROVISIONER<span class="w">             </span>AGE
+my-tenant-fast<span class="w">        </span>kubernetes.io/aws-ebs<span class="w">   </span>30d
+my-tenant-standard<span class="w">    </span>kubernetes.io/gp2<span class="w">       </span>30d
 </code></pre></div>
 <p>List all namespaces for a tenant:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>namespaces<span class="w"> </span>my-tenant
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>NAME                  AGE
-my-tenant-prod        45d
-my-tenant-staging     45d
-my-tenant-dev         30d
+<div class="highlight"><pre><span></span><code>NAME<span class="w">                  </span>AGE
+my-tenant-prod<span class="w">        </span>45d
+my-tenant-staging<span class="w">     </span>45d
+my-tenant-dev<span class="w">         </span>30d
 </code></pre></div>
 <h3 id="get-specific-resource">Get Specific Resource<a class="headerlink" href="#get-specific-resource" title="Permanent link">#</a></h3>
 <p>Get a specific storage class:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>storageclasses<span class="w"> </span>my-tenant<span class="w"> </span>my-tenant-fast
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>NAME                  PROVISIONER             AGE
-my-tenant-fast        kubernetes.io/aws-ebs   30d
+<div class="highlight"><pre><span></span><code>NAME<span class="w">                  </span>PROVISIONER<span class="w">             </span>AGE
+my-tenant-fast<span class="w">        </span>kubernetes.io/aws-ebs<span class="w">   </span>30d
 </code></pre></div>
 <h2 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h2>
-<ol>
+<ul>
 <li>Reads the specified Tenant CR from <code>tenantoperator.stakater.com/v1beta3</code></li>
 <li>Extracts permitted resources from the tenant's status fields</li>
 <li>Fetches and returns only those resources the tenant can access</li>
-</ol>
-<h2 id="roadmap">Roadmap<a class="headerlink" href="#roadmap" title="Permanent link">#</a></h2>
+</ul>
+<h2 id="future-roadmap">Future Roadmap<a class="headerlink" href="#future-roadmap" title="Permanent link">#</a></h2>
 <p>Future versions may include support for additional cluster-scoped resources:</p>
 <ul>
 <li>IngressClasses</li>
