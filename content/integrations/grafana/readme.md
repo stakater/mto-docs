@@ -175,6 +175,7 @@ spec:
     annotations:
       enable: "mto.grafana/disabled"
       tenant: "mto.grafana/tenant"
+
   deletionPolicy: Delete
 ```
 
