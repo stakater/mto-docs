@@ -149,24 +149,6 @@ spec:
       # - true: tenants MAY deploy cluster-scoped resources (use with extreme care)
       allowClusterScopedResources: false
 
-    # Advanced escape hatch (optional):
-    # If you ever need to tune AppProject policies beyond what the standard knobs cover,
-    # you can apply a structured patch. This keeps the CR extensible without exploding fields.
-    #
-    # IMPORTANT: MTO API uses allowlist/denylist terminology.
-    # Controller will translate to ArgoCD internal fields when applying.
-    appProjectPolicyPatch:
-      enabled: false
-      patch: {}
-      # Example (only if you ever need it; not required for v1):
-      # patch:
-      #   clusterResourceAllowlist:
-      #     - group: ""
-      #       kind: "Pod"
-      #   namespaceResourceDenylist:
-      #     - group: ""
-      #       kind: "ResourceQuota"
-
   # How tenant users/groups get permissions in ArgoCD.
   # The extension should map tenant membership to AppProject roles/policies.
   # (Exact group source depends on how your Tenant CR represents membership.)
