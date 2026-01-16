@@ -4630,24 +4630,6 @@ If not, it is not.</p>
 <span class="w">      </span><span class="c1"># - true: tenants MAY deploy cluster-scoped resources (use with extreme care)</span>
 <span class="w">      </span><span class="nt">allowClusterScopedResources</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 
-<span class="w">    </span><span class="c1"># Advanced escape hatch (optional):</span>
-<span class="w">    </span><span class="c1"># If you ever need to tune AppProject policies beyond what the standard knobs cover,</span>
-<span class="w">    </span><span class="c1"># you can apply a structured patch. This keeps the CR extensible without exploding fields.</span>
-<span class="w">    </span><span class="c1">#</span>
-<span class="w">    </span><span class="c1"># IMPORTANT: MTO API uses allowlist/denylist terminology.</span>
-<span class="w">    </span><span class="c1"># Controller will translate to ArgoCD internal fields when applying.</span>
-<span class="w">    </span><span class="nt">appProjectPolicyPatch</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
-<span class="w">      </span><span class="nt">patch</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="c1"># Example (only if you ever need it; not required for v1):</span>
-<span class="w">      </span><span class="c1"># patch:</span>
-<span class="w">      </span><span class="c1">#   clusterResourceAllowlist:</span>
-<span class="w">      </span><span class="c1">#     - group: ""</span>
-<span class="w">      </span><span class="c1">#       kind: "Pod"</span>
-<span class="w">      </span><span class="c1">#   namespaceResourceDenylist:</span>
-<span class="w">      </span><span class="c1">#     - group: ""</span>
-<span class="w">      </span><span class="c1">#       kind: "ResourceQuota"</span>
-
 <span class="w">  </span><span class="c1"># How tenant users/groups get permissions in ArgoCD.</span>
 <span class="w">  </span><span class="c1"># The extension should map tenant membership to AppProject roles/policies.</span>
 <span class="w">  </span><span class="c1"># (Exact group source depends on how your Tenant CR represents membership.)</span>
