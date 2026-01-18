@@ -104,14 +104,10 @@ spec:
 
   # Which tenants should be managed by this ArgoCD extension?
   # Recommended: opt-in via Tenant label (simple, GitOps-friendly).
-  scaffolding:
-    mode: TenantSelector
-    tenantSelector:
-      matchLabels:
-        # Tenant CR must carry this label to be managed by ArgoCD extension.
-        # Example:
-        #   metadata.labels["mto.stakater.io/integrations.argocd"]="enabled"
-        mto.stakater.io/integrations.argocd: "enabled"
+  tenantSelector:
+    matchLabels:
+    # Tenant CR must carry this label to be managed by ArgoCD extension.
+    mto.stakater.com/argocd: "enabled"
 
   # Lifecycle behavior for resources CREATED by this extension.
   # - Retain: leave AppProjects/Bootstrap apps in cluster when tenant opts out or is deleted.
@@ -119,10 +115,6 @@ spec:
   deletionPolicy: Retain # Retain | Delete
 
   tenancy:
-    # Core multi-tenancy behavior:
-    # Create ONE AppProject per tenant (this is the tenancy boundary).
-    projectPerTenant: true
-
     # How we decide where tenant apps are allowed to deploy.
     # We DO NOT rely on namespace name prefixes/postfixes, and we DO NOT require Tenant.status.
     # Instead we select namespaces by labels (Kubernetes-native + stable).
@@ -151,24 +143,10 @@ spec:
 
   # How tenant users/groups get permissions in ArgoCD.
   # The extension should map tenant membership to AppProject roles/policies.
-  # (Exact group source depends on how your Tenant CR represents membership.)
   tenantRoleMapping:
-    # Source of truth for tenant identities (matches current Tenant CR)
-    # Tenant.spec.accessControl:
-    #   owners/editors/viewers each contain users[] and groups[]
-    source: TenantSpecAccessControl
-
-    # Map Tenant roles -> ArgoCD project roles
-    roles:
-      admin:
-        fromTenantSpec: owners     # owners.users + owners.groups
-      write:
-        fromTenantSpec: editors    # editors.users + editors.groups
-      read:
-        fromTenantSpec: viewers    # viewers.users + viewers.groups
-
-    # If accessControl is missing/empty, do not grant access by default
-    fallback: deny   # deny | read
+    owner: admin
+    editor: write
+    viewer: read
 
   # Repo credentials strategy (plumbing, not multi-tenancy):
   # This controls how ArgoCD gets access to private repos for each tenant.
