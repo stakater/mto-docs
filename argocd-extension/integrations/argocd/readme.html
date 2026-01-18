@@ -4585,14 +4585,10 @@ If not, it is not.</p>
 
 <span class="w">  </span><span class="c1"># Which tenants should be managed by this ArgoCD extension?</span>
 <span class="w">  </span><span class="c1"># Recommended: opt-in via Tenant label (simple, GitOps-friendly).</span>
-<span class="w">  </span><span class="nt">scaffolding</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TenantSelector</span>
-<span class="w">    </span><span class="nt">tenantSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">        </span><span class="c1"># Tenant CR must carry this label to be managed by ArgoCD extension.</span>
-<span class="w">        </span><span class="c1"># Example:</span>
-<span class="w">        </span><span class="c1">#   metadata.labels["mto.stakater.io/integrations.argocd"]="enabled"</span>
-<span class="w">        </span><span class="nt">mto.stakater.io/integrations.argocd</span><span class="p">:</span><span class="w"> </span><span class="s">"enabled"</span>
+<span class="w">  </span><span class="nt">tenantSelector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># Tenant CR must carry this label to be managed by ArgoCD extension.</span>
+<span class="w">    </span><span class="nt">mto.stakater.com/argocd</span><span class="p">:</span><span class="w"> </span><span class="s">"enabled"</span>
 
 <span class="w">  </span><span class="c1"># Lifecycle behavior for resources CREATED by this extension.</span>
 <span class="w">  </span><span class="c1"># - Retain: leave AppProjects/Bootstrap apps in cluster when tenant opts out or is deleted.</span>
@@ -4600,10 +4596,6 @@ If not, it is not.</p>
 <span class="w">  </span><span class="nt">deletionPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Retain</span><span class="w"> </span><span class="c1"># Retain | Delete</span>
 
 <span class="w">  </span><span class="nt">tenancy</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># Core multi-tenancy behavior:</span>
-<span class="w">    </span><span class="c1"># Create ONE AppProject per tenant (this is the tenancy boundary).</span>
-<span class="w">    </span><span class="nt">projectPerTenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-
 <span class="w">    </span><span class="c1"># How we decide where tenant apps are allowed to deploy.</span>
 <span class="w">    </span><span class="c1"># We DO NOT rely on namespace name prefixes/postfixes, and we DO NOT require Tenant.status.</span>
 <span class="w">    </span><span class="c1"># Instead we select namespaces by labels (Kubernetes-native + stable).</span>
@@ -4632,24 +4624,10 @@ If not, it is not.</p>
 
 <span class="w">  </span><span class="c1"># How tenant users/groups get permissions in ArgoCD.</span>
 <span class="w">  </span><span class="c1"># The extension should map tenant membership to AppProject roles/policies.</span>
-<span class="w">  </span><span class="c1"># (Exact group source depends on how your Tenant CR represents membership.)</span>
 <span class="w">  </span><span class="nt">tenantRoleMapping</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># Source of truth for tenant identities (matches current Tenant CR)</span>
-<span class="w">    </span><span class="c1"># Tenant.spec.accessControl:</span>
-<span class="w">    </span><span class="c1">#   owners/editors/viewers each contain users[] and groups[]</span>
-<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TenantSpecAccessControl</span>
-
-<span class="w">    </span><span class="c1"># Map Tenant roles -&gt; ArgoCD project roles</span>
-<span class="w">    </span><span class="nt">roles</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">admin</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">fromTenantSpec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">owners</span><span class="w">     </span><span class="c1"># owners.users + owners.groups</span>
-<span class="w">      </span><span class="nt">write</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">fromTenantSpec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">editors</span><span class="w">    </span><span class="c1"># editors.users + editors.groups</span>
-<span class="w">      </span><span class="nt">read</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">fromTenantSpec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">viewers</span><span class="w">    </span><span class="c1"># viewers.users + viewers.groups</span>
-
-<span class="w">    </span><span class="c1"># If accessControl is missing/empty, do not grant access by default</span>
-<span class="w">    </span><span class="nt">fallback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deny</span><span class="w">   </span><span class="c1"># deny | read</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
+<span class="w">    </span><span class="nt">editor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="w">    </span><span class="nt">viewer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
 
 <span class="w">  </span><span class="c1"># Repo credentials strategy (plumbing, not multi-tenancy):</span>
 <span class="w">  </span><span class="c1"># This controls how ArgoCD gets access to private repos for each tenant.</span>
