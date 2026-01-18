@@ -165,6 +165,10 @@ spec:
       # MTO can validate presence and report status if missing.
       secretName: argocd-repo-creds
 
+    sharedSecret:
+      name: global-repo-creds
+      namespace: argocd
+
   # Bootstrap (optional UX):
   # Creates ONE root Application per tenant so onboarding is "zero-click".
   # This is NOT required for multi-tenancy. Multi-tenancy is AppProject only.
@@ -178,20 +182,20 @@ spec:
     #   argocd.ext.mto.stakater.com/bootstrap-revision: main
     repoURL:
       defaultTemplate: "https://github.com/{{ .tenant.name }}/gitops"
-      overrideFromAnnotation: "argocd.ext.mto.stakater.com/bootstrap-repo-url"
+      overrideAnnotation: "argocd.ext.mto.stakater.com/bootstrap-repo-url"
 
     path:
       defaultTemplate: "tenants/{{ .tenant.name }}"
-      overrideFromAnnotation: "argocd.ext.mto.stakater.com/bootstrap-path"
+      overrideAnnotation: "argocd.ext.mto.stakater.com/bootstrap-path"
 
     revision:
       default: "main"
-      overrideFromAnnotation: "argocd.ext.mto.stakater.com/bootstrap-revision"
+      overrideAnnotation: "argocd.ext.mto.stakater.com/bootstrap-revision"
 
     # Behavior if repoURL/path cannot be resolved (missing annotations + no usable defaults):
     # - SkipBootstrap: do not create bootstrap Application; still create AppProject (tenancy is intact)
     # - DegradedTenant: mark tenant as degraded in extension status
-    onMissingRepoOrPath: SkipBootstrap # SkipBootstrap | DegradedTenant
+    onMissingRepo: SkipBootstrap # SkipBootstrap | DegradedTenant
 
 status:
   conditions:
