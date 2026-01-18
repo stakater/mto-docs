@@ -4673,6 +4673,40 @@ If not, it is not.</p>
 <span class="w">    </span><span class="c1"># - SkipBootstrap: do not create bootstrap Application; still create AppProject (tenancy is intact)</span>
 <span class="w">    </span><span class="c1"># - DegradedTenant: mark tenant as degraded in extension status</span>
 <span class="w">    </span><span class="nt">onMissingRepoOrPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SkipBootstrap</span><span class="w"> </span><span class="c1"># SkipBootstrap | DegradedTenant</span>
+
+<span class="nt">status</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">conditions</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ready</span>
+<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">"True"</span>
+<span class="w">      </span><span class="nt">reason</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReconcileSuccess</span>
+<span class="w">      </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">"All</span><span class="nv"> </span><span class="s">tenants</span><span class="nv"> </span><span class="s">reconciled</span><span class="nv"> </span><span class="s">successfully"</span>
+<span class="w">      </span><span class="nt">lastTransitionTime</span><span class="p">:</span><span class="w"> </span><span class="s">"1111-11-11T11:11:11Z"</span>
+<span class="w">      </span><span class="nt">observedGeneration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServerConnected</span>
+<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">"True"</span>
+<span class="w">      </span><span class="nt">reason</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Success</span>
+<span class="w">      </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">"Connected</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">ArgoCD</span><span class="nv"> </span><span class="s">server"</span>
+<span class="w">      </span><span class="nt">lastTransitionTime</span><span class="p">:</span><span class="w"> </span><span class="s">"1111-11-11T11:11:11Z"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SSOConfigured</span>
+<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">"True"</span>
+<span class="w">      </span><span class="nt">reason</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Success</span>
+<span class="w">      </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">"SSO</span><span class="nv"> </span><span class="s">configuration</span><span class="nv"> </span><span class="s">applied"</span>
+<span class="w">      </span><span class="nt">lastTransitionTime</span><span class="p">:</span><span class="w"> </span><span class="s">"1111-11-11T11:11:11Z"</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TenantsReconciled</span>
+<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">"True"</span>
+<span class="w">      </span><span class="nt">reason</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Success</span>
+<span class="w">      </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="s">"All</span><span class="nv"> </span><span class="s">tenant</span><span class="nv"> </span><span class="s">AppProjects</span><span class="nv"> </span><span class="s">are</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">sync"</span>
+<span class="w">      </span><span class="nt">lastTransitionTime</span><span class="p">:</span><span class="w"> </span><span class="s">"1111-11-11T11:11:11Z"</span>
+<span class="w">  </span><span class="nt">tenantSummary</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">total</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">12</span>
+<span class="w">    </span><span class="nt">reconciled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">11</span>
+<span class="w">    </span><span class="nt">failed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">lastReconcileTime</span><span class="p">:</span><span class="w"> </span><span class="s">"1111-11-11T11:11:11Z"</span>
+<span class="w">  </span><span class="nt">failedTenants</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-foo</span>
+<span class="w">      </span><span class="nt">reason</span><span class="p">:</span><span class="w"> </span><span class="s">"AppProject</span><span class="nv"> </span><span class="s">creation</span><span class="nv"> </span><span class="s">failed:</span><span class="nv"> </span><span class="s">quota</span><span class="nv"> </span><span class="s">exceeded"</span>
+<span class="w">      </span><span class="nt">lastAttempt</span><span class="p">:</span><span class="w"> </span><span class="s">"1111-11-11T11:11:11Z"</span>
+<span class="w">  </span><span class="nt">observedGeneration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </code></pre></div>
 <h2 id="supported-per-tenant-overrides-v1alpha1">Supported per-tenant overrides (v1alpha1)<a class="headerlink" href="#supported-per-tenant-overrides-v1alpha1" title="Permanent link">#</a></h2>
 <p>Only these annotations are supported:</p>
