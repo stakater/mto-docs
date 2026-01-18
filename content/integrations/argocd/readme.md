@@ -192,6 +192,40 @@ spec:
     # - SkipBootstrap: do not create bootstrap Application; still create AppProject (tenancy is intact)
     # - DegradedTenant: mark tenant as degraded in extension status
     onMissingRepoOrPath: SkipBootstrap # SkipBootstrap | DegradedTenant
+
+status:
+  conditions:
+    - type: Ready
+      status: "True"
+      reason: ReconcileSuccess
+      message: "All tenants reconciled successfully"
+      lastTransitionTime: "1111-11-11T11:11:11Z"
+      observedGeneration: 3
+    - type: ServerConnected
+      status: "True"
+      reason: Success
+      message: "Connected to ArgoCD server"
+      lastTransitionTime: "1111-11-11T11:11:11Z"
+    - type: SSOConfigured
+      status: "True"
+      reason: Success
+      message: "SSO configuration applied"
+      lastTransitionTime: "1111-11-11T11:11:11Z"
+    - type: TenantsReconciled
+      status: "True"
+      reason: Success
+      message: "All tenant AppProjects are in sync"
+      lastTransitionTime: "1111-11-11T11:11:11Z"
+  tenantSummary:
+    total: 12
+    reconciled: 11
+    failed: 1
+    lastReconcileTime: "1111-11-11T11:11:11Z"
+  failedTenants:
+    - name: tenant-foo
+      reason: "AppProject creation failed: quota exceeded"
+      lastAttempt: "1111-11-11T11:11:11Z"
+  observedGeneration: 3
 ```
 
 ## Supported per-tenant overrides (v1alpha1)
