@@ -4646,6 +4646,10 @@ If not, it is not.</p>
 <span class="w">      </span><span class="c1"># MTO can validate presence and report status if missing.</span>
 <span class="w">      </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-repo-creds</span>
 
+<span class="w">    </span><span class="nt">sharedSecret</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global-repo-creds</span>
+<span class="w">      </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
+
 <span class="w">  </span><span class="c1"># Bootstrap (optional UX):</span>
 <span class="w">  </span><span class="c1"># Creates ONE root Application per tenant so onboarding is "zero-click".</span>
 <span class="w">  </span><span class="c1"># This is NOT required for multi-tenancy. Multi-tenancy is AppProject only.</span>
@@ -4659,20 +4663,20 @@ If not, it is not.</p>
 <span class="w">    </span><span class="c1">#   argocd.ext.mto.stakater.com/bootstrap-revision: main</span>
 <span class="w">    </span><span class="nt">repoURL</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">defaultTemplate</span><span class="p">:</span><span class="w"> </span><span class="s">"https://github.com/{{</span><span class="nv"> </span><span class="s">.tenant.name</span><span class="nv"> </span><span class="s">}}/gitops"</span>
-<span class="w">      </span><span class="nt">overrideFromAnnotation</span><span class="p">:</span><span class="w"> </span><span class="s">"argocd.ext.mto.stakater.com/bootstrap-repo-url"</span>
+<span class="w">      </span><span class="nt">overrideAnnotation</span><span class="p">:</span><span class="w"> </span><span class="s">"argocd.ext.mto.stakater.com/bootstrap-repo-url"</span>
 
 <span class="w">    </span><span class="nt">path</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">defaultTemplate</span><span class="p">:</span><span class="w"> </span><span class="s">"tenants/{{</span><span class="nv"> </span><span class="s">.tenant.name</span><span class="nv"> </span><span class="s">}}"</span>
-<span class="w">      </span><span class="nt">overrideFromAnnotation</span><span class="p">:</span><span class="w"> </span><span class="s">"argocd.ext.mto.stakater.com/bootstrap-path"</span>
+<span class="w">      </span><span class="nt">overrideAnnotation</span><span class="p">:</span><span class="w"> </span><span class="s">"argocd.ext.mto.stakater.com/bootstrap-path"</span>
 
 <span class="w">    </span><span class="nt">revision</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">"main"</span>
-<span class="w">      </span><span class="nt">overrideFromAnnotation</span><span class="p">:</span><span class="w"> </span><span class="s">"argocd.ext.mto.stakater.com/bootstrap-revision"</span>
+<span class="w">      </span><span class="nt">overrideAnnotation</span><span class="p">:</span><span class="w"> </span><span class="s">"argocd.ext.mto.stakater.com/bootstrap-revision"</span>
 
 <span class="w">    </span><span class="c1"># Behavior if repoURL/path cannot be resolved (missing annotations + no usable defaults):</span>
 <span class="w">    </span><span class="c1"># - SkipBootstrap: do not create bootstrap Application; still create AppProject (tenancy is intact)</span>
 <span class="w">    </span><span class="c1"># - DegradedTenant: mark tenant as degraded in extension status</span>
-<span class="w">    </span><span class="nt">onMissingRepoOrPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SkipBootstrap</span><span class="w"> </span><span class="c1"># SkipBootstrap | DegradedTenant</span>
+<span class="w">    </span><span class="nt">onMissingRepo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SkipBootstrap</span><span class="w"> </span><span class="c1"># SkipBootstrap | DegradedTenant</span>
 
 <span class="nt">status</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">conditions</span><span class="p">:</span>
