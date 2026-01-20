@@ -103,4 +103,4 @@ my-tenant-fast        kubernetes.io/aws-ebs   30d
 
 ## Demo
 
-![kubectl tenant rbac demo](../images/kubectlTenantRbacDemo.gif)
+![Kubectl Tenant RBAC Demo](../images/kubectlTenantRbacDemo.gif)
