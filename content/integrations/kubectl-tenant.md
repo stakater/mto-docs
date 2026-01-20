@@ -100,3 +100,7 @@ my-tenant-fast        kubernetes.io/aws-ebs   30d
 - Reads the specified Tenant CR from `tenantoperator.stakater.com/v1beta3`
 - Extracts permitted resources from the tenant's status fields
 - Fetches and returns only those resources the tenant can access
+
+## Demo
+
+![kubectl tenant rbac demo](../images/kubectlTenantRbacDemo.gif)
