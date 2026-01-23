@@ -5,10 +5,10 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/SA-8009-document-kubectl-tenant-plugin-in-stakater-docs/integrations/kubectl-tenant.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/SA-8009-document-kubectl-tenant-plugin-in-stakater-docs/kubectlplugin/kubectl-tenant.html">
       
       
-        <link rel="prev" href="aws-pricing.html">
+        <link rel="prev" href="../integrations/aws-pricing.html">
       
       
         <link rel="next" href="../operators/dependencies.html">
@@ -3870,7 +3870,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="argocd.html" class="md-nav__link">
+      <a href="../integrations/argocd.html" class="md-nav__link">
         
   
   
@@ -3945,7 +3945,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="vault/vault.html" class="md-nav__link">
+      <a href="../integrations/vault/vault.html" class="md-nav__link">
         
   
   
@@ -3973,7 +3973,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="vault/vault-ic.html" class="md-nav__link">
+      <a href="../integrations/vault/vault-ic.html" class="md-nav__link">
         
   
   
@@ -4001,7 +4001,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="vault/vault-kc-entraid.html" class="md-nav__link">
+      <a href="../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
         
   
   
@@ -4037,7 +4037,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="devworkspace.html" class="md-nav__link">
+      <a href="../integrations/devworkspace.html" class="md-nav__link">
         
   
   
@@ -4065,7 +4065,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="mattermost.html" class="md-nav__link">
+      <a href="../integrations/mattermost.html" class="md-nav__link">
         
   
   
@@ -4093,7 +4093,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="keycloak.html" class="md-nav__link">
+      <a href="../integrations/keycloak.html" class="md-nav__link">
         
   
   
@@ -4121,7 +4121,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="azure-pricing.html" class="md-nav__link">
+      <a href="../integrations/azure-pricing.html" class="md-nav__link">
         
   
   
@@ -4149,7 +4149,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="aws-pricing.html" class="md-nav__link">
+      <a href="../integrations/aws-pricing.html" class="md-nav__link">
         
   
   
@@ -4334,6 +4334,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <span class="md-ellipsis">
       
         Get Specific Resource
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output Formats
       
     </span>
   </a>
@@ -4688,6 +4699,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#output-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output Formats
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4823,6 +4845,20 @@ my-tenant-dev<span class="w">         </span>30d
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>NAME<span class="w">                  </span>PROVISIONER<span class="w">             </span>AGE
 my-tenant-fast<span class="w">        </span>kubernetes.io/aws-ebs<span class="w">   </span>30d
+</code></pre></div>
+<h3 id="output-formats">Output Formats<a class="headerlink" href="#output-formats" title="Permanent link">#</a></h3>
+<p>All standard kubectl output formats and flags are supported:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML output</span>
+kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>storageclasses<span class="w"> </span>my-tenant<span class="w"> </span>-o<span class="w"> </span>yaml
+
+<span class="c1"># JSON output</span>
+kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>namespaces<span class="w"> </span>my-tenant<span class="w"> </span>-o<span class="w"> </span>json
+
+<span class="c1"># JSONPath for specific fields</span>
+kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>namespaces<span class="w"> </span>my-tenant<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.items[*].metadata.name}'</span>
+
+<span class="c1"># Custom columns</span>
+kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>namespaces<span class="w"> </span>my-tenant<span class="w"> </span>-o<span class="w"> </span>custom-columns<span class="o">=</span>NAME:.metadata.name,STATUS:.status.phase
 </code></pre></div>
 <h2 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h2>
 <ul>
