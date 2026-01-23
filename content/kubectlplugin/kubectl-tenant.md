@@ -95,6 +95,24 @@ NAME                  PROVISIONER             AGE
 my-tenant-fast        kubernetes.io/aws-ebs   30d
 ```
 
+### Output Formats
+
+All standard kubectl output formats and flags are supported:
+
+```bash
+# YAML output
+kubectl tenant get storageclasses my-tenant -o yaml
+
+# JSON output
+kubectl tenant get namespaces my-tenant -o json
+
+# JSONPath for specific fields
+kubectl tenant get namespaces my-tenant -o jsonpath='{.items[*].metadata.name}'
+
+# Custom columns
+kubectl tenant get namespaces my-tenant -o custom-columns=NAME:.metadata.name,STATUS:.status.phase
+```
+
 ## How It Works
 
 - Reads the specified Tenant CR from `tenantoperator.stakater.com/v1beta3`
