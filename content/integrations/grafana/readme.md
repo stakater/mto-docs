@@ -126,8 +126,8 @@ helm upgrade --install mto-grafana-extension \
 # - Ensures Grafana SSO auth for users.
 # - Sets up per-tenant isolated organisations with roles.
 # - Sets up pre-configured resources (Datasources, Dashboard, Folders,...) per-tenant.
-apiVersion: extensions.mto.stakater.com/v1alpha1
-kind: GrafanaExtension
+apiVersion: telemetry.tenantoperator.stakater.com/v1alpha1
+kind: Grafana
 metadata:
   name: cluster-default                 # One per grafana instance (typical). Keep in mto-system.
   namespace: mto-system
@@ -139,20 +139,22 @@ spec:
 
   sso:
     mode: inline
-    issuer: https://idp.example.com
-    clientID: grafana
-    clientSecret: abc123
-    redirectUri: https://grafana.external.url/login/generic_oauth
-    scope: openid email profile groups offline_access
-    idTokenAattributeName: id_token
-    roleAttributePath: groups
-    emailAttributePath: email
-    loginAttributePath: preferred_username
-    nameAttributePath: full_name
-    emailAttributeName: email:primary
-    authUrl: https://idp.example.com/dex/auth
-    tokenUrl: https://idp.example.com/dex/token
-    apiUrl: https://idp.example.com/dex/api
+    idp:
+      issuer: https://idp.example.com
+      clientId: grafana
+      clientSecret: abc123
+      redirectUri: https://grafana.external.url/login/generic_oauth
+      scope: openid email profile groups offline_access
+      idTokenAttributeName: id_token
+      roleAttributeName: groups
+      orgAttributeName: groups
+      emailAttributePath: email
+      loginAttributePath: preferred_username
+      nameAttributePath: name
+      emailAttributeName: email:primary
+      authUrl: https://idp.example.com/dex/auth
+      tokenUrl: https://idp.example.com/dex/token
+      apiUrl: https://idp.example.com/dex/api
 
   tenantRoleMapping:
     admin:
@@ -246,28 +248,43 @@ status:
   observedGeneration: 2
   phase: Ready
   conditions:
+    - type: OperatorConfig
+      status: "True"
+      reason: Success
+      message: OperatorConfig: Success
+    - type: GrafanaConfig
+      status: "True"
+      reason: Success
+      message: GrafanaConfig: Success
+    - type: Organisations
+      status: "True"
+      reason: Success
+      message: Organisations: Success
+    - type: SyncDatasources
+      status: "True"
+      reason: Success
+      message: SyncDatasources: Success
+    - type: SyncDashboards
+      status: "True"
+      reason: Success
+      message: SyncDashboards: Success
     - type: Ready
       status: "True"
-      reason: AllTenantsReconciled
-      message: 15/15 tenants reconciled
+      reason: Success
+      message: All dependencies healthy.
       lastTransitionTime: "2025-09-02T20:00:00Z"
-    - type: GrafanaConnectionEstablished
-      status: "True"
-      reason: ConnectionSuccessful
-      message: Connected to Grafana at http://grafana.telemetry.svc.cluster.local
-    - type: SSOConfigured
-      status: "True"
-      reason: AuthEnabled
-      message: OIDC authentication configured
   tenantStatus:
-    totalTenants: 15
-    reconciled: 14
+    totalTenants: 3
+    reconciled: 2
     failed: 1
     details:
-      - tenant: "my-tenant-1"
-        namespace: "my-app-namespace"
+      - tenant: "tenant-a"
+        namespace: "tenant-a-apps"
         lastSyncTime: "2025-09-02T19:59:30Z"
-        error: "Failed to create datasource: permission denied"
+      - tenant: "tenant-b"
+        namespace: "tenant-b-apps"
+        lastSyncTime: "2025-09-02T19:59:10Z"
+        error: "failed to upsert datasource: permission denied"
 ```
 
 ---
@@ -282,12 +299,23 @@ status:
 
 ### 9.2 Auditability
 
-* GEX emits Kubernetes **Events** on reconciliation failures.
-* Prometheus metrics are exposed:
+* GEX emits Kubernetes **Events** on reconciliation.
+* Prometheus metrics
 
-  * `gex_tenant_reconciles_total`
-  * `gex_tenant_failures_total`
-  * `gex_grafana_api_latency_seconds`
+  * **Failure counters**
+    * `grafana_extension_reconciliation_errors_total`
+    * `grafana_extension_api_call_errors_total`
+  * **Other operational metrics**
+    * `grafana_extension_reconciliations_total`
+    * `grafana_extension_reconciliation_duration_seconds`
+    * `grafana_extension_api_calls_total`
+    * `grafana_extension_api_call_duration_seconds`
+    * `grafana_extension_tenants_managed`
+    * `grafana_extension_organizations_managed`
+    * `grafana_extension_dashboards_managed`
+    * `grafana_extension_datasources_managed`
+    * `grafana_extension_grafana_health_status`
+    * `grafana_extension_last_successful_sync_timestamp`
 
 ### 9.3 Failure Recovery
 
@@ -352,7 +380,7 @@ sequenceDiagram
 
 ### 10.3 Watches & Scale Hygiene
 
-**Watch model (strict & intentional):***
+**Watch model (strict & intentional):**
 
 * Tenant CRs: cluster-scoped watch (names + members). No tenant namespace watches.
 
