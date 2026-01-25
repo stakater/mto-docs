@@ -1,6 +1,6 @@
 # Template Instances
 
-Template Instances in the MTO Console allow users to deploy standardized resource configurations, such as Kubernetes manifests, Helm charts, Secrets, or ConfigMaps, into specific namespaces. By using Template Instances, organizations can ensure consistency, repeatability, and compliance across multiple environments. Each instance is based on a predefined template and can be managed, synchronized, or removed as needed, making it easy to propagate best practices and updates throughout your infrastructure.
+[Template Instances](https://docs.stakater.com/template-operator/main/kubernetes-resources/template-instance.html) in the MTO Console allow users to deploy standardized resource configurations, such as Kubernetes manifests, Helm charts, Secrets, or ConfigMaps, into specific namespaces. By using Template Instances, organizations can ensure consistency, repeatability, and compliance across multiple environments. Each instance is based on a predefined template and can be managed, synchronized, or removed as needed, making it easy to propagate best practices and updates throughout your infrastructure.
 
 ![template-instances](../images/templateInstances.png)
 
@@ -21,7 +21,7 @@ The Template Instance creation process in the MTO Console is designed to be stra
 
 Create Instance(s) Button: Click the Create Instance(s) button at the top right of the Template Instances page to start the process.
 
-By default selected type is Template Instance. But it can be modified to Template Group Instance.
+By default selected type is Template Instance. But it can be modified to Cluster Template Instance.
 
 ### Instance Configuration
 
@@ -46,7 +46,7 @@ The new Template Instance will appear in the list with the following columns:
 
 ## YAML View
 
-![templateInstanceYAML](../images/templateInstanceYAMLView.png)
+![TemplateInstance YAML](../images/ti-yaml.png)
 
 ## Update Template Instance
 

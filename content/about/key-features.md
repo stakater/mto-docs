@@ -27,7 +27,7 @@ Common use cases for namespace templates may be:
 * Deploying pre-populated databases with test data
 * Injecting new namespaces with optional credentials such as image pull secrets
 
-More details on [Distributing Template Resources](../kubernetes-resources/template/how-to-guides/deploying-templates.md)
+More details on [Distributing Template Resources](https://docs.stakater.com/template-operator/main/kubernetes-resources/how-to-guides/deploying-templates.html)
 
 ### Resource Management
 
@@ -44,12 +44,6 @@ The showback functionality in Multi Tenant Operator (MTO) Console is a significa
 Furthermore, this functionality supports financial planning and budgeting by offering a clear view of operational costs associated with each tenant. This can be particularly beneficial for organizations that chargeback internal departments or external clients based on resource usage, ensuring that billing is fair and reflective of actual consumption.
 
 More details on [Showback](../console/showback.md)
-
-### Hibernation
-
-Multi Tenant Operator can downscale Deployments and StatefulSets in a tenant's namespace according to a defined sleep schedule. The Deployments and StatefulSets are brought back to their required replicas according to the provided wake schedule.
-
-More details on [Hibernation](../kubernetes-resources/tenant/how-to-guides/hibernate-tenant.md) and [ResourceSupervisor](../kubernetes-resources/resource-supervisor.md)
 
 ### Capacity Planning
 
@@ -93,9 +87,9 @@ More details on [Sandboxes](../kubernetes-resources/tenant/how-to-guides/create-
 
 ### Cross Namespace Resource Distribution
 
-Multi Tenant Operator supports cloning of secrets and ConfigMaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide references to secrets and ConfigMaps. It uses a template group instance to distribute those secrets and ConfigMaps in matching namespaces, even if namespaces belong to different tenants. If a template instance is used, then the resources will only be mapped if namespaces belong to the same tenant.
+Multi Tenant Operator supports cloning of secrets and ConfigMaps from one namespace to another namespace based on label selectors. It uses templates to enable users to provide references to secrets and ConfigMaps. It uses a Cluster Template Instance to distribute those secrets and ConfigMaps in matching namespaces, even if namespaces belong to different tenants. If a template instance is used, then the resources will only be mapped if namespaces belong to the same tenant.
 
-More details on [Copying Secrets and ConfigMaps](../kubernetes-resources/template/how-to-guides/copying-resources.md)
+More details on [Copying Secrets and ConfigMaps](https://docs.stakater.com/template-operator/main/kubernetes-resources/how-to-guides/copying-resources.html)
 
 ### Self-Service
 

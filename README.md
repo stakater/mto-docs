@@ -45,7 +45,7 @@ There are at least two options to get fast continuous feedback during local deve
 Build Dockerfile test image:
 
 ```bash
-docker build . -t test -f Dockerfilelocal
+docker build . -t test -f DockerfileLocal
 ```
 
 Run test container:

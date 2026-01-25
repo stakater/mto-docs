@@ -1,6 +1,6 @@
 # Templates
 
-The Templates section acts as a repository for standardized resource deployment patterns, which can be utilized to maintain consistency and reliability across tenant environments. Few examples include provisioning specific k8s manifests, Helm charts, Secrets or ConfigMaps across a set of namespaces.
+The [Templates](https://docs.stakater.com/template-operator/main/kubernetes-resources/template.html) section acts as a repository for standardized resource deployment patterns, which can be utilized to maintain consistency and reliability across tenant environments. Few examples include provisioning specific k8s manifests, Helm charts, Secrets or ConfigMaps across a set of namespaces.
 
 ![templates](../images/templates.png)
 
@@ -82,7 +82,7 @@ The Manifests section allows you to add raw Kubernetes manifests directly to you
 
 ## YAML View
 
-![templateYAML](../images/templateYAMLView.png)
+![Template YAML](../images/template-yaml.png)
 
 A YAML representation of the template configuration can be previewed by user by clicking on the template card thee dots.
 
