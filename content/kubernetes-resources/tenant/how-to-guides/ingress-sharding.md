@@ -19,6 +19,18 @@ The `ingressClasses` field in the Tenant specification is used to filter and con
 
 This ensures that tenants can only use the ingress controllers that are explicitly allowed, providing better control and security over the ingress resources within the Kubernetes cluster.
 
+### Deny-by-Default Behavior
+
+This field follows a **deny-by-default** security model:
+
+| Spec State | Behavior |
+|------------|----------|
+| Field not specified (`nil`) | **Deny all** - feature disabled, tenants cannot create any Ingress resources |
+| Empty struct `{}` or `{allowed: []}` | **Allow all** - tenants can use any ingress class in the cluster |
+| Specific values `{allowed: ["nginx"]}` | **Only allow specified** - tenants can only use listed ingress classes |
+
+This ensures that cluster admins must explicitly opt-in to enable ingress class access for tenants.
+
 ### Demo
 
 ![Ingress Class Demo](../../../images/ingress-class-demo.gif)

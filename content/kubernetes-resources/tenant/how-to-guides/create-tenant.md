@@ -29,6 +29,9 @@ spec:
 EOF
 ```
 
+!!! note
+    This basic tenant configuration does not specify `storageClasses`, `ingressClasses`, or `podPriorityClasses`. Due to the deny-by-default security model, tenants will not have access to these cluster resources until explicitly configured. See the [Tenant Overview](../tenant-overview.md) for details on enabling these features.
+
 In this configuration, Bill specifies <anna@aurora.org> as the owner, giving her full administrative rights over the tenant. The editor role is assigned to <john@aurora.org> and the group alpha, providing them with editing capabilities within the tenant's scope.
 
 ## Verifying the Tenant Creation

@@ -17,6 +17,18 @@ spec:
       - shared
 ```
 
+### Deny-by-Default Behavior
+
+This field follows a **deny-by-default** security model:
+
+| Spec State | Behavior |
+|------------|----------|
+| Field not specified (`nil`) | **Deny all** - feature disabled, tenants cannot use any storage classes |
+| Empty struct `{}` or `{allowed: []}` | **Allow all** - tenants can use any storage class in the cluster |
+| Specific values `{allowed: ["sc1"]}` | **Only allow specified** - tenants can only use listed storage classes |
+
+This ensures that cluster admins must explicitly opt-in to enable storage class access for tenants.
+
 ### Notes
 
 - If the PVC specifies a `storageClass` explicitly, that value is checked against the allow-list.

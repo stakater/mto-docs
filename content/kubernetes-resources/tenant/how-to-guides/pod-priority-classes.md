@@ -16,6 +16,18 @@ spec:
       - high-priority
 ```
 
+### Deny-by-Default Behavior
+
+This field follows a **deny-by-default** security model:
+
+| Spec State | Behavior |
+|------------|----------|
+| Field not specified (`nil`) | **Deny all** - feature disabled, tenants cannot use any priority classes |
+| Empty struct `{}` or `{allowed: []}` | **Allow all** - tenants can use any priority class in the cluster |
+| Specific values `{allowed: ["high-priority"]}` | **Only allow specified** - tenants can only use listed priority classes |
+
+This ensures that cluster admins must explicitly opt-in to enable priority class access for tenants.
+
 ### Notes
 
 The operator will validate the `priorityClassName` field on workloads and controllers (Pods, Deployments, StatefulSets, ReplicaSets, Jobs, CronJobs, Daemonsets). The empty string (`""`) is treated as a valid `priorityClass` name — include `""` in `allowed` if you want to permit resources that omit a priority class.
