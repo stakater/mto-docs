@@ -4608,7 +4608,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This basic tenant configuration does not specify <code>storageClasses</code>, <code>ingressClasses</code>, or <code>podPriorityClasses</code>. Due to the deny-by-default security model, tenants will not have access to these cluster resources until explicitly configured. See the <a href="../tenant-overview.html">Tenant Overview</a> for details on enabling these features.</p>
+<p>This basic tenant configuration does not specify <code>storageClasses</code>, <code>ingressClasses</code>, or <code>podPriorityClasses</code>. These features are disabled by default, leaving RBAC configuration for these cluster resources to the platform administrator. To enable operator-managed access to these resources, see the <a href="../tenant-overview.html">Tenant Overview</a> for configuration options.</p>
 </div>
 <p>In this configuration, Bill specifies <a href="mailto:anna@aurora.org">anna@aurora.org</a> as the owner, giving her full administrative rights over the tenant. The editor role is assigned to <a href="mailto:john@aurora.org">john@aurora.org</a> and the group alpha, providing them with editing capabilities within the tenant's scope.</p>
 <h2 id="verifying-the-tenant-creation">Verifying the Tenant Creation<a class="headerlink" href="#verifying-the-tenant-creation" title="Permanent link">#</a></h2>
@@ -4638,6 +4638,10 @@ no
 no
 </code></pre></div>
 <p>Access to the Tenant resource itself is also restricted, aligning with the principle of least privilege.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Tenant users can use the <a href="../../../kubectlplugin/kubectl-tenant.html">kubectl-tenant plugin</a> to list cluster resources available to them, such as namespaces and storage classes: <code>kubectl tenant get namespaces bluesky</code></p>
+</div>
 <h2 id="adding-multiple-owners-to-a-tenant">Adding Multiple Owners to a Tenant<a class="headerlink" href="#adding-multiple-owners-to-a-tenant" title="Permanent link">#</a></h2>
 <p>Later, if there's a need to grant administrative privileges to another user, such as Anthony, Bill can easily update the tenant's configuration to include multiple owners:</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f - &lt;&lt; EOF</span>

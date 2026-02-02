@@ -3612,10 +3612,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#deny-by-default-behavior" class="md-nav__link">
+  <a href="#behavior" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deny-by-Default Behavior
+        Behavior
       
     </span>
   </a>
@@ -4553,10 +4553,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#deny-by-default-behavior" class="md-nav__link">
+  <a href="#behavior" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deny-by-Default Behavior
+        Behavior
       
     </span>
   </a>
@@ -4642,8 +4642,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </code></pre></div>
 <p>The <code>ingressClasses</code> field in the Tenant specification is used to filter and control which ingress classes are allowed for the tenant. By specifying an <code>allowed</code> list, you can restrict the creation of ingress resources to only those with the specified ingress class names. In the example above, only ingress resources with the class names <code>nginx</code> and <code>traefik</code> are permitted for the tenant.</p>
 <p>This ensures that tenants can only use the ingress controllers that are explicitly allowed, providing better control and security over the ingress resources within the Kubernetes cluster.</p>
-<h3 id="deny-by-default-behavior">Deny-by-Default Behavior<a class="headerlink" href="#deny-by-default-behavior" title="Permanent link">#</a></h3>
-<p>This field follows a <strong>deny-by-default</strong> security model:</p>
+<h3 id="behavior">Behavior<a class="headerlink" href="#behavior" title="Permanent link">#</a></h3>
+<p>This field follows a <strong>secure-by-default</strong> model. Configuring this field enables both the filtering functionality and automatic RBAC configuration for IngressClasses:</p>
 <table>
 <thead>
 <tr>
@@ -4654,19 +4654,26 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <tbody>
 <tr>
 <td>Field not specified (<code>nil</code>)</td>
-<td><strong>Deny all</strong> - feature disabled, tenants cannot create any Ingress resources</td>
+<td><strong>Feature disabled</strong> - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for IngressClasses (if any)</td>
 </tr>
 <tr>
 <td>Empty struct <code>{}</code> or <code>{allowed: []}</code></td>
-<td><strong>Allow all</strong> - tenants can use any ingress class in the cluster</td>
+<td><strong>Allow all</strong> - the operator automatically configures RBAC so that tenants can use any ingress class in the cluster</td>
 </tr>
 <tr>
 <td>Specific values <code>{allowed: ["nginx"]}</code></td>
-<td><strong>Only allow specified</strong> - tenants can only use listed ingress classes</td>
+<td><strong>Only allow specified</strong> - the operator automatically configures RBAC so that tenants can only use the listed ingress classes</td>
 </tr>
 </tbody>
 </table>
-<p>This ensures that cluster admins must explicitly opt-in to enable ingress class access for tenants.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The filtering functionality only works when the <code>ingressClasses</code> field is explicitly configured. Without it, the operator does not manage IngressClass access for the tenant.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Tenant users can use the <a href="../../../kubectlplugin/kubectl-tenant.html">kubectl-tenant plugin</a> to list the IngressClasses available to them: <code>kubectl tenant get ingressclasses &lt;tenant-name&gt;</code></p>
+</div>
 <h3 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">#</a></h3>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../images/ingress-class-demo.gif" data-desc-position="bottom"><img alt="Ingress Class Demo" src="../../../images/ingress-class-demo.gif"></a></p>
 <h2 id="ingress-sharding-on-openshift-container-platform">Ingress Sharding on OpenShift Container Platform<a class="headerlink" href="#ingress-sharding-on-openshift-container-platform" title="Permanent link">#</a></h2>

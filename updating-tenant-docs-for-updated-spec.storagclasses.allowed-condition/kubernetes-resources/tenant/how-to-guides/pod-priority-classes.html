@@ -3696,10 +3696,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#deny-by-default-behavior" class="md-nav__link">
+  <a href="#behavior" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deny-by-Default Behavior
+        Behavior
       
     </span>
   </a>
@@ -3729,10 +3729,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#behavior" class="md-nav__link">
+  <a href="#validation-behavior" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Behavior
+        Validation Behavior
       
     </span>
   </a>
@@ -4558,10 +4558,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#deny-by-default-behavior" class="md-nav__link">
+  <a href="#behavior" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deny-by-Default Behavior
+        Behavior
       
     </span>
   </a>
@@ -4591,10 +4591,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#behavior" class="md-nav__link">
+  <a href="#validation-behavior" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Behavior
+        Validation Behavior
       
     </span>
   </a>
@@ -4650,8 +4650,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high-priority</span>
 </code></pre></div>
-<h3 id="deny-by-default-behavior">Deny-by-Default Behavior<a class="headerlink" href="#deny-by-default-behavior" title="Permanent link">#</a></h3>
-<p>This field follows a <strong>deny-by-default</strong> security model:</p>
+<h3 id="behavior">Behavior<a class="headerlink" href="#behavior" title="Permanent link">#</a></h3>
+<p>This field follows a <strong>secure-by-default</strong> model. Configuring this field enables both the filtering functionality and automatic RBAC configuration for PodPriorityClasses:</p>
 <table>
 <thead>
 <tr>
@@ -4662,19 +4662,26 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <tbody>
 <tr>
 <td>Field not specified (<code>nil</code>)</td>
-<td><strong>Deny all</strong> - feature disabled, tenants cannot use any priority classes</td>
+<td><strong>Feature disabled</strong> - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for PodPriorityClasses (if any)</td>
 </tr>
 <tr>
 <td>Empty struct <code>{}</code> or <code>{allowed: []}</code></td>
-<td><strong>Allow all</strong> - tenants can use any priority class in the cluster</td>
+<td><strong>Allow all</strong> - the operator automatically configures RBAC so that tenants can use any priority class in the cluster</td>
 </tr>
 <tr>
 <td>Specific values <code>{allowed: ["high-priority"]}</code></td>
-<td><strong>Only allow specified</strong> - tenants can only use listed priority classes</td>
+<td><strong>Only allow specified</strong> - the operator automatically configures RBAC so that tenants can only use the listed priority classes</td>
 </tr>
 </tbody>
 </table>
-<p>This ensures that cluster admins must explicitly opt-in to enable priority class access for tenants.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The filtering functionality only works when the <code>podPriorityClasses</code> field is explicitly configured. Without it, the operator does not manage PodPriorityClass access for the tenant.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Tenant users can use the <a href="../../../kubectlplugin/kubectl-tenant.html">kubectl-tenant plugin</a> to list the PodPriorityClasses available to them: <code>kubectl tenant get priorityclasses &lt;tenant-name&gt;</code></p>
+</div>
 <h3 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h3>
 <p>The operator will validate the <code>priorityClassName</code> field on workloads and controllers (Pods, Deployments, StatefulSets, ReplicaSets, Jobs, CronJobs, Daemonsets). The empty string (<code>""</code>) is treated as a valid <code>priorityClass</code> name — include <code>""</code> in <code>allowed</code> if you want to permit resources that omit a priority class.</p>
 <h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">#</a></h3>
@@ -4700,7 +4707,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx:1.23</span>
 </code></pre></div>
-<h3 id="behavior">Behavior<a class="headerlink" href="#behavior" title="Permanent link">#</a></h3>
+<h3 id="validation-behavior">Validation Behavior<a class="headerlink" href="#validation-behavior" title="Permanent link">#</a></h3>
 <ul>
 <li>The first Pod will be accepted because <code>high-priority</code> is in <code>podPriorityClasses.allowed</code>.</li>
 <li>The second Pod will be rejected by the operator if <code>low-priority</code> is not present in the allow-list.</li>
