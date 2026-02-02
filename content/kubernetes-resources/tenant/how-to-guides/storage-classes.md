@@ -17,17 +17,21 @@ spec:
       - shared
 ```
 
-### Deny-by-Default Behavior
+### Behavior
 
-This field follows a **deny-by-default** security model:
+This field follows a **secure-by-default** model. Configuring this field enables both the filtering functionality and automatic RBAC configuration for StorageClasses:
 
 | Spec State | Behavior |
 |------------|----------|
-| Field not specified (`nil`) | **Deny all** - feature disabled, tenants cannot use any storage classes |
-| Empty struct `{}` or `{allowed: []}` | **Allow all** - tenants can use any storage class in the cluster |
-| Specific values `{allowed: ["sc1"]}` | **Only allow specified** - tenants can only use listed storage classes |
+| Field not specified (`nil`) | **Feature disabled** - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for StorageClasses (if any) |
+| Empty struct `{}` or `{allowed: []}` | **Allow all** - the operator automatically configures RBAC so that tenants can use any storage class in the cluster |
+| Specific values `{allowed: ["sc1"]}` | **Only allow specified** - the operator automatically configures RBAC so that tenants can only use the listed storage classes |
 
-This ensures that cluster admins must explicitly opt-in to enable storage class access for tenants.
+!!! note
+    The filtering functionality only works when the `storageClasses` field is explicitly configured. Without it, the operator does not manage StorageClass access for the tenant.
+
+!!! tip
+    Tenant users can use the [kubectl-tenant plugin](../../../kubectlplugin/kubectl-tenant.md) to list the StorageClasses available to them: `kubectl tenant get storageclasses <tenant-name>`
 
 ### Notes
 

@@ -11,6 +11,9 @@ spec:
   quota: small
 ```
 
+!!! note
+    This minimal configuration does not specify `storageClasses`, `ingressClasses`, or `podPriorityClasses`. These features are disabled by default, leaving RBAC configuration for these cluster resources to the platform administrator. See the sections below for details on enabling these features.
+
 For a more comprehensive setup, a detailed Tenant definition includes various configurations:
 
 ```yaml
@@ -162,13 +165,13 @@ storageClasses:
     - shared
 ```
 
-The `storageClasses` field controls which StorageClasses a tenant may use for PersistentVolumeClaims. This field follows a **deny-by-default** security model:
+The `storageClasses` field controls which StorageClasses a tenant may use for PersistentVolumeClaims. This field follows a **secure-by-default** model. Configuring this field enables both the filtering functionality and automatic RBAC configuration:
 
 | Spec State | Behavior |
 |------------|----------|
-| Field not specified (`nil`) | **Deny all** - feature disabled, tenants cannot use any storage classes |
-| Empty struct `{}` or `{allowed: []}` | **Allow all** - tenants can use any storage class in the cluster |
-| Specific values `{allowed: ["sc1"]}` | **Only allow specified** - tenants can only use listed storage classes |
+| Field not specified (`nil`) | **Feature disabled** - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for StorageClasses (if any) |
+| Empty struct `{}` or `{allowed: []}` | **Allow all** - the operator automatically configures RBAC so that tenants can use any storage class in the cluster |
+| Specific values `{allowed: ["sc1"]}` | **Only allow specified** - the operator automatically configures RBAC so that tenants can only use the listed storage classes |
 
 The evaluation works as follows:
 
@@ -176,6 +179,9 @@ The evaluation works as follows:
 * If the `volumeName` is provided instead, the operator inspects the corresponding PersistentVolume to determine its class.
 * If neither `storageClass` nor `volumeName` is provided, the evaluation is deferred until a default storage class is set.
 * An empty string for `storageClass` (vs. null) is treated as the literal value `""`
+
+!!! tip
+    Tenant users can use the [kubectl-tenant plugin](../../kubectlplugin/kubectl-tenant.md) to list available StorageClasses: `kubectl tenant get storageclasses <tenant-name>`
 
 ## Ingress
 
@@ -189,13 +195,13 @@ ingressClasses:
   - traefik
 ```
 
-The `ingressClasses` field controls which IngressClasses a tenant may use. This field follows a **deny-by-default** security model:
+The `ingressClasses` field controls which IngressClasses a tenant may use. This field follows a **secure-by-default** model. Configuring this field enables both the filtering functionality and automatic RBAC configuration:
 
 | Spec State | Behavior |
 |------------|----------|
-| Field not specified (`nil`) | **Deny all** - feature disabled, tenants cannot create any Ingress resources |
-| Empty struct `{}` or `{allowed: []}` | **Allow all** - tenants can use any ingress class in the cluster |
-| Specific values `{allowed: ["nginx"]}` | **Only allow specified** - tenants can only use listed ingress classes |
+| Field not specified (`nil`) | **Feature disabled** - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for IngressClasses (if any) |
+| Empty struct `{}` or `{allowed: []}` | **Allow all** - the operator automatically configures RBAC so that tenants can use any ingress class in the cluster |
+| Specific values `{allowed: ["nginx"]}` | **Only allow specified** - the operator automatically configures RBAC so that tenants can only use the listed ingress classes |
 
 The empty string `""` is treated like any other IngressClass name. If no IngressClass is specified for an Ingress resource, it will be treated as `""` and must be included in the allow-list if permitted.
 
@@ -228,13 +234,13 @@ podPriorityClasses:
     - high-priority
 ```
 
-The `podPriorityClasses` field controls which PriorityClasses a tenant may use. This field follows a **deny-by-default** security model:
+The `podPriorityClasses` field controls which PriorityClasses a tenant may use. This field follows a **secure-by-default** model. Configuring this field enables both the filtering functionality and automatic RBAC configuration:
 
 | Spec State | Behavior |
 |------------|----------|
-| Field not specified (`nil`) | **Deny all** - feature disabled, tenants cannot specify any priority classes |
-| Empty struct `{}` or `{allowed: []}` | **Allow all** - tenants can use any priority class in the cluster |
-| Specific values `{allowed: ["high-priority"]}` | **Only allow specified** - tenants can only use listed priority classes |
+| Field not specified (`nil`) | **Feature disabled** - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for PodPriorityClasses (if any) |
+| Empty struct `{}` or `{allowed: []}` | **Allow all** - the operator automatically configures RBAC so that tenants can use any priority class in the cluster |
+| Specific values `{allowed: ["high-priority"]}` | **Only allow specified** - the operator automatically configures RBAC so that tenants can only use the listed priority classes |
 
 The following resources are validated for the `priorityClassName` field:
 
