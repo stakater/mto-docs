@@ -4743,6 +4743,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This minimal configuration does not specify <code>storageClasses</code>, <code>ingressClasses</code>, or <code>podPriorityClasses</code>. These features are disabled by default, leaving RBAC configuration for these cluster resources to the platform administrator. See the sections below for details on enabling these features.</p>
+</div>
 <p>For a more comprehensive setup, a detailed Tenant definition includes various configurations:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
@@ -4887,29 +4891,74 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">staging-fast</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared</span>
 </code></pre></div>
+<p>The <code>storageClasses</code> field controls which StorageClasses a tenant may use for PersistentVolumeClaims. This field follows a <strong>secure-by-default</strong> model. Configuring this field enables both the filtering functionality and automatic RBAC configuration:</p>
+<table>
+<thead>
+<tr>
+<th>Spec State</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Field not specified (<code>nil</code>)</td>
+<td><strong>Feature disabled</strong> - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for StorageClasses (if any)</td>
+</tr>
+<tr>
+<td>Empty struct <code>{}</code> or <code>{allowed: []}</code></td>
+<td><strong>Allow all</strong> - the operator automatically configures RBAC so that tenants can use any storage class in the cluster</td>
+</tr>
+<tr>
+<td>Specific values <code>{allowed: ["sc1"]}</code></td>
+<td><strong>Only allow specified</strong> - the operator automatically configures RBAC so that tenants can only use the listed storage classes</td>
+</tr>
+</tbody>
+</table>
+<p>The evaluation works as follows:</p>
 <ul>
-<li><code>allowed</code> can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the list.<br>
-  The evaluation works as follows:<ul>
-<li>If the <code>storageClass</code>-field set when creating a PersistentVolumeClaim, it is evaluated directly.</li>
-<li>If, instead, the <code>volumeName</code> is provided, the operator looks at the corresponding PersistentVolume to determine its class.</li>
-<li>If no <code>storageClass</code> or <code>volumeName</code> is provided, the evaluation is deferred until a default storage class is set.</li>
+<li>If the <code>storageClass</code> field is set when creating a PersistentVolumeClaim, it is evaluated directly.</li>
+<li>If the <code>volumeName</code> is provided instead, the operator inspects the corresponding PersistentVolume to determine its class.</li>
+<li>If neither <code>storageClass</code> nor <code>volumeName</code> is provided, the evaluation is deferred until a default storage class is set.</li>
 <li>An empty string for <code>storageClass</code> (vs. null) is treated as the literal value <code>""</code></li>
 </ul>
-</li>
-</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Tenant users can use the <a href="../../kubectlplugin/kubectl-tenant.html">kubectl-tenant plugin</a> to list available StorageClasses: <code>kubectl tenant get storageclasses &lt;tenant-name&gt;</code></p>
+</div>
 <h2 id="ingress">Ingress<a class="headerlink" href="#ingress" title="Permanent link">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This field is applicable only for Kubernetes. For more information, refer to the <a href="how-to-guides/ingress-sharding.html">Ingress Sharding Guide</a>.</p>
 </div>
-<ul>
-<li><code>allowed</code> restricts a tenant to creating Ingress resources only with the specified IngressClasses. The empty string <code>""</code> is treated like any other IngressClass name. If you use it while filtering IngressClasses, you must include <code>""</code> in the tenant's allow-list, or it will be filtered out. If no IngressClass is specified for an Ingress resource, it will be treated as <code>""</code>.</li>
-</ul>
 <div class="highlight"><pre><span></span><code><span class="nt">ingressClasses</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik</span>
 </code></pre></div>
+<p>The <code>ingressClasses</code> field controls which IngressClasses a tenant may use. This field follows a <strong>secure-by-default</strong> model. Configuring this field enables both the filtering functionality and automatic RBAC configuration:</p>
+<table>
+<thead>
+<tr>
+<th>Spec State</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Field not specified (<code>nil</code>)</td>
+<td><strong>Feature disabled</strong> - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for IngressClasses (if any)</td>
+</tr>
+<tr>
+<td>Empty struct <code>{}</code> or <code>{allowed: []}</code></td>
+<td><strong>Allow all</strong> - the operator automatically configures RBAC so that tenants can use any ingress class in the cluster</td>
+</tr>
+<tr>
+<td>Specific values <code>{allowed: ["nginx"]}</code></td>
+<td><strong>Only allow specified</strong> - the operator automatically configures RBAC so that tenants can only use the listed ingress classes</td>
+</tr>
+</tbody>
+</table>
+<p>The empty string <code>""</code> is treated like any other IngressClass name. If no IngressClass is specified for an Ingress resource, it will be treated as <code>""</code> and must be included in the allow-list if permitted.</p>
 <h2 id="service-accounts">Service Accounts<a class="headerlink" href="#service-accounts" title="Permanent link">#</a></h2>
 <ul>
 <li><code>denied</code> restricts the tenant from using the specified service accounts in pods, deployments, and other resources. The empty string <code>""</code> or no service account name is provided then it is treated as <code>default</code> service account name. <code>default</code> must be added to denied list if you want to block pods / pod controllers with default or empty service account</li>
@@ -4930,10 +4979,34 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-2</span>
 </code></pre></div>
 <h2 id="pod-priority-classes">Pod Priority Classes<a class="headerlink" href="#pod-priority-classes" title="Permanent link">#</a></h2>
-<ul>
-<li><code>allowed</code> restricts a tenant to creating pods only with the specified <code>priorityClasse</code>. The empty string <code>""</code> is treated like any other <code>priorityClass</code> name. If you use it while filtering PodPriorityClasses, you must include <code>""</code> in the tenant's allow-list, or it will be filtered out. If no PodPriorityClass is specified for a resource, it will be treated as <code>""</code>.</li>
-</ul>
-<p>Following resources will be watched for PodPriorityClasses:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">podPriorityClasses</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">allowed</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high-priority</span>
+</code></pre></div>
+<p>The <code>podPriorityClasses</code> field controls which PriorityClasses a tenant may use. This field follows a <strong>secure-by-default</strong> model. Configuring this field enables both the filtering functionality and automatic RBAC configuration:</p>
+<table>
+<thead>
+<tr>
+<th>Spec State</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Field not specified (<code>nil</code>)</td>
+<td><strong>Feature disabled</strong> - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for PodPriorityClasses (if any)</td>
+</tr>
+<tr>
+<td>Empty struct <code>{}</code> or <code>{allowed: []}</code></td>
+<td><strong>Allow all</strong> - the operator automatically configures RBAC so that tenants can use any priority class in the cluster</td>
+</tr>
+<tr>
+<td>Specific values <code>{allowed: ["high-priority"]}</code></td>
+<td><strong>Only allow specified</strong> - the operator automatically configures RBAC so that tenants can only use the listed priority classes</td>
+</tr>
+</tbody>
+</table>
+<p>The following resources are validated for the <code>priorityClassName</code> field:</p>
 <ul>
 <li>Pods</li>
 <li>Deployments</li>
@@ -4943,10 +5016,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li>CronJobs</li>
 <li>Daemonsets</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="nt">podPriorityClasses</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">allowed</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high-priority</span>
-</code></pre></div>
+<p>The empty string <code>""</code> is treated like any other <code>priorityClass</code> name. Include <code>""</code> in the allow-list to permit resources that omit a priority class.</p>
 <h2 id="image-registries">Image Registries<a class="headerlink" href="#image-registries" title="Permanent link">#</a></h2>
 <p>The <code>imageRegistries</code> field allows you to specify which container image registries are permitted for use within the tenant. This ensures that only trusted sources are used for pulling container images, enhancing security and compliance.</p>
 <ul>
