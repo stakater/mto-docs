@@ -19,6 +19,22 @@ The `ingressClasses` field in the Tenant specification is used to filter and con
 
 This ensures that tenants can only use the ingress controllers that are explicitly allowed, providing better control and security over the ingress resources within the Kubernetes cluster.
 
+### Behavior
+
+This field follows a **secure-by-default** model. Configuring this field enables both the filtering functionality and automatic RBAC configuration for IngressClasses:
+
+| Spec State | Behavior |
+|------------|----------|
+| Field not specified (`nil`) | **Feature disabled** - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for IngressClasses (if any) |
+| Empty struct `{}` or `{allowed: []}` | **Allow all** - the operator automatically configures RBAC so that tenants can use any ingress class in the cluster |
+| Specific values `{allowed: ["nginx"]}` | **Only allow specified** - the operator automatically configures RBAC so that tenants can only use the listed ingress classes |
+
+!!! note
+    The filtering functionality only works when the `ingressClasses` field is explicitly configured. Without it, the operator does not manage IngressClass access for the tenant.
+
+!!! tip
+    Tenant users can use the [kubectl-tenant plugin](../../../kubectlplugin/kubectl-tenant.md) to list the IngressClasses available to them: `kubectl tenant get ingressclasses <tenant-name>`
+
 ### Demo
 
 ![Ingress Class Demo](../../../images/ingress-class-demo.gif)
