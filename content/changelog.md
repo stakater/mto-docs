@@ -12,6 +12,20 @@ To upgrade to version 1.5.x from earlier minor versions, follow this migration g
 
 1. Migrate `ResourceSupervisor` CRs to `ClusterResourceSupervisor`. Refer to [Setup ClusterResourceSupervisor](https://docs.stakater.com/hibernation-operator/latest/how-to-guides/create-cluster-resource-supervisor.html) for detailed instructions.
 
+### v1.5.2
+
+#### Features
+
+- Now exposing more information about tenant available resources in tenant status: Quota, IngressClasses, PodPriorityClasses
+
+#### Bug Fixes
+
+- Namespace labels were not always added during creation, but patched after creation, which could lead to problems with [OVN-kubenretes](https://ovn-kubernetes.io/) on OpenShift
+- Tenant controller deadlock when tenant with `onDeletePurgeNamespaces: true` with non-deletable namespaces are deleted. 
+
+#### Changes to behavior
+- When a tenant with `onDeletePurgeNamespaces: true` is deleted, the operator no longer blocks the reconciler waiting for all namespaces to be deleted. Instead it will keep the finalizer and report which namespaces are not deleted in it's status conditions and only clean up after all namespaces have been successfully deleted.
+
 ### v1.5.1
 
 #### Bug Fixes
