@@ -21,9 +21,10 @@ To upgrade to version 1.5.x from earlier minor versions, follow this migration g
 #### Bug Fixes
 
 - Namespace labels were not always added during creation, but patched after creation, which could lead to problems with [OVN-kubenretes](https://ovn-kubernetes.io/) on OpenShift
-- Tenant controller deadlock when tenant with `onDeletePurgeNamespaces: true` with non-deletable namespaces are deleted. 
+- Tenant controller deadlock when tenant with `onDeletePurgeNamespaces: true` with non-deletable namespaces are deleted.
 
 #### Changes to behavior
+
 - When a tenant with `onDeletePurgeNamespaces: true` is deleted, the operator no longer blocks the reconciler waiting for all namespaces to be deleted. Instead it will keep the finalizer and report which namespaces are not deleted in it's status conditions and only clean up after all namespaces have been successfully deleted.
 
 ### v1.5.1
