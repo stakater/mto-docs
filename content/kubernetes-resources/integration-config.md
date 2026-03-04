@@ -298,7 +298,7 @@ Details on console GUI and showback can be found [here](../console/overview.md)
 
 MTO manages several dependencies (PostgreSQL, Prometheus, OpenCost, Dex) that can operate in two modes:
 
-- **Managed** (default): MTO deploys and manages the dependency via the MTO Dependencies Operator. You can customize the deployment using the `values` field, which accepts the respective Helm chart values.
+- **Managed** (default): MTO deploys and manages the dependency via the MTO Dependencies Operator. You can customize the deployment using the `values` field, which accepts the respective [Helm chart](https://helm.sh/) values.
 - **External**: Bring your own instance of the dependency. Provide connection details via the `external` field.
 
 #### PostgreSQL
@@ -339,6 +339,8 @@ The referenced secret should contain either:
 
 #### Prometheus
 
+The `values` field accepts [Prometheus Helm chart values](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml).
+
 ```yaml
 components:
   prometheus:
@@ -371,6 +373,8 @@ components:
 
 #### OpenCost
 
+The `values` field accepts [OpenCost Helm chart values](https://github.com/opencost/opencost-helm-chart/blob/main/charts/opencost/values.yaml).
+
 ```yaml
 components:
   opencost:
@@ -401,6 +405,8 @@ components:
 - `external.serverURL`: The base URL of the external OpenCost server for query API access.
 
 #### Dex
+
+The `values` field accepts [Dex Helm chart values](https://github.com/dexidp/helm-charts/blob/master/charts/dex/values.yaml).
 
 ```yaml
 components:
