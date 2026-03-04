@@ -206,6 +206,24 @@ Following are the different components that can be used to configure multi-tenan
 
       opencostServiceRoleArn: arn:aws:iam::123456789012:role/S3Access
       retentionPeriod: 7d
+    postgres:
+      mode: Managed
+      values:
+        primary:
+          persistence:
+            size: "20Gi"
+    prometheus:
+      mode: External
+      external:
+        serverURL: https://prometheus.example.com
+    opencost:
+      mode: Managed
+    dex:
+      mode: External
+      external:
+        issuer: https://dex.example.com
+    dexConfigOperator: {}
+    finopsOperator: {}
     ingress:
       ingressClassName: nginx
       keycloak:
@@ -216,6 +234,12 @@ Following are the different components that can be used to configure multi-tenan
         tlsSecretName: tenant-operator-tls
       gateway:
         host: tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud
+        tlsSecretName: tenant-operator-tls
+      dex:
+        host: tenant-operator-dex.apps.mycluster-ams.abcdef.cloud
+        tlsSecretName: tenant-operator-tls
+      finopsGateway:
+        host: tenant-operator-finops.apps.mycluster-ams.abcdef.cloud
         tlsSecretName: tenant-operator-tls
 ```
 
