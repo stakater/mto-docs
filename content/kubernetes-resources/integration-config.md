@@ -657,7 +657,7 @@ If `authMethod` is set to `token`, then admins have to specify the following fie
     - `name:` Name of the secret containing Vault token.
     - `namespace:` Namespace of the secret containing Vault token.
 
-For more details around enabling Kubernetes auth in Vault, visit [here](https://developer.hashicorp.com/vault/docs/auth/kubernetes)
+For more details around enabling Kubernetes auth in Vault, visit [here](https://developer.HashiCorp.com/vault/docs/auth/kubernetes)
 
 #### Vault Policies
 
