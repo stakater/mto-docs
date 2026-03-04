@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.6.x
+
+### v1.6.0
+
+#### Features
+
+- Support for [Dex](https://dexidp.io/) as an authentication service. Users can now use Dex instead of Keycloak for authentication. This feature also introduces the DexConfigOperator, which simplifies configuring Dex on Kubernetes.
+
+- Support for bringing your own dependencies. Users can now bring their own PostgreSQL, Prometheus, OpenCost, or Dex instances and use them with MTO.
+
+- MTO now bundles the FinOps Operator to power showback features.
+
+- Added the MTO Dependencies Operator, a Helm-based operator that manages the lifecycle of MTO's dependencies, including FinOps Operator, Dex, DexConfigOperator, Prometheus, OpenCost, and PostgreSQL.
+
 ## v1.5.x
 
 To upgrade to version 1.5.x from earlier minor versions, follow this migration guide:
