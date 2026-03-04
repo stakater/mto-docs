@@ -32,7 +32,7 @@ This guide provides step-by-step instructions for integrating **Vault** with **K
     - Claim: groups
     - Sync Mode: FORCE
 
-   ![Keycloak IDP Mapper showing how the group IDs claim is mapped to the user attribute.](../../images/keycloak-idp-mapper.png)
+   ![Keycloak IdP Mapper showing how the group IDs claim is mapped to the user attribute.](../../images/keycloak-idp-mapper.png)
 
 ### Step 3: Set Up a Mapper for Vault Client in Keycloak
 
