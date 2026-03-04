@@ -22,6 +22,8 @@ To upgrade to version 1.6.x from 1.5.x, follow this migration guide:
 
 - Added the MTO Dependencies Operator, a Helm-based operator that manages the lifecycle of MTO's dependencies, including FinOps Operator, Dex, DexConfigOperator, Prometheus, OpenCost, and PostgreSQL.
 
+- Users can now configure values for each MTO component via [IntegrationConfig](./kubernetes-resources/integration-config.md).
+
 ## v1.5.x
 
 To upgrade to version 1.5.x from earlier minor versions, follow this migration guide:
