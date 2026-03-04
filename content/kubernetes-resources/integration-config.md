@@ -303,6 +303,8 @@ MTO manages several dependencies (PostgreSQL, Prometheus, OpenCost, Dex) that ca
 
 #### PostgreSQL
 
+The `values` field accepts [Bitnami PostgreSQL Helm chart values](https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml).
+
 ```yaml
 components:
   postgres:
