@@ -2,13 +2,10 @@
 
 ## v1.6.x
 
-To upgrade to version 1.6.x from 1.5.x, follow this migration guide:
+To upgrade to version 1.6.x from 1.5.x:
 
-1. Uninstall the `Multi Tenant Operator` from your cluster to ensure a safe migration.
-
-1. Reinstall with the newer version:
-    - For OpenShift: Update the channel to `release-1.6` in your Subscription.
-    - For Kubernetes: Update the Helm chart version to 1.6.x.
+- For OpenShift: Update the channel from `release-1.5` to `release-1.6` in your OLM Subscription.
+- For Kubernetes: Update the Helm chart version to 1.6.x.
 
 ### v1.6.0
 
