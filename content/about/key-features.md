@@ -51,9 +51,9 @@ Provides tools to forecast and allocate resources effectively, ensuring optimal 
 
 ## Integration Features
 
-### Hashicorp Vault Multi-tenancy
+### HashiCorp Vault Multi-tenancy
 
-Multi Tenant Operator extends the tenant's permission model to Hashicorp Vault where it can create Vault paths and greatly ease the overhead of managing RBAC in Vault. Tenant users can manage their own secrets without the concern of someone else having access to their Vault paths.
+Multi Tenant Operator extends the tenant's permission model to HashiCorp Vault where it can create Vault paths and greatly ease the overhead of managing RBAC in Vault. Tenant users can manage their own secrets without the concern of someone else having access to their Vault paths.
 
 More details on [Vault Multi-tenancy](../integrations/vault/vault.md)
 

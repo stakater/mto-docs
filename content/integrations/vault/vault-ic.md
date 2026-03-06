@@ -2,7 +2,7 @@
 
 [Vault](https://www.vaultproject.io/) is used to secure, store and tightly control access to tokens, passwords, certificates, and encryption keys for protecting secrets and other sensitive data using a UI, CLI, or http API.
 
-To enable Vault multi-tenancy, a role has to be created in Vault under [Kubernetes authentication](https://developer.hashicorp.com/vault/docs/auth/kubernetes) with the following permissions:
+To enable Vault multi-tenancy, a role has to be created in Vault under [Kubernetes authentication](https://developer.HashiCorp.com/vault/docs/auth/kubernetes) with the following permissions:
 
 ```yaml
 path "secret/*" {
@@ -93,4 +93,4 @@ Now Bill goes to `Vault` and sees that a path for `tenant` has been made under t
 
 Now if Anna sign's in to the Vault via OIDC, she can see her tenants path and secrets. Whereas if John sign's in to the Vault via OIDC, he can't see his tenants path or secrets as he doesn't have the access required to view them.
 
-For more details around enabling Kubernetes auth in Vault, visit [here](https://developer.hashicorp.com/vault/docs/auth/kubernetes)
+For more details around enabling Kubernetes auth in Vault, visit [here](https://developer.HashiCorp.com/vault/docs/auth/kubernetes)

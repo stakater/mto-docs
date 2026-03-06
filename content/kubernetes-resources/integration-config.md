@@ -48,6 +48,30 @@ spec:
       gateway:
         host: tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud
         tlsSecretName: tenant-operator-tls
+      dex:
+        host: tenant-operator-dex.apps.mycluster-ams.abcdef.cloud
+        tlsSecretName: tenant-operator-tls
+      finopsGateway:
+        host: tenant-operator-finops.apps.mycluster-ams.abcdef.cloud
+        tlsSecretName: tenant-operator-tls
+    postgres:
+      mode: Managed
+      values:
+        primary:
+          persistence:
+            size: "20Gi"
+    prometheus:
+      mode: External
+      external:
+        serverURL: https://prometheus.example.com
+    opencost:
+      mode: Managed
+    dex:
+      mode: External
+      external:
+        issuer: https://dex.example.com
+    dexConfigOperator: {}
+    finopsOperator: {}
   accessControl:
     rbac:
       tenantRoles:
@@ -182,6 +206,24 @@ Following are the different components that can be used to configure multi-tenan
 
       opencostServiceRoleArn: arn:aws:iam::123456789012:role/S3Access
       retentionPeriod: 7d
+    postgres:
+      mode: Managed
+      values:
+        primary:
+          persistence:
+            size: "20Gi"
+    prometheus:
+      mode: External
+      external:
+        serverURL: https://prometheus.example.com
+    opencost:
+      mode: Managed
+    dex:
+      mode: External
+      external:
+        issuer: https://dex.example.com
+    dexConfigOperator: {}
+    finopsOperator: {}
     ingress:
       ingressClassName: nginx
       keycloak:
@@ -192,6 +234,12 @@ Following are the different components that can be used to configure multi-tenan
         tlsSecretName: tenant-operator-tls
       gateway:
         host: tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud
+        tlsSecretName: tenant-operator-tls
+      dex:
+        host: tenant-operator-dex.apps.mycluster-ams.abcdef.cloud
+        tlsSecretName: tenant-operator-tls
+      finopsGateway:
+        host: tenant-operator-finops.apps.mycluster-ams.abcdef.cloud
         tlsSecretName: tenant-operator-tls
 ```
 
@@ -208,11 +256,23 @@ Following are the different components that can be used to configure multi-tenan
     - `keycloak:` Settings for the Keycloak's ingress.
         - `host:` hostname for the Keycloak's ingress.
         - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the Keycloak's ingress.
+    - `dex:` Settings for the Dex's ingress.
+        - `host:` hostname for the Dex's ingress.
+        - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the Dex's ingress.
+    - `finopsGateway:` Settings for the FinOps Gateway's ingress.
+        - `host:` hostname for the FinOps Gateway's ingress.
+        - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the FinOps Gateway's ingress.
 - `components.showbackOpts:` Configures the showback feature with the following options:
     - `custom:` Custom pricing model for showback.
     - `cloudPricingSecretRef:` Secret reference for AWS / Azure Pricing model.
     - `opencostServiceRoleArn`: Role ARN to be used by OpenCost gateway's service account
     - `retentionPeriod`: Retention period to configure `--storage.tsdb.retention.time` parameter of MTO Prometheus Deployment
+- `components.postgres:` Configures PostgreSQL. See [Dependency Management](#dependency-management) below.
+- `components.prometheus:` Configures Prometheus. See [Dependency Management](#dependency-management) below.
+- `components.opencost:` Configures OpenCost. See [Dependency Management](#dependency-management) below.
+- `components.dex:` Configures Dex. See [Dependency Management](#dependency-management) below.
+- `components.dexConfigOperator:` Configures DexConfigOperator. See [DexConfigOperator](#dexconfigoperator) below.
+- `components.finopsOperator:` Configures FinOps Operator. See [FinOps Operator](#finops-operator) below.
 
 Here's an example of how to generate the secrets required to configure MTO:
 
@@ -233,6 +293,165 @@ Integration config will be managing the following resources required for console
 - `Showback` cron-job
 
 Details on console GUI and showback can be found [here](../console/overview.md)
+
+### Dependency Management
+
+MTO manages several dependencies (PostgreSQL, Prometheus, OpenCost, Dex) that can operate in two modes:
+
+- **Managed** (default): MTO deploys and manages the dependency via the MTO Dependencies Operator. You can customize the deployment using the `values` field, which accepts the respective [Helm chart](https://helm.sh/) values.
+- **External**: Bring your own instance of the dependency. Provide connection details via the `external` field.
+
+#### PostgreSQL
+
+The `values` field accepts [Bitnami PostgreSQL Helm chart values](https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml).
+
+```yaml
+components:
+  postgres:
+    mode: Managed # or External
+    values:
+      primary:
+        persistence:
+          size: "20Gi"
+        resources:
+          limits:
+            cpu: "2"
+            memory: "4Gi"
+          requests:
+            cpu: "500m"
+            memory: "2Gi"
+```
+
+To use an external PostgreSQL instance, set `mode: External` and provide connection details:
+
+```yaml
+components:
+  postgres:
+    mode: External
+    external:
+      secretRef:
+        name: external-postgres-connection
+        namespace: shared-services
+```
+
+The referenced secret should contain either:
+
+- A `dsn` field with a full connection string: `postgresql://user:pass@host:5432/dbname?sslmode=require`
+- Or individual fields: `host`, `port`, `username`, `password`, `database`, `sslmode`
+
+#### Prometheus
+
+The `values` field accepts [Prometheus Helm chart values](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml).
+
+```yaml
+components:
+  prometheus:
+    mode: Managed # or External
+    values:
+      server:
+        retention: "30d"
+        persistence:
+          size: "50Gi"
+        resources:
+          limits:
+            cpu: "2"
+            memory: "8Gi"
+          requests:
+            cpu: "500m"
+            memory: "4Gi"
+```
+
+To use an external Prometheus instance:
+
+```yaml
+components:
+  prometheus:
+    mode: External
+    external:
+      serverURL: https://prometheus.example.com
+```
+
+- `external.serverURL`: The base URL of the external Prometheus server for query API access.
+
+#### OpenCost
+
+The `values` field accepts [OpenCost Helm chart values](https://github.com/opencost/opencost-helm-chart/blob/main/charts/opencost/values.yaml).
+
+```yaml
+components:
+  opencost:
+    mode: Managed # or External
+    values:
+      opencost:
+        exporter:
+          replicas: 2
+          resources:
+            limits:
+              cpu: "1"
+              memory: "2Gi"
+            requests:
+              cpu: "200m"
+              memory: "512Mi"
+```
+
+To use an external OpenCost instance:
+
+```yaml
+components:
+  opencost:
+    mode: External
+    external:
+      serverURL: https://opencost.example.com
+```
+
+- `external.serverURL`: The base URL of the external OpenCost server for query API access.
+
+#### Dex
+
+The `values` field accepts [Dex Helm chart values](https://github.com/dexidp/helm-charts/blob/master/charts/dex/values.yaml).
+
+```yaml
+components:
+  dex:
+    mode: Managed # or External
+    values: {}
+```
+
+To use an external Dex instance:
+
+```yaml
+components:
+  dex:
+    mode: External
+    external:
+      issuer: https://dex.example.com
+```
+
+- `external.issuer`: The URL of the external Dex issuer, used for OIDC discovery.
+
+### DexConfigOperator
+
+DexConfigOperator helps configure Dex on Kubernetes. Its deployment can be customized via Helm chart values:
+
+```yaml
+components:
+  dexConfigOperator:
+    values: {}
+```
+
+- `values`: Helm chart values for customizing the DexConfigOperator deployment.
+
+### FinOps Operator
+
+The FinOps Operator powers the showback features in MTO. Its deployment can be customized via Helm chart values:
+
+```yaml
+components:
+  finopsOperator:
+    values: {}
+```
+
+- `values`: Helm chart values for customizing the FinOps Operator deployment.
 
 ### Custom Pricing
 
@@ -657,7 +876,7 @@ If `authMethod` is set to `token`, then admins have to specify the following fie
     - `name:` Name of the secret containing Vault token.
     - `namespace:` Namespace of the secret containing Vault token.
 
-For more details around enabling Kubernetes auth in Vault, visit [here](https://developer.hashicorp.com/vault/docs/auth/kubernetes)
+For more details around enabling Kubernetes auth in Vault, visit [here](https://developer.HashiCorp.com/vault/docs/auth/kubernetes)
 
 #### Vault Policies
 
