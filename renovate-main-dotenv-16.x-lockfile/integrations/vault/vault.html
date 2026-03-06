@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
     
     
       
@@ -4597,7 +4597,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <h1 id="multi-tenancy-in-vault">Multi-Tenancy in Vault<a class="headerlink" href="#multi-tenancy-in-vault" title="Permanent link">#</a></h1>
 <h2 id="vault-multitenancy">Vault Multitenancy<a class="headerlink" href="#vault-multitenancy" title="Permanent link">#</a></h2>
-<p>Hashicorp Vault is an identity-based secret and encryption management system. Vault validates and authorizes a system's clients (users, machines, apps) before providing them access to secrets or stored sensitive data.</p>
+<p>HashiCorp Vault is an identity-based secret and encryption management system. Vault validates and authorizes a system's clients (users, machines, apps) before providing them access to secrets or stored sensitive data.</p>
 <h2 id="vault-integration-in-multi-tenant-operator">Vault integration in Multi Tenant Operator<a class="headerlink" href="#vault-integration-in-multi-tenant-operator" title="Permanent link">#</a></h2>
 <h3 id="service-account-auth-in-vault">Service Account Auth in Vault<a class="headerlink" href="#service-account-auth-in-vault" title="Permanent link">#</a></h3>
 <p>MTO enables the <a href="https://www.Vaultproject.io/docs/auth/kubernetes">Kubernetes auth method</a> which can be used to authenticate with Vault using a Kubernetes Service Account Token. When enabled, for every tenant namespace, MTO automatically creates policies and roles that allow the service accounts present in those namespaces to <strong>read</strong> secrets at tenant's path in Vault. The name of the role is the same as <strong>namespace</strong> name.</p>
@@ -4605,7 +4605,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>The Diagram shows how MTO enables ServiceAccounts to read secrets from Vault.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/mto-vault-k8s-auth-workflow.png" data-desc-position="bottom"><img alt="image" src="../../images/mto-vault-k8s-auth-workflow.png"></a></p>
 <h3 id="user-oidc-auth-in-vault">User OIDC Auth in Vault<a class="headerlink" href="#user-oidc-auth-in-vault" title="Permanent link">#</a></h3>
-<p>This requires a running <code>RHSSO(RedHat Single Sign On)</code> instance integrated with Vault over <a href="https://developer.hashicorp.com/vault/docs/auth/jwt">OIDC</a> login method.</p>
+<p>This requires a running <code>RHSSO(RedHat Single Sign On)</code> instance integrated with Vault over <a href="https://developer.HashiCorp.com/vault/docs/auth/jwt">OIDC</a> login method.</p>
 <p>MTO creates specific policies in Vault for its tenant users.</p>
 <p>Mapping of tenant roles to Vault is shown below</p>
 <table>
