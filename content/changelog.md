@@ -1,5 +1,26 @@
 # Changelog
 
+## v1.6.x
+
+To upgrade to version 1.6.x from 1.5.x:
+
+- For OpenShift: Update the channel from `release-1.5` to `release-1.6` in your OLM Subscription.
+- For Kubernetes: Update the Helm chart version to 1.6.x.
+
+### v1.6.0
+
+#### Features
+
+- Support for [Dex](https://dexidp.io/) as an authentication service. Users can now use Dex instead of Keycloak for authentication. This feature also introduces the DexConfigOperator, which simplifies configuring Dex on Kubernetes.
+
+- Support for bringing your own dependencies. Users can now bring their own PostgreSQL, Prometheus, OpenCost, or Dex instances and use them with MTO.
+
+- MTO now bundles the FinOps Operator to power showback features.
+
+- Added the MTO Dependencies Operator, a Helm-based operator that manages the lifecycle of MTO's dependencies, including FinOps Operator, Dex, DexConfigOperator, Prometheus, OpenCost, and PostgreSQL.
+
+- Users can now configure values for each MTO component via [IntegrationConfig](./kubernetes-resources/integration-config.md).
+
 ## v1.5.x
 
 To upgrade to version 1.5.x from earlier minor versions, follow this migration guide:
@@ -11,6 +32,21 @@ To upgrade to version 1.5.x from earlier minor versions, follow this migration g
     - For Kubernetes: Update the Helm chart version to 1.5.x.
 
 1. Migrate `ResourceSupervisor` CRs to `ClusterResourceSupervisor`. Refer to [Setup ClusterResourceSupervisor](https://docs.stakater.com/hibernation-operator/latest/how-to-guides/create-cluster-resource-supervisor.html) for detailed instructions.
+
+### v1.5.2
+
+#### Features
+
+- Now exposing more information about tenant available resources in tenant status: Quota, IngressClasses, PodPriorityClasses
+
+#### Bug Fixes
+
+- Namespace labels were not always added during creation, but patched after creation, which could lead to problems with [OVN-kubenretes](https://ovn-kubernetes.io/) on OpenShift
+- Tenant controller deadlock when tenant with `onDeletePurgeNamespaces: true` with non-deletable namespaces are deleted.
+
+#### Changes to behavior
+
+- When a tenant with `onDeletePurgeNamespaces: true` is deleted, the operator no longer blocks the reconciler waiting for all namespaces to be deleted. Instead it will keep the finalizer and report which namespaces are not deleted in it's status conditions and only clean up after all namespaces have been successfully deleted.
 
 ### v1.5.1
 

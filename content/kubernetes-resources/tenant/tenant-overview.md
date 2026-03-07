@@ -11,6 +11,9 @@ spec:
   quota: small
 ```
 
+!!! note
+    This minimal configuration does not specify `storageClasses`, `ingressClasses`, or `podPriorityClasses`. These features are disabled by default, leaving RBAC configuration for these cluster resources to the platform administrator. See the sections below for details on enabling these features.
+
 For a more comprehensive setup, a detailed Tenant definition includes various configurations:
 
 ```yaml
@@ -162,19 +165,28 @@ storageClasses:
     - shared
 ```
 
-* `allowed` can be used to limit a tenant to only being able to create PersistentVolumeClaims for StorageClasses in the list.  
-  The evaluation works as follows:
-    * If the `storageClass`-field set when creating a PersistentVolumeClaim, it is evaluated directly.
-    * If, instead, the `volumeName` is provided, the operator looks at the corresponding PersistentVolume to determine its class.
-    * If no `storageClass` or `volumeName` is provided, the evaluation is deferred until a default storage class is set.
-    * An empty string for `storageClass` (vs. null) is treated as the literal value `""`
+The `storageClasses` field controls which StorageClasses a tenant may use for PersistentVolumeClaims. This field follows a **secure-by-default** model. Configuring this field enables both the filtering functionality and automatic RBAC configuration:
+
+| Spec State | Behavior |
+|------------|----------|
+| Field not specified (`nil`) | **Feature disabled** - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for StorageClasses (if any) |
+| Empty struct `{}` or `{allowed: []}` | **Allow all** - the operator automatically configures RBAC so that tenants can use any storage class in the cluster |
+| Specific values `{allowed: ["sc1"]}` | **Only allow specified** - the operator automatically configures RBAC so that tenants can only use the listed storage classes |
+
+The evaluation works as follows:
+
+* If the `storageClass` field is set when creating a PersistentVolumeClaim, it is evaluated directly.
+* If the `volumeName` is provided instead, the operator inspects the corresponding PersistentVolume to determine its class.
+* If neither `storageClass` nor `volumeName` is provided, the evaluation is deferred until a default storage class is set.
+* An empty string for `storageClass` (vs. null) is treated as the literal value `""`
+
+!!! tip
+    Tenant users can use the [kubectl-tenant plugin](../../kubectlplugin/kubectl-tenant.md) to list available StorageClasses: `kubectl tenant get storageclasses <tenant-name>`
 
 ## Ingress
 
 !!! note
     This field is applicable only for Kubernetes. For more information, refer to the [Ingress Sharding Guide](../tenant/how-to-guides/ingress-sharding.md).
-
-* `allowed` restricts a tenant to creating Ingress resources only with the specified IngressClasses. The empty string `""` is treated like any other IngressClass name. If you use it while filtering IngressClasses, you must include `""` in the tenant's allow-list, or it will be filtered out. If no IngressClass is specified for an Ingress resource, it will be treated as `""`.
 
 ```yaml
 ingressClasses:
@@ -182,6 +194,16 @@ ingressClasses:
   - nginx
   - traefik
 ```
+
+The `ingressClasses` field controls which IngressClasses a tenant may use. This field follows a **secure-by-default** model. Configuring this field enables both the filtering functionality and automatic RBAC configuration:
+
+| Spec State | Behavior |
+|------------|----------|
+| Field not specified (`nil`) | **Feature disabled** - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for IngressClasses (if any) |
+| Empty struct `{}` or `{allowed: []}` | **Allow all** - the operator automatically configures RBAC so that tenants can use any ingress class in the cluster |
+| Specific values `{allowed: ["nginx"]}` | **Only allow specified** - the operator automatically configures RBAC so that tenants can only use the listed ingress classes |
+
+The empty string `""` is treated like any other IngressClass name. If no IngressClass is specified for an Ingress resource, it will be treated as `""` and must be included in the allow-list if permitted.
 
 ## Service Accounts
 
@@ -206,9 +228,21 @@ serviceAccounts:
 
 ## Pod Priority Classes
 
-* `allowed` restricts a tenant to creating pods only with the specified `priorityClasse`. The empty string `""` is treated like any other `priorityClass` name. If you use it while filtering PodPriorityClasses, you must include `""` in the tenant's allow-list, or it will be filtered out. If no PodPriorityClass is specified for a resource, it will be treated as `""`.
+```yaml
+podPriorityClasses:
+  allowed:
+    - high-priority
+```
 
-Following resources will be watched for PodPriorityClasses:
+The `podPriorityClasses` field controls which PriorityClasses a tenant may use. This field follows a **secure-by-default** model. Configuring this field enables both the filtering functionality and automatic RBAC configuration:
+
+| Spec State | Behavior |
+|------------|----------|
+| Field not specified (`nil`) | **Feature disabled** - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for PodPriorityClasses (if any) |
+| Empty struct `{}` or `{allowed: []}` | **Allow all** - the operator automatically configures RBAC so that tenants can use any priority class in the cluster |
+| Specific values `{allowed: ["high-priority"]}` | **Only allow specified** - the operator automatically configures RBAC so that tenants can only use the listed priority classes |
+
+The following resources are validated for the `priorityClassName` field:
 
 * Pods
 * Deployments
@@ -218,12 +252,7 @@ Following resources will be watched for PodPriorityClasses:
 * CronJobs
 * Daemonsets
 
-```yaml
-
-podPriorityClasses:
-  allowed:
-    - high-priority
-```
+The empty string `""` is treated like any other `priorityClass` name. Include `""` in the allow-list to permit resources that omit a priority class.
 
 ## Image Registries
 

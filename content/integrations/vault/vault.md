@@ -2,7 +2,7 @@
 
 ## Vault Multitenancy
 
-Hashicorp Vault is an identity-based secret and encryption management system. Vault validates and authorizes a system's clients (users, machines, apps) before providing them access to secrets or stored sensitive data.
+HashiCorp Vault is an identity-based secret and encryption management system. Vault validates and authorizes a system's clients (users, machines, apps) before providing them access to secrets or stored sensitive data.
 
 ## Vault integration in Multi Tenant Operator
 
@@ -18,7 +18,7 @@ The Diagram shows how MTO enables ServiceAccounts to read secrets from Vault.
 
 ### User OIDC Auth in Vault
 
-This requires a running `RHSSO(RedHat Single Sign On)` instance integrated with Vault over [OIDC](https://developer.hashicorp.com/vault/docs/auth/jwt) login method.
+This requires a running `RHSSO(RedHat Single Sign On)` instance integrated with Vault over [OIDC](https://developer.HashiCorp.com/vault/docs/auth/jwt) login method.
 
 MTO creates specific policies in Vault for its tenant users.
 

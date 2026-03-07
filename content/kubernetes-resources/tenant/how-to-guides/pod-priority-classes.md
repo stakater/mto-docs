@@ -16,6 +16,22 @@ spec:
       - high-priority
 ```
 
+### Behavior
+
+This field follows a **secure-by-default** model. Configuring this field enables both the filtering functionality and automatic RBAC configuration for PodPriorityClasses:
+
+| Spec State | Behavior |
+|------------|----------|
+| Field not specified (`nil`) | **Feature disabled** - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for PodPriorityClasses (if any) |
+| Empty struct `{}` or `{allowed: []}` | **Allow all** - the operator automatically configures RBAC so that tenants can use any priority class in the cluster |
+| Specific values `{allowed: ["high-priority"]}` | **Only allow specified** - the operator automatically configures RBAC so that tenants can only use the listed priority classes |
+
+!!! note
+    The filtering functionality only works when the `podPriorityClasses` field is explicitly configured. Without it, the operator does not manage PodPriorityClass access for the tenant.
+
+!!! tip
+    Tenant users can use the [kubectl-tenant plugin](../../../kubectlplugin/kubectl-tenant.md) to list the PodPriorityClasses available to them: `kubectl tenant get priorityclasses <tenant-name>`
+
 ### Notes
 
 The operator will validate the `priorityClassName` field on workloads and controllers (Pods, Deployments, StatefulSets, ReplicaSets, Jobs, CronJobs, Daemonsets). The empty string (`""`) is treated as a valid `priorityClass` name — include `""` in `allowed` if you want to permit resources that omit a priority class.
@@ -50,7 +66,7 @@ spec:
       image: nginx:1.23
 ```
 
-### Behavior
+### Validation Behavior
 
 - The first Pod will be accepted because `high-priority` is in `podPriorityClasses.allowed`.
 - The second Pod will be rejected by the operator if `low-priority` is not present in the allow-list.
