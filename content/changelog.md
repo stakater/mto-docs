@@ -9,6 +9,8 @@ To upgrade to version 1.6.x from 1.5.x:
 
 ### v1.6.0
 
+_**March 6, 2026**_
+
 #### Features
 
 - Support for [Dex](https://dexidp.io/) as an authentication service. Users can now use Dex instead of Keycloak for authentication. This feature also introduces the DexConfigOperator, which simplifies configuring Dex on Kubernetes.
@@ -35,6 +37,8 @@ To upgrade to version 1.5.x from earlier minor versions, follow this migration g
 
 ### v1.5.2
 
+_**February 17, 2026**_
+
 #### Features
 
 - Now exposing more information about tenant available resources in tenant status: Quota, IngressClasses, PodPriorityClasses
@@ -50,12 +54,16 @@ To upgrade to version 1.5.x from earlier minor versions, follow this migration g
 
 ### v1.5.1
 
+_**November 10, 2025**_
+
 #### Bug Fixes
 
 - Fixed namespace metadata not being applied during tenant namespace creation.
 - Visual improvements and bug fixes in MTO Console.
 
 ### v1.5.0
+
+_**October 7, 2025**_
 
 #### Features
 
@@ -85,6 +93,8 @@ This migration is of non-destructive nature because resources are transferred to
 
 ### v1.4.2
 
+_**September 8, 2025**_
+
 #### Enhancements
 
 - Updated Console image to have the latest design for `Showback Export functionality`, letting users download CSV with usage data of their Tenant namespaces.
@@ -96,11 +106,15 @@ This migration is of non-destructive nature because resources are transferred to
 
 ### v1.4.1
 
+_**September 5, 2025**_
+
 #### Enhancements
 
 - Added `storageclasses` to Tenant status for tracking of available `Storage Classes` for a tenant
 
 ### v1.4.0
+
+_**August 26, 2025**_
 
 #### Features
 
@@ -120,6 +134,8 @@ This migration is of non-destructive nature because resources are transferred to
 ## v1.3.x
 
 ### v1.3.0
+
+_**June 11, 2025**_
 
 #### Features
 
@@ -149,6 +165,8 @@ This migration is of non-destructive nature because resources are transferred to
 - Re-certified v1.2.0 for OpenShift versions as v1.2.1, with open value in versions. From now on, MTO will be available automatically on every new OpenShift version.
 
 ### v1.2.0
+
+_**March 19, 2025**_
 
 - Newly released on RedHat OperatorHub for OpenShift 4.17 and 4.18 as well.
 
@@ -180,6 +198,8 @@ Before upgrading to v1.2.0, perform the following steps:
 ## v1.1.x
 
 ### v1.1.0
+
+_**January 27, 2025**_
 
 #### Features
 
@@ -233,6 +253,8 @@ Before upgrading to v1.1.0, perform the following steps:
 ## v1.0.x
 
 ### v1.0.0
+
+_**October 16, 2024**_
 
 #### Features
 
