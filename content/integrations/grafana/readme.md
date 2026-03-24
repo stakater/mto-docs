@@ -12,7 +12,7 @@ The Grafana Extension (GEX) integrates **Grafana** with **MTO Tenants** to deliv
 * **OAuth** for humans (via OAuth, e.g., Dex/Keycloak/Entra) and basic auth for API access for machines.
 
 GEX operates against a **single Grafana instance** and scales tenants as `orgs` inside it.  
-It **does not install or operate Grafana itself** — it only wires Grafana to your MTO tenants via the Grafana HTTP API.
+It **does not install or operate Grafana itself** — it only wires Grafana to your MTO tenants via the Grafana `HTTP` API.
 
 ---
 
@@ -82,8 +82,8 @@ flowchart TD
 
     * creation of organisation per tenant
     * organisation members
-    * configmap in Kubernetes
-    * configuration of `orgs`, users, SSO, `datasources`, dashboards, and folders via the Grafana HTTP API
+    * ConfigMap in Kubernetes
+    * configuration of `orgs`, users, SSO, `datasources`, dashboards, and folders via the Grafana `HTTP` API
 * **SSO extension manages:**
 
     * Your IdP (Dex/Keycloak/Entra) & publishes an SSO **contract** (issuer, `groupsClaim`, `grafana` clientID/secret, group patterns) via CR **status** or a labeled **Secret**.
@@ -92,13 +92,13 @@ flowchart TD
     * Operating Grafana (resources, storage, backup/restore, version upgrades).
     * Grafana resources (plugins, dashboards, etc...) that are not provisioned through GEX i.e. installed directly into Grafana by user with [correct permissions][1]
 
-> GEX configures Grafana via the HTTP API. It does not modify Grafana Operator CRDs, avoiding installation lifecycle conflicts.
+> GEX configures Grafana via the `HTTP` API. It does not modify Grafana Operator CRDs, avoiding installation lifecycle conflicts.
 
 ---
 
 ## 5) Prerequisites
 
-1. **Grafana** reachable via service url (`http://grafana.telemetry.svc.cluster.local`).
+1. **Grafana** reachable via service URL (`http://grafana.telemetry.svc.cluster.local`).
 1. **Grafana** must be in **[multi-org mode](#1111-what-is-multi-org-mode-in-grafana)** and allow API admin access.
 1. **SSO extension** installed and configured; publishes **issuer**, **`groupsClaim`**, and `grafana` client.
 1. **Network/TLS**: Pods allowed to egress to Grafana; trust chain available.
@@ -181,7 +181,7 @@ spec:
   deletionPolicy: Delete
 ```
 
-> GEX uses the Grafana HTTP API to manage configuration directly in the Grafana database.
+> GEX uses the Grafana `HTTP` API to manage configuration directly in the Grafana database.
 > See [Appendix 11.5](#115-sso-modes) for how SSO modes map to this API.
 
 ---
@@ -346,9 +346,9 @@ GEX uses a **single controller** (`GrafanaReconciler`) that watches the `Grafana
 | # | Stage | Responsibility |
 |---|-------|---------------|
 | 1 | **OperatorConfig** | Validates spec, sets defaults (scaffolding mode, deletion policy, role mapping patterns) |
-| 2 | **GrafanaConfig** | Applies SSO settings to Grafana via HTTP API (inline mode); secret mode is read-only |
+| 2 | **GrafanaConfig** | Applies SSO settings to Grafana via `HTTP` API (inline mode); secret mode is read-only |
 | 3 | **Organisations** | Creates/deletes Grafana organisations to match Tenant CRs; configures org members and role mappings |
-| 4 | **SyncDatasources** | Distributes `GrafanaDatasource` resources to tenant `orgs` with tenant-scoped UIDs and `X-Scope-OrgID` headers; cleans up orphans |
+| 4 | **SyncDatasources** | Distributes `GrafanaDatasource` resources to tenant `orgs` with tenant-scoped `UIDs` and `X-Scope-OrgID` headers; cleans up orphans |
 | 5 | **SyncDashboards** | Distributes `GrafanaDashboard` resources to tenant `orgs` in managed folders; cleans up orphans |
 | 6 | **Complete** | Placeholder for finishing touches |
 
@@ -401,7 +401,7 @@ sequenceDiagram
 
 * Role mapping patterns support Go templating with `{{ .Tenant }}` and `{{ .Role }}` substitution.
     * Example: `tenant-{{ .Tenant }}-{{ .Role }}s` renders to `tenant-acme-owners` for tenant `acme` with role `owner`.
-* `Datasource` UIDs are made tenant-scoped: `{baseUID}-{tenantName}` (max 40 characters).
+* `Datasource` `UIDs` are made tenant-scoped: `{baseUID}-{tenantName}` (max 40 characters).
 * Loki `datasource` URLs are rewritten per tenant for path-based isolation.
 * `X-Scope-OrgID` headers are injected per tenant org for multi-tenant backends (Loki, Mimir, Tempo).
 
@@ -501,7 +501,7 @@ enabled = false  # must be disabled; isolation breaks otherwise
     * Platform team installs Grafana + Grafana Operator.
     * Deploys GEX (`GrafanaExtension` CR).
     * Connects to SSO Extension contract.
-    * GEX connects to Grafana via HTTP API.
+    * GEX connects to Grafana via `HTTP` API.
 
 * **Day-1 (Tenant onboarding):**
 
@@ -522,11 +522,11 @@ enabled = false  # must be disabled; isolation breaks otherwise
 
 | Mode | Where config comes from | Use case / Best for |
 | ---- | ----------------------- | ------------------- |
-| secret | External Secret | BYO IdP config, no SSOExtension |
+| secret | External Secret | BYO IdP config, no `SSOExtension` |
 | inline | Inline in CR (`idp:` block) | Simple setups, GitOps friendly (careful with secrets) |
 | disabled | None | Dev/test, legacy |
 
-> Regardless of how GEX obtains SSO config, it always applies it via the Grafana HTTP API.
+> Regardless of how GEX obtains SSO config, it always applies it via the Grafana `HTTP` API.
 > This ensures dynamic updates without requiring Grafana restarts or CR modifications.
 >
 > **Workaround**
