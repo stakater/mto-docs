@@ -4725,10 +4725,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#104-templates-renderers" class="md-nav__link">
+  <a href="#104-templates" class="md-nav__link">
     <span class="md-ellipsis">
       
-        10.4 Templates (Renderers)
+        10.4 Templates
       
     </span>
   </a>
@@ -4915,7 +4915,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li>Per-tenant isolation of Dashboards and Data Sources via <strong>Grafana Organisations</strong>. Each tenant maps to its own Grafana org.</li>
 <li><strong>OAuth</strong> for humans (via OAuth, e.g., Dex/Keycloak/Entra) and basic auth for API access for machines.</li>
 </ul>
-<p>GEX operates against a <strong>single Grafana instance</strong> and scales tenants as orgs inside it.<br>
+<p>GEX operates against a <strong>single Grafana instance</strong> and scales tenants as <code>orgs</code> inside it.<br>
 It <strong>does not install or operate Grafana itself</strong> — it only wires Grafana to your MTO tenants via the Grafana HTTP API.</p>
 <hr>
 <h2 id="2-audience">2) Audience<a class="headerlink" href="#2-audience" title="Permanent link">#</a></h2>
@@ -4980,12 +4980,12 @@ flowchart TD
 <li>creation of organisation per tenant</li>
 <li>organisation members</li>
 <li>configmap in Kubernetes</li>
-<li>configuration of orgs, users, SSO, datasources, dashboards, and folders via the Grafana HTTP API</li>
+<li>configuration of <code>orgs</code>, users, SSO, <code>datasources</code>, dashboards, and folders via the Grafana HTTP API</li>
 <li>
 <p><strong>SSO extension manages:</strong></p>
 </li>
 <li>
-<p>Your IdP (Dex/Keycloak/Entra) &amp; publishes an SSO <strong>contract</strong> (issuer, groupsClaim, <code>grafana</code> clientID/secret, group patterns) via CR <strong>status</strong> or a labeled <strong>Secret</strong>.</p>
+<p>Your IdP (Dex/Keycloak/Entra) &amp; publishes an SSO <strong>contract</strong> (issuer, <code>groupsClaim</code>, <code>grafana</code> clientID/secret, group patterns) via CR <strong>status</strong> or a labeled <strong>Secret</strong>.</p>
 </li>
 <li>
 <p><strong>Out of scope:</strong></p>
@@ -5005,7 +5005,7 @@ flowchart TD
 <ol>
 <li><strong>Grafana</strong> reachable via service url (<code>http://grafana.telemetry.svc.cluster.local</code>).</li>
 <li><strong>Grafana</strong> must be in <strong><a href="#1111-what-is-multi-org-mode-in-grafana">multi-org mode</a></strong> and allow API admin access.</li>
-<li><strong>SSO extension</strong> installed and configured; publishes <strong>issuer</strong>, <strong>groupsClaim</strong>, and <code>grafana</code> client.</li>
+<li><strong>SSO extension</strong> installed and configured; publishes <strong>issuer</strong>, <strong><code>groupsClaim</code></strong>, and <code>grafana</code> client.</li>
 <li><strong>Network/TLS</strong>: Pods allowed to egress to Grafana; trust chain available.</li>
 </ol>
 <hr>
@@ -5088,7 +5088,7 @@ See <a href="#115-sso-modes">Appendix 11.5</a> for how SSO modes map to this API
 <p>By default, <strong>all GrafanaDashboards and GrafanaDatasources are provisioned to all tenants</strong>.
 Annotations are only needed to explicitly <strong>disable</strong> or <strong>restrict</strong> provisioning.</p>
 <hr>
-<h3 id="71-disable-a-datasource">7.1 Disable a Datasource<a class="headerlink" href="#71-disable-a-datasource" title="Permanent link">#</a></h3>
+<h3 id="71-disable-a-datasource">7.1 Disable a <code>Datasource</code><a class="headerlink" href="#71-disable-a-datasource" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana.integreatly.org/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GrafanaDatasource</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -5107,7 +5107,7 @@ Annotations are only needed to explicitly <strong>disable</strong> or <strong>re
 </code></pre></div>
 <hr>
 <h3 id="73-behavior-summary">7.3 Behavior Summary<a class="headerlink" href="#73-behavior-summary" title="Permanent link">#</a></h3>
-<p>By default, <strong>all dashboards and datasources are provisioned to all tenants</strong>.
+<p>By default, <strong>all dashboards and <code>datasources</code> are provisioned to all tenants</strong>.
 Annotations override this behavior.</p>
 <table>
 <thead>
@@ -5227,13 +5227,13 @@ Annotations override this behavior.</p>
 </ul>
 <h3 id="93-failure-recovery">9.3 Failure Recovery<a class="headerlink" href="#93-failure-recovery" title="Permanent link">#</a></h3>
 <ul>
-<li>Reconcile loops use standard <strong>controller-runtime requeue</strong> on transient errors.</li>
+<li>Reconcile loops use standard <strong>controller-runtime <code>requeue</code></strong> on transient errors.</li>
 <li>The operator retries automatically on the next reconciliation cycle.</li>
 </ul>
 <h3 id="94-security-notes">9.4 Security Notes<a class="headerlink" href="#94-security-notes" title="Permanent link">#</a></h3>
 <ul>
 <li>Never enable <code>insecureSkipVerify</code> in production.</li>
-<li>Always reference OAuth client secrets via SecretRef, never inline.</li>
+<li>Always reference OAuth client secrets via secretRef, never inline.</li>
 <li>Enforce strict group patterns to prevent cross-tenant access.</li>
 </ul>
 <h3 id="95-rbac-minimum">9.5 RBAC minimum<a class="headerlink" href="#95-rbac-minimum" title="Permanent link">#</a></h3>
@@ -5274,12 +5274,12 @@ Annotations override this behavior.</p>
 <tr>
 <td>4</td>
 <td><strong>SyncDatasources</strong></td>
-<td>Distributes <code>GrafanaDatasource</code> resources to tenant orgs with tenant-scoped UIDs and <code>X-Scope-OrgID</code> headers; cleans up orphans</td>
+<td>Distributes <code>GrafanaDatasource</code> resources to tenant <code>orgs</code> with tenant-scoped UIDs and <code>X-Scope-OrgID</code> headers; cleans up orphans</td>
 </tr>
 <tr>
 <td>5</td>
 <td><strong>SyncDashboards</strong></td>
-<td>Distributes <code>GrafanaDashboard</code> resources to tenant orgs in managed folders; cleans up orphans</td>
+<td>Distributes <code>GrafanaDashboard</code> resources to tenant <code>orgs</code> in managed folders; cleans up orphans</td>
 </tr>
 <tr>
 <td>6</td>
@@ -5292,8 +5292,8 @@ Annotations override this behavior.</p>
 <p><strong>Watch triggers:</strong></p>
 <ul>
 <li><code>Grafana</code> CR — primary resource (ignores status-only updates)</li>
-<li><code>Tenant</code> — cluster-scoped; any Tenant change enqueues all <code>Grafana</code> CRs</li>
-<li><code>GrafanaDatasource</code> — fires when a datasource becomes <code>DatasourceSynchronized=True</code> or its spec changes while already synchronized</li>
+<li><code>Tenant</code> — cluster-scoped; any Tenant change <code>enqueues</code> all <code>Grafana</code> CRs</li>
+<li><code>GrafanaDatasource</code> — fires when a <code>datasource</code> becomes <code>DatasourceSynchronized=True</code> or its spec changes while already synchronized</li>
 <li><code>GrafanaDashboard</code> — fires on spec changes; filtered to the namespace matching <code>spec.server.namespace</code></li>
 </ul>
 <hr>
@@ -5321,25 +5321,25 @@ Annotations override this behavior.</p>
 <h3 id="103-watch-model">10.3 Watch Model<a class="headerlink" href="#103-watch-model" title="Permanent link">#</a></h3>
 <ul>
 <li><strong><code>Grafana</code> CR</strong> — primary resource; status-only updates (no generation change) are ignored.</li>
-<li><strong><code>Tenant</code></strong> — cluster-scoped watch; any Tenant change enqueues all <code>Grafana</code> CRs.</li>
-<li><strong><code>GrafanaDatasource</code></strong> — fires when <code>DatasourceSynchronized</code> condition becomes <code>True</code>, or when the spec changes on an already-synchronized datasource. Filtered to datasources whose namespace matches <code>spec.server.namespace</code>.</li>
+<li><strong><code>Tenant</code></strong> — cluster-scoped watch; any Tenant change <code>enqueues</code> all <code>Grafana</code> CRs.</li>
+<li><strong><code>GrafanaDatasource</code></strong> — fires when <code>DatasourceSynchronized</code> condition becomes <code>True</code>, or when the spec changes on an already-synchronized <code>datasource</code>. Filtered to <code>datasources</code> whose namespace matches <code>spec.server.namespace</code>.</li>
 <li><strong><code>GrafanaDashboard</code></strong> — fires on spec changes (generation bump); filtered to the namespace matching <code>spec.server.namespace</code>.</li>
 </ul>
 <hr>
-<h3 id="104-templates-renderers">10.4 Templates (Renderers)<a class="headerlink" href="#104-templates-renderers" title="Permanent link">#</a></h3>
+<h3 id="104-templates">10.4 Templates<a class="headerlink" href="#104-templates" title="Permanent link">#</a></h3>
 <ul>
 <li>Role mapping patterns support Go templating with <code>{{ .Tenant }}</code> and <code>{{ .Role }}</code> substitution.<ul>
 <li>Example: <code>tenant-{{ .Tenant }}-{{ .Role }}s</code> renders to <code>tenant-acme-owners</code> for tenant <code>acme</code> with role <code>owner</code>.</li>
 </ul>
 </li>
-<li>Datasource UIDs are made tenant-scoped: <code>{baseUID}-{tenantName}</code> (max 40 characters).</li>
-<li>Loki datasource URLs are rewritten per tenant for path-based isolation.</li>
+<li><code>Datasource</code> UIDs are made tenant-scoped: <code>{baseUID}-{tenantName}</code> (max 40 characters).</li>
+<li>Loki <code>datasource</code> URLs are rewritten per tenant for path-based isolation.</li>
 <li><code>X-Scope-OrgID</code> headers are injected per tenant org for multi-tenant backends (Loki, Mimir, Tempo).</li>
 </ul>
 <hr>
 <h3 id="105-testing-strategy">10.5 Testing Strategy<a class="headerlink" href="#105-testing-strategy" title="Permanent link">#</a></h3>
 <ul>
-<li><strong>Unit tests:</strong> per-reconciler tests for OperatorConfig, GrafanaConfig, Organisations, Datasources, Dashboards, scaffolding annotation filtering, and status computation.</li>
+<li><strong>Unit tests:</strong> per-reconciler tests for OperatorConfig, GrafanaConfig, Organisations, <code>Datasources</code>, Dashboards, scaffolding annotation filtering, and status computation.</li>
 <li><strong>E2E tests:</strong> run against a real Grafana instance — cover tenant org lifecycle, datasource/dashboard reconciliation, scaffolding annotations, and SSO settings with Dex login flow.</li>
 </ul>
 <hr>
@@ -5363,10 +5363,10 @@ Annotations override this behavior.</p>
 </ul>
 <h3 id="1111-what-is-multi-org-mode-in-grafana">11.1.1 What is <strong>multi-org mode</strong> in Grafana?<a class="headerlink" href="#1111-what-is-multi-org-mode-in-grafana" title="Permanent link">#</a></h3>
 <p>Grafana has a concept of <strong>organisations</strong> — logical partitions inside a single Grafana instance.</p>
-<p>Each org has its own users, dashboards, folders, and datasources.</p>
+<p>Each org has its own users, dashboards, folders, and <code>datasources</code>.</p>
 <ul>
 <li>Single-org setup: Grafana is used as one shared org. (This is what you get by default in most Helm charts).</li>
-<li>Multi-org setup: You allow multiple orgs to exist and be managed. GEX relies on this, since it provisions one org per tenant.</li>
+<li>Multi-org setup: You allow multiple <code>orgs</code> to exist and be managed. GEX relies on this, since it provisions one org per tenant.</li>
 </ul>
 <h4 id="requirements-for-multi-org">Requirements for multi-org<a class="headerlink" href="#requirements-for-multi-org" title="Permanent link">#</a></h4>
 <div class="highlight"><pre><span></span><code><span class="k">[users]</span>
@@ -5381,7 +5381,7 @@ Annotations override this behavior.</p>
 </code></pre></div>
 <p><strong>Other implied requirements</strong>:</p>
 <ul>
-<li><strong>Admin user available</strong> with rights to create orgs and users</li>
+<li><strong>Admin user available</strong> with rights to create <code>orgs</code> and users</li>
 <li><strong>Root URL configured</strong> in <code>[server]</code> for OAuth callbacks</li>
 <li><strong>No restrictive licensing</strong> (GEX uses only community features)</li>
 </ul>
@@ -5414,7 +5414,7 @@ Annotations override this behavior.</p>
 <td>Namespace that Grafana instance lives in.</td>
 </tr>
 <tr>
-<td>spec.sso.mode</td>
+<td><code>spec.sso.mode</code></td>
 <td>Selected mode on how to configure SSO. See <a href="#115-sso-modes">Appendix 11.5</a></td>
 </tr>
 <tr>
@@ -5431,7 +5431,7 @@ Annotations override this behavior.</p>
 </tr>
 <tr>
 <td>spec.tenantRoleMapping.tieBreakStrategy</td>
-<td>If a user matches against multiple roles, which role should be assigned. Possible values: <code>highest</code> (default) - the role with the highest permission is assigned. <code>lowest</code> - the role with the lowest permission is assigned. <code>deny</code> - user is denied any roles, i.e. abort.</td>
+<td>If a user matches against multiple roles, which role should be assigned. Possible values: <code>highest</code> (default) - the role with the highest permission is assigned. <code>lowest</code> - the role with the lowest permission is assigned. <code>deny</code> - user is denied any roles.</td>
 </tr>
 <tr>
 <td>spec.tenantRoleMapping.fallback</td>
@@ -5472,7 +5472,7 @@ Annotations override this behavior.</p>
 <ul>
 <li>App team creates <code>Tenant</code> CR.</li>
 <li>GEX auto-creates Grafana org.</li>
-<li>Default dashboards + datasources provisioned.</li>
+<li>Default dashboards + <code>datasources</code> provisioned.</li>
 <li>Users login via IdP → assigned roles automatically.</li>
 </ul>
 </li>
