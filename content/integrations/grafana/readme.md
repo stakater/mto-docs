@@ -80,17 +80,17 @@ flowchart TD
 
 * **GEX manages:**
 
-  * creation of organisation per tenant
-  * organisation members
-  * configmap in Kubernetes
-  * configuration of orgs, users, SSO, datasources, dashboards, and folders via the Grafana HTTP API
+    * creation of organisation per tenant
+    * organisation members
+    * configmap in Kubernetes
+    * configuration of orgs, users, SSO, datasources, dashboards, and folders via the Grafana HTTP API
 * **SSO extension manages:**
 
-  * Your IdP (Dex/Keycloak/Entra) & publishes an SSO **contract** (issuer, groupsClaim, `grafana` clientID/secret, group patterns) via CR **status** or a labeled **Secret**.
+    * Your IdP (Dex/Keycloak/Entra) & publishes an SSO **contract** (issuer, groupsClaim, `grafana` clientID/secret, group patterns) via CR **status** or a labeled **Secret**.
 * **Out of scope:**
 
-  * Operating Grafana (resources, storage, backup/restore, version upgrades).
-  * Grafana resources (plugins, dashboards, etc...) that are not provisioned through GEX i.e. installed directly into Grafana by user with [correct permissions][1]
+    * Operating Grafana (resources, storage, backup/restore, version upgrades).
+    * Grafana resources (plugins, dashboards, etc...) that are not provisioned through GEX i.e. installed directly into Grafana by user with [correct permissions][1]
 
 > GEX configures Grafana via the HTTP API. It does not modify Grafana Operator CRDs, avoiding installation lifecycle conflicts.
 
@@ -99,9 +99,9 @@ flowchart TD
 ## 5) Prerequisites
 
 1. **Grafana** reachable via service url (`http://grafana.telemetry.svc.cluster.local`).
-2. **Grafana** must be in **[multi-org mode](#1111-what-is-multi-org-mode-in-grafana)** and allow API admin access.
-3. **SSO extension** installed and configured; publishes **issuer**, **groupsClaim**, and `grafana` client.
-4. **Network/TLS**: Pods allowed to egress to Grafana; trust chain available.
+1. **Grafana** must be in **[multi-org mode](#1111-what-is-multi-org-mode-in-grafana)** and allow API admin access.
+1. **SSO extension** installed and configured; publishes **issuer**, **groupsClaim**, and `grafana` client.
+1. **Network/TLS**: Pods allowed to egress to Grafana; trust chain available.
 
 ---
 
@@ -302,60 +302,64 @@ status:
 * GEX emits Kubernetes **Events** on reconciliation.
 * Prometheus metrics
 
-  * **Failure counters**
-    * `grafana_extension_reconciliation_errors_total`
-    * `grafana_extension_api_call_errors_total`
-  * **Other operational metrics**
-    * `grafana_extension_reconciliations_total`
-    * `grafana_extension_reconciliation_duration_seconds`
-    * `grafana_extension_api_calls_total`
-    * `grafana_extension_api_call_duration_seconds`
-    * `grafana_extension_tenants_managed`
-    * `grafana_extension_organizations_managed`
-    * `grafana_extension_dashboards_managed`
-    * `grafana_extension_datasources_managed`
-    * `grafana_extension_grafana_health_status`
-    * `grafana_extension_last_successful_sync_timestamp`
+    * **Failure counters**
+        * `grafana_extension_reconciliation_errors_total`
+        * `grafana_extension_api_call_errors_total`
+    * **Other operational metrics**
+        * `grafana_extension_reconciliations_total`
+        * `grafana_extension_reconciliation_duration_seconds`
+        * `grafana_extension_api_calls_total`
+        * `grafana_extension_api_call_duration_seconds`
+        * `grafana_extension_tenants_managed`
+        * `grafana_extension_organizations_managed`
+        * `grafana_extension_dashboards_managed`
+        * `grafana_extension_datasources_managed`
+        * `grafana_extension_grafana_health_status`
+        * `grafana_extension_last_successful_sync_timestamp`
 
 ### 9.3 Failure Recovery
 
-* All reconcile loops use **exponential backoff**.
-* Force reconciliation via annotation:
-
-```bash
-kubectl annotate grafanaextension cluster-default gex.force-reconcile=true --overwrite
-```
+* Reconcile loops use standard **controller-runtime requeue** on transient errors.
+* The operator retries automatically on the next reconciliation cycle.
 
 ### 9.4 Security Notes
 
 * Never enable `insecureSkipVerify` in production.
 * Always reference OAuth client secrets via SecretRef, never inline.
 * Enforce strict group patterns to prevent cross-tenant access.
-* Grafana API calls are retried with backoff and respect tenant scaling. If Grafana API rate-limits are hit, reconciliation is delayed.
 
 ### 9.5 RBAC minimum
 
-- Read (get/list/watch) Tenant (cluster-scoped).
-- Read (get/list/watch) GrafanaDashboard, GrafanaDatasource in spec.watchNamespace.
-- Read Secrets for Grafana admin/API credentials in the referenced namespace.
-- No access to arbitrary tenant namespaces.
+* Read (get/list/watch) Tenant (cluster-scoped).
+* Read (get/list/watch) GrafanaDashboard, GrafanaDatasource in `spec.server.namespace`.
+* Read Secrets for Grafana admin/API credentials in the Grafana namespace.
+* No access to arbitrary tenant namespaces.
 
 ---
 
 ## 10) Developer Guide (How it Works)
 
-### 10.1 Controllers (Reconcilers)
+### 10.1 Controller & Reconciliation Stages
 
-* **TenantOrgReconciler**
-  * Watches: `Tenant` (cluster-scoped)
-  * Ensures: matching Grafana org exists; applies role mapping/membership as configured.
+GEX uses a **single controller** (`GrafanaReconciler`) that watches the `Grafana` CR as its primary resource. On each reconciliation it executes **six sequential stages**, each implemented as a sub-reconciler:
 
-* **AppResourceReconciler**
-  * Watches: `GrafanaDashboard`, `GrafanaDatasource` in the namespace that Grafana lives 
-  * Ensures: resources are provisioned to the correct set of orgs (default = all orgs; annotations can restrict/disable).
+| # | Stage | Responsibility |
+|---|-------|---------------|
+| 1 | **OperatorConfig** | Validates spec, sets defaults (scaffolding mode, deletion policy, role mapping patterns) |
+| 2 | **GrafanaConfig** | Applies SSO settings to Grafana via HTTP API (inline mode); secret mode is read-only |
+| 3 | **Organisations** | Creates/deletes Grafana organisations to match Tenant CRs; configures org members and role mappings |
+| 4 | **SyncDatasources** | Distributes `GrafanaDatasource` resources to tenant orgs with tenant-scoped UIDs and `X-Scope-OrgID` headers; cleans up orphans |
+| 5 | **SyncDashboards** | Distributes `GrafanaDashboard` resources to tenant orgs in managed folders; cleans up orphans |
+| 6 | **Complete** | Placeholder for finishing touches |
 
-* **ClusterAuthReconciler**
-  * Ensures: SSO settings via `/api/v1/sso-settings` align with selected mode (cluster/secret/inline/disabled).
+Each stage updates a corresponding `status.condition`. If a stage fails, the operator stops and retries on the next reconciliation cycle.
+
+**Watch triggers:**
+
+* `Grafana` CR — primary resource (ignores status-only updates)
+* `Tenant` — cluster-scoped; any Tenant change enqueues all `Grafana` CRs
+* `GrafanaDatasource` — fires when a datasource becomes `DatasourceSynchronized=True` or its spec changes while already synchronized
+* `GrafanaDashboard` — fires on spec changes; filtered to the namespace matching `spec.server.namespace`
 
 ---
 
@@ -363,75 +367,58 @@ kubectl annotate grafanaextension cluster-default gex.force-reconcile=true --ove
 
 ```mermaid
 sequenceDiagram
-    participant TenantCR as Tenant CR
-    participant GEX as GEX Operator
+    participant Watch as Watch Trigger
+    participant GEX as GrafanaReconciler
     participant API as Grafana HTTP API
 
-    TenantCR->>GEX: Tenant created/updated
-    GEX->>API: Create or update Org
-    GEX->>API: Configure users & roles
-    API-->>GEX: Org + user config OK
-    GEX->>API: Apply resources (datasources, dashboards, folders)
-    API-->>GEX: Resources synced
-    GEX-->>TenantCR: Status updated (Ready/Failed)
+    Watch->>GEX: Grafana CR / Tenant / Datasource / Dashboard change
+    GEX->>GEX: OperatorConfig — validate & set defaults
+    GEX->>API: GrafanaConfig — apply SSO settings (inline mode)
+    API-->>GEX: SSO OK
+    GEX->>API: Organisations — create/delete orgs, configure members & roles
+    API-->>GEX: Orgs synced
+    GEX->>API: SyncDatasources — distribute to tenant orgs, cleanup orphans
+    API-->>GEX: Datasources synced
+    GEX->>API: SyncDashboards — distribute to tenant orgs, cleanup orphans
+    API-->>GEX: Dashboards synced
+    GEX->>GEX: Complete — update status conditions & tenantStatus
 ```
 
----
-
-### 10.3 Watches & Scale Hygiene
-
-**Watch model (strict & intentional):**
-
-* Tenant CRs: cluster-scoped watch (names + members). No tenant namespace watches.
-
-* Grafana resources: watch only the spec.watchNamespace for GrafanaDashboard and GrafanaDatasource.
-
-* Reconcile triggers:
-
-  * Tenant add/update/delete → (create/update/delete) Grafana org per `deletionPolicy`.
-
-  * `GrafanaDashboard`/`Datasource` add/update/delete → propagate to target org set (default all; honor annotations).
-
-* Periodic light sync with Grafana API for drift detection (org inventory, resource presence).
+> Each stage sets a `status.condition`. On failure the operator stops at the failing stage, updates the CR status, and retries on the next reconciliation cycle.
 
 ---
 
-### 10.4 Drift & Deletion Policy
+### 10.3 Watch Model
 
-* Trigger: Tenant CR deletion.
-* Behavior:
-```yaml
-spec:
-  deletionPolicy: Delete   # Delete org in Grafana
-  # or
-  deletionPolicy: Orphan   # Leave org in Grafana
-```
+* **`Grafana` CR** — primary resource; status-only updates (no generation change) are ignored.
+* **`Tenant`** — cluster-scoped watch; any Tenant change enqueues all `Grafana` CRs.
+* **`GrafanaDatasource`** — fires when `DatasourceSynchronized` condition becomes `True`, or when the spec changes on an already-synchronized datasource. Filtered to datasources whose namespace matches `spec.server.namespace`.
+* **`GrafanaDashboard`** — fires on spec changes (generation bump); filtered to the namespace matching `spec.server.namespace`.
 
 ---
 
-### 10.5 Templates (Renderers)
+### 10.4 Templates (Renderers)
 
-* Dashboards and datasources support templating with `{{ .tenant }}` substitution.
-* Templates are validated with a **dry run** before provisioning.
-* Golden tests ensure renderer output is stable across changes.
-
----
-
-### 10.6 Testing Strategy
-
-* **Unit:** golden tests for renderer templates with fixtures.
-* **Envtest:** verify org creation and resource sync using fake API server.
-* **Kind e2e:** deploy Grafana, Dex/Keycloak, apply tenants; verify org creation, OIDC login, dashboard sync.
-* **Fault injection:** rotate client secret or TLS cert; confirm operator reconciles safely.
+* Role mapping patterns support Go templating with `{{ .Tenant }}` and `{{ .Role }}` substitution.
+    * Example: `tenant-{{ .Tenant }}-{{ .Role }}s` renders to `tenant-acme-owners` for tenant `acme` with role `owner`.
+* Datasource UIDs are made tenant-scoped: `{baseUID}-{tenantName}` (max 40 characters).
+* Loki datasource URLs are rewritten per tenant for path-based isolation.
+* `X-Scope-OrgID` headers are injected per tenant org for multi-tenant backends (Loki, Mimir, Tempo).
 
 ---
 
-### 10.7 Performance Notes
+### 10.5 Testing Strategy
 
-* Restrict informers to tenant-selected namespaces.
-* Batch Grafana API calls when safe.
-* Avoid re-provisioning unchanged dashboards.
-* Expose metrics for reconcile duration and API latency (`grafana_api_latency_seconds`).
+* **Unit tests:** per-reconciler tests for OperatorConfig, GrafanaConfig, Organisations, Datasources, Dashboards, scaffolding annotation filtering, and status computation.
+* **E2E tests:** run against a real Grafana instance — cover tenant org lifecycle, datasource/dashboard reconciliation, scaffolding annotations, and SSO settings with Dex login flow.
+
+---
+
+### 10.6 Performance Notes
+
+* GrafanaDashboard and GrafanaDatasource watches are filtered to `spec.server.namespace` to limit informer scope.
+* Dashboard search and orphan cleanup use pagination (limit 1000 per page).
+* Expose metrics for reconcile duration and API latency (`grafana_extension_reconciliation_duration_seconds`, `grafana_extension_api_call_duration_seconds`).
 
 ---
 
@@ -456,7 +443,7 @@ Each org has its own users, dashboards, folders, and datasources.
 * Single-org setup: Grafana is used as one shared org. (This is what you get by default in most Helm charts).
 * Multi-org setup: You allow multiple orgs to exist and be managed. GEX relies on this, since it provisions one org per tenant.
 
-**Requirements for multi-org**
+#### Requirements for multi-org
 
 ```ini
 [users]
@@ -494,16 +481,16 @@ enabled = false  # must be disabled; isolation breaks otherwise
 | ------ | ----------- |
 | spec.server.name | Name of the Grafana instance |
 | spec.server.namespace | Namespace that Grafana instance lives in. |
-| spec.sso.mode | Selected mode on how to configure sso. See [Appendix 11.5](#115-sso-modes) |
+| spec.sso.mode | Selected mode on how to configure SSO. See [Appendix 11.5](#115-sso-modes) |
 | spec.tenantRoleMapping.[admin\|owner\|editor\|viewer] | The configuration of MTO-roles to Grafana Roles |
 | spec.tenantRoleMapping.[admin\|owner\|editor\|viewer].grafanaRole | Which Grafana Role to map to |
 | spec.tenantRoleMapping.[admin\|owner\|editor\|viewer].pattern | The partial string of the group claim to match to. Separate values with \|\| (OR condition)  |
-| spec.tenantRoleMapping.tieBreakStrategy | If a user matches against multiple roles, which role should be assigned. Possible values: `highest` (default)- the role with highest permission is assigned. `lowest` - the role with lowest permission is assigned. `deny` - user is denies any roles, i.e. abort. |
+| spec.tenantRoleMapping.tieBreakStrategy | If a user matches against multiple roles, which role should be assigned. Possible values: `highest` (default) - the role with the highest permission is assigned. `lowest` - the role with the lowest permission is assigned. `deny` - user is denied any roles, i.e. abort. |
 | spec.tenantRoleMapping.fallback | Default role when there is no match. Possible values: `deny` (default) - deny access. `allow` - user is granted the default role. `<rolename>` - user is assigned `<rolename>` rights. |
-| spec.sso.scaffolding | Allows GEX to detect other CRs based on the annotations |
-| spec.sso.scaffolding.mode | `OnAnnotation` (default) - Scaffolding is triggered or configured based on the presence and values of specific annotations. Possible other values: `Always` (Not supported), `Never` (Not supported), or `OnLabel` (Not supported) |
-| spec.sso.scaffolding.annotations | Annotations to look for |
-| spec.sso.deletionPolicy | See [Appendix 10.4](#104-drift--deletion-policy) |
+| spec.scaffolding | Allows GEX to detect other CRs based on the annotations |
+| spec.scaffolding.mode | `OnAnnotation` (default) - Scaffolding is triggered or configured based on the presence and values of specific annotations. |
+| spec.scaffolding.annotations | Annotations to look for |
+| spec.deletionPolicy | `Delete` (default) or `Orphan`. Controls what happens to Grafana organisations when a Tenant CR is removed. |
 
 ---
 
@@ -511,23 +498,23 @@ enabled = false  # must be disabled; isolation breaks otherwise
 
 * **Day-0 (Platform setup):**
 
-  * Platform team installs Grafana + Grafana Operator.
-  * Deploys GEX (`GrafanaExtension` CR).
-  * Connects to SSO Extension contract.
-  * GEX connects to Grafana via HTTP API.
+    * Platform team installs Grafana + Grafana Operator.
+    * Deploys GEX (`GrafanaExtension` CR).
+    * Connects to SSO Extension contract.
+    * GEX connects to Grafana via HTTP API.
 
 * **Day-1 (Tenant onboarding):**
 
-  * App team creates `Tenant` CR.
-  * GEX auto-creates Grafana org.
-  * Default dashboards + datasources provisioned.
-  * Users login via IdP → assigned roles automatically.
+    * App team creates `Tenant` CR.
+    * GEX auto-creates Grafana org.
+    * Default dashboards + datasources provisioned.
+    * Users login via IdP → assigned roles automatically.
 
 * **Day-2 (Ongoing):**
 
-  * App team adds annotated dashboards in their namespace.
-  * GEX syncs them into the right org.
-  * Rotation of IdP secrets handled automatically via SSO Extension.
+    * App team adds annotated dashboards in their namespace.
+    * GEX syncs them into the right org.
+    * Rotation of IdP secrets handled automatically via SSO Extension.
 
 ---
 
@@ -541,7 +528,7 @@ enabled = false  # must be disabled; isolation breaks otherwise
 
 > Regardless of how GEX obtains SSO config, it always applies it via the Grafana HTTP API.
 > This ensures dynamic updates without requiring Grafana restarts or CR modifications.
-
+>
 > **Workaround**
 > If your IdP doesn't supply `groups` and/or `roles`, or you want to only use username to map users to organisations, you may set `orgAttributeName` to the same value as `loginAttributePath`.
 > The extension will then use the value as a single-user group/role then.
@@ -565,19 +552,20 @@ enabled = false  # must be disabled; isolation breaks otherwise
     namespace: telemetry
   stringData:
     issuer: https://idp.example.com
-    clientID: grafana
+    clientId: grafana
     clientSecret: supersecret
+    redirectUri: https://grafana.external.url/login/generic_oauth
 
-    scope: openid email profile groups offline_access # (default is: openid email profile groups offline_access )
-    idTokenAattributeName: id_token # (optional, default is: id_token )
-    roleAttributePath: groups # (default is: groups , usually either `groups` or `roles`)
-    emailAttributePath: email # (default is: email )
-    loginAttributePath: preferred_username # (default is: preferred_username )
-    nameAttributePath: full_name # (default is: full_name )
-    emailAttributeName: email:primary (optional, default is: email:primary )
-    authUrl: https://idp.example.com)/dex/auth # (optional, default is: {{ issuer }}/dex/auth )
-    tokenUrl: https://idp.example.com)/dex/token # (optional, default is: {{ issuer }}/dex/token )
-    apiUrl: https://idp.example.com)/dex/api # (optional, default is: {{ issuer }}/dex/api )
+    scope: openid email profile groups offline_access # (optional, default: openid email profile groups offline_access)
+    idTokenAttributeName: id_token # (optional, default: id_token)
+    roleAttributeName: groups # (optional, default: groups, usually either `groups` or `roles`)
+    emailAttributePath: email # (optional, default: email)
+    loginAttributePath: preferred_username # (optional, default: preferred_username)
+    nameAttributePath: name # (optional, default: name)
+    emailAttributeName: "email:primary" # (optional, default: email:primary)
+    authUrl: https://idp.example.com/dex/auth # (optional, default: {{ issuer }}/dex/auth)
+    tokenUrl: https://idp.example.com/dex/token # (optional, default: {{ issuer }}/dex/token)
+    apiUrl: https://idp.example.com/dex/api # (optional, default: {{ issuer }}/dex/api)
   ```
 
 * **mode = inline**
@@ -587,19 +575,20 @@ enabled = false  # must be disabled; isolation breaks otherwise
       mode: inline
       idp:
         issuer: https://idp.example.com
-        clientID: grafana
+        clientId: grafana
         clientSecret: abc123
         redirectUri: https://grafana.external.url/login/generic_oauth
-        scope: openid email profile groups offline_access # (default is: openid email profile groups offline_access )
-        idTokenAattributeName: id_token # (optional, default is: id_token )
-        roleAttributePath: groups # (default is: groups , usually either `groups` or `roles`)
-        emailAttributePath: email # (default is: email )
-        loginAttributePath: preferred_username # (default is: preferred_username )
-        nameAttributePath: full_name # (default is: full_name )
-        emailAttributeName: email:primary (optional, default is: email:primary )
-        authUrl: https://idp.example.com)/dex/auth # (optional, default is: {{ issuer }}/dex/auth )
-        tokenUrl: https://idp.example.com)/dex/token # (optional, default is: {{ issuer }}/dex/token )
-        apiUrl: https://idp.example.com)/dex/api # (optional, default is: {{ issuer }}/dex/api )
+        scope: openid email profile groups offline_access # (optional, default: openid email profile groups offline_access)
+        idTokenAttributeName: id_token # (optional, default: id_token)
+        roleAttributeName: groups # (optional, default: groups, usually either `groups` or `roles`)
+        orgAttributeName: groups # (optional, default: groups)
+        emailAttributePath: email # (optional, default: email)
+        loginAttributePath: preferred_username # (optional, default: preferred_username)
+        nameAttributePath: name # (optional, default: name)
+        emailAttributeName: "email:primary" # (optional, default: email:primary)
+        authUrl: https://idp.example.com/dex/auth # (optional, default: {{ issuer }}/dex/auth)
+        tokenUrl: https://idp.example.com/dex/token # (optional, default: {{ issuer }}/dex/token)
+        apiUrl: https://idp.example.com/dex/api # (optional, default: {{ issuer }}/dex/api)
   ```
 
 * **mode = disabled**
@@ -688,4 +677,4 @@ sequenceDiagram
 
 ## References
 
-- [1](<https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/#organization-roles> "Roles and Permissions")
+[1]: https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/#organization-roles "Roles and Permissions"
