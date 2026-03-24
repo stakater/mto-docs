@@ -11,7 +11,7 @@ The Grafana Extension (GEX) integrates **Grafana** with **MTO Tenants** to deliv
 * Per-tenant isolation of Dashboards and Data Sources via **Grafana Organisations**. Each tenant maps to its own Grafana org.
 * **OAuth** for humans (via OAuth, e.g., Dex/Keycloak/Entra) and basic auth for API access for machines.
 
-GEX operates against a **single Grafana instance** and scales tenants as orgs inside it.  
+GEX operates against a **single Grafana instance** and scales tenants as `orgs` inside it.  
 It **does not install or operate Grafana itself** — it only wires Grafana to your MTO tenants via the Grafana HTTP API.
 
 ---
@@ -83,10 +83,10 @@ flowchart TD
     * creation of organisation per tenant
     * organisation members
     * configmap in Kubernetes
-    * configuration of orgs, users, SSO, datasources, dashboards, and folders via the Grafana HTTP API
+    * configuration of `orgs`, users, SSO, `datasources`, dashboards, and folders via the Grafana HTTP API
 * **SSO extension manages:**
 
-    * Your IdP (Dex/Keycloak/Entra) & publishes an SSO **contract** (issuer, groupsClaim, `grafana` clientID/secret, group patterns) via CR **status** or a labeled **Secret**.
+    * Your IdP (Dex/Keycloak/Entra) & publishes an SSO **contract** (issuer, `groupsClaim`, `grafana` clientID/secret, group patterns) via CR **status** or a labeled **Secret**.
 * **Out of scope:**
 
     * Operating Grafana (resources, storage, backup/restore, version upgrades).
@@ -100,7 +100,7 @@ flowchart TD
 
 1. **Grafana** reachable via service url (`http://grafana.telemetry.svc.cluster.local`).
 1. **Grafana** must be in **[multi-org mode](#1111-what-is-multi-org-mode-in-grafana)** and allow API admin access.
-1. **SSO extension** installed and configured; publishes **issuer**, **groupsClaim**, and `grafana` client.
+1. **SSO extension** installed and configured; publishes **issuer**, **`groupsClaim`**, and `grafana` client.
 1. **Network/TLS**: Pods allowed to egress to Grafana; trust chain available.
 
 ---
@@ -193,7 +193,7 @@ Annotations are only needed to explicitly **disable** or **restrict** provisioni
 
 ---
 
-### 7.1 Disable a Datasource
+### 7.1 Disable a `Datasource`
 
 ```yaml
 apiVersion: grafana.integreatly.org/v1beta1
@@ -221,7 +221,7 @@ metadata:
 
 ### 7.3 Behavior Summary
 
-By default, **all dashboards and datasources are provisioned to all tenants**.
+By default, **all dashboards and `datasources` are provisioned to all tenants**.
 Annotations override this behavior.
 
 | Annotation                       | Applies To           | Result                                                                                           |
@@ -319,13 +319,13 @@ status:
 
 ### 9.3 Failure Recovery
 
-* Reconcile loops use standard **controller-runtime requeue** on transient errors.
+* Reconcile loops use standard **controller-runtime `requeue`** on transient errors.
 * The operator retries automatically on the next reconciliation cycle.
 
 ### 9.4 Security Notes
 
 * Never enable `insecureSkipVerify` in production.
-* Always reference OAuth client secrets via SecretRef, never inline.
+* Always reference OAuth client secrets via secretRef, never inline.
 * Enforce strict group patterns to prevent cross-tenant access.
 
 ### 9.5 RBAC minimum
@@ -348,8 +348,8 @@ GEX uses a **single controller** (`GrafanaReconciler`) that watches the `Grafana
 | 1 | **OperatorConfig** | Validates spec, sets defaults (scaffolding mode, deletion policy, role mapping patterns) |
 | 2 | **GrafanaConfig** | Applies SSO settings to Grafana via HTTP API (inline mode); secret mode is read-only |
 | 3 | **Organisations** | Creates/deletes Grafana organisations to match Tenant CRs; configures org members and role mappings |
-| 4 | **SyncDatasources** | Distributes `GrafanaDatasource` resources to tenant orgs with tenant-scoped UIDs and `X-Scope-OrgID` headers; cleans up orphans |
-| 5 | **SyncDashboards** | Distributes `GrafanaDashboard` resources to tenant orgs in managed folders; cleans up orphans |
+| 4 | **SyncDatasources** | Distributes `GrafanaDatasource` resources to tenant `orgs` with tenant-scoped UIDs and `X-Scope-OrgID` headers; cleans up orphans |
+| 5 | **SyncDashboards** | Distributes `GrafanaDashboard` resources to tenant `orgs` in managed folders; cleans up orphans |
 | 6 | **Complete** | Placeholder for finishing touches |
 
 Each stage updates a corresponding `status.condition`. If a stage fails, the operator stops and retries on the next reconciliation cycle.
@@ -357,8 +357,8 @@ Each stage updates a corresponding `status.condition`. If a stage fails, the ope
 **Watch triggers:**
 
 * `Grafana` CR — primary resource (ignores status-only updates)
-* `Tenant` — cluster-scoped; any Tenant change enqueues all `Grafana` CRs
-* `GrafanaDatasource` — fires when a datasource becomes `DatasourceSynchronized=True` or its spec changes while already synchronized
+* `Tenant` — cluster-scoped; any Tenant change `enqueues` all `Grafana` CRs
+* `GrafanaDatasource` — fires when a `datasource` becomes `DatasourceSynchronized=True` or its spec changes while already synchronized
 * `GrafanaDashboard` — fires on spec changes; filtered to the namespace matching `spec.server.namespace`
 
 ---
@@ -391,25 +391,25 @@ sequenceDiagram
 ### 10.3 Watch Model
 
 * **`Grafana` CR** — primary resource; status-only updates (no generation change) are ignored.
-* **`Tenant`** — cluster-scoped watch; any Tenant change enqueues all `Grafana` CRs.
-* **`GrafanaDatasource`** — fires when `DatasourceSynchronized` condition becomes `True`, or when the spec changes on an already-synchronized datasource. Filtered to datasources whose namespace matches `spec.server.namespace`.
+* **`Tenant`** — cluster-scoped watch; any Tenant change `enqueues` all `Grafana` CRs.
+* **`GrafanaDatasource`** — fires when `DatasourceSynchronized` condition becomes `True`, or when the spec changes on an already-synchronized `datasource`. Filtered to `datasources` whose namespace matches `spec.server.namespace`.
 * **`GrafanaDashboard`** — fires on spec changes (generation bump); filtered to the namespace matching `spec.server.namespace`.
 
 ---
 
-### 10.4 Templates (Renderers)
+### 10.4 Templates
 
 * Role mapping patterns support Go templating with `{{ .Tenant }}` and `{{ .Role }}` substitution.
     * Example: `tenant-{{ .Tenant }}-{{ .Role }}s` renders to `tenant-acme-owners` for tenant `acme` with role `owner`.
-* Datasource UIDs are made tenant-scoped: `{baseUID}-{tenantName}` (max 40 characters).
-* Loki datasource URLs are rewritten per tenant for path-based isolation.
+* `Datasource` UIDs are made tenant-scoped: `{baseUID}-{tenantName}` (max 40 characters).
+* Loki `datasource` URLs are rewritten per tenant for path-based isolation.
 * `X-Scope-OrgID` headers are injected per tenant org for multi-tenant backends (Loki, Mimir, Tempo).
 
 ---
 
 ### 10.5 Testing Strategy
 
-* **Unit tests:** per-reconciler tests for OperatorConfig, GrafanaConfig, Organisations, Datasources, Dashboards, scaffolding annotation filtering, and status computation.
+* **Unit tests:** per-reconciler tests for OperatorConfig, GrafanaConfig, Organisations, `Datasources`, Dashboards, scaffolding annotation filtering, and status computation.
 * **E2E tests:** run against a real Grafana instance — cover tenant org lifecycle, datasource/dashboard reconciliation, scaffolding annotations, and SSO settings with Dex login flow.
 
 ---
@@ -438,10 +438,10 @@ sequenceDiagram
 
 Grafana has a concept of **organisations** — logical partitions inside a single Grafana instance.
 
-Each org has its own users, dashboards, folders, and datasources.
+Each org has its own users, dashboards, folders, and `datasources`.
 
 * Single-org setup: Grafana is used as one shared org. (This is what you get by default in most Helm charts).
-* Multi-org setup: You allow multiple orgs to exist and be managed. GEX relies on this, since it provisions one org per tenant.
+* Multi-org setup: You allow multiple `orgs` to exist and be managed. GEX relies on this, since it provisions one org per tenant.
 
 #### Requirements for multi-org
 
@@ -459,7 +459,7 @@ enabled = false  # must be disabled; isolation breaks otherwise
 
 **Other implied requirements**:
 
-* **Admin user available** with rights to create orgs and users
+* **Admin user available** with rights to create `orgs` and users
 * **Root URL configured** in `[server]` for OAuth callbacks
 * **No restrictive licensing** (GEX uses only community features)
 
@@ -481,11 +481,11 @@ enabled = false  # must be disabled; isolation breaks otherwise
 | ------ | ----------- |
 | spec.server.name | Name of the Grafana instance |
 | spec.server.namespace | Namespace that Grafana instance lives in. |
-| spec.sso.mode | Selected mode on how to configure SSO. See [Appendix 11.5](#115-sso-modes) |
+| `spec.sso.mode` | Selected mode on how to configure SSO. See [Appendix 11.5](#115-sso-modes) |
 | spec.tenantRoleMapping.[admin\|owner\|editor\|viewer] | The configuration of MTO-roles to Grafana Roles |
 | spec.tenantRoleMapping.[admin\|owner\|editor\|viewer].grafanaRole | Which Grafana Role to map to |
 | spec.tenantRoleMapping.[admin\|owner\|editor\|viewer].pattern | The partial string of the group claim to match to. Separate values with \|\| (OR condition)  |
-| spec.tenantRoleMapping.tieBreakStrategy | If a user matches against multiple roles, which role should be assigned. Possible values: `highest` (default) - the role with the highest permission is assigned. `lowest` - the role with the lowest permission is assigned. `deny` - user is denied any roles, i.e. abort. |
+| spec.tenantRoleMapping.tieBreakStrategy | If a user matches against multiple roles, which role should be assigned. Possible values: `highest` (default) - the role with the highest permission is assigned. `lowest` - the role with the lowest permission is assigned. `deny` - user is denied any roles. |
 | spec.tenantRoleMapping.fallback | Default role when there is no match. Possible values: `deny` (default) - deny access. `allow` - user is granted the default role. `<rolename>` - user is assigned `<rolename>` rights. |
 | spec.scaffolding | Allows GEX to detect other CRs based on the annotations |
 | spec.scaffolding.mode | `OnAnnotation` (default) - Scaffolding is triggered or configured based on the presence and values of specific annotations. |
@@ -507,7 +507,7 @@ enabled = false  # must be disabled; isolation breaks otherwise
 
     * App team creates `Tenant` CR.
     * GEX auto-creates Grafana org.
-    * Default dashboards + datasources provisioned.
+    * Default dashboards + `datasources` provisioned.
     * Users login via IdP → assigned roles automatically.
 
 * **Day-2 (Ongoing):**
