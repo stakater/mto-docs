@@ -8,8 +8,8 @@ To upgrade to version 1.6.x from 1.5.x:
 - For Kubernetes: Update the Helm chart version to 1.6.x.
 
 ### v1.6.2
-_**April 2, 2026**_
 
+_**April 2, 2026**_
 
 ## Bug Fixes & Enhancements
 
