@@ -20,9 +20,9 @@ _**April 2, 2026**_
   | Resource Type | Old Name | New Name | Purpose |
   |---|---|---|---|
   | Secret | `mto-postgresql` | `tenant-operator-postgresql` | Stores database connection information |
-  | OpenCost CR | `opencost-gateway` | `tenant-operator-opencost` | Deploys the OpenCost chart via the Dependencies Operator |
-  | Prometheus CR | `prometheus` | `tenant-operator-prometheus` | Deploys the Prometheus chart via the Dependencies Operator |
-  | FinOpsOperator CR | `finops-operator` | `tenant-operator-finops` | Deploys the FinOps Operator via the Dependencies Operator |
+  | `OpenCost` CR | `opencost-gateway` | `tenant-operator-opencost` | Deploys the OpenCost chart via the Dependencies Operator |
+  | `Prometheus` CR | `prometheus` | `tenant-operator-prometheus` | Deploys the Prometheus chart via the Dependencies Operator |
+  | `FinOpsOperator` CR | `finops-operator` | `tenant-operator-finops` | Deploys the FinOps Operator via the Dependencies Operator |
 
 ## Troubleshooting Steps for Upgrade
 
@@ -34,7 +34,7 @@ _**March 18, 2026**_
 
 ## Bug Fixes
 
-- Fix for Finops Operator pods crashlooping after the upgrade
+- Fix for finops operator pods crashing after the upgrade
 
 ### v1.6.0
 
