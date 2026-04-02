@@ -34,7 +34,7 @@ _**March 18, 2026**_
 
 ## Bug Fixes
 
-- Fix for finops operator pods crashing after the upgrade
+- Fix for some pods deployed by `FinopsOperator` CR crashing after the upgrade
 
 ### v1.6.0
 
