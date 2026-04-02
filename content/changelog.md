@@ -7,6 +7,35 @@ To upgrade to version 1.6.x from 1.5.x:
 - For OpenShift: Update the channel from `release-1.5` to `release-1.6` in your OLM Subscription.
 - For Kubernetes: Update the Helm chart version to 1.6.x.
 
+### v1.6.2
+_**April 2, 2026**_
+
+
+## Bug Fixes & Enhancements
+
+- Legacy resources are now automatically cleaned up from the cluster after upgrade.
+
+- The following resources have been renamed to avoid conflicts during the upgrade:
+
+  | Resource Type | Old Name | New Name | Purpose |
+  |---|---|---|---|
+  | Secret | `mto-postgresql` | `tenant-operator-postgresql` | Stores database connection information |
+  | OpenCost CR | `opencost-gateway` | `tenant-operator-opencost` | Deploys the OpenCost chart via the Dependencies Operator |
+  | Prometheus CR | `prometheus` | `tenant-operator-prometheus` | Deploys the Prometheus chart via the Dependencies Operator |
+  | FinOpsOperator CR | `finops-operator` | `tenant-operator-finops` | Deploys the FinOps Operator via the Dependencies Operator |
+
+## Troubleshooting Steps for Upgrade
+
+- If you experience issues fetching data or notice missing data in the MTO Console, restart the `tenant-operator-db-controller` pod.
+
+### v1.6.1
+
+_**March 18, 2026**_
+
+## Bug Fixes
+
+- Fix for Finops Operator pods crashlooping after the upgrade
+
 ### v1.6.0
 
 _**March 6, 2026**_
