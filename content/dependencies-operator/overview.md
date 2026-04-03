@@ -25,7 +25,7 @@ Each CRD maps to an embedded Helm chart. When you create a CR, the operator depl
 The workflow is straightforward:
 
 1. Create a CR with the desired `kind` (e.g. `Dex`, `Postgres`).
-2. Populate `.spec` with the Helm chart values you want to customize.
-3. Apply the CR — the operator reconciles and deploys the component.
+1. Populate `.spec` with the Helm chart values you want to customize.
+1. Apply the CR — the operator reconciles and deploys the component.
 
 For the full list of configurable values for each component, refer to the [CR Reference](cr-reference.md) and individual [Deployment Guides](guides/deploying-dex.md).
