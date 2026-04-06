@@ -6,7 +6,7 @@ A kubectl plugin that provides tenant-scoped access to cluster resources managed
 
 Kubernetes RBAC has a fundamental limitation: when granting `list` permissions on cluster-scoped resources, users can see *all* resources of that type, not just those belonging to their tenant. The kubectl-tenant plugin solves this by reading the Tenant CR status and filtering results to show only resources the tenant is permitted to access.
 
-**Source Code:** [GitHub.com/Stakater/kubectl-tenant](https://github.com/stakater/kubectl-tenant)
+**Source Code:** [https://github.com/stakater/kubectl-tenant](https://github.com/stakater/kubectl-tenant)
 
 ## Installation
 
@@ -61,7 +61,7 @@ kubectl tenant get <resource-type> <tenant-name> <resource-name> [flags]
 
 | Argument | Description |
 |----------|-------------|
-| `resource-type` | The type of resource to list (e.g. `storageclasses`, `namespaces`, `ingressclasses`, `priorityclasses`, `quotas`) |
+| `resource-type` | The type of resource to list (`storageclasses`, `namespaces`, `ingressclasses`, `priorityclasses`, `quotas`) |
 | `tenant-name` | The name of the Tenant CR to scope the query |
 | `resource-name` | (Optional) Specific resource name to retrieve |
 
