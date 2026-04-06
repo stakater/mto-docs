@@ -30,7 +30,7 @@ This field follows a **secure-by-default** model. Configuring this field enables
     The filtering functionality only works when the `podPriorityClasses` field is explicitly configured. Without it, the operator does not manage PodPriorityClass access for the tenant.
 
 !!! tip
-    Tenant users can use the [kubectl-tenant plugin](../../../kubectlplugin/kubectl-tenant.md) to list the PodPriorityClasses available to them: `kubectl tenant get priorityclasses <tenant-name>`
+    Tenant users can use the [kubectl-tenant plugin](../../../cli/kubectl-plugin.md) to list the PodPriorityClasses available to them: `kubectl tenant get priorityclasses <tenant-name>`
 
 ### Notes
 

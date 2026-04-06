@@ -1,4 +1,4 @@
-# kubectl-tenant
+# kubectl plugin
 
 A kubectl plugin that provides tenant-scoped access to cluster resources managed by Multi Tenant Operator.
 
