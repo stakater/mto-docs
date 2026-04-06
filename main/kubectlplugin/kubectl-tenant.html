@@ -4318,6 +4318,17 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
         
           <li class="md-nav__item">
+  <a href="#list-tenants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List Tenants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#list-resources" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4677,6 +4688,17 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
         
           <li class="md-nav__item">
+  <a href="#list-tenants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List Tenants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#list-resources" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4760,7 +4782,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <p>A kubectl plugin that provides tenant-scoped access to cluster resources managed by Multi Tenant Operator.</p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
 <p>Kubernetes RBAC has a fundamental limitation: when granting <code>list</code> permissions on cluster-scoped resources, users can see <em>all</em> resources of that type, not just those belonging to their tenant. The kubectl-tenant plugin solves this by reading the Tenant CR status and filtering results to show only resources the tenant is permitted to access.</p>
-<p><strong>Source Code:</strong> <a href="https://github.com/stakater/kubectl-tenant">GitHub.com/Stakater/kubectl-tenant</a></p>
+<p><strong>Source Code:</strong> <a href="https://github.com/stakater/kubectl-tenant">https://github.com/stakater/kubectl-tenant</a></p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
 <p>Download the binary for your platform from <a href="https://github.com/stakater/kubectl-tenant/releases">GitHub Releases</a>:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Download for your OS/Arch</span>
@@ -4782,23 +4804,42 @@ mv<span class="w"> </span>kubectl-tenant<span class="w"> </span>/usr/local/bin/
 <thead>
 <tr>
 <th>Resource</th>
-<th>Command</th>
+<th>Command Keyword</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>StorageClasses</td>
+<td>Storage Classes</td>
 <td><code>storageclasses</code></td>
 </tr>
 <tr>
 <td>Namespaces</td>
 <td><code>namespaces</code></td>
 </tr>
+<tr>
+<td>Ingress Classes</td>
+<td><code>ingressclasses</code></td>
+</tr>
+<tr>
+<td>Priority Classes</td>
+<td><code>priorityclasses</code></td>
+</tr>
+<tr>
+<td>Quotas</td>
+<td><code>quotas</code></td>
+</tr>
 </tbody>
 </table>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h2>
 <h3 id="command-syntax">Command Syntax<a class="headerlink" href="#command-syntax" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>&lt;resource-type&gt;<span class="w"> </span>&lt;tenant-name&gt;<span class="w"> </span><span class="o">[</span>resource-name<span class="o">]</span><span class="w"> </span><span class="o">[</span>flags<span class="o">]</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># List tenants for the current user</span>
+kubectl<span class="w"> </span>tenant<span class="w"> </span>list
+
+<span class="c1"># List all tenant-scoped resources</span>
+kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>&lt;resource-type&gt;<span class="w"> </span>&lt;tenant-name&gt;<span class="w"> </span><span class="o">[</span>flags<span class="o">]</span>
+
+<span class="c1"># Get a specific tenant-scoped resource</span>
+kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>&lt;resource-type&gt;<span class="w"> </span>&lt;tenant-name&gt;<span class="w"> </span>&lt;resource-name&gt;<span class="w"> </span><span class="o">[</span>flags<span class="o">]</span>
 </code></pre></div>
 <table>
 <thead>
@@ -4810,7 +4851,7 @@ mv<span class="w"> </span>kubectl-tenant<span class="w"> </span>/usr/local/bin/
 <tbody>
 <tr>
 <td><code>resource-type</code></td>
-<td>The type of resource to list (<code>storageclasses</code>, <code>namespaces</code>)</td>
+<td>The type of resource to list (<code>storageclasses</code>, <code>namespaces</code>, <code>ingressclasses</code>, <code>priorityclasses</code>, <code>quotas</code>)</td>
 </tr>
 <tr>
 <td><code>tenant-name</code></td>
@@ -4822,6 +4863,14 @@ mv<span class="w"> </span>kubectl-tenant<span class="w"> </span>/usr/local/bin/
 </tr>
 </tbody>
 </table>
+<h3 id="list-tenants">List Tenants<a class="headerlink" href="#list-tenants" title="Permanent link">#</a></h3>
+<p>List all tenants the current user belongs to (as owner, editor, or viewer):</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>tenant<span class="w"> </span>list
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>NAME<span class="w">        </span>ROLE
+logistics<span class="w">   </span>owner
+warehouse<span class="w">   </span>viewer
+</code></pre></div>
 <h3 id="list-resources">List Resources<a class="headerlink" href="#list-resources" title="Permanent link">#</a></h3>
 <p>List all storage classes for a tenant:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>storageclasses<span class="w"> </span>my-tenant
