@@ -36,24 +36,48 @@ mv kubectl-tenant /usr/local/bin/
 
 ## Supported Resources
 
-| Resource | Command |
-|----------|---------|
-| StorageClasses | `storageclasses` |
+| Resource | Command Keyword |
+|----------|----------------|
+| Storage Classes | `storageclasses` |
 | Namespaces | `namespaces` |
+| Ingress Classes | `ingressclasses` |
+| Priority Classes | `priorityclasses` |
+| Quotas | `quotas` |
 
 ## Usage
 
 ### Command Syntax
 
 ```bash
-kubectl tenant get <resource-type> <tenant-name> [resource-name] [flags]
+# List tenants for the current user
+kubectl tenant list
+
+# List all tenant-scoped resources
+kubectl tenant get <resource-type> <tenant-name> [flags]
+
+# Get a specific tenant-scoped resource
+kubectl tenant get <resource-type> <tenant-name> <resource-name> [flags]
 ```
 
 | Argument | Description |
 |----------|-------------|
-| `resource-type` | The type of resource to list (`storageclasses`, `namespaces`) |
+| `resource-type` | The type of resource to list (e.g. `storageclasses`, `namespaces`, `ingressclasses`, `priorityclasses`, `quotas`) |
 | `tenant-name` | The name of the Tenant CR to scope the query |
 | `resource-name` | (Optional) Specific resource name to retrieve |
+
+### List Tenants
+
+List all tenants the current user belongs to (as owner, editor, or viewer):
+
+```bash
+kubectl tenant list
+```
+
+```bash
+NAME        ROLE
+logistics   owner
+warehouse   viewer
+```
 
 ### List Resources
 
