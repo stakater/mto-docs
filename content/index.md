@@ -5,7 +5,7 @@ head:
       content: SEO plugin
 ---
 
-# Welcome to the Docs
+# What is MTO
 
 [//]: # ( introduction.md, features.md)
 
