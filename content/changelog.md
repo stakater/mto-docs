@@ -1,24 +1,5 @@
 # Changelog
 
-## v1.7.x
-
-To upgrade to version 1.7.x from 1.6.x:
-
-- For OpenShift: update the channel from `release-1.5` to `release-1.6` in your OLM Subscription.
-- For Kubernetes: update the Helm chart version to `1.7.x`.
-
-### v1.7.0
-
-_**April 14, 2026**_
-
-#### Bug Fixes & Enhancements
-
-- Removed hibernation-related fields from the [Tenant CR](./kubernetes-resources/tenant/tenant-overview.md). See [Hibernation Operator](https://docs.stakater.com/hibernation-operator).
-
-- Bumped FinOps Operator to `v0.1.1`.
-
-- Added a new Tenants API to the Tenant controller for use by [kubectl-tenant](./cli/kubectl-plugin.md).
-
 ## v1.6.x
 
 To upgrade to version 1.6.x from 1.5.x:
