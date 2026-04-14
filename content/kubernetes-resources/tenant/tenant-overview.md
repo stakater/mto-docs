@@ -40,10 +40,6 @@ spec:
         - viewuser
       groups:
         - view-group
-  hibernation:
-  # UTC time
-    sleepSchedule: "20 * * * *"
-    wakeSchedule: "40 * * * *"        
   namespaces:
     sandboxes:
       enabled: true
@@ -142,13 +138,6 @@ Controls the creation and management of namespaces within the tenant:
     * `sandbox`: Special metadata for sandbox namespaces, which can include templated annotations or labels for dynamic information.
         * We also support the use of a templating mechanism within annotations, specifically allowing the inclusion of the tenant's username through the placeholder `{{ TENANT.USERNAME }}`. This template can be utilized to dynamically insert the tenant's username value into annotations, for example, as `username: {{ TENANT.USERNAME }}`.
     * `specific`: Allows applying unique labels and annotations to specified tenant namespaces, enabling custom configurations for particular workloads or environments.
-
-## Hibernation
-
-`hibernation` allows for the scheduling of inactive periods for namespaces associated with the tenant, effectively putting them into a "sleep" mode. This capability is designed to conserve resources during known periods of inactivity.
-
-* Configuration for this feature involves two key fields, `sleepSchedule` and `wakeSchedule`, both of which accept strings formatted according to cron syntax.
-* These schedules dictate when the namespaces will automatically transition into and out of hibernation, aligning resource usage with actual operational needs.
 
 ## Description
 
