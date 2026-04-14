@@ -31,7 +31,7 @@ This field follows a **secure-by-default** model. Configuring this field enables
     The filtering functionality only works when the `storageClasses` field is explicitly configured. Without it, the operator does not manage StorageClass access for the tenant.
 
 !!! tip
-    Tenant users can use the [kubectl-tenant plugin](../../../kubectlplugin/kubectl-tenant.md) to list the StorageClasses available to them: `kubectl tenant get storageclasses <tenant-name>`
+    Tenant users can use the [kubectl-tenant plugin](../../../cli/kubectl-plugin.md) to list the StorageClasses available to them: `kubectl tenant get storageclasses <tenant-name>`
 
 ### Notes
 
