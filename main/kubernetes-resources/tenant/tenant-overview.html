@@ -3353,17 +3353,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#hibernation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hibernation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4573,17 +4562,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </li>
       
         <li class="md-nav__item">
-  <a href="#hibernation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hibernation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4717,10 +4695,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">viewuser</span>
 <span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">view-group</span>
-<span class="w">  </span><span class="nt">hibernation</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># UTC time</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"20</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"40</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">        </span>
 <span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -4819,12 +4793,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li><code>specific</code>: Allows applying unique labels and annotations to specified tenant namespaces, enabling custom configurations for particular workloads or environments.</li>
 </ul>
 </li>
-</ul>
-<h2 id="hibernation">Hibernation<a class="headerlink" href="#hibernation" title="Permanent link">#</a></h2>
-<p><code>hibernation</code> allows for the scheduling of inactive periods for namespaces associated with the tenant, effectively putting them into a "sleep" mode. This capability is designed to conserve resources during known periods of inactivity.</p>
-<ul>
-<li>Configuration for this feature involves two key fields, <code>sleepSchedule</code> and <code>wakeSchedule</code>, both of which accept strings formatted according to cron syntax.</li>
-<li>These schedules dictate when the namespaces will automatically transition into and out of hibernation, aligning resource usage with actual operational needs.</li>
 </ul>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
 <p><code>desc</code> provides a human-readable description of the tenant, aiding in documentation and at-a-glance understanding of the tenant's purpose and configuration.</p>
