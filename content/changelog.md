@@ -1,5 +1,46 @@
 # Changelog
 
+## v1.7.x
+
+### Migration Guide
+
+Follow these steps to upgrade to version 1.7.x from 1.6.x
+
+- Remove `hibernation` field from the Tenant CR if it exists
+- For OpenShift: update the channel from `release-1.6` to `release-1.7` in your OLM Subscription.
+- For Kubernetes: update the Helm chart version to `1.7.x`.
+
+### v1.7.0
+
+_**April 14, 2026**_
+
+#### Breaking Changes
+
+- Removed hibernation-related fields from the [Tenant CR](./kubernetes-resources/tenant/tenant-overview.md). See [Hibernation Operator](https://docs.stakater.com/hibernation-operator) to configure hibernation for a tenant.
+
+#### Bug Fixes & Enhancements
+
+- Bumped FinOps Operator to `v0.1.1`.
+- Added a new Tenants API to the Tenant controller for use by [kubectl-tenant](./cli/kubectl-plugin.md).
+
+#### Component Updates
+
+| Name | Tag | Image |
+| --- | --- | --- |
+| `tenant-operator`       | v1.7.0              | `ghcr.io/stakater/public/mto/tenant-operator`                     |
+| `mto-console`           | 1.0.237             | `ghcr.io/stakater/public/mto/mto-console`                         |
+| `mto-gateway`           | 1.0.164             | `ghcr.io/stakater/public/mto/mto-gateway`                         |
+| `finops-operator`       | v0.1.1              | `ghcr.io/stakater/public/finops-operator`                         |
+| `keycloak`              | 24.0.5              | `ghcr.io/stakater/public/mto/keycloak`                            |
+| `dex`                   | v0.0.1              | `ghcr.io/stakater/public/mto/dex`                            |
+| `dexConfigOperator`     | v0.0.6              | `https://ghcr.io/stakater/public/dex-config-operator`                            |
+| `postgresql`            | 18.2                | `ghcr.io/stakater/public/mto/postgresql`                          |
+| `kube-state-metrics`    | v2.17.0             | `registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.17.0`   |
+| `opencost`              | 1.113.0             | `ghcr.io/opencost/opencost:1.117.3`                            |
+| `prometheus`            | v2.55.1             | `quay.io/prometheus/prometheus`                          |
+| `template-operator`     | v0.1.5              | `ghcr.io/stakater/public/template-operator`             |
+| `hibernation-operator`  | v0.1.103            | `ghcr.io/stakater/public/hibernation-operator` |
+
 ## v1.6.x
 
 To upgrade to version 1.6.x from 1.5.x:
