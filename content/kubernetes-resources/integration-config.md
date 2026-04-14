@@ -651,9 +651,9 @@ namespaceAccessPolicy:
 
 `namespaceAccessPolicy.Deny:` Can be used to restrict privileged *users/groups* CRUD operation over managed namespaces.
 
-#### Privileged
+### Privileged
 
-##### Namespaces
+#### Namespaces
 
 `privileged.namespaces:` Contains the list of `namespaces` ignored by MTO. MTO will not manage the `namespaces` in this list. Treatment for privileged namespaces does not involve further integrations or finalizers processing as with normal namespaces. Values in this list are regex patterns.
 
@@ -663,18 +663,18 @@ For example:
 - To ignore all namespaces starting with the `openshift-` prefix, we can specify `^openshift-.*`.
 - To ignore any namespace containing `stakater` in its name, we can specify `^stakater.`. (A constant word given as a regex pattern will match any namespace containing that word.)
 
-##### ServiceAccounts
+#### ServiceAccounts
 
 `privileged.serviceAccounts:` Contains the list of `ServiceAccounts` ignored by MTO. MTO will not manage the `ServiceAccounts` in this list. Values in this list are regex patterns. For example, to ignore all `ServiceAccounts` starting with the `system:serviceaccount:openshift-` prefix, we can use `^system:serviceaccount:openshift-.*`; and to ignore a specific service account like `system:serviceaccount:builder` service account we can use `^system:serviceaccount:builder$.`
 
 !!! note
     `stakater`, `stakater.` and `stakater.*` will have the same effect. To check out the combinations, go to [Regex101](https://regex101.com/), select Golang, and type your expected regex and test string.
 
-##### Users
+#### Users
 
 `privileged.users:` Contains the list of `users` ignored by MTO. MTO will not manage the `users` in this list. Values in this list are regex patterns.
 
-##### Groups
+#### Groups
 
 `privileged.groups:` Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of `privilegedNamespaces`.
 

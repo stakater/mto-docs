@@ -181,7 +181,7 @@ The evaluation works as follows:
 * An empty string for `storageClass` (vs. null) is treated as the literal value `""`
 
 !!! tip
-    Tenant users can use the [kubectl-tenant plugin](../../kubectlplugin/kubectl-tenant.md) to list available StorageClasses: `kubectl tenant get storageclasses <tenant-name>`
+    Tenant users can use the [kubectl-tenant plugin](../../cli/kubectl-plugin.md) to list available StorageClasses: `kubectl tenant get storageclasses <tenant-name>`
 
 ## Ingress
 

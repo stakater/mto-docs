@@ -81,7 +81,7 @@ no
 Access to the Tenant resource itself is also restricted, aligning with the principle of least privilege.
 
 !!! tip
-    Tenant users can use the [kubectl-tenant plugin](../../../kubectlplugin/kubectl-tenant.md) to list cluster resources available to them, such as namespaces and storage classes: `kubectl tenant get namespaces bluesky`
+    Tenant users can use the [kubectl-tenant plugin](../../../cli/kubectl-plugin.md) to list cluster resources available to them, such as namespaces and storage classes: `kubectl tenant get namespaces bluesky`
 
 ## Adding Multiple Owners to a Tenant
 
