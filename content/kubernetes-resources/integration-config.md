@@ -267,12 +267,15 @@ Following are the different components that can be used to configure multi-tenan
     - `cloudPricingSecretRef:` Secret reference for AWS / Azure Pricing model.
     - `opencostServiceRoleArn`: Role ARN to be used by OpenCost gateway's service account
     - `retentionPeriod`: Retention period to configure `--storage.tsdb.retention.time` parameter of MTO Prometheus Deployment
-- `components.postgres:` Configures PostgreSQL. See [Dependency Management](#dependency-management) below.
-- `components.prometheus:` Configures Prometheus. See [Dependency Management](#dependency-management) below.
-- `components.opencost:` Configures OpenCost. See [Dependency Management](#dependency-management) below.
-- `components.dex:` Configures Dex. See [Dependency Management](#dependency-management) below.
-- `components.dexConfigOperator:` Configures DexConfigOperator. See [DexConfigOperator](#dexconfigoperator) below.
-- `components.finopsOperator:` Configures FinOps Operator. See [FinOps Operator](#finops-operator) below.
+- `components.postgres:` Configures PostgreSQL.
+- `components.prometheus:` Configures Prometheus.
+- `components.opencost:` Configures OpenCost.
+- `components.dex:` Configures Dex.
+- `components.dexConfigOperator:` Configures DexConfigOperator.
+- `components.finopsOperator:` Configures FinOps Operator.
+
+!!! note
+  PostgreSQL, Prometheus, OpenCost, Dex, DexConfigOperator and FinOpsOperator are configured using MTO Dependencies Operator. See [MTO Dependencies Operator documentation](https://github.com/stakater/mto-dependencies-operator) for reference
 
 Here's an example of how to generate the secrets required to configure MTO:
 
@@ -294,14 +297,7 @@ Integration config will be managing the following resources required for console
 
 Details on console GUI and showback can be found [here](../console/overview.md)
 
-### Dependency Management
-
-MTO manages several dependencies (PostgreSQL, Prometheus, OpenCost, Dex) that can operate in two modes:
-
-- **Managed** (default): MTO deploys and manages the dependency via the MTO Dependencies Operator. You can customize the deployment using the `values` field, which accepts the respective [Helm chart](https://helm.sh/) values.
-- **External**: Bring your own instance of the dependency. Provide connection details via the `external` field.
-
-#### PostgreSQL
+### PostgreSQL
 
 The `values` field accepts [Bitnami PostgreSQL Helm chart values](https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml).
 
@@ -339,7 +335,7 @@ The referenced secret should contain either:
 - A `dsn` field with a full connection string: `postgresql://user:pass@host:5432/dbname?sslmode=require`
 - Or individual fields: `host`, `port`, `username`, `password`, `database`, `sslmode`
 
-#### Prometheus
+### Prometheus
 
 The `values` field accepts [Prometheus Helm chart values](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml).
 
@@ -373,7 +369,7 @@ components:
 
 - `external.serverURL`: The base URL of the external Prometheus server for query API access.
 
-#### OpenCost
+### OpenCost
 
 The `values` field accepts [OpenCost Helm chart values](https://github.com/opencost/opencost-helm-chart/blob/main/charts/opencost/values.yaml).
 
@@ -406,7 +402,7 @@ components:
 
 - `external.serverURL`: The base URL of the external OpenCost server for query API access.
 
-#### Dex
+### Dex
 
 The `values` field accepts [Dex Helm chart values](https://github.com/dexidp/helm-charts/blob/master/charts/dex/values.yaml).
 
