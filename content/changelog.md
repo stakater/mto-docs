@@ -27,19 +27,19 @@ _**April 14, 2026**_
 
 | Name | Tag | Image |
 | --- | --- | --- |
-| `tenant-operator`       | v1.7.0              | `ghcr.io/stakater/public/mto/tenant-operator`                     |
-| `mto-console`           | 1.0.237             | `ghcr.io/stakater/public/mto/mto-console`                         |
-| `mto-gateway`           | 1.0.164             | `ghcr.io/stakater/public/mto/mto-gateway`                         |
-| `finops-operator`       | v0.1.1              | `ghcr.io/stakater/public/finops-operator`                         |
-| `keycloak`              | 24.0.5              | `ghcr.io/stakater/public/mto/keycloak`                            |
-| `dex`                   | v0.0.1              | `ghcr.io/stakater/public/mto/dex`                            |
-| `dexConfigOperator`     | v0.0.6              | `https://ghcr.io/stakater/public/dex-config-operator`                            |
-| `postgresql`            | 18.2                | `ghcr.io/stakater/public/mto/postgresql`                          |
-| `kube-state-metrics`    | v2.17.0             | `registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.17.0`   |
-| `opencost`              | 1.113.0             | `ghcr.io/opencost/opencost:1.117.3`                            |
-| `prometheus`            | v2.55.1             | `quay.io/prometheus/prometheus`                          |
-| `template-operator`     | v0.1.5              | `ghcr.io/stakater/public/template-operator`             |
-| `hibernation-operator`  | v0.1.103            | `ghcr.io/stakater/public/hibernation-operator` |
+| `tenant-operator`       | v1.7.0              | `ghcr.io/stakater/public/mto/tenant-operator`             |
+| `mto-console`           | 1.0.237             | `ghcr.io/stakater/public/mto/mto-console`                 |
+| `mto-gateway`           | 1.0.164             | `ghcr.io/stakater/public/mto/mto-gateway`                 |
+| `finops-operator`       | v0.1.1              | `ghcr.io/stakater/public/finops-operator`                 |
+| `dex-config-operator`   | v0.0.6              | `ghcr.io/stakater/public/dex-config-operator`             |
+| `template-operator`     | v0.1.5              | `ghcr.io/stakater/public/template-operator`               |
+| `hibernation-operator`  | v0.1.103            | `ghcr.io/stakater/public/hibernation-operator`            |
+| `postgresql`            | 18.2                | `ghcr.io/stakater/public/mto/postgresql`                  |
+| `keycloak`              | 24.0.5              | `ghcr.io/stakater/public/mto/keycloak`                    |
+| `dex`                   | v0.0.1              | `ghcr.io/stakater/public/mto/dex`                         |
+| `prometheus`            | v2.55.1             | `quay.io/prometheus/prometheus`                           |
+| `kube-state-metrics`    | v2.17.0             | `registry.k8s.io/kube-state-metrics/kube-state-metrics`   |
+| `opencost`              | 1.117.3             | `ghcr.io/opencost/opencost`                               |
 
 ## v1.6.x
 
