@@ -694,7 +694,7 @@ A: A platform engineer (or the tenant itself, via self-service) creates a `Tenan
 
 1. Creates a dedicated Grafana organisation for the tenant.
 1. Provisions default dashboards, data sources, and folders into that org.
-1. Maps IdP groups to tenant roles (`admin`, `owner`, `editor`, `viewer`) per your policy. In Grafana terms: `admin` → **grafanaadmin** (global), `owner` → **org admin** (within the tenant's org), `editor` / `viewer` → the matching org roles.
+1. Maps IdP groups to tenant roles (`admin`, `owner`, `editor`, `viewer`) per your policy. In Grafana terms: `admin` → `grafanaadmin` (global), `owner` → org admin (within the tenant's org), `editor` / `viewer` → the matching org roles.
 1. Grants users access on their next IdP login — no manual invites.
 
 **Q: Does it work with my existing Grafana and IdP?**
@@ -704,13 +704,13 @@ A: Yes. It runs against a **single existing Grafana instance** (in multi-org mod
 A: `GrafanaDashboard` and `GrafanaDatasource` resources are placed in the Grafana instance's namespace (`spec.server.namespace`) — that's the only namespace the MTO Grafana Extension watches for these resources. By default, every such resource is provisioned to **all tenants**. Optional annotations let you **disable** a resource (`mto.grafana/disabled: "true"`) or **restrict** it to specific tenants (`mto.grafana/tenant: "tenant-a,tenant-b"`). See [7.2 Restrict a Dashboard to certain tenants](#72-restrict-a-dashboard-to-certain-tenants) and [7.3 Behavior Summary](#73-behavior-summary).
 
 **Q: Does the MTO Grafana Extension install or upgrade Grafana for me?**
-A: No. It intentionally stays out of Grafana's lifecycle. Installation, storage, backup/restore, and version upgrades are handled by the Grafana Operator or your platform team — the extension only configures Grafana via its HTTP API, so you keep full control of the instance.
+A: No. It intentionally stays out of Grafana's lifecycle. Installation, storage, backup/restore, and version upgrades are handled by the Grafana Operator or your platform team — the extension only configures Grafana via its `HTTP` API, so you keep full control of the instance.
 
 **Q: Do I need a separate Grafana instance per tenant?**
 A: No. One Grafana instance serves every tenant, with isolation enforced through Grafana Organisations. Fewer instances to run, patch, and pay for.
 
 **Q: How is access controlled per tenant?**
-A: IdP group claims are mapped to tenant roles through the extension's `Grafana` CR `tenantRoleMapping`. The four tenant roles — `admin`, `owner`, `editor`, `viewer` — map to Grafana's **grafanaadmin** (global admin), **org admin**, **editor**, and **viewer** respectively. You define, once, how groups become which tenant role — including how to handle users matching multiple patterns (`tieBreakStrategy`) or none (`fallback`). Changes take effect on the user's next login or token refresh.
+A: IdP group claims are mapped to tenant roles through the extension's `Grafana` CR `tenantRoleMapping`. The four tenant roles — `admin`, `owner`, `editor`, `viewer` — map to Grafana's `grafanaadmin` (global admin), org admin, editor, and viewer respectively. You define, once, how groups become which tenant role — including how to handle users matching multiple patterns (`tieBreakStrategy`) or none (`fallback`). Changes take effect on the user's next login or token refresh.
 
 **Q: Can users still install plugins or create ad-hoc dashboards directly in Grafana?**
 A: Yes, if they have the [correct Grafana permissions][1]. Those resources are out of scope for the MTO Grafana Extension — they won't be managed, synced, or reconciled — so teams that prefer click-ops in Grafana can still do so.
