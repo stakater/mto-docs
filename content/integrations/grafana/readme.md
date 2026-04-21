@@ -1,17 +1,17 @@
 # MTO Grafana Extension
 
-> **Purpose:** A single source of truth for deploying, operating, and extending the **MTO Grafana Extension (GEX)**. It serves both **platform engineers** (how to install/use) and **developers** (how it works under the hood).
+> **Purpose:** A single source of truth for deploying, operating, and extending the **MTO Grafana Extension**. It serves both **platform engineers** (how to install/use) and **developers** (how it works under the hood).
 
 ---
 
 ## 1) What is it?
 
-The Grafana Extension (GEX) integrates **Grafana** with **MTO Tenants** to deliver:
+The MTO Grafana Extension integrates **Grafana** with **MTO Tenants** to deliver:
 
 * Per-tenant isolation of Dashboards and Data Sources via **Grafana Organisations**. Each tenant maps to its own Grafana org.
-* **OAuth** for humans (via OAuth, e.g., Dex/Keycloak/Entra) and basic auth for API access for machines.
+* **OIDC/OAuth** for human login (via Dex, Keycloak, Entra, or any OIDC provider) and **basic auth** for the operator's API calls to Grafana.
 
-GEX operates against a **single Grafana instance** and scales tenants as `orgs` inside it.  
+The MTO Grafana Extension operates against a **single Grafana instance** and scales tenants as `orgs` inside it.  
 It **does not install or operate Grafana itself** — it only wires Grafana to your MTO tenants via the Grafana `HTTP` API.
 
 ---
@@ -19,8 +19,8 @@ It **does not install or operate Grafana itself** — it only wires Grafana to y
 ## 2) Audience
 
 * **Platform engineers:** Install/configure, define policies, enable tenants/app teams, troubleshoot.
-* **Developers of GEX:** Understand controllers, Day-0/1/2 flows, CRDs, idempotency and tests.
-* **Tenant/App teams:** Annotate dashboards/datasources for tenant-specific provisioning.
+* **Developers of the MTO Grafana Extension:** Understand controllers, Day-0/1/2 flows, CRDs, idempotency and tests.
+* **Tenant/App teams:** Optionally annotate dashboards/data sources to **restrict** or **disable** their provisioning per tenant (by default, every dashboard and data source goes to all tenants).
 
 ---
 
@@ -30,7 +30,7 @@ It **does not install or operate Grafana itself** — it only wires Grafana to y
 ---
 config:
   layout: dagre
-title: Grafana Operator Multi-Tenancy with GEX - MTO Extension
+title: Grafana Operator Multi-Tenancy with MTO Grafana Extension
 ---
 flowchart TD
   subgraph ClusterPlatform["Cluster Platform"]
@@ -78,7 +78,7 @@ flowchart TD
 
 ## 4) Scope & Boundaries
 
-* **GEX manages:**
+* **The MTO Grafana Extension manages:**
 
     * creation of organisation per tenant
     * organisation members
@@ -90,9 +90,9 @@ flowchart TD
 * **Out of scope:**
 
     * Operating Grafana (resources, storage, backup/restore, version upgrades).
-    * Grafana resources (plugins, dashboards, etc...) that are not provisioned through GEX i.e. installed directly into Grafana by user with [correct permissions][1]
+    * Grafana resources (plugins, dashboards, etc...) that are not provisioned through the MTO Grafana Extension i.e. installed directly into Grafana by user with [correct permissions][1]
 
-> GEX configures Grafana via the `HTTP` API. It does not modify Grafana Operator CRDs, avoiding installation lifecycle conflicts.
+> The MTO Grafana Extension configures Grafana via the `HTTP` API. It does not modify Grafana Operator CRDs, avoiding installation lifecycle conflicts.
 
 ---
 
@@ -119,10 +119,14 @@ helm upgrade --install mto-grafana-extension \
 
 > The `values.yaml` should minimally configure operator RBAC and resource requests. A reference sample is provided in the Helm chart.
 
-### 6.2 Create GrafanaExtension CR
+### 6.2 Create the MTO Grafana Extension's `Grafana` CR
+
+> **Naming note:** The MTO Grafana Extension's top-level CR has `kind: Grafana` under the group `telemetry.tenantoperator.stakater.com`. This is **not** the same as the Grafana Operator's native `Grafana` CR (group `grafana.integreatly.org`). Throughout this doc, "the extension's `Grafana` CR" always refers to the MTO Grafana Extension resource defined below.
 
 ```yaml
-# GrafanaExtension: wires your MTO tenants to an existing Grafana cluster.
+# MTO Grafana Extension's Grafana CR
+# (kind: Grafana, group: telemetry.tenantoperator.stakater.com)
+# Wires your MTO tenants to an existing Grafana instance managed by the Grafana Operator.
 # - Ensures Grafana SSO auth for users.
 # - Sets up per-tenant isolated organisations with roles.
 # - Sets up pre-configured resources (Datasources, Dashboard, Folders,...) per-tenant.
@@ -181,7 +185,7 @@ spec:
   deletionPolicy: Delete
 ```
 
-> GEX uses the Grafana `HTTP` API to manage configuration directly in the Grafana database.
+> The MTO Grafana Extension uses the Grafana `HTTP` API to manage configuration directly in the Grafana database.
 > See [Appendix 11.5](#115-sso-modes) for how SSO modes map to this API.
 
 ---
@@ -231,7 +235,7 @@ Annotations override this behavior.
 | `mto.grafana/tenant: "tenant-x"` | Dashboard/Datasource | Provisioned **only** to the listed tenant(s). Multiple tenants allowed via comma-separated list. |
 | Both `disabled` + `tenant` set   | Dashboard/Datasource | `disabled` takes precedence → provisioned to **no tenants**                                      |
 
-> Namespaces without a Tenant CR are ignored. Resources in such namespaces will not be provisioned.
+> `GrafanaDashboard` and `GrafanaDatasource` resources must live in the Grafana instance's namespace (`spec.server.namespace`). Resources in other namespaces are not watched and will not be provisioned.
 
 ---
 
@@ -239,9 +243,9 @@ Annotations override this behavior.
 
 ### 8.1 Status reporting
 
-The operator continuously updates the `status` field of the `GrafanaExtension` CR with cluster-wide and tenant-specific information.
+The operator continuously updates the `status` field of the extension's `Grafana` CR with cluster-wide and tenant-specific information.
 
-#### 8.1.1 Status in GrafanaExtension
+#### 8.1.1 Status in the extension's `Grafana` CR
 
 ```yaml
 status:
@@ -293,13 +297,13 @@ status:
 
 ### 9.1 Access Control
 
-* GEX connects to Grafana using **credentials** created by the Grafana Operator.
+* The MTO Grafana Extension connects to Grafana using **credentials** created by the Grafana Operator.
 * Credentials are stored in Kubernetes Secrets.
-* When credentials rotate, GEX re-establishes connection automatically.
+* When credentials rotate, the MTO Grafana Extension re-establishes connection automatically.
 
 ### 9.2 Auditability
 
-* GEX emits Kubernetes **Events** on reconciliation.
+* The MTO Grafana Extension emits Kubernetes **Events** on reconciliation.
 * Prometheus metrics
 
     * **Failure counters**
@@ -341,7 +345,7 @@ status:
 
 ### 10.1 Controller & Reconciliation Stages
 
-GEX uses a **single controller** (`GrafanaReconciler`) that watches the `Grafana` CR as its primary resource. On each reconciliation it executes **six sequential stages**, each implemented as a sub-reconciler:
+The MTO Grafana Extension uses a **single controller** (`GrafanaReconciler`) that watches the extension's `Grafana` CR (group `telemetry.tenantoperator.stakater.com`) as its primary resource. On each reconciliation it executes **six sequential stages**, each implemented as a sub-reconciler:
 
 | # | Stage | Responsibility |
 |---|-------|---------------|
@@ -356,9 +360,9 @@ Each stage updates a corresponding `status.condition`. If a stage fails, the ope
 
 **Watch triggers:**
 
-* `Grafana` CR — primary resource (ignores status-only updates)
-* `Tenant` — cluster-scoped; any Tenant change `enqueues` all `Grafana` CRs
-* `GrafanaDatasource` — fires when a `datasource` becomes `DatasourceSynchronized=True` or its spec changes while already synchronized
+* Extension's `Grafana` CR — primary resource (ignores status-only updates)
+* `Tenant` — cluster-scoped; any Tenant change `enqueues` all extension `Grafana` CRs
+* `GrafanaDatasource` — fires when a `datasource` becomes `DatasourceSynchronized=True` or its spec changes while already synchronized; filtered to the namespace matching `spec.server.namespace`
 * `GrafanaDashboard` — fires on spec changes; filtered to the namespace matching `spec.server.namespace`
 
 ---
@@ -390,8 +394,8 @@ sequenceDiagram
 
 ### 10.3 Watch Model
 
-* **`Grafana` CR** — primary resource; status-only updates (no generation change) are ignored.
-* **`Tenant`** — cluster-scoped watch; any Tenant change `enqueues` all `Grafana` CRs.
+* **Extension's `Grafana` CR** — primary resource; status-only updates (no generation change) are ignored.
+* **`Tenant`** — cluster-scoped watch; any Tenant change `enqueues` all extension `Grafana` CRs.
 * **`GrafanaDatasource`** — fires when `DatasourceSynchronized` condition becomes `True`, or when the spec changes on an already-synchronized `datasource`. Filtered to `datasources` whose namespace matches `spec.server.namespace`.
 * **`GrafanaDashboard`** — fires on spec changes (generation bump); filtered to the namespace matching `spec.server.namespace`.
 
@@ -427,21 +431,20 @@ sequenceDiagram
 ### 11.1 Glossary
 
 * **Org** → Grafana organisation = tenant isolation boundary.
-* **SSO contract** → Published by SSO extension, consumed by GEX.
+* **SSO contract** → Published by SSO extension, consumed by the MTO Grafana Extension.
 * **Tenant CR** → Defines tenants in MTO.
-* **SSO** → Single Sign-On = user only sign in once
-* **DRY** → Don't Repeat Yourself
+* **SSO** → Single Sign-On; users sign in once and access all connected apps.
 * **BYO** → Bring Your Own
 * **IdP** → Identity Provider
 
-### 11.1.1 What is **multi-org mode** in Grafana?
+#### 11.1.1 What is **multi-org mode** in Grafana?
 
 Grafana has a concept of **organisations** — logical partitions inside a single Grafana instance.
 
 Each org has its own users, dashboards, folders, and `datasources`.
 
 * Single-org setup: Grafana is used as one shared org. (This is what you get by default in most Helm charts).
-* Multi-org setup: You allow multiple `orgs` to exist and be managed. GEX relies on this, since it provisions one org per tenant.
+* Multi-org setup: You allow multiple `orgs` to exist and be managed. The MTO Grafana Extension relies on this, since it provisions one org per tenant.
 
 #### Requirements for multi-org
 
@@ -461,7 +464,7 @@ enabled = false  # must be disabled; isolation breaks otherwise
 
 * **Admin user available** with rights to create `orgs` and users
 * **Root URL configured** in `[server]` for OAuth callbacks
-* **No restrictive licensing** (GEX uses only community features)
+* **No restrictive licensing** (the MTO Grafana Extension uses only community features)
 
 ---
 
@@ -475,7 +478,7 @@ enabled = false  # must be disabled; isolation breaks otherwise
 
 ### 11.3 CRD Reference
 
-* `GrafanaExtension` schema (fields documented above).
+The MTO Grafana Extension's `Grafana` CR schema (`telemetry.tenantoperator.stakater.com/v1alpha1`):
 
 | Field  | Description |
 | ------ | ----------- |
@@ -487,7 +490,7 @@ enabled = false  # must be disabled; isolation breaks otherwise
 | spec.tenantRoleMapping.[admin\|owner\|editor\|viewer].pattern | The partial string of the group claim to match to. Separate values with \|\| (OR condition)  |
 | spec.tenantRoleMapping.tieBreakStrategy | If a user matches against multiple roles, which role should be assigned. Possible values: `highest` (default) - the role with the highest permission is assigned. `lowest` - the role with the lowest permission is assigned. `deny` - user is denied any roles. |
 | spec.tenantRoleMapping.fallback | Default role when there is no match. Possible values: `deny` (default) - deny access. `allow` - user is granted the default role. `<rolename>` - user is assigned `<rolename>` rights. |
-| spec.scaffolding | Allows GEX to detect other CRs based on the annotations |
+| spec.scaffolding | Allows the MTO Grafana Extension to detect other CRs based on the annotations |
 | spec.scaffolding.mode | `OnAnnotation` (default) - Scaffolding is triggered or configured based on the presence and values of specific annotations. |
 | spec.scaffolding.annotations | Annotations to look for |
 | spec.deletionPolicy | `Delete` (default) or `Orphan`. Controls what happens to Grafana organisations when a Tenant CR is removed. |
@@ -499,21 +502,21 @@ enabled = false  # must be disabled; isolation breaks otherwise
 * **Day-0 (Platform setup):**
 
     * Platform team installs Grafana + Grafana Operator.
-    * Deploys GEX (`GrafanaExtension` CR).
+    * Deploys the MTO Grafana Extension and creates its `Grafana` CR (`telemetry.tenantoperator.stakater.com`).
     * Connects to SSO Extension contract.
-    * GEX connects to Grafana via `HTTP` API.
+    * The MTO Grafana Extension connects to Grafana via `HTTP` API.
 
 * **Day-1 (Tenant onboarding):**
 
     * App team creates `Tenant` CR.
-    * GEX auto-creates Grafana org.
+    * The MTO Grafana Extension auto-creates Grafana org.
     * Default dashboards + `datasources` provisioned.
     * Users login via IdP → assigned roles automatically.
 
 * **Day-2 (Ongoing):**
 
-    * App team adds annotated dashboards in their namespace.
-    * GEX syncs them into the right org.
+    * Platform engineer or app team adds `GrafanaDashboard` / `GrafanaDatasource` resources in the Grafana instance's namespace (`spec.server.namespace`), optionally annotated to restrict or disable per tenant.
+    * The MTO Grafana Extension syncs them into the right `orgs`.
     * Rotation of IdP secrets handled automatically via SSO Extension.
 
 ---
@@ -526,7 +529,7 @@ enabled = false  # must be disabled; isolation breaks otherwise
 | inline | Inline in CR (`idp:` block) | Simple setups, GitOps friendly (careful with secrets) |
 | disabled | None | Dev/test, legacy |
 
-> Regardless of how GEX obtains SSO config, it always applies it via the Grafana `HTTP` API.
+> Regardless of how the MTO Grafana Extension obtains SSO config, it always applies it via the Grafana `HTTP` API.
 > This ensures dynamic updates without requiring Grafana restarts or CR modifications.
 >
 > **Workaround**
@@ -675,6 +678,47 @@ sequenceDiagram
   end
 ```
 
+## FAQ
+
+**Q: Why use the MTO Grafana Extension?**
+A: It turns Grafana into a true **multi-tenant** platform without the cost and operational overhead of running one Grafana per team. You get:
+
+* **Tenant isolation by default** — each MTO tenant gets its own Grafana organisation, dashboards, data sources, and members.
+* **Zero-touch onboarding** — a new tenant gets an org, default dashboards, data sources, and role mappings created automatically.
+* **IdP-driven access** — users log in via your existing IdP and are assigned the right role on first login; no manual user management in Grafana.
+* **GitOps-native** — everything is driven by Kubernetes CRs and annotations, so dashboards and access live alongside your app code.
+* **Scales with your platform** — add tenants as `orgs` inside a single Grafana instance, without spinning up new instances.
+
+**Q: How does a new tenant get onboarded?**
+A: A platform engineer (or the tenant itself, via self-service) creates a `Tenant` CR. The MTO Grafana Extension then automatically:
+
+1. Creates a dedicated Grafana organisation for the tenant.
+1. Provisions default dashboards, data sources, and folders into that org.
+1. Maps IdP groups to tenant roles (`admin`, `owner`, `editor`, `viewer`) per your policy. In Grafana terms: `admin` → **grafanaadmin** (global), `owner` → **org admin** (within the tenant's org), `editor` / `viewer` → the matching org roles.
+1. Grants users access on their next IdP login — no manual invites.
+
+**Q: Does it work with my existing Grafana and IdP?**
+A: Yes. It runs against a **single existing Grafana instance** (in multi-org mode) and integrates with your existing IdP (Dex, Keycloak, Entra, or any OIDC provider) through the SSO Extension. You don't need a new Grafana, and you don't need to rebuild your identity stack.
+
+**Q: How are dashboards and data sources published to tenants?**
+A: `GrafanaDashboard` and `GrafanaDatasource` resources are placed in the Grafana instance's namespace (`spec.server.namespace`) — that's the only namespace the MTO Grafana Extension watches for these resources. By default, every such resource is provisioned to **all tenants**. Optional annotations let you **disable** a resource (`mto.grafana/disabled: "true"`) or **restrict** it to specific tenants (`mto.grafana/tenant: "tenant-a,tenant-b"`). See [7.2 Restrict a Dashboard to certain tenants](#72-restrict-a-dashboard-to-certain-tenants) and [7.3 Behavior Summary](#73-behavior-summary).
+
+**Q: Does the MTO Grafana Extension install or upgrade Grafana for me?**
+A: No. It intentionally stays out of Grafana's lifecycle. Installation, storage, backup/restore, and version upgrades are handled by the Grafana Operator or your platform team — the extension only configures Grafana via its HTTP API, so you keep full control of the instance.
+
+**Q: Do I need a separate Grafana instance per tenant?**
+A: No. One Grafana instance serves every tenant, with isolation enforced through Grafana Organisations. Fewer instances to run, patch, and pay for.
+
+**Q: How is access controlled per tenant?**
+A: IdP group claims are mapped to tenant roles through the extension's `Grafana` CR `tenantRoleMapping`. The four tenant roles — `admin`, `owner`, `editor`, `viewer` — map to Grafana's **grafanaadmin** (global admin), **org admin**, **editor**, and **viewer** respectively. You define, once, how groups become which tenant role — including how to handle users matching multiple patterns (`tieBreakStrategy`) or none (`fallback`). Changes take effect on the user's next login or token refresh.
+
+**Q: Can users still install plugins or create ad-hoc dashboards directly in Grafana?**
+A: Yes, if they have the [correct Grafana permissions][1]. Those resources are out of scope for the MTO Grafana Extension — they won't be managed, synced, or reconciled — so teams that prefer click-ops in Grafana can still do so.
+
+---
+
 ## References
+
+1. [Roles and Permissions](https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/#organization-roles)
 
 [1]: https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/#organization-roles "Roles and Permissions"
