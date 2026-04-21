@@ -41,11 +41,11 @@ The structural-isolation row is load-bearing: a secrets platform cannot rely on 
 
 ### Q2: Why 1 Tenant = 1 OpenBao namespace (not 1-per-k8s-ns)
 
-| Aspect | 1 Tenant = 1 OpenBao ns | 1 k8s-ns = 1 OpenBao ns |
+| Aspect | 1 Tenant = 1 OpenBao `ns` | 1 k8s-ns = 1 OpenBao `ns` |
 |---|---|---|
 | Trust-boundary alignment | Matches MTO's Tenant | Splits one team across many OpenBao namespaces |
 | Bootstrap cost per tenant | 4 API calls | 4 × M calls (M = k8s-ns per tenant) |
-| k8s-ns rename/move | Policy & role rename inside tenant ns | Destructive OpenBao-ns migration |
+| k8s-ns rename/move | Policy & role rename inside tenant `ns` | Destructive OpenBao-ns migration |
 | Same-tenant cross-ns sharing | One policy attached to multiple roles | Requires cross-namespace plumbing |
 | Isolation gain between same-tenant workloads | N/A (same team) | None — same team, same policies |
 
@@ -85,6 +85,6 @@ It remains available for deployments where:
 
 Example: `acme/app1/`, `acme/app2/`, `globex/app1/`. Rejected because:
 
-- MTO treats the Tenant as the trust boundary, not the k8s ns.
+- MTO treats the Tenant as the trust boundary, not the k8s `ns`.
 - 5× bootstrap cost for no isolation gain between same-team workloads.
 - Couples k8s-ns rename/move to OpenBao-ns migration — messy.

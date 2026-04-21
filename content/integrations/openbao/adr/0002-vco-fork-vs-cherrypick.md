@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-04-21
-- **Decision:** Cherry-pick the 11 VCO type definitions we need and write our own controllers against our bao client (Option C).
+- **Decision:** Cherry-pick the 11 VCO type definitions we need and write our own controllers against our OpenBao client (Option C).
 
 ## Context
 
@@ -17,7 +17,7 @@ Red Hat CoP's [Vault Config Operator (VCO)](https://github.com/redhat-cop/vault-
 | 3 | SecretEngineMount | Mount enable (PKI, Transit, KV) |
 | 4 | PKISecretEngineConfig | Per-tenant intermediate CA |
 | 5 | PKISecretEngineRole | Cert issuance rules |
-| 6 | CertAuthEngineConfig | Trusted CAs for cert auth |
+| 6 | CertAuthEngineConfig | Trusted `CAs` for cert auth |
 | 7 | CertAuthEngineRole | Cert-auth role → policy |
 | 8 | JWTOIDCAuthEngineConfig | Keycloak OIDC mount config |
 | 9 | JWTOIDCAuthEngineRole | Keycloak group → policy |
@@ -30,7 +30,7 @@ No OpenBao-native config operator exists. `openbao/openbao-secrets-operator` is 
 
 ## Options
 
-Shared context for all options below: VCO's upstream tests target Vault, not OpenBao — so "inherited test coverage" from B or C doesn't include OpenBao-specific assertions. OpenBao compat tests are on us regardless.
+Shared context for all options below: `VCO`'s upstream tests target Vault, not OpenBao — so "inherited test coverage" from B or C doesn't include OpenBao-specific assertions. OpenBao `compat` tests are on us regardless.
 
 ### A. Use VCO as-is
 
@@ -45,8 +45,8 @@ Cons:
 
 - Users see 47 additional CRDs. Our intended surface is `OpenBaoExtension` + MTO `Tenant`.
 - Two operators to deploy and debug.
-- Version skew we can't fix: VCO uses `controller-runtime v0.17.3` and a pre-1.41 Operator SDK; we're on `v0.20.4` and current. VCO's Operator SDK migration ([PR #290](https://github.com/redhat-cop/vault-config-operator/pull/290)) has been open 6+ months. (Under B, we'd control this; under C, it doesn't apply.)
-- VCO's per-CR Kubernetes auth requires us to pre-create a "driver" SA and Vault role. The auth mismatch is solvable but moves the bootstrap work to us.
+- Version skew we can't fix: VCO uses `controller-runtime v0.17.3` and a pre-1.41 Operator SDK; we're on `v0.20.4` and current. `VCO`'s Operator SDK migration ([PR #290](https://github.com/redhat-cop/vault-config-operator/pull/290)) has been open 6+ months. (Under B, we'd control this; under C, it doesn't apply.)
+- `VCO`'s per-CR Kubernetes auth requires us to pre-create a "driver" SA and Vault role. The auth mismatch is solvable but moves the bootstrap work to us.
 
 ### B. Fork VCO
 
@@ -54,29 +54,29 @@ Copy the whole repo into `stakater-ab`, patch for OpenBao, maintain long-term.
 
 Pros:
 
-- We own it. Can merge PR #290, add OpenBao patches, pull upstream fixes via rebase.
+- We own it. Can merge PR #290, add OpenBao patches, pull upstream fixes via `rebase`.
 - Inherits 15,707 LOC of tests and 47 working controllers (Vault-targeted; see shared context).
 
 Cons:
 
 - **Scope change.** Shipping a `stakater-ab/vault-config-operator` fork makes us an OpenBao config-operator maintainer. We inherit bug reports, feature requests, and CVE disclosures for all 47 primitives, not just the 11 we use.
-- **Split focus.** Engineering attention that was on tenant fan-out now also covers rebases, dep bumps, CVE triage, and OpenBao-compat patches across 46,000 LOC.
+- **Split focus.** Engineering attention that was on tenant fan-out now also covers `rebases`, dep bumps, CVE triage, and OpenBao-compat patches across 46,000 LOC.
 - **Product identity.** A new contributor finds a Vault operator with MTO bolted on, not a focused MTO extension.
 - **Security surface.** The 36 dormant primitives are reachable code paths. CVEs there flag our binary regardless of whether we use the feature.
 - **Hard to undo.** Once published, a fork accumulates downstream users and custom patches. Reversing later means coordinating a migration for consumers and abandoning years of divergence — a high-cost exit.
 
-Tactical costs (rebase tax, Vault SDK in `go.mod`, version skew) also apply but are secondary.
+Tactical costs (`rebase` tax, Vault SDK in `go.mod`, version skew) also apply but are secondary.
 
 ### C. Cherry-pick
 
-Copy the 11 type files (Apache-2.0 with attribution). Write our own controllers against our existing bao client ([operator source](https://github.com/stakater/mto-extension-openbao)).
+Copy the 11 type files (Apache-2.0 with attribution). Write our own controllers against our existing OpenBao client ([operator source](https://github.com/stakater/mto-extension-openbao)).
 
 Pros:
 
 - Product identity stays focused on tenant fan-out.
 - Ship one CRD (`OpenBaoExtension`). Nothing dormant.
 - No Vault SDK. Our thin-client design stays intact.
-- Drift we care about (OpenBao compat) is in code we own. Drift we don't care about (VCO tracking Vault) isn't our problem.
+- Drift we care about (OpenBao `compat`) is in code we own. Drift we don't care about (VCO tracking Vault) isn't our problem.
 - Apache-2.0 bulk-copy with attribution is legally and culturally standard.
 
 Cons:
@@ -88,7 +88,7 @@ Cons:
 
 ### D. Write from scratch
 
-Discards VCO's battle-tested schemas with no benefit over C. Apache-2.0 permits reuse.
+Discards `VCO`'s battle-tested schemas with no benefit over C. Apache-2.0 permits reuse.
 
 ## Decision
 
@@ -102,7 +102,7 @@ Two reasons:
 
 ## Implementation plan
 
-1. Create `internal/vaultobject/` — our own interface over `baoclient.Client` mirroring VCO's `VaultObject` contract. Do **not** copy VCO's `utils/` package (it drags in the Vault SDK).
+1. Create `internal/vaultobject/` — our own interface over `baoclient.Client` mirroring `VCO`'s `VaultObject` contract. Do **not** copy `VCO`'s `utils/` package (it drags in the Vault SDK).
 
 1. Copy the 11 type files one at a time as each feature lands. Every copied file gets a header:
 
@@ -112,7 +112,7 @@ Two reasons:
    // Apache-2.0
    ```
 
-1. Write controllers against our bao client. Use VCO's controllers as a reference; translate SDK calls to `baoclient.Client` and fit our existing status/finalizer patterns.
+1. Write controllers against our OpenBao client. Use `VCO`'s controllers as a reference; translate SDK calls to `baoclient.Client` and fit our existing status/finalizer patterns.
 
 1. Ship a `NOTICE` file and `THIRD_PARTY_NOTICES.md` listing every copied file and its source SHA.
 
@@ -124,7 +124,7 @@ Two reasons:
 
 Write a drift-check script that runs weekly in CI:
 
-- Reads pinned source SHAs from `THIRD_PARTY_NOTICES.md`
+- Reads pinned source `SHAs` from `THIRD_PARTY_NOTICES.md`
 - Fetches the current version of each file from VCO
 - 3-way merges any changes onto our copy
 - Opens a PR with the diff, updated SHA, and test results
