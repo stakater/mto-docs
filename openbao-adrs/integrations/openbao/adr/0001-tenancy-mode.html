@@ -4617,8 +4617,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <thead>
 <tr>
 <th>Aspect</th>
-<th>1 Tenant = 1 OpenBao ns</th>
-<th>1 k8s-ns = 1 OpenBao ns</th>
+<th>1 Tenant = 1 OpenBao <code>ns</code></th>
+<th>1 k8s-ns = 1 OpenBao <code>ns</code></th>
 </tr>
 </thead>
 <tbody>
@@ -4634,7 +4634,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tr>
 <tr>
 <td>k8s-ns rename/move</td>
-<td>Policy &amp; role rename inside tenant ns</td>
+<td>Policy &amp; role rename inside tenant <code>ns</code></td>
 <td>Destructive OpenBao-ns migration</td>
 </tr>
 <tr>
@@ -4677,7 +4677,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h3 id="1-tenant-m-openbao-namespaces-one-per-k8s-namespace">1 Tenant = M OpenBao namespaces (one per k8s namespace)<a class="headerlink" href="#1-tenant-m-openbao-namespaces-one-per-k8s-namespace" title="Permanent link">#</a></h3>
 <p>Example: <code>acme/app1/</code>, <code>acme/app2/</code>, <code>globex/app1/</code>. Rejected because:</p>
 <ul>
-<li>MTO treats the Tenant as the trust boundary, not the k8s ns.</li>
+<li>MTO treats the Tenant as the trust boundary, not the k8s <code>ns</code>.</li>
 <li>5× bootstrap cost for no isolation gain between same-team workloads.</li>
 <li>Couples k8s-ns rename/move to OpenBao-ns migration — messy.</li>
 </ul>

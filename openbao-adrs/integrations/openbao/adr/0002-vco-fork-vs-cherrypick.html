@@ -4493,7 +4493,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <ul>
 <li><strong>Status:</strong> Accepted</li>
 <li><strong>Date:</strong> 2026-04-21</li>
-<li><strong>Decision:</strong> Cherry-pick the 11 VCO type definitions we need and write our own controllers against our bao client (Option C).</li>
+<li><strong>Decision:</strong> Cherry-pick the 11 VCO type definitions we need and write our own controllers against our OpenBao client (Option C).</li>
 </ul>
 <h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">#</a></h2>
 <p>Our operator needs to manage several OpenBao resources per MTO <code>Tenant</code>: policies, Kubernetes-auth roles, PKI, Transit, cert auth, and Keycloak/OIDC login.</p>
@@ -4535,7 +4535,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <tr>
 <td>6</td>
 <td>CertAuthEngineConfig</td>
-<td>Trusted CAs for cert auth</td>
+<td>Trusted <code>CAs</code> for cert auth</td>
 </tr>
 <tr>
 <td>7</td>
@@ -4567,7 +4567,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Transit isn't in VCO. We'd write it from scratch regardless.</p>
 <p>No OpenBao-native config operator exists. <code>openbao/openbao-secrets-operator</code> is unmaintained and redirects users to External Secrets Operator.</p>
 <h2 id="options">Options<a class="headerlink" href="#options" title="Permanent link">#</a></h2>
-<p>Shared context for all options below: VCO's upstream tests target Vault, not OpenBao — so "inherited test coverage" from B or C doesn't include OpenBao-specific assertions. OpenBao compat tests are on us regardless.</p>
+<p>Shared context for all options below: <code>VCO</code>'s upstream tests target Vault, not OpenBao — so "inherited test coverage" from B or C doesn't include OpenBao-specific assertions. OpenBao <code>compat</code> tests are on us regardless.</p>
 <h3 id="a-use-vco-as-is">A. Use VCO as-is<a class="headerlink" href="#a-use-vco-as-is" title="Permanent link">#</a></h3>
 <p>Install VCO alongside our operator. Our Tenant controller generates VCO CRs; VCO applies them to OpenBao.</p>
 <p>Pros:</p>
@@ -4579,33 +4579,33 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <ul>
 <li>Users see 47 additional CRDs. Our intended surface is <code>OpenBaoExtension</code> + MTO <code>Tenant</code>.</li>
 <li>Two operators to deploy and debug.</li>
-<li>Version skew we can't fix: VCO uses <code>controller-runtime v0.17.3</code> and a pre-1.41 Operator SDK; we're on <code>v0.20.4</code> and current. VCO's Operator SDK migration (<a href="https://github.com/redhat-cop/vault-config-operator/pull/290">PR #290</a>) has been open 6+ months. (Under B, we'd control this; under C, it doesn't apply.)</li>
-<li>VCO's per-CR Kubernetes auth requires us to pre-create a "driver" SA and Vault role. The auth mismatch is solvable but moves the bootstrap work to us.</li>
+<li>Version skew we can't fix: VCO uses <code>controller-runtime v0.17.3</code> and a pre-1.41 Operator SDK; we're on <code>v0.20.4</code> and current. <code>VCO</code>'s Operator SDK migration (<a href="https://github.com/redhat-cop/vault-config-operator/pull/290">PR #290</a>) has been open 6+ months. (Under B, we'd control this; under C, it doesn't apply.)</li>
+<li><code>VCO</code>'s per-CR Kubernetes auth requires us to pre-create a "driver" SA and Vault role. The auth mismatch is solvable but moves the bootstrap work to us.</li>
 </ul>
 <h3 id="b-fork-vco">B. Fork VCO<a class="headerlink" href="#b-fork-vco" title="Permanent link">#</a></h3>
 <p>Copy the whole repo into <code>stakater-ab</code>, patch for OpenBao, maintain long-term.</p>
 <p>Pros:</p>
 <ul>
-<li>We own it. Can merge PR #290, add OpenBao patches, pull upstream fixes via rebase.</li>
+<li>We own it. Can merge PR #290, add OpenBao patches, pull upstream fixes via <code>rebase</code>.</li>
 <li>Inherits 15,707 LOC of tests and 47 working controllers (Vault-targeted; see shared context).</li>
 </ul>
 <p>Cons:</p>
 <ul>
 <li><strong>Scope change.</strong> Shipping a <code>stakater-ab/vault-config-operator</code> fork makes us an OpenBao config-operator maintainer. We inherit bug reports, feature requests, and CVE disclosures for all 47 primitives, not just the 11 we use.</li>
-<li><strong>Split focus.</strong> Engineering attention that was on tenant fan-out now also covers rebases, dep bumps, CVE triage, and OpenBao-compat patches across 46,000 LOC.</li>
+<li><strong>Split focus.</strong> Engineering attention that was on tenant fan-out now also covers <code>rebases</code>, dep bumps, CVE triage, and OpenBao-compat patches across 46,000 LOC.</li>
 <li><strong>Product identity.</strong> A new contributor finds a Vault operator with MTO bolted on, not a focused MTO extension.</li>
 <li><strong>Security surface.</strong> The 36 dormant primitives are reachable code paths. CVEs there flag our binary regardless of whether we use the feature.</li>
 <li><strong>Hard to undo.</strong> Once published, a fork accumulates downstream users and custom patches. Reversing later means coordinating a migration for consumers and abandoning years of divergence — a high-cost exit.</li>
 </ul>
-<p>Tactical costs (rebase tax, Vault SDK in <code>go.mod</code>, version skew) also apply but are secondary.</p>
+<p>Tactical costs (<code>rebase</code> tax, Vault SDK in <code>go.mod</code>, version skew) also apply but are secondary.</p>
 <h3 id="c-cherry-pick">C. Cherry-pick<a class="headerlink" href="#c-cherry-pick" title="Permanent link">#</a></h3>
-<p>Copy the 11 type files (Apache-2.0 with attribution). Write our own controllers against our existing bao client (<a href="https://github.com/stakater/mto-extension-openbao">operator source</a>).</p>
+<p>Copy the 11 type files (Apache-2.0 with attribution). Write our own controllers against our existing OpenBao client (<a href="https://github.com/stakater/mto-extension-openbao">operator source</a>).</p>
 <p>Pros:</p>
 <ul>
 <li>Product identity stays focused on tenant fan-out.</li>
 <li>Ship one CRD (<code>OpenBaoExtension</code>). Nothing dormant.</li>
 <li>No Vault SDK. Our thin-client design stays intact.</li>
-<li>Drift we care about (OpenBao compat) is in code we own. Drift we don't care about (VCO tracking Vault) isn't our problem.</li>
+<li>Drift we care about (OpenBao <code>compat</code>) is in code we own. Drift we don't care about (VCO tracking Vault) isn't our problem.</li>
 <li>Apache-2.0 bulk-copy with attribution is legally and culturally standard.</li>
 </ul>
 <p>Cons:</p>
@@ -4616,7 +4616,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li>Harder to contribute fixes back to VCO.</li>
 </ul>
 <h3 id="d-write-from-scratch">D. Write from scratch<a class="headerlink" href="#d-write-from-scratch" title="Permanent link">#</a></h3>
-<p>Discards VCO's battle-tested schemas with no benefit over C. Apache-2.0 permits reuse.</p>
+<p>Discards <code>VCO</code>'s battle-tested schemas with no benefit over C. Apache-2.0 permits reuse.</p>
 <h2 id="decision">Decision<a class="headerlink" href="#decision" title="Permanent link">#</a></h2>
 <p><strong>Option C — cherry-pick.</strong></p>
 <p>Two reasons:</p>
@@ -4631,7 +4631,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="implementation-plan">Implementation plan<a class="headerlink" href="#implementation-plan" title="Permanent link">#</a></h2>
 <ol>
 <li>
-<p>Create <code>internal/vaultobject/</code> — our own interface over <code>baoclient.Client</code> mirroring VCO's <code>VaultObject</code> contract. Do <strong>not</strong> copy VCO's <code>utils/</code> package (it drags in the Vault SDK).</p>
+<p>Create <code>internal/vaultobject/</code> — our own interface over <code>baoclient.Client</code> mirroring <code>VCO</code>'s <code>VaultObject</code> contract. Do <strong>not</strong> copy <code>VCO</code>'s <code>utils/</code> package (it drags in the Vault SDK).</p>
 </li>
 <li>
 <p>Copy the 11 type files one at a time as each feature lands. Every copied file gets a header:</p>
@@ -4643,7 +4643,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </code></pre></div>
 <ol>
 <li>
-<p>Write controllers against our bao client. Use VCO's controllers as a reference; translate SDK calls to <code>baoclient.Client</code> and fit our existing status/finalizer patterns.</p>
+<p>Write controllers against our OpenBao client. Use <code>VCO</code>'s controllers as a reference; translate SDK calls to <code>baoclient.Client</code> and fit our existing status/finalizer patterns.</p>
 </li>
 <li>
 <p>Ship a <code>NOTICE</code> file and <code>THIRD_PARTY_NOTICES.md</code> listing every copied file and its source SHA.</p>
@@ -4658,7 +4658,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="staying-current-with-upstream">Staying current with upstream<a class="headerlink" href="#staying-current-with-upstream" title="Permanent link">#</a></h2>
 <p>Write a drift-check script that runs weekly in CI:</p>
 <ul>
-<li>Reads pinned source SHAs from <code>THIRD_PARTY_NOTICES.md</code></li>
+<li>Reads pinned source <code>SHAs</code> from <code>THIRD_PARTY_NOTICES.md</code></li>
 <li>Fetches the current version of each file from VCO</li>
 <li>3-way merges any changes onto our copy</li>
 <li>Opens a PR with the diff, updated SHA, and test results</li>
