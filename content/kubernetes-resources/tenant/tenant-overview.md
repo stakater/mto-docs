@@ -40,10 +40,6 @@ spec:
         - viewuser
       groups:
         - view-group
-  hibernation:
-  # UTC time
-    sleepSchedule: "20 * * * *"
-    wakeSchedule: "40 * * * *"        
   namespaces:
     sandboxes:
       enabled: true
@@ -143,13 +139,6 @@ Controls the creation and management of namespaces within the tenant:
         * We also support the use of a templating mechanism within annotations, specifically allowing the inclusion of the tenant's username through the placeholder `{{ TENANT.USERNAME }}`. This template can be utilized to dynamically insert the tenant's username value into annotations, for example, as `username: {{ TENANT.USERNAME }}`.
     * `specific`: Allows applying unique labels and annotations to specified tenant namespaces, enabling custom configurations for particular workloads or environments.
 
-## Hibernation
-
-`hibernation` allows for the scheduling of inactive periods for namespaces associated with the tenant, effectively putting them into a "sleep" mode. This capability is designed to conserve resources during known periods of inactivity.
-
-* Configuration for this feature involves two key fields, `sleepSchedule` and `wakeSchedule`, both of which accept strings formatted according to cron syntax.
-* These schedules dictate when the namespaces will automatically transition into and out of hibernation, aligning resource usage with actual operational needs.
-
 ## Description
 
 `desc` provides a human-readable description of the tenant, aiding in documentation and at-a-glance understanding of the tenant's purpose and configuration.
@@ -181,7 +170,7 @@ The evaluation works as follows:
 * An empty string for `storageClass` (vs. null) is treated as the literal value `""`
 
 !!! tip
-    Tenant users can use the [kubectl-tenant plugin](../../kubectlplugin/kubectl-tenant.md) to list available StorageClasses: `kubectl tenant get storageclasses <tenant-name>`
+    Tenant users can use the [kubectl-tenant plugin](../../cli/kubectl-plugin.md) to list available StorageClasses: `kubectl tenant get storageclasses <tenant-name>`
 
 ## Ingress
 

@@ -267,12 +267,15 @@ Following are the different components that can be used to configure multi-tenan
     - `cloudPricingSecretRef:` Secret reference for AWS / Azure Pricing model.
     - `opencostServiceRoleArn`: Role ARN to be used by OpenCost gateway's service account
     - `retentionPeriod`: Retention period to configure `--storage.tsdb.retention.time` parameter of MTO Prometheus Deployment
-- `components.postgres:` Configures PostgreSQL. See [Dependency Management](#dependency-management) below.
-- `components.prometheus:` Configures Prometheus. See [Dependency Management](#dependency-management) below.
-- `components.opencost:` Configures OpenCost. See [Dependency Management](#dependency-management) below.
-- `components.dex:` Configures Dex. See [Dependency Management](#dependency-management) below.
-- `components.dexConfigOperator:` Configures DexConfigOperator. See [DexConfigOperator](#dexconfigoperator) below.
-- `components.finopsOperator:` Configures FinOps Operator. See [FinOps Operator](#finops-operator) below.
+- `components.postgres:` Configures PostgreSQL.
+- `components.prometheus:` Configures Prometheus.
+- `components.opencost:` Configures OpenCost.
+- `components.dex:` Configures Dex.
+- `components.dexConfigOperator:` Configures DexConfigOperator.
+- `components.finopsOperator:` Configures FinOps Operator.
+
+!!! note
+  PostgreSQL, Prometheus, OpenCost, Dex, DexConfigOperator and FinOpsOperator are configured using MTO Dependencies Operator. See [MTO Dependencies Operator documentation](https://github.com/stakater/mto-dependencies-operator) for reference
 
 Here's an example of how to generate the secrets required to configure MTO:
 
@@ -294,14 +297,7 @@ Integration config will be managing the following resources required for console
 
 Details on console GUI and showback can be found [here](../console/overview.md)
 
-### Dependency Management
-
-MTO manages several dependencies (PostgreSQL, Prometheus, OpenCost, Dex) that can operate in two modes:
-
-- **Managed** (default): MTO deploys and manages the dependency via the MTO Dependencies Operator. You can customize the deployment using the `values` field, which accepts the respective [Helm chart](https://helm.sh/) values.
-- **External**: Bring your own instance of the dependency. Provide connection details via the `external` field.
-
-#### PostgreSQL
+### PostgreSQL
 
 The `values` field accepts [Bitnami PostgreSQL Helm chart values](https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml).
 
@@ -339,7 +335,7 @@ The referenced secret should contain either:
 - A `dsn` field with a full connection string: `postgresql://user:pass@host:5432/dbname?sslmode=require`
 - Or individual fields: `host`, `port`, `username`, `password`, `database`, `sslmode`
 
-#### Prometheus
+### Prometheus
 
 The `values` field accepts [Prometheus Helm chart values](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml).
 
@@ -373,7 +369,7 @@ components:
 
 - `external.serverURL`: The base URL of the external Prometheus server for query API access.
 
-#### OpenCost
+### OpenCost
 
 The `values` field accepts [OpenCost Helm chart values](https://github.com/opencost/opencost-helm-chart/blob/main/charts/opencost/values.yaml).
 
@@ -406,7 +402,7 @@ components:
 
 - `external.serverURL`: The base URL of the external OpenCost server for query API access.
 
-#### Dex
+### Dex
 
 The `values` field accepts [Dex Helm chart values](https://github.com/dexidp/helm-charts/blob/master/charts/dex/values.yaml).
 
@@ -651,9 +647,9 @@ namespaceAccessPolicy:
 
 `namespaceAccessPolicy.Deny:` Can be used to restrict privileged *users/groups* CRUD operation over managed namespaces.
 
-#### Privileged
+### Privileged
 
-##### Namespaces
+#### Namespaces
 
 `privileged.namespaces:` Contains the list of `namespaces` ignored by MTO. MTO will not manage the `namespaces` in this list. Treatment for privileged namespaces does not involve further integrations or finalizers processing as with normal namespaces. Values in this list are regex patterns.
 
@@ -663,18 +659,18 @@ For example:
 - To ignore all namespaces starting with the `openshift-` prefix, we can specify `^openshift-.*`.
 - To ignore any namespace containing `stakater` in its name, we can specify `^stakater.`. (A constant word given as a regex pattern will match any namespace containing that word.)
 
-##### ServiceAccounts
+#### ServiceAccounts
 
 `privileged.serviceAccounts:` Contains the list of `ServiceAccounts` ignored by MTO. MTO will not manage the `ServiceAccounts` in this list. Values in this list are regex patterns. For example, to ignore all `ServiceAccounts` starting with the `system:serviceaccount:openshift-` prefix, we can use `^system:serviceaccount:openshift-.*`; and to ignore a specific service account like `system:serviceaccount:builder` service account we can use `^system:serviceaccount:builder$.`
 
 !!! note
     `stakater`, `stakater.` and `stakater.*` will have the same effect. To check out the combinations, go to [Regex101](https://regex101.com/), select Golang, and type your expected regex and test string.
 
-##### Users
+#### Users
 
 `privileged.users:` Contains the list of `users` ignored by MTO. MTO will not manage the `users` in this list. Values in this list are regex patterns.
 
-##### Groups
+#### Groups
 
 `privileged.groups:` Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of `privilegedNamespaces`.
 

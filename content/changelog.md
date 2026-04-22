@@ -1,11 +1,81 @@
 # Changelog
 
+## v1.7.x
+
+### Migration Guide
+
+Follow these steps to upgrade to version 1.7.x from 1.6.x
+
+- Remove `hibernation` field from the Tenant CR if it exists
+- For OpenShift: update the channel from `release-1.6` to `release-1.7` in your OLM Subscription.
+- For Kubernetes: update the Helm chart version to `1.7.x`.
+
+### v1.7.0
+
+_**April 14, 2026**_
+
+#### Breaking Changes
+
+- Removed hibernation-related fields from the [Tenant CR](./kubernetes-resources/tenant/tenant-overview.md). See [Hibernation Operator](https://docs.stakater.com/hibernation-operator) to configure hibernation for a tenant.
+
+#### Bug Fixes & Enhancements
+
+- Bumped FinOps Operator to `v0.1.1`.
+- Added a new Tenants API to the Tenant controller for use by [kubectl-tenant](./cli/kubectl-plugin.md).
+
+#### Component Updates
+
+| Name | Tag | Image |
+| --- | --- | --- |
+| `tenant-operator`       | v1.7.0              | `ghcr.io/stakater/public/mto/tenant-operator`             |
+| `mto-console`           | 1.0.237             | `ghcr.io/stakater/public/mto/mto-console`                 |
+| `mto-gateway`           | 1.0.164             | `ghcr.io/stakater/public/mto/mto-gateway`                 |
+| `finops-operator`       | v0.1.1              | `ghcr.io/stakater/public/finops-operator`                 |
+| `dex-config-operator`   | v0.0.6              | `ghcr.io/stakater/public/dex-config-operator`             |
+| `template-operator`     | v0.1.5              | `ghcr.io/stakater/public/template-operator`               |
+| `hibernation-operator`  | v0.1.103            | `ghcr.io/stakater/public/hibernation-operator`            |
+| `postgresql`            | 18.2                | `ghcr.io/stakater/public/mto/postgresql`                  |
+| `keycloak`              | 24.0.5              | `ghcr.io/stakater/public/mto/keycloak`                    |
+| `dex`                   | v0.0.1              | `ghcr.io/stakater/public/mto/dex`                         |
+| `prometheus`            | v2.55.1             | `quay.io/prometheus/prometheus`                           |
+| `kube-state-metrics`    | v2.17.0             | `registry.k8s.io/kube-state-metrics/kube-state-metrics`   |
+| `opencost`              | 1.117.3             | `ghcr.io/opencost/opencost`                               |
+
 ## v1.6.x
 
 To upgrade to version 1.6.x from 1.5.x:
 
 - For OpenShift: Update the channel from `release-1.5` to `release-1.6` in your OLM Subscription.
 - For Kubernetes: Update the Helm chart version to 1.6.x.
+
+### v1.6.2
+
+_**April 2, 2026**_
+
+## Bug Fixes & Enhancements
+
+- Legacy resources are now automatically cleaned up from the cluster after upgrade.
+
+- The following resources have been renamed to avoid conflicts during the upgrade:
+
+  | Resource Type | Old Name | New Name | Purpose |
+  |---|---|---|---|
+  | Secret | `mto-postgresql` | `tenant-operator-postgresql` | Stores database connection information |
+  | `OpenCost` CR | `opencost-gateway` | `tenant-operator-opencost` | Deploys the OpenCost chart via the Dependencies Operator |
+  | `Prometheus` CR | `prometheus` | `tenant-operator-prometheus` | Deploys the Prometheus chart via the Dependencies Operator |
+  | `FinOpsOperator` CR | `finops-operator` | `tenant-operator-finops` | Deploys the FinOps Operator via the Dependencies Operator |
+
+## Troubleshooting Steps for Upgrade
+
+- If you experience issues fetching data or notice missing data in the MTO Console, restart the `tenant-operator-db-controller` pod.
+
+### v1.6.1
+
+_**March 18, 2026**_
+
+## Bug Fixes
+
+- Fix for some pods deployed by `FinopsOperator` CR crashing after the upgrade
 
 ### v1.6.0
 
