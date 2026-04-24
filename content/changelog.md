@@ -1,5 +1,51 @@
 # Changelog
 
+## v1.8.x
+
+### Migration Guide
+
+Follow these steps to upgrade to version 1.8.x from 1.7.x
+
+- Migrate authentication from Keycloak to [Dex](https://dexidp.io/) before upgrading. Keycloak is no longer bundled with MTO starting in v1.8.0. Dex and the `DexConfigOperator` are installed automatically by the MTO Dependencies Operator, configure them via the `components.dex` and `components.dexConfigOperator` fields in your [IntegrationConfig](./kubernetes-resources/integration-config.md).
+- For OpenShift: update the channel from `release-1.7` to `release-1.8` in your OLM Subscription.
+- For Kubernetes: update the Helm chart version to `1.8.x`.
+
+### v1.8.0
+
+_**TBD**_
+
+#### Breaking Changes
+
+- Removed bundled Keycloak. Authentication now requires Dex (introduced in v1.6.0), which is provisioned automatically by the MTO Dependencies Operator and configured via [IntegrationConfig](./kubernetes-resources/integration-config.md).
+
+#### Features
+
+- Added an experimental feature flag for the namespace admission webhook that replaces the `privilegedNamespaces` deny-list with a tenant-label membership check: tenant members are restricted to namespaces labeled for their tenant, and non-tenant users are allowed on namespaces without a tenant label.
+- MTO Console Cost Analysis export dialog now supports selecting namespace labels, making it easier to filter usage data when exporting.
+
+#### Enhancements
+
+- FinOps Operator now stamps `resolvedPricing` on the `Offering` status, capturing the effective per-meter unit prices and subscription fee derived from the offering spec, along with the timestamp when pricing was resolved.
+
+#### Component Updates
+
+| Name | Tag | Image |
+| --- | --- | --- |
+| `tenant-operator`         | v1.8.0              | `ghcr.io/stakater/public/mto/tenant-operator`             |
+| `mto-console`             | 1.0.242             | `ghcr.io/stakater/public/mto/mto-console`                 |
+| `mto-gateway`             | 1.0.166             | `ghcr.io/stakater/public/mto/mto-gateway`                 |
+| `finops-operator`         | v0.1.2              | `ghcr.io/stakater/public/finops-operator`                 |
+| `finops-gateway`          | v0.1.1              | `ghcr.io/stakater/public/finops-gateway`                  |
+| `mto-dependencies-operator` | v0.0.8            | `ghcr.io/stakater/public/mto-dependencies-operator`       |
+| `dex-config-operator`     | v0.0.6              | `ghcr.io/stakater/public/dex-config-operator`             |
+| `template-operator`       | v0.1.5              | `ghcr.io/stakater/public/template-operator`               |
+| `hibernation-operator`    | v0.1.103            | `ghcr.io/stakater/public/hibernation-operator`            |
+| `postgresql`              | 18.2                | `ghcr.io/stakater/public/mto/postgresql`                  |
+| `dex`                     | v0.0.1              | `ghcr.io/stakater/public/mto/dex`                         |
+| `prometheus`              | v2.55.1             | `quay.io/prometheus/prometheus`                           |
+| `kube-state-metrics`      | v2.17.0             | `registry.k8s.io/kube-state-metrics/kube-state-metrics`   |
+| `opencost`                | 1.117.3             | `ghcr.io/opencost/opencost`                               |
+
 ## v1.7.x
 
 ### Migration Guide
