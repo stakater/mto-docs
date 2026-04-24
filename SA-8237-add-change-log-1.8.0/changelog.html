@@ -4351,6 +4351,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
+  <a href="#troubleshooting-steps-for-upgrade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting Steps for Upgrade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#v180" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4534,7 +4545,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting-steps-for-upgrade" class="md-nav__link">
+  <a href="#troubleshooting-steps-for-upgrade_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Troubleshooting Steps for Upgrade
@@ -6537,6 +6548,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
+  <a href="#troubleshooting-steps-for-upgrade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting Steps for Upgrade
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#v180" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6720,7 +6742,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting-steps-for-upgrade" class="md-nav__link">
+  <a href="#troubleshooting-steps-for-upgrade_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Troubleshooting Steps for Upgrade
@@ -8638,6 +8660,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li>For OpenShift: update the channel from <code>release-1.7</code> to <code>release-1.8</code> in your OLM Subscription.</li>
 <li>For Kubernetes: update the Helm chart version to <code>1.8.x</code>.</li>
 </ul>
+<h3 id="troubleshooting-steps-for-upgrade">Troubleshooting Steps for Upgrade<a class="headerlink" href="#troubleshooting-steps-for-upgrade" title="Permanent link">#</a></h3>
+<ul>
+<li>
+<p>If the MTO Console was already enabled on the previous version, the FinOps CRDs may not be updated automatically after upgrade, which will cause the new <code>resolvedPricing</code> field to be missing from the <code>Offering</code> status. To fix this, delete the <code>Offering</code> CRD and the FinOps Operator CR so they are re-applied on the next reconcile:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>customresourcedefinitions.apiextensions.k8s.io<span class="w"> </span>offerings.finops.stakater.com
+kubectl<span class="w"> </span>delete<span class="w"> </span>finopsoperators.dependencies.tenantoperator.stakater.com<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>tenant-operator-finops
+</code></pre></div>
+</li>
+</ul>
 <h3 id="v180">v1.8.0<a class="headerlink" href="#v180" title="Permanent link">#</a></h3>
 <p><em><strong>TBD</strong></em></p>
 <h4 id="breaking-changes">Breaking Changes<a class="headerlink" href="#breaking-changes" title="Permanent link">#</a></h4>
@@ -8884,7 +8915,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tr>
 </tbody>
 </table>
-<h2 id="troubleshooting-steps-for-upgrade">Troubleshooting Steps for Upgrade<a class="headerlink" href="#troubleshooting-steps-for-upgrade" title="Permanent link">#</a></h2>
+<h2 id="troubleshooting-steps-for-upgrade_1">Troubleshooting Steps for Upgrade<a class="headerlink" href="#troubleshooting-steps-for-upgrade_1" title="Permanent link">#</a></h2>
 <ul>
 <li>If you experience issues fetching data or notice missing data in the MTO Console, restart the <code>tenant-operator-db-controller</code> pod.</li>
 </ul>
