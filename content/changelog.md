@@ -76,7 +76,7 @@ _**April 14, 2026**_
 #### Bug Fixes & Enhancements
 
 - Bumped FinOps Operator to `v0.1.1`.
-- Added a new Tenants API to the Tenant controller for use by [kubectl-tenant](./cli/kubectl-plugin.md).
+- Added a new Tenants API to the Tenant controller to support [kubectl-tenant](./cli/kubectl-plugin.md).
 
 #### Component Updates
 
