@@ -33,7 +33,7 @@ _**TBD**_
 | --- | --- | --- |
 | `tenant-operator`         | v1.8.0              | `ghcr.io/stakater/public/mto/tenant-operator`             |
 | `mto-console`             | 1.0.242             | `ghcr.io/stakater/public/mto/mto-console`                 |
-| `mto-gateway`             | 1.0.166             | `ghcr.io/stakater/public/mto/mto-gateway`                 |
+| `mto-gateway`             | 1.0.167             | `ghcr.io/stakater/public/mto/mto-gateway`                 |
 | `finops-operator`         | v0.1.2              | `ghcr.io/stakater/public/finops-operator`                 |
 | `finops-gateway`          | v0.1.1              | `ghcr.io/stakater/public/finops-gateway`                  |
 | `mto-dependencies-operator` | v0.0.8            | `ghcr.io/stakater/public/mto-dependencies-operator`       |
