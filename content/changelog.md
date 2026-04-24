@@ -6,11 +6,14 @@
 
 Follow these steps to upgrade to version 1.8.x from 1.7.x
 
-- Migrate authentication from Keycloak to [Dex](https://dexidp.io/) before upgrading. Keycloak is no longer bundled with MTO starting in v1.8.0. Dex and the `DexConfigOperator` are installed automatically by the MTO Dependencies Operator, configure them via the `components.dex` and `components.dexConfigOperator` fields in your [IntegrationConfig](./kubernetes-resources/integration-config.md).
+- Migrate authentication from Keycloak to [Dex](https://dexidp.io/) before upgrading. Keycloak is no longer bundled with MTO starting in v1.8.0. Dex and the `DexConfigOperator` are installed automatically by the MTO Dependencies Operator, and can be configured via the `components.dex` and `components.dexConfigOperator` fields in your [IntegrationConfig](./kubernetes-resources/integration-config.md). See the [DexConfigOperator documentation](https://docs.stakater.com/dco) for help configuring Dex connectors, clients, and local users.
+- Remove the following Keycloak-specific fields from your IntegrationConfig, as they are no longer honored:
+    - `spec.components.ingress.keycloak`
+    - `spec.integrations.keycloak`
 - For OpenShift: update the channel from `release-1.7` to `release-1.8` in your OLM Subscription.
 - For Kubernetes: update the Helm chart version to `1.8.x`.
 
-### Troubleshooting Steps for Upgrade
+#### Troubleshooting Steps for Upgrade
 
 - If the MTO Console was already enabled on the previous version, the FinOps CRDs may not be updated automatically after upgrade, which will cause the new `resolvedPricing` field to be missing from the `Offering` status. To fix this, delete the `Offering` CRD and the FinOps Operator CR so they are re-applied on the next reconcile:
 
@@ -25,16 +28,20 @@ _**TBD**_
 
 #### Breaking Changes
 
-- Removed bundled Keycloak. Authentication now requires Dex (introduced in v1.6.0), which is provisioned automatically by the MTO Dependencies Operator and configured via [IntegrationConfig](./kubernetes-resources/integration-config.md).
+- Removed bundled Keycloak. Authentication now requires Dex, provisioned automatically by the MTO Dependencies Operator and configured via [IntegrationConfig](./kubernetes-resources/integration-config.md).
 
 #### Features
 
-- Added an experimental feature flag for the namespace admission webhook that replaces the `privilegedNamespaces` deny-list with a tenant-label membership check: tenant members are restricted to namespaces labeled for their tenant, and non-tenant users are allowed on namespaces without a tenant label.
-- MTO Console Cost Analysis export dialog now supports selecting namespace labels, making it easier to filter usage data when exporting.
+- Added an opt-in flag (`EXPERIMENTAL_NAMESPACE_WEBHOOK_V2`) that restricts tenant members to namespaces labeled for their tenant. Disabled by default.
+- MTO Console Cost Analysis export dialog now supports selecting namespace labels when exporting usage data.
 
 #### Enhancements
 
-- FinOps Operator now stamps `resolvedPricing` on the `Offering` status, capturing the effective per-meter unit prices and subscription fee derived from the offering spec, along with the timestamp when pricing was resolved.
+- `Offering` status now exposes `resolvedPricing`, reflecting the effective pricing resolved from the offering spec along with the timestamp when it was resolved.
+
+#### Changes to Behavior
+
+- `mto-gateway` now identifies users via the `preferred_username` claim by default, falling back to `email` when the claim is missing. Previously it always used `email`. This can be overridden via the `MTO_GATEWAY_USERNAME_CLAIM` environment variable on the tenant-operator pilot controller.
 
 #### Component Updates
 
