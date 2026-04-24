@@ -4413,17 +4413,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#changes-to-behavior" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Changes to Behavior
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#component-updates" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4681,7 +4670,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#changes-to-behavior_1" class="md-nav__link">
+  <a href="#changes-to-behavior" class="md-nav__link">
     <span class="md-ellipsis">
       
         Changes to behavior
@@ -6627,17 +6616,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#changes-to-behavior" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Changes to Behavior
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#component-updates" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6895,7 +6873,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#changes-to-behavior_1" class="md-nav__link">
+  <a href="#changes-to-behavior" class="md-nav__link">
     <span class="md-ellipsis">
       
         Changes to behavior
@@ -8722,9 +8700,6 @@ kubectl<span class="w"> </span>delete<span class="w"> </span>finopsoperators.dep
 <h4 id="enhancements">Enhancements<a class="headerlink" href="#enhancements" title="Permanent link">#</a></h4>
 <ul>
 <li><code>Offering</code> status now exposes <code>resolvedPricing</code>, reflecting the effective pricing resolved from the offering spec along with the timestamp when it was resolved.</li>
-</ul>
-<h4 id="changes-to-behavior">Changes to Behavior<a class="headerlink" href="#changes-to-behavior" title="Permanent link">#</a></h4>
-<ul>
 <li><code>mto-gateway</code> now identifies users via the <code>preferred_username</code> claim by default, falling back to <code>email</code> when the claim is missing. Previously it always used <code>email</code>. This can be overridden via the <code>MTO_GATEWAY_USERNAME_CLAIM</code> environment variable on the tenant-operator pilot controller.</li>
 </ul>
 <h4 id="component-updates">Component Updates<a class="headerlink" href="#component-updates" title="Permanent link">#</a></h4>
@@ -9016,7 +8991,7 @@ kubectl<span class="w"> </span>delete<span class="w"> </span>finopsoperators.dep
 <li>Namespace labels were not always added during creation, but patched after creation, which could lead to problems with <a href="https://ovn-kubernetes.io/">OVN-kubenretes</a> on OpenShift</li>
 <li>Tenant controller deadlock when tenant with <code>onDeletePurgeNamespaces: true</code> with non-deletable namespaces are deleted.</li>
 </ul>
-<h4 id="changes-to-behavior_1">Changes to behavior<a class="headerlink" href="#changes-to-behavior_1" title="Permanent link">#</a></h4>
+<h4 id="changes-to-behavior">Changes to behavior<a class="headerlink" href="#changes-to-behavior" title="Permanent link">#</a></h4>
 <ul>
 <li>When a tenant with <code>onDeletePurgeNamespaces: true</code> is deleted, the operator no longer blocks the reconciler waiting for all namespaces to be deleted. Instead it will keep the finalizer and report which namespaces are not deleted in it's status conditions and only clean up after all namespaces have been successfully deleted.</li>
 </ul>
