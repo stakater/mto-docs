@@ -4348,7 +4348,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Migration Guide">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#troubleshooting-steps-for-upgrade" class="md-nav__link">
@@ -4358,6 +4359,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -4400,6 +4406,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <span class="md-ellipsis">
       
         Enhancements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changes-to-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changes to Behavior
       
     </span>
   </a>
@@ -4664,7 +4681,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#changes-to-behavior" class="md-nav__link">
+  <a href="#changes-to-behavior_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Changes to behavior
@@ -6545,7 +6562,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Migration Guide">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#troubleshooting-steps-for-upgrade" class="md-nav__link">
@@ -6555,6 +6573,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -6597,6 +6620,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <span class="md-ellipsis">
       
         Enhancements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changes-to-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changes to Behavior
       
     </span>
   </a>
@@ -6861,7 +6895,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#changes-to-behavior" class="md-nav__link">
+  <a href="#changes-to-behavior_1" class="md-nav__link">
     <span class="md-ellipsis">
       
         Changes to behavior
@@ -8656,11 +8690,16 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h3 id="migration-guide">Migration Guide<a class="headerlink" href="#migration-guide" title="Permanent link">#</a></h3>
 <p>Follow these steps to upgrade to version 1.8.x from 1.7.x</p>
 <ul>
-<li>Migrate authentication from Keycloak to <a href="https://dexidp.io/">Dex</a> before upgrading. Keycloak is no longer bundled with MTO starting in v1.8.0. Dex and the <code>DexConfigOperator</code> are installed automatically by the MTO Dependencies Operator, configure them via the <code>components.dex</code> and <code>components.dexConfigOperator</code> fields in your <a href="kubernetes-resources/integration-config.html">IntegrationConfig</a>.</li>
+<li>Migrate authentication from Keycloak to <a href="https://dexidp.io/">Dex</a> before upgrading. Keycloak is no longer bundled with MTO starting in v1.8.0. Dex and the <code>DexConfigOperator</code> are installed automatically by the MTO Dependencies Operator, and can be configured via the <code>components.dex</code> and <code>components.dexConfigOperator</code> fields in your <a href="kubernetes-resources/integration-config.html">IntegrationConfig</a>. See the <a href="https://docs.stakater.com/dco">DexConfigOperator documentation</a> for help configuring Dex connectors, clients, and local users.</li>
+<li>Remove the following Keycloak-specific fields from your IntegrationConfig, as they are no longer honored:<ul>
+<li><code>spec.components.ingress.keycloak</code></li>
+<li><code>spec.integrations.keycloak</code></li>
+</ul>
+</li>
 <li>For OpenShift: update the channel from <code>release-1.7</code> to <code>release-1.8</code> in your OLM Subscription.</li>
 <li>For Kubernetes: update the Helm chart version to <code>1.8.x</code>.</li>
 </ul>
-<h3 id="troubleshooting-steps-for-upgrade">Troubleshooting Steps for Upgrade<a class="headerlink" href="#troubleshooting-steps-for-upgrade" title="Permanent link">#</a></h3>
+<h4 id="troubleshooting-steps-for-upgrade">Troubleshooting Steps for Upgrade<a class="headerlink" href="#troubleshooting-steps-for-upgrade" title="Permanent link">#</a></h4>
 <ul>
 <li>
 <p>If the MTO Console was already enabled on the previous version, the FinOps CRDs may not be updated automatically after upgrade, which will cause the new <code>resolvedPricing</code> field to be missing from the <code>Offering</code> status. To fix this, delete the <code>Offering</code> CRD and the FinOps Operator CR so they are re-applied on the next reconcile:</p>
@@ -8673,16 +8712,20 @@ kubectl<span class="w"> </span>delete<span class="w"> </span>finopsoperators.dep
 <p><em><strong>TBD</strong></em></p>
 <h4 id="breaking-changes">Breaking Changes<a class="headerlink" href="#breaking-changes" title="Permanent link">#</a></h4>
 <ul>
-<li>Removed bundled Keycloak. Authentication now requires Dex (introduced in v1.6.0), which is provisioned automatically by the MTO Dependencies Operator and configured via <a href="kubernetes-resources/integration-config.html">IntegrationConfig</a>.</li>
+<li>Removed bundled Keycloak. Authentication now requires Dex, provisioned automatically by the MTO Dependencies Operator and configured via <a href="kubernetes-resources/integration-config.html">IntegrationConfig</a>.</li>
 </ul>
 <h4 id="features">Features<a class="headerlink" href="#features" title="Permanent link">#</a></h4>
 <ul>
-<li>Added an experimental feature flag for the namespace admission webhook that replaces the <code>privilegedNamespaces</code> deny-list with a tenant-label membership check: tenant members are restricted to namespaces labeled for their tenant, and non-tenant users are allowed on namespaces without a tenant label.</li>
-<li>MTO Console Cost Analysis export dialog now supports selecting namespace labels, making it easier to filter usage data when exporting.</li>
+<li>Added an opt-in flag (<code>EXPERIMENTAL_NAMESPACE_WEBHOOK_V2</code>) that restricts tenant members to namespaces labeled for their tenant. Disabled by default.</li>
+<li>MTO Console Cost Analysis export dialog now supports selecting namespace labels when exporting usage data.</li>
 </ul>
 <h4 id="enhancements">Enhancements<a class="headerlink" href="#enhancements" title="Permanent link">#</a></h4>
 <ul>
-<li>FinOps Operator now stamps <code>resolvedPricing</code> on the <code>Offering</code> status, capturing the effective per-meter unit prices and subscription fee derived from the offering spec, along with the timestamp when pricing was resolved.</li>
+<li><code>Offering</code> status now exposes <code>resolvedPricing</code>, reflecting the effective pricing resolved from the offering spec along with the timestamp when it was resolved.</li>
+</ul>
+<h4 id="changes-to-behavior">Changes to Behavior<a class="headerlink" href="#changes-to-behavior" title="Permanent link">#</a></h4>
+<ul>
+<li><code>mto-gateway</code> now identifies users via the <code>preferred_username</code> claim by default, falling back to <code>email</code> when the claim is missing. Previously it always used <code>email</code>. This can be overridden via the <code>MTO_GATEWAY_USERNAME_CLAIM</code> environment variable on the tenant-operator pilot controller.</li>
 </ul>
 <h4 id="component-updates">Component Updates<a class="headerlink" href="#component-updates" title="Permanent link">#</a></h4>
 <table>
@@ -8973,7 +9016,7 @@ kubectl<span class="w"> </span>delete<span class="w"> </span>finopsoperators.dep
 <li>Namespace labels were not always added during creation, but patched after creation, which could lead to problems with <a href="https://ovn-kubernetes.io/">OVN-kubenretes</a> on OpenShift</li>
 <li>Tenant controller deadlock when tenant with <code>onDeletePurgeNamespaces: true</code> with non-deletable namespaces are deleted.</li>
 </ul>
-<h4 id="changes-to-behavior">Changes to behavior<a class="headerlink" href="#changes-to-behavior" title="Permanent link">#</a></h4>
+<h4 id="changes-to-behavior_1">Changes to behavior<a class="headerlink" href="#changes-to-behavior_1" title="Permanent link">#</a></h4>
 <ul>
 <li>When a tenant with <code>onDeletePurgeNamespaces: true</code> is deleted, the operator no longer blocks the reconciler waiting for all namespaces to be deleted. Instead it will keep the finalizer and report which namespaces are not deleted in it's status conditions and only clean up after all namespaces have been successfully deleted.</li>
 </ul>
