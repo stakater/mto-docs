@@ -38,9 +38,6 @@ _**TBD**_
 #### Enhancements
 
 - `Offering` status now exposes `resolvedPricing`, reflecting the effective pricing resolved from the offering spec along with the timestamp when it was resolved.
-
-#### Changes to Behavior
-
 - `mto-gateway` now identifies users via the `preferred_username` claim by default, falling back to `email` when the claim is missing. Previously it always used `email`. This can be overridden via the `MTO_GATEWAY_USERNAME_CLAIM` environment variable on the tenant-operator pilot controller.
 
 #### Component Updates
