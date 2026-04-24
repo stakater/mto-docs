@@ -10,6 +10,15 @@ Follow these steps to upgrade to version 1.8.x from 1.7.x
 - For OpenShift: update the channel from `release-1.7` to `release-1.8` in your OLM Subscription.
 - For Kubernetes: update the Helm chart version to `1.8.x`.
 
+### Troubleshooting Steps for Upgrade
+
+- If the MTO Console was already enabled on the previous version, the FinOps CRDs may not be updated automatically after upgrade, which will cause the new `resolvedPricing` field to be missing from the `Offering` status. To fix this, delete the `Offering` CRD and the FinOps Operator CR so they are re-applied on the next reconcile:
+
+    ```bash
+    kubectl delete customresourcedefinitions.apiextensions.k8s.io offerings.finops.stakater.com
+    kubectl delete finopsoperators.dependencies.tenantoperator.stakater.com -n multi-tenant-operator tenant-operator-finops
+    ```
+
 ### v1.8.0
 
 _**TBD**_
