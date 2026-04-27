@@ -8,15 +8,15 @@ The Capacity Planning feature in the app provides insights into resource usage a
 
 This part will allow users to group nodes based on their labels, to change how the data should be visualized for them.
 
-To add a node filter, user will be asked to provide a name and node labels in form of [MatchExpressions](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#resources-that-support-set-based-requirements).
+Click the **Add Node Filter** button on the top-right of the Capacity Planning page to open the drawer. Provide a **Node Filter Name** and one or more node label selectors in the form of [MatchExpressions](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#resources-that-support-set-based-requirements). For each selector, choose the **Select Key**, **Operator** (default `in`), and **Value**, then click **Add**. Click **Create Filter** to save.
 
 ![add-node-filter](../images/add-node-filter.png)
 
-After creation, node filters will look like this.
+After creation, node filters appear in the **Node Filter** table with **Name**, **Specs**, and **Labels** columns. Select one or more filters and click **Apply** to update the charts below.
 
 ![node-filters](../images/node-filtering-capacity-planning.png)
 
-On clicking any of the node filters, the data in the next two parts will change accordingly.
+When a filter is applied, the data in the next two parts changes accordingly. The selected filter is shown as a chip at the top with a **Clear All** option, and the filter table can be collapsed using the **Hide Filters** / **Show Filters** toggle.
 
 ![selected-node-filters](../images/node-filtering-capacity-planning-selected.png)
 
@@ -30,14 +30,14 @@ Similar to the tenant requests, this section compares the quota requests against
 
 ![capacity-planning](../images/capacity_planning.png)
 
-## 2. Worker-pool Details
+## 2. Node Capacity
 
 A detailed table lists the worker nodes in the cluster, displaying each node’s CPU and memory capacity along with various labels that indicate the node’s configuration and role (e.g., worker, infra). This information helps in identifying resource distribution across nodes and managing workloads accordingly.
 
-![worker-pool](../images/worker_pool.png)
+![node-capacity](../images/worker_pool.png)
 
-## 3. Request Details
+## 3. Tenant Request Details
 
 This table provides a breakdown of the resource requests from different tenants, displaying both the requested resources (CPU and memory) and the allocated quotas. It helps to monitor if tenant requests align with the quotas set for each tenant, ensuring optimal resource management.
 
-![request-details](../images/request_details.png)
+![tenant-request-details](../images/request_details.png)

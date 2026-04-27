@@ -1,12 +1,12 @@
 # Tenants
 
-Here, admins have a bird's-eye view of all tenants, with the ability to delve into each one for detailed examination and management. This section is pivotal for observing the distribution and organization of tenants within the system. More information on each tenant can be accessed by clicking the view option against each tenant name.
+Here, admins have a bird's-eye view of all tenants, with the ability to delve into each one for detailed examination and management. This section is pivotal for observing the distribution and organization of tenants within the system. More information on each tenant can be accessed by clicking the tenant name.
 
 ![tenants](../images/tenants.png)
 
 ## Live YAML and Graph View
 
-In the MTO Console, each resource section is equipped with a "View" button, revealing the live YAML configuration for complete information on the resource. For Tenant resources, a supplementary "Graph" option is available, illustrating the relationships and dependencies of all resources under a Tenant. This dual-view approach empowers users with both the detailed control of YAML and the holistic oversight of the graph view.
+In the MTO Console, clicking a resource's name opens its detail page, which includes a `YAML` tab revealing the live YAML configuration for complete information on the resource. For Tenant resources, a supplementary `Graph` tab is available, illustrating the relationships and dependencies of all resources under a Tenant. This dual-view approach empowers users with both the detailed control of YAML and the holistic oversight of the graph view.
 
 ![tenants-graph](../images/tenants_graph.png)
 
@@ -34,7 +34,7 @@ To view the graph of your tenant, follow the steps below:
 
 - Navigate to `Tenants` page on the MTO Console using the left navigation bar.
 ![Tenants](../images/graph-1.png)
-- Click on `View` of the tenant for which you want to view the graph.
+- Click on the name of the tenant for which you want to view the graph.
 ![Tenant View](../images/graph-2.png)
 - Click on `Graph` tab on the tenant details page.
 ![Tenant Graph](../images/graph-3.png)
@@ -166,7 +166,7 @@ This section allows users to optionally configure namespaces and metadata for th
 ![tenantNamespaceTab](../images/tenantNamespaceTab.png)
 
 - Toggles:
-    - Enable Sandbox: Activates the sandbox environment for the tenant.
+    - Sandbox: Activates the sandbox environment for the tenant.
     - Private Sandbox: Makes the sandbox environment private.
     - On Delete Purge Namespaces: Ensures namespaces are purged upon deletion.
 - Input Fields:
