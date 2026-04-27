@@ -37,13 +37,13 @@ Selects namespaces by Kubernetes labels. Users can input label selectors in the 
 
 In the example below, the label `kubernetes.io/metadata.name:retail-dev` is selected and the matching namespace is shown under "Namespaces to be affected".
 
-![byLabels](../images/sleepByLabels.png)
+![by-labels](../images/sleepByLabels.png)
 
 #### By Namespaces
 
 Shows a namespace checklist with a **Select All** link. Users select namespaces directly from the list — there is no labels filter on this flow.
 
-![byNamespaces](../images/sleepByNameSelection.png)
+![by-namespaces](../images/sleepByNameSelection.png)
 
 ### Hibernation Mode
 
@@ -57,7 +57,7 @@ Namespaces sleep and wake automatically based on a defined cron schedule. A sche
 
 The **Select Schedule** dropdown shows existing schedules. Use the **+** button next to it to create a new schedule. The drawer's bottom action is **Apply Hibernation**.
 
-![selectSchedule](../images/selectCreatedInterval.png)
+![select-schedule](../images/selectCreatedInterval.png)
 
 ## Creating a Hibernation Schedule
 
@@ -72,4 +72,4 @@ Clicking the **+** button next to the Select Schedule dropdown opens the **Creat
 
 Click **Create Schedule** to save.
 
-![createSchedule](../images/createInterval.png)
+![create-schedule](../images/createInterval.png)
