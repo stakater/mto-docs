@@ -2878,7 +2878,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Showback
+    Cost Analysis
   
 
     
@@ -2973,35 +2973,86 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-metadata" class="md-nav__link">
+  <a href="#step-1-quota-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: Metadata
+        Step 1: Quota Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Quota Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resource Quota
       
     </span>
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#step-2-resource-quota" class="md-nav__link">
+  <a href="#step-2-container-optional" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: Resource Quota
+        Step 2: Container (Optional)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Container (Optional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Handling
       
     </span>
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#step-3-limit-range-optional" class="md-nav__link">
+  <a href="#step-3-pod-optional" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: Limit Range (Optional)
+        Step 3: Pod (Optional)
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Pod (Optional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-handling_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Handling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3048,6 +3099,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <span class="md-ellipsis">
       
         Delete Quota
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        View YAML
       
     </span>
   </a>
@@ -4526,35 +4588,86 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-metadata" class="md-nav__link">
+  <a href="#step-1-quota-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: Metadata
+        Step 1: Quota Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Quota Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource-quota" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resource Quota
       
     </span>
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#step-2-resource-quota" class="md-nav__link">
+  <a href="#step-2-container-optional" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: Resource Quota
+        Step 2: Container (Optional)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Container (Optional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Handling
       
     </span>
   </a>
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+        
           <li class="md-nav__item">
-  <a href="#step-3-limit-range-optional" class="md-nav__link">
+  <a href="#step-3-pod-optional" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: Limit Range (Optional)
+        Step 3: Pod (Optional)
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Step 3: Pod (Optional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-handling_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Handling
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -4607,6 +4720,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#view-yaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        View YAML
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4631,12 +4755,13 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>MTO's Quotas are crucial for managing resource allocation. In this section, administrators can assess the quotas assigned to each tenant, ensuring a balanced distribution of resources in line with operational requirements.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/quotas.png" data-desc-position="bottom"><img alt="quotas" src="../images/quotas.png"></a></p>
 <h2 id="create-quota">Create Quota<a class="headerlink" href="#create-quota" title="Permanent link">#</a></h2>
-<p>The quota creation process allows administrators to define resource limits and optional configurations for containers and pods. This document outlines the steps to create a new quota, including the metadata, resource quota, and limit range configurations.</p>
-<h3 id="step-1-metadata">Step 1: Metadata<a class="headerlink" href="#step-1-metadata" title="Permanent link">#</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/quotaCreationMetadata.png" data-desc-position="bottom"><img alt="quotaCreationMetadata" src="../images/quotaCreationMetadata.png"></a></p>
+<p>Click the <strong>Create Quota</strong> button on the top-right of the Quotas page to open the creation drawer. The drawer uses a stepper layout with the following navigation items: <strong>Quota Overview</strong>, <strong>Limit Range (Optional)</strong>, <strong>Container (Optional)</strong>, and <strong>Pod (Optional)</strong>.</p>
+<h3 id="step-1-quota-overview">Step 1: Quota Overview<a class="headerlink" href="#step-1-quota-overview" title="Permanent link">#</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/quotaCreationMetadata.png" data-desc-position="bottom"><img alt="quotaCreationQuotaOverview" src="../images/quotaCreationMetadata.png"></a></p>
+<p>This step combines the quota name and the resource quota definitions.</p>
 <ul>
 <li>
-<p>Name Field</p>
+<p>Metadata Name</p>
 <ul>
 <li>The name field is mandatory and must be unique.</li>
 <li>If the name already exists, an inline error message is displayed.</li>
@@ -4652,16 +4777,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </code></pre></div>
 <ul>
 <li>This ensures that quota names consist of lowercase alphanumeric characters and hyphens, and do not start or end with a hyphen.</li>
-<li>The metadata section in the drawer while creating a quota is to provide a name for the quota. Users must ensure the quota name meets the specified
-criteria. Also, the quota name should not already exist in order to create a new quota.</li>
+<li>Users must ensure the quota name meets the specified criteria. Also, the quota name should not already exist in order to create a new quota.</li>
 </ul>
 </li>
 </ul>
-<h3 id="step-2-resource-quota">Step 2: Resource Quota<a class="headerlink" href="#step-2-resource-quota" title="Permanent link">#</a></h3>
+<h4 id="resource-quota">Resource Quota<a class="headerlink" href="#resource-quota" title="Permanent link">#</a></h4>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/quotaCreationResourceQuota.png" data-desc-position="bottom"><img alt="quotaCreationResourceQuota" src="../images/quotaCreationResourceQuota.png"></a></p>
 <ol>
 <li>Adding Resources</li>
-<li>The <strong>Resource</strong> dropdown allows the selection of resource types such as:<ul>
+<li>The <strong>Resource Type</strong> dropdown allows the selection of common resource types such as:<ul>
 <li>CPU Requests</li>
 <li>Memory Requests</li>
 <li>Config Maps</li>
@@ -4670,8 +4794,9 @@ criteria. Also, the quota name should not already exist in order to create a new
 <li>Load Balancer Services</li>
 </ul>
 </li>
+<li>Custom resources can also be entered (for example, <code>nvidia.com/gpu</code>).</li>
 <li>
-<p>Enter the corresponding <strong>Value</strong> for the selected resource.</p>
+<p>Enter the corresponding <strong>Value</strong> for the selected resource (for example, <code>10</code>, <code>100Gi</code>, <code>2000m</code>).</p>
 </li>
 <li>
 <p>Error Handling</p>
@@ -4684,35 +4809,37 @@ criteria. Also, the quota name should not already exist in order to create a new
 </li>
 <li>Allows users to add multiple resources sequentially.</li>
 </ol>
-<h3 id="step-3-limit-range-optional">Step 3: Limit Range (Optional)<a class="headerlink" href="#step-3-limit-range-optional" title="Permanent link">#</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/quotaCreationLimitRange.png" data-desc-position="bottom"><img alt="quotaCreationLimitRange" src="../images/quotaCreationLimitRange.png"></a></p>
-<p>The limit range section provides optional configurations for containers and pods. It includes:</p>
-<ol>
-<li>Container</li>
-<li>
-<p>Configure limits for container resources by entering:</p>
+<h3 id="step-2-container-optional">Step 2: Container (Optional)<a class="headerlink" href="#step-2-container-optional" title="Permanent link">#</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/quotaCreationLimitRangeContainer.png" data-desc-position="bottom"><img alt="quotaCreationLimitRangeContainer" src="../images/quotaCreationLimitRangeContainer.png"></a></p>
+<p>Sets resource limits that apply to each container individually. The page is split into <strong>CPU Limits</strong> and <strong>Memory Limits</strong> sections, each accepting:</p>
 <ul>
-<li><strong>Min</strong> and <strong>Max</strong> values for resource types.</li>
-<li><strong>Default Request</strong> and <strong>Default Limit</strong> values.</li>
+<li><strong>Minimum</strong></li>
+<li><strong>Maximum</strong></li>
+<li><strong>Default Limit</strong></li>
+<li><strong>Default Request</strong></li>
 </ul>
-</li>
-<li>
-<p>Pod</p>
-</li>
-<li>
-<p>Similar to the container section, allows configuration for pod-level resources.</p>
-</li>
-<li>
-<p>Error Handling</p>
-</li>
+<h4 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">#</a></h4>
+<ul>
+<li>Inline errors guide users in correcting their inputs.</li>
+</ul>
+<h3 id="step-3-pod-optional">Step 3: Pod (Optional)<a class="headerlink" href="#step-3-pod-optional" title="Permanent link">#</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/quotaCreationLimitRangePod.png" data-desc-position="bottom"><img alt="quotaCreationLimitRangePod" src="../images/quotaCreationLimitRangePod.png"></a></p>
+<p>Sets resource limits that apply to the sum of all containers in a pod. The page is split into <strong>CPU Limits</strong> and <strong>Memory Limits</strong> sections, each accepting only:</p>
+<ul>
+<li><strong>Minimum</strong></li>
+<li><strong>Maximum</strong></li>
+</ul>
+<p>Unlike the Container step, Pod limits do not include Default Limit or Default Request fields.</p>
+<h4 id="error-handling_1">Error Handling<a class="headerlink" href="#error-handling_1" title="Permanent link">#</a></h4>
+<ul>
 <li>No validation errors occur unless an invalid value is entered.</li>
 <li>Inline errors guide users in correcting their inputs.</li>
-</ol>
+</ul>
 <h3 id="final-step-save-quota">Final Step: Save Quota<a class="headerlink" href="#final-step-save-quota" title="Permanent link">#</a></h3>
 <ol>
-<li>Add Quota Button</li>
+<li>Create Button</li>
 <li>
-<p>Once all configurations are completed, users can click the <strong>Add Quota</strong> button to save the quota.</p>
+<p>Once all configurations are completed, users can click the <strong>Create</strong> button to save the quota.</p>
 </li>
 <li>
 <p>Completion</p>
@@ -4723,13 +4850,15 @@ criteria. Also, the quota name should not already exist in order to create a new
 <h3 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h3>
 <ul>
 <li>The entire quota creation process is intuitive, with inline validation to guide users.</li>
-<li>Optional configurations like "Limit Range" allow flexibility based on use cases.</li>
+<li>Limit Range, Container, and Pod steps are all optional and can be skipped.</li>
 </ul>
 <h2 id="update-quota">Update Quota<a class="headerlink" href="#update-quota" title="Permanent link">#</a></h2>
-<p>User can click on the edit button in the table under the action items to open the drawer with all the pre-populated quota configurations.</p>
-<p>The update process follows a similar flow to the create process. However, the key difference is that the <strong>quota name</strong> in <strong>Step-1</strong> cannot be edited or updated. All other steps and configurations remain the same, allowing users to modify resource quota, limit range values as needed.</p>
+<p>From the <strong>Actions</strong> column on the Quotas list page, click the three-dot menu on a quota row and select the edit option to open the drawer with all the pre-populated quota configurations.</p>
+<p>The update process follows the same stepper as the create process. The key difference is that the <strong>Metadata Name</strong> in <strong>Quota Overview</strong> cannot be edited or updated. All other steps and configurations remain the same, allowing users to modify resource quota and limit range values as needed.</p>
 <h2 id="delete-quota">Delete Quota<a class="headerlink" href="#delete-quota" title="Permanent link">#</a></h2>
-<p>By clicking on the delete option in the quota table the user will be able to perform delete operation, a confirmation modal will open which will prompt the user to delete or cancel operation.</p>
+<p>From the <strong>Actions</strong> column on the Quotas list page, click the three-dot menu on a quota row and select the delete option. A confirmation modal will prompt the user to delete or cancel the operation.</p>
+<h2 id="view-yaml">View YAML<a class="headerlink" href="#view-yaml" title="Permanent link">#</a></h2>
+<p>From the <strong>Actions</strong> column on the Quotas list page, click the three-dot menu on a quota row and select the YAML option to view the quota's YAML representation.</p>
 
 
 
