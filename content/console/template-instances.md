@@ -4,6 +4,8 @@
 
 ![template-instances](../images/templateInstances.png)
 
+The Template Instances page lists all instances across the cluster, organized into two tabs: **Template Instances** (namespace-scoped) and **Cluster Template Instances** (cluster-scoped). Each row shows **Name**, **Namespace**, **Template**, **Status**, **Sync**, **Created**, and an **Actions** kebab menu.
+
 ## Details Section
 
 By clicking on the Template Instance name user can be directed to the details section of the selected Template Instance.
@@ -13,40 +15,59 @@ It has breadcrumb to redirect user back to the Template Instances table.
 
 ## Create Template Instance
 
-![templateInstanceCrudDrawer](../images/templateInstanceCrudDrawer.png)
+The Template Instance creation process in the MTO Console is designed to be straightforward, allowing users to deploy a selected template into a specific namespace with optional synchronization. The process is presented in a drawer interface.
 
-The Template Instance creation process in the MTO Console is designed to be straightforward, allowing users to deploy a selected template into a specific namespace with optional synchronization. The process is presented in a drawer interface and consists of the following steps:
+Click the **Create Instance(s)** button at the top right of the Template Instances page to open the creation drawer.
 
-### Template Instance Info
+### Select Instance Type
 
-Create Instance(s) Button: Click the Create Instance(s) button at the top right of the Template Instances page to start the process.
+![templateInstanceCreateDrawer](../images/templateInstanceCreateDrawer.png)
 
-By default selected type is Template Instance. But it can be modified to Cluster Template Instance.
+The drawer first prompts you to choose the scope of the instance:
 
-### Instance Configuration
+- **Template Instance:** Creates resources in a specific namespace.
+- **Cluster Template Instance:** Creates resources across multiple namespaces based on selectors.
 
-- **Select Instance / Group Instance:** Choose Template Instance from the dropdown.
-- **Select Template:** Pick the template you want to instantiate (e.g., docker-pull-secret).
-- **Select Namespace:** Choose the target namespace where the resources will be deployed (e.g., arsenal-dev).
-- **Keep resources in sync with template:** (Optional) Check this box to ensure that resources deployed by this instance remain synchronized with any updates to the template.
+Select **Template Instance** to continue with the namespace-scoped flow described below. The cluster-scoped flow is documented separately on the [Cluster Template Instances](cluster-template-instances.md) page. The **Change Type** button on later steps lets you switch between the two scopes without leaving the drawer.
 
-Click Submit to create the Template Instance.
+### Basic Information
+
+![templateInstanceCreateDrawerInfo](../images/templateInstanceCreateDrawerInfo.png)
+
+- **Instance Name:** Enter a unique name for the instance.
+- **Namespace:** Select the target namespace where the resources will be deployed (for example, `arsenal-dev`).
+- **Template:** Pick the template to instantiate (for example, `docker-pull-secret`).
+- **Auto Sync:** Toggle on to automatically sync changes from the template to the deployed resources.
+
+Click **Next** to continue to Parameters.
+
+### Parameters
+
+![templateInstanceCreateDrawerParams](../images/templateInstanceCreateDrawerParams.png)
+
+- **Parameter Name:** Select a parameter defined in the template.
+- **Value:** Provide the value for the selected parameter.
+- Click **Add** to include the parameter in the instance.
+
+Click **Create Instance** to save the Template Instance.
 
 ### Result & Management
 
-The new Template Instance will appear in the list with the following columns:
+The new Template Instance appears on the Template Instances tab of the list page with the following columns:
 
 - **Name:** The name of the Template Instance.
-- **Template:** The template used for the instance.
 - **Namespace:** The target namespace.
-- **Status:** Indicates if the instance is deployed (e.g., green check for deployed).
+- **Template:** The template used for the instance.
+- **Status:** Indicates if the instance is deployed (for example, `Deployed` for a successful deployment, `Failed` if it could not be applied).
 - **Sync:** Shows if the resources are kept in sync with the template.
-- **Created At:** Timestamp of instance creation.
-- **Actions:** Three-dot menu for additional actions (e.g., view YAML, edit, delete).
+- **Created:** Timestamp of instance creation.
+- **Actions:** Three-dot menu for additional actions (view YAML, edit, delete).
 
 ## YAML View
 
-![TemplateInstance YAML](../images/ti-yaml.png)
+A YAML representation of the Template Instance can be previewed by selecting **View YAML** from the Actions kebab menu on an instance row.
+
+![TemplateInstance YAML](../images/templateInstanceYAMLView.png)
 
 ## Update Template Instance
 
@@ -54,4 +75,4 @@ Template Instance can not be updated as all fields are disabled.
 
 ## Delete Template Instance
 
-Template instance can be deleted by clicking on the three dot menu in the table.
+Template instance can be deleted by selecting **Delete** from the Actions kebab menu on the instance row.
