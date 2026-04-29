@@ -63,7 +63,6 @@ Sets resource limits that apply to each container individually. The page is spli
 
 #### Error Handling
 
-- No validation errors occur unless an invalid value is entered.
 - Inline errors guide users in correcting their inputs.
 
 ### Step 3: Pod (Optional)
