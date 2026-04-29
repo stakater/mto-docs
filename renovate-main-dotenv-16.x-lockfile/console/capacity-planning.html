@@ -2878,7 +2878,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Showback
+    Cost Analysis
   
 
     
@@ -3123,10 +3123,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-worker-pool-details" class="md-nav__link">
+  <a href="#2-node-capacity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Worker-pool Details
+        2. Node Capacity
       
     </span>
   </a>
@@ -3134,10 +3134,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-request-details" class="md-nav__link">
+  <a href="#3-tenant-request-details" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Request Details
+        3. Tenant Request Details
       
     </span>
   </a>
@@ -4542,10 +4542,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-worker-pool-details" class="md-nav__link">
+  <a href="#2-node-capacity" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Worker-pool Details
+        2. Node Capacity
       
     </span>
   </a>
@@ -4553,10 +4553,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-request-details" class="md-nav__link">
+  <a href="#3-tenant-request-details" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Request Details
+        3. Tenant Request Details
       
     </span>
   </a>
@@ -4588,23 +4588,23 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="1-graphical-representation">1. Graphical Representation<a class="headerlink" href="#1-graphical-representation" title="Permanent link">#</a></h2>
 <h3 id="a-node-filtering-based-on-labels">a. Node filtering based on Labels<a class="headerlink" href="#a-node-filtering-based-on-labels" title="Permanent link">#</a></h3>
 <p>This part will allow users to group nodes based on their labels, to change how the data should be visualized for them.</p>
-<p>To add a node filter, user will be asked to provide a name and node labels in form of <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#resources-that-support-set-based-requirements">MatchExpressions</a>.</p>
+<p>Click the <strong>Add Node Filter</strong> button on the top-right of the Capacity Planning page to open the drawer. Provide a <strong>Node Filter Name</strong> and one or more node label selectors in the form of <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#resources-that-support-set-based-requirements">MatchExpressions</a>. For each selector, choose the <strong>Select Key</strong>, <strong>Operator</strong> (default <code>in</code>), and <strong>Value</strong>, then click <strong>Add</strong>. Click <strong>Create Filter</strong> to save.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/add-node-filter.png" data-desc-position="bottom"><img alt="add-node-filter" src="../images/add-node-filter.png"></a></p>
-<p>After creation, node filters will look like this.</p>
+<p>After creation, node filters appear in the <strong>Node Filter</strong> table with <strong>Name</strong>, <strong>Specs</strong>, and <strong>Labels</strong> columns. Select one or more filters and click <strong>Apply</strong> to update the charts below.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/node-filtering-capacity-planning.png" data-desc-position="bottom"><img alt="node-filters" src="../images/node-filtering-capacity-planning.png"></a></p>
-<p>On clicking any of the node filters, the data in the next two parts will change accordingly.</p>
+<p>When a filter is applied, the data in the next two parts changes accordingly. The selected filter is shown as a chip at the top with a <strong>Clear All</strong> option, and the filter table can be collapsed using the <strong>Hide Filters</strong> / <strong>Show Filters</strong> toggle.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/node-filtering-capacity-planning-selected.png" data-desc-position="bottom"><img alt="selected-node-filters" src="../images/node-filtering-capacity-planning-selected.png"></a></p>
 <h3 id="b-tenant-requests-vs-cluster-capacity">b. Tenant Requests vs. Cluster Capacity<a class="headerlink" href="#b-tenant-requests-vs-cluster-capacity" title="Permanent link">#</a></h3>
 <p>This section displays bar charts that compare the current resource requests from tenants (like CPU and memory) with the total available cluster capacity. The charts visually represent how much of the cluster’s resources are currently being utilized versus what is available, helping identify over-utilization or under-utilization scenarios.</p>
 <h3 id="c-quota-requests-vs-cluster-capacity">c. Quota Requests vs. Cluster Capacity<a class="headerlink" href="#c-quota-requests-vs-cluster-capacity" title="Permanent link">#</a></h3>
 <p>Similar to the tenant requests, this section compares the quota requests against the total cluster capacity. It allows administrators to see if the quota assigned is in line with the cluster's actual capacity.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/capacity_planning.png" data-desc-position="bottom"><img alt="capacity-planning" src="../images/capacity_planning.png"></a></p>
-<h2 id="2-worker-pool-details">2. Worker-pool Details<a class="headerlink" href="#2-worker-pool-details" title="Permanent link">#</a></h2>
+<h2 id="2-node-capacity">2. Node Capacity<a class="headerlink" href="#2-node-capacity" title="Permanent link">#</a></h2>
 <p>A detailed table lists the worker nodes in the cluster, displaying each node’s CPU and memory capacity along with various labels that indicate the node’s configuration and role (e.g., worker, infra). This information helps in identifying resource distribution across nodes and managing workloads accordingly.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/worker_pool.png" data-desc-position="bottom"><img alt="worker-pool" src="../images/worker_pool.png"></a></p>
-<h2 id="3-request-details">3. Request Details<a class="headerlink" href="#3-request-details" title="Permanent link">#</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/worker_pool.png" data-desc-position="bottom"><img alt="node-capacity" src="../images/worker_pool.png"></a></p>
+<h2 id="3-tenant-request-details">3. Tenant Request Details<a class="headerlink" href="#3-tenant-request-details" title="Permanent link">#</a></h2>
 <p>This table provides a breakdown of the resource requests from different tenants, displaying both the requested resources (CPU and memory) and the allocated quotas. It helps to monitor if tenant requests align with the quotas set for each tenant, ensuring optimal resource management.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/request_details.png" data-desc-position="bottom"><img alt="request-details" src="../images/request_details.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/request_details.png" data-desc-position="bottom"><img alt="tenant-request-details" src="../images/request_details.png"></a></p>
 
 
 
