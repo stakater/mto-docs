@@ -2878,7 +2878,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Showback
+    Cost Analysis
   
 
     
@@ -3068,10 +3068,32 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cluster-template-instance-info" class="md-nav__link">
+  <a href="#basic-information" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cluster Template Instance Info
+        Basic Information
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-selector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Namespace Selector
       
     </span>
   </a>
@@ -4282,34 +4304,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/keycloak.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Keycloak
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../integrations/azure-pricing.html" class="md-nav__link">
         
   
@@ -4526,10 +4520,32 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cluster-template-instance-info" class="md-nav__link">
+  <a href="#basic-information" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cluster Template Instance Info
+        Basic Information
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace-selector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Namespace Selector
       
     </span>
   </a>
@@ -4608,53 +4624,65 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h1 id="cluster-template-instances">Cluster Template Instances<a class="headerlink" href="#cluster-template-instances" title="Permanent link">#</a></h1>
 <p><a href="https://docs.stakater.com/template-operator/main/kubernetes-resources/cluster-template-instance.html">Cluster Template Instances</a> in the MTO Console allow users to deploy standardized resource configurations, such as Kubernetes manifests, Helm charts, Secrets, or ConfigMaps, into multiple namespaces that match specific label selectors. By using Cluster Template Instances, organizations can ensure consistency, repeatability, and compliance across multiple environments. Each Cluster Template Instance is based on a predefined template and can be managed, synchronized, or removed as needed, making it easy to propagate best practices and updates throughout your infrastructure.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/cti-tab.png" data-desc-position="bottom"><img alt="CTI Tab" src="../images/cti-tab.png"></a></p>
+<p>The Cluster Template Instances tab on the Template Instances page lists each instance with the following columns: <strong>Name</strong>, <strong>Template</strong>, <strong>Status</strong>, <strong>Sync</strong>, <strong>Namespaces</strong> (the number of matched namespaces), <strong>Created</strong>, and an <strong>Actions</strong> kebab menu.</p>
 <h2 id="details-section">Details Section<a class="headerlink" href="#details-section" title="Permanent link">#</a></h2>
 <p>By clicking on the Cluster Template Instance name user can be directed to the details section of the selected Cluster Template Instance. It has breadcrumb to redirect user back to the Template Instances table.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/cti-details.png" data-desc-position="bottom"><img alt="CTI Details" src="../images/cti-details.png"></a></p>
-<h2 id="create-cluster-template-instance">Create Cluster Template Instance<a class="headerlink" href="#create-cluster-template-instance" title="Permanent link">#</a></h2>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/cti-create.png" data-desc-position="bottom"><img alt="CTI Create" src="../images/cti-create.png"></a></p>
-<p>The Cluster Template Instance creation process in the MTO Console is designed to be straightforward, allowing users to deploy a selected template into all namespaces matching specified label selectors, with optional synchronization. The process is presented in a drawer interface and consists of the following steps:</p>
-<h3 id="cluster-template-instance-info">Cluster Template Instance Info<a class="headerlink" href="#cluster-template-instance-info" title="Permanent link">#</a></h3>
+<p>The details page shows:</p>
 <ul>
-<li><strong>Create Instance(s) Button:</strong> Click the "Create Instance(s)" button at the top right of the Cluster Template Instances page to start the process.</li>
-<li><strong>Select Instance / Cluster Template Instance:</strong> Choose "Cluster Template Instance" from the dropdown.</li>
-<li><strong>Select Template:</strong> Pick the template you want to instantiate (e.g., docker-pull-secret).</li>
-<li><strong>Cluster Template Instance Name:</strong> Enter a unique name for the Cluster Template Instance.</li>
-<li><strong>Namespace Labels Selector:</strong> Add one or more label selectors to target namespaces. For each selector:<ul>
-<li><strong>Key:</strong> Enter the label key (e.g., <code>stakater.com/quota</code>).</li>
-<li><strong>Operator:</strong> The operator is set to "In".</li>
-<li><strong>Select Values:</strong> Choose one or more values for the label key (e.g., <code>large</code>, <code>small</code>).</li>
-<li>You can add multiple selectors to further refine the target namespaces.</li>
+<li><strong>Specification:</strong> Instance Name, Template, and Sync Enabled.</li>
+<li><strong>Parameters:</strong> Key-value chips for each parameter set on the instance.</li>
+<li><strong>Namespace Selector:</strong> The label selectors used to target namespaces.</li>
+<li><strong>Status:</strong> Current deployment status badge.</li>
+<li><strong>Deployed Namespaces:</strong> The list of namespaces where the resources have been applied.</li>
 </ul>
-</li>
-<li><strong>Keep resources in sync with template:</strong> (Optional) Check this box to ensure that resources deployed by this Cluster Template Instance remain synchronized with any updates to the template.</li>
+<h2 id="create-cluster-template-instance">Create Cluster Template Instance<a class="headerlink" href="#create-cluster-template-instance" title="Permanent link">#</a></h2>
+<p>The Cluster Template Instance creation process in the MTO Console is designed to be straightforward, allowing users to deploy a selected template into all namespaces matching specified label selectors, with optional synchronization. The process is presented in a drawer interface with a three-step stepper: <strong>Basic Information</strong>, <strong>Parameters</strong>, and <strong>Namespace Selector</strong>.</p>
+<p>Click the <strong>Create Instance(s)</strong> button at the top right of the Template Instances page to open the creation drawer. On the Select Instance Type screen, choose <strong>Cluster Template Instance</strong> to enter the cluster-scoped flow. The <strong>Change Type</strong> button on later steps lets you switch back to the namespace-scoped Template Instance flow without leaving the drawer.</p>
+<h3 id="basic-information">Basic Information<a class="headerlink" href="#basic-information" title="Permanent link">#</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/cti-create.png" data-desc-position="bottom"><img alt="CTI Create" src="../images/cti-create.png"></a></p>
+<ul>
+<li><strong>Instance Name:</strong> Enter a unique name for the Cluster Template Instance.</li>
+<li><strong>Template:</strong> Pick the template you want to instantiate (for example, <code>docker-pull-secret</code>).</li>
+<li><strong>Auto Sync:</strong> Toggle on to automatically sync changes from the template to the deployed resources.</li>
 </ul>
-<p>Click <strong>Submit</strong> to create the Cluster Template Instance.</p>
+<p>Click <strong>Next</strong> to continue to Parameters.</p>
+<h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">#</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/cti-create-param.png" data-desc-position="bottom"><img alt="CTI Create Parameters" src="../images/cti-create-param.png"></a></p>
+<ul>
+<li><strong>Parameter Name:</strong> Select a parameter defined in the template.</li>
+<li><strong>Value:</strong> Provide the value for the selected parameter.</li>
+<li>Click <strong>Add</strong> to include the parameter in the instance.</li>
+</ul>
+<p>Click <strong>Next</strong> to continue to Namespace Selector.</p>
+<h3 id="namespace-selector">Namespace Selector<a class="headerlink" href="#namespace-selector" title="Permanent link">#</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/cti-create-ns-selector.png" data-desc-position="bottom"><img alt="CTI Create Namespace Selector" src="../images/cti-create-ns-selector.png"></a></p>
+<p>The <strong>Namespace Labels Selector</strong> targets namespaces by their labels.</p>
+<ul>
+<li><strong>Key:</strong> Select a label key (for example, <code>stakater.com/quota</code>).</li>
+<li><strong>Operator:</strong> Select the match operator (default: <code>In</code>).</li>
+<li><strong>Select Values:</strong> Choose one or more values to match against (for example, <code>large</code>, <code>small</code>).</li>
+<li>Click <strong>Add Label</strong> to add the selector. Multiple selectors can be added to further refine the target namespaces.</li>
+</ul>
+<p>At least one label selector must be added to target namespaces. Click <strong>Create Instance</strong> to save the Cluster Template Instance.</p>
 <h3 id="result-management">Result &amp; Management<a class="headerlink" href="#result-management" title="Permanent link">#</a></h3>
-<p>The new Cluster Template Instance will appear in the list with the following columns:</p>
+<p>The new Cluster Template Instance will appear in the Cluster Template Instances tab with the following columns:</p>
 <ul>
 <li><strong>Name:</strong> The name of the Cluster Template Instance.</li>
 <li><strong>Template:</strong> The template used for the Cluster Template Instance.</li>
-<li><strong>Status:</strong> Indicates if the Cluster Template Instance is deployed (e.g., green check for deployed).</li>
+<li><strong>Status:</strong> Indicates if the Cluster Template Instance is deployed (for example, <code>Deployed</code> for a successful deployment).</li>
 <li><strong>Sync:</strong> Shows if the resources are kept in sync with the template.</li>
-<li><strong>Created At:</strong> Timestamp of Cluster Template Instance creation.</li>
-<li><strong>Actions:</strong> Three-dot menu for additional actions (e.g., view YAML, edit, delete).</li>
+<li><strong>Namespaces:</strong> The number of matched namespaces where resources are deployed.</li>
+<li><strong>Created:</strong> Timestamp of Cluster Template Instance creation.</li>
+<li><strong>Actions:</strong> Three-dot menu for additional actions (view YAML, edit, delete).</li>
 </ul>
 <h2 id="yaml-view">YAML View<a class="headerlink" href="#yaml-view" title="Permanent link">#</a></h2>
+<p>A YAML representation of the Cluster Template Instance can be previewed by selecting <strong>View YAML</strong> from the Actions kebab menu on an instance row. The YAML drawer also provides <strong>Copy</strong> and <strong>Download</strong> options.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/cti-yaml.png" data-desc-position="bottom"><img alt="CTI YAML" src="../images/cti-yaml.png"></a></p>
 <h2 id="update-cluster-template-instance">Update Cluster Template Instance<a class="headerlink" href="#update-cluster-template-instance" title="Permanent link">#</a></h2>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/cti-edit.png" data-desc-position="bottom"><img alt="CTI Edit" src="../images/cti-edit.png"></a></p>
-<p>When editing a Cluster Template Instance, the edit screen displays all configuration fields, including:</p>
-<ul>
-<li>Select Instance / Cluster Template Instance (type)</li>
-<li>Select Template</li>
-<li>Cluster Template Instance Name</li>
-<li>Namespace Labels Selector (with all keys, operators, and values visible)</li>
-<li>Keep resources in sync with template (checkbox)</li>
-</ul>
-<p>However, (Select Instance / Cluster Template Instance, Select Template and Cluster Template Instance Name) fields are disabled and cannot be modified. Only the namespace labels selector can be modified.</p>
+<p>Selecting <strong>Edit</strong> from the Actions kebab menu opens the same stepper drawer with all fields pre-populated. The <strong>Instance Name</strong> and <strong>Template</strong> in the Basic Information step are disabled and cannot be modified. The Auto Sync toggle, Parameters, and Namespace Selector remain editable.</p>
 <h2 id="delete-cluster-template-instance">Delete Cluster Template Instance<a class="headerlink" href="#delete-cluster-template-instance" title="Permanent link">#</a></h2>
-<p>A Cluster Template Instance can be deleted by clicking on the three-dot menu in the table.</p>
+<p>A Cluster Template Instance can be deleted by selecting <strong>Delete</strong> from the Actions kebab menu on the instance row.</p>
 
 
 

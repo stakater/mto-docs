@@ -2973,7 +2973,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Showback
+    Cost Analysis
   
 
     
@@ -4245,34 +4245,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/keycloak.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Keycloak
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../integrations/azure-pricing.html" class="md-nav__link">
         
   
@@ -4557,10 +4529,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="s2">          \"host\": \"gateway.&lt;FULL_SUBDOMAIN&gt;\",</span>
 <span class="s2">          \"tlsSecretName\": \"&lt;SECRET_NAME&gt;\"</span>
 <span class="s2">        },</span>
-<span class="s2">        \"keycloak\": {</span>
-<span class="s2">          \"host\": \"keycloak.&lt;FULL_SUBDOMAIN&gt;\",</span>
-<span class="s2">          \"tlsSecretName\": \"&lt;SECRET_NAME&gt;\"</span>
-<span class="s2">        },</span>
 <span class="s2">        \"ingressClassName\": \"nginx\"</span>
 <span class="s2">      },</span>
 <span class="s2">      \"showback\": true</span>
@@ -4595,7 +4563,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 NAME<span class="w">                       </span>CLASS<span class="w">   </span>HOSTS<span class="w">                                  </span>ADDRESS<span class="w">                                                                          </span>PORTS<span class="w">     </span>AGE
 tenant-operator-console<span class="w">    </span>nginx<span class="w">   </span>console.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
 tenant-operator-gateway<span class="w">    </span>nginx<span class="w">   </span>gateway.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
-tenant-operator-keycloak<span class="w">   </span>nginx<span class="w">   </span>keycloak.iinhdnh6.demo.kubeapp.cloud<span class="w">   </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>24m
 </code></pre></div>
 <h2 id="mto-console-admin-login">MTO Console Admin Login<a class="headerlink" href="#mto-console-admin-login" title="Permanent link">#</a></h2>
 <p>Patch the following integration config to give privileged access to MTO's default admin user</p>

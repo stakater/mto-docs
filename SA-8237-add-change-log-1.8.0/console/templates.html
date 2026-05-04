@@ -2878,7 +2878,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Showback
+    Cost Analysis
   
 
     
@@ -3001,10 +3001,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#template-info" class="md-nav__link">
+  <a href="#template-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Template Info
+        Template Overview
       
     </span>
   </a>
@@ -3069,6 +3069,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Save Template
+      
+    </span>
+  </a>
   
 </li>
         
@@ -4321,34 +4332,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/keycloak.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Keycloak
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../integrations/azure-pricing.html" class="md-nav__link">
         
   
@@ -4554,10 +4537,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#template-info" class="md-nav__link">
+  <a href="#template-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Template Info
+        Template Overview
       
     </span>
   </a>
@@ -4625,6 +4608,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#save-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Save Template
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4686,21 +4680,22 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h1 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">#</a></h1>
 <p>The <a href="https://docs.stakater.com/template-operator/main/kubernetes-resources/template.html">Templates</a> section acts as a repository for standardized resource deployment patterns, which can be utilized to maintain consistency and reliability across tenant environments. Few examples include provisioning specific k8s manifests, Helm charts, Secrets or ConfigMaps across a set of namespaces.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/templates.png" data-desc-position="bottom"><img alt="templates" src="../images/templates.png"></a></p>
+<p>The Templates list page shows each template in a row with <strong>Name</strong>, <strong>Type</strong>, <strong>Version</strong>, <strong>Created</strong>, and <strong>Actions</strong> columns. Templates currently in use are marked with an <code>In Use</code> badge next to the name. Clicking on a template's name opens its Template Instances page, which has separate <strong>Template Instances</strong> and <strong>Cluster Template Instances</strong> tabs. The <strong>Actions</strong> kebab menu on each row provides options to view instances, view YAML, edit, or delete the template.</p>
 <h2 id="create-template">Create Template<a class="headerlink" href="#create-template" title="Permanent link">#</a></h2>
-<p>The template creation process in the MTO Console is designed to be intuitive and flexible, allowing users to define reusable deployment patterns for resources such as Kubernetes manifests, Helm charts, Secrets, or ConfigMaps. The process is presented in a drawer interface and consists of several key sections:</p>
-<h3 id="template-info">Template Info<a class="headerlink" href="#template-info" title="Permanent link">#</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/templateCrudDrawerInfoAndParameters.png" data-desc-position="bottom"><img alt="templateCrudDrawerInfoAndParameters" src="../images/templateCrudDrawerInfoAndParameters.png"></a></p>
+<p>The template creation process in the MTO Console is designed to be intuitive and flexible, allowing users to define reusable deployment patterns for resources such as Kubernetes manifests, Helm charts, Secrets, or ConfigMaps. Click the <strong>Create Template</strong> button on the top-right of the Templates page to open the creation drawer. The drawer presents a stepper with the following sections:</p>
+<h3 id="template-overview">Template Overview<a class="headerlink" href="#template-overview" title="Permanent link">#</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/templateCrudDrawerInfo.png" data-desc-position="bottom"><img alt="templateCrudDrawerInfo" src="../images/templateCrudDrawerInfo.png"></a></p>
 <ul>
-<li><strong>Name</strong> The template name is a required field. Enter a unique and descriptive name for your template.</li>
+<li><strong>Template Name</strong> The template name is a required field. Enter a unique and descriptive name for your template.</li>
 <li><strong>Type</strong> Optionally specify the type of template.</li>
 <li><strong>Version</strong> Optionally provide a version identifier for the template.</li>
-<li><strong>Upload Icon</strong> You can upload a custom icon to visually distinguish your template in the list view.</li>
-<li>The Add Template button remains disabled until the required fields (at minimum, the template name and at least one resource) are provided.</li>
+<li><strong>Icon</strong> Optionally enter an icon URL to visually distinguish your template in the list view.</li>
 </ul>
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">#</a></h3>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/templateCrudDrawerParameters.png" data-desc-position="bottom"><img alt="templateCrudDrawerParameters" src="../images/templateCrudDrawerParameters.png"></a></p>
 <p>This section allows you to define parameters that can be used within your template for customization.</p>
 <ul>
-<li><strong>Name &amp; Value:</strong> Add key-value pairs to parameterize your template.</li>
+<li><strong>Parameter Name &amp; Value:</strong> Add key-value pairs to parameterize your template.</li>
 <li><strong>Required Checkbox:</strong> Mark parameters as required if they must be provided when the template is instantiated.</li>
 <li><strong>Add Button:</strong> Click to add each parameter to the list.</li>
 </ul>
@@ -4708,17 +4703,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h3 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">#</a></h3>
 <p>At least one resource must be specified for the template. You can add resources in the following ways:</p>
 <h4 id="helm">Helm<a class="headerlink" href="#helm" title="Permanent link">#</a></h4>
-<p>Expand this section to provide Helm chart details if your template is based on a Helm deployment.</p>
+<p>Use this section to provide Helm chart details if your template is based on a Helm deployment.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/templateHelmResource.png" data-desc-position="bottom"><img alt="templateHelmResource" src="../images/templateHelmResource.png"></a></p>
 <ul>
 <li><strong>Release Name:</strong> Enter a name for the Helm release. This will be used as the release identifier when the chart is deployed.</li>
-<li><strong>Private Checkbox:</strong> If the Helm chart repository is private, check this box to indicate that authentication may be required.</li>
-<li><strong>Chart Repository:</strong> Specify the URL or name of the Helm chart repository.</li>
-<li><strong>Chart Version:</strong> Enter the version of the Helm chart you wish to deploy.</li>
 <li><strong>Chart Name:</strong> Provide the name of the chart within the repository.</li>
-<li><strong>Set Values:</strong> You can specify custom values to override chart defaults using the --set or --set-string options.</li>
-<li><strong>Type:</strong> Select between --set (for standard values) and --set-string (for string values).</li>
+<li><strong>Chart Version:</strong> Enter the version of the Helm chart you wish to deploy.</li>
+<li><strong>Repository URL:</strong> Specify the URL of the Helm chart repository.</li>
+<li><strong>Private Checkbox:</strong> If the Helm chart repository is private, check this box to indicate that authentication may be required.</li>
+<li><strong>Set Values:</strong> You can specify custom values to override chart defaults using the <code>--set</code> or <code>--set-string</code> options.<ul>
+<li><strong>Set Type:</strong> Select between <code>--set</code> (for standard values) and <code>--set-string</code> (for string values).</li>
 <li><strong>Name &amp; Value:</strong> Enter the key and value to set. Click Add to include each override. Added values are displayed as tags below the input fields, and can be removed if needed.</li>
+</ul>
+</li>
 <li><strong>Values:</strong> Optionally, you can provide a YAML block to specify multiple values at once. This is useful for more complex configurations or when you want to override several chart values together.</li>
 </ul>
 <p>Example Value:</p>
@@ -4728,37 +4725,39 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>The Resource Mappings section allows you to define mappings for Kubernetes resources such as Secrets and ConfigMaps, enabling advanced or custom deployment scenarios. This is useful for referencing or distributing existing resources across different namespaces.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/templateResourceMappings.png" data-desc-position="bottom"><img alt="templateResourceMappings" src="../images/templateResourceMappings.png"></a></p>
 <ul>
-<li><strong>Resource Type Dropdown:</strong> Select the type of resource you want to map. The available options typically include<ul>
-<li>Secrets</li>
-<li>ConfigMaps</li>
+<li><strong>Resource Type Dropdown:</strong> Select the type of resource you want to map. The available options are<ul>
+<li>Secret</li>
+<li>ConfigMap</li>
 </ul>
 </li>
 <li><strong>Name &amp; Namespace:</strong> Enter the name of the resource and the target namespace where it should be mapped.</li>
-<li><strong>Add Button:</strong> Click Add to include the mapping in your template. Each mapping will appear as a tag below the input fields showing the resource name and its associated namespace.</li>
-<li><strong>Listing and Removal:</strong> Added mappings are displayed in separate sections for Secrets and ConfigMaps. Each mapping is shown as a tag (e.g., <code>secret-s1</code> (<code>namespace-n1</code>) or <code>configmap-c1</code> (<code>namespace-n2</code>)). Click the "X" on a tag to remove a mapping from the template.</li>
+<li><strong>Add Button:</strong> Click Add to include the mapping in your template. Each mapping will appear as a tag below the input fields showing the resource name.</li>
+<li><strong>Listing and Removal:</strong> Added mappings are displayed in separate sections for <strong>Secrets</strong> and <strong>Config Maps</strong>. Click the "X" on a tag to remove a mapping from the template.</li>
 </ul>
 <h4 id="manifests">Manifests<a class="headerlink" href="#manifests" title="Permanent link">#</a></h4>
 <p>The Manifests section allows you to add raw Kubernetes manifests directly to your template. This is useful for provisioning standard Kubernetes resources such as Deployments, Services, ConfigMaps, Secrets, NetworkPolicies, and more, using YAML definitions.</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/templateManifestResource.png" data-desc-position="bottom"><img alt="templateManifestResource" src="../images/templateManifestResource.png"></a></p>
 <ul>
 <li><strong>YAML Editor:</strong> Enter one or more Kubernetes resource definitions in YAML format. Each manifest should follow standard Kubernetes syntax and can include any supported resource kind.</li>
-<li><strong>Multi-Resource Support:</strong> You can define multiple resources in a single template by listing them under the manifests:** key as a YAML array.</li>
-<li><strong>Parameters:</strong> You may use template parameters (defined in the Parameters section) within your manifests for dynamic substitution at deployment time. For example, ${PARAM_NAME} can be used as a placeholder for values provided during instantiation.</li>
+<li><strong>Multi-Resource Support:</strong> You can define multiple resources in a single template by listing them under the <code>manifests:</code> key as a YAML array.</li>
+<li><strong>Parameters:</strong> You may use template parameters (defined in the Parameters section) within your manifests for dynamic substitution at deployment time. For example, <code>${PARAM_NAME}</code> can be used as a placeholder for values provided during instantiation.</li>
 <li><strong>Validation:</strong><ul>
 <li>The editor provides basic YAML validation to help ensure your manifests are correctly formatted before adding the template.</li>
 <li>If any parameter added to the manifest is missing from the added parameters list in the template and is set to required will result in an error on the top of the manifest indicating the user to add that parameter to the list.</li>
 </ul>
 </li>
 </ul>
+<h3 id="save-template">Save Template<a class="headerlink" href="#save-template" title="Permanent link">#</a></h3>
+<p>Once all required configurations are completed, click the <strong>Create</strong> button to save the template.</p>
 <h2 id="yaml-view">YAML View<a class="headerlink" href="#yaml-view" title="Permanent link">#</a></h2>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/template-yaml.png" data-desc-position="bottom"><img alt="Template YAML" src="../images/template-yaml.png"></a></p>
-<p>A YAML representation of the template configuration can be previewed by user by clicking on the template card thee dots.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/templateYAMLView.png" data-desc-position="bottom"><img alt="Template YAML" src="../images/templateYAMLView.png"></a></p>
+<p>A YAML representation of the template configuration can be previewed by selecting <strong>View YAML</strong> from the Actions kebab menu on a template row.</p>
 <h2 id="update-template">Update Template<a class="headerlink" href="#update-template" title="Permanent link">#</a></h2>
-<p>This flow is similar to create flow just that the name of the template can not be changed or modified.</p>
+<p>Selecting <strong>Edit</strong> from a template's Actions kebab menu on the Templates list page opens the same stepper drawer with all fields pre-populated. This flow is similar to the create flow, except the template name cannot be changed or modified.</p>
 <h2 id="delete-template">Delete Template<a class="headerlink" href="#delete-template" title="Permanent link">#</a></h2>
 <ul>
-<li>The three dots on the template card open up a drop down menu containing options like (YAML, Edit and Delete).</li>
-<li>Template can only be deleted if it is not having the <code>inuse</code> tag on it.</li>
+<li>The Actions kebab menu on a template row provides a <strong>Delete</strong> option.</li>
+<li>A template can only be deleted if it does not have the <code>In Use</code> badge on it.</li>
 </ul>
 
 
