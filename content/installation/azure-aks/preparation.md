@@ -7,9 +7,9 @@ This document provides a detailed walk through of the preparation steps required
 An AKS cluster with the following components:
 
 - An Ingress controller
-- Valid certificates for MTO Gateway, MTO Console, and MTO Keycloak
+- Valid certificates for MTO Gateway and MTO Console
 
-DNS entries configured for MTO Gateway, MTO Console, and MTO Keycloak
+DNS entries configured for MTO Gateway and MTO Console
 
 A user with **cluster administrator privileges**.
 
@@ -236,7 +236,7 @@ To ensure proper routing for applications, you need to create a wildcard DNS rec
 
 ### Create Wildcard Certificate
 
-A wildcard certificate allows all applications under a given subdomain to use a single SSL certificate. MTO will use this certificate to secure the MTO Console, MTO Gateway, and MTO Keycloak.
+A wildcard certificate allows all applications under a given subdomain to use a single SSL certificate. MTO will use this certificate to secure the MTO Console and MTO Gateway.
 
 1. Apply the Wildcard Certificate Configuration
 

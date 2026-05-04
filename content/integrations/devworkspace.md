@@ -91,7 +91,6 @@ spec:
     ingress:
       console: {}
       gateway: {}
-      keycloak: {}
     showback: false
   integrations:
     vault:

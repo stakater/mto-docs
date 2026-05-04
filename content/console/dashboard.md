@@ -15,9 +15,6 @@ components:
       gateway:
         host: tenant-operator-gateway.<hostname>
         tlsSecretName: <tls-secret-name>
-      keycloak:
-        host: tenant-operator-keycloak.<hostname>
-        tlsSecretName: <tls-secret-name>
     showback: true
     trustedRootCert: <root-ca-secret-name>
 ```  

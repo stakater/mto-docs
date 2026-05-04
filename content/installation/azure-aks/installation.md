@@ -36,10 +36,6 @@ kubectl patch integrationconfig tenant-operator-config \
           \"host\": \"gateway.<FULL_SUBDOMAIN>\",
           \"tlsSecretName\": \"<SECRET_NAME>\"
         },
-        \"keycloak\": {
-          \"host\": \"keycloak.<FULL_SUBDOMAIN>\",
-          \"tlsSecretName\": \"<SECRET_NAME>\"
-        },
         \"ingressClassName\": \"nginx\"
       },
       \"showback\": true
@@ -67,7 +63,6 @@ List the ingresses to access the URL of MTO Console
 NAME                       CLASS   HOSTS                                  ADDRESS                                                                          PORTS     AGE
 tenant-operator-console    nginx   console.iinhdnh6.demo.kubeapp.cloud    ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com   80, 443   23m
 tenant-operator-gateway    nginx   gateway.iinhdnh6.demo.kubeapp.cloud    ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com   80, 443   23m
-tenant-operator-keycloak   nginx   keycloak.iinhdnh6.demo.kubeapp.cloud   ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com   80, 443   24m
 
 ```
 

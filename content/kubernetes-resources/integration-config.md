@@ -39,9 +39,6 @@ spec:
 
     ingress:
       ingressClassName: 'nginx'
-      keycloak:
-        host: tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud
-        tlsSecretName: tenant-operator-tls
       console:
         host: tenant-operator-console.apps.mycluster-ams.abcdef.cloud
         tlsSecretName: tenant-operator-tls
@@ -140,10 +137,6 @@ spec:
       annotations:
         openshift.io/node-selector: node-role.kubernetes.io/worker=
   integrations:
-    keycloak:
-      realm: mto
-      address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud
-      clientName: mto-console
     argocd:
       clusterResourceWhitelist:
         - group: tronador.stakater.com
@@ -226,9 +219,6 @@ Following are the different components that can be used to configure multi-tenan
     finopsOperator: {}
     ingress:
       ingressClassName: nginx
-      keycloak:
-        host: tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud
-        tlsSecretName: tenant-operator-tls
       console:
         host: tenant-operator-console.apps.mycluster-ams.abcdef.cloud
         tlsSecretName: tenant-operator-tls
@@ -253,9 +243,6 @@ Following are the different components that can be used to configure multi-tenan
     - `gateway:` Settings for the gateway's ingress.
         - `host:` hostname for the gateway's ingress.
         - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the gateway's ingress.
-    - `keycloak:` Settings for the Keycloak's ingress.
-        - `host:` hostname for the Keycloak's ingress.
-        - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the Keycloak's ingress.
     - `dex:` Settings for the Dex's ingress.
         - `host:` hostname for the Dex's ingress.
         - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the Dex's ingress.
@@ -281,7 +268,7 @@ Here's an example of how to generate the secrets required to configure MTO:
 
 **TLS Secret for Ingress:**
 
-Create a TLS secret containing your SSL/TLS certificate and key for secure communication. This secret will be used for the Console, Gateway, and Keycloak ingresses.
+Create a TLS secret containing your SSL/TLS certificate and key for secure communication. This secret will be used for the Console and Gateway ingresses.
 
 ```bash
 kubectl -n multi-tenant-operator create secret tls <tls-secret-name> --key=<path-to-key.pem> --cert=<path-to-cert.pem>
@@ -292,7 +279,7 @@ Integration config will be managing the following resources required for console
 - `Postgresql` resources
 - `Prometheus` resources
 - `Opencost` resources
-- `MTO Console, Gateway, Keycloak` resources
+- `MTO Console, Gateway` resources
 - `Showback` cron-job
 
 Details on console GUI and showback can be found [here](../console/overview.md)
@@ -740,10 +727,6 @@ Integrations are used to configure the integrations that MTO has with other tool
 
 ```yaml
 integrations:
-  keycloak:
-    realm: mto
-    address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud
-    clientName: mto-console
   argocd:
     clusterResourceWhitelist:
       - group: tronador.stakater.com
@@ -775,25 +758,6 @@ integrations:
           - viewer
           - editor
 ```
-
-### Keycloak
-
-[Keycloak](https://www.keycloak.org/) is an open-source Identity and Access Management solution aimed at modern applications and services. It makes it easy to secure applications and services with little to no code.
-
-If a `Keycloak` instance is already set up within your cluster, configure it for MTO by enabling the following configuration:
-
-```yaml
-keycloak:
-  realm: mto
-  address: https://keycloak.apps.prod.abcdefghi.kubeapp.cloud/
-  clientName: mto-console
-```
-
-- `keycloak.realm:` The realm in Keycloak where the client is configured.
-- `keycloak.address:` The address of the Keycloak instance.
-- `keycloak.clientName:` The name of the client in Keycloak.
-
-For more details around enabling Keycloak in MTO, visit [here](../integrations/keycloak.md)
 
 ### ArgoCD
 
