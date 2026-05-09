@@ -5,31 +5,27 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-stakater-vale-package-0.x/kubectlplugin/kubectl-tenant.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-stakater-vale-package-0.x/integrations/grafana/readme.html">
       
       
-        <link rel="prev" href="../integrations/aws-pricing.html">
-      
-      
-        <link rel="next" href="../operators/dependencies.html">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.svg">
+      <link rel="icon" href="../../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Kubectl Tenant Plugin - Multi Tenant Operator</title>
+        <title>MTO Grafana Extension - Multi-Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -48,9 +44,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -66,7 +62,7 @@
 
     
     
-  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -95,7 +91,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kubectl-tenant" class="md-skip">
+        <a href="#mto-grafana-extension" class="md-skip">
           Skip to content
         </a>
       
@@ -340,7 +336,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../index.html" title="Multi Tenant Operator" class="md-header__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../.." title="Multi-Tenant Operator" class="md-header__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
       <!-- 
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -361,14 +357,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="../assets/images/logo-light.png#only-light" alt="logo">
+          <img class="md-header__logo_light" src="../../assets/images/logo-light.png#only-light" alt="logo">
           
           
-          <img class="md-header__logo_dark" src="../assets/images/logo-dark.png#only-dark" alt="logo">
+          <img class="md-header__logo_dark" src="../../assets/images/logo-dark.png#only-dark" alt="logo">
           
           
           <div class="header-site-name">
-            <h5 class="site-name-text">Multi Tenant Operator</h5>
+            <h5 class="site-name-text">Multi-Tenant Operator</h5>
           </div>
           
         </div>
@@ -1988,13 +1984,13 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../index.html" title="Multi Tenant Operator" class="md-nav__button md-logo" aria-label="Multi Tenant Operator" data-md-component="logo">
+    <a href="../.." title="Multi-Tenant Operator" class="md-nav__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
-    Multi Tenant Operator
+    Multi-Tenant Operator
   </label>
   
     <div class="md-nav__source">
@@ -2017,15 +2013,62 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1">
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Overview
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
+      <a href="../../index.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Welcome to the Docs
+    What is MTO
   
 
     
@@ -2034,6 +2077,98 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/key-features.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/use-cases.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/benefits.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benefits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2063,7 +2198,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    About
+    Architecture
   
 
     
@@ -2079,7 +2214,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    About
+    Architecture
   
 
           </label>
@@ -2092,70 +2227,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../about/key-features.html" class="md-nav__link">
+      <a href="../../architecture/architecture.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Key Features
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../about/use-cases.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Use Cases
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../about/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
+    Architecture
   
 
     
@@ -2201,7 +2280,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Architecture
+    Install
   
 
     
@@ -2217,7 +2296,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Architecture
+    Install
   
 
           </label>
@@ -2230,14 +2309,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../architecture/architecture.html" class="md-nav__link">
+      <a href="../../installation/overview.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Architecture
+    Overview
   
 
     
@@ -2246,6 +2325,340 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/openshift.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    On OpenShift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/kubernetes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    On Kubernetes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    On AKS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    On AKS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/azure-aks/preparation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prepration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/azure-aks/installation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/azure-aks/validation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5">
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    On EKS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    On EKS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/aws-eks/preparation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/aws-eks/installation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/aws-eks/validation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2283,7 +2696,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Installation
+    Console
   
 
     
@@ -2299,7 +2712,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Installation
+    Console
   
 
           </label>
@@ -2312,7 +2725,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../installation/overview.html" class="md-nav__link">
+      <a href="../../console/overview.html" class="md-nav__link">
         
   
   
@@ -2340,89 +2753,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../installation/openshift.html" class="md-nav__link">
+      <a href="../../console/dashboard.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    On OpenShift
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3">
-        
-          
-          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    On AKS
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    On AKS
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/azure-aks/preparation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Prepration
+    Dashboard
   
 
     
@@ -2443,14 +2781,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../installation/azure-aks/installation.html" class="md-nav__link">
+      <a href="../../console/tenants.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Installation
+    Tenants
   
 
     
@@ -2471,97 +2809,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../installation/azure-aks/validation.html" class="md-nav__link">
+      <a href="../../console/namespaces.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Validation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4">
-        
-          
-          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    On EKS
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    On EKS
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/aws-eks/preparation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Preparation
+    Namespaces
   
 
     
@@ -2582,14 +2837,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../installation/aws-eks/installation.html" class="md-nav__link">
+      <a href="../../console/hibernation.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Installation
+    Hibernation
   
 
     
@@ -2610,50 +2865,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../installation/aws-eks/validation.html" class="md-nav__link">
+      <a href="../../console/showback.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Validation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../installation/kubernetes.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    On Kubernetes
+    Cost Analysis
   
 
     
@@ -2674,14 +2893,154 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../installation/uninstalling.html" class="md-nav__link">
+      <a href="../../console/quotas.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Uninstall via OperatorHub UI on OpenShift
+    Quotas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../console/templates.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../console/template-instances.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Template Instances
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../console/cluster-template-instances.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cluster Template Instances
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../console/capacity-planning.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capacity Planning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../console/configuration.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
   
 
     
@@ -2727,7 +3086,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Navigating Console
+    CLI
   
 
     
@@ -2743,7 +3102,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Navigating Console
+    CLI
   
 
           </label>
@@ -2756,322 +3115,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../console/overview.html" class="md-nav__link">
+      <a href="../../cli/kubectl-plugin.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Overview
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/dashboard.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Dashboard
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/tenants.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Tenants
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/namespaces.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Namespaces
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/hibernation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hibernation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/showback.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Showback
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/quotas.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quotas
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/templates.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Templates
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/template-instances.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Template Instances
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/cluster-template-instances.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Cluster Template Instances
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/capacity-planning.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Capacity Planning
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../console/configuration.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Configuration
+    kubectl plugin
   
 
     
@@ -3117,7 +3168,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Kubernetes Resources
+    API Reference
   
 
     
@@ -3133,7 +3184,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Kubernetes Resources
+    API Reference
   
 
           </label>
@@ -3146,7 +3197,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../architecture/concepts.html" class="md-nav__link">
+      <a href="../../architecture/concepts.html" class="md-nav__link">
         
   
   
@@ -3174,7 +3225,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/quota.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/quota.html" class="md-nav__link">
         
   
   
@@ -3202,7 +3253,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/tenant-overview.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/tenant-overview.html" class="md-nav__link">
         
   
   
@@ -3230,7 +3281,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/extensions.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/extensions.html" class="md-nav__link">
         
   
   
@@ -3258,7 +3309,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/integration-config.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/integration-config.html" class="md-nav__link">
         
   
   
@@ -3311,7 +3362,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    How-to Guides
+    Guides
   
 
     
@@ -3327,7 +3378,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    How-to Guides
+    Guides
   
 
           </label>
@@ -3340,7 +3391,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/create-tenant.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/create-tenant.html" class="md-nav__link">
         
   
   
@@ -3368,7 +3419,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
         
   
   
@@ -3396,7 +3447,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
         
   
   
@@ -3424,7 +3475,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
         
   
   
@@ -3452,7 +3503,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
         
   
   
@@ -3480,7 +3531,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   
@@ -3508,7 +3559,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
         
   
   
@@ -3536,7 +3587,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
         
   
   
@@ -3564,7 +3615,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/host-validation.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/host-validation.html" class="md-nav__link">
         
   
   
@@ -3592,7 +3643,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/storage-classes.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/storage-classes.html" class="md-nav__link">
         
   
   
@@ -3620,7 +3671,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/pod-priority-classes.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/pod-priority-classes.html" class="md-nav__link">
         
   
   
@@ -3648,7 +3699,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/service-accounts.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/service-accounts.html" class="md-nav__link">
         
   
   
@@ -3676,7 +3727,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/image-registries.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/image-registries.html" class="md-nav__link">
         
   
   
@@ -3704,7 +3755,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/custom-roles.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   
@@ -3732,7 +3783,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   
@@ -3760,7 +3811,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
         
   
   
@@ -3788,7 +3839,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes-resources/tenant/how-to-guides/templated-metadata-values.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/templated-metadata-values.html" class="md-nav__link">
         
   
   
@@ -3841,7 +3892,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Integrations
+    Extensions
   
 
     
@@ -3857,7 +3908,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Integrations
+    Extensions
   
 
           </label>
@@ -3870,7 +3921,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/argocd.html" class="md-nav__link">
+      <a href="../argocd.html" class="md-nav__link">
         
   
   
@@ -3945,7 +3996,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/vault/vault.html" class="md-nav__link">
+      <a href="../vault/vault.html" class="md-nav__link">
         
   
   
@@ -3973,7 +4024,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/vault/vault-ic.html" class="md-nav__link">
+      <a href="../vault/vault-ic.html" class="md-nav__link">
         
   
   
@@ -4001,7 +4052,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
+      <a href="../vault/vault-kc-entraid.html" class="md-nav__link">
         
   
   
@@ -4037,7 +4088,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/devworkspace.html" class="md-nav__link">
+      <a href="../devworkspace.html" class="md-nav__link">
         
   
   
@@ -4065,7 +4116,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/mattermost.html" class="md-nav__link">
+      <a href="../mattermost.html" class="md-nav__link">
         
   
   
@@ -4093,7 +4144,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/keycloak.html" class="md-nav__link">
+      <a href="../keycloak.html" class="md-nav__link">
         
   
   
@@ -4121,7 +4172,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/azure-pricing.html" class="md-nav__link">
+      <a href="../azure-pricing.html" class="md-nav__link">
         
   
   
@@ -4149,7 +4200,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integrations/aws-pricing.html" class="md-nav__link">
+      <a href="../aws-pricing.html" class="md-nav__link">
         
   
   
@@ -4181,301 +4232,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Kubectl Tenant Plugin
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="kubectl-tenant.html" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Kubectl Tenant Plugin
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#build-from-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Build from Source
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supported-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supported Resources
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usage
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#command-syntax" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Command Syntax
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#list-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        List Resources
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-specific-resource" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Get Specific Resource
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#output-formats" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Output Formats
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How It Works
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#demo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Demo
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
-        
-          
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Dependencies
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_10">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Dependencies
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
   
   
     <li class="md-nav__item">
-      <a href="../operators/dependencies.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Multi Tenant Operator Dependencies
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../pricing.html" class="md-nav__link">
+      <a href="../../pricing.html" class="md-nav__link">
         
   
   
@@ -4502,7 +4262,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../changelog.html" class="md-nav__link">
+      <a href="../../changelog.html" class="md-nav__link">
         
   
   
@@ -4529,7 +4289,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../eula.html" class="md-nav__link">
+      <a href="../../eula.html" class="md-nav__link">
         
   
   
@@ -4556,7 +4316,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting.html" class="md-nav__link">
+      <a href="../../troubleshooting.html" class="md-nav__link">
         
   
   
@@ -4605,10 +4365,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#1-what-is-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        1) What is it?
       
     </span>
   </a>
@@ -4616,22 +4376,77 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
+  <a href="#2-audience" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installation
+        2) Audience
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installation">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3) Architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-scope-boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4) Scope &amp; Boundaries
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5) Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-install-platform-engineer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6) Install (Platform Engineer)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6) Install (Platform Engineer)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#build-from-source" class="md-nav__link">
+  <a href="#61-create-namespace-install-controller" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Build from Source
+        6.1 Create namespace &amp; install controller
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-create-the-mto-grafana-extensions-grafana-cr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Create the MTO Grafana Extension's Grafana CR
       
     </span>
   </a>
@@ -4644,33 +4459,22 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#supported-resources" class="md-nav__link">
+  <a href="#7-using-it-platform-engineer-app-teams" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Supported Resources
+        7) Using it (Platform Engineer &amp; App Teams)
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usage
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
+    <nav class="md-nav" aria-label="7) Using it (Platform Engineer &amp; App Teams)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#command-syntax" class="md-nav__link">
+  <a href="#71-disable-a-datasource" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Command Syntax
+        7.1 Disable a Datasource
       
     </span>
   </a>
@@ -4678,10 +4482,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#list-resources" class="md-nav__link">
+  <a href="#72-restrict-a-dashboard-to-certain-tenants" class="md-nav__link">
     <span class="md-ellipsis">
       
-        List Resources
+        7.2 Restrict a Dashboard to certain tenants
       
     </span>
   </a>
@@ -4689,21 +4493,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-specific-resource" class="md-nav__link">
+  <a href="#73-behavior-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Get Specific Resource
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#output-formats" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Output Formats
+        7.3 Behavior Summary
       
     </span>
   </a>
@@ -4716,10 +4509,310 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
+  <a href="#8-lifecycle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How It Works
+        8) Lifecycle
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8) Lifecycle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-status-reporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Status reporting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.1 Status reporting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#811-status-in-the-extensions-grafana-cr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1.1 Status in the extension's Grafana CR
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-operations-security-platform-engineer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9) Operations &amp; Security (Platform Engineer)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9) Operations &amp; Security (Platform Engineer)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Access Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-auditability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Auditability
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-failure-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Failure Recovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-security-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 Security Notes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95-rbac-minimum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5 RBAC minimum
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-developer-guide-how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10) Developer Guide (How it Works)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10) Developer Guide (How it Works)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-controller-reconciliation-stages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Controller &amp; Reconciliation Stages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-reconciliation-flow-sequence-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Reconciliation Flow (sequence diagram)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-watch-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Watch Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 Templates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#105-testing-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5 Testing Strategy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#106-performance-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6 Performance Notes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-appendices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11) Appendices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11) Appendices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-glossary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1 Glossary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11.1 Glossary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1111-what-is-multi-org-mode-in-grafana" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.1.1 What is multi-org mode in Grafana?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirements-for-multi-org" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirements for multi-org
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.2 Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-crd-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.3 CRD Reference
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-lifecycle-examples-day-0-day-1-story" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.4 Lifecycle Examples (Day-0 / Day-1 story)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115-sso-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11.5 SSO modes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication-and-authorization-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authentication and Authorization Flow
       
     </span>
   </a>
@@ -4727,10 +4820,21 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#demo" class="md-nav__link">
+  <a href="#faq" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Demo
+        FAQ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
       
     </span>
   </a>
@@ -4757,117 +4861,787 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="kubectl-tenant">kubectl-tenant<a class="headerlink" href="#kubectl-tenant" title="Permanent link">#</a></h1>
-<p>A kubectl plugin that provides tenant-scoped access to cluster resources managed by Multi Tenant Operator.</p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
-<p>Kubernetes RBAC has a fundamental limitation: when granting <code>list</code> permissions on cluster-scoped resources, users can see <em>all</em> resources of that type, not just those belonging to their tenant. The kubectl-tenant plugin solves this by reading the Tenant CR status and filtering results to show only resources the tenant is permitted to access.</p>
-<p><strong>Source Code:</strong> <a href="https://github.com/stakater/kubectl-tenant">GitHub.com/Stakater/kubectl-tenant</a></p>
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
-<p>Download the binary for your platform from <a href="https://github.com/stakater/kubectl-tenant/releases">GitHub Releases</a>:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Download for your OS/Arch</span>
-curl<span class="w"> </span>-L<span class="w"> </span>https://github.com/stakater/kubectl-tenant/releases/download/v0.0.1/kubectl-tenant-linux-amd64<span class="w"> </span>-o<span class="w"> </span>kubectl-tenant
-chmod<span class="w"> </span>+x<span class="w"> </span>kubectl-tenant
-mv<span class="w"> </span>kubectl-tenant<span class="w"> </span>~/.local/bin/<span class="w">   </span><span class="c1"># ensure this path is in your $PATH</span>
+<h1 id="mto-grafana-extension">MTO Grafana Extension<a class="headerlink" href="#mto-grafana-extension" title="Permanent link">#</a></h1>
+<blockquote>
+<p><strong>Purpose:</strong> A single source of truth for deploying, operating, and extending the <strong>MTO Grafana Extension</strong>. It serves both <strong>platform engineers</strong> (how to install/use) and <strong>developers</strong> (how it works under the hood).</p>
+</blockquote>
+<hr>
+<h2 id="1-what-is-it">1) What is it?<a class="headerlink" href="#1-what-is-it" title="Permanent link">#</a></h2>
+<p>The MTO Grafana Extension integrates <strong>Grafana</strong> with <strong>MTO Tenants</strong> to deliver:</p>
+<ul>
+<li>Per-tenant isolation of Dashboards and Data Sources via <strong>Grafana Organisations</strong>. Each tenant maps to its own Grafana org.</li>
+<li><strong>OIDC/OAuth</strong> for human login (via Dex, Keycloak, Entra, or any OIDC provider) and <strong>basic auth</strong> for the operator's API calls to Grafana.</li>
+</ul>
+<p>The MTO Grafana Extension operates against a <strong>single Grafana instance</strong> and scales tenants as <code>orgs</code> inside it.<br>
+It <strong>does not install or operate Grafana itself</strong> — it only wires Grafana to your MTO tenants via the Grafana <code>HTTP</code> API.</p>
+<hr>
+<h2 id="2-audience">2) Audience<a class="headerlink" href="#2-audience" title="Permanent link">#</a></h2>
+<ul>
+<li><strong>Platform engineers:</strong> Install/configure, define policies, enable tenants/app teams, troubleshoot.</li>
+<li><strong>Developers of the MTO Grafana Extension:</strong> Understand controllers, Day-0/1/2 flows, CRDs, idempotency and tests.</li>
+<li><strong>Tenant/App teams:</strong> Optionally annotate dashboards/data sources to <strong>restrict</strong> or <strong>disable</strong> their provisioning per tenant (by default, every dashboard and data source goes to all tenants).</li>
+</ul>
+<hr>
+<h2 id="3-architecture">3) Architecture<a class="headerlink" href="#3-architecture" title="Permanent link">#</a></h2>
+<pre class="mermaid"><code>---
+config:
+  layout: dagre
+title: Grafana Operator Multi-Tenancy with MTO Grafana Extension
+---
+flowchart TD
+  subgraph ClusterPlatform["Cluster Platform"]
+    MTO["MTO Core"]
+    SSO["SSO Extension&lt;br&gt;(Dex/Keycloak)"]
+    GRO["Grafana Operator&lt;br&gt;(Manages Grafana lifecycle)"]
+    GEX["MTO Grafana Extension&lt;br&gt;(Orgs, Resources, SSO)"]
+  end
+
+  subgraph GRAFANA["Grafana Instance (Single Instance)"]
+    subgraph T1["Org: Tenant A"]
+        ResA["Resources"]
+    end
+    subgraph T2["Org: Tenant B"]
+        ResB["Resources"]
+    end
+    subgraph Tn["Org: Tenant N"]
+        ResN["Resources"]
+    end
+    subgraph Tenants["Tenants"]
+      direction LR
+          T1
+          T2
+          Tn
+    end
+    API["Grafana HTTP API&lt;br&gt;(Orgs, Users, Dashboards, Datasources, Folders, SSO)"]
+  end
+
+  SSO -- SSO Contract --&gt; GEX
+  MTO -- Reads tenant --&gt; GEX
+  GRO -- Installs/Upgrades&lt;br&gt;Grafana --&gt; GRAFANA
+  GEX -- "Creates/Syncs per-tenant&lt;br&gt;Config, Datasources, Dashboards, Folders" --&gt; ResA &amp; ResB &amp; ResN
+  GEX -- Configures Orgs, Users, SSO via API --&gt; API
+
+  T1:::isolation
+  T2:::isolation
+  Tn:::isolation
+  ResA:::isolation
+  ResB:::isolation
+  ResN:::isolation
+  classDef isolation color:#333333fill:#f6ffe7,stroke:#3FB950,stroke-width:2px</code></pre>
+<hr>
+<h2 id="4-scope-boundaries">4) Scope &amp; Boundaries<a class="headerlink" href="#4-scope-boundaries" title="Permanent link">#</a></h2>
+<ul>
+<li>
+<p><strong>The MTO Grafana Extension manages:</strong></p>
+<ul>
+<li>creation of organisation per tenant</li>
+<li>organisation members</li>
+<li>ConfigMap in Kubernetes</li>
+<li>configuration of <code>orgs</code>, users, SSO, <code>datasources</code>, dashboards, and folders via the Grafana <code>HTTP</code> API</li>
+<li>
+<p><strong>SSO extension manages:</strong></p>
+</li>
+<li>
+<p>Your IdP (Dex/Keycloak/Entra) &amp; publishes an SSO <strong>contract</strong> (issuer, <code>groupsClaim</code>, <code>grafana</code> clientID/secret, group patterns) via CR <strong>status</strong> or a labeled <strong>Secret</strong>.</p>
+</li>
+<li>
+<p><strong>Out of scope:</strong></p>
+</li>
+<li>
+<p>Operating Grafana (resources, storage, backup/restore, version upgrades).</p>
+</li>
+<li>Grafana resources (plugins, dashboards, etc...) that are not provisioned through the MTO Grafana Extension i.e. installed directly into Grafana by user with <a href="https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/#organization-roles" title="Roles and Permissions">correct permissions</a></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>The MTO Grafana Extension configures Grafana via the <code>HTTP</code> API. It does not modify Grafana Operator CRDs, avoiding installation lifecycle conflicts.</p>
+</blockquote>
+<hr>
+<h2 id="5-prerequisites">5) Prerequisites<a class="headerlink" href="#5-prerequisites" title="Permanent link">#</a></h2>
+<ol>
+<li><strong>Grafana</strong> reachable via service URL (<code>http://grafana.telemetry.svc.cluster.local</code>).</li>
+<li><strong>Grafana</strong> must be in <strong><a href="#1111-what-is-multi-org-mode-in-grafana">multi-org mode</a></strong> and allow API admin access.</li>
+<li><strong>SSO extension</strong> installed and configured; publishes <strong>issuer</strong>, <strong><code>groupsClaim</code></strong>, and <code>grafana</code> client.</li>
+<li><strong>Network/TLS</strong>: Pods allowed to egress to Grafana; trust chain available.</li>
+</ol>
+<hr>
+<h2 id="6-install-platform-engineer">6) Install (Platform Engineer)<a class="headerlink" href="#6-install-platform-engineer" title="Permanent link">#</a></h2>
+<h3 id="61-create-namespace-install-controller">6.1 Create namespace &amp; install controller<a class="headerlink" href="#61-create-namespace-install-controller" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>ns<span class="w"> </span>mto-system<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+helm<span class="w"> </span>upgrade<span class="w"> </span>--install<span class="w"> </span>mto-grafana-extension<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>oci://&lt;your-registry&gt;/mto-grafana-extension<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-n<span class="w"> </span>mto-system<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-f<span class="w"> </span>values.yaml
 </code></pre></div>
-<p>Verify it works:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>tenant<span class="w"> </span>--help
+<blockquote>
+<p>The <code>values.yaml</code> should minimally configure operator RBAC and resource requests. A reference sample is provided in the Helm chart.</p>
+</blockquote>
+<h3 id="62-create-the-mto-grafana-extensions-grafana-cr">6.2 Create the MTO Grafana Extension's <code>Grafana</code> CR<a class="headerlink" href="#62-create-the-mto-grafana-extensions-grafana-cr" title="Permanent link">#</a></h3>
+<blockquote>
+<p><strong>Naming note:</strong> The MTO Grafana Extension's top-level CR has <code>kind: Grafana</code> under the group <code>telemetry.tenantoperator.stakater.com</code>. This is <strong>not</strong> the same as the Grafana Operator's native <code>Grafana</code> CR (group <code>grafana.integreatly.org</code>). Throughout this doc, "the extension's <code>Grafana</code> CR" always refers to the MTO Grafana Extension resource defined below.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># MTO Grafana Extension's Grafana CR</span>
+<span class="c1"># (kind: Grafana, group: telemetry.tenantoperator.stakater.com)</span>
+<span class="c1"># Wires your MTO tenants to an existing Grafana instance managed by the Grafana Operator.</span>
+<span class="c1"># - Ensures Grafana SSO auth for users.</span>
+<span class="c1"># - Sets up per-tenant isolated organisations with roles.</span>
+<span class="c1"># - Sets up pre-configured resources (Datasources, Dashboard, Folders,...) per-tenant.</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.tenantoperator.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Grafana</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster-default</span><span class="w">                 </span><span class="c1"># One per grafana instance (typical). Keep in mto-system.</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto-system</span>
+
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">server</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana-instance</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry</span>
+
+<span class="w">  </span><span class="nt">sso</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inline</span>
+<span class="w">    </span><span class="nt">idp</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://idp.example.com</span>
+<span class="w">      </span><span class="nt">clientId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana</span>
+<span class="w">      </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">abc123</span>
+<span class="w">      </span><span class="nt">redirectUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://grafana.external.url/login/generic_oauth</span>
+<span class="w">      </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openid email profile groups offline_access</span>
+<span class="w">      </span><span class="nt">idTokenAttributeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id_token</span>
+<span class="w">      </span><span class="nt">roleAttributeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">groups</span>
+<span class="w">      </span><span class="nt">orgAttributeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">groups</span>
+<span class="w">      </span><span class="nt">emailAttributePath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">email</span>
+<span class="w">      </span><span class="nt">loginAttributePath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">preferred_username</span>
+<span class="w">      </span><span class="nt">nameAttributePath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name</span>
+<span class="w">      </span><span class="nt">emailAttributeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">email:primary</span>
+<span class="w">      </span><span class="nt">authUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://idp.example.com/dex/auth</span>
+<span class="w">      </span><span class="nt">tokenUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://idp.example.com/dex/token</span>
+<span class="w">      </span><span class="nt">apiUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://idp.example.com/dex/api</span>
+
+<span class="w">  </span><span class="nt">tenantRoleMapping</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">admin</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">grafanaRole</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafanaadmin</span>
+<span class="w">      </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">clusteradmin || cluster-admin</span>
+<span class="w">    </span><span class="nt">owner</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">grafanaRole</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
+<span class="w">      </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-{{ .Tenant }}-{{ .Role }}s</span>
+<span class="w">    </span><span class="nt">editor</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">grafanaRole</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">editor</span>
+<span class="w">      </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-{{ .Tenant }}-{{ .Role }}s</span>
+<span class="w">    </span><span class="nt">viewer</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">grafanaRole</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">viewer</span>
+<span class="w">      </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-{{ .Tenant }}-{{ .Role }}s</span>
+<span class="w">    </span><span class="nt">tieBreakStrategy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">highest</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">fallback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deny</span>
+
+<span class="w">  </span><span class="nt">scaffolding</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OnAnnotation</span>
+<span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="s">"mto.grafana/disabled"</span>
+<span class="w">      </span><span class="nt">tenant</span><span class="p">:</span><span class="w"> </span><span class="s">"mto.grafana/tenant"</span>
+
+<span class="w">  </span><span class="nt">deletionPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Delete</span>
 </code></pre></div>
-<h3 id="build-from-source">Build from Source<a class="headerlink" href="#build-from-source" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/stakater/kubectl-tenant.git
-<span class="nb">cd</span><span class="w"> </span>kubectl-tenant
-go<span class="w"> </span>build<span class="w"> </span>-o<span class="w"> </span>kubectl-tenant
-mv<span class="w"> </span>kubectl-tenant<span class="w"> </span>/usr/local/bin/
+<blockquote>
+<p>The MTO Grafana Extension uses the Grafana <code>HTTP</code> API to manage configuration directly in the Grafana database.
+See <a href="#115-sso-modes">Appendix 11.5</a> for how SSO modes map to this API.</p>
+</blockquote>
+<hr>
+<h2 id="7-using-it-platform-engineer-app-teams">7) Using it (Platform Engineer &amp; App Teams)<a class="headerlink" href="#7-using-it-platform-engineer-app-teams" title="Permanent link">#</a></h2>
+<p>By default, <strong>all GrafanaDashboards and GrafanaDatasources are provisioned to all tenants</strong>.
+Annotations are only needed to explicitly <strong>disable</strong> or <strong>restrict</strong> provisioning.</p>
+<hr>
+<h3 id="71-disable-a-datasource">7.1 Disable a <code>Datasource</code><a class="headerlink" href="#71-disable-a-datasource" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana.integreatly.org/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GrafanaDatasource</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">annotations</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="nt">mto.grafana/disabled</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
-<h2 id="supported-resources">Supported Resources<a class="headerlink" href="#supported-resources" title="Permanent link">#</a></h2>
+<hr>
+<h3 id="72-restrict-a-dashboard-to-certain-tenants">7.2 Restrict a Dashboard to certain tenants<a class="headerlink" href="#72-restrict-a-dashboard-to-certain-tenants" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana.integreatly.org/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GrafanaDashboard</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">annotations</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="nt">mto.grafana/tenant</span><span class="p">:</span><span class="w"> </span><span class="s">"tenant-a,tenant-b"</span>
+</code></pre></div>
+<hr>
+<h3 id="73-behavior-summary">7.3 Behavior Summary<a class="headerlink" href="#73-behavior-summary" title="Permanent link">#</a></h3>
+<p>By default, <strong>all dashboards and <code>datasources</code> are provisioned to all tenants</strong>.
+Annotations override this behavior.</p>
 <table>
 <thead>
 <tr>
-<th>Resource</th>
-<th>Command</th>
+<th>Annotation</th>
+<th>Applies To</th>
+<th>Result</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>StorageClasses</td>
-<td><code>storageclasses</code></td>
+<td><em>(none)</em></td>
+<td>Dashboard/Datasource</td>
+<td>Provisioned to <strong>all tenants</strong></td>
 </tr>
 <tr>
-<td>Namespaces</td>
-<td><code>namespaces</code></td>
+<td><code>mto.grafana/disabled: "true"</code></td>
+<td>Dashboard/Datasource</td>
+<td>Provisioned to <strong>no tenants</strong></td>
+</tr>
+<tr>
+<td><code>mto.grafana/tenant: "tenant-x"</code></td>
+<td>Dashboard/Datasource</td>
+<td>Provisioned <strong>only</strong> to the listed tenant(s). Multiple tenants allowed via comma-separated list.</td>
+</tr>
+<tr>
+<td>Both <code>disabled</code> + <code>tenant</code> set</td>
+<td>Dashboard/Datasource</td>
+<td><code>disabled</code> takes precedence → provisioned to <strong>no tenants</strong></td>
 </tr>
 </tbody>
 </table>
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h2>
-<h3 id="command-syntax">Command Syntax<a class="headerlink" href="#command-syntax" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>&lt;resource-type&gt;<span class="w"> </span>&lt;tenant-name&gt;<span class="w"> </span><span class="o">[</span>resource-name<span class="o">]</span><span class="w"> </span><span class="o">[</span>flags<span class="o">]</span>
+<blockquote>
+<p><code>GrafanaDashboard</code> and <code>GrafanaDatasource</code> resources must live in the Grafana instance's namespace (<code>spec.server.namespace</code>). Resources in other namespaces are not watched and will not be provisioned.</p>
+</blockquote>
+<hr>
+<h2 id="8-lifecycle">8) Lifecycle<a class="headerlink" href="#8-lifecycle" title="Permanent link">#</a></h2>
+<h3 id="81-status-reporting">8.1 Status reporting<a class="headerlink" href="#81-status-reporting" title="Permanent link">#</a></h3>
+<p>The operator continuously updates the <code>status</code> field of the extension's <code>Grafana</code> CR with cluster-wide and tenant-specific information.</p>
+<h4 id="811-status-in-the-extensions-grafana-cr">8.1.1 Status in the extension's <code>Grafana</code> CR<a class="headerlink" href="#811-status-in-the-extensions-grafana-cr" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nt">status</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">observedGeneration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">phase</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ready</span>
+<span class="w">  </span><span class="nt">conditions</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OperatorConfig</span>
+<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">"True"</span>
+<span class="w">      </span><span class="nt">reason</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Success</span>
+<span class="w">      </span><span class="nt">message: OperatorConfig</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Success</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GrafanaConfig</span>
+<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">"True"</span>
+<span class="w">      </span><span class="nt">reason</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Success</span>
+<span class="w">      </span><span class="nt">message: GrafanaConfig</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Success</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Organisations</span>
+<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">"True"</span>
+<span class="w">      </span><span class="nt">reason</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Success</span>
+<span class="w">      </span><span class="nt">message: Organisations</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Success</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SyncDatasources</span>
+<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">"True"</span>
+<span class="w">      </span><span class="nt">reason</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Success</span>
+<span class="w">      </span><span class="nt">message: SyncDatasources</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Success</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SyncDashboards</span>
+<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">"True"</span>
+<span class="w">      </span><span class="nt">reason</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Success</span>
+<span class="w">      </span><span class="nt">message: SyncDashboards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Success</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ready</span>
+<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="s">"True"</span>
+<span class="w">      </span><span class="nt">reason</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Success</span>
+<span class="w">      </span><span class="nt">message</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">All dependencies healthy.</span>
+<span class="w">      </span><span class="nt">lastTransitionTime</span><span class="p">:</span><span class="w"> </span><span class="s">"2025-09-02T20:00:00Z"</span>
+<span class="w">  </span><span class="nt">tenantStatus</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">totalTenants</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">    </span><span class="nt">reconciled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">    </span><span class="nt">failed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">details</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tenant</span><span class="p">:</span><span class="w"> </span><span class="s">"tenant-a"</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">"tenant-a-apps"</span>
+<span class="w">        </span><span class="nt">lastSyncTime</span><span class="p">:</span><span class="w"> </span><span class="s">"2025-09-02T19:59:30Z"</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tenant</span><span class="p">:</span><span class="w"> </span><span class="s">"tenant-b"</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">"tenant-b-apps"</span>
+<span class="w">        </span><span class="nt">lastSyncTime</span><span class="p">:</span><span class="w"> </span><span class="s">"2025-09-02T19:59:10Z"</span>
+<span class="w">        </span><span class="nt">error</span><span class="p">:</span><span class="w"> </span><span class="s">"failed</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">upsert</span><span class="nv"> </span><span class="s">datasource:</span><span class="nv"> </span><span class="s">permission</span><span class="nv"> </span><span class="s">denied"</span>
 </code></pre></div>
+<hr>
+<h2 id="9-operations-security-platform-engineer">9) Operations &amp; Security (Platform Engineer)<a class="headerlink" href="#9-operations-security-platform-engineer" title="Permanent link">#</a></h2>
+<h3 id="91-access-control">9.1 Access Control<a class="headerlink" href="#91-access-control" title="Permanent link">#</a></h3>
+<ul>
+<li>The MTO Grafana Extension connects to Grafana using <strong>credentials</strong> created by the Grafana Operator.</li>
+<li>Credentials are stored in Kubernetes Secrets.</li>
+<li>When credentials rotate, the MTO Grafana Extension re-establishes connection automatically.</li>
+</ul>
+<h3 id="92-auditability">9.2 Auditability<a class="headerlink" href="#92-auditability" title="Permanent link">#</a></h3>
+<ul>
+<li>The MTO Grafana Extension emits Kubernetes <strong>Events</strong> on reconciliation.</li>
+<li>
+<p>Prometheus metrics</p>
+<ul>
+<li><strong>Failure counters</strong><ul>
+<li><code>grafana_extension_reconciliation_errors_total</code></li>
+<li><code>grafana_extension_api_call_errors_total</code></li>
+</ul>
+</li>
+<li><strong>Other operational metrics</strong><ul>
+<li><code>grafana_extension_reconciliations_total</code></li>
+<li><code>grafana_extension_reconciliation_duration_seconds</code></li>
+<li><code>grafana_extension_api_calls_total</code></li>
+<li><code>grafana_extension_api_call_duration_seconds</code></li>
+<li><code>grafana_extension_tenants_managed</code></li>
+<li><code>grafana_extension_organizations_managed</code></li>
+<li><code>grafana_extension_dashboards_managed</code></li>
+<li><code>grafana_extension_datasources_managed</code></li>
+<li><code>grafana_extension_grafana_health_status</code></li>
+<li><code>grafana_extension_last_successful_sync_timestamp</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="93-failure-recovery">9.3 Failure Recovery<a class="headerlink" href="#93-failure-recovery" title="Permanent link">#</a></h3>
+<ul>
+<li>Reconcile loops use standard <strong>controller-runtime <code>requeue</code></strong> on transient errors.</li>
+<li>The operator retries automatically on the next reconciliation cycle.</li>
+</ul>
+<h3 id="94-security-notes">9.4 Security Notes<a class="headerlink" href="#94-security-notes" title="Permanent link">#</a></h3>
+<ul>
+<li>Never enable <code>insecureSkipVerify</code> in production.</li>
+<li>Always reference OAuth client secrets via secretRef, never inline.</li>
+<li>Enforce strict group patterns to prevent cross-tenant access.</li>
+</ul>
+<h3 id="95-rbac-minimum">9.5 RBAC minimum<a class="headerlink" href="#95-rbac-minimum" title="Permanent link">#</a></h3>
+<ul>
+<li>Read (get/list/watch) Tenant (cluster-scoped).</li>
+<li>Read (get/list/watch) GrafanaDashboard, GrafanaDatasource in <code>spec.server.namespace</code>.</li>
+<li>Read Secrets for Grafana admin/API credentials in the Grafana namespace.</li>
+<li>No access to arbitrary tenant namespaces.</li>
+</ul>
+<hr>
+<h2 id="10-developer-guide-how-it-works">10) Developer Guide (How it Works)<a class="headerlink" href="#10-developer-guide-how-it-works" title="Permanent link">#</a></h2>
+<h3 id="101-controller-reconciliation-stages">10.1 Controller &amp; Reconciliation Stages<a class="headerlink" href="#101-controller-reconciliation-stages" title="Permanent link">#</a></h3>
+<p>The MTO Grafana Extension uses a <strong>single controller</strong> (<code>GrafanaReconciler</code>) that watches the extension's <code>Grafana</code> CR (group <code>telemetry.tenantoperator.stakater.com</code>) as its primary resource. On each reconciliation it executes <strong>six sequential stages</strong>, each implemented as a sub-reconciler:</p>
 <table>
 <thead>
 <tr>
-<th>Argument</th>
+<th>#</th>
+<th>Stage</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>OperatorConfig</strong></td>
+<td>Validates spec, sets defaults (scaffolding mode, deletion policy, role mapping patterns)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>GrafanaConfig</strong></td>
+<td>Applies SSO settings to Grafana via <code>HTTP</code> API (inline mode); secret mode is read-only</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Organisations</strong></td>
+<td>Creates/deletes Grafana organisations to match Tenant CRs; configures org members and role mappings</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>SyncDatasources</strong></td>
+<td>Distributes <code>GrafanaDatasource</code> resources to tenant <code>orgs</code> with tenant-scoped <code>UIDs</code> and <code>X-Scope-OrgID</code> headers; cleans up orphans</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>SyncDashboards</strong></td>
+<td>Distributes <code>GrafanaDashboard</code> resources to tenant <code>orgs</code> in managed folders; cleans up orphans</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Complete</strong></td>
+<td>Placeholder for finishing touches</td>
+</tr>
+</tbody>
+</table>
+<p>Each stage updates a corresponding <code>status.condition</code>. If a stage fails, the operator stops and retries on the next reconciliation cycle.</p>
+<p><strong>Watch triggers:</strong></p>
+<ul>
+<li>Extension's <code>Grafana</code> CR — primary resource (ignores status-only updates)</li>
+<li><code>Tenant</code> — cluster-scoped; any Tenant change <code>enqueues</code> all extension <code>Grafana</code> CRs</li>
+<li><code>GrafanaDatasource</code> — fires when a <code>datasource</code> becomes <code>DatasourceSynchronized=True</code> or its spec changes while already synchronized; filtered to the namespace matching <code>spec.server.namespace</code></li>
+<li><code>GrafanaDashboard</code> — fires on spec changes; filtered to the namespace matching <code>spec.server.namespace</code></li>
+</ul>
+<hr>
+<h3 id="102-reconciliation-flow-sequence-diagram">10.2 Reconciliation Flow (sequence diagram)<a class="headerlink" href="#102-reconciliation-flow-sequence-diagram" title="Permanent link">#</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Watch as Watch Trigger
+    participant GEX as GrafanaReconciler
+    participant API as Grafana HTTP API
+
+    Watch-&gt;&gt;GEX: Grafana CR / Tenant / Datasource / Dashboard change
+    GEX-&gt;&gt;GEX: OperatorConfig — validate &amp; set defaults
+    GEX-&gt;&gt;API: GrafanaConfig — apply SSO settings (inline mode)
+    API--&gt;&gt;GEX: SSO OK
+    GEX-&gt;&gt;API: Organisations — create/delete orgs, configure members &amp; roles
+    API--&gt;&gt;GEX: Orgs synced
+    GEX-&gt;&gt;API: SyncDatasources — distribute to tenant orgs, cleanup orphans
+    API--&gt;&gt;GEX: Datasources synced
+    GEX-&gt;&gt;API: SyncDashboards — distribute to tenant orgs, cleanup orphans
+    API--&gt;&gt;GEX: Dashboards synced
+    GEX-&gt;&gt;GEX: Complete — update status conditions &amp; tenantStatus</code></pre>
+<blockquote>
+<p>Each stage sets a <code>status.condition</code>. On failure the operator stops at the failing stage, updates the CR status, and retries on the next reconciliation cycle.</p>
+</blockquote>
+<hr>
+<h3 id="103-watch-model">10.3 Watch Model<a class="headerlink" href="#103-watch-model" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Extension's <code>Grafana</code> CR</strong> — primary resource; status-only updates (no generation change) are ignored.</li>
+<li><strong><code>Tenant</code></strong> — cluster-scoped watch; any Tenant change <code>enqueues</code> all extension <code>Grafana</code> CRs.</li>
+<li><strong><code>GrafanaDatasource</code></strong> — fires when <code>DatasourceSynchronized</code> condition becomes <code>True</code>, or when the spec changes on an already-synchronized <code>datasource</code>. Filtered to <code>datasources</code> whose namespace matches <code>spec.server.namespace</code>.</li>
+<li><strong><code>GrafanaDashboard</code></strong> — fires on spec changes (generation bump); filtered to the namespace matching <code>spec.server.namespace</code>.</li>
+</ul>
+<hr>
+<h3 id="104-templates">10.4 Templates<a class="headerlink" href="#104-templates" title="Permanent link">#</a></h3>
+<ul>
+<li>Role mapping patterns support Go templating with <code>{{ .Tenant }}</code> and <code>{{ .Role }}</code> substitution.<ul>
+<li>Example: <code>tenant-{{ .Tenant }}-{{ .Role }}s</code> renders to <code>tenant-acme-owners</code> for tenant <code>acme</code> with role <code>owner</code>.</li>
+</ul>
+</li>
+<li><code>Datasource</code> <code>UIDs</code> are made tenant-scoped: <code>{baseUID}-{tenantName}</code> (max 40 characters).</li>
+<li>Loki <code>datasource</code> URLs are rewritten per tenant for path-based isolation.</li>
+<li><code>X-Scope-OrgID</code> headers are injected per tenant org for multi-tenant backends (Loki, Mimir, Tempo).</li>
+</ul>
+<hr>
+<h3 id="105-testing-strategy">10.5 Testing Strategy<a class="headerlink" href="#105-testing-strategy" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Unit tests:</strong> per-reconciler tests for OperatorConfig, GrafanaConfig, Organisations, <code>Datasources</code>, Dashboards, scaffolding annotation filtering, and status computation.</li>
+<li><strong>E2E tests:</strong> run against a real Grafana instance — cover tenant org lifecycle, datasource/dashboard reconciliation, scaffolding annotations, and SSO settings with Dex login flow.</li>
+</ul>
+<hr>
+<h3 id="106-performance-notes">10.6 Performance Notes<a class="headerlink" href="#106-performance-notes" title="Permanent link">#</a></h3>
+<ul>
+<li>GrafanaDashboard and GrafanaDatasource watches are filtered to <code>spec.server.namespace</code> to limit informer scope.</li>
+<li>Dashboard search and orphan cleanup use pagination (limit 1000 per page).</li>
+<li>Expose metrics for reconcile duration and API latency (<code>grafana_extension_reconciliation_duration_seconds</code>, <code>grafana_extension_api_call_duration_seconds</code>).</li>
+</ul>
+<hr>
+<h2 id="11-appendices">11) Appendices<a class="headerlink" href="#11-appendices" title="Permanent link">#</a></h2>
+<h3 id="111-glossary">11.1 Glossary<a class="headerlink" href="#111-glossary" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Org</strong> → Grafana organisation = tenant isolation boundary.</li>
+<li><strong>SSO contract</strong> → Published by SSO extension, consumed by the MTO Grafana Extension.</li>
+<li><strong>Tenant CR</strong> → Defines tenants in MTO.</li>
+<li><strong>SSO</strong> → Single Sign-On; users sign in once and access all connected apps.</li>
+<li><strong>BYO</strong> → Bring Your Own</li>
+<li><strong>IdP</strong> → Identity Provider</li>
+</ul>
+<h4 id="1111-what-is-multi-org-mode-in-grafana">11.1.1 What is <strong>multi-org mode</strong> in Grafana?<a class="headerlink" href="#1111-what-is-multi-org-mode-in-grafana" title="Permanent link">#</a></h4>
+<p>Grafana has a concept of <strong>organisations</strong> — logical partitions inside a single Grafana instance.</p>
+<p>Each org has its own users, dashboards, folders, and <code>datasources</code>.</p>
+<ul>
+<li>Single-org setup: Grafana is used as one shared org. (This is what you get by default in most Helm charts).</li>
+<li>Multi-org setup: You allow multiple <code>orgs</code> to exist and be managed. The MTO Grafana Extension relies on this, since it provisions one org per tenant.</li>
+</ul>
+<h4 id="requirements-for-multi-org">Requirements for multi-org<a class="headerlink" href="#requirements-for-multi-org" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">[users]</span>
+<span class="na">auto_assign_org</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+<span class="na">allow_org_create</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+
+<span class="k">[auth.basic]</span>
+<span class="na">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span><span class="w">   </span><span class="c1"># required for operator to talk to Grafana API</span>
+
+<span class="k">[auth.anonymous]</span>
+<span class="na">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span><span class="w">  </span><span class="c1"># must be disabled; isolation breaks otherwise</span>
+</code></pre></div>
+<p><strong>Other implied requirements</strong>:</p>
+<ul>
+<li><strong>Admin user available</strong> with rights to create <code>orgs</code> and users</li>
+<li><strong>Root URL configured</strong> in <code>[server]</code> for OAuth callbacks</li>
+<li><strong>No restrictive licensing</strong> (the MTO Grafana Extension uses only community features)</li>
+</ul>
+<hr>
+<h3 id="112-troubleshooting">11.2 Troubleshooting<a class="headerlink" href="#112-troubleshooting" title="Permanent link">#</a></h3>
+<ul>
+<li><code>401 Unauthorized</code>: Check Grafana admin secret.</li>
+<li><code>SSOConfigured: False</code>: Check IdP contract in SSO extension.</li>
+<li>Dashboards not showing: Verify tenant annotation and org membership.</li>
+</ul>
+<hr>
+<h3 id="113-crd-reference">11.3 CRD Reference<a class="headerlink" href="#113-crd-reference" title="Permanent link">#</a></h3>
+<p>The MTO Grafana Extension's <code>Grafana</code> CR schema (<code>telemetry.tenantoperator.stakater.com/v1alpha1</code>):</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>resource-type</code></td>
-<td>The type of resource to list (<code>storageclasses</code>, <code>namespaces</code>)</td>
+<td>spec.server.name</td>
+<td>Name of the Grafana instance</td>
 </tr>
 <tr>
-<td><code>tenant-name</code></td>
-<td>The name of the Tenant CR to scope the query</td>
+<td>spec.server.namespace</td>
+<td>Namespace that Grafana instance lives in.</td>
 </tr>
 <tr>
-<td><code>resource-name</code></td>
-<td>(Optional) Specific resource name to retrieve</td>
+<td><code>spec.sso.mode</code></td>
+<td>Selected mode on how to configure SSO. See <a href="#115-sso-modes">Appendix 11.5</a></td>
+</tr>
+<tr>
+<td>spec.tenantRoleMapping.[admin|owner|editor|viewer]</td>
+<td>The configuration of MTO-roles to Grafana Roles</td>
+</tr>
+<tr>
+<td>spec.tenantRoleMapping.[admin|owner|editor|viewer].grafanaRole</td>
+<td>Which Grafana Role to map to</td>
+</tr>
+<tr>
+<td>spec.tenantRoleMapping.[admin|owner|editor|viewer].pattern</td>
+<td>The partial string of the group claim to match to. Separate values with || (OR condition)</td>
+</tr>
+<tr>
+<td>spec.tenantRoleMapping.tieBreakStrategy</td>
+<td>If a user matches against multiple roles, which role should be assigned. Possible values: <code>highest</code> (default) - the role with the highest permission is assigned. <code>lowest</code> - the role with the lowest permission is assigned. <code>deny</code> - user is denied any roles.</td>
+</tr>
+<tr>
+<td>spec.tenantRoleMapping.fallback</td>
+<td>Default role when there is no match. Possible values: <code>deny</code> (default) - deny access. <code>allow</code> - user is granted the default role. <code>&lt;rolename&gt;</code> - user is assigned <code>&lt;rolename&gt;</code> rights.</td>
+</tr>
+<tr>
+<td>spec.scaffolding</td>
+<td>Allows the MTO Grafana Extension to detect other CRs based on the annotations</td>
+</tr>
+<tr>
+<td>spec.scaffolding.mode</td>
+<td><code>OnAnnotation</code> (default) - Scaffolding is triggered or configured based on the presence and values of specific annotations.</td>
+</tr>
+<tr>
+<td>spec.scaffolding.annotations</td>
+<td>Annotations to look for</td>
+</tr>
+<tr>
+<td>spec.deletionPolicy</td>
+<td><code>Delete</code> (default) or <code>Orphan</code>. Controls what happens to Grafana organisations when a Tenant CR is removed.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="list-resources">List Resources<a class="headerlink" href="#list-resources" title="Permanent link">#</a></h3>
-<p>List all storage classes for a tenant:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>storageclasses<span class="w"> </span>my-tenant
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>NAME<span class="w">                  </span>PROVISIONER<span class="w">             </span>AGE
-my-tenant-fast<span class="w">        </span>kubernetes.io/aws-ebs<span class="w">   </span>30d
-my-tenant-standard<span class="w">    </span>kubernetes.io/gp2<span class="w">       </span>30d
-</code></pre></div>
-<p>List all namespaces for a tenant:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>namespaces<span class="w"> </span>my-tenant
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>NAME<span class="w">                  </span>AGE
-my-tenant-prod<span class="w">        </span>45d
-my-tenant-staging<span class="w">     </span>45d
-my-tenant-dev<span class="w">         </span>30d
-</code></pre></div>
-<h3 id="get-specific-resource">Get Specific Resource<a class="headerlink" href="#get-specific-resource" title="Permanent link">#</a></h3>
-<p>Get a specific storage class:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>storageclasses<span class="w"> </span>my-tenant<span class="w"> </span>my-tenant-fast
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>NAME<span class="w">                  </span>PROVISIONER<span class="w">             </span>AGE
-my-tenant-fast<span class="w">        </span>kubernetes.io/aws-ebs<span class="w">   </span>30d
-</code></pre></div>
-<h3 id="output-formats">Output Formats<a class="headerlink" href="#output-formats" title="Permanent link">#</a></h3>
-<p>All standard kubectl output formats and flags are supported:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML output</span>
-kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>storageclasses<span class="w"> </span>my-tenant<span class="w"> </span>-o<span class="w"> </span>yaml
-
-<span class="c1"># JSON output</span>
-kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>namespaces<span class="w"> </span>my-tenant<span class="w"> </span>-o<span class="w"> </span>json
-
-<span class="c1"># JSONPath for specific fields</span>
-kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>namespaces<span class="w"> </span>my-tenant<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.items[*].metadata.name}'</span>
-
-<span class="c1"># Custom columns</span>
-kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>namespaces<span class="w"> </span>my-tenant<span class="w"> </span>-o<span class="w"> </span>custom-columns<span class="o">=</span>NAME:.metadata.name,STATUS:.status.phase
-</code></pre></div>
-<h2 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h2>
+<hr>
+<h3 id="114-lifecycle-examples-day-0-day-1-story">11.4 Lifecycle Examples (Day-0 / Day-1 story)<a class="headerlink" href="#114-lifecycle-examples-day-0-day-1-story" title="Permanent link">#</a></h3>
 <ul>
-<li>Reads the specified Tenant CR from <code>tenantoperator.stakater.com/v1beta3</code></li>
-<li>Extracts permitted resources from the tenant's status fields</li>
-<li>Fetches and returns only those resources the tenant can access</li>
+<li>
+<p><strong>Day-0 (Platform setup):</strong></p>
+<ul>
+<li>Platform team installs Grafana + Grafana Operator.</li>
+<li>Deploys the MTO Grafana Extension and creates its <code>Grafana</code> CR (<code>telemetry.tenantoperator.stakater.com</code>).</li>
+<li>Connects to SSO Extension contract.</li>
+<li>The MTO Grafana Extension connects to Grafana via <code>HTTP</code> API.</li>
 </ul>
-<h2 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">#</a></h2>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/kubectlTenantRbacDemo.gif" data-desc-position="bottom"><img alt="kubectl tenant RBAC demo" src="../images/kubectlTenantRbacDemo.gif"></a></p>
+</li>
+<li>
+<p><strong>Day-1 (Tenant onboarding):</strong></p>
+<ul>
+<li>App team creates <code>Tenant</code> CR.</li>
+<li>The MTO Grafana Extension auto-creates Grafana org.</li>
+<li>Default dashboards + <code>datasources</code> provisioned.</li>
+<li>Users login via IdP → assigned roles automatically.</li>
+</ul>
+</li>
+<li>
+<p><strong>Day-2 (Ongoing):</strong></p>
+<ul>
+<li>Platform engineer or app team adds <code>GrafanaDashboard</code> / <code>GrafanaDatasource</code> resources in the Grafana instance's namespace (<code>spec.server.namespace</code>), optionally annotated to restrict or disable per tenant.</li>
+<li>The MTO Grafana Extension syncs them into the right <code>orgs</code>.</li>
+<li>Rotation of IdP secrets handled automatically via SSO Extension.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="115-sso-modes">11.5 SSO modes<a class="headerlink" href="#115-sso-modes" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Where config comes from</th>
+<th>Use case / Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>secret</td>
+<td>External Secret</td>
+<td>BYO IdP config, no <code>SSOExtension</code></td>
+</tr>
+<tr>
+<td>inline</td>
+<td>Inline in CR (<code>idp:</code> block)</td>
+<td>Simple setups, GitOps friendly (careful with secrets)</td>
+</tr>
+<tr>
+<td>disabled</td>
+<td>None</td>
+<td>Dev/test, legacy</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Regardless of how the MTO Grafana Extension obtains SSO config, it always applies it via the Grafana <code>HTTP</code> API.
+This ensures dynamic updates without requiring Grafana restarts or CR modifications.</p>
+<p><strong>Workaround</strong>
+If your IdP doesn't supply <code>groups</code> and/or <code>roles</code>, or you want to only use username to map users to organisations, you may set <code>orgAttributeName</code> to the same value as <code>loginAttributePath</code>.
+The extension will then use the value as a single-user group/role then.</p>
+</blockquote>
+<ul>
+<li><strong>mode = secret</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">sso</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">secret</span>
+<span class="w">    </span><span class="nt">secretRef</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana-sso-credentials</span>
+</code></pre></div>
+<p>Expected Secret format:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana-sso-credentials</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry</span>
+<span class="nt">stringData</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://idp.example.com</span>
+<span class="w">  </span><span class="nt">clientId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana</span>
+<span class="w">  </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">supersecret</span>
+<span class="w">  </span><span class="nt">redirectUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://grafana.external.url/login/generic_oauth</span>
+
+<span class="w">  </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openid email profile groups offline_access</span><span class="w"> </span><span class="c1"># (optional, default: openid email profile groups offline_access)</span>
+<span class="w">  </span><span class="nt">idTokenAttributeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id_token</span><span class="w"> </span><span class="c1"># (optional, default: id_token)</span>
+<span class="w">  </span><span class="nt">roleAttributeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">groups</span><span class="w"> </span><span class="c1"># (optional, default: groups, usually either `groups` or `roles`)</span>
+<span class="w">  </span><span class="nt">emailAttributePath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">email</span><span class="w"> </span><span class="c1"># (optional, default: email)</span>
+<span class="w">  </span><span class="nt">loginAttributePath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">preferred_username</span><span class="w"> </span><span class="c1"># (optional, default: preferred_username)</span>
+<span class="w">  </span><span class="nt">nameAttributePath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="w"> </span><span class="c1"># (optional, default: name)</span>
+<span class="w">  </span><span class="nt">emailAttributeName</span><span class="p">:</span><span class="w"> </span><span class="s">"email:primary"</span><span class="w"> </span><span class="c1"># (optional, default: email:primary)</span>
+<span class="w">  </span><span class="nt">authUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://idp.example.com/dex/auth</span><span class="w"> </span><span class="c1"># (optional, default: {{ issuer }}/dex/auth)</span>
+<span class="w">  </span><span class="nt">tokenUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://idp.example.com/dex/token</span><span class="w"> </span><span class="c1"># (optional, default: {{ issuer }}/dex/token)</span>
+<span class="w">  </span><span class="nt">apiUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://idp.example.com/dex/api</span><span class="w"> </span><span class="c1"># (optional, default: {{ issuer }}/dex/api)</span>
+</code></pre></div>
+<ul>
+<li><strong>mode = inline</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">sso</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">inline</span>
+<span class="w">    </span><span class="nt">idp</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">issuer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://idp.example.com</span>
+<span class="w">      </span><span class="nt">clientId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">grafana</span>
+<span class="w">      </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">abc123</span>
+<span class="w">      </span><span class="nt">redirectUri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://grafana.external.url/login/generic_oauth</span>
+<span class="w">      </span><span class="nt">scope</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openid email profile groups offline_access</span><span class="w"> </span><span class="c1"># (optional, default: openid email profile groups offline_access)</span>
+<span class="w">      </span><span class="nt">idTokenAttributeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id_token</span><span class="w"> </span><span class="c1"># (optional, default: id_token)</span>
+<span class="w">      </span><span class="nt">roleAttributeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">groups</span><span class="w"> </span><span class="c1"># (optional, default: groups, usually either `groups` or `roles`)</span>
+<span class="w">      </span><span class="nt">orgAttributeName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">groups</span><span class="w"> </span><span class="c1"># (optional, default: groups)</span>
+<span class="w">      </span><span class="nt">emailAttributePath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">email</span><span class="w"> </span><span class="c1"># (optional, default: email)</span>
+<span class="w">      </span><span class="nt">loginAttributePath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">preferred_username</span><span class="w"> </span><span class="c1"># (optional, default: preferred_username)</span>
+<span class="w">      </span><span class="nt">nameAttributePath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="w"> </span><span class="c1"># (optional, default: name)</span>
+<span class="w">      </span><span class="nt">emailAttributeName</span><span class="p">:</span><span class="w"> </span><span class="s">"email:primary"</span><span class="w"> </span><span class="c1"># (optional, default: email:primary)</span>
+<span class="w">      </span><span class="nt">authUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://idp.example.com/dex/auth</span><span class="w"> </span><span class="c1"># (optional, default: {{ issuer }}/dex/auth)</span>
+<span class="w">      </span><span class="nt">tokenUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://idp.example.com/dex/token</span><span class="w"> </span><span class="c1"># (optional, default: {{ issuer }}/dex/token)</span>
+<span class="w">      </span><span class="nt">apiUrl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://idp.example.com/dex/api</span><span class="w"> </span><span class="c1"># (optional, default: {{ issuer }}/dex/api)</span>
+</code></pre></div>
+<ul>
+<li><strong>mode = disabled</strong></li>
+</ul>
+<p>Skips SSO configuration entirely.</p>
+<p>Grafana will continue using its existing auth config.</p>
+<p>This is useful only for development or legacy clusters.</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">sso</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">disabled</span>
+</code></pre></div>
+<hr>
+<h2 id="authentication-and-authorization-flow">Authentication and Authorization Flow<a class="headerlink" href="#authentication-and-authorization-flow" title="Permanent link">#</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+  autonumber
+  actor U as User (Browser)
+  participant G as Grafana
+  participant D as Dex (OIDC Provider)
+  participant K as Keycloak (IdP + Authorization)
+  participant L as LDAP (User Directory)
+
+  rect rgb(245,245,245)
+    note over K,L: One-time setup (admin)
+    K-&gt;&gt;L: Configure LDAP federation (bind, user search, group sync)
+    K-&gt;&gt;K: Define roles (realm/client) + group→role mappings
+    K-&gt;&gt;K: Add protocol mappers (roles/groups/email/name claims)
+    D-&gt;&gt;K: Configure Dex OIDC connector to Keycloak (client + redirect URIs)
+    G-&gt;&gt;D: Configure Grafana OIDC (client id/secret, endpoints, scopes)
+  end
+
+  rect rgb(235,248,255)
+    note over U,G: Runtime: user logs in
+    U-&gt;&gt;G: Open Grafana / Login
+    G--&gt;&gt;U: Redirect to Dex /authorize (OIDC Auth Code)
+    U-&gt;&gt;D: GET /authorize?client_id=grafana&amp;...
+    D--&gt;&gt;U: Redirect to Keycloak /authorize (upstream IdP)
+    U-&gt;&gt;K: GET /authorize?client_id=dex&amp;...
+
+    note over K,L: Authentication against LDAP
+    K-&gt;&gt;U: Show login page (or SSO)
+    U-&gt;&gt;K: Submit username/password
+    K-&gt;&gt;L: Validate credentials / bind as user
+    L--&gt;&gt;K: Auth OK + user attributes/groups
+
+    note over K: Authorization resolution
+    K-&gt;&gt;K: Evaluate mappings (LDAP groups → Keycloak groups/roles)
+    K-&gt;&gt;K: Issue tokens (ID/Access/Refresh) with role/group claims
+    K--&gt;&gt;U: Redirect back to Dex with auth code
+    U-&gt;&gt;D: GET /callback?code=...
+    D-&gt;&gt;K: Exchange code for tokens (token endpoint)
+    K--&gt;&gt;D: Tokens (claims: roles/groups/etc.)
+
+    note over D: Optional claim normalization / passthrough
+    D-&gt;&gt;D: Map/forward claims (e.g., groups, email, roles)
+    D--&gt;&gt;U: Redirect back to Grafana with Dex auth code
+    U-&gt;&gt;G: GET /login/generic_oauth?code=...
+    G-&gt;&gt;D: Exchange code for tokens (Dex token endpoint)
+    D--&gt;&gt;G: Tokens (OIDC)
+
+    note over G: Grafana provisioning + mapping
+    G-&gt;&gt;G: Create/update user (first login or sync)
+    G-&gt;&gt;G: Map token claims → Grafana org/team/role (Admin/Editor/Viewer)
+    G--&gt;&gt;U: Session established, dashboards visible per role
+  end
+
+  rect rgb(255,245,235)
+    note over U,G: During usage: enforcement
+    U-&gt;&gt;G: Request dashboards / APIs
+    G-&gt;&gt;G: Enforce Grafana RBAC (org/team/permissions)
+    G--&gt;&gt;U: Allow/deny based on mapped role
+
+    note over K,D: Permission changes over time
+    K-&gt;&gt;K: Admin updates role mappings (or LDAP group membership changes)
+    L--&gt;&gt;K: Updated groups (sync or on-demand)
+    note over U,G: New permissions take effect on new token
+    U-&gt;&gt;G: Re-login / refresh token
+  end</code></pre>
+<h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">#</a></h2>
+<p><strong>Q: Why use the MTO Grafana Extension?</strong>
+A: It turns Grafana into a true <strong>multi-tenant</strong> platform without the cost and operational overhead of running one Grafana per team. You get:</p>
+<ul>
+<li><strong>Tenant isolation by default</strong> — each MTO tenant gets its own Grafana organisation, dashboards, data sources, and members.</li>
+<li><strong>Zero-touch onboarding</strong> — a new tenant gets an org, default dashboards, data sources, and role mappings created automatically.</li>
+<li><strong>IdP-driven access</strong> — users log in via your existing IdP and are assigned the right role on first login; no manual user management in Grafana.</li>
+<li><strong>GitOps-native</strong> — everything is driven by Kubernetes CRs and annotations, so dashboards and access live alongside your app code.</li>
+<li><strong>Scales with your platform</strong> — add tenants as <code>orgs</code> inside a single Grafana instance, without spinning up new instances.</li>
+</ul>
+<p><strong>Q: How does a new tenant get onboarded?</strong>
+A: A platform engineer (or the tenant itself, via self-service) creates a <code>Tenant</code> CR. The MTO Grafana Extension then automatically:</p>
+<ol>
+<li>Creates a dedicated Grafana organisation for the tenant.</li>
+<li>Provisions default dashboards, data sources, and folders into that org.</li>
+<li>Maps IdP groups to tenant roles (<code>admin</code>, <code>owner</code>, <code>editor</code>, <code>viewer</code>) per your policy. In Grafana terms: <code>admin</code> → <code>grafanaadmin</code> (global), <code>owner</code> → org admin (within the tenant's org), <code>editor</code> / <code>viewer</code> → the matching org roles.</li>
+<li>Grants users access on their next IdP login — no manual invites.</li>
+</ol>
+<p><strong>Q: Does it work with my existing Grafana and IdP?</strong>
+A: Yes. It runs against a <strong>single existing Grafana instance</strong> (in multi-org mode) and integrates with your existing IdP (Dex, Keycloak, Entra, or any OIDC provider) through the SSO Extension. You don't need a new Grafana, and you don't need to rebuild your identity stack.</p>
+<p><strong>Q: How are dashboards and data sources published to tenants?</strong>
+A: <code>GrafanaDashboard</code> and <code>GrafanaDatasource</code> resources are placed in the Grafana instance's namespace (<code>spec.server.namespace</code>) — that's the only namespace the MTO Grafana Extension watches for these resources. By default, every such resource is provisioned to <strong>all tenants</strong>. Optional annotations let you <strong>disable</strong> a resource (<code>mto.grafana/disabled: "true"</code>) or <strong>restrict</strong> it to specific tenants (<code>mto.grafana/tenant: "tenant-a,tenant-b"</code>). See <a href="#72-restrict-a-dashboard-to-certain-tenants">7.2 Restrict a Dashboard to certain tenants</a> and <a href="#73-behavior-summary">7.3 Behavior Summary</a>.</p>
+<p><strong>Q: Does the MTO Grafana Extension install or upgrade Grafana for me?</strong>
+A: No. It intentionally stays out of Grafana's lifecycle. Installation, storage, backup/restore, and version upgrades are handled by the Grafana Operator or your platform team — the extension only configures Grafana via its <code>HTTP</code> API, so you keep full control of the instance.</p>
+<p><strong>Q: Do I need a separate Grafana instance per tenant?</strong>
+A: No. One Grafana instance serves every tenant, with isolation enforced through Grafana Organisations. Fewer instances to run, patch, and pay for.</p>
+<p><strong>Q: How is access controlled per tenant?</strong>
+A: IdP group claims are mapped to tenant roles through the extension's <code>Grafana</code> CR <code>tenantRoleMapping</code>. The four tenant roles — <code>admin</code>, <code>owner</code>, <code>editor</code>, <code>viewer</code> — map to Grafana's <code>grafanaadmin</code> (global admin), org admin, editor, and viewer respectively. You define, once, how groups become which tenant role — including how to handle users matching multiple patterns (<code>tieBreakStrategy</code>) or none (<code>fallback</code>). Changes take effect on the user's next login or token refresh.</p>
+<p><strong>Q: Can users still install plugins or create ad-hoc dashboards directly in Grafana?</strong>
+A: Yes, if they have the <a href="https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/#organization-roles" title="Roles and Permissions">correct Grafana permissions</a>. Those resources are out of scope for the MTO Grafana Extension — they won't be managed, synced, or reconciled — so teams that prefer click-ops in Grafana can still do so.</p>
+<hr>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">#</a></h2>
+<ol>
+<li><a href="https://grafana.com/docs/grafana/latest/administration/roles-and-permissions/#organization-roles">Roles and Permissions</a></li>
+</ol>
 
 
 
@@ -5161,27 +5935,27 @@ kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w">
                 <div class="flex-2">
                     <div class="logo-footer-container">
                         
-                        <img class="md-header__logo_light" src="../assets/images/footer-logo-light.png#only-light" alt="logo">
+                        <img class="md-header__logo_light" src="../../assets/images/footer-logo-light.png#only-light" alt="logo">
                         
                         
-                        <img src="../assets/images/footer-logo-dark.png#only-dark" alt="logo">
+                        <img src="../../assets/images/footer-logo-dark.png#only-dark" alt="logo">
                         
                     </div>
 
                     <div class="collaborations-img-container">
                         <div class="display-flex">
                             
-                            <img class="csa-logo-dark" src="../assets/images/CSA_dark.png#only-dark" alt="CSA">
+                            <img class="csa-logo-dark" src="../../assets/images/CSA_dark.png#only-dark" alt="CSA">
                             
                             
-                            <img class="csa-logo-light" src="../assets/images/CSA_light.png#only-light" alt="CSA">
+                            <img class="csa-logo-light" src="../../assets/images/CSA_light.png#only-light" alt="CSA">
                             
 
                             
-                            <img class="hc-logo-dark" src="../assets/images/HC_dark.png#only-dark" alt="HC">
+                            <img class="hc-logo-dark" src="../../assets/images/HC_dark.png#only-dark" alt="HC">
                             
                             
-                            <img class="hc-logo-light" src="../assets/images/HC_light.png#only-light" alt="HC">
+                            <img class="hc-logo-light" src="../../assets/images/HC_light.png#only-light" alt="HC">
                             
                         </div>
                     </div>
@@ -5573,10 +6347,10 @@ kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w">
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   
