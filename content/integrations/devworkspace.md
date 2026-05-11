@@ -91,6 +91,8 @@ spec:
     ingress:
       console: {}
       gateway: {}
+      dex: {}
+      finopsGateway: {}
     showback: false
   integrations:
     vault:
