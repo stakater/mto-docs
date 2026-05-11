@@ -6,7 +6,7 @@
 
 Follow these steps to upgrade to version 1.8.x from 1.7.x
 
-- Migrate authentication from Keycloak to [Dex](https://dexidp.io/) before upgrading. Keycloak is no longer bundled with MTO starting in v1.8.0. Dex and the `DexConfigOperator` are installed automatically by the MTO Dependencies Operator, and can be configured via the `components.dex` and `components.dexConfigOperator` fields in your [IntegrationConfig](./kubernetes-resources/integration-config.md). See the [DexConfigOperator documentation](https://docs.stakater.com/dco) for help configuring Dex connectors, clients, and local users.
+- Migrate authentication from Keycloak to [Dex](https://dexidp.io/) before upgrading. See the [DexConfigOperator documentation](https://docs.stakater.com/dco) for configuring connectors, clients, and local users.
 - Remove the following Keycloak-specific fields from your IntegrationConfig, as they are no longer honored:
     - `spec.components.ingress.keycloak`
     - `spec.integrations.keycloak`
