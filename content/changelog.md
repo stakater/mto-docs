@@ -22,9 +22,9 @@ Follow these steps to upgrade to version 1.8.x from 1.7.x
     kubectl delete finopsoperators.dependencies.tenantoperator.stakater.com -n multi-tenant-operator tenant-operator-finops
     ```
 
-### v1.8.0
+### v1.8.1
 
-_**TBD**_
+_**May 8, 2026**_
 
 #### Breaking Changes
 
@@ -44,7 +44,7 @@ _**TBD**_
 
 | Name | Tag | Image |
 | --- | --- | --- |
-| `tenant-operator`         | v1.8.0              | `ghcr.io/stakater/public/mto/tenant-operator`             |
+| `tenant-operator`         | v1.8.1              | `ghcr.io/stakater/public/mto/tenant-operator`             |
 | `mto-console`             | 1.0.242             | `ghcr.io/stakater/public/mto/mto-console`                 |
 | `mto-gateway`             | 1.0.167             | `ghcr.io/stakater/public/mto/mto-gateway`                 |
 | `finops-operator`         | v0.1.2              | `ghcr.io/stakater/public/finops-operator`                 |
@@ -58,6 +58,8 @@ _**TBD**_
 | `prometheus`              | v2.55.1             | `quay.io/prometheus/prometheus`                           |
 | `kube-state-metrics`      | v2.17.0             | `registry.k8s.io/kube-state-metrics/kube-state-metrics`   |
 | `opencost`                | 1.117.3             | `ghcr.io/opencost/opencost`                               |
+
+**Note:** v1.8.0 was not released due to build issues; all intended changes ship in this version.
 
 ## v1.7.x
 
