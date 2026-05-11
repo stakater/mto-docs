@@ -59,7 +59,7 @@ _**May 8, 2026**_
 | `kube-state-metrics`      | v2.17.0             | `registry.k8s.io/kube-state-metrics/kube-state-metrics`   |
 | `opencost`                | 1.117.3             | `ghcr.io/opencost/opencost`                               |
 
-**Note:** v1.8.0 was not released due to build issues; all intended changes ship in this version.
+**Note:** v1.8.0 is an unreleased version; all its changes ship in v1.8.1.
 
 ## v1.7.x
 
