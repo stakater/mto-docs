@@ -1,8 +1,6 @@
 # Architecture
 
-The Multi-Tenant Operator (MTO) is a comprehensive system designed to manage multi-tenancy in Kubernetes environments. Following is the architecture of the MTO:
-
-![architecture](../images/architecture.png)
+The Multi-Tenant Operator (MTO) is a comprehensive system designed to manage multi-tenancy in Kubernetes environments. 
 
 ## Core Operators
 

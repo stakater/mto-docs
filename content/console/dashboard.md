@@ -15,6 +15,12 @@ components:
       gateway:
         host: tenant-operator-gateway.<hostname>
         tlsSecretName: <tls-secret-name>
+      dex:
+        host: tenant-operator-dex.<hostname>
+        tlsSecretName: <tls-secret-name>
+      finopsGateway:
+        host: tenant-operator-finops.<hostname>
+        tlsSecretName: <tls-secret-name>
     showback: true
     trustedRootCert: <root-ca-secret-name>
 ```  
