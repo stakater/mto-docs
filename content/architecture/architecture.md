@@ -1,8 +1,6 @@
 # Architecture
 
-The Multi-Tenant Operator (MTO) is a comprehensive system designed to manage multi-tenancy in Kubernetes environments. Following is the architecture of the MTO:
-
-![architecture](../images/architecture.png)
+The Multi-Tenant Operator (MTO) is a comprehensive system designed to manage multi-tenancy in Kubernetes environments.
 
 ## Core Operators
 
@@ -16,7 +14,6 @@ MTO consists of multiple controllers and components that work together to provid
 | Quota Integration Config Controller | Deployment | The Quota Integration Config Controller manages 2 different CRDs in one controller, [Quota CRD](../kubernetes-resources/quota.md), and [IntegrationConfig CRD](../kubernetes-resources/integration-config.md). |
 | Webhook | Deployment | The Webhook is responsible for managing webhook requests from MTO's resources. |
 | Pilot Controller | Deployment | The Pilot Controller is responsible for provisioning and managing the lifecycle of MTO-Console and its dependencies. |
-| Keycloak | Deployment | Keycloak is an open-source identity and access management solution that provides authentication and authorization services for the MTO Console. It can be provisioned via Pilot Controller or deployed and managed externally following this guide [External Keycloak](../integrations/keycloak.md). |
 | PostgreSQL | StatefulSet | PostgreSQL is an open-source relational database that acts as a caching layer and stores the data for the MTO Console. It is also provisioned via Pilot Controller and is managed internally. |
 | Opencost | Deployment | Opencost is an open-source cost management solution that provides cost tracking and reporting for the resources deployed on the cluster. It is also provisioned via Pilot Controller and is managed internally. |
 | Prometheus | Deployment | Prometheus is an open-source monitoring and alerting solution that provides metrics and monitoring for the resources deployed on the cluster. It is also provisioned via Pilot Controller and is managed internally. |

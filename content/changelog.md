@@ -1,5 +1,67 @@
 # Changelog
 
+## v1.8.x
+
+### Migration Guide
+
+Follow these steps to upgrade to version 1.8.x from 1.7.x
+
+- Migrate authentication from Keycloak to [Dex](https://dexidp.io/) before upgrading. See the [DexConfigOperator documentation](https://docs.stakater.com/dco) for configuring connectors, clients, and local users.
+- Remove the following Keycloak-specific fields from your IntegrationConfig, as they are no longer honored:
+    - `spec.components.ingress.keycloak`
+    - `spec.integrations.keycloak`
+- For OpenShift: update the channel from `release-1.7` to `release-1.8` in your OLM Subscription.
+- For Kubernetes: update the Helm chart version to `1.8.x`.
+
+#### Troubleshooting Steps for Upgrade
+
+- If the MTO Console was already enabled on the previous version, the FinOps CRDs may not be updated automatically after upgrade, which will cause the new `resolvedPricing` field to be missing from the `Offering` status. To fix this, delete the `Offering` CRD and the FinOps Operator CR so they are re-applied on the next reconcile:
+
+    ```bash
+    kubectl delete customresourcedefinitions.apiextensions.k8s.io offerings.finops.stakater.com
+    kubectl delete finopsoperators.dependencies.tenantoperator.stakater.com -n multi-tenant-operator tenant-operator-finops
+    ```
+
+### v1.8.1
+
+_**May 8, 2026**_
+
+#### Breaking Changes
+
+- Removed bundled Keycloak. Authentication now requires Dex, provisioned automatically by the MTO Dependencies Operator and configured via [IntegrationConfig](./kubernetes-resources/integration-config.md).
+
+#### Features
+
+- Added an opt-in flag (`EXPERIMENTAL_NAMESPACE_WEBHOOK_V2`) that restricts tenant members to namespaces labeled for their tenant. Disabled by default.
+- MTO Console Cost Analysis export dialog now supports selecting namespace labels when exporting usage data.
+
+#### Enhancements
+
+- `Offering` status now exposes `resolvedPricing`, reflecting the effective pricing resolved from the offering spec along with the timestamp when it was resolved.
+- `mto-gateway` now identifies users via the `preferred_username` claim by default, falling back to `email` when the claim is missing. Previously it always used `email`. This can be overridden via the `MTO_GATEWAY_USERNAME_CLAIM` environment variable on the tenant-operator pilot controller.
+
+#### Component Updates
+
+| Name | Tag | Image |
+| --- | --- | --- |
+| `tenant-operator`         | v1.8.1              | `ghcr.io/stakater/public/mto/tenant-operator`             |
+| `mto-console`             | 1.0.242             | `ghcr.io/stakater/public/mto/mto-console`                 |
+| `mto-gateway`             | 1.0.167             | `ghcr.io/stakater/public/mto/mto-gateway`                 |
+| `finops-operator`         | v0.1.2              | `ghcr.io/stakater/public/finops-operator`                 |
+| `finops-gateway`          | v0.1.1              | `ghcr.io/stakater/public/finops-gateway`                  |
+| `mto-dependencies-operator` | v0.0.8            | `ghcr.io/stakater/public/mto-dependencies-operator`       |
+| `dex-config-operator`     | v0.0.6              | `ghcr.io/stakater/public/dex-config-operator`             |
+| `template-operator`       | v0.1.5              | `ghcr.io/stakater/public/template-operator`               |
+| `hibernation-operator`    | v0.1.103            | `ghcr.io/stakater/public/hibernation-operator`            |
+| `postgresql`              | 18.2                | `ghcr.io/stakater/public/mto/postgresql`                  |
+| `dex`                     | v0.0.1              | `ghcr.io/stakater/public/mto/dex`                         |
+| `prometheus`              | v2.55.1             | `quay.io/prometheus/prometheus`                           |
+| `kube-state-metrics`      | v2.17.0             | `registry.k8s.io/kube-state-metrics/kube-state-metrics`   |
+| `opencost`                | 1.117.3             | `ghcr.io/opencost/opencost`                               |
+
+!!! note
+    v1.8.0 is an unreleased version; all its changes ship in v1.8.1.
+
 ## v1.7.x
 
 ### Migration Guide
@@ -21,7 +83,7 @@ _**April 14, 2026**_
 #### Bug Fixes & Enhancements
 
 - Bumped FinOps Operator to `v0.1.1`.
-- Added a new Tenants API to the Tenant controller for use by [kubectl-tenant](./cli/kubectl-plugin.md).
+- Added a new Tenants API to the Tenant controller to support [kubectl-tenant](./cli/kubectl-plugin.md).
 
 #### Component Updates
 
