@@ -67,10 +67,13 @@ flowchart TB
     DepsOp -- manages --> FinOps
     DepsOp -- manages --> Data
     MC --> MG
+    MC --> FG
     MG --> PG
     MG --> DX
     FG --> OC
-    FG --> PR
+    FG --> PG
+    OC --> PR
+    FO -- scrape job --> PG
     DCO -. configures .-> DX
 ```
 
