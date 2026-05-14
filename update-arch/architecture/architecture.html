@@ -4619,10 +4619,13 @@ flowchart TB
     DepsOp -- manages --&gt; FinOps
     DepsOp -- manages --&gt; Data
     MC --&gt; MG
+    MC --&gt; FG
     MG --&gt; PG
     MG --&gt; DX
     FG --&gt; OC
-    FG --&gt; PR
+    FG --&gt; PG
+    OC --&gt; PR
+    FO -- scrape job --&gt; PG
     DCO -. configures .-&gt; DX</code></pre>
 <h2 id="core-operators">Core Operators<a class="headerlink" href="#core-operators" title="Permanent link">#</a></h2>
 <p>MTO consists of multiple controllers and components that work together to provide the functionality of the system. The following is a list of the components that make up the MTO system:</p>
