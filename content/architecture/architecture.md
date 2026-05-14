@@ -38,6 +38,7 @@ flowchart TB
         direction LR
         MC["MTO Console"]
         MG["MTO Gateway"]
+        FG["FinOps Gateway"]
     end
 
     subgraph Managed["Managed Dependencies"]
@@ -50,7 +51,6 @@ flowchart TB
         subgraph FinOps["FinOps"]
             direction LR
             FO["FinOps Operator"]
-            FG["FinOps Gateway"]
             OC["OpenCost"]
         end
         subgraph Data["Data"]
@@ -68,12 +68,14 @@ flowchart TB
     DepsOp -- manages --> Data
     MC --> MG
     MC --> FG
+    MC --> DX
     MG --> PG
     MG --> DX
     FG --> OC
     FG --> PG
     OC --> PR
     FO -- scrape job --> PG
+    DX --> PG
     DCO -. configures .-> DX
 ```
 
