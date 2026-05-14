@@ -4590,6 +4590,7 @@ flowchart TB
         direction LR
         MC["MTO Console"]
         MG["MTO Gateway"]
+        FG["FinOps Gateway"]
     end
 
     subgraph Managed["Managed Dependencies"]
@@ -4602,7 +4603,6 @@ flowchart TB
         subgraph FinOps["FinOps"]
             direction LR
             FO["FinOps Operator"]
-            FG["FinOps Gateway"]
             OC["OpenCost"]
         end
         subgraph Data["Data"]
@@ -4620,12 +4620,14 @@ flowchart TB
     DepsOp -- manages --&gt; Data
     MC --&gt; MG
     MC --&gt; FG
+    MC --&gt; DX
     MG --&gt; PG
     MG --&gt; DX
     FG --&gt; OC
     FG --&gt; PG
     OC --&gt; PR
     FO -- scrape job --&gt; PG
+    DX --&gt; PG
     DCO -. configures .-&gt; DX</code></pre>
 <h2 id="core-operators">Core Operators<a class="headerlink" href="#core-operators" title="Permanent link">#</a></h2>
 <p>MTO consists of multiple controllers and components that work together to provide the functionality of the system. The following is a list of the components that make up the MTO system:</p>
