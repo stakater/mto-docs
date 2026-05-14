@@ -92,8 +92,8 @@ MTO consists of multiple controllers and components that work together to provid
 | Prometheus | Deployment | Prometheus is an open-source monitoring and alerting solution that provides metrics and monitoring for the resources deployed on the cluster. Provisioned and managed by the MTO Dependencies Operator. |
 | OpenCost | Deployment | OpenCost is an open-source cost management solution that provides cost tracking and reporting for the resources deployed on the cluster. Provisioned and managed by the MTO Dependencies Operator. |
 | Kube-State-Metrics | Deployment | Kube-State-Metrics listens to the Kubernetes API server and generates metrics about the state of the objects in the cluster. Provisioned and managed alongside Prometheus by the MTO Dependencies Operator. |
-| Dex | Deployment | Dex is the identity provider (IDP) used by MTO for authentication, replacing Keycloak. Provisioned and managed by the MTO Dependencies Operator. |
-| DexConfigOperator | Deployment | DexConfigOperator manages the configuration of the Dex IDP on Kubernetes. Provisioned and managed by the MTO Dependencies Operator. |
+| Dex | Deployment | Dex is the identity provider (IdP) used by MTO for authentication, replacing Keycloak. Provisioned and managed by the MTO Dependencies Operator. |
+| DexConfigOperator | Deployment | DexConfigOperator manages the configuration of the Dex IdP on Kubernetes. Provisioned and managed by the MTO Dependencies Operator. |
 | FinOps Operator | Deployment | The FinOps Operator powers the showback features in MTO, replacing the previous Showback CronJob. Provisioned and managed by the MTO Dependencies Operator. |
 | FinOps Gateway | Deployment | The FinOps Gateway exposes cost and showback data from OpenCost and Prometheus to the MTO Console. |
 
