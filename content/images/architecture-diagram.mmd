@@ -53,10 +53,10 @@ flowchart TB
 
     Users --> MC
     PC -- provisions --> ConsoleStack
-    PC -- provisions --> DepsOp
-    DepsOp -- manages --> Identity
-    DepsOp -- manages --> FinOps
-    DepsOp -- manages --> Data
+    PC -- deploys CRs --> DepsOp
+    DepsOp -- reconciles --> Identity
+    DepsOp -- reconciles --> FinOps
+    DepsOp -- reconciles --> Data
     MC --> MG
     MC --> FG
     MC --> DX
