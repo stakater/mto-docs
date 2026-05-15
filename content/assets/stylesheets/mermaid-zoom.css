@@ -1,9 +1,10 @@
 .mermaid-zoom-container {
-  position: relative;
+  position: relative !important;
   overflow: hidden;
   border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
   border-radius: 6px;
   background: var(--md-default-bg-color, #fff);
+  padding: 8px;
 }
 
 .mermaid-zoom-container > svg {
@@ -20,32 +21,33 @@
   right: 8px;
   display: flex;
   gap: 4px;
-  z-index: 10;
-  opacity: 0;
+  z-index: 100;
+  opacity: 0.85;
   transition: opacity 0.15s ease-in-out;
+  pointer-events: auto;
 }
 
 .mermaid-zoom-container:hover .mermaid-zoom-toolbar,
-.mermaid-zoom-container:focus-within .mermaid-zoom-toolbar,
-.mermaid-zoom-container:fullscreen .mermaid-zoom-toolbar {
+.mermaid-zoom-container:focus-within .mermaid-zoom-toolbar {
   opacity: 1;
 }
 
 .mermaid-zoom-btn {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border: 1px solid var(--md-default-fg-color--lightest, #d0d0d0);
   border-radius: 4px;
   background: var(--md-default-bg-color, #fff);
   color: var(--md-default-fg-color, #333);
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  font-family: inherit;
 }
 
 .mermaid-zoom-btn:hover {
@@ -54,7 +56,8 @@
   border-color: var(--md-accent-fg-color, #2196f3);
 }
 
-.mermaid-zoom-container:fullscreen {
+.mermaid-zoom-container:fullscreen,
+.mermaid-zoom-container:-webkit-full-screen {
   background: var(--md-default-bg-color, #fff);
   padding: 24px;
   display: flex;
@@ -62,7 +65,8 @@
   justify-content: center;
 }
 
-.mermaid-zoom-container:fullscreen > svg {
+.mermaid-zoom-container:fullscreen > svg,
+.mermaid-zoom-container:-webkit-full-screen > svg {
   max-width: 100%;
   max-height: 100%;
   width: auto;
