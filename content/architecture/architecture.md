@@ -4,80 +4,9 @@ The Multi-Tenant Operator (MTO) is a comprehensive system designed to manage mul
 
 ## Overview
 
-The diagram below shows how MTO's controllers, the MTO Dependencies Operator, and the components they provision fit together.
+The diagram below shows how MTO's controllers, the MTO Dependencies Operator, and the components they provision fit together. Click the diagram to open it in a zoomable lightbox.
 
-```mermaid
----
-config:
-  layout: elk
-  theme: default
----
-flowchart TB
-    Users(["Users"])
-
-    subgraph Operators["MTO Operators"]
-        direction LR
-        subgraph CoreOp["Core Operator"]
-            direction TB
-            TC["Tenant Controller"]
-            NC["Namespace Controller"]
-            EC["Extensions Controller"]
-            QIC["Quota & IntegrationConfig Controller"]
-            PC["Pilot Controller"]
-            WH["Webhook"]
-        end
-        subgraph ChildOps["Child Operators"]
-            direction TB
-            TmplOp["Template Operator"]
-            HibOp["Hibernation Operator"]
-            DepsOp["MTO Dependencies Operator"]
-        end
-    end
-
-    subgraph ConsoleStack["Console Stack"]
-        direction LR
-        MC["MTO Console"]
-        MG["MTO Gateway"]
-        FG["FinOps Gateway"]
-    end
-
-    subgraph Managed["Managed Dependencies"]
-        direction TB
-        subgraph Identity["Identity"]
-            direction LR
-            DX["Dex"]
-            DCO["DexConfigOperator"]
-        end
-        subgraph FinOps["FinOps"]
-            direction LR
-            FO["FinOps Operator"]
-            OC["OpenCost"]
-        end
-        subgraph Data["Data"]
-            direction LR
-            PG[("PostgreSQL")]
-            PR["Prometheus"]
-        end
-    end
-
-    Users --> MC
-    PC -- provisions --> ConsoleStack
-    PC -- provisions --> DepsOp
-    DepsOp -- manages --> Identity
-    DepsOp -- manages --> FinOps
-    DepsOp -- manages --> Data
-    MC --> MG
-    MC --> FG
-    MC --> DX
-    MG --> PG
-    MG --> DX
-    FG --> OC
-    FG --> PG
-    OC --> PR
-    FO -- scrape job --> PG
-    DX --> PG
-    DCO -. configures .-> DX
-```
+![MTO Architecture](../images/architecture-diagram.svg)
 
 ## Core Operators
 
