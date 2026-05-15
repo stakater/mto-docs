@@ -1,50 +1,19 @@
 (function () {
-  const PANZOOM_SRC = "https://cdn.jsdelivr.net/npm/panzoom@9.4.3/dist/panzoom.min.js";
+  let dialog = null;
+  let stage = null;
+  let scaleEl = null;
+  let scale = 1;
+  let panX = 0;
+  let panY = 0;
+  let dragging = false;
+  let dragStart = null;
 
-  function loadPanzoom() {
-    return new Promise((resolve, reject) => {
-      if (window.panzoom) return resolve(window.panzoom);
-      const existing = document.querySelector('script[data-mermaid-zoom-panzoom]');
-      if (existing) {
-        existing.addEventListener("load", () => resolve(window.panzoom));
-        return;
-      }
-      const s = document.createElement("script");
-      s.src = PANZOOM_SRC;
-      s.dataset.mermaidZoomPanzoom = "true";
-      s.onload = () => resolve(window.panzoom);
-      s.onerror = reject;
-      document.head.appendChild(s);
-    });
-  }
-
-  function findContainer(svg) {
-    // Walk up looking for a mermaid container (div.mermaid, pre.mermaid, or a div with class containing 'mermaid').
-    let el = svg.parentElement;
-    while (el && el !== document.body) {
-      if (el.classList && (el.classList.contains("mermaid") || el.tagName === "PRE" && el.classList.contains("mermaid"))) {
-        return el;
-      }
-      el = el.parentElement;
-    }
-    return svg.parentElement; // fallback
-  }
-
-  function enhance(svg) {
-    if (svg.dataset.mzApplied === "true") return;
-    const container = findContainer(svg);
-    if (!container) return;
-    if (container.dataset.zoomEnabled === "true") return;
-    svg.dataset.mzApplied = "true";
-    container.dataset.zoomEnabled = "true";
-    container.classList.add("mermaid-zoom-container");
-
-    // Ensure svg can be transformed
-    svg.style.transformOrigin = "0 0";
-    if (!svg.style.maxWidth) svg.style.maxWidth = "100%";
+  function buildDialog() {
+    dialog = document.createElement("dialog");
+    dialog.className = "mermaid-zoom-dialog";
 
     const toolbar = document.createElement("div");
-    toolbar.className = "mermaid-zoom-toolbar";
+    toolbar.className = "mermaid-zoom-dialog-toolbar";
 
     const mkBtn = (label, title, onClick) => {
       const b = document.createElement("button");
@@ -61,63 +30,163 @@
       return b;
     };
 
-    let pz = null;
-    const ensurePanzoom = () => {
-      if (pz) return Promise.resolve(pz);
-      return loadPanzoom().then((panzoom) => {
-        if (!panzoom) throw new Error("panzoom failed to load");
-        pz = panzoom(svg, {
-          maxZoom: 8,
-          minZoom: 0.3,
-          bounds: false,
-          smoothScroll: false,
-          beforeWheel: () => false,
-        });
-        return pz;
-      }).catch((err) => {
-        console.error("[mermaid-zoom] panzoom load failed:", err);
-      });
-    };
-
-    const zoomBy = (factor) =>
-      ensurePanzoom().then((p) => {
-        if (!p) return;
-        const rect = svg.getBoundingClientRect();
-        p.smoothZoom(rect.width / 2, rect.height / 2, factor);
-      });
-
-    const reset = () => {
-      if (pz) { try { pz.dispose(); } catch (e) {} pz = null; }
-      svg.style.transform = "";
-    };
-
-    const fullscreen = () => {
-      if (document.fullscreenElement === container) {
-        document.exitFullscreen();
-      } else if (container.requestFullscreen) {
-        container.requestFullscreen().catch((err) => console.warn("[mermaid-zoom] fullscreen denied:", err));
-      }
-    };
-
-    toolbar.appendChild(mkBtn("+", "Zoom in", () => zoomBy(1.4)));
-    toolbar.appendChild(mkBtn("−", "Zoom out", () => zoomBy(0.7)));
+    toolbar.appendChild(mkBtn("+", "Zoom in", () => zoom(1.25)));
+    toolbar.appendChild(mkBtn("−", "Zoom out", () => zoom(0.8)));
     toolbar.appendChild(mkBtn("↻", "Reset", reset));
-    toolbar.appendChild(mkBtn("⛶", "Fullscreen", fullscreen));
+    toolbar.appendChild(mkBtn("✕", "Close", () => dialog.close()));
 
-    container.appendChild(toolbar);
+    stage = document.createElement("div");
+    stage.className = "mermaid-zoom-dialog-stage";
+
+    scaleEl = document.createElement("div");
+    scaleEl.className = "mermaid-zoom-dialog-scale";
+    stage.appendChild(scaleEl);
+
+    dialog.appendChild(toolbar);
+    dialog.appendChild(stage);
+
+    // Close on backdrop click.
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+
+    // Wheel = zoom around cursor.
+    stage.addEventListener("wheel", (e) => {
+      e.preventDefault();
+      const rect = stage.getBoundingClientRect();
+      const cx = e.clientX - rect.left;
+      const cy = e.clientY - rect.top;
+      const factor = e.deltaY < 0 ? 1.15 : 0.87;
+      zoomAt(cx, cy, factor);
+    }, { passive: false });
+
+    // Drag to pan.
+    stage.addEventListener("mousedown", (e) => {
+      dragging = true;
+      dragStart = { x: e.clientX - panX, y: e.clientY - panY };
+      stage.classList.add("is-dragging");
+    });
+    window.addEventListener("mousemove", (e) => {
+      if (!dragging) return;
+      panX = e.clientX - dragStart.x;
+      panY = e.clientY - dragStart.y;
+      applyTransform();
+    });
+    window.addEventListener("mouseup", () => {
+      dragging = false;
+      stage.classList.remove("is-dragging");
+    });
+
+    dialog.addEventListener("close", () => {
+      scaleEl.innerHTML = "";
+      reset();
+    });
+
+    document.body.appendChild(dialog);
   }
 
+  function applyTransform() {
+    scaleEl.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+  }
+
+  function zoom(factor) {
+    scale = Math.max(0.2, Math.min(10, scale * factor));
+    applyTransform();
+  }
+
+  function zoomAt(cx, cy, factor) {
+    const newScale = Math.max(0.2, Math.min(10, scale * factor));
+    const k = newScale / scale;
+    panX = cx - k * (cx - panX);
+    panY = cy - k * (cy - panY);
+    scale = newScale;
+    applyTransform();
+  }
+
+  function reset() {
+    scale = 1;
+    panX = 0;
+    panY = 0;
+    applyTransform();
+  }
+
+  function getSvg(host) {
+    if (host.shadowRoot) return host.shadowRoot.querySelector("svg");
+    return host.querySelector("svg");
+  }
+
+  function openFor(host) {
+    const svg = getSvg(host);
+    if (!svg) return;
+    if (!dialog) buildDialog();
+    const clone = svg.cloneNode(true);
+    // Strip any inline width/height so the SVG scales to the stage.
+    clone.removeAttribute("width");
+    clone.removeAttribute("height");
+    clone.style.width = "auto";
+    clone.style.height = "auto";
+    clone.style.maxWidth = "100%";
+    clone.style.maxHeight = "100%";
+    scaleEl.innerHTML = "";
+    scaleEl.appendChild(clone);
+    reset();
+    dialog.showModal();
+  }
+
+  function enhance(host) {
+    if (host.dataset.zoomEnabled === "true") return;
+    if (!getSvg(host)) return;
+    host.dataset.zoomEnabled = "true";
+    host.classList.add("mermaid-zoom-host");
+
+    const hint = document.createElement("button");
+    hint.type = "button";
+    hint.className = "mermaid-zoom-open";
+    hint.title = "Click to zoom";
+    hint.setAttribute("aria-label", "Open diagram in zoom view");
+    hint.textContent = "⤢";
+    hint.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openFor(host);
+    });
+    host.appendChild(hint);
+
+    host.addEventListener("click", (e) => {
+      // Don't trigger when clicking the hint button itself (handled above).
+      if (e.target.closest(".mermaid-zoom-open")) return;
+      openFor(host);
+    });
+  }
+
+  const watchedShadows = new WeakSet();
+
   function scan() {
-    // Match SVGs inside anything labelled mermaid (div, pre, etc.)
-    document.querySelectorAll(".mermaid svg, pre.mermaid svg").forEach(enhance);
+    document.querySelectorAll(".mermaid, pre.mermaid").forEach((host) => {
+      if (getSvg(host)) {
+        enhance(host);
+      } else if (host.shadowRoot && !watchedShadows.has(host.shadowRoot)) {
+        watchedShadows.add(host.shadowRoot);
+        const obs = new MutationObserver(() => {
+          if (getSvg(host)) {
+            enhance(host);
+            obs.disconnect();
+          }
+        });
+        obs.observe(host.shadowRoot, { childList: true, subtree: true });
+      }
+    });
   }
 
   function watch() {
     scan();
     const obs = new MutationObserver(() => scan());
     obs.observe(document.body, { childList: true, subtree: true });
-    // Keep observing indefinitely — mermaid can render very late on slow connections
-    // and the cost of one passive observer is negligible.
+    let ticks = 0;
+    const poll = setInterval(() => {
+      scan();
+      if (++ticks > 20) clearInterval(poll);
+    }, 250);
   }
 
   if (document.readyState === "loading") {
