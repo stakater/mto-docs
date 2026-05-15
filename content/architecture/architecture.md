@@ -4,7 +4,7 @@ The Multi-Tenant Operator (MTO) is a comprehensive system designed to manage mul
 
 ## Overview
 
-The diagram below shows how MTO's controllers, the MTO Dependencies Operator, and the components they provision fit together. Click the diagram to open it in a zoomable lightbox.
+The diagram below shows how MTO's controllers, the MTO Dependencies Operator, and the components they provision fit together.
 
 ![MTO Architecture](../images/architecture-diagram.svg)
 
