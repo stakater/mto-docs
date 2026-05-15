@@ -50,8 +50,6 @@
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../assets/stylesheets/mermaid-zoom.css">
-    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -4560,77 +4558,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h1 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">#</a></h1>
 <p>The Multi-Tenant Operator (MTO) is a comprehensive system designed to manage multi-tenancy in Kubernetes environments.</p>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
-<p>The diagram below shows how MTO's controllers, the MTO Dependencies Operator, and the components they provision fit together.</p>
-<pre class="mermaid"><code>---
-config:
-  layout: elk
-  theme: default
----
-flowchart TB
-    Users(["Users"])
-
-    subgraph Operators["MTO Operators"]
-        direction LR
-        subgraph CoreOp["Core Operator"]
-            direction TB
-            TC["Tenant Controller"]
-            NC["Namespace Controller"]
-            EC["Extensions Controller"]
-            QIC["Quota &amp; IntegrationConfig Controller"]
-            PC["Pilot Controller"]
-            WH["Webhook"]
-        end
-        subgraph ChildOps["Child Operators"]
-            direction TB
-            TmplOp["Template Operator"]
-            HibOp["Hibernation Operator"]
-            DepsOp["MTO Dependencies Operator"]
-        end
-    end
-
-    subgraph ConsoleStack["Console Stack"]
-        direction LR
-        MC["MTO Console"]
-        MG["MTO Gateway"]
-        FG["FinOps Gateway"]
-    end
-
-    subgraph Managed["Managed Dependencies"]
-        direction TB
-        subgraph Identity["Identity"]
-            direction LR
-            DX["Dex"]
-            DCO["DexConfigOperator"]
-        end
-        subgraph FinOps["FinOps"]
-            direction LR
-            FO["FinOps Operator"]
-            OC["OpenCost"]
-        end
-        subgraph Data["Data"]
-            direction LR
-            PG[("PostgreSQL")]
-            PR["Prometheus"]
-        end
-    end
-
-    Users --&gt; MC
-    PC -- provisions --&gt; ConsoleStack
-    PC -- provisions --&gt; DepsOp
-    DepsOp -- manages --&gt; Identity
-    DepsOp -- manages --&gt; FinOps
-    DepsOp -- manages --&gt; Data
-    MC --&gt; MG
-    MC --&gt; FG
-    MC --&gt; DX
-    MG --&gt; PG
-    MG --&gt; DX
-    FG --&gt; OC
-    FG --&gt; PG
-    OC --&gt; PR
-    FO -- scrape job --&gt; PG
-    DX --&gt; PG
-    DCO -. configures .-&gt; DX</code></pre>
+<p>The diagram below shows how MTO's controllers, the MTO Dependencies Operator, and the components they provision fit together. Click the diagram to open it in a zoomable lightbox.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/architecture-diagram.svg" data-desc-position="bottom"><img alt="MTO Architecture" src="../images/architecture-diagram.svg"></a></p>
 <h2 id="core-operators">Core Operators<a class="headerlink" href="#core-operators" title="Permanent link">#</a></h2>
 <p>MTO consists of multiple controllers and components that work together to provide the functionality of the system. The following is a list of the components that make up the MTO system:</p>
 <table>
@@ -5444,8 +5373,6 @@ flowchart TB
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
-      
-        <script src="../assets/javascripts/mermaid-zoom.js"></script>
       
     
   
