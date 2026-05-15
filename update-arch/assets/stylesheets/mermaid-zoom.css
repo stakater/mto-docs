@@ -1,40 +1,73 @@
-.mermaid-zoom-container {
+.mermaid-zoom-host {
   position: relative !important;
-  overflow: hidden;
-  border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
-  border-radius: 6px;
-  background: var(--md-default-bg-color, #fff);
-  padding: 8px;
+  cursor: zoom-in;
 }
 
-.mermaid-zoom-container > svg {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  height: auto;
-  transform-origin: 0 0;
-}
-
-.mermaid-zoom-toolbar {
+.mermaid-zoom-open {
   position: absolute;
   top: 8px;
   right: 8px;
-  display: flex;
-  gap: 4px;
-  z-index: 100;
-  opacity: 0.85;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--md-default-fg-color--lightest, #d0d0d0);
+  border-radius: 4px;
+  background: var(--md-default-bg-color, #fff);
+  color: var(--md-default-fg-color, #333);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+  opacity: 0;
   transition: opacity 0.15s ease-in-out;
-  pointer-events: auto;
+  font-family: inherit;
 }
 
-.mermaid-zoom-container:hover .mermaid-zoom-toolbar,
-.mermaid-zoom-container:focus-within .mermaid-zoom-toolbar {
-  opacity: 1;
+.mermaid-zoom-host:hover .mermaid-zoom-open,
+.mermaid-zoom-host:focus-within .mermaid-zoom-open {
+  opacity: 0.9;
 }
 
-.mermaid-zoom-btn {
-  width: 30px;
-  height: 30px;
+.mermaid-zoom-open:hover {
+  opacity: 1 !important;
+  background: var(--md-accent-fg-color, #2196f3);
+  color: var(--md-accent-bg-color, #fff);
+  border-color: var(--md-accent-fg-color, #2196f3);
+}
+
+.mermaid-zoom-dialog {
+  width: 95vw;
+  height: 92vh;
+  max-width: 95vw;
+  max-height: 92vh;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: var(--md-default-bg-color, #fff);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.mermaid-zoom-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.mermaid-zoom-dialog-toolbar {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+}
+
+.mermaid-zoom-dialog .mermaid-zoom-btn {
+  width: 36px;
+  height: 36px;
   border: 1px solid var(--md-default-fg-color--lightest, #d0d0d0);
   border-radius: 4px;
   background: var(--md-default-bg-color, #fff);
@@ -50,25 +83,35 @@
   font-family: inherit;
 }
 
-.mermaid-zoom-btn:hover {
+.mermaid-zoom-dialog .mermaid-zoom-btn:hover {
   background: var(--md-accent-fg-color, #2196f3);
   color: var(--md-accent-bg-color, #fff);
   border-color: var(--md-accent-fg-color, #2196f3);
 }
 
-.mermaid-zoom-container:fullscreen,
-.mermaid-zoom-container:-webkit-full-screen {
-  background: var(--md-default-bg-color, #fff);
-  padding: 24px;
+.mermaid-zoom-dialog-stage {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: grab;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.mermaid-zoom-container:fullscreen > svg,
-.mermaid-zoom-container:-webkit-full-screen > svg {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
+.mermaid-zoom-dialog-stage.is-dragging {
+  cursor: grabbing;
+}
+
+.mermaid-zoom-dialog-scale {
+  transform-origin: 0 0;
+  transition: transform 0.05s linear;
+  display: inline-block;
+  will-change: transform;
+}
+
+.mermaid-zoom-dialog-scale > svg {
+  display: block;
+  max-width: 90vw;
+  max-height: 85vh;
 }
