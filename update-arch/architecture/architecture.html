@@ -4574,82 +4574,82 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <tr>
 <td>Tenant Controller</td>
 <td>Deployment</td>
-<td>The Tenant Controller is responsible for managing the creation, deletion, and updating of tenants in the cluster via <a href="../kubernetes-resources/tenant/tenant-overview.html">Tenant CRD</a>.</td>
+<td>Responsible for managing the creation, deletion, and updating of tenants in the cluster via <a href="../kubernetes-resources/tenant/tenant-overview.html">Tenant CRD</a>.</td>
 </tr>
 <tr>
 <td>Namespace Controller</td>
 <td>Deployment</td>
-<td>The Namespace Controller is responsible for managing the creation, deletion, and updating of namespaces in the cluster.</td>
+<td>Responsible for managing the creation, deletion, and updating of namespaces in the cluster.</td>
 </tr>
 <tr>
 <td>Extensions Controller</td>
 <td>Deployment</td>
-<td>The Extensions Controller enhances MTO's functionality by allowing integration with external services. Currently, supports integration with ArgoCD, enabling you to synchronize your repositories and configure AppProjects directly through MTO. It manages extensions via <a href="../kubernetes-resources/extensions.html">Extension CRD</a>.</td>
+<td>Enhances MTO's functionality by allowing integration with external services and manages extensions via <a href="../kubernetes-resources/extensions.html">Extension CRD</a>. See the <a href="../kubernetes-resources/extensions.html">Extensions</a> page for supported integrations and configuration details.</td>
 </tr>
 <tr>
 <td>Quota Integration Config Controller</td>
 <td>Deployment</td>
-<td>The Quota Integration Config Controller manages 2 different CRDs in one controller, <a href="../kubernetes-resources/quota.html">Quota CRD</a>, and <a href="../kubernetes-resources/integration-config.html">IntegrationConfig CRD</a>.</td>
+<td>Manages 2 different CRDs in one controller, <a href="../kubernetes-resources/quota.html">Quota CRD</a>, and <a href="../kubernetes-resources/integration-config.html">IntegrationConfig CRD</a>.</td>
 </tr>
 <tr>
 <td>Webhook</td>
 <td>Deployment</td>
-<td>The Webhook is responsible for managing webhook requests from MTO's resources.</td>
+<td>Responsible for managing webhook requests from MTO's resources.</td>
 </tr>
 <tr>
 <td>Pilot Controller</td>
 <td>Deployment</td>
-<td>The Pilot Controller is responsible for provisioning and managing the lifecycle of the MTO Console and MTO Gateway. It also deploys the Custom Resources (PostgreSQL, Prometheus, OpenCost, Dex, DexConfigOperator and FinOps Operator) that are reconciled by the MTO Dependencies Operator.</td>
+<td>Responsible for provisioning and managing the lifecycle of the MTO Console and MTO Gateway. It also deploys the Custom Resources (PostgreSQL, Prometheus, OpenCost, Dex, DexConfigOperator and FinOps Operator) that are reconciled by the MTO Dependencies Operator.</td>
 </tr>
 <tr>
 <td>MTO Console</td>
 <td>Deployment</td>
-<td>The MTO Console is the user interface for the MTO system that provides a web-based interface for managing tenants, namespaces, sleep, and more. Details about the MTO Console can be found <a href="../console/overview.html">here</a>.</td>
+<td>Provides a web-based interface for managing tenants, namespaces, sleep, and more. Details about the MTO Console can be found <a href="../console/overview.html">here</a>.</td>
 </tr>
 <tr>
 <td>MTO Gateway</td>
 <td>Deployment</td>
-<td>The MTO Gateway is the backend service that provides the REST API for the MTO Console.</td>
+<td>Backend service that provides the REST API for the MTO Console.</td>
 </tr>
 <tr>
 <td>PostgreSQL</td>
 <td>StatefulSet</td>
-<td>PostgreSQL is an open-source relational database that acts as a caching layer and stores the data for the MTO Console. Provisioned and managed by the MTO Dependencies Operator.</td>
+<td>Open-source relational database that acts as a caching layer and stores data for the MTO Console. Provisioned and managed by the MTO Dependencies Operator.</td>
 </tr>
 <tr>
 <td>Prometheus</td>
 <td>Deployment</td>
-<td>Prometheus is an open-source monitoring and alerting solution that provides metrics and monitoring for the resources deployed on the cluster. Provisioned and managed by the MTO Dependencies Operator.</td>
+<td>Open-source monitoring and alerting solution that provides metrics and monitoring for resources deployed on the cluster. Provisioned and managed by the MTO Dependencies Operator.</td>
 </tr>
 <tr>
 <td>OpenCost</td>
 <td>Deployment</td>
-<td>OpenCost is an open-source cost management solution that provides cost tracking and reporting for the resources deployed on the cluster. Provisioned and managed by the MTO Dependencies Operator.</td>
+<td>Open-source cost management solution that provides cost tracking and reporting for resources deployed on the cluster. Provisioned and managed by the MTO Dependencies Operator.</td>
 </tr>
 <tr>
 <td>Kube-State-Metrics</td>
 <td>Deployment</td>
-<td>Kube-State-Metrics listens to the Kubernetes API server and generates metrics about the state of the objects in the cluster. Provisioned and managed alongside Prometheus by the MTO Dependencies Operator.</td>
+<td>Listens to the Kubernetes API server and generates metrics about the state of objects in the cluster. Provisioned and managed alongside Prometheus by the MTO Dependencies Operator.</td>
 </tr>
 <tr>
 <td>Dex</td>
 <td>Deployment</td>
-<td>Dex is the identity provider (IdP) used by MTO for authentication, replacing Keycloak. Provisioned and managed by the MTO Dependencies Operator.</td>
+<td>Identity provider (IdP) used by MTO for authentication, replacing Keycloak. Provisioned and managed by the MTO Dependencies Operator.</td>
 </tr>
 <tr>
 <td>DexConfigOperator</td>
 <td>Deployment</td>
-<td>DexConfigOperator manages the configuration of the Dex IdP on Kubernetes. Provisioned and managed by the MTO Dependencies Operator.</td>
+<td>Manages the configuration of the Dex IdP on Kubernetes. Provisioned and managed by the MTO Dependencies Operator.</td>
 </tr>
 <tr>
 <td>FinOps Operator</td>
 <td>Deployment</td>
-<td>The FinOps Operator powers the showback features in MTO, replacing the previous Showback CronJob. Provisioned and managed by the MTO Dependencies Operator.</td>
+<td>Powers the showback features in MTO, replacing the previous Showback CronJob. Provisioned and managed by the MTO Dependencies Operator.</td>
 </tr>
 <tr>
 <td>FinOps Gateway</td>
 <td>Deployment</td>
-<td>The FinOps Gateway exposes cost and showback data from OpenCost and Prometheus to the MTO Console.</td>
+<td>Exposes cost and showback data from OpenCost and Prometheus to the MTO Console.</td>
 </tr>
 </tbody>
 </table>
