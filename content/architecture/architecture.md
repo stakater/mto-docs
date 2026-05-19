@@ -16,7 +16,7 @@ MTO consists of multiple controllers and components that work together to provid
 |------|------|-------------|
 | Tenant Controller | Deployment | Responsible for managing the creation, deletion, and updating of tenants in the cluster via [Tenant CRD](../kubernetes-resources/tenant/tenant-overview.md). |
 | Namespace Controller | Deployment | Responsible for managing the creation, deletion, and updating of namespaces in the cluster. |
-| Extensions Controller | Deployment | Enhances MTO's functionality by allowing integration with external services and manages extensions via [Extension CRD](../kubernetes-resources/extensions.md). See the [Extensions](../kubernetes-resources/extensions.md) page for supported integrations and configuration details. |
+| Extensions Controller | Deployment | Enhances MTO's functionality by allowing integration with external services and manages extensions via [Extension CRD](../kubernetes-resources/extensions.md). |
 | Quota Integration Config Controller | Deployment | Manages 2 different CRDs in one controller, [Quota CRD](../kubernetes-resources/quota.md), and [IntegrationConfig CRD](../kubernetes-resources/integration-config.md). |
 | Webhook | Deployment | Responsible for managing webhook requests from MTO's resources. |
 | Pilot Controller | Deployment | Responsible for provisioning and managing the lifecycle of the MTO Console and MTO Gateway. It also deploys the Custom Resources (PostgreSQL, Prometheus, OpenCost, Dex, DexConfigOperator and FinOps Operator) that are reconciled by the MTO Dependencies Operator. |
