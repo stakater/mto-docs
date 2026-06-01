@@ -280,7 +280,8 @@ Integration config will be managing the following resources required for console
 - `Prometheus` resources
 - `Opencost` resources
 - `MTO Console, Gateway` resources
-- `Showback` cron-job
+- `Dex` and `DexConfigOperator` resources
+- `FinOps Operator` and `FinOps Gateway` resources
 
 Details on console GUI and showback can be found [here](../console/overview.md)
 
