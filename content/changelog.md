@@ -39,7 +39,7 @@ _**June 10, 2026**_
 
 | Name | Tag | Image |
 | --- | --- | --- |
-| `tenant-operator`         | v1.8.1              | `ghcr.io/stakater/public/mto/tenant-operator`             |
+| `tenant-operator`         | v1.8.2              | `ghcr.io/stakater/public/mto/tenant-operator`             |
 | `mto-console`             | 1.0.246             | `ghcr.io/stakater/public/mto/mto-console`                 |
 | `mto-gateway`             | 1.0.171             | `ghcr.io/stakater/public/mto/mto-gateway`                 |
 | `finops-operator`         | v0.1.2              | `ghcr.io/stakater/public/finops-operator`                 |
