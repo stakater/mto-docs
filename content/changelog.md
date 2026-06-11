@@ -24,7 +24,7 @@ Follow these steps to upgrade to version 1.8.x from 1.7.x
 
 ### v1.8.2
 
-_**June 10, 2026**_
+_**June 11, 2026**_
 
 #### Features
 
