@@ -9,7 +9,7 @@ Namespaces can be put to rest in two ways:
 
 ## Namespace List
 
-Displays a list of namespaces associated with a selected tenant. The tenant filter and schedule filters allow users to scope the namespaces shown. The header also exposes the **Manage Schedules** action (to view and create hibernation schedules) and the **Apply Sleep / Hibernate** action.
+Displays a list of namespaces associated with a selected tenant. The tenant filter and schedule filters allow users to scope the namespaces shown.
 
 ### Columns
 
@@ -32,7 +32,7 @@ Displays a list of namespaces associated with a selected tenant. The tenant filt
 Whether a sleeping namespace can be woken from the list depends on how it was targeted:
 
 - **Targeted By Namespaces:** the **Wake up** action is enabled and wakes the namespace directly. In the example above, `logistics-prod` was put to sleep individually, so its **Wake up** action is active.
-- **Targeted By Labels:** the **Wake up** action is disabled, because the label selector would simply put the namespace back to sleep. In the example above, `logistics-test` is hibernating via a label-based schedule, so its **Wake up** action is greyed out. To wake it, delete the schedule that put it to sleep (see [Managing Hibernation Schedules](#managing-hibernation-schedules)), or remove the matching label so it no longer falls under the selector.
+- **Targeted By Labels:** the **Wake up** action is disabled, because the label selector would immediately put the namespace back to sleep. In the example above, `logistics-test` is hibernating via a label-based schedule, so its **Wake up** action is disabled. To wake such a namespace, either delete the schedule that put it to sleep (see [Managing Hibernation Schedules](#managing-hibernation-schedules)) or remove the matching label so the selector no longer applies.
 
 ## Apply Hibernation Settings
 
@@ -106,6 +106,7 @@ The create form has the following fields:
 - **Quick Presets:** Optional dropdown of preset schedules that auto-fill the Sleep and Wake schedules below.
 - **Sleep Schedule:** A cron expression in `MM HH DD MM W` (Minute Hour Day Month Weekday) format.
 - **Wake Schedule:** A cron expression in the same format.
+- **Browser timezone disclaimer:** Schedules run in the cluster's configured timezone, which may differ from the browser's timezone.
 - **Schedule Preview:** Shows the next occurrences of both the Sleep and Wake events for verification.
 
 Click **Create Schedule** to save.
