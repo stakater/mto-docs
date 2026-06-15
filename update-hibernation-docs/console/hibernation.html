@@ -4809,7 +4809,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><strong>Hibernate (Scheduled):</strong> Namespaces sleep and wake automatically based on a cron schedule (a <em>hibernation schedule</em>). They are woken automatically at the schedule's wake time.</li>
 </ul>
 <h2 id="namespace-list">Namespace List<a class="headerlink" href="#namespace-list" title="Permanent link">#</a></h2>
-<p>Displays a list of namespaces associated with a selected tenant. The tenant filter and schedule filters allow users to scope the namespaces shown. The header also exposes the <strong>Manage Schedules</strong> action (to view and create hibernation schedules) and the <strong>Apply Sleep / Hibernate</strong> action.</p>
+<p>Displays a list of namespaces associated with a selected tenant. The tenant filter and schedule filters allow users to scope the namespaces shown.</p>
 <h3 id="columns">Columns<a class="headerlink" href="#columns" title="Permanent link">#</a></h3>
 <ul>
 <li><strong>Namespace:</strong> Name of the namespace.</li>
@@ -4829,7 +4829,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Whether a sleeping namespace can be woken from the list depends on how it was targeted:</p>
 <ul>
 <li><strong>Targeted By Namespaces:</strong> the <strong>Wake up</strong> action is enabled and wakes the namespace directly. In the example above, <code>logistics-prod</code> was put to sleep individually, so its <strong>Wake up</strong> action is active.</li>
-<li><strong>Targeted By Labels:</strong> the <strong>Wake up</strong> action is disabled, because the label selector would simply put the namespace back to sleep. In the example above, <code>logistics-test</code> is hibernating via a label-based schedule, so its <strong>Wake up</strong> action is greyed out. To wake it, delete the schedule that put it to sleep (see <a href="#managing-hibernation-schedules">Managing Hibernation Schedules</a>), or remove the matching label so it no longer falls under the selector.</li>
+<li><strong>Targeted By Labels:</strong> the <strong>Wake up</strong> action is disabled, because the label selector would immediately put the namespace back to sleep. In the example above, <code>logistics-test</code> is hibernating via a label-based schedule, so its <strong>Wake up</strong> action is disabled. To wake such a namespace, either delete the schedule that put it to sleep (see <a href="#managing-hibernation-schedules">Managing Hibernation Schedules</a>) or remove the matching label so the selector no longer applies.</li>
 </ul>
 <h2 id="apply-hibernation-settings">Apply Hibernation Settings<a class="headerlink" href="#apply-hibernation-settings" title="Permanent link">#</a></h2>
 <p>Clicking <strong>Apply Sleep / Hibernate</strong> opens a drawer titled <strong>Apply Hibernation Settings</strong>. The drawer has two independent selectors that determine how namespaces are affected:</p>
@@ -4875,6 +4875,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><strong>Quick Presets:</strong> Optional dropdown of preset schedules that auto-fill the Sleep and Wake schedules below.</li>
 <li><strong>Sleep Schedule:</strong> A cron expression in <code>MM HH DD MM W</code> (Minute Hour Day Month Weekday) format.</li>
 <li><strong>Wake Schedule:</strong> A cron expression in the same format.</li>
+<li><strong>Browser timezone disclaimer:</strong> Schedules run in the cluster's configured timezone, which may differ from the browser's timezone.</li>
 <li><strong>Schedule Preview:</strong> Shows the next occurrences of both the Sleep and Wake events for verification.</li>
 </ul>
 <p>Click <strong>Create Schedule</strong> to save.</p>
