@@ -4,7 +4,7 @@ Multi Tenant Operator (MTO) is available in two versions: _Basic_ and _Enterpris
 
 The Basic version is free.
 
-The Enterprise version is priced according to information on the [Multi Tenant Operator website](https://www.stakater.com/mto).
+The Enterprise version is priced according to information on the [Multi Tenant Operator website](https://www.stakater.com/products/mto/).
 
 ## Feature Difference
 
@@ -19,7 +19,7 @@ The difference between the versions are highlighted here:
 
 ## Demo
 
-A web application demo of MTO is available on the [Multi Tenant Operator website](https://www.stakater.com/mto), it showcases MTO Console which is aimed at providing a more intuitive and user-friendly way for administrators and tenant users to manage tenants and their resources.
+A web application demo of MTO is available on the [Multi Tenant Operator website](https://www.stakater.com/products/mto/), it showcases MTO Console which is aimed at providing a more intuitive and user-friendly way for administrators and tenant users to manage tenants and their resources.
 
 Contact [`sales@stakater.com`](mailto:sales@stakater.com) to request a custom demo.
 

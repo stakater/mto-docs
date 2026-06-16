@@ -1,6 +1,6 @@
 # Multi Tenant Operator Documentation
 
-This repository contains the source for the documentation for [Multi Tenant Operator](https://www.stakater.com/mto). It is built using [MkDocs](https://github.com/mkdocs/mkdocs) which is based on Python. It is also versioned using [mike](https://github.com/jimporter/mike).
+This repository contains the source for the documentation for [Multi Tenant Operator](https://www.stakater.com/products/mto/). It is built using [MkDocs](https://github.com/mkdocs/mkdocs) which is based on Python. It is also versioned using [mike](https://github.com/jimporter/mike).
 
 ## GitHub Actions
 
