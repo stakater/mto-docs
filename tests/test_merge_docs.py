@@ -161,6 +161,37 @@ def test_read_nav_missing_raises():
         m.read_nav("site_name: x\n")
 
 
+# combine_mkdocs_config_yaml.py emits the merged config via PyYAML, which puts
+# sequence items under a mapping key at column 0 (indentless). read_nav/write_nav
+# must handle that, not just the hand-indented theme_override style above.
+_MKDOCS_COMBINED = (
+    "site_name: MTO\n"
+    "nav:\n"
+    "- Overview:\n"
+    "  - index.md\n"
+    "- API Reference:\n"
+    "  - kubernetes-resources/quota.md\n"
+    "plugins:\n"
+    "- search\n"
+)
+
+
+def test_read_nav_indentless_sequence():
+    nav = m.read_nav(_MKDOCS_COMBINED)
+    assert nav[0] == {"Overview": ["index.md"]}
+    assert m.find_section(nav, "API Reference") == ["kubernetes-resources/quota.md"]
+
+
+def test_write_nav_indentless_preserves_trailing_key():
+    nav = m.read_nav(_MKDOCS_COMBINED)
+    m.insert_subtree(nav, "API Reference", "Template Operator", ["a/b.md"])
+    out = m.write_nav(_MKDOCS_COMBINED, nav)
+    # the key after the nav block must survive untouched
+    assert "plugins:\n- search\n" in out
+    assert out.startswith("site_name: MTO\n")
+    assert m.find_section(m.read_nav(out), "Template Operator") == ["a/b.md"]
+
+
 _CONFIG = """\
 operators:
   - title: Template Operator

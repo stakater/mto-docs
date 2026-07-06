@@ -137,11 +137,16 @@ def _nav_bounds(text):
         raise ValueError("no top-level 'nav:' block found in mkdocs.yml")
     end = len(lines)
     for j in range(start + 1, len(lines)):
-        if lines[j].strip() == "":
+        line = lines[j]
+        if line.strip() == "":
             continue
-        if not lines[j][0].isspace():
-            end = j
-            break
+        # Indented lines and column-0 list items ("- ...", as PyYAML emits
+        # sequences under a mapping key) belong to the nav block. The block
+        # ends only at the next top-level mapping key.
+        if line[0].isspace() or line[0] == "-":
+            continue
+        end = j
+        break
     return lines, start, end
 
 
