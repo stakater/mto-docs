@@ -1,0 +1,57 @@
+# Controls which sub-operator docs are merged into mto-docs at build time.
+# `repo` is the canonical source (git URL); the pipeline clones it and the
+# merge runs against the clone via --set-repo. Locally, override with --set-repo
+# (see the Makefile) to point at a local checkout.
+#
+# NOTE: `into`/`under` target the CURRENT mto-docs nav/layout. Once mto-docs is
+# migrated to the shared structure (structure.md), these become near 1:1 pairs
+# (guides->Guides, reference->Reference, concepts->Concepts, ...).
+operators:
+  - title: Template Operator
+    repo: https://github.com/stakater/template-operator-docs.git
+    mappings:
+      - from: "overview/**"
+        into: "overview"
+        under: "Overview"
+      - from: "concepts/**"
+        into: "concepts"
+        under: "Architecture"
+      - from: "getting-started/**"
+        into: "getting-started"
+        under: "Install"
+      - from: "guides/**"
+        into: "guides"
+        under: "Guides"
+      - from: "reference/**"
+        into: "reference"
+        under: "API Reference"
+      - from: "images/**"
+        into: "images"          # assets only, no menu entry
+    exclude:
+      - "**/.gitkeep"
+
+  - title: Hibernation Operator
+    repo: https://github.com/stakater/hibernation-operator-docs.git
+    mappings:
+      - from: "overview/**"
+        into: "overview"
+        under: "Overview"
+      - from: "concepts/**"
+        into: "concepts"
+        under: "Architecture"
+      - from: "getting-started/**"
+        into: "getting-started"
+        under: "Install"
+      - from: "guides/**"
+        into: "guides"
+        under: "Guides"
+      - from: "reference/**"
+        into: "reference"
+        under: "API Reference"
+      - from: "integrations/**"
+        into: "integrations"
+        under: "Extensions"
+      - from: "images/**"
+        into: "images"
+    exclude:
+      - "**/.gitkeep"

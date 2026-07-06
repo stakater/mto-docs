@@ -17,9 +17,12 @@ jobs:
     concurrency:
       group: pull_request_versioned_doc
       cancel-in-progress: false
-    uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@v0.0.147
+    uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@feat/hook-in-version-doc
+    with:
+      PRE_BUILD_HOOK: make merge
     secrets:
       GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+      PRE_BUILD_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
   build_container:
     needs: deploy_doc
     if: ${{ github.base_ref == 'main' }}
