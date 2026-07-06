@@ -105,8 +105,7 @@ this repo's `content/` directory at build time by [`scripts/merge_docs.py`](./sc
   an already-merged nav would duplicate entries. See [`DockerfileLocal`](./DockerfileLocal)
   for the conditional `MERGE_SUBOP_REPOS` gate.
 - A host-side run of `merge_docs.py` copies files directly into the real `content/`
-  tree. To undo it, remove only the specific generated paths listed in `merge.yaml`
-  afterward — do not use a broad `git clean`, which could wipe other untracked work.
+  tree. To undo it, remove only the specific generated paths listed in `merge.yaml` afterward.
 - Production CI performs the build inside the shared `stakater/.github` reusable
   workflow, so wiring up the sub-operator repo clone + merge step there is a
   separate coordination task.
