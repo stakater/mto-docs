@@ -58,10 +58,11 @@ def test_compute_dest():
 
 
 def test_build_nav_tree_nests_folders():
+    # entries: (remainder, dest, src)
     entries = [
-        ("template.md", "kubernetes-resources/template-operator/template.md"),
-        ("how-to-guides/copy.md", "kubernetes-resources/template-operator/how-to-guides/copy.md"),
-        ("how-to-guides/deploy.md", "kubernetes-resources/template-operator/how-to-guides/deploy.md"),
+        ("template.md", "kubernetes-resources/template-operator/template.md", "reference/template.md"),
+        ("how-to-guides/copy.md", "kubernetes-resources/template-operator/how-to-guides/copy.md", "reference/how-to-guides/copy.md"),
+        ("how-to-guides/deploy.md", "kubernetes-resources/template-operator/how-to-guides/deploy.md", "reference/how-to-guides/deploy.md"),
     ]
     assert m.build_nav_tree(entries) == [
         {"How To Guides": [
@@ -72,10 +73,25 @@ def test_build_nav_tree_nests_folders():
     ]
 
 
+def test_build_nav_tree_uses_folder_titles_from_source_nav():
+    # folder "api" (source reference/api) is titled from the sub-op nav, not prettify
+    entries = [
+        ("api/rs.md", "kubernetes-resources/hib/api/rs.md", "reference/api/rs.md"),
+    ]
+    titles = {"reference/api": "API Reference"}
+    assert m.build_nav_tree(entries, titles) == [
+        {"API Reference": ["kubernetes-resources/hib/api/rs.md"]},
+    ]
+    # fallback to prettify when the source folder isn't in the map
+    assert m.build_nav_tree(entries) == [
+        {"Api": ["kubernetes-resources/hib/api/rs.md"]},
+    ]
+
+
 def test_build_nav_tree_duplicate_remainder_raises():
     entries = [
-        ("template.md", "kubernetes-resources/into-a/template.md"),
-        ("template.md", "kubernetes-resources/into-b/template.md"),
+        ("template.md", "kubernetes-resources/into-a/template.md", "a/template.md"),
+        ("template.md", "kubernetes-resources/into-b/template.md", "b/template.md"),
     ]
     with pytest.raises(ValueError):
         m.build_nav_tree(entries)
@@ -83,11 +99,29 @@ def test_build_nav_tree_duplicate_remainder_raises():
 
 def test_build_nav_tree_folder_file_conflict_raises():
     entries = [
-        ("a", "kubernetes-resources/a"),
-        ("a/b.md", "kubernetes-resources/a/b.md"),
+        ("a", "kubernetes-resources/a", "x/a"),
+        ("a/b.md", "kubernetes-resources/a/b.md", "x/a/b.md"),
     ]
     with pytest.raises(ValueError):
         m.build_nav_tree(entries)
+
+
+def test_nav_folder_titles_from_nav():
+    nav = [
+        {"Reference": [
+            {"API Reference": [
+                "reference/api/resource-supervisor.md",
+                "reference/api/cluster-resource-supervisor.md",
+            ]},
+            "reference/configuration.md",
+            "reference/rbac.md",
+        ]},
+        {"Guides": ["guides/create-resource-supervisor.md"]},
+    ]
+    titles = m.nav_folder_titles(nav)
+    assert titles["reference/api"] == "API Reference"
+    assert titles["reference"] == "Reference"
+    assert titles["guides"] == "Guides"
 
 
 def _sample_nav():
@@ -170,9 +204,10 @@ def test_rewrite_links_cross_folder():
         "guides/create-resource-supervisor.md": "guides/hib/create-resource-supervisor.md",
     }
     text = "See [guide](../guides/create-resource-supervisor.md)."
-    out = m.rewrite_links(text, "getting-started/quick-start.md",
-                          "getting-started/hib/quick-start.md", mapping)
+    out, ext = m.rewrite_links(text, "getting-started/quick-start.md",
+                               "getting-started/hib/quick-start.md", mapping)
     assert out == "See [guide](../../guides/hib/create-resource-supervisor.md)."
+    assert ext == []
 
 
 def test_rewrite_links_image_and_anchor():
@@ -183,26 +218,59 @@ def test_rewrite_links_image_and_anchor():
     }
     src = "getting-started/installation/openshift.md"
     dst = "getting-started/hib/installation/openshift.md"
-    img = m.rewrite_links("![oh](../../images/operatorHub.png)", src, dst, mapping)
+    img, _ = m.rewrite_links("![oh](../../images/operatorHub.png)", src, dst, mapping)
     assert img == "![oh](../../../images/hib/operatorHub.png)"
     # anchor is preserved
-    link = m.rewrite_links("[k](kubernetes.md#argocd)", src, dst, mapping)
-    assert link == "[k](kubernetes.md#argocd)"  # same dir, resolves to itself? -> in map
+    link, _ = m.rewrite_links("[k](kubernetes.md#argocd)", src, dst, mapping)
+    assert link == "[k](kubernetes.md#argocd)"  # same dir, resolves to itself -> in map
 
 
 def test_rewrite_links_leaves_external_and_uncopied():
     mapping = {"a/x.md": "a/slug/x.md"}
     text = ("[ext](https://example.com) [anchor](#section) "
             "[abs](/root.md) [missing](../other/y.md)")
-    out = m.rewrite_links(text, "a/x.md", "a/slug/x.md", mapping)
-    assert out == text  # nothing in map is referenced; all left as-is
+    # no live_url -> unmatched links left as-is
+    out, ext = m.rewrite_links(text, "a/x.md", "a/slug/x.md", mapping)
+    assert out == text
+    assert ext == []
 
 
 def test_rewrite_links_reference_style():
     mapping = {"guides/b.md": "guides/slug/b.md", "images/x.png": "images/slug/x.png"}
     text = "See ![img][ref].\n\n[ref]: ../images/x.png\n"
-    out = m.rewrite_links(text, "guides/b.md", "guides/slug/b.md", mapping)
+    out, _ = m.rewrite_links(text, "guides/b.md", "guides/slug/b.md", mapping)
     assert "[ref]: ../../images/slug/x.png" in out
+
+
+# --- external (live_url) fallback for non-whitelisted targets ---
+
+def test_rewrite_links_external_directory_style():
+    mapping = {"guides/b.md": "guides/slug/b.md"}   # only b is whitelisted
+    text = "See [arch](../concepts/architecture.md#intro)."
+    out, ext = m.rewrite_links(text, "guides/b.md", "guides/slug/b.md", mapping,
+                               live_url="https://docs.example.com/op/",
+                               live_url_style="directory")
+    assert out == "See [arch](https://docs.example.com/op/concepts/architecture/#intro)."
+    assert ext == ["concepts/architecture.md"]
+
+
+def test_rewrite_links_external_html_style():
+    mapping = {"guides/b.md": "guides/slug/b.md"}
+    text = "[cfg](../reference/configuration.md)"
+    out, _ = m.rewrite_links(text, "guides/b.md", "guides/slug/b.md", mapping,
+                             live_url="https://docs.example.com/op", live_url_style="html")
+    assert out == "[cfg](https://docs.example.com/op/reference/configuration.html)"
+
+
+def test_rewrite_links_external_index_and_asset():
+    mapping = {"guides/b.md": "guides/slug/b.md"}
+    src, dst = "guides/b.md", "guides/slug/b.md"
+    home, _ = m.rewrite_links("[home](../index.md)", src, dst, mapping,
+                              live_url="https://docs.example.com/op/")
+    assert home == "[home](https://docs.example.com/op/)"
+    img, _ = m.rewrite_links("![d](../images/diagram.png)", src, dst, mapping,
+                             live_url="https://docs.example.com/op/")
+    assert img == "![d](https://docs.example.com/op/images/diagram.png)"
 
 
 # combine_mkdocs_config_yaml.py emits the merged config via PyYAML, which puts
