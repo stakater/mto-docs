@@ -53,7 +53,6 @@ _**July 6, 2026**_
 | `kube-state-metrics`      | v2.17.0             | `registry.k8s.io/kube-state-metrics/kube-state-metrics`   |
 | `opencost`                | 1.117.3             | `ghcr.io/opencost/opencost`                               |
 
-
 ### v1.8.2
 
 _**June 11, 2026**_
