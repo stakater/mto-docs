@@ -161,6 +161,50 @@ def test_read_nav_missing_raises():
         m.read_nav("site_name: x\n")
 
 
+# --- link rewriting (Path B) ---
+
+def test_rewrite_links_cross_folder():
+    # getting-started page links to a guides page; both moved under different roots
+    mapping = {
+        "getting-started/quick-start.md": "getting-started/hib/quick-start.md",
+        "guides/create-resource-supervisor.md": "guides/hib/create-resource-supervisor.md",
+    }
+    text = "See [guide](../guides/create-resource-supervisor.md)."
+    out = m.rewrite_links(text, "getting-started/quick-start.md",
+                          "getting-started/hib/quick-start.md", mapping)
+    assert out == "See [guide](../../guides/hib/create-resource-supervisor.md)."
+
+
+def test_rewrite_links_image_and_anchor():
+    mapping = {
+        "getting-started/installation/openshift.md": "getting-started/hib/installation/openshift.md",
+        "images/operatorHub.png": "images/hib/operatorHub.png",
+        "getting-started/installation/kubernetes.md": "getting-started/hib/installation/kubernetes.md",
+    }
+    src = "getting-started/installation/openshift.md"
+    dst = "getting-started/hib/installation/openshift.md"
+    img = m.rewrite_links("![oh](../../images/operatorHub.png)", src, dst, mapping)
+    assert img == "![oh](../../../images/hib/operatorHub.png)"
+    # anchor is preserved
+    link = m.rewrite_links("[k](kubernetes.md#argocd)", src, dst, mapping)
+    assert link == "[k](kubernetes.md#argocd)"  # same dir, resolves to itself? -> in map
+
+
+def test_rewrite_links_leaves_external_and_uncopied():
+    mapping = {"a/x.md": "a/slug/x.md"}
+    text = ("[ext](https://example.com) [anchor](#section) "
+            "[abs](/root.md) [missing](../other/y.md)")
+    out = m.rewrite_links(text, "a/x.md", "a/slug/x.md", mapping)
+    assert out == text  # nothing in map is referenced; all left as-is
+
+
+def test_rewrite_links_reference_style():
+    mapping = {"guides/b.md": "guides/slug/b.md", "images/x.png": "images/slug/x.png"}
+    text = "See ![img][ref].\n\n[ref]: ../images/x.png\n"
+    out = m.rewrite_links(text, "guides/b.md", "guides/slug/b.md", mapping)
+    assert "[ref]: ../../images/slug/x.png" in out
+
+
 # combine_mkdocs_config_yaml.py emits the merged config via PyYAML, which puts
 # sequence items under a mapping key at column 0 (indentless). read_nav/write_nav
 # must handle that, not just the hand-indented theme_override style above.
