@@ -236,6 +236,8 @@ Following are the different components that can be used to configure multi-tenan
 - `components.console:` Enables or disables the console GUI for MTO.
 - `components.showback:` Enables or disables the showback feature on the console.
 - `components.ingress:` Configures the ingress settings for various components:
+    - `host:` Shared hostname serving all components. Setting it enables consolidated mode. See [Ingress](#ingress).
+    - `tlsSecretName:` Name of the secret containing the TLS certificate and key covering the shared host in consolidated mode.
     - `ingressClassName:` Ingress class to be used for the ingress.
     - `console:` Settings for the console's ingress.
         - `host:` hostname for the console's ingress.
@@ -284,6 +286,55 @@ Integration config will be managing the following resources required for console
 - `FinOps Operator` and `FinOps Gateway` resources
 
 Details on console GUI and showback can be found [here](../console/overview.md)
+
+### Ingress
+
+MTO's web components — Console, Gateway, Dex, and the FinOps gateway — are served under a **single shared hostname** by default, each on its own path prefix, rather than one hostname per component.
+
+#### Consolidated mode (recommended)
+
+Set a top-level `host` to serve all components under one hostname:
+
+```yaml
+components:
+  console: true
+  showback: true
+  ingress:
+    host: mto.apps.example.com   # shared host for all components
+    tlsSecretName: mto-tls       # TLS cert covering the shared host
+    ingressClassName: nginx      # applied to every component ingress
+```
+
+- `host`: the shared hostname. Setting it enables consolidated mode.
+- `tlsSecretName`: a single TLS secret whose certificate covers the shared host, used by every component ingress.
+- `ingressClassName`: ingress class for all component ingresses. On OpenShift, if omitted, MTO discovers the default IngressClass (falling back to `openshift-default`).
+
+On OpenShift, when no host is set, the shared host is auto-derived from the cluster ingress domain. On Kubernetes there is no cluster domain to derive from, so `host` must be set explicitly.
+
+#### Legacy mode (per-component hosts)
+
+Set explicit per-component hosts to keep each component on its own hostname (pre-consolidation behavior). Setting any per-component host, with no top-level host, selects legacy mode:
+
+```yaml
+components:
+  ingress:
+    ingressClassName: nginx
+    console:
+      host: tenant-operator-console.apps.example.com
+      tlsSecretName: console-tls
+    gateway:
+      host: tenant-operator-gateway.apps.example.com
+      tlsSecretName: gateway-tls
+    dex:
+      host: tenant-operator-dex.apps.example.com
+      tlsSecretName: dex-tls
+    finopsGateway:
+      host: tenant-operator-finops.apps.example.com
+      tlsSecretName: finops-tls
+```
+
+!!! note
+    In consolidated mode the Dex issuer becomes `https://<host>/dex`. Any external OIDC client that trusts MTO's Dex must be configured with this issuer.
 
 ### PostgreSQL
 
