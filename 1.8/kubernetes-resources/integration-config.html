@@ -3388,6 +3388,45 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ingress
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ingress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consolidated-mode-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consolidated mode (recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#legacy-mode-per-component-hosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Legacy mode (per-component hosts)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4832,6 +4871,45 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ingress
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ingress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consolidated-mode-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consolidated mode (recommended)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#legacy-mode-per-component-hosts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Legacy mode (per-component hosts)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#postgresql" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5499,6 +5577,8 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li><code>components.console:</code> Enables or disables the console GUI for MTO.</li>
 <li><code>components.showback:</code> Enables or disables the showback feature on the console.</li>
 <li><code>components.ingress:</code> Configures the ingress settings for various components:<ul>
+<li><code>host:</code> Shared hostname serving all components. Setting it enables consolidated mode. See <a href="#ingress">Ingress</a>.</li>
+<li><code>tlsSecretName:</code> Name of the secret containing the TLS certificate and key covering the shared host in consolidated mode.</li>
 <li><code>ingressClassName:</code> Ingress class to be used for the ingress.</li>
 <li><code>console:</code> Settings for the console's ingress.<ul>
 <li><code>host:</code> hostname for the console's ingress.</li>
@@ -5555,6 +5635,46 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li><code>FinOps Operator</code> and <code>FinOps Gateway</code> resources</li>
 </ul>
 <p>Details on console GUI and showback can be found <a href="../console/overview.html">here</a></p>
+<h3 id="ingress">Ingress<a class="headerlink" href="#ingress" title="Permanent link">#</a></h3>
+<p>MTO's web components — Console, Gateway, Dex, and the FinOps gateway — are served under a <strong>single shared hostname</strong> by default, each on its own path prefix, rather than one hostname per component.</p>
+<h4 id="consolidated-mode-recommended">Consolidated mode (recommended)<a class="headerlink" href="#consolidated-mode-recommended" title="Permanent link">#</a></h4>
+<p>Set a top-level <code>host</code> to serve all components under one hostname:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">ingress</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto.apps.example.com</span><span class="w">   </span><span class="c1"># shared host for all components</span>
+<span class="w">    </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto-tls</span><span class="w">       </span><span class="c1"># TLS cert covering the shared host</span>
+<span class="w">    </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span><span class="w">      </span><span class="c1"># applied to every component ingress</span>
+</code></pre></div>
+<ul>
+<li><code>host</code>: the shared hostname. Setting it enables consolidated mode.</li>
+<li><code>tlsSecretName</code>: a single TLS secret whose certificate covers the shared host, used by every component ingress.</li>
+<li><code>ingressClassName</code>: ingress class for all component ingresses. On OpenShift, if omitted, MTO discovers the default IngressClass (falling back to <code>openshift-default</code>).</li>
+</ul>
+<p>On OpenShift, when no host is set, the shared host is auto-derived from the cluster ingress domain. On Kubernetes there is no cluster domain to derive from, so <code>host</code> must be set explicitly.</p>
+<h4 id="legacy-mode-per-component-hosts">Legacy mode (per-component hosts)<a class="headerlink" href="#legacy-mode-per-component-hosts" title="Permanent link">#</a></h4>
+<p>Set explicit per-component hosts to keep each component on its own hostname (pre-consolidation behavior). Setting any per-component host, with no top-level host, selects legacy mode:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ingress</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">    </span><span class="nt">console</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-console.apps.example.com</span>
+<span class="w">      </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">console-tls</span>
+<span class="w">    </span><span class="nt">gateway</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-gateway.apps.example.com</span>
+<span class="w">      </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway-tls</span>
+<span class="w">    </span><span class="nt">dex</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-dex.apps.example.com</span>
+<span class="w">      </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dex-tls</span>
+<span class="w">    </span><span class="nt">finopsGateway</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-finops.apps.example.com</span>
+<span class="w">      </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">finops-tls</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In consolidated mode the Dex issuer becomes <code>https://&lt;host&gt;/dex</code>. Any external OIDC client that trusts MTO's Dex must be configured with this issuer.</p>
+</div>
 <h3 id="postgresql">PostgreSQL<a class="headerlink" href="#postgresql" title="Permanent link">#</a></h3>
 <p>The <code>values</code> field accepts <a href="https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml">Bitnami PostgreSQL Helm chart values</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
