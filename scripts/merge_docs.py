@@ -144,14 +144,17 @@ def nav_folder_titles(nav):
         for item in items:
             if isinstance(item, dict):
                 for title, val in item.items():
-                    if isinstance(val, list):
-                        files = _collect_files(val)
-                        if files:
-                            common = (posixpath.dirname(files[0]) if len(files) == 1
-                                      else posixpath.commonpath(files))
-                            if common:
-                                titles.setdefault(common, title)
-                        walk(val)
+                    if not isinstance(val, list):
+                        continue
+                    # recurse first so a deeper (more specific) section claims the
+                    # folder; a broad ancestor then won't override it (setdefault)
+                    walk(val)
+                    files = _collect_files(val)
+                    if files:
+                        common = (posixpath.dirname(files[0]) if len(files) == 1
+                                  else posixpath.commonpath(files))
+                        if common:
+                            titles.setdefault(common, title)
 
     walk(nav)
     return titles

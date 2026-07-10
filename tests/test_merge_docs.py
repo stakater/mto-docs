@@ -124,6 +124,21 @@ def test_nav_folder_titles_from_nav():
     assert titles["guides"] == "Guides"
 
 
+def test_nav_folder_titles_deepest_section_wins():
+    # a broad section whose files all live in one subfolder must NOT claim that
+    # subfolder over the more specific inner section
+    nav = [
+        {"Guides": [
+            {"Templates": [
+                "guides/templates/copying.md",
+                "guides/templates/deploying.md",
+            ]},
+        ]},
+    ]
+    titles = m.nav_folder_titles(nav)
+    assert titles["guides/templates"] == "Templates"   # not "Guides"
+
+
 def _sample_nav():
     return [
         {"Overview": ["index.md"]},
