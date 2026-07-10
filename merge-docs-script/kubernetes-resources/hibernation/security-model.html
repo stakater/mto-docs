@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/merge-docs-script/kubernetes-resources/template-operator/metrics.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/merge-docs-script/kubernetes-resources/hibernation/security-model.html">
       
       
-        <link rel="prev" href="api.html">
+        <link rel="prev" href="rbac.html">
       
       
-        <link rel="next" href="../hibernation-operator/api/cluster-resource-supervisor.html">
+        <link rel="next" href="webhooks.html">
       
       
         
@@ -22,7 +22,7 @@
     
     
       
-        <title>Metrics and Logs - Multi-Tenant Operator</title>
+        <title>Security Model - Multi-Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#metrics-and-logs" class="md-skip">
+        <a href="#security-model" class="md-skip">
           Skip to content
         </a>
       
@@ -3340,20 +3340,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6">
         
           
           <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
@@ -3363,7 +3361,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Template Operator
+    Template
   
 
     
@@ -3374,12 +3372,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Template Operator
+    Template
   
 
           </label>
@@ -3392,7 +3390,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="api.html" class="md-nav__link">
+      <a href="../template/api.html" class="md-nav__link">
         
   
   
@@ -3417,37 +3415,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Metrics and Logs
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="metrics.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../template/metrics.html" class="md-nav__link">
         
   
   
@@ -3463,95 +3434,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#metrics-list" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Metrics List
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#custom-resource-status" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Custom Resource Status
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Custom Resource Status">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cluster-template-instance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cluster Template Instance
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#log-interpretation-guide" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Log Interpretation Guide
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Log Interpretation Guide">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cluster-template-instance-controller" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cluster Template Instance Controller
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3569,18 +3451,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" checked="">
         
           
           <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
@@ -3590,7 +3474,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -3601,12 +3485,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_7">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -3666,7 +3550,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../hibernation-operator/api/cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="api/cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -3694,7 +3578,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../hibernation-operator/api/resource-supervisor.html" class="md-nav__link">
+      <a href="api/resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -3730,7 +3614,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../hibernation-operator/configuration.html" class="md-nav__link">
+      <a href="configuration.html" class="md-nav__link">
         
   
   
@@ -3758,7 +3642,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../hibernation-operator/metrics.html" class="md-nav__link">
+      <a href="metrics.html" class="md-nav__link">
         
   
   
@@ -3786,7 +3670,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../hibernation-operator/rbac.html" class="md-nav__link">
+      <a href="rbac.html" class="md-nav__link">
         
   
   
@@ -3811,10 +3695,37 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../hibernation-operator/security-model.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security Model
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="security-model.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3830,6 +3741,72 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#pod-and-container-hardening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pod and container hardening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#least-privilege-rbac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Least-privilege RBAC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#namespace-exclusion-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Namespace exclusion safety
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transport-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transport security
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3842,7 +3819,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../hibernation-operator/webhooks.html" class="md-nav__link">
+      <a href="webhooks.html" class="md-nav__link">
         
   
   
@@ -4426,7 +4403,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Template Operator
+    Template
   
 
     
@@ -4442,7 +4419,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Template Operator
+    Template
   
 
           </label>
@@ -4473,7 +4450,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Guides
+    Templates
   
 
     
@@ -4489,7 +4466,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Guides
+    Templates
   
 
           </label>
@@ -4502,7 +4479,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/copying-resources-2.html" class="md-nav__link">
+      <a href="../../guides/template/templates/copying-resources-2.html" class="md-nav__link">
         
   
   
@@ -4530,7 +4507,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/copying-resources.html" class="md-nav__link">
+      <a href="../../guides/template/templates/copying-resources.html" class="md-nav__link">
         
   
   
@@ -4558,7 +4535,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../../guides/template/templates/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   
@@ -4586,7 +4563,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/deploying-templates.html" class="md-nav__link">
+      <a href="../../guides/template/templates/deploying-templates.html" class="md-nav__link">
         
   
   
@@ -4614,7 +4591,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/distributing-manifests.html" class="md-nav__link">
+      <a href="../../guides/template/templates/distributing-manifests.html" class="md-nav__link">
         
   
   
@@ -4642,7 +4619,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../../guides/template/templates/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   
@@ -4670,7 +4647,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../../guides/template/templates/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   
@@ -4698,7 +4675,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/template-default-params.html" class="md-nav__link">
+      <a href="../../guides/template/templates/template-default-params.html" class="md-nav__link">
         
   
   
@@ -4760,7 +4737,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -4776,7 +4753,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -4789,7 +4766,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/hibernation-operator/create-cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../../guides/hibernation/create-cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -4817,7 +4794,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/hibernation-operator/create-resource-supervisor.html" class="md-nav__link">
+      <a href="../../guides/hibernation/create-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -4845,7 +4822,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/hibernation-operator/hibernate-resources.html" class="md-nav__link">
+      <a href="../../guides/hibernation/hibernate-resources.html" class="md-nav__link">
         
   
   
@@ -5232,7 +5209,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -5248,7 +5225,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -5261,7 +5238,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/hibernation-operator/argocd.html" class="md-nav__link">
+      <a href="../../integrations/hibernation/argocd.html" class="md-nav__link">
         
   
   
@@ -5434,10 +5411,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#metrics-list" class="md-nav__link">
+  <a href="#pod-and-container-hardening" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Metrics List
+        Pod and container hardening
       
     </span>
   </a>
@@ -5445,58 +5422,35 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#custom-resource-status" class="md-nav__link">
+  <a href="#least-privilege-rbac" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Custom Resource Status
+        Least-privilege RBAC
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Custom Resource Status">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cluster-template-instance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cluster Template Instance
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#log-interpretation-guide" class="md-nav__link">
+  <a href="#namespace-exclusion-safety" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Log Interpretation Guide
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Log Interpretation Guide">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cluster-template-instance-controller" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cluster Template Instance Controller
+        Namespace exclusion safety
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#transport-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transport security
+      
+    </span>
+  </a>
   
 </li>
       
@@ -5520,77 +5474,55 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="metrics-and-logs">Metrics and Logs<a class="headerlink" href="#metrics-and-logs" title="Permanent link">#</a></h1>
-<p>This document offers an overview of the Prometheus metrics implemented by the <code>template_operator</code> controllers, along with an interpretation guide for the logs and statuses generated by these controllers. Each metric is designed to provide specific insights into the controllers' operational performance, while the log interpretation guide aids in understanding their behavior and workflow processes. Additionally, the status descriptions for custom resources provide operational snapshots. Together, these elements form a comprehensive toolkit for monitoring and enhancing the performance and health of the controllers.</p>
-<h2 id="metrics-list">Metrics List<a class="headerlink" href="#metrics-list" title="Permanent link">#</a></h2>
-<p><strong><code>template_operator_resources_deployed_total</code></strong></p>
+<h1 id="security-model">Security Model<a class="headerlink" href="#security-model" title="Permanent link">#</a></h1>
+<p>The Hibernation Operator is designed to run safely in shared and multi-tenant
+clusters. Its security model rests on four pillars: hardened workloads,
+least-privilege RBAC, namespace-level safety controls, and secured transport.</p>
+<h2 id="pod-and-container-hardening">Pod and container hardening<a class="headerlink" href="#pod-and-container-hardening" title="Permanent link">#</a></h2>
+<p>The operator and webhook deployments adhere to the Kubernetes
+<a href="https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted">restricted Pod Security Standards</a>:</p>
 <ul>
-<li><strong>Description</strong>: Tracks the total number of resources deployed by the operator.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code>, <code>namespace</code></li>
-<li><strong>Usage</strong>: Helps to understand the overall workload managed by the operator.</li>
+<li><strong>Pod:</strong> <code>runAsNonRoot: true</code>, <code>seccompProfile.type: RuntimeDefault</code></li>
+<li><strong>Container:</strong> <code>allowPrivilegeEscalation: false</code>, all Linux capabilities
+  dropped (<code>capabilities.drop: ["ALL"]</code>)</li>
+<li>Resource requests and limits are set to bound resource consumption.</li>
 </ul>
-<p><strong><code>template_operator_resources_deployed</code></strong></p>
+<h2 id="least-privilege-rbac">Least-privilege RBAC<a class="headerlink" href="#least-privilege-rbac" title="Permanent link">#</a></h2>
+<p>The operator runs under a dedicated <code>controller-manager</code> ServiceAccount with a
+tightly scoped <code>ClusterRole</code>:</p>
 <ul>
-<li><strong>Description</strong>: Monitors resources currently deployed by the operator.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code>, <code>namespace</code>, <code>type</code></li>
-<li><strong>Usage</strong>: Useful for tracking the current state and type of resources managed by the operator.</li>
+<li><strong>Read-only</strong> on <code>namespaces</code> and <code>customresourcedefinitions</code>.</li>
+<li><strong>Write</strong> access limited to <code>Deployments</code> and <code>StatefulSets</code> (for scaling) and
+  the operator's own custom resources.</li>
+<li><code>status</code> and <code>finalizers</code> permissions are separated from the main resource
+  rules.</li>
 </ul>
-<p><strong><code>template_operator_reconcile_error</code></strong></p>
+<p>No cluster-admin or wildcard permissions are granted. See <a href="rbac.html">RBAC</a> for
+the complete permission set.</p>
+<h2 id="namespace-exclusion-safety">Namespace exclusion safety<a class="headerlink" href="#namespace-exclusion-safety" title="Permanent link">#</a></h2>
+<p>Workloads can be protected from hibernation regardless of any matching
+supervisor:</p>
 <ul>
-<li><strong>Description</strong>: Indicates resources in an error state, broken down by resource kind, name, and namespace.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code>, <code>namespace</code>, <code>state</code>, <code>errors</code></li>
-<li><strong>Usage</strong>: Essential for identifying and analyzing errors in resource management.</li>
+<li>A namespace annotated with <code>hibernation.stakater.com/exclude: "true"</code> is
+  <strong>always ignored</strong> — the operator never scales workloads in it.</li>
+<li>The <strong>operator's own namespace is automatically excluded</strong>.</li>
 </ul>
-<p><strong><code>template_operator_reconcile_count</code></strong></p>
+<p>This lets platform teams carve out critical namespaces (or let application teams
+opt out of cluster-wide policies) safely. The operator only ever modifies
+<code>Deployments</code> and <code>StatefulSets</code> it explicitly targets; all other resources are
+left untouched.</p>
+<h2 id="transport-security">Transport security<a class="headerlink" href="#transport-security" title="Permanent link">#</a></h2>
 <ul>
-<li><strong>Description</strong>: Counts the number of reconciliations performed for a Cluster Template Instance, categorized by name.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code></li>
-<li><strong>Usage</strong>: Provides insight into the frequency of reconciliation processes.</li>
+<li><strong>Webhooks</strong> are served over TLS, with certificates managed by cert-manager
+  (or supplied via flags). See <a href="webhooks.html">Webhooks</a>.</li>
+<li><strong>Metrics</strong> are served over https with bearer-token authentication by default.
+  See <a href="metrics.html">Metrics</a>.</li>
+<li><strong><code>HTTP/2</code> is disabled by default</strong> (<code>--enable-http2=false</code>) to mitigate known
+  <code>HTTP/2</code> denial-of-service vulnerabilities (e.g. the "Rapid Reset" class of
+  CVEs). Enable it only if you understand the risk.</li>
+<li>An optional <code>NetworkPolicy</code> is provided to restrict ingress to the metrics
+  endpoint.</li>
 </ul>
-<p><strong><code>template_operator_reconcile_seconds</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Represents the cumulative duration, in seconds, taken to reconcile a Cluster Template Instance, categorized by instance name.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code></li>
-<li><strong>Usage</strong>: Critical for assessing the time efficiency of the reconciliation process.</li>
-</ul>
-<p><strong><code>template_operator_reconcile_seconds_total</code></strong></p>
-<ul>
-<li><strong>Description</strong>: Tracks the total duration, in seconds, for all reconciliation processes of a Cluster Template Instance, categorized by instance name.</li>
-<li><strong>Type</strong>: Gauge</li>
-<li><strong>Labels</strong>: <code>kind</code>, <code>name</code></li>
-<li><strong>Usage</strong>: Useful for understanding the overall time spent on reconciliation processes.</li>
-</ul>
-<h2 id="custom-resource-status">Custom Resource Status<a class="headerlink" href="#custom-resource-status" title="Permanent link">#</a></h2>
-<p>In this section, we delve into the status of various custom resources managed by our controllers. The <code>kubectl describe</code> command can be used to fetch the status of these resources.</p>
-<h3 id="cluster-template-instance">Cluster Template Instance<a class="headerlink" href="#cluster-template-instance" title="Permanent link">#</a></h3>
-<p>Status from the <code>ClusterTemplateInstances.tenantoperator.stakater.com</code> custom resource:</p>
-<ul>
-<li><strong>Current Operational State</strong>: Provides a snapshot of the resource's current condition.</li>
-<li><strong>Conditions</strong>: Offers a detailed view of the resource's status, which includes:<ul>
-<li><code>InstallSucceeded</code>: Indicates the success of the instance's installation.</li>
-<li><code>Ready</code>: Shows the readiness of the instance, with details on the last reconciliation process, its duration, and relevant messages.</li>
-<li><code>Running</code>: Reports on active processes like ongoing resource reconciliation.</li>
-</ul>
-</li>
-<li><strong>Deployed Namespaces</strong>: Enumerates the namespaces where the instance has been deployed, along with their statuses and associated template manifests.</li>
-<li><strong>Manifest Hashes</strong>: Includes the <code>Template Manifests Hash</code> and <code>Resource Mapping Hash</code>, which provide versioning and change tracking for template manifests and resource mappings.</li>
-</ul>
-<h2 id="log-interpretation-guide">Log Interpretation Guide<a class="headerlink" href="#log-interpretation-guide" title="Permanent link">#</a></h2>
-<h3 id="cluster-template-instance-controller">Cluster Template Instance Controller<a class="headerlink" href="#cluster-template-instance-controller" title="Permanent link">#</a></h3>
-<p>Logs from the <code>tenant-operator-ClusterTemplateInstance-controller</code>:</p>
-<ul>
-<li><strong>Reconciliation Process</strong>: Logs starting with <code>Reconciling!</code> mark the beginning of a reconciliation process for a ClusterTemplateInstance. Subsequent actions like <code>Creating/Updating ClusterTemplateInstance</code> and <code>Retrieving list of namespaces Matching to TGI</code> outline the reconciliation steps.</li>
-<li><strong>Namespace and Resource Management</strong>: Logs such as <code>Namespaces test-namespace-1 is new or failed...</code> and <code>Creating/Updating resource...</code> detail the management of Kubernetes resources in specific namespaces.</li>
-<li><strong>Worker Activities</strong>: Logs labeled <code>[Worker X]</code> show tasks being processed in parallel, including steps like <code>Validating parameters</code>, <code>Gathering objects from manifest</code>, and <code>Apply manifests</code>.</li>
-<li><strong>Reconciliation Completion</strong>: Entries like <code>End Reconciling</code> and <code>Defering XXth Reconciling, with duration XXXms</code> indicate the end of a reconciliation process and its duration, aiding in performance analysis.</li>
-<li><strong>Watcher Events</strong>: Logs from <code>Watcher</code> such as <code>Delete call received for object...</code> and <code>Following resource is recreated...</code> are key for tracking changes to Kubernetes objects.</li>
-</ul>
-<p>These logs are crucial for tracking the system's behavior, diagnosing issues, and comprehending the resource management workflow.</p>
 
 
 

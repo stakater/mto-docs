@@ -5,31 +5,31 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/merge-docs-script/guides/hibernation-operator/create-cluster-resource-supervisor.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/merge-docs-script/kubernetes-resources/hibernation/api/resource-supervisor.html">
       
       
-        <link rel="prev" href="../template-operator/templates/template-default-params.html">
+        <link rel="prev" href="cluster-resource-supervisor.html">
       
       
-        <link rel="next" href="create-resource-supervisor.html">
+        <link rel="next" href="../configuration.html">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.svg">
+      <link rel="icon" href="../../../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Setup ClusterResourceSupervisor - Multi-Tenant Operator</title>
+        <title>ResourceSupervisor - Multi-Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -66,7 +66,7 @@
 
     
     
-  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setup-clusterresourcesupervisor" class="md-skip">
+        <a href="#resourcesupervisor" class="md-skip">
           Skip to content
         </a>
       
@@ -340,7 +340,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../.." title="Multi-Tenant Operator" class="md-header__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
+    <a href="../../.." title="Multi-Tenant Operator" class="md-header__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
       <!-- 
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -361,10 +361,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="../../assets/images/logo-light.png#only-light" alt="logo">
+          <img class="md-header__logo_light" src="../../../assets/images/logo-light.png#only-light" alt="logo">
           
           
-          <img class="md-header__logo_dark" src="../../assets/images/logo-dark.png#only-dark" alt="logo">
+          <img class="md-header__logo_dark" src="../../../assets/images/logo-dark.png#only-dark" alt="logo">
           
           
           <div class="header-site-name">
@@ -1988,7 +1988,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Multi-Tenant Operator" class="md-nav__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
+    <a href="../../.." title="Multi-Tenant Operator" class="md-nav__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
@@ -2065,7 +2065,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../index.html" class="md-nav__link">
+      <a href="../../../index.html" class="md-nav__link">
         
   
   
@@ -2093,7 +2093,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../about/key-features.html" class="md-nav__link">
+      <a href="../../../about/key-features.html" class="md-nav__link">
         
   
   
@@ -2121,7 +2121,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../about/use-cases.html" class="md-nav__link">
+      <a href="../../../about/use-cases.html" class="md-nav__link">
         
   
   
@@ -2149,7 +2149,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../about/benefits.html" class="md-nav__link">
+      <a href="../../../about/benefits.html" class="md-nav__link">
         
   
   
@@ -2231,7 +2231,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/architecture.html" class="md-nav__link">
+      <a href="../../../architecture/architecture.html" class="md-nav__link">
         
   
   
@@ -2313,7 +2313,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/overview.html" class="md-nav__link">
+      <a href="../../../installation/overview.html" class="md-nav__link">
         
   
   
@@ -2341,7 +2341,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/openshift.html" class="md-nav__link">
+      <a href="../../../installation/openshift.html" class="md-nav__link">
         
   
   
@@ -2369,7 +2369,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/kubernetes.html" class="md-nav__link">
+      <a href="../../../installation/kubernetes.html" class="md-nav__link">
         
   
   
@@ -2444,7 +2444,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/azure-aks/preparation.html" class="md-nav__link">
+      <a href="../../../installation/azure-aks/preparation.html" class="md-nav__link">
         
   
   
@@ -2472,7 +2472,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/azure-aks/installation.html" class="md-nav__link">
+      <a href="../../../installation/azure-aks/installation.html" class="md-nav__link">
         
   
   
@@ -2500,7 +2500,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/azure-aks/validation.html" class="md-nav__link">
+      <a href="../../../installation/azure-aks/validation.html" class="md-nav__link">
         
   
   
@@ -2583,7 +2583,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/aws-eks/preparation.html" class="md-nav__link">
+      <a href="../../../installation/aws-eks/preparation.html" class="md-nav__link">
         
   
   
@@ -2611,7 +2611,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/aws-eks/installation.html" class="md-nav__link">
+      <a href="../../../installation/aws-eks/installation.html" class="md-nav__link">
         
   
   
@@ -2639,7 +2639,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/aws-eks/validation.html" class="md-nav__link">
+      <a href="../../../installation/aws-eks/validation.html" class="md-nav__link">
         
   
   
@@ -2729,7 +2729,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/overview.html" class="md-nav__link">
+      <a href="../../../console/overview.html" class="md-nav__link">
         
   
   
@@ -2757,7 +2757,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/dashboard.html" class="md-nav__link">
+      <a href="../../../console/dashboard.html" class="md-nav__link">
         
   
   
@@ -2785,7 +2785,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/tenants.html" class="md-nav__link">
+      <a href="../../../console/tenants.html" class="md-nav__link">
         
   
   
@@ -2813,7 +2813,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/namespaces.html" class="md-nav__link">
+      <a href="../../../console/namespaces.html" class="md-nav__link">
         
   
   
@@ -2841,7 +2841,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/hibernation.html" class="md-nav__link">
+      <a href="../../../console/hibernation.html" class="md-nav__link">
         
   
   
@@ -2869,7 +2869,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/showback.html" class="md-nav__link">
+      <a href="../../../console/showback.html" class="md-nav__link">
         
   
   
@@ -2897,7 +2897,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/quotas.html" class="md-nav__link">
+      <a href="../../../console/quotas.html" class="md-nav__link">
         
   
   
@@ -2925,7 +2925,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/templates.html" class="md-nav__link">
+      <a href="../../../console/templates.html" class="md-nav__link">
         
   
   
@@ -2953,7 +2953,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/template-instances.html" class="md-nav__link">
+      <a href="../../../console/template-instances.html" class="md-nav__link">
         
   
   
@@ -2981,7 +2981,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/cluster-template-instances.html" class="md-nav__link">
+      <a href="../../../console/cluster-template-instances.html" class="md-nav__link">
         
   
   
@@ -3009,7 +3009,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/capacity-planning.html" class="md-nav__link">
+      <a href="../../../console/capacity-planning.html" class="md-nav__link">
         
   
   
@@ -3037,7 +3037,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/configuration.html" class="md-nav__link">
+      <a href="../../../console/configuration.html" class="md-nav__link">
         
   
   
@@ -3119,7 +3119,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../cli/kubectl-plugin.html" class="md-nav__link">
+      <a href="../../../cli/kubectl-plugin.html" class="md-nav__link">
         
   
   
@@ -3151,18 +3151,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -3183,7 +3185,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3201,7 +3203,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/concepts.html" class="md-nav__link">
+      <a href="../../../architecture/concepts.html" class="md-nav__link">
         
   
   
@@ -3229,7 +3231,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/quota.html" class="md-nav__link">
+      <a href="../../quota.html" class="md-nav__link">
         
   
   
@@ -3257,7 +3259,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/tenant-overview.html" class="md-nav__link">
+      <a href="../../tenant/tenant-overview.html" class="md-nav__link">
         
   
   
@@ -3285,7 +3287,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/extensions.html" class="md-nav__link">
+      <a href="../../extensions.html" class="md-nav__link">
         
   
   
@@ -3313,7 +3315,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/integration-config.html" class="md-nav__link">
+      <a href="../../integration-config.html" class="md-nav__link">
         
   
   
@@ -3359,7 +3361,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Template Operator
+    Template
   
 
     
@@ -3375,7 +3377,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Template Operator
+    Template
   
 
           </label>
@@ -3388,7 +3390,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/template-operator/api.html" class="md-nav__link">
+      <a href="../../template/api.html" class="md-nav__link">
         
   
   
@@ -3416,7 +3418,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/template-operator/metrics.html" class="md-nav__link">
+      <a href="../../template/metrics.html" class="md-nav__link">
         
   
   
@@ -3449,18 +3451,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" checked="">
         
           
           <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
@@ -3470,7 +3474,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -3481,12 +3485,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_7">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -3496,18 +3500,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7_1">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7_1" checked="">
         
           
           <label class="md-nav__link" for="__nav_6_7_1" id="__nav_6_7_1_label" tabindex="0">
@@ -3528,7 +3534,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_7_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_7_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_7_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3546,7 +3552,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/hibernation-operator/api/cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -3571,10 +3577,37 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../kubernetes-resources/hibernation-operator/api/resource-supervisor.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ResourceSupervisor
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="resource-supervisor.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3590,6 +3623,172 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#supported-workloads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Workloads
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ignored-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ignored Namespaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Modes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-hibernation-with-cron-schedule-sleep-wake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Hibernation with Cron Schedule (Sleep + Wake)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-permanent-sleep-manual-wake" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Permanent Sleep (Manual Wake)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-immediate-sleep-no-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Immediate Sleep (No Schedule)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status Tracking
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-cicd-preview-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: CI/CD Preview Namespace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Status
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3610,7 +3809,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/hibernation-operator/configuration.html" class="md-nav__link">
+      <a href="../configuration.html" class="md-nav__link">
         
   
   
@@ -3638,7 +3837,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/hibernation-operator/metrics.html" class="md-nav__link">
+      <a href="../metrics.html" class="md-nav__link">
         
   
   
@@ -3666,7 +3865,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/hibernation-operator/rbac.html" class="md-nav__link">
+      <a href="../rbac.html" class="md-nav__link">
         
   
   
@@ -3694,7 +3893,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/hibernation-operator/security-model.html" class="md-nav__link">
+      <a href="../security-model.html" class="md-nav__link">
         
   
   
@@ -3722,7 +3921,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/hibernation-operator/webhooks.html" class="md-nav__link">
+      <a href="../webhooks.html" class="md-nav__link">
         
   
   
@@ -3762,20 +3961,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -3796,7 +3993,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3814,7 +4011,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/how-to-guides/create-tenant.html" class="md-nav__link">
+      <a href="../../tenant/how-to-guides/create-tenant.html" class="md-nav__link">
         
   
   
@@ -3842,7 +4039,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
+      <a href="../../tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
         
   
   
@@ -3870,7 +4067,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
+      <a href="../../tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
         
   
   
@@ -3898,7 +4095,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
+      <a href="../../tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
         
   
   
@@ -3926,7 +4123,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
+      <a href="../../tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
         
   
   
@@ -3954,7 +4151,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
+      <a href="../../tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   
@@ -3982,7 +4179,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
+      <a href="../../tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
         
   
   
@@ -4010,7 +4207,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
+      <a href="../../tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
         
   
   
@@ -4038,7 +4235,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/how-to-guides/host-validation.html" class="md-nav__link">
+      <a href="../../tenant/how-to-guides/host-validation.html" class="md-nav__link">
         
   
   
@@ -4066,7 +4263,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/how-to-guides/storage-classes.html" class="md-nav__link">
+      <a href="../../tenant/how-to-guides/storage-classes.html" class="md-nav__link">
         
   
   
@@ -4094,7 +4291,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/how-to-guides/pod-priority-classes.html" class="md-nav__link">
+      <a href="../../tenant/how-to-guides/pod-priority-classes.html" class="md-nav__link">
         
   
   
@@ -4122,7 +4319,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/how-to-guides/service-accounts.html" class="md-nav__link">
+      <a href="../../tenant/how-to-guides/service-accounts.html" class="md-nav__link">
         
   
   
@@ -4150,7 +4347,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/how-to-guides/image-registries.html" class="md-nav__link">
+      <a href="../../tenant/how-to-guides/image-registries.html" class="md-nav__link">
         
   
   
@@ -4178,7 +4375,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/how-to-guides/custom-roles.html" class="md-nav__link">
+      <a href="../../tenant/how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   
@@ -4206,7 +4403,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
+      <a href="../../tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   
@@ -4234,7 +4431,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
+      <a href="../../tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
         
   
   
@@ -4262,7 +4459,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../kubernetes-resources/tenant/how-to-guides/templated-metadata-values.html" class="md-nav__link">
+      <a href="../../tenant/how-to-guides/templated-metadata-values.html" class="md-nav__link">
         
   
   
@@ -4308,7 +4505,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Template Operator
+    Template
   
 
     
@@ -4324,7 +4521,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Template Operator
+    Template
   
 
           </label>
@@ -4355,7 +4552,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Guides
+    Templates
   
 
     
@@ -4371,7 +4568,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Guides
+    Templates
   
 
           </label>
@@ -4384,7 +4581,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../template-operator/templates/copying-resources-2.html" class="md-nav__link">
+      <a href="../../../guides/template/templates/copying-resources-2.html" class="md-nav__link">
         
   
   
@@ -4412,7 +4609,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../template-operator/templates/copying-resources.html" class="md-nav__link">
+      <a href="../../../guides/template/templates/copying-resources.html" class="md-nav__link">
         
   
   
@@ -4440,7 +4637,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../template-operator/templates/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../../../guides/template/templates/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   
@@ -4468,7 +4665,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../template-operator/templates/deploying-templates.html" class="md-nav__link">
+      <a href="../../../guides/template/templates/deploying-templates.html" class="md-nav__link">
         
   
   
@@ -4496,7 +4693,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../template-operator/templates/distributing-manifests.html" class="md-nav__link">
+      <a href="../../../guides/template/templates/distributing-manifests.html" class="md-nav__link">
         
   
   
@@ -4524,7 +4721,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../template-operator/templates/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../../../guides/template/templates/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   
@@ -4552,7 +4749,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../template-operator/templates/resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../../../guides/template/templates/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   
@@ -4580,7 +4777,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../template-operator/templates/template-default-params.html" class="md-nav__link">
+      <a href="../../../guides/template/templates/template-default-params.html" class="md-nav__link">
         
   
   
@@ -4621,20 +4818,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_19" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_19">
         
           
           <label class="md-nav__link" for="__nav_7_19" id="__nav_7_19_label" tabindex="0">
@@ -4644,7 +4839,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -4655,12 +4850,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_19_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_19_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_19">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -4670,37 +4865,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Setup ClusterResourceSupervisor
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="create-cluster-resource-supervisor.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../guides/hibernation/create-cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -4716,150 +4884,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#creating-a-clusterresourcesupervisor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating a ClusterResourceSupervisor
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Creating a ClusterResourceSupervisor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Prerequisites
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-1-choose-a-targeting-strategy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: Choose a Targeting Strategy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-create-a-clusterresourcesupervisor-yaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: Create a ClusterResourceSupervisor YAML
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 2: Create a ClusterResourceSupervisor YAML">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-a-label-based-targeting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example A: Label-Based Targeting
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-b-argocd-appproject-integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example B: ArgoCD AppProject Integration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-c-explicit-namespace-list" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example C: Explicit Namespace List
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-apply-the-resource" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: Apply the Resource
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-4-verify-status" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 4: Verify Status
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Notes
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -4872,7 +4896,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="create-resource-supervisor.html" class="md-nav__link">
+      <a href="../../../guides/hibernation/create-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -4900,7 +4924,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="hibernate-resources.html" class="md-nav__link">
+      <a href="../../../guides/hibernation/hibernate-resources.html" class="md-nav__link">
         
   
   
@@ -4990,7 +5014,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/argocd.html" class="md-nav__link">
+      <a href="../../../integrations/argocd.html" class="md-nav__link">
         
   
   
@@ -5065,7 +5089,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/vault/vault.html" class="md-nav__link">
+      <a href="../../../integrations/vault/vault.html" class="md-nav__link">
         
   
   
@@ -5093,7 +5117,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/vault/vault-ic.html" class="md-nav__link">
+      <a href="../../../integrations/vault/vault-ic.html" class="md-nav__link">
         
   
   
@@ -5121,7 +5145,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
+      <a href="../../../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
         
   
   
@@ -5157,7 +5181,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/devworkspace.html" class="md-nav__link">
+      <a href="../../../integrations/devworkspace.html" class="md-nav__link">
         
   
   
@@ -5185,7 +5209,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/mattermost.html" class="md-nav__link">
+      <a href="../../../integrations/mattermost.html" class="md-nav__link">
         
   
   
@@ -5213,7 +5237,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/azure-pricing.html" class="md-nav__link">
+      <a href="../../../integrations/azure-pricing.html" class="md-nav__link">
         
   
   
@@ -5241,7 +5265,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/aws-pricing.html" class="md-nav__link">
+      <a href="../../../integrations/aws-pricing.html" class="md-nav__link">
         
   
   
@@ -5287,7 +5311,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -5303,7 +5327,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -5316,7 +5340,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/hibernation-operator/argocd.html" class="md-nav__link">
+      <a href="../../../integrations/hibernation/argocd.html" class="md-nav__link">
         
   
   
@@ -5359,7 +5383,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../pricing.html" class="md-nav__link">
+      <a href="../../../pricing.html" class="md-nav__link">
         
   
   
@@ -5386,7 +5410,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../changelog.html" class="md-nav__link">
+      <a href="../../../changelog.html" class="md-nav__link">
         
   
   
@@ -5413,7 +5437,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../eula.html" class="md-nav__link">
+      <a href="../../../eula.html" class="md-nav__link">
         
   
   
@@ -5440,7 +5464,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting.html" class="md-nav__link">
+      <a href="../../../troubleshooting.html" class="md-nav__link">
         
   
   
@@ -5489,22 +5513,44 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#creating-a-clusterresourcesupervisor" class="md-nav__link">
+  <a href="#supported-workloads" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Creating a ClusterResourceSupervisor
+        Supported Workloads
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Creating a ClusterResourceSupervisor">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ignored-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ignored Namespaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Modes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported Modes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#1-hibernation-with-cron-schedule-sleep-wake" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prerequisites
+        1. Hibernation with Cron Schedule (Sleep + Wake)
       
     </span>
   </a>
@@ -5512,10 +5558,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-1-choose-a-targeting-strategy" class="md-nav__link">
+  <a href="#2-permanent-sleep-manual-wake" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: Choose a Targeting Strategy
+        2. Permanent Sleep (Manual Wake)
       
     </span>
   </a>
@@ -5523,44 +5569,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-create-a-clusterresourcesupervisor-yaml" class="md-nav__link">
+  <a href="#3-immediate-sleep-no-schedule" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: Create a ClusterResourceSupervisor YAML
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 2: Create a ClusterResourceSupervisor YAML">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-a-label-based-targeting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example A: Label-Based Targeting
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-b-argocd-appproject-integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example B: ArgoCD AppProject Integration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-c-explicit-namespace-list" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example C: Explicit Namespace List
+        3. Immediate Sleep (No Schedule)
       
     </span>
   </a>
@@ -5571,12 +5583,57 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-apply-the-resource" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#status-tracking" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: Apply the Resource
+        Status Tracking
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-cicd-preview-namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: CI/CD Preview Namespace
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Reference
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spec
       
     </span>
   </a>
@@ -5584,21 +5641,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-4-verify-status" class="md-nav__link">
+  <a href="#status" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4: Verify Status
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Notes
+        Status
       
     </span>
   </a>
@@ -5630,105 +5676,171 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="setup-clusterresourcesupervisor">Setup ClusterResourceSupervisor<a class="headerlink" href="#setup-clusterresourcesupervisor" title="Permanent link">#</a></h1>
-<h2 id="creating-a-clusterresourcesupervisor">Creating a <code>ClusterResourceSupervisor</code><a class="headerlink" href="#creating-a-clusterresourcesupervisor" title="Permanent link">#</a></h2>
-<p>This guide explains how to create a <strong>cluster-scoped</strong> <code>ClusterResourceSupervisor</code> to manage hibernation across multiple namespaces or ArgoCD AppProjects.</p>
-<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h3>
+<h1 id="resourcesupervisor">ResourceSupervisor<a class="headerlink" href="#resourcesupervisor" title="Permanent link">#</a></h1>
+<p>The <code>ResourceSupervisor</code> is a <strong>namespace-scoped</strong> custom resource that enables <strong>self-service hibernation</strong> of workloads within a <strong>single namespace</strong>. It allows application teams or namespace owners to define schedules for scaling down and restoring <code>Deployments</code> and <code>StatefulSets</code> without requiring cluster-wide permissions.</p>
+<blockquote>
+<p>✅ <strong>Only affects the namespace in which it is created.</strong></p>
+</blockquote>
+<h2 id="supported-workloads">Supported Workloads<a class="headerlink" href="#supported-workloads" title="Permanent link">#</a></h2>
 <ul>
-<li>The <strong>Hibernation Operator</strong> must be <a href="https://docs.stakater.com/hibernation-operator-docs/getting-started/installation/kubernetes.html">installed</a>.</li>
-<li>You have <strong>cluster-admin</strong> permissions.</li>
+<li><code>Deployment</code></li>
+<li><code>StatefulSet</code></li>
 </ul>
-<h3 id="step-1-choose-a-targeting-strategy">Step 1: Choose a Targeting Strategy<a class="headerlink" href="#step-1-choose-a-targeting-strategy" title="Permanent link">#</a></h3>
-<p>You can target namespaces in <strong>three ways</strong> (use one or combine <code>names</code> + <code>labelSelector</code>):</p>
+<p>These resources are scaled to <strong>0 replicas</strong> during sleep and restored to their <strong>original replica count</strong> during wake.</p>
+<h2 id="ignored-namespaces">Ignored Namespaces<a class="headerlink" href="#ignored-namespaces" title="Permanent link">#</a></h2>
+<p>While <code>ResourceSupervisor</code> is namespace-scoped and only acts within its own namespace, the Hibernation Operator still respects global exclusion rules. A namespace (including the one containing the <code>ResourceSupervisor</code>) will be <strong>ignored</strong> if it has:</p>
+<ul>
+<li>The annotation:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">hibernation.stakater.com/exclude</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+</code></pre></div>
+<blockquote>
+<p>🔒 The operator <strong>never modifies</strong> workloads in excluded namespaces—even if a <code>ResourceSupervisor</code> exists there.</p>
+</blockquote>
+<h2 id="supported-modes">Supported Modes<a class="headerlink" href="#supported-modes" title="Permanent link">#</a></h2>
+<h3 id="1-hibernation-with-cron-schedule-sleep-wake">1. Hibernation with Cron Schedule (Sleep + Wake)<a class="headerlink" href="#1-hibernation-with-cron-schedule-sleep-wake" title="Permanent link">#</a></h3>
+<p>Define both <code>sleepSchedule</code> and <code>wakeSchedule</code> to automatically cycle workloads on and off.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nightly-hibernation</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app-staging</span><span class="w">  </span><span class="c1"># ← Must match target namespace</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">20</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">   </span><span class="c1"># Sleep daily at 8:00 PM UTC</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">     </span><span class="c1"># Wake daily at 8:00 AM UTC</span>
+</code></pre></div>
+<blockquote>
+<p>🕒 <strong>Cron Format</strong>: Standard Unix cron (<code>minute hour day month weekday</code>). Timezone is <strong>UTC</strong>.</p>
+</blockquote>
+<hr>
+<h3 id="2-permanent-sleep-manual-wake">2. Permanent Sleep (Manual Wake)<a class="headerlink" href="#2-permanent-sleep-manual-wake" title="Permanent link">#</a></h3>
+<p>Omit <code>wakeSchedule</code> to keep workloads asleep indefinitely. Workloads will <strong>only wake</strong> when:</p>
+<ul>
+<li>The <code>ResourceSupervisor</code> is <strong>deleted</strong>, <strong>or</strong></li>
+<li>A <code>wakeSchedule</code> is <strong>added later</strong></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pause-for-maintenance</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo-env</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">12</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">   </span><span class="c1"># Sleep today at noon UTC, never wake</span>
+<span class="w">    </span><span class="c1"># wakeSchedule: omitted → stay asleep</span>
+</code></pre></div>
+<blockquote>
+<p>💡 This is useful for temporary freezes (e.g., during security reviews or budget pauses).</p>
+</blockquote>
+<hr>
+<h3 id="3-immediate-sleep-no-schedule">3. Immediate Sleep (No Schedule)<a class="headerlink" href="#3-immediate-sleep-no-schedule" title="Permanent link">#</a></h3>
+<p>To sleep <strong>immediately</strong>, create a <code>ResourceSupervisor</code> with an <strong>empty <code>schedule</code></strong> block:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleep-now</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci-preview-pr123</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</code></pre></div>
+<ul>
+<li>Workloads are scaled to 0 <strong>as soon as the CR is created</strong>.</li>
+<li>They remain asleep until the CR is <strong>deleted</strong>.</li>
+</ul>
+<blockquote>
+<p>🚀 Ideal for ephemeral environments (e.g., CI/CD preview namespaces).</p>
+</blockquote>
+<hr>
+<h2 id="status-tracking">Status Tracking<a class="headerlink" href="#status-tracking" title="Permanent link">#</a></h2>
+<p>The operator updates the CR’s <code>status</code> to reflect current state:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">status</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">currentStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleeping</span><span class="w">      </span><span class="c1"># or "running", "error"</span>
+<span class="w">  </span><span class="nt">nextReconcileTime</span><span class="p">:</span><span class="w"> </span><span class="s">"2025-02-01T08:00:00Z"</span>
+</code></pre></div>
+<p>Use <code>kubectl describe</code> or <code>kubectl get -o yaml</code> to monitor:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>resourcesupervisor<span class="w"> </span>nightly-hibernation<span class="w"> </span>-n<span class="w"> </span>my-app-staging<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.status}'</span>
+</code></pre></div>
+<hr>
+<h2 id="key-notes">Key Notes<a class="headerlink" href="#key-notes" title="Permanent link">#</a></h2>
+<ul>
+<li>❌ <strong>No <code>argocd</code> field</strong>: <code>ResourceSupervisor</code> <strong>does not support ArgoCD integration</strong>. Use <code>ClusterResourceSupervisor</code> for AppProject-based hibernation.</li>
+<li>❌ <strong>No <code>namespaces</code> field</strong>: It <strong>only affects its own namespace</strong>—you cannot target other namespaces.</li>
+<li>✅ <strong>Safe by default</strong>: Only <code>Deployments</code> and <code>StatefulSets</code> are scaled; all other resources are untouched.</li>
+<li>✅ <strong>Stateful restoration</strong>: Original replica counts are stored in the CR’s status and restored accurately—even after operator restarts.</li>
+</ul>
+<hr>
+<h2 id="example-cicd-preview-namespace">Example: CI/CD Preview Namespace<a class="headerlink" href="#example-cicd-preview-namespace" title="Permanent link">#</a></h2>
+<p>A CI pipeline creates a namespace <code>pr-456</code> and immediately hibernates it to save costs:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># pr-456-hibernation.yaml</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto-sleep</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pr-456</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</code></pre></div>
+<p>Apply it:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>pr-456-hibernation.yaml
+</code></pre></div>
+<p>Workloads sleep instantly. When the PR is merged, the pipeline deletes the namespace (or the CR), waking workloads briefly before cleanup.</p>
+<hr>
+<h2 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">#</a></h2>
+<p><strong>Group/Version:</strong> <code>hibernation.stakater.com/v1beta1</code> · <strong>Kind:</strong> <code>ResourceSupervisor</code> · <strong>Scope:</strong> Namespace</p>
+<h3 id="spec">Spec<a class="headerlink" href="#spec" title="Permanent link">#</a></h3>
 <table>
 <thead>
 <tr>
-<th>Method</th>
-<th>Use Case</th>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Explicit namespace list</strong></td>
-<td>Known, static namespaces</td>
+<td><code>schedule</code></td>
+<td><code>object</code> (Hibernation)</td>
+<td>Yes</td>
+<td>Hibernation schedule for workloads in this namespace. An empty object (<code>schedule: {}</code>) triggers immediate sleep.</td>
 </tr>
 <tr>
-<td><strong>Label selector</strong></td>
-<td>Dynamic selection (e.g., all <code>env=dev</code>)</td>
+<td><code>schedule.sleepSchedule</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Standard 5-field Unix cron expression (UTC) for scaling workloads to zero. If empty, workloads sleep immediately on creation.</td>
 </tr>
 <tr>
-<td><strong>ArgoCD AppProjects</strong></td>
-<td>GitOps-aligned hibernation</td>
+<td><code>schedule.wakeSchedule</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Standard 5-field Unix cron expression (UTC) for restoring workloads. If omitted, workloads remain asleep until the CR is updated or deleted.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="step-2-create-a-clusterresourcesupervisor-yaml">Step 2: Create a <code>ClusterResourceSupervisor</code> YAML<a class="headerlink" href="#step-2-create-a-clusterresourcesupervisor-yaml" title="Permanent link">#</a></h3>
-<h4 id="example-a-label-based-targeting">Example A: Label-Based Targeting<a class="headerlink" href="#example-a-label-based-targeting" title="Permanent link">#</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environments-hibernation</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">18</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">   </span><span class="c1"># Weekdays at 6 PM UTC</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">     </span><span class="c1"># Weekdays at 8 AM UTC</span>
-</code></pre></div>
-<h4 id="example-b-argocd-appproject-integration">Example B: ArgoCD AppProject Integration<a class="headerlink" href="#example-b-argocd-appproject-integration" title="Permanent link">#</a></h4>
-<blockquote>
-<p>✅ Ensure <code>argoCD.enabled=true</code> was set during <a href="https://docs.stakater.com/hibernation-operator-docs/getting-started/installation/kubernetes.html#optional-enable-argocd-integration">Helm install</a></p>
-</blockquote>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-frontend-hibernation</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend-team</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mobile-apps</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">22</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">     </span><span class="c1"># Sleep at 10 PM UTC daily</span>
-<span class="w">    </span><span class="c1"># No wakeSchedule → stay asleep until manually updated</span>
-</code></pre></div>
-<h4 id="example-c-explicit-namespace-list">Example C: Explicit Namespace List<a class="headerlink" href="#example-c-explicit-namespace-list" title="Permanent link">#</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">specific-namespaces-hibernation</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-a-staging</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-b-test</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo-env</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">0"</span><span class="w">      </span><span class="c1"># Every Sunday at midnight</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1"</span><span class="w">       </span><span class="c1"># Every Monday at midnight</span>
-</code></pre></div>
-<h3 id="step-3-apply-the-resource">Step 3: Apply the Resource<a class="headerlink" href="#step-3-apply-the-resource" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>cluster-resource-supervisor.yaml
-</code></pre></div>
-<h3 id="step-4-verify-status">Step 4: Verify Status<a class="headerlink" href="#step-4-verify-status" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>clusterresourcesupervisor<span class="w"> </span>dev-environments-hibernation<span class="w"> </span>-o<span class="w"> </span>yaml
-</code></pre></div>
-<p>Key status fields:</p>
-<ul>
-<li><code>status.watchedNamespaces</code>: List of namespaces being managed</li>
-<li><code>status.sleepingNamespaces</code>: Details of scaled-down apps (with original replica counts)</li>
-<li><code>status.currentStatus</code>: Overall state (<code>running</code>, <code>sleeping</code>, <code>error</code>)</li>
-<li><code>status.nextReconcileTime</code>: Next scheduled action</li>
-</ul>
-<h3 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h3>
-<ul>
-<li>The operator <strong>merges</strong> <code>names</code> and <code>labelSelector</code> results (union of both).</li>
-<li>If <strong>both <code>namespaces</code> and <code>argocd</code></strong> are defined, the operator targets <strong>all namespaces from both sources</strong>.</li>
-<li>Namespaces not matching any criteria are <strong>ignored</strong> (safe by default).</li>
-</ul>
+<h3 id="status">Status<a class="headerlink" href="#status" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>currentStatus</code></td>
+<td><code>string</code> (<code>sleeping</code>, <code>running</code>, <code>error</code>)</td>
+<td>Current state of the targeted workloads.</td>
+</tr>
+<tr>
+<td><code>nextReconcileTime</code></td>
+<td><code>string</code> (RFC 3339 timestamp)</td>
+<td>Next time the operator will sleep or wake the namespace's workloads.</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -6022,27 +6134,27 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 <div class="flex-2">
                     <div class="logo-footer-container">
                         
-                        <img class="md-header__logo_light" src="../../assets/images/footer-logo-light.png#only-light" alt="logo">
+                        <img class="md-header__logo_light" src="../../../assets/images/footer-logo-light.png#only-light" alt="logo">
                         
                         
-                        <img src="../../assets/images/footer-logo-dark.png#only-dark" alt="logo">
+                        <img src="../../../assets/images/footer-logo-dark.png#only-dark" alt="logo">
                         
                     </div>
 
                     <div class="collaborations-img-container">
                         <div class="display-flex">
                             
-                            <img class="csa-logo-dark" src="../../assets/images/CSA_dark.png#only-dark" alt="CSA">
+                            <img class="csa-logo-dark" src="../../../assets/images/CSA_dark.png#only-dark" alt="CSA">
                             
                             
-                            <img class="csa-logo-light" src="../../assets/images/CSA_light.png#only-light" alt="CSA">
+                            <img class="csa-logo-light" src="../../../assets/images/CSA_light.png#only-light" alt="CSA">
                             
 
                             
-                            <img class="hc-logo-dark" src="../../assets/images/HC_dark.png#only-dark" alt="HC">
+                            <img class="hc-logo-dark" src="../../../assets/images/HC_dark.png#only-dark" alt="HC">
                             
                             
-                            <img class="hc-logo-light" src="../../assets/images/HC_light.png#only-light" alt="HC">
+                            <img class="hc-logo-light" src="../../../assets/images/HC_light.png#only-light" alt="HC">
                             
                         </div>
                     </div>
@@ -6434,10 +6546,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   

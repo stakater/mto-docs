@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/merge-docs-script/kubernetes-resources/hibernation-operator/webhooks.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/merge-docs-script/guides/hibernation/hibernate-resources.html">
       
       
-        <link rel="prev" href="security-model.html">
+        <link rel="prev" href="create-resource-supervisor.html">
       
       
-        <link rel="next" href="../tenant/how-to-guides/create-tenant.html">
+        <link rel="next" href="../../integrations/argocd.html">
       
       
         
@@ -22,7 +22,7 @@
     
     
       
-        <title>Webhooks - Multi-Tenant Operator</title>
+        <title>Hibernate a Tenant - Multi-Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#webhooks" class="md-skip">
+        <a href="#hibernate-a-tenant" class="md-skip">
           Skip to content
         </a>
       
@@ -3151,20 +3151,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -3185,7 +3183,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3231,7 +3229,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../quota.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/quota.html" class="md-nav__link">
         
   
   
@@ -3259,7 +3257,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/tenant-overview.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/tenant-overview.html" class="md-nav__link">
         
   
   
@@ -3287,7 +3285,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../extensions.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/extensions.html" class="md-nav__link">
         
   
   
@@ -3315,7 +3313,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integration-config.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/integration-config.html" class="md-nav__link">
         
   
   
@@ -3361,7 +3359,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Template Operator
+    Template
   
 
     
@@ -3377,7 +3375,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Template Operator
+    Template
   
 
           </label>
@@ -3390,7 +3388,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../template-operator/api.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/template/api.html" class="md-nav__link">
         
   
   
@@ -3418,7 +3416,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../template-operator/metrics.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/template/metrics.html" class="md-nav__link">
         
   
   
@@ -3451,20 +3449,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7">
         
           
           <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
@@ -3474,7 +3470,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -3485,12 +3481,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_7">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -3550,7 +3546,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="api/cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/hibernation/api/cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -3578,7 +3574,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="api/resource-supervisor.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/hibernation/api/resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -3614,7 +3610,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="configuration.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/hibernation/configuration.html" class="md-nav__link">
         
   
   
@@ -3642,7 +3638,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="metrics.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/hibernation/metrics.html" class="md-nav__link">
         
   
   
@@ -3670,7 +3666,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="rbac.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/hibernation/rbac.html" class="md-nav__link">
         
   
   
@@ -3698,7 +3694,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="security-model.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/hibernation/security-model.html" class="md-nav__link">
         
   
   
@@ -3723,37 +3719,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Webhooks
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="webhooks.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../kubernetes-resources/hibernation/webhooks.html" class="md-nav__link">
         
   
   
@@ -3769,72 +3738,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#schedule-validation-both-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Schedule validation (both resources)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#clusterresourcesupervisor-namespace-validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ClusterResourceSupervisor namespace validation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#certificates" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Certificates
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3859,18 +3762,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked="">
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -3891,7 +3796,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3909,7 +3814,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/create-tenant.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/create-tenant.html" class="md-nav__link">
         
   
   
@@ -3937,7 +3842,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
         
   
   
@@ -3965,7 +3870,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
         
   
   
@@ -3993,7 +3898,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
         
   
   
@@ -4021,7 +3926,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
         
   
   
@@ -4049,7 +3954,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   
@@ -4077,7 +3982,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
         
   
   
@@ -4105,7 +4010,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
         
   
   
@@ -4133,7 +4038,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/host-validation.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/host-validation.html" class="md-nav__link">
         
   
   
@@ -4161,7 +4066,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/storage-classes.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/storage-classes.html" class="md-nav__link">
         
   
   
@@ -4189,7 +4094,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/pod-priority-classes.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/pod-priority-classes.html" class="md-nav__link">
         
   
   
@@ -4217,7 +4122,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/service-accounts.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/service-accounts.html" class="md-nav__link">
         
   
   
@@ -4245,7 +4150,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/image-registries.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/image-registries.html" class="md-nav__link">
         
   
   
@@ -4273,7 +4178,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/custom-roles.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   
@@ -4301,7 +4206,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   
@@ -4329,7 +4234,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
         
   
   
@@ -4357,7 +4262,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/templated-metadata-values.html" class="md-nav__link">
+      <a href="../../kubernetes-resources/tenant/how-to-guides/templated-metadata-values.html" class="md-nav__link">
         
   
   
@@ -4403,7 +4308,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Template Operator
+    Template
   
 
     
@@ -4419,7 +4324,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Template Operator
+    Template
   
 
           </label>
@@ -4450,7 +4355,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Guides
+    Templates
   
 
     
@@ -4466,7 +4371,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Guides
+    Templates
   
 
           </label>
@@ -4479,7 +4384,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/copying-resources-2.html" class="md-nav__link">
+      <a href="../template/templates/copying-resources-2.html" class="md-nav__link">
         
   
   
@@ -4507,7 +4412,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/copying-resources.html" class="md-nav__link">
+      <a href="../template/templates/copying-resources.html" class="md-nav__link">
         
   
   
@@ -4535,7 +4440,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../template/templates/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   
@@ -4563,7 +4468,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/deploying-templates.html" class="md-nav__link">
+      <a href="../template/templates/deploying-templates.html" class="md-nav__link">
         
   
   
@@ -4591,7 +4496,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/distributing-manifests.html" class="md-nav__link">
+      <a href="../template/templates/distributing-manifests.html" class="md-nav__link">
         
   
   
@@ -4619,7 +4524,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../template/templates/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   
@@ -4647,7 +4552,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../template/templates/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   
@@ -4675,7 +4580,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/template-default-params.html" class="md-nav__link">
+      <a href="../template/templates/template-default-params.html" class="md-nav__link">
         
   
   
@@ -4716,18 +4621,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_19">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_19" checked="">
         
           
           <label class="md-nav__link" for="__nav_7_19" id="__nav_7_19_label" tabindex="0">
@@ -4737,7 +4644,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -4748,12 +4655,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_19_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_19_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_19">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -4766,7 +4673,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/hibernation-operator/create-cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="create-cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -4794,7 +4701,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/hibernation-operator/create-resource-supervisor.html" class="md-nav__link">
+      <a href="create-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -4819,10 +4726,37 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../guides/hibernation-operator/hibernate-resources.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hibernate a Tenant
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="hibernate-resources.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -4838,6 +4772,100 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#configuring-hibernation-for-tenant-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuring Hibernation for Tenant Namespaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cluster-namespace-resource-supervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cluster &amp; Namespace Resource Supervisor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cluster &amp; Namespace Resource Supervisor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual-creation-of-resourcesupervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual creation of ResourceSupervisor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#freeing-up-unused-resources-with-hibernation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Freeing up unused resources with hibernation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hibernation-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hibernation States
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hibernating-namespaces-andor-argocd-applications-with-cluster-resourcesupervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hibernating namespaces and/or ArgoCD Applications with Cluster ResourceSupervisor
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -5209,7 +5237,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -5225,7 +5253,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -5238,7 +5266,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/hibernation-operator/argocd.html" class="md-nav__link">
+      <a href="../../integrations/hibernation/argocd.html" class="md-nav__link">
         
   
   
@@ -5411,10 +5439,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#configuring-hibernation-for-tenant-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        Configuring Hibernation for Tenant Namespaces
       
     </span>
   </a>
@@ -5422,10 +5450,38 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#schedule-validation-both-resources" class="md-nav__link">
+  <a href="#cluster-namespace-resource-supervisor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Schedule validation (both resources)
+        Cluster &amp; Namespace Resource Supervisor
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cluster &amp; Namespace Resource Supervisor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual-creation-of-resourcesupervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manual creation of ResourceSupervisor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#freeing-up-unused-resources-with-hibernation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Freeing up unused resources with hibernation
       
     </span>
   </a>
@@ -5433,10 +5489,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#clusterresourcesupervisor-namespace-validation" class="md-nav__link">
+  <a href="#hibernation-states" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ClusterResourceSupervisor namespace validation
+        Hibernation States
       
     </span>
   </a>
@@ -5444,10 +5500,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#certificates" class="md-nav__link">
+  <a href="#hibernating-namespaces-andor-argocd-applications-with-cluster-resourcesupervisor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Certificates
+        Hibernating namespaces and/or ArgoCD Applications with Cluster ResourceSupervisor
       
     </span>
   </a>
@@ -5474,65 +5530,160 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="webhooks">Webhooks<a class="headerlink" href="#webhooks" title="Permanent link">#</a></h1>
-<p>The Hibernation Operator provides <strong>validating admission webhooks</strong> for both
-custom resources. They reject invalid resources at admission time — before they
-are persisted — primarily to catch malformed cron schedules and conflicting
-namespace targeting.</p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
-<ul>
-<li><strong>Type:</strong> validating only (no mutating webhooks).</li>
-<li><strong>Resources / operations:</strong> <code>resourcesupervisors</code> and
-  <code>clusterresourcesupervisors</code>, on <code>CREATE</code> and <code>UPDATE</code>.</li>
-<li><strong>Failure policy:</strong> <code>Fail</code> — if the webhook is unavailable, the request is
-  rejected (<code>sideEffects: None</code>).</li>
-<li><strong>Enablement:</strong> off by default; enabled via the <code>ENABLE_WEBHOOKS</code> environment
-  variable. The Helm chart runs a dedicated webhook deployment with webhooks
-  enabled (see <a href="configuration.html">Configuration</a>).</li>
-<li><strong>Port:</strong> the webhook server listens on <code>9443</code>.</li>
-</ul>
-<p>The webhook endpoints are:</p>
-<ul>
-<li><code>/validate-hibernation-stakater-com-v1beta1-resourcesupervisor</code> (<code>vresourcesupervisor.kb.io</code>)</li>
-<li><code>/validate-hibernation-stakater-com-v1beta1-clusterresourcesupervisor</code> (<code>vclusterresourcesupervisor.kb.io</code>)</li>
-</ul>
-<h2 id="schedule-validation-both-resources">Schedule validation (both resources)<a class="headerlink" href="#schedule-validation-both-resources" title="Permanent link">#</a></h2>
-<p>Cron schedules are parsed using standard cron syntax. The webhook enforces:</p>
-<ul>
-<li><strong>Empty schedules are allowed</strong> — both <code>sleepSchedule</code> and <code>wakeSchedule</code>
-  empty (immediate/permanent sleep use cases) passes validation.</li>
-<li>If a <code>wakeSchedule</code> is provided, both <code>sleepSchedule</code> and <code>wakeSchedule</code> must
-  be <strong>valid cron expressions</strong>.</li>
-<li><code>sleepSchedule</code> and <code>wakeSchedule</code> <strong>must not be identical</strong>.</li>
-<li>When neither schedule uses a wildcard (<code>*</code>), both must resolve to a time <strong>in
-  the future</strong>, and the <strong>wake time must be after the sleep time</strong>. Schedules
-  containing <code>*</code> are always considered valid.</li>
-</ul>
-<h2 id="clusterresourcesupervisor-namespace-validation">ClusterResourceSupervisor namespace validation<a class="headerlink" href="#clusterresourcesupervisor-namespace-validation" title="Permanent link">#</a></h2>
-<p>In addition to schedule validation, the <code>ClusterResourceSupervisor</code> webhook
-enforces namespace uniqueness:</p>
-<ul>
-<li><strong>No duplicate namespace names</strong> within a single resource's
-  <code>spec.namespaces.names</code>.</li>
-<li><strong>No overlap across resources</strong> — a namespace targeted by one
-  <code>ClusterResourceSupervisor</code> cannot be targeted by another. This prevents two
-  cluster supervisors from fighting over the same namespace.</li>
-</ul>
-<h2 id="certificates">Certificates<a class="headerlink" href="#certificates" title="Permanent link">#</a></h2>
-<p>The webhook server requires TLS. The operator integrates with
-<a href="https://cert-manager.io">cert-manager</a>:</p>
-<ul>
-<li>A self-signed <code>Issuer</code> (<code>selfsigned-issuer</code>) issues a <code>Certificate</code> stored in
-  the secret <code>hibernation-operator-webhook-server-cert</code>.</li>
-<li>DNS names cover the webhook service (<code>&lt;service&gt;.&lt;namespace&gt;.svc</code> and the
-  <code>.svc.cluster.local</code> variant).</li>
-</ul>
-<p>Alternatively, you can supply certificates directly via the
-<code>--webhook-cert-path</code>, <code>--webhook-cert-name</code>, and <code>--webhook-cert-key</code> flags.</p>
+<h1 id="hibernate-a-tenant">Hibernate a Tenant<a class="headerlink" href="#hibernate-a-tenant" title="Permanent link">#</a></h1>
+<p>Implementing hibernation for tenants' namespaces efficiently manages cluster resources by temporarily reducing workload activities during off-peak hours. This guide demonstrates how to configure hibernation schedules for tenant namespaces, leveraging Tenant and ResourceSupervisor for precise control.</p>
+<h2 id="configuring-hibernation-for-tenant-namespaces">Configuring Hibernation for Tenant Namespaces<a class="headerlink" href="#configuring-hibernation-for-tenant-namespaces" title="Permanent link">#</a></h2>
+<p>You can manage workloads in your cluster with MTO by implementing a hibernation schedule for your tenants.
+Hibernation downsizes the running <code>Deployments</code> and <code>StatefulSets</code> in a tenant’s namespace according to a defined cron schedule. You can set a hibernation schedule for your tenants by adding the ‘spec.hibernation’ field to the tenant's respective Custom Resource.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">hibernation</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">23 * * * *</span>
+<span class="w">  </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">26 * * * *</span>
+</code></pre></div>
+<p><code>spec.hibernation.sleepSchedule</code> accepts a cron expression indicating the time to put the workloads in your tenant’s namespaces to sleep.</p>
+<p><code>spec.hibernation.wakeSchedule</code> accepts a cron expression indicating the time to wake the workloads in your tenant’s namespaces up.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Both sleep and wake schedules must be specified for your tenant's hibernation schedule to be valid.</p>
+</div>
+<p>Additionally, adding the <code>hibernation.stakater.com/exclude: 'true'</code> annotation to a namespace excludes it from hibernating.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is only true for hibernation applied via the Tenant Custom Resource, and does not apply for hibernation done by manually creating a ClusterResourceSupervisor (details about that below).</p>
+</div>
+<h2 id="cluster-namespace-resource-supervisor">Cluster &amp; Namespace Resource Supervisor<a class="headerlink" href="#cluster-namespace-resource-supervisor" title="Permanent link">#</a></h2>
+<p>Adding a Hibernation Schedule to a Tenant creates an accompanying ClusterResourceSupervisor Custom Resource.</p>
+<p>When the sleep timer is activated, the Resource Supervisor puts your applications to sleep and store their previous state. When the wake timer is activated, it uses the stored state to bring them back to running state.</p>
+<p>Enabling ArgoCD support for Tenants will also hibernate applications in the tenants' <code>appProjects</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma-tenant</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma-tenant</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-gitops</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42 * * * *</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45 * * * *</span>
+
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">stakater.com/current-tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma</span>
+<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-ns1</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-ns2</span>
+</code></pre></div>
 <blockquote>
-<p>ℹ️ cert-manager is a prerequisite only when webhooks are enabled. See
-<a href="https://docs.stakater.com/hibernation-operator-docs/getting-started/installation/kubernetes.html">Installation › Kubernetes</a>.</p>
+<p>Currently, Hibernation is available only for <code>StatefulSets</code> and <code>Deployments</code>.</p>
 </blockquote>
+<h3 id="manual-creation-of-resourcesupervisor">Manual creation of ResourceSupervisor<a class="headerlink" href="#manual-creation-of-resourcesupervisor" title="Permanent link">#</a></h3>
+<p>Hibernation can also be applied by creating a ResourceSupervisor resource manually.
+The ResourceSupervisor definition will contain the hibernation cron schedule, the names of the namespaces to be hibernated, and the names of the ArgoCD AppProjects whose ArgoCD Applications have to be hibernated (as per the given schedule).</p>
+<p>This method can be used to hibernate:</p>
+<ul>
+<li>Some specific namespaces and AppProjects in a tenant</li>
+<li>A set of namespaces and AppProjects belonging to different tenants</li>
+<li>Namespaces and AppProjects belonging to a tenant that the cluster admin is not a member of</li>
+<li>Non-tenant namespaces and ArgoCD AppProjects</li>
+</ul>
+<p>As an example, the following ClusterResourceSupervisor could be created manually, to apply hibernation explicitly to the 'ns1' and 'ns2' namespaces, and to the 'sample-app-project' AppProject.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernator</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sample-app-project</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openshift-gitops</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42 * * * *</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">45 * * * *</span>
+
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns1</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns2</span>
+</code></pre></div>
+<h2 id="freeing-up-unused-resources-with-hibernation">Freeing up unused resources with hibernation<a class="headerlink" href="#freeing-up-unused-resources-with-hibernation" title="Permanent link">#</a></h2>
+<h2 id="hibernation-states">Hibernation States<a class="headerlink" href="#hibernation-states" title="Permanent link">#</a></h2>
+<p>The ClusterResourceSupervisor will look like this at 'sleeping' time (as per the schedule):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">''</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 20 * * 1-5</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 8 * * 1-5</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stage</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
+<span class="nt">status</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">currentStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleeping</span>
+<span class="w">  </span><span class="nt">nextReconcileTime</span><span class="p">:</span><span class="w"> </span><span class="s">'2024-06-11T08:00:00Z'</span>
+<span class="w">  </span><span class="nt">sleepingNamespaces</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">    </span><span class="nt">sleepingApplications</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example</span>
+<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stage</span>
+<span class="w">    </span><span class="nt">sleepingApplications</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Example</span>
+<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+</code></pre></div>
+<h2 id="hibernating-namespaces-andor-argocd-applications-with-cluster-resourcesupervisor">Hibernating namespaces and/or ArgoCD Applications with Cluster ResourceSupervisor<a class="headerlink" href="#hibernating-namespaces-andor-argocd-applications-with-cluster-resourcesupervisor" title="Permanent link">#</a></h2>
+<p>Bill, the cluster administrator, wants to hibernate a collection of namespaces and AppProjects belonging to multiple different tenants. He can do so by creating a ResourceSupervisor manually, specifying the hibernation schedule in its spec, the namespaces and ArgoCD Applications that need to be hibernated as per the mentioned schedule.
+Bill can also use the same method to hibernate some namespaces and ArgoCD Applications that do not belong to any tenant on his cluster.</p>
+<p>The example given below will hibernate the ArgoCD Applications in the 'test-app-project' AppProject; and it will also hibernate the 'ns2' and 'ns4' namespaces.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-cluster-resource-supervisor</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-app-project</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-ns</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 20 * * 1-5</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 8 * * 1-5</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns2</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns4</span>
+<span class="nt">status</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">currentStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleeping</span>
+<span class="w">  </span><span class="nt">nextReconcileTime</span><span class="p">:</span><span class="w"> </span><span class="s">'2022-10-13T08:00:00Z'</span>
+<span class="w">  </span><span class="nt">sleepingNamespaces</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">    </span><span class="nt">sleepingApplications</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-deployment</span>
+<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-deployment</span>
+<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+</code></pre></div>
 
 
 

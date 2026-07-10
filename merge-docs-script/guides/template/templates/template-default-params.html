@@ -5,31 +5,31 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/merge-docs-script/kubernetes-resources/hibernation-operator/metrics.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/merge-docs-script/guides/template/templates/template-default-params.html">
       
       
-        <link rel="prev" href="configuration.html">
+        <link rel="prev" href="resource-sync-by-tgi.html">
       
       
-        <link rel="next" href="rbac.html">
+        <link rel="next" href="../../hibernation/create-cluster-resource-supervisor.html">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.svg">
+      <link rel="icon" href="../../../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Metrics - Multi-Tenant Operator</title>
+        <title>Using Templates with Default Parameters - Multi-Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -66,7 +66,7 @@
 
     
     
-  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#metrics" class="md-skip">
+        <a href="#using-templates-with-default-parameters" class="md-skip">
           Skip to content
         </a>
       
@@ -340,7 +340,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../.." title="Multi-Tenant Operator" class="md-header__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
+    <a href="../../.." title="Multi-Tenant Operator" class="md-header__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
       <!-- 
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -361,10 +361,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="../../assets/images/logo-light.png#only-light" alt="logo">
+          <img class="md-header__logo_light" src="../../../assets/images/logo-light.png#only-light" alt="logo">
           
           
-          <img class="md-header__logo_dark" src="../../assets/images/logo-dark.png#only-dark" alt="logo">
+          <img class="md-header__logo_dark" src="../../../assets/images/logo-dark.png#only-dark" alt="logo">
           
           
           <div class="header-site-name">
@@ -1988,7 +1988,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Multi-Tenant Operator" class="md-nav__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
+    <a href="../../.." title="Multi-Tenant Operator" class="md-nav__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
@@ -2065,7 +2065,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../index.html" class="md-nav__link">
+      <a href="../../../index.html" class="md-nav__link">
         
   
   
@@ -2093,7 +2093,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../about/key-features.html" class="md-nav__link">
+      <a href="../../../about/key-features.html" class="md-nav__link">
         
   
   
@@ -2121,7 +2121,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../about/use-cases.html" class="md-nav__link">
+      <a href="../../../about/use-cases.html" class="md-nav__link">
         
   
   
@@ -2149,7 +2149,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../about/benefits.html" class="md-nav__link">
+      <a href="../../../about/benefits.html" class="md-nav__link">
         
   
   
@@ -2231,7 +2231,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/architecture.html" class="md-nav__link">
+      <a href="../../../architecture/architecture.html" class="md-nav__link">
         
   
   
@@ -2313,7 +2313,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/overview.html" class="md-nav__link">
+      <a href="../../../installation/overview.html" class="md-nav__link">
         
   
   
@@ -2341,7 +2341,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/openshift.html" class="md-nav__link">
+      <a href="../../../installation/openshift.html" class="md-nav__link">
         
   
   
@@ -2369,7 +2369,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/kubernetes.html" class="md-nav__link">
+      <a href="../../../installation/kubernetes.html" class="md-nav__link">
         
   
   
@@ -2444,7 +2444,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/azure-aks/preparation.html" class="md-nav__link">
+      <a href="../../../installation/azure-aks/preparation.html" class="md-nav__link">
         
   
   
@@ -2472,7 +2472,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/azure-aks/installation.html" class="md-nav__link">
+      <a href="../../../installation/azure-aks/installation.html" class="md-nav__link">
         
   
   
@@ -2500,7 +2500,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/azure-aks/validation.html" class="md-nav__link">
+      <a href="../../../installation/azure-aks/validation.html" class="md-nav__link">
         
   
   
@@ -2583,7 +2583,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/aws-eks/preparation.html" class="md-nav__link">
+      <a href="../../../installation/aws-eks/preparation.html" class="md-nav__link">
         
   
   
@@ -2611,7 +2611,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/aws-eks/installation.html" class="md-nav__link">
+      <a href="../../../installation/aws-eks/installation.html" class="md-nav__link">
         
   
   
@@ -2639,7 +2639,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/aws-eks/validation.html" class="md-nav__link">
+      <a href="../../../installation/aws-eks/validation.html" class="md-nav__link">
         
   
   
@@ -2729,7 +2729,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/overview.html" class="md-nav__link">
+      <a href="../../../console/overview.html" class="md-nav__link">
         
   
   
@@ -2757,7 +2757,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/dashboard.html" class="md-nav__link">
+      <a href="../../../console/dashboard.html" class="md-nav__link">
         
   
   
@@ -2785,7 +2785,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/tenants.html" class="md-nav__link">
+      <a href="../../../console/tenants.html" class="md-nav__link">
         
   
   
@@ -2813,7 +2813,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/namespaces.html" class="md-nav__link">
+      <a href="../../../console/namespaces.html" class="md-nav__link">
         
   
   
@@ -2841,7 +2841,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/hibernation.html" class="md-nav__link">
+      <a href="../../../console/hibernation.html" class="md-nav__link">
         
   
   
@@ -2869,7 +2869,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/showback.html" class="md-nav__link">
+      <a href="../../../console/showback.html" class="md-nav__link">
         
   
   
@@ -2897,7 +2897,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/quotas.html" class="md-nav__link">
+      <a href="../../../console/quotas.html" class="md-nav__link">
         
   
   
@@ -2925,7 +2925,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/templates.html" class="md-nav__link">
+      <a href="../../../console/templates.html" class="md-nav__link">
         
   
   
@@ -2953,7 +2953,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/template-instances.html" class="md-nav__link">
+      <a href="../../../console/template-instances.html" class="md-nav__link">
         
   
   
@@ -2981,7 +2981,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/cluster-template-instances.html" class="md-nav__link">
+      <a href="../../../console/cluster-template-instances.html" class="md-nav__link">
         
   
   
@@ -3009,7 +3009,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/capacity-planning.html" class="md-nav__link">
+      <a href="../../../console/capacity-planning.html" class="md-nav__link">
         
   
   
@@ -3037,7 +3037,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/configuration.html" class="md-nav__link">
+      <a href="../../../console/configuration.html" class="md-nav__link">
         
   
   
@@ -3119,7 +3119,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../cli/kubectl-plugin.html" class="md-nav__link">
+      <a href="../../../cli/kubectl-plugin.html" class="md-nav__link">
         
   
   
@@ -3151,20 +3151,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -3185,7 +3183,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3203,7 +3201,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/concepts.html" class="md-nav__link">
+      <a href="../../../architecture/concepts.html" class="md-nav__link">
         
   
   
@@ -3231,7 +3229,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../quota.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/quota.html" class="md-nav__link">
         
   
   
@@ -3259,7 +3257,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/tenant-overview.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/tenant-overview.html" class="md-nav__link">
         
   
   
@@ -3287,7 +3285,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../extensions.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/extensions.html" class="md-nav__link">
         
   
   
@@ -3315,7 +3313,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integration-config.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/integration-config.html" class="md-nav__link">
         
   
   
@@ -3361,7 +3359,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Template Operator
+    Template
   
 
     
@@ -3377,7 +3375,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Template Operator
+    Template
   
 
           </label>
@@ -3390,7 +3388,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../template-operator/api.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/template/api.html" class="md-nav__link">
         
   
   
@@ -3418,7 +3416,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../template-operator/metrics.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/template/metrics.html" class="md-nav__link">
         
   
   
@@ -3451,20 +3449,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7">
         
           
           <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
@@ -3474,7 +3470,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -3485,12 +3481,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_7">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -3550,7 +3546,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="api/cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/hibernation/api/cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -3578,7 +3574,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="api/resource-supervisor.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/hibernation/api/resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -3614,7 +3610,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="configuration.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/hibernation/configuration.html" class="md-nav__link">
         
   
   
@@ -3639,37 +3635,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Metrics
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="metrics.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../kubernetes-resources/hibernation/metrics.html" class="md-nav__link">
         
   
   
@@ -3685,61 +3654,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#metrics-endpoint" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Metrics endpoint
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#servicemonitor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ServiceMonitor
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#available-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Available metrics
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3752,7 +3666,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="rbac.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/hibernation/rbac.html" class="md-nav__link">
         
   
   
@@ -3780,7 +3694,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="security-model.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/hibernation/security-model.html" class="md-nav__link">
         
   
   
@@ -3808,7 +3722,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="webhooks.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/hibernation/webhooks.html" class="md-nav__link">
         
   
   
@@ -3848,18 +3762,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked="">
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -3880,7 +3796,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3898,7 +3814,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/create-tenant.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/create-tenant.html" class="md-nav__link">
         
   
   
@@ -3926,7 +3842,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
         
   
   
@@ -3954,7 +3870,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
         
   
   
@@ -3982,7 +3898,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
         
   
   
@@ -4010,7 +3926,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
         
   
   
@@ -4038,7 +3954,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   
@@ -4066,7 +3982,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
         
   
   
@@ -4094,7 +4010,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
         
   
   
@@ -4122,7 +4038,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/host-validation.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/host-validation.html" class="md-nav__link">
         
   
   
@@ -4150,7 +4066,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/storage-classes.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/storage-classes.html" class="md-nav__link">
         
   
   
@@ -4178,7 +4094,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/pod-priority-classes.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/pod-priority-classes.html" class="md-nav__link">
         
   
   
@@ -4206,7 +4122,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/service-accounts.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/service-accounts.html" class="md-nav__link">
         
   
   
@@ -4234,7 +4150,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/image-registries.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/image-registries.html" class="md-nav__link">
         
   
   
@@ -4262,7 +4178,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/custom-roles.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   
@@ -4290,7 +4206,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   
@@ -4318,7 +4234,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
         
   
   
@@ -4346,7 +4262,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/templated-metadata-values.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/templated-metadata-values.html" class="md-nav__link">
         
   
   
@@ -4371,18 +4287,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_18">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_18" checked="">
         
           
           <label class="md-nav__link" for="__nav_7_18" id="__nav_7_18_label" tabindex="0">
@@ -4392,7 +4310,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Template Operator
+    Template
   
 
     
@@ -4403,12 +4321,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_18_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_18_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_18">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Template Operator
+    Template
   
 
           </label>
@@ -4418,18 +4336,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_18_1">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_18_1" checked="">
         
           
           <label class="md-nav__link" for="__nav_7_18_1" id="__nav_7_18_1_label" tabindex="0">
@@ -4439,7 +4359,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Guides
+    Templates
   
 
     
@@ -4450,12 +4370,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_18_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_18_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_18_1">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Guides
+    Templates
   
 
           </label>
@@ -4468,7 +4388,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/copying-resources-2.html" class="md-nav__link">
+      <a href="copying-resources-2.html" class="md-nav__link">
         
   
   
@@ -4496,7 +4416,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/copying-resources.html" class="md-nav__link">
+      <a href="copying-resources.html" class="md-nav__link">
         
   
   
@@ -4524,7 +4444,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="deploying-private-helm-charts.html" class="md-nav__link">
         
   
   
@@ -4552,7 +4472,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/deploying-templates.html" class="md-nav__link">
+      <a href="deploying-templates.html" class="md-nav__link">
         
   
   
@@ -4580,7 +4500,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/distributing-manifests.html" class="md-nav__link">
+      <a href="distributing-manifests.html" class="md-nav__link">
         
   
   
@@ -4608,7 +4528,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   
@@ -4636,7 +4556,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="resource-sync-by-tgi.html" class="md-nav__link">
         
   
   
@@ -4661,10 +4581,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/template-default-params.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="template-default-params.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -4680,6 +4609,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+      
     </li>
   
 
@@ -4726,7 +4656,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -4742,7 +4672,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -4755,7 +4685,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/hibernation-operator/create-cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../../hibernation/create-cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -4783,7 +4713,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/hibernation-operator/create-resource-supervisor.html" class="md-nav__link">
+      <a href="../../hibernation/create-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -4811,7 +4741,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/hibernation-operator/hibernate-resources.html" class="md-nav__link">
+      <a href="../../hibernation/hibernate-resources.html" class="md-nav__link">
         
   
   
@@ -4901,7 +4831,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/argocd.html" class="md-nav__link">
+      <a href="../../../integrations/argocd.html" class="md-nav__link">
         
   
   
@@ -4976,7 +4906,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/vault/vault.html" class="md-nav__link">
+      <a href="../../../integrations/vault/vault.html" class="md-nav__link">
         
   
   
@@ -5004,7 +4934,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/vault/vault-ic.html" class="md-nav__link">
+      <a href="../../../integrations/vault/vault-ic.html" class="md-nav__link">
         
   
   
@@ -5032,7 +4962,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
+      <a href="../../../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
         
   
   
@@ -5068,7 +4998,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/devworkspace.html" class="md-nav__link">
+      <a href="../../../integrations/devworkspace.html" class="md-nav__link">
         
   
   
@@ -5096,7 +5026,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/mattermost.html" class="md-nav__link">
+      <a href="../../../integrations/mattermost.html" class="md-nav__link">
         
   
   
@@ -5124,7 +5054,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/azure-pricing.html" class="md-nav__link">
+      <a href="../../../integrations/azure-pricing.html" class="md-nav__link">
         
   
   
@@ -5152,7 +5082,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/aws-pricing.html" class="md-nav__link">
+      <a href="../../../integrations/aws-pricing.html" class="md-nav__link">
         
   
   
@@ -5198,7 +5128,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -5214,7 +5144,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -5227,7 +5157,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/hibernation-operator/argocd.html" class="md-nav__link">
+      <a href="../../../integrations/hibernation/argocd.html" class="md-nav__link">
         
   
   
@@ -5270,7 +5200,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../pricing.html" class="md-nav__link">
+      <a href="../../../pricing.html" class="md-nav__link">
         
   
   
@@ -5297,7 +5227,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../changelog.html" class="md-nav__link">
+      <a href="../../../changelog.html" class="md-nav__link">
         
   
   
@@ -5324,7 +5254,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../eula.html" class="md-nav__link">
+      <a href="../../../eula.html" class="md-nav__link">
         
   
   
@@ -5351,7 +5281,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting.html" class="md-nav__link">
+      <a href="../../../troubleshooting.html" class="md-nav__link">
         
   
   
@@ -5393,47 +5323,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#metrics-endpoint" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Metrics endpoint
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#servicemonitor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ServiceMonitor
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#available-metrics" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Available metrics
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -5452,49 +5341,37 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">#</a></h1>
-<p>The Hibernation Operator exposes Prometheus-compatible metrics through the
-<a href="https://book.kubebuilder.io/reference/metrics">controller-runtime</a> framework.</p>
-<h2 id="metrics-endpoint">Metrics endpoint<a class="headerlink" href="#metrics-endpoint" title="Permanent link">#</a></h2>
-<p>The metrics server is <strong>disabled by default</strong> (<code>--metrics-bind-address=0</code>). When
-enabled it serves on:</p>
-<ul>
-<li><strong><code>:8443</code></strong> over https when <code>--metrics-secure=true</code> (the default), or</li>
-<li><strong><code>:8080</code></strong> over http when <code>--metrics-secure=false</code>.</li>
-</ul>
-<p>The endpoint path is <code>/metrics</code>. In secure mode, requests are authenticated and
-authorized using the Kubernetes API (bearer token), so only principals granted
-the metrics-reader permission can scrape it. See
-<a href="configuration.html">Configuration</a> for the relevant flags and
-<a href="rbac.html">RBAC</a> for the metrics roles.</p>
-<h2 id="servicemonitor">ServiceMonitor<a class="headerlink" href="#servicemonitor" title="Permanent link">#</a></h2>
-<p>A Prometheus Operator <code>ServiceMonitor</code> (<code>controller-manager-metrics-monitor</code>)
-is provided to scrape the endpoint:</p>
-<ul>
-<li><strong>scheme:</strong> https, <strong>port:</strong> <code>https</code>, <strong>path:</strong> <code>/metrics</code></li>
-<li><strong>auth:</strong> bearer token from <code>/var/run/secrets/kubernetes.io/serviceaccount/token</code></li>
-<li><strong>selector:</strong> matches the manager service labels
-  (<code>control-plane: hibernation-controller-manager</code>,
-  <code>app.kubernetes.io/name: hibernation-operator</code>)</li>
-</ul>
-<blockquote>
-<p>⚠️ By default the <code>ServiceMonitor</code> uses <code>insecureSkipVerify: true</code>. For
-production, enable cert-manager and reference a managed certificate so
-Prometheus verifies the metrics server's TLS certificate.</p>
-</blockquote>
-<h2 id="available-metrics">Available metrics<a class="headerlink" href="#available-metrics" title="Permanent link">#</a></h2>
-<p>The operator exports the <strong>standard controller-runtime metrics</strong> — there are
-currently no custom hibernation-specific metrics. These include, among others:</p>
-<ul>
-<li><code>controller_runtime_reconcile_total</code> — reconciliations per controller and result</li>
-<li><code>controller_runtime_reconcile_errors_total</code> — reconcile errors per controller</li>
-<li><code>controller_runtime_reconcile_time_seconds</code> — reconcile latency histogram</li>
-<li><code>workqueue_*</code> — depth, adds, latency, and retries of the controller work queues</li>
-<li><code>rest_client_*</code> — Kubernetes API client request metrics</li>
-</ul>
-<p>Use these to monitor reconciliation health, error rates, and API client
-behavior for both the <code>ResourceSupervisor</code> and <code>ClusterResourceSupervisor</code>
-controllers.</p>
+<h1 id="using-templates-with-default-parameters">Using Templates with Default Parameters<a class="headerlink" href="#using-templates-with-default-parameters" title="Permanent link">#</a></h1>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions</span>
+<span class="nt">parameters</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Name of the parameter</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_LIMIT</span>
+<span class="w">    </span><span class="c1"># The default value of the parameter</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_REQUESTS</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"0.5"</span>
+<span class="w">    </span><span class="c1"># If a parameter is required the template instance will need to set it</span>
+<span class="w">    </span><span class="c1"># required: true</span>
+<span class="w">    </span><span class="c1"># Make sure only values are entered for this parameter</span>
+<span class="w">    </span><span class="nt">validation</span><span class="p">:</span><span class="w"> </span><span class="s">"^[0-9]*\\.?[0-9]+$"</span>
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitRange</span>
+<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-limit-range-${namespace}</span>
+<span class="w">      </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"${{DEFAULT_CPU_LIMIT}}"</span>
+<span class="w">            </span><span class="nt">defaultRequest</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"${{DEFAULT_CPU_REQUESTS}}"</span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Container</span>
+</code></pre></div>
+<p>Parameters can be used with both <code>manifests</code> and <code>helm charts</code></p>
 
 
 
@@ -5788,27 +5665,27 @@ controllers.</p>
                 <div class="flex-2">
                     <div class="logo-footer-container">
                         
-                        <img class="md-header__logo_light" src="../../assets/images/footer-logo-light.png#only-light" alt="logo">
+                        <img class="md-header__logo_light" src="../../../assets/images/footer-logo-light.png#only-light" alt="logo">
                         
                         
-                        <img src="../../assets/images/footer-logo-dark.png#only-dark" alt="logo">
+                        <img src="../../../assets/images/footer-logo-dark.png#only-dark" alt="logo">
                         
                     </div>
 
                     <div class="collaborations-img-container">
                         <div class="display-flex">
                             
-                            <img class="csa-logo-dark" src="../../assets/images/CSA_dark.png#only-dark" alt="CSA">
+                            <img class="csa-logo-dark" src="../../../assets/images/CSA_dark.png#only-dark" alt="CSA">
                             
                             
-                            <img class="csa-logo-light" src="../../assets/images/CSA_light.png#only-light" alt="CSA">
+                            <img class="csa-logo-light" src="../../../assets/images/CSA_light.png#only-light" alt="CSA">
                             
 
                             
-                            <img class="hc-logo-dark" src="../../assets/images/HC_dark.png#only-dark" alt="HC">
+                            <img class="hc-logo-dark" src="../../../assets/images/HC_dark.png#only-dark" alt="HC">
                             
                             
-                            <img class="hc-logo-light" src="../../assets/images/HC_light.png#only-light" alt="HC">
+                            <img class="hc-logo-light" src="../../../assets/images/HC_light.png#only-light" alt="HC">
                             
                         </div>
                     </div>
@@ -6200,10 +6077,10 @@ controllers.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   

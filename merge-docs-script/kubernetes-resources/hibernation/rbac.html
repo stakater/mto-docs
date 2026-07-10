@@ -5,31 +5,31 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/merge-docs-script/guides/template-operator/templates/deploying-templates.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/merge-docs-script/kubernetes-resources/hibernation/rbac.html">
       
       
-        <link rel="prev" href="deploying-private-helm-charts.html">
+        <link rel="prev" href="metrics.html">
       
       
-        <link rel="next" href="distributing-manifests.html">
+        <link rel="next" href="security-model.html">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="icon" href="../../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Distributing Resources in Namespaces - Multi-Tenant Operator</title>
+        <title>RBAC - Multi-Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -66,7 +66,7 @@
 
     
     
-  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#distributing-resources-in-namespaces" class="md-skip">
+        <a href="#rbac" class="md-skip">
           Skip to content
         </a>
       
@@ -340,7 +340,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../../.." title="Multi-Tenant Operator" class="md-header__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
+    <a href="../.." title="Multi-Tenant Operator" class="md-header__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
       <!-- 
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -361,10 +361,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="../../../assets/images/logo-light.png#only-light" alt="logo">
+          <img class="md-header__logo_light" src="../../assets/images/logo-light.png#only-light" alt="logo">
           
           
-          <img class="md-header__logo_dark" src="../../../assets/images/logo-dark.png#only-dark" alt="logo">
+          <img class="md-header__logo_dark" src="../../assets/images/logo-dark.png#only-dark" alt="logo">
           
           
           <div class="header-site-name">
@@ -1988,7 +1988,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Multi-Tenant Operator" class="md-nav__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
+    <a href="../.." title="Multi-Tenant Operator" class="md-nav__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
@@ -2065,7 +2065,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../index.html" class="md-nav__link">
+      <a href="../../index.html" class="md-nav__link">
         
   
   
@@ -2093,7 +2093,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../about/key-features.html" class="md-nav__link">
+      <a href="../../about/key-features.html" class="md-nav__link">
         
   
   
@@ -2121,7 +2121,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../about/use-cases.html" class="md-nav__link">
+      <a href="../../about/use-cases.html" class="md-nav__link">
         
   
   
@@ -2149,7 +2149,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../about/benefits.html" class="md-nav__link">
+      <a href="../../about/benefits.html" class="md-nav__link">
         
   
   
@@ -2231,7 +2231,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/architecture.html" class="md-nav__link">
+      <a href="../../architecture/architecture.html" class="md-nav__link">
         
   
   
@@ -2313,7 +2313,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/overview.html" class="md-nav__link">
+      <a href="../../installation/overview.html" class="md-nav__link">
         
   
   
@@ -2341,7 +2341,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/openshift.html" class="md-nav__link">
+      <a href="../../installation/openshift.html" class="md-nav__link">
         
   
   
@@ -2369,7 +2369,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/kubernetes.html" class="md-nav__link">
+      <a href="../../installation/kubernetes.html" class="md-nav__link">
         
   
   
@@ -2444,7 +2444,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/azure-aks/preparation.html" class="md-nav__link">
+      <a href="../../installation/azure-aks/preparation.html" class="md-nav__link">
         
   
   
@@ -2472,7 +2472,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/azure-aks/installation.html" class="md-nav__link">
+      <a href="../../installation/azure-aks/installation.html" class="md-nav__link">
         
   
   
@@ -2500,7 +2500,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/azure-aks/validation.html" class="md-nav__link">
+      <a href="../../installation/azure-aks/validation.html" class="md-nav__link">
         
   
   
@@ -2583,7 +2583,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/aws-eks/preparation.html" class="md-nav__link">
+      <a href="../../installation/aws-eks/preparation.html" class="md-nav__link">
         
   
   
@@ -2611,7 +2611,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/aws-eks/installation.html" class="md-nav__link">
+      <a href="../../installation/aws-eks/installation.html" class="md-nav__link">
         
   
   
@@ -2639,7 +2639,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../installation/aws-eks/validation.html" class="md-nav__link">
+      <a href="../../installation/aws-eks/validation.html" class="md-nav__link">
         
   
   
@@ -2729,7 +2729,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/overview.html" class="md-nav__link">
+      <a href="../../console/overview.html" class="md-nav__link">
         
   
   
@@ -2757,7 +2757,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/dashboard.html" class="md-nav__link">
+      <a href="../../console/dashboard.html" class="md-nav__link">
         
   
   
@@ -2785,7 +2785,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/tenants.html" class="md-nav__link">
+      <a href="../../console/tenants.html" class="md-nav__link">
         
   
   
@@ -2813,7 +2813,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/namespaces.html" class="md-nav__link">
+      <a href="../../console/namespaces.html" class="md-nav__link">
         
   
   
@@ -2841,7 +2841,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/hibernation.html" class="md-nav__link">
+      <a href="../../console/hibernation.html" class="md-nav__link">
         
   
   
@@ -2869,7 +2869,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/showback.html" class="md-nav__link">
+      <a href="../../console/showback.html" class="md-nav__link">
         
   
   
@@ -2897,7 +2897,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/quotas.html" class="md-nav__link">
+      <a href="../../console/quotas.html" class="md-nav__link">
         
   
   
@@ -2925,7 +2925,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/templates.html" class="md-nav__link">
+      <a href="../../console/templates.html" class="md-nav__link">
         
   
   
@@ -2953,7 +2953,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/template-instances.html" class="md-nav__link">
+      <a href="../../console/template-instances.html" class="md-nav__link">
         
   
   
@@ -2981,7 +2981,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/cluster-template-instances.html" class="md-nav__link">
+      <a href="../../console/cluster-template-instances.html" class="md-nav__link">
         
   
   
@@ -3009,7 +3009,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/capacity-planning.html" class="md-nav__link">
+      <a href="../../console/capacity-planning.html" class="md-nav__link">
         
   
   
@@ -3037,7 +3037,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/configuration.html" class="md-nav__link">
+      <a href="../../console/configuration.html" class="md-nav__link">
         
   
   
@@ -3119,7 +3119,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../cli/kubectl-plugin.html" class="md-nav__link">
+      <a href="../../cli/kubectl-plugin.html" class="md-nav__link">
         
   
   
@@ -3151,18 +3151,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -3183,7 +3185,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3201,7 +3203,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../architecture/concepts.html" class="md-nav__link">
+      <a href="../../architecture/concepts.html" class="md-nav__link">
         
   
   
@@ -3229,7 +3231,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/quota.html" class="md-nav__link">
+      <a href="../quota.html" class="md-nav__link">
         
   
   
@@ -3257,7 +3259,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/tenant-overview.html" class="md-nav__link">
+      <a href="../tenant/tenant-overview.html" class="md-nav__link">
         
   
   
@@ -3285,7 +3287,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/extensions.html" class="md-nav__link">
+      <a href="../extensions.html" class="md-nav__link">
         
   
   
@@ -3313,7 +3315,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/integration-config.html" class="md-nav__link">
+      <a href="../integration-config.html" class="md-nav__link">
         
   
   
@@ -3359,7 +3361,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Template Operator
+    Template
   
 
     
@@ -3375,7 +3377,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Template Operator
+    Template
   
 
           </label>
@@ -3388,7 +3390,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/template-operator/api.html" class="md-nav__link">
+      <a href="../template/api.html" class="md-nav__link">
         
   
   
@@ -3416,7 +3418,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/template-operator/metrics.html" class="md-nav__link">
+      <a href="../template/metrics.html" class="md-nav__link">
         
   
   
@@ -3449,18 +3451,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" checked="">
         
           
           <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
@@ -3470,7 +3474,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -3481,12 +3485,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_7">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -3546,7 +3550,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/hibernation-operator/api/cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="api/cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -3574,7 +3578,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/hibernation-operator/api/resource-supervisor.html" class="md-nav__link">
+      <a href="api/resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -3610,7 +3614,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/hibernation-operator/configuration.html" class="md-nav__link">
+      <a href="configuration.html" class="md-nav__link">
         
   
   
@@ -3638,7 +3642,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/hibernation-operator/metrics.html" class="md-nav__link">
+      <a href="metrics.html" class="md-nav__link">
         
   
   
@@ -3663,10 +3667,37 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/hibernation-operator/rbac.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RBAC
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="rbac.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3682,6 +3713,61 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#operator-manager-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operator (manager) permissions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#user-facing-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User-facing roles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leader-election-and-metrics-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leader election and metrics roles
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3694,7 +3780,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/hibernation-operator/security-model.html" class="md-nav__link">
+      <a href="security-model.html" class="md-nav__link">
         
   
   
@@ -3722,7 +3808,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/hibernation-operator/webhooks.html" class="md-nav__link">
+      <a href="webhooks.html" class="md-nav__link">
         
   
   
@@ -3762,20 +3848,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -3796,7 +3880,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3814,7 +3898,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/how-to-guides/create-tenant.html" class="md-nav__link">
+      <a href="../tenant/how-to-guides/create-tenant.html" class="md-nav__link">
         
   
   
@@ -3842,7 +3926,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
+      <a href="../tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
         
   
   
@@ -3870,7 +3954,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
+      <a href="../tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
         
   
   
@@ -3898,7 +3982,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
+      <a href="../tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
         
   
   
@@ -3926,7 +4010,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
+      <a href="../tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
         
   
   
@@ -3954,7 +4038,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
+      <a href="../tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   
@@ -3982,7 +4066,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
+      <a href="../tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
         
   
   
@@ -4010,7 +4094,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
+      <a href="../tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
         
   
   
@@ -4038,7 +4122,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/how-to-guides/host-validation.html" class="md-nav__link">
+      <a href="../tenant/how-to-guides/host-validation.html" class="md-nav__link">
         
   
   
@@ -4066,7 +4150,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/how-to-guides/storage-classes.html" class="md-nav__link">
+      <a href="../tenant/how-to-guides/storage-classes.html" class="md-nav__link">
         
   
   
@@ -4094,7 +4178,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/how-to-guides/pod-priority-classes.html" class="md-nav__link">
+      <a href="../tenant/how-to-guides/pod-priority-classes.html" class="md-nav__link">
         
   
   
@@ -4122,7 +4206,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/how-to-guides/service-accounts.html" class="md-nav__link">
+      <a href="../tenant/how-to-guides/service-accounts.html" class="md-nav__link">
         
   
   
@@ -4150,7 +4234,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/how-to-guides/image-registries.html" class="md-nav__link">
+      <a href="../tenant/how-to-guides/image-registries.html" class="md-nav__link">
         
   
   
@@ -4178,7 +4262,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/how-to-guides/custom-roles.html" class="md-nav__link">
+      <a href="../tenant/how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   
@@ -4206,7 +4290,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
+      <a href="../tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   
@@ -4234,7 +4318,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
+      <a href="../tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
         
   
   
@@ -4262,7 +4346,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-resources/tenant/how-to-guides/templated-metadata-values.html" class="md-nav__link">
+      <a href="../tenant/how-to-guides/templated-metadata-values.html" class="md-nav__link">
         
   
   
@@ -4287,20 +4371,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_18" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_18">
         
           
           <label class="md-nav__link" for="__nav_7_18" id="__nav_7_18_label" tabindex="0">
@@ -4310,7 +4392,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Template Operator
+    Template
   
 
     
@@ -4321,12 +4403,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_18_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_18_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_18">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Template Operator
+    Template
   
 
           </label>
@@ -4336,20 +4418,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_18_1" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_18_1">
         
           
           <label class="md-nav__link" for="__nav_7_18_1" id="__nav_7_18_1_label" tabindex="0">
@@ -4359,7 +4439,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Guides
+    Templates
   
 
     
@@ -4370,12 +4450,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_18_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_18_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_18_1">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Guides
+    Templates
   
 
           </label>
@@ -4388,7 +4468,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="copying-resources-2.html" class="md-nav__link">
+      <a href="../../guides/template/templates/copying-resources-2.html" class="md-nav__link">
         
   
   
@@ -4416,7 +4496,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="copying-resources.html" class="md-nav__link">
+      <a href="../../guides/template/templates/copying-resources.html" class="md-nav__link">
         
   
   
@@ -4444,7 +4524,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../../guides/template/templates/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   
@@ -4469,148 +4549,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Distributing Resources in Namespaces
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="deploying-templates.html" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Distributing Resources in Namespaces
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#deploying-template-to-namespaces-via-clustertemplateinstances" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploying Template to Namespaces via ClusterTemplateInstances
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deploying Template to Namespaces via ClusterTemplateInstances">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#clustertemplateinstance-for-multiple-tenants" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ClusterTemplateInstance for multiple Tenants
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clustertemplateinstance-for-all-tenants" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ClusterTemplateInstance for all Tenants
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deploying-template-to-a-namespace-via-templateinstance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploying Template to a Namespace via TemplateInstance
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#passing-parameters-to-template-via-templateinstance-clustertemplateinstance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Passing Parameters to Template via TemplateInstance, ClusterTemplateInstance
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
   
   
     <li class="md-nav__item">
-      <a href="distributing-manifests.html" class="md-nav__link">
+      <a href="../../guides/template/templates/deploying-templates.html" class="md-nav__link">
         
   
   
@@ -4638,7 +4580,35 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../../guides/template/templates/distributing-manifests.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Distributing Resources in Namespaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/template/templates/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   
@@ -4666,7 +4636,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../../guides/template/templates/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   
@@ -4694,7 +4664,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="template-default-params.html" class="md-nav__link">
+      <a href="../../guides/template/templates/template-default-params.html" class="md-nav__link">
         
   
   
@@ -4756,7 +4726,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -4772,7 +4742,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -4785,7 +4755,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../hibernation-operator/create-cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../../guides/hibernation/create-cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -4813,7 +4783,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../hibernation-operator/create-resource-supervisor.html" class="md-nav__link">
+      <a href="../../guides/hibernation/create-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -4841,7 +4811,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../hibernation-operator/hibernate-resources.html" class="md-nav__link">
+      <a href="../../guides/hibernation/hibernate-resources.html" class="md-nav__link">
         
   
   
@@ -4931,7 +4901,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/argocd.html" class="md-nav__link">
+      <a href="../../integrations/argocd.html" class="md-nav__link">
         
   
   
@@ -5006,7 +4976,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/vault/vault.html" class="md-nav__link">
+      <a href="../../integrations/vault/vault.html" class="md-nav__link">
         
   
   
@@ -5034,7 +5004,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/vault/vault-ic.html" class="md-nav__link">
+      <a href="../../integrations/vault/vault-ic.html" class="md-nav__link">
         
   
   
@@ -5062,7 +5032,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
+      <a href="../../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
         
   
   
@@ -5098,7 +5068,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/devworkspace.html" class="md-nav__link">
+      <a href="../../integrations/devworkspace.html" class="md-nav__link">
         
   
   
@@ -5126,7 +5096,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/mattermost.html" class="md-nav__link">
+      <a href="../../integrations/mattermost.html" class="md-nav__link">
         
   
   
@@ -5154,7 +5124,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/azure-pricing.html" class="md-nav__link">
+      <a href="../../integrations/azure-pricing.html" class="md-nav__link">
         
   
   
@@ -5182,7 +5152,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/aws-pricing.html" class="md-nav__link">
+      <a href="../../integrations/aws-pricing.html" class="md-nav__link">
         
   
   
@@ -5228,7 +5198,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -5244,7 +5214,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -5257,7 +5227,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/hibernation-operator/argocd.html" class="md-nav__link">
+      <a href="../../integrations/hibernation/argocd.html" class="md-nav__link">
         
   
   
@@ -5300,7 +5270,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../pricing.html" class="md-nav__link">
+      <a href="../../pricing.html" class="md-nav__link">
         
   
   
@@ -5327,7 +5297,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../changelog.html" class="md-nav__link">
+      <a href="../../changelog.html" class="md-nav__link">
         
   
   
@@ -5354,7 +5324,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../eula.html" class="md-nav__link">
+      <a href="../../eula.html" class="md-nav__link">
         
   
   
@@ -5381,7 +5351,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../troubleshooting.html" class="md-nav__link">
+      <a href="../../troubleshooting.html" class="md-nav__link">
         
   
   
@@ -5430,49 +5400,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#deploying-template-to-namespaces-via-clustertemplateinstances" class="md-nav__link">
+  <a href="#operator-manager-permissions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deploying Template to Namespaces via ClusterTemplateInstances
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Deploying Template to Namespaces via ClusterTemplateInstances">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#clustertemplateinstance-for-multiple-tenants" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ClusterTemplateInstance for multiple Tenants
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clustertemplateinstance-for-all-tenants" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ClusterTemplateInstance for all Tenants
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deploying-template-to-a-namespace-via-templateinstance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploying Template to a Namespace via TemplateInstance
+        Operator (manager) permissions
       
     </span>
   </a>
@@ -5480,10 +5411,21 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#passing-parameters-to-template-via-templateinstance-clustertemplateinstance" class="md-nav__link">
+  <a href="#user-facing-roles" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Passing Parameters to Template via TemplateInstance, ClusterTemplateInstance
+        User-facing roles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#leader-election-and-metrics-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Leader election and metrics roles
       
     </span>
   </a>
@@ -5510,182 +5452,102 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="distributing-resources-in-namespaces">Distributing Resources in Namespaces<a class="headerlink" href="#distributing-resources-in-namespaces" title="Permanent link">#</a></h1>
-<p>Multi Tenant Operator has two Custom Resources which can cover this need using the <code>Template</code> CR, depending upon the conditions and preference.</p>
-<ol>
-<li>ClusterTemplateInstance</li>
-<li>TemplateInstance</li>
-</ol>
-<h2 id="deploying-template-to-namespaces-via-clustertemplateinstances">Deploying Template to Namespaces via ClusterTemplateInstances<a class="headerlink" href="#deploying-template-to-namespaces-via-clustertemplateinstances" title="Permanent link">#</a></h2>
-<p>Bill, the cluster admin, wants to deploy a docker pull secret in namespaces where certain labels exists.</p>
-<p>First, Bill creates a template:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret</span>
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
-<span class="w">      </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="w">      </span><span class="nt">data</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">.dockercfg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eyAKICAiaHR0cHM6IC8vaW5kZXguZG9ja2VyLmlvL3YxLyI6IHsgImF1dGgiOiAiYzNSaGEyRjBaWEk2VjI5M1YyaGhkRUZIY21WaGRGQmhjM04zYjNKayJ9Cn0K</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/dockercfg</span>
+<h1 id="rbac">RBAC<a class="headerlink" href="#rbac" title="Permanent link">#</a></h1>
+<p>The Hibernation Operator ships with a least-privilege set of RBAC roles: the
+permissions the controller itself needs to operate, and a set of user-facing
+roles you can bind to your own users and groups for self-service access to the
+custom resources.</p>
+<h2 id="operator-manager-permissions">Operator (manager) permissions<a class="headerlink" href="#operator-manager-permissions" title="Permanent link">#</a></h2>
+<p>The operator's <code>manager-role</code> <code>ClusterRole</code> grants only what is required to
+watch the custom resources and scale workloads:</p>
+<table>
+<thead>
+<tr>
+<th>API group</th>
+<th>Resources</th>
+<th>Verbs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>""</code> (core)</td>
+<td><code>namespaces</code></td>
+<td>get, list, watch</td>
+</tr>
+<tr>
+<td><code>apiextensions.k8s.io</code></td>
+<td><code>customresourcedefinitions</code></td>
+<td>get, list, watch</td>
+</tr>
+<tr>
+<td><code>apps</code></td>
+<td><code>deployments</code>, <code>statefulsets</code></td>
+<td>get, list, patch, update, watch</td>
+</tr>
+<tr>
+<td><code>hibernation.stakater.com</code></td>
+<td><code>clusterresourcesupervisors</code>, <code>resourcesupervisors</code></td>
+<td>create, delete, get, list, patch, update, watch</td>
+</tr>
+<tr>
+<td><code>hibernation.stakater.com</code></td>
+<td><code>clusterresourcesupervisors/status</code>, <code>resourcesupervisors/status</code></td>
+<td>get, patch, update</td>
+</tr>
+<tr>
+<td><code>hibernation.stakater.com</code></td>
+<td><code>clusterresourcesupervisors/finalizers</code>, <code>resourcesupervisors/finalizers</code></td>
+<td>update</td>
+</tr>
+</tbody>
+</table>
+<p>Note the operator has <strong>read-only</strong> access to namespaces and CRDs, and can
+<strong>only</strong> modify <code>Deployments</code> and <code>StatefulSets</code> (for scaling) — it never
+touches other workload types or arbitrary resources. See the
+<a href="security-model.html">Security Model</a> for how this supports safe operation.</p>
+<h2 id="user-facing-roles">User-facing roles<a class="headerlink" href="#user-facing-roles" title="Permanent link">#</a></h2>
+<p>For each custom resource the chart provides admin, editor, and viewer
+<code>ClusterRole</code>s intended for binding to your users:</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>ResourceSupervisor</th>
+<th>ClusterResourceSupervisor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>admin</strong></td>
+<td>full access (<code>*</code>) to the resource; <code>get</code> on status</td>
+<td>full access (<code>*</code>) to the resource; <code>get</code> on status</td>
+</tr>
+<tr>
+<td><strong>editor</strong></td>
+<td>create, delete, get, list, patch, update, watch; <code>get</code> on status</td>
+<td>create, delete, get, list, patch, update, watch; <code>get</code> on status</td>
+</tr>
+<tr>
+<td><strong>viewer</strong></td>
+<td>get, list, watch</td>
+<td>get, list, watch</td>
+</tr>
+</tbody>
+</table>
+<p>Bind one of these to a user or group, for example:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>rolebinding<span class="w"> </span>alice-rs-editor<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--clusterrole<span class="o">=</span>resourcesupervisor-editor-role<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--user<span class="o">=</span>alice<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--namespace<span class="o">=</span>my-app-staging
 </code></pre></div>
-<p>Once the template has been created, Bill makes a <code>ClusterTemplateInstance</code> referring to the <code>Template</code> he wants to deploy with <code>MatchLabels</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterTemplateInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-group-instance</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<p>Afterward, Bill can see that secrets have been successfully created in all label matching namespaces.</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-secret<span class="w"> </span>-n<span class="w"> </span>bluesky-anna-aurora-sandbox
-NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
-docker-secret<span class="w">    </span>Active<span class="w">   </span>3m
-
-kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-secret<span class="w"> </span>-n<span class="w"> </span>alpha-dave-aurora-sandbox
-NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
-docker-secret<span class="w">    </span>Active<span class="w">   </span>2m
-</code></pre></div>
-<p><code>ClusterTemplateInstance</code> can also target specific tenants or all tenant namespaces under a single YAML definition.</p>
-<h3 id="clustertemplateinstance-for-multiple-tenants">ClusterTemplateInstance for multiple Tenants<a class="headerlink" href="#clustertemplateinstance-for-multiple-tenants" title="Permanent link">#</a></h3>
-<p>It can be done by using the <code>matchExpressions</code> field, dividing the tenant label in key and values.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterTemplateInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-group-instance</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater.com/tenant</span>
-<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">      </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beta</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<h3 id="clustertemplateinstance-for-all-tenants">ClusterTemplateInstance for all Tenants<a class="headerlink" href="#clustertemplateinstance-for-all-tenants" title="Permanent link">#</a></h3>
-<p>This can also be done by using the <code>matchExpressions</code> field, using just the tenant label key <code>stakater.com/tenant</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterTemplateInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-group-instance</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater.com/tenant</span>
-<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Exists</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<h2 id="deploying-template-to-a-namespace-via-templateinstance">Deploying Template to a Namespace via TemplateInstance<a class="headerlink" href="#deploying-template-to-a-namespace-via-templateinstance" title="Permanent link">#</a></h2>
-<p>Anna wants to deploy a docker pull secret in her namespace.</p>
-<p>First Anna asks Bill, the cluster admin, to create a template of the secret for her:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
-<span class="w">      </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="w">      </span><span class="nt">data</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">.dockercfg</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eyAKICAiaHR0cHM6IC8vaW5kZXguZG9ja2VyLmlvL3YxLyI6IHsgImF1dGgiOiAiYzNSaGEyRjBaWEk2VjI5M1YyaGhkRUZIY21WaGRGQmhjM04zYjNKayJ9Cn0K</span>
-<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes.io/dockercfg</span>
-</code></pre></div>
-<p>Once the template has been created, Anna creates a <code>TemplateInstance</code> in her namespace referring to the <code>Template</code> she wants to deploy:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret-instance</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-anna-aurora-sandbox</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<p>Once this is created, Anna can see that the secret has been successfully applied.</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-secret<span class="w"> </span>-n<span class="w"> </span>bluesky-anna-aurora-sandbox
-NAME<span class="w">                  </span>STATE<span class="w">    </span>AGE
-docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
-</code></pre></div>
-<h2 id="passing-parameters-to-template-via-templateinstance-clustertemplateinstance">Passing Parameters to Template via TemplateInstance, ClusterTemplateInstance<a class="headerlink" href="#passing-parameters-to-template-via-templateinstance-clustertemplateinstance" title="Permanent link">#</a></h2>
-<p>Anna wants to deploy a LimitRange resource to certain namespaces.</p>
-<p>First Anna asks Bill, the cluster admin, to create template with parameters for LimitRange for her:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions</span>
-<span class="nt">parameters</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Name of the parameter</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_LIMIT</span>
-<span class="w">    </span><span class="c1"># The default value of the parameter</span>
-<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_REQUESTS</span>
-<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"0.5"</span>
-<span class="w">    </span><span class="c1"># If a parameter is required the template instance will need to set it</span>
-<span class="w">    </span><span class="c1"># required: true</span>
-<span class="w">    </span><span class="c1"># Make sure only values are entered for this parameter</span>
-<span class="w">    </span><span class="nt">validation</span><span class="p">:</span><span class="w"> </span><span class="s">"^[0-9]*\\.?[0-9]+$"</span>
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitRange</span>
-<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-limit-range-${namespace}</span>
-<span class="w">      </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">default</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"${{DEFAULT_CPU_LIMIT}}"</span>
-<span class="w">            </span><span class="nt">defaultRequest</span><span class="p">:</span>
-<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"${{DEFAULT_CPU_REQUESTS}}"</span>
-<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Container</span>
-</code></pre></div>
-<p>Afterward, Anna creates a <code>TemplateInstance</code> in her namespace referring to the <code>Template</code> she wants to deploy:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions-instance</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-anna-aurora-sandbox</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">parameters</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_LIMIT</span>
-<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"1.5"</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_REQUESTS</span>
-<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
-</code></pre></div>
-<p>If she wants to distribute the same Template over multiple namespaces, she can use <code>ClusterTemplateInstance</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterTemplateInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions-tgi</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater.com/tenant</span>
-<span class="w">      </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">      </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">alpha</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">beta</span>
-<span class="w">  </span><span class="nt">parameters</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_LIMIT</span>
-<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"1.5"</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_REQUESTS</span>
-<span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
-</code></pre></div>
+<h2 id="leader-election-and-metrics-roles">Leader election and metrics roles<a class="headerlink" href="#leader-election-and-metrics-roles" title="Permanent link">#</a></h2>
+<ul>
+<li><strong>Leader election</strong> — a <code>Role</code> granting access to <code>coordination.k8s.io</code>
+  leases and events, used only when <code>--leader-elect</code> is enabled.</li>
+<li><strong>Metrics access</strong> — a <code>metrics-reader</code> role (read the <code>/metrics</code> endpoint) and
+  a <code>metrics-auth</code> role used by the authentication/authorization filter that
+  protects the metrics endpoint. See <a href="metrics.html">Metrics</a>.</li>
+</ul>
 
 
 
@@ -5979,27 +5841,27 @@ docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
                 <div class="flex-2">
                     <div class="logo-footer-container">
                         
-                        <img class="md-header__logo_light" src="../../../assets/images/footer-logo-light.png#only-light" alt="logo">
+                        <img class="md-header__logo_light" src="../../assets/images/footer-logo-light.png#only-light" alt="logo">
                         
                         
-                        <img src="../../../assets/images/footer-logo-dark.png#only-dark" alt="logo">
+                        <img src="../../assets/images/footer-logo-dark.png#only-dark" alt="logo">
                         
                     </div>
 
                     <div class="collaborations-img-container">
                         <div class="display-flex">
                             
-                            <img class="csa-logo-dark" src="../../../assets/images/CSA_dark.png#only-dark" alt="CSA">
+                            <img class="csa-logo-dark" src="../../assets/images/CSA_dark.png#only-dark" alt="CSA">
                             
                             
-                            <img class="csa-logo-light" src="../../../assets/images/CSA_light.png#only-light" alt="CSA">
+                            <img class="csa-logo-light" src="../../assets/images/CSA_light.png#only-light" alt="CSA">
                             
 
                             
-                            <img class="hc-logo-dark" src="../../../assets/images/HC_dark.png#only-dark" alt="HC">
+                            <img class="hc-logo-dark" src="../../assets/images/HC_dark.png#only-dark" alt="HC">
                             
                             
-                            <img class="hc-logo-light" src="../../../assets/images/HC_light.png#only-light" alt="HC">
+                            <img class="hc-logo-light" src="../../assets/images/HC_light.png#only-light" alt="HC">
                             
                         </div>
                     </div>
@@ -6391,10 +6253,10 @@ docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   

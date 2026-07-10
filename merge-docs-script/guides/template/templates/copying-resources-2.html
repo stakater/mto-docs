@@ -5,31 +5,31 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/merge-docs-script/kubernetes-resources/template-operator/api.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/merge-docs-script/guides/template/templates/copying-resources-2.html">
       
       
-        <link rel="prev" href="../integration-config.html">
+        <link rel="prev" href="../../../kubernetes-resources/tenant/how-to-guides/templated-metadata-values.html">
       
       
-        <link rel="next" href="metrics.html">
+        <link rel="next" href="copying-resources.html">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.svg">
+      <link rel="icon" href="../../../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Api - Multi-Tenant Operator</title>
+        <title>Copying Secrets and ConfigMaps across Tenant Namespaces via TGI - Multi-Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -66,7 +66,7 @@
 
     
     
-  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#api-reference" class="md-skip">
+        <a href="#copying-secrets-and-configmaps-across-tenant-namespaces-via-tgi" class="md-skip">
           Skip to content
         </a>
       
@@ -340,7 +340,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../.." title="Multi-Tenant Operator" class="md-header__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
+    <a href="../../.." title="Multi-Tenant Operator" class="md-header__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
       <!-- 
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -361,10 +361,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="../../assets/images/logo-light.png#only-light" alt="logo">
+          <img class="md-header__logo_light" src="../../../assets/images/logo-light.png#only-light" alt="logo">
           
           
-          <img class="md-header__logo_dark" src="../../assets/images/logo-dark.png#only-dark" alt="logo">
+          <img class="md-header__logo_dark" src="../../../assets/images/logo-dark.png#only-dark" alt="logo">
           
           
           <div class="header-site-name">
@@ -1988,7 +1988,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Multi-Tenant Operator" class="md-nav__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
+    <a href="../../.." title="Multi-Tenant Operator" class="md-nav__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
@@ -2065,7 +2065,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../index.html" class="md-nav__link">
+      <a href="../../../index.html" class="md-nav__link">
         
   
   
@@ -2093,7 +2093,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../about/key-features.html" class="md-nav__link">
+      <a href="../../../about/key-features.html" class="md-nav__link">
         
   
   
@@ -2121,7 +2121,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../about/use-cases.html" class="md-nav__link">
+      <a href="../../../about/use-cases.html" class="md-nav__link">
         
   
   
@@ -2149,7 +2149,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../about/benefits.html" class="md-nav__link">
+      <a href="../../../about/benefits.html" class="md-nav__link">
         
   
   
@@ -2231,7 +2231,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/architecture.html" class="md-nav__link">
+      <a href="../../../architecture/architecture.html" class="md-nav__link">
         
   
   
@@ -2313,7 +2313,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/overview.html" class="md-nav__link">
+      <a href="../../../installation/overview.html" class="md-nav__link">
         
   
   
@@ -2341,7 +2341,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/openshift.html" class="md-nav__link">
+      <a href="../../../installation/openshift.html" class="md-nav__link">
         
   
   
@@ -2369,7 +2369,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/kubernetes.html" class="md-nav__link">
+      <a href="../../../installation/kubernetes.html" class="md-nav__link">
         
   
   
@@ -2444,7 +2444,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/azure-aks/preparation.html" class="md-nav__link">
+      <a href="../../../installation/azure-aks/preparation.html" class="md-nav__link">
         
   
   
@@ -2472,7 +2472,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/azure-aks/installation.html" class="md-nav__link">
+      <a href="../../../installation/azure-aks/installation.html" class="md-nav__link">
         
   
   
@@ -2500,7 +2500,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/azure-aks/validation.html" class="md-nav__link">
+      <a href="../../../installation/azure-aks/validation.html" class="md-nav__link">
         
   
   
@@ -2583,7 +2583,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/aws-eks/preparation.html" class="md-nav__link">
+      <a href="../../../installation/aws-eks/preparation.html" class="md-nav__link">
         
   
   
@@ -2611,7 +2611,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/aws-eks/installation.html" class="md-nav__link">
+      <a href="../../../installation/aws-eks/installation.html" class="md-nav__link">
         
   
   
@@ -2639,7 +2639,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../installation/aws-eks/validation.html" class="md-nav__link">
+      <a href="../../../installation/aws-eks/validation.html" class="md-nav__link">
         
   
   
@@ -2729,7 +2729,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/overview.html" class="md-nav__link">
+      <a href="../../../console/overview.html" class="md-nav__link">
         
   
   
@@ -2757,7 +2757,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/dashboard.html" class="md-nav__link">
+      <a href="../../../console/dashboard.html" class="md-nav__link">
         
   
   
@@ -2785,7 +2785,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/tenants.html" class="md-nav__link">
+      <a href="../../../console/tenants.html" class="md-nav__link">
         
   
   
@@ -2813,7 +2813,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/namespaces.html" class="md-nav__link">
+      <a href="../../../console/namespaces.html" class="md-nav__link">
         
   
   
@@ -2841,7 +2841,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/hibernation.html" class="md-nav__link">
+      <a href="../../../console/hibernation.html" class="md-nav__link">
         
   
   
@@ -2869,7 +2869,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/showback.html" class="md-nav__link">
+      <a href="../../../console/showback.html" class="md-nav__link">
         
   
   
@@ -2897,7 +2897,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/quotas.html" class="md-nav__link">
+      <a href="../../../console/quotas.html" class="md-nav__link">
         
   
   
@@ -2925,7 +2925,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/templates.html" class="md-nav__link">
+      <a href="../../../console/templates.html" class="md-nav__link">
         
   
   
@@ -2953,7 +2953,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/template-instances.html" class="md-nav__link">
+      <a href="../../../console/template-instances.html" class="md-nav__link">
         
   
   
@@ -2981,7 +2981,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/cluster-template-instances.html" class="md-nav__link">
+      <a href="../../../console/cluster-template-instances.html" class="md-nav__link">
         
   
   
@@ -3009,7 +3009,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/capacity-planning.html" class="md-nav__link">
+      <a href="../../../console/capacity-planning.html" class="md-nav__link">
         
   
   
@@ -3037,7 +3037,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/configuration.html" class="md-nav__link">
+      <a href="../../../console/configuration.html" class="md-nav__link">
         
   
   
@@ -3119,7 +3119,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../cli/kubectl-plugin.html" class="md-nav__link">
+      <a href="../../../cli/kubectl-plugin.html" class="md-nav__link">
         
   
   
@@ -3151,20 +3151,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -3185,7 +3183,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3203,7 +3201,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../architecture/concepts.html" class="md-nav__link">
+      <a href="../../../architecture/concepts.html" class="md-nav__link">
         
   
   
@@ -3231,7 +3229,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../quota.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/quota.html" class="md-nav__link">
         
   
   
@@ -3259,7 +3257,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/tenant-overview.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/tenant-overview.html" class="md-nav__link">
         
   
   
@@ -3287,7 +3285,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../extensions.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/extensions.html" class="md-nav__link">
         
   
   
@@ -3315,7 +3313,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../integration-config.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/integration-config.html" class="md-nav__link">
         
   
   
@@ -3340,20 +3338,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6">
         
           
           <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
@@ -3363,7 +3359,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Template Operator
+    Template
   
 
     
@@ -3374,12 +3370,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_6">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Template Operator
+    Template
   
 
           </label>
@@ -3389,37 +3385,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Api
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="api.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../kubernetes-resources/template/api.html" class="md-nav__link">
         
   
   
@@ -3435,326 +3404,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#packages" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Packages
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#templatesstakatercomv1alpha1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        templates.stakater.com/v1alpha1
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="templates.stakater.com/v1alpha1">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#resource-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Resource Types
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Resource Types">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#clustertemplateinstance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ClusterTemplateInstance
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clustertemplateinstancespec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ClusterTemplateInstanceSpec
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templateinstanceparameter" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TemplateInstanceParameter
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clustertemplateinstancestatus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ClusterTemplateInstanceStatus
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#template" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Template
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templateresources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TemplateResources
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#embeddedresource" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        EmbeddedResource
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helmconfiguration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HelmConfiguration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helmsetvalue" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HelmSetValue
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helmchart" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HelmChart
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helmchartrepository" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HelmChartRepository
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helmsecretref" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HelmSecretRef
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resourcemapping" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ResourceMapping
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resource" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Resource
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templatespec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TemplateSpec
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templatestatus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TemplateStatus
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templateparameter" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TemplateParameter
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templateinstance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TemplateInstance
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templateinstancespec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TemplateInstanceSpec
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templateinstancestatus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TemplateInstanceStatus
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#instancedeploymentstatus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        InstanceDeploymentStatus
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deployednamespacestate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DeployedNamespaceState
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mappedresourcesstate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MappedResourcesState
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3767,7 +3416,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="metrics.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/template/metrics.html" class="md-nav__link">
         
   
   
@@ -3821,7 +3470,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -3837,7 +3486,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -3897,7 +3546,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../hibernation-operator/api/cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/hibernation/api/cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -3925,7 +3574,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../hibernation-operator/api/resource-supervisor.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/hibernation/api/resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -3961,7 +3610,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../hibernation-operator/configuration.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/hibernation/configuration.html" class="md-nav__link">
         
   
   
@@ -3989,7 +3638,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../hibernation-operator/metrics.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/hibernation/metrics.html" class="md-nav__link">
         
   
   
@@ -4017,7 +3666,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../hibernation-operator/rbac.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/hibernation/rbac.html" class="md-nav__link">
         
   
   
@@ -4045,7 +3694,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../hibernation-operator/security-model.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/hibernation/security-model.html" class="md-nav__link">
         
   
   
@@ -4073,7 +3722,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../hibernation-operator/webhooks.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/hibernation/webhooks.html" class="md-nav__link">
         
   
   
@@ -4113,18 +3762,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked="">
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -4145,7 +3796,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4163,7 +3814,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/create-tenant.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/create-tenant.html" class="md-nav__link">
         
   
   
@@ -4191,7 +3842,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/create-namespaces.html" class="md-nav__link">
         
   
   
@@ -4219,7 +3870,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/create-sandbox.html" class="md-nav__link">
         
   
   
@@ -4247,7 +3898,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/assign-metadata.html" class="md-nav__link">
         
   
   
@@ -4275,7 +3926,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/hibernate-tenant.html" class="md-nav__link">
         
   
   
@@ -4303,7 +3954,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   
@@ -4331,7 +3982,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/disable-intra-tenant-networking.html" class="md-nav__link">
         
   
   
@@ -4359,7 +4010,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/ingress-sharding.html" class="md-nav__link">
         
   
   
@@ -4387,7 +4038,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/host-validation.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/host-validation.html" class="md-nav__link">
         
   
   
@@ -4415,7 +4066,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/storage-classes.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/storage-classes.html" class="md-nav__link">
         
   
   
@@ -4443,7 +4094,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/pod-priority-classes.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/pod-priority-classes.html" class="md-nav__link">
         
   
   
@@ -4471,7 +4122,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/service-accounts.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/service-accounts.html" class="md-nav__link">
         
   
   
@@ -4499,7 +4150,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/image-registries.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/image-registries.html" class="md-nav__link">
         
   
   
@@ -4527,7 +4178,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/custom-roles.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/custom-roles.html" class="md-nav__link">
         
   
   
@@ -4555,7 +4206,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/extend-default-roles.html" class="md-nav__link">
         
   
   
@@ -4583,7 +4234,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/delete-tenant.html" class="md-nav__link">
         
   
   
@@ -4611,7 +4262,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../tenant/how-to-guides/templated-metadata-values.html" class="md-nav__link">
+      <a href="../../../kubernetes-resources/tenant/how-to-guides/templated-metadata-values.html" class="md-nav__link">
         
   
   
@@ -4636,18 +4287,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_18">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_18" checked="">
         
           
           <label class="md-nav__link" for="__nav_7_18" id="__nav_7_18_label" tabindex="0">
@@ -4657,7 +4310,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Template Operator
+    Template
   
 
     
@@ -4668,12 +4321,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_18_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_18_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_18">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Template Operator
+    Template
   
 
           </label>
@@ -4683,18 +4336,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_18_1">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_18_1" checked="">
         
           
           <label class="md-nav__link" for="__nav_7_18_1" id="__nav_7_18_1_label" tabindex="0">
@@ -4704,7 +4359,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Guides
+    Templates
   
 
     
@@ -4715,12 +4370,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_18_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_18_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_18_1">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Guides
+    Templates
   
 
           </label>
@@ -4730,10 +4385,37 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/copying-resources-2.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copying Secrets and ConfigMaps across Tenant Namespaces via TGI
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="copying-resources-2.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -4749,6 +4431,39 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#mapping-resources-within-tenant-namespaces-via-ti" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapping Resources within Tenant Namespaces via TI
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4761,7 +4476,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/copying-resources.html" class="md-nav__link">
+      <a href="copying-resources.html" class="md-nav__link">
         
   
   
@@ -4789,7 +4504,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="deploying-private-helm-charts.html" class="md-nav__link">
         
   
   
@@ -4817,7 +4532,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/deploying-templates.html" class="md-nav__link">
+      <a href="deploying-templates.html" class="md-nav__link">
         
   
   
@@ -4845,7 +4560,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/distributing-manifests.html" class="md-nav__link">
+      <a href="distributing-manifests.html" class="md-nav__link">
         
   
   
@@ -4873,7 +4588,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   
@@ -4901,7 +4616,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="resource-sync-by-tgi.html" class="md-nav__link">
         
   
   
@@ -4929,7 +4644,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/template-default-params.html" class="md-nav__link">
+      <a href="template-default-params.html" class="md-nav__link">
         
   
   
@@ -4991,7 +4706,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -5007,7 +4722,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -5020,7 +4735,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/hibernation-operator/create-cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../../hibernation/create-cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -5048,7 +4763,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/hibernation-operator/create-resource-supervisor.html" class="md-nav__link">
+      <a href="../../hibernation/create-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -5076,7 +4791,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/hibernation-operator/hibernate-resources.html" class="md-nav__link">
+      <a href="../../hibernation/hibernate-resources.html" class="md-nav__link">
         
   
   
@@ -5166,7 +4881,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/argocd.html" class="md-nav__link">
+      <a href="../../../integrations/argocd.html" class="md-nav__link">
         
   
   
@@ -5241,7 +4956,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/vault/vault.html" class="md-nav__link">
+      <a href="../../../integrations/vault/vault.html" class="md-nav__link">
         
   
   
@@ -5269,7 +4984,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/vault/vault-ic.html" class="md-nav__link">
+      <a href="../../../integrations/vault/vault-ic.html" class="md-nav__link">
         
   
   
@@ -5297,7 +5012,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
+      <a href="../../../integrations/vault/vault-kc-entraid.html" class="md-nav__link">
         
   
   
@@ -5333,7 +5048,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/devworkspace.html" class="md-nav__link">
+      <a href="../../../integrations/devworkspace.html" class="md-nav__link">
         
   
   
@@ -5361,7 +5076,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/mattermost.html" class="md-nav__link">
+      <a href="../../../integrations/mattermost.html" class="md-nav__link">
         
   
   
@@ -5389,7 +5104,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/azure-pricing.html" class="md-nav__link">
+      <a href="../../../integrations/azure-pricing.html" class="md-nav__link">
         
   
   
@@ -5417,7 +5132,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/aws-pricing.html" class="md-nav__link">
+      <a href="../../../integrations/aws-pricing.html" class="md-nav__link">
         
   
   
@@ -5463,7 +5178,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -5479,7 +5194,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -5492,7 +5207,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/hibernation-operator/argocd.html" class="md-nav__link">
+      <a href="../../../integrations/hibernation/argocd.html" class="md-nav__link">
         
   
   
@@ -5535,7 +5250,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../pricing.html" class="md-nav__link">
+      <a href="../../../pricing.html" class="md-nav__link">
         
   
   
@@ -5562,7 +5277,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../changelog.html" class="md-nav__link">
+      <a href="../../../changelog.html" class="md-nav__link">
         
   
   
@@ -5589,7 +5304,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../eula.html" class="md-nav__link">
+      <a href="../../../eula.html" class="md-nav__link">
         
   
   
@@ -5616,7 +5331,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting.html" class="md-nav__link">
+      <a href="../../../troubleshooting.html" class="md-nav__link">
         
   
   
@@ -5665,300 +5380,13 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#packages" class="md-nav__link">
+  <a href="#mapping-resources-within-tenant-namespaces-via-ti" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Packages
+        Mapping Resources within Tenant Namespaces via TI
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#templatesstakatercomv1alpha1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        templates.stakater.com/v1alpha1
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="templates.stakater.com/v1alpha1">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#resource-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Resource Types
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Resource Types">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#clustertemplateinstance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ClusterTemplateInstance
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clustertemplateinstancespec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ClusterTemplateInstanceSpec
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templateinstanceparameter" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TemplateInstanceParameter
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clustertemplateinstancestatus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ClusterTemplateInstanceStatus
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#template" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Template
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templateresources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TemplateResources
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#embeddedresource" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        EmbeddedResource
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helmconfiguration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HelmConfiguration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helmsetvalue" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HelmSetValue
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helmchart" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HelmChart
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helmchartrepository" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HelmChartRepository
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helmsecretref" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HelmSecretRef
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resourcemapping" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ResourceMapping
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resource" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Resource
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templatespec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TemplateSpec
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templatestatus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TemplateStatus
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templateparameter" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TemplateParameter
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templateinstance" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TemplateInstance
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templateinstancespec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TemplateInstanceSpec
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#templateinstancestatus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        TemplateInstanceStatus
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#instancedeploymentstatus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        InstanceDeploymentStatus
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deployednamespacestate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DeployedNamespaceState
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mappedresourcesstate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MappedResourcesState
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -5982,790 +5410,68 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<!-- markdownlint-disable --><h1 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">#</a></h1>
-<h2 id="packages">Packages<a class="headerlink" href="#packages" title="Permanent link">#</a></h2>
-<ul>
-<li><a href="#templatesstakatercomv1alpha1">templates.stakater.com/v1alpha1</a></li>
-</ul>
-<h2 id="templatesstakatercomv1alpha1">templates.stakater.com/v1alpha1<a class="headerlink" href="#templatesstakatercomv1alpha1" title="Permanent link">#</a></h2>
-<p>Package v1alpha1 contains API Schema definitions for the templates.stakater.com v1alpha1 API group</p>
-<h3 id="resource-types">Resource Types<a class="headerlink" href="#resource-types" title="Permanent link">#</a></h3>
-<ul>
-<li><a href="#clustertemplateinstance">ClusterTemplateInstance</a></li>
-<li><a href="#template">Template</a></li>
-<li><a href="#templateinstance">TemplateInstance</a></li>
-</ul>
-<h4 id="clustertemplateinstance">ClusterTemplateInstance<a class="headerlink" href="#clustertemplateinstance" title="Permanent link">#</a></h4>
-<p>ClusterTemplateInstance is the Schema for the clustertemplateinstances API</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>apiVersion</code> <em>string</em></td>
-<td><code>templates.stakater.com/v1alpha1</code></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>kind</code> <em>string</em></td>
-<td><code>ClusterTemplateInstance</code></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>metadata</code> <em><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#objectmeta-v1-meta">ObjectMeta</a></em></td>
-<td>Refer to Kubernetes API documentation for fields of <code>metadata</code>.</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>spec</code> <em><a href="#clustertemplateinstancespec">ClusterTemplateInstanceSpec</a></em></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>status</code> <em><a href="#clustertemplateinstancestatus">ClusterTemplateInstanceStatus</a></em></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="clustertemplateinstancespec">ClusterTemplateInstanceSpec<a class="headerlink" href="#clustertemplateinstancespec" title="Permanent link">#</a></h4>
-<p>ClusterTemplateInstanceSpec defines the desired state of ClusterTemplateInstance</p>
-<p><em>Appears in:</em>
-- <a href="#clustertemplateinstance">ClusterTemplateInstance</a></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>template</code> <em>string</em></td>
-<td>Template is used to tell what to deploy in matched namespaces</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>selector</code> <em><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#labelselector-v1-meta">LabelSelector</a></em></td>
-<td>Selector is used to filter namespaces where template needs to be deployed</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sync</code> <em>boolean</em></td>
-<td>Sync is used to keep deployed instance and template in sync</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>parameters</code> <em><a href="#templateinstanceparameter">TemplateInstanceParameter</a> array</em></td>
-<td>Parameters hold the values of the defined parameters in the template</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-</tbody>
-</table>
-<h4 id="templateinstanceparameter">TemplateInstanceParameter<a class="headerlink" href="#templateinstanceparameter" title="Permanent link">#</a></h4>
-<p><em>Appears in:</em>
-- <a href="#clustertemplateinstancespec">ClusterTemplateInstanceSpec</a>
-- <a href="#templateinstancespec">TemplateInstanceSpec</a></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code> <em>string</em></td>
-<td>Name is the name of the parameter to set</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>value</code> <em>string</em></td>
-<td>Value is the value of the parameter to set</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="clustertemplateinstancestatus">ClusterTemplateInstanceStatus<a class="headerlink" href="#clustertemplateinstancestatus" title="Permanent link">#</a></h4>
-<p>ClusterTemplateInstanceStatus defines the observed state of ClusterTemplateInstance</p>
-<p><em>Appears in:</em>
-- <a href="#clustertemplateinstance">ClusterTemplateInstance</a></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>conditions</code> <em><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#condition-v1-meta">Condition</a> array</em></td>
-<td>Status conditions</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>deployedNamespaces</code> <em>object (keys:string, values:<a href="#deployednamespacestate">DeployedNamespaceState</a>)</em></td>
-<td>DeployedNamespaces is a list of namespaces where template has been deployed along with its state.</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>mappedSecrets</code> <em>object (keys:string, values:map[string]MappedResourcesState)</em></td>
-<td>MappedSecrets is a list of secrets which have been mapped along with its state.</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>mappedConfigmaps</code> <em>object (keys:string, values:map[string]MappedResourcesState)</em></td>
-<td>MappedConfigmaps is a list of configmaps which have been mapped along with its state.</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>templateManifestsHash</code> <em>string</em></td>
-<td>TemplateManifestsHash is used to ignore false-positive template.manifests update events</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>templateResourceMappingHash</code> <em>string</em></td>
-<td>TemplateResourceMappingHash is used to ignore false-positive template.resourceMappings update events</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>namespaceCount</code> <em>integer</em></td>
-<td>NamespaceCount tells the number of namespaces CTI matches</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-</tbody>
-</table>
-<h4 id="template">Template<a class="headerlink" href="#template" title="Permanent link">#</a></h4>
-<p>Template is the Schema for the templates API</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>apiVersion</code> <em>string</em></td>
-<td><code>templates.stakater.com/v1alpha1</code></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>kind</code> <em>string</em></td>
-<td><code>Template</code></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>metadata</code> <em><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#objectmeta-v1-meta">ObjectMeta</a></em></td>
-<td>Refer to Kubernetes API documentation for fields of <code>metadata</code>.</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>resources</code> <em><a href="#templateresources">TemplateResources</a></em></td>
-<td></td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>spec</code> <em><a href="#templatespec">TemplateSpec</a></em></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>status</code> <em><a href="#templatestatus">TemplateStatus</a></em></td>
-<td></td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>parameters</code> <em><a href="#templateparameter">TemplateParameter</a> array</em></td>
-<td>Parameters can be used to replace certain parts of the template. A parameter is referenced<br>by this format: ${NAME}, to parse the value as an expression write ${{NAME}} instead. Besides the<br>parameters defined here, the following predefined parameters can be used:<br>- ${NAMESPACE}: the namespace where the template instance was created<br>- ${TENANT}: the tenant name of the tenant that owns the namespace (if any)</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-</tbody>
-</table>
-<h4 id="templateresources">TemplateResources<a class="headerlink" href="#templateresources" title="Permanent link">#</a></h4>
-<p>TemplateResources defines a templates resources</p>
-<p><em>Appears in:</em>
-- <a href="#template">Template</a></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>manifests</code> <em><a href="#embeddedresource">EmbeddedResource</a> array</em></td>
-<td>manifest represents kubernetes resources that will be deployed into the target namespace</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>helm</code> <em><a href="#helmconfiguration">HelmConfiguration</a></em></td>
-<td>helm defines the configuration for a helm deployment</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>resourceMappings</code> <em><a href="#resourcemapping">ResourceMapping</a></em></td>
-<td>ResourceMappings defines the secrets/configmaps which will be mapped into the target namespaces</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>gotemplate</code> <em>string</em></td>
-<td>gotemplate is a Go template with Sprig functions support which will be rendered to generate Kubernetes resources.</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-</tbody>
-</table>
-<h4 id="embeddedresource">EmbeddedResource<a class="headerlink" href="#embeddedresource" title="Permanent link">#</a></h4>
-<p>EmbeddedResource holds a kubernetes resource</p>
-<p><em>Appears in:</em>
-- <a href="#templateresources">TemplateResources</a></p>
-<h4 id="helmconfiguration">HelmConfiguration<a class="headerlink" href="#helmconfiguration" title="Permanent link">#</a></h4>
-<p>HelmConfiguration holds the helm configuration</p>
-<p><em>Appears in:</em>
-- <a href="#templateresources">TemplateResources</a></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>releaseName</code> <em>string</em></td>
-<td>The helm release name. If omitted the template name will be used</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>setValues</code> <em><a href="#helmsetvalue">HelmSetValue</a> array</em></td>
-<td>Values in the form of name=value that will be passed to the helm command during<br>helm template</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>values</code> <em>string</em></td>
-<td>The additional helm values to use. Expected block string</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>chart</code> <em><a href="#helmchart">HelmChart</a></em></td>
-<td>Tells us where to find the helm chart to deploy</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="helmsetvalue">HelmSetValue<a class="headerlink" href="#helmsetvalue" title="Permanent link">#</a></h4>
-<p>HelmSetValue defines a name=value pair that will be passed to helm template</p>
-<p><em>Appears in:</em>
-- <a href="#helmconfiguration">HelmConfiguration</a></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code> <em>string</em></td>
-<td>The path of the value to set</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>value</code> <em>string</em></td>
-<td>The value to set</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>forceString</code> <em>boolean</em></td>
-<td>ForceString specifies if the parameter <code>--set</code> or <code>--set-string</code> should be used</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-</tbody>
-</table>
-<h4 id="helmchart">HelmChart<a class="headerlink" href="#helmchart" title="Permanent link">#</a></h4>
-<p>HelmChart holds the information needed to find a chart to deploy</p>
-<p><em>Appears in:</em>
-- <a href="#helmconfiguration">HelmConfiguration</a></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>repository</code> <em><a href="#helmchartrepository">HelmChartRepository</a></em></td>
-<td>Load helm chart from a repository</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-</tbody>
-</table>
-<h4 id="helmchartrepository">HelmChartRepository<a class="headerlink" href="#helmchartrepository" title="Permanent link">#</a></h4>
-<p>HelmChartRepository defines a helm repository where TO can load a chart from</p>
-<p><em>Appears in:</em>
-- <a href="#helmchart">HelmChart</a></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code> <em>string</em></td>
-<td>Name of the chart to deploy</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>version</code> <em>string</em></td>
-<td>Version is the version of the chart to deploy</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>repoUrl</code> <em>string</em></td>
-<td>The repo url to use</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>username</code> <em><a href="#helmsecretref">HelmSecretRef</a></em></td>
-<td>The username to use for the selected repository</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>password</code> <em><a href="#helmsecretref">HelmSecretRef</a></em></td>
-<td>The password to use for the selected repository</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-</tbody>
-</table>
-<h4 id="helmsecretref">HelmSecretRef<a class="headerlink" href="#helmsecretref" title="Permanent link">#</a></h4>
-<p>HelmSecretRef holds a secret reference to a secret</p>
-<p><em>Appears in:</em>
-- <a href="#helmchartrepository">HelmChartRepository</a></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>key</code> <em>string</em></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>name</code> <em>string</em></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>namespace</code> <em>string</em></td>
-<td></td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-</tbody>
-</table>
-<h4 id="resourcemapping">ResourceMapping<a class="headerlink" href="#resourcemapping" title="Permanent link">#</a></h4>
-<p><em>Appears in:</em>
-- <a href="#templateresources">TemplateResources</a></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>secrets</code> <em><a href="#resource">Resource</a> array</em></td>
-<td>Secrets consist of secrets which will be mapped to matching namespaces</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>configMaps</code> <em><a href="#resource">Resource</a> array</em></td>
-<td>ConfigMaps consist of configMaps which will be mapped to matching namespaces</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-</tbody>
-</table>
-<h4 id="resource">Resource<a class="headerlink" href="#resource" title="Permanent link">#</a></h4>
-<p><em>Appears in:</em>
-- <a href="#resourcemapping">ResourceMapping</a></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code> <em>string</em></td>
-<td>Name is the name of the resource</td>
-<td></td>
-<td>Required: {} <br></td>
-</tr>
-<tr>
-<td><code>namespace</code> <em>string</em></td>
-<td>Namespace is the namespace where the resource lives</td>
-<td></td>
-<td>Required: {} <br></td>
-</tr>
-</tbody>
-</table>
-<h4 id="templatespec">TemplateSpec<a class="headerlink" href="#templatespec" title="Permanent link">#</a></h4>
-<p><em>Appears in:</em>
-- <a href="#template">Template</a></p>
-<h4 id="templatestatus">TemplateStatus<a class="headerlink" href="#templatestatus" title="Permanent link">#</a></h4>
-<p><em>Appears in:</em>
-- <a href="#template">Template</a></p>
-<h4 id="templateparameter">TemplateParameter<a class="headerlink" href="#templateparameter" title="Permanent link">#</a></h4>
-<p><em>Appears in:</em>
-- <a href="#template">Template</a></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>name</code> <em>string</em></td>
-<td>Name is the name of the parameter</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>value</code> <em>string</em></td>
-<td>Value is the default value of the parameter</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>required</code> <em>boolean</em></td>
-<td>If required is true, the template instance must<br>define this parameter, otherwise the deployment will fail.</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>validation</code> <em>string</em></td>
-<td>Validation takes a regular expression as value to<br>verify the provided value does match expected values.</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-</tbody>
-</table>
-<h4 id="templateinstance">TemplateInstance<a class="headerlink" href="#templateinstance" title="Permanent link">#</a></h4>
-<p>TemplateInstance is the Schema for the templatesinstance API</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>apiVersion</code> <em>string</em></td>
-<td><code>templates.stakater.com/v1alpha1</code></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>kind</code> <em>string</em></td>
-<td><code>TemplateInstance</code></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>metadata</code> <em><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#objectmeta-v1-meta">ObjectMeta</a></em></td>
-<td>Refer to Kubernetes API documentation for fields of <code>metadata</code>.</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>spec</code> <em><a href="#templateinstancespec">TemplateInstanceSpec</a></em></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>status</code> <em><a href="#templateinstancestatus">TemplateInstanceStatus</a></em></td>
-<td></td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-</tbody>
-</table>
-<h4 id="templateinstancespec">TemplateInstanceSpec<a class="headerlink" href="#templateinstancespec" title="Permanent link">#</a></h4>
-<p>TemplateInstanceSpec holds the expected cluster status of the template instance</p>
-<p><em>Appears in:</em>
-- <a href="#templateinstance">TemplateInstance</a></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>template</code> <em>string</em></td>
-<td>The template to instantiate. This is an immutable field</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>sync</code> <em>boolean</em></td>
-<td>If true the template instance will keep the deployed resources in sync with the template.</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>parameters</code> <em><a href="#templateinstanceparameter">TemplateInstanceParameter</a> array</em></td>
-<td>Parameters hold the values of the defined parameters in the template</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-</tbody>
-</table>
-<h4 id="templateinstancestatus">TemplateInstanceStatus<a class="headerlink" href="#templateinstancestatus" title="Permanent link">#</a></h4>
-<p>TemplateInstanceStatus describes the current status of the template instance in the cluster</p>
-<p><em>Appears in:</em>
-- <a href="#templateinstance">TemplateInstance</a></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>status</code> <em><a href="#instancedeploymentstatus">InstanceDeploymentStatus</a></em></td>
-<td>Status holds the template instances status</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>message</code> <em>string</em></td>
-<td>A human readable message indicating details about why the namespace is in this condition.</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>reason</code> <em>string</em></td>
-<td>A brief CamelCase message indicating details about why the namespace is in this state.</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>templateHash</code> <em>string</em></td>
-<td>TemplateHash is used to ignore false-positive template update events</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>templateManifests</code> <em>string</em></td>
-<td>TemplateManifests are the manifests that were rendered before</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>mappedSecrets</code> <em>object (keys:string, values:<a href="#mappedresourcesstate">MappedResourcesState</a>)</em></td>
-<td>MappedSecrets is a list of secrets which have been mapped along with its state.</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>mappedConfigmaps</code> <em>object (keys:string, values:<a href="#mappedresourcesstate">MappedResourcesState</a>)</em></td>
-<td>MappedConfigmaps is a list of configmaps which have been mapped along with its state.</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>observedAt</code> <em><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#time-v1-meta">Time</a></em></td>
-<td>LastAppliedAt indicates when the template was last applied</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-</tbody>
-</table>
-<h4 id="instancedeploymentstatus">InstanceDeploymentStatus<a class="headerlink" href="#instancedeploymentstatus" title="Permanent link">#</a></h4>
-<p><em>Underlying type:</em> <em>string</em></p>
-<p>InstanceDeploymentStatus describes the status of template instance deployment as {"Deployed", "Failed", ""}</p>
-<p><em>Appears in:</em>
-- <a href="#deployednamespacestate">DeployedNamespaceState</a>
-- <a href="#mappedresourcesstate">MappedResourcesState</a>
-- <a href="#templateinstancestatus">TemplateInstanceStatus</a></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Deployed</code></td>
-<td>InstanceDeploymentStatusDeployed describes a succeeded instance deployment<br></td>
-</tr>
-<tr>
-<td><code>Failed</code></td>
-<td>InstanceDeploymentStatusFailed describes a failed instance deployment<br></td>
-</tr>
-<tr>
-<td>``</td>
-<td>InstanceDeploymentStatusPending describes a not yet deployed instance<br></td>
-</tr>
-</tbody>
-</table>
-<h4 id="deployednamespacestate">DeployedNamespaceState<a class="headerlink" href="#deployednamespacestate" title="Permanent link">#</a></h4>
-<p><em>Appears in:</em>
-- <a href="#clustertemplateinstancestatus">ClusterTemplateInstanceStatus</a></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>templateManifests</code> <em>string</em></td>
-<td>TemplateManifests are the manifests that were rendered before</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>status</code> <em><a href="#instancedeploymentstatus">InstanceDeploymentStatus</a></em></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="mappedresourcesstate">MappedResourcesState<a class="headerlink" href="#mappedresourcesstate" title="Permanent link">#</a></h4>
-<p><em>Appears in:</em>
-- <a href="#clustertemplateinstancestatus">ClusterTemplateInstanceStatus</a>
-- <a href="#templateinstancestatus">TemplateInstanceStatus</a></p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Default</th>
-<th>Validation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>reason</code> <em>string</em></td>
-<td>Reason of resource mapping if failed</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>status</code> <em><a href="#instancedeploymentstatus">InstanceDeploymentStatus</a></em></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<h1 id="copying-secrets-and-configmaps-across-tenant-namespaces-via-tgi">Copying Secrets and ConfigMaps across Tenant Namespaces via TGI<a class="headerlink" href="#copying-secrets-and-configmaps-across-tenant-namespaces-via-tgi" title="Permanent link">#</a></h1>
+<p>Bill is a cluster admin who wants to map a <code>docker-pull-secret</code>, present in a <code>build</code> namespace, in tenant namespaces where certain labels exists.</p>
+<p>First, Bill creates a template:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">resourceMappings</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+</code></pre></div>
+<p>Once the template has been created, Bill makes a <code>ClusterTemplateInstance</code> referring to the <code>Template</code> he wants to deploy with <code>MatchLabels</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterTemplateInstance</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-group-instance</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>Afterward, Bill can see that secrets has been successfully mapped in all matching namespaces.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-pull-secret<span class="w"> </span>-n<span class="w"> </span>bluesky-anna-aurora-sandbox
+NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
+docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
+
+kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-pull-secret<span class="w"> </span>-n<span class="w"> </span>alpha-dave-aurora-sandbox
+NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
+docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
+</code></pre></div>
+<h2 id="mapping-resources-within-tenant-namespaces-via-ti">Mapping Resources within Tenant Namespaces via TI<a class="headerlink" href="#mapping-resources-within-tenant-namespaces-via-ti" title="Permanent link">#</a></h2>
+<p>Anna is a tenant owner who wants to map a <code>docker-pull-secret</code>, present in <code>bluseky-build</code> namespace, to <code>bluesky-anna-aurora-sandbox</code> namespace.</p>
+<p>First, Bill creates a template:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="nt">resources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">resourceMappings</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-build</span>
+</code></pre></div>
+<p>Once the template has been created, Anna creates a <code>TemplateInstance</code> in <code>bluesky-anna-aurora-sandbox</code> namespace, referring to the <code>Template</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TemplateInstance</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-secret-instance</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-anna-aurora-sandbox</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-pull-secret</span>
+<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>Afterward, Bill can see that secrets has been successfully mapped in all matching namespaces.</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>docker-pull-secret<span class="w"> </span>-n<span class="w"> </span>bluesky-anna-aurora-sandbox
+NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
+docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
+</code></pre></div>
 
 
 
@@ -7059,27 +5765,27 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 <div class="flex-2">
                     <div class="logo-footer-container">
                         
-                        <img class="md-header__logo_light" src="../../assets/images/footer-logo-light.png#only-light" alt="logo">
+                        <img class="md-header__logo_light" src="../../../assets/images/footer-logo-light.png#only-light" alt="logo">
                         
                         
-                        <img src="../../assets/images/footer-logo-dark.png#only-dark" alt="logo">
+                        <img src="../../../assets/images/footer-logo-dark.png#only-dark" alt="logo">
                         
                     </div>
 
                     <div class="collaborations-img-container">
                         <div class="display-flex">
                             
-                            <img class="csa-logo-dark" src="../../assets/images/CSA_dark.png#only-dark" alt="CSA">
+                            <img class="csa-logo-dark" src="../../../assets/images/CSA_dark.png#only-dark" alt="CSA">
                             
                             
-                            <img class="csa-logo-light" src="../../assets/images/CSA_light.png#only-light" alt="CSA">
+                            <img class="csa-logo-light" src="../../../assets/images/CSA_light.png#only-light" alt="CSA">
                             
 
                             
-                            <img class="hc-logo-dark" src="../../assets/images/HC_dark.png#only-dark" alt="HC">
+                            <img class="hc-logo-dark" src="../../../assets/images/HC_dark.png#only-dark" alt="HC">
                             
                             
-                            <img class="hc-logo-light" src="../../assets/images/HC_light.png#only-light" alt="HC">
+                            <img class="hc-logo-light" src="../../../assets/images/HC_light.png#only-light" alt="HC">
                             
                         </div>
                     </div>
@@ -7471,10 +6177,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   

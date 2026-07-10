@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/merge-docs-script/kubernetes-resources/hibernation-operator/rbac.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/merge-docs-script/kubernetes-resources/hibernation/metrics.html">
       
       
-        <link rel="prev" href="metrics.html">
+        <link rel="prev" href="configuration.html">
       
       
-        <link rel="next" href="security-model.html">
+        <link rel="next" href="rbac.html">
       
       
         
@@ -22,7 +22,7 @@
     
     
       
-        <title>RBAC - Multi-Tenant Operator</title>
+        <title>Metrics - Multi-Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rbac" class="md-skip">
+        <a href="#metrics" class="md-skip">
           Skip to content
         </a>
       
@@ -3361,7 +3361,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Template Operator
+    Template
   
 
     
@@ -3377,7 +3377,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Template Operator
+    Template
   
 
           </label>
@@ -3390,7 +3390,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../template-operator/api.html" class="md-nav__link">
+      <a href="../template/api.html" class="md-nav__link">
         
   
   
@@ -3418,7 +3418,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../template-operator/metrics.html" class="md-nav__link">
+      <a href="../template/metrics.html" class="md-nav__link">
         
   
   
@@ -3474,7 +3474,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -3490,7 +3490,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -3639,34 +3639,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="metrics.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Metrics
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -3686,7 +3658,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    RBAC
+    Metrics
   
 
     
@@ -3697,14 +3669,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="rbac.html" class="md-nav__link md-nav__link--active">
+      <a href="metrics.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    RBAC
+    Metrics
   
 
     
@@ -3732,10 +3704,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#operator-manager-permissions" class="md-nav__link">
+  <a href="#metrics-endpoint" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Operator (manager) permissions
+        Metrics endpoint
       
     </span>
   </a>
@@ -3743,10 +3715,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#user-facing-roles" class="md-nav__link">
+  <a href="#servicemonitor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        User-facing roles
+        ServiceMonitor
       
     </span>
   </a>
@@ -3754,10 +3726,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#leader-election-and-metrics-roles" class="md-nav__link">
+  <a href="#available-metrics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Leader election and metrics roles
+        Available metrics
       
     </span>
   </a>
@@ -3768,6 +3740,34 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="rbac.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RBAC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -4392,7 +4392,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Template Operator
+    Template
   
 
     
@@ -4408,7 +4408,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Template Operator
+    Template
   
 
           </label>
@@ -4439,7 +4439,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Guides
+    Templates
   
 
     
@@ -4455,7 +4455,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Guides
+    Templates
   
 
           </label>
@@ -4468,7 +4468,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/copying-resources-2.html" class="md-nav__link">
+      <a href="../../guides/template/templates/copying-resources-2.html" class="md-nav__link">
         
   
   
@@ -4496,7 +4496,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/copying-resources.html" class="md-nav__link">
+      <a href="../../guides/template/templates/copying-resources.html" class="md-nav__link">
         
   
   
@@ -4524,7 +4524,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../../guides/template/templates/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   
@@ -4552,7 +4552,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/deploying-templates.html" class="md-nav__link">
+      <a href="../../guides/template/templates/deploying-templates.html" class="md-nav__link">
         
   
   
@@ -4580,7 +4580,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/distributing-manifests.html" class="md-nav__link">
+      <a href="../../guides/template/templates/distributing-manifests.html" class="md-nav__link">
         
   
   
@@ -4608,7 +4608,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../../guides/template/templates/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   
@@ -4636,7 +4636,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../../guides/template/templates/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   
@@ -4664,7 +4664,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/template-operator/templates/template-default-params.html" class="md-nav__link">
+      <a href="../../guides/template/templates/template-default-params.html" class="md-nav__link">
         
   
   
@@ -4726,7 +4726,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -4742,7 +4742,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -4755,7 +4755,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/hibernation-operator/create-cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../../guides/hibernation/create-cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -4783,7 +4783,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/hibernation-operator/create-resource-supervisor.html" class="md-nav__link">
+      <a href="../../guides/hibernation/create-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -4811,7 +4811,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/hibernation-operator/hibernate-resources.html" class="md-nav__link">
+      <a href="../../guides/hibernation/hibernate-resources.html" class="md-nav__link">
         
   
   
@@ -5198,7 +5198,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Hibernation
   
 
     
@@ -5214,7 +5214,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
             
   
-    Hibernation Operator
+    Hibernation
   
 
           </label>
@@ -5227,7 +5227,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../integrations/hibernation-operator/argocd.html" class="md-nav__link">
+      <a href="../../integrations/hibernation/argocd.html" class="md-nav__link">
         
   
   
@@ -5400,10 +5400,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#operator-manager-permissions" class="md-nav__link">
+  <a href="#metrics-endpoint" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Operator (manager) permissions
+        Metrics endpoint
       
     </span>
   </a>
@@ -5411,10 +5411,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#user-facing-roles" class="md-nav__link">
+  <a href="#servicemonitor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        User-facing roles
+        ServiceMonitor
       
     </span>
   </a>
@@ -5422,10 +5422,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#leader-election-and-metrics-roles" class="md-nav__link">
+  <a href="#available-metrics" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Leader election and metrics roles
+        Available metrics
       
     </span>
   </a>
@@ -5452,102 +5452,49 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="rbac">RBAC<a class="headerlink" href="#rbac" title="Permanent link">#</a></h1>
-<p>The Hibernation Operator ships with a least-privilege set of RBAC roles: the
-permissions the controller itself needs to operate, and a set of user-facing
-roles you can bind to your own users and groups for self-service access to the
-custom resources.</p>
-<h2 id="operator-manager-permissions">Operator (manager) permissions<a class="headerlink" href="#operator-manager-permissions" title="Permanent link">#</a></h2>
-<p>The operator's <code>manager-role</code> <code>ClusterRole</code> grants only what is required to
-watch the custom resources and scale workloads:</p>
-<table>
-<thead>
-<tr>
-<th>API group</th>
-<th>Resources</th>
-<th>Verbs</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>""</code> (core)</td>
-<td><code>namespaces</code></td>
-<td>get, list, watch</td>
-</tr>
-<tr>
-<td><code>apiextensions.k8s.io</code></td>
-<td><code>customresourcedefinitions</code></td>
-<td>get, list, watch</td>
-</tr>
-<tr>
-<td><code>apps</code></td>
-<td><code>deployments</code>, <code>statefulsets</code></td>
-<td>get, list, patch, update, watch</td>
-</tr>
-<tr>
-<td><code>hibernation.stakater.com</code></td>
-<td><code>clusterresourcesupervisors</code>, <code>resourcesupervisors</code></td>
-<td>create, delete, get, list, patch, update, watch</td>
-</tr>
-<tr>
-<td><code>hibernation.stakater.com</code></td>
-<td><code>clusterresourcesupervisors/status</code>, <code>resourcesupervisors/status</code></td>
-<td>get, patch, update</td>
-</tr>
-<tr>
-<td><code>hibernation.stakater.com</code></td>
-<td><code>clusterresourcesupervisors/finalizers</code>, <code>resourcesupervisors/finalizers</code></td>
-<td>update</td>
-</tr>
-</tbody>
-</table>
-<p>Note the operator has <strong>read-only</strong> access to namespaces and CRDs, and can
-<strong>only</strong> modify <code>Deployments</code> and <code>StatefulSets</code> (for scaling) — it never
-touches other workload types or arbitrary resources. See the
-<a href="security-model.html">Security Model</a> for how this supports safe operation.</p>
-<h2 id="user-facing-roles">User-facing roles<a class="headerlink" href="#user-facing-roles" title="Permanent link">#</a></h2>
-<p>For each custom resource the chart provides admin, editor, and viewer
-<code>ClusterRole</code>s intended for binding to your users:</p>
-<table>
-<thead>
-<tr>
-<th>Role</th>
-<th>ResourceSupervisor</th>
-<th>ClusterResourceSupervisor</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>admin</strong></td>
-<td>full access (<code>*</code>) to the resource; <code>get</code> on status</td>
-<td>full access (<code>*</code>) to the resource; <code>get</code> on status</td>
-</tr>
-<tr>
-<td><strong>editor</strong></td>
-<td>create, delete, get, list, patch, update, watch; <code>get</code> on status</td>
-<td>create, delete, get, list, patch, update, watch; <code>get</code> on status</td>
-</tr>
-<tr>
-<td><strong>viewer</strong></td>
-<td>get, list, watch</td>
-<td>get, list, watch</td>
-</tr>
-</tbody>
-</table>
-<p>Bind one of these to a user or group, for example:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>rolebinding<span class="w"> </span>alice-rs-editor<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--clusterrole<span class="o">=</span>resourcesupervisor-editor-role<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--user<span class="o">=</span>alice<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--namespace<span class="o">=</span>my-app-staging
-</code></pre></div>
-<h2 id="leader-election-and-metrics-roles">Leader election and metrics roles<a class="headerlink" href="#leader-election-and-metrics-roles" title="Permanent link">#</a></h2>
+<h1 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link">#</a></h1>
+<p>The Hibernation Operator exposes Prometheus-compatible metrics through the
+<a href="https://book.kubebuilder.io/reference/metrics">controller-runtime</a> framework.</p>
+<h2 id="metrics-endpoint">Metrics endpoint<a class="headerlink" href="#metrics-endpoint" title="Permanent link">#</a></h2>
+<p>The metrics server is <strong>disabled by default</strong> (<code>--metrics-bind-address=0</code>). When
+enabled it serves on:</p>
 <ul>
-<li><strong>Leader election</strong> — a <code>Role</code> granting access to <code>coordination.k8s.io</code>
-  leases and events, used only when <code>--leader-elect</code> is enabled.</li>
-<li><strong>Metrics access</strong> — a <code>metrics-reader</code> role (read the <code>/metrics</code> endpoint) and
-  a <code>metrics-auth</code> role used by the authentication/authorization filter that
-  protects the metrics endpoint. See <a href="metrics.html">Metrics</a>.</li>
+<li><strong><code>:8443</code></strong> over https when <code>--metrics-secure=true</code> (the default), or</li>
+<li><strong><code>:8080</code></strong> over http when <code>--metrics-secure=false</code>.</li>
 </ul>
+<p>The endpoint path is <code>/metrics</code>. In secure mode, requests are authenticated and
+authorized using the Kubernetes API (bearer token), so only principals granted
+the metrics-reader permission can scrape it. See
+<a href="configuration.html">Configuration</a> for the relevant flags and
+<a href="rbac.html">RBAC</a> for the metrics roles.</p>
+<h2 id="servicemonitor">ServiceMonitor<a class="headerlink" href="#servicemonitor" title="Permanent link">#</a></h2>
+<p>A Prometheus Operator <code>ServiceMonitor</code> (<code>controller-manager-metrics-monitor</code>)
+is provided to scrape the endpoint:</p>
+<ul>
+<li><strong>scheme:</strong> https, <strong>port:</strong> <code>https</code>, <strong>path:</strong> <code>/metrics</code></li>
+<li><strong>auth:</strong> bearer token from <code>/var/run/secrets/kubernetes.io/serviceaccount/token</code></li>
+<li><strong>selector:</strong> matches the manager service labels
+  (<code>control-plane: hibernation-controller-manager</code>,
+  <code>app.kubernetes.io/name: hibernation-operator</code>)</li>
+</ul>
+<blockquote>
+<p>⚠️ By default the <code>ServiceMonitor</code> uses <code>insecureSkipVerify: true</code>. For
+production, enable cert-manager and reference a managed certificate so
+Prometheus verifies the metrics server's TLS certificate.</p>
+</blockquote>
+<h2 id="available-metrics">Available metrics<a class="headerlink" href="#available-metrics" title="Permanent link">#</a></h2>
+<p>The operator exports the <strong>standard controller-runtime metrics</strong> — there are
+currently no custom hibernation-specific metrics. These include, among others:</p>
+<ul>
+<li><code>controller_runtime_reconcile_total</code> — reconciliations per controller and result</li>
+<li><code>controller_runtime_reconcile_errors_total</code> — reconcile errors per controller</li>
+<li><code>controller_runtime_reconcile_time_seconds</code> — reconcile latency histogram</li>
+<li><code>workqueue_*</code> — depth, adds, latency, and retries of the controller work queues</li>
+<li><code>rest_client_*</code> — Kubernetes API client request metrics</li>
+</ul>
+<p>Use these to monitor reconciliation health, error rates, and API client
+behavior for both the <code>ResourceSupervisor</code> and <code>ClusterResourceSupervisor</code>
+controllers.</p>
 
 
 
