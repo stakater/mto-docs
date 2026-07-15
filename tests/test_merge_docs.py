@@ -331,6 +331,7 @@ operators:
     repo: ../hibernation-operator-docs
     slug: hib
     docs_dir: site
+    branch: develop
     exclude: ["**/.gitkeep"]
     mappings:
       - from: "guides/**"
@@ -346,9 +347,11 @@ def test_load_config_defaults(tmp_path):
     assert ops[0]["slug"] == "template-operator"
     assert ops[0]["docs_dir"] == "content"
     assert ops[0]["exclude"] == []
+    assert ops[0]["branch"] == ""          # default -> repo default branch
     assert ops[1]["slug"] == "hib"
     assert ops[1]["docs_dir"] == "site"
     assert ops[1]["exclude"] == ["**/.gitkeep"]
+    assert ops[1]["branch"] == "develop"
 
 
 def test_run_copies_files_and_injects_nav(tmp_path):

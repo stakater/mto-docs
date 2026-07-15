@@ -6,7 +6,7 @@ VENV := .venv
 PY   := $(VENV)/bin/python
 
 .DEFAULT_GOAL := help
-.PHONY: help venv merge serve clean
+.PHONY: help venv test merge serve clean
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) \
@@ -15,6 +15,10 @@ help: ## Show this help
 venv: ## Create the local virtualenv if missing
 	@test -x $(PY) || python3 -m venv $(VENV)
 	@$(VENV)/bin/pip install -q --upgrade pip
+
+test: venv ## Run the merge_docs unit tests
+	$(VENV)/bin/pip install -q -r requirements-dev.txt
+	$(PY) -m pytest
 
 # Clones the repos in merge.yaml and merges their docs into content/ + mkdocs.yml.
 # Assumes mkdocs.yml already exists (produced by the theme-combine step). This is

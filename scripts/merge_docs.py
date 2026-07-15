@@ -1,6 +1,7 @@
 """Merge sub-operator docs into the mto-docs content tree and nav.
 
 Driven by merge.yaml. Runs after the mkdocs config-combine step and before
+`mkdocs build`. See docs/superpowers/specs/2026-07-03-merge-sub-operator-docs-design.md.
 """
 import argparse
 import fnmatch
@@ -253,6 +254,7 @@ def load_config(path):
         operators.append({
             "title": raw["title"],
             "repo": raw["repo"],
+            "branch": raw.get("branch") or "",   # empty -> repo default branch
             "slug": raw.get("slug") or slugify(raw["title"]),
             "docs_dir": raw.get("docs_dir", "content"),
             "exclude": raw.get("exclude") or [],

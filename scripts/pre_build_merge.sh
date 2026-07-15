@@ -15,7 +15,7 @@ PYTHON="${PYTHON:-python3}"
 mkdir -p "$WORKDIR"
 
 set_args=()
-while read -r slug repo; do
+while IFS=$'\t' read -r slug repo branch; do
   [ -z "$slug" ] && continue
   dest="$WORKDIR/$slug"
   url="$repo"
@@ -23,11 +23,14 @@ while read -r slug repo; do
   # if [ -n "${PRE_BUILD_TOKEN:-}" ] && [ "${repo#https://}" != "$repo" ]; then
   #   url="https://x-access-token:${PRE_BUILD_TOKEN}@${repo#https://}"
   # fi
-  echo ">> cloning $slug"
+  # empty branch -> clone the repo's default branch
+  branch_arg=()
+  [ -n "$branch" ] && branch_arg=(--branch "$branch")
+  echo ">> cloning $slug${branch:+ (branch $branch)}"
   rm -rf "$dest"
-  git clone --depth 1 "$url" "$dest"
+  git clone --depth 1 "${branch_arg[@]}" "$url" "$dest"
   set_args+=(--set-repo "$slug=$dest")
-done < <("$PYTHON" -c "import sys; sys.path.insert(0,'scripts'); import merge_docs; [print(op['slug'], op['repo']) for op in merge_docs.load_config('$CONFIG')]")
+done < <("$PYTHON" -c "import sys; sys.path.insert(0,'scripts'); import merge_docs; [print(op['slug'], op['repo'], op['branch'], sep='\t') for op in merge_docs.load_config('$CONFIG')]")
 
 echo ">> merging sub-operator docs"
 "$PYTHON" scripts/merge_docs.py --config "$CONFIG" "${set_args[@]}"
