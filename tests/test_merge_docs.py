@@ -57,6 +57,18 @@ def test_compute_dest():
         "kubernetes-resources/template-operator/how-to/copy.md"
 
 
+def test_compute_dest_flatten_keeps_slug_drops_subdirs():
+    # flatten: into/<slug>/<basename> -- slug kept for collision-safe namespacing,
+    # sub-folders dropped
+    assert m.compute_dest("api.md", "kubernetes-resources", "template", flatten=True) == \
+        "kubernetes-resources/template/api.md"
+    assert m.compute_dest("api/resource-supervisor.md", "kubernetes-resources", "hib",
+                          flatten=True) == "kubernetes-resources/hib/resource-supervisor.md"
+    # non-flatten keeps slug + full structure (default)
+    assert m.compute_dest("api/rs.md", "kubernetes-resources", "hib") == \
+        "kubernetes-resources/hib/api/rs.md"
+
+
 def test_build_nav_tree_nests_folders():
     # entries: (remainder, dest, src)
     entries = [
@@ -172,6 +184,22 @@ def test_insert_subtree_missing_section_raises():
     nav = _sample_nav()
     with pytest.raises(KeyError):
         m.insert_subtree(nav, "Ghost", "Template Operator", ["a/b.md"])
+
+
+def test_insert_leaves_appends_directly():
+    nav = _sample_nav()
+    m.insert_leaves(nav, "API Reference", [{"Templates": "k/api.md"}, "k/rs.md"])
+    assert nav[1] == {"API Reference": [
+        "kubernetes-resources/quota.md",
+        {"Templates": "k/api.md"},
+        "k/rs.md",
+    ]}
+
+
+def test_insert_leaves_missing_section_raises():
+    nav = _sample_nav()
+    with pytest.raises(KeyError):
+        m.insert_leaves(nav, "Ghost", ["a/b.md"])
 
 
 _MKDOCS = """\
@@ -381,6 +409,45 @@ def test_run_copies_files_and_injects_nav(tmp_path):
     assert (content / "kubernetes-resources/template-operator/how-to/copy.md").is_file()
     node = m.find_section(m.read_nav(mkdocs.read_text()), "Template Operator")
     assert "kubernetes-resources/template-operator/template.md" in node
+
+
+def test_run_flatten_single_file_title_and_multi_leaves(tmp_path):
+    repo = tmp_path / "template-operator-docs"
+    _touch(repo / "content",
+           "reference/api.md",
+           "guides/templates/copy.md",
+           "guides/templates/deploy.md")
+    content = tmp_path / "content"; content.mkdir()
+    mkdocs = tmp_path / "mkdocs.yml"
+    mkdocs.write_text(
+        "site_name: MTO\nnav:\n  - API Reference:\n      - k/quota.md\n"
+        "  - Guides:\n      - k/own.md\n"
+    )
+    operators = [{
+        "title": "Template", "repo": str(repo), "slug": "template",
+        "docs_dir": "content", "exclude": [],
+        "mappings": [
+            {"from": "reference/api.md", "into": "kubernetes-resources",
+             "under": "API Reference", "title": "Templates", "flatten": True},
+            {"from": "guides/**", "into": "guides", "under": "Guides", "flatten": True},
+        ],
+    }]
+    m.run(operators, str(content), str(mkdocs))
+
+    # flattened path: slug kept, sub-dirs dropped
+    assert (content / "kubernetes-resources/template/api.md").is_file()
+    assert (content / "guides/template/copy.md").is_file()
+    assert (content / "guides/template/deploy.md").is_file()
+
+    nav = m.read_nav(mkdocs.read_text())
+    # single-file mapping with title -> one renamed leaf, directly under the section
+    assert {"Templates": "kubernetes-resources/template/api.md"} in \
+        m.find_section(nav, "API Reference")
+    # multi-file flatten -> bare dest leaves (mkdocs derives titles from each H1)
+    guides = m.find_section(nav, "Guides")
+    assert "guides/template/copy.md" in guides and "guides/template/deploy.md" in guides
+    # no operator wrapper folder was created
+    assert m.find_section(nav, "Template") is None
 
 
 def test_run_empty_match_raises(tmp_path):

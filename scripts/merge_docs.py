@@ -46,7 +46,9 @@ def strip_base(rel, base):
     return rel[len(prefix):]
 
 
-def compute_dest(remainder, into, slug):
+def compute_dest(remainder, into, slug, flatten=False):
+    if flatten:   # keep slug (namespacing), drop sub-dirs: into/<slug>/<basename>
+        return "/".join(p for p in (into, slug, remainder.rsplit("/", 1)[-1]) if p)
     return "/".join(p for p in (into, slug, remainder) if p)
 
 
@@ -197,6 +199,18 @@ def insert_subtree(nav, under, title, subtree):
             item[title].extend(subtree)
             return
     section.append({title: subtree})
+
+
+def insert_leaves(nav, under, leaves):
+    """Append leaf nav entries directly into the `under` section (flatten mode).
+
+    No operator wrapper folder: each leaf (a bare dest string or a {title: dest}
+    dict) becomes a direct child of the target section.
+    """
+    section = find_section(nav, under)
+    if section is None:
+        raise KeyError(f"menu section {under!r} not found in nav")
+    section.extend(leaves)
 
 
 def _nav_bounds(text):
@@ -361,6 +375,7 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None):
 
         folder_titles = read_folder_titles(repo)   # from the sub-op's own nav
         under_entries = {}
+        flat_leaves = []  # (under, leaf-entry) for flatten mappings, in nav order
         op_map = {}       # source-relative path -> content-relative destination
         md_files = []     # (src_rel, dest_rel) of copied markdown, for link rewriting
         for mapping in op["mappings"]:
@@ -368,9 +383,11 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None):
             matches = find_matches(docs, mapping["from"], op["exclude"])
             if not matches:
                 raise ValueError(f"{mapping['from']!r} matched no files in {docs}")
+            flatten = mapping.get("flatten", False)
+            mapping_dests = []   # dests of copied .md in this mapping (nav order)
             for rel in matches:
                 remainder = strip_base(rel, base)
-                dest_rel = compute_dest(remainder, mapping["into"], op["slug"])
+                dest_rel = compute_dest(remainder, mapping["into"], op["slug"], flatten)
                 if dest_rel in seen:
                     raise ValueError(f"destination collision: {dest_rel}")
                 seen[dest_rel] = True
@@ -382,7 +399,21 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None):
                 if rel.endswith(".md"):
                     md_files.append((rel, dest_rel))
                     if mapping.get("under"):
-                        under_entries.setdefault(mapping["under"], []).append((remainder, dest_rel, rel))
+                        if flatten:
+                            mapping_dests.append(dest_rel)
+                        else:
+                            under_entries.setdefault(mapping["under"], []).append((remainder, dest_rel, rel))
+            # flatten: merge as direct leaves under the section (no op wrapper).
+            # A `title` renames a single-file mapping; with several files it names
+            # a folder holding them, else each page keeps its own H1 as the label.
+            if flatten and mapping_dests:
+                title = mapping.get("title")
+                if title and len(mapping_dests) == 1:
+                    flat_leaves.append((mapping["under"], {title: mapping_dests[0]}))
+                elif title:
+                    flat_leaves.append((mapping["under"], {title: mapping_dests}))
+                else:
+                    flat_leaves.extend((mapping["under"], d) for d in mapping_dests)
 
         # rewrite links now that all destinations are known: whitelisted targets
         # become local, everything else falls back to the operator's live docs
@@ -404,6 +435,8 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None):
 
         for under, entries in under_entries.items():
             insert_subtree(nav, under, op["title"], build_nav_tree(entries, folder_titles))
+        for under, leaf in flat_leaves:
+            insert_leaves(nav, under, [leaf])
 
     Path(mkdocs_path).write_text(write_nav(text, nav))
 

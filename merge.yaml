@@ -14,21 +14,15 @@ operators:
     live_url: https://docs.stakater.com/template-operator-docs/
     live_url_style: directory
     mappings:
-      # - from: "overview/**"
-      #   into: "overview"
-      #   under: "Overview"
-      # - from: "concepts/**"
-      #   into: "concepts"
-      #   under: "Architecture"
-      # - from: "getting-started/**"
-      #   into: "getting-started"
-      #   under: "Install"
-      - from: "guides/**"
-        into: "guides"
-        under: "Guides"
-      - from: "reference/**"
+      - from: "reference/api.md"        # single file, one custom-named entry
         into: "kubernetes-resources"
         under: "API Reference"
+        title: "Templates"
+        flatten: true
+      - from: "guides/**"               # merged flat into the Guides section
+        into: "guides"
+        under: "Guides"
+        flatten: true
       - from: "images/**"
         into: "images"          # assets only, no menu entry
     exclude:
@@ -40,24 +34,18 @@ operators:
     live_url: https://docs.stakater.com/hibernation-operator-docs/
     live_url_style: html          # sub-op uses use_directory_urls: false
     mappings:
-      # - from: "overview/**"
-      #   into: "overview"
-      #   under: "Overview"
-      # - from: "concepts/**"
-      #   into: "concepts"
-      #   under: "Architecture"
-      # - from: "getting-started/**"
-      #   into: "getting-started"
-      #   under: "Install"
-      - from: "guides/**"
-        into: "guides"
-        under: "Guides"
-      - from: "reference/**"
+      - from: "reference/api/**"        # the CRD API pages, merged flat
         into: "kubernetes-resources"
         under: "API Reference"
-      - from: "integrations/**"
+        flatten: true
+      - from: "guides/**"               # merged flat into the Guides section
+        into: "guides"
+        under: "Guides"
+        flatten: true
+      - from: "integrations/**"        # merged flat into the Extensions section
         into: "integrations"
         under: "Extensions"
+        flatten: true
       - from: "images/**"
         into: "images"
     exclude:
