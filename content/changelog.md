@@ -22,6 +22,37 @@ Follow these steps to upgrade to version 1.8.x from 1.7.x
     kubectl delete finopsoperators.dependencies.tenantoperator.stakater.com -n multi-tenant-operator tenant-operator-finops
     ```
 
+### v1.8.3
+
+_**July 6, 2026**_
+
+#### Features
+
+- MTO web components (Console, Gateway, Dex, and the FinOps gateway) are now served under a **single shared hostname** by default, each on its own path prefix, instead of a separate hostname per component. Configure the shared host via `spec.components.ingress.host` in the [IntegrationConfig](./kubernetes-resources/integration-config.md#ingress). Per-component hosts remain supported for the previous behavior.
+
+#### Migration Notes
+
+- On OpenShift, installs that did not configure any host previously received auto-derived per-component hosts and will now switch to the consolidated shared host. This changes the Dex issuer and all component URLs, so existing OIDC sessions must re-authenticate and external OIDC clients must be updated to the new issuer. To keep the old per-component hostnames, set the per-component host fields (legacy mode).
+
+#### Component Updates
+
+| Name | Tag | Image |
+| --- | --- | --- |
+| `tenant-operator`         | v1.8.3              | `ghcr.io/stakater/public/mto/tenant-operator`             |
+| `mto-console`             | 1.0.246             | `ghcr.io/stakater/public/mto/mto-console`                 |
+| `mto-gateway`             | 1.0.172             | `ghcr.io/stakater/public/mto/mto-gateway`                 |
+| `finops-operator`         | v0.1.2              | `ghcr.io/stakater/public/finops-operator`                 |
+| `finops-gateway`          | v0.1.2              | `ghcr.io/stakater/public/finops-gateway`                  |
+| `mto-dependencies-operator` | v0.0.11           | `ghcr.io/stakater/public/mto-dependencies-operator`       |
+| `dex-config-operator`     | v0.0.6              | `ghcr.io/stakater/public/dex-config-operator`             |
+| `template-operator`       | v0.1.5              | `ghcr.io/stakater/public/template-operator`               |
+| `hibernation-operator`    | v0.1.103            | `ghcr.io/stakater/public/hibernation-operator`            |
+| `postgresql`              | 18.2                | `ghcr.io/stakater/public/mto/postgresql`                  |
+| `dex`                     | v0.0.1              | `ghcr.io/stakater/public/mto/dex`                         |
+| `prometheus`              | v2.55.1             | `quay.io/prometheus/prometheus`                           |
+| `kube-state-metrics`      | v2.17.0             | `registry.k8s.io/kube-state-metrics/kube-state-metrics`   |
+| `opencost`                | 1.117.3             | `ghcr.io/opencost/opencost`                               |
+
 ### v1.8.2
 
 _**June 11, 2026**_
