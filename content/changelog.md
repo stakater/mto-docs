@@ -18,7 +18,7 @@ Follow these steps to upgrade to version 1.9.x from 1.8.x
     kubectl get crds -o name | grep finops.stakater.com | xargs -r kubectl delete
 
     # Trigger re-install by deleting the FinOps Operator CR
-    kubectl delete finopsoperators.dependencies.tenantoperator.stakater.com -n multi-tenant-operator finops-operator
+    kubectl delete finopsoperators.dependencies.tenantoperator.stakater.com -n multi-tenant-operator tenant-operator-finops
     ```
 
 ### v1.9.0
@@ -68,7 +68,7 @@ Follow these steps to upgrade to version 1.8.x from 1.7.x
 
     ```bash
     kubectl delete customresourcedefinitions.apiextensions.k8s.io offerings.finops.stakater.com
-    kubectl delete finopsoperators.dependencies.tenantoperator.stakater.com -n multi-tenant-operator finops-operator
+    kubectl delete finopsoperators.dependencies.tenantoperator.stakater.com -n multi-tenant-operator tenant-operator-finops
     ```
 
 ### v1.8.3
