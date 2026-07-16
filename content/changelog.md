@@ -11,7 +11,7 @@ Follow these steps to upgrade to version 1.9.x from 1.8.x
 
 #### Troubleshooting Steps for Upgrade
 
-- If you get CRD-related errors after upgrade, such as a field not being defined for FinOps CRs, purge the FinOps CRDs and trigger a re-install:
+- If CRD-related errors occur after upgrade, such as a field not being defined for FinOps CRs, purge the FinOps CRDs and trigger a re-install:
 
     ```bash
     # Purge FinOps CRDs
