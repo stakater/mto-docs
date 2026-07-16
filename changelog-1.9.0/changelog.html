@@ -9019,7 +9019,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 kubectl<span class="w"> </span>get<span class="w"> </span>crds<span class="w"> </span>-o<span class="w"> </span>name<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>finops.stakater.com<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>-r<span class="w"> </span>kubectl<span class="w"> </span>delete
 
 <span class="c1"># Trigger re-install by deleting the FinOps Operator CR</span>
-kubectl<span class="w"> </span>delete<span class="w"> </span>finopsoperators.dependencies.tenantoperator.stakater.com<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>finops-operator
+kubectl<span class="w"> </span>delete<span class="w"> </span>finopsoperators.dependencies.tenantoperator.stakater.com<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>tenant-operator-finops
 </code></pre></div>
 </li>
 </ul>
@@ -9130,7 +9130,7 @@ kubectl<span class="w"> </span>delete<span class="w"> </span>finopsoperators.dep
 <li>
 <p>If the MTO Console was already enabled on the previous version, the FinOps CRDs may not be updated automatically after upgrade, which will cause the new <code>resolvedPricing</code> field to be missing from the <code>Offering</code> status. To fix this, delete the <code>Offering</code> CRD and the FinOps Operator CR so they are re-applied on the next reconcile:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>delete<span class="w"> </span>customresourcedefinitions.apiextensions.k8s.io<span class="w"> </span>offerings.finops.stakater.com
-kubectl<span class="w"> </span>delete<span class="w"> </span>finopsoperators.dependencies.tenantoperator.stakater.com<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>finops-operator
+kubectl<span class="w"> </span>delete<span class="w"> </span>finopsoperators.dependencies.tenantoperator.stakater.com<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>tenant-operator-finops
 </code></pre></div>
 </li>
 </ul>
