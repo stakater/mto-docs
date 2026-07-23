@@ -30,7 +30,7 @@ EOF
 ```
 
 !!! note
-    This basic tenant configuration does not specify `storageClasses`, `ingressClasses`, or `podPriorityClasses`. These features are disabled by default, leaving RBAC configuration for these cluster resources to the platform administrator. To enable operator-managed access to these resources, see the [Tenant Overview](../tenant-overview.md) for configuration options.
+    This basic tenant configuration does not specify `storageClasses`, `ingressClasses`, or `podPriorityClasses`. These features are disabled by default, leaving RBAC configuration for these cluster resources to the platform administrator. To enable operator-managed access to these resources, see the [Tenant Overview](../concepts/tenant.md) for configuration options.
 
 In this configuration, Bill specifies <anna@aurora.org> as the owner, giving her full administrative rights over the tenant. The editor role is assigned to <john@aurora.org> and the group alpha, providing them with editing capabilities within the tenant's scope.
 
@@ -81,7 +81,7 @@ no
 Access to the Tenant resource itself is also restricted, aligning with the principle of least privilege.
 
 !!! tip
-    Tenant users can use the [kubectl-tenant plugin](../../../cli/kubectl-plugin.md) to list cluster resources available to them, such as namespaces and storage classes: `kubectl tenant get namespaces bluesky`
+    Tenant users can use the [kubectl-tenant plugin](../reference/cli.md) to list cluster resources available to them, such as namespaces and storage classes: `kubectl tenant get namespaces bluesky`
 
 ## Adding Multiple Owners to a Tenant
 

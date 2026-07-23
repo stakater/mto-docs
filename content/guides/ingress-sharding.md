@@ -33,11 +33,11 @@ This field follows a **secure-by-default** model. Configuring this field enables
     The filtering functionality only works when the `ingressClasses` field is explicitly configured. Without it, the operator does not manage IngressClass access for the tenant.
 
 !!! tip
-    Tenant users can use the [kubectl-tenant plugin](../../../cli/kubectl-plugin.md) to list the IngressClasses available to them: `kubectl tenant get ingressclasses <tenant-name>`
+    Tenant users can use the [kubectl-tenant plugin](../reference/cli.md) to list the IngressClasses available to them: `kubectl tenant get ingressclasses <tenant-name>`
 
 ### Demo
 
-![Ingress Class Demo](../../../images/ingress-class-demo.gif)
+![Ingress Class Demo](../images/ingress-class-demo.gif)
 
 ## Ingress Sharding on OpenShift Container Platform
 

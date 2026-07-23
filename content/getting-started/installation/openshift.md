@@ -20,29 +20,29 @@ This document contains instructions on installing, uninstalling and configuring 
 
 * After opening OpenShift console click on `Operators`, followed by `OperatorHub` from the side menu
 
-![image](../images/operatorHub.png)
+![image](../../images/operatorHub.png)
 
 * Now search for `Multi Tenant Operator` and then click on `Multi Tenant Operator` tile
 
-![image](../images/search_tenant_operator_operatorHub.png)
+![image](../../images/search_tenant_operator_operatorHub.png)
 
 * Click on the `install` button
 
-![image](../images/to_install_1.png)
+![image](../../images/to_install_1.png)
 
 * Select `Updated channel`. Select `multi-tenant-operator` to install the operator in `multi-tenant-operator` namespace from `Installed Namespace` dropdown menu. After configuring `Update approval` click on the `install` button.
 
 > Note: Use `stable` channel for seamless upgrades. For `Production Environment` prefer `Manual` approval and use `Automatic` for `Development Environment`
 
-![image](../images/to_install_2.png)
+![image](../../images/to_install_2.png)
 
 * Wait for the operator to be installed
 
-![image](../images/to_install_wait.png)
+![image](../../images/to_install_wait.png)
 
 * Once successfully installed, MTO will be ready to enforce multi-tenancy in your cluster
 
-![image](../images/to_installed_successful.png)
+![image](../../images/to_installed_successful.png)
 
 > Note: MTO will be installed in `multi-tenant-operator` namespace.
 
@@ -92,21 +92,21 @@ subscription.operators.coreos.com/tenant-operator created
 
 * After creating the `subscription` custom resource open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
 
-![image](../images/to_sub_installation_wait.png)
+![image](../../images/to_sub_installation_wait.png)
 
 * Wait for the installation to complete
 
-![image](../images/to_sub_installation_successful.png)
+![image](../../images/to_sub_installation_successful.png)
 
 * Once the installation is complete click on `Workloads`, followed by `Pods` from the side menu and select `multi-tenant-operator` project
 
-![image](../images/select_multi_tenant_operator_project.png)
+![image](../../images/select_multi_tenant_operator_project.png)
 
 * Once pods are up and running, MTO will be ready to enforce multi-tenancy in your cluster
 
-![image](../images/to_installed_successful_pod.png)
+![image](../../images/to_installed_successful_pod.png)
 
-For more details and configurations check out [IntegrationConfig](../kubernetes-resources/integration-config.md).
+For more details and configurations check out [IntegrationConfig](../../concepts/integration-config.md).
 
 ## Enabling Console
 
@@ -125,19 +125,19 @@ spec:
 
 * Open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu.
 
-![image](../images/manual-approve-1.png)
+![image](../../images/manual-approve-1.png)
 
 * Now click on `Upgrade available` in front of `mto-opencost` or `mto-prometheus`.
 
-![image](../images/manual-approve-2.png)
+![image](../../images/manual-approve-2.png)
 
 * Now click on `Preview InstallPlan` on top.
 
-![image](../images/manual-approve-3.png)
+![image](../../images/manual-approve-3.png)
 
 * Now click on `Approve` button.
 
-![image](../images/manual-approve-4.png)
+![image](../../images/manual-approve-4.png)
 
 * Now the `InstallPlan` will be approved, and MTO console components will be installed.
 
@@ -145,15 +145,15 @@ spec:
 
 You can uninstall MTO by following these steps:
 
-* Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set `spec.onDelete.cleanNamespaces` to `false` for all those tenants whose namespaces you want to retain, and `spec.onDelete.cleanAppProject` to `false` for all those tenants whose AppProject you want to retain. For more details check out [onDelete](../kubernetes-resources/tenant/how-to-guides/delete-tenant.md)
+* Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set `spec.onDelete.cleanNamespaces` to `false` for all those tenants whose namespaces you want to retain, and `spec.onDelete.cleanAppProject` to `false` for all those tenants whose AppProject you want to retain. For more details check out [onDelete](../../guides/delete-tenant.md)
 
 * After making the required changes open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
 
-![image](../images/installed-operators.png)
+![image](../../images/installed-operators.png)
 
 * Now click on uninstall and confirm uninstall.
 
-![image](../images/uninstall-from-ui.png)
+![image](../../images/uninstall-from-ui.png)
 
 * Now the operator has been uninstalled.
 
@@ -161,6 +161,6 @@ You can uninstall MTO by following these steps:
 
 ## Notes
 
-* For details on licensing of MTO please refer [Pricing](../pricing.md).
-* For more details on how to use MTO please refer [Tenant tutorial](../kubernetes-resources/tenant/how-to-guides/create-tenant.md).
-* For details on how to extend your MTO manager ClusterRole please refer [extend-default-clusterroles](../kubernetes-resources/tenant/how-to-guides/extend-default-roles.md).
+* For details on licensing of MTO please refer [Pricing](../../pricing.md).
+* For more details on how to use MTO please refer [Tenant tutorial](../../guides/create-tenant.md).
+* For details on how to extend your MTO manager ClusterRole please refer [extend-default-clusterroles](../../guides/extend-default-roles.md).

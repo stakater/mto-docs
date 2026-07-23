@@ -26,8 +26,8 @@ Before proceeding, ensure the following:
 Choose the installation guide that matches your environment:
 
 * [Installing with OLM on OpenShift](openshift.md)
-* [Installing with Helm on AKS](./azure-aks/installation.md)
-* [Installing with Helm on EKS](./aws-eks/installation.md)
+* [Installing with Helm on AKS](azure-aks/installation.md)
+* [Installing with Helm on EKS](aws-eks/installation.md)
 * [Installing with Helm on any Kubernetes](kubernetes.md)
 
 By following the appropriate guide, you’ll be able to deploy MTO efficiently and start managing multi-tenancy in your Kubernetes environment.

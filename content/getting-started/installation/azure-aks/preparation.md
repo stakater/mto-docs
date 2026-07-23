@@ -20,7 +20,7 @@ The installation machine must have:
 - Helm installed
 - kubectl installed
 
-Once these preparations are complete, you can proceed with the [installation section](./installation.md).
+Once these preparations are complete, you can proceed with the [installation section](installation.md).
 
 ## Optional: Creating and Configuring an AKS Cluster
 
@@ -279,4 +279,4 @@ A wildcard certificate allows all applications under a given subdomain to use a 
 
 ## What's Next?
 
-All the required components have been installed and configured. Now MTO can be installed on the EKS Cluster. See [AKS MTO Installation Guide](./installation.md)
+All the required components have been installed and configured. Now MTO can be installed on the EKS Cluster. See [AKS MTO Installation Guide](installation.md)

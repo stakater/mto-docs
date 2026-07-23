@@ -185,11 +185,11 @@ Error from server (Forbidden): namespaces is forbidden: User "falcon@nordmart.co
 
 Navigate to MTO Console URL and Log In with the user credentials.
 
-![MTO Console Login Page](../../images/mto-console-login.png)
+![MTO Console Login Page](../../../images/mto-console-login.png)
 
 Dashboard will open after the successful login. Now you can navigate different tenants and namespaces using MTO Console
 
-![MTO Console Dashboard](../../images/mto-console-bear-dashboard.png)
+![MTO Console Dashboard](../../../images/mto-console-bear-dashboard.png)
 
 ## 6. Validate Bear permissions
 
@@ -231,8 +231,8 @@ Error from server (Forbidden): namespaces is forbidden: User "bear@nordmart.com"
 
 Navigate to MTO Console URL and Log In with the user credentials.
 
-![MTO Console Login Page](../../images/mto-console-login.png)
+![MTO Console Login Page](../../../images/mto-console-login.png)
 
 Dashboard will open after the successful login. Now you can navigate different tenants and namespaces using MTO Console
 
-![MTO Console Dashboard](../../images/mto-console-bear-dashboard.png)
+![MTO Console Dashboard](../../../images/mto-console-bear-dashboard.png)

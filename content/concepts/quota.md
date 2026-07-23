@@ -39,7 +39,7 @@ spec:
 EOF
 ```
 
-For more details please refer to [Quotas](./quota.md).
+For more details please refer to [Quotas](quota.md).
 
 ```bash
 kubectl get quota small

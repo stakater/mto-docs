@@ -83,4 +83,4 @@ spec:
 
 ### Demo
 
-![Ingress Host Validation](../../../images/host-validation.gif)
+![Ingress Host Validation](../images/host-validation.gif)

@@ -77,7 +77,7 @@ _**July 6, 2026**_
 
 #### Features
 
-- MTO web components (Console, Gateway, Dex, and the FinOps gateway) are now served under a **single shared hostname** by default, each on its own path prefix, instead of a separate hostname per component. Configure the shared host via `spec.components.ingress.host` in the [IntegrationConfig](./kubernetes-resources/integration-config.md#ingress). Per-component hosts remain supported for the previous behavior.
+- MTO web components (Console, Gateway, Dex, and the FinOps gateway) are now served under a **single shared hostname** by default, each on its own path prefix, instead of a separate hostname per component. Configure the shared host via `spec.components.ingress.host` in the [IntegrationConfig](concepts/integration-config.md#ingress). Per-component hosts remain supported for the previous behavior.
 
 #### Migration Notes
 
@@ -109,7 +109,7 @@ _**June 11, 2026**_
 #### Features
 
 - MTO Console hibernation settings page now filters namespaces by their labels, disabling namespaces that are already hibernating or sleeping to prevent conflicting selections.
-- Added a **Wake** action to the MTO Console [Hibernation](./console/hibernation.md) page. Namespaces put to sleep by label can only be woken by deleting the schedule.
+- Added a **Wake** action to the MTO Console [Hibernation](console/hibernation.md) page. Namespaces put to sleep by label can only be woken by deleting the schedule.
 
 #### Enhancements
 
@@ -140,7 +140,7 @@ _**May 8, 2026**_
 
 #### Breaking Changes
 
-- Removed bundled Keycloak. Authentication now requires Dex, provisioned automatically by the MTO Dependencies Operator and configured via [IntegrationConfig](./kubernetes-resources/integration-config.md).
+- Removed bundled Keycloak. Authentication now requires Dex, provisioned automatically by the MTO Dependencies Operator and configured via [IntegrationConfig](concepts/integration-config.md).
 
 #### Features
 
@@ -190,12 +190,12 @@ _**April 14, 2026**_
 
 #### Breaking Changes
 
-- Removed hibernation-related fields from the [Tenant CR](./kubernetes-resources/tenant/tenant-overview.md). See [Hibernation Operator](https://docs.stakater.com/hibernation-operator) to configure hibernation for a tenant.
+- Removed hibernation-related fields from the [Tenant CR](concepts/tenant.md). See [Hibernation Operator](https://docs.stakater.com/hibernation-operator) to configure hibernation for a tenant.
 
 #### Bug Fixes & Enhancements
 
 - Bumped FinOps Operator to `v0.1.1`.
-- Added a new Tenants API to the Tenant controller to support [kubectl-tenant](./cli/kubectl-plugin.md).
+- Added a new Tenants API to the Tenant controller to support [kubectl-tenant](reference/cli.md).
 
 #### Component Updates
 
@@ -265,7 +265,7 @@ _**March 6, 2026**_
 
 - Added the MTO Dependencies Operator, a Helm-based operator that manages the lifecycle of MTO's dependencies, including FinOps Operator, Dex, DexConfigOperator, Prometheus, OpenCost, and PostgreSQL.
 
-- Users can now configure values for each MTO component via [IntegrationConfig](./kubernetes-resources/integration-config.md).
+- Users can now configure values for each MTO component via [IntegrationConfig](concepts/integration-config.md).
 
 ## v1.5.x
 
@@ -383,15 +383,15 @@ _**June 11, 2025**_
 
 #### Features
 
-- Option to deny services with specific service accounts via [Tenant CR](./kubernetes-resources/tenant/tenant-overview.md#service-accounts)
-- Option to only allow pods with specific priority classes via [Tenant CR](./kubernetes-resources/tenant/tenant-overview.md#pod-priority-classes)
-- Option to only allow pods with specified image registries via [Tenant CR](./kubernetes-resources/tenant/tenant-overview.md#image-registries)
-- Option to block services of type nodePort via [Integration Config CR](./kubernetes-resources/integration-config.md#network)
-- Option to block pods with host ports via [Integration Config CR](./kubernetes-resources/integration-config.md#network)
+- Option to deny services with specific service accounts via [Tenant CR](concepts/tenant.md#service-accounts)
+- Option to only allow pods with specific priority classes via [Tenant CR](concepts/tenant.md#pod-priority-classes)
+- Option to only allow pods with specified image registries via [Tenant CR](concepts/tenant.md#image-registries)
+- Option to block services of type nodePort via [Integration Config CR](concepts/integration-config.md#network)
+- Option to block pods with host ports via [Integration Config CR](concepts/integration-config.md#network)
 
 #### Enhancements
 
-- Retention Period is now configurable via [Integration Config CR](./kubernetes-resources/integration-config.md#network)
+- Retention Period is now configurable via [Integration Config CR](concepts/integration-config.md#network)
 - Dynamic provisioning of global Vault policies
 - Error reporting via status conditions in namespace controller
 - Error reporting via status conditions in tenant controller
@@ -416,10 +416,10 @@ _**March 19, 2025**_
 
 #### Features
 
-- Added the option to select [Ingress class per tenant](./kubernetes-resources/tenant/tenant-overview.md#ingress) via Tenant CR
-- Added CRUD for [Quota](./console/quotas.md) and [Tenant](./console/tenants.md) CR via console.
-- Added support for [AWS CloudCosts integration in Opencost](./integrations/aws-pricing.md)
-- Added support for [node label filtering on Capacity Planning page](./console/capacity-planning.md)
+- Added the option to select [Ingress class per tenant](concepts/tenant.md#ingress) via Tenant CR
+- Added CRUD for [Quota](console/quotas.md) and [Tenant](console/tenants.md) CR via console.
+- Added support for [AWS CloudCosts integration in Opencost](integrations/aws-pricing.md)
+- Added support for [node label filtering on Capacity Planning page](console/capacity-planning.md)
 
 #### Enhancements
 
@@ -435,7 +435,7 @@ Before upgrading to v1.2.0, perform the following steps:
 
 #### Post-Upgrade Checklist
 
-- Enable `console` in the integration config. [Link](./installation/openshift.md#enabling-console)
+- Enable `console` in the integration config. [Link](getting-started/installation/openshift.md#enabling-console)
 - Delete `PersistentVolumeClaim` named `postgresql-data-mto-postgresql-0` and Pod named `mto-postgresql-0` for keycloak to reconfigure itself on the newer version.
 - Delete all pods in `multi-tenant-operator` namespace having `controller` in their name, so data can be populated into the console again.
 
@@ -447,9 +447,9 @@ _**January 27, 2025**_
 
 #### Features
 
-- Added [Azure Pricing](./integrations/azure-pricing.md) support for Opencost via [Integration Config](./kubernetes-resources/integration-config.md#azure-pricing).
-- Added option to disable `Intra-tenant Networking` via [Integration Config](./kubernetes-resources/integration-config.md#tenantpolicies).
-- Added [Storage class per tenant](./kubernetes-resources/tenant/tenant-overview.md#storage) support via Tenant CR.
+- Added [Azure Pricing](integrations/azure-pricing.md) support for Opencost via [Integration Config](concepts/integration-config.md#azure-pricing).
+- Added option to disable `Intra-tenant Networking` via [Integration Config](concepts/integration-config.md#tenantpolicies).
+- Added [Storage class per tenant](concepts/tenant.md#storage) support via Tenant CR.
 - Added option to override component images.
 - Added support to add/update `Casbin` policies via `tenant-operator-casbin-config` ConfigMap.
 
@@ -476,7 +476,7 @@ Before upgrading to v1.1.0, perform the following steps:
 
 #### Post-Upgrade Checklist
 
-- Enable `console` in the integration config. [Link](./installation/openshift.md#enabling-console)
+- Enable `console` in the integration config. [Link](getting-started/installation/openshift.md#enabling-console)
 - If the `prometheus-server` pod is failing, ensure that only one `prometheus-server` deployment exists in the `multi-tenant-operator` namespace. If multiple deployments exist, delete the older one.
 
 #### Components
@@ -502,8 +502,8 @@ _**October 16, 2024**_
 
 #### Features
 
-- Added [capacity planning](./console/capacity-planning.md) feature on MTO Console to view resource usage of tenants based in their request and limits
-- Added [hibernation](./console/hibernation.md) feature on MTO Console to view and manage hibernated namespaces and hibernate/unhibernate namespaces
+- Added [capacity planning](console/capacity-planning.md) feature on MTO Console to view resource usage of tenants based in their request and limits
+- Added [hibernation](console/hibernation.md) feature on MTO Console to view and manage hibernated namespaces and hibernate/unhibernate namespaces
 
 #### Enhancements
 
@@ -572,8 +572,8 @@ _**October 16, 2024**_
 
 #### Enhanced
 
-- Updated Tenant CR to v1beta3, more details in [Tenant CRD](./kubernetes-resources/tenant/tenant-overview.md)
-- Added custom pricing support for Opencost, more details in [Opencost](./kubernetes-resources/integration-config.md#custom-pricing)
+- Updated Tenant CR to v1beta3, more details in [Tenant CRD](concepts/tenant.md)
+- Added custom pricing support for Opencost, more details in [Opencost](concepts/integration-config.md#custom-pricing)
 
 #### Fix
 
@@ -609,7 +609,7 @@ _**October 16, 2024**_
 
 #### Enhanced
 
-- Privileged service accounts mentioned in the `IntegrationConfig` have now access over all types of namespaces. Previously operations were denied on orphaned namespaces (the namespaces which are not part of both privileged and tenant scope). More info in [Troubleshooting Guide](./troubleshooting.md)
+- Privileged service accounts mentioned in the `IntegrationConfig` have now access over all types of namespaces. Previously operations were denied on orphaned namespaces (the namespaces which are not part of both privileged and tenant scope). More info in [Troubleshooting Guide](troubleshooting.md)
 - `TemplateGroupInstance` controller now ensures that its underlying resources are force-synced when a namespace is created or deleted.
 - Optimizations were made to ensure the reconciler in the TGI controller runs only once per watch event, reducing reconcile times.
 - The `TemplateGroupInstance` reconcile flow has been refined to process only the namespace for which the event was received, streamlining resource creation/deletion and improving overall efficiency.
@@ -676,7 +676,7 @@ _**October 16, 2024**_
 
 #### Enabling console
 
-- To enable console visit [Installation](./installation/openshift.md), and add config to subscription for OperatorHub based installation.
+- To enable console visit [Installation](getting-started/installation/openshift.md), and add config to subscription for OperatorHub based installation.
 
 ## v0.8.x
 
@@ -690,8 +690,8 @@ _**October 16, 2024**_
 
 ### v0.8.0
 
-- feat: Allow custom roles for each tenant via label selector, more details in [custom roles document](./kubernetes-resources/tenant/how-to-guides//custom-roles.md)
-    - Roles mapping is a required field in [MTO's IntegrationConfig](./kubernetes-resources/integration-config.md). By default, it will always be filled with OpenShift's admin/edit/view roles
+- feat: Allow custom roles for each tenant via label selector, more details in [custom roles document](guides/custom-roles.md)
+    - Roles mapping is a required field in [MTO's IntegrationConfig](concepts/integration-config.md). By default, it will always be filled with OpenShift's admin/edit/view roles
     - Ensure that mentioned roles exist within the cluster
     - Remove coupling with OpenShift's built-in admin/edit/view roles
 - feat: Removed coupling of ResourceSupervisor and Tenant resources
@@ -731,7 +731,7 @@ _**October 16, 2024**_
 - feat: Allow creation of namespaces without tenant prefix from within tenant spec
 - fix: Webhook changes will now be updated without manual intervention
 - maintain: Updated Tenant CR version from v1beta1 to v1beta2. Conversion webhook is added to facilitate transition to new version
-    - see [Tenant spec](./kubernetes-resources/tenant/tenant-overview.md) for updated spec
+    - see [Tenant spec](concepts/tenant.md) for updated spec
 - enhance: Better automated testing
 
 ## v0.6.x
@@ -780,7 +780,7 @@ _**October 16, 2024**_
 - fix: TemplateGroupInstance now cleans up leftover Template resources from namespaces that are no longer part of TGI namespace selector
 - fix: Fixed hibernation sync issue
 
-- enhance: Update tenant spec for applying common/specific namespace labels/annotations. For more details check out [commonMetadata & SpecificMetadata](./kubernetes-resources/tenant/how-to-guides/assign-metadata.md)
+- enhance: Update tenant spec for applying common/specific namespace labels/annotations. For more details check out [commonMetadata & SpecificMetadata](guides/assign-metadata.md)
 - enhance: Add support for multi-pod architecture for Operator-Hub
 
 - chore: Remove conversion webhook for Quota and Tenant
@@ -790,7 +790,7 @@ _**October 16, 2024**_
 ### v0.4.7
 
 - feat: Add hibernation of StatefulSets and Deployments based on a timer
-- feat: [New custom resource](./kubernetes-resources/tenant/how-to-guides/hibernate-tenant.md) that handles hibernation
+- feat: [New custom resource](guides/hibernate-tenant.md) that handles hibernation
 
 ### v0.4.6
 
@@ -867,7 +867,7 @@ _**October 16, 2024**_
 
 ### v0.3.24
 
-- feat: Add feature to allow ArgoCD to sync specific cluster scoped custom resources, configurable via Integration Config. More details in [relevant docs](./kubernetes-resources/integration-config.md#argocd)
+- feat: Add feature to allow ArgoCD to sync specific cluster scoped custom resources, configurable via Integration Config. More details in [relevant docs](concepts/integration-config.md#argocd)
 
 ### v0.3.23
 
@@ -904,8 +904,8 @@ _**October 16, 2024**_
 
 > ⚠️ ApiVersion `v1alpha1` of Tenant and Quota custom resources has been deprecated and is scheduled to be removed in the future. The following links contain the updated structure of both resources
 >
-> - [Quota v1beta1](./kubernetes-resources/quota.md)
-> - [Tenant v1beta1](./kubernetes-resources/tenant/tenant-overview.md)
+> - [Quota v1beta1](concepts/quota.md)
+> - [Tenant v1beta1](concepts/tenant.md)
 
 ### v0.3.18
 
@@ -975,13 +975,13 @@ _**October 16, 2024**_
 
 ### v0.3.2
 
-- refactor: Restructure Quota CR, more details in [relevant docs](./kubernetes-resources/quota.md)
+- refactor: Restructure Quota CR, more details in [relevant docs](concepts/quota.md)
 - feat: Add support for adding LimitRanges in Quota
 - feat: Add conversion webhook to convert existing v1alpha1 versions of quota to v1beta1
 
 ### v0.3.1
 
-- feat: Add ability to create ArgoCD AppProjects per tenant, more details in [relevant docs](./integrations/argocd.md)
+- feat: Add ability to create ArgoCD AppProjects per tenant, more details in [relevant docs](integrations/argocd.md)
 
 ### v0.3.0
 
@@ -991,16 +991,16 @@ _**October 16, 2024**_
 
 ### v0.2.33
 
-- refactor: Restructure Tenant spec, more details in [relevant docs](./kubernetes-resources/tenant/tenant-overview.md)
+- refactor: Restructure Tenant spec, more details in [relevant docs](concepts/tenant.md)
 - feat: Add conversion webhook to convert existing v1alpha1 versions of tenant to v1beta1
 
 ### v0.2.32
 
 - refactor: Restructure integration config spec, more details in [relevant docs][def]
-- feat: Allow users to input custom regex in certain fields inside of integration config, more details in [relevant docs](./kubernetes-resources/integration-config.md)
+- feat: Allow users to input custom regex in certain fields inside of integration config, more details in [relevant docs](concepts/integration-config.md)
 
 ### v0.2.31
 
 - feat: Add limit range for `kube-RBAC-proxy`
 
-[def]: ./kubernetes-resources/integration-config.md
+[def]: concepts/integration-config.md

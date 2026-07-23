@@ -12,7 +12,7 @@ Multi Tenant Operator binds existing ClusterRoles to the Tenant's namespaces use
 
 Multi Tenant Operator is also able to leverage existing groups in Kubernetes and OpenShift, or external groups synced from third-party identity management systems, for maintaining tenant membership in your organization's current user management system.
 
-More details on [Tenant](../kubernetes-resources/tenant/tenant-overview.md)
+More details on [Tenant](../concepts/tenant.md)
 
 ### Templates and Template Distribution
 
@@ -33,7 +33,7 @@ More details on [Distributing Template Resources](https://docs.stakater.com/temp
 
 Multi Tenant Operator provides a mechanism for defining Resource Quotas at the tenant scope, meaning all namespaces belonging to a particular tenant share the defined quota. This enables you to safely enable dev teams to self-serve their namespaces while being confident that they can only use the resources allocated based on budget and business needs.
 
-More details on [Quota](../kubernetes-resources/quota.md)
+More details on [Quota](../concepts/quota.md)
 
 ## FinOps Features
 
@@ -81,7 +81,7 @@ More details on [Console](../console/overview.md)
 
 Multi Tenant Operator can be configured to automatically provision a namespace in the cluster for every member of the specific tenant. This namespace will be preloaded with any selected templates and consume the same pool of resources from the tenant's quota, creating safe remote dev namespaces that teams can use as scratch namespaces for rapid prototyping and development. So, every developer gets a Kubernetes-based cloud development environment that feels like working on localhost.
 
-More details on [Sandboxes](../kubernetes-resources/tenant/how-to-guides/create-sandbox.md)
+More details on [Sandboxes](../guides/create-sandbox.md)
 
 ## Security Features
 

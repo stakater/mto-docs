@@ -59,4 +59,4 @@ spec:
 
 ### Demo
 
-![Image Registry Validation](../../../images/image-registry-validation.gif)
+![Image Registry Validation](../images/image-registry-validation.gif)

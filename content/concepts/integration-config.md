@@ -595,7 +595,7 @@ RBAC is used to configure the roles that will be applied to each Tenant namespac
 
 TenantRoles are required within the IntegrationConfig, as they are used for defining what roles will be applied to each Tenant namespace. The field allows optional custom roles, that are then used to create RoleBindings for namespaces that match a labelSelector.
 
-> ⚠️ If you do not configure roles in any way, then the default OpenShift roles of `owner`, `edit`, and `view` will apply to Tenant members. Their details can be found [here](../kubernetes-resources/tenant/how-to-guides/custom-roles.md)
+> ⚠️ If you do not configure roles in any way, then the default OpenShift roles of `owner`, `edit`, and `view` will apply to Tenant members. Their details can be found [here](../guides/custom-roles.md)
 
 ```yaml
 rbac:
@@ -632,7 +632,7 @@ rbac:
 
 ##### Default
 
-This field contains roles that will be used to create default `roleBindings` for each namespace that belongs to tenants. These `roleBindings` are only created for a namespace if that namespace isn't already matched by the `custom` field below it. Therefore, it is required to have at least one role mentioned within each of its three subfields: `owner`, `editor`, and `viewer`. These 3 subfields also correspond to the member fields of the [Tenant CR](./tenant/tenant-overview.md)
+This field contains roles that will be used to create default `roleBindings` for each namespace that belongs to tenants. These `roleBindings` are only created for a namespace if that namespace isn't already matched by the `custom` field below it. Therefore, it is required to have at least one role mentioned within each of its three subfields: `owner`, `editor`, and `viewer`. These 3 subfields also correspond to the member fields of the [Tenant CR](tenant.md)
 
 ##### Custom
 

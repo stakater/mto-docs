@@ -61,4 +61,4 @@ spec:
 
 ### Demo
 
-![Service Account Validation](../../../images/service-account-validation.gif)
+![Service Account Validation](../images/service-account-validation.gif)
