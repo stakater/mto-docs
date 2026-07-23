@@ -8,7 +8,7 @@ on:
 
 jobs:
   doc_qa:
-    uses: stakater/.github/.github/workflows/pull_request_doc_qa.yaml@v0.0.131
+    uses: stakater/.github/.github/workflows/pull_request_doc_qa.yaml@v0.0.189
     with:
       MD_CONFIG: .github/md_config.json
       DOC_SRC: content README.md
@@ -17,9 +17,12 @@ jobs:
     concurrency:
       group: pull_request_versioned_doc
       cancel-in-progress: false
-    uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@v0.0.147
+    uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@v0.0.189
+    with:
+      PRE_BUILD_HOOK: make merge
     secrets:
       GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+      PRE_BUILD_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
   build_container:
     needs: deploy_doc
     if: ${{ github.base_ref == 'main' }}

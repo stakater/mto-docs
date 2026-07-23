@@ -84,6 +84,32 @@ python3 -m mike serve
 
 Then, you can make changes in `content` or `dist/_theme` folder. Please note that `dist/_theme` is a build folder and any changes made here will be lost if you do not move them to the `theme_common` or the `theme_override` folder.
 
+## Merging sub-operator docs
+
+Some sub-operators maintain their own docs repos, and their content can be merged into
+this repo's `content/` directory at build time by [`scripts/merge_docs.py`](./scripts/merge_docs.py).
+
+- [`merge.yaml`](./merge.yaml) controls which sub-operator repos are merged, which
+  paths are copied, and where each mapping is nested in the nav (`under:`).
+- By default, `docker build -f DockerfileLocal` does not have the sub-operator repos
+  in its build context, so the merge step is skipped and the local build works
+  normally with no extra setup.
+- To include sub-operator docs in a local build: clone the sub-operator repos, make
+  them available to the build (e.g. via `docker build --build-context`), and pass
+  `--build-arg MERGE_SUBOP_REPOS="template-operator=/path hibernation-operator=/path"`
+  (space-separated `slug=path` pairs). Alternatively, run
+  `python scripts/merge_docs.py --set-repo slug=path ...` on the host as a
+  pre-build step, then build normally.
+- The merge must run against a freshly combined `mkdocs.yml` (i.e. after
+  `combine_mkdocs_config_yaml.py` and before `mkdocs build`) — re-running it against
+  an already-merged nav would duplicate entries. See [`DockerfileLocal`](./DockerfileLocal)
+  for the conditional `MERGE_SUBOP_REPOS` gate.
+- A host-side run of `merge_docs.py` copies files directly into the real `content/`
+  tree. To undo it, remove only the specific generated paths listed in `merge.yaml` afterward.
+- Production CI performs the build inside the shared `stakater/.github` reusable
+  workflow, so wiring up the sub-operator repo clone + merge step there is a
+  separate coordination task.
+
 ### QA Checks
 
 You can run QA checks locally. They are also run as part of pull request builds.

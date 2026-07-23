@@ -17,6 +17,17 @@ RUN pip install -r theme_common/requirements.txt
 RUN python theme_common/scripts/combine_theme_resources.py -s theme_common/resources -ov theme_override/resources -o dist/_theme
 RUN python theme_common/scripts/combine_mkdocs_config_yaml.py theme_common/mkdocs.yml theme_override/mkdocs.yml mkdocs.yml
 
+# Optionally merge sub-operator docs into the site. Skipped unless
+# MERGE_SUBOP_REPOS is provided (space-separated slug=path pairs pointing at
+# sub-operator repos made available in the build, e.g. via --build-context).
+# Runs after the config-combine so nav is injected into the final mkdocs.yml.
+ARG MERGE_SUBOP_REPOS=""
+RUN if [ -n "$MERGE_SUBOP_REPOS" ]; then \
+      python scripts/merge_docs.py $(for r in $MERGE_SUBOP_REPOS; do echo --set-repo "$r"; done); \
+    else \
+      echo "merge_docs: skipped (MERGE_SUBOP_REPOS not set)"; \
+    fi
+
 RUN rm -f 'prepare_theme.sh' && \
     rm -rf theme_global && \
     rm -rf theme_common

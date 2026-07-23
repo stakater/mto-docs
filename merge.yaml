@@ -1,0 +1,52 @@
+# Controls which sub-operator docs are merged into mto-docs at build time.
+# `repo` is the canonical source (git URL); the pipeline clones it and the
+# merge runs against the clone via --set-repo. Locally, override with --set-repo
+# (see the Makefile) to point at a local checkout.
+#
+# NOTE: `into`/`under` target the CURRENT mto-docs nav/layout. Once mto-docs is
+# migrated to the shared structure (structure.md), these become near 1:1 pairs
+# (guides->Guides, reference->Reference, concepts->Concepts, ...).
+operators:
+  - title: Template
+    repo: https://github.com/stakater/template-operator-docs.git
+    # branch: main            # optional; empty -> the repo's default branch
+    # links to pages NOT whitelisted below fall back to this published site
+    live_url: https://docs.stakater.com/template-operator-docs/
+    live_url_style: directory
+    mappings:
+      - from: "reference/api.md"        # single file, one custom-named entry
+        into: "kubernetes-resources"
+        under: "API Reference"
+        title: "Templates"
+        flatten: true
+      - from: "guides/**"               # merged flat into the Guides section
+        into: "guides"
+        under: "Guides"
+        flatten: true
+      - from: "images/**"
+        into: "images"          # assets only, no menu entry
+    exclude:
+      - "**/.gitkeep"
+
+  - title: Hibernation
+    repo: https://github.com/stakater/hibernation-operator-docs.git
+    # branch: main            # optional; empty -> the repo's default branch
+    live_url: https://docs.stakater.com/hibernation-operator-docs/
+    live_url_style: html          # sub-op uses use_directory_urls: false
+    mappings:
+      - from: "reference/api/**"        # the CRD API pages, merged flat
+        into: "kubernetes-resources"
+        under: "API Reference"
+        flatten: true
+      - from: "guides/**"               # merged flat into the Guides section
+        into: "guides"
+        under: "Guides"
+        flatten: true
+      - from: "integrations/**"        # merged flat into the Extensions section
+        into: "integrations"
+        under: "Extensions"
+        flatten: true
+      - from: "images/**"
+        into: "images"
+    exclude:
+      - "**/.gitkeep"
