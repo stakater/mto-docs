@@ -19,6 +19,50 @@ extra:
 plugins:
   - search
   - glightbox
+  # Redirects for pages relocated during the docs restructure, so old bookmarks
+  # keep working. Requires the mkdocs-redirects package at build time, see
+  # docs/superpowers/shared-theme-redirects.md (added to the shared theme's
+  # requirements.txt).
+  - redirects:
+      redirect_maps:
+        about/key-features.md: overview/key-features.md
+        about/use-cases.md: overview/use-cases.md
+        about/benefits.md: overview/benefits.md
+        architecture/architecture.md: concepts/architecture.md
+        architecture/concepts.md: concepts/terminology.md
+        kubernetes-resources/tenant/tenant-overview.md: concepts/tenant.md
+        kubernetes-resources/quota.md: concepts/quota.md
+        kubernetes-resources/extensions.md: concepts/extensions.md
+        kubernetes-resources/integration-config.md: concepts/integration-config.md
+        installation/overview.md: getting-started/installation/overview.md
+        installation/openshift.md: getting-started/installation/openshift.md
+        installation/kubernetes.md: getting-started/installation/kubernetes.md
+        installation/azure-aks/preparation.md: getting-started/installation/azure-aks/preparation.md
+        installation/azure-aks/installation.md: getting-started/installation/azure-aks/installation.md
+        installation/azure-aks/validation.md: getting-started/installation/azure-aks/validation.md
+        installation/aws-eks/preparation.md: getting-started/installation/aws-eks/preparation.md
+        installation/aws-eks/installation.md: getting-started/installation/aws-eks/installation.md
+        installation/aws-eks/validation.md: getting-started/installation/aws-eks/validation.md
+        installation/uninstalling.md: getting-started/uninstalling.md
+        cli/kubectl-plugin.md: reference/cli.md
+        kubernetes-resources/tenant/how-to-guides/create-tenant.md: guides/create-tenant.md
+        kubernetes-resources/tenant/how-to-guides/create-namespaces.md: guides/create-namespaces.md
+        kubernetes-resources/tenant/how-to-guides/create-sandbox.md: guides/create-sandbox.md
+        kubernetes-resources/tenant/how-to-guides/assign-metadata.md: guides/assign-metadata.md
+        kubernetes-resources/tenant/how-to-guides/hibernate-tenant.md: guides/hibernate-tenant.md
+        kubernetes-resources/tenant/how-to-guides/restrict-nodepool-per-tenant.md: guides/restrict-nodepool-per-tenant.md
+        kubernetes-resources/tenant/how-to-guides/disable-intra-tenant-networking.md: guides/disable-intra-tenant-networking.md
+        kubernetes-resources/tenant/how-to-guides/ingress-sharding.md: guides/ingress-sharding.md
+        kubernetes-resources/tenant/how-to-guides/host-validation.md: guides/host-validation.md
+        kubernetes-resources/tenant/how-to-guides/storage-classes.md: guides/storage-classes.md
+        kubernetes-resources/tenant/how-to-guides/pod-priority-classes.md: guides/pod-priority-classes.md
+        kubernetes-resources/tenant/how-to-guides/service-accounts.md: guides/service-accounts.md
+        kubernetes-resources/tenant/how-to-guides/image-registries.md: guides/image-registries.md
+        kubernetes-resources/tenant/how-to-guides/custom-roles.md: guides/custom-roles.md
+        kubernetes-resources/tenant/how-to-guides/extend-default-roles.md: guides/extend-default-roles.md
+        kubernetes-resources/tenant/how-to-guides/delete-tenant.md: guides/delete-tenant.md
+        kubernetes-resources/tenant/how-to-guides/templated-metadata-values.md: guides/templated-metadata-values.md
+        changelog.md: release-notes.md
 
 nav:
   - Overview:
