@@ -38,6 +38,6 @@ spec:
 
 Now user can log In to Mattermost to see their Team and relevant channels associated with it.
 
-![image](./../images/mattermost-tenant-team.png)
+![image](../images/mattermost-tenant-team.png)
 
 The name of the Team is similar to the Tenant name. Notification channels are pre-configured for every team, and can be modified.

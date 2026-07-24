@@ -1,0 +1,26 @@
+# Config for generating content/reference/api.md from the tenant-operator Go
+# types with https://github.com/elastic/crd-ref-docs (template-operator-docs
+# model). One-off manual regeneration (no CI workflow here yet):
+#
+#   go install github.com/elastic/crd-ref-docs@latest
+#   crd-ref-docs --source-path=<tenant-operator>/api \
+#     --config=crd-ref-docs.yaml --renderer=markdown \
+#     --output-path=content/reference/api.md
+#   # Then prepend the '<!-- markdownlint-disable -->' header, and delink the
+#   # api/common helper types that crd-ref-docs links but does not render
+#   # (they fail `mkdocs build --strict`):
+#   sed -i -E 's/\[(Namespace|Members)\]\(#(namespace|members)\)/\1/g' content/reference/api.md
+#
+processor:
+  ignoreTypes:
+    - "List$"
+  ignoreFields:
+    - "TypeMeta$"
+  # Latest served version per kind only: drop the deprecated Tenant v1beta2
+  # (Tenant is served at v1beta3). Quota/IntegrationConfig/FinOpsOperator are at
+  # v1beta1, Extensions at v1alpha1.
+  ignoreGroupVersions:
+    - "tenantoperator.stakater.com/v1beta2"
+
+render:
+  kubernetesVersion: "1.30"

@@ -3,9 +3,8 @@
 # merge runs against the clone via --set-repo. Locally, override with --set-repo
 # (see the Makefile) to point at a local checkout.
 #
-# NOTE: `into`/`under` target the CURRENT mto-docs nav/layout. Once mto-docs is
-# migrated to the shared structure (structure.md), these become near 1:1 pairs
-# (guides->Guides, reference->Reference, concepts->Concepts, ...).
+# mto-docs now follows the shared structure (structure.md), so `into`/`under`
+# map 1:1 to the shared sections (guides->Guides, reference->Reference, ...).
 operators:
   - title: Template
     repo: https://github.com/stakater/template-operator-docs.git
@@ -15,9 +14,9 @@ operators:
     live_url_style: directory
     mappings:
       - from: "reference/api.md"        # single file, one custom-named entry
-        into: "kubernetes-resources"
+        into: "reference/api"
         under: "API Reference"
-        title: "Templates"
+        title: "Template Operator"
         flatten: true
       - from: "guides/**"               # merged flat into the Guides section
         into: "guides"
@@ -35,16 +34,15 @@ operators:
     live_url_style: html          # sub-op uses use_directory_urls: false
     mappings:
       - from: "reference/api/**"        # the CRD API pages, merged flat
-        into: "kubernetes-resources"
+        into: "reference/api"
         under: "API Reference"
-        flatten: true
       - from: "guides/**"               # merged flat into the Guides section
         into: "guides"
         under: "Guides"
         flatten: true
-      - from: "integrations/**"        # merged flat into the Extensions section
+      - from: "integrations/**"        # merged flat into the Integrations section
         into: "integrations"
-        under: "Extensions"
+        under: "Integrations"
         flatten: true
       - from: "images/**"
         into: "images"
