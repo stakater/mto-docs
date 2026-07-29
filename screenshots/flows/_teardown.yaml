@@ -1,0 +1,115 @@
+# TEARDOWN flow -- takes NO screenshots. Runs LAST on a full capture run,
+# regardless of whether any capture flow failed (capture.sh keeps going).
+#
+# Deletes everything the flows create, in dependency order: instances first (a
+# template with instances carries `In Use` and can't be deleted), then templates,
+# then the hibernation schedule, then the node filter.
+#
+# Timeouts are generous on purpose. A step that can't find its target burns its
+# whole timeout before being skipped, so a teardown with nothing to do is slow --
+# but that is the right trade: a short timeout would skip a deletion just because
+# the console was briefly slow, silently leaving objects behind. A clean run is
+# fast anyway (~23s), because every step finds its target immediately.
+#
+# Every step lives in `after:`, which the runner treats as non-fatal, and is also
+# marked `optional: true` to document that intent (teardown must be idempotent --
+# safe to run when there is nothing left to clean up). Read the `[after] ... failed`
+# lines to see what was actually removed; the PASS verdict says nothing about it.
+#
+# Selectors verified against the mto-console source:
+#  * Confirm dialogs are Radix AlertDialog => role="alertdialog", NOT role="dialog".
+#    That single mismatch is why every earlier delete silently did nothing. The
+#    confirm button's label flips to "Deleting..." mid-flight, so the real proof of
+#    success is the ROW disappearing.
+#  * List rows are plain <tr>; the kebab is an icon-only <button aria-haspopup="menu">
+#    with no testid, and SortableTable adds three more such triggers to its toolbar
+#    (search field, columns, page size) -- so the kebab MUST be scoped to its row.
+#  * The hibernation page enables its header buttons only once a tenant is selected.
+#    ?tenant=<name> seeds that on first render and skips the tenant dropdown, which
+#    opens EMPTY when the tenants query returns nothing -- the actual reason
+#    "Manage Schedules" was disabled.
+name: docs-teardown
+
+requires:
+  env: [CONSOLE_URL, CONSOLE_USER, CONSOLE_PASSWORD, DOCS_HIB_TENANT, DOCS_SLEEP_NS]
+  reachable: ["${CONSOLE_URL}"]
+
+viewport:
+  width: 1280
+  height: 800
+  deviceScaleFactor: 2
+  colorScheme: light
+
+steps:
+  - { step: open, url: "${CONSOLE_URL}" }
+  - { step: wait-for, selector: 'input[name="login"], input[name="username"]', timeout: 60s }
+  - { step: fill, selector: 'input[name="login"], input[name="username"]', value: "${CONSOLE_USER}" }
+  - { step: fill, selector: 'input[name="password"]', value: "${CONSOLE_PASSWORD}" }
+  - { step: click, selector: 'button[type="submit"]', timeout: 60s }
+  - { step: wait-for, selector: '[data-testid="dashboard-container"]', timeout: 60s }
+  - { step: log, message: "teardown: logged in, deleting docs-* objects" }
+
+after:
+  # --- 1. Template instance (namespace-scoped) --------------------------------
+  - { step: open, url: "${CONSOLE_URL}/templates/instances", optional: true }
+  - { step: wait-for, selector: 'h1:has-text("All Template Instances")', timeout: 30s, optional: true }
+  - { step: click, selector: 'tr:has-text("docs-instance") button[aria-haspopup="menu"]', timeout: 15s, optional: true }
+  - { step: click, selector: '[role="menuitem"]:text-is("Delete")', timeout: 15s, optional: true }
+  - { step: click, selector: '[role="alertdialog"] button:text-is("Delete")', timeout: 15s, optional: true }
+  - { step: wait-for, selector: 'tr:has-text("docs-instance")', state: detached, timeout: 60s, optional: true }
+
+  # --- 2. Cluster template instance ------------------------------------------
+  - { step: open, url: "${CONSOLE_URL}/templates/instances", optional: true }
+  - { step: wait-for, selector: 'h1:has-text("All Template Instances")', timeout: 30s, optional: true }
+  - { step: click, selector: '[role="tab"]:has-text("Cluster Template Instances")', timeout: 15s, optional: true }
+  - { step: wait-for, selector: '[role="tabpanel"][data-state="active"] table', timeout: 30s, optional: true }
+  - { step: click, selector: 'tr:has-text("docs-cti-instance") button[aria-haspopup="menu"]', timeout: 15s, optional: true }
+  - { step: click, selector: '[role="menuitem"]:text-is("Delete")', timeout: 15s, optional: true }
+  - { step: click, selector: '[role="alertdialog"] button:text-is("Delete")', timeout: 15s, optional: true }
+  - { step: wait-for, selector: 'tr:has-text("docs-cti-instance")', state: detached, timeout: 60s, optional: true }
+
+  # --- 3. Templates: docs-template, then docs-seed-template -------------------
+  - { step: open, url: "${CONSOLE_URL}/templates", optional: true }
+  - { step: wait-for, selector: '[data-testid="template-list"]', timeout: 30s, optional: true }
+  - { step: click, selector: 'tr:has-text("docs-template") button[aria-haspopup="menu"]', timeout: 15s, optional: true }
+  - { step: click, selector: '[role="menuitem"]:text-is("Delete")', timeout: 15s, optional: true }
+  - { step: click, selector: '[role="alertdialog"] button:text-is("Delete")', timeout: 15s, optional: true }
+  - { step: wait-for, selector: 'tr:has-text("docs-template")', state: detached, timeout: 60s, optional: true }
+
+  - { step: open, url: "${CONSOLE_URL}/templates", optional: true }
+  - { step: wait-for, selector: '[data-testid="template-list"]', timeout: 30s, optional: true }
+  - { step: click, selector: 'tr:has-text("docs-seed-template") button[aria-haspopup="menu"]', timeout: 15s, optional: true }
+  - { step: click, selector: '[role="menuitem"]:text-is("Delete")', timeout: 15s, optional: true }
+  - { step: click, selector: '[role="alertdialog"] button:text-is("Delete")', timeout: 15s, optional: true }
+  - { step: wait-for, selector: 'tr:has-text("docs-seed-template")', state: detached, timeout: 60s, optional: true }
+
+  # --- 4. Hibernation: wake the slept namespace, then delete the schedule -----
+  # An ENABLED Manage Schedules button is the observable proof a tenant is selected.
+  - { step: open, url: "${CONSOLE_URL}/hibernation?tenant=${DOCS_HIB_TENANT}", optional: true }
+  - { step: wait-for, selector: '[data-testid="hibernation-list"]', timeout: 30s, optional: true }
+  - { step: wait-for, selector: '[data-testid="hibernation-manage-button"]:not([disabled])', timeout: 30s, optional: true }
+  # Wake DOCS_SLEEP_NS. The button is ABSENT when the namespace is already awake and
+  # DISABLED when it sleeps via a label selector -- both are fine to skip here,
+  # because deleting the schedule below wakes the label-managed ones anyway.
+  - { step: click, selector: 'tr:has-text("${DOCS_SLEEP_NS}") button:has-text("Wake up")', timeout: 15s, optional: true }
+  # The drawer only mounts once hibernation data has arrived, so wait for its title.
+  # Both sheets share data-testid="sheet-content", hence the :has-text disambiguation.
+  - { step: click, selector: '[data-testid="hibernation-manage-button"]', timeout: 15s, optional: true }
+  - { step: wait-for, selector: '[data-testid="sheet-content"]:has-text("Manage Hibernation Schedules")', timeout: 30s, optional: true }
+  # The trash control has no testid, no aria-label and no text node -- only an svg --
+  # so its row is the only way in. It is the row's single button.
+  - { step: click, selector: '[data-testid="sheet-content"] tr:has-text("docs-weekend-shutdown") button', timeout: 15s, optional: true }
+  - { step: click, selector: '[role="alertdialog"] button:has-text("Delete")', timeout: 15s, optional: true }
+  - { step: wait-for, selector: '[data-testid="sheet-content"] tr:has-text("docs-weekend-shutdown")', state: detached, timeout: 60s, optional: true }
+
+  # --- 5. Capacity-planning node filter --------------------------------------
+  - { step: open, url: "${CONSOLE_URL}/capacity-planning", optional: true }
+  - { step: wait-for, selector: '[data-testid="capacity-planning-page"]', timeout: 30s, optional: true }
+  - { step: click, selector: '[data-testid="show-filters-button"]', timeout: 15s, optional: true }
+  - { step: wait-for, selector: '[data-testid="node-filters-accordion"] >> text=docs-gpu-nodes', timeout: 30s, optional: true }
+  - { step: click, selector: '[aria-haspopup="menu"]:right-of(:text("docs-gpu-nodes")) >> nth=0', timeout: 15s, optional: true }
+  - { step: click, selector: '[role="menuitem"]:has-text("Delete")', timeout: 15s, optional: true }
+  - { step: click, selector: '[data-testid="confirm-delete-button"]', timeout: 15s, optional: true }
+  - { step: wait-for, selector: '[data-testid="node-filters-accordion"] >> text=docs-gpu-nodes', state: detached, timeout: 30s, optional: true }
+
+  - { step: log, message: "teardown finished -- read the [after] ... failed lines above to see what was actually removed" }

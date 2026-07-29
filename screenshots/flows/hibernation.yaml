@@ -1,0 +1,151 @@
+# console/hibernation.md -> 8 images, SELF-SEEDING:
+#   - creates schedule "docs-weekend-shutdown" (via the "+" popup, shot as createInterval.png)
+#   - REALLY applies Sleep to DOCS_SLEEP_NS and Hibernate (on the schedule) to DOCS_HIB_NS,
+#     both By Namespaces, so hibernation_table.png shows Sleeping/Hibernating badges + Wake up buttons
+#   - cleanup (wake + delete schedule) happens in _teardown.yaml
+# DOCS_SLEEP_NS and DOCS_HIB_NS must be two namespaces of DOCS_HIB_TENANT that are
+# currently ACTIVE (already-asleep namespaces can't be selected in the drawer).
+name: docs-hibernation
+
+requires:
+  env: [CONSOLE_URL, CONSOLE_USER, CONSOLE_PASSWORD, DOCS_HIB_TENANT, DOCS_SLEEP_NS, DOCS_HIB_NS]
+  reachable: ["${CONSOLE_URL}"]
+
+viewport:
+  width: 1280
+  height: 800
+  deviceScaleFactor: 2
+  colorScheme: light
+
+steps:
+  - { step: open, url: "${CONSOLE_URL}" }
+  - { step: wait-for, selector: 'input[name="login"], input[name="username"]', timeout: 60s }
+  - { step: fill, selector: 'input[name="login"], input[name="username"]', value: "${CONSOLE_USER}" }
+  - { step: fill, selector: 'input[name="password"]', value: "${CONSOLE_PASSWORD}" }
+  # The click is instant; Playwright then waits for the Dex -> /auth/callback ->
+  # dashboard redirect chain, which exceeds the 10s default on a cold Dex. The
+  # wait-for below is the real gate, so a long timeout here only removes a false
+  # failure.
+  - { step: click, selector: 'button[type="submit"]', timeout: 60s }
+  - { step: wait-for, selector: '[data-testid="dashboard-container"]', timeout: 60s }
+
+  # Hibernation page, scoped to the docs tenant (old images show tenant "logistics")
+  - { step: open, url: "${CONSOLE_URL}/hibernation" }
+  - { step: wait-for, selector: '[data-testid="hibernation-list"]', timeout: 30s }
+  # VERIFY on first run: tenant filter locator
+  # Tenant filter is a Radix DropdownMenu (aria-haspopup=menu + menuitemcheckbox),
+  # NOT a combobox/listbox. Escape is safe here: no drawer is open on the list page.
+  - { step: click, selector: '[aria-haspopup="menu"]:near(:text("Tenant")) >> nth=0' }
+  - { step: click, selector: '[role="menuitemcheckbox"]:has-text("${DOCS_HIB_TENANT}")' }
+  - { step: press, key: Escape }
+  - { step: wait-for, selector: '[role="menuitemcheckbox"]', state: detached }
+  - { step: wait-for, selector: '[data-testid="hibernation-list"] .animate-pulse', state: detached, timeout: 30s }
+
+  # --- Drawer round 1: SLEEP ---------------------------------------------------
+  - { step: click, selector: '[data-testid="hibernation-apply-button"]' }
+  - { step: wait-for, selector: 'text="Target Selection:"', timeout: 15s }
+
+  # Sleep Mode + By Labels are already selected when the drawer opens, so there is
+  # nothing to click -- and clicking an active ToggleGroupItem can deselect it.
+  # Just pick the first label (screenshot only, never applied).
+  - { step: click, selector: '[role="dialog"] [role="combobox"] >> nth=0' }
+  - { step: wait-for, selector: 'input[placeholder="Search labels..."]', timeout: 15s }
+  # Items are <button>s, not role=option -- take the first one below the search box
+  - { step: click, selector: 'button:below(input[placeholder="Search labels..."]) >> nth=0' }
+  # The picker is a multi-select: it stays open after a pick. Toggle the trigger
+  # to close it -- never Escape, which closes the whole drawer.
+  - { step: click, selector: '[role="dialog"] [role="combobox"] >> nth=0' }
+  - { step: wait-for, selector: 'input[placeholder="Search labels..."]', state: detached, timeout: 15s }
+  - { step: wait-for, selector: '[role="dialog"] >> text=1 label selected', timeout: 15s }
+  - { step: screenshot, path: sleepByLabels.png, fullPage: false }
+
+  # Sleep mode + By Namespaces: check DOCS_SLEEP_NS, shoot, then REALLY apply
+  - { step: click, selector: '[role="dialog"] button:has-text("By Namespaces")' }
+  - { step: wait-for, selector: '[role="dialog"] >> text=Select Namespaces', timeout: 15s }
+  # Each namespace row is a <button> containing a styled div that merely LOOKS
+  # like a checkbox -- there is no role="checkbox" and no table row. Click the
+  # row button itself (its onClick is the toggle), matched on the exact name.
+  # NOTE: the button is `disabled` when the namespace is already sleeping or
+  # hibernating, so this step times out unless the namespace is Active.
+  - { step: click, selector: '[role="dialog"] button:has(span:text-is("${DOCS_SLEEP_NS}"))' }
+  - { step: screenshot, path: sleepByNameSelection.png, fullPage: false }
+  - { step: click, selector: '[role="dialog"] button:has-text("Apply Sleep Mode")' }
+  - { step: wait-for, selector: '[role="dialog"]', state: detached, timeout: 30s }
+
+  # --- Drawer round 2: HIBERNATE ----------------------------------------------
+  - { step: click, selector: '[data-testid="hibernation-apply-button"]' }
+  - { step: wait-for, selector: 'text="Target Selection:"', timeout: 15s }
+  - { step: click, selector: 'label[for="mode-hibernate"]' }
+  - { step: wait-for, selector: '[role="dialog"] >> text=Select Schedule', timeout: 15s }
+
+  # Create the schedule via the "+" popup (old image values: 0 20 * * * / 0 8 * * *)
+  # SchedulePicker renders one of two layouts: with NO schedules yet, a full-width
+  # dashed button BELOW the label ("Click here to create your first hibernation
+  # schedule"); with schedules, a select plus an icon-only "+" button beside it.
+  # Neither sits to the RIGHT of the label, so :right-of matched nothing. What
+  # both share is the Plus icon. Scroll it into view first -- the section is
+  # below the drawer's fold.
+  - { step: scroll-to, selector: '[role="dialog"] >> text=Select Schedule', block: center }
+  - { step: click, selector: '[role="dialog"] button:has(svg.lucide-plus)' }
+  - { step: wait-for, selector: 'text="Create Hibernation Schedule"', timeout: 15s }
+  - { step: fill, selector: '[role="dialog"]:has-text("Create Hibernation Schedule") input >> nth=0', value: docs-weekend-shutdown }
+  - { step: fill, selector: '[role="dialog"]:has-text("Create Hibernation Schedule") input >> nth=1', value: "0 20 * * *" }
+  - { step: fill, selector: '[role="dialog"]:has-text("Create Hibernation Schedule") input >> nth=2', value: "0 8 * * *" }
+  - { step: wait-for, selector: 'text="Schedule Preview"', timeout: 15s }
+  - { step: screenshot, path: createInterval.png, fullPage: false }
+  - { step: click, selector: '[role="dialog"]:has-text("Create Hibernation Schedule") button:has-text("Create Schedule")' }
+  - { step: wait-for, selector: 'text="Create Hibernation Schedule"', state: detached, timeout: 15s }
+
+  # Select the new schedule (if the popup didn't auto-select it)
+  - { step: click, selector: '[role="dialog"] [role="combobox"]:near(:text("Select Schedule")) >> nth=0' }
+  - { step: click, selector: '[role="option"]:has-text("docs-weekend-shutdown")' }
+  - { step: wait-for, selector: '[role="option"]', state: detached }
+
+  # Hibernate + By Labels: By Labels is still the default in this fresh drawer.
+  # Pick the first label (screenshot only).
+  - { step: click, selector: '[role="dialog"] [role="combobox"] >> nth=0' }
+  - { step: wait-for, selector: 'input[placeholder="Search labels..."]', timeout: 15s }
+  - { step: click, selector: 'button:below(input[placeholder="Search labels..."]) >> nth=0' }
+  - { step: click, selector: '[role="dialog"] [role="combobox"] >> nth=0' }
+  - { step: wait-for, selector: 'input[placeholder="Search labels..."]', state: detached, timeout: 15s }
+  - { step: wait-for, selector: '[role="dialog"] >> text=1 label selected', timeout: 15s }
+  - { step: screenshot, path: hibernateByLabels.png, fullPage: false }
+
+  # Hibernate + By Namespaces: check DOCS_HIB_NS, shoot, then REALLY apply
+  - { step: click, selector: '[role="dialog"] button:has-text("By Namespaces")' }
+  - { step: wait-for, selector: '[role="dialog"] >> text=Select Namespaces', timeout: 15s }
+  # Each namespace row is a <button> containing a styled div that merely LOOKS
+  # like a checkbox -- there is no role="checkbox" and no table row. Click the
+  # row button itself (its onClick is the toggle), matched on the exact name.
+  # NOTE: the button is `disabled` when the namespace is already sleeping or
+  # hibernating, so this step times out unless the namespace is Active.
+  - { step: click, selector: '[role="dialog"] button:has(span:text-is("${DOCS_HIB_NS}"))' }
+  - { step: screenshot, path: hibernateByNameSelection.png, fullPage: false }
+  - { step: click, selector: '[role="dialog"] button:has-text("Apply Hibernation")' }
+  - { step: wait-for, selector: '[role="dialog"]', state: detached, timeout: 30s }
+
+  # --- List AFTER both applies: badges + Wake up buttons ----------------------
+  - { step: open, url: "${CONSOLE_URL}/hibernation" }
+  - { step: wait-for, selector: '[data-testid="hibernation-list"]', timeout: 30s }
+  # Tenant filter is a Radix DropdownMenu (aria-haspopup=menu + menuitemcheckbox),
+  # NOT a combobox/listbox. Escape is safe here: no drawer is open on the list page.
+  - { step: click, selector: '[aria-haspopup="menu"]:near(:text("Tenant")) >> nth=0' }
+  - { step: click, selector: '[role="menuitemcheckbox"]:has-text("${DOCS_HIB_TENANT}")' }
+  - { step: press, key: Escape }
+  - { step: wait-for, selector: '[role="menuitemcheckbox"]', state: detached }
+  - { step: wait-for, selector: 'tr:has-text("${DOCS_SLEEP_NS}") >> text=Sleeping', timeout: 90s }
+  - { step: wait-for, selector: 'tr:has-text("${DOCS_HIB_NS}") >> text=Hibernating', timeout: 90s }
+  - { step: screenshot, path: hibernation_table.png, fullPage: false }
+
+  # --- Manage Schedules drawer (now lists docs-weekend-shutdown) --------------
+  - { step: click, selector: '[data-testid="hibernation-manage-button"]' }
+  - { step: wait-for, selector: '[role="dialog"] >> text=Existing Schedules', timeout: 15s }
+  - { step: wait-for, selector: '[role="dialog"] >> text=docs-weekend-shutdown', timeout: 15s }
+  - { step: screenshot, path: manageHIbernationSchedules.png, fullPage: false }
+  - { step: click, selector: '[role="dialog"] [role="tab"]:has-text("Create New")' }
+  - { step: wait-for, selector: '[role="dialog"] >> text=Schedule Name', timeout: 15s }
+  - { step: screenshot, path: createHibernationSchedule.png, fullPage: false }
+
+after:
+  # Cleanup (wake namespace + delete schedule) lives in _teardown.yaml
+  - { step: screenshot, when: on-failure, path: _failure-hibernation.png }

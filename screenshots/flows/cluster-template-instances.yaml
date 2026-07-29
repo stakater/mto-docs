@@ -1,0 +1,125 @@
+# console/cluster-template-instances.md -> 6 images.
+# Requires "docs-seed-template" from _seed.yaml (runs first on a full run).
+#   1. walks the cluster-scoped Create Instance drawer (basic info / params with
+#      image=nginx added / namespace selector limited to DOCS_NAMESPACE) and
+#      REALLY creates "docs-cti-instance"
+#   2. shoots the CTI tab AFTER creation (Deployed row), details, YAML view
+#   3. cleanup happens in _teardown.yaml, which runs last on a full run
+# The namespace selector targets ONLY DOCS_NAMESPACE (via its unique
+# kubernetes.io/metadata.name label) to bound the blast radius to one namespace.
+name: docs-cluster-template-instances
+
+requires:
+  env: [CONSOLE_URL, CONSOLE_USER, CONSOLE_PASSWORD, DOCS_NAMESPACE]
+  reachable: ["${CONSOLE_URL}"]
+
+viewport:
+  width: 1280
+  height: 800
+  deviceScaleFactor: 2
+  colorScheme: light
+
+steps:
+  - { step: open, url: "${CONSOLE_URL}" }
+  - { step: wait-for, selector: 'input[name="login"], input[name="username"]', timeout: 60s }
+  - { step: fill, selector: 'input[name="login"], input[name="username"]', value: "${CONSOLE_USER}" }
+  - { step: fill, selector: 'input[name="password"]', value: "${CONSOLE_PASSWORD}" }
+  # The click is instant; Playwright then waits for the Dex -> /auth/callback ->
+  # dashboard redirect chain, which exceeds the 10s default on a cold Dex. The
+  # wait-for below is the real gate, so a long timeout here only removes a false
+  # failure.
+  - { step: click, selector: 'button[type="submit"]', timeout: 60s }
+  - { step: wait-for, selector: '[data-testid="dashboard-container"]', timeout: 60s }
+
+  # --- Create CTI drawer (with screenshots) ------------------------------------
+  - { step: open, url: "${CONSOLE_URL}/templates/instances" }
+  - { step: wait-for, selector: 'h1:has-text("All Template Instances")', timeout: 30s }
+  - { step: click, selector: 'button:has-text("Create Instance(s)")' }
+  - { step: wait-for, selector: '[role="dialog"] >> text="Cluster Template Instance"', timeout: 15s }
+  - { step: click, selector: '[role="dialog"] >> text="Cluster Template Instance"' }
+  - { step: wait-for, selector: '[role="dialog"] >> text=Instance Name', timeout: 15s }
+  # Original shows this step UNTOUCHED (placeholders, Auto Sync off) -- shoot first
+  - { step: screenshot, path: cti-create.png, fullPage: false }
+  - { step: fill, selector: '[role="dialog"] input >> nth=0', value: docs-cti-instance }
+  # Assert the closed combobox displays the selection before moving on
+  - { step: click, selector: '[role="dialog"] [role="combobox"] >> nth=0' }
+  - { step: click, selector: '[role="option"]:has-text("docs-seed-template")' }
+  - { step: wait-for, selector: '[role="option"]', state: detached }
+  - { step: wait-for, selector: '[role="dialog"] [role="combobox"]:has-text("docs-seed-template")', timeout: 15s }
+
+  # Parameters step: add image = nginx (matches old cti-details "image = nginx")
+  - { step: click, selector: '[role="dialog"] button:has-text("Next")' }
+  - { step: wait-for, selector: '[role="dialog"] >> text=Set Parameter Values', timeout: 15s }
+  # Original shows no parameter added yet -- shoot before picking
+  - { step: screenshot, path: cti-create-param.png, fullPage: false }
+  - { step: click, selector: '[role="dialog"] [role="combobox"] >> nth=0' }
+  - { step: click, selector: '[role="option"]:has-text("image")' }
+  - { step: wait-for, selector: '[role="option"]', state: detached }
+  - { step: wait-for, selector: '[role="dialog"] [role="combobox"]:has-text("image")', timeout: 15s }
+  # Parameter Name is a combobox, so Value is the ONLY input on this step --
+  # `input >> nth=1` does not exist. Anchor on its placeholder ("Default: <x>").
+  - { step: fill, selector: '[role="dialog"] input[placeholder^="Default:"]', value: nginx }
+  - { step: click, selector: '[role="dialog"] button:has-text("Add")' }
+  - { step: wait-for, selector: '[role="dialog"] >> text=nginx', timeout: 15s }
+
+  # Namespace Selector step: key kubernetes.io/metadata.name In [DOCS_NAMESPACE]
+  # VERIFY on first run: key option text in the dropdown
+  - { step: click, selector: '[role="dialog"] button:has-text("Next")' }
+  - { step: wait-for, selector: '[role="dialog"] >> text=Namespace Labels Selector', timeout: 15s }
+  # Original shows no selector added yet (Operator defaults to In) -- shoot first
+  - { step: screenshot, path: cti-create-ns-selector.png, fullPage: false }
+  - { step: click, selector: '[role="dialog"] [role="combobox"] >> nth=0' }
+  - { step: click, selector: '[role="option"]:has-text("metadata.name")' }
+  - { step: wait-for, selector: '[role="option"]', state: detached }
+  # "Select Values" is a searchable MULTI-select (cmdk), NOT a combobox -- the
+  # two comboboxes on this step are Key and Operator, so `combobox >> nth=1`
+  # was opening Operator. Target it by its own trigger text instead.
+  # The namespace list is long and only the rendered window is in the DOM, so
+  # type the name to filter down to it. The search box placeholder must be
+  # matched EXACTLY: the list page behind the drawer also has a "Search by name
+  # or template..." input, and a prefix match types into that instead.
+  - { step: click, selector: '[role="dialog"] button:has-text("Select options")' }
+  - { step: fill, selector: 'input[placeholder="Search values..."]', value: "${DOCS_NAMESPACE}" }
+  - { step: click, selector: '[role="option"]:text-is("${DOCS_NAMESPACE}")' }
+  # Dismiss the popover by clicking the card heading (the trigger's own label
+  # changes once a value is picked, so it is not a reliable second target).
+  - { step: click, selector: '[role="dialog"] >> text=Namespace Labels Selector' }
+  - { step: wait-for, selector: '[role="option"]', state: detached }
+  - { step: click, selector: '[role="dialog"] button:has-text("Add Label")' }
+
+  # REALLY create, then the CTI tab AFTER creation shows a Deployed row
+  - { step: click, selector: '[role="dialog"] button:has-text("Create Instance")' }
+  - { step: wait-for, selector: '[role="dialog"]', state: detached, timeout: 30s }
+  - { step: click, selector: '[role="tab"]:has-text("Cluster Template Instances")' }
+  - { step: wait-for, selector: 'tr:has-text("docs-cti-instance") >> text=Deployed', timeout: 90s }
+  - { step: screenshot, path: cti-tab.png, fullPage: false }
+
+  # Details page
+  - { step: click, selector: '[role="tabpanel"][data-state="active"] >> text="docs-cti-instance"' }
+  - { step: wait-for, selector: 'text="Namespace Selector"', timeout: 30s }
+  - { step: wait, ms: 1s }
+  - { step: screenshot, path: cti-details.png, fullPage: false }
+
+  # YAML view
+  - { step: open, url: "${CONSOLE_URL}/templates/instances" }
+  - { step: wait-for, selector: 'h1:has-text("All Template Instances")', timeout: 30s }
+  - { step: click, selector: '[role="tab"]:has-text("Cluster Template Instances")' }
+  - { step: wait-for, selector: '[role="tabpanel"][data-state="active"] table', timeout: 30s }
+  - { step: click, selector: 'tr:has-text("docs-cti-instance") >> [aria-haspopup="menu"]' }
+  - { step: click, selector: '[role="menuitem"]:has-text("YAML")' }
+  - { step: wait-for, selector: '[data-testid="yaml-editor-container"]', timeout: 15s }
+  # The testid is the static wrapper -- Monaco lazy-mounts inside it, so wait for
+  # rendered lines, not just the container.
+  - { step: wait-for, selector: '[data-testid="yaml-editor-container"] .view-lines', timeout: 30s }
+  - { step: wait-for, selector: '[data-testid="yaml-editor-container"] >> text=apiVersion', timeout: 15s }
+  # Monaco paints text into .view-lines BEFORE it renders the line-number gutter
+  # and applies syntax colouring, so waiting on .view-lines alone can capture a
+  # half-initialised editor (plain text, no gutter). Wait for the gutter too,
+  # then settle briefly for tokenisation.
+  - { step: wait-for, selector: '[data-testid="yaml-editor-container"] .line-numbers', timeout: 30s }
+  - { step: wait, ms: 1s }
+  - { step: screenshot, path: cti-yaml.png, fullPage: false }
+
+after:
+  # Cleanup lives in _teardown.yaml (runs last, non-fatal)
+  - { step: screenshot, when: on-failure, path: _failure-cluster-template-instances.png }

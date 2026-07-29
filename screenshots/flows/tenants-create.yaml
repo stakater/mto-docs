@@ -1,0 +1,92 @@
+# console/tenants.md -> Create Tenant drawer walk (6 images).
+# Fills the wizard but NEVER clicks the final Create button.
+# DOCS_QUOTA must be the name of a quota that exists in the environment.
+name: docs-tenants-create
+
+requires:
+  env: [CONSOLE_URL, CONSOLE_USER, CONSOLE_PASSWORD, DOCS_QUOTA]
+  reachable: ["${CONSOLE_URL}"]
+
+viewport:
+  width: 1280
+  height: 800
+  deviceScaleFactor: 2
+  colorScheme: light
+
+steps:
+  - { step: open, url: "${CONSOLE_URL}" }
+  - { step: wait-for, selector: 'input[name="login"], input[name="username"]', timeout: 60s }
+  - { step: fill, selector: 'input[name="login"], input[name="username"]', value: "${CONSOLE_USER}" }
+  - { step: fill, selector: 'input[name="password"]', value: "${CONSOLE_PASSWORD}" }
+  # The click is instant; Playwright then waits for the Dex -> /auth/callback ->
+  # dashboard redirect chain, which exceeds the 10s default on a cold Dex. The
+  # wait-for below is the real gate, so a long timeout here only removes a false
+  # failure.
+  - { step: click, selector: 'button[type="submit"]', timeout: 60s }
+  - { step: wait-for, selector: '[data-testid="dashboard-container"]', timeout: 60s }
+
+  - { step: open, url: "${CONSOLE_URL}/tenants" }
+  - { step: wait-for, selector: '[data-testid="tenant-table"]', timeout: 30s }
+
+  # Original shows the NAME EMPTY with only the quota chosen -- so pick the quota,
+  # shoot, and only then fill the name (the YAML shot later needs it set).
+  - { step: click, selector: '[data-testid="tenant-create-button"]' }
+  - { step: wait-for, selector: '[data-testid="tenant-name-input"]', timeout: 15s }
+  - { step: click, selector: '[data-testid="tenant-quota-select"]' }
+  - { step: click, selector: '[role="option"]:has-text("${DOCS_QUOTA}")' }
+  - { step: wait-for, selector: '[role="option"]', state: detached }
+  - { step: screenshot, path: tenant-overview.png, fullPage: false }
+  - { step: fill, selector: '[data-testid="tenant-name-input"]', value: tenant }
+  - { step: wait-for, selector: '[data-testid="tenant-name-available"]', timeout: 15s }
+
+  # Wizard nav: the label and its "(Optional)" suffix are separate spans spaced by
+  # a CSS margin, so the DOM text is "Namespace(Optional)" with no space and text
+  # matching is a trap. Each nav button carries a generated testid instead.
+  - { step: click, selector: '[data-testid="tenant-accessControl-button"]' }
+  - { step: wait-for, selector: '[data-testid="sheet-content"] >> text=Owners', timeout: 15s }
+  - { step: screenshot, path: tenantAccessControl.png, fullPage: false }
+
+  # Namespace section -- default horizontal tab is Namespace
+  - { step: click, selector: '[data-testid="tenant-namespace-button"]' }
+  - { step: wait-for, selector: '[data-testid="sheet-content"] >> text="Sandbox Settings"', timeout: 15s }
+  - { step: screenshot, path: tenantNamespaceTab.png, fullPage: false }
+
+  # Metadata horizontal tab: Common + Sandbox view
+  - { step: click, selector: '[data-testid="sheet-content"] [role="tab"]:has-text("Metadata")' }
+  - { step: wait-for, selector: '[data-testid="sheet-content"] >> text=Common', timeout: 15s }
+  - { step: screenshot, path: tenantMetadataCommonSandboxTab.png, fullPage: false }
+
+  # "Specific" is a HEADING inside the same Metadata tab (not a tab). Clicking Add
+  # appends a COLLAPSED accordion item ("0 Namespace . 0 Annotation . 0 Labels")
+  # that must be expanded via its chevron before shooting.
+  # The expander is a Radix AccordionTrigger = a real <button>, so it has an
+  # IMPLICIT button role and no role="button" attribute -- CSS [role="button"]
+  # matched nothing. Radix does set data-state, which also proves it expanded.
+  - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Add")' }
+  - { step: click, selector: '[data-testid="sheet-content"] button[data-state="closed"]:has-text("Namespace")' }
+  - { step: wait-for, selector: '[data-testid="sheet-content"] button[data-state="open"]:has-text("Namespace")', timeout: 15s }
+  # data-state flips to "open" BEFORE the accordion finishes animating its height,
+  # so scrolling immediately measures the pre-animation layout (everything still
+  # in view => no scroll) and the shot ends up unscrolled. Let the height settle.
+  - { step: wait, ms: 600 }
+  # Scroll to the very END of the drawer body: the expanded item is appended last,
+  # so its final input is the last input in the sheet. Pinning that to the bottom
+  # of the viewport puts the whole expanded item in frame.
+  - { step: scroll-to, selector: '[data-testid="sheet-content"] input >> nth=-1', block: end }
+  - { step: screenshot, path: tenantMetadataSpecificTab.png, fullPage: false }
+
+  # YAML section -- the testid is the static wrapper; Monaco lazy-mounts inside
+  - { step: click, selector: '[data-testid="tenant-yaml-button"]' }
+  - { step: wait-for, selector: '[data-testid="yaml-editor-container"]', timeout: 15s }
+  - { step: wait-for, selector: '[data-testid="yaml-editor-container"] .view-lines', timeout: 30s }
+  - { step: wait-for, selector: '[data-testid="yaml-editor-container"] >> text=apiVersion', timeout: 15s }
+  # Monaco paints text into .view-lines BEFORE it renders the line-number gutter
+  # and applies syntax colouring, so waiting on .view-lines alone can capture a
+  # half-initialised editor (plain text, no gutter). Wait for the gutter too,
+  # then settle briefly for tokenisation.
+  - { step: wait-for, selector: '[data-testid="yaml-editor-container"] .line-numbers', timeout: 30s }
+  - { step: wait, ms: 1s }
+  - { step: screenshot, path: YamlView.png, fullPage: false }
+
+after:
+  - { step: screenshot, when: on-failure, path: _failure-tenants-create.png }

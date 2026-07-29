@@ -1,0 +1,67 @@
+# console/quotas.md -> list + Create Quota drawer steps (5 images).
+# Fills the drawer but NEVER clicks the final Create button.
+name: docs-quotas
+
+requires:
+  env: [CONSOLE_URL, CONSOLE_USER, CONSOLE_PASSWORD]
+  reachable: ["${CONSOLE_URL}"]
+
+viewport:
+  width: 1280
+  height: 800
+  deviceScaleFactor: 2
+  colorScheme: light
+
+steps:
+  - { step: open, url: "${CONSOLE_URL}" }
+  - { step: wait-for, selector: 'input[name="login"], input[name="username"]', timeout: 60s }
+  - { step: fill, selector: 'input[name="login"], input[name="username"]', value: "${CONSOLE_USER}" }
+  - { step: fill, selector: 'input[name="password"]', value: "${CONSOLE_PASSWORD}" }
+  # The click is instant; Playwright then waits for the Dex -> /auth/callback ->
+  # dashboard redirect chain, which exceeds the 10s default on a cold Dex. The
+  # wait-for below is the real gate, so a long timeout here only removes a false
+  # failure.
+  - { step: click, selector: 'button[type="submit"]', timeout: 60s }
+  - { step: wait-for, selector: '[data-testid="dashboard-container"]', timeout: 60s }
+
+  - { step: open, url: "${CONSOLE_URL}/quotas" }
+  - { step: wait-for, selector: '[data-testid="quota-table"]', timeout: 30s }
+  - { step: wait-for, selector: '[data-testid="quota-table"] .animate-pulse', state: detached }
+  - { step: screenshot, path: quotas.png, fullPage: false }
+
+  # Create drawer, step "Quota Overview": wait for the form content, then fill the name
+  - { step: click, selector: '[data-testid="quota-create-button"]' }
+  - { step: wait-for, selector: '[data-testid="sheet-content"] >> text=Metadata Name', timeout: 15s }
+  # react-hook-form spreads {...field}, so the name input carries name="name"
+  - { step: fill, selector: 'input[name="name"]', value: docs-quota }
+  - { step: screenshot, path: quotaCreationMetadata.png, fullPage: false }
+
+  # Same step with one resource added (drawer-local, nothing persisted);
+  # wait for the dropdown to close and the added row to render before shooting.
+  - { step: click, selector: '[data-testid="sheet-content"] [role="combobox"] >> nth=0' }
+  - { step: click, selector: '[role="option"]:has-text("CPU Requests")' }
+  - { step: wait-for, selector: '[role="option"]', state: detached }
+  - { step: fill, selector: '[data-testid="sheet-content"] input:below(:text("Value")) >> nth=0', value: 2000m }
+  - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Add Resource")' }
+  # An added row renders its key/value in DISABLED inputs, so `text=requests.cpu`
+  # can never match (text= matches text nodes, not input values) -- and the row's
+  # trash icon can't be matched by lucide class either (Trash2 -> lucide-trash2 vs
+  # -trash-2 is version-dependent). The disabled inputs themselves are the signal:
+  # nothing else in this drawer is disabled while creating.
+  - { step: wait-for, selector: '[data-testid="sheet-content"] input[disabled]', timeout: 15s }
+  # Original image also shows "Memory Requests" selected in the next empty row
+  - { step: click, selector: '[data-testid="sheet-content"] [role="combobox"] >> nth=0' }
+  - { step: click, selector: '[role="option"]:has-text("Memory Requests")' }
+  - { step: wait-for, selector: '[role="option"]', state: detached }
+  - { step: screenshot, path: quotaCreationResourceQuota.png, fullPage: false }
+
+  # Stepper sidebar: Container (has Default Limit fields), then Pod
+  - { step: click, selector: '[data-testid="sheet-content"] >> text="Container"' }
+  - { step: wait-for, selector: '[data-testid="sheet-content"] >> text=Default Limit', timeout: 15s }
+  - { step: screenshot, path: quotaCreationLimitRangeContainer.png, fullPage: false }
+  - { step: click, selector: '[data-testid="sheet-content"] >> text="Pod"' }
+  - { step: wait-for, selector: '[data-testid="sheet-content"] >> text=Default Limit', state: detached, timeout: 15s }
+  - { step: screenshot, path: quotaCreationLimitRangePod.png, fullPage: false }
+
+after:
+  - { step: screenshot, when: on-failure, path: _failure-quotas.png }

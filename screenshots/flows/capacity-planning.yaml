@@ -1,0 +1,100 @@
+# console/capacity-planning.md -> charts, node table, request table, filters, add-filter drawer (6 images).
+# The node filter is CREATED IN-FLOW (name: docs-gpu-nodes) so no pre-seeding is
+# needed; _teardown.yaml deletes it. Only the filter is persisted; the
+# apply/clear is view state.
+name: docs-capacity-planning
+
+requires:
+  env: [CONSOLE_URL, CONSOLE_USER, CONSOLE_PASSWORD]
+  reachable: ["${CONSOLE_URL}"]
+
+viewport:
+  width: 1280
+  height: 800
+  deviceScaleFactor: 2
+  colorScheme: light
+
+steps:
+  - { step: open, url: "${CONSOLE_URL}" }
+  - { step: wait-for, selector: 'input[name="login"], input[name="username"]', timeout: 60s }
+  - { step: fill, selector: 'input[name="login"], input[name="username"]', value: "${CONSOLE_USER}" }
+  - { step: fill, selector: 'input[name="password"]', value: "${CONSOLE_PASSWORD}" }
+  # The click is instant; Playwright then waits for the Dex -> /auth/callback ->
+  # dashboard redirect chain, which exceeds the 10s default on a cold Dex. The
+  # wait-for below is the real gate, so a long timeout here only removes a false
+  # failure.
+  - { step: click, selector: 'button[type="submit"]', timeout: 60s }
+  - { step: wait-for, selector: '[data-testid="dashboard-container"]', timeout: 60s }
+
+  # Charts view (top of page); settle for the JS chart animation
+  - { step: open, url: "${CONSOLE_URL}/capacity-planning" }
+  - { step: wait-for, selector: '[data-testid="capacity-planning-page"]', timeout: 30s }
+  - { step: wait-for, selector: '[data-testid="tenant-vs-cluster-chart"] svg', timeout: 30s }
+  - { step: wait-for, selector: '[data-testid="quota-vs-cluster-chart"] svg', timeout: 30s }
+  - { step: wait, ms: 2s }
+  - { step: screenshot, path: capacity_planning.png, fullPage: false }
+
+  # Node Capacity section framed at the top of the viewport
+  - { step: scroll-to, selector: 'text="Node Capacity"', block: start }
+  - { step: screenshot, path: worker_pool.png, fullPage: false }
+
+  # Tenant Request Details section
+  - { step: scroll-to, selector: 'text="Tenant Request Details"', block: start }
+  - { step: wait-for, selector: '[data-testid="tenant-requests-table"] .animate-pulse', state: detached, timeout: 30s }
+  - { step: screenshot, path: request_details.png, fullPage: false }
+
+  # Add Node Filter drawer: the shot is the freshly opened drawer, untouched
+  # (the Key select defaults to the first key on its own).
+  - { step: scroll-to, selector: '[data-testid="capacity-planning-title"]', block: start }
+  - { step: click, selector: '[data-testid="add-node-pool-button"]' }
+  - { step: wait-for, selector: '[data-testid="add-node-pool-sheet"]', timeout: 15s }
+  - { step: wait-for, selector: '[data-testid="add-node-pool-sheet"] >> text=Node Filter Name', timeout: 15s }
+  - { step: screenshot, path: add-node-filter.png, fullPage: false }
+  # Now complete the form and really create the filter.
+  # Name: the deployed console has no node-pool-name testid -- the drawer's
+  # first input IS the Node Filter Name field.
+  - { step: fill, selector: '[data-testid="add-node-pool-sheet"] input >> nth=0', value: docs-gpu-nodes }
+  # The key/value selects are cmdk popovers that STAY OPEN after picking.
+  # Dismiss by clicking the drawer's own label text -- NOT Escape, which
+  # bubbles up and closes the whole sheet.
+  - { step: click, selector: '[data-testid="node-pool-label-key-select"]' }
+  - { step: click, selector: '[role="option"] >> nth=0' }
+  - { step: click, selector: '[data-testid="add-node-pool-sheet"] >> text=Node Filter Name' }
+  - { step: wait-for, selector: '[role="option"]', state: detached }
+  # VERIFY on first run: value control (cmdk popover vs plain input)
+  - { step: click, selector: '[data-testid="node-pool-label-value"]' }
+  - { step: click, selector: '[role="option"] >> nth=0' }
+  - { step: click, selector: '[data-testid="add-node-pool-sheet"] >> text=Node Filter Name' }
+  - { step: wait-for, selector: '[role="option"]', state: detached }
+  - { step: click, selector: '[data-testid="add-selector-button"]' }
+  - { step: click, selector: '[data-testid="add-node-pool-sheet"] button:has-text("Create")' }
+  - { step: wait-for, selector: '[data-testid="add-node-pool-sheet"]', state: detached, timeout: 15s }
+
+  # Filter table open, filters listed, checkboxes UNCHECKED (matches original).
+  # Wait out the "created successfully" toast so it stays out of the frame.
+  - { step: click, selector: '[data-testid="show-filters-button"]' }
+  - { step: wait-for, selector: '[data-testid="node-filters-accordion"] >> text=docs-gpu-nodes', timeout: 15s }
+  - { step: wait-for, selector: '[data-sonner-toast]', state: detached, timeout: 15s }
+  - { step: screenshot, path: node-filtering-capacity-planning.png, fullPage: false }
+
+  # Select OUR filter by name (never `nth=0` -- that is whichever row sorts first),
+  # apply it, and confirm OUR chip specifically (`filter-badge-<name>`); a bare
+  # `filter-badge-*` match would be satisfied by somebody else's selection.
+  - { step: click, selector: '[data-testid="node-filters-accordion"] [role="checkbox"]:left-of(:text("docs-gpu-nodes")) >> nth=0' }
+  - { step: click, selector: '[data-testid="node-filters-accordion"] button:has-text("Apply")' }
+  - { step: wait-for, selector: '[data-testid="filter-badge-docs-gpu-nodes"]', timeout: 15s }
+
+  # Hide the table -> chip bar + refreshed charts (matches original: "Show
+  # Filters" + Node Filter chip + Clear All)
+  - { step: click, selector: '[data-testid="show-filters-button"]' }
+  # The Accordion root stays mounted; only its content collapses -> hidden, not detached
+  - { step: wait-for, selector: '[data-testid="node-filters-accordion"]', state: hidden, timeout: 15s }
+  - { step: wait, ms: 2s }
+  # Re-assert the chip immediately before the shot: if the selection silently
+  # reverted, fail here rather than publishing a chip-less image.
+  - { step: wait-for, selector: '[data-testid="filter-badge-docs-gpu-nodes"]', timeout: 15s }
+  - { step: screenshot, path: node-filtering-capacity-planning-selected.png, fullPage: false }
+
+after:
+  # No cleanup here -- deleting docs-gpu-nodes lives in _teardown.yaml
+  - { step: screenshot, when: on-failure, path: _failure-capacity-planning.png }
