@@ -22,7 +22,7 @@
     
     
       
-        <title>Setup ResourceSupervisor - Multi-Tenant Operator</title>
+        <title>Hibernate Workloads in a Single Namespace - Multi-Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setup-resourcesupervisor" class="md-skip">
+        <a href="#hibernate-workloads-in-a-single-namespace" class="md-skip">
           Skip to content
         </a>
       
@@ -4191,7 +4191,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Setup ClusterResourceSupervisor
+    Hibernate Workloads Across Multiple Namespaces
   
 
     
@@ -4228,7 +4228,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Setup ResourceSupervisor
+    Hibernate Workloads in a Single Namespace
   
 
     
@@ -4246,7 +4246,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Setup ResourceSupervisor
+    Hibernate Workloads in a Single Namespace
   
 
     
@@ -4274,18 +4274,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#creating-a-resourcesupervisor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating a ResourceSupervisor
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Creating a ResourceSupervisor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4295,53 +4283,59 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-1-create-a-resourcesupervisor-yaml" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#step-1-define-the-resourcesupervisor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: Create a ResourceSupervisor YAML
+        Step 1: Define the ResourceSupervisor
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-apply-the-resource" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#step-2-apply-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: Apply the Resource
+        Step 2: Apply it
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-verify-status" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#step-3-check-the-status" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: Verify Status
+        Step 3: Check the status
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#what-gets-hibernated" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notes
+        What gets hibernated
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#related-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related guides
+      
+    </span>
+  </a>
   
 </li>
       
@@ -5303,18 +5297,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#creating-a-resourcesupervisor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating a ResourceSupervisor
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Creating a ResourceSupervisor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5324,53 +5306,59 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-1-create-a-resourcesupervisor-yaml" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#step-1-define-the-resourcesupervisor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: Create a ResourceSupervisor YAML
+        Step 1: Define the ResourceSupervisor
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-apply-the-resource" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#step-2-apply-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: Apply the Resource
+        Step 2: Apply it
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-verify-status" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#step-3-check-the-status" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: Verify Status
+        Step 3: Check the status
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#what-gets-hibernated" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notes
+        What gets hibernated
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#related-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related guides
+      
+    </span>
+  </a>
   
 </li>
       
@@ -5394,47 +5382,54 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="setup-resourcesupervisor">Setup ResourceSupervisor<a class="headerlink" href="#setup-resourcesupervisor" title="Permanent link">#</a></h1>
-<h2 id="creating-a-resourcesupervisor">Creating a <code>ResourceSupervisor</code><a class="headerlink" href="#creating-a-resourcesupervisor" title="Permanent link">#</a></h2>
-<p>This guide explains how to create a <strong>namespace-scoped</strong> <code>ResourceSupervisor</code> to hibernate workloads in a single namespace.</p>
-<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h3>
+<h1 id="hibernate-workloads-in-a-single-namespace">Hibernate Workloads in a Single Namespace<a class="headerlink" href="#hibernate-workloads-in-a-single-namespace" title="Permanent link">#</a></h1>
+<p>A <code>ResourceSupervisor</code> scales the <code>Deployments</code> and <code>StatefulSets</code> in its own namespace down to zero on a schedule, and back to their original replica counts when the wake schedule fires. It is namespace-scoped, so a team that owns a namespace can set this up without cluster-wide permissions.</p>
+<p>To cover several namespaces at once, use a <a href="create-cluster-resource-supervisor.html">ClusterResourceSupervisor</a> instead.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
 <ul>
-<li>The <strong>Hibernation Operator</strong> must be <a href="https://docs.stakater.com/hibernation-operator-docs/getting-started/installation/kubernetes.html">installed</a> in your cluster.</li>
-<li>You have <strong>edit</strong> (or equivalent) permissions in the target namespace.</li>
+<li>The Hibernation Operator is <a href="https://docs.stakater.com/hibernation-operator-docs/getting-started/installation/kubernetes.html">installed</a> in the cluster.</li>
+<li>You have edit permissions in the namespace you want to hibernate.</li>
 </ul>
-<h3 id="step-1-create-a-resourcesupervisor-yaml">Step 1: Create a <code>ResourceSupervisor</code> YAML<a class="headerlink" href="#step-1-create-a-resourcesupervisor-yaml" title="Permanent link">#</a></h3>
-<p>Create a file named <code>resource-supervisor.yaml</code>:</p>
+<h2 id="step-1-define-the-resourcesupervisor">Step 1: Define the ResourceSupervisor<a class="headerlink" href="#step-1-define-the-resourcesupervisor" title="Permanent link">#</a></h2>
+<p>Create <code>resource-supervisor.yaml</code>. The <code>metadata.namespace</code> is the namespace that will be hibernated, since the resource only acts on its own namespace.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-namespace-hibernation</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app-staging</span><span class="w">  </span><span class="c1"># ← Must match the namespace you want to hibernate</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app-staging</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">20</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">   </span><span class="c1"># Sleep every day at 8 PM UTC</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">    </span><span class="c1"># Wake up every day at 8 AM UTC</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">20</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">   </span><span class="c1"># Sleep daily at 20:00 UTC</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">     </span><span class="c1"># Wake daily at 08:00 UTC</span>
 </code></pre></div>
-<blockquote>
-<p>💡 <strong>Cron Format</strong>: Uses standard Unix cron syntax (<code>minute hour day month weekday</code>).<br>
-Timezone is <strong>UTC</strong>. Use tools like <a href="https://crontab.guru">crontab.guru</a> to validate schedules.</p>
-</blockquote>
-<h3 id="step-2-apply-the-resource">Step 2: Apply the Resource<a class="headerlink" href="#step-2-apply-the-resource" title="Permanent link">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Both schedules use standard five-field Unix cron syntax (<code>minute hour day month weekday</code>) and are evaluated in UTC, not the cluster's local timezone. <a href="https://crontab.guru">crontab.guru</a> is useful for checking an expression before applying it.</p>
+</div>
+<p>Omitting <code>wakeSchedule</code> puts the workloads to sleep and leaves them there until you edit or delete the resource. That is a deliberate option for environments you want parked indefinitely, but it is easy to do by accident.</p>
+<h2 id="step-2-apply-it">Step 2: Apply it<a class="headerlink" href="#step-2-apply-it" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>resource-supervisor.yaml
 </code></pre></div>
-<h3 id="step-3-verify-status">Step 3: Verify Status<a class="headerlink" href="#step-3-verify-status" title="Permanent link">#</a></h3>
-<p>Check the status to confirm the hibernation state:</p>
+<h2 id="step-3-check-the-status">Step 3: Check the status<a class="headerlink" href="#step-3-check-the-status" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>resourcesupervisor<span class="w"> </span>my-namespace-hibernation<span class="w"> </span>-n<span class="w"> </span>my-app-staging<span class="w"> </span>-o<span class="w"> </span>yaml
 </code></pre></div>
-<p>Look for:</p>
+<p>Two fields tell you where things stand:</p>
 <ul>
-<li><code>status.currentStatus</code>: <code>running</code> or <code>sleeping</code></li>
-<li><code>status.nextReconcileTime</code>: Next scheduled action (ISO 8601)</li>
+<li><code>status.currentStatus</code> is <code>running</code>, <code>sleeping</code>, or <code>error</code>.</li>
+<li><code>status.nextReconcileTime</code> is the next time the operator will sleep or wake the workloads.</li>
 </ul>
-<h3 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h3>
+<h2 id="what-gets-hibernated">What gets hibernated<a class="headerlink" href="#what-gets-hibernated" title="Permanent link">#</a></h2>
+<p>Only <code>Deployments</code> and <code>StatefulSets</code> in the same namespace are touched. Other workload types, and resources in any other namespace, are left alone. Workloads already sitting at zero replicas are skipped rather than recorded as sleeping.</p>
+<p>Before scaling a workload down, the operator writes its replica count to the annotation <code>hibernation.stakater.com/original-replicas</code> on the workload itself. Waking reads the count back from there, so you can always see what a sleeping workload will return to:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>deploy<span class="w"> </span>-n<span class="w"> </span>my-app-staging<span class="w"> </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="se">\</span>
+NAME:.metadata.name,REPLICAS:.spec.replicas,ORIGINAL:<span class="s1">'.metadata.annotations.hibernation\.stakater\.com/original-replicas'</span>
+</code></pre></div>
+<p>Deleting the <code>ResourceSupervisor</code> wakes its workloads first. A finalizer holds the resource until the restore completes, so removing the supervisor is a safe way to cancel hibernation rather than a way to strand workloads at zero.</p>
+<p>A namespace annotated with <code>hibernation.stakater.com/exclude: "true"</code> is skipped, even if a <code>ResourceSupervisor</code> exists in it.</p>
+<h2 id="related-guides">Related guides<a class="headerlink" href="#related-guides" title="Permanent link">#</a></h2>
 <ul>
-<li>Only <code>Deployments</code> and <code>StatefulSets</code> in the <strong>same namespace</strong> are affected.</li>
-<li>The operator <strong>scales them to 0 replicas</strong> during sleep and <strong>restores original replica counts</strong> on wake.</li>
-<li>If <code>wakeSchedule</code> is omitted, workloads stay asleep until manually deleted or updated.</li>
+<li><a href="create-cluster-resource-supervisor.html">Hibernate Workloads Across Multiple Namespaces</a></li>
+<li><a href="hibernate-resources.html">Hibernate a Tenant</a></li>
 </ul>
 
 

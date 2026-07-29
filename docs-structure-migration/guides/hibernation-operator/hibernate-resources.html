@@ -4191,7 +4191,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Setup ClusterResourceSupervisor
+    Hibernate Workloads Across Multiple Namespaces
   
 
     
@@ -4219,7 +4219,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Setup ResourceSupervisor
+    Hibernate Workloads in a Single Namespace
   
 
     
@@ -5513,9 +5513,12 @@ The ResourceSupervisor definition will contain the hibernation cron schedule, th
 <span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 </code></pre></div>
 <h2 id="hibernating-namespaces-andor-argocd-applications-with-cluster-resourcesupervisor">Hibernating namespaces and/or ArgoCD Applications with Cluster ResourceSupervisor<a class="headerlink" href="#hibernating-namespaces-andor-argocd-applications-with-cluster-resourcesupervisor" title="Permanent link">#</a></h2>
-<p>Bill, the cluster administrator, wants to hibernate a collection of namespaces and AppProjects belonging to multiple different tenants. He can do so by creating a ResourceSupervisor manually, specifying the hibernation schedule in its spec, the namespaces and ArgoCD Applications that need to be hibernated as per the mentioned schedule.
-Bill can also use the same method to hibernate some namespaces and ArgoCD Applications that do not belong to any tenant on his cluster.</p>
-<p>The example given below will hibernate the ArgoCD Applications in the 'test-app-project' AppProject; and it will also hibernate the 'ns2' and 'ns4' namespaces.</p>
+<p>Bill, the cluster administrator, wants to hibernate a collection of namespaces belonging to multiple different tenants. He can do so by creating a <code>ClusterResourceSupervisor</code> manually, specifying the hibernation schedule and the namespaces to be hibernated in its spec. The same method works for namespaces that do not belong to any tenant on his cluster.</p>
+<p>The example below hibernates the 'ns2' and 'ns4' namespaces. It also names the 'test-app-project' AppProject under <code>argocd</code>, which puts a deny sync window on that project for the duration of the sleep so ArgoCD does not scale the workloads back up.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>spec.argocd</code> does not select namespaces to hibernate. Namespaces come only from <code>spec.namespaces</code>. Listing AppProjects without a <code>namespaces</code> block writes sync windows and hibernates nothing.</p>
+</div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -5529,9 +5532,6 @@ Bill can also use the same method to hibernate some namespaces and ArgoCD Applic
 <span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 20 * * 1-5</span>
 <span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 8 * * 1-5</span>
 <span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">    </span><span class="nt">names</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns2</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns4</span>

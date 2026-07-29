@@ -22,7 +22,7 @@
     
     
       
-        <title>Setup ClusterResourceSupervisor - Multi-Tenant Operator</title>
+        <title>Hibernate Workloads Across Multiple Namespaces - Multi-Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setup-clusterresourcesupervisor" class="md-skip">
+        <a href="#hibernate-workloads-across-multiple-namespaces" class="md-skip">
           Skip to content
         </a>
       
@@ -4200,7 +4200,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Setup ClusterResourceSupervisor
+    Hibernate Workloads Across Multiple Namespaces
   
 
     
@@ -4218,7 +4218,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Setup ClusterResourceSupervisor
+    Hibernate Workloads Across Multiple Namespaces
   
 
     
@@ -4246,18 +4246,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#creating-a-clusterresourcesupervisor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating a ClusterResourceSupervisor
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Creating a ClusterResourceSupervisor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4267,103 +4255,70 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-1-choose-a-targeting-strategy" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#step-1-choose-how-to-select-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: Choose a Targeting Strategy
+        Step 1: Choose how to select namespaces
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-create-a-clusterresourcesupervisor-yaml" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#step-2-define-the-clusterresourcesupervisor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: Create a ClusterResourceSupervisor YAML
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 2: Create a ClusterResourceSupervisor YAML">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-a-label-based-targeting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example A: Label-Based Targeting
+        Step 2: Define the ClusterResourceSupervisor
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#example-b-argocd-appproject-integration" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#step-3-apply-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example B: ArgoCD AppProject Integration
+        Step 3: Apply it
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#example-c-explicit-namespace-list" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#step-4-check-the-status" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example C: Explicit Namespace List
+        Step 4: Check the status
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-apply-the-resource" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#keeping-argocd-from-waking-workloads" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: Apply the Resource
+        Keeping ArgoCD from waking workloads
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-4-verify-status" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#related-guides" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4: Verify Status
+        Related guides
       
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Notes
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -4390,7 +4345,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Setup ResourceSupervisor
+    Hibernate Workloads in a Single Namespace
   
 
     
@@ -5353,18 +5308,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#creating-a-clusterresourcesupervisor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating a ClusterResourceSupervisor
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Creating a ClusterResourceSupervisor">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5374,103 +5317,70 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-1-choose-a-targeting-strategy" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#step-1-choose-how-to-select-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: Choose a Targeting Strategy
+        Step 1: Choose how to select namespaces
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-create-a-clusterresourcesupervisor-yaml" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#step-2-define-the-clusterresourcesupervisor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: Create a ClusterResourceSupervisor YAML
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 2: Create a ClusterResourceSupervisor YAML">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-a-label-based-targeting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example A: Label-Based Targeting
+        Step 2: Define the ClusterResourceSupervisor
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#example-b-argocd-appproject-integration" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#step-3-apply-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example B: ArgoCD AppProject Integration
+        Step 3: Apply it
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#example-c-explicit-namespace-list" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#step-4-check-the-status" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example C: Explicit Namespace List
+        Step 4: Check the status
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-apply-the-resource" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#keeping-argocd-from-waking-workloads" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3: Apply the Resource
+        Keeping ArgoCD from waking workloads
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#step-4-verify-status" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#related-guides" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4: Verify Status
+        Related guides
       
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Notes
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -5494,40 +5404,41 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="setup-clusterresourcesupervisor">Setup ClusterResourceSupervisor<a class="headerlink" href="#setup-clusterresourcesupervisor" title="Permanent link">#</a></h1>
-<h2 id="creating-a-clusterresourcesupervisor">Creating a <code>ClusterResourceSupervisor</code><a class="headerlink" href="#creating-a-clusterresourcesupervisor" title="Permanent link">#</a></h2>
-<p>This guide explains how to create a <strong>cluster-scoped</strong> <code>ClusterResourceSupervisor</code> to manage hibernation across multiple namespaces or ArgoCD AppProjects.</p>
-<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h3>
+<h1 id="hibernate-workloads-across-multiple-namespaces">Hibernate Workloads Across Multiple Namespaces<a class="headerlink" href="#hibernate-workloads-across-multiple-namespaces" title="Permanent link">#</a></h1>
+<p>A <code>ClusterResourceSupervisor</code> applies one hibernation schedule to a group of namespaces. It is cluster-scoped, so it suits a platform team parking development or test environments outside working hours, rather than a single team managing its own namespace.</p>
+<p>For one namespace owned by the team that hibernates it, use a <a href="create-resource-supervisor.html">ResourceSupervisor</a> instead.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h2>
 <ul>
-<li>The <strong>Hibernation Operator</strong> must be <a href="https://docs.stakater.com/hibernation-operator-docs/getting-started/installation/kubernetes.html">installed</a>.</li>
-<li>You have <strong>cluster-admin</strong> permissions.</li>
+<li>The Hibernation Operator is <a href="https://docs.stakater.com/hibernation-operator-docs/getting-started/installation/kubernetes.html">installed</a> in the cluster.</li>
+<li>You have cluster-admin permissions.</li>
 </ul>
-<h3 id="step-1-choose-a-targeting-strategy">Step 1: Choose a Targeting Strategy<a class="headerlink" href="#step-1-choose-a-targeting-strategy" title="Permanent link">#</a></h3>
-<p>You can target namespaces in <strong>three ways</strong> (use one or combine <code>names</code> + <code>labelSelector</code>):</p>
+<h2 id="step-1-choose-how-to-select-namespaces">Step 1: Choose how to select namespaces<a class="headerlink" href="#step-1-choose-how-to-select-namespaces" title="Permanent link">#</a></h2>
+<p>Namespaces come from <code>spec.namespaces</code>, either listed by name, matched by label, or both. The two are combined, so a namespace selected either way is hibernated.</p>
 <table>
 <thead>
 <tr>
-<th>Method</th>
-<th>Use Case</th>
+<th>Field</th>
+<th>Selects</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Explicit namespace list</strong></td>
-<td>Known, static namespaces</td>
+<td><code>spec.namespaces.names</code></td>
+<td>A fixed list of namespaces you name explicitly</td>
 </tr>
 <tr>
-<td><strong>Label selector</strong></td>
-<td>Dynamic selection (e.g., all <code>env=dev</code>)</td>
-</tr>
-<tr>
-<td><strong>ArgoCD AppProjects</strong></td>
-<td>GitOps-aligned hibernation</td>
+<td><code>spec.namespaces.labelSelector</code></td>
+<td>Every namespace matching the labels, re-evaluated as namespaces come and go</td>
 </tr>
 </tbody>
 </table>
-<h3 id="step-2-create-a-clusterresourcesupervisor-yaml">Step 2: Create a <code>ClusterResourceSupervisor</code> YAML<a class="headerlink" href="#step-2-create-a-clusterresourcesupervisor-yaml" title="Permanent link">#</a></h3>
-<h4 id="example-a-label-based-targeting">Example A: Label-Based Targeting<a class="headerlink" href="#example-a-label-based-targeting" title="Permanent link">#</a></h4>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A <code>ClusterResourceSupervisor</code> with no <code>spec.namespaces</code> hibernates nothing. This matters most when using the ArgoCD integration described below, which does not select namespaces on its own.</p>
+</div>
+<p>An empty <code>labelSelector: {}</code> also matches nothing. To select broadly, use a label every target namespace carries rather than an empty selector.</p>
+<h2 id="step-2-define-the-clusterresourcesupervisor">Step 2: Define the ClusterResourceSupervisor<a class="headerlink" href="#step-2-define-the-clusterresourcesupervisor" title="Permanent link">#</a></h2>
+<p>Selecting by label, so namespaces labelled <code>env=dev</code> are picked up automatically as they are created:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -5538,28 +5449,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">18</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">   </span><span class="c1"># Weekdays at 6 PM UTC</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">     </span><span class="c1"># Weekdays at 8 AM UTC</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">18</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">   </span><span class="c1"># Weekdays at 18:00 UTC</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">     </span><span class="c1"># Weekdays at 08:00 UTC</span>
 </code></pre></div>
-<h4 id="example-b-argocd-appproject-integration">Example B: ArgoCD AppProject Integration<a class="headerlink" href="#example-b-argocd-appproject-integration" title="Permanent link">#</a></h4>
-<blockquote>
-<p>✅ Ensure <code>argoCD.enabled=true</code> was set during <a href="https://docs.stakater.com/hibernation-operator-docs/getting-started/installation/kubernetes.html#optional-enable-argocd-integration">Helm install</a></p>
-</blockquote>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-frontend-hibernation</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend-team</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mobile-apps</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">22</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">     </span><span class="c1"># Sleep at 10 PM UTC daily</span>
-<span class="w">    </span><span class="c1"># No wakeSchedule → stay asleep until manually updated</span>
-</code></pre></div>
-<h4 id="example-c-explicit-namespace-list">Example C: Explicit Namespace List<a class="headerlink" href="#example-c-explicit-namespace-list" title="Permanent link">#</a></h4>
+<p>Selecting a fixed set by name:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -5571,27 +5464,80 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-b-test</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo-env</span>
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">0"</span><span class="w">      </span><span class="c1"># Every Sunday at midnight</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1"</span><span class="w">       </span><span class="c1"># Every Monday at midnight</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">0"</span><span class="w">      </span><span class="c1"># Sundays at midnight UTC</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1"</span><span class="w">       </span><span class="c1"># Mondays at midnight UTC</span>
 </code></pre></div>
-<h3 id="step-3-apply-the-resource">Step 3: Apply the Resource<a class="headerlink" href="#step-3-apply-the-resource" title="Permanent link">#</a></h3>
+<p>Schedules use five-field Unix cron syntax in UTC. Omitting <code>wakeSchedule</code> leaves the workloads asleep until the resource is edited or deleted.</p>
+<h2 id="step-3-apply-it">Step 3: Apply it<a class="headerlink" href="#step-3-apply-it" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>cluster-resource-supervisor.yaml
 </code></pre></div>
-<h3 id="step-4-verify-status">Step 4: Verify Status<a class="headerlink" href="#step-4-verify-status" title="Permanent link">#</a></h3>
+<h2 id="step-4-check-the-status">Step 4: Check the status<a class="headerlink" href="#step-4-check-the-status" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>clusterresourcesupervisor<span class="w"> </span>dev-environments-hibernation<span class="w"> </span>-o<span class="w"> </span>yaml
 </code></pre></div>
-<p>Key status fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Shows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>status.currentStatus</code></td>
+<td><code>running</code>, <code>sleeping</code>, or <code>error</code></td>
+</tr>
+<tr>
+<td><code>status.watchedNamespaces</code></td>
+<td>Namespaces currently being managed</td>
+</tr>
+<tr>
+<td><code>status.ignoreNamespaces</code></td>
+<td>Selected namespaces that were filtered out</td>
+</tr>
+<tr>
+<td><code>status.sleepingNamespaces</code></td>
+<td>Per-namespace detail of the scaled-down workloads</td>
+</tr>
+<tr>
+<td><code>status.nextReconcileTime</code></td>
+<td>Next scheduled sleep or wake</td>
+</tr>
+</tbody>
+</table>
+<p>If a namespace you expected is missing from <code>watchedNamespaces</code>, check <code>ignoreNamespaces</code>. Namespaces annotated <code>hibernation.stakater.com/exclude: "true"</code>, and the operator's own namespace, are always filtered out.</p>
+<h2 id="keeping-argocd-from-waking-workloads">Keeping ArgoCD from waking workloads<a class="headerlink" href="#keeping-argocd-from-waking-workloads" title="Permanent link">#</a></h2>
+<p>When applications are managed by ArgoCD, scaling them to zero puts them out of sync with Git, and ArgoCD will scale them back up. The <code>spec.argocd</code> field addresses this by writing a <code>deny</code> sync window onto the named AppProjects, matching the sleep schedule and its computed duration.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-frontend-hibernation</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">team</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
+<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span><span class="w">          </span><span class="c1"># Namespace where the AppProjects live</span>
+<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend-team</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mobile-apps</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">22</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">6</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>spec.argocd</code> does not select namespaces. It only suppresses ArgoCD syncing for the AppProjects you name, and the namespaces to hibernate still come entirely from <code>spec.namespaces</code>. The example above hibernates the <code>team=frontend</code> namespaces; without that <code>namespaces</code> block it would hibernate nothing while still writing sync windows.</p>
+</div>
+<p>Two further points before enabling this:</p>
 <ul>
-<li><code>status.watchedNamespaces</code>: List of namespaces being managed</li>
-<li><code>status.sleepingNamespaces</code>: Details of scaled-down apps (with original replica counts)</li>
-<li><code>status.currentStatus</code>: Overall state (<code>running</code>, <code>sleeping</code>, <code>error</code>)</li>
-<li><code>status.nextReconcileTime</code>: Next scheduled action</li>
+<li>The operator replaces <code>spec.syncWindows</code> on each named AppProject rather than appending to it. Any sync windows you maintain there by other means are overwritten.</li>
+<li>The integration requires the ArgoCD <code>AppProject</code> CRD to be present, and <code>argoCD.enabled=true</code> at <a href="https://docs.stakater.com/hibernation-operator-docs/getting-started/installation/kubernetes.html#optional-enable-argocd-integration">install time</a>. If the CRD is absent the operator logs the fact and carries on hibernating.</li>
 </ul>
-<h3 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h3>
+<h2 id="related-guides">Related guides<a class="headerlink" href="#related-guides" title="Permanent link">#</a></h2>
 <ul>
-<li>The operator <strong>merges</strong> <code>names</code> and <code>labelSelector</code> results (union of both).</li>
-<li>If <strong>both <code>namespaces</code> and <code>argocd</code></strong> are defined, the operator targets <strong>all namespaces from both sources</strong>.</li>
-<li>Namespaces not matching any criteria are <strong>ignored</strong> (safe by default).</li>
+<li><a href="create-resource-supervisor.html">Hibernate Workloads in a Single Namespace</a></li>
+<li><a href="hibernate-resources.html">Hibernate a Tenant</a></li>
 </ul>
 
 

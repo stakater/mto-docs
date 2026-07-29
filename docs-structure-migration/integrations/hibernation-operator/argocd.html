@@ -4189,7 +4189,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Setup ClusterResourceSupervisor
+    Hibernate Workloads Across Multiple Namespaces
   
 
     
@@ -4217,7 +4217,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Setup ResourceSupervisor
+    Hibernate Workloads in a Single Namespace
   
 
     
@@ -4715,7 +4715,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How It Works
+        How it works
       
     </span>
   </a>
@@ -4723,60 +4723,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#enabling-argocd-integration" class="md-nav__link">
+  <a href="#enabling-the-integration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enabling ArgoCD Integration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Enabling ArgoCD Integration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-install-hibernation-operator-with-argocd-support" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: Install Hibernation Operator with ArgoCD Support
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-create-a-clusterresourcesupervisor-targeting-appprojects" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: Create a ClusterResourceSupervisor Targeting AppProjects
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-verify-targeted-namespaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: Verify Targeted Namespaces
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-benefits" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key Benefits
+        Enabling the integration
       
     </span>
   </a>
@@ -4784,10 +4734,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#requirements-permissions" class="md-nav__link">
+  <a href="#using-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Requirements &amp; Permissions
+        Using it
       
     </span>
   </a>
@@ -4795,10 +4745,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#combining-with-other-targeting-methods" class="md-nav__link">
+  <a href="#verifying" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Combining with Other Targeting Methods
+        Verifying
       
     </span>
   </a>
@@ -4806,10 +4756,32 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting-tips" class="md-nav__link">
+  <a href="#permissions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Troubleshooting Tips
+        Permissions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related pages
       
     </span>
   </a>
@@ -5341,7 +5313,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How It Works
+        How it works
       
     </span>
   </a>
@@ -5349,60 +5321,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#enabling-argocd-integration" class="md-nav__link">
+  <a href="#enabling-the-integration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enabling ArgoCD Integration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Enabling ArgoCD Integration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#step-1-install-hibernation-operator-with-argocd-support" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 1: Install Hibernation Operator with ArgoCD Support
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-2-create-a-clusterresourcesupervisor-targeting-appprojects" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 2: Create a ClusterResourceSupervisor Targeting AppProjects
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#step-3-verify-targeted-namespaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 3: Verify Targeted Namespaces
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#key-benefits" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Key Benefits
+        Enabling the integration
       
     </span>
   </a>
@@ -5410,10 +5332,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#requirements-permissions" class="md-nav__link">
+  <a href="#using-it" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Requirements &amp; Permissions
+        Using it
       
     </span>
   </a>
@@ -5421,10 +5343,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#combining-with-other-targeting-methods" class="md-nav__link">
+  <a href="#verifying" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Combining with Other Targeting Methods
+        Verifying
       
     </span>
   </a>
@@ -5432,10 +5354,32 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting-tips" class="md-nav__link">
+  <a href="#permissions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Troubleshooting Tips
+        Permissions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related pages
       
     </span>
   </a>
@@ -5463,127 +5407,106 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="argocd-integration">ArgoCD Integration<a class="headerlink" href="#argocd-integration" title="Permanent link">#</a></h1>
-<p>The <strong>Hibernation Operator</strong> provides optional, native integration with <strong>ArgoCD</strong>, enabling platform teams to apply hibernation schedules based on <strong>ArgoCD AppProjects</strong>. This allows hibernation policies to align with GitOps application boundaries rather than infrastructure namespaces—ideal for organizations using ArgoCD for declarative application delivery.</p>
-<blockquote>
-<p>💡 <strong>Note</strong>: ArgoCD integration is <strong>optional</strong> and must be explicitly enabled during installation.</p>
-</blockquote>
-<h2 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h2>
-<p>When a <code>ClusterResourceSupervisor</code> specifies <code>argocd.appProjects</code>, the Hibernation Operator:</p>
+<p>When workloads are managed by ArgoCD, hibernation and GitOps pull in opposite directions. Scaling a <code>Deployment</code> to zero is drift from the desired state in Git, so ArgoCD syncs it back up and the workloads never stay asleep.</p>
+<p>The Hibernation Operator resolves this by writing a <code>deny</code> sync window onto the ArgoCD <code>AppProject</code>s you name, covering the sleep period. ArgoCD then leaves those applications alone while they are hibernated, and resumes normal syncing afterwards.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>spec.argocd</code> does not choose which namespaces to hibernate. It only suppresses ArgoCD syncing. The namespaces still come entirely from <code>spec.namespaces</code>, and a <code>ClusterResourceSupervisor</code> with an <code>argocd</code> block but no <code>namespaces</code> block writes sync windows while hibernating nothing.</p>
+</div>
+<p>The integration is optional and must be enabled at install time.</p>
+<h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h2>
+<p>When a <code>ClusterResourceSupervisor</code> sets <code>spec.argocd</code>, the operator:</p>
 <ol>
-<li><strong>Discovers</strong> all namespaces associated with the listed ArgoCD <code>AppProject</code>s (by reading the <code>AppProject.spec.destinations</code> field).</li>
-<li><strong>Applies hibernation</strong> (scaling <code>Deployments</code>/<code>StatefulSets</code> to 0) to workloads in those namespaces according to the defined <code>sleepSchedule</code> and <code>wakeSchedule</code>.</li>
-<li><strong>Tracks state</strong> in the CR’s <code>status.sleepingNamespaces</code> to ensure accurate restoration.</li>
+<li>Looks up each named <code>AppProject</code> in the namespace given by <code>spec.argocd.namespace</code>.</li>
+<li>Computes the sleep duration from <code>sleepSchedule</code> and <code>wakeSchedule</code>.</li>
+<li>Sets a single <code>deny</code> sync window on the AppProject, scheduled to match the sleep time and lasting that duration, with manual sync still permitted.</li>
 </ol>
-<p>This means you can hibernate entire application portfolios (e.g., <code>frontend-team</code>, <code>data-platform</code>) with a single policy—without manually listing namespaces.</p>
-<hr>
-<h2 id="enabling-argocd-integration">Enabling ArgoCD Integration<a class="headerlink" href="#enabling-argocd-integration" title="Permanent link">#</a></h2>
-<h3 id="step-1-install-hibernation-operator-with-argocd-support">Step 1: Install Hibernation Operator with ArgoCD Support<a class="headerlink" href="#step-1-install-hibernation-operator-with-argocd-support" title="Permanent link">#</a></h3>
-<p>During Helm installation, enable ArgoCD and specify the ArgoCD namespace:</p>
+<p>Hibernation of the workloads themselves proceeds independently, driven by <code>spec.namespaces</code> as usual.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The operator replaces <code>spec.syncWindows</code> on each named AppProject rather than appending to it. Sync windows you maintain there by other means are overwritten. If you rely on existing sync windows, do not point the operator at that AppProject.</p>
+</div>
+<p>If the ArgoCD <code>AppProject</code> CRD is not present in the cluster, the operator logs that and continues hibernating without touching ArgoCD.</p>
+<h2 id="enabling-the-integration">Enabling the integration<a class="headerlink" href="#enabling-the-integration" title="Permanent link">#</a></h2>
+<p>Enable ArgoCD support and point the operator at the ArgoCD namespace during installation:</p>
 <div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>hibernation-operator<span class="w"> </span>oci://ghcr.io/stakater/public/charts/hibernation-operator<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--namespace<span class="w"> </span>hibernation-system<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--create-namespace<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--set<span class="w"> </span>argoCD.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--set<span class="w"> </span>argoCD.namespace<span class="o">=</span>argocd
 </code></pre></div>
-<blockquote>
-<p>✅ The operator requires <strong>read-only access</strong> to <code>AppProject</code> resources in the ArgoCD namespace.</p>
-</blockquote>
-<h3 id="step-2-create-a-clusterresourcesupervisor-targeting-appprojects">Step 2: Create a <code>ClusterResourceSupervisor</code> Targeting AppProjects<a class="headerlink" href="#step-2-create-a-clusterresourcesupervisor-targeting-appprojects" title="Permanent link">#</a></h3>
+<h2 id="using-it">Using it<a class="headerlink" href="#using-it" title="Permanent link">#</a></h2>
+<p>Select the namespaces to hibernate as normal, and list the AppProjects whose syncing should be suppressed while they sleep:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd-hibernation-policy</span>
 <span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
 <span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span><span class="w">                </span><span class="c1"># ← Namespace where ArgoCD is installed</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w">                     </span><span class="c1"># ← List of AppProject names</span>
+<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span><span class="w">          </span><span class="c1"># Namespace where the AppProjects live</span>
+<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend-team</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mobile-apps</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data-platform</span>
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">18</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">   </span><span class="c1"># Sleep weekdays at 6 PM UTC</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">     </span><span class="c1"># Wake weekdays at 8 AM UTC</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">18</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">   </span><span class="c1"># Sleep weekdays at 18:00 UTC</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">     </span><span class="c1"># Wake weekdays at 08:00 UTC</span>
 </code></pre></div>
 <p>Apply it:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>cluster-resource-supervisor-argocd.yaml
 </code></pre></div>
-<h3 id="step-3-verify-targeted-namespaces">Step 3: Verify Targeted Namespaces<a class="headerlink" href="#step-3-verify-targeted-namespaces" title="Permanent link">#</a></h3>
-<p>Check the status to see which namespaces are being watched:</p>
+<h2 id="verifying">Verifying<a class="headerlink" href="#verifying" title="Permanent link">#</a></h2>
+<p>Check which namespaces the policy actually manages. These come from <code>spec.namespaces</code>, not from the AppProjects:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>clusterresourcesupervisor<span class="w"> </span>argocd-hibernation-policy<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.status.watchedNamespaces}'</span>
 </code></pre></div>
-<p>Example output:</p>
-<div class="highlight"><pre><span></span><code><span class="p">[</span><span class="s2">"frontend-dev"</span><span class="p">,</span><span class="w"> </span><span class="s2">"mobile-staging"</span><span class="p">,</span><span class="w"> </span><span class="s2">"data-platform-prod"</span><span class="p">]</span>
+<p>Then confirm the sync window landed on the AppProject:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>appproject<span class="w"> </span>frontend-team<span class="w"> </span>-n<span class="w"> </span>argocd<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.spec.syncWindows}'</span>
 </code></pre></div>
-<p>These are the namespaces defined in the <code>destinations</code> of the specified AppProjects.</p>
-<hr>
-<h2 id="key-benefits">Key Benefits<a class="headerlink" href="#key-benefits" title="Permanent link">#</a></h2>
+<p>You should see a single entry with <code>kind: deny</code> and a schedule matching your <code>sleepSchedule</code>.</p>
+<h2 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">#</a></h2>
+<p>ArgoCD must be installed, and the operator's ServiceAccount needs to read and modify AppProjects in the ArgoCD namespace, since writing the sync window is a patch rather than a read:</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"argoproj.io"</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"appprojects"</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"list"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"watch"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"update"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"patch"</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h2>
 <table>
 <thead>
 <tr>
-<th>Benefit</th>
-<th>Description</th>
+<th>Symptom</th>
+<th>Check</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>GitOps-Aligned Hibernation</strong></td>
-<td>Hibernation follows application ownership (via AppProjects), not manual namespace lists.</td>
+<td>No sync window appears on the AppProject</td>
+<td>The name in <code>appProjects</code> matches the <code>AppProject</code> resource name exactly, and <code>spec.argocd.namespace</code> is the namespace it lives in. Both are case-sensitive.</td>
 </tr>
 <tr>
-<td><strong>Dynamic Namespace Discovery</strong></td>
-<td>New namespaces added to an AppProject are <strong>automatically included</strong> in hibernation.</td>
+<td>Sync window exists but nothing hibernates</td>
+<td><code>spec.namespaces</code> is set. The <code>argocd</code> block alone selects no namespaces.</td>
 </tr>
 <tr>
-<td><strong>No Duplication</strong></td>
-<td>Avoid maintaining separate namespace lists in both ArgoCD and hibernation policies.</td>
+<td>Namespace missing from <code>status.watchedNamespaces</code></td>
+<td><code>status.ignoreNamespaces</code>, which lists namespaces filtered out by the <code>hibernation.stakater.com/exclude</code> annotation or because they are the operator's own namespace.</td>
 </tr>
 <tr>
-<td><strong>Safe &amp; Observable</strong></td>
-<td>Original replica counts are preserved; status shows exactly which apps are sleeping.</td>
+<td>Workloads wake up during the sleep window</td>
+<td>The sync window was overwritten, or the application belongs to an AppProject not listed in <code>spec.argocd.appProjects</code>.</td>
+</tr>
+<tr>
+<td>Permission errors in the operator log</td>
+<td>The ServiceAccount has <code>update</code> and <code>patch</code> on <code>appprojects.argoproj.io</code>, not only read verbs.</td>
 </tr>
 </tbody>
 </table>
-<hr>
-<h2 id="requirements-permissions">Requirements &amp; Permissions<a class="headerlink" href="#requirements-permissions" title="Permanent link">#</a></h2>
+<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">#</a></h2>
 <ul>
-<li>ArgoCD must be installed in the cluster (typically in the <code>argocd</code> namespace).</li>
-<li>The Hibernation Operator needs the following RBAC (automatically included when <code>argoCD.enabled=true</code>):</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"argoproj.io"</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"appprojects"</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"get"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"list"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"watch"</span><span class="p p-Indicator">]</span>
-</code></pre></div>
-<blockquote>
-<p>🔒 The operator <strong>never modifies</strong> ArgoCD resources—it only reads <code>AppProject</code> definitions.</p>
-</blockquote>
-<hr>
-<h2 id="combining-with-other-targeting-methods">Combining with Other Targeting Methods<a class="headerlink" href="#combining-with-other-targeting-methods" title="Permanent link">#</a></h2>
-<p>You can <strong>combine</strong> ArgoCD targeting with explicit namespaces or label selectors:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"frontend-team"</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"legacy-staging"</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-</code></pre></div>
-<p>In this case, hibernation applies to:</p>
-<ul>
-<li>All namespaces in the <code>frontend-team</code> AppProject <strong>plus</strong></li>
-<li>The <code>legacy-staging</code> namespace <strong>plus</strong></li>
-<li>Any namespace with label <code>env=dev</code></li>
-</ul>
-<blockquote>
-<p>🔄 The union of all targeting methods is used.</p>
-</blockquote>
-<hr>
-<h2 id="troubleshooting-tips">Troubleshooting Tips<a class="headerlink" href="#troubleshooting-tips" title="Permanent link">#</a></h2>
-<ul>
-<li><strong>AppProject not found?</strong> Ensure the <code>appProjects</code> names <strong>exactly match</strong> the <code>AppProject</code> resource names (case-sensitive).</li>
-<li><strong>Namespace not hibernating?</strong> Verify the namespace appears in <code>AppProject.spec.destinations</code>.</li>
-<li><strong>Permission errors?</strong> Check that the operator’s ServiceAccount has <code>get/list/watch</code> on <code>appprojects.argoproj.io</code>.</li>
+<li><a href="../../concepts/hibernation-operator/cluster-resource-supervisor.html">ClusterResourceSupervisor</a></li>
+<li><a href="../../guides/hibernation-operator/create-cluster-resource-supervisor.html">Hibernate Workloads Across Multiple Namespaces</a></li>
 </ul>
 
 

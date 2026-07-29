@@ -2547,99 +2547,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#supported-targeting-methods" class="md-nav__link">
+  <a href="#selecting-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Supported Targeting Methods
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Supported Targeting Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-explicit-namespace-list" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Explicit Namespace List
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-label-selector-dynamic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Label Selector (Dynamic)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-argocd-appproject-integration-optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. ArgoCD AppProject Integration (Optional)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hibernation-scheduling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hibernation Scheduling
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Hibernation Scheduling">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#full-cycle-sleep-wake" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Full Cycle: Sleep + Wake
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#permanent-sleep-manual-wake" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Permanent Sleep (Manual Wake)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ignored-namespaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ignored Namespaces
+        Selecting namespaces
       
     </span>
   </a>
@@ -2647,10 +2558,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#status-tracking" class="md-nav__link">
+  <a href="#scheduling" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Status Tracking
+        Scheduling
       
     </span>
   </a>
@@ -2658,10 +2569,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-platform-wide-dev-hibernation" class="md-nav__link">
+  <a href="#exclusions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example: Platform-Wide Dev Hibernation
+        Exclusions
       
     </span>
   </a>
@@ -2669,10 +2580,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-argocd-label-selector-combo" class="md-nav__link">
+  <a href="#overlap-between-supervisors" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example: ArgoCD + Label Selector Combo
+        Overlap between supervisors
       
     </span>
   </a>
@@ -2680,10 +2591,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-notes" class="md-nav__link">
+  <a href="#argocd-sync-windows" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key Notes
+        ArgoCD sync windows
       
     </span>
   </a>
@@ -2691,40 +2602,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#when-to-use-clusterresourcesupervisor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        When to Use ClusterResourceSupervisor
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api-reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        API Reference
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="API Reference">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#spec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Spec
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#status" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2734,9 +2611,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-between-the-two" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing between the two
+      
+    </span>
+  </a>
   
 </li>
       
@@ -4445,7 +4328,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Setup ClusterResourceSupervisor
+    Hibernate Workloads Across Multiple Namespaces
   
 
     
@@ -4473,7 +4356,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Setup ResourceSupervisor
+    Hibernate Workloads in a Single Namespace
   
 
     
@@ -5436,99 +5319,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#supported-targeting-methods" class="md-nav__link">
+  <a href="#selecting-namespaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Supported Targeting Methods
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Supported Targeting Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-explicit-namespace-list" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. Explicit Namespace List
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-label-selector-dynamic" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. Label Selector (Dynamic)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-argocd-appproject-integration-optional" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. ArgoCD AppProject Integration (Optional)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hibernation-scheduling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hibernation Scheduling
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Hibernation Scheduling">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#full-cycle-sleep-wake" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Full Cycle: Sleep + Wake
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#permanent-sleep-manual-wake" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Permanent Sleep (Manual Wake)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ignored-namespaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ignored Namespaces
+        Selecting namespaces
       
     </span>
   </a>
@@ -5536,10 +5330,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#status-tracking" class="md-nav__link">
+  <a href="#scheduling" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Status Tracking
+        Scheduling
       
     </span>
   </a>
@@ -5547,10 +5341,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-platform-wide-dev-hibernation" class="md-nav__link">
+  <a href="#exclusions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example: Platform-Wide Dev Hibernation
+        Exclusions
       
     </span>
   </a>
@@ -5558,10 +5352,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-argocd-label-selector-combo" class="md-nav__link">
+  <a href="#overlap-between-supervisors" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example: ArgoCD + Label Selector Combo
+        Overlap between supervisors
       
     </span>
   </a>
@@ -5569,10 +5363,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-notes" class="md-nav__link">
+  <a href="#argocd-sync-windows" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key Notes
+        ArgoCD sync windows
       
     </span>
   </a>
@@ -5580,40 +5374,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#when-to-use-clusterresourcesupervisor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        When to Use ClusterResourceSupervisor
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api-reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        API Reference
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="API Reference">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#spec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Spec
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#status" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5623,9 +5383,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-between-the-two" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing between the two
+      
+    </span>
+  </a>
   
 </li>
       
@@ -5661,117 +5427,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="clusterresourcesupervisor">ClusterResourceSupervisor<a class="headerlink" href="#clusterresourcesupervisor" title="Permanent link">#</a></h1>
-<p>The <code>ClusterResourceSupervisor</code> is a <strong>cluster-scoped</strong> custom resource that enables <strong>centralized hibernation management</strong> across multiple namespaces. It is designed for <strong>platform administrators</strong> who need to enforce cost-saving policies at scale—whether by targeting explicit namespaces, using dynamic label selectors, or integrating with <strong>ArgoCD AppProjects</strong>.</p>
-<blockquote>
-<p>✅ <strong>Scope</strong>: Cluster-wide
-✅ <strong>Permissions</strong>: Requires cluster-admin or equivalent
-✅ <strong>Use Case</strong>: Platform-level hibernation for dev/test environments, GitOps portfolios, or tenant groups</p>
-</blockquote>
-<hr>
-<h2 id="supported-targeting-methods">Supported Targeting Methods<a class="headerlink" href="#supported-targeting-methods" title="Permanent link">#</a></h2>
-<p>You can define <strong>one or more</strong> of the following targeting strategies. The operator applies hibernation to the <strong>union</strong> of all matched namespaces.</p>
-<h3 id="1-explicit-namespace-list">1. <strong>Explicit Namespace List</strong><a class="headerlink" href="#1-explicit-namespace-list" title="Permanent link">#</a></h3>
-<p>List namespaces by name:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-a-dev</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-b-staging</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo-env</span>
-</code></pre></div>
-<h3 id="2-label-selector-dynamic">2. <strong>Label Selector (Dynamic)</strong><a class="headerlink" href="#2-label-selector-dynamic" title="Permanent link">#</a></h3>
-<p>Use Kubernetes-standard label selectors to match namespaces dynamically:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
-<span class="w">        </span><span class="nt">team</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
-<span class="w">      </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s">"cost-center"</span>
-<span class="w">          </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">          </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"cc-100"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"cc-200"</span><span class="p p-Indicator">]</span>
-</code></pre></div>
-<p>🔍 <strong>Note</strong>:</p>
-<blockquote>
-<ul>
-<li><code>matchLabels</code> and <code>matchExpressions</code> are <strong>AND</strong> together.</li>
-<li>An empty <code>labelSelector: {}</code> matches <strong>all namespaces</strong>.</li>
-<li>A missing/<code>null</code> <code>labelSelector</code> matches <strong>none</strong>.</li>
-</ul>
-</blockquote>
-<h3 id="3-argocd-appproject-integration-optional">3. <strong>ArgoCD AppProject Integration</strong> <em>(Optional)</em><a class="headerlink" href="#3-argocd-appproject-integration-optional" title="Permanent link">#</a></h3>
-<p>Target all namespaces associated with one or more ArgoCD <code>AppProject</code>s:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span><span class="w">               </span><span class="c1"># ← Namespace where ArgoCD is installed</span>
-<span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span><span class="w">                    </span><span class="c1"># ← List of AppProject names</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend-team</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data-platform</span>
-</code></pre></div>
-<blockquote>
-<p>🔄 The operator reads <code>AppProject.spec.destinations</code> to discover target namespaces.
-✅ <strong>No manual namespace listing needed</strong>—ideal for GitOps environments.
-⚠️ <strong>Prerequisite</strong>: ArgoCD integration must be <a href="https://docs.stakater.com/hibernation-operator-docs/getting-started/installation/kubernetes.html#optional-enable-argocd-integration">enabled during installation</a>.</p>
-</blockquote>
-<hr>
-<h2 id="hibernation-scheduling">Hibernation Scheduling<a class="headerlink" href="#hibernation-scheduling" title="Permanent link">#</a></h2>
-<p>Define when workloads should sleep and wake using standard <strong>cron expressions</strong> (UTC timezone).</p>
-<h3 id="full-cycle-sleep-wake">Full Cycle: Sleep + Wake<a class="headerlink" href="#full-cycle-sleep-wake" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">18</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">   </span><span class="c1"># Weekdays at 6 PM UTC</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span><span class="w">     </span><span class="c1"># Weekdays at 8 AM UTC</span>
-</code></pre></div>
-<h3 id="permanent-sleep-manual-wake">Permanent Sleep (Manual Wake)<a class="headerlink" href="#permanent-sleep-manual-wake" title="Permanent link">#</a></h3>
-<p>Omit <code>wakeSchedule</code> to keep workloads asleep until the CR is updated or deleted:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">      </span><span class="c1"># Sleep on the 1st of every month</span>
-<span class="w">    </span><span class="c1"># wakeSchedule: omitted → stay asleep</span>
-</code></pre></div>
-<hr>
-<h2 id="ignored-namespaces">Ignored Namespaces<a class="headerlink" href="#ignored-namespaces" title="Permanent link">#</a></h2>
-<p>Even if a namespace matches your targeting rules, it will be <strong>excluded</strong> if it has:</p>
-<ul>
-<li>The annotation:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nt">hibernation.stakater.com/exclude</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
-</code></pre></div>
-<blockquote>
-<p>🔒 This allows teams to opt out of platform-wide hibernation policies.</p>
-</blockquote>
-<hr>
-<h2 id="status-tracking">Status Tracking<a class="headerlink" href="#status-tracking" title="Permanent link">#</a></h2>
-<p>The operator populates rich status fields for observability and debugging:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">status</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">currentStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleeping</span><span class="w">                 </span><span class="c1"># "running", "sleeping", or "error"</span>
-<span class="w">  </span><span class="nt">nextReconcileTime</span><span class="p">:</span><span class="w"> </span><span class="s">"2025-02-01T08:00:00Z"</span>
-<span class="w">  </span><span class="nt">watchedNamespaces</span><span class="p">:</span><span class="w">                      </span><span class="c1"># Namespaces being managed</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-a-dev</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend-staging</span>
-<span class="w">  </span><span class="nt">ignoreNamespaces</span><span class="p">:</span><span class="w">                       </span><span class="c1"># Excluded (e.g., via annotation)</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-system</span>
-<span class="w">  </span><span class="nt">sleepingNamespaces</span><span class="p">:</span><span class="w">                     </span><span class="c1"># Detailed state of scaled-down apps</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-a-dev</span>
-<span class="w">      </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleeping</span>
-<span class="w">      </span><span class="nt">sleepingApplications</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web-api</span>
-<span class="w">          </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
-<span class="w">          </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w">                    </span><span class="c1"># ← Original replica count (restored on wake)</span>
-<span class="w">          </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleeping</span>
-</code></pre></div>
-<p>Use <code>kubectl describe</code> or <code>kubectl get -o yaml</code> to inspect:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>clusterresourcesupervisor<span class="w"> </span>my-policy<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.status}'</span>
-</code></pre></div>
-<hr>
-<h2 id="example-platform-wide-dev-hibernation">Example: Platform-Wide Dev Hibernation<a class="headerlink" href="#example-platform-wide-dev-hibernation" title="Permanent link">#</a></h2>
+<p>A <code>ClusterResourceSupervisor</code> applies one hibernation schedule to a group of namespaces. It is cluster-scoped and intended for platform teams parking development, test, or preview environments at scale. For a single namespace managed by the team that owns it, use a <a href="resource-supervisor.html">ResourceSupervisor</a>.</p>
+<p>As with the namespace-scoped resource, only <code>Deployments</code> and <code>StatefulSets</code> are affected.</p>
+<p>For the complete field listing, see the <a href="../../reference/api/hibernation-operator/api.html">API Reference</a>.</p>
+<h2 id="selecting-namespaces">Selecting namespaces<a class="headerlink" href="#selecting-namespaces" title="Permanent link">#</a></h2>
+<p>Namespaces come from <code>spec.namespaces</code>, by explicit name, by label selector, or both. The results are combined, so a namespace selected either way is hibernated.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-environments-hibernation</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">legacy-staging</span>
 <span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
@@ -5779,214 +5447,94 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">18</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span>
 <span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span>
 </code></pre></div>
-<blockquote>
-<p>🌐 Applies to <strong>all namespaces</strong> labeled <code>env=dev</code>, now and in the future.</p>
-</blockquote>
-<hr>
-<h2 id="example-argocd-label-selector-combo">Example: ArgoCD + Label Selector Combo<a class="headerlink" href="#example-argocd-label-selector-combo" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hybrid-hibernation</span>
-<span class="nt">spec</span><span class="p">:</span>
+<p><code>labelSelector</code> is a standard Kubernetes label selector, so <code>matchLabels</code> and <code>matchExpressions</code> both work and are combined with AND. It is re-evaluated on each reconcile, which is what lets namespaces created later be picked up without editing the resource.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>An empty <code>labelSelector: {}</code> matches no namespaces, not all of them, and a <code>ClusterResourceSupervisor</code> with no <code>spec.namespaces</code> at all hibernates nothing. To cover a broad set, apply a label the target namespaces share and select on that.</p>
+</div>
+<h2 id="scheduling">Scheduling<a class="headerlink" href="#scheduling" title="Permanent link">#</a></h2>
+<p><code>spec.schedule</code> behaves as it does for <code>ResourceSupervisor</code>: two five-field cron expressions evaluated in UTC. Setting both cycles the workloads, and omitting <code>wakeSchedule</code> sleeps them at the next sleep time and leaves them asleep.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">22</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">6</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
+</code></pre></div>
+<h2 id="exclusions">Exclusions<a class="headerlink" href="#exclusions" title="Permanent link">#</a></h2>
+<p>Two filters run after selection, and a namespace caught by either is reported in <code>status.ignoreNamespaces</code> rather than hibernated:</p>
+<ul>
+<li>The namespace is annotated <code>hibernation.stakater.com/exclude: "true"</code>.</li>
+<li>The namespace is the one the operator itself runs in.</li>
+</ul>
+<p>The annotation is how an individual team opts out of a platform-wide policy without needing the selector changed.</p>
+<h2 id="overlap-between-supervisors">Overlap between supervisors<a class="headerlink" href="#overlap-between-supervisors" title="Permanent link">#</a></h2>
+<p>The admission webhook rejects a <code>ClusterResourceSupervisor</code> that claims a namespace already claimed by another one, and also rejects duplicate names within a single resource. Two cluster-scoped supervisors therefore cannot fight over the same namespace.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>That check does not extend to <code>ResourceSupervisor</code>. A namespace can hold its own <code>ResourceSupervisor</code> while also being selected here, and both controllers will then act on the same workloads on their own schedules. Exclude the namespace with the annotation if it should manage itself.</p>
+</div>
+<h2 id="argocd-sync-windows">ArgoCD sync windows<a class="headerlink" href="#argocd-sync-windows" title="Permanent link">#</a></h2>
+<p>Workloads managed by ArgoCD present a problem: scaling them to zero is drift from Git, and ArgoCD will scale them back up. The <code>spec.argocd</code> field addresses this by writing a <code>deny</code> sync window onto the AppProjects you name, covering the sleep schedule and its computed duration.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">team</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
 <span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
 <span class="w">    </span><span class="nt">appProjects</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mobile-apps</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">names</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">legacy-staging</span>
-<span class="w">    </span><span class="nt">labelSelector</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">temporary</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend-team</span>
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">20</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">22</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">6</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span>
 </code></pre></div>
-<p>🔄 Hibernates:</p>
-<blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>spec.argocd</code> does not select namespaces. It suppresses syncing for the AppProjects listed, nothing more, and the namespaces to hibernate still come entirely from <code>spec.namespaces</code>. A resource with <code>argocd</code> but no <code>namespaces</code> writes sync windows and hibernates nothing.</p>
+</div>
+<p>Two further constraints:</p>
 <ul>
-<li>All namespaces in the <code>mobile-apps</code> AppProject</li>
-<li>Plus <code>legacy-staging</code></li>
-<li>Plus any namespace with label <code>temporary=true</code></li>
+<li>The operator replaces <code>spec.syncWindows</code> on each named AppProject rather than appending, so any sync windows maintained there by other means are overwritten.</li>
+<li>The ArgoCD <code>AppProject</code> CRD must be present. If it is absent the operator logs that and continues hibernating without touching ArgoCD.</li>
 </ul>
-</blockquote>
-<hr>
-<h2 id="key-notes">Key Notes<a class="headerlink" href="#key-notes" title="Permanent link">#</a></h2>
-<ul>
-<li>❌ <strong>Not namespace-scoped</strong>: Cannot be created inside a namespace.</li>
-<li>✅ <strong>Safe by default</strong>: Only modifies <code>Deployments</code> and <code>StatefulSets</code>.</li>
-<li>✅ <strong>Stateful restoration</strong>: Replica counts are stored in <code>status.sleepingNamespaces</code>.</li>
-<li>✅ <strong>Coexists with <code>ResourceSupervisor</code></strong>: If a namespace has a local <code>ResourceSupervisor</code>, the operator <strong>skips it</strong> (to avoid conflicts)—unless your operator logic is designed otherwise. <em>(Confirm behavior in your implementation.)</em></li>
-</ul>
-<hr>
-<h2 id="when-to-use-clusterresourcesupervisor">When to Use <code>ClusterResourceSupervisor</code><a class="headerlink" href="#when-to-use-clusterresourcesupervisor" title="Permanent link">#</a></h2>
-<table>
-<thead>
-<tr>
-<th>Scenario</th>
-<th>Recommended</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Hibernating 50+ dev namespaces</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>GitOps with ArgoCD AppProjects</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>Dynamic namespace selection via labels</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>Team self-service in one namespace</td>
-<td>❌ → Use <code>ResourceSupervisor</code></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">#</a></h2>
-<p><strong>Group/Version:</strong> <code>hibernation.stakater.com/v1beta1</code> · <strong>Kind:</strong> <code>ClusterResourceSupervisor</code> · <strong>Scope:</strong> Cluster</p>
-<h3 id="spec">Spec<a class="headerlink" href="#spec" title="Permanent link">#</a></h3>
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">#</a></h2>
 <table>
 <thead>
 <tr>
 <th>Field</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>schedule</code></td>
-<td><code>object</code> (Hibernation)</td>
-<td>Yes</td>
-<td>Hibernation schedule applied to all matched namespaces.</td>
-</tr>
-<tr>
-<td><code>schedule.sleepSchedule</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>Standard 5-field Unix cron expression (UTC) for scaling workloads to zero.</td>
-</tr>
-<tr>
-<td><code>schedule.wakeSchedule</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>Standard 5-field Unix cron expression (UTC) for restoring workloads. If omitted, workloads stay asleep.</td>
-</tr>
-<tr>
-<td><code>namespaces</code></td>
-<td><code>object</code></td>
-<td>No</td>
-<td>Targets namespaces by name and/or label selector.</td>
-</tr>
-<tr>
-<td><code>namespaces.names</code></td>
-<td><code>[]string</code></td>
-<td>No</td>
-<td>Explicit list of namespace names to manage.</td>
-</tr>
-<tr>
-<td><code>namespaces.labelSelector</code></td>
-<td><code>object</code> (<code>metav1.LabelSelector</code>)</td>
-<td>No</td>
-<td>Standard Kubernetes label selector (<code>matchLabels</code> / <code>matchExpressions</code>). Empty <code>{}</code> matches all namespaces; absent matches none.</td>
-</tr>
-<tr>
-<td><code>argocd</code></td>
-<td><code>object</code></td>
-<td>No</td>
-<td>Target namespaces via ArgoCD AppProjects. Requires ArgoCD integration enabled at install time.</td>
-</tr>
-<tr>
-<td><code>argocd.appProjects</code></td>
-<td><code>[]string</code></td>
-<td>Yes (within <code>argocd</code>)</td>
-<td>ArgoCD AppProject names whose destination namespaces follow the schedule.</td>
-</tr>
-<tr>
-<td><code>argocd.namespace</code></td>
-<td><code>string</code></td>
-<td>Yes (within <code>argocd</code>)</td>
-<td>Namespace where the ArgoCD AppProjects reside.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="status">Status<a class="headerlink" href="#status" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
+<th>Shows</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>currentStatus</code></td>
-<td><code>string</code> (<code>sleeping</code>, <code>running</code>, <code>error</code>)</td>
-<td>Overall state of managed workloads.</td>
-</tr>
-<tr>
-<td><code>nextReconcileTime</code></td>
-<td><code>string</code> (RFC 3339 timestamp)</td>
-<td>Next scheduled sleep/wake reconciliation.</td>
+<td><code>running</code>, <code>sleeping</code>, or <code>error</code></td>
 </tr>
 <tr>
 <td><code>watchedNamespaces</code></td>
-<td><code>[]string</code></td>
-<td>Namespaces currently managed by this resource.</td>
+<td>Namespaces currently being managed</td>
 </tr>
 <tr>
 <td><code>ignoreNamespaces</code></td>
-<td><code>[]string</code></td>
-<td>Namespaces excluded from management (e.g. via the exclude annotation).</td>
+<td>Selected namespaces filtered out by the exclusions above</td>
 </tr>
 <tr>
 <td><code>sleepingNamespaces</code></td>
-<td><code>[]object</code> (SleepingNamespace)</td>
-<td>Per-namespace record of scaled-down workloads, used for accurate restoration.</td>
+<td>Per-namespace detail of scaled-down workloads and their original replica counts</td>
 </tr>
 <tr>
-<td><code>sleepingNamespaces[].Namespace</code></td>
-<td><code>string</code></td>
-<td>The namespace containing the sleeping applications.</td>
-</tr>
-<tr>
-<td><code>sleepingNamespaces[].status</code></td>
-<td><code>string</code>  (<code>sleeping</code>, <code>running</code>, <code>error</code>)</td>
-<td>Per-namespace error/state indicator.</td>
-</tr>
-<tr>
-<td><code>sleepingNamespaces[].sleepingApplications</code></td>
-<td><code>[]object</code> (SleepingApplication)</td>
-<td>Workloads scaled down in the namespace.</td>
-</tr>
-<tr>
-<td><code>sleepingNamespaces[].sleepingApplications[].name</code></td>
-<td><code>string</code></td>
-<td>Name of the sleeping application.</td>
-</tr>
-<tr>
-<td><code>sleepingNamespaces[].sleepingApplications[].kind</code></td>
-<td><code>string</code></td>
-<td>Workload kind.</td>
-</tr>
-<tr>
-<td><code>sleepingNamespaces[].sleepingApplications[].replicas</code></td>
-<td><code>int32</code></td>
-<td>Original replica count, preserved for restoration on wake.</td>
+<td><code>nextReconcileTime</code></td>
+<td>Next scheduled sleep or wake</td>
 </tr>
 </tbody>
 </table>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>clusterresourcesupervisor<span class="w"> </span>dev-environments-hibernation<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.status}'</span>
+</code></pre></div>
+<p>When a namespace you expected is missing from <code>watchedNamespaces</code>, <code>ignoreNamespaces</code> is the first place to look.</p>
+<h2 id="choosing-between-the-two">Choosing between the two<a class="headerlink" href="#choosing-between-the-two" title="Permanent link">#</a></h2>
+<p>Use a <code>ResourceSupervisor</code> when a namespace should decide its own hibernation and the team owning it holds only namespace-level permissions. Use a <code>ClusterResourceSupervisor</code> when a platform team sets the policy across many namespaces, when the set is defined by labels and changes over time, or when ArgoCD sync windows need suppressing during sleep.</p>
 <h2 id="related-guides">Related guides<a class="headerlink" href="#related-guides" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="../../guides/hibernation-operator/create-cluster-resource-supervisor.html">Setup ClusterResourceSupervisor</a></li>
+<li><a href="../../guides/hibernation-operator/create-cluster-resource-supervisor.html">Hibernate Workloads Across Multiple Namespaces</a></li>
 <li><a href="../../guides/hibernation-operator/hibernate-resources.html">Hibernate a Tenant</a></li>
 </ul>
 

@@ -2575,44 +2575,22 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#supported-workloads" class="md-nav__link">
+  <a href="#scheduling-modes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Supported Workloads
+        Scheduling modes
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ignored-namespaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ignored Namespaces
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supported-modes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supported Modes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Supported Modes">
+    <nav class="md-nav" aria-label="Scheduling modes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-hibernation-with-cron-schedule-sleep-wake" class="md-nav__link">
+  <a href="#recurring-hibernation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Hibernation with Cron Schedule (Sleep + Wake)
+        Recurring hibernation
       
     </span>
   </a>
@@ -2620,10 +2598,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-permanent-sleep-manual-wake" class="md-nav__link">
+  <a href="#sleep-with-no-scheduled-wake" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Permanent Sleep (Manual Wake)
+        Sleep with no scheduled wake
       
     </span>
   </a>
@@ -2631,10 +2609,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-immediate-sleep-no-schedule" class="md-nav__link">
+  <a href="#immediate-sleep" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Immediate Sleep (No Schedule)
+        Immediate sleep
       
     </span>
   </a>
@@ -2647,10 +2625,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#status-tracking" class="md-nav__link">
+  <a href="#replica-counts-and-restoration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Status Tracking
+        Replica counts and restoration
       
     </span>
   </a>
@@ -2658,10 +2636,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-notes" class="md-nav__link">
+  <a href="#exclusions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key Notes
+        Exclusions
       
     </span>
   </a>
@@ -2669,40 +2647,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-cicd-preview-namespace" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example: CI/CD Preview Namespace
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api-reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        API Reference
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="API Reference">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#spec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Spec
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#status" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2712,9 +2656,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#differences-from-clusterresourcesupervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Differences from ClusterResourceSupervisor
+      
+    </span>
+  </a>
   
 </li>
       
@@ -4395,7 +4345,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Setup ClusterResourceSupervisor
+    Hibernate Workloads Across Multiple Namespaces
   
 
     
@@ -4423,7 +4373,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Setup ResourceSupervisor
+    Hibernate Workloads in a Single Namespace
   
 
     
@@ -5386,44 +5336,22 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#supported-workloads" class="md-nav__link">
+  <a href="#scheduling-modes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Supported Workloads
+        Scheduling modes
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ignored-namespaces" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ignored Namespaces
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#supported-modes" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Supported Modes
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Supported Modes">
+    <nav class="md-nav" aria-label="Scheduling modes">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-hibernation-with-cron-schedule-sleep-wake" class="md-nav__link">
+  <a href="#recurring-hibernation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Hibernation with Cron Schedule (Sleep + Wake)
+        Recurring hibernation
       
     </span>
   </a>
@@ -5431,10 +5359,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-permanent-sleep-manual-wake" class="md-nav__link">
+  <a href="#sleep-with-no-scheduled-wake" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Permanent Sleep (Manual Wake)
+        Sleep with no scheduled wake
       
     </span>
   </a>
@@ -5442,10 +5370,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-immediate-sleep-no-schedule" class="md-nav__link">
+  <a href="#immediate-sleep" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Immediate Sleep (No Schedule)
+        Immediate sleep
       
     </span>
   </a>
@@ -5458,10 +5386,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#status-tracking" class="md-nav__link">
+  <a href="#replica-counts-and-restoration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Status Tracking
+        Replica counts and restoration
       
     </span>
   </a>
@@ -5469,10 +5397,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-notes" class="md-nav__link">
+  <a href="#exclusions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key Notes
+        Exclusions
       
     </span>
   </a>
@@ -5480,40 +5408,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-cicd-preview-namespace" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example: CI/CD Preview Namespace
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#api-reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        API Reference
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="API Reference">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#spec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Spec
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#status" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5523,9 +5417,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#differences-from-clusterresourcesupervisor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Differences from ClusterResourceSupervisor
+      
+    </span>
+  </a>
   
 </li>
       
@@ -5561,65 +5461,59 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="resourcesupervisor">ResourceSupervisor<a class="headerlink" href="#resourcesupervisor" title="Permanent link">#</a></h1>
-<p>The <code>ResourceSupervisor</code> is a <strong>namespace-scoped</strong> custom resource that enables <strong>self-service hibernation</strong> of workloads within a <strong>single namespace</strong>. It allows application teams or namespace owners to define schedules for scaling down and restoring <code>Deployments</code> and <code>StatefulSets</code> without requiring cluster-wide permissions.</p>
-<blockquote>
-<p>✅ <strong>Only affects the namespace in which it is created.</strong></p>
-</blockquote>
-<h2 id="supported-workloads">Supported Workloads<a class="headerlink" href="#supported-workloads" title="Permanent link">#</a></h2>
-<ul>
-<li><code>Deployment</code></li>
-<li><code>StatefulSet</code></li>
-</ul>
-<p>These resources are scaled to <strong>0 replicas</strong> during sleep and restored to their <strong>original replica count</strong> during wake.</p>
-<h2 id="ignored-namespaces">Ignored Namespaces<a class="headerlink" href="#ignored-namespaces" title="Permanent link">#</a></h2>
-<p>While <code>ResourceSupervisor</code> is namespace-scoped and only acts within its own namespace, the Hibernation Operator still respects global exclusion rules. A namespace (including the one containing the <code>ResourceSupervisor</code>) will be <strong>ignored</strong> if it has:</p>
-<ul>
-<li>The annotation:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nt">hibernation.stakater.com/exclude</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
-</code></pre></div>
-<blockquote>
-<p>🔒 The operator <strong>never modifies</strong> workloads in excluded namespaces—even if a <code>ResourceSupervisor</code> exists there.</p>
-</blockquote>
-<h2 id="supported-modes">Supported Modes<a class="headerlink" href="#supported-modes" title="Permanent link">#</a></h2>
-<h3 id="1-hibernation-with-cron-schedule-sleep-wake">1. Hibernation with Cron Schedule (Sleep + Wake)<a class="headerlink" href="#1-hibernation-with-cron-schedule-sleep-wake" title="Permanent link">#</a></h3>
-<p>Define both <code>sleepSchedule</code> and <code>wakeSchedule</code> to automatically cycle workloads on and off.</p>
+<p>A <code>ResourceSupervisor</code> hibernates the workloads in the namespace it lives in. It is namespace-scoped, so a team that owns a namespace can park its own workloads outside working hours without needing cluster-wide permissions. To cover a group of namespaces from one place, use a <a href="cluster-resource-supervisor.html">ClusterResourceSupervisor</a>.</p>
+<p>Only <code>Deployments</code> and <code>StatefulSets</code> are affected. Everything else in the namespace is left running.</p>
+<p>For the complete field listing, see the <a href="../../reference/api/hibernation-operator/api.html">API Reference</a>.</p>
+<h2 id="scheduling-modes">Scheduling modes<a class="headerlink" href="#scheduling-modes" title="Permanent link">#</a></h2>
+<p>The <code>spec.schedule</code> block accepts two cron expressions, and which of them you set determines the behavior.</p>
+<table>
+<thead>
+<tr>
+<th><code>sleepSchedule</code></th>
+<th><code>wakeSchedule</code></th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Set</td>
+<td>Set</td>
+<td>Workloads cycle between the two times</td>
+</tr>
+<tr>
+<td>Set</td>
+<td>Omitted</td>
+<td>Workloads sleep at the next sleep time and stay asleep</td>
+</tr>
+<tr>
+<td>Omitted</td>
+<td>Omitted</td>
+<td>Workloads sleep immediately and stay asleep</td>
+</tr>
+</tbody>
+</table>
+<p>Both expressions use standard five-field Unix cron syntax (<code>minute hour day month weekday</code>) and are evaluated in UTC, not the cluster's local timezone.</p>
+<h3 id="recurring-hibernation">Recurring hibernation<a class="headerlink" href="#recurring-hibernation" title="Permanent link">#</a></h3>
+<p>Setting both schedules is the common case, parking an environment overnight and bringing it back in the morning.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nightly-hibernation</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app-staging</span><span class="w">  </span><span class="c1"># ← Must match target namespace</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-app-staging</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">20</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">   </span><span class="c1"># Sleep daily at 8:00 PM UTC</span>
-<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">     </span><span class="c1"># Wake daily at 8:00 AM UTC</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">20</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">   </span><span class="c1"># Sleep daily at 20:00 UTC</span>
+<span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">     </span><span class="c1"># Wake daily at 08:00 UTC</span>
 </code></pre></div>
-<blockquote>
-<p>🕒 <strong>Cron Format</strong>: Standard Unix cron (<code>minute hour day month weekday</code>). Timezone is <strong>UTC</strong>.</p>
-</blockquote>
-<hr>
-<h3 id="2-permanent-sleep-manual-wake">2. Permanent Sleep (Manual Wake)<a class="headerlink" href="#2-permanent-sleep-manual-wake" title="Permanent link">#</a></h3>
-<p>Omit <code>wakeSchedule</code> to keep workloads asleep indefinitely. Workloads will <strong>only wake</strong> when:</p>
-<ul>
-<li>The <code>ResourceSupervisor</code> is <strong>deleted</strong>, <strong>or</strong></li>
-<li>A <code>wakeSchedule</code> is <strong>added later</strong></li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pause-for-maintenance</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo-env</span>
-<span class="nt">spec</span><span class="p">:</span>
+<h3 id="sleep-with-no-scheduled-wake">Sleep with no scheduled wake<a class="headerlink" href="#sleep-with-no-scheduled-wake" title="Permanent link">#</a></h3>
+<p>Omitting <code>wakeSchedule</code> sleeps the workloads at the next sleep time and leaves them there. The operator still reconciles at each subsequent sleep time, so workloads added to the namespace later are hibernated too rather than being left running.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">12</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">   </span><span class="c1"># Sleep today at noon UTC, never wake</span>
-<span class="w">    </span><span class="c1"># wakeSchedule: omitted → stay asleep</span>
+<span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">12</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">   </span><span class="c1"># Sleep at the next 12:00 UTC, no wake</span>
 </code></pre></div>
-<blockquote>
-<p>💡 This is useful for temporary freezes (e.g., during security reviews or budget pauses).</p>
-</blockquote>
-<hr>
-<h3 id="3-immediate-sleep-no-schedule">3. Immediate Sleep (No Schedule)<a class="headerlink" href="#3-immediate-sleep-no-schedule" title="Permanent link">#</a></h3>
-<p>To sleep <strong>immediately</strong>, create a <code>ResourceSupervisor</code> with an <strong>empty <code>schedule</code></strong> block:</p>
+<p>To bring the workloads back, add a <code>wakeSchedule</code> or delete the resource.</p>
+<h3 id="immediate-sleep">Immediate sleep<a class="headerlink" href="#immediate-sleep" title="Permanent link">#</a></h3>
+<p>An empty schedule sleeps the workloads as soon as the resource is created, and reconciles hourly to catch anything new. This suits ephemeral environments such as CI preview namespaces, where the namespace should be parked from the moment it exists.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -5628,106 +5522,29 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
-<ul>
-<li>Workloads are scaled to 0 <strong>as soon as the CR is created</strong>.</li>
-<li>They remain asleep until the CR is <strong>deleted</strong>.</li>
-</ul>
-<blockquote>
-<p>🚀 Ideal for ephemeral environments (e.g., CI/CD preview namespaces).</p>
-</blockquote>
-<hr>
-<h2 id="status-tracking">Status Tracking<a class="headerlink" href="#status-tracking" title="Permanent link">#</a></h2>
-<p>The operator updates the CR’s <code>status</code> to reflect current state:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">status</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">currentStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleeping</span><span class="w">      </span><span class="c1"># or "running", "error"</span>
-<span class="w">  </span><span class="nt">nextReconcileTime</span><span class="p">:</span><span class="w"> </span><span class="s">"2025-02-01T08:00:00Z"</span>
-</code></pre></div>
-<p>Use <code>kubectl describe</code> or <code>kubectl get -o yaml</code> to monitor:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Setting <code>wakeSchedule</code> without <code>sleepSchedule</code> is not a supported combination and the operator does not act on it.</p>
+</div>
+<h2 id="replica-counts-and-restoration">Replica counts and restoration<a class="headerlink" href="#replica-counts-and-restoration" title="Permanent link">#</a></h2>
+<p>Before scaling a workload down, the operator writes its replica count to the annotation <code>hibernation.stakater.com/original-replicas</code> on the workload itself, and reads it back on wake. Keeping the count on the workload rather than in the supervisor's status means it survives operator restarts and stays visible with <code>kubectl get</code>.</p>
+<p>Workloads already at zero replicas are skipped, so they are not later "restored" to zero-with-a-record they never had.</p>
+<p>Deleting the <code>ResourceSupervisor</code> wakes its workloads first. A finalizer holds the resource until the restore finishes, which makes deletion the straightforward way to cancel hibernation.</p>
+<h2 id="exclusions">Exclusions<a class="headerlink" href="#exclusions" title="Permanent link">#</a></h2>
+<p>A namespace annotated <code>hibernation.stakater.com/exclude: "true"</code> is never hibernated, even if a <code>ResourceSupervisor</code> exists in it. The operator's own namespace is excluded the same way. This gives platform teams a way to protect a namespace regardless of what is created inside it.</p>
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">#</a></h2>
+<p><code>status.currentStatus</code> reports <code>running</code>, <code>sleeping</code>, or <code>error</code>, and <code>status.nextReconcileTime</code> gives the next time the operator will act.</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>resourcesupervisor<span class="w"> </span>nightly-hibernation<span class="w"> </span>-n<span class="w"> </span>my-app-staging<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.status}'</span>
 </code></pre></div>
-<hr>
-<h2 id="key-notes">Key Notes<a class="headerlink" href="#key-notes" title="Permanent link">#</a></h2>
-<ul>
-<li>❌ <strong>No <code>argocd</code> field</strong>: <code>ResourceSupervisor</code> <strong>does not support ArgoCD integration</strong>. Use <code>ClusterResourceSupervisor</code> for AppProject-based hibernation.</li>
-<li>❌ <strong>No <code>namespaces</code> field</strong>: It <strong>only affects its own namespace</strong>—you cannot target other namespaces.</li>
-<li>✅ <strong>Safe by default</strong>: Only <code>Deployments</code> and <code>StatefulSets</code> are scaled; all other resources are untouched.</li>
-<li>✅ <strong>Stateful restoration</strong>: Original replica counts are stored in the CR’s status and restored accurately—even after operator restarts.</li>
-</ul>
-<hr>
-<h2 id="example-cicd-preview-namespace">Example: CI/CD Preview Namespace<a class="headerlink" href="#example-cicd-preview-namespace" title="Permanent link">#</a></h2>
-<p>A CI pipeline creates a namespace <code>pr-456</code> and immediately hibernates it to save costs:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># pr-456-hibernation.yaml</span>
-<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto-sleep</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pr-456</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
-</code></pre></div>
-<p>Apply it:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>pr-456-hibernation.yaml
-</code></pre></div>
-<p>Workloads sleep instantly. When the PR is merged, the pipeline deletes the namespace (or the CR), waking workloads briefly before cleanup.</p>
-<hr>
-<h2 id="api-reference">API Reference<a class="headerlink" href="#api-reference" title="Permanent link">#</a></h2>
-<p><strong>Group/Version:</strong> <code>hibernation.stakater.com/v1beta1</code> · <strong>Kind:</strong> <code>ResourceSupervisor</code> · <strong>Scope:</strong> Namespace</p>
-<h3 id="spec">Spec<a class="headerlink" href="#spec" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>schedule</code></td>
-<td><code>object</code> (Hibernation)</td>
-<td>Yes</td>
-<td>Hibernation schedule for workloads in this namespace. An empty object (<code>schedule: {}</code>) triggers immediate sleep.</td>
-</tr>
-<tr>
-<td><code>schedule.sleepSchedule</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>Standard 5-field Unix cron expression (UTC) for scaling workloads to zero. If empty, workloads sleep immediately on creation.</td>
-</tr>
-<tr>
-<td><code>schedule.wakeSchedule</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>Standard 5-field Unix cron expression (UTC) for restoring workloads. If omitted, workloads remain asleep until the CR is updated or deleted.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="status">Status<a class="headerlink" href="#status" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>currentStatus</code></td>
-<td><code>string</code> (<code>sleeping</code>, <code>running</code>, <code>error</code>)</td>
-<td>Current state of the targeted workloads.</td>
-</tr>
-<tr>
-<td><code>nextReconcileTime</code></td>
-<td><code>string</code> (RFC 3339 timestamp)</td>
-<td>Next time the operator will sleep or wake the namespace's workloads.</td>
-</tr>
-</tbody>
-</table>
+<h2 id="differences-from-clusterresourcesupervisor">Differences from ClusterResourceSupervisor<a class="headerlink" href="#differences-from-clusterresourcesupervisor" title="Permanent link">#</a></h2>
+<p><code>ResourceSupervisor</code> has no <code>namespaces</code> field and cannot target anything beyond its own namespace, and no <code>argocd</code> field, so it cannot suppress ArgoCD syncing during sleep. If the namespace's workloads are managed by ArgoCD, ArgoCD will see the scaled-down state as drift and may restore it. Use a <a href="cluster-resource-supervisor.html">ClusterResourceSupervisor</a> where that matters.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Nothing prevents a <code>ClusterResourceSupervisor</code> from also selecting a namespace that already has a <code>ResourceSupervisor</code>. The admission webhook rejects overlap between two <code>ClusterResourceSupervisor</code> resources, but it does not check for this case, and the two controllers will then act on the same workloads independently. Avoid the overlap, or exclude the namespace with the annotation above.</p>
+</div>
 <h2 id="related-guides">Related guides<a class="headerlink" href="#related-guides" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="../../guides/hibernation-operator/create-resource-supervisor.html">Setup ResourceSupervisor</a></li>
+<li><a href="../../guides/hibernation-operator/create-resource-supervisor.html">Hibernate Workloads in a Single Namespace</a></li>
 <li><a href="../../guides/hibernation-operator/hibernate-resources.html">Hibernate a Tenant</a></li>
 </ul>
 
