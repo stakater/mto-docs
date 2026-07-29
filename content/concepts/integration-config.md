@@ -1,6 +1,6 @@
-# Integration Config
+# IntegrationConfig
 
-IntegrationConfig is used to configure settings of multi-tenancy for Multi Tenant Operator.
+`IntegrationConfig` is used to configure settings of multi-tenancy for Multi Tenant Operator.
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta1
