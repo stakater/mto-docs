@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/docs-structure-migration/guides/template/deploying-private-helm-charts.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/docs-structure-migration/guides/template-operator/template-default-params.html">
       
       
-        <link rel="prev" href="copying-resources.html">
+        <link rel="prev" href="resource-sync-by-tgi.html">
       
       
-        <link rel="next" href="deploying-templates.html">
+        <link rel="next" href="../hibernation-operator/create-cluster-resource-supervisor.html">
       
       
         
@@ -22,7 +22,7 @@
     
     
       
-        <title>Deploying Private Helm Chart to Multiple Namespaces - Multi-Tenant Operator</title>
+        <title>Using Templates with Default Parameters - Multi-Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deploying-private-helm-chart-to-multiple-namespaces" class="md-skip">
+        <a href="#using-templates-with-default-parameters" class="md-skip">
           Skip to content
         </a>
       
@@ -2378,7 +2378,147 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Integration Config
+    IntegrationConfig
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/template-operator/cluster-template-instance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ClusterTemplateInstance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/template-operator/template-instance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TemplateInstance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/template-operator/template.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/hibernation-operator/cluster-resource-supervisor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ClusterResourceSupervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concepts/hibernation-operator/resource-supervisor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ResourceSupervisor
   
 
     
@@ -3873,37 +4013,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Deploying Private Helm Chart to Multiple Namespaces
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="deploying-private-helm-charts.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="deploying-private-helm-charts.html" class="md-nav__link">
         
   
   
@@ -3919,50 +4032,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#deploying-helm-chart-to-namespaces-via-clustertemplateinstances-from-oci-registry" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploying Helm Chart to Namespaces via ClusterTemplateInstances from OCI Registry
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deploying-helm-chart-to-namespaces-via-clustertemplateinstances-from-https-registry" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploying Helm Chart to Namespaces via ClusterTemplateInstances from HTTPS Registry
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -4084,10 +4153,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="template-default-params.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="template-default-params.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -4103,6 +4181,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+      
     </li>
   
 
@@ -4115,7 +4194,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../hibernation/create-cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../hibernation-operator/create-cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -4143,7 +4222,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../hibernation/create-resource-supervisor.html" class="md-nav__link">
+      <a href="../hibernation-operator/create-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -4171,7 +4250,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../hibernation/hibernate-resources.html" class="md-nav__link">
+      <a href="../hibernation-operator/hibernate-resources.html" class="md-nav__link">
         
   
   
@@ -4531,8 +4610,55 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7">
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hibernation Operator
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hibernation Operator
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../integrations/hibernation/argocd.html" class="md-nav__link">
+      <a href="../../integrations/hibernation-operator/argocd.html" class="md-nav__link">
         
   
   
@@ -4548,6 +4674,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -4689,7 +4823,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../reference/api/template/api.html" class="md-nav__link">
+      <a href="../../reference/api/template-operator/api.html" class="md-nav__link">
         
   
   
@@ -4716,62 +4850,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1_3">
-        
-          
-          <label class="md-nav__link" for="__nav_7_1_3" id="__nav_7_1_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hibernation
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_1_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_1_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Hibernation
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../../reference/api/hibernation/cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../../reference/api/hibernation-operator/api.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    ClusterResourceSupervisor
+    Hibernation Operator
   
 
     
@@ -4780,42 +4867,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../reference/api/hibernation/resource-supervisor.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ResourceSupervisor
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -5134,36 +5185,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#deploying-helm-chart-to-namespaces-via-clustertemplateinstances-from-oci-registry" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploying Helm Chart to Namespaces via ClusterTemplateInstances from OCI Registry
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deploying-helm-chart-to-namespaces-via-clustertemplateinstances-from-https-registry" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deploying Helm Chart to Namespaces via ClusterTemplateInstances from HTTPS Registry
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -5182,90 +5203,37 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="deploying-private-helm-chart-to-multiple-namespaces">Deploying Private Helm Chart to Multiple Namespaces<a class="headerlink" href="#deploying-private-helm-chart-to-multiple-namespaces" title="Permanent link">#</a></h1>
-<p>Multi Tenant Operator uses its <code>helm</code> functionality from <code>Template</code> and <code>ClusterTemplateInstance</code> to deploy private and public charts to multiple namespaces.</p>
-<h2 id="deploying-helm-chart-to-namespaces-via-clustertemplateinstances-from-oci-registry">Deploying Helm Chart to Namespaces via ClusterTemplateInstances from OCI Registry<a class="headerlink" href="#deploying-helm-chart-to-namespaces-via-clustertemplateinstances-from-oci-registry" title="Permanent link">#</a></h2>
-<p>Bill, the cluster admin, wants to deploy a helm chart from <code>OCI</code> registry in namespaces where certain labels exists.</p>
-<p>First, Bill creates a template:</p>
+<h1 id="using-templates-with-default-parameters">Using Templates with Default Parameters<a class="headerlink" href="#using-templates-with-default-parameters" title="Permanent link">#</a></h1>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chart-deploy</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-parameterized-restrictions</span>
+<span class="nt">parameters</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Name of the parameter</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_LIMIT</span>
+<span class="w">    </span><span class="c1"># The default value of the parameter</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_REQUESTS</span>
+<span class="w">    </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"0.5"</span>
+<span class="w">    </span><span class="c1"># If a parameter is required the template instance will need to set it</span>
+<span class="w">    </span><span class="c1"># required: true</span>
+<span class="w">    </span><span class="c1"># Make sure only values are entered for this parameter</span>
+<span class="w">    </span><span class="nt">validation</span><span class="p">:</span><span class="w"> </span><span class="s">"^[0-9]*\\.?[0-9]+$"</span>
 <span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">helm</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">releaseName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">random-release</span>
-<span class="w">    </span><span class="nt">chart</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">repository</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">random-chart</span>
-<span class="w">        </span><span class="nt">repoUrl</span><span class="p">:</span><span class="w"> </span><span class="s">"oci://ghcr.io/stakater/charts/random-chart"</span>
-<span class="w">        </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.15</span>
-<span class="w">        </span><span class="nt">password</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">repo-user</span>
-<span class="w">          </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared-ns</span>
-<span class="w">        </span><span class="nt">username</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">username</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">repo-user</span>
-<span class="w">          </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared-ns</span>
+<span class="w">  </span><span class="nt">manifests</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitRange</span>
+<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace-limit-range-${namespace}</span>
+<span class="w">      </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"${{DEFAULT_CPU_LIMIT}}"</span>
+<span class="w">            </span><span class="nt">defaultRequest</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">"${{DEFAULT_CPU_REQUESTS}}"</span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Container</span>
 </code></pre></div>
-<p>Once the template has been created, Bill makes a <code>ClusterTemplateInstance</code> referring to the <code>Template</code> he wants to deploy with <code>MatchLabels</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterTemplateInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chart-deploy</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater.com/kind</span>
-<span class="w">        </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">        </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chart-deploy</span>
-</code></pre></div>
-<p>Multi Tenant Operator will pick up the credentials from the mentioned namespace to pull the chart and apply it.</p>
-<p>Afterward, Bill can see that manifests in the chart have been successfully created in all label matching namespaces.</p>
-<h2 id="deploying-helm-chart-to-namespaces-via-clustertemplateinstances-from-https-registry">Deploying Helm Chart to Namespaces via ClusterTemplateInstances from <code>HTTPS</code> Registry<a class="headerlink" href="#deploying-helm-chart-to-namespaces-via-clustertemplateinstances-from-https-registry" title="Permanent link">#</a></h2>
-<p>Bill, the cluster admin, wants to deploy a helm chart from <code>HTTPS</code> registry in namespaces where certain labels exists.</p>
-<p>First, Bill creates a template:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chart-deploy</span>
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">helm</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">releaseName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">random-release</span>
-<span class="w">    </span><span class="nt">chart</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">repository</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">random-chart</span>
-<span class="w">        </span><span class="nt">repoUrl</span><span class="p">:</span><span class="w"> </span><span class="s">'nexus-helm-url/registry'</span>
-<span class="w">        </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.15</span>
-<span class="w">        </span><span class="nt">password</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">repo-user</span>
-<span class="w">          </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared-ns</span>
-<span class="w">        </span><span class="nt">username</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">username</span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">repo-user</span>
-<span class="w">          </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared-ns</span>
-</code></pre></div>
-<p>Once the template has been created, Bill makes a <code>ClusterTemplateInstance</code> referring to the <code>Template</code> he wants to deploy with <code>MatchLabels</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterTemplateInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chart-deploy</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchExpressions</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stakater.com/kind</span>
-<span class="w">        </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">        </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chart-deploy</span>
-</code></pre></div>
-<p>Multi Tenant Operator will pick up the credentials from the mentioned namespace to pull the chart and apply it.</p>
-<p>Afterward, Bill can see that manifests in the chart have been successfully created in all label matching namespaces.</p>
+<p>Parameters can be used with both <code>manifests</code> and <code>helm charts</code></p>
 
 
 
