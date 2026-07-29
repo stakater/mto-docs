@@ -275,3 +275,26 @@ The `hostValidationConfig` field allows you to specify rules for the validation 
 * `allowedRegex`: Specifies a regex that will be used to validate the hostname. Hostnames matching the regex will be allowed.
 
 * `denyWildcards`: Use of wildcards in ingress hostnames will be restricted if field is set to true
+
+## Related guides
+
+* [Create a Tenant](../guides/create-tenant.md)
+* [Delete a Tenant](../guides/delete-tenant.md)
+* [Create Namespaces](../guides/create-namespaces.md)
+* [Create Sandbox Namespaces](../guides/create-sandbox.md)
+* [Assign Metadata](../guides/assign-metadata.md)
+* [Templated values in Labels and Annotations](../guides/templated-metadata-values.md)
+* [Changing the default access level for tenant owners](../guides/custom-roles.md)
+* [Extending the default access level for tenant members](../guides/extend-default-roles.md)
+* [Hibernate a Tenant](../guides/hibernate-tenant.md)
+
+The per-field restriction guides each build on a section above:
+
+* [Restricting Storage Classes per Tenant](../guides/storage-classes.md)
+* [Restricting Hostname per Tenant](../guides/host-validation.md)
+* [Restricting Image Registries per Tenant](../guides/image-registries.md)
+* [Restricting Service Accounts per Tenant](../guides/service-accounts.md)
+* [Restricting Pod Priority Classes per Tenant](../guides/pod-priority-classes.md)
+* [Restricting Tenant Workloads to Specific Nodes](../guides/restrict-nodepool-per-tenant.md)
+* [Disable intra-tenant networking](../guides/disable-intra-tenant-networking.md)
+* [Ingress Sharding](../guides/ingress-sharding.md)

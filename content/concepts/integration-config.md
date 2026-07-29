@@ -992,3 +992,10 @@ network:
 - `disableNodePortServices`: (Default false) Disallow creation of services of type `NodePort` across all namespaces.
 
 - `disableHostPorts`: (Default false) Disallow the creation of containers with `hostPort` defined in it.
+
+## Related guides
+
+- [Changing the default access level for tenant owners](../guides/custom-roles.md)
+- [Extending the default access level for tenant members](../guides/extend-default-roles.md)
+- [Disable intra-tenant networking](../guides/disable-intra-tenant-networking.md)
+- [Templated values in Labels and Annotations](../guides/templated-metadata-values.md)

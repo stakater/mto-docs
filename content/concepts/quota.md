@@ -167,3 +167,8 @@ Now, the combined storage provisioned from StorageClass `stakater` used by all t
 
 !!! tip
     More details about `Resource Quota` can be found [here](https://kubernetes.io/docs/concepts/policy/resource-quotas/)
+
+## Related guides
+
+- [Create a Tenant](../guides/create-tenant.md)
+- [Restricting Storage Classes per Tenant](../guides/storage-classes.md)
