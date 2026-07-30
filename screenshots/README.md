@@ -86,12 +86,11 @@ tenant, namespace, quota names). `.env` holds only `CONSOLE_USER` and
 `CONSOLE_PASSWORD`, and can override anything in `config.env` for a one-off run.
 In CI those two credentials are the only secrets — the rest comes from `config.env`.
 
-The flows use `wait` / `scroll-to` / `press` and animation-disabled screenshots, so
-until a browser-runner release ships them, build the image locally:
+`capture.sh` uses `ghcr.io/stakater/browser-runner:latest`. Override it to test
+against a different build:
 
 ```sh
-cd ../browser-runner/browser-runner && docker build -t browser-runner:dev .
-cd - && RUNNER_IMAGE=browser-runner:dev ./screenshots/capture.sh
+RUNNER_IMAGE=browser-runner:dev ./screenshots/capture.sh
 ```
 
 ## Image standard
@@ -99,11 +98,10 @@ cd - && RUNNER_IMAGE=browser-runner:dev ./screenshots/capture.sh
 **2560 x 1600** — a `1280x800` viewport at `deviceScaleFactor: 2`, light theme. Set in
 the `viewport:` block of every flow, so all captures come out the same size and theme.
 
-## Inventory — MTO Console images (in scope, 57)
+## Flows and the images they produce
 
 One flow per docs page, except tenants which is split in two so a failure in the
-create-drawer walk can't lose the detail-page shots. Capture filenames match the old
-image names.
+create-drawer walk can't lose the detail-page shots.
 
 | Flow (`flows/<name>.yaml`) | Docs page | Images | UI state captured |
 |---|---|---|---|
@@ -120,7 +118,7 @@ image names.
 | `showback` | `console/showback.md` | `showback.png` | Cost Analysis page with data loaded |
 | `configuration` | `console/configuration.md` | `integrationConfig.png` | IntegrationConfig page (admin-only view) |
 
-## Where this runs in CI (phase 2)
+## Where this runs in CI
 
 `pull_request.yaml` and `push.yaml` call the shared `stakater/.github` versioned-doc
 workflows with `PRE_BUILD_HOOK: make merge`. That hook runs after theme prep and
@@ -150,66 +148,15 @@ committed. So a console outage blocks a docs build — the alternative is commit
 captures and capturing only on push, which trades images in git for a smaller blast
 radius.
 
-`capture.sh` defaults to `ghcr.io/stakater/browser-runner:latest`. These flows need
-`wait`, `scroll-to`, `press`, animation-disabled screenshots, abort-on-failure and
-`optional`, so **CI capture only works once a browser-runner release ships them** —
-until then, pin `RUNNER_IMAGE`.
 
-## Known limits found while verifying the flows
+Only images under `content/console/` are automated. Everything else stays
+hand-made: the OpenShift install pages, third-party UIs in `integrations/`,
+diagrams, and the demo GIFs.
 
-- **Annotated originals can't be reproduced.** `graph-1.png`, `graph-2.png` and
-  `graph-3.png` carry red callout rectangles drawn on *after* capture (around the
-  Tenants sidebar item, the tenant row link, and the Graph tab). The runner
-  reproduces the underlying UI only. Either re-annotate downstream, keep those
-  three manual, or drop the callouts and use the plain captures.
-- **Some originals are duplicates.** `worker_pool.png` and `request_details.png`
-  are byte-identical (same md5) — one scroll position showing Node Capacity with
-  Tenant Request Details below. `graph-2.png` is the tenants list (same view as
-  `tenants.png`) and `graph-3.png` is the graph tab (same view as
-  `tenants_graph.png`), differing only by the callouts. Candidates for
-  consolidation in the docs.
-- **`graph-1.png` is the Dashboard**, not the tenants list — the flow captures it
-  right after login, before navigating to `/tenants`.
-- **Testids in the deployed console lag the source.** `node-pool-name` and the
-  access-control input testids don't exist in the running build, so those steps
-  use structural or placeholder selectors instead.
-
-## Console images NOT in phase 1 (3)
-
-`mto-console-login.png` (1846x948), `mto-console-dashboard-0-tenants.png` and
-`mto-console-bear-dashboard.png` (1853x954), referenced by the AWS-EKS /
-Azure-AKS installation and validation pages. They are MTO Console screenshots
-but depict installation-narrative data states (an empty console with **0
-tenants**; a specific `bear` org) that contradict a seeded docs environment,
-and they use a different, non-retina size. The login page itself is trivially
-capturable; the dashboard states need a decision (re-shoot against the seeded
-env and reword the pages, or leave manual). Deferred.
-
-## Out of scope — not MTO Console
-
-| Category | Images |
-|---|---|
-| OpenShift console (OperatorHub / OLM install + uninstall) | 17 images in `installation/openshift.md`, `installation/uninstalling.md` |
-| Third-party UIs (ArgoCD, Mattermost, Azure AD, Keycloak, Vault mappers) | 7 images in `integrations/` |
-| Diagrams / workflow art | `architecture-diagram.png`, `mto-vault-*-workflow.png` |
-| Terminal/demo GIFs (kubectl plugin, tenant how-to guides) | 8 GIFs |
-
-## Orphans (referenced by no page — flagged, NOT deleted)
-
-`architecture.png`, `eks-access-config.png`, `eks-access-entry.png`,
-`eks-denied-ns-access.png`, `eks-nodegroup.png`, `mto-console-dasboard.png`,
-`mto-console-falcon-dashboard.png`, `noInterval.png`, `realm.png`,
-`routes.png`, `tenant-operator-basic-overview.png`,
-`tenant-operator-edit-overview.jpg`, `tenant-operator-owner-overview.jpg`,
-`tenant-operator-view-overview.jpg`, `tenantsAdmin.png`, `tenants_yaml.png`,
-`tenantUtilizationNamespaceWorkloads.png`, `to-architecture.png`,
-`uninstall-from-ui-csv.png`
-
-## Environment / seed-data contract
+## What the environment needs
 
 Templates, instances, the hibernation schedule and the node filter are created by
-the flows under `docs-*` names and deleted by `_teardown`. What the environment
-must provide:
+the flows under `docs-*` names and deleted by `_teardown`. What must already exist:
 
 - tenant `DOCS_TENANT` with namespace `DOCS_NAMESPACE`
 - a quota named `DOCS_QUOTA`
@@ -223,21 +170,3 @@ instance flows deploy one ConfigMap into `DOCS_NAMESPACE`. `_teardown` reverses 
 of it. **If a run dies before teardown**, the leftover `docs-*` objects make the
 next run fail on a duplicate name — run `./screenshots/capture.sh _teardown` first.
 
-## browser-runner additions these flows rely on
-
-Shipped on the browser-runner `screenshot-automation` branch (build the dev
-image, see [Running](#running)):
-
-- **`wait` primitive** (bounded, max 30s) — settles JS chart animations
-  (recharts) that no DOM state marks as finished.
-- **`scroll-to` primitive** — frames below-the-fold sections (Node Capacity,
-  Tenant Request Details) at the top of the viewport.
-- **`press` primitive** — `Escape` to dismiss open dropdown portals before a
-  shot.
-- **Screenshots disable CSS animations by default** — drawer slide-ins and
-  tab-highlight transitions are fast-forwarded, eliminating the
-  mid-animation captures ("wrong tab highlighted", "drawer half open") from
-  the first validation round.
-
-Still open: promote the repeated 6-step Dex login to a `mto-console-login`
-pack once selectors are proven against the live env.
