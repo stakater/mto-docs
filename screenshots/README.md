@@ -1,8 +1,7 @@
 # Docs screenshots — automated capture
 
-Live MTO Console screenshots for these docs, captured with
-[browser-runner](https://github.com/stakater-ab/browser-runner) (design:
-`browser-runner/docs/docs-screenshot-automation.md`).
+Live MTO Console screenshots for these docs, captured with browser-runner
+(design: `browser-runner/docs/docs-screenshot-automation.md`).
 
 The 57 console screenshots aren't referenced by path any more. Each
 `![…](../images/x.png)` in `content/console/*.md` is a `{{ screenshot: x }}` directive
