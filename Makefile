@@ -6,7 +6,7 @@ VENV := .venv
 PY   := $(VENV)/bin/python
 
 .DEFAULT_GOAL := help
-.PHONY: help venv test merge serve clean
+.PHONY: help venv test merge screenshots screenshots-check docs-images serve clean
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) \
@@ -26,6 +26,20 @@ test: venv ## Run the merge_docs unit tests
 # local preview. Set PRE_BUILD_TOKEN to clone private repos.
 merge: ## Clone sub-operator repos and merge their docs (the CI pre-build hook)
 	bash scripts/pre_build_merge.sh
+
+# The build resolves {{ screenshot: ... }} itself (see screenshots/mkdocs_hook.py).
+screenshots: ## Capture live console screenshots into screenshots/captured/
+	bash screenshots/capture.sh
+
+screenshots-check: ## Read-only: check every {{ screenshot: ... }} has a captured image
+	python3 screenshots/inject.py --check
+
+docs-images: merge ## CI pre-build hook: merge sub-operator docs, then capture screenshots
+	@test -n "$$PRE_BUILD_USER" -a -n "$$PRE_BUILD_PASSWORD" \
+	  || { echo "docs-images: PRE_BUILD_USER/PRE_BUILD_PASSWORD not set"; exit 1; }
+	@printf 'CONSOLE_USER=%s\nCONSOLE_PASSWORD=%s\n' "$$PRE_BUILD_USER" "$$PRE_BUILD_PASSWORD" > screenshots/.env
+	bash screenshots/capture.sh
+	python3 screenshots/inject.py --check
 
 serve: venv ## Full local preview: combine theme, merge sub-operator docs, mkdocs serve
 	git submodule update --init --recursive

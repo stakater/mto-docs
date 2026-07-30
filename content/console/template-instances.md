@@ -2,7 +2,7 @@
 
 [Template Instances](https://docs.stakater.com/template-operator/main/kubernetes-resources/template-instance.html) in the MTO Console allow users to deploy standardized resource configurations, such as Kubernetes manifests, Helm charts, Secrets, or ConfigMaps, into specific namespaces. By using Template Instances, organizations can ensure consistency, repeatability, and compliance across multiple environments. Each instance is based on a predefined template and can be managed, synchronized, or removed as needed, making it easy to propagate best practices and updates throughout your infrastructure.
 
-![template-instances](../images/templateInstances.png)
+{{ screenshot: templateInstances }}
 
 The Template Instances page lists all instances across the cluster, organized into two tabs: **Template Instances** (namespace-scoped) and **Cluster Template Instances** (cluster-scoped). Each row shows **Name**, **Namespace**, **Template**, **Status**, **Sync**, **Created**, and an **Actions** kebab menu.
 
@@ -11,7 +11,7 @@ The Template Instances page lists all instances across the cluster, organized in
 By clicking on the Template Instance name user can be directed to the details section of the selected Template Instance.
 It has breadcrumb to redirect user back to the Template Instances table.
 
-![templateInstanceDetails](../images/templateInstanceDetails.png)
+{{ screenshot: templateInstanceDetails }}
 
 ## Create Template Instance
 
@@ -21,7 +21,7 @@ Click the **Create Instance(s)** button at the top right of the Template Instanc
 
 ### Select Instance Type
 
-![templateInstanceCreateDrawer](../images/templateInstanceCreateDrawer.png)
+{{ screenshot: templateInstanceCreateDrawer }}
 
 The drawer first prompts you to choose the scope of the instance:
 
@@ -32,7 +32,7 @@ Select **Template Instance** to continue with the namespace-scoped flow describe
 
 ### Basic Information
 
-![templateInstanceCreateDrawerInfo](../images/templateInstanceCreateDrawerInfo.png)
+{{ screenshot: templateInstanceCreateDrawerInfo }}
 
 - **Instance Name:** Enter a unique name for the instance.
 - **Namespace:** Select the target namespace where the resources will be deployed (for example, `arsenal-dev`).
@@ -43,7 +43,7 @@ Click **Next** to continue to Parameters.
 
 ### Parameters
 
-![templateInstanceCreateDrawerParams](../images/templateInstanceCreateDrawerParams.png)
+{{ screenshot: templateInstanceCreateDrawerParams }}
 
 - **Parameter Name:** Select a parameter defined in the template.
 - **Value:** Provide the value for the selected parameter.
@@ -67,7 +67,7 @@ The new Template Instance appears on the Template Instances tab of the list page
 
 A YAML representation of the Template Instance can be previewed by selecting **View YAML** from the Actions kebab menu on an instance row.
 
-![TemplateInstance YAML](../images/templateInstanceYAMLView.png)
+{{ screenshot: templateInstanceYAMLView }}
 
 ## Update Template Instance
 

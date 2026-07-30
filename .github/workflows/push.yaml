@@ -8,10 +8,12 @@ on:
 
 jobs:
   push:
-    uses: stakater/.github/.github/workflows/push_versioned_doc.yaml@v0.0.189
+    uses: stakater/.github/.github/workflows/push_versioned_doc.yaml@v0.0.191
     with:
-      PRE_BUILD_HOOK: make merge
+      PRE_BUILD_HOOK: make docs-images
       LATEST_DOC_VERSION: "1.9"
     secrets:
       GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
       PRE_BUILD_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+      PRE_BUILD_USER: ${{ secrets.CONSOLE_USER }}
+      PRE_BUILD_PASSWORD: ${{ secrets.CONSOLE_PASSWORD }}

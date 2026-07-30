@@ -2,7 +2,7 @@
 
 The [Templates](https://docs.stakater.com/template-operator/main/kubernetes-resources/template.html) section acts as a repository for standardized resource deployment patterns, which can be utilized to maintain consistency and reliability across tenant environments. Few examples include provisioning specific k8s manifests, Helm charts, Secrets or ConfigMaps across a set of namespaces.
 
-![templates](../images/templates.png)
+{{ screenshot: templates }}
 
 The Templates list page shows each template in a row with **Name**, **Type**, **Version**, **Created**, and **Actions** columns. Templates currently in use are marked with an `In Use` badge next to the name. Clicking on a template's name opens its Template Instances page, which has separate **Template Instances** and **Cluster Template Instances** tabs. The **Actions** kebab menu on each row provides options to view instances, view YAML, edit, or delete the template.
 
@@ -12,7 +12,7 @@ The template creation process in the MTO Console is designed to be intuitive and
 
 ### Template Overview
 
-![templateCrudDrawerInfo](../images/templateCrudDrawerInfo.png)
+{{ screenshot: templateCrudDrawerInfo }}
 
 - **Template Name** The template name is a required field. Enter a unique and descriptive name for your template.
 - **Type** Optionally specify the type of template.
@@ -21,7 +21,7 @@ The template creation process in the MTO Console is designed to be intuitive and
 
 ### Parameters
 
-![templateCrudDrawerParameters](../images/templateCrudDrawerParameters.png)
+{{ screenshot: templateCrudDrawerParameters }}
 
 This section allows you to define parameters that can be used within your template for customization.
 
@@ -39,7 +39,7 @@ At least one resource must be specified for the template. You can add resources 
 
 Use this section to provide Helm chart details if your template is based on a Helm deployment.
 
-![templateHelmResource](../images/templateHelmResource.png)
+{{ screenshot: templateHelmResource }}
 
 - **Release Name:** Enter a name for the Helm release. This will be used as the release identifier when the chart is deployed.
 - **Chart Name:** Provide the name of the chart within the repository.
@@ -61,7 +61,7 @@ redisPort: 6379
 
 The Resource Mappings section allows you to define mappings for Kubernetes resources such as Secrets and ConfigMaps, enabling advanced or custom deployment scenarios. This is useful for referencing or distributing existing resources across different namespaces.
 
-![templateResourceMappings](../images/templateResourceMappings.png)
+{{ screenshot: templateResourceMappings }}
 
 - **Resource Type Dropdown:** Select the type of resource you want to map. The available options are
     - Secret
@@ -74,7 +74,7 @@ The Resource Mappings section allows you to define mappings for Kubernetes resou
 
 The Manifests section allows you to add raw Kubernetes manifests directly to your template. This is useful for provisioning standard Kubernetes resources such as Deployments, Services, ConfigMaps, Secrets, NetworkPolicies, and more, using YAML definitions.
 
-![templateManifestResource](../images/templateManifestResource.png)
+{{ screenshot: templateManifestResource }}
 
 - **YAML Editor:** Enter one or more Kubernetes resource definitions in YAML format. Each manifest should follow standard Kubernetes syntax and can include any supported resource kind.
 - **Multi-Resource Support:** You can define multiple resources in a single template by listing them under the `manifests:` key as a YAML array.
@@ -89,7 +89,7 @@ Once all required configurations are completed, click the **Create** button to s
 
 ## YAML View
 
-![Template YAML](../images/templateYAMLView.png)
+{{ screenshot: templateYAMLView }}
 
 A YAML representation of the template configuration can be previewed by selecting **View YAML** from the Actions kebab menu on a template row.
 

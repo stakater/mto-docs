@@ -4,18 +4,20 @@
 #   ./screenshots/capture.sh tenants    -> only flows/tenants.yaml
 #   ./screenshots/capture.sh _seed      -> setup only (create docs-seed-template)
 #   ./screenshots/capture.sh _teardown  -> cleanup only (delete all docs-* objects)
-# A failing flow does NOT stop the run, so _teardown always gets its chance to
-# clean up. Env comes from screenshots/.env (see .env.example).
+# A failing flow does NOT stop the run, so _teardown always gets its chance to clean
+# up. Config comes from screenshots/config.env, credentials from screenshots/.env
+# (see .env.example). .env wins on conflicts.
 # Output -> screenshots/captured/.
 set -u
 
 DIR="$(cd "$(dirname "$0")" && pwd)"
 IMAGE="${RUNNER_IMAGE:-ghcr.io/stakater/browser-runner:latest}"
 OUT="$DIR/captured"
-ENV_FILE="$DIR/.env"
+CONFIG_FILE="$DIR/config.env"
+ENV_FILE="$DIR/.env"           # credentials (and any overrides)
 
 if [ ! -f "$ENV_FILE" ]; then
-    echo "FAIL: $ENV_FILE not found - copy .env.example and fill it in" >&2
+    echo "FAIL: $ENV_FILE not found - copy .env.example and fill in the credentials" >&2
     exit 1
 fi
 
@@ -48,6 +50,7 @@ for flow in $flows; do
     name="$(basename "$flow" .yaml)"
     echo "RUN: $name"
     if docker run --rm \
+        --env-file "$CONFIG_FILE" \
         --env-file "$ENV_FILE" \
         -e E2E_ARTIFACTS_DIR=/out \
         -v "$OUT:/out" \
