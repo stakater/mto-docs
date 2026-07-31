@@ -90,8 +90,15 @@ steps:
   # REALLY create, then the CTI tab AFTER creation shows a Deployed row
   - { step: click, selector: '[role="dialog"] button:has-text("Create Instance")' }
   - { step: wait-for, selector: '[role="dialog"]', state: detached, timeout: 30s }
+  # The list is a plain useQuery (staleTime 5m, no refetchInterval), so the row
+  # never updates in place: its only fetch is the one the create triggers, which
+  # in CI lands before the operator has written status, leaving the cell empty
+  # forever. Give the operator a moment, then reload for a fresh fetch.
+  - { step: wait, ms: 20s }
+  - { step: open, url: "${CONSOLE_URL}/templates/instances" }
+  - { step: wait-for, selector: 'h1:has-text("All Template Instances")', timeout: 30s }
   - { step: click, selector: '[role="tab"]:has-text("Cluster Template Instances")' }
-  - { step: wait-for, selector: 'tr:has-text("docs-cti-instance") >> text=Deployed', timeout: 90s }
+  - { step: wait-for, selector: 'tr:has-text("docs-cti-instance") >> text=Deployed', timeout: 30s }
   - { step: screenshot, path: cti-tab.png, fullPage: false }
 
   # Details page
