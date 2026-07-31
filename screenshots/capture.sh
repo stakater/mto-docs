@@ -22,6 +22,9 @@ if [ ! -f "$ENV_FILE" ]; then
 fi
 
 mkdir -p "$OUT"
+# The runner writes screenshots as its own user (pwuser, uid 1000), which need
+# not match whoever owns the checkout -- on a GitHub runner it doesn't.
+chmod 0777 "$OUT"
 
 if [ $# -ge 1 ]; then
     flows="$DIR/flows/$1.yaml"
