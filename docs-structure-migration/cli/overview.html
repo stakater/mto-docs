@@ -5,13 +5,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/docs-structure-migration/reference/configuration.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/docs-structure-migration/cli/overview.html">
       
       
-        <link rel="prev" href="api/hibernation-operator/api.html">
+        <link rel="prev" href="../integrations/hibernation-operator/argocd.html">
       
       
-        <link rel="next" href="rbac.html">
+        <link rel="next" href="../reference/api.html">
       
       
         
@@ -22,7 +22,7 @@
     
     
       
-        <title>Configuration - Multi-Tenant Operator</title>
+        <title>kubectl plugin - Multi-Tenant Operator</title>
       
     
     
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuration" class="md-skip">
+        <a href="#kubectl-plugin" class="md-skip">
           Skip to content
         </a>
       
@@ -4686,18 +4686,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked="">
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -4718,7 +4720,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4733,10 +4735,37 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../cli/overview.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    kubectl plugin
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="overview.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -4752,6 +4781,172 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#build-from-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Build from Source
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#command-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Syntax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-tenants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List Tenants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List Resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-specific-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get Specific Resource
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output Formats
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Demo
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4768,20 +4963,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -4802,7 +4995,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4867,7 +5060,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="api.html" class="md-nav__link">
+      <a href="../reference/api.html" class="md-nav__link">
         
   
   
@@ -4895,7 +5088,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="api/template-operator/api.html" class="md-nav__link">
+      <a href="../reference/api/template-operator/api.html" class="md-nav__link">
         
   
   
@@ -4923,7 +5116,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="api/hibernation-operator/api.html" class="md-nav__link">
+      <a href="../reference/api/hibernation-operator/api.html" class="md-nav__link">
         
   
   
@@ -4956,37 +5149,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Configuration
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="configuration.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../reference/configuration.html" class="md-nav__link">
         
   
   
@@ -5002,122 +5168,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#deployment-layout" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deployment layout
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#environment-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Environment variables
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Environment variables">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#platform-and-identity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Platform and identity
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#admission-behavior" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Admission behavior
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#console-and-dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Console and dependencies
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#command-line-flags" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Command-line flags
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#helm-values" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Helm values
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#related-pages" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Related pages
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -5130,7 +5180,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="rbac.html" class="md-nav__link">
+      <a href="../reference/rbac.html" class="md-nav__link">
         
   
   
@@ -5158,7 +5208,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="security-model.html" class="md-nav__link">
+      <a href="../reference/security-model.html" class="md-nav__link">
         
   
   
@@ -5186,7 +5236,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="metrics.html" class="md-nav__link">
+      <a href="../reference/metrics.html" class="md-nav__link">
         
   
   
@@ -5214,7 +5264,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="webhooks.html" class="md-nav__link">
+      <a href="../reference/webhooks.html" class="md-nav__link">
         
   
   
@@ -5379,10 +5429,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#deployment-layout" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deployment layout
+        Overview
       
     </span>
   </a>
@@ -5390,44 +5440,22 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#environment-variables" class="md-nav__link">
+  <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Environment variables
+        Installation
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Environment variables">
+    <nav class="md-nav" aria-label="Installation">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#platform-and-identity" class="md-nav__link">
+  <a href="#build-from-source" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Platform and identity
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#admission-behavior" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Admission behavior
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#console-and-dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Console and dependencies
+        Build from Source
       
     </span>
   </a>
@@ -5440,10 +5468,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#command-line-flags" class="md-nav__link">
+  <a href="#supported-resources" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Command-line flags
+        Supported Resources
       
     </span>
   </a>
@@ -5451,10 +5479,82 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#helm-values" class="md-nav__link">
+  <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Helm values
+        Usage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#command-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command Syntax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-tenants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List Tenants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List Resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-specific-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get Specific Resource
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#output-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Output Formats
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
       
     </span>
   </a>
@@ -5462,10 +5562,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#related-pages" class="md-nav__link">
+  <a href="#demo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Related pages
+        Demo
       
     </span>
   </a>
@@ -5492,227 +5592,144 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">#</a></h1>
-<p>Multi Tenant Operator is configured in two places. Cluster-wide tenancy behavior, such as default tenant roles and integrations, lives in the <a href="../concepts/integration-config.html">IntegrationConfig</a> custom resource. How the operator itself runs, which controllers start, on which platform, and how its endpoints are exposed, is configured through the environment variables and flags on this page.</p>
-<h2 id="deployment-layout">Deployment layout<a class="headerlink" href="#deployment-layout" title="Permanent link">#</a></h2>
-<p>MTO does not run as a single process. Each controller ships as its own Deployment running the same operator image, with an environment variable selecting which controller that pod starts. A controller can therefore be scaled or restarted without disturbing the others.</p>
-<table>
-<thead>
-<tr>
-<th>Deployment</th>
-<th>Enabled by</th>
-<th>Responsibility</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>tenant-controller</code></td>
-<td><code>TENANT_CONTROLLER</code></td>
-<td>Reconciles <code>Tenant</code> resources and registers the dynamic admission webhooks</td>
-</tr>
-<tr>
-<td><code>namespace-controller</code></td>
-<td><code>NAMESPACE_CONTROLLER</code></td>
-<td>Reconciles namespaces into their owning tenants</td>
-</tr>
-<tr>
-<td><code>quota-intconfig-controller</code></td>
-<td><code>QUOTA_INTEGRATIONCONFIG_CONTROLLER</code></td>
-<td>Reconciles <code>Quota</code> and <code>IntegrationConfig</code></td>
-</tr>
-<tr>
-<td><code>pilot-controller</code></td>
-<td><code>PILOT_CONTROLLER</code></td>
-<td>Provisions the Console, Gateway, and their dependencies</td>
-</tr>
-<tr>
-<td><code>db-controller</code></td>
-<td><code>DATABASE_CONTROLLER</code></td>
-<td>Manages the database backing the Console</td>
-</tr>
-<tr>
-<td><code>extensions-argocd-controller</code></td>
-<td><code>EXTENSIONS_ARGOCD_CONTROLLER</code></td>
-<td>Reconciles the ArgoCD <code>Extension</code> integration</td>
-</tr>
-<tr>
-<td><code>webhook</code></td>
-<td><code>ENABLE_WEBHOOKS</code>, <code>ENABLE_ADMISSION_WEBHOOKS</code></td>
-<td>Serves the validating admission webhooks</td>
-</tr>
-</tbody>
-</table>
-<p>Set a variable to <code>"true"</code> to start that controller. <code>ENABLE_ALL_CONTROLLERS</code> starts everything in one process and <code>ENABLE_ALL_CORE_CONTROLLERS</code> starts the core set, both of which suit local development rather than production.</p>
-<h2 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">#</a></h2>
-<h3 id="platform-and-identity">Platform and identity<a class="headerlink" href="#platform-and-identity" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Values</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>PLATFORM_TYPE</code></td>
-<td><code>OpenShift</code>, <code>Kubernetes</code></td>
-<td>Required. The operator refuses to start on any other value, since this decides whether OpenShift-only resources such as <code>Route</code> and <code>ClusterResourceQuota</code> are reconciled.</td>
-</tr>
-<tr>
-<td><code>OPERATOR_NAMESPACE</code></td>
-<td>namespace name</td>
-<td>Namespace the operator runs in.</td>
-</tr>
-<tr>
-<td><code>OPERATOR_NAME_PREFIX</code></td>
-<td>string</td>
-<td>Prefix applied to resources the operator generates.</td>
-</tr>
-<tr>
-<td><code>SERVICE_ACCOUNT_NAME</code></td>
-<td>string</td>
-<td>ServiceAccount the webhook runs as.</td>
-</tr>
-<tr>
-<td><code>LEADER_ELECTION_ID</code></td>
-<td>string</td>
-<td>Lease name used when <code>--leader-elect</code> is set. Each controller Deployment uses a distinct value so they do not contend for one lease.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="admission-behavior">Admission behavior<a class="headerlink" href="#admission-behavior" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>Variable</th>
-<th>Values</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ENABLE_WEBHOOKS</code></td>
-<td><code>"true"</code></td>
-<td>Starts the webhook server.</td>
-</tr>
-<tr>
-<td><code>ENABLE_ADMISSION_WEBHOOKS</code></td>
-<td><code>"true"</code></td>
-<td>Registers the admission webhook handlers.</td>
-</tr>
-<tr>
-<td><code>BYPASSED_GROUPS</code></td>
-<td>comma-separated group names</td>
-<td>Groups whose members skip tenant admission checks entirely.</td>
-</tr>
-<tr>
-<td><code>DEBUG_WEBHOOKS</code></td>
-<td><code>"true"</code></td>
-<td>Verbose webhook logging. Development only.</td>
-</tr>
-<tr>
-<td><code>EXPERIMENTAL_NAMESPACE_WEBHOOK_V2</code></td>
-<td><code>"true"</code></td>
-<td>Opts into the rewritten namespace webhook. Off by default.</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><code>BYPASSED_GROUPS</code> is an authorization bypass, not a logging or convenience setting. Any user in a listed group can create and modify tenant-owned resources with none of the tenant checks applying. Keep it to genuine cluster administrator groups, and see <a href="security-model.html">Security Model</a>.</p>
-</div>
-<h3 id="console-and-dependencies">Console and dependencies<a class="headerlink" href="#console-and-dependencies" title="Permanent link">#</a></h3>
-<p>The <code>pilot-controller</code> reads the images it should deploy from its own environment, which is how a disconnected or mirrored registry is configured:</p>
-<p><code>MTO_CONSOLE_IMAGE</code>, <code>MTO_GATEWAY_IMAGE</code>, <code>MTO_POSTGRESQL_IMAGE</code>, <code>MTO_SHOWBACK_IMAGE</code>, <code>OPENCOST_IMAGE</code>, <code>PROMETHEUS_IMAGE</code>, and <code>KUBE_STATE_METRICS_IMAGE</code>.</p>
-<p><code>ENABLE_CONSOLE</code> turns the Console on, and <code>TENANT_API</code> enables the Tenants API that backs the <a href="../cli/overview.html">kubectl plugin</a>. <code>DB_OPERATION_TIMEOUT</code> bounds database calls, and <code>LOCAL_ENV</code> switches to local development defaults.</p>
-<h2 id="command-line-flags">Command-line flags<a class="headerlink" href="#command-line-flags" title="Permanent link">#</a></h2>
-<table>
-<thead>
-<tr>
-<th>Flag</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>--metrics-bind-address</code></td>
-<td><code>0</code></td>
-<td>Metrics listen address. <code>0</code> disables the endpoint. See <a href="metrics.html">Metrics</a>.</td>
-</tr>
-<tr>
-<td><code>--metrics-secure</code></td>
-<td><code>true</code></td>
-<td>Serve metrics over https with authentication.</td>
-</tr>
-<tr>
-<td><code>--metrics-cert-path</code></td>
-<td>none</td>
-<td>Directory holding the metrics serving certificate.</td>
-</tr>
-<tr>
-<td><code>--metrics-cert-name</code></td>
-<td><code>tls.crt</code></td>
-<td>Certificate filename within that directory.</td>
-</tr>
-<tr>
-<td><code>--metrics-cert-key</code></td>
-<td><code>tls.key</code></td>
-<td>Key filename within that directory.</td>
-</tr>
-<tr>
-<td><code>--health-probe-bind-address</code></td>
-<td><code>:8081</code></td>
-<td>Probe address, serving <code>/healthz</code> and <code>/readyz</code>.</td>
-</tr>
-<tr>
-<td><code>--leader-elect</code></td>
-<td><code>false</code></td>
-<td>Enable leader election. Set on the shipped Deployments.</td>
-</tr>
-<tr>
-<td><code>--tenant-api-port</code></td>
-<td><code>8080</code></td>
-<td>Port the Tenants API binds to.</td>
-</tr>
-<tr>
-<td><code>--webhook-cert-path</code></td>
-<td>none</td>
-<td>Directory holding the webhook serving certificate.</td>
-</tr>
-<tr>
-<td><code>--webhook-cert-name</code></td>
-<td><code>tls.crt</code></td>
-<td>Certificate filename within that directory.</td>
-</tr>
-<tr>
-<td><code>--webhook-cert-key</code></td>
-<td><code>tls.key</code></td>
-<td>Key filename within that directory.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="helm-values">Helm values<a class="headerlink" href="#helm-values" title="Permanent link">#</a></h2>
-<p>The chart exposes each controller as its own block, so replicas, resources, pod security context, and image can be set per controller: <code>tenantController</code>, <code>namespaceController</code>, <code>quotaIntconfigController</code>, <code>pilotController</code>, <code>dbController</code>, <code>extensionsArgocdController</code>, and <code>webhook</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">tenantController</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="nt">manager</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">resources</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">limits</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">500m</span>
-<span class="w">        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">512Mi</span>
-
-<span class="nt">webhook</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<h1 id="kubectl-plugin">kubectl plugin<a class="headerlink" href="#kubectl-plugin" title="Permanent link">#</a></h1>
+<p>A kubectl plugin that provides tenant-scoped access to cluster resources managed by Multi-Tenant Operator.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
+<p>Kubernetes RBAC has a fundamental limitation: when granting <code>list</code> permissions on cluster-scoped resources, users can see <em>all</em> resources of that type, not just those belonging to their tenant. The kubectl-tenant plugin solves this by reading the Tenant CR status and filtering results to show only resources the tenant is permitted to access.</p>
+<p><strong>Source Code:</strong> <a href="https://github.com/stakater/kubectl-tenant">https://github.com/stakater/kubectl-tenant</a></p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
+<p>Download the binary for your platform from <a href="https://github.com/stakater/kubectl-tenant/releases">GitHub Releases</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Download for your OS/Arch</span>
+curl<span class="w"> </span>-L<span class="w"> </span>https://github.com/stakater/kubectl-tenant/releases/download/v0.0.1/kubectl-tenant-linux-amd64<span class="w"> </span>-o<span class="w"> </span>kubectl-tenant
+chmod<span class="w"> </span>+x<span class="w"> </span>kubectl-tenant
+mv<span class="w"> </span>kubectl-tenant<span class="w"> </span>~/.local/bin/<span class="w">   </span><span class="c1"># ensure this path is in your $PATH</span>
 </code></pre></div>
-<p>Service types and ports are configured through <code>tenantMetricsService</code>, <code>webhookService</code>, <code>quotaIntconfigWebhookService</code>, <code>pilotMetricsService</code>, and <code>api</code>. <code>imagePullSecrets</code> and <code>kubernetesClusterDomain</code> apply chart-wide.</p>
-<h2 id="related-pages">Related pages<a class="headerlink" href="#related-pages" title="Permanent link">#</a></h2>
+<p>Verify it works:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>tenant<span class="w"> </span>--help
+</code></pre></div>
+<h3 id="build-from-source">Build from Source<a class="headerlink" href="#build-from-source" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/stakater/kubectl-tenant.git
+<span class="nb">cd</span><span class="w"> </span>kubectl-tenant
+go<span class="w"> </span>build<span class="w"> </span>-o<span class="w"> </span>kubectl-tenant
+mv<span class="w"> </span>kubectl-tenant<span class="w"> </span>/usr/local/bin/
+</code></pre></div>
+<h2 id="supported-resources">Supported Resources<a class="headerlink" href="#supported-resources" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Command Keyword</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Storage Classes</td>
+<td><code>storageclasses</code></td>
+</tr>
+<tr>
+<td>Namespaces</td>
+<td><code>namespaces</code></td>
+</tr>
+<tr>
+<td>Ingress Classes</td>
+<td><code>ingressclasses</code></td>
+</tr>
+<tr>
+<td>Priority Classes</td>
+<td><code>priorityclasses</code></td>
+</tr>
+<tr>
+<td>Quotas</td>
+<td><code>quotas</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">#</a></h2>
+<h3 id="command-syntax">Command Syntax<a class="headerlink" href="#command-syntax" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># List tenants for the current user</span>
+kubectl<span class="w"> </span>tenant<span class="w"> </span>list
+
+<span class="c1"># List all tenant-scoped resources</span>
+kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>&lt;resource-type&gt;<span class="w"> </span>&lt;tenant-name&gt;<span class="w"> </span><span class="o">[</span>flags<span class="o">]</span>
+
+<span class="c1"># Get a specific tenant-scoped resource</span>
+kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>&lt;resource-type&gt;<span class="w"> </span>&lt;tenant-name&gt;<span class="w"> </span>&lt;resource-name&gt;<span class="w"> </span><span class="o">[</span>flags<span class="o">]</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>resource-type</code></td>
+<td>The type of resource to list (<code>storageclasses</code>, <code>namespaces</code>, <code>ingressclasses</code>, <code>priorityclasses</code>, <code>quotas</code>)</td>
+</tr>
+<tr>
+<td><code>tenant-name</code></td>
+<td>The name of the Tenant CR to scope the query</td>
+</tr>
+<tr>
+<td><code>resource-name</code></td>
+<td>(Optional) Specific resource name to retrieve</td>
+</tr>
+</tbody>
+</table>
+<h3 id="list-tenants">List Tenants<a class="headerlink" href="#list-tenants" title="Permanent link">#</a></h3>
+<p>List all tenants the current user belongs to (as owner, editor, or viewer):</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>tenant<span class="w"> </span>list
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>NAME<span class="w">        </span>ROLE
+logistics<span class="w">   </span>owner
+warehouse<span class="w">   </span>viewer
+</code></pre></div>
+<h3 id="list-resources">List Resources<a class="headerlink" href="#list-resources" title="Permanent link">#</a></h3>
+<p>List all storage classes for a tenant:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>storageclasses<span class="w"> </span>my-tenant
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>NAME<span class="w">                  </span>PROVISIONER<span class="w">             </span>AGE
+my-tenant-fast<span class="w">        </span>kubernetes.io/aws-ebs<span class="w">   </span>30d
+my-tenant-standard<span class="w">    </span>kubernetes.io/gp2<span class="w">       </span>30d
+</code></pre></div>
+<p>List all namespaces for a tenant:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>namespaces<span class="w"> </span>my-tenant
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>NAME<span class="w">                  </span>AGE
+my-tenant-prod<span class="w">        </span>45d
+my-tenant-staging<span class="w">     </span>45d
+my-tenant-dev<span class="w">         </span>30d
+</code></pre></div>
+<h3 id="get-specific-resource">Get Specific Resource<a class="headerlink" href="#get-specific-resource" title="Permanent link">#</a></h3>
+<p>Get a specific storage class:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>storageclasses<span class="w"> </span>my-tenant<span class="w"> </span>my-tenant-fast
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>NAME<span class="w">                  </span>PROVISIONER<span class="w">             </span>AGE
+my-tenant-fast<span class="w">        </span>kubernetes.io/aws-ebs<span class="w">   </span>30d
+</code></pre></div>
+<h3 id="output-formats">Output Formats<a class="headerlink" href="#output-formats" title="Permanent link">#</a></h3>
+<p>All standard kubectl output formats and flags are supported:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML output</span>
+kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>storageclasses<span class="w"> </span>my-tenant<span class="w"> </span>-o<span class="w"> </span>yaml
+
+<span class="c1"># JSON output</span>
+kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>namespaces<span class="w"> </span>my-tenant<span class="w"> </span>-o<span class="w"> </span>json
+
+<span class="c1"># JSONPath for specific fields</span>
+kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>namespaces<span class="w"> </span>my-tenant<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.items[*].metadata.name}'</span>
+
+<span class="c1"># Custom columns</span>
+kubectl<span class="w"> </span>tenant<span class="w"> </span>get<span class="w"> </span>namespaces<span class="w"> </span>my-tenant<span class="w"> </span>-o<span class="w"> </span>custom-columns<span class="o">=</span>NAME:.metadata.name,STATUS:.status.phase
+</code></pre></div>
+<h2 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="../concepts/integration-config.html">IntegrationConfig</a> for cluster-wide tenancy settings</li>
-<li><a href="rbac.html">RBAC</a> for the permissions each component holds</li>
-<li><a href="webhooks.html">Webhooks</a> for what admission enforces</li>
+<li>Reads the specified Tenant CR from <code>tenantoperator.stakater.com/v1beta3</code></li>
+<li>Extracts permitted resources from the tenant's status fields</li>
+<li>Fetches and returns only those resources the tenant can access</li>
 </ul>
+<h2 id="demo">Demo<a class="headerlink" href="#demo" title="Permanent link">#</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/kubectlTenantRbacDemo.gif" data-desc-position="bottom"><img alt="kubectl tenant RBAC demo" src="../images/kubectlTenantRbacDemo.gif"></a></p>
 
 
 
