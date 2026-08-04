@@ -5458,7 +5458,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <tr>
 <td><code>owner</code></td>
 <td><code>admin</code></td>
-<td>Full control of namespaced resources, including RBAC within the namespace</td>
+<td>Full control of resources in the namespace, including RBAC</td>
 </tr>
 <tr>
 <td><code>editor</code></td>
@@ -5665,7 +5665,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <tr>
 <td><code>gateway</code></td>
 <td><code>gateway</code></td>
-<td>Backend API for the Console. Read and write on tenants, quotas, and template resources; read on integrationconfigs</td>
+<td>Backend API for the Console. Read and write on tenants, quotas, and template resources; read on <code>integrationconfigs</code></td>
 </tr>
 <tr>
 <td><code>console</code></td>
@@ -5696,7 +5696,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </table>
 <h2 id="supporting-roles">Supporting roles<a class="headerlink" href="#supporting-roles" title="Permanent link">#</a></h2>
 <ul>
-<li><strong>Leader election</strong> grants <code>coordination.k8s.io</code> leases, configmaps, and events in the operator namespace, used when <code>--leader-elect</code> is set.</li>
+<li><strong>Leader election</strong> grants <code>coordination.k8s.io</code> leases, ConfigMaps, and events in the operator namespace, used when <code>--leader-elect</code> is set.</li>
 <li><strong><code>metrics-auth-role</code></strong> grants <code>tokenreviews</code> and <code>subjectaccessreviews</code>, which is how the metrics endpoint authenticates and authorizes scrapers.</li>
 <li><strong><code>metrics-reader</code></strong> grants <code>get</code> on the non-resource <code>/metrics</code> URL and is the role you bind to Prometheus. See <a href="metrics.html">Metrics</a>.</li>
 </ul>

@@ -5495,7 +5495,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tr>
 </tbody>
 </table>
-<p>The split in failure policy is deliberate. MTO's own resources fail closed, so a webhook outage stops tenants being misconfigured. The webhooks on core Kubernetes resources fail open, so an outage degrades tenant isolation rather than blocking all namespace and RBAC activity cluster-wide.</p>
+<p>The split in failure policy is deliberate. MTO's own resources fail closed, so a webhook outage cannot let a tenant misconfiguration through. The webhooks on core Kubernetes resources fail open, so an outage degrades tenant isolation rather than blocking all namespace and RBAC activity cluster-wide.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Because <code>vnamespace.kb.io</code> and <code>vrolebinding.kb.io</code> use <code>failurePolicy: Ignore</code>, a webhook Deployment that is down means namespace and RoleBinding operations proceed unchecked. Monitor the webhook pods as a security control, not just an availability one.</p>
