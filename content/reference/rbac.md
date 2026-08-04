@@ -14,7 +14,7 @@ MTO does not invent permissions for tenant members. It binds existing ClusterRol
 
 | Tenant role | Default ClusterRole bound | Effect in the tenant's namespaces |
 | --- | --- | --- |
-| `owner` | `admin` | Full control of namespaced resources, including RBAC within the namespace |
+| `owner` | `admin` | Full control of resources in the namespace, including RBAC |
 | `editor` | `edit` | Read and write workloads and config, no RBAC changes |
 | `viewer` | `view` | Read-only |
 
@@ -100,7 +100,7 @@ The Console and its supporting workloads run under their own ServiceAccounts rat
 
 | ServiceAccount | ClusterRole | Purpose |
 | --- | --- | --- |
-| `gateway` | `gateway` | Backend API for the Console. Read and write on tenants, quotas, and template resources; read on integrationconfigs |
+| `gateway` | `gateway` | Backend API for the Console. Read and write on tenants, quotas, and template resources; read on `integrationconfigs` |
 | `console` | via gateway | Console frontend |
 | `showback` | `showback` | Read-only on tenants, namespaces, pods, and workload kinds for cost attribution |
 | `opencost-gateway` | `opencost-gateway` | Read-only across workload, node, and quota resources for cost data |
@@ -109,7 +109,7 @@ The Console and its supporting workloads run under their own ServiceAccounts rat
 
 ## Supporting roles
 
-- **Leader election** grants `coordination.k8s.io` leases, configmaps, and events in the operator namespace, used when `--leader-elect` is set.
+- **Leader election** grants `coordination.k8s.io` leases, ConfigMaps, and events in the operator namespace, used when `--leader-elect` is set.
 - **`metrics-auth-role`** grants `tokenreviews` and `subjectaccessreviews`, which is how the metrics endpoint authenticates and authorizes scrapers.
 - **`metrics-reader`** grants `get` on the non-resource `/metrics` URL and is the role you bind to Prometheus. See [Metrics](metrics.md).
 

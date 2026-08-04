@@ -16,7 +16,7 @@ These live in the `tenant.operator.validation.kb.io` ValidatingWebhookConfigurat
 | `vnamespace.kb.io` | `namespaces` | CREATE, UPDATE, DELETE | Ignore |
 | `vrolebinding.kb.io` | `rolebindings` | CREATE, UPDATE, DELETE | Ignore |
 
-The split in failure policy is deliberate. MTO's own resources fail closed, so a webhook outage stops tenants being misconfigured. The webhooks on core Kubernetes resources fail open, so an outage degrades tenant isolation rather than blocking all namespace and RBAC activity cluster-wide.
+The split in failure policy is deliberate. MTO's own resources fail closed, so a webhook outage cannot let a tenant misconfiguration through. The webhooks on core Kubernetes resources fail open, so an outage degrades tenant isolation rather than blocking all namespace and RBAC activity cluster-wide.
 
 !!! warning
     Because `vnamespace.kb.io` and `vrolebinding.kb.io` use `failurePolicy: Ignore`, a webhook Deployment that is down means namespace and RoleBinding operations proceed unchecked. Monitor the webhook pods as a security control, not just an availability one.
