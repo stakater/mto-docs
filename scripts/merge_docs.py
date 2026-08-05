@@ -213,6 +213,57 @@ def insert_leaves(nav, under, leaves):
     section.extend(leaves)
 
 
+def _leaf_path(item):
+    """The dest a direct-child nav leaf points at (bare string or single-key
+    dict), else None for a folder or multi-key node."""
+    if isinstance(item, str):
+        return item
+    if isinstance(item, dict) and len(item) == 1:
+        (val,) = item.values()
+        if isinstance(val, str):
+            return val
+    return None
+
+
+def find_base_leaf(section, base, exclude):
+    """A direct-child leaf in `section` whose file basename is `base` and whose
+    path isn't in `exclude` -- i.e. mto-docs' own page, not a merged one."""
+    for item in section or []:
+        path = _leaf_path(item)
+        if path and path not in exclude and path.rsplit("/", 1)[-1] == base:
+            return path
+    return None
+
+
+def apply_group(nav, group):
+    """Regroup duplicate pages under a shared folder with per-source labels.
+
+    A group declares a `title` folder under an existing `under` section and the
+    `items` (each a content-relative `page` + optional `title` label) to gather
+    into it. Standalone leaves for those pages are removed from the section and
+    replaced, in the slot of the first one, by the folder. Combines a merged
+    page with MTO's own since both are just final dest paths.
+    """
+    under, title, items = group["under"], group["title"], group["items"]
+    section = find_section(nav, under)
+    if section is None:
+        raise KeyError(f"menu section {under!r} not found in nav")
+    pages = {it["page"] for it in items}
+    folder = {title: [{it["title"]: it["page"]} if it.get("title") else it["page"]
+                      for it in items]}
+    new_section, placed = [], False
+    for item in section:
+        if _leaf_path(item) in pages:
+            if not placed:
+                new_section.append(folder)
+                placed = True
+            continue   # drop the standalone leaf (folded into the group)
+        new_section.append(item)
+    if not placed:
+        new_section.append(folder)
+    section[:] = new_section
+
+
 def _nav_bounds(text):
     lines = text.splitlines(keepends=True)
     start = None
@@ -277,6 +328,52 @@ def load_config(path):
             "mappings": raw["mappings"],
         })
     return operators
+
+
+def read_h1(path):
+    """First level-1 heading text in a markdown file, else None."""
+    try:
+        text = Path(path).read_text(encoding="utf-8")
+    except OSError:
+        return None
+    for line in text.splitlines():
+        mo = re.match(r"#\s+(.+?)\s*#*\s*$", line.strip())
+        if mo:
+            return mo.group(1).strip()
+    return None
+
+
+def build_duplicate_groups(nav, flat_pages, content_dir, site_title):
+    """Describe folders that gather pages colliding by basename across sources.
+
+    `flat_pages` is (under, dest, source_title) for each flattened, untitled
+    page. Any basename appearing under the same section in >=2 sources (the
+    operators here plus mto-docs' own matching nav leaf) yields a group: a folder
+    titled by the page's H1 with one labelled leaf per source. Fully derived --
+    no per-duplicate configuration.
+    """
+    by_key, order = {}, []
+    for under, dest, source in flat_pages:
+        key = (under, dest.rsplit("/", 1)[-1])
+        if key not in by_key:
+            by_key[key] = []
+            order.append(key)
+        by_key[key].append((source, dest))
+
+    groups = []
+    for under, base in order:
+        members = by_key[(under, base)]
+        section = find_section(nav, under)
+        merged = {d for _, d in members}
+        own = find_base_leaf(section, base, merged) if section is not None else None
+        entries = ([(site_title, own)] if own else []) + members
+        if len(entries) < 2:
+            continue   # not actually a duplicate; leave it as a flat leaf
+        stem = base[:-3] if base.endswith(".md") else base
+        title = read_h1(Path(content_dir) / entries[0][1]) or prettify(stem)
+        groups.append({"under": under, "title": title,
+                       "items": [{"title": t, "page": p} for t, p in entries]})
+    return groups
 
 
 _INLINE_LINK_RE = re.compile(r"(!?\[[^\]]*\]\()([^)]+)(\))")
@@ -360,12 +457,13 @@ def rewrite_links(text, src_rel, dest_rel, mapping, live_url=None,
     return text, external
 
 
-def run(operators, content_dir, mkdocs_path, repo_overrides=None):
+def run(operators, content_dir, mkdocs_path, repo_overrides=None, site_title=None):
     content_dir = Path(content_dir)
     overrides = repo_overrides or {}
     text = Path(mkdocs_path).read_text()
     nav = read_nav(text)
     seen = {}
+    flat_pages = []   # (under, dest, source_title) for flattened untitled pages
 
     for op in operators:
         repo = Path(overrides.get(op["slug"], op["repo"]))
@@ -414,6 +512,8 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None):
                     flat_leaves.append((mapping["under"], {title: mapping_dests}))
                 else:
                     flat_leaves.extend((mapping["under"], d) for d in mapping_dests)
+                    # untitled flat pages are candidates for duplicate auto-grouping
+                    flat_pages.extend((mapping["under"], d, op["title"]) for d in mapping_dests)
 
         # rewrite links now that all destinations are known: whitelisted targets
         # become local, everything else falls back to the operator's live docs
@@ -438,6 +538,14 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None):
         for under, leaf in flat_leaves:
             insert_leaves(nav, under, [leaf])
 
+    # post-merge: auto-fold pages that collide by basename across sources into a
+    # per-page folder with per-source labels (e.g. ArgoCD -> {MTO, Hibernation})
+    if site_title is None:
+        mo = re.search(r"(?m)^site_name:\s*(.+?)\s*$", text)
+        site_title = mo.group(1).strip().strip("\"'") if mo else "Multi-Tenant Operator"
+    for group in build_duplicate_groups(nav, flat_pages, content_dir, site_title):
+        apply_group(nav, group)
+
     Path(mkdocs_path).write_text(write_nav(text, nav))
 
 
@@ -459,8 +567,9 @@ def main(argv=None):
     ap.add_argument("--set-repo", action="append", default=[], metavar="slug=path")
     args = ap.parse_args(argv)
     operators = load_config(args.config)
+    site_title = (yaml.safe_load(Path(args.config).read_text()) or {}).get("site_title")
     overrides = parse_repo_overrides(args.set_repo)
-    run(operators, args.content_dir, args.mkdocs, overrides)
+    run(operators, args.content_dir, args.mkdocs, overrides, site_title=site_title)
     return 0
 
 

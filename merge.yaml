@@ -5,6 +5,12 @@
 #
 # mto-docs now follows the shared structure (structure.md), so `into`/`under`
 # map 1:1 to the shared sections (guides->Guides, reference->Reference, ...).
+#
+# Duplicate pages (same filename from mto-docs + a sub-operator, or across
+# sub-operators) under one flattened section are auto-folded into a per-page
+# folder (titled by the page H1) with one labelled leaf per source. mto-docs'
+# own leaf is labelled with `site_title` (defaults to the mkdocs site_name).
+# site_title: "Multi-Tenant Operator"
 operators:
   - title: Template Operator
     repo: https://github.com/stakater/template-operator-docs.git
@@ -55,7 +61,7 @@ operators:
       - from: "integrations/**"        # merged flat into the Integrations section
         into: "integrations"
         under: "Integrations"
-        flatten: false
+        flatten: true
       - from: "images/**"
         into: "images"
     exclude:
