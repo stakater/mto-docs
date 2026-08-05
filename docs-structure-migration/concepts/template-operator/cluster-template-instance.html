@@ -4447,9 +4447,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   
-    <li class="md-nav__item">
-      <a href="../../integrations/argocd.html" class="md-nav__link">
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1">
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -4463,7 +4474,79 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ArgoCD
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/argocd.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Tenant Operator
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/hibernation-operator/argocd.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hibernation Operator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -4715,89 +4798,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7">
-        
-          
-          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hibernation Operator
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Hibernation Operator
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../integrations/hibernation-operator/argocd.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ArgoCD Integration
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -5514,7 +5514,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>New matching namespaces are always deployed to, with sync off or on. What sync adds is propagation of template edits to namespaces already covered. With <code>sync</code> false, each namespace receives the template as it looked when that namespace first matched, so a long-lived instance can end up with different content in different namespaces.</p>
 <p>Cleanup of namespaces that stopped matching runs regardless of the <code>sync</code> setting.</p>
 <h2 id="ownership-and-deletion">Ownership and deletion<a class="headerlink" href="#ownership-and-deletion" title="Permanent link">#</a></h2>
-<p>Because a <code>ClusterTemplateInstance</code> is itself cluster-scoped, it can own everything it renders, both namespaced and cluster-scoped resources. Deleting the instance removes all of them through garbage collection. This is the one respect in which it is simpler than <code>TemplateInstance</code>, where cluster-scoped resources have to fall back to the <code>Template</code> as owner.</p>
+<p>Because a <code>ClusterTemplateInstance</code> is itself cluster-scoped, it can own everything it renders, both namespace-scoped and cluster-scoped resources. Deleting the instance removes all of them through garbage collection. This is the one respect in which it is simpler than <code>TemplateInstance</code>, where cluster-scoped resources have to fall back to the <code>Template</code> as owner.</p>
 <p>Deleting the referenced <code>Template</code> is rejected by the admission webhook while the instance still exists.</p>
 <h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">#</a></h2>
 <p><code>status.deployedNamespaces</code> maps each namespace to its deployment state, and <code>status.namespaceCount</code> gives the number of namespaces currently matched. Mapped resources are tracked per namespace in <code>status.mappedSecrets</code> and <code>status.mappedConfigmaps</code>, so a mapping that fails in one namespace is visible without hiding successful copies elsewhere.</p>

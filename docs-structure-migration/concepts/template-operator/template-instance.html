@@ -4425,9 +4425,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   
-    <li class="md-nav__item">
-      <a href="../../integrations/argocd.html" class="md-nav__link">
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1">
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -4441,7 +4452,79 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ArgoCD
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/argocd.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Tenant Operator
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/hibernation-operator/argocd.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hibernation Operator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -4693,89 +4776,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7">
-        
-          
-          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hibernation Operator
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Hibernation Operator
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../integrations/hibernation-operator/argocd.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ArgoCD Integration
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -5428,7 +5428,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CIDR_IP</span>
 <span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"172.17.0.0/16"</span>
 </code></pre></div>
-<p><code>spec.template</code> names a cluster-scoped <code>Template</code>. There is no namespace component, since templates are not namespaced. The API treats this field as immutable: to point a workload at a different template, delete the instance and create a new one rather than editing it in place.</p>
+<p><code>spec.template</code> names a cluster-scoped <code>Template</code>. There is no namespace component, since templates are cluster-scoped. The API treats this field as immutable: to point a workload at a different template, delete the instance and create a new one rather than editing it in place.</p>
 <p>Parameters listed under <code>spec.parameters</code> override the defaults declared on the template. The template must declare every parameter the instance sets, otherwise the deployment fails. See <a href="template.html#parameters">Parameters</a> for resolution order and the predefined values available.</p>
 <p>For the complete field listing, see the <a href="../../reference/api/template-operator/api.html">API Reference</a>.</p>
 <h2 id="sync">Sync<a class="headerlink" href="#sync" title="Permanent link">#</a></h2>
@@ -5438,8 +5438,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Switching <code>sync</code> on later takes effect immediately. The edit triggers a reconcile, the instance is rendered again, and anything that drifted while sync was off is overwritten at that point rather than at the next template change.</p>
 <p>This applies to resource mappings too. The controller does watch the source Secrets and ConfigMaps and will wake up when they change, but the sync check runs before the mapping work, so a non-syncing instance keeps whatever it copied the first time. Use <code>sync: true</code> on any instance whose mapped resources are expected to track their source.</p>
 <h2 id="ownership-and-deletion">Ownership and deletion<a class="headerlink" href="#ownership-and-deletion" title="Permanent link">#</a></h2>
-<p>Namespaced resources rendered by a <code>TemplateInstance</code> are given the instance as their controller owner, so deleting the instance removes them through ordinary garbage collection.</p>
-<p>Cluster-scoped resources are the exception. A namespaced object cannot own a cluster-scoped one, so those are owned by the <code>Template</code> instead. A <code>ClusterRole</code> created through a <code>TemplateInstance</code> therefore outlives the instance and is removed only when the template is deleted.</p>
+<p>Namespace-scoped resources rendered by a <code>TemplateInstance</code> are given the instance as their controller owner, so deleting the instance removes them through ordinary garbage collection.</p>
+<p>Cluster-scoped resources are the exception. A namespace-scoped object cannot own a cluster-scoped one, so those are owned by the <code>Template</code> instead. A <code>ClusterRole</code> created through a <code>TemplateInstance</code> therefore outlives the instance and is removed only when the template is deleted.</p>
 <h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">#</a></h2>
 <p><code>status.status</code> reports <code>Deployed</code>, <code>Failed</code>, or an empty value while the instance is still pending. On failure, <code>status.reason</code> carries a short CamelCase code and <code>status.message</code> the detail.</p>
 <p>The remaining fields are working state rather than something to act on. <code>templateHash</code> and <code>templateManifests</code> record what was last rendered, which is how the controller ignores template updates that change nothing. <code>mappedSecrets</code> and <code>mappedConfigmaps</code> track each copied resource separately, so one failed mapping is visible without obscuring the others.</p>

@@ -4436,9 +4436,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   
-    <li class="md-nav__item">
-      <a href="../../integrations/argocd.html" class="md-nav__link">
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1">
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -4452,7 +4463,79 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ArgoCD
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/argocd.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Tenant Operator
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/hibernation-operator/argocd.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hibernation Operator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -4704,89 +4787,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7">
-        
-          
-          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hibernation Operator
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Hibernation Operator
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../integrations/hibernation-operator/argocd.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ArgoCD Integration
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -5458,7 +5458,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Both schedules use standard five-field Unix cron syntax (<code>minute hour day month weekday</code>) and are evaluated in UTC, not the cluster's local timezone. <a href="https://crontab.guru">crontab.guru</a> is useful for checking an expression before applying it.</p>
+<p>Both schedules use standard five-field Unix cron syntax (<code>minute hour day month weekday</code>) and are evaluated in UTC, not the cluster's local timezone. <a href="https://crontab.guru"><code>crontab.guru</code></a> is useful for checking an expression before applying it.</p>
 </div>
 <p>Omitting <code>wakeSchedule</code> puts the workloads to sleep and leaves them there until you edit or delete the resource. That is a deliberate option for environments you want parked indefinitely, but it is easy to do by accident.</p>
 <h2 id="step-2-apply-it">Step 2: Apply it<a class="headerlink" href="#step-2-apply-it" title="Permanent link">#</a></h2>
