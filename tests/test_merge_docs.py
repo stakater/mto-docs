@@ -202,6 +202,68 @@ def test_insert_leaves_missing_section_raises():
         m.insert_leaves(nav, "Ghost", ["a/b.md"])
 
 
+# --- duplicate auto-grouping ---
+
+def test_read_h1(tmp_path):
+    p = tmp_path / "argocd.md"
+    p.write_text("<!-- comment -->\n\n# ArgoCD\n\nbody\n")
+    assert m.read_h1(p) == "ArgoCD"
+    p.write_text("no heading here\n## sub\n")
+    assert m.read_h1(p) is None
+
+
+def test_find_base_leaf():
+    section = ["integrations/argocd.md", {"Vault": ["integrations/vault/vault.md"]},
+               "integrations/devworkspace.md"]
+    # mto's own argocd, excluding the merged copy
+    assert m.find_base_leaf(section, "argocd.md",
+                            {"integrations/hib/argocd.md"}) == "integrations/argocd.md"
+    assert m.find_base_leaf(section, "missing.md", set()) is None
+
+
+def test_apply_group_folds_leaves_into_folder():
+    nav = [{"Integrations": [
+        "integrations/argocd.md",
+        "integrations/devworkspace.md",
+        "integrations/hib/argocd.md",
+    ]}]
+    m.apply_group(nav, {"under": "Integrations", "title": "ArgoCD", "items": [
+        {"title": "MTO", "page": "integrations/argocd.md"},
+        {"title": "Hibernation", "page": "integrations/hib/argocd.md"},
+    ]})
+    assert nav[0] == {"Integrations": [
+        {"ArgoCD": [
+            {"MTO": "integrations/argocd.md"},
+            {"Hibernation": "integrations/hib/argocd.md"},
+        ]},
+        "integrations/devworkspace.md",
+    ]}   # folder takes the first leaf's slot; the other leaf is removed
+
+
+def test_build_duplicate_groups_detects_collision(tmp_path):
+    (tmp_path / "integrations").mkdir()
+    (tmp_path / "integrations/argocd.md").write_text("# ArgoCD\n")
+    (tmp_path / "integrations/hib").mkdir()
+    (tmp_path / "integrations/hib/argocd.md").write_text("# ArgoCD\n")
+    nav = [{"Integrations": ["integrations/argocd.md", "integrations/hib/argocd.md"]}]
+    # a merged flat page from Hibernation collides with mto's own argocd
+    flat_pages = [("Integrations", "integrations/hib/argocd.md", "Hibernation")]
+    groups = m.build_duplicate_groups(nav, flat_pages, str(tmp_path), "MTO")
+    assert groups == [{
+        "under": "Integrations", "title": "ArgoCD",
+        "items": [{"title": "MTO", "page": "integrations/argocd.md"},
+                  {"title": "Hibernation", "page": "integrations/hib/argocd.md"}],
+    }]
+
+
+def test_build_duplicate_groups_no_collision_is_skipped(tmp_path):
+    (tmp_path / "guides").mkdir(parents=True)
+    (tmp_path / "guides").joinpath("unique.md").write_text("# Unique\n")
+    nav = [{"Guides": ["guides/own.md"]}]
+    flat_pages = [("Guides", "guides/hib/unique.md", "Hibernation")]
+    assert m.build_duplicate_groups(nav, flat_pages, str(tmp_path), "MTO") == []
+
+
 _MKDOCS = """\
 site_name: Multi-Tenant Operator
 markdown_extensions:
@@ -448,6 +510,36 @@ def test_run_flatten_single_file_title_and_multi_leaves(tmp_path):
     assert "guides/template/copy.md" in guides and "guides/template/deploy.md" in guides
     # no operator wrapper folder was created
     assert m.find_section(nav, "Template") is None
+
+
+def test_run_auto_groups_duplicate_across_source_and_mto(tmp_path):
+    repo = tmp_path / "hib-docs"
+    _touch(repo / "content", "integrations/argocd.md")
+    (repo / "content/integrations/argocd.md").write_text("# ArgoCD\n")
+    content = tmp_path / "content"
+    (content / "integrations").mkdir(parents=True)
+    (content / "integrations/argocd.md").write_text("# ArgoCD\n")   # mto's own
+    mkdocs = tmp_path / "mkdocs.yml"
+    mkdocs.write_text(
+        "site_name: Multi-Tenant Operator\nnav:\n"
+        "  - Integrations:\n      - integrations/argocd.md\n"
+    )
+    operators = [{
+        "title": "Hibernation Operator", "repo": str(repo), "slug": "hibernation-operator",
+        "docs_dir": "content", "exclude": [],
+        "mappings": [{"from": "integrations/**", "into": "integrations",
+                      "under": "Integrations", "flatten": True}],
+    }]
+    m.run(operators, str(content), str(mkdocs))
+
+    section = m.find_section(m.read_nav(mkdocs.read_text()), "Integrations")
+    # ArgoCD folder with mto's own (site_title from site_name) + the merged page
+    assert {"ArgoCD": [
+        {"Multi-Tenant Operator": "integrations/argocd.md"},
+        {"Hibernation Operator": "integrations/hibernation-operator/argocd.md"},
+    ]} in section
+    # the standalone argocd leaves are gone
+    assert "integrations/argocd.md" not in section
 
 
 def test_run_empty_match_raises(tmp_path):

@@ -24,4 +24,4 @@ The Multi-Tenant Operator (MTO) builds on Kubernetes' capabilities, simplifying 
 
 ## Installation
 
-Refer to the [installation guide](./installation/overview.md) for setting up MTO.
+Refer to the [installation guide](getting-started/installation/overview.md) for setting up MTO.
