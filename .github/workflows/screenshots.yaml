@@ -1,0 +1,72 @@
+name: Screenshots
+
+# Captures the MTO Console screenshots and commits them, so no docs build has to
+# reach the live console. On approval, because by then the prose is settled.
+on:
+  pull_request_review:
+    types: [submitted]
+  workflow_dispatch:
+
+concurrency:
+  group: screenshots-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.review.state == 'approved' &&
+       github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Checkout the branch being captured for
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref }}
+          # PUBLISH_TOKEN rather than GITHUB_TOKEN: the commit below has to
+          # trigger the docs build, and GITHUB_TOKEN pushes never do.
+          token: ${{ secrets.PUBLISH_TOKEN }}
+
+      - name: Log in to container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: stakater-user
+          password: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Capture
+        env:
+          CONSOLE_USER: ${{ secrets.CONSOLE_USER }}
+          CONSOLE_PASSWORD: ${{ secrets.CONSOLE_PASSWORD }}
+        run: |
+          printf 'CONSOLE_USER=%s\nCONSOLE_PASSWORD=%s\n' \
+            "$CONSOLE_USER" "$CONSOLE_PASSWORD" > screenshots/.env
+          bash screenshots/capture.sh
+
+      - name: Check every directive resolves
+        run: python3 screenshots/inject.py --check
+
+      - name: Commit the new images
+        run: |
+          git config user.email "stakater@gmail.com"
+          git config user.name "stakater-user"
+          git add screenshots/captured
+          if git diff --cached --quiet; then
+            echo "screenshots unchanged"
+            exit 0
+          fi
+          git commit -m "chore: refresh console screenshots"
+          git push
+
+      # So the push build can skip capturing what this run already captured.
+      - name: Label the PR as captured
+        if: github.event_name == 'pull_request_review'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          gh label create screenshots-captured --repo "$GITHUB_REPOSITORY" --force \
+            --description "Console screenshots captured on this PR" --color ededed
+          gh pr edit "$PR" --repo "$GITHUB_REPOSITORY" --add-label screenshots-captured

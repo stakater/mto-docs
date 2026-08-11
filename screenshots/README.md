@@ -22,13 +22,9 @@ isn't one.
    touched. No capture for a directive means the build fails and names the page.
 
 `captured/` is the only source. No fallback to `baseline/`, because falling back
-would publish a stale screenshot, which is what this setup exists to prevent. To
-preview locally without capturing, copy them in manually — note they are the old
-images:
-
-```sh
-cp screenshots/baseline/*.png screenshots/captured/
-```
+would publish a stale screenshot, which is what this setup exists to prevent.
+Those captures are committed, so a build never has to capture to resolve them —
+see [Where this runs in CI](#where-this-runs-in-ci).
 
 A hook is used rather than `mkdocs-macros-plugin` for two reasons: macros is an
 external dependency, and it would have to be added to `theme_common/requirements.txt`
@@ -49,7 +45,7 @@ screenshots/
     _teardown.yaml   #   cleanup: deletes every docs-* object (runs last)
     _verify-clean.yaml #  optional: asserts the env has no leftovers (fatal)
   baseline/          # archive of the previous hand-taken images (diff reference only)
-  captured/          # capture output (gitignored) — what the directives resolve to
+  captured/          # capture output, committed — what the directives resolve to
   inject.py          # --check gate; can also resolve directives on disk
   mkdocs_hook.py     # resolves directives during mkdocs build (in memory)
   config.env         # checked-in config: console URL, tenant/namespace/quota names
@@ -120,33 +116,24 @@ create-drawer walk can't lose the detail-page shots.
 
 ## Where this runs in CI
 
-`pull_request.yaml` and `push.yaml` call the shared `stakater/.github` versioned-doc
-workflows with `PRE_BUILD_HOOK: make merge`. That hook runs after theme prep and
-before `mkdocs build`, which is where capture belongs.
+Capture is its own workflow, `screenshots.yaml`. It runs when a PR is **approved**,
+or manually from the Actions tab on any branch, and **commits the images it takes**.
+Everything downstream then resolves the directives from the branch.
 
-To turn it on, switch the hook and pass the credentials:
+| Workflow | Captures? |
+|---|---|
+| `screenshots.yaml` | yes — on approval, or a manual run |
+| `pull_request.yaml` | no — uses the committed images |
+| `push.yaml` | only if the merged PR never captured |
 
-```yaml
-with:
-  PRE_BUILD_HOOK: make docs-images     # merge, then capture
-secrets:
-  PRE_BUILD_USER: ${{ secrets.CONSOLE_USER }}
-  PRE_BUILD_PASSWORD: ${{ secrets.CONSOLE_PASSWORD }}
-```
+`push.yaml` decides on the `screenshots-captured` label that a capture adds: with it,
+the images are already fresh and it skips; without it, it captures so published
+images are never stale. Since approval is required to merge, that fallback only fires
+for a PR merged without a successful capture.
 
-`docs-images` writes those two into `screenshots/.env` and runs the capture. The rest
-of the config is in `config.env`, and resolution needs no step of its own since the
-mkdocs hook does it.
+If a flow fails, nothing is committed — a broken run can't half-update the set.
 
-They're **secrets** on the shared workflow (added in stakater/.github), not inputs, so
-the values stay masked. They have to be declared there because a caller can't inject
-env into a reusable workflow — GitHub doesn't allow `env:` on a job that uses one, and
-`secrets: inherit` only helps if the called workflow references the secret.
-
-Capture runs on every PR and push, because the build needs the images and they aren't
-committed. So a console outage blocks a docs build — the alternative is committing the
-captures and capturing only on push, which trades images in git for a smaller blast
-radius.
+Credentials come from the `CONSOLE_USER` / `CONSOLE_PASSWORD` repo secrets.
 
 
 Only images under `content/console/` are automated. Everything else stays
