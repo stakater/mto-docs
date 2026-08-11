@@ -25,7 +25,7 @@ Displays a list of namespaces associated with a selected tenant. The tenant filt
 - **Tenant filter:** Switch the displayed namespaces to a specific tenant.
 - **Schedule Filters:** Filter the list by namespace state — `All`, `Sleeping`, `Hibernated`, or `Active`.
 
-{{ screenshot: hibernation_table }}
+{{ screenshot: hibernation-table }}
 
 ### Waking a Namespace
 
@@ -51,13 +51,13 @@ Selects namespaces by Kubernetes labels. Use the **Select namespace labels** dro
 
 In the example below, the label `stakater.com/kind:prod` is selected and the matching namespaces are shown under "Namespaces to be affected".
 
-{{ screenshot: sleepByLabels }}
+{{ screenshot: sleep-by-labels }}
 
 #### By Namespaces
 
 Shows a namespace checklist with a **Select All** link. Users select namespaces directly from the list — there is no labels filter on this flow. Namespaces that are already asleep are shown but cannot be selected.
 
-{{ screenshot: sleepByNameSelection }}
+{{ screenshot: sleep-by-name-selection }}
 
 ### Hibernation Mode
 
@@ -71,11 +71,11 @@ Namespaces sleep and wake automatically based on a defined cron schedule. A sche
 
 The **Select Schedule** dropdown shows existing schedules and their sleep/wake details. Use the **+** button next to it to create a new schedule. The drawer's bottom action is **Apply Hibernation**.
 
-{{ screenshot: hibernateByLabels }}
+{{ screenshot: hibernate-by-labels }}
 
 Hibernate Mode can also be applied to an explicit set of namespaces using **By Namespaces**.
 
-{{ screenshot: hibernateByNameSelection }}
+{{ screenshot: hibernate-by-name-selection }}
 
 ### Namespaces to be affected
 
@@ -92,13 +92,13 @@ Clicking **Manage Schedules** opens the **Manage Hibernation Schedules** drawer,
 
 Lists the schedules defined for the selected tenant, each showing its **Interval** (the sleep and wake times). Schedules can be searched by name, and the **Columns** control adjusts which columns are shown. Use the delete action to remove a schedule — deleting a schedule wakes any namespaces that were hibernating on it.
 
-{{ screenshot: manageHIbernationSchedules }}
+{{ screenshot: manage-hibernation-schedules }}
 
 ### Creating a Hibernation Schedule
 
 A schedule can be created from the **Create New** tab here, or from the **+** button next to the **Select Schedule** dropdown in the Apply Hibernation Settings drawer. Existing schedules can also be reused directly from that dropdown.
 
-{{ screenshot: createHibernationSchedule }}
+{{ screenshot: create-hibernation-schedule }}
 
 The create form has the following fields:
 
@@ -111,4 +111,4 @@ The create form has the following fields:
 
 Click **Create Schedule** to save.
 
-{{ screenshot: createInterval }}
+{{ screenshot: create-interval }}

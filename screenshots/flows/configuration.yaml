@@ -1,4 +1,4 @@
-# console/configuration.md -> integrationConfig.png (Operator Settings, admin-only)
+# console/configuration.md -> integration-config.png (Operator Settings, admin-only)
 name: docs-configuration
 
 requires:
@@ -30,7 +30,7 @@ steps:
   - { step: wait-for, selector: '[data-testid="integration-yaml-content"]', timeout: 30s }
   # YAML text itself loads async -- wait for actual content, not the container
   - { step: wait-for, selector: '[data-testid="integration-yaml-content"] >> text=apiVersion', timeout: 30s }
-  - { step: screenshot, path: integrationConfig.png, fullPage: false }
+  - { step: screenshot, path: integration-config.png, fullPage: false }
 
 after:
   - { step: screenshot, when: on-failure, path: _failure-configuration.png }

@@ -34,7 +34,7 @@ steps:
   - { step: wait-for, selector: '[data-testid="sheet-content"] >> text=Metadata Name', timeout: 15s }
   # react-hook-form spreads {...field}, so the name input carries name="name"
   - { step: fill, selector: 'input[name="name"]', value: docs-quota }
-  - { step: screenshot, path: quotaCreationMetadata.png, fullPage: false }
+  - { step: screenshot, path: quota-creation-metadata.png, fullPage: false }
 
   # Same step with one resource added (drawer-local, nothing persisted);
   # wait for the dropdown to close and the added row to render before shooting.
@@ -53,15 +53,15 @@ steps:
   - { step: click, selector: '[data-testid="sheet-content"] [role="combobox"] >> nth=0' }
   - { step: click, selector: '[role="option"]:has-text("Memory Requests")' }
   - { step: wait-for, selector: '[role="option"]', state: detached }
-  - { step: screenshot, path: quotaCreationResourceQuota.png, fullPage: false }
+  - { step: screenshot, path: quota-creation-resource-quota.png, fullPage: false }
 
   # Stepper sidebar: Container (has Default Limit fields), then Pod
   - { step: click, selector: '[data-testid="sheet-content"] >> text="Container"' }
   - { step: wait-for, selector: '[data-testid="sheet-content"] >> text=Default Limit', timeout: 15s }
-  - { step: screenshot, path: quotaCreationLimitRangeContainer.png, fullPage: false }
+  - { step: screenshot, path: quota-creation-limit-range-container.png, fullPage: false }
   - { step: click, selector: '[data-testid="sheet-content"] >> text="Pod"' }
   - { step: wait-for, selector: '[data-testid="sheet-content"] >> text=Default Limit', state: detached, timeout: 15s }
-  - { step: screenshot, path: quotaCreationLimitRangePod.png, fullPage: false }
+  - { step: screenshot, path: quota-creation-limit-range-pod.png, fullPage: false }
 
 after:
   - { step: screenshot, when: on-failure, path: _failure-quotas.png }

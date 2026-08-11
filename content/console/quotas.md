@@ -10,7 +10,7 @@ Click the **Create Quota** button on the top-right of the Quotas page to open th
 
 ### Step 1: Quota Overview
 
-{{ screenshot: quotaCreationMetadata }}
+{{ screenshot: quota-creation-metadata }}
 
 This step combines the quota name and the resource quota definitions.
 
@@ -31,7 +31,7 @@ This step combines the quota name and the resource quota definitions.
 
 #### Resource Quota
 
-{{ screenshot: quotaCreationResourceQuota }}
+{{ screenshot: quota-creation-resource-quota }}
 
 1. Adding Resources
    - The **Resource Type** dropdown allows the selection of common resource types such as:
@@ -52,7 +52,7 @@ This step combines the quota name and the resource quota definitions.
 
 ### Step 2: Container (Optional)
 
-{{ screenshot: quotaCreationLimitRangeContainer }}
+{{ screenshot: quota-creation-limit-range-container }}
 
 Sets resource limits that apply to each container individually. The page is split into **CPU Limits** and **Memory Limits** sections, each accepting:
 
@@ -67,7 +67,7 @@ Sets resource limits that apply to each container individually. The page is spli
 
 ### Step 3: Pod (Optional)
 
-{{ screenshot: quotaCreationLimitRangePod }}
+{{ screenshot: quota-creation-limit-range-pod }}
 
 Sets resource limits that apply to the sum of all containers in a pod. The page is split into **CPU Limits** and **Memory Limits** sections, each accepting only:
 

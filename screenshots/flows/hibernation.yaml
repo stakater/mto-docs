@@ -1,7 +1,7 @@
 # console/hibernation.md -> 8 images, SELF-SEEDING:
-#   - creates schedule "docs-weekend-shutdown" (via the "+" popup, shot as createInterval.png)
+#   - creates schedule "docs-weekend-shutdown" (via the "+" popup, shot as create-interval.png)
 #   - REALLY applies Sleep to DOCS_SLEEP_NS and Hibernate (on the schedule) to DOCS_HIB_NS,
-#     both By Namespaces, so hibernation_table.png shows Sleeping/Hibernating badges + Wake up buttons
+#     both By Namespaces, so hibernation-table.png shows Sleeping/Hibernating badges + Wake up buttons
 #   - cleanup (wake + delete schedule) happens in _teardown.yaml
 # DOCS_SLEEP_NS and DOCS_HIB_NS must be two namespaces of DOCS_HIB_TENANT that are
 # currently ACTIVE (already-asleep namespaces can't be selected in the drawer).
@@ -57,7 +57,7 @@ steps:
   - { step: click, selector: '[role="dialog"] [role="combobox"] >> nth=0' }
   - { step: wait-for, selector: 'input[placeholder="Search labels..."]', state: detached, timeout: 15s }
   - { step: wait-for, selector: '[role="dialog"] >> text=1 label selected', timeout: 15s }
-  - { step: screenshot, path: sleepByLabels.png, fullPage: false }
+  - { step: screenshot, path: sleep-by-labels.png, fullPage: false }
 
   # Sleep mode + By Namespaces: check DOCS_SLEEP_NS, shoot, then REALLY apply
   - { step: click, selector: '[role="dialog"] button:has-text("By Namespaces")' }
@@ -68,7 +68,7 @@ steps:
   # NOTE: the button is `disabled` when the namespace is already sleeping or
   # hibernating, so this step times out unless the namespace is Active.
   - { step: click, selector: '[role="dialog"] button:has(span:text-is("${DOCS_SLEEP_NS}"))' }
-  - { step: screenshot, path: sleepByNameSelection.png, fullPage: false }
+  - { step: screenshot, path: sleep-by-name-selection.png, fullPage: false }
   - { step: click, selector: '[role="dialog"] button:has-text("Apply Sleep Mode")' }
   - { step: wait-for, selector: '[role="dialog"]', state: detached, timeout: 30s }
 
@@ -92,7 +92,7 @@ steps:
   - { step: fill, selector: '[role="dialog"]:has-text("Create Hibernation Schedule") input >> nth=1', value: "0 20 * * *" }
   - { step: fill, selector: '[role="dialog"]:has-text("Create Hibernation Schedule") input >> nth=2', value: "0 8 * * *" }
   - { step: wait-for, selector: 'text="Schedule Preview"', timeout: 15s }
-  - { step: screenshot, path: createInterval.png, fullPage: false }
+  - { step: screenshot, path: create-interval.png, fullPage: false }
   - { step: click, selector: '[role="dialog"]:has-text("Create Hibernation Schedule") button:has-text("Create Schedule")' }
   - { step: wait-for, selector: 'text="Create Hibernation Schedule"', state: detached, timeout: 15s }
 
@@ -109,7 +109,7 @@ steps:
   - { step: click, selector: '[role="dialog"] [role="combobox"] >> nth=0' }
   - { step: wait-for, selector: 'input[placeholder="Search labels..."]', state: detached, timeout: 15s }
   - { step: wait-for, selector: '[role="dialog"] >> text=1 label selected', timeout: 15s }
-  - { step: screenshot, path: hibernateByLabels.png, fullPage: false }
+  - { step: screenshot, path: hibernate-by-labels.png, fullPage: false }
 
   # Hibernate + By Namespaces: check DOCS_HIB_NS, shoot, then REALLY apply
   - { step: click, selector: '[role="dialog"] button:has-text("By Namespaces")' }
@@ -120,7 +120,7 @@ steps:
   # NOTE: the button is `disabled` when the namespace is already sleeping or
   # hibernating, so this step times out unless the namespace is Active.
   - { step: click, selector: '[role="dialog"] button:has(span:text-is("${DOCS_HIB_NS}"))' }
-  - { step: screenshot, path: hibernateByNameSelection.png, fullPage: false }
+  - { step: screenshot, path: hibernate-by-name-selection.png, fullPage: false }
   - { step: click, selector: '[role="dialog"] button:has-text("Apply Hibernation")' }
   - { step: wait-for, selector: '[role="dialog"]', state: detached, timeout: 30s }
 
@@ -135,16 +135,16 @@ steps:
   - { step: wait-for, selector: '[role="menuitemcheckbox"]', state: detached }
   - { step: wait-for, selector: 'tr:has-text("${DOCS_SLEEP_NS}") >> text=Sleeping', timeout: 90s }
   - { step: wait-for, selector: 'tr:has-text("${DOCS_HIB_NS}") >> text=Hibernating', timeout: 90s }
-  - { step: screenshot, path: hibernation_table.png, fullPage: false }
+  - { step: screenshot, path: hibernation-table.png, fullPage: false }
 
   # --- Manage Schedules drawer (now lists docs-weekend-shutdown) --------------
   - { step: click, selector: '[data-testid="hibernation-manage-button"]' }
   - { step: wait-for, selector: '[role="dialog"] >> text=Existing Schedules', timeout: 15s }
   - { step: wait-for, selector: '[role="dialog"] >> text=docs-weekend-shutdown', timeout: 15s }
-  - { step: screenshot, path: manageHIbernationSchedules.png, fullPage: false }
+  - { step: screenshot, path: manage-hibernation-schedules.png, fullPage: false }
   - { step: click, selector: '[role="dialog"] [role="tab"]:has-text("Create New")' }
   - { step: wait-for, selector: '[role="dialog"] >> text=Schedule Name', timeout: 15s }
-  - { step: screenshot, path: createHibernationSchedule.png, fullPage: false }
+  - { step: screenshot, path: create-hibernation-schedule.png, fullPage: false }
 
 after:
   # Cleanup (wake namespace + delete schedule) lives in _teardown.yaml

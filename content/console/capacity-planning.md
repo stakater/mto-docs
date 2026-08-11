@@ -28,16 +28,16 @@ This section displays bar charts that compare the current resource requests from
 
 Similar to the tenant requests, this section compares the quota requests against the total cluster capacity. It allows administrators to see if the quota assigned is in line with the cluster's actual capacity.
 
-{{ screenshot: capacity_planning }}
+{{ screenshot: capacity-planning }}
 
 ## 2. Node Capacity
 
 A detailed table lists the worker nodes in the cluster, displaying each node’s CPU and memory capacity along with various labels that indicate the node’s configuration and role (e.g., worker, infra). This information helps in identifying resource distribution across nodes and managing workloads accordingly.
 
-{{ screenshot: worker_pool }}
+{{ screenshot: worker-pool }}
 
 ## 3. Tenant Request Details
 
 This table provides a breakdown of the resource requests from different tenants, displaying both the requested resources (CPU and memory) and the allocated quotas. It helps to monitor if tenant requests align with the quotas set for each tenant, ensuring optimal resource management.
 
-{{ screenshot: request_details }}
+{{ screenshot: request-details }}

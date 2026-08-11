@@ -42,7 +42,7 @@ steps:
   - { step: fill, selector: 'input[name="name"]', value: docs-template }
   - { step: fill, selector: 'input[name="type"]', value: database }
   - { step: fill, selector: 'input[name="version"]', value: v1 }
-  - { step: screenshot, path: templateCrudDrawerInfo.png, fullPage: false }
+  - { step: screenshot, path: template-crud-drawer-info.png, fullPage: false }
 
   # Step 2 -- Parameters: add CIDR_IP = 192.12.0.0/10, required (as in old image)
   - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Next")' }
@@ -54,7 +54,7 @@ steps:
   - { step: click, selector: '[data-testid="sheet-content"] [role="checkbox"] >> nth=0' }
   - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Add")' }
   - { step: wait-for, selector: '[data-testid="sheet-content"] >> text=CIDR_IP', timeout: 15s }
-  - { step: screenshot, path: templateCrudDrawerParameters.png, fullPage: false }
+  - { step: screenshot, path: template-crud-drawer-parameters.png, fullPage: false }
 
   # Step 3 -- Helm (old image: hobo / hobo-urs / 14.6.0 / hobo@github.com + two set chips)
   - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Next")' }
@@ -78,7 +78,7 @@ steps:
   # Values editor (old image: redisPort: 6379)
   # VERIFY on first run: editor element (textarea vs contenteditable)
   - { step: fill, selector: 'textarea[name="resources.helm.values"]', value: "redisPort: 6379" }
-  - { step: screenshot, path: templateHelmResource.png, fullPage: false }
+  - { step: screenshot, path: template-helm-resource.png, fullPage: false }
 
   # Step 4 -- Resource Mappings (old image: secret + configmap chips added,
   # form left filled with ConfigMap / test-config / dev-ns)
@@ -95,7 +95,7 @@ steps:
   - { step: wait-for, selector: '[role="option"]', state: detached }
   - { step: fill, selector: 'input[placeholder="Enter text here"] >> nth=0', value: test-config }
   - { step: fill, selector: 'input[placeholder="Enter text here"] >> nth=1', value: dev-ns }
-  - { step: screenshot, path: templateResourceMappings.png, fullPage: false }
+  - { step: screenshot, path: template-resource-mappings.png, fullPage: false }
 
   # Step 5 -- Manifests (old image: NetworkPolicy referencing the CIDR_IP param)
   - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Next")' }
@@ -119,7 +119,7 @@ steps:
           - from:
               - ipBlock:
                   cidr: "${{CIDR_IP}}"
-  - { step: screenshot, path: templateManifestResource.png, fullPage: false }
+  - { step: screenshot, path: template-manifest-resource.png, fullPage: false }
 
   # REALLY create it, then the list AFTER creation
   - { step: click, selector: '[data-testid="template-submit-button"]' }
@@ -138,7 +138,7 @@ steps:
   # then settle briefly for tokenisation.
   - { step: wait-for, selector: '[data-testid="yaml-editor-container"] .line-numbers', timeout: 30s }
   - { step: wait, ms: 1s }
-  - { step: screenshot, path: templateYAMLView.png, fullPage: false }
+  - { step: screenshot, path: template-yaml-view.png, fullPage: false }
 
 after:
   # Cleanup lives in _teardown.yaml (runs last, non-fatal)

@@ -49,29 +49,29 @@ steps:
   - { step: wait-for, selector: '[role="tabpanel"][data-state="active"] :is(svg, canvas)', timeout: 30s }
   - { step: wait, ms: 3s }
   - { step: screenshot, path: graph-3.png, fullPage: false }
-  - { step: screenshot, path: tenants_graph.png, fullPage: false }
+  - { step: screenshot, path: tenants-graph.png, fullPage: false }
 
   # Quota tab: aggregated view, then namespace view
   - { step: click, selector: '[role="tab"]:has-text("Quota")' }
   - { step: wait-for, selector: '[role="tabpanel"][data-state="active"]', timeout: 30s }
   - { step: wait-for, selector: '[role="tabpanel"][data-state="active"] .animate-spin', state: detached, timeout: 30s }
   - { step: wait, ms: 1s }
-  - { step: screenshot, path: tenantQuotaAggregatedView.png, fullPage: false }
+  - { step: screenshot, path: tenant-quota-aggregated-view.png, fullPage: false }
   - { step: click, selector: '[role="tabpanel"][data-state="active"] >> text=Namespace' }
   - { step: wait, ms: 1s }
-  - { step: screenshot, path: tenantQuotaNamespaceView.png, fullPage: false }
+  - { step: screenshot, path: tenant-quota-namespace-view.png, fullPage: false }
 
   # Utilization tab: namespace table, then drill into one namespace
   - { step: click, selector: '[role="tab"]:has-text("Utilization")' }
   - { step: wait-for, selector: '[role="tabpanel"][data-state="active"] table', timeout: 30s }
   - { step: wait-for, selector: '[role="tabpanel"][data-state="active"] .animate-spin', state: detached, timeout: 30s }
   - { step: wait, ms: 1s }
-  - { step: screenshot, path: tenantUtilizationNamespaces.png, fullPage: false }
+  - { step: screenshot, path: tenant-utilization-namespaces.png, fullPage: false }
   - { step: click, selector: '[role="tabpanel"][data-state="active"] >> text="${DOCS_NAMESPACE}"' }
   - { step: wait-for, selector: '[role="tabpanel"][data-state="active"] .animate-spin', state: detached, timeout: 30s }
   - { step: wait-for, selector: '[role="tabpanel"][data-state="active"] :is(svg, canvas)', timeout: 30s }
   - { step: wait, ms: 3s }
-  - { step: screenshot, path: tenantUtilizationNamespaceStats.png, fullPage: false }
+  - { step: screenshot, path: tenant-utilization-namespace-stats.png, fullPage: false }
 
 after:
   - { step: screenshot, when: on-failure, path: _failure-tenants.png }

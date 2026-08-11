@@ -32,16 +32,16 @@ steps:
   - { step: wait-for, selector: '[data-testid="tenant-vs-cluster-chart"] svg', timeout: 30s }
   - { step: wait-for, selector: '[data-testid="quota-vs-cluster-chart"] svg', timeout: 30s }
   - { step: wait, ms: 2s }
-  - { step: screenshot, path: capacity_planning.png, fullPage: false }
+  - { step: screenshot, path: capacity-planning.png, fullPage: false }
 
   # Node Capacity section framed at the top of the viewport
   - { step: scroll-to, selector: 'text="Node Capacity"', block: start }
-  - { step: screenshot, path: worker_pool.png, fullPage: false }
+  - { step: screenshot, path: worker-pool.png, fullPage: false }
 
   # Tenant Request Details section
   - { step: scroll-to, selector: 'text="Tenant Request Details"', block: start }
   - { step: wait-for, selector: '[data-testid="tenant-requests-table"] .animate-pulse', state: detached, timeout: 30s }
-  - { step: screenshot, path: request_details.png, fullPage: false }
+  - { step: screenshot, path: request-details.png, fullPage: false }
 
   # Add Node Filter drawer: the shot is the freshly opened drawer, untouched
   # (the Key select defaults to the first key on its own).

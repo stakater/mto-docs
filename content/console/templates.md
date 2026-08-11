@@ -12,7 +12,7 @@ The template creation process in the MTO Console is designed to be intuitive and
 
 ### Template Overview
 
-{{ screenshot: templateCrudDrawerInfo }}
+{{ screenshot: template-crud-drawer-info }}
 
 - **Template Name** The template name is a required field. Enter a unique and descriptive name for your template.
 - **Type** Optionally specify the type of template.
@@ -21,7 +21,7 @@ The template creation process in the MTO Console is designed to be intuitive and
 
 ### Parameters
 
-{{ screenshot: templateCrudDrawerParameters }}
+{{ screenshot: template-crud-drawer-parameters }}
 
 This section allows you to define parameters that can be used within your template for customization.
 
@@ -39,7 +39,7 @@ At least one resource must be specified for the template. You can add resources 
 
 Use this section to provide Helm chart details if your template is based on a Helm deployment.
 
-{{ screenshot: templateHelmResource }}
+{{ screenshot: template-helm-resource }}
 
 - **Release Name:** Enter a name for the Helm release. This will be used as the release identifier when the chart is deployed.
 - **Chart Name:** Provide the name of the chart within the repository.
@@ -61,7 +61,7 @@ redisPort: 6379
 
 The Resource Mappings section allows you to define mappings for Kubernetes resources such as Secrets and ConfigMaps, enabling advanced or custom deployment scenarios. This is useful for referencing or distributing existing resources across different namespaces.
 
-{{ screenshot: templateResourceMappings }}
+{{ screenshot: template-resource-mappings }}
 
 - **Resource Type Dropdown:** Select the type of resource you want to map. The available options are
     - Secret
@@ -74,7 +74,7 @@ The Resource Mappings section allows you to define mappings for Kubernetes resou
 
 The Manifests section allows you to add raw Kubernetes manifests directly to your template. This is useful for provisioning standard Kubernetes resources such as Deployments, Services, ConfigMaps, Secrets, NetworkPolicies, and more, using YAML definitions.
 
-{{ screenshot: templateManifestResource }}
+{{ screenshot: template-manifest-resource }}
 
 - **YAML Editor:** Enter one or more Kubernetes resource definitions in YAML format. Each manifest should follow standard Kubernetes syntax and can include any supported resource kind.
 - **Multi-Resource Support:** You can define multiple resources in a single template by listing them under the `manifests:` key as a YAML array.
@@ -89,7 +89,7 @@ Once all required configurations are completed, click the **Create** button to s
 
 ## YAML View
 
-{{ screenshot: templateYAMLView }}
+{{ screenshot: template-yaml-view }}
 
 A YAML representation of the template configuration can be previewed by selecting **View YAML** from the Actions kebab menu on a template row.
 

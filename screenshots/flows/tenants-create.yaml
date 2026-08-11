@@ -44,17 +44,17 @@ steps:
   # matching is a trap. Each nav button carries a generated testid instead.
   - { step: click, selector: '[data-testid="tenant-accessControl-button"]' }
   - { step: wait-for, selector: '[data-testid="sheet-content"] >> text=Owners', timeout: 15s }
-  - { step: screenshot, path: tenantAccessControl.png, fullPage: false }
+  - { step: screenshot, path: tenant-access-control.png, fullPage: false }
 
   # Namespace section -- default horizontal tab is Namespace
   - { step: click, selector: '[data-testid="tenant-namespace-button"]' }
   - { step: wait-for, selector: '[data-testid="sheet-content"] >> text="Sandbox Settings"', timeout: 15s }
-  - { step: screenshot, path: tenantNamespaceTab.png, fullPage: false }
+  - { step: screenshot, path: tenant-namespace-tab.png, fullPage: false }
 
   # Metadata horizontal tab: Common + Sandbox view
   - { step: click, selector: '[data-testid="sheet-content"] [role="tab"]:has-text("Metadata")' }
   - { step: wait-for, selector: '[data-testid="sheet-content"] >> text=Common', timeout: 15s }
-  - { step: screenshot, path: tenantMetadataCommonSandboxTab.png, fullPage: false }
+  - { step: screenshot, path: tenant-metadata-common-sandbox-tab.png, fullPage: false }
 
   # "Specific" is a HEADING inside the same Metadata tab (not a tab). Clicking Add
   # appends a COLLAPSED accordion item ("0 Namespace . 0 Annotation . 0 Labels")
@@ -73,7 +73,7 @@ steps:
   # so its final input is the last input in the sheet. Pinning that to the bottom
   # of the viewport puts the whole expanded item in frame.
   - { step: scroll-to, selector: '[data-testid="sheet-content"] input >> nth=-1', block: end }
-  - { step: screenshot, path: tenantMetadataSpecificTab.png, fullPage: false }
+  - { step: screenshot, path: tenant-metadata-specific-tab.png, fullPage: false }
 
   # YAML section -- the testid is the static wrapper; Monaco lazy-mounts inside
   - { step: click, selector: '[data-testid="tenant-yaml-button"]' }
@@ -86,7 +86,7 @@ steps:
   # then settle briefly for tokenisation.
   - { step: wait-for, selector: '[data-testid="yaml-editor-container"] .line-numbers', timeout: 30s }
   - { step: wait, ms: 1s }
-  - { step: screenshot, path: YamlView.png, fullPage: false }
+  - { step: screenshot, path: yaml-view.png, fullPage: false }
 
 after:
   - { step: screenshot, when: on-failure, path: _failure-tenants-create.png }
