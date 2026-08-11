@@ -116,20 +116,20 @@ create-drawer walk can't lose the detail-page shots.
 
 ## Where this runs in CI
 
-Capture is its own workflow, `screenshots.yaml`. It runs when a PR is **approved**,
-or manually from the Actions tab on any branch, and **commits the images it takes**.
-Everything downstream then resolves the directives from the branch.
+Capture is its own workflow, `screenshots.yaml`, and it **commits the images it
+takes**. Everything downstream then resolves the directives from the branch.
 
-| Workflow | Captures? |
+| Trigger | Captures? |
 |---|---|
-| `screenshots.yaml` | yes — on approval, or a manual run |
-| `pull_request.yaml` | no — uses the committed images |
-| `push.yaml` | only if the merged PR never captured |
+| `screenshots` label on a PR | always — this is how you force a recapture |
+| PR approved | only if the PR hasn't captured yet |
+| Push to `main` | only if the merged PR never captured |
+| *Run workflow* on a branch | always |
 
-`push.yaml` decides on the `screenshots-captured` label that a capture adds: with it,
-the images are already fresh and it skips; without it, it captures so published
-images are never stale. Since approval is required to merge, that fallback only fires
-for a PR merged without a successful capture.
+A capture adds the `screenshots-captured` label and takes `screenshots` off, so it can
+be added again for another. That label is what approval and `push.yaml` check, so the
+console is touched once per PR unless you ask for more. Add `screenshots-captured` by
+hand to skip capture entirely.
 
 If a flow fails, nothing is committed — a broken run can't half-update the set.
 

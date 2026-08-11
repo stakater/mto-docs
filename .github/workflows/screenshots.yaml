@@ -1,8 +1,10 @@
 name: Screenshots
 
 # Captures the MTO Console screenshots and commits them, so no docs build has to
-# reach the live console. On approval, because by then the prose is settled.
+# reach the live console.
 on:
+  pull_request:
+    types: [labeled]
   pull_request_review:
     types: [submitted]
   workflow_dispatch:
@@ -13,10 +15,15 @@ concurrency:
 
 jobs:
   capture:
+    # The label forces a capture; approval only captures if none has happened yet.
     if: >-
       github.event_name == 'workflow_dispatch' ||
-      (github.event.review.state == 'approved' &&
-       github.event.pull_request.head.repo.full_name == github.repository)
+      (github.event.pull_request.head.repo.full_name == github.repository &&
+       ((github.event_name == 'pull_request' &&
+         github.event.label.name == 'screenshots') ||
+        (github.event_name == 'pull_request_review' &&
+         github.event.review.state == 'approved' &&
+         !contains(github.event.pull_request.labels.*.name, 'screenshots-captured'))))
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -60,13 +67,13 @@ jobs:
           git commit -m "chore: refresh console screenshots"
           git push
 
-      # So the push build can skip capturing what this run already captured.
+      # So approval and the push build skip capturing what this run already did.
+      # The `screenshots` label comes off, so it can be added again to force another.
       - name: Label the PR as captured
-        if: github.event_name == 'pull_request_review'
+        if: github.event_name != 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR: ${{ github.event.pull_request.number }}
         run: |
-          gh label create screenshots-captured --repo "$GITHUB_REPOSITORY" --force \
-            --description "Console screenshots captured on this PR" --color ededed
-          gh pr edit "$PR" --repo "$GITHUB_REPOSITORY" --add-label screenshots-captured
+          gh pr edit "$PR" --repo "$GITHUB_REPOSITORY" \
+            --add-label screenshots-captured --remove-label screenshots
