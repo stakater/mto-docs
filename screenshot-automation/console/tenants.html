@@ -5895,7 +5895,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenants.png" data-desc-position="bottom"><img alt="tenants" src="../images/generated/tenants.png"></a></p>
 <h2 id="live-yaml-and-graph-view">Live YAML and Graph View<a class="headerlink" href="#live-yaml-and-graph-view" title="Permanent link">#</a></h2>
 <p>In the MTO Console, clicking a resource's name opens its detail page, which includes a <code>YAML</code> tab revealing the live YAML configuration for complete information on the resource. For Tenant resources, a supplementary <code>Graph</code> tab is available, illustrating the relationships and dependencies of all resources under a Tenant. This dual-view approach empowers users with both the detailed control of YAML and the holistic oversight of the graph view.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenants_graph.png" data-desc-position="bottom"><img alt="tenants_graph" src="../images/generated/tenants_graph.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenants-graph.png" data-desc-position="bottom"><img alt="tenants-graph" src="../images/generated/tenants-graph.png"></a></p>
 <p>Effortlessly associate tenants with their respective resources using the enhanced graph feature on the MTO Console. This dynamic graph illustrates the relationships between tenants and the resources they create, encompassing both MTO's proprietary resources and native Kubernetes/OpenShift elements.</p>
 <p>Example Graph:</p>
 <pre class="mermaid"><code>  graph LR;
@@ -5922,10 +5922,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="tenant-quota">Tenant Quota<a class="headerlink" href="#tenant-quota" title="Permanent link">#</a></h2>
 <p>In this view, users can access a dedicated tab to review the quota utilization for their Tenants. Within this tab, users have the option to toggle between two different views: <strong>Aggregated Quota</strong> and <strong>Namespace Quota</strong>.</p>
 <h3 id="aggregated-quota-view">Aggregated Quota View<a class="headerlink" href="#aggregated-quota-view" title="Permanent link">#</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenantQuotaAggregatedView.png" data-desc-position="bottom"><img alt="tenantQuotaAggregatedView" src="../images/generated/tenantQuotaAggregatedView.png"></a>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenant-quota-aggregated-view.png" data-desc-position="bottom"><img alt="tenant-quota-aggregated-view" src="../images/generated/tenant-quota-aggregated-view.png"></a>
 This view provides users with an overview of the combined resource allocation and usage across all namespaces within their tenant. It offers a comprehensive look at the total limits and usage of resources such as CPU, memory, and other defined quotas. Users can easily monitor and manage resource distribution across their entire tenant environment from this aggregated perspective.</p>
 <h3 id="namespace-quota-view">Namespace Quota View<a class="headerlink" href="#namespace-quota-view" title="Permanent link">#</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenantQuotaNamespaceView.png" data-desc-position="bottom"><img alt="tenantQuotaNamespaceView" src="../images/generated/tenantQuotaNamespaceView.png"></a>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenant-quota-namespace-view.png" data-desc-position="bottom"><img alt="tenant-quota-namespace-view" src="../images/generated/tenant-quota-namespace-view.png"></a>
 Alternatively, users can opt to view quota settings on a per-namespace basis. This view allows users to focus specifically on the resource allocation and usage within individual namespaces. By selecting this option, users gain granular insights into the resource constraints and utilization for each namespace, facilitating more targeted management and optimization of resources at the namespace level.</p>
 <h2 id="tenant-utilization">Tenant Utilization<a class="headerlink" href="#tenant-utilization" title="Permanent link">#</a></h2>
 <p>In the <strong>Utilization</strong> tab of the tenant console, users are presented with a detailed table listing all namespaces within their tenant. This table provides essential metrics for each namespace, including CPU and memory utilization. The metrics shown include:</p>
@@ -5936,7 +5936,7 @@ Alternatively, users can opt to view quota settings on a per-namespace basis. Th
 <li><strong>Max:</strong> The maximum value between CPU and memory requests and used resources, calculated every 30 seconds and averaged over the selected running minutes.</li>
 </ul>
 <p>Users can adjust the interval window using the provided selector to customize the time frame for the displayed data. This table allows users to quickly assess resource utilization across all namespaces, facilitating efficient resource management and cost tracking.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenantUtilizationNamespaces.png" data-desc-position="bottom"><img alt="tenantUtilizationNamespaces" src="../images/generated/tenantUtilizationNamespaces.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenant-utilization-namespaces.png" data-desc-position="bottom"><img alt="tenant-utilization-namespaces" src="../images/generated/tenant-utilization-namespaces.png"></a></p>
 <p>Upon selecting a specific namespace from the utilization table, users are directed to a detailed view that includes CPU and memory utilization graphs along with a workload table. This detailed view provides:</p>
 <ul>
 <li><strong>CPU and Memory Graphs:</strong> Visual representations of the namespace's CPU and memory usage over time, enabling users to identify trends and potential issues at a glance.</li>
@@ -5949,7 +5949,7 @@ Alternatively, users can opt to view quota settings on a per-namespace basis. Th
 </li>
 </ul>
 <p>This detailed view provides users with in-depth insights into resource utilization at the workload level, enabling precise monitoring and optimization of resource allocation within the selected namespace.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenantUtilizationNamespaceStats.png" data-desc-position="bottom"><img alt="tenantUtilizationNamespaceStats" src="../images/generated/tenantUtilizationNamespaceStats.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenant-utilization-namespace-stats.png" data-desc-position="bottom"><img alt="tenant-utilization-namespace-stats" src="../images/generated/tenant-utilization-namespace-stats.png"></a></p>
 <h2 id="create-tenant">Create Tenant<a class="headerlink" href="#create-tenant" title="Permanent link">#</a></h2>
 <p>The tenant creation process involves a drawer interface with a sidebar navigation. This document outlines the validation checks and the criteria for progressing through tenant creation.</p>
 <h3 id="tenant-overview">Tenant Overview<a class="headerlink" href="#tenant-overview" title="Permanent link">#</a></h3>
@@ -5989,7 +5989,7 @@ Alternatively, users can opt to view quota settings on a per-namespace basis. Th
 <li>If the tenant name already exists, the user is prompted to enter a new name.</li>
 </ul>
 <h3 id="access-control-optional">Access Control (Optional)<a class="headerlink" href="#access-control-optional" title="Permanent link">#</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenantAccessControl.png" data-desc-position="bottom"><img alt="tenantAccessControl" src="../images/generated/tenantAccessControl.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenant-access-control.png" data-desc-position="bottom"><img alt="tenant-access-control" src="../images/generated/tenant-access-control.png"></a></p>
 <p>This section allows users to configure access control for the tenant. This section is optional and provides three tabs for managing user roles: Owners, Editors, and Viewers.</p>
 <p>The user can either enter some data in each tab or choose to skip this section.</p>
 <h3 id="input-fields-and-listing-behavior">Input Fields and Listing Behavior<a class="headerlink" href="#input-fields-and-listing-behavior" title="Permanent link">#</a></h3>
@@ -6025,7 +6025,7 @@ Alternatively, users can opt to view quota settings on a per-namespace basis. Th
 <h3 id="namespace-optional">Namespace (Optional)<a class="headerlink" href="#namespace-optional" title="Permanent link">#</a></h3>
 <p>This section allows users to optionally configure namespaces and metadata for the tenant. This section consists of two tabs:</p>
 <h3 id="namespace">Namespace<a class="headerlink" href="#namespace" title="Permanent link">#</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenantNamespaceTab.png" data-desc-position="bottom"><img alt="tenantNamespaceTab" src="../images/generated/tenantNamespaceTab.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenant-namespace-tab.png" data-desc-position="bottom"><img alt="tenant-namespace-tab" src="../images/generated/tenant-namespace-tab.png"></a></p>
 <ul>
 <li>Toggles:<ul>
 <li>Sandbox: Activates the sandbox environment for the tenant.</li>
@@ -6056,7 +6056,7 @@ Alternatively, users can opt to view quota settings on a per-namespace basis. Th
 <h3 id="metadata">Metadata<a class="headerlink" href="#metadata" title="Permanent link">#</a></h3>
 <p>The Metadata tab has 3 main sections:</p>
 <h4 id="common-and-sandbox-tabs">Common and Sandbox Tabs<a class="headerlink" href="#common-and-sandbox-tabs" title="Permanent link">#</a></h4>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenantMetadataCommonSandboxTab.png" data-desc-position="bottom"><img alt="tenantMetadataCommonSandboxTab" src="../images/generated/tenantMetadataCommonSandboxTab.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenant-metadata-common-sandbox-tab.png" data-desc-position="bottom"><img alt="tenant-metadata-common-sandbox-tab" src="../images/generated/tenant-metadata-common-sandbox-tab.png"></a></p>
 <ul>
 <li>Both sections allow users to add annotations and labels using Key and Value input fields.</li>
 <li>Inputs act as filters for existing values.</li>
@@ -6064,7 +6064,7 @@ Alternatively, users can opt to view quota settings on a per-namespace basis. Th
 <li>Added annotations and labels are displayed in a scroll list with remove buttons ("X") for easy deletion.</li>
 </ul>
 <h4 id="specific-tab">Specific Tab<a class="headerlink" href="#specific-tab" title="Permanent link">#</a></h4>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenantMetadataSpecificTab.png" data-desc-position="bottom"><img alt="tenantMetadataSpecificTab" src="../images/generated/tenantMetadataSpecificTab.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/tenant-metadata-specific-tab.png" data-desc-position="bottom"><img alt="tenant-metadata-specific-tab" src="../images/generated/tenant-metadata-specific-tab.png"></a></p>
 <ul>
 <li>Includes an Add Accordion button.</li>
 <li>Each accordion contains the following fields:<ul>
@@ -6096,7 +6096,7 @@ Alternatively, users can opt to view quota settings on a per-namespace basis. Th
 <li>Users finalize the tenant creation process by clicking the Create button.</li>
 </ul>
 <h3 id="yaml-view">YAML View<a class="headerlink" href="#yaml-view" title="Permanent link">#</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/YamlView.png" data-desc-position="bottom"><img alt="YamlView" src="../images/generated/YamlView.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/yaml-view.png" data-desc-position="bottom"><img alt="yaml-view" src="../images/generated/yaml-view.png"></a></p>
 <ul>
 <li>A YAML representation of the configuration can be previewed as user clicks on the last navigation item in the sidebar creation or update.</li>
 </ul>
