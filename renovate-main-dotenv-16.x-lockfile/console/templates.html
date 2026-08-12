@@ -5516,12 +5516,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <h1 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">#</a></h1>
 <p>The <a href="https://docs.stakater.com/template-operator/main/kubernetes-resources/template.html">Templates</a> section acts as a repository for standardized resource deployment patterns, which can be utilized to maintain consistency and reliability across tenant environments. Few examples include provisioning specific k8s manifests, Helm charts, Secrets or ConfigMaps across a set of namespaces.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/templates.png" data-desc-position="bottom"><img alt="templates" src="../images/templates.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/templates.png" data-desc-position="bottom"><img alt="templates" src="../images/generated/templates.png"></a></p>
 <p>The Templates list page shows each template in a row with <strong>Name</strong>, <strong>Type</strong>, <strong>Version</strong>, <strong>Created</strong>, and <strong>Actions</strong> columns. Templates currently in use are marked with an <code>In Use</code> badge next to the name. Clicking on a template's name opens its Template Instances page, which has separate <strong>Template Instances</strong> and <strong>Cluster Template Instances</strong> tabs. The <strong>Actions</strong> kebab menu on each row provides options to view instances, view YAML, edit, or delete the template.</p>
 <h2 id="create-template">Create Template<a class="headerlink" href="#create-template" title="Permanent link">#</a></h2>
 <p>The template creation process in the MTO Console is designed to be intuitive and flexible, allowing users to define reusable deployment patterns for resources such as Kubernetes manifests, Helm charts, Secrets, or ConfigMaps. Click the <strong>Create Template</strong> button on the top-right of the Templates page to open the creation drawer. The drawer presents a stepper with the following sections:</p>
 <h3 id="template-overview">Template Overview<a class="headerlink" href="#template-overview" title="Permanent link">#</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/templateCrudDrawerInfo.png" data-desc-position="bottom"><img alt="templateCrudDrawerInfo" src="../images/templateCrudDrawerInfo.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-crud-drawer-info.png" data-desc-position="bottom"><img alt="template-crud-drawer-info" src="../images/generated/template-crud-drawer-info.png"></a></p>
 <ul>
 <li><strong>Template Name</strong> The template name is a required field. Enter a unique and descriptive name for your template.</li>
 <li><strong>Type</strong> Optionally specify the type of template.</li>
@@ -5529,7 +5529,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><strong>Icon</strong> Optionally enter an icon URL to visually distinguish your template in the list view.</li>
 </ul>
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">#</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/templateCrudDrawerParameters.png" data-desc-position="bottom"><img alt="templateCrudDrawerParameters" src="../images/templateCrudDrawerParameters.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-crud-drawer-parameters.png" data-desc-position="bottom"><img alt="template-crud-drawer-parameters" src="../images/generated/template-crud-drawer-parameters.png"></a></p>
 <p>This section allows you to define parameters that can be used within your template for customization.</p>
 <ul>
 <li><strong>Parameter Name &amp; Value:</strong> Add key-value pairs to parameterize your template.</li>
@@ -5541,7 +5541,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>At least one resource must be specified for the template. You can add resources in the following ways:</p>
 <h4 id="helm">Helm<a class="headerlink" href="#helm" title="Permanent link">#</a></h4>
 <p>Use this section to provide Helm chart details if your template is based on a Helm deployment.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/templateHelmResource.png" data-desc-position="bottom"><img alt="templateHelmResource" src="../images/templateHelmResource.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-helm-resource.png" data-desc-position="bottom"><img alt="template-helm-resource" src="../images/generated/template-helm-resource.png"></a></p>
 <ul>
 <li><strong>Release Name:</strong> Enter a name for the Helm release. This will be used as the release identifier when the chart is deployed.</li>
 <li><strong>Chart Name:</strong> Provide the name of the chart within the repository.</li>
@@ -5560,7 +5560,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </code></pre></div>
 <h4 id="resource-mappings">Resource Mappings<a class="headerlink" href="#resource-mappings" title="Permanent link">#</a></h4>
 <p>The Resource Mappings section allows you to define mappings for Kubernetes resources such as Secrets and ConfigMaps, enabling advanced or custom deployment scenarios. This is useful for referencing or distributing existing resources across different namespaces.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/templateResourceMappings.png" data-desc-position="bottom"><img alt="templateResourceMappings" src="../images/templateResourceMappings.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-resource-mappings.png" data-desc-position="bottom"><img alt="template-resource-mappings" src="../images/generated/template-resource-mappings.png"></a></p>
 <ul>
 <li><strong>Resource Type Dropdown:</strong> Select the type of resource you want to map. The available options are<ul>
 <li>Secret</li>
@@ -5573,7 +5573,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </ul>
 <h4 id="manifests">Manifests<a class="headerlink" href="#manifests" title="Permanent link">#</a></h4>
 <p>The Manifests section allows you to add raw Kubernetes manifests directly to your template. This is useful for provisioning standard Kubernetes resources such as Deployments, Services, ConfigMaps, Secrets, NetworkPolicies, and more, using YAML definitions.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/templateManifestResource.png" data-desc-position="bottom"><img alt="templateManifestResource" src="../images/templateManifestResource.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-manifest-resource.png" data-desc-position="bottom"><img alt="template-manifest-resource" src="../images/generated/template-manifest-resource.png"></a></p>
 <ul>
 <li><strong>YAML Editor:</strong> Enter one or more Kubernetes resource definitions in YAML format. Each manifest should follow standard Kubernetes syntax and can include any supported resource kind.</li>
 <li><strong>Multi-Resource Support:</strong> You can define multiple resources in a single template by listing them under the <code>manifests:</code> key as a YAML array.</li>
@@ -5587,7 +5587,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h3 id="save-template">Save Template<a class="headerlink" href="#save-template" title="Permanent link">#</a></h3>
 <p>Once all required configurations are completed, click the <strong>Create</strong> button to save the template.</p>
 <h2 id="yaml-view">YAML View<a class="headerlink" href="#yaml-view" title="Permanent link">#</a></h2>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/templateYAMLView.png" data-desc-position="bottom"><img alt="Template YAML" src="../images/templateYAMLView.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-yaml-view.png" data-desc-position="bottom"><img alt="template-yaml-view" src="../images/generated/template-yaml-view.png"></a></p>
 <p>A YAML representation of the template configuration can be previewed by selecting <strong>View YAML</strong> from the Actions kebab menu on a template row.</p>
 <h2 id="update-template">Update Template<a class="headerlink" href="#update-template" title="Permanent link">#</a></h2>
 <p>Selecting <strong>Edit</strong> from a template's Actions kebab menu on the Templates list page opens the same stepper drawer with all fields pre-populated. This flow is similar to the create flow, except the template name cannot be changed or modified.</p>
