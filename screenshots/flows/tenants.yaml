@@ -1,0 +1,77 @@
+# console/tenants.md -> list page + tenant-detail tabs (9 of the page's 15 images;
+# the create-drawer walk lives in tenants-create.yaml for failure isolation).
+name: docs-tenants
+
+requires:
+  env: [CONSOLE_URL, CONSOLE_USER, CONSOLE_PASSWORD, DOCS_TENANT, DOCS_NAMESPACE]
+  reachable: ["${CONSOLE_URL}"]
+
+viewport:
+  width: 1280
+  height: 800
+  deviceScaleFactor: 2
+  colorScheme: light
+
+steps:
+  - { step: open, url: "${CONSOLE_URL}" }
+  - { step: wait-for, selector: 'input[name="login"], input[name="username"]', timeout: 60s }
+  - { step: fill, selector: 'input[name="login"], input[name="username"]', value: "${CONSOLE_USER}" }
+  - { step: fill, selector: 'input[name="password"]', value: "${CONSOLE_PASSWORD}" }
+  # The click is instant; Playwright then waits for the Dex -> /auth/callback ->
+  # dashboard redirect chain, which exceeds the 10s default on a cold Dex. The
+  # wait-for below is the real gate, so a long timeout here only removes a false
+  # failure.
+  - { step: click, selector: 'button[type="submit"]', timeout: 60s }
+  - { step: wait-for, selector: '[data-testid="dashboard-container"]', timeout: 60s }
+
+  # graph-1.png is the DASHBOARD page (the docs step "navigate to Tenants"),
+  # not the tenants list. Its red callout box cannot be reproduced -- see README.
+  - { step: wait-for, selector: '[data-testid="dashboard-metrics-grid"]', timeout: 30s }
+  - { step: wait, ms: 2s }
+  - { step: screenshot, path: graph-1.png, fullPage: false }
+
+  # Tenants list
+  - { step: open, url: "${CONSOLE_URL}/tenants" }
+  - { step: wait-for, selector: '[data-testid="tenant-table"]', timeout: 30s }
+  - { step: wait-for, selector: '[data-testid="tenant-table"] .animate-pulse', state: detached }
+  - { step: screenshot, path: tenants.png, fullPage: false }
+  # graph-2.png is the same tenants-list view (docs step "click the tenant name")
+  - { step: screenshot, path: graph-2.png, fullPage: false }
+
+  # Tenant details (navigation only -- no original shows the default tab)
+  - { step: click, selector: '[data-testid="tenant-table"] >> text="${DOCS_TENANT}"' }
+  - { step: wait-for-url, url: "/tenants/${DOCS_TENANT}" }
+  - { step: wait-for, selector: '[role="tab"]:has-text("Graph")', timeout: 30s }
+
+  # Graph tab: the graph renders asynchronously after the svg/canvas mounts
+  - { step: click, selector: '[role="tab"]:has-text("Graph")' }
+  - { step: wait-for, selector: '[role="tabpanel"][data-state="active"] .animate-spin', state: detached, timeout: 30s }
+  - { step: wait-for, selector: '[role="tabpanel"][data-state="active"] :is(svg, canvas)', timeout: 30s }
+  - { step: wait, ms: 3s }
+  - { step: screenshot, path: graph-3.png, fullPage: false }
+  - { step: screenshot, path: tenants-graph.png, fullPage: false }
+
+  # Quota tab: aggregated view, then namespace view
+  - { step: click, selector: '[role="tab"]:has-text("Quota")' }
+  - { step: wait-for, selector: '[role="tabpanel"][data-state="active"]', timeout: 30s }
+  - { step: wait-for, selector: '[role="tabpanel"][data-state="active"] .animate-spin', state: detached, timeout: 30s }
+  - { step: wait, ms: 1s }
+  - { step: screenshot, path: tenant-quota-aggregated-view.png, fullPage: false }
+  - { step: click, selector: '[role="tabpanel"][data-state="active"] >> text=Namespace' }
+  - { step: wait, ms: 1s }
+  - { step: screenshot, path: tenant-quota-namespace-view.png, fullPage: false }
+
+  # Utilization tab: namespace table, then drill into one namespace
+  - { step: click, selector: '[role="tab"]:has-text("Utilization")' }
+  - { step: wait-for, selector: '[role="tabpanel"][data-state="active"] table', timeout: 30s }
+  - { step: wait-for, selector: '[role="tabpanel"][data-state="active"] .animate-spin', state: detached, timeout: 30s }
+  - { step: wait, ms: 1s }
+  - { step: screenshot, path: tenant-utilization-namespaces.png, fullPage: false }
+  - { step: click, selector: '[role="tabpanel"][data-state="active"] >> text="${DOCS_NAMESPACE}"' }
+  - { step: wait-for, selector: '[role="tabpanel"][data-state="active"] .animate-spin', state: detached, timeout: 30s }
+  - { step: wait-for, selector: '[role="tabpanel"][data-state="active"] :is(svg, canvas)', timeout: 30s }
+  - { step: wait, ms: 3s }
+  - { step: screenshot, path: tenant-utilization-namespace-stats.png, fullPage: false }
+
+after:
+  - { step: screenshot, when: on-failure, path: _failure-tenants.png }

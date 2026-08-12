@@ -16,6 +16,14 @@ extra:
     provider: mike
     default: latest
 
+# Resolves {{ screenshot: <name> }} directives to the images captured by
+# screenshots/capture.sh. Our own module, loaded by mkdocs' built-in hooks: key --
+# no plugin to install, and it only touches that exact pattern (mkdocs-macros would
+# enable Jinja2 on every page and try to evaluate the {{ .Role }} / {{ issuer }}
+# templating examples in the integration docs).
+hooks:
+  - screenshots/mkdocs_hook.py
+
 plugins:
   - search
   - glightbox

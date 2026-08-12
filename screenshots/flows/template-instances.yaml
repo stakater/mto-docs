@@ -1,0 +1,92 @@
+# console/template-instances.md -> 6 images.
+# Requires "docs-seed-template" from _seed.yaml (runs first on a full run).
+#   1. walks the Create Instance drawer (shooting type-select / basic info / params)
+#      and REALLY creates instance "docs-instance" in DOCS_NAMESPACE
+#   2. shoots the list AFTER creation (row shows Deployed), details, YAML view
+#   3. cleanup happens in _teardown.yaml, which runs last on a full run
+name: docs-template-instances
+
+requires:
+  env: [CONSOLE_URL, CONSOLE_USER, CONSOLE_PASSWORD, DOCS_NAMESPACE]
+  reachable: ["${CONSOLE_URL}"]
+
+viewport:
+  width: 1280
+  height: 800
+  deviceScaleFactor: 2
+  colorScheme: light
+
+steps:
+  - { step: open, url: "${CONSOLE_URL}" }
+  - { step: wait-for, selector: 'input[name="login"], input[name="username"]', timeout: 60s }
+  - { step: fill, selector: 'input[name="login"], input[name="username"]', value: "${CONSOLE_USER}" }
+  - { step: fill, selector: 'input[name="password"]', value: "${CONSOLE_PASSWORD}" }
+  # The click is instant; Playwright then waits for the Dex -> /auth/callback ->
+  # dashboard redirect chain, which exceeds the 10s default on a cold Dex. The
+  # wait-for below is the real gate, so a long timeout here only removes a false
+  # failure.
+  - { step: click, selector: 'button[type="submit"]', timeout: 60s }
+  - { step: wait-for, selector: '[data-testid="dashboard-container"]', timeout: 60s }
+
+  # --- Create Instance drawer (with screenshots) -------------------------------
+  - { step: open, url: "${CONSOLE_URL}/templates/instances" }
+  - { step: wait-for, selector: 'h1:has-text("All Template Instances")', timeout: 30s }
+  - { step: click, selector: 'button:has-text("Create Instance(s)")' }
+  - { step: wait-for, selector: '[role="dialog"] >> text="Cluster Template Instance"', timeout: 15s }
+  - { step: screenshot, path: template-instance-create-drawer.png, fullPage: false }
+
+  - { step: click, selector: '[role="dialog"] >> text="Template Instance"' }
+  - { step: wait-for, selector: '[role="dialog"] >> text=Instance Name', timeout: 15s }
+  # Original shows this step UNTOUCHED (placeholders, Auto Sync off) -- shoot first
+  - { step: screenshot, path: template-instance-create-drawer-info.png, fullPage: false }
+  - { step: fill, selector: '[role="dialog"] input >> nth=0', value: docs-instance }
+  # VERIFY on first run: namespace + template combobox order.
+  # After each pick, assert the closed combobox now DISPLAYS the selection --
+  # a missed pick fails here instead of shooting a half-filled drawer.
+  - { step: click, selector: '[role="dialog"] [role="combobox"] >> nth=0' }
+  - { step: click, selector: '[role="option"]:has-text("${DOCS_NAMESPACE}")' }
+  - { step: wait-for, selector: '[role="option"]', state: detached }
+  - { step: wait-for, selector: '[role="dialog"] [role="combobox"]:has-text("${DOCS_NAMESPACE}")', timeout: 15s }
+  - { step: click, selector: '[role="dialog"] [role="combobox"] >> nth=1' }
+  - { step: click, selector: '[role="option"]:has-text("docs-seed-template")' }
+  - { step: wait-for, selector: '[role="option"]', state: detached }
+  - { step: wait-for, selector: '[role="dialog"] [role="combobox"]:has-text("docs-seed-template")', timeout: 15s }
+
+  # Parameters step (left empty, as in the old image -- the param has a default)
+  - { step: click, selector: '[role="dialog"] button:has-text("Next")' }
+  - { step: wait-for, selector: '[role="dialog"] >> text=Set Parameter Values', timeout: 15s }
+  - { step: screenshot, path: template-instance-create-drawer-params.png, fullPage: false }
+
+  # REALLY create, then the list AFTER creation shows a Deployed row
+  - { step: click, selector: '[role="dialog"] button:has-text("Create Instance")' }
+  - { step: wait-for, selector: '[role="dialog"]', state: detached, timeout: 30s }
+  - { step: wait-for, selector: 'tr:has-text("docs-instance") >> text=Deployed', timeout: 90s }
+  - { step: screenshot, path: template-instances.png, fullPage: false }
+
+  # Details page
+  - { step: click, selector: 'table >> text="docs-instance"' }
+  - { step: wait-for, selector: 'text="Specification"', timeout: 30s }
+  - { step: wait, ms: 1s }
+  - { step: screenshot, path: template-instance-details.png, fullPage: false }
+
+  # YAML view
+  - { step: open, url: "${CONSOLE_URL}/templates/instances" }
+  - { step: wait-for, selector: 'h1:has-text("All Template Instances")', timeout: 30s }
+  - { step: click, selector: 'tr:has-text("docs-instance") >> [aria-haspopup="menu"]' }
+  - { step: click, selector: '[role="menuitem"]:has-text("YAML")' }
+  - { step: wait-for, selector: '[data-testid="yaml-editor-container"]', timeout: 15s }
+  # The testid is the static wrapper -- Monaco lazy-mounts inside it, so wait for
+  # rendered lines, not just the container.
+  - { step: wait-for, selector: '[data-testid="yaml-editor-container"] .view-lines', timeout: 30s }
+  - { step: wait-for, selector: '[data-testid="yaml-editor-container"] >> text=apiVersion', timeout: 15s }
+  # Monaco paints text into .view-lines BEFORE it renders the line-number gutter
+  # and applies syntax colouring, so waiting on .view-lines alone can capture a
+  # half-initialised editor (plain text, no gutter). Wait for the gutter too,
+  # then settle briefly for tokenisation.
+  - { step: wait-for, selector: '[data-testid="yaml-editor-container"] .line-numbers', timeout: 30s }
+  - { step: wait, ms: 1s }
+  - { step: screenshot, path: template-instance-yaml-view.png, fullPage: false }
+
+after:
+  # Cleanup lives in _teardown.yaml (runs last, non-fatal)
+  - { step: screenshot, when: on-failure, path: _failure-template-instances.png }

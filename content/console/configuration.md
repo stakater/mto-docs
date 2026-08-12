@@ -6,7 +6,7 @@
 
 Administrators have overarching access to the console, including the ability to view all namespaces and tenants. They have exclusive access to the IntegrationConfig, allowing them to view all the settings and integrations.
 
-![integration Config](../images/integrationConfig.png)
+{{ screenshot: integration-config }}
 
 ### Tenant Users
 
