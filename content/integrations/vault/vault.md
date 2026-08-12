@@ -267,7 +267,7 @@ The auth role's `bound_service_account_names` lists exactly the labelled service
 ### What deletion does
 
 !!! warning
-    Setting `enabled: false` removes each tenant's `<tenant>-admin` and `<tenant>-read` policies and its identity groups, and unmounts its `<tenant>/kv` secrets engine. Unmounting a KV engine deletes the secrets stored in it. Deleting the `vault` block outright does not run that cleanup — it leaves everything in Vault as it stands.
+    Setting `enabled: false` removes each tenant's `<tenant>-admin` and `<tenant>-read` policies and its identity groups, and unmounts its `<tenant>/kv` secrets engine. Removing that mount deletes the secrets stored in it. Deleting the `vault` block outright does not run that cleanup — it leaves everything in Vault as it stands.
 
 Deleting a namespace removes its auth role. Removing a group from the tenant's `accessControl` deletes the matching Vault identity group, so access follows the tenant definition rather than lingering in Vault.
 
