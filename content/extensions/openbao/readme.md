@@ -16,7 +16,7 @@ The other half is what it removes from application teams. A developer never writ
 
 ## What using it looks like
 
-Everything an application team writes fits on one screen. The ServiceAccount says what the application needs, the Deployment says which secret it wants delivered, and the container reads an ordinary Kubernetes `Secret`:
+Everything an application team writes fits on one screen. The ServiceAccount says what the application needs, the Deployment says which secret to deliver, and the container reads an ordinary Kubernetes `Secret`:
 
 ```yaml
 apiVersion: v1
@@ -54,7 +54,7 @@ The OpenBao policy, the login role and the Kubernetes `Secret` are all created f
 | Capability | Default | What it is |
 |:---|:---|:---|
 | A private OpenBao namespace | on | Everything for the tenant lives under `<tenant>/`. One tenant cannot see or reach another tenant's namespace. |
-| Secrets storage | on | A KV version 2 engine, with each application's secrets on its own path. |
+| Secrets storage | on | A KV engine (version 2), with each application's secrets on its own path. |
 | Encryption keys | on | A transit engine: the workload sends data and gets it back encrypted, and the key never leaves OpenBao. |
 | Certificates | on | A PKI certificate authority per tenant, for serving TLS and for service-to-service mTLS. |
 | Secret delivery | on | Secrets arrive as ordinary Kubernetes `Secret`s through the External Secrets Operator, so an application needs no OpenBao code. |
@@ -105,7 +105,7 @@ MTO labels each tenant namespace `stakater.com/tenant=<tenant-name>`, and the ex
 
 The extension is installed once per cluster; there is no per-tenant installation step. It watches `Tenant` resources cluster-wide and renders one set of configuration per tenant, which the OpenBao Config Operator then applies to OpenBao.
 
-A tenant is picked up once its spec lists at least one namespace under `withTenantPrefix` or `withoutTenantPrefix`; add one to a skipped tenant and it is picked up on the next render. The check reads those two fields and nothing else: sandboxes do not count, and neither do namespaces attached to the tenant by label alone — a `Tenant` listing none is skipped even when labelled namespaces exist for it. A skipped tenant is silent rather than failing; it has no rendered configuration to report on.
+A tenant is picked up once its spec lists at least one namespace under `withTenantPrefix` or `withoutTenantPrefix`; add one to a skipped tenant, and it is picked up on the next render. The check reads those two fields and nothing else: sandboxes do not count, and neither do namespaces attached to the tenant by label alone — a `Tenant` listing none is skipped even when labelled namespaces exist for it. A skipped tenant is silent rather than failing; it has no rendered configuration to report on.
 
 The extension ships as the `openbao-config-mto-bootstrap` Helm chart, and these are its values — set them wherever your platform supplies Helm values for that chart. Everything under `parent` is passed down to every tenant, so this is where you point the cluster at your OpenBao server and decide which features are on:
 
@@ -354,7 +354,7 @@ Two workloads that must exchange encrypted data use the tenant-shared key on bot
 
 ## Issuing certificates
 
-Each tenant gets its own certificate authority. By default it is an intermediate signed by a cluster-wide platform CA, so every tenant's certificates chain back to a single anchor. Trusting another tenant is still opt-in — the anchor alone grants nothing.
+Each tenant gets its own certificate authority. By default, it is an intermediate signed by a cluster-wide platform CA, so every tenant's certificates chain back to a single anchor. Trusting another tenant is still opt-in — the anchor alone grants nothing.
 
 ```mermaid
 flowchart LR
@@ -491,7 +491,7 @@ Deleting a resource does not destroy the data behind it, by default.
 | An engine, an OpenBao namespace or an auth mount | Retained. The OpenBao object and everything stored under it survives; re-creating an identical resource adopts it back. |
 | A policy, login role, group or alias | Deleted, so the access it granted is revoked. |
 
-The practical consequence: **deleting an MTO `Tenant` does not destroy its OpenBao data.** Its secrets, encryption keys and certificate authority are retained while its policies and login roles are removed, so access closes but the data is recoverable by re-creating the tenant.
+The practical consequence: **deleting an MTO `Tenant` does not destroy its OpenBao data.** Its secrets, encryption keys and certificate authority are retained while its policies and login roles are removed, so access closes, but the data is recoverable by re-creating the tenant.
 
 !!! warning
     To remove a tenant's data for real, delete the tenant and then, with an OpenBao administrator token, delete its OpenBao namespace — `bao namespace delete <tenant>` cascades through everything inside it.
