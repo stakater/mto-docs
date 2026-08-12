@@ -55,8 +55,8 @@ The OpenBao policy, the login role and the Kubernetes `Secret` are all created f
 |:---|:---|:---|
 | A private OpenBao namespace | on | Everything for the tenant lives under `<tenant>/`. One tenant cannot see or reach another tenant's namespace. |
 | Secrets storage | on | A KV version 2 engine, with each application's secrets on its own path. |
-| Encryption keys | on | A transit engine: the workload sends data and gets ciphertext back, and the key never leaves OpenBao. |
-| Certificates | on | A PKI certificate authority per tenant, for HTTPS and service-to-service mTLS. |
+| Encryption keys | on | A transit engine: the workload sends data and gets it back encrypted, and the key never leaves OpenBao. |
+| Certificates | on | A PKI certificate authority per tenant, for serving TLS and for service-to-service mTLS. |
 | Secret delivery | on | Secrets arrive as ordinary Kubernetes `Secret`s through the External Secrets Operator, so an application needs no OpenBao code. |
 | Human login | off | Tenant members sign in through your OIDC identity provider, and their group membership decides their access. |
 | cert-manager issuance | off | A cert-manager `Issuer` per namespace, so applications request certificates the usual way. |
@@ -195,7 +195,7 @@ bao kv put -mount=kv dev/team-a-api/web/postgres username=app password=s3cr3t
 
 In the OpenBao web UI, open the `kv` mount and browse `dev/team-a-api/web/`. The `/data/` segment in `kvPath` is an API artefact and does not appear in the UI.
 
-![The kv mount browsed to one application's own path, holding its secrets.](../../images/openbao-kv-tree.png)
+![The KV mount browsed to one application's own path, holding its secrets.](../../images/openbao-kv-tree.png)
 
 The breadcrumb is the path from `bao-apps`: the `kv` mount, then `<env>/<namespace>/<app>/`. Everything under it belongs to that one application.
 
@@ -239,7 +239,7 @@ The ConfigMap always carries the server address, the tenant's OpenBao namespace,
 | `VAULT_KV_APP_PATH` | `kv/data/dev/team-a-api/web/` | where this application's secrets live |
 | `VAULT_KV_SHARED_OUT_PATH` | `kv/data/dev/_shared/from-team-a-api/` | the namespace's shared folder |
 
-Read these from the ConfigMap rather than hardcoding them — they differ per tenant and per application. Transit and PKI add their own keys when those engines are enabled.
+Read these from the ConfigMap rather than copying them into your manifests — they differ per tenant and per application. Transit and PKI add their own keys when those engines are enabled.
 
 !!! note
     Every engine is reached this same way: one login with the ServiceAccount token, then the paths from the ConfigMap. Once you know it, transit and PKI need nothing new.
@@ -320,7 +320,7 @@ metadata:
     bao.stakater.com/kv-subscribe-ns: team-a-api
 ```
 
-Subscribing only ever grants read, so no namespace can write into another's folder. You can only subscribe to namespaces in your own tenant.
+Subscribing only ever grants read, so no namespace can write into another namespace's folder. You can only subscribe to namespaces in your own tenant.
 
 ### Between tenants
 
@@ -350,7 +350,7 @@ curl -s --request POST \
   "${VAULT_ADDR}/v1/${VAULT_TRANSIT_APP_ENCRYPT}"
 ```
 
-Two workloads that must exchange ciphertext use the tenant-shared key on both sides. Across tenants, `transit-export-tenant` and `transit-import-tenant` create one key per pair: the exporter may encrypt and decrypt, the importer may only decrypt.
+Two workloads that must exchange encrypted data use the tenant-shared key on both sides. Across tenants, `transit-export-tenant` and `transit-import-tenant` create one key per pair: the exporter may encrypt and decrypt, the importer may only decrypt.
 
 ## Issuing certificates
 
