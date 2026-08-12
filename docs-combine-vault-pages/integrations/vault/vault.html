@@ -5925,7 +5925,7 @@ vault<span class="w"> </span><span class="nb">read</span><span class="w"> </span
 <h3 id="what-deletion-does">What deletion does<a class="headerlink" href="#what-deletion-does" title="Permanent link">#</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Setting <code>enabled: false</code> removes each tenant's <code>&lt;tenant&gt;-admin</code> and <code>&lt;tenant&gt;-read</code> policies and its identity groups, and unmounts its <code>&lt;tenant&gt;/kv</code> secrets engine. Unmounting a KV engine deletes the secrets stored in it. Deleting the <code>vault</code> block outright does not run that cleanup — it leaves everything in Vault as it stands.</p>
+<p>Setting <code>enabled: false</code> removes each tenant's <code>&lt;tenant&gt;-admin</code> and <code>&lt;tenant&gt;-read</code> policies and its identity groups, and unmounts its <code>&lt;tenant&gt;/kv</code> secrets engine. Removing that mount deletes the secrets stored in it. Deleting the <code>vault</code> block outright does not run that cleanup — it leaves everything in Vault as it stands.</p>
 </div>
 <p>Deleting a namespace removes its auth role. Removing a group from the tenant's <code>accessControl</code> deletes the matching Vault identity group, so access follows the tenant definition rather than lingering in Vault.</p>
 <h2 id="using-microsoft-entra-id-group-ids">Using Microsoft Entra ID group IDs<a class="headerlink" href="#using-microsoft-entra-id-group-ids" title="Permanent link">#</a></h2>
