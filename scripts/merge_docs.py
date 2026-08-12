@@ -312,6 +312,32 @@ def write_nav(text, nav):
     return "".join(lines[:start]) + block + "".join(lines[end:])
 
 
+def insert_extra_list(text, key, values):
+    """Add `key: [values]` under the top-level `extra:` mapping in mkdocs.yml text.
+
+    Text-level insertion for the same reason the nav is edited that way: the file
+    carries `!!python/name:` tags that a safe_load round-trip would drop. When the
+    file has no top-level `extra:` block, one is appended.
+    """
+    if not values:
+        return text
+    block = yaml.safe_dump({key: values}, sort_keys=False, allow_unicode=True,
+                           default_flow_style=False)
+    body = "".join(f"  {line}\n" for line in block.splitlines())
+    lines = text.splitlines(keepends=True)
+    for i, line in enumerate(lines):
+        if re.match(r"^extra\s*:\s*$", line):
+            for j in range(i + 1, len(lines)):
+                if not lines[j][0].isspace():
+                    break
+                if re.match(rf"^  {re.escape(key)}\s*:", lines[j]):
+                    raise ValueError(f"extra.{key} already present in {lines[j].strip()!r}")
+            return "".join(lines[:i + 1]) + body + "".join(lines[i + 1:])
+    if text and not text.endswith("\n"):
+        text += "\n"
+    return text + "extra:\n" + body
+
+
 def load_config(path):
     data = yaml.safe_load(Path(path).read_text())
     operators = []
@@ -457,6 +483,19 @@ def rewrite_links(text, src_rel, dest_rel, mapping, live_url=None,
     return text, external
 
 
+def validate_mapping(mapping):
+    """Reject `label` combinations that cannot render as an operator header."""
+    if not mapping.get("label"):
+        return
+    where = mapping.get("from")
+    if not mapping.get("flatten"):
+        raise ValueError(f"label requires flatten: true (mapping from {where!r})")
+    if mapping.get("title"):
+        raise ValueError(f"label and title are mutually exclusive (mapping from {where!r})")
+    if not mapping.get("under"):
+        raise ValueError(f"label requires under (mapping from {where!r})")
+
+
 def run(operators, content_dir, mkdocs_path, repo_overrides=None, site_title=None):
     content_dir = Path(content_dir)
     overrides = repo_overrides or {}
@@ -464,6 +503,7 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None, site_title=Non
     nav = read_nav(text)
     seen = {}
     flat_pages = []   # (under, dest, source_title) for flattened untitled pages
+    nav_labels = []   # operator titles emitted as nav labels, in first-seen order
 
     for op in operators:
         repo = Path(overrides.get(op["slug"], op["repo"]))
@@ -473,10 +513,14 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None, site_title=Non
 
         folder_titles = read_folder_titles(repo)   # from the sub-op's own nav
         under_entries = {}
-        flat_leaves = []  # (under, leaf-entry) for flatten mappings, in nav order
+        # (under, kind, payload) for flatten mappings, in mapping order.
+        # kind "leaf" -> a direct child of the section; kind "group" -> the
+        # operator-titled section the theme renders as a label header.
+        flat_inserts = []
         op_map = {}       # source-relative path -> content-relative destination
         md_files = []     # (src_rel, dest_rel) of copied markdown, for link rewriting
         for mapping in op["mappings"]:
+            validate_mapping(mapping)
             base = glob_base(mapping["from"])
             matches = find_matches(docs, mapping["from"], op["exclude"])
             if not matches:
@@ -504,14 +548,20 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None, site_title=Non
             # flatten: merge as direct leaves under the section (no op wrapper).
             # A `title` renames a single-file mapping; with several files it names
             # a folder holding them, else each page keeps its own H1 as the label.
+            # `label` instead groups the pages under the operator's own title,
+            # which the theme renders as a plain header (see extra.nav_labels).
             if flatten and mapping_dests:
                 title = mapping.get("title")
-                if title and len(mapping_dests) == 1:
-                    flat_leaves.append((mapping["under"], {title: mapping_dests[0]}))
+                if mapping.get("label"):
+                    flat_inserts.append((mapping["under"], "group", mapping_dests))
+                    if op["title"] not in nav_labels:
+                        nav_labels.append(op["title"])
+                elif title and len(mapping_dests) == 1:
+                    flat_inserts.append((mapping["under"], "leaf", {title: mapping_dests[0]}))
                 elif title:
-                    flat_leaves.append((mapping["under"], {title: mapping_dests}))
+                    flat_inserts.append((mapping["under"], "leaf", {title: mapping_dests}))
                 else:
-                    flat_leaves.extend((mapping["under"], d) for d in mapping_dests)
+                    flat_inserts.extend((mapping["under"], "leaf", d) for d in mapping_dests)
                     # untitled flat pages are candidates for duplicate auto-grouping
                     flat_pages.extend((mapping["under"], d, op["title"]) for d in mapping_dests)
 
@@ -535,8 +585,11 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None, site_title=Non
 
         for under, entries in under_entries.items():
             insert_subtree(nav, under, op["title"], build_nav_tree(entries, folder_titles))
-        for under, leaf in flat_leaves:
-            insert_leaves(nav, under, [leaf])
+        for under, kind, payload in flat_inserts:
+            if kind == "group":
+                insert_subtree(nav, under, op["title"], payload)
+            else:
+                insert_leaves(nav, under, [payload])
 
     # post-merge: auto-fold pages that collide by basename across sources into a
     # per-page folder with per-source labels (e.g. ArgoCD -> {MTO, Hibernation})
@@ -546,7 +599,9 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None, site_title=Non
     for group in build_duplicate_groups(nav, flat_pages, content_dir, site_title):
         apply_group(nav, group)
 
-    Path(mkdocs_path).write_text(write_nav(text, nav))
+    out = write_nav(text, nav)
+    out = insert_extra_list(out, "nav_labels", nav_labels)
+    Path(mkdocs_path).write_text(out)
 
 
 def parse_repo_overrides(pairs):

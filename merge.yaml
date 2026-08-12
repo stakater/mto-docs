@@ -10,11 +10,21 @@
 # sub-operators) under one flattened section are auto-folded into a per-page
 # folder (titled by the page H1) with one labelled leaf per source. mto-docs'
 # own leaf is labelled with `site_title` (defaults to the mkdocs site_name).
+# This path stays in the code for any mapping that isn't labelled, but every
+# untitled flatten mapping below now carries `label: true`, so this folding is
+# currently unused and `site_title` only matters again if a mapping stops
+# being labelled.
+#
+# A mapping with `label: true` (flatten mappings only) groups that operator's
+# pages under a header titled with the operator's `title`. The header is a plain
+# label, not a clickable folder, and its pages sit at the same indent as MTO's.
+# Labelled pages are never auto-folded as duplicates since the header already
+# says which operator they came from. `label` and `title` are mutually exclusive.
 site_title: "Tenant Operator"
 operators:
   - title: Template Operator
     repo: https://github.com/stakater/template-operator-docs.git
-    branch: added-concepts            # optional; empty -> the repo's default branch
+    # branch: added-concepts            # optional; empty -> the repo's default branch
     # links to pages NOT whitelisted below fall back to this published site
     live_url: https://docs.stakater.com/template-operator-docs/
     live_url_style: directory
@@ -23,6 +33,7 @@ operators:
         into: "concepts"                # (architecture/terminology excluded below)
         under: "Concepts"
         flatten: true
+        label: true
       - from: "reference/api.md"        # single file, one custom-named entry
         into: "reference/api"
         under: "API Reference"
@@ -32,6 +43,7 @@ operators:
         into: "guides"
         under: "Guides"
         flatten: true
+        label: true
       - from: "images/**"
         into: "images"          # assets only, no menu entry
     exclude:
@@ -41,7 +53,7 @@ operators:
 
   - title: Hibernation Operator
     repo: https://github.com/stakater/hibernation-operator-docs.git
-    branch: added-concepts            # optional; empty -> the repo's default branch
+    # branch: added-concepts            # optional; empty -> the repo's default branch
     live_url: https://docs.stakater.com/hibernation-operator-docs/
     live_url_style: html          # sub-op uses use_directory_urls: false
     mappings:
@@ -49,6 +61,7 @@ operators:
         into: "concepts"                # (architecture/terminology excluded below)
         under: "Concepts"
         flatten: true
+        label: true
       - from: "reference/api.md"        # single file, one custom-named entry
         into: "reference/api"
         under: "API Reference"
@@ -58,10 +71,12 @@ operators:
         into: "guides"
         under: "Guides"
         flatten: true
+        label: true
       - from: "integrations/**"        # merged flat into the Integrations section
         into: "integrations"
         under: "Integrations"
         flatten: true
+        label: true
       - from: "images/**"
         into: "images"
     exclude:

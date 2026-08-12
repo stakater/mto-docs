@@ -579,3 +579,282 @@ def test_main_end_to_end(tmp_path, monkeypatch):
                  "--set-repo", f"template-operator={repo}"])
     assert rc == 0
     assert (content / "kubernetes-resources/template-operator/create.md").is_file()
+
+
+def test_insert_extra_list_under_existing_extra():
+    text = (
+        "docs_dir: content\n"
+        "extra:\n"
+        "  version:\n"
+        "    provider: mike\n"
+        "nav:\n"
+        "  - index.md\n"
+    )
+    got = m.insert_extra_list(text, "nav_labels", ["Template Operator", "Hibernation Operator"])
+    assert got == (
+        "docs_dir: content\n"
+        "extra:\n"
+        "  nav_labels:\n"
+        "  - Template Operator\n"
+        "  - Hibernation Operator\n"
+        "  version:\n"
+        "    provider: mike\n"
+        "nav:\n"
+        "  - index.md\n"
+    )
+
+
+def test_insert_extra_list_appends_extra_when_missing():
+    text = "docs_dir: content\nnav:\n  - index.md\n"
+    got = m.insert_extra_list(text, "nav_labels", ["Template Operator"])
+    assert got == (
+        "docs_dir: content\n"
+        "nav:\n"
+        "  - index.md\n"
+        "extra:\n"
+        "  nav_labels:\n"
+        "  - Template Operator\n"
+    )
+
+
+def test_insert_extra_list_empty_values_is_noop():
+    text = "extra:\n  version:\n    provider: mike\n"
+    assert m.insert_extra_list(text, "nav_labels", []) == text
+
+
+def test_insert_extra_list_existing_key_raises():
+    # a stale nav_labels already in the file would otherwise be duplicated, and
+    # PyYAML keeps the last one on reload -- silently dropping our fresh labels
+    text = "extra:\n  nav_labels:\n  - Stale Operator\n"
+    with pytest.raises(ValueError, match="nav_labels"):
+        m.insert_extra_list(text, "nav_labels", ["Template Operator"])
+
+
+def test_validate_mapping_label_requires_flatten():
+    with pytest.raises(ValueError, match="flatten"):
+        m.validate_mapping({"from": "guides/**", "into": "guides",
+                            "under": "Guides", "label": True})
+
+
+def test_validate_mapping_label_conflicts_with_title():
+    with pytest.raises(ValueError, match="title"):
+        m.validate_mapping({"from": "guides/**", "into": "guides", "under": "Guides",
+                            "flatten": True, "label": True, "title": "Guides"})
+
+
+def test_validate_mapping_label_requires_under():
+    with pytest.raises(ValueError, match="under"):
+        m.validate_mapping({"from": "guides/**", "into": "guides",
+                            "flatten": True, "label": True})
+
+
+def test_validate_mapping_accepts_valid_mappings():
+    m.validate_mapping({"from": "guides/**", "into": "guides", "under": "Guides",
+                        "flatten": True, "label": True})
+    m.validate_mapping({"from": "reference/api.md", "into": "reference/api",
+                        "under": "API Reference", "flatten": True, "title": "Template"})
+    m.validate_mapping({"from": "images/**", "into": "images"})
+
+
+def test_run_label_groups_pages_under_operator_header(tmp_path):
+    repo = tmp_path / "template-operator-docs"
+    _touch(repo / "content", "guides/create.md", "guides/delete.md")
+    content = tmp_path / "content"; content.mkdir()
+    mkdocs = tmp_path / "mkdocs.yml"
+    mkdocs.write_text(
+        "site_name: MTO\nextra:\n  version:\n    provider: mike\n"
+        "nav:\n  - Guides:\n      - guides/own.md\n"
+    )
+    operators = [{
+        "title": "Template Operator", "repo": str(repo), "slug": "template-operator",
+        "docs_dir": "content", "exclude": [],
+        "mappings": [{"from": "guides/**", "into": "guides", "under": "Guides",
+                      "flatten": True, "label": True}],
+    }]
+    m.run(operators, str(content), str(mkdocs))
+
+    out = mkdocs.read_text()
+    section = m.find_section(m.read_nav(out), "Guides")
+    # mto's own leaf stays first and bare, the operator's pages sit in a titled group
+    assert section == [
+        "guides/own.md",
+        {"Template Operator": ["guides/template-operator/create.md",
+                              "guides/template-operator/delete.md"]},
+    ]
+    # the theme needs the title in extra.nav_labels to render it as a label
+    assert "  nav_labels:\n  - Template Operator\n" in out
+
+
+def test_run_label_merges_two_mappings_into_one_group(tmp_path):
+    repo = tmp_path / "repo"
+    _touch(repo / "content", "guides/create.md", "howto/extra.md")
+    content = tmp_path / "content"; content.mkdir()
+    mkdocs = tmp_path / "mkdocs.yml"
+    mkdocs.write_text("site_name: MTO\nnav:\n  - Guides:\n      - guides/own.md\n")
+    operators = [{
+        "title": "Template Operator", "repo": str(repo), "slug": "template-operator",
+        "docs_dir": "content", "exclude": [],
+        "mappings": [
+            {"from": "guides/**", "into": "guides", "under": "Guides",
+             "flatten": True, "label": True},
+            {"from": "howto/**", "into": "guides", "under": "Guides",
+             "flatten": True, "label": True},
+        ],
+    }]
+    m.run(operators, str(content), str(mkdocs))
+
+    section = m.find_section(m.read_nav(mkdocs.read_text()), "Guides")
+    # one header, not two
+    assert section == [
+        "guides/own.md",
+        {"Template Operator": ["guides/template-operator/create.md",
+                              "guides/template-operator/extra.md"]},
+    ]
+    # nav_labels is de-duplicated (this fixture has no `extra:`, so the whole
+    # appended block is exactly the one key with one entry)
+    extra_block = mkdocs.read_text().split("extra:\n", 1)[1]
+    assert extra_block == "  nav_labels:\n  - Template Operator\n"
+
+
+def test_run_labelled_pages_are_not_folded_as_duplicates(tmp_path):
+    repo = tmp_path / "hib-docs"
+    _touch(repo / "content", "integrations/argocd.md")
+    (repo / "content/integrations/argocd.md").write_text("# ArgoCD\n")
+    content = tmp_path / "content"
+    (content / "integrations").mkdir(parents=True)
+    (content / "integrations/argocd.md").write_text("# ArgoCD\n")   # mto's own
+    mkdocs = tmp_path / "mkdocs.yml"
+    mkdocs.write_text(
+        "site_name: Multi-Tenant Operator\nnav:\n"
+        "  - Integrations:\n      - integrations/argocd.md\n"
+    )
+    operators = [{
+        "title": "Hibernation Operator", "repo": str(repo), "slug": "hibernation-operator",
+        "docs_dir": "content", "exclude": [],
+        "mappings": [{"from": "integrations/**", "into": "integrations",
+                      "under": "Integrations", "flatten": True, "label": True}],
+    }]
+    m.run(operators, str(content), str(mkdocs))
+
+    section = m.find_section(m.read_nav(mkdocs.read_text()), "Integrations")
+    # the header disambiguates, so no shared "ArgoCD" folder is created
+    assert section == [
+        "integrations/argocd.md",
+        {"Hibernation Operator": ["integrations/hibernation-operator/argocd.md"]},
+    ]
+
+
+def test_run_without_labels_writes_no_nav_labels(tmp_path):
+    repo = tmp_path / "repo"
+    _touch(repo / "content", "guides/create.md")
+    content = tmp_path / "content"; content.mkdir()
+    mkdocs = tmp_path / "mkdocs.yml"
+    mkdocs.write_text("site_name: MTO\nnav:\n  - Guides:\n      - guides/own.md\n")
+    operators = [{
+        "title": "Template Operator", "repo": str(repo), "slug": "template-operator",
+        "docs_dir": "content", "exclude": [],
+        "mappings": [{"from": "guides/**", "into": "guides", "under": "Guides",
+                      "flatten": True}],
+    }]
+    m.run(operators, str(content), str(mkdocs))
+    assert "nav_labels" not in mkdocs.read_text()
+
+
+def test_run_invalid_label_mapping_raises(tmp_path):
+    repo = tmp_path / "repo"
+    _touch(repo / "content", "guides/create.md")
+    content = tmp_path / "content"; content.mkdir()
+    mkdocs = tmp_path / "mkdocs.yml"
+    mkdocs.write_text("site_name: MTO\nnav:\n  - Guides:\n      - guides/own.md\n")
+    operators = [{
+        "title": "Template Operator", "repo": str(repo), "slug": "template-operator",
+        "docs_dir": "content", "exclude": [],
+        "mappings": [{"from": "guides/**", "into": "guides", "under": "Guides",
+                      "label": True}],   # no flatten
+    }]
+    with pytest.raises(ValueError, match="flatten"):
+        m.run(operators, str(content), str(mkdocs))
+
+
+def test_run_two_operators_label_into_same_section(tmp_path):
+    # the real merge.yaml shape: Template Operator and Hibernation Operator both
+    # label their own concepts into the shared Concepts section
+    template_repo = tmp_path / "template-operator-docs"
+    _touch(template_repo / "content", "concepts/tier.md")
+    hib_repo = tmp_path / "hibernation-operator-docs"
+    _touch(hib_repo / "content", "concepts/schedule.md")
+    content = tmp_path / "content"; content.mkdir()
+    mkdocs = tmp_path / "mkdocs.yml"
+    mkdocs.write_text("site_name: MTO\nnav:\n  - Concepts:\n      - concepts/own.md\n")
+    operators = [
+        {
+            "title": "Template Operator", "repo": str(template_repo),
+            "slug": "template-operator", "docs_dir": "content", "exclude": [],
+            "mappings": [{"from": "concepts/**", "into": "concepts", "under": "Concepts",
+                          "flatten": True, "label": True}],
+        },
+        {
+            "title": "Hibernation Operator", "repo": str(hib_repo),
+            "slug": "hibernation-operator", "docs_dir": "content", "exclude": [],
+            "mappings": [{"from": "concepts/**", "into": "concepts", "under": "Concepts",
+                          "flatten": True, "label": True}],
+        },
+    ]
+    m.run(operators, str(content), str(mkdocs))
+
+    out = mkdocs.read_text()
+    section = m.find_section(m.read_nav(out), "Concepts")
+    # MTO's own leaf first, then the two operator groups, in operator order
+    assert section == [
+        "concepts/own.md",
+        {"Template Operator": ["concepts/template-operator/tier.md"]},
+        {"Hibernation Operator": ["concepts/hibernation-operator/schedule.md"]},
+    ]
+    assert "  nav_labels:\n  - Template Operator\n  - Hibernation Operator\n" in out
+
+
+def test_run_unlabelled_operator_folds_while_labelled_one_stays_grouped(tmp_path):
+    # one labelled operator, one unlabelled operator, both with a same-named page
+    # as MTO's own: the unlabelled one still folds into a shared duplicate group;
+    # the labelled one keeps its own page inside its operator header, unfolded
+    labelled_repo = tmp_path / "template-operator-docs"
+    _touch(labelled_repo / "content", "integrations/argocd.md")
+    (labelled_repo / "content/integrations/argocd.md").write_text("# ArgoCD\n")
+    unlabelled_repo = tmp_path / "hibernation-operator-docs"
+    _touch(unlabelled_repo / "content", "integrations/argocd.md")
+    (unlabelled_repo / "content/integrations/argocd.md").write_text("# ArgoCD\n")
+    content = tmp_path / "content"
+    (content / "integrations").mkdir(parents=True)
+    (content / "integrations/argocd.md").write_text("# ArgoCD\n")   # mto's own
+    mkdocs = tmp_path / "mkdocs.yml"
+    mkdocs.write_text(
+        "site_name: Multi-Tenant Operator\nnav:\n"
+        "  - Integrations:\n      - integrations/argocd.md\n"
+    )
+    operators = [
+        {
+            "title": "Template Operator", "repo": str(labelled_repo),
+            "slug": "template-operator", "docs_dir": "content", "exclude": [],
+            "mappings": [{"from": "integrations/**", "into": "integrations",
+                          "under": "Integrations", "flatten": True, "label": True}],
+        },
+        {
+            "title": "Hibernation Operator", "repo": str(unlabelled_repo),
+            "slug": "hibernation-operator", "docs_dir": "content", "exclude": [],
+            "mappings": [{"from": "integrations/**", "into": "integrations",
+                          "under": "Integrations", "flatten": True}],
+        },
+    ]
+    m.run(operators, str(content), str(mkdocs))
+
+    section = m.find_section(m.read_nav(mkdocs.read_text()), "Integrations")
+    # the labelled operator's own ArgoCD stays inside its header, untouched
+    assert {"Template Operator": ["integrations/template-operator/argocd.md"]} in section
+    # mto's own leaf folded with the unlabelled operator's page into a shared folder
+    assert {"ArgoCD": [
+        {"Multi-Tenant Operator": "integrations/argocd.md"},
+        {"Hibernation Operator": "integrations/hibernation-operator/argocd.md"},
+    ]} in section
+    # no bare leaves remain for either duplicate source
+    assert "integrations/argocd.md" not in section
+    assert "integrations/hibernation-operator/argocd.md" not in section

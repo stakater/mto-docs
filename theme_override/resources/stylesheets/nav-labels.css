@@ -1,0 +1,28 @@
+/* Operator headers inside merged nav sections (see scripts/merge_docs.py).
+   A label, not a link: muted, uppercase, and never clickable. Its pages are
+   rendered as siblings, so they need no indent rules here. */
+.md-nav__item--label {
+  margin-top: 0.75rem;
+}
+
+.md-nav__label {
+  display: block;
+  /* desktop (min-width: 76.25em, material's own breakpoint for the primary nav):
+     .md-nav__link itself has no horizontal padding there, .md-nav__list supplies
+     it via padding-left: .6rem, so match by leaving this at 0 too. */
+  padding: 0;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+/* mobile drawer: .md-nav__link carries its own padding: .6rem .8rem there
+   (same breakpoint material gates that rule with), so match it here too. */
+@media screen and (max-width: 76.234375em) {
+  .md-nav__label {
+    padding: 0.6rem 0.8rem;
+  }
+}
