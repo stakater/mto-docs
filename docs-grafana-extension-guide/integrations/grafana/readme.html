@@ -5792,7 +5792,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tr>
 <tr>
 <td style="text-align: left;">Dashboards</td>
-<td style="text-align: left;">Import each one, then repoint every panel, target and variable at that organisation's own data source</td>
+<td style="text-align: left;">Import each one, then aim every panel, target and variable at that organisation's own data source</td>
 <td style="text-align: left;">Derived, references rewritten</td>
 </tr>
 <tr>
@@ -5858,7 +5858,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <tr>
 <td style="text-align: left;">Dashboards with rewritten queries</td>
 <td style="text-align: left;">on</td>
-<td style="text-align: left;">Each dashboard's data source references — in panels, targets and template variables — are repointed at that organisation's own data source copy.</td>
+<td style="text-align: left;">Each dashboard's data source references — in panels, targets and template variables — are rewritten to that organisation's own data source copy.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Folders</td>
@@ -6140,7 +6140,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Three things are required, and are the usual reason a data source never appears:</p>
 <ul>
 <li><strong><code>spec.allowCrossNamespaceImport: true</code>.</strong> The extension skips any data source without it — which is also how you keep a data source in that namespace outside MTO's control.</li>
-<li><strong>A non-empty, unique <code>spec.datasource.uid</code>.</strong> Grafana caps a UID at 40 characters and the per-tenant copy is <code>&lt;base&gt;-&lt;tenant&gt;</code>; if that would run over, the extension keeps a readable prefix and appends a short hash rather than failing. A short base UID simply keeps the derived ones legible. Duplicate UIDs — and duplicate data source names — are resolved in favour of the oldest resource, and the newer one is skipped with an error in status.</li>
+<li><strong>A non-empty, unique <code>spec.datasource.uid</code>.</strong> Grafana caps a UID at 40 characters and the per-tenant copy is <code>&lt;base&gt;-&lt;tenant&gt;</code>; if that would run over, the extension keeps a readable prefix and appends a short hash rather than failing. A short base UID simply keeps the derived ones legible. A duplicate UID — or a duplicate data source name — is resolved in favour of the oldest resource, and the newer one is skipped with an error in status.</li>
 <li><strong>An <code>httpHeaderName&lt;N&gt;</code> entry whose value is exactly <code>X-Scope-OrgID</code>.</strong> That is the slot the tenant name goes into; without it the data source cannot be scoped and is skipped.</li>
 </ul>
 <p>The Grafana Operator must also have set <code>DatasourceSynchronized=True</code> on the resource before the extension picks it up.</p>
