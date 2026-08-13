@@ -202,6 +202,31 @@ def test_insert_leaves_missing_section_raises():
         m.insert_leaves(nav, "Ghost", ["a/b.md"])
 
 
+def test_product_subsections_collapses_single_page():
+    nodes = m.product_subsections([
+        ("Overview", ["templates/overview/index.md"]),
+        ("Guides", ["templates/guides/a.md", "templates/guides/b.md"]),
+    ])
+    assert nodes == [
+        {"Overview": "templates/overview/index.md"},          # single -> leaf
+        {"Guides": ["templates/guides/a.md", "templates/guides/b.md"]},
+    ]
+
+
+def test_fill_placeholder_fills_and_raises():
+    nav = [{"Templates": []}, {"Extensions": ["x.md"]}]
+    m.fill_placeholder(nav, "Templates", [{"Overview": "t/o.md"}])
+    assert nav[0] == {"Templates": [{"Overview": "t/o.md"}]}
+    with pytest.raises(KeyError):
+        m.fill_placeholder(nav, "Ghost", [])
+
+
+def test_set_single_leaf_with_label():
+    nav = [{"Reference": ["reference/api.md", "reference/rbac.md"]}]
+    m._set_single_leaf(nav, "Reference", "reference/api.md", label="API Reference")
+    assert nav[0]["Reference"][0] == {"API Reference": "reference/api.md"}
+
+
 # --- duplicate auto-grouping ---
 
 def test_read_h1(tmp_path):
@@ -442,6 +467,25 @@ def test_load_config_defaults(tmp_path):
     assert ops[1]["docs_dir"] == "site"
     assert ops[1]["exclude"] == ["**/.gitkeep"]
     assert ops[1]["branch"] == "develop"
+
+
+def test_load_config_section_defaults_to_title(tmp_path):
+    cfg = tmp_path / "merge.yaml"
+    cfg.write_text(
+        "operators:\n"
+        "  - title: Templates\n"
+        "    repo: /x\n"
+        "    mappings: []\n"
+        "  - title: FinOps\n"
+        "    section: Finance\n"
+        "    repo: /y\n"
+        "    mappings: []\n"
+    )
+    ops = m.load_config(str(cfg))
+    assert ops[0]["section"] == "Templates"      # defaults to title
+    assert ops[1]["section"] == "Finance"        # explicit override
+    assert ops[0]["product_first"] is False      # no explicit section -> legacy
+    assert ops[1]["product_first"] is True       # explicit section -> product-first
 
 
 def test_run_copies_files_and_injects_nav(tmp_path):
@@ -858,3 +902,161 @@ def test_run_unlabelled_operator_folds_while_labelled_one_stays_grouped(tmp_path
     # no bare leaves remain for either duplicate source
     assert "integrations/argocd.md" not in section
     assert "integrations/hibernation-operator/argocd.md" not in section
+
+
+# --- merged pages (single page, per-source H2 sections) ---
+
+def test_apply_concat_builds_page_and_leaf(tmp_path):
+    content = tmp_path / "content"
+    (content / "reference").mkdir(parents=True)
+    (content / "reference/api.md").write_text(
+        "# API Reference\n\n## Packages\n\nmto crds\n")          # mto's own (self)
+    opdocs = tmp_path / "hib" / "content"
+    (opdocs / "reference").mkdir(parents=True)
+    (opdocs / "reference/api.md").write_text(
+        "# API Reference\n\n## Widgets\n\nhib crds\n")
+    nav = [{"Reference": ["reference/api.md", "reference/rbac.md"]}]
+    op_ctx = {"Hibernation Operator": {"docs": opdocs, "op_map": {},
+                                       "live_url": None, "style": "directory"}}
+    targets = {"reference/api.md": {
+        "under": "Reference", "as": "API Reference",
+        "sections": [("Hibernation Operator", "Hibernation Operator", "reference/api.md")],
+    }}
+    m.apply_concat(nav, targets, str(content), op_ctx, "Tenant Operator")
+
+    page = (content / "reference/api.md").read_text()
+    assert page.startswith("# API Reference")
+    assert "## Tenant Operator" in page and "## Hibernation Operator" in page
+    assert "### Packages" in page and "### Widgets" in page          # demoted
+    section = m.find_section(nav, "Reference")
+    assert section[0] == {"API Reference": "reference/api.md"}       # labeled leaf
+    assert "reference/rbac.md" in section                            # siblings kept
+
+
+def test_shift_headings_skips_code_fences_and_caps():
+    text = "# Title\n## Sec\n```yaml\n# not a heading\n```\n### Deep\n###### Max"
+    assert m.shift_headings(text, 1) == (
+        "## Title\n### Sec\n```yaml\n# not a heading\n```\n#### Deep\n###### Max")
+
+
+def test_split_h1_removes_first_real_h1():
+    text = "```\n# fake\n```\n# Real Title\n\nbody\n## sub"
+    h1, body = m.split_h1(text)
+    assert h1 == "Real Title"
+    assert "# Real Title" not in body
+    assert "# fake" in body and "## sub" in body   # fenced hash and rest kept
+
+
+
+
+def test_run_product_first_fills_placeholder_and_concats(tmp_path):
+    repo = tmp_path / "tpl"
+    _touch(repo / "content", "overview/index.md",
+           "guides/a.md", "guides/b.md")
+    (repo / "content/reference").mkdir(parents=True)
+    (repo / "content/reference/api.md").write_text(
+        "# API Reference\n\n## Kinds\n\ntpl crds\n")
+    content = tmp_path / "content"
+    (content / "reference").mkdir(parents=True)
+    (content / "reference/api.md").write_text(
+        "# API Reference\n\n## Packages\n\nmto crds\n")
+    mkdocs = tmp_path / "mkdocs.yml"
+    mkdocs.write_text(
+        "site_name: MTO\nnav:\n"
+        "  - Templates: []\n"
+        "  - Reference:\n      - reference/api.md\n")
+    operators = [{
+        "title": "Templates", "section": "Templates", "repo": str(repo),
+        "slug": "templates", "docs_dir": "content", "exclude": [],
+        "live_url": "https://d/templates/", "live_url_style": "directory",
+        "mappings": [
+            {"from": "overview/**", "into": "templates/overview", "under": "Overview"},
+            {"from": "guides/**", "into": "templates/guides", "under": "Guides"},
+            {"from": "reference/api.md", "concat_into": "reference/api.md",
+             "under": "Reference", "as": "API Reference", "heading": "Template Operator"},
+        ],
+    }]
+    m.run(operators, str(content), str(mkdocs), site_title="Tenant Operator")
+
+    nav = m.read_nav(mkdocs.read_text())
+    templates = m.find_section(nav, "Templates")
+    assert {"Overview": "templates/templates/overview/index.md"} in templates  # single -> leaf
+    assert {"Guides": ["templates/templates/guides/a.md",
+                       "templates/templates/guides/b.md"]} in templates
+    # concat page built, single labeled leaf, mto's own + operator sections
+    page = (content / "reference/api.md").read_text()
+    assert "## Tenant Operator" in page and "## Template Operator" in page
+    assert "### Packages" in page and "### Kinds" in page
+    ref = m.find_section(nav, "Reference")
+    assert {"API Reference": "reference/api.md"} in ref
+    # the concat source is NOT copied as a standalone page
+    assert not (content / "templates/templates/reference").exists()
+
+
+def test_run_concat_conflicting_under_raises(tmp_path):
+    repo = tmp_path / "op"
+    _touch(repo / "content", "reference/api.md")
+    (repo / "content/reference/api.md").write_text("# API\n\n## X\n\nbody\n")
+    content = tmp_path / "content"; content.mkdir()
+    (content / "reference").mkdir()
+    (content / "reference/api.md").write_text("# API\n\n## Own\n\nmto\n")
+    mkdocs = tmp_path / "mkdocs.yml"
+    mkdocs.write_text("site_name: MTO\nnav:\n  - Reference:\n      - reference/api.md\n")
+    operators = [{
+        "title": "Op", "section": None, "product_first": False,
+        "repo": str(repo), "slug": "op", "docs_dir": "content", "exclude": [],
+        "mappings": [
+            {"from": "reference/api.md", "concat_into": "reference/api.md",
+             "under": "Reference", "as": "API Reference", "heading": "One"},
+            {"from": "reference/api.md", "concat_into": "reference/api.md",
+             "under": "Somewhere Else", "heading": "Two"},   # conflicting under
+        ],
+    }]
+    with pytest.raises(ValueError):
+        m.run(operators, str(content), str(mkdocs))
+
+
+def test_run_concat_multi_file_glob_each_file_becomes_a_section(tmp_path):
+    # a single concat mapping whose `from` glob matches more than one file: each
+    # matched file is recorded as its own section (heading, op, rel) in match
+    # order, so all of them contribute to the merged page under the same heading.
+    repo = tmp_path / "op"
+    (repo / "content/guides").mkdir(parents=True)
+    (repo / "content/guides/a.md").write_text("# Guides\n\n## First\n\nfrom a\n")
+    (repo / "content/guides/b.md").write_text("# Guides\n\n## Second\n\nfrom b\n")
+    content = tmp_path / "content"; content.mkdir()
+    mkdocs = tmp_path / "mkdocs.yml"
+    mkdocs.write_text("site_name: MTO\nnav:\n  - Guides: []\n")
+    operators = [{
+        "title": "Op", "section": None, "product_first": False,
+        "repo": str(repo), "slug": "op", "docs_dir": "content", "exclude": [],
+        "mappings": [
+            {"from": "guides/*.md", "concat_into": "guides/combined.md",
+             "under": "Guides", "as": "Combined Guides", "heading": "Op Guides"},
+        ],
+    }]
+    m.run(operators, str(content), str(mkdocs), site_title="Tenant Operator")
+
+    page = (content / "guides/combined.md").read_text()
+    # both glob-matched files contribute a section (same heading, since it comes
+    # from the mapping, not per-file), in sorted match order
+    assert page.count("## Op Guides") == 2
+    assert "### First" in page and "from a" in page
+    assert "### Second" in page and "from b" in page
+    section = m.find_section(m.read_nav(mkdocs.read_text()), "Guides")
+    assert {"Combined Guides": "guides/combined.md"} in section
+
+
+def test_run_product_first_missing_placeholder_raises(tmp_path):
+    repo = tmp_path / "op"
+    _touch(repo / "content", "overview/index.md")
+    content = tmp_path / "content"; content.mkdir()
+    mkdocs = tmp_path / "mkdocs.yml"
+    mkdocs.write_text("site_name: MTO\nnav:\n  - Reference:\n      - r.md\n")  # no Templates placeholder
+    operators = [{
+        "title": "Templates", "section": "Templates", "product_first": True,
+        "repo": str(repo), "slug": "templates", "docs_dir": "content", "exclude": [],
+        "mappings": [{"from": "overview/**", "into": "overview", "under": "Overview"}],
+    }]
+    with pytest.raises(KeyError):
+        m.run(operators, str(content), str(mkdocs))

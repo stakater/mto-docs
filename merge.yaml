@@ -1,85 +1,80 @@
 # Controls which sub-operator docs are merged into mto-docs at build time.
-# `repo` is the canonical source (git URL); the pipeline clones it and the
-# merge runs against the clone via --set-repo. Locally, override with --set-repo
-# (see the Makefile) to point at a local checkout.
+# `repo` is the canonical source (git URL); the pipeline clones it and the merge
+# runs against the clone via --set-repo. Locally override with --set-repo.
 #
-# mto-docs now follows the shared structure (structure.md), so `into`/`under`
-# map 1:1 to the shared sections (guides->Guides, reference->Reference, ...).
-#
-# Duplicate pages (same filename from mto-docs + a sub-operator, or across
-# sub-operators) under one flattened section are auto-folded into a per-page
-# folder (titled by the page H1) with one labelled leaf per source. mto-docs'
-# own leaf is labelled with `site_title` (defaults to the mkdocs site_name).
-# This path stays in the code for any mapping that isn't labelled, but every
-# untitled flatten mapping below now carries `label: true`, so this folding is
-# currently unused and `site_title` only matters again if a mapping stops
-# being labelled.
-#
-# A mapping with `label: true` (flatten mappings only) groups that operator's
-# pages under a header titled with the operator's `title`. The header is a plain
-# label, not a clickable folder, and its pages sit at the same indent as MTO's.
-# Labelled pages are never auto-folded as duplicates since the header already
-# says which operator they came from. `label` and `title` are mutually exclusive.
+# Product-first: each operator fills its own top-level nav placeholder section
+# (declared empty in theme_override/mkdocs.yml) with Overview/Concepts/Guides
+# sub-sections. `site_title` labels mto-docs' own section in the joined API page.
 site_title: "Tenant Operator"
+
 operators:
-  - title: Template Operator
+  - title: Templates
+    section: "Templates"
+    slug: template-operator          # avoid mkdocs' reserved top-level /templates/ dir
     repo: https://github.com/stakater/template-operator-docs.git
-    # branch: main             # optional; empty -> the repo's default branch
-    # links to pages NOT whitelisted below fall back to this published site
     live_url: https://docs.stakater.com/template-operator-docs/
     live_url_style: directory
     mappings:
-      - from: "concepts/**"             # per-resource concept pages, merged flat
-        into: "concepts"                # (architecture/terminology excluded below)
+      - from: "overview/**"
+        into: "overview"
+        under: "Overview"
+      - from: "concepts/**"
+        into: "concepts"
         under: "Concepts"
-        flatten: true
-        label: true
-      - from: "reference/api.md"        # single file, one custom-named entry
-        into: "reference/api"
-        under: "API Reference"
-        title: "Template Operator"
-        flatten: true
-      - from: "guides/**"               # merged flat into the Guides section
+      - from: "guides/**"
         into: "guides"
         under: "Guides"
-        flatten: true
-        label: true
-      - from: "images/**"
-        into: "images"          # assets only, no menu entry
-    exclude:
-      - "**/.gitkeep"
-      - "concepts/architecture.md"      # MTO owns the shared Architecture page
-      - "concepts/terminology.md"       # MTO owns the shared Terminology page
-
-  - title: Hibernation Operator
-    repo: https://github.com/stakater/hibernation-operator-docs.git
-    # branch: main            # optional; empty -> the repo's default branch
-    live_url: https://docs.stakater.com/hibernation-operator-docs/
-    live_url_style: html          # sub-op uses use_directory_urls: false
-    mappings:
-      - from: "concepts/**"             # per-resource concept pages, merged flat
-        into: "concepts"                # (architecture/terminology excluded below)
-        under: "Concepts"
-        flatten: true
-        label: true
-      - from: "reference/api.md"        # single file, one custom-named entry
-        into: "reference/api"
-        under: "API Reference"
-        title: "Hibernation Operator"
-        flatten: true
-      - from: "guides/**"               # merged flat into the Guides section
-        into: "guides"
-        under: "Guides"
-        flatten: true
-        label: true
-      - from: "integrations/**"        # merged flat into the Integrations section
-        into: "integrations"
-        under: "Integrations"
-        flatten: true
-        label: true
+      - from: "reference/api.md"          # concatenated into the single API page
+        concat_into: "reference/api.md"
+        under: "Reference"
+        as: "API Reference"
+        heading: "Template Operator"
       - from: "images/**"
         into: "images"
     exclude:
       - "**/.gitkeep"
-      - "concepts/architecture.md"      # MTO owns the shared Architecture page
-      - "concepts/terminology.md"       # MTO owns the shared Terminology page
+
+  - title: FinOps
+    section: "FinOps"
+    repo: https://github.com/stakater/finops-docs.git
+    live_url: https://docs.stakater.com/finops-docs/
+    live_url_style: directory
+    mappings:
+      - from: "overview/**"
+        into: "overview"
+        under: "Overview"
+      - from: "concepts/**"
+        into: "concepts"
+        under: "Concepts"
+      - from: "guides/**"
+        into: "guides"
+        under: "Guides"
+      - from: "reference/api.md"
+        concat_into: "reference/api.md"
+        heading: "FinOps"
+      # finops-docs has no images/ directory, so no images mapping here
+    exclude:
+      - "**/.gitkeep"
+
+  - title: Hibernation
+    section: "Hibernation"
+    repo: https://github.com/stakater/hibernation-operator-docs.git
+    live_url: https://docs.stakater.com/hibernation-operator-docs/
+    live_url_style: html
+    mappings:
+      - from: "overview/**"
+        into: "overview"
+        under: "Overview"
+      - from: "concepts/**"
+        into: "concepts"
+        under: "Concepts"
+      - from: "guides/**"
+        into: "guides"
+        under: "Guides"
+      - from: "reference/api.md"
+        concat_into: "reference/api.md"
+        heading: "Hibernation Operator"
+      - from: "images/**"
+        into: "images"
+    exclude:
+      - "**/.gitkeep"
