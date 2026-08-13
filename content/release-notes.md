@@ -27,8 +27,12 @@ _**August 11, 2026**_
 
 #### Enhancements
 
-- Bumped FinOps Operator and FinOps Gateway to `v0.1.4`.
-- Bumped DexConfigOperator to `v0.0.7`.
+- FinOps cost data now supports sorting and pagination.
+
+#### Bug Fixes
+
+- Fixed a FinOps Operator issue where an unused materialized view caused resource usage spikes on every FinOps cronjob run.
+- Fixed unnecessary DexConfigOperator restarts caused by non-deterministic Dex configuration generation.
 
 #### Component Updates
 
