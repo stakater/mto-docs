@@ -14,7 +14,7 @@ A Grafana organisation is a hard boundary — nothing crosses it. Every tenant t
 |:---|:---|:---|
 | Organisation | Create it | Derived from the `Tenant` |
 | Data sources | Re-create each one with a unique UID and the tenant's `X-Scope-OrgID` — plus a tenant URL path for Loki | Derived, one copy per organisation |
-| Dashboards | Import each one, then repoint every panel, target and variable at that organisation's own data source | Derived, references rewritten |
+| Dashboards | Import each one, then aim every panel, target and variable at that organisation's own data source | Derived, references rewritten |
 | Folders | Rebuild the tree | Derived on first use |
 | Access | Add an `org_mapping` entry per identity-provider group | Derived from the tenant name |
 
@@ -62,7 +62,7 @@ flowchart LR
 |:---|:---|:---|
 | A private organisation | on | A Grafana organisation named exactly after the tenant. Members of one tenant cannot see another tenant's dashboards or data sources. |
 | Tenant-scoped data sources | on | One copy of each data source per organisation, with UID `<base-uid>-<tenant>` and `X-Scope-OrgID` set to the tenant name, so a single definition returns only that tenant's data. |
-| Dashboards with rewritten queries | on | Each dashboard's data source references — in panels, targets and template variables — are repointed at that organisation's own data source copy. |
+| Dashboards with rewritten queries | on | Each dashboard's data source references — in panels, targets and template variables — are rewritten to that organisation's own data source copy. |
 | Folders | on | `GrafanaFolder` titles are replicated into an organisation as dashboards referencing them are synced. A dashboard with no folder lands in a per-organisation folder named `Default`. |
 | Human login | on | Tenant members sign in through your OIDC provider, and their identity-provider group membership decides which organisations they see and with what role. |
 | Per-tenant targeting | on | Annotations on a data source or dashboard choose which tenants receive it. Without annotations it goes to every tenant. |
@@ -292,7 +292,7 @@ spec:
 Three things are required, and are the usual reason a data source never appears:
 
 - **`spec.allowCrossNamespaceImport: true`.** The extension skips any data source without it — which is also how you keep a data source in that namespace outside MTO's control.
-- **A non-empty, unique `spec.datasource.uid`.** Grafana caps a UID at 40 characters and the per-tenant copy is `<base>-<tenant>`; if that would run over, the extension keeps a readable prefix and appends a short hash rather than failing. A short base UID simply keeps the derived ones legible. Duplicate UIDs — and duplicate data source names — are resolved in favour of the oldest resource, and the newer one is skipped with an error in status.
+- **A non-empty, unique `spec.datasource.uid`.** Grafana caps a UID at 40 characters and the per-tenant copy is `<base>-<tenant>`; if that would run over, the extension keeps a readable prefix and appends a short hash rather than failing. A short base UID simply keeps the derived ones legible. A duplicate UID — or a duplicate data source name — is resolved in favour of the oldest resource, and the newer one is skipped with an error in status.
 - **An `httpHeaderName<N>` entry whose value is exactly `X-Scope-OrgID`.** That is the slot the tenant name goes into; without it the data source cannot be scoped and is skipped.
 
 The Grafana Operator must also have set `DatasourceSynchronized=True` on the resource before the extension picks it up.
