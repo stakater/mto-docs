@@ -65,7 +65,7 @@ flowchart LR
 | Dashboards with rewritten queries | on | Each dashboard's data source references — in panels, targets and template variables — are rewritten to that organisation's own data source copy. |
 | Folders | on | `GrafanaFolder` titles are replicated into an organisation as dashboards referencing them are synced. A dashboard with no folder lands in a per-organisation folder named `Default`. |
 | Human login | on | Tenant members sign in through your OIDC provider, and their identity-provider group membership decides which organisations they see and with what role. |
-| Per-tenant targeting | on | Annotations on a data source or dashboard choose which tenants receive it. Without annotations it goes to every tenant. |
+| Per-tenant targeting | on | Annotations on a data source or dashboard choose which tenants receive it. Without annotations, it goes to every tenant. |
 | Aggregated views | off | One extra organisation per user, mirroring the content of every tenant they belong to, so multi-tenant users stop switching organisations. |
 | Cross-tenant traces | off | A single union Tempo data source inside the aggregated view, so one distributed trace can be followed across tenants. |
 | Shared user dashboards | off | Dashboards a user builds inside their own aggregated view are shared with colleagues whose tenant access covers the same data. |
@@ -207,7 +207,7 @@ stringData:
 
 From this the extension writes Grafana's `generic_oauth` settings: one `org_mapping` entry per tenant role — so three per tenant, for owners, editors and viewers — plus a `role_attribute_path` that detects cluster administrators only. Keeping tenant roles out of `role_attribute_path` is deliberate: Grafana would otherwise take the highest of the two and flatten per-organisation roles into one role everywhere.
 
-You do not need to label the secret. The extension adds `mto.grafana/sso-secret: "true"` on first reconcile so its informer cache watches only SSO secrets.
+You do not need to label the secret. The extension adds `mto.grafana/sso-secret: "true"` on first reconcile, so its informer cache watches only SSO secrets.
 
 ## Giving a tenant a dashboard
 
@@ -390,7 +390,7 @@ A dashboard needs:
 
 **Reference data sources in object form** — `{"type": ..., "uid": ...}` — using the same base UID as the `GrafanaDatasource`. The extension then rewrites `loki-ds` to `loki-ds-bluesky` in the bluesky copy, and to each other tenant's UID in theirs.
 
-- If the UID matches no managed data source, it falls back to matching on `type`, which only resolves when exactly one managed data source has that type. With two, the reference is left alone and a warning is logged.
+- If the UID matches no managed data source, it falls back to matching on `type`, which only resolves when exactly one managed data source has that type. With two, the reference is left alone, and a warning is logged.
 - String references such as `"-- Grafana --"` or `"${DS_PROMETHEUS}"` are left untouched.
 
 **For folders, prefer `spec.folderRef` over `spec.folderUID`.** Both need a `GrafanaFolder` resource to exist — the Grafana Operator will not mark the dashboard synchronized otherwise — but `folderRef` names the dependency instead of implying it through a matching UID. The extension creates the folder, with its title, in a tenant's organisation the first time a dashboard referencing it is synced there.
@@ -431,7 +431,7 @@ If the same user also carried `tenant-arsenal-viewers`, they would additionally 
 
 ## Choosing which tenants get a resource
 
-By default every managed data source and dashboard goes to every tenant. `spec.scaffolding.mode` decides whether annotations are consulted:
+By default, every managed data source and dashboard goes to every tenant. `spec.scaffolding.mode` decides whether annotations are consulted:
 
 | Mode | Behaviour |
 |:---|:---|
