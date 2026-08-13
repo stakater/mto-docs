@@ -5873,7 +5873,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <tr>
 <td style="text-align: left;">Per-tenant targeting</td>
 <td style="text-align: left;">on</td>
-<td style="text-align: left;">Annotations on a data source or dashboard choose which tenants receive it. Without annotations it goes to every tenant.</td>
+<td style="text-align: left;">Annotations on a data source or dashboard choose which tenants receive it. Without annotations, it goes to every tenant.</td>
 </tr>
 <tr>
 <td style="text-align: left;">Aggregated views</td>
@@ -6054,7 +6054,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>If you override <code>scope</code>, it must still contain <code>openid</code>, <code>email</code>, <code>profile</code> and <code>groups</code>. The extension validates all four and refuses to configure SSO without them — <code>groups</code> in particular is what the whole organisation mapping is built from.</p>
 </div>
 <p>From this the extension writes Grafana's <code>generic_oauth</code> settings: one <code>org_mapping</code> entry per tenant role — so three per tenant, for owners, editors and viewers — plus a <code>role_attribute_path</code> that detects cluster administrators only. Keeping tenant roles out of <code>role_attribute_path</code> is deliberate: Grafana would otherwise take the highest of the two and flatten per-organisation roles into one role everywhere.</p>
-<p>You do not need to label the secret. The extension adds <code>mto.grafana/sso-secret: "true"</code> on first reconcile so its informer cache watches only SSO secrets.</p>
+<p>You do not need to label the secret. The extension adds <code>mto.grafana/sso-secret: "true"</code> on first reconcile, so its informer cache watches only SSO secrets.</p>
 <h2 id="giving-a-tenant-a-dashboard">Giving a tenant a dashboard<a class="headerlink" href="#giving-a-tenant-a-dashboard" title="Permanent link">#</a></h2>
 <p>This is the path most people take, and everything else on this page builds on it: create the tenant, add a data source once for the whole cluster, add a dashboard, sign in as a tenant member. The examples use tenant <code>bluesky</code> and a Grafana instance in namespace <code>telemetry</code>.</p>
 <h3 id="1-create-the-tenant">1. Create the tenant<a class="headerlink" href="#1-create-the-tenant" title="Permanent link">#</a></h3>
@@ -6221,7 +6221,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </ul>
 <p><strong>Reference data sources in object form</strong> — <code>{"type": ..., "uid": ...}</code> — using the same base UID as the <code>GrafanaDatasource</code>. The extension then rewrites <code>loki-ds</code> to <code>loki-ds-bluesky</code> in the bluesky copy, and to each other tenant's UID in theirs.</p>
 <ul>
-<li>If the UID matches no managed data source, it falls back to matching on <code>type</code>, which only resolves when exactly one managed data source has that type. With two, the reference is left alone and a warning is logged.</li>
+<li>If the UID matches no managed data source, it falls back to matching on <code>type</code>, which only resolves when exactly one managed data source has that type. With two, the reference is left alone, and a warning is logged.</li>
 <li>String references such as <code>"-- Grafana --"</code> or <code>"${DS_PROMETHEUS}"</code> are left untouched.</li>
 </ul>
 <p><strong>For folders, prefer <code>spec.folderRef</code> over <code>spec.folderUID</code>.</strong> Both need a <code>GrafanaFolder</code> resource to exist — the Grafana Operator will not mark the dashboard synchronized otherwise — but <code>folderRef</code> names the dependency instead of implying it through a matching UID. The extension creates the folder, with its title, in a tenant's organisation the first time a dashboard referencing it is synced there.</p>
@@ -6250,7 +6250,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     G--&gt;&gt;User: bluesky organisation, Admin role</code></pre>
 <p>If the same user also carried <code>tenant-arsenal-viewers</code>, they would additionally have Viewer in the <code>arsenal</code> organisation and could switch between the two.</p>
 <h2 id="choosing-which-tenants-get-a-resource">Choosing which tenants get a resource<a class="headerlink" href="#choosing-which-tenants-get-a-resource" title="Permanent link">#</a></h2>
-<p>By default every managed data source and dashboard goes to every tenant. <code>spec.scaffolding.mode</code> decides whether annotations are consulted:</p>
+<p>By default, every managed data source and dashboard goes to every tenant. <code>spec.scaffolding.mode</code> decides whether annotations are consulted:</p>
 <table>
 <thead>
 <tr>
