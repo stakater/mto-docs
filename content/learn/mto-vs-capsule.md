@@ -126,6 +126,12 @@ Capsule is open source with community support and commercial support available f
 
 ---
 
+## What you assemble instead
+
+The list above is the substance of the comparison: standardization, cost, hibernation, GitOps and secrets tenancy, and an interface are all products in their own right. Choosing Capsule means sourcing and integrating each of them separately, then keeping them agreeing with each other about who a tenant is. [What you assemble instead](kubernetes-multi-tenancy-tools.md#what-you-assemble-instead) sets out the trade capability by capability.
+
+---
+
 ## How to Decide
 
 ### Choose Capsule when

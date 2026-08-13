@@ -119,6 +119,20 @@ MTO projects the tenant into ArgoCD as a scoped `AppProject` and into OpenBao or
 
 ---
 
+## What you would still assemble
+
+vCluster Platform covers more of this ground than vCluster alone: self-service provisioning, templates and sleep mode are part of the product, so standardization and idle-environment cost are genuinely addressed. The gaps that remain against MTO are narrower and worth naming precisely:
+
+- **An organizational tenant** — a boundary that owns several long-lived environments, its membership, its allocation and its cost, rather than the environments themselves
+- **Cost attributed to that boundary** — priced and kept as history, without a labelling convention to maintain
+- **GitOps tenancy** — a scoped project per tenant rather than hand-maintained ArgoCD RBAC
+- **Secrets tenancy** — a path, policies and login roles per tenant, kept in step with membership
+- **Interface** — something for tenant users that is not `kubectl` and YAML
+
+MTO includes all of these, built on the same tenant definition, which is why they agree with each other. Assembled separately they are six or seven products to source, integrate and keep aligned about who a tenant is. See [what you assemble instead](kubernetes-multi-tenancy-tools.md#what-you-assemble-instead).
+
+---
+
 ## How to Decide
 
 ### Choose vCluster Platform when

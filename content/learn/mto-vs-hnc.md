@@ -96,6 +96,12 @@ Outside the scope of HNC entirely. It is a focused component, not a platform.
 
 ---
 
+## What you assemble instead
+
+HNC is one component of a platform, and an honest comparison counts the rest. Alongside it you would source a policy engine for admission guardrails, a templating mechanism for standardization, a cost stack with the labelling convention it depends on, something to sleep idle environments, GitOps and secrets tenancy maintained by hand, and an interface for tenant users. [What you assemble instead](kubernetes-multi-tenancy-tools.md#what-you-assemble-instead) sets out the trade capability by capability.
+
+---
+
 ## How to Decide
 
 ### Choose HNC when

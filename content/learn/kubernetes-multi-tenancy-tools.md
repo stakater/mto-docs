@@ -109,6 +109,25 @@ See [MTO vs KCP](mto-vs-kcp.md).
 
 ---
 
+## What you assemble instead
+
+Tool comparisons usually stop at tenancy, because tenancy is the feature everyone lists. That understates the decision. Tenancy is the foundation MTO's other capabilities are built on, and each of them is a product in its own right that a customer choosing differently has to source, integrate and then keep working.
+
+| Capability | What MTO includes | What you assemble otherwise |
+|--------|-----|----------|
+| Tenancy | `Tenant` owning namespaces, RBAC from identity provider groups, quota at the tenant scope, admission guardrails, network isolation | A tenancy operator, or your own controllers, plus a policy engine for the guardrails |
+| Standardization | Parameterized templates — manifests, Helm charts or resource references — rendered into tenant namespaces, optionally enforced, and reconciled continuously | GitOps conventions or a templating operator, plus a way to reach namespaces created after the standard was written |
+| Cost | Usage sampled per namespace, aggregated to the tenant, priced with provider rates, stored so periods can be compared, with capacity planning | A cost tool, a metrics stack, a database for history, dashboards, and a labelling convention that everything depends on being applied correctly |
+| Idle environments | Workloads slept and woken on a schedule or on demand, targeted by label, previous replica counts restored | Custom controllers or scheduled jobs that scale workloads down and can restore what was running |
+| GitOps tenancy | An ArgoCD `AppProject` per tenant, scoped to its repositories and namespaces | ArgoCD projects and RBAC maintained by hand, kept in step with team membership |
+| Secrets tenancy | A path, policies and login roles per tenant in OpenBao or Vault, derived from the tenant | Secrets-platform policy written and revised per tenant, application and access change |
+| Developer tooling | Workspace and collaboration spaces that follow tenant membership | Separate configuration per tool, drifting whenever membership changes |
+| Interface | A permission-aware console for administrators and tenant users over the same objects | A UI you build, or tenant users left on `kubectl` and YAML |
+
+None of these is impossible to assemble. The cost is rarely in the first integration — it is in the seventh, and in keeping all of them agreeing with each other about who a tenant is after two years of membership changes. That is the comparison worth making, and it is the one a feature-by-feature tenancy table hides.
+
+---
+
 ## Choosing
 
 Work through the layers rather than the tool list.

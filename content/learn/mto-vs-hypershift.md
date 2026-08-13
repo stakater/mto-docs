@@ -87,6 +87,22 @@ If a hosted cluster serves a single small team, it may need no further tenancy m
 
 ---
 
+## What the isolation layer leaves you to assemble
+
+HyperShift hands a tenant a cluster. Everything that makes that cluster a governed platform is still to be built, and built again for each hosted cluster shared by more than one team:
+
+- **Tenancy** — who owns this environment, who may access it, and what it may consume
+- **Standardization** — the baseline every environment carries, applied to the ones created later and corrected when it drifts
+- **Cost** — consumption attributed to an organizational owner, priced and kept as history
+- **Idle environments** — scheduled sleep and wake, with previous replica counts restored
+- **GitOps tenancy** — a scoped project per tenant rather than hand-maintained ArgoCD RBAC
+- **Secrets tenancy** — a path, policies and login roles per tenant, kept in step with membership
+- **Interface** — something for tenant users that is not `kubectl` and YAML
+
+MTO includes all of these, built on the same tenant definition, which is why they agree with each other. Assembled separately they are six or seven products to source, integrate and keep aligned about who a tenant is. See [what you assemble instead](kubernetes-multi-tenancy-tools.md#what-you-assemble-instead).
+
+---
+
 ## How to Decide
 
 ### Choose MTO when
