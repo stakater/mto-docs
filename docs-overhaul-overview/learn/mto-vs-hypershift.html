@@ -7032,6 +7032,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
+  <a href="#what-the-isolation-layer-leaves-you-to-assemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the isolation layer leaves you to assemble
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-to-decide" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7399,6 +7410,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
+  <a href="#what-the-isolation-layer-leaves-you-to-assemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What the isolation layer leaves you to assemble
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-to-decide" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7654,6 +7676,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>HyperShift provisions and manages the lifecycle of clusters. What happens inside one is not its concern.</p>
 <h3 id="inside-a-hosted-cluster">Inside a hosted cluster<a class="headerlink" href="#inside-a-hosted-cluster" title="Permanent link">#</a></h3>
 <p>If a hosted cluster serves a single small team, it may need no further tenancy model. If it serves several teams — which is common, since the hosted cluster is usually given to a department rather than an individual — the shared-cluster governance problem reappears inside it, and MTO is installable there like in any other OpenShift cluster.</p>
+<hr>
+<h2 id="what-the-isolation-layer-leaves-you-to-assemble">What the isolation layer leaves you to assemble<a class="headerlink" href="#what-the-isolation-layer-leaves-you-to-assemble" title="Permanent link">#</a></h2>
+<p>HyperShift hands a tenant a cluster. Everything that makes that cluster a governed platform is still to be built, and built again for each hosted cluster shared by more than one team:</p>
+<ul>
+<li><strong>Tenancy</strong> — who owns this environment, who may access it, and what it may consume</li>
+<li><strong>Standardization</strong> — the baseline every environment carries, applied to the ones created later and corrected when it drifts</li>
+<li><strong>Cost</strong> — consumption attributed to an organizational owner, priced and kept as history</li>
+<li><strong>Idle environments</strong> — scheduled sleep and wake, with previous replica counts restored</li>
+<li><strong>GitOps tenancy</strong> — a scoped project per tenant rather than hand-maintained ArgoCD RBAC</li>
+<li><strong>Secrets tenancy</strong> — a path, policies and login roles per tenant, kept in step with membership</li>
+<li><strong>Interface</strong> — something for tenant users that is not <code>kubectl</code> and YAML</li>
+</ul>
+<p>MTO includes all of these, built on the same tenant definition, which is why they agree with each other. Assembled separately they are six or seven products to source, integrate and keep aligned about who a tenant is. See <a href="kubernetes-multi-tenancy-tools.html#what-you-assemble-instead">what you assemble instead</a>.</p>
 <hr>
 <h2 id="how-to-decide">How to Decide<a class="headerlink" href="#how-to-decide" title="Permanent link">#</a></h2>
 <h3 id="choose-mto-when">Choose MTO when<a class="headerlink" href="#choose-mto-when" title="Permanent link">#</a></h3>

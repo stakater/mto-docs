@@ -7039,6 +7039,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
+  <a href="#what-you-would-still-assemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you would still assemble
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-to-decide" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7521,6 +7532,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
+  <a href="#what-you-would-still-assemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you would still assemble
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-to-decide" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7804,6 +7826,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>MTO supports Kubernetes and OpenShift, and on OpenShift uses <code>ClusterResourceQuota</code> natively. If you run OpenShift, that matters.</p>
 <h3 id="extending-beyond-the-cluster">Extending beyond the cluster<a class="headerlink" href="#extending-beyond-the-cluster" title="Permanent link">#</a></h3>
 <p>MTO projects the tenant into ArgoCD as a scoped <code>AppProject</code> and into OpenBao or Vault as a tenant path with its policies and login roles, from the same definition.</p>
+<hr>
+<h2 id="what-you-would-still-assemble">What you would still assemble<a class="headerlink" href="#what-you-would-still-assemble" title="Permanent link">#</a></h2>
+<p>vCluster Platform covers more of this ground than vCluster alone: self-service provisioning, templates and sleep mode are part of the product, so standardization and idle-environment cost are genuinely addressed. The gaps that remain against MTO are narrower and worth naming precisely:</p>
+<ul>
+<li><strong>An organizational tenant</strong> — a boundary that owns several long-lived environments, its membership, its allocation and its cost, rather than the environments themselves</li>
+<li><strong>Cost attributed to that boundary</strong> — priced and kept as history, without a labelling convention to maintain</li>
+<li><strong>GitOps tenancy</strong> — a scoped project per tenant rather than hand-maintained ArgoCD RBAC</li>
+<li><strong>Secrets tenancy</strong> — a path, policies and login roles per tenant, kept in step with membership</li>
+<li><strong>Interface</strong> — something for tenant users that is not <code>kubectl</code> and YAML</li>
+</ul>
+<p>MTO includes all of these, built on the same tenant definition, which is why they agree with each other. Assembled separately they are six or seven products to source, integrate and keep aligned about who a tenant is. See <a href="kubernetes-multi-tenancy-tools.html#what-you-assemble-instead">what you assemble instead</a>.</p>
 <hr>
 <h2 id="how-to-decide">How to Decide<a class="headerlink" href="#how-to-decide" title="Permanent link">#</a></h2>
 <h3 id="choose-vcluster-platform-when">Choose vCluster Platform when<a class="headerlink" href="#choose-vcluster-platform-when" title="Permanent link">#</a></h3>

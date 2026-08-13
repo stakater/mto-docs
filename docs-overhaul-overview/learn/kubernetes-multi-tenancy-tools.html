@@ -6871,6 +6871,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
+  <a href="#what-you-assemble-instead" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you assemble instead
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#choosing" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7405,6 +7416,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
+  <a href="#what-you-assemble-instead" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you assemble instead
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#choosing" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7618,6 +7640,61 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>KCP is not a Kubernetes cluster and does not schedule workloads. It provides logical control planes — workspaces — that serve Kubernetes-style APIs, aimed at multi-tenant API services and control-plane-as-a-service scenarios.</p>
 <p>It appears in multi-tenancy searches because it is genuinely multi-tenant, but it addresses API multi-tenancy rather than workload isolation on a shared cluster. For most platform teams it is not a candidate for the same decision.</p>
 <p>See <a href="mto-vs-kcp.html">MTO vs KCP</a>.</p>
+<hr>
+<h2 id="what-you-assemble-instead">What you assemble instead<a class="headerlink" href="#what-you-assemble-instead" title="Permanent link">#</a></h2>
+<p>Tool comparisons usually stop at tenancy, because tenancy is the feature everyone lists. That understates the decision. Tenancy is the foundation MTO's other capabilities are built on, and each of them is a product in its own right that a customer choosing differently has to source, integrate and then keep working.</p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>What MTO includes</th>
+<th>What you assemble otherwise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tenancy</td>
+<td><code>Tenant</code> owning namespaces, RBAC from identity provider groups, quota at the tenant scope, admission guardrails, network isolation</td>
+<td>A tenancy operator, or your own controllers, plus a policy engine for the guardrails</td>
+</tr>
+<tr>
+<td>Standardization</td>
+<td>Parameterized templates — manifests, Helm charts or resource references — rendered into tenant namespaces, optionally enforced, and reconciled continuously</td>
+<td>GitOps conventions or a templating operator, plus a way to reach namespaces created after the standard was written</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>Usage sampled per namespace, aggregated to the tenant, priced with provider rates, stored so periods can be compared, with capacity planning</td>
+<td>A cost tool, a metrics stack, a database for history, dashboards, and a labelling convention that everything depends on being applied correctly</td>
+</tr>
+<tr>
+<td>Idle environments</td>
+<td>Workloads slept and woken on a schedule or on demand, targeted by label, previous replica counts restored</td>
+<td>Custom controllers or scheduled jobs that scale workloads down and can restore what was running</td>
+</tr>
+<tr>
+<td>GitOps tenancy</td>
+<td>An ArgoCD <code>AppProject</code> per tenant, scoped to its repositories and namespaces</td>
+<td>ArgoCD projects and RBAC maintained by hand, kept in step with team membership</td>
+</tr>
+<tr>
+<td>Secrets tenancy</td>
+<td>A path, policies and login roles per tenant in OpenBao or Vault, derived from the tenant</td>
+<td>Secrets-platform policy written and revised per tenant, application and access change</td>
+</tr>
+<tr>
+<td>Developer tooling</td>
+<td>Workspace and collaboration spaces that follow tenant membership</td>
+<td>Separate configuration per tool, drifting whenever membership changes</td>
+</tr>
+<tr>
+<td>Interface</td>
+<td>A permission-aware console for administrators and tenant users over the same objects</td>
+<td>A UI you build, or tenant users left on <code>kubectl</code> and YAML</td>
+</tr>
+</tbody>
+</table>
+<p>None of these is impossible to assemble. The cost is rarely in the first integration — it is in the seventh, and in keeping all of them agreeing with each other about who a tenant is after two years of membership changes. That is the comparison worth making, and it is the one a feature-by-feature tenancy table hides.</p>
 <hr>
 <h2 id="choosing">Choosing<a class="headerlink" href="#choosing" title="Permanent link">#</a></h2>
 <p>Work through the layers rather than the tool list.</p>
