@@ -2,6 +2,16 @@
 
 Sharing a Kubernetes cluster is easy. Sharing it *safely*, at scale, without a platform team becoming the bottleneck for every namespace, role binding and quota change — that is the hard part. Multi-Tenant Operator exists to make that part routine.
 
+## What Kubernetes does not model
+
+Picture a platform serving thirty development teams. Each one needs namespaces, users and groups with different permissions, quota, network boundaries, required labels and annotations, standard platform configuration, secrets, GitOps access, cost visibility, development environments and a handful of integrations. The platform team has to work out how all of that relates to a team, and keep it consistent for as long as the team exists.
+
+Kubernetes understands each of those resources individually. What it has no native concept of is the sentence that ties them together:
+
+> This is Tenant A. These users belong to it, these namespaces belong to it, these resources are available to it — and the platform services around the cluster must respect the same boundary.
+
+A namespace is an isolation boundary, not an organization, a department or a customer. MTO adds the abstraction that is missing: a `Tenant` that owns many namespaces and carries the membership, access rules, resource allocation, policies, templates, cost attribution and external integrations that belong to one organizational unit.
+
 ## The two ways teams usually solve it
 
 **A cluster per team.** Isolation by duplication. It works, and then the bill arrives: every cluster needs its own control plane, ingress, monitoring, logging, policy engine, upgrade cycle and on-call rotation. Costs and operational load grow linearly with the number of teams, and the platform team spends its time on cluster fleet management instead of the platform.
@@ -44,5 +54,6 @@ Honesty is more useful than a longer list:
 
 - [How MTO Works](how-it-works.md) — the reconciliation path, end to end
 - [Key Capabilities](key-features.md) — what each capability area includes
+- [Deployment Models](deployment-models.md) — where MTO fits alongside virtual and dedicated clusters
 - [Use Cases](use-cases.md) — the shapes this takes in practice
 - [Create a Tenant](../guides/create-tenant.md) — try it
