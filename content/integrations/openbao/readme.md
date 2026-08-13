@@ -62,7 +62,7 @@ The OpenBao policy, the login role and the Kubernetes `Secret` are all created f
 | cert-manager issuance | off | A cert-manager `Issuer` per namespace, so applications request certificates the usual way. |
 | Cross-tenant trust | off | Opt-in, directional trust between two tenants' certificate authorities. |
 
-Engines exist for every tenant, but they grant nothing on their own: a workload gets access only once its ServiceAccount is annotated. Access is never derived from the tenant's `accessControl` groups, as it is in the [Vault integration](../../integrations/vault/vault.md): workloads get access from ServiceAccount annotations, and people from identity-provider groups named after the tenant.
+Engines exist for every tenant, but they grant nothing on their own: a workload gets access only once its ServiceAccount is annotated. Access is never derived from the tenant's `accessControl` groups, as it is in the [Vault integration](../vault/vault.md): workloads get access from ServiceAccount annotations, and people from identity-provider groups named after the tenant.
 
 ![The OpenBao namespace list: one namespace per tenant, plus the platform namespace.](../../images/openbao-namespaces.png)
 
@@ -87,17 +87,11 @@ These steps are done once per cluster, by a platform administrator, before any t
 
 ### Prerequisites
 
-Install these first. The extension does not install them for you.
-
-| Dependency | Needed for | Always required? |
-|:---|:---|:---|
-| An OpenBao server reachable from the cluster | Everything | Yes |
-| OpenBao Config Operator | Applying the configuration to OpenBao | Yes |
-| [template-operator-v2](../../concepts/template-operator/template.md) | Rendering the configuration per tenant | Yes |
-| [cert-manager](https://cert-manager.io/) | template-operator-v2's webhook, and certificate issuance | Yes |
-| [External Secrets Operator](https://external-secrets.io/) | Delivering secrets as Kubernetes `Secret`s | Only while secret delivery is on (the default) |
-| [trust-manager](https://cert-manager.io/docs/trust/trust-manager/) | Cross-tenant certificate trust | Only if you turn it on |
-| An OIDC identity provider | Human login | Only if you turn it on |
+- An OpenBao server reachable from the cluster.
+- The OpenBao extension and its operator, which build on [Template Operator](../../concepts/template-operator/template.md). Contact Stakater to have them installed.
+- [External Secrets Operator](https://external-secrets.io/), while secrets are delivered as Kubernetes `Secret`s — the default.
+- [cert-manager](https://cert-manager.io/) to issue certificates through Kubernetes, and [trust-manager](https://cert-manager.io/docs/trust/trust-manager/) for trust between tenants.
+- An OIDC identity provider, for human login.
 
 MTO labels each tenant namespace `stakater.com/tenant=<tenant-name>`, and the extension uses that label to find them.
 
@@ -107,7 +101,7 @@ The extension is installed once per cluster; there is no per-tenant installation
 
 A tenant is picked up once its spec lists at least one namespace under `withTenantPrefix` or `withoutTenantPrefix`; add one to a skipped tenant, and it is picked up on the next render. The check reads those two fields and nothing else: sandboxes do not count, and neither do namespaces attached to the tenant by label alone — a `Tenant` listing none is skipped even when labelled namespaces exist for it. A skipped tenant is silent rather than failing; it has no rendered configuration to report on.
 
-The extension ships as the `openbao-config-mto-bootstrap` Helm chart, and these are its values — set them wherever your platform supplies Helm values for that chart. Everything under `parent` is passed down to every tenant, so this is where you point the cluster at your OpenBao server and decide which features are on:
+The extension is installed with Helm, and these are its values. Everything under `parent` is passed down to every tenant, so this is where you point the cluster at your OpenBao server and decide which features are on:
 
 ```yaml
 parent:
@@ -121,7 +115,7 @@ parent:
     issuerUrl: ""
 ```
 
-Values outside `parent` cover the cluster's own setup rather than the tenants' — `platformPki` for the certificate authority that signs each tenant's CA, and `safety` for what deletion does. The per-tenant engine details, such as certificate roles and what each tier may do, are values of the `openbao-config-mto` chart, which the bootstrap chart renders for you.
+Values outside `parent` cover the cluster's own setup rather than the tenants': `platformPki` for the certificate authority that signs each tenant's CA, and `safety` for what deletion does. The certificate roles tenants issue from are install-wide too, under `parent.pki.roles`. What each tier may do is fixed by the extension and is not exposed as a value.
 
 ### Giving the operator its own credentials
 
