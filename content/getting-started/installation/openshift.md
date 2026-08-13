@@ -141,6 +141,27 @@ spec:
 
 * Now the `InstallPlan` will be approved, and MTO console components will be installed.
 
+### Console Admin Access
+
+MTO ships with a default admin user, `mto`, that you can log in to the console with. It is not privileged out of the box, so add its email to the privileged users in the `IntegrationConfig` to give it administrator access:
+
+```bash
+oc patch integrationconfigs.tenantoperator.stakater.com tenant-operator-config \
+  -n multi-tenant-operator --type=merge --patch '{
+    "spec": {
+        "accessControl": {
+            "privileged": {
+                "users": [
+                    "mto@stakater.com"
+                ]
+            }
+        }
+    }
+}'
+```
+
+Users listed under `spec.accessControl.privileged` can see every tenant and namespace in the console, along with the `IntegrationConfig` itself. For the other console roles, see [Configuration](../../console/configuration.md).
+
 ## Uninstall via OperatorHub UI
 
 You can uninstall MTO by following these steps:
