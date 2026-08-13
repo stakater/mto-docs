@@ -88,7 +88,7 @@ These steps are done once per cluster, by a platform administrator, before any t
 ### Prerequisites
 
 - An OpenBao server reachable from the cluster.
-- The OpenBao extension and its operator, which build on [Template Operator](../../concepts/template-operator/template.md). Contact Stakater to have them installed.
+- The OpenBao extension and its operator, which build on Template Operator. Contact Stakater to have them installed.
 - [External Secrets Operator](https://external-secrets.io/), while secrets are delivered as Kubernetes `Secret`s — the default.
 - [cert-manager](https://cert-manager.io/) to issue certificates through Kubernetes, and [trust-manager](https://cert-manager.io/docs/trust/trust-manager/) for trust between tenants.
 - An OIDC identity provider, for human login.
