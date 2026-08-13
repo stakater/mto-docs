@@ -5,31 +5,31 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-dotenv-16.x-lockfile/getting-started/installation/azure-aks/installation.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-dotenv-16.x-lockfile/integrations/openbao/readme.html">
       
       
-        <link rel="prev" href="preparation.html">
+        <link rel="prev" href="../vault/vault.html">
       
       
-        <link rel="next" href="validation.html">
+        <link rel="next" href="../devworkspace.html">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="icon" href="../../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
-        <title>Installation - Multi-Tenant Operator</title>
+        <title>OpenBao - Multi-Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -66,7 +66,7 @@
 
     
     
-  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -95,7 +95,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mto-installation-guide" class="md-skip">
+        <a href="#openbao" class="md-skip">
           Skip to content
         </a>
       
@@ -340,7 +340,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../../.." title="Multi-Tenant Operator" class="md-header__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
+    <a href="../.." title="Multi-Tenant Operator" class="md-header__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
       <!-- 
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -361,10 +361,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="../../../assets/images/logo-light.png#only-light" alt="logo">
+          <img class="md-header__logo_light" src="../../assets/images/logo-light.png#only-light" alt="logo">
           
           
-          <img class="md-header__logo_dark" src="../../../assets/images/logo-dark.png#only-dark" alt="logo">
+          <img class="md-header__logo_dark" src="../../assets/images/logo-dark.png#only-dark" alt="logo">
           
           
           <div class="header-site-name">
@@ -1988,7 +1988,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Multi-Tenant Operator" class="md-nav__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
+    <a href="../.." title="Multi-Tenant Operator" class="md-nav__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
@@ -2065,7 +2065,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../index.html" class="md-nav__link">
+      <a href="../../index.html" class="md-nav__link">
         
   
   
@@ -2093,7 +2093,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../overview/key-features.html" class="md-nav__link">
+      <a href="../../overview/key-features.html" class="md-nav__link">
         
   
   
@@ -2121,7 +2121,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../overview/use-cases.html" class="md-nav__link">
+      <a href="../../overview/use-cases.html" class="md-nav__link">
         
   
   
@@ -2149,7 +2149,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../overview/benefits.html" class="md-nav__link">
+      <a href="../../overview/benefits.html" class="md-nav__link">
         
   
   
@@ -2231,7 +2231,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/architecture.html" class="md-nav__link">
+      <a href="../../concepts/architecture.html" class="md-nav__link">
         
   
   
@@ -2259,7 +2259,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/terminology.html" class="md-nav__link">
+      <a href="../../concepts/terminology.html" class="md-nav__link">
         
   
   
@@ -2287,7 +2287,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/tenant.html" class="md-nav__link">
+      <a href="../../concepts/tenant.html" class="md-nav__link">
         
   
   
@@ -2315,7 +2315,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/quota.html" class="md-nav__link">
+      <a href="../../concepts/quota.html" class="md-nav__link">
         
   
   
@@ -2343,7 +2343,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/extensions.html" class="md-nav__link">
+      <a href="../../concepts/extensions.html" class="md-nav__link">
         
   
   
@@ -2371,7 +2371,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/integration-config.html" class="md-nav__link">
+      <a href="../../concepts/integration-config.html" class="md-nav__link">
         
   
   
@@ -2399,7 +2399,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/template-operator/cluster-template-instance.html" class="md-nav__link">
+      <a href="../../concepts/template-operator/cluster-template-instance.html" class="md-nav__link">
         
   
   
@@ -2427,7 +2427,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/template-operator/template-instance.html" class="md-nav__link">
+      <a href="../../concepts/template-operator/template-instance.html" class="md-nav__link">
         
   
   
@@ -2455,7 +2455,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/template-operator/template.html" class="md-nav__link">
+      <a href="../../concepts/template-operator/template.html" class="md-nav__link">
         
   
   
@@ -2483,7 +2483,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/hibernation-operator/cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../../concepts/hibernation-operator/cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -2511,7 +2511,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/hibernation-operator/resource-supervisor.html" class="md-nav__link">
+      <a href="../../concepts/hibernation-operator/resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -2543,20 +2543,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -2577,7 +2575,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2592,20 +2590,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1">
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -2626,7 +2622,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2644,7 +2640,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../overview.html" class="md-nav__link">
+      <a href="../../getting-started/installation/overview.html" class="md-nav__link">
         
   
   
@@ -2672,7 +2668,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../openshift.html" class="md-nav__link">
+      <a href="../../getting-started/installation/openshift.html" class="md-nav__link">
         
   
   
@@ -2700,7 +2696,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../kubernetes.html" class="md-nav__link">
+      <a href="../../getting-started/installation/kubernetes.html" class="md-nav__link">
         
   
   
@@ -2725,20 +2721,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4">
         
           
           <label class="md-nav__link" for="__nav_3_1_4" id="__nav_3_1_4_label" tabindex="0">
@@ -2759,7 +2753,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_1_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2777,7 +2771,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="preparation.html" class="md-nav__link">
+      <a href="../../getting-started/installation/azure-aks/preparation.html" class="md-nav__link">
         
   
   
@@ -2802,37 +2796,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Installation
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="installation.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../getting-started/installation/azure-aks/installation.html" class="md-nav__link">
         
   
   
@@ -2848,72 +2815,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#install-mto-core" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Install MTO Core
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#enable-mto-console" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Enable MTO Console
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mto-console-admin-login" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MTO Console Admin Login
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What's Next
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2926,7 +2827,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="validation.html" class="md-nav__link">
+      <a href="../../getting-started/installation/azure-aks/validation.html" class="md-nav__link">
         
   
   
@@ -3009,7 +2910,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../aws-eks/preparation.html" class="md-nav__link">
+      <a href="../../getting-started/installation/aws-eks/preparation.html" class="md-nav__link">
         
   
   
@@ -3037,7 +2938,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../aws-eks/installation.html" class="md-nav__link">
+      <a href="../../getting-started/installation/aws-eks/installation.html" class="md-nav__link">
         
   
   
@@ -3065,7 +2966,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../aws-eks/validation.html" class="md-nav__link">
+      <a href="../../getting-started/installation/aws-eks/validation.html" class="md-nav__link">
         
   
   
@@ -3109,7 +3010,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../uninstalling.html" class="md-nav__link">
+      <a href="../../getting-started/uninstalling.html" class="md-nav__link">
         
   
   
@@ -3191,7 +3092,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/overview.html" class="md-nav__link">
+      <a href="../../console/overview.html" class="md-nav__link">
         
   
   
@@ -3219,7 +3120,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/dashboard.html" class="md-nav__link">
+      <a href="../../console/dashboard.html" class="md-nav__link">
         
   
   
@@ -3247,7 +3148,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/tenants.html" class="md-nav__link">
+      <a href="../../console/tenants.html" class="md-nav__link">
         
   
   
@@ -3275,7 +3176,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/namespaces.html" class="md-nav__link">
+      <a href="../../console/namespaces.html" class="md-nav__link">
         
   
   
@@ -3303,7 +3204,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/hibernation.html" class="md-nav__link">
+      <a href="../../console/hibernation.html" class="md-nav__link">
         
   
   
@@ -3331,7 +3232,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/showback.html" class="md-nav__link">
+      <a href="../../console/showback.html" class="md-nav__link">
         
   
   
@@ -3359,7 +3260,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/quotas.html" class="md-nav__link">
+      <a href="../../console/quotas.html" class="md-nav__link">
         
   
   
@@ -3387,7 +3288,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/templates.html" class="md-nav__link">
+      <a href="../../console/templates.html" class="md-nav__link">
         
   
   
@@ -3415,7 +3316,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/template-instances.html" class="md-nav__link">
+      <a href="../../console/template-instances.html" class="md-nav__link">
         
   
   
@@ -3443,7 +3344,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/cluster-template-instances.html" class="md-nav__link">
+      <a href="../../console/cluster-template-instances.html" class="md-nav__link">
         
   
   
@@ -3471,7 +3372,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/capacity-planning.html" class="md-nav__link">
+      <a href="../../console/capacity-planning.html" class="md-nav__link">
         
   
   
@@ -3499,7 +3400,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/configuration.html" class="md-nav__link">
+      <a href="../../console/configuration.html" class="md-nav__link">
         
   
   
@@ -3581,7 +3482,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/create-tenant.html" class="md-nav__link">
+      <a href="../../guides/create-tenant.html" class="md-nav__link">
         
   
   
@@ -3609,7 +3510,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/create-namespaces.html" class="md-nav__link">
+      <a href="../../guides/create-namespaces.html" class="md-nav__link">
         
   
   
@@ -3637,7 +3538,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/create-sandbox.html" class="md-nav__link">
+      <a href="../../guides/create-sandbox.html" class="md-nav__link">
         
   
   
@@ -3665,7 +3566,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/assign-metadata.html" class="md-nav__link">
+      <a href="../../guides/assign-metadata.html" class="md-nav__link">
         
   
   
@@ -3693,7 +3594,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/hibernate-tenant.html" class="md-nav__link">
+      <a href="../../guides/hibernate-tenant.html" class="md-nav__link">
         
   
   
@@ -3721,7 +3622,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
+      <a href="../../guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   
@@ -3749,7 +3650,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/disable-intra-tenant-networking.html" class="md-nav__link">
+      <a href="../../guides/disable-intra-tenant-networking.html" class="md-nav__link">
         
   
   
@@ -3777,7 +3678,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/ingress-sharding.html" class="md-nav__link">
+      <a href="../../guides/ingress-sharding.html" class="md-nav__link">
         
   
   
@@ -3805,7 +3706,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/host-validation.html" class="md-nav__link">
+      <a href="../../guides/host-validation.html" class="md-nav__link">
         
   
   
@@ -3833,7 +3734,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/storage-classes.html" class="md-nav__link">
+      <a href="../../guides/storage-classes.html" class="md-nav__link">
         
   
   
@@ -3861,7 +3762,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/pod-priority-classes.html" class="md-nav__link">
+      <a href="../../guides/pod-priority-classes.html" class="md-nav__link">
         
   
   
@@ -3889,7 +3790,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/service-accounts.html" class="md-nav__link">
+      <a href="../../guides/service-accounts.html" class="md-nav__link">
         
   
   
@@ -3917,7 +3818,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/image-registries.html" class="md-nav__link">
+      <a href="../../guides/image-registries.html" class="md-nav__link">
         
   
   
@@ -3945,7 +3846,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/custom-roles.html" class="md-nav__link">
+      <a href="../../guides/custom-roles.html" class="md-nav__link">
         
   
   
@@ -3973,7 +3874,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/extend-default-roles.html" class="md-nav__link">
+      <a href="../../guides/extend-default-roles.html" class="md-nav__link">
         
   
   
@@ -4001,7 +3902,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/delete-tenant.html" class="md-nav__link">
+      <a href="../../guides/delete-tenant.html" class="md-nav__link">
         
   
   
@@ -4029,7 +3930,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/templated-metadata-values.html" class="md-nav__link">
+      <a href="../../guides/templated-metadata-values.html" class="md-nav__link">
         
   
   
@@ -4057,7 +3958,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/template-operator/copying-resources-2.html" class="md-nav__link">
+      <a href="../../guides/template-operator/copying-resources-2.html" class="md-nav__link">
         
   
   
@@ -4085,7 +3986,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/template-operator/copying-resources.html" class="md-nav__link">
+      <a href="../../guides/template-operator/copying-resources.html" class="md-nav__link">
         
   
   
@@ -4113,7 +4014,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/template-operator/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../../guides/template-operator/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   
@@ -4141,7 +4042,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/template-operator/deploying-templates.html" class="md-nav__link">
+      <a href="../../guides/template-operator/deploying-templates.html" class="md-nav__link">
         
   
   
@@ -4169,7 +4070,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/template-operator/distributing-manifests.html" class="md-nav__link">
+      <a href="../../guides/template-operator/distributing-manifests.html" class="md-nav__link">
         
   
   
@@ -4197,7 +4098,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/template-operator/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../../guides/template-operator/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   
@@ -4225,7 +4126,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/template-operator/resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../../guides/template-operator/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   
@@ -4253,7 +4154,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/template-operator/template-default-params.html" class="md-nav__link">
+      <a href="../../guides/template-operator/template-default-params.html" class="md-nav__link">
         
   
   
@@ -4281,7 +4182,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/hibernation-operator/create-cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../../guides/hibernation-operator/create-cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -4309,7 +4210,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/hibernation-operator/create-resource-supervisor.html" class="md-nav__link">
+      <a href="../../guides/hibernation-operator/create-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -4337,7 +4238,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/hibernation-operator/hibernate-resources.html" class="md-nav__link">
+      <a href="../../guides/hibernation-operator/hibernate-resources.html" class="md-nav__link">
         
   
   
@@ -4369,18 +4270,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -4401,7 +4304,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4466,7 +4369,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/argocd.html" class="md-nav__link">
+      <a href="../argocd.html" class="md-nav__link">
         
   
   
@@ -4494,7 +4397,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/hibernation-operator/argocd.html" class="md-nav__link">
+      <a href="../hibernation-operator/argocd.html" class="md-nav__link">
         
   
   
@@ -4530,7 +4433,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/vault/vault.html" class="md-nav__link">
+      <a href="../vault/vault.html" class="md-nav__link">
         
   
   
@@ -4555,10 +4458,37 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../integrations/openbao/readme.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenBao
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="readme.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -4574,6 +4504,327 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#what-it-saves-you" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it saves you
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-using-it-looks-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What using it looks like
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-each-tenant-gets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What each tenant gets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-tiers-map-to-openbao-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How tiers map to OpenBao access
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-the-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting up the extension
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting up the extension">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabling-the-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enabling the extension
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giving-the-operator-its-own-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giving the operator its own credentials
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giving-an-application-a-secret" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giving an application a secret
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Giving an application a secret">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-annotate-the-serviceaccount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Annotate the ServiceAccount
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-write-the-first-secret" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Write the first secret
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-read-the-secret-from-the-pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Read the secret from the pod
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delivering-secrets-as-kubernetes-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delivering secrets as Kubernetes Secrets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sharing-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sharing secrets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sharing secrets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#between-namespaces-in-one-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Between namespaces in one tenant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#between-tenants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Between tenants
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encrypting-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encrypting data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#issuing-certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issuing certificates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#human-login" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Human login
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotation-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotation reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operating-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operating it
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operating it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checking-what-was-created" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking what was created
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-a-workload-cannot-log-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When a workload cannot log in
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-deletion-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What deletion does
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4586,7 +4837,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/devworkspace.html" class="md-nav__link">
+      <a href="../devworkspace.html" class="md-nav__link">
         
   
   
@@ -4614,7 +4865,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/mattermost.html" class="md-nav__link">
+      <a href="../mattermost.html" class="md-nav__link">
         
   
   
@@ -4696,7 +4947,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../cli/overview.html" class="md-nav__link">
+      <a href="../../cli/overview.html" class="md-nav__link">
         
   
   
@@ -4825,7 +5076,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/api.html" class="md-nav__link">
+      <a href="../../reference/api.html" class="md-nav__link">
         
   
   
@@ -4853,7 +5104,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/api/template-operator/api.html" class="md-nav__link">
+      <a href="../../reference/api/template-operator/api.html" class="md-nav__link">
         
   
   
@@ -4881,7 +5132,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/api/hibernation-operator/api.html" class="md-nav__link">
+      <a href="../../reference/api/hibernation-operator/api.html" class="md-nav__link">
         
   
   
@@ -4917,7 +5168,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/configuration.html" class="md-nav__link">
+      <a href="../../reference/configuration.html" class="md-nav__link">
         
   
   
@@ -4945,7 +5196,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/rbac.html" class="md-nav__link">
+      <a href="../../reference/rbac.html" class="md-nav__link">
         
   
   
@@ -4973,7 +5224,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/security-model.html" class="md-nav__link">
+      <a href="../../reference/security-model.html" class="md-nav__link">
         
   
   
@@ -5001,7 +5252,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/metrics.html" class="md-nav__link">
+      <a href="../../reference/metrics.html" class="md-nav__link">
         
   
   
@@ -5029,7 +5280,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/webhooks.html" class="md-nav__link">
+      <a href="../../reference/webhooks.html" class="md-nav__link">
         
   
   
@@ -5064,7 +5315,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../troubleshooting.html" class="md-nav__link">
+      <a href="../../troubleshooting.html" class="md-nav__link">
         
   
   
@@ -5091,7 +5342,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../release-notes.html" class="md-nav__link">
+      <a href="../../release-notes.html" class="md-nav__link">
         
   
   
@@ -5118,7 +5369,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../pricing.html" class="md-nav__link">
+      <a href="../../pricing.html" class="md-nav__link">
         
   
   
@@ -5145,7 +5396,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../eula.html" class="md-nav__link">
+      <a href="../../eula.html" class="md-nav__link">
         
   
   
@@ -5194,10 +5445,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#install-mto-core" class="md-nav__link">
+  <a href="#what-it-saves-you" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install MTO Core
+        What it saves you
       
     </span>
   </a>
@@ -5205,10 +5456,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#enable-mto-console" class="md-nav__link">
+  <a href="#what-using-it-looks-like" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Enable MTO Console
+        What using it looks like
       
     </span>
   </a>
@@ -5216,10 +5467,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#mto-console-admin-login" class="md-nav__link">
+  <a href="#what-each-tenant-gets" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MTO Console Admin Login
+        What each tenant gets
       
     </span>
   </a>
@@ -5227,10 +5478,265 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
+  <a href="#how-tiers-map-to-openbao-access" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What's Next
+        How tiers map to OpenBao access
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-the-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setting up the extension
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting up the extension">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabling-the-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enabling the extension
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#giving-the-operator-its-own-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giving the operator its own credentials
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#giving-an-application-a-secret" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Giving an application a secret
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Giving an application a secret">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-annotate-the-serviceaccount" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Annotate the ServiceAccount
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-write-the-first-secret" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Write the first secret
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-read-the-secret-from-the-pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Read the secret from the pod
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delivering-secrets-as-kubernetes-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delivering secrets as Kubernetes Secrets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sharing-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sharing secrets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sharing secrets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#between-namespaces-in-one-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Between namespaces in one tenant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#between-tenants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Between tenants
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#encrypting-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encrypting data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#issuing-certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Issuing certificates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#human-login" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Human login
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotation-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotation reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operating-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operating it
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operating it">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checking-what-was-created" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checking what was created
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-a-workload-cannot-log-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When a workload cannot log in
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-deletion-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What deletion does
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference
       
     </span>
   </a>
@@ -5257,89 +5763,561 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="mto-installation-guide">MTO Installation Guide<a class="headerlink" href="#mto-installation-guide" title="Permanent link">#</a></h1>
-<p>Once the <a href="preparation.html">necessary preparations</a> are complete, you can proceed with the installation section.</p>
-<p>The installation process consists of two steps:</p>
-<ol>
-<li><a href="#install-mto-core">Install MTO Core</a></li>
-<li><a href="#enable-mto-console">Enable MTO Console</a></li>
-</ol>
-<h2 id="install-mto-core">Install MTO Core<a class="headerlink" href="#install-mto-core" title="Permanent link">#</a></h2>
-<p>We will be using helm to install the operator.</p>
-<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>tenant-operator<span class="w"> </span>oci://ghcr.io/stakater/public/charts/tenant-operator<span class="w"> </span>--namespace<span class="w"> </span>multi-tenant-operator<span class="w"> </span>--create-namespace
+<h1 id="openbao">OpenBao<a class="headerlink" href="#openbao" title="Permanent link">#</a></h1>
+<p><a href="https://openbao.org/">OpenBao</a> is an identity-based secret and encryption management system: it authenticates and authorizes a client — a person or a workload — before giving it access to anything OpenBao holds.</p>
+<p>With the Multi-Tenant Operator (MTO), cluster administrators can configure multi-tenancy within their cluster. The OpenBao extension carries that multi-tenancy into OpenBao: every tenant gets its own OpenBao namespace — with a secrets store, encryption keys and a certificate authority inside it — along with the policies and login roles that let the tenant's people and workloads reach them and nothing else.</p>
+<p>Note that the OpenBao extension is optional.</p>
+<h2 id="what-it-saves-you">What it saves you<a class="headerlink" href="#what-it-saves-you" title="Permanent link">#</a></h2>
+<p>Setting a tenant up in OpenBao by hand means creating, per tenant: an OpenBao namespace; a KV secrets engine, a transit engine and a PKI certificate authority inside it; a policy for every application at every access level; a Kubernetes auth role for every ServiceAccount that logs in; and an OIDC role for every identity-provider group that should be able to sign in. All of it has to be revisited whenever a namespace is added, an application is deployed, or a team's access changes.</p>
+<p>The extension derives all of it from the <code>Tenant</code> resource you already maintain, and keeps it in step as the tenant changes — creating what is now needed and removing what no longer applies.</p>
+<p>The other half is what it removes from application teams. A developer never writes an OpenBao policy and never holds a static OpenBao credential. They declare what the application needs in annotations on its ServiceAccount, and the pod authenticates with the token Kubernetes already gives it.</p>
+<h2 id="what-using-it-looks-like">What using it looks like<a class="headerlink" href="#what-using-it-looks-like" title="Permanent link">#</a></h2>
+<p>Everything an application team writes fits on one screen. The ServiceAccount says what the application needs, the Deployment says which secret to deliver, and the container reads an ordinary Kubernetes <code>Secret</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-a-api</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">bao.stakater.com/kv</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span><span class="w">       </span><span class="c1"># give this application a private secrets path</span>
+<span class="w">    </span><span class="nt">bao.stakater.com/tier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">editor</span><span class="w">     </span><span class="c1"># it may read and write there</span>
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-a-api</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">bao.stakater.com/kv-secret.db-creds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span><span class="w">   </span><span class="c1"># deliver this secret</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my/web:1.0</span>
+<span class="w">          </span><span class="nt">envFrom</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">secretRef</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web-db-creds</span><span class="w">    </span><span class="c1"># created and kept in sync for you</span>
 </code></pre></div>
-<p>We will wait for the pods to come in running state.</p>
-<h2 id="enable-mto-console">Enable MTO Console<a class="headerlink" href="#enable-mto-console" title="Permanent link">#</a></h2>
-<p>Execute the following command to enable MTO console</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>patch<span class="w"> </span>integrationconfig<span class="w"> </span>tenant-operator-config<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>--type<span class="w"> </span>merge<span class="w"> </span>--patch<span class="w"> </span><span class="s2">"{</span>
-<span class="s2">  \"spec\": {</span>
-<span class="s2">    \"components\": {</span>
-<span class="s2">      \"console\": true,</span>
-<span class="s2">      \"ingress\": {</span>
-<span class="s2">        \"console\": {</span>
-<span class="s2">          \"host\": \"console.&lt;FULL_SUBDOMAIN&gt;\",</span>
-<span class="s2">          \"tlsSecretName\": \"&lt;SECRET_NAME&gt;\"</span>
-<span class="s2">        },</span>
-<span class="s2">        \"gateway\": {</span>
-<span class="s2">          \"host\": \"gateway.&lt;FULL_SUBDOMAIN&gt;\",</span>
-<span class="s2">          \"tlsSecretName\": \"&lt;SECRET_NAME&gt;\"</span>
-<span class="s2">        },</span>
-<span class="s2">        \"ingressClassName\": \"nginx\"</span>
-<span class="s2">      },</span>
-<span class="s2">      \"showback\": true</span>
-<span class="s2">    }</span>
-<span class="s2">  }</span>
-<span class="s2">}"</span>
-</code></pre></div>
+<p>The OpenBao policy, the login role and the Kubernetes <code>Secret</code> are all created from those three annotations. The rest of this page explains what each piece does, and what else an application can ask for.</p>
+<h2 id="what-each-tenant-gets">What each tenant gets<a class="headerlink" href="#what-each-tenant-gets" title="Permanent link">#</a></h2>
 <table>
 <thead>
 <tr>
-<th>Placeholder</th>
-<th>Description</th>
+<th style="text-align: left;">Capability</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">What it is</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>&lt;FULL_SUBDOMAIN&gt;</code></td>
-<td>Full subdomain of the EKS cluster e.g. <code>iinhdnh6.demo.kubeapp.cloud</code></td>
+<td style="text-align: left;">A private OpenBao namespace</td>
+<td style="text-align: left;">on</td>
+<td style="text-align: left;">Everything for the tenant lives under <code>&lt;tenant&gt;/</code>. One tenant cannot see or reach another tenant's namespace.</td>
 </tr>
 <tr>
-<td><code>&lt;SECRET_NAME&gt;</code></td>
-<td>Name of the secret that should be used as TLS secret</td>
+<td style="text-align: left;">Secrets storage</td>
+<td style="text-align: left;">on</td>
+<td style="text-align: left;">A KV engine (version 2), with each application's secrets on its own path.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Encryption keys</td>
+<td style="text-align: left;">on</td>
+<td style="text-align: left;">A transit engine: the workload sends data and gets it back encrypted, and the key never leaves OpenBao.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Certificates</td>
+<td style="text-align: left;">on</td>
+<td style="text-align: left;">A PKI certificate authority per tenant, for serving TLS and for service-to-service mTLS.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Secret delivery</td>
+<td style="text-align: left;">on</td>
+<td style="text-align: left;">Secrets arrive as ordinary Kubernetes <code>Secret</code>s through the External Secrets Operator, so an application needs no OpenBao code.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Human login</td>
+<td style="text-align: left;">off</td>
+<td style="text-align: left;">Tenant members sign in through your OIDC identity provider, and their group membership decides their access.</td>
+</tr>
+<tr>
+<td style="text-align: left;">cert-manager issuance</td>
+<td style="text-align: left;">off</td>
+<td style="text-align: left;">A cert-manager <code>Issuer</code> per namespace, so applications request certificates the usual way.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Cross-tenant trust</td>
+<td style="text-align: left;">off</td>
+<td style="text-align: left;">Opt-in, directional trust between two tenants' certificate authorities.</td>
 </tr>
 </tbody>
 </table>
-<p>Wait for the pods to be ready with the following command</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>--for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span>ready<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>--all<span class="w"> </span>--timeout<span class="o">=</span>300s
+<p>Engines exist for every tenant, but they grant nothing on their own: a workload gets access only once its ServiceAccount is annotated. Access is never derived from the tenant's <code>accessControl</code> groups, as it is in the <a href="../vault/vault.html">Vault integration</a>: workloads get access from ServiceAccount annotations, and people from identity-provider groups named after the tenant.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/openbao-namespaces.png" data-desc-position="bottom"><img alt="The OpenBao namespace list: one namespace per tenant, plus the platform namespace." src="../../images/openbao-namespaces.png"></a></p>
+<p>One OpenBao namespace per tenant, created with the <code>Tenant</code>. The <code>platform</code> namespace holds the certificate authority that signs each tenant's CA. A login to one tenant's namespace gives no access to any other.</p>
+<h2 id="how-tiers-map-to-openbao-access">How tiers map to OpenBao access<a class="headerlink" href="#how-tiers-map-to-openbao-access" title="Permanent link">#</a></h2>
+<p>A <strong>tier</strong> is set with <code>bao.stakater.com/tier</code> and applies to every engine the ServiceAccount enables.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tier</th>
+<th style="text-align: left;">Secrets (KV)</th>
+<th style="text-align: left;">Encryption (transit)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>audit-read</code></td>
+<td style="text-align: left;">List names only — no values</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>viewer</code></td>
+<td style="text-align: left;">Read, List</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>editor</code></td>
+<td style="text-align: left;">Create, Read, Update, Patch, List</td>
+<td style="text-align: left;">Encrypt, decrypt, rewrap</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>admin</code></td>
+<td style="text-align: left;">Create, Read, Update, Patch, List, Delete</td>
+<td style="text-align: left;">Encrypt, decrypt, rewrap, plus create, rotate and delete keys</td>
+</tr>
+</tbody>
+</table>
+<p>Transit needs write access, so <code>viewer</code> and <code>audit-read</code> get none of it. Certificates are the exception to the table: a workload that opts into PKI may issue and sign at any tier. For people signing in through OIDC, the tier bounds certificate access as well.</p>
+<h2 id="setting-up-the-extension">Setting up the extension<a class="headerlink" href="#setting-up-the-extension" title="Permanent link">#</a></h2>
+<p>These steps are done once per cluster, by a platform administrator, before any tenant gets an OpenBao namespace.</p>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h3>
+<ul>
+<li>An OpenBao server reachable from the cluster.</li>
+<li>The OpenBao extension and its operator, which build on Template Operator. Contact Stakater to have them installed.</li>
+<li><a href="https://external-secrets.io/">External Secrets Operator</a>, while secrets are delivered as Kubernetes <code>Secret</code>s — the default.</li>
+<li><a href="https://cert-manager.io/">cert-manager</a> to issue certificates through Kubernetes, and <a href="https://cert-manager.io/docs/trust/trust-manager/">trust-manager</a> for trust between tenants.</li>
+<li>An OIDC identity provider, for human login.</li>
+</ul>
+<p>MTO labels each tenant namespace <code>stakater.com/tenant=&lt;tenant-name&gt;</code>, and the extension uses that label to find them.</p>
+<h3 id="enabling-the-extension">Enabling the extension<a class="headerlink" href="#enabling-the-extension" title="Permanent link">#</a></h3>
+<p>The extension is installed once per cluster; there is no per-tenant installation step. It watches <code>Tenant</code> resources cluster-wide and renders one set of configuration per tenant, which the OpenBao Config Operator then applies to OpenBao.</p>
+<p>A tenant is picked up once its spec lists at least one namespace under <code>withTenantPrefix</code> or <code>withoutTenantPrefix</code>; add one to a skipped tenant, and it is picked up on the next render. The check reads those two fields and nothing else: sandboxes do not count, and neither do namespaces attached to the tenant by label alone — a <code>Tenant</code> listing none is skipped even when labelled namespaces exist for it. A skipped tenant is silent rather than failing; it has no rendered configuration to report on.</p>
+<p>The extension is installed with Helm, and these are its values. Everything under <code>parent</code> is passed down to every tenant, so this is where you point the cluster at your OpenBao server and decide which features are on:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">parent</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">baoServer</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://openbao.openbao.svc.cluster.local:8200</span>
+<span class="w">  </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span><span class="w">                    </span><span class="c1"># a segment in every secret path, so one server can hold several environments</span>
+<span class="w">  </span><span class="nt">eso</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span><span class="w">                </span><span class="c1"># deliver secrets as Kubernetes Secrets</span>
+<span class="w">  </span><span class="nt">certManager</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">            </span><span class="c1"># cert-manager Issuers per namespace</span>
+<span class="w">  </span><span class="nt">sso</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">            </span><span class="c1"># human login through OIDC</span>
+<span class="w">    </span><span class="nt">issuerUrl</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
 </code></pre></div>
-<p>List the ingresses to access the URL of MTO Console</p>
-<div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>ingress<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
+<p>Values outside <code>parent</code> cover the cluster's own setup rather than the tenants': <code>platformPki</code> for the certificate authority that signs each tenant's CA, and <code>safety</code> for what deletion does. The certificate roles tenants issue from are install-wide too, under <code>parent.pki.roles</code>. What each tier may do is fixed by the extension and is not exposed as a value.</p>
+<h3 id="giving-the-operator-its-own-credentials">Giving the operator its own credentials<a class="headerlink" href="#giving-the-operator-its-own-credentials" title="Permanent link">#</a></h3>
+<p>The operator authenticates to OpenBao with its own Kubernetes ServiceAccount and stores no token anywhere. This needs a one-time bootstrap per OpenBao server: an auth mount for the cluster, a policy covering what the operator manages, and a role binding that policy to the operator's ServiceAccount.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Never give the operator OpenBao's root token. In production, also set <code>baoServer</code> to an <code>https://</code> address, and set <code>baoCABundle</code> if OpenBao serves with a private CA.</p>
+</div>
+<h2 id="giving-an-application-a-secret">Giving an application a secret<a class="headerlink" href="#giving-an-application-a-secret" title="Permanent link">#</a></h2>
+<p>This is the path most people take, and everything else on this page builds on it: annotate the workload, write a secret, read it from a pod. The examples use tenant <code>team-a</code> and its namespace <code>team-a-api</code>, which are created the ordinary way — see <a href="../../guides/create-tenant.html">Creating a tenant</a>. Nothing about the <code>Tenant</code> is OpenBao-specific.</p>
+<h3 id="1-annotate-the-serviceaccount">1. Annotate the ServiceAccount<a class="headerlink" href="#1-annotate-the-serviceaccount" title="Permanent link">#</a></h3>
+<p>The ServiceAccount is the identity OpenBao authenticates, so this is where access is granted. Name the engine you want, and the tier to grant it at:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-a-api</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">bao.stakater.com/kv</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">    </span><span class="nt">bao.stakater.com/tier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">editor</span>
+</code></pre></div>
+<p><code>tier</code> is required alongside any engine — an engine annotation on its own grants nothing. For ServiceAccount <code>web</code>, in tenant <code>team-a</code>'s namespace <code>team-a-api</code>, this creates:</p>
+<ul>
+<li>an OpenBao policy scoped to that application's own path, <code>kv/data/dev/team-a-api/web/*</code>;</li>
+<li>a Kubernetes auth role, so the pod can trade its ServiceAccount token for a short-lived OpenBao token;</li>
+<li>a ConfigMap named <code>bao-config-web</code> in <code>team-a-api</code>, holding every address, role and path the workload needs.</li>
+</ul>
+<p>The last path segment is the <strong>application</strong>, which defaults to the ServiceAccount name. Scoping to the application rather than the namespace is what stops two workloads in one namespace reading each other's secrets.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant MTO as OpenBao extension
+    participant K8s as Kubernetes
+    participant Bao as OpenBao
+    participant Pod
+    MTO-&gt;&gt;K8s: watch ServiceAccounts annotated bao.stakater.com/*
+    MTO-&gt;&gt;Bao: create the policy and login role for this ServiceAccount
+    MTO-&gt;&gt;K8s: write the bao-config-web ConfigMap beside the workload
+    Pod-&gt;&gt;Bao: log in with its ServiceAccount token
+    Bao-&gt;&gt;K8s: verify the token
+    Bao--&gt;&gt;Pod: short-lived token carrying the application's policy
+    Pod-&gt;&gt;Bao: read and write under its own path</code></pre>
+<h3 id="2-write-the-first-secret">2. Write the first secret<a class="headerlink" href="#2-write-the-first-secret" title="Permanent link">#</a></h3>
+<p>Someone has to write the first secret, which means knowing the path to write it to. The <code>bao-apps</code> ConfigMap answers that — every namespace with at least one OpenBao-enabled ServiceAccount has one, listing an entry per application:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>kubectl<span class="w"> </span>get<span class="w"> </span>cm<span class="w"> </span>bao-apps<span class="w"> </span>-n<span class="w"> </span>team-a-api<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.data.web}'</span>
+<span class="go">serviceAccount: "web"</span>
+<span class="go">tier: "editor"</span>
+<span class="go">engines: kv</span>
+<span class="go">kvPath: kv/data/dev/team-a-api/web/</span>
+</code></pre></div>
+<p>Once a Deployment starts requesting secrets, a <code>requestedSecrets</code> line joins the entry. The <code>_namespace</code> entry carries the namespace's shared folder.</p>
+<p>A person signed in through OIDC, or a pipeline with its own credentials, writes to that path:</p>
+<div class="highlight"><pre><span></span><code>bao<span class="w"> </span>login<span class="w"> </span>-method<span class="o">=</span>oidc<span class="w"> </span>-namespace<span class="o">=</span>team-a<span class="w"> </span><span class="nv">role</span><span class="o">=</span>sso-team-a-admin
+bao<span class="w"> </span>kv<span class="w"> </span>put<span class="w"> </span>-mount<span class="o">=</span>kv<span class="w"> </span>dev/team-a-api/web/postgres<span class="w"> </span><span class="nv">username</span><span class="o">=</span>app<span class="w"> </span><span class="nv">password</span><span class="o">=</span>s3cr3t
+</code></pre></div>
+<p>In the OpenBao web UI, open the <code>kv</code> mount and browse <code>dev/team-a-api/web/</code>. The <code>/data/</code> segment in <code>kvPath</code> is an API artefact and does not appear in the UI.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/openbao-kv-tree.png" data-desc-position="bottom"><img alt="The KV mount browsed to one application's own path, holding its secrets." src="../../images/openbao-kv-tree.png"></a></p>
+<p>The breadcrumb is the path from <code>bao-apps</code>: the <code>kv</code> mount, then <code>&lt;env&gt;/&lt;namespace&gt;/&lt;app&gt;/</code>. Everything under it belongs to that one application.</p>
+<h3 id="3-read-the-secret-from-the-pod">3. Read the secret from the pod<a class="headerlink" href="#3-read-the-secret-from-the-pod" title="Permanent link">#</a></h3>
+<p>Load the ConfigMap into the pod, and everything the workload needs is in its environment:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-a-api</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my/web:1.0</span>
+<span class="w">          </span><span class="nt">envFrom</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">configMapRef</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bao-config-web</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">VAULT_TOKEN</span><span class="o">=</span><span class="k">$(</span>bao<span class="w"> </span>write<span class="w"> </span>-field<span class="o">=</span>token<span class="w"> </span>auth/kubernetes/login<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nv">role</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">VAULT_K8S_ROLE</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nv">jwt</span><span class="o">=</span>@/var/run/secrets/kubernetes.io/serviceaccount/token<span class="k">)</span>
 
-NAME<span class="w">                       </span>CLASS<span class="w">   </span>HOSTS<span class="w">                                  </span>ADDRESS<span class="w">                                                                          </span>PORTS<span class="w">     </span>AGE
-tenant-operator-console<span class="w">    </span>nginx<span class="w">   </span>console.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
-tenant-operator-gateway<span class="w">    </span>nginx<span class="w">   </span>gateway.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
+bao<span class="w"> </span><span class="nb">read</span><span class="w"> </span><span class="s2">"</span><span class="si">${</span><span class="nv">VAULT_KV_APP_PATH</span><span class="si">}</span><span class="s2">postgres"</span>
 </code></pre></div>
-<h2 id="mto-console-admin-login">MTO Console Admin Login<a class="headerlink" href="#mto-console-admin-login" title="Permanent link">#</a></h2>
-<p>Patch the following integration config to give privileged access to MTO's default admin user</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>patch<span class="w"> </span>integrationconfigs.tenantoperator.stakater.com<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>tenant-operator-config<span class="w"> </span>--type<span class="o">=</span>merge<span class="w"> </span>--patch<span class="w"> </span><span class="s2">"{</span>
-<span class="s2">    \"spec\": {</span>
-<span class="s2">        \"accessControl\": {</span>
-<span class="s2">            \"privileged\": {</span>
-<span class="s2">                \"users\": [</span>
-<span class="s2">                    \"mto@stakater.com\"</span>
-<span class="s2">                ]</span>
-<span class="s2">            }</span>
-<span class="s2">        }</span>
-<span class="s2">    }</span>
-<span class="s2">}"</span>
+<p>The ConfigMap always carries the server address, the tenant's OpenBao namespace, the login role and the application's own paths:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Key</th>
+<th style="text-align: left;">Example</th>
+<th style="text-align: left;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>VAULT_ADDR</code></td>
+<td style="text-align: left;"><code>https://openbao.openbao:8200</code></td>
+<td style="text-align: left;">OpenBao server URL</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>VAULT_NAMESPACE</code></td>
+<td style="text-align: left;"><code>team-a/</code></td>
+<td style="text-align: left;">the tenant's OpenBao namespace</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>VAULT_K8S_ROLE</code></td>
+<td style="text-align: left;"><code>team-a-team-a-api-web</code></td>
+<td style="text-align: left;">the login role for this ServiceAccount</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>VAULT_KV_APP_PATH</code></td>
+<td style="text-align: left;"><code>kv/data/dev/team-a-api/web/</code></td>
+<td style="text-align: left;">where this application's secrets live</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>VAULT_KV_SHARED_OUT_PATH</code></td>
+<td style="text-align: left;"><code>kv/data/dev/_shared/from-team-a-api/</code></td>
+<td style="text-align: left;">the namespace's shared folder</td>
+</tr>
+</tbody>
+</table>
+<p>Read these from the ConfigMap rather than copying them into your manifests — they differ per tenant and per application. Transit and PKI add their own keys when those engines are enabled.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Every engine is reached this same way: one login with the ServiceAccount token, then the paths from the ConfigMap. Once you know it, transit and PKI need nothing new.</p>
+</div>
+<h2 id="delivering-secrets-as-kubernetes-secrets">Delivering secrets as Kubernetes Secrets<a class="headerlink" href="#delivering-secrets-as-kubernetes-secrets" title="Permanent link">#</a></h2>
+<p>Most applications should not call OpenBao at all. With the <a href="https://external-secrets.io/">External Secrets Operator</a> (ESO), which is on by default, the extension wires up delivery: ESO logs into OpenBao for the workload, fetches the secret and keeps an ordinary Kubernetes <code>Secret</code> in sync with it.</p>
+<p>For each ServiceAccount you give a tier, the extension creates a <code>SecretStore</code> named <code>&lt;serviceaccount&gt;-bao</code> that logs in with the same role as the workload. You then request secrets with annotations on the <strong>Deployment</strong> — each one produces one Kubernetes <code>Secret</code>, named <code>&lt;serviceaccount&gt;-&lt;name&gt;</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-a-api</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">bao.stakater.com/kv-secret.db-creds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span><span class="w">        </span><span class="c1"># the whole secret</span>
+<span class="w">    </span><span class="nt">bao.stakater.com/kv-secret.api-key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external#token</span><span class="w">   </span><span class="c1"># just the "token" field</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my/web:1.0</span>
+<span class="w">          </span><span class="nt">envFrom</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">secretRef</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web-db-creds</span>
 </code></pre></div>
-<p>Open the Console URL and Log In with the admin user. Default username and password is <code>mto</code></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../images/mto-console-login.png" data-desc-position="bottom"><img alt="MTO Console Login Page" src="../../../images/mto-console-login.png"></a></p>
-<p>Dashboard will open after the successful login. Currently we don't have any tenants</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../images/mto-console-dashboard-0-tenants.png" data-desc-position="bottom"><img alt="MTO Console Dashboard" src="../../../images/mto-console-dashboard-0-tenants.png"></a></p>
-<h2 id="whats-next">What's Next<a class="headerlink" href="#whats-next" title="Permanent link">#</a></h2>
-<p>Now lets <a href="validation.html">create our first tenant on AKS</a>.</p>
+<p>The value is <code>&lt;leaf&gt;[#&lt;field&gt;]</code>: with <code>#&lt;field&gt;</code>, only that field is copied into the Secret; without it, every field becomes a key.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant MTO as OpenBao extension
+    participant ESO as External Secrets Operator
+    participant Bao as OpenBao
+    participant K8s as Kubernetes
+    MTO-&gt;&gt;ESO: SecretStore web-bao, ExternalSecret web-db-creds
+    ESO-&gt;&gt;Bao: log in with the workload's own role
+    Bao--&gt;&gt;ESO: the secret at kv/data/dev/team-a-api/web/postgres
+    ESO-&gt;&gt;K8s: create or update Secret web-db-creds
+    Note over ESO,Bao: repeats every refresh interval — 1h by default</code></pre>
+<p>The workload mounts the Secret and never learns that OpenBao exists. Two annotations cover the sharing cases below: <code>bao.stakater.com/kv-subscribe.&lt;name&gt;</code> reads from a sibling namespace's shared folder, and <code>bao.stakater.com/kv-import.&lt;name&gt;</code> reads from another tenant.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Every refresh is an OpenBao login. The default interval is one hour, and every workload logs in on it, so shortening the interval multiplies the load on OpenBao by the number of workloads.</p>
+</div>
+<h2 id="sharing-secrets">Sharing secrets<a class="headerlink" href="#sharing-secrets" title="Permanent link">#</a></h2>
+<p>Sharing is opt-in on both sides, and the direction is fixed. There are three scopes, and the path tells you which one you are in:</p>
+<pre class="mermaid"><code>flowchart TB
+  subgraph T["team-a/ — the tenant's own OpenBao namespace"]
+    A["kv/data/dev/team-a-api/web/&lt;br/&gt;&lt;b&gt;private&lt;/b&gt; to the web application"]
+    B["kv/data/dev/_shared/from-team-a-api/&lt;br/&gt;&lt;b&gt;written&lt;/b&gt; by team-a-api,&lt;br/&gt;&lt;b&gt;read&lt;/b&gt; by namespaces that subscribe"]
+  end
+  subgraph S["shared/ — the cross-tenant namespace"]
+    C["kv/data/dev/from-team-a/to-team-b/&lt;br/&gt;&lt;b&gt;written&lt;/b&gt; by team-a, &lt;b&gt;read&lt;/b&gt; by team-b"]
+  end</code></pre>
+<h3 id="between-namespaces-in-one-tenant">Between namespaces in one tenant<a class="headerlink" href="#between-namespaces-in-one-tenant" title="Permanent link">#</a></h3>
+<p>Each namespace owns a shared folder that only it can write to; other namespaces in the same tenant subscribe to read it. The folder is named after the writer, so a reader always knows where a value came from.</p>
+<p>An <code>editor</code> or <code>admin</code> workload writes to its own folder with no extra annotation — the path is already in its ConfigMap as <code>VAULT_KV_SHARED_OUT_PATH</code>. The reader opts in:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># a ServiceAccount in team-a-worker, reading what team-a-api shared</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">bao.stakater.com/tier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">viewer</span>
+<span class="w">    </span><span class="nt">bao.stakater.com/kv-subscribe-ns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-a-api</span>
+</code></pre></div>
+<p>Subscribing only ever grants read, so no namespace can write into another namespace's folder. You can only subscribe to namespaces in your own tenant.</p>
+<h3 id="between-tenants">Between tenants<a class="headerlink" href="#between-tenants" title="Permanent link">#</a></h3>
+<p>Cross-tenant secrets live in neither tenant. They go to the <code>shared/</code> OpenBao namespace, and both sides must opt in:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># a team-a ServiceAccount — may write to team-b</span>
+<span class="nt">bao.stakater.com/kv-export-tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-b</span>
+
+<span class="c1"># a team-b ServiceAccount — may read what team-a sent</span>
+<span class="nt">bao.stakater.com/kv-import-tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-a</span>
+</code></pre></div>
+<p>Exporting grants nothing until the other tenant imports, and removing either annotation cuts the link.</p>
+<h2 id="encrypting-data">Encrypting data<a class="headerlink" href="#encrypting-data" title="Permanent link">#</a></h2>
+<p>Add <code>bao.stakater.com/transit: "true"</code> alongside an <code>editor</code> or <code>admin</code> tier, and the workload gets three encryption keys: one private to the application, one shared by every opted-in application in its namespace, and one shared across the tenant. Keys rotate every 90 days by default and never leave OpenBao.</p>
+<p>The ConfigMap carries each key's encrypt and decrypt endpoints, so encrypting is one call:</p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>--request<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--header<span class="w"> </span><span class="s2">"X-Vault-Token: </span><span class="si">${</span><span class="nv">VAULT_TOKEN</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--header<span class="w"> </span><span class="s2">"X-Vault-Namespace: </span><span class="si">${</span><span class="nv">VAULT_NAMESPACE</span><span class="si">}</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--data<span class="w"> </span><span class="s1">'{"plaintext":"'</span><span class="s2">"</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s1">'hello'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="k">)</span><span class="s2">"</span><span class="s1">'"}'</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">"</span><span class="si">${</span><span class="nv">VAULT_ADDR</span><span class="si">}</span><span class="s2">/v1/</span><span class="si">${</span><span class="nv">VAULT_TRANSIT_APP_ENCRYPT</span><span class="si">}</span><span class="s2">"</span>
+</code></pre></div>
+<p>Two workloads that must exchange encrypted data use the tenant-shared key on both sides. Across tenants, <code>transit-export-tenant</code> and <code>transit-import-tenant</code> create one key per pair: the exporter may encrypt and decrypt, the importer may only decrypt.</p>
+<h2 id="issuing-certificates">Issuing certificates<a class="headerlink" href="#issuing-certificates" title="Permanent link">#</a></h2>
+<p>Each tenant gets its own certificate authority. By default, it is an intermediate signed by a cluster-wide platform CA, so every tenant's certificates chain back to a single anchor. Trusting another tenant is still opt-in — the anchor alone grants nothing.</p>
+<pre class="mermaid"><code>flowchart LR
+  R["Platform CA&lt;br/&gt;self-signed, or signed by&lt;br/&gt;your own offline root"] --&gt; A["team-a&lt;br/&gt;intermediate CA"]
+  R --&gt; B["team-b&lt;br/&gt;intermediate CA"]
+  A --&gt; AL["certificates for&lt;br/&gt;*.team-a-api.svc.cluster.local"]
+  B --&gt; BL["certificates for&lt;br/&gt;*.team-b-prod.svc.cluster.local"]</code></pre>
+<p>The shipped role issues certificates for <code>*.svc.cluster.local</code> names in the tenant's own namespaces, valid for 7 days.</p>
+<p><strong>Through cert-manager</strong>, which is the recommended route: turn on <code>parent.certManager.enabled</code> and each opted-in namespace gets an <code>Issuer</code> named after the tenant's certificate role. Applications then request certificates the normal way, and the private key is generated in the cluster and never sent to OpenBao:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cert-manager.io/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Certificate</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web-tls</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-a-api</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web-tls</span>
+<span class="w">  </span><span class="nt">issuerRef</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-a-svc</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Issuer</span>
+<span class="w">  </span><span class="nt">commonName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web.team-a-api.svc.cluster.local</span><span class="w">   </span><span class="c1"># required</span>
+<span class="w">  </span><span class="nt">dnsNames</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web.team-a-api.svc.cluster.local</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code>commonName</code> is not optional. A <code>Certificate</code> carrying only <code>dnsNames</code> is refused at signing time; it sits at <code>Ready=False</code>, and the reason appears on the <code>CertificateRequest</code>, not on the <code>Certificate</code>.</p>
+</div>
+<p><strong>Directly from OpenBao</strong>, with <code>bao.stakater.com/pki: "true"</code> on the ServiceAccount, the ConfigMap offers two endpoints: <code>VAULT_PKI_SIGN_PATH</code>, where you send a certificate signing request and the private key never leaves the pod, and <code>VAULT_PKI_ISSUE_PATH</code>, where OpenBao generates the key and returns it over the network. Prefer signing.</p>
+<p>Namespaces in one tenant share a CA, so they already trust one another. Across tenants, trust is opt-in and decided by the consuming side: <code>bao.stakater.com/pki-trust-tenant</code> to trust a peer's server certificates when you call it, and <code>bao.stakater.com/pki-allow-tenant</code> to accept that peer as a client calling you. Accepting implies trusting; trusting never implies accepting.</p>
+<h2 id="human-login">Human login<a class="headerlink" href="#human-login" title="Permanent link">#</a></h2>
+<p>With <code>sso.enabled</code>, people sign in to OpenBao through your identity provider and their access follows their groups. For each tier, the extension creates a login role bound to an identity-provider group named <code>&lt;tenant&gt;-&lt;tier&gt;s</code> by default — so members of <code>team-a-admins</code> get the <code>admin</code> tier in <code>team-a</code>. Unlike a workload, which is confined to one namespace, a signed-in person gets that tier across the whole tenant.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant MTO as OpenBao extension
+    participant Bao as OpenBao
+    participant IdP as OIDC provider
+    participant User as Tenant member
+    MTO-&gt;&gt;Bao: create one OIDC login role per tier, bound to an IdP group
+    User-&gt;&gt;Bao: bao login -method=oidc -namespace=team-a
+    Bao-&gt;&gt;IdP: authenticate and read the group claim
+    Bao--&gt;&gt;User: token carrying that tier's policies
+    User-&gt;&gt;Bao: read and write across the tenant</code></pre>
+<div class="highlight"><pre><span></span><code>bao<span class="w"> </span>login<span class="w"> </span>-method<span class="o">=</span>oidc<span class="w"> </span>-namespace<span class="o">=</span>team-a<span class="w"> </span><span class="nv">role</span><span class="o">=</span>sso-team-a-admin
+</code></pre></div>
+<p>Sessions are short — 15 minutes by default, 1 hour at most — because removing someone from a group in the identity provider does not revoke tokens already issued.</p>
+<h2 id="annotation-reference">Annotation reference<a class="headerlink" href="#annotation-reference" title="Permanent link">#</a></h2>
+<p>The keys follow one grammar, so you can work out a name instead of looking it up:</p>
+<ul>
+<li><code>bao.stakater.com/&lt;engine&gt;</code> — turn an engine on: <code>kv</code>, <code>transit</code>, <code>pki</code>.</li>
+<li><code>bao.stakater.com/&lt;engine&gt;-&lt;verb&gt;-&lt;scope&gt;</code> — a sharing <strong>grant</strong>, always on the ServiceAccount. <code>export</code> and <code>import</code> cross a tenant boundary, <code>subscribe</code> stays inside one tenant. Values are comma-separated lists.</li>
+<li><code>bao.stakater.com/&lt;engine&gt;-&lt;request&gt;.&lt;name&gt;</code> — a delivery <strong>request</strong>, always on the Deployment. <code>&lt;name&gt;</code> becomes the Kubernetes <code>Secret</code>.</li>
+<li><code>tier</code> and <code>app</code> carry no engine: they qualify the identity itself.</li>
+</ul>
+<p>Grants go on the ServiceAccount, because that is the identity OpenBao authenticates. Requests go on the Deployment, because that is the workload receiving the secret. A key on the wrong object is reported as an error beside the workload rather than ignored.</p>
+<p><strong>On the ServiceAccount:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Annotation</th>
+<th style="text-align: left;">Engine</th>
+<th style="text-align: left;">What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>bao.stakater.com/tier</code></td>
+<td style="text-align: left;">all</td>
+<td style="text-align: left;"><strong>Required alongside any engine.</strong> <code>audit-read</code>, <code>viewer</code>, <code>editor</code> or <code>admin</code>.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bao.stakater.com/kv</code></td>
+<td style="text-align: left;">KV</td>
+<td style="text-align: left;"><code>"true"</code> — read and write this application's own secrets path.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bao.stakater.com/transit</code></td>
+<td style="text-align: left;">Transit</td>
+<td style="text-align: left;"><code>"true"</code> — use the application, namespace and tenant encryption keys.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bao.stakater.com/pki</code></td>
+<td style="text-align: left;">PKI</td>
+<td style="text-align: left;"><code>"true"</code> — issue certificates directly from OpenBao.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bao.stakater.com/app</code></td>
+<td style="text-align: left;">KV, Transit</td>
+<td style="text-align: left;">Optional. Names the application that owns these secrets; defaults to the ServiceAccount name.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bao.stakater.com/kv-subscribe-ns</code></td>
+<td style="text-align: left;">KV</td>
+<td style="text-align: left;">Read the shared folders of other namespaces in the same tenant.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bao.stakater.com/kv-export-tenant</code></td>
+<td style="text-align: left;">KV</td>
+<td style="text-align: left;">Share secrets out to other tenants.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bao.stakater.com/kv-import-tenant</code></td>
+<td style="text-align: left;">KV</td>
+<td style="text-align: left;">Read secrets other tenants shared in.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bao.stakater.com/transit-export-tenant</code></td>
+<td style="text-align: left;">Transit</td>
+<td style="text-align: left;">Share an encryption key out to other tenants.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bao.stakater.com/transit-import-tenant</code></td>
+<td style="text-align: left;">Transit</td>
+<td style="text-align: left;">Use an encryption key another tenant shared in.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bao.stakater.com/pki-allow-tenant</code></td>
+<td style="text-align: left;">PKI</td>
+<td style="text-align: left;">Accept these tenants as inbound mTLS clients. Implies trusting their CA.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bao.stakater.com/pki-trust-tenant</code></td>
+<td style="text-align: left;">PKI</td>
+<td style="text-align: left;">Trust these tenants' server certificates when calling them, without accepting them inbound.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>On the Deployment</strong> — each one creates a Kubernetes <code>Secret</code> named <code>&lt;serviceaccount&gt;-&lt;name&gt;</code>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Annotation</th>
+<th style="text-align: left;">Reads from</th>
+<th style="text-align: left;">Needs, on the ServiceAccount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>bao.stakater.com/kv-secret.&lt;name&gt;</code></td>
+<td style="text-align: left;">this application's own path</td>
+<td style="text-align: left;"><code>kv</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bao.stakater.com/kv-subscribe.&lt;name&gt;</code></td>
+<td style="text-align: left;">a sibling namespace's shared folder</td>
+<td style="text-align: left;"><code>kv-subscribe-ns</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bao.stakater.com/kv-import.&lt;name&gt;</code></td>
+<td style="text-align: left;">another tenant's shared space</td>
+<td style="text-align: left;"><code>kv-import-tenant</code></td>
+</tr>
+</tbody>
+</table>
+<p>Values take the form <code>&lt;leaf&gt;[#&lt;field&gt;]</code> — with a field, only that field is copied into the <code>Secret</code>; without one, every field becomes a key. The subscribe and import forms are prefixed with the source: <code>team-a-api/postgres</code> and <code>team-a/creds</code>.</p>
+<h2 id="operating-it">Operating it<a class="headerlink" href="#operating-it" title="Permanent link">#</a></h2>
+<h3 id="checking-what-was-created">Checking what was created<a class="headerlink" href="#checking-what-was-created" title="Permanent link">#</a></h3>
+<p>For tenant <code>team-a</code>, the resources the extension renders:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>openbao-config-operator-system<span class="w"> </span>get<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>obns,obse,obam,obkac,obkar,obp,obtk,obpkic,obpkir<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-l<span class="w"> </span>templates.v2.stakater.com/instance<span class="o">=</span>openbao-config-mto-team-a
+</code></pre></div>
+<p>One read covers the health of every tenant at once:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>openbao-config-operator-system<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>get<span class="w"> </span>templateinstances.templates.v2.stakater.com<span class="w"> </span>openbao-config-mto-parent<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.status.outputs.tiReady}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
+</code></pre></div>
+<p>Anything other than <code>True</code> for a tenant means its configuration did not reach OpenBao. The neighbouring <code>tiRendered</code> and <code>tiApplied</code> fields say whether it failed to render or was refused on apply.</p>
+<h3 id="when-a-workload-cannot-log-in">When a workload cannot log in<a class="headerlink" href="#when-a-workload-cannot-log-in" title="Permanent link">#</a></h3>
+<ul>
+<li>The ServiceAccount needs <strong>both</strong> an engine annotation and <code>bao.stakater.com/tier</code>. An engine on its own grants nothing.</li>
+<li>Annotation values are strings — <code>"true"</code> must be quoted, or Kubernetes rejects it as a boolean.</li>
+<li>The <code>bao-config-&lt;serviceaccount&gt;</code> ConfigMap appears only once the ServiceAccount is annotated. If it is missing, the annotation has not been picked up.</li>
+<li>Grants go on the ServiceAccount and secret requests go on the Deployment. A key on the wrong object is reported as an error beside the workload rather than silently ignored.</li>
+<li>If a whole tenant is missing, check its <code>Tenant</code> lists a namespace under <code>withTenantPrefix</code> or <code>withoutTenantPrefix</code> — a tenant listing none is skipped silently — and that its namespaces carry <code>stakater.com/tenant=&lt;tenant-name&gt;</code>.</li>
+</ul>
+<h3 id="what-deletion-does">What deletion does<a class="headerlink" href="#what-deletion-does" title="Permanent link">#</a></h3>
+<p>Deleting a resource does not destroy the data behind it, by default.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">What is deleted</th>
+<th style="text-align: left;">What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">An engine, an OpenBao namespace or an auth mount</td>
+<td style="text-align: left;">Retained. The OpenBao object and everything stored under it survives; re-creating an identical resource adopts it back.</td>
+</tr>
+<tr>
+<td style="text-align: left;">A policy, login role, group or alias</td>
+<td style="text-align: left;">Deleted, so the access it granted is revoked.</td>
+</tr>
+</tbody>
+</table>
+<p>The practical consequence: <strong>deleting an MTO <code>Tenant</code> does not destroy its OpenBao data.</strong> Its secrets, encryption keys and certificate authority are retained while its policies and login roles are removed, so access closes, but the data is recoverable by re-creating the tenant.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>To remove a tenant's data for real, delete the tenant and then, with an OpenBao administrator token, delete its OpenBao namespace — <code>bao namespace delete &lt;tenant&gt;</code> cascades through everything inside it.</p>
+</div>
+<p>Removing an annotation from a ServiceAccount revokes what it granted, so access follows the workload definition rather than lingering in OpenBao.</p>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">#</a></h2>
+<ul>
+<li>OpenBao Config Operator — the operator that applies this configuration to OpenBao.</li>
+<li><a href="../../concepts/tenant.html">Tenant</a> — the resource this extension reads.</li>
+</ul>
 
 
 
@@ -5633,27 +6611,27 @@ tenant-operator-gateway<span class="w">    </span>nginx<span class="w">   </span
                 <div class="flex-2">
                     <div class="logo-footer-container">
                         
-                        <img class="md-header__logo_light" src="../../../assets/images/footer-logo-light.png#only-light" alt="logo">
+                        <img class="md-header__logo_light" src="../../assets/images/footer-logo-light.png#only-light" alt="logo">
                         
                         
-                        <img src="../../../assets/images/footer-logo-dark.png#only-dark" alt="logo">
+                        <img src="../../assets/images/footer-logo-dark.png#only-dark" alt="logo">
                         
                     </div>
 
                     <div class="collaborations-img-container">
                         <div class="display-flex">
                             
-                            <img class="csa-logo-dark" src="../../../assets/images/CSA_dark.png#only-dark" alt="CSA">
+                            <img class="csa-logo-dark" src="../../assets/images/CSA_dark.png#only-dark" alt="CSA">
                             
                             
-                            <img class="csa-logo-light" src="../../../assets/images/CSA_light.png#only-light" alt="CSA">
+                            <img class="csa-logo-light" src="../../assets/images/CSA_light.png#only-light" alt="CSA">
                             
 
                             
-                            <img class="hc-logo-dark" src="../../../assets/images/HC_dark.png#only-dark" alt="HC">
+                            <img class="hc-logo-dark" src="../../assets/images/HC_dark.png#only-dark" alt="HC">
                             
                             
-                            <img class="hc-logo-light" src="../../../assets/images/HC_light.png#only-light" alt="HC">
+                            <img class="hc-logo-light" src="../../assets/images/HC_light.png#only-light" alt="HC">
                             
                         </div>
                     </div>
@@ -6045,10 +7023,10 @@ tenant-operator-gateway<span class="w">    </span>nginx<span class="w">   </span
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   
