@@ -7,9 +7,38 @@ on:
       - '[0-9]+.[0-9]+'
 
 jobs:
+  # An approved PR already committed its screenshots (screenshots.yaml), so
+  # capturing again here would only risk failing the deploy on a console outage.
+  hook:
+    runs-on: ubuntu-latest
+    outputs:
+      pre_build: ${{ steps.decide.outputs.pre_build }}
+    steps:
+      - name: Decide whether to capture
+        id: decide
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          labels=$(gh pr list --repo "$GITHUB_REPOSITORY" --search "$GITHUB_SHA" \
+            --state merged --json labels --jq '.[0].labels[].name' 2>/dev/null || true)
+          if echo "$labels" | grep -qx screenshots-captured; then
+            echo "captured on the PR, skipping"
+            echo "pre_build=make merge" >> "$GITHUB_OUTPUT"
+          else
+            echo "no capture on the PR, capturing here"
+            echo "pre_build=make docs-images" >> "$GITHUB_OUTPUT"
+          fi
+
   push:
-    uses: stakater/.github/.github/workflows/push_versioned_doc.yaml@v0.0.131
+    needs: hook
+    uses: stakater/.github/.github/workflows/push_versioned_doc.yaml@v0.0.192
     with:
+      PRE_BUILD_HOOK: ${{ needs.hook.outputs.pre_build }}
       LATEST_DOC_VERSION: "1.9"
     secrets:
-      GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+      # GHCR_TOKEN, not PUBLISH_TOKEN: if the hook captures, it pulls the private
+      # browser-runner image, which PUBLISH_TOKEN has no package read access to.
+      GH_TOKEN: ${{ secrets.GHCR_TOKEN }}
+      PRE_BUILD_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+      PRE_BUILD_USER: ${{ secrets.CONSOLE_USER }}
+      PRE_BUILD_PASSWORD: ${{ secrets.CONSOLE_PASSWORD }}

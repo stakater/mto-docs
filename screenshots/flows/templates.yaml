@@ -1,0 +1,145 @@
+# console/templates.md -> 7 images.
+# Walks the Create New Template drawer with the SAME values as the old docs images
+# (param CIDR_IP, Helm hobo chart, NetworkPolicy manifest), shooting each step,
+# then REALLY creates the template as "docs-template" and shoots the list + YAML
+# view. Deletion happens in _teardown.yaml. The stepper is flat (Overview/
+# Parameters/Helm/Resource Mappings/Manifests); navigation uses Next, not
+# stepper clicks.
+name: docs-templates
+
+requires:
+  env: [CONSOLE_URL, CONSOLE_USER, CONSOLE_PASSWORD]
+  reachable: ["${CONSOLE_URL}"]
+
+viewport:
+  width: 1280
+  height: 800
+  deviceScaleFactor: 2
+  colorScheme: light
+
+steps:
+  - { step: open, url: "${CONSOLE_URL}" }
+  - { step: wait-for, selector: 'input[name="login"], input[name="username"]', timeout: 60s }
+  - { step: fill, selector: 'input[name="login"], input[name="username"]', value: "${CONSOLE_USER}" }
+  - { step: fill, selector: 'input[name="password"]', value: "${CONSOLE_PASSWORD}" }
+  # The click is instant; Playwright then waits for the Dex -> /auth/callback ->
+  # dashboard redirect chain, which exceeds the 10s default on a cold Dex. The
+  # wait-for below is the real gate, so a long timeout here only removes a false
+  # failure.
+  - { step: click, selector: 'button[type="submit"]', timeout: 60s }
+  - { step: wait-for, selector: '[data-testid="dashboard-container"]', timeout: 60s }
+
+  - { step: open, url: "${CONSOLE_URL}/templates" }
+  - { step: wait-for, selector: '[data-testid="template-list"]', timeout: 30s }
+  - { step: wait-for, selector: '[data-testid="template-list"] .animate-pulse', state: detached }
+
+  # Step 1 -- Template Overview (old image: deny-cross-ns-traffic/database/v1)
+  - { step: click, selector: '[data-testid="template-create-button"]' }
+  - { step: wait-for, selector: '[data-testid="sheet-content"] >> text=Template Name', timeout: 15s }
+  # react-hook-form spreads {...field}, so every input carries a name attribute.
+  # Positional `input >> nth=0` was filling the wrong element, which surfaced only
+  # as "Template name is required" on the final step.
+  - { step: fill, selector: 'input[name="name"]', value: docs-template }
+  - { step: fill, selector: 'input[name="type"]', value: database }
+  - { step: fill, selector: 'input[name="version"]', value: v1 }
+  - { step: screenshot, path: template-crud-drawer-info.png, fullPage: false }
+
+  # Step 2 -- Parameters: add CIDR_IP = 192.12.0.0/10, required (as in old image)
+  - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Next")' }
+  - { step: wait-for, selector: '[data-testid="sheet-content"] >> text=Parameter Name', timeout: 15s }
+  # The new-parameter row is local state (no name attrs); its value input is the
+  # only one placeholdered "Default value (optional)".
+  - { step: fill, selector: 'input[placeholder="Enter text here"] >> nth=0', value: CIDR_IP }
+  - { step: fill, selector: 'input[placeholder="Default value (optional)"]', value: 192.12.0.0/10 }
+  - { step: click, selector: '[data-testid="sheet-content"] [role="checkbox"] >> nth=0' }
+  - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Add")' }
+  - { step: wait-for, selector: '[data-testid="sheet-content"] >> text=CIDR_IP', timeout: 15s }
+  - { step: screenshot, path: template-crud-drawer-parameters.png, fullPage: false }
+
+  # Step 3 -- Helm (old image: hobo / hobo-urs / 14.6.0 / hobo@github.com + two set chips)
+  - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Next")' }
+  - { step: wait-for, selector: '[data-testid="sheet-content"] >> text=Release Name', timeout: 15s }
+  - { step: fill, selector: 'input[name="resources.helm.releaseName"]', value: hobo }
+  - { step: fill, selector: 'input[name="resources.helm.chart.repository.name"]', value: hobo-urs }
+  - { step: fill, selector: 'input[name="resources.helm.chart.repository.version"]', value: 14.6.0 }
+  - { step: fill, selector: 'input[name="resources.helm.chart.repository.repoUrl"]', value: hobo@github.com }
+  # set chip 1: (--set) port: 6379   -- Set Type dropdown already defaults to --set
+  # VERIFY on first run: input order in the Set Values row
+  - { step: fill, selector: '[data-testid="sheet-content"] input >> nth=4', value: port }
+  - { step: fill, selector: '[data-testid="sheet-content"] input >> nth=5', value: "6379" }
+  - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Add")' }
+  # set chip 2: (--set-string) port: 2201
+  - { step: click, selector: '[data-testid="sheet-content"] [role="combobox"] >> nth=0' }
+  - { step: click, selector: '[role="option"]:has-text("--set-string")' }
+  - { step: wait-for, selector: '[role="option"]', state: detached }
+  - { step: fill, selector: '[data-testid="sheet-content"] input >> nth=4', value: port }
+  - { step: fill, selector: '[data-testid="sheet-content"] input >> nth=5', value: "2201" }
+  - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Add")' }
+  # Values editor (old image: redisPort: 6379)
+  # VERIFY on first run: editor element (textarea vs contenteditable)
+  - { step: fill, selector: 'textarea[name="resources.helm.values"]', value: "redisPort: 6379" }
+  - { step: screenshot, path: template-helm-resource.png, fullPage: false }
+
+  # Step 4 -- Resource Mappings (old image: secret + configmap chips added,
+  # form left filled with ConfigMap / test-config / dev-ns)
+  - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Next")' }
+  - { step: wait-for, selector: '[data-testid="sheet-content"] >> text=Resource Type', timeout: 15s }
+  - { step: click, selector: '[data-testid="sheet-content"] [role="combobox"] >> nth=0' }
+  - { step: click, selector: '[role="option"]:has-text("Secret")' }
+  - { step: wait-for, selector: '[role="option"]', state: detached }
+  - { step: fill, selector: 'input[placeholder="Enter text here"] >> nth=0', value: secret }
+  - { step: fill, selector: 'input[placeholder="Enter text here"] >> nth=1', value: dev-ns }
+  - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Add")' }
+  - { step: click, selector: '[data-testid="sheet-content"] [role="combobox"] >> nth=0' }
+  - { step: click, selector: '[role="option"]:has-text("ConfigMap")' }
+  - { step: wait-for, selector: '[role="option"]', state: detached }
+  - { step: fill, selector: 'input[placeholder="Enter text here"] >> nth=0', value: test-config }
+  - { step: fill, selector: 'input[placeholder="Enter text here"] >> nth=1', value: dev-ns }
+  - { step: screenshot, path: template-resource-mappings.png, fullPage: false }
+
+  # Step 5 -- Manifests (old image: NetworkPolicy referencing the CIDR_IP param)
+  - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Next")' }
+  - { step: wait-for, selector: '[data-testid="sheet-content"] button:has-text("Create")', timeout: 15s }
+  # RAW object only -- the `manifests:` + array form in the ORIGINAL docs image no
+  # longer validates, so this capture will differ from it on that point.
+  - step: fill
+    selector: '[name="resources.manifests"]'
+    value: |
+      kind: NetworkPolicy
+      apiVersion: networking.k8s.io/v1
+      metadata:
+        name: deny-cross-ns-traffic
+      spec:
+        podSelector:
+          matchLabels:
+            role: db
+        policyTypes:
+          - Ingress
+        ingress:
+          - from:
+              - ipBlock:
+                  cidr: "${{CIDR_IP}}"
+  - { step: screenshot, path: template-manifest-resource.png, fullPage: false }
+
+  # REALLY create it, then the list AFTER creation
+  - { step: click, selector: '[data-testid="template-submit-button"]' }
+  - { step: wait-for, selector: '[data-testid="sheet-content"]', state: detached, timeout: 30s }
+  - { step: wait-for, selector: '[data-testid="template-list"] >> text=docs-template', timeout: 30s }
+  - { step: screenshot, path: templates.png, fullPage: false }
+
+  # YAML view of the created template
+  - { step: click, selector: '[data-testid="template-list"] tr:has-text("docs-template") >> [aria-haspopup="menu"]' }
+  - { step: click, selector: '[role="menuitem"]:has-text("YAML")' }
+  - { step: wait-for, selector: 'text=Template Specification', timeout: 15s }
+  - { step: wait-for, selector: 'text=apiVersion', timeout: 15s }
+  # Monaco paints text into .view-lines BEFORE it renders the line-number gutter
+  # and applies syntax colouring, so waiting on .view-lines alone can capture a
+  # half-initialised editor (plain text, no gutter). Wait for the gutter too,
+  # then settle briefly for tokenisation.
+  - { step: wait-for, selector: '[data-testid="yaml-editor-container"] .line-numbers', timeout: 30s }
+  - { step: wait, ms: 1s }
+  - { step: screenshot, path: template-yaml-view.png, fullPage: false }
+
+after:
+  # Cleanup lives in _teardown.yaml (runs last, non-fatal)
+  - { step: screenshot, when: on-failure, path: _failure-templates.png }

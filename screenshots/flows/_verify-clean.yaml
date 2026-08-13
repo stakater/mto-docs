@@ -1,0 +1,73 @@
+# VERIFY-CLEAN -- takes NO screenshots, changes NOTHING. Run it after _teardown to
+# get a real verdict on whether the environment is back to normal.
+#
+# Why this exists: _teardown's steps are all non-fatal, so its PASS says only that
+# login worked. Here every assertion is a FATAL `steps` entry, so the flow fails
+# loudly on the first leftover.
+#
+# Each section asserts the page LOADED first (a positive check) and only then that
+# the docs-* object is ABSENT. Without the positive check, an absence assertion
+# passes vacuously on a page that never rendered -- a selector matching nothing is
+# trivially "detached".
+name: docs-verify-clean
+
+requires:
+  env: [CONSOLE_URL, CONSOLE_USER, CONSOLE_PASSWORD, DOCS_HIB_TENANT, DOCS_SLEEP_NS, DOCS_HIB_NS]
+  reachable: ["${CONSOLE_URL}"]
+
+viewport:
+  width: 1280
+  height: 800
+  deviceScaleFactor: 2
+  colorScheme: light
+
+steps:
+  - { step: open, url: "${CONSOLE_URL}" }
+  - { step: wait-for, selector: 'input[name="login"], input[name="username"]', timeout: 60s }
+  - { step: fill, selector: 'input[name="login"], input[name="username"]', value: "${CONSOLE_USER}" }
+  - { step: fill, selector: 'input[name="password"]', value: "${CONSOLE_PASSWORD}" }
+  - { step: click, selector: 'button[type="submit"]', timeout: 60s }
+  - { step: wait-for, selector: '[data-testid="dashboard-container"]', timeout: 60s }
+
+  # --- Templates: neither docs-template nor docs-seed-template may remain -----
+  - { step: open, url: "${CONSOLE_URL}/templates" }
+  - { step: wait-for, selector: '[data-testid="template-list"]', timeout: 30s }
+  - { step: wait-for, selector: '[data-testid="template-list"] .animate-pulse', state: detached, timeout: 30s }
+  - { step: wait-for, selector: 'tr:has-text("docs-template")', state: detached, timeout: 10s }
+  - { step: wait-for, selector: 'tr:has-text("docs-seed-template")', state: detached, timeout: 10s }
+  - { step: log, message: "clean: no docs-* templates" }
+
+  # --- Template instances (both tabs) ----------------------------------------
+  - { step: open, url: "${CONSOLE_URL}/templates/instances" }
+  - { step: wait-for, selector: 'h1:has-text("All Template Instances")', timeout: 30s }
+  - { step: wait-for, selector: 'tr:has-text("docs-instance")', state: detached, timeout: 10s }
+  - { step: click, selector: '[role="tab"]:has-text("Cluster Template Instances")' }
+  - { step: wait-for, selector: '[role="tabpanel"][data-state="active"] table', timeout: 30s }
+  - { step: wait-for, selector: 'tr:has-text("docs-cti-instance")', state: detached, timeout: 10s }
+  - { step: log, message: "clean: no docs-* instances" }
+
+  # --- Hibernation: both namespaces awake, no docs schedule -------------------
+  # ?tenant= seeds the selection so the header buttons enable without the dropdown.
+  - { step: open, url: "${CONSOLE_URL}/hibernation?tenant=${DOCS_HIB_TENANT}" }
+  - { step: wait-for, selector: '[data-testid="hibernation-list"]', timeout: 30s }
+  - { step: wait-for, selector: '[data-testid="hibernation-manage-button"]:not([disabled])', timeout: 30s }
+  # Positive check: the rows exist at all, so the absence checks below mean something
+  - { step: wait-for, selector: 'tr:has-text("${DOCS_SLEEP_NS}")', timeout: 30s }
+  - { step: wait-for, selector: 'tr:has-text("${DOCS_HIB_NS}")', timeout: 30s }
+  - { step: wait-for, selector: 'tr:has-text("${DOCS_SLEEP_NS}") >> text=Sleeping', state: detached, timeout: 10s }
+  - { step: wait-for, selector: 'tr:has-text("${DOCS_HIB_NS}") >> text=Hibernating', state: detached, timeout: 10s }
+  - { step: click, selector: '[data-testid="hibernation-manage-button"]' }
+  - { step: wait-for, selector: '[data-testid="sheet-content"]:has-text("Manage Hibernation Schedules")', timeout: 30s }
+  - { step: wait-for, selector: '[data-testid="sheet-content"] tr:has-text("docs-weekend-shutdown")', state: detached, timeout: 10s }
+  - { step: log, message: "clean: namespaces awake, no docs-weekend-shutdown schedule" }
+
+  # --- Capacity planning node filter -----------------------------------------
+  - { step: open, url: "${CONSOLE_URL}/capacity-planning" }
+  - { step: wait-for, selector: '[data-testid="capacity-planning-page"]', timeout: 30s }
+  - { step: click, selector: '[data-testid="show-filters-button"]' }
+  - { step: wait-for, selector: '[data-testid="node-filters-accordion"]', timeout: 15s }
+  - { step: wait-for, selector: '[data-testid="node-filters-accordion"] >> text=docs-gpu-nodes', state: detached, timeout: 10s }
+  - { step: log, message: "clean: no docs-gpu-nodes filter" }
+
+after:
+  - { step: screenshot, when: on-failure, path: _failure-verify-clean.png }

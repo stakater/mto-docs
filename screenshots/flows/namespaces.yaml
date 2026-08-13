@@ -1,0 +1,34 @@
+# console/namespaces.md -> namespaces.png
+# Selectors relaxed: the deployed console may predate the namespace-* testids.
+name: docs-namespaces
+
+requires:
+  env: [CONSOLE_URL, CONSOLE_USER, CONSOLE_PASSWORD]
+  reachable: ["${CONSOLE_URL}"]
+
+viewport:
+  width: 1280
+  height: 800
+  deviceScaleFactor: 2
+  colorScheme: light
+
+steps:
+  - { step: open, url: "${CONSOLE_URL}" }
+  - { step: wait-for, selector: 'input[name="login"], input[name="username"]', timeout: 60s }
+  - { step: fill, selector: 'input[name="login"], input[name="username"]', value: "${CONSOLE_USER}" }
+  - { step: fill, selector: 'input[name="password"]', value: "${CONSOLE_PASSWORD}" }
+  # The click is instant; Playwright then waits for the Dex -> /auth/callback ->
+  # dashboard redirect chain, which exceeds the 10s default on a cold Dex. The
+  # wait-for below is the real gate, so a long timeout here only removes a false
+  # failure.
+  - { step: click, selector: 'button[type="submit"]', timeout: 60s }
+  - { step: wait-for, selector: '[data-testid="dashboard-container"]', timeout: 60s }
+
+  - { step: open, url: "${CONSOLE_URL}/namespaces" }
+  - { step: wait-for, selector: 'h1:has-text("Namespaces")', timeout: 30s }
+  - { step: wait-for, selector: "table tbody tr", timeout: 30s }
+  - { step: wait-for, selector: "table .animate-pulse", state: detached, timeout: 30s }
+  - { step: screenshot, path: namespaces.png, fullPage: false }
+
+after:
+  - { step: screenshot, when: on-failure, path: _failure-namespaces.png }

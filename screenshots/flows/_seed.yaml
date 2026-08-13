@@ -1,0 +1,84 @@
+# SETUP flow -- takes NO screenshots. Runs first on a full capture run.
+#
+# Creates the one shared template that the instance flows instantiate:
+#   docs-seed-template  (parameter `image` defaulting to nginx + a ConfigMap manifest)
+# A parameterised template is required so the instance drawers' Parameters step
+# actually offers options, and the manifest keeps the deploy trivial.
+#
+# Deleted again by _teardown.yaml.
+#
+# Selectors use the react-hook-form field names (the form spreads {...field}, so
+# every input carries `name=`). Positional `input >> nth=N` filled the wrong
+# element, which the drawer reported only as "Template name is required" on the
+# final step -- with the Create button styled-disabled but still clickable, so
+# nothing errored at the point of failure.
+name: docs-seed
+
+requires:
+  env: [CONSOLE_URL, CONSOLE_USER, CONSOLE_PASSWORD]
+  reachable: ["${CONSOLE_URL}"]
+
+viewport:
+  width: 1280
+  height: 800
+  deviceScaleFactor: 2
+  colorScheme: light
+
+steps:
+  - { step: open, url: "${CONSOLE_URL}" }
+  - { step: wait-for, selector: 'input[name="login"], input[name="username"]', timeout: 60s }
+  - { step: fill, selector: 'input[name="login"], input[name="username"]', value: "${CONSOLE_USER}" }
+  - { step: fill, selector: 'input[name="password"]', value: "${CONSOLE_PASSWORD}" }
+  # The click is instant; Playwright then waits for the Dex -> /auth/callback ->
+  # dashboard redirect chain, which exceeds the 10s default on a cold Dex. The
+  # wait-for below is the real gate, so a long timeout here only removes a false
+  # failure.
+  - { step: click, selector: 'button[type="submit"]', timeout: 60s }
+  - { step: wait-for, selector: '[data-testid="dashboard-container"]', timeout: 60s }
+
+  - { step: open, url: "${CONSOLE_URL}/templates" }
+  - { step: wait-for, selector: '[data-testid="template-list"]', timeout: 30s }
+  - { step: wait-for, selector: '[data-testid="template-list"] .animate-pulse', state: detached }
+
+  # Overview
+  - { step: click, selector: '[data-testid="template-create-button"]' }
+  - { step: wait-for, selector: 'input[name="name"]', timeout: 15s }
+  - { step: fill, selector: 'input[name="name"]', value: docs-seed-template }
+  # Diagnostic (not a docs image): proves the name landed before we walk on.
+  - { step: screenshot, path: _seed-overview.png, fullPage: false }
+
+  # Parameters: image = nginx (defaulted, so instances need no input).
+  # This row is component state, not form state -- anchor by placeholder.
+  - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Next")' }
+  - { step: wait-for, selector: '[data-testid="sheet-content"] >> text=Parameter Name', timeout: 15s }
+  - { step: fill, selector: 'input[placeholder="Enter text here"] >> nth=0', value: image }
+  - { step: fill, selector: 'input[placeholder="Default value (optional)"]', value: nginx }
+  - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Add")' }
+  # Assert the parameter ROW exists (a bare text match is satisfied by placeholders)
+  - { step: wait-for, selector: '[data-testid="template-parameter-delete-0"]', timeout: 15s }
+
+  # Skip Helm + Resource Mappings, land on Manifests (final step: Create button)
+  - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Next")' }
+  - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Next")' }
+  - { step: click, selector: '[data-testid="sheet-content"] button:has-text("Next")' }
+  - { step: wait-for, selector: '[name="resources.manifests"]', timeout: 15s }
+  # The editor takes a RAW object -- no `manifests:` key and no `- ` array item.
+  # `${{image}}` is the template's own parameter syntax; browser-runner leaves it
+  # alone (its own vars are ${VAR}, and `{` isn't a valid variable start).
+  - step: fill
+    selector: '[name="resources.manifests"]'
+    value: |
+      kind: ConfigMap
+      apiVersion: v1
+      metadata:
+        name: docs-flow-cm
+      data:
+        image: "${{image}}"
+  - { step: click, selector: '[data-testid="template-submit-button"]' }
+  # The drawer closing is the ONLY signal that the submit was accepted: Create is
+  # styled-disabled rather than HTML-disabled, so a rejected submit clicks fine.
+  - { step: wait-for, selector: '[data-testid="sheet-content"]', state: detached, timeout: 30s }
+  - { step: wait-for, selector: '[data-testid="template-list"] tr:has-text("docs-seed-template")', timeout: 30s }
+
+after:
+  - { step: screenshot, when: on-failure, path: _failure-seed.png }
