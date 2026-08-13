@@ -33,7 +33,7 @@ Wait for the pods to be up:
 kubectl get pods -n multi-tenant-operator --watch
 ```
 
-After all pods come in running state, you can follow the [Tutorials](../../guides/create-tenant.md).
+After all pods come in running state, you can follow the [Tutorials](../../multi-tenancy/guides/create-tenant.md).
 
 ### Enterprise License Configuration
 
@@ -69,5 +69,5 @@ helm uninstall tenant-operator --namespace multi-tenant-operator
 ## Notes
 
 * For details on licensing of MTO, please refer to [Pricing](../../pricing.md).
-* For more details on how to use MTO, please refer to the [Tenant tutorial](../../guides/create-tenant.md).
-* For details on how to extend your MTO manager ClusterRole, please refer to [extend-default-clusterroles](../../guides/extend-default-roles.md).
+* For more details on how to use MTO, please refer to the [Tenant tutorial](../../multi-tenancy/guides/create-tenant.md).
+* For details on how to extend your MTO manager ClusterRole, please refer to [extend-default-clusterroles](../../multi-tenancy/guides/extend-default-roles.md).

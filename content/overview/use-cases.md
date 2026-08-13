@@ -71,4 +71,4 @@ If a tenant is genuinely untrusted and needs its own API server — hostile work
 
 * [Key Capabilities](key-features.md) — what each capability area includes
 * [How MTO Works](how-it-works.md) — the reconciliation path, end to end
-* [Create a Tenant](../guides/create-tenant.md) — start with one object
+* [Create a Tenant](../multi-tenancy/guides/create-tenant.md) — start with one object

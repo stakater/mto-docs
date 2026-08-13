@@ -106,7 +106,7 @@ subscription.operators.coreos.com/tenant-operator created
 
 ![image](../../images/to_installed_successful_pod.png)
 
-For more details and configurations check out [IntegrationConfig](../../concepts/integration-config.md).
+For more details and configurations check out [IntegrationConfig](../../multi-tenancy/concepts/integration-config.md).
 
 ## Enabling Console
 
@@ -145,7 +145,7 @@ spec:
 
 You can uninstall MTO by following these steps:
 
-* Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set `spec.onDelete.cleanNamespaces` to `false` for all those tenants whose namespaces you want to retain, and `spec.onDelete.cleanAppProject` to `false` for all those tenants whose AppProject you want to retain. For more details check out [onDelete](../../guides/delete-tenant.md)
+* Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set `spec.onDelete.cleanNamespaces` to `false` for all those tenants whose namespaces you want to retain, and `spec.onDelete.cleanAppProject` to `false` for all those tenants whose AppProject you want to retain. For more details check out [onDelete](../../multi-tenancy/guides/delete-tenant.md)
 
 * After making the required changes open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
 
@@ -162,5 +162,5 @@ You can uninstall MTO by following these steps:
 ## Notes
 
 * For details on licensing of MTO please refer [Pricing](../../pricing.md).
-* For more details on how to use MTO please refer [Tenant tutorial](../../guides/create-tenant.md).
-* For details on how to extend your MTO manager ClusterRole please refer [extend-default-clusterroles](../../guides/extend-default-roles.md).
+* For more details on how to use MTO please refer [Tenant tutorial](../../multi-tenancy/guides/create-tenant.md).
+* For details on how to extend your MTO manager ClusterRole please refer [extend-default-clusterroles](../../multi-tenancy/guides/extend-default-roles.md).

@@ -17,43 +17,43 @@ MTO groups into six capability areas. Each one is driven by the same `Tenant` de
 
 A `Tenant` names the people, the namespaces, the quota and the standards that belong to one team, department or customer. Everything else in MTO reads from it, so access, cost and lifecycle all agree on the same boundary.
 
-More details on [Tenant](../concepts/tenant.md).
+More details on [Tenant](../multi-tenancy/concepts/tenant.md).
 
 ### Access control without hand-written RBAC
 
 RBAC is one of the most error-prone parts of Kubernetes. MTO binds ClusterRoles to the tenant's namespaces for owners, editors and viewers, keeps those bindings current as membership changes, and lets you swap in custom roles when the defaults do not fit. Existing Kubernetes and OpenShift groups — including groups synced from an external identity provider — can be used directly as tenant membership.
 
-More details on [Custom Roles](../guides/custom-roles.md) and [Extending Default Roles](../guides/extend-default-roles.md).
+More details on [Custom Roles](../multi-tenancy/guides/custom-roles.md) and [Extending Default Roles](../multi-tenancy/guides/extend-default-roles.md).
 
 ### Namespace management and self-service
 
 Tenants declare the namespaces they own, with or without the tenant name as a prefix. Sandboxes give every member of a tenant their own namespace, preloaded with the tenant's templates and drawing from the tenant's quota — a personal development environment that costs nothing extra to govern.
 
-More details on [Creating Namespaces](../guides/create-namespaces.md) and [Sandboxes](../guides/create-sandbox.md).
+More details on [Creating Namespaces](../multi-tenancy/guides/create-namespaces.md) and [Sandboxes](../multi-tenancy/guides/create-sandbox.md).
 
 ### Quota at the tenant scope
 
 Quota is defined once for the tenant and shared across all of its namespaces, so teams can self-serve namespaces without being able to exceed the budget you allocated. On OpenShift this is enforced with a `ClusterResourceQuota`; on other distributions MTO aggregates per-namespace quota at admission.
 
-More details on [Quota](../concepts/quota.md).
+More details on [Quota](../multi-tenancy/concepts/quota.md).
 
 ### Guardrails enforced at admission
 
 Beyond quota, the admission webhook enforces the boundaries a platform team actually cares about: which storage classes, ingress classes, pod priority classes and image registries a tenant may use, which service accounts are denied, and which hostnames a tenant may claim. Each of these is off by default and grants no extra permissions until you enable it.
 
-More details on [Storage Classes](../guides/storage-classes.md), [Image Registries](../guides/image-registries.md), [Pod Priority Classes](../guides/pod-priority-classes.md), [Service Accounts](../guides/service-accounts.md) and [Host Validation](../guides/host-validation.md).
+More details on [Storage Classes](../multi-tenancy/guides/storage-classes.md), [Image Registries](../multi-tenancy/guides/image-registries.md), [Pod Priority Classes](../multi-tenancy/guides/pod-priority-classes.md), [Service Accounts](../multi-tenancy/guides/service-accounts.md) and [Host Validation](../multi-tenancy/guides/host-validation.md).
 
 ### Network and node isolation
 
 Tenant namespaces can be isolated from each other on the network, and workloads can be pinned to a specific node pool so noisy or sensitive tenants do not share hardware.
 
-More details on [Disabling Intra-Tenant Networking](../guides/disable-intra-tenant-networking.md) and [Restricting Node Pools](../guides/restrict-nodepool-per-tenant.md).
+More details on [Disabling Intra-Tenant Networking](../multi-tenancy/guides/disable-intra-tenant-networking.md) and [Restricting Node Pools](../multi-tenancy/guides/restrict-nodepool-per-tenant.md).
 
 ### Standard metadata everywhere
 
 Labels and annotations can be applied cluster-wide, per tenant, or per namespace, with templated values such as the tenant's name or user. That is what makes downstream tooling — cost attribution, network policy, monitoring — able to find things reliably.
 
-More details on [Assigning Metadata](../guides/assign-metadata.md) and [Templated Metadata Values](../guides/templated-metadata-values.md).
+More details on [Assigning Metadata](../multi-tenancy/guides/assign-metadata.md) and [Templated Metadata Values](../multi-tenancy/guides/templated-metadata-values.md).
 
 ## Templates
 
@@ -103,7 +103,7 @@ Hibernation is driven by a `ClusterResourceSupervisor` resource, provided by the
 
 The saving shows up directly in showback.
 
-More details on [Hibernating a Tenant](../guides/hibernate-tenant.md) and the [Hibernation console](../console/hibernation.md).
+More details on [Hibernating a Tenant](../hibernation/guides/hibernate-tenant.md) and the [Hibernation console](../console/hibernation.md).
 
 ## Extensions
 
@@ -113,21 +113,21 @@ The tenant boundary does not stop at the Kubernetes API. Extensions project the 
 
 MTO provisions an `AppProject` per tenant, scoped to the repositories the tenant may deploy from and the namespaces it may deploy into, with cluster-resource allow-lists and namespace-resource deny-lists. Tenant users get GitOps self-service without an administrator hand-editing ArgoCD RBAC.
 
-More details on [ArgoCD Multi-Tenancy](../integrations/argocd.md).
+More details on [ArgoCD Multi-Tenancy](../extensions/guides/argocd.md).
 
 ### HashiCorp Vault
 
 MTO extends the tenant's permission model into Vault, creating the paths, roles and policies for the tenant. Tenant users manage their own secrets without anyone else gaining access to their paths.
 
-More details on [Vault Multi-Tenancy](../integrations/vault/vault.md).
+More details on [Vault Multi-Tenancy](../extensions/guides/vault.md).
 
 ### Developer workspaces and collaboration
 
 DevWorkspace gives tenant users cloud development environments inside their own namespaces. Mattermost creates a team and a set of channels per tenant, and removes users from it when they leave the tenant.
 
-More details on [DevWorkspace](../integrations/devworkspace.md) and [Mattermost](../integrations/mattermost.md).
+More details on [DevWorkspace](../extensions/guides/devworkspace.md) and [Mattermost](../extensions/guides/mattermost.md).
 
-More details on [Extensions](../concepts/extensions.md).
+More details on [Extensions](../extensions/concepts/extensions.md).
 
 ## Console
 
@@ -151,4 +151,4 @@ More details on [Console](../console/overview.md).
 
 * [How MTO Works](how-it-works.md) — how these fit together at runtime
 * [Use Cases](use-cases.md) — the shapes this takes in practice
-* [Create a Tenant](../guides/create-tenant.md) — start with one object
+* [Create a Tenant](../multi-tenancy/guides/create-tenant.md) — start with one object

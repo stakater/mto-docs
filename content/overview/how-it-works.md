@@ -120,7 +120,7 @@ flowchart TB
 
 The **Pilot controller** provisions and manages that supporting stack — Console, Gateway, PostgreSQL, Prometheus, OpenCost, `kube-state-metrics`, Dex and the FinOps components — so cost visibility and the self-service UI work out of the box rather than after a separate integration project.
 
-See [Architecture](../concepts/architecture.md) for the full component table.
+See [Architecture](architecture.md) for the full component table.
 
 ## Where each capability comes from
 
@@ -141,6 +141,6 @@ The Tenant, Quota, IntegrationConfig, Template and ClusterResourceSupervisor res
 
 - [Why MTO](why-mto.md) — the argument for adopting it
 - [Key Capabilities](key-features.md) — what each capability includes
-- [Architecture](../concepts/architecture.md) — components and controllers in detail
-- [Tenant](../concepts/tenant.md) — the full Tenant model
-- [Create a Tenant](../guides/create-tenant.md) — do it for real
+- [Architecture](architecture.md) — components and controllers in detail
+- [Tenant](../multi-tenancy/concepts/tenant.md) — the full Tenant model
+- [Create a Tenant](../multi-tenancy/guides/create-tenant.md) — do it for real

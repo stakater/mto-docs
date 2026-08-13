@@ -10,7 +10,7 @@ MTO does not estimate from node count. It measures:
 
 1. **Sampled** — Prometheus and `kube-state-metrics` record actual resource usage and requests per namespace over time.
 1. **Aggregated** — usage is rolled up to the tenant, because the tenant is the unit of ownership. Every namespace MTO manages already belongs to exactly one tenant.
-1. **Priced** — OpenCost applies rates to the sampled usage. For public-cloud clusters, MTO can use provider pricing so the figures track what you are actually billed. See [AWS Pricing](../integrations/aws-pricing.md) and [Azure Pricing](../integrations/azure-pricing.md).
+1. **Priced** — OpenCost applies rates to the sampled usage. For public-cloud clusters, MTO can use provider pricing so the figures track what you are actually billed. See [AWS Pricing](../finops/guides/aws-pricing.md) and [Azure Pricing](../finops/guides/azure-pricing.md).
 1. **Stored** — results are written to MTO's PostgreSQL instance, so history survives Prometheus retention and you can compare this month against the last.
 
 ## Why the tenant boundary makes this correct

@@ -164,6 +164,56 @@ def test_find_section():
     assert m.find_section(nav, "Nope") is None
 
 
+def _pillar_nav():
+    """Two pillars, each owning a section called Concepts — a bare title is
+    ambiguous, which is why `under` accepts a path."""
+    return [
+        {"Templates": [{"Overview": "templates/overview.md"}]},
+        {"Hibernation": [
+            {"Overview": "hibernation/overview.md"},
+            {"Concepts": ["hibernation/concepts/supervisor.md"]},
+        ]},
+    ]
+
+
+def test_resolve_section_path_disambiguates_pillars():
+    nav = _pillar_nav()
+    assert m.resolve_section(nav, "Hibernation/Concepts") == [
+        "hibernation/concepts/supervisor.md"
+    ]
+    assert m.resolve_section(nav, "Templates/Concepts") is None
+
+
+def test_resolve_section_creates_missing_levels():
+    nav = _pillar_nav()
+    section = m.resolve_section(nav, "Templates/Concepts", create=True)
+    section.append("templates/concepts/template.md")
+    assert nav[0] == {"Templates": [
+        {"Overview": "templates/overview.md"},
+        {"Concepts": ["templates/concepts/template.md"]},
+    ]}
+
+
+def test_resolve_section_bare_title_still_works():
+    nav = _sample_nav()
+    assert m.resolve_section(nav, "API Reference") == [
+        "kubernetes-resources/quota.md"
+    ]
+    assert m.resolve_section(nav, "Nope") is None
+
+
+def test_insert_leaves_creates_pillar_subsection():
+    nav = _pillar_nav()
+    m.insert_leaves(nav, "Templates/Guides", ["templates/guides/create.md"])
+    assert nav[0]["Templates"][-1] == {"Guides": ["templates/guides/create.md"]}
+
+
+def test_insert_leaves_unknown_pillar_raises():
+    nav = _pillar_nav()
+    with pytest.raises(KeyError):
+        m.insert_leaves(nav, "Ghost/Guides", ["a/b.md"])
+
+
 def test_insert_subtree_appends_title_node():
     nav = _sample_nav()
     m.insert_subtree(nav, "API Reference", "Template Operator", ["a/b.md"])
