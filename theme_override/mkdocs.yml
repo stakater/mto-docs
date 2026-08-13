@@ -6,6 +6,11 @@ edit_uri: blob/main/content/
 theme:
   favicon: assets/images/favicon.svg
 
+# Appended to the shared theme's extra_css by combine_mkdocs_config_yaml.py,
+# which unions lists, so stylesheets/extra.css is preserved.
+extra_css:
+  - stylesheets/nav-labels.css
+
 strict: true
 validation:
   links:
@@ -81,13 +86,7 @@ nav:
       - overview/key-features.md
       - overview/use-cases.md
       - overview/benefits.md
-  - Concepts:
-      - concepts/architecture.md
-      - concepts/terminology.md
-      - concepts/tenant.md
-      - concepts/quota.md
-      - concepts/extensions.md
-      - concepts/integration-config.md
+      - Architecture: concepts/architecture.md
   - Getting Started:
       - Installation:
           - getting-started/installation/overview.md
@@ -102,6 +101,34 @@ nav:
               - Installation: "getting-started/installation/aws-eks/installation.md"
               - Validation: "getting-started/installation/aws-eks/validation.md"
       - getting-started/uninstalling.md
+  - Multi-Tenancy:
+      - Concepts:
+          - concepts/terminology.md
+          - concepts/tenant.md
+          - concepts/quota.md
+          - concepts/extensions.md
+          - concepts/integration-config.md
+      - Guides:
+          - guides/create-tenant.md
+          - guides/create-namespaces.md
+          - guides/create-sandbox.md
+          - guides/assign-metadata.md
+          - guides/hibernate-tenant.md
+          - guides/restrict-nodepool-per-tenant.md
+          - guides/disable-intra-tenant-networking.md
+          - guides/ingress-sharding.md
+          - guides/host-validation.md
+          - guides/storage-classes.md
+          - guides/pod-priority-classes.md
+          - guides/service-accounts.md
+          - guides/image-registries.md
+          - guides/custom-roles.md
+          - guides/extend-default-roles.md
+          - guides/delete-tenant.md
+          - guides/templated-metadata-values.md
+  - Templates: []
+  - FinOps: []
+  - Hibernation: []
   - Console:
       - console/overview.md
       - console/dashboard.md
@@ -115,35 +142,18 @@ nav:
       - console/cluster-template-instances.md
       - console/capacity-planning.md
       - console/configuration.md
-  - Guides:
-      - guides/create-tenant.md
-      - guides/create-namespaces.md
-      - guides/create-sandbox.md
-      - guides/assign-metadata.md
-      - guides/hibernate-tenant.md
-      - guides/restrict-nodepool-per-tenant.md
-      - guides/disable-intra-tenant-networking.md
-      - guides/ingress-sharding.md
-      - guides/host-validation.md
-      - guides/storage-classes.md
-      - guides/pod-priority-classes.md
-      - guides/service-accounts.md
-      - guides/image-registries.md
-      - guides/custom-roles.md
-      - guides/extend-default-roles.md
-      - guides/delete-tenant.md
-      - guides/templated-metadata-values.md
   - Integrations:
       - integrations/argocd.md
+      - integrations/grafana/readme.md
       - integrations/lgtm/lgtm.md
       - integrations/vault/vault.md
+      - OpenBao: integrations/openbao/readme.md
       - integrations/devworkspace.md
       - integrations/mattermost.md
   - CLI:
       - cli/overview.md
   - Reference:
-      - API Reference:
-          - Tenant Operator: reference/api.md
+      - reference/api.md
       - reference/configuration.md
       - reference/rbac.md
       - reference/security-model.md

@@ -46,7 +46,9 @@ def strip_base(rel, base):
     return rel[len(prefix):]
 
 
-def compute_dest(remainder, into, slug, flatten=False):
+def compute_dest(remainder, into, slug, flatten=False, product_first=False):
+    if product_first:   # product namespace leads: <slug>/<into>/<remainder>
+        return "/".join(p for p in (slug, into, remainder) if p)
     if flatten:   # keep slug (namespacing), drop sub-dirs: into/<slug>/<basename>
         return "/".join(p for p in (into, slug, remainder.rsplit("/", 1)[-1]) if p)
     return "/".join(p for p in (into, slug, remainder) if p)
@@ -213,6 +215,38 @@ def insert_leaves(nav, under, leaves):
     section.extend(leaves)
 
 
+def product_subsections(ordered_unders):
+    """Nav nodes for a product's sub-sections. Each (under, dests) becomes a
+    folder {under: [dests]}, or a single clickable leaf {under: dest} when the
+    sub-section holds exactly one page."""
+    nodes = []
+    for under, dests in ordered_unders:
+        nodes.append({under: dests[0]} if len(dests) == 1 else {under: list(dests)})
+    return nodes
+
+
+def fill_placeholder(nav, section, nodes):
+    """Append sub-section nodes into the (empty) `section` placeholder."""
+    sec = find_section(nav, section)
+    if sec is None:
+        raise KeyError(f"placeholder section {section!r} not found in nav")
+    sec.extend(nodes)
+
+
+def _set_single_leaf(nav, under, path, label=None):
+    """Ensure one leaf for `path` in `under`: bare (title from H1) or {label:
+    path}. Relabels an existing leaf, else prepends one."""
+    section = find_section(nav, under)
+    if section is None:
+        raise KeyError(f"menu section {under!r} not found in nav")
+    entry = {label: path} if label else path
+    for i, item in enumerate(section):
+        if _leaf_path(item) == path:
+            section[i] = entry
+            return
+    section.insert(0, entry)
+
+
 def _leaf_path(item):
     """The dest a direct-child nav leaf points at (bare string or single-key
     dict), else None for a folder or multi-key node."""
@@ -264,6 +298,33 @@ def apply_group(nav, group):
     section[:] = new_section
 
 
+def apply_concat(nav, targets, content_dir, op_ctx, site_title):
+    """Concatenate several source pages into one per `into` target. The existing
+    content page (mto-docs' own) is the first `## site_title` section; each
+    contributing operator adds a `## heading` section sourced from its clone and
+    link-rewritten. Every source's own headings are demoted one level so the
+    in-page TOC lists the sections. One `{as: into}` leaf is set under `under`."""
+    content_dir = Path(content_dir)
+    for into, spec in targets.items():
+        blocks, page_title = [], None
+        self_path = content_dir / into
+        if self_path.is_file():
+            page_title, body = split_h1(self_path.read_text(encoding="utf-8"))
+            blocks.append(f"## {site_title}\n\n{shift_headings(body, 1).strip()}\n")
+        for heading, op_title, frm in spec["sections"]:
+            ctx = op_ctx[op_title]
+            raw = (ctx["docs"] / frm).read_text(encoding="utf-8")
+            raw, _ = rewrite_links(raw, frm, into, ctx["op_map"],
+                                   ctx["live_url"], ctx["style"])
+            body = shift_headings(split_h1(raw)[1], 1).strip()
+            blocks.append(f"## {heading}\n\n{body}\n")
+        if page_title is None:
+            page_title = read_h1(self_path) or prettify(Path(into).stem)
+        self_path.parent.mkdir(parents=True, exist_ok=True)
+        self_path.write_text(f"# {page_title}\n\n" + "\n".join(blocks), encoding="utf-8")
+        _set_single_leaf(nav, spec["under"], into, spec.get("as"))
+
+
 def _nav_bounds(text):
     lines = text.splitlines(keepends=True)
     start = None
@@ -312,12 +373,40 @@ def write_nav(text, nav):
     return "".join(lines[:start]) + block + "".join(lines[end:])
 
 
+def insert_extra_list(text, key, values):
+    """Add `key: [values]` under the top-level `extra:` mapping in mkdocs.yml text.
+
+    Text-level insertion for the same reason the nav is edited that way: the file
+    carries `!!python/name:` tags that a safe_load round-trip would drop. When the
+    file has no top-level `extra:` block, one is appended.
+    """
+    if not values:
+        return text
+    block = yaml.safe_dump({key: values}, sort_keys=False, allow_unicode=True,
+                           default_flow_style=False)
+    body = "".join(f"  {line}\n" for line in block.splitlines())
+    lines = text.splitlines(keepends=True)
+    for i, line in enumerate(lines):
+        if re.match(r"^extra\s*:\s*$", line):
+            for j in range(i + 1, len(lines)):
+                if not lines[j][0].isspace():
+                    break
+                if re.match(rf"^  {re.escape(key)}\s*:", lines[j]):
+                    raise ValueError(f"extra.{key} already present in {lines[j].strip()!r}")
+            return "".join(lines[:i + 1]) + body + "".join(lines[i + 1:])
+    if text and not text.endswith("\n"):
+        text += "\n"
+    return text + "extra:\n" + body
+
+
 def load_config(path):
     data = yaml.safe_load(Path(path).read_text())
     operators = []
     for raw in data["operators"]:
         operators.append({
             "title": raw["title"],
+            "section": raw.get("section") or raw["title"],
+            "product_first": bool(raw.get("section")),
             "repo": raw["repo"],
             "branch": raw.get("branch") or "",   # empty -> repo default branch
             "slug": raw.get("slug") or slugify(raw["title"]),
@@ -336,11 +425,60 @@ def read_h1(path):
         text = Path(path).read_text(encoding="utf-8")
     except OSError:
         return None
-    for line in text.splitlines():
+    for line, in_code in _md_lines(text):
+        if in_code:
+            continue
         mo = re.match(r"#\s+(.+?)\s*#*\s*$", line.strip())
         if mo:
             return mo.group(1).strip()
     return None
+
+
+def _md_lines(text):
+    """(line, in_code) for each line, tracking ``` / ~~~ fenced code blocks so
+    that `#` inside a code sample is never mistaken for a heading."""
+    fence, out = None, []
+    for line in text.splitlines():
+        marker = None
+        mo = re.match(r"(`{3,}|~{3,})", line.strip())
+        if mo:
+            marker = mo.group(1)[0]
+        if fence:
+            out.append((line, True))
+            if marker == fence:
+                fence = None
+        elif marker:
+            fence = marker
+            out.append((line, True))
+        else:
+            out.append((line, False))
+    return out
+
+
+def split_h1(text):
+    """Return (first-H1-text or None, body with that H1 line removed)."""
+    h1, out, removed = None, [], False
+    for line, in_code in _md_lines(text):
+        if not in_code and not removed:
+            mo = re.match(r"#\s+(.*\S)\s*$", line)
+            if mo:
+                h1, removed = mo.group(1).strip(), True
+                continue
+        out.append(line)
+    return h1, "\n".join(out)
+
+
+def shift_headings(text, by):
+    """Demote ATX headings by `by` levels (capped at 6), skipping code fences."""
+    out = []
+    for line, in_code in _md_lines(text):
+        if not in_code:
+            mo = re.match(r"(#{1,6})(\s)", line)
+            if mo:
+                level = min(len(mo.group(1)) + by, 6)
+                line = "#" * level + line[len(mo.group(1)):]
+        out.append(line)
+    return "\n".join(out)
 
 
 def build_duplicate_groups(nav, flat_pages, content_dir, site_title):
@@ -457,6 +595,19 @@ def rewrite_links(text, src_rel, dest_rel, mapping, live_url=None,
     return text, external
 
 
+def validate_mapping(mapping):
+    """Reject `label` combinations that cannot render as an operator header."""
+    if not mapping.get("label"):
+        return
+    where = mapping.get("from")
+    if not mapping.get("flatten"):
+        raise ValueError(f"label requires flatten: true (mapping from {where!r})")
+    if mapping.get("title"):
+        raise ValueError(f"label and title are mutually exclusive (mapping from {where!r})")
+    if not mapping.get("under"):
+        raise ValueError(f"label requires under (mapping from {where!r})")
+
+
 def run(operators, content_dir, mkdocs_path, repo_overrides=None, site_title=None):
     content_dir = Path(content_dir)
     overrides = repo_overrides or {}
@@ -464,6 +615,9 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None, site_title=Non
     nav = read_nav(text)
     seen = {}
     flat_pages = []   # (under, dest, source_title) for flattened untitled pages
+    op_ctx = {}       # op title -> {docs, op_map, live_url, style} for the concat pass
+    nav_labels = []   # operator titles emitted as nav labels, in first-seen order
+    concat_targets = {}   # into -> {"under", "as", "sections":[(heading,op,from)]}
 
     for op in operators:
         repo = Path(overrides.get(op["slug"], op["repo"]))
@@ -473,19 +627,47 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None, site_title=Non
 
         folder_titles = read_folder_titles(repo)   # from the sub-op's own nav
         under_entries = {}
-        flat_leaves = []  # (under, leaf-entry) for flatten mappings, in nav order
+        # (under, kind, payload) for flatten mappings, in mapping order.
+        # kind "leaf" -> a direct child of the section; kind "group" -> the
+        # operator-titled section the theme renders as a label header.
+        flat_inserts = []
         op_map = {}       # source-relative path -> content-relative destination
         md_files = []     # (src_rel, dest_rel) of copied markdown, for link rewriting
+        sub_pages = []    # [(under, [dest,...])] preserving mapping order (product-first)
+        sub_index = {}    # under -> index into sub_pages
+        # product-first: the operator owns an (empty) placeholder section in the
+        # nav that its sub-sections fill. Routing comes from an explicit signal
+        # (load_config sets product_first only when `section` is declared), not
+        # from nav content, so a missing placeholder still fails fast in
+        # fill_placeholder. Legacy operators keep the flatten/label/wrapper path.
+        product_first = op.get("product_first", bool(op.get("section")))
         for mapping in op["mappings"]:
-            base = glob_base(mapping["from"])
+            validate_mapping(mapping)
             matches = find_matches(docs, mapping["from"], op["exclude"])
             if not matches:
                 raise ValueError(f"{mapping['from']!r} matched no files in {docs}")
+            if mapping.get("concat_into"):
+                into = mapping["concat_into"]
+                tgt = concat_targets.setdefault(into, {"under": None, "as": None,
+                                                       "sections": []})
+                for key in ("under", "as"):
+                    val = mapping.get(key)
+                    if val is not None:
+                        if tgt[key] is not None and tgt[key] != val:
+                            raise ValueError(
+                                f"concat_into {into!r}: conflicting {key} "
+                                f"{tgt[key]!r} vs {val!r}")
+                        tgt[key] = val
+                for rel in matches:
+                    tgt["sections"].append((mapping["heading"], op["title"], rel))
+                continue
+            base = glob_base(mapping["from"])
             flatten = mapping.get("flatten", False)
             mapping_dests = []   # dests of copied .md in this mapping (nav order)
             for rel in matches:
                 remainder = strip_base(rel, base)
-                dest_rel = compute_dest(remainder, mapping["into"], op["slug"], flatten)
+                dest_rel = compute_dest(remainder, mapping["into"], op["slug"], flatten,
+                                        product_first=product_first)
                 if dest_rel in seen:
                     raise ValueError(f"destination collision: {dest_rel}")
                 seen[dest_rel] = True
@@ -496,7 +678,13 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None, site_title=Non
                 # only markdown pages become nav entries; assets are copied only
                 if rel.endswith(".md"):
                     md_files.append((rel, dest_rel))
-                    if mapping.get("under"):
+                    if mapping.get("under") and product_first:
+                        under = mapping["under"]
+                        if under not in sub_index:
+                            sub_index[under] = len(sub_pages)
+                            sub_pages.append((under, []))
+                        sub_pages[sub_index[under]][1].append(dest_rel)
+                    elif mapping.get("under"):
                         if flatten:
                             mapping_dests.append(dest_rel)
                         else:
@@ -504,14 +692,20 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None, site_title=Non
             # flatten: merge as direct leaves under the section (no op wrapper).
             # A `title` renames a single-file mapping; with several files it names
             # a folder holding them, else each page keeps its own H1 as the label.
+            # `label` instead groups the pages under the operator's own title,
+            # which the theme renders as a plain header (see extra.nav_labels).
             if flatten and mapping_dests:
                 title = mapping.get("title")
-                if title and len(mapping_dests) == 1:
-                    flat_leaves.append((mapping["under"], {title: mapping_dests[0]}))
+                if mapping.get("label"):
+                    flat_inserts.append((mapping["under"], "group", mapping_dests))
+                    if op["title"] not in nav_labels:
+                        nav_labels.append(op["title"])
+                elif title and len(mapping_dests) == 1:
+                    flat_inserts.append((mapping["under"], "leaf", {title: mapping_dests[0]}))
                 elif title:
-                    flat_leaves.append((mapping["under"], {title: mapping_dests}))
+                    flat_inserts.append((mapping["under"], "leaf", {title: mapping_dests}))
                 else:
-                    flat_leaves.extend((mapping["under"], d) for d in mapping_dests)
+                    flat_inserts.extend((mapping["under"], "leaf", d) for d in mapping_dests)
                     # untitled flat pages are candidates for duplicate auto-grouping
                     flat_pages.extend((mapping["under"], d, op["title"]) for d in mapping_dests)
 
@@ -533,10 +727,19 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None, site_title=Non
             for target in sorted(set(externalized)):
                 print(f"     {target}")
 
+        op_ctx[op["title"]] = {"docs": docs, "op_map": op_map,
+                               "live_url": live_url, "style": style}
+
+        if product_first:
+            fill_placeholder(nav, op["section"], product_subsections(sub_pages))
+
         for under, entries in under_entries.items():
             insert_subtree(nav, under, op["title"], build_nav_tree(entries, folder_titles))
-        for under, leaf in flat_leaves:
-            insert_leaves(nav, under, [leaf])
+        for under, kind, payload in flat_inserts:
+            if kind == "group":
+                insert_subtree(nav, under, op["title"], payload)
+            else:
+                insert_leaves(nav, under, [payload])
 
     # post-merge: auto-fold pages that collide by basename across sources into a
     # per-page folder with per-source labels (e.g. ArgoCD -> {MTO, Hibernation})
@@ -546,7 +749,11 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None, site_title=Non
     for group in build_duplicate_groups(nav, flat_pages, content_dir, site_title):
         apply_group(nav, group)
 
-    Path(mkdocs_path).write_text(write_nav(text, nav))
+    apply_concat(nav, concat_targets, content_dir, op_ctx, site_title)
+
+    out = write_nav(text, nav)
+    out = insert_extra_list(out, "nav_labels", nav_labels)
+    Path(mkdocs_path).write_text(out)
 
 
 def parse_repo_overrides(pairs):

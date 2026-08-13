@@ -18,7 +18,7 @@ A tenant member signs in through your identity provider and lands in the Grafana
 | Their own organisation in Grafana | Named after the tenant, holding dashboards whose panels already point at that tenant's data |
 | A role that follows their group | Identity-provider group membership decides which organisations a member sees, and with what role |
 
-Members who belong to several tenants can have more, though none of it is on by default. They can be given one organisation holding every tenant they belong to, rather than switching between them; a data source that follows a single request from one tenant's service into another tenant's; and the option to share a dashboard built there with colleagues whose access covers the same data. All three are configured on the Grafana extension, and the [Grafana integration](../grafana/readme.md) page covers them.
+Members who belong to several tenants can have more, though none of it is on by default. They can be given one organisation holding every tenant they belong to, rather than switching between them; a data source that follows a single request from one tenant's service into another tenant's; and the option to share a dashboard built there with colleagues whose access covers the same data. All three are configured on the Grafana extension — see [One organisation across a user's tenants](../grafana/readme.md#one-organisation-across-a-users-tenants).
 
 ## What you do not have to do
 
@@ -163,5 +163,5 @@ One check confirms the whole chain, however you assemble it. Sign in as a member
 
 ## Where to go next
 
-- [Grafana integration](../grafana/readme.md) — organisations, data sources, dashboards and single sign-on in full.
+- [Grafana integration](../grafana/readme.md) — organisations, data sources, dashboards, single sign-on and cross-tenant views in full.
 - [Create a tenant](../../guides/create-tenant.md) — the resource everything else is derived from.
