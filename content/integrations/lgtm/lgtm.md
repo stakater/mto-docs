@@ -32,7 +32,7 @@ The alternative to one shared stack is one per tenant: multiplied storage, multi
 | Per-tenant collector configuration | A route or remote-write block written for each tenant | Rendered from the tenant list by the Template Operator |
 | An organisation per tenant | Create each, then keep the set current as tenants change | Derived |
 | Data sources | One copy per tenant per signal, each with the right header, and the right URL for Loki | Derived from one definition |
-| Dashboards | Import into every organisation, then repoint every panel | Derived, with references rewritten |
+| Dashboards | Import into every organisation, then point every panel at that organisation's own data source | Derived, with references rewritten |
 | Who can see what | An org-mapping entry per identity-provider group, per tenant | Derived from the tenant |
 | Onboarding | Repeat all of the above | Nothing: it is already a `Tenant` |
 | Offboarding | Undo all of the above, everywhere | Its organisation and content go with the `Tenant` |
