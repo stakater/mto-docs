@@ -17,8 +17,10 @@ jobs:
     concurrency:
       group: pull_request_versioned_doc
       cancel-in-progress: false
-    uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@v0.0.189
+    uses: stakater/.github/.github/workflows/pull_request_versioned_doc.yaml@v0.0.192
     with:
+      # Screenshots resolve from the images committed under screenshots/captured/,
+      # refreshed by screenshots.yaml -- a docs PR never touches the live console.
       PRE_BUILD_HOOK: make merge
     secrets:
       GH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}

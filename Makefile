@@ -11,7 +11,7 @@ PY   := $(VENV)/bin/python
 SUBOPS ?= $(HOME)/Documents/work
 
 .DEFAULT_GOAL := help
-.PHONY: help venv test theme merge merge-local serve serve-local clean
+.PHONY: help venv test theme merge merge-local screenshots screenshots-check docs-images serve serve-local clean
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) \
@@ -40,6 +40,20 @@ merge-local: venv ## Merge from local sub-operator checkouts under SUBOPS (no cl
 	  for o in merge_docs.load_config('merge.yaml')))"); \
 	echo ">> merging from $(SUBOPS)"; \
 	$(PY) scripts/merge_docs.py $$args
+
+# The build resolves {{ screenshot: ... }} itself (see screenshots/mkdocs_hook.py).
+screenshots: ## Capture live console screenshots into screenshots/captured/
+	bash screenshots/capture.sh
+
+screenshots-check: ## Read-only: check every {{ screenshot: ... }} has a captured image
+	python3 screenshots/inject.py --check
+
+docs-images: merge ## CI pre-build hook: merge sub-operator docs, then capture screenshots
+	@test -n "$$PRE_BUILD_USER" -a -n "$$PRE_BUILD_PASSWORD" \
+	  || { echo "docs-images: PRE_BUILD_USER/PRE_BUILD_PASSWORD not set"; exit 1; }
+	@printf 'CONSOLE_USER=%s\nCONSOLE_PASSWORD=%s\n' "$$PRE_BUILD_USER" "$$PRE_BUILD_PASSWORD" > screenshots/.env
+	bash screenshots/capture.sh
+	python3 screenshots/inject.py --check
 
 theme: venv ## Combine the shared theme with theme_override into dist/_theme and mkdocs.yml
 	git submodule update --init --recursive

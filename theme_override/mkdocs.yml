@@ -21,6 +21,14 @@ extra:
     provider: mike
     default: latest
 
+# Resolves {{ screenshot: <name> }} directives to the images captured by
+# screenshots/capture.sh. Our own module, loaded by mkdocs' built-in hooks: key --
+# no plugin to install, and it only touches that exact pattern (mkdocs-macros would
+# enable Jinja2 on every page and try to evaluate the {{ .Role }} / {{ issuer }}
+# templating examples in the integration docs).
+hooks:
+  - screenshots/mkdocs_hook.py
+
 plugins:
   - search
   - glightbox
@@ -69,6 +77,8 @@ plugins:
         kubernetes-resources/tenant/how-to-guides/delete-tenant.md: guides/delete-tenant.md
         kubernetes-resources/tenant/how-to-guides/templated-metadata-values.md: guides/templated-metadata-values.md
         changelog.md: release-notes.md
+        integrations/vault/vault-ic.md: integrations/vault/vault.md
+        integrations/vault/vault-kc-entraid.md: integrations/vault/vault.md
 
 nav:
   - Overview:
@@ -130,10 +140,7 @@ nav:
       - guides/templated-metadata-values.md
   - Integrations:
       - integrations/argocd.md
-      - Vault:
-          - integrations/vault/vault.md
-          - integrations/vault/vault-ic.md
-          - integrations/vault/vault-kc-entraid.md
+      - integrations/vault/vault.md
       - integrations/devworkspace.md
       - integrations/mattermost.md
   - CLI:

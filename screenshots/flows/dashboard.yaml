@@ -1,0 +1,39 @@
+# console/dashboard.md -> dashboard.png
+name: docs-dashboard
+
+requires:
+  env: [CONSOLE_URL, CONSOLE_USER, CONSOLE_PASSWORD]
+  reachable: ["${CONSOLE_URL}"]
+
+viewport:
+  width: 1280
+  height: 800
+  deviceScaleFactor: 2
+  colorScheme: light
+
+steps:
+  # Login via Dex (candidate for a browser-runner pack once proven stable).
+  # Selector matches both stock Dex (name="login") and themed variants (name="username").
+  - { step: open, url: "${CONSOLE_URL}" }
+  - { step: wait-for, selector: 'input[name="login"], input[name="username"]', timeout: 60s }
+  - { step: fill, selector: 'input[name="login"], input[name="username"]', value: "${CONSOLE_USER}" }
+  - { step: fill, selector: 'input[name="password"]', value: "${CONSOLE_PASSWORD}" }
+  # The click is instant; Playwright then waits for the Dex -> /auth/callback ->
+  # dashboard redirect chain, which exceeds the 10s default on a cold Dex. The
+  # wait-for below is the real gate, so a long timeout here only removes a false
+  # failure.
+  - { step: click, selector: 'button[type="submit"]', timeout: 60s }
+  - { step: wait-for, selector: '[data-testid="dashboard-container"]', timeout: 60s }
+
+  # Dashboard fully loaded: metric cards + the capacity chart.
+  # There is deliberately NO wait for dashboard-showback-chart: that panel only
+  # mounts when the overview API returns non-empty costData, and the ORIGINAL
+  # dashboard.png doesn't show it either (metric cards -> Capacity Planning).
+  # console/dashboard.md's prose still mentions a Showback graph -- stale text.
+  - { step: wait-for, selector: '[data-testid="dashboard-metrics-grid"]' }
+  - { step: wait-for, selector: '[data-testid="dashboard-capacity-chart"] svg', timeout: 30s }
+  - { step: wait, ms: 2s }
+  - { step: screenshot, path: dashboard.png, fullPage: false }
+
+after:
+  - { step: screenshot, when: on-failure, path: _failure-dashboard.png }
