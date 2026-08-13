@@ -4,7 +4,7 @@ You can uninstall MTO by following these steps:
 
 * Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not.
 For more details check out [onDeletePurgeNamespaces](../guides/delete-tenant.md#configuration-for-retaining-resources)
-[onDeletePurgeAppProject](../concepts/extensions.md#configuring-argocd-integration)
+[onDeletePurgeAppProject](../concepts/extensions.md#per-tenant-extensions-the-extensions-cr)
 
 * In case you have enabled console and showback, you will have to disable it first by navigating to `Search` -> `IntegrationConfig` -> `tenant-operator-config` and set `spec.components.console` and `spec.components.showback` to `false`.
 

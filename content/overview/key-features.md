@@ -94,9 +94,14 @@ More details on [Capacity Planning](../console/capacity-planning.md).
 
 ## Hibernation
 
-Non-production environments are idle most of the week, and idle environments still cost money. MTO can put Deployments and StatefulSets to sleep on a schedule — nights, weekends — and wake them again, either automatically or on demand when someone needs the environment back.
+Non-production environments are idle most of the week, and idle environments still cost money. MTO puts Deployments and StatefulSets to sleep and restores their previous replica counts on wake, in two modes:
 
-Hibernation is defined per tenant, so it follows the same boundary as everything else, and its effect shows up directly in showback.
+* **Scheduled** — a sleep and wake cron pair, typically nights and weekends.
+* **Instant** — put an environment to sleep now, and leave it asleep until someone wakes it.
+
+Hibernation is driven by a `ClusterResourceSupervisor` resource, provided by the Hibernation Operator. It targets namespaces by label selector, and because MTO stamps `stakater.com/tenant: <tenant-name>` on every namespace it manages, one selector covers a whole tenant. A supervisor can also name the tenant's ArgoCD AppProjects, so the tenant's Applications sleep alongside its workloads instead of syncing them back up.
+
+The saving shows up directly in showback.
 
 More details on [Hibernating a Tenant](../guides/hibernate-tenant.md) and the [Hibernation console](../console/hibernation.md).
 

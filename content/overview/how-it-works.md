@@ -129,13 +129,13 @@ See [Architecture](../concepts/architecture.md) for the full component table.
 | Multi-Tenancy | Tenant, Namespace and Quota controllers | Namespaces, RBAC and quota reconciled continuously; webhook rejects out-of-bounds writes |
 | Templates | Template Operator (Template, TemplateInstance, TemplateGroupInstance) | Resources rendered into tenant namespaces and kept in sync |
 | FinOps | FinOps Operator and Gateway, OpenCost, Prometheus | Usage sampled per namespace, aggregated per tenant, priced and stored |
-| Hibernation | Hibernation Operator (ResourceSupervisor) | Deployments and StatefulSets scaled down on schedule and restored on wake |
+| Hibernation | Hibernation Operator (ClusterResourceSupervisor) | Deployments and StatefulSets scaled down on a schedule or on demand, and restored on wake |
 | Extensions | Extensions controller | Tenant identity projected into ArgoCD, Vault and other platform services |
 | Console | Pilot controller, Console, Gateway, Dex | Both personas see the same tenant model through a UI backed by the same API |
 
 ## Everything as code
 
-The Tenant, Quota, IntegrationConfig, Template and ResourceSupervisor resources are ordinary Kubernetes objects. They belong in Git, go through review, and are applied by whatever GitOps tool you already run. The Console reads and writes the same objects, so a change made in the UI is visible in the API and vice versa — there is no second source of truth.
+The Tenant, Quota, IntegrationConfig, Template and ClusterResourceSupervisor resources are ordinary Kubernetes objects. They belong in Git, go through review, and are applied by whatever GitOps tool you already run. The Console reads and writes the same objects, so a change made in the UI is visible in the API and vice versa — there is no second source of truth.
 
 ## Next
 
