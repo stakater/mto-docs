@@ -21,6 +21,34 @@ Follow these steps to upgrade to version 1.9.x from 1.8.x
     kubectl delete finopsoperators.dependencies.tenantoperator.stakater.com -n multi-tenant-operator tenant-operator-finops
     ```
 
+### v1.9.1
+
+_**August 11, 2026**_
+
+#### Enhancements
+
+- Bumped FinOps Operator and FinOps Gateway to `v0.1.4`.
+- Bumped DexConfigOperator to `v0.0.7`.
+
+#### Component Updates
+
+| Name | Tag | Image |
+| --- | --- | --- |
+| `tenant-operator`         | v1.9.1              | `ghcr.io/stakater/public/mto/tenant-operator`             |
+| `mto-console`             | 1.0.246             | `ghcr.io/stakater/public/mto/mto-console`                 |
+| `mto-gateway`             | 1.0.172             | `ghcr.io/stakater/public/mto/mto-gateway`                 |
+| `finops-operator`         | v0.1.4              | `ghcr.io/stakater/public/finops-operator`                 |
+| `finops-gateway`          | v0.1.4              | `ghcr.io/stakater/public/finops-gateway`                  |
+| `mto-dependencies-operator` | v0.0.12           | `ghcr.io/stakater/public/mto-dependencies-operator`       |
+| `dex-config-operator`     | v0.0.7              | `ghcr.io/stakater/public/dex-config-operator`             |
+| `template-operator`       | v0.1.5              | `ghcr.io/stakater/public/template-operator`               |
+| `hibernation-operator`    | v0.1.103            | `ghcr.io/stakater/public/hibernation-operator`            |
+| `postgresql`              | 18.2                | `ghcr.io/stakater/public/mto/postgresql`                  |
+| `dex`                     | v0.0.1              | `ghcr.io/stakater/public/mto/dex`                         |
+| `prometheus`              | v2.55.1             | `quay.io/prometheus/prometheus`                           |
+| `kube-state-metrics`      | v2.17.0             | `registry.k8s.io/kube-state-metrics/kube-state-metrics`   |
+| `opencost`                | 1.117.3             | `ghcr.io/opencost/opencost`                               |
+
 ### v1.9.0
 
 _**July 16, 2026**_
