@@ -8,9 +8,9 @@ Note that the OpenBao extension is optional.
 
 ## What it saves you
 
-Setting a tenant up in OpenBao by hand means creating, per tenant: an OpenBao namespace; a KV secrets engine, a transit engine and a PKI certificate authority inside it; a policy for every application at every access level; a Kubernetes auth role for every ServiceAccount that logs in; and an OIDC role for every identity-provider group that should be able to sign in. All of it has to be revisited whenever a namespace is added, an application is deployed, or a team's access changes.
+Setting a tenant up in OpenBao manually means creating, per tenant: an OpenBao namespace; a KV secrets engine, a transit engine and a PKI certificate authority inside it; a policy for every application at every access level; a Kubernetes auth role for every ServiceAccount that logs in; and an OIDC role for every identity-provider group that should be able to sign in. All of it has to be revisited whenever a namespace is added, an application is deployed, or a team's access changes.
 
-The extension derives all of it from the `Tenant` resource you already maintain, and keeps it in step as the tenant changes — creating what is now needed and removing what no longer applies.
+The extension derives all of it from the [`Tenant`](../../concepts/tenant.md) resource you already maintain, and keeps it in step as the tenant changes — creating what is now needed and removing what no longer applies.
 
 The other half is what it removes from application teams. A developer never writes an OpenBao policy and never holds a static OpenBao credential. They declare what the application needs in annotations on its ServiceAccount, and the pod authenticates with the token Kubernetes already gives it.
 
@@ -81,11 +81,9 @@ A **tier** is set with `bao.stakater.com/tier` and applies to every engine the S
 
 Transit needs write access, so `viewer` and `audit-read` get none of it. Certificates are the exception to the table: a workload that opts into PKI may issue and sign at any tier. For people signing in through OIDC, the tier bounds certificate access as well.
 
-## Setting up the extension
+## Prerequisites
 
-These steps are done once per cluster, by a platform administrator, before any tenant gets an OpenBao namespace.
-
-### Prerequisites
+These must be in place before a tenant can use OpenBao.
 
 - An OpenBao server reachable from the cluster.
 - The OpenBao extension and its operator, which build on Template Operator. Contact Stakater to have them installed.
@@ -94,6 +92,10 @@ These steps are done once per cluster, by a platform administrator, before any t
 - An OIDC identity provider, for human login.
 
 MTO labels each tenant namespace `stakater.com/tenant=<tenant-name>`, and the extension uses that label to find them.
+
+## Setting up the extension
+
+These steps are done once per cluster, by a platform administrator, before any tenant gets an OpenBao namespace.
 
 ### Enabling the extension
 
@@ -491,8 +493,3 @@ The practical consequence: **deleting an MTO `Tenant` does not destroy its OpenB
     To remove a tenant's data for real, delete the tenant and then, with an OpenBao administrator token, delete its OpenBao namespace — `bao namespace delete <tenant>` cascades through everything inside it.
 
 Removing an annotation from a ServiceAccount revokes what it granted, so access follows the workload definition rather than lingering in OpenBao.
-
-## Reference
-
-- OpenBao Config Operator — the operator that applies this configuration to OpenBao.
-- [Tenant](../../concepts/tenant.md) — the resource this extension reads.
