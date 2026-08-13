@@ -5,31 +5,31 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-dotenv-16.x-lockfile/template-operator/guides/templates/copying-resources.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/renovate-main-dotenv-16.x-lockfile/integrations/lgtm/lgtm.html">
       
       
-        <link rel="prev" href="copying-resources-2.html">
+        <link rel="prev" href="../grafana/readme.html">
       
       
-        <link rel="next" href="deploying-private-helm-charts.html">
+        <link rel="next" href="../vault/vault.html">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.svg">
+      <link rel="icon" href="../../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.7.7">
     
     
       
-        <title>Propagate Secrets from Parent to Descendant namespaces - Multi-Tenant Operator</title>
+        <title>LGTM stack - Multi-Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -48,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/nav-labels.css">
+      <link rel="stylesheet" href="../../stylesheets/nav-labels.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -68,7 +68,7 @@
 
     
     
-  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -97,7 +97,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#propagate-secrets-from-parent-to-descendant-namespaces" class="md-skip">
+        <a href="#lgtm-stack" class="md-skip">
           Skip to content
         </a>
       
@@ -342,7 +342,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../../.." title="Multi-Tenant Operator" class="md-header__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
+    <a href="../.." title="Multi-Tenant Operator" class="md-header__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
       <!-- 
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -363,10 +363,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="../../../assets/images/logo-light.png#only-light" alt="logo">
+          <img class="md-header__logo_light" src="../../assets/images/logo-light.png#only-light" alt="logo">
           
           
-          <img class="md-header__logo_dark" src="../../../assets/images/logo-dark.png#only-dark" alt="logo">
+          <img class="md-header__logo_dark" src="../../assets/images/logo-dark.png#only-dark" alt="logo">
           
           
           <div class="header-site-name">
@@ -1990,7 +1990,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Multi-Tenant Operator" class="md-nav__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
+    <a href="../.." title="Multi-Tenant Operator" class="md-nav__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
@@ -2065,7 +2065,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../index.html" class="md-nav__link">
+      <a href="../../index.html" class="md-nav__link">
         
   
   
@@ -2092,7 +2092,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../overview/key-features.html" class="md-nav__link">
+      <a href="../../overview/key-features.html" class="md-nav__link">
         
   
   
@@ -2119,7 +2119,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../overview/use-cases.html" class="md-nav__link">
+      <a href="../../overview/use-cases.html" class="md-nav__link">
         
   
   
@@ -2146,7 +2146,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../overview/benefits.html" class="md-nav__link">
+      <a href="../../overview/benefits.html" class="md-nav__link">
         
   
   
@@ -2173,7 +2173,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/architecture.html" class="md-nav__link">
+      <a href="../../concepts/architecture.html" class="md-nav__link">
         
   
   
@@ -2299,7 +2299,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/installation/overview.html" class="md-nav__link">
+      <a href="../../getting-started/installation/overview.html" class="md-nav__link">
         
   
   
@@ -2326,7 +2326,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/installation/openshift.html" class="md-nav__link">
+      <a href="../../getting-started/installation/openshift.html" class="md-nav__link">
         
   
   
@@ -2353,7 +2353,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/installation/kubernetes.html" class="md-nav__link">
+      <a href="../../getting-started/installation/kubernetes.html" class="md-nav__link">
         
   
   
@@ -2426,7 +2426,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/installation/azure-aks/preparation.html" class="md-nav__link">
+      <a href="../../getting-started/installation/azure-aks/preparation.html" class="md-nav__link">
         
   
   
@@ -2453,7 +2453,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/installation/azure-aks/installation.html" class="md-nav__link">
+      <a href="../../getting-started/installation/azure-aks/installation.html" class="md-nav__link">
         
   
   
@@ -2480,7 +2480,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/installation/azure-aks/validation.html" class="md-nav__link">
+      <a href="../../getting-started/installation/azure-aks/validation.html" class="md-nav__link">
         
   
   
@@ -2561,7 +2561,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/installation/aws-eks/preparation.html" class="md-nav__link">
+      <a href="../../getting-started/installation/aws-eks/preparation.html" class="md-nav__link">
         
   
   
@@ -2588,7 +2588,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/installation/aws-eks/installation.html" class="md-nav__link">
+      <a href="../../getting-started/installation/aws-eks/installation.html" class="md-nav__link">
         
   
   
@@ -2615,7 +2615,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/installation/aws-eks/validation.html" class="md-nav__link">
+      <a href="../../getting-started/installation/aws-eks/validation.html" class="md-nav__link">
         
   
   
@@ -2658,7 +2658,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../getting-started/uninstalling.html" class="md-nav__link">
+      <a href="../../getting-started/uninstalling.html" class="md-nav__link">
         
   
   
@@ -2784,7 +2784,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/terminology.html" class="md-nav__link">
+      <a href="../../concepts/terminology.html" class="md-nav__link">
         
   
   
@@ -2811,7 +2811,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/tenant.html" class="md-nav__link">
+      <a href="../../concepts/tenant.html" class="md-nav__link">
         
   
   
@@ -2838,7 +2838,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/quota.html" class="md-nav__link">
+      <a href="../../concepts/quota.html" class="md-nav__link">
         
   
   
@@ -2865,7 +2865,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/extensions.html" class="md-nav__link">
+      <a href="../../concepts/extensions.html" class="md-nav__link">
         
   
   
@@ -2892,7 +2892,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../concepts/integration-config.html" class="md-nav__link">
+      <a href="../../concepts/integration-config.html" class="md-nav__link">
         
   
   
@@ -2973,7 +2973,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/create-tenant.html" class="md-nav__link">
+      <a href="../../guides/create-tenant.html" class="md-nav__link">
         
   
   
@@ -3000,7 +3000,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/create-namespaces.html" class="md-nav__link">
+      <a href="../../guides/create-namespaces.html" class="md-nav__link">
         
   
   
@@ -3027,7 +3027,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/create-sandbox.html" class="md-nav__link">
+      <a href="../../guides/create-sandbox.html" class="md-nav__link">
         
   
   
@@ -3054,7 +3054,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/assign-metadata.html" class="md-nav__link">
+      <a href="../../guides/assign-metadata.html" class="md-nav__link">
         
   
   
@@ -3081,7 +3081,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/hibernate-tenant.html" class="md-nav__link">
+      <a href="../../guides/hibernate-tenant.html" class="md-nav__link">
         
   
   
@@ -3108,7 +3108,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
+      <a href="../../guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   
@@ -3135,7 +3135,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/disable-intra-tenant-networking.html" class="md-nav__link">
+      <a href="../../guides/disable-intra-tenant-networking.html" class="md-nav__link">
         
   
   
@@ -3162,7 +3162,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/ingress-sharding.html" class="md-nav__link">
+      <a href="../../guides/ingress-sharding.html" class="md-nav__link">
         
   
   
@@ -3189,7 +3189,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/host-validation.html" class="md-nav__link">
+      <a href="../../guides/host-validation.html" class="md-nav__link">
         
   
   
@@ -3216,7 +3216,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/storage-classes.html" class="md-nav__link">
+      <a href="../../guides/storage-classes.html" class="md-nav__link">
         
   
   
@@ -3243,7 +3243,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/pod-priority-classes.html" class="md-nav__link">
+      <a href="../../guides/pod-priority-classes.html" class="md-nav__link">
         
   
   
@@ -3270,7 +3270,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/service-accounts.html" class="md-nav__link">
+      <a href="../../guides/service-accounts.html" class="md-nav__link">
         
   
   
@@ -3297,7 +3297,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/image-registries.html" class="md-nav__link">
+      <a href="../../guides/image-registries.html" class="md-nav__link">
         
   
   
@@ -3324,7 +3324,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/custom-roles.html" class="md-nav__link">
+      <a href="../../guides/custom-roles.html" class="md-nav__link">
         
   
   
@@ -3351,7 +3351,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/extend-default-roles.html" class="md-nav__link">
+      <a href="../../guides/extend-default-roles.html" class="md-nav__link">
         
   
   
@@ -3378,7 +3378,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/delete-tenant.html" class="md-nav__link">
+      <a href="../../guides/delete-tenant.html" class="md-nav__link">
         
   
   
@@ -3405,7 +3405,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/templated-metadata-values.html" class="md-nav__link">
+      <a href="../../guides/templated-metadata-values.html" class="md-nav__link">
         
   
   
@@ -3445,19 +3445,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
-    
-  
   
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -3478,7 +3476,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3541,7 +3539,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../overview/key-features.html" class="md-nav__link">
+      <a href="../../template-operator/overview/key-features.html" class="md-nav__link">
         
   
   
@@ -3568,7 +3566,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../overview/use-cases.html" class="md-nav__link">
+      <a href="../../template-operator/overview/use-cases.html" class="md-nav__link">
         
   
   
@@ -3649,7 +3647,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/templates/cluster-template-instance.html" class="md-nav__link">
+      <a href="../../template-operator/concepts/templates/cluster-template-instance.html" class="md-nav__link">
         
   
   
@@ -3676,7 +3674,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/templates/template-instance.html" class="md-nav__link">
+      <a href="../../template-operator/concepts/templates/template-instance.html" class="md-nav__link">
         
   
   
@@ -3703,7 +3701,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/templates/template.html" class="md-nav__link">
+      <a href="../../template-operator/concepts/templates/template.html" class="md-nav__link">
         
   
   
@@ -3736,19 +3734,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
-  
   
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3">
         
           
           <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
@@ -3769,7 +3765,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3786,7 +3782,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="copying-resources-2.html" class="md-nav__link">
+      <a href="../../template-operator/guides/templates/copying-resources-2.html" class="md-nav__link">
         
   
   
@@ -3811,18 +3807,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="copying-resources.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../template-operator/guides/templates/copying-resources.html" class="md-nav__link">
         
   
   
@@ -3838,7 +3825,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-      
     </li>
   
 
@@ -3850,7 +3836,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../../template-operator/guides/templates/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   
@@ -3877,7 +3863,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="deploying-templates.html" class="md-nav__link">
+      <a href="../../template-operator/guides/templates/deploying-templates.html" class="md-nav__link">
         
   
   
@@ -3904,7 +3890,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="distributing-manifests.html" class="md-nav__link">
+      <a href="../../template-operator/guides/templates/distributing-manifests.html" class="md-nav__link">
         
   
   
@@ -3931,7 +3917,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../../template-operator/guides/templates/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   
@@ -3958,7 +3944,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../../template-operator/guides/templates/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   
@@ -3985,7 +3971,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="template-default-params.html" class="md-nav__link">
+      <a href="../../template-operator/guides/templates/template-default-params.html" class="md-nav__link">
         
   
   
@@ -4119,7 +4105,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/overview/key-features.html" class="md-nav__link">
+      <a href="../../finops/overview/key-features.html" class="md-nav__link">
         
   
   
@@ -4146,7 +4132,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/overview/use-cases.html" class="md-nav__link">
+      <a href="../../finops/overview/use-cases.html" class="md-nav__link">
         
   
   
@@ -4227,7 +4213,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/concepts/billing-model.html" class="md-nav__link">
+      <a href="../../finops/concepts/billing-model.html" class="md-nav__link">
         
   
   
@@ -4254,7 +4240,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/concepts/compatibility-and-hierarchy.html" class="md-nav__link">
+      <a href="../../finops/concepts/compatibility-and-hierarchy.html" class="md-nav__link">
         
   
   
@@ -4281,7 +4267,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/concepts/costjob.html" class="md-nav__link">
+      <a href="../../finops/concepts/costjob.html" class="md-nav__link">
         
   
   
@@ -4308,7 +4294,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/concepts/finops-provider.html" class="md-nav__link">
+      <a href="../../finops/concepts/finops-provider.html" class="md-nav__link">
         
   
   
@@ -4335,7 +4321,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/concepts/offering.html" class="md-nav__link">
+      <a href="../../finops/concepts/offering.html" class="md-nav__link">
         
   
   
@@ -4362,7 +4348,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/concepts/pricebook.html" class="md-nav__link">
+      <a href="../../finops/concepts/pricebook.html" class="md-nav__link">
         
   
   
@@ -4389,7 +4375,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/concepts/subscription.html" class="md-nav__link">
+      <a href="../../finops/concepts/subscription.html" class="md-nav__link">
         
   
   
@@ -4470,7 +4456,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/guides/collect-cost-data.html" class="md-nav__link">
+      <a href="../../finops/guides/collect-cost-data.html" class="md-nav__link">
         
   
   
@@ -4497,7 +4483,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/guides/compose-subscriptions.html" class="md-nav__link">
+      <a href="../../finops/guides/compose-subscriptions.html" class="md-nav__link">
         
   
   
@@ -4524,7 +4510,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/guides/deactivate-a-subscription.html" class="md-nav__link">
+      <a href="../../finops/guides/deactivate-a-subscription.html" class="md-nav__link">
         
   
   
@@ -4551,7 +4537,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/guides/define-offering.html" class="md-nav__link">
+      <a href="../../finops/guides/define-offering.html" class="md-nav__link">
         
   
   
@@ -4578,7 +4564,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/guides/define-pricing.html" class="md-nav__link">
+      <a href="../../finops/guides/define-pricing.html" class="md-nav__link">
         
   
   
@@ -4605,7 +4591,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/guides/price-resource-usage.html" class="md-nav__link">
+      <a href="../../finops/guides/price-resource-usage.html" class="md-nav__link">
         
   
   
@@ -4632,7 +4618,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/guides/read-subscription-costs.html" class="md-nav__link">
+      <a href="../../finops/guides/read-subscription-costs.html" class="md-nav__link">
         
   
   
@@ -4659,7 +4645,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/guides/subscribe-to-offering.html" class="md-nav__link">
+      <a href="../../finops/guides/subscribe-to-offering.html" class="md-nav__link">
         
   
   
@@ -4686,7 +4672,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../finops/guides/switch-active-pricebook.html" class="md-nav__link">
+      <a href="../../finops/guides/switch-active-pricebook.html" class="md-nav__link">
         
   
   
@@ -4820,7 +4806,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../hibernation/overview/benefits.html" class="md-nav__link">
+      <a href="../../hibernation/overview/benefits.html" class="md-nav__link">
         
   
   
@@ -4847,7 +4833,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../hibernation/overview/key-features.html" class="md-nav__link">
+      <a href="../../hibernation/overview/key-features.html" class="md-nav__link">
         
   
   
@@ -4874,7 +4860,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../hibernation/overview/use-cases.html" class="md-nav__link">
+      <a href="../../hibernation/overview/use-cases.html" class="md-nav__link">
         
   
   
@@ -4955,7 +4941,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../hibernation/concepts/cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../../hibernation/concepts/cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -4982,7 +4968,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../hibernation/concepts/resource-supervisor.html" class="md-nav__link">
+      <a href="../../hibernation/concepts/resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -5063,7 +5049,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../hibernation/guides/create-cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../../hibernation/guides/create-cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -5090,7 +5076,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../hibernation/guides/create-resource-supervisor.html" class="md-nav__link">
+      <a href="../../hibernation/guides/create-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -5117,7 +5103,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../hibernation/guides/hibernate-resources.html" class="md-nav__link">
+      <a href="../../hibernation/guides/hibernate-resources.html" class="md-nav__link">
         
   
   
@@ -5205,7 +5191,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/overview.html" class="md-nav__link">
+      <a href="../../console/overview.html" class="md-nav__link">
         
   
   
@@ -5232,7 +5218,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/dashboard.html" class="md-nav__link">
+      <a href="../../console/dashboard.html" class="md-nav__link">
         
   
   
@@ -5259,7 +5245,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/tenants.html" class="md-nav__link">
+      <a href="../../console/tenants.html" class="md-nav__link">
         
   
   
@@ -5286,7 +5272,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/namespaces.html" class="md-nav__link">
+      <a href="../../console/namespaces.html" class="md-nav__link">
         
   
   
@@ -5313,7 +5299,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/hibernation.html" class="md-nav__link">
+      <a href="../../console/hibernation.html" class="md-nav__link">
         
   
   
@@ -5340,7 +5326,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/showback.html" class="md-nav__link">
+      <a href="../../console/showback.html" class="md-nav__link">
         
   
   
@@ -5367,7 +5353,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/quotas.html" class="md-nav__link">
+      <a href="../../console/quotas.html" class="md-nav__link">
         
   
   
@@ -5394,7 +5380,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/templates.html" class="md-nav__link">
+      <a href="../../console/templates.html" class="md-nav__link">
         
   
   
@@ -5421,7 +5407,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/template-instances.html" class="md-nav__link">
+      <a href="../../console/template-instances.html" class="md-nav__link">
         
   
   
@@ -5448,7 +5434,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/cluster-template-instances.html" class="md-nav__link">
+      <a href="../../console/cluster-template-instances.html" class="md-nav__link">
         
   
   
@@ -5475,7 +5461,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/capacity-planning.html" class="md-nav__link">
+      <a href="../../console/capacity-planning.html" class="md-nav__link">
         
   
   
@@ -5502,7 +5488,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../console/configuration.html" class="md-nav__link">
+      <a href="../../console/configuration.html" class="md-nav__link">
         
   
   
@@ -5534,17 +5520,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
   
   
+    
+  
   
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked="">
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -5565,7 +5553,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -5582,7 +5570,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/overview.html" class="md-nav__link">
+      <a href="../overview.html" class="md-nav__link">
         
   
   
@@ -5609,7 +5597,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/argocd.html" class="md-nav__link">
+      <a href="../argocd.html" class="md-nav__link">
         
   
   
@@ -5636,7 +5624,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/grafana/readme.html" class="md-nav__link">
+      <a href="../grafana/readme.html" class="md-nav__link">
         
   
   
@@ -5661,9 +5649,36 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../integrations/lgtm/lgtm.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LGTM stack
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="lgtm.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -5679,6 +5694,122 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#what-a-tenant-gets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a tenant gets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-do-not-have-to-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you do not have to do
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it works
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How it works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-telemetry-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting telemetry in
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-settles-the-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What settles the tenant
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-is-made-of" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it is made of
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-can-tailor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you can tailor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-go-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where to go next
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -5690,7 +5821,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/vault/vault.html" class="md-nav__link">
+      <a href="../vault/vault.html" class="md-nav__link">
         
   
   
@@ -5717,7 +5848,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/openbao/readme.html" class="md-nav__link">
+      <a href="../openbao/readme.html" class="md-nav__link">
         
   
   
@@ -5744,7 +5875,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/devworkspace.html" class="md-nav__link">
+      <a href="../devworkspace.html" class="md-nav__link">
         
   
   
@@ -5771,7 +5902,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../integrations/mattermost.html" class="md-nav__link">
+      <a href="../mattermost.html" class="md-nav__link">
         
   
   
@@ -5851,7 +5982,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../cli/overview.html" class="md-nav__link">
+      <a href="../../cli/overview.html" class="md-nav__link">
         
   
   
@@ -5931,7 +6062,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/api.html" class="md-nav__link">
+      <a href="../../reference/api.html" class="md-nav__link">
         
   
   
@@ -5958,7 +6089,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/configuration.html" class="md-nav__link">
+      <a href="../../reference/configuration.html" class="md-nav__link">
         
   
   
@@ -5985,7 +6116,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/rbac.html" class="md-nav__link">
+      <a href="../../reference/rbac.html" class="md-nav__link">
         
   
   
@@ -6012,7 +6143,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/security-model.html" class="md-nav__link">
+      <a href="../../reference/security-model.html" class="md-nav__link">
         
   
   
@@ -6039,7 +6170,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/metrics.html" class="md-nav__link">
+      <a href="../../reference/metrics.html" class="md-nav__link">
         
   
   
@@ -6066,7 +6197,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../reference/webhooks.html" class="md-nav__link">
+      <a href="../../reference/webhooks.html" class="md-nav__link">
         
   
   
@@ -6100,7 +6231,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../troubleshooting.html" class="md-nav__link">
+      <a href="../../troubleshooting.html" class="md-nav__link">
         
   
   
@@ -6126,7 +6257,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../release-notes.html" class="md-nav__link">
+      <a href="../../release-notes.html" class="md-nav__link">
         
   
   
@@ -6152,7 +6283,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../pricing.html" class="md-nav__link">
+      <a href="../../pricing.html" class="md-nav__link">
         
   
   
@@ -6178,7 +6309,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../eula.html" class="md-nav__link">
+      <a href="../../eula.html" class="md-nav__link">
         
   
   
@@ -6220,6 +6351,108 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#what-a-tenant-gets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a tenant gets
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-do-not-have-to-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you do not have to do
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it works
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How it works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-telemetry-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting telemetry in
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-settles-the-tenant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What settles the tenant
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-it-is-made-of" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What it is made of
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-can-tailor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you can tailor
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-go-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where to go next
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -6238,53 +6471,310 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="propagate-secrets-from-parent-to-descendant-namespaces">Propagate Secrets from Parent to Descendant namespaces<a class="headerlink" href="#propagate-secrets-from-parent-to-descendant-namespaces" title="Permanent link">#</a></h1>
-<p>Secrets like <code>registry</code> credentials often need to exist in multiple Namespaces, so that Pods within different namespaces can have access to those credentials in form of secrets.</p>
-<p>Manually creating secrets within different namespaces could lead to challenges, such as:</p>
-<ul>
-<li>Someone will have to create secret either manually or via GitOps each time there is a new descendant namespace that needs the secret</li>
-<li>If we update the parent secret, they will have to update the secret in all descendant namespaces</li>
-<li>This could be time-consuming, and a small mistake while creating or updating the secret could lead to unnecessary debugging</li>
-</ul>
-<p>With the help of Template Operator's Template feature we can make this secret distribution experience easy.</p>
-<hr>
-<p>For example, to copy a Secret called <code>registry</code> which exists in the <code>example</code> to new Namespaces whenever they are created, we will first create a Template which will have reference of the registry secret.</p>
-<p>It will also push updates to the copied Secrets and keep the propagated secrets always sync and updated with parent namespaces.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Template</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry-secret</span>
-<span class="nt">resources</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">resourceMappings</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">secrets</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry</span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
-</code></pre></div>
-<p>Now using this Template we can propagate registry secret to different namespaces that have some common set of labels.</p>
-<p>For example, will just add one label <code>kind: registry</code> and all namespaces with this label will get this secret.</p>
-<p>For propagating it on different namespaces dynamically will have to create another resource called <code>ClusterTemplateInstance</code>.
-<code>ClusterTemplateInstance</code> will have <code>Template</code> and <code>matchLabel</code> mapping as shown below:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">templates.stakater.com/v1alpha1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterTemplateInstance</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry-secret-group-instance</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry-secret</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry</span>
-<span class="w">  </span><span class="nt">sync</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<p>After reconciliation, you will be able to see those secrets in namespaces having mentioned label.</p>
-<p>Template Operator will keep injecting this secret to the new namespaces created with that label.</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>registry-secret<span class="w"> </span>-n<span class="w"> </span>example-ns-1
-NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
-registry-secret<span class="w">    </span>Active<span class="w">   </span>3m
+<h1 id="lgtm-stack">LGTM stack<a class="headerlink" href="#lgtm-stack" title="Permanent link">#</a></h1>
+<p>Your <code>Tenant</code> resources already say who your teams are: which namespaces they own, what they may use, and who may act for them. This integration extends that same definition into observability.</p>
+<p>One shared LGTM stack — <a href="https://grafana.com/oss/loki/">Loki</a>, <a href="https://grafana.com/">Grafana</a>, <a href="https://grafana.com/oss/tempo/">Tempo</a> and <a href="https://grafana.com/oss/mimir/">Mimir</a> — then serves every tenant, and each one reaches only its own logs, metrics, traces and dashboards. Nothing about a tenant is described twice: the <code>Tenant</code> that governs its namespaces and access is the tenant the observability stack partitions on.</p>
+<p>This page covers the stack as a whole — how telemetry is collected per tenant, and what holds the boundary in front of each component. Grafana's own side of it, from organisations and data sources to dashboards and sign-in, is covered by the <a href="../grafana/readme.html">Grafana integration</a> page.</p>
+<h2 id="what-a-tenant-gets">What a tenant gets<a class="headerlink" href="#what-a-tenant-gets" title="Permanent link">#</a></h2>
+<p>A tenant member signs in through your identity provider and lands in the Grafana organisation belonging to their tenant. Inside it is that tenant's telemetry and nothing else.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">They get</th>
+<th style="text-align: left;">Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Their own logs, metrics and traces</td>
+<td style="text-align: left;">Every query is answered from that tenant's partition of Loki, Mimir and Tempo, and no other</td>
+</tr>
+<tr>
+<td style="text-align: left;">Ad-hoc queries</td>
+<td style="text-align: left;">Explore, LogQL, PromQL and TraceQL, plus live tailing of Loki logs, for members with an editing role</td>
+</tr>
+<tr>
+<td style="text-align: left;">Their own alerting rules</td>
+<td style="text-align: left;">The Loki and Mimir rulers, and Mimir's Alertmanager, are served per tenant</td>
+</tr>
+<tr>
+<td style="text-align: left;">Their own organisation in Grafana</td>
+<td style="text-align: left;">Named after the tenant, holding dashboards whose panels already point at that tenant's data</td>
+</tr>
+<tr>
+<td style="text-align: left;">A role that follows their group</td>
+<td style="text-align: left;">Identity-provider group membership decides which organisations a member sees, and with what role</td>
+</tr>
+</tbody>
+</table>
+<p>Members who belong to several tenants can have more, though none of it is on by default. They can be given one organisation holding every tenant they belong to, rather than switching between them; a data source that follows a single request from one tenant's service into another tenant's; and the option to share a dashboard built there with colleagues whose access covers the same data. All three are configured on the Grafana extension — see <a href="../grafana/readme.html#one-organisation-across-a-users-tenants">One organisation across a user's tenants</a>.</p>
+<h2 id="what-you-do-not-have-to-do">What you do not have to do<a class="headerlink" href="#what-you-do-not-have-to-do" title="Permanent link">#</a></h2>
+<p>None of that is configured per tenant, and that is the point.</p>
+<p>The alternative to one shared stack is one per tenant: multiplied storage, multiplied upgrades, and no way to follow a request across tenants. But a shared stack is only multi-tenant <em>capable</em>. Configuring it by hand means keeping a second definition of your tenants in every component that needs one.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">To serve a tenant</th>
+<th style="text-align: left;">By hand</th>
+<th style="text-align: left;">Here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Say who the tenants are</td>
+<td style="text-align: left;">A list kept in the collector, in each gateway and in Grafana, separately</td>
+<td style="text-align: left;">Read from your <code>Tenant</code> resources</td>
+</tr>
+<tr>
+<td style="text-align: left;">Per-tenant collector configuration</td>
+<td style="text-align: left;">A route or remote-write block written for each tenant</td>
+<td style="text-align: left;">Rendered from the tenant list by the Template Operator</td>
+</tr>
+<tr>
+<td style="text-align: left;">An organisation per tenant</td>
+<td style="text-align: left;">Create each, then keep the set current as tenants change</td>
+<td style="text-align: left;">Derived</td>
+</tr>
+<tr>
+<td style="text-align: left;">Data sources</td>
+<td style="text-align: left;">One copy per tenant per signal, each with the right header, and the right URL for Loki</td>
+<td style="text-align: left;">Derived from one definition</td>
+</tr>
+<tr>
+<td style="text-align: left;">Dashboards</td>
+<td style="text-align: left;">Import into every organisation, then point every panel at that organisation's own data source</td>
+<td style="text-align: left;">Derived, with references rewritten</td>
+</tr>
+<tr>
+<td style="text-align: left;">Who can see what</td>
+<td style="text-align: left;">An org-mapping entry per identity-provider group, per tenant</td>
+<td style="text-align: left;">Derived from the tenant</td>
+</tr>
+<tr>
+<td style="text-align: left;">Onboarding</td>
+<td style="text-align: left;">Repeat all of the above</td>
+<td style="text-align: left;">Nothing: it is already a <code>Tenant</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Offboarding</td>
+<td style="text-align: left;">Undo all of the above, everywhere</td>
+<td style="text-align: left;">Its organisation and content go with the <code>Tenant</code></td>
+</tr>
+</tbody>
+</table>
+<p>By hand this multiplies quickly. Ten tenants, three signals and eight shared dashboards comes to ten organisations, thirty data sources, eighty dashboards, thirty org-mapping entries and a routing entry per tenant in the collector — about a hundred and sixty objects to create, and then to keep correct every time a dashboard changes or a tenant arrives. Here it is eleven definitions written once for the cluster: three data sources and eight dashboards. Everything per-tenant is either derived by the operators or rendered from the tenant list by the Template Operator, never authored. The eleventh tenant costs nothing, where by hand it would cost another sixteen.</p>
+<p>More valuable than the saving is that two definitions cannot disagree when there is only one. The gateways and the Grafana extension watch <code>Tenant</code> resources, and the Template Operator renders from them, so what observability enforces tracks what the cluster grants rather than tracking it at whatever interval someone remembers to reconcile the two. A tenant removed from Kubernetes cannot be left behind with an organisation that still queries its old data — the characteristic failure of a hand-maintained tenant list.</p>
+<h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h2>
+<pre class="mermaid"><code>flowchart TB
+  subgraph K["Kubernetes"]
+    T["&lt;b&gt;Tenant&lt;/b&gt; resources"]
+    API["API server&lt;br/&gt;TokenReview · SubjectAccessReview"]
+  end
 
-kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>registry-secret<span class="w"> </span>-n<span class="w"> </span>example-ns-2
-NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
-registry-secret<span class="w">    </span>Active<span class="w">   </span>3m
-</code></pre></div>
+  subgraph W["Ingestion"]
+    P["Application pods&lt;br/&gt;in tenant namespaces"] --&gt; C["Collector&lt;br/&gt;tags and routes per tenant"]
+  end
+
+  subgraph E["Gateways — authorise the caller, then set the tenant header"]
+    LG["MTO Loki Gateway"]
+    MG["MTO Mimir Gateway"]
+    TG["Tempo Operator gateway"]
+  end
+
+  subgraph S["Storage, partitioned by tenant"]
+    L[("Loki")]
+    M[("Mimir")]
+    TP[("Tempo")]
+  end
+
+  subgraph R["Access"]
+    U["Tenant member"] --&gt;|"OIDC login"| G[("Grafana&lt;br/&gt;one organisation per tenant")]
+    X["Grafana extension"] --&gt;|"organisation and&lt;br/&gt;tenant-scoped data sources"| G
+  end
+
+  C --&gt;|"ServiceAccount token"| LG &amp; MG &amp; TG
+  G --&gt;|"ServiceAccount token"| LG &amp; MG &amp; TG
+  LG --&gt; L
+  MG --&gt; M
+  TG --&gt; TP
+  LG &amp; MG -.-&gt;|"verify"| API
+  T -.-&gt;|"watched"| LG &amp; MG &amp; X
+  T -.-&gt;|"read"| TO["Template Operator"]
+  TO -.-&gt;|"renders per-tenant&lt;br/&gt;configuration"| C</code></pre>
+<p>Telemetry goes in through a collector and comes back out through Grafana. Both directions cross the same gateways, and the tenant is settled there rather than taken on trust.</p>
+<h3 id="getting-telemetry-in">Getting telemetry in<a class="headerlink" href="#getting-telemetry-in" title="Permanent link">#</a></h3>
+<p>One platform-managed collector serves the whole cluster. It derives each tenant from the namespace its source pod runs in, so workloads need no observability configuration of their own.</p>
+<p>An OpenTelemetry Collector is the usual choice, but not the only one — the gateways accept the native protocol of each backend alongside OTLP: Prometheus remote write for metrics, Loki's push API for logs. Whatever writes must do two things: present a ServiceAccount token the gateway authorises, and name the tenant it is writing for.</p>
+<p>That second requirement shapes how each one is configured. A collector reads the namespace from each record and routes accordingly, so a single pipeline covers every tenant. Prometheus cannot do that, because remote-write headers are fixed per block — one instance covering many namespaces, such as OpenShift's user workload monitoring, would label every series with the same tenant. It therefore needs a block per tenant, each filtered to that tenant's namespaces.</p>
+<p>Neither is written per tenant by hand. The Template Operator that ships with MTO reads your <code>Tenant</code> resources and renders the per-tenant configuration — collector routes, remote-write blocks — from that one list, so the repetition is generated from the same source as everything else on this page. It can also be set to reconcile what it rendered, reverting drift.</p>
+<h3 id="what-settles-the-tenant">What settles the tenant<a class="headerlink" href="#what-settles-the-tenant" title="Permanent link">#</a></h3>
+<p>With multi-tenancy turned on, Loki, Mimir and Tempo each read the tenant from an <code>X-Scope-OrgID</code> header, and none of them authenticates it. All three tell you to run an authenticating reverse proxy in front, and to let that proxy set the header. Grafana's boundary is the organisation, and it has no idea which organisation belongs to which tenant. So all four need something alongside them:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Signal</th>
+<th style="text-align: left;">Component</th>
+<th style="text-align: left;">What settles the tenant</th>
+<th style="text-align: left;">Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Logs</td>
+<td style="text-align: left;">Loki</td>
+<td style="text-align: left;">MTO Loki Gateway</td>
+<td style="text-align: left;">Authorises every request against your tenants, in place of the gateway a <code>LokiStack</code> would otherwise run</td>
+</tr>
+<tr>
+<td style="text-align: left;">Metrics</td>
+<td style="text-align: left;">Mimir</td>
+<td style="text-align: left;">MTO Mimir Gateway</td>
+<td style="text-align: left;">Authorises every request against your tenants. Mimir has no authenticating layer of its own</td>
+</tr>
+<tr>
+<td style="text-align: left;">Traces</td>
+<td style="text-align: left;">Tempo</td>
+<td style="text-align: left;">Tempo Operator gateway</td>
+<td style="text-align: left;">Tempo partitions traces itself; the operator's gateway authenticates and authorises per tenant</td>
+</tr>
+<tr>
+<td style="text-align: left;">Dashboards</td>
+<td style="text-align: left;">Grafana</td>
+<td style="text-align: left;">The Grafana extension</td>
+<td style="text-align: left;">Organisations, tenant-scoped data source copies, and access mapped from identity-provider groups</td>
+</tr>
+</tbody>
+</table>
+<p>Both MTO gateways check a caller the same way. The request carries a Kubernetes ServiceAccount token; the gateway verifies it with the TokenReview API, confirms the tenant is one of those it watches, and authorises that caller for that tenant — against an allow-list, or Kubernetes RBAC.</p>
+<p>Where they differ is how the tenant is named. A Loki request names it in the URL, as <code>/api/logs/v1/{tenant}/…</code>, and the gateway sets the header from that path, discarding whatever header and credentials the caller sent. A Mimir request names it in the header, which the gateway validates and then re-sets from the value it authorised. Either way, a caller reaches only a tenant it was authorised for.</p>
+<p>The collector and Grafana are both such callers, each with a ServiceAccount of its own. Going in, the collector names the tenant it routed the telemetry to. Coming out, the tenant comes from the data source the extension wrote for that tenant's organisation — so which tenant a query belongs to is settled by which organisation the person is in.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The MTO gateways use only standard Kubernetes APIs, so they run on any distribution — vanilla Kubernetes, EKS, GKE, AKS or OpenShift.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Tempo must run behind its gateway, and that gateway's tenants must be kept aligned with yours, because unlike the Loki and Mimir gateways it does not read <code>Tenant</code> resources. Tempo on its own accepts whichever tenant a request names, so the gateway is what makes the trace boundary hold.</p>
+</div>
+<h2 id="what-it-is-made-of">What it is made of<a class="headerlink" href="#what-it-is-made-of" title="Permanent link">#</a></h2>
+<p>Most of the stack is upstream. MTO supplies the pieces that make the tenant boundary real.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Component</th>
+<th style="text-align: left;">How it can be deployed</th>
+<th style="text-align: left;">Role here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Loki</td>
+<td style="text-align: left;">The Loki Operator as a <code>LokiStack</code>, or its Helm chart</td>
+<td style="text-align: left;">Stores logs, partitioned by tenant</td>
+</tr>
+<tr>
+<td style="text-align: left;">Mimir</td>
+<td style="text-align: left;">The <code>mimir-distributed</code> Helm chart</td>
+<td style="text-align: left;">Stores metrics, partitioned by tenant</td>
+</tr>
+<tr>
+<td style="text-align: left;">Tempo</td>
+<td style="text-align: left;">The Tempo Operator as a <code>TempoStack</code>, or the <code>tempo-distributed</code> chart</td>
+<td style="text-align: left;">Stores traces, partitioned by tenant, behind its gateway</td>
+</tr>
+<tr>
+<td style="text-align: left;">Collector</td>
+<td style="text-align: left;">The OpenTelemetry Operator, its Helm chart or plain manifests</td>
+<td style="text-align: left;">Tags telemetry with its source tenant and writes it through the gateways</td>
+</tr>
+<tr>
+<td style="text-align: left;">Grafana</td>
+<td style="text-align: left;">The Grafana Operator</td>
+<td style="text-align: left;">Dashboards and exploration, one organisation per tenant</td>
+</tr>
+<tr>
+<td style="text-align: left;">Template Operator</td>
+<td style="text-align: left;">Ships with MTO</td>
+<td style="text-align: left;">Renders per-tenant configuration, such as collector routes and remote-write blocks, from your <code>Tenant</code> resources</td>
+</tr>
+<tr>
+<td style="text-align: left;">MTO Loki Gateway, MTO Mimir Gateway</td>
+<td style="text-align: left;">Stakater</td>
+<td style="text-align: left;">Verify the caller on every Loki and Mimir request, then set the tenant header</td>
+</tr>
+<tr>
+<td style="text-align: left;">The Grafana extension</td>
+<td style="text-align: left;">Stakater</td>
+<td style="text-align: left;">Derives organisations, data sources, dashboards and access from your tenants</td>
+</tr>
+</tbody>
+</table>
+<p>Where both an operator and a chart exist, either will do, and the choice can follow whatever a cluster already runs — on OpenShift that is usually the operator, since Red Hat ships its own Loki, Tempo and OpenTelemetry operators. Three components are narrower than that, for reasons worth knowing rather than working around:</p>
+<ul>
+<li><strong>Tempo</strong> — both routes deploy Tempo, and both ship a gateway, but the two are not equivalent. The chart's is an nginx proxy offering basic authentication, which identifies a caller without tying it to a tenant. The operator's authenticates with OIDC and authorises per tenant, which is what the trace boundary depends on.</li>
+<li><strong>Mimir</strong> — Grafana publishes the chart and no operator of its own, so the chart is the route.</li>
+<li><strong>Grafana</strong> — the extension configures an instance the Grafana Operator owns, so that operator is required rather than preferred.</li>
+</ul>
+<p>Stakater can deploy the whole stack, or only the MTO components in front of an LGTM stack you already run. Either way two requirements hold: multi-tenancy must be enabled on Loki, Mimir and Tempo, and whatever collects telemetry must tag it with the source pod's namespace.</p>
+<h2 id="what-you-can-tailor">What you can tailor<a class="headerlink" href="#what-you-can-tailor" title="Permanent link">#</a></h2>
+<p>The tenant boundary is the part that stays constant. Most of what surrounds it is a choice, and much of it can be changed after the stack is running.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Choice</th>
+<th style="text-align: left;">Options</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Which signals you run</td>
+<td style="text-align: left;">Logs, metrics and traces are independent — run any combination, and add another later</td>
+</tr>
+<tr>
+<td style="text-align: left;">How telemetry is written</td>
+<td style="text-align: left;">OTLP from a collector, Prometheus remote write for metrics, or Loki's push API for logs</td>
+</tr>
+<tr>
+<td style="text-align: left;">Who deploys the stack</td>
+<td style="text-align: left;">Stakater deploys all of it, or only the MTO components in front of one you already run</td>
+</tr>
+<tr>
+<td style="text-align: left;">How callers are authorised at the gateways</td>
+<td style="text-align: left;">A ServiceAccount allow-list, or Kubernetes RBAC through SubjectAccessReview</td>
+</tr>
+<tr>
+<td style="text-align: left;">Which requests the gateways accept</td>
+<td style="text-align: left;">The standard route set for each backend, plus any extra routes you add</td>
+</tr>
+<tr>
+<td style="text-align: left;">How the Loki gateway reaches Loki</td>
+<td style="text-align: left;">TLS managed with a <code>LokiStack</code>, or certificates from a Secret you supply</td>
+</tr>
+<tr>
+<td style="text-align: left;">How tenant members sign in</td>
+<td style="text-align: left;">Identity-provider details from a Secret, written inline, or single sign-on turned off</td>
+</tr>
+<tr>
+<td style="text-align: left;">Which tenants receive a dashboard or data source</td>
+<td style="text-align: left;">Every tenant, or only the ones an annotation names</td>
+</tr>
+<tr>
+<td style="text-align: left;">Which group names grant which role</td>
+<td style="text-align: left;">A templated pattern per role, so one pattern covers every tenant</td>
+</tr>
+<tr>
+<td style="text-align: left;">Views across several tenants</td>
+<td style="text-align: left;">Off, or on with a choice of role, cross-tenant traces, and dashboard sharing</td>
+</tr>
+</tbody>
+</table>
+<p>The last four rows — sign-in, targeting, role patterns and cross-tenant views — belong to the Grafana extension and are set on its <code>Grafana</code> resource. The <a href="../grafana/readme.html">Grafana integration</a> page covers each in full, with field names and defaults.</p>
+<p>One check confirms the whole chain, however you assemble it. Sign in as a member of one tenant, confirm you can see that tenant's logs, metrics and traces, then confirm a request for another tenant's data is refused.</p>
+<h2 id="where-to-go-next">Where to go next<a class="headerlink" href="#where-to-go-next" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="../grafana/readme.html">Grafana integration</a> — organisations, data sources, dashboards, single sign-on and cross-tenant views in full.</li>
+<li><a href="../../guides/create-tenant.html">Create a tenant</a> — the resource everything else is derived from.</li>
+</ul>
 
 
 
@@ -6578,27 +7068,27 @@ registry-secret<span class="w">    </span>Active<span class="w">   </span>3m
                 <div class="flex-2">
                     <div class="logo-footer-container">
                         
-                        <img class="md-header__logo_light" src="../../../assets/images/footer-logo-light.png#only-light" alt="logo">
+                        <img class="md-header__logo_light" src="../../assets/images/footer-logo-light.png#only-light" alt="logo">
                         
                         
-                        <img src="../../../assets/images/footer-logo-dark.png#only-dark" alt="logo">
+                        <img src="../../assets/images/footer-logo-dark.png#only-dark" alt="logo">
                         
                     </div>
 
                     <div class="collaborations-img-container">
                         <div class="display-flex">
                             
-                            <img class="csa-logo-dark" src="../../../assets/images/CSA_dark.png#only-dark" alt="CSA">
+                            <img class="csa-logo-dark" src="../../assets/images/CSA_dark.png#only-dark" alt="CSA">
                             
                             
-                            <img class="csa-logo-light" src="../../../assets/images/CSA_light.png#only-light" alt="CSA">
+                            <img class="csa-logo-light" src="../../assets/images/CSA_light.png#only-light" alt="CSA">
                             
 
                             
-                            <img class="hc-logo-dark" src="../../../assets/images/HC_dark.png#only-dark" alt="HC">
+                            <img class="hc-logo-dark" src="../../assets/images/HC_dark.png#only-dark" alt="HC">
                             
                             
-                            <img class="hc-logo-light" src="../../../assets/images/HC_light.png#only-light" alt="HC">
+                            <img class="hc-logo-light" src="../../assets/images/HC_light.png#only-light" alt="HC">
                             
                         </div>
                     </div>
@@ -6990,10 +7480,10 @@ registry-secret<span class="w">    </span>Active<span class="w">   </span>3m
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   
