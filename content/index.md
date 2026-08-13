@@ -65,6 +65,6 @@ See [How MTO Works](overview/how-it-works.md) for the full reconciliation path.
 ### Running MTO
 
 - [Installation](getting-started/installation/overview.md) — install on OpenShift, Kubernetes, AKS or EKS
-- [Create a Tenant](multi-tenancy/guides/create-tenant.md) — your first tenant
+- [Create a Tenant](guides/create-tenant.md) — your first tenant
 - [Console](console/overview.md) — the UI for administrators and tenant users
-- [Architecture](overview/architecture.md) — components and controllers
+- [Architecture](concepts/architecture.md) — components and controllers

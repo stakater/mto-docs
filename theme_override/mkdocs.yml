@@ -7,12 +7,6 @@ theme:
   favicon: assets/images/favicon.svg
 
 strict: true
-
-# MkDocs' default exclude_docs also drops a top-level `/templates/` directory,
-# which is the Templates pillar here. Keep only the dotfile exclusion.
-exclude_docs: |
-  .*
-
 validation:
   links:
     anchors: warn
@@ -43,12 +37,12 @@ plugins:
         about/use-cases.md: overview/use-cases.md
         about/benefits.md: overview/why-mto.md
         overview/benefits.md: overview/why-mto.md
-        architecture/architecture.md: overview/architecture.md
-        architecture/concepts.md: overview/terminology.md
-        kubernetes-resources/tenant/tenant-overview.md: multi-tenancy/concepts/tenant.md
-        kubernetes-resources/quota.md: multi-tenancy/concepts/quota.md
-        kubernetes-resources/extensions.md: extensions/concepts/extensions.md
-        kubernetes-resources/integration-config.md: multi-tenancy/concepts/integration-config.md
+        architecture/architecture.md: concepts/architecture.md
+        architecture/concepts.md: concepts/terminology.md
+        kubernetes-resources/tenant/tenant-overview.md: concepts/tenant.md
+        kubernetes-resources/quota.md: concepts/quota.md
+        kubernetes-resources/extensions.md: concepts/extensions.md
+        kubernetes-resources/integration-config.md: concepts/integration-config.md
         installation/overview.md: getting-started/installation/overview.md
         installation/openshift.md: getting-started/installation/openshift.md
         installation/kubernetes.md: getting-started/installation/kubernetes.md
@@ -61,63 +55,24 @@ plugins:
         installation/uninstalling.md: getting-started/uninstalling.md
         cli/kubectl-plugin.md: cli/overview.md
         reference/cli.md: cli/overview.md
-        kubernetes-resources/tenant/how-to-guides/create-tenant.md: multi-tenancy/guides/create-tenant.md
-        kubernetes-resources/tenant/how-to-guides/create-namespaces.md: multi-tenancy/guides/create-namespaces.md
-        kubernetes-resources/tenant/how-to-guides/create-sandbox.md: multi-tenancy/guides/create-sandbox.md
-        kubernetes-resources/tenant/how-to-guides/assign-metadata.md: multi-tenancy/guides/assign-metadata.md
-        kubernetes-resources/tenant/how-to-guides/hibernate-tenant.md: hibernation/guides/hibernate-tenant.md
-        kubernetes-resources/tenant/how-to-guides/restrict-nodepool-per-tenant.md: multi-tenancy/guides/restrict-nodepool-per-tenant.md
-        kubernetes-resources/tenant/how-to-guides/disable-intra-tenant-networking.md: multi-tenancy/guides/disable-intra-tenant-networking.md
-        kubernetes-resources/tenant/how-to-guides/ingress-sharding.md: multi-tenancy/guides/ingress-sharding.md
-        kubernetes-resources/tenant/how-to-guides/host-validation.md: multi-tenancy/guides/host-validation.md
-        kubernetes-resources/tenant/how-to-guides/storage-classes.md: multi-tenancy/guides/storage-classes.md
-        kubernetes-resources/tenant/how-to-guides/pod-priority-classes.md: multi-tenancy/guides/pod-priority-classes.md
-        kubernetes-resources/tenant/how-to-guides/service-accounts.md: multi-tenancy/guides/service-accounts.md
-        kubernetes-resources/tenant/how-to-guides/image-registries.md: multi-tenancy/guides/image-registries.md
-        kubernetes-resources/tenant/how-to-guides/custom-roles.md: multi-tenancy/guides/custom-roles.md
-        kubernetes-resources/tenant/how-to-guides/extend-default-roles.md: multi-tenancy/guides/extend-default-roles.md
-        kubernetes-resources/tenant/how-to-guides/delete-tenant.md: multi-tenancy/guides/delete-tenant.md
-        kubernetes-resources/tenant/how-to-guides/templated-metadata-values.md: multi-tenancy/guides/templated-metadata-values.md
+        kubernetes-resources/tenant/how-to-guides/create-tenant.md: guides/create-tenant.md
+        kubernetes-resources/tenant/how-to-guides/create-namespaces.md: guides/create-namespaces.md
+        kubernetes-resources/tenant/how-to-guides/create-sandbox.md: guides/create-sandbox.md
+        kubernetes-resources/tenant/how-to-guides/assign-metadata.md: guides/assign-metadata.md
+        kubernetes-resources/tenant/how-to-guides/hibernate-tenant.md: guides/hibernate-tenant.md
+        kubernetes-resources/tenant/how-to-guides/restrict-nodepool-per-tenant.md: guides/restrict-nodepool-per-tenant.md
+        kubernetes-resources/tenant/how-to-guides/disable-intra-tenant-networking.md: guides/disable-intra-tenant-networking.md
+        kubernetes-resources/tenant/how-to-guides/ingress-sharding.md: guides/ingress-sharding.md
+        kubernetes-resources/tenant/how-to-guides/host-validation.md: guides/host-validation.md
+        kubernetes-resources/tenant/how-to-guides/storage-classes.md: guides/storage-classes.md
+        kubernetes-resources/tenant/how-to-guides/pod-priority-classes.md: guides/pod-priority-classes.md
+        kubernetes-resources/tenant/how-to-guides/service-accounts.md: guides/service-accounts.md
+        kubernetes-resources/tenant/how-to-guides/image-registries.md: guides/image-registries.md
+        kubernetes-resources/tenant/how-to-guides/custom-roles.md: guides/custom-roles.md
+        kubernetes-resources/tenant/how-to-guides/extend-default-roles.md: guides/extend-default-roles.md
+        kubernetes-resources/tenant/how-to-guides/delete-tenant.md: guides/delete-tenant.md
+        kubernetes-resources/tenant/how-to-guides/templated-metadata-values.md: guides/templated-metadata-values.md
         changelog.md: release-notes.md
-        # Pillar restructure: flat Concepts/Guides/Integrations sections replaced
-        # by per-pillar Overview / Concepts / Guides.
-        concepts/architecture.md: overview/architecture.md
-        concepts/terminology.md: overview/terminology.md
-        concepts/tenant.md: multi-tenancy/concepts/tenant.md
-        concepts/quota.md: multi-tenancy/concepts/quota.md
-        concepts/integration-config.md: multi-tenancy/concepts/integration-config.md
-        concepts/extensions.md: extensions/concepts/extensions.md
-        guides/create-tenant.md: multi-tenancy/guides/create-tenant.md
-        guides/create-namespaces.md: multi-tenancy/guides/create-namespaces.md
-        guides/create-sandbox.md: multi-tenancy/guides/create-sandbox.md
-        guides/assign-metadata.md: multi-tenancy/guides/assign-metadata.md
-        guides/restrict-nodepool-per-tenant.md: multi-tenancy/guides/restrict-nodepool-per-tenant.md
-        guides/disable-intra-tenant-networking.md: multi-tenancy/guides/disable-intra-tenant-networking.md
-        guides/ingress-sharding.md: multi-tenancy/guides/ingress-sharding.md
-        guides/host-validation.md: multi-tenancy/guides/host-validation.md
-        guides/storage-classes.md: multi-tenancy/guides/storage-classes.md
-        guides/pod-priority-classes.md: multi-tenancy/guides/pod-priority-classes.md
-        guides/service-accounts.md: multi-tenancy/guides/service-accounts.md
-        guides/image-registries.md: multi-tenancy/guides/image-registries.md
-        guides/custom-roles.md: multi-tenancy/guides/custom-roles.md
-        guides/extend-default-roles.md: multi-tenancy/guides/extend-default-roles.md
-        guides/delete-tenant.md: multi-tenancy/guides/delete-tenant.md
-        guides/templated-metadata-values.md: multi-tenancy/guides/templated-metadata-values.md
-        guides/hibernate-tenant.md: hibernation/guides/hibernate-tenant.md
-        integrations/argocd.md: extensions/guides/argocd.md
-        integrations/vault/vault.md: extensions/guides/vault.md
-        integrations/vault/vault-ic.md: extensions/guides/vault-ic.md
-        integrations/vault/vault-kc-entraid.md: extensions/guides/vault-kc-entraid.md
-        integrations/devworkspace.md: extensions/guides/devworkspace.md
-        integrations/mattermost.md: extensions/guides/mattermost.md
-        integrations/aws-pricing.md: finops/guides/aws-pricing.md
-        integrations/azure-pricing.md: finops/guides/azure-pricing.md
-        reference/configuration.md: administration/configuration.md
-        reference/rbac.md: administration/rbac.md
-        reference/security-model.md: administration/security-model.md
-        reference/metrics.md: administration/metrics.md
-        reference/webhooks.md: administration/webhooks.md
-        troubleshooting.md: administration/troubleshooting.md
 
 nav:
   - Overview:
@@ -126,8 +81,13 @@ nav:
       - overview/why-mto.md
       - overview/key-features.md
       - overview/use-cases.md
-      - overview/architecture.md
-      - overview/terminology.md
+  - Concepts:
+      - concepts/architecture.md
+      - concepts/terminology.md
+      - concepts/tenant.md
+      - concepts/quota.md
+      - concepts/extensions.md
+      - concepts/integration-config.md
   - Getting Started:
       - Installation:
           - getting-started/installation/overview.md
@@ -142,54 +102,6 @@ nav:
               - Installation: "getting-started/installation/aws-eks/installation.md"
               - Validation: "getting-started/installation/aws-eks/validation.md"
       - getting-started/uninstalling.md
-  # The five capability pillars. Each is Overview / Concepts / Guides; the
-  # Concepts and Guides sections of Templates, FinOps and Hibernation are
-  # populated from the sub-operator repos at build time (see merge.yaml).
-  - Multi-Tenancy:
-      - Overview: multi-tenancy/overview.md
-      - Concepts:
-          - multi-tenancy/concepts/tenant.md
-          - multi-tenancy/concepts/quota.md
-          - multi-tenancy/concepts/integration-config.md
-      - Guides:
-          - multi-tenancy/guides/create-tenant.md
-          - multi-tenancy/guides/create-namespaces.md
-          - multi-tenancy/guides/create-sandbox.md
-          - multi-tenancy/guides/assign-metadata.md
-          - multi-tenancy/guides/templated-metadata-values.md
-          - multi-tenancy/guides/custom-roles.md
-          - multi-tenancy/guides/extend-default-roles.md
-          - multi-tenancy/guides/storage-classes.md
-          - multi-tenancy/guides/pod-priority-classes.md
-          - multi-tenancy/guides/service-accounts.md
-          - multi-tenancy/guides/image-registries.md
-          - multi-tenancy/guides/host-validation.md
-          - multi-tenancy/guides/ingress-sharding.md
-          - multi-tenancy/guides/disable-intra-tenant-networking.md
-          - multi-tenancy/guides/restrict-nodepool-per-tenant.md
-          - multi-tenancy/guides/delete-tenant.md
-  - Templates:
-      - Overview: templates/overview.md
-  - FinOps:
-      - Overview: finops/overview.md
-      - Guides:
-          - finops/guides/aws-pricing.md
-          - finops/guides/azure-pricing.md
-  - Hibernation:
-      - Overview: hibernation/overview.md
-      - Guides:
-          - hibernation/guides/hibernate-tenant.md
-  - Extensions:
-      - Overview: extensions/overview.md
-      - Concepts:
-          - extensions/concepts/extensions.md
-      - Guides:
-          - extensions/guides/argocd.md
-          - extensions/guides/vault.md
-          - extensions/guides/vault-ic.md
-          - extensions/guides/vault-kc-entraid.md
-          - extensions/guides/devworkspace.md
-          - extensions/guides/mattermost.md
   - Console:
       - console/overview.md
       - console/dashboard.md
@@ -203,24 +115,43 @@ nav:
       - console/cluster-template-instances.md
       - console/capacity-planning.md
       - console/configuration.md
-  - CLI: cli/overview.md
-  # What running all of the above on one cluster makes an administrator
-  # responsible for. Per-operator administration for standalone FinOps or
-  # Hibernation deployments lives in those products' own docs.
-  - Administration:
-      - Overview: administration/overview.md
-      - administration/configuration.md
-      - administration/rbac.md
-      - administration/security-model.md
-      - administration/webhooks.md
-      - administration/metrics.md
-      - administration/troubleshooting.md
+  - Guides:
+      - guides/create-tenant.md
+      - guides/create-namespaces.md
+      - guides/create-sandbox.md
+      - guides/assign-metadata.md
+      - guides/hibernate-tenant.md
+      - guides/restrict-nodepool-per-tenant.md
+      - guides/disable-intra-tenant-networking.md
+      - guides/ingress-sharding.md
+      - guides/host-validation.md
+      - guides/storage-classes.md
+      - guides/pod-priority-classes.md
+      - guides/service-accounts.md
+      - guides/image-registries.md
+      - guides/custom-roles.md
+      - guides/extend-default-roles.md
+      - guides/delete-tenant.md
+      - guides/templated-metadata-values.md
+  - Integrations:
+      - integrations/argocd.md
+      - Vault:
+          - integrations/vault/vault.md
+          - integrations/vault/vault-ic.md
+          - integrations/vault/vault-kc-entraid.md
+      - integrations/devworkspace.md
+      - integrations/mattermost.md
+  - CLI:
+      - cli/overview.md
   - Reference:
       - API Reference:
           - Tenant Operator: reference/api.md
+      - reference/configuration.md
+      - reference/rbac.md
+      - reference/security-model.md
+      - reference/metrics.md
+      - reference/webhooks.md
+  - Troubleshooting: troubleshooting.md
+  - Release Notes: release-notes.md
   - Pricing: pricing.md
   - EULA: eula.md
-  - Changelog: release-notes.md
-  - Learn:
-      - learn/index.md
-      - learn/mto-vs-vcluster.md

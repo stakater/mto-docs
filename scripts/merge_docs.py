@@ -190,41 +190,8 @@ def find_section(nav, title):
     return None
 
 
-def resolve_section(nav, under, create=False):
-    """Resolve an `under` value to the nav list it names.
-
-    A bare title ("Console") is matched anywhere in the tree, first match wins.
-    A slash-separated path ("Templates/Concepts") is matched level by level,
-    which is what tells the per-pillar Concepts and Guides sections apart —
-    with five pillars each owning one, a bare title is ambiguous.
-
-    With `create`, levels below the first that do not exist yet are appended as
-    empty folders, so a pillar whose Concepts or Guides pages come entirely
-    from a sub-operator does not need an empty section in mkdocs.yml.
-    """
-    parts = [p.strip() for p in under.split("/") if p.strip()]
-    if not parts:
-        return None
-    section = find_section(nav, parts[0])
-    if section is None:
-        return None
-    for part in parts[1:]:
-        child = None
-        for item in section:
-            if isinstance(item, dict) and part in item and isinstance(item[part], list):
-                child = item[part]
-                break
-        if child is None:
-            if not create:
-                return None
-            child = []
-            section.append({part: child})
-        section = child
-    return section
-
-
 def insert_subtree(nav, under, title, subtree):
-    section = resolve_section(nav, under, create=True)
+    section = find_section(nav, under)
     if section is None:
         raise KeyError(f"menu section {under!r} not found in nav")
     for item in section:
@@ -240,7 +207,7 @@ def insert_leaves(nav, under, leaves):
     No operator wrapper folder: each leaf (a bare dest string or a {title: dest}
     dict) becomes a direct child of the target section.
     """
-    section = resolve_section(nav, under, create=True)
+    section = find_section(nav, under)
     if section is None:
         raise KeyError(f"menu section {under!r} not found in nav")
     section.extend(leaves)
@@ -278,7 +245,7 @@ def apply_group(nav, group):
     page with MTO's own since both are just final dest paths.
     """
     under, title, items = group["under"], group["title"], group["items"]
-    section = resolve_section(nav, under)
+    section = find_section(nav, under)
     if section is None:
         raise KeyError(f"menu section {under!r} not found in nav")
     pages = {it["page"] for it in items}
@@ -396,7 +363,7 @@ def build_duplicate_groups(nav, flat_pages, content_dir, site_title):
     groups = []
     for under, base in order:
         members = by_key[(under, base)]
-        section = resolve_section(nav, under)
+        section = find_section(nav, under)
         merged = {d for _, d in members}
         own = find_base_leaf(section, base, merged) if section is not None else None
         entries = ([(site_title, own)] if own else []) + members

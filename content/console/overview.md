@@ -32,4 +32,4 @@ Which pages and actions a given user sees is decided by their role on the tenant
 
 ## Getting the Console running
 
-The Console is disabled by default and is enabled through the IntegrationConfig, along with the Gateway and Dex components it depends on. The [Dashboard](dashboard.md) page has the configuration; [IntegrationConfig](../multi-tenancy/concepts/integration-config.md) has the full reference.
+The Console is disabled by default and is enabled through the IntegrationConfig, along with the Gateway and Dex components it depends on. The [Dashboard](dashboard.md) page has the configuration; [IntegrationConfig](../concepts/integration-config.md) has the full reference.

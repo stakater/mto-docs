@@ -3,18 +3,8 @@
 # merge runs against the clone via --set-repo. Locally, override with --set-repo
 # (see the Makefile) to point at a local checkout.
 #
-# mto-docs is organised by capability pillar (Multi-Tenancy, Templates, FinOps,
-# Hibernation, Extensions), each with an Overview / Concepts / Guides triple.
-# A sub-operator's shared sections therefore map into its own pillar, not into
-# one flat Concepts or Guides section: `into` is the content path and `under` is
-# the nav path, e.g. concepts/** -> templates/concepts under "Templates/Concepts".
-# `under` must be a path here — five pillars each own a section called Concepts
-# and a section called Guides, so a bare title would be ambiguous. Levels below
-# the first are created if the pillar does not declare them in mkdocs.yml.
-#
-# Administration pages are deliberately NOT merged: they describe running a
-# sub-operator standalone, which does not apply when it is installed as part of
-# MTO. See content/administration/ for the hosted-together responsibilities.
+# mto-docs now follows the shared structure (structure.md), so `into`/`under`
+# map 1:1 to the shared sections (guides->Guides, reference->Reference, ...).
 #
 # Duplicate pages (same filename from mto-docs + a sub-operator, or across
 # sub-operators) under one flattened section are auto-folded into a per-page
@@ -30,17 +20,17 @@ operators:
     live_url_style: directory
     mappings:
       - from: "concepts/**"             # per-resource concept pages, merged flat
-        into: "templates/concepts"      # (architecture/terminology excluded below)
-        under: "Templates/Concepts"
+        into: "concepts"                # (architecture/terminology excluded below)
+        under: "Concepts"
         flatten: true
       - from: "reference/api.md"        # single file, one custom-named entry
         into: "reference/api"
-        under: "Reference/API Reference"
+        under: "API Reference"
         title: "Template Operator"
         flatten: true
-      - from: "guides/**"               # merged flat into the pillar's Guides
-        into: "templates/guides"
-        under: "Templates/Guides"
+      - from: "guides/**"               # merged flat into the Guides section
+        into: "guides"
+        under: "Guides"
         flatten: true
       - from: "images/**"
         into: "images"          # assets only, no menu entry
@@ -48,7 +38,6 @@ operators:
       - "**/.gitkeep"
       - "concepts/architecture.md"      # MTO owns the shared Architecture page
       - "concepts/terminology.md"       # MTO owns the shared Terminology page
-      - "administration/**"             # standalone-only, see content/administration/
 
   - title: Hibernation Operator
     repo: https://github.com/stakater/hibernation-operator-docs.git
@@ -57,21 +46,21 @@ operators:
     live_url_style: html          # sub-op uses use_directory_urls: false
     mappings:
       - from: "concepts/**"             # per-resource concept pages, merged flat
-        into: "hibernation/concepts"    # (architecture/terminology excluded below)
-        under: "Hibernation/Concepts"
+        into: "concepts"                # (architecture/terminology excluded below)
+        under: "Concepts"
         flatten: true
       - from: "reference/api.md"        # single file, one custom-named entry
         into: "reference/api"
-        under: "Reference/API Reference"
+        under: "API Reference"
         title: "Hibernation Operator"
         flatten: true
-      - from: "guides/**"               # merged flat into the pillar's Guides
-        into: "hibernation/guides"
-        under: "Hibernation/Guides"
+      - from: "guides/**"               # merged flat into the Guides section
+        into: "guides"
+        under: "Guides"
         flatten: true
-      - from: "integrations/**"         # hibernating alongside other systems
-        into: "hibernation/guides"
-        under: "Hibernation/Guides"
+      - from: "integrations/**"        # merged flat into the Integrations section
+        into: "integrations"
+        under: "Integrations"
         flatten: true
       - from: "images/**"
         into: "images"
@@ -79,4 +68,3 @@ operators:
       - "**/.gitkeep"
       - "concepts/architecture.md"      # MTO owns the shared Architecture page
       - "concepts/terminology.md"       # MTO owns the shared Terminology page
-      - "administration/**"             # standalone-only, see content/administration/

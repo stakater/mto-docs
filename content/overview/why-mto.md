@@ -45,4 +45,4 @@ Honesty is more useful than a longer list:
 - [How MTO Works](how-it-works.md) — the reconciliation path, end to end
 - [Key Capabilities](key-features.md) — what each capability area includes
 - [Use Cases](use-cases.md) — the shapes this takes in practice
-- [Create a Tenant](../multi-tenancy/guides/create-tenant.md) — try it
+- [Create a Tenant](../guides/create-tenant.md) — try it
