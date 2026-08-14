@@ -7227,11 +7227,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p><strong>For platform administrators</strong> — you no longer choose between a usable platform and a tight one. Tenant users get a scoped view without being granted cluster-wide read, which is the permission you did not want to hand out and the one that quietly turns a multi-tenant cluster into a transparent one.</p>
 <p><strong>Nothing in the request path.</strong> The plugin runs on the user's machine: it reads the Tenant resource, works out what that tenant is entitled to, and asks the API server for those objects. It is not a proxy. Other approaches to this problem place a component between users and the API server, which is another deployment to run, scale, secure and keep available — and which every <code>kubectl</code> call then depends on. Here, if the plugin is absent, <code>kubectl</code> behaves exactly as it always did.</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
-<p>Download the binary for your platform from <a href="https://github.com/stakater/kubectl-tenant/releases">GitHub Releases</a>, substituting the current version:</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-L<span class="w"> </span>https://github.com/stakater/kubectl-tenant/releases/download/v0.0.1/kubectl-tenant-linux-amd64<span class="w"> </span>-o<span class="w"> </span>kubectl-tenant
+<p>Releases are published as archives for Linux, macOS and Windows on <code>amd64</code>, <code>arm64</code> and 32-bit architectures. Pick the one matching your machine from <a href="https://github.com/stakater/kubectl-tenant/releases">GitHub Releases</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">VERSION</span><span class="o">=</span>v1.0.0
+<span class="nv">OS</span><span class="o">=</span>linux<span class="w">            </span><span class="c1"># linux | darwin | windows</span>
+<span class="nv">ARCH</span><span class="o">=</span>amd64<span class="w">          </span><span class="c1"># amd64 | arm64 | 386</span>
+
+curl<span class="w"> </span>-sL<span class="w"> </span><span class="s2">"https://github.com/stakater/kubectl-tenant/releases/download/</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span><span class="s2">/kubectl-tenant_</span><span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">OS</span><span class="si">}</span><span class="s2">_</span><span class="si">${</span><span class="nv">ARCH</span><span class="si">}</span><span class="s2">.tar.gz"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>-xz<span class="w"> </span>kubectl-tenant
 chmod<span class="w"> </span>+x<span class="w"> </span>kubectl-tenant
 mv<span class="w"> </span>kubectl-tenant<span class="w"> </span>~/.local/bin/<span class="w">   </span><span class="c1"># ensure this path is in your $PATH</span>
 </code></pre></div>
+<p>Each release also publishes a checksums file if you want to verify the download before installing.</p>
 <p><code>kubectl</code> discovers any executable named <code>kubectl-*</code> on your <code>PATH</code> and exposes it as a nested command, so no further configuration is needed. Verify it:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>tenant<span class="w"> </span>--help
 </code></pre></div>
