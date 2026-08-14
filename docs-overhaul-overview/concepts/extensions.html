@@ -2985,6 +2985,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#every-extension-is-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Every extension is optional
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-four-mechanisms" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7044,6 +7055,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#every-extension-is-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Every extension is optional
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#the-four-mechanisms" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7143,6 +7165,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h1 id="extensions">Extensions<a class="headerlink" href="#extensions" title="Permanent link">#</a></h1>
 <p>A tenant boundary that stops at the Kubernetes API is only half a boundary. The team that owns <code>bluesky-dev</code> also needs an ArgoCD project scoped to its namespaces, a Vault path only it can read, and a workspace it can develop in — and if those are configured by hand, they drift away from the Tenant the moment membership changes.</p>
 <p>Extensions are how MTO projects the same Tenant definition into the tools around the cluster.</p>
+<h2 id="every-extension-is-optional">Every extension is optional<a class="headerlink" href="#every-extension-is-optional" title="Permanent link">#</a></h2>
+<p>Nothing here is enabled by default, and nothing is all-or-nothing.</p>
+<ul>
+<li><strong>Cluster-wide integrations are inert until configured.</strong> If <code>spec.integrations.argocd</code> is not set in the IntegrationConfig, MTO has no ArgoCD configuration and creates nothing there. The same holds for Vault and OpenBao.</li>
+<li><strong>Per-tenant extensions are created per tenant.</strong> A tenant with no <code>Extensions</code> resource gets no <code>AppProject</code>, whatever other tenants are doing.</li>
+</ul>
+<p>That matters when adopting MTO on a cluster already in production. If you have ArgoCD <code>AppProjects</code> you maintain in Git today, leave the integration unconfigured and MTO will not touch them — there is no reconcile to lose and no migration to perform. The same is true of Vault or OpenBao policies managed elsewhere.</p>
+<p>You can then enable an extension for one tenant, see what it produces, and decide whether to move the rest. Adoption is incremental by construction rather than by exception.</p>
 <h2 id="the-four-mechanisms">The four mechanisms<a class="headerlink" href="#the-four-mechanisms" title="Permanent link">#</a></h2>
 <p>MTO extends into surrounding systems in four different ways. Which one applies depends on the system, and the distinction matters because it determines <em>where</em> you configure it.</p>
 <table>

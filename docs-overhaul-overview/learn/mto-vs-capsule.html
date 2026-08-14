@@ -7910,6 +7910,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <ul>
 <li><strong>Brownfield adoption</strong> — existing namespaces join a tenant by carrying its label, so a cluster already in production can be brought under management incrementally rather than rebuilt. See <a href="../guides/create-namespaces.html">Create Namespaces</a>.</li>
 <li><strong>Bring your own stack</strong> — MTO installs a supporting stack, and each component can be pointed at one you already run instead. PostgreSQL, Prometheus, OpenCost and Dex each take <code>mode: Managed</code> or <code>mode: External</code>, so an existing Prometheus or an existing identity broker is used rather than duplicated. See <a href="../concepts/integration-config.html">Integration Config</a>.</li>
+<li><strong>Existing ArgoCD and secrets setup</strong> — every extension is optional and inert until configured. If you already maintain ArgoCD <code>AppProjects</code> or Vault policies in Git, leave the integration unset and MTO does not touch them; enable it for one tenant when you want to. See <a href="../concepts/extensions.html">Extensions</a>.</li>
 <li><strong>Licensing</strong> — MTO has a free Basic tier limited to two tenants and a commercial Enterprise tier. See <a href="../pricing.html">Pricing</a>.</li>
 </ul>
 <hr>
