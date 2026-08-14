@@ -49,6 +49,8 @@ spec:
 
 The platform team moves from operating resources on behalf of teams to operating a platform teams can safely consume themselves.
 
+This is the largest known deployment shape: one government customer runs an internal developer platform on MTO with more than 100 tenants and 700 namespaces.
+
 ## Service providers and multi-customer platforms
 
 **The situation.** A vendor, managed service provider or internal cloud provider serves many customers or business units from shared infrastructure. Each needs its own users, namespaces, resource allocation, standard configuration and cost figure — and one customer must not be able to affect another.
