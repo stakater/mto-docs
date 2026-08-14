@@ -1,4 +1,4 @@
-# kubectl-tenant Plugin
+# kubectl-tenant plugin
 
 Tenant users work in ordinary `kubectl`. The problem is that Kubernetes gives them no way to see what they own.
 
@@ -10,7 +10,7 @@ The `kubectl-tenant` plugin adds that missing verb.
 
 **Source:** [`kubectl-tenant` on GitHub](https://github.com/stakater/kubectl-tenant)
 
-## Why it matters
+## Why It Matters
 
 **For tenant users** — the platform becomes discoverable from the command line they already use. `kubectl tenant get namespaces my-tenant` answers "what do I have?" without a console, a ticket, or a guess. Every standard output flag works, so it composes with the scripts and pipelines already in use.
 
