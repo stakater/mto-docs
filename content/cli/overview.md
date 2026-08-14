@@ -62,7 +62,7 @@ These are the cluster-scoped resources a tenant has an entitlement to, so they a
 | Priority Classes | `priorityclasses` |
 | Quotas | `quotas` |
 
-Namespaced resources are unaffected — ordinary `kubectl` already scopes those correctly through namespace RBAC.
+Resources that live inside a namespace are unaffected — ordinary `kubectl` already scopes those correctly through namespace RBAC.
 
 ## Usage
 
