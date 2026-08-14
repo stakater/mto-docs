@@ -7202,6 +7202,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Some tenants require complete cluster isolation — for regulatory or security reasons, for customer-contractual isolation, or because the workload's scale or lifecycle demands it.</p>
 <p>Dedicated clusters give the strongest boundary and the highest operational cost: every cluster is another control plane, monitoring stack, upgrade cycle and on-call surface.</p>
 <p>MTO is installed per cluster. Where several clusters each host more than one team, applying the same <code>Tenant</code>, <code>Quota</code> and <code>IntegrationConfig</code> definitions to each of them through GitOps gives every cluster the same tenancy model, reviewed in one place. MTO does not federate across clusters or provide a single fleet-wide view — each installation governs its own cluster.</p>
+<p>This is a working pattern rather than a theoretical one: one public sector customer runs MTO across several clusters, the largest of them carrying more than 100 tenants and 700 namespaces.</p>
 <h2 id="hybrid-platforms">Hybrid platforms<a class="headerlink" href="#hybrid-platforms" title="Permanent link">#</a></h2>
 <p>Most large platforms arrive here:</p>
 <pre class="mermaid"><code>flowchart TB
