@@ -17,7 +17,7 @@ The honest answer is that the alternatives fall into two groups, and only one of
 | vCluster | No | Open source | Virtual clusters — isolation, not governance |
 | vCluster Platform (Loft) | No | Commercial | Platform over virtual clusters |
 | Kamaji | No | Open source | Hosted control planes |
-| Build it yourself | Yes | — | Common, and usually underestimated |
+| Build it yourself | In principle | — | Underestimated by a wide margin — see below |
 
 ---
 
@@ -56,9 +56,13 @@ It has no tenant abstraction — no membership, no allocation at the tenant scop
 
 ### Building it yourself
 
-The most common alternative, and the one whose cost is most often underestimated. The primitives are all in Kubernetes; the work is in reconciliation, admission control, identity integration, cost attribution and keeping it correct across upgrades.
+The alternative teams reach for most often, and the one whose scale is hardest to judge from the inside.
 
-Worth doing if tenancy is your differentiator. Rarely worth it otherwise. See [How to Implement Kubernetes Multi-Tenancy](kubernetes-multi-tenancy-implementation.md) for what the list actually contains.
+The primitives are all in Kubernetes, so a first version arrives quickly and convincingly. What follows is the actual work: continuous reconciliation, an admission webhook in the write path of every workload, identity provider integration, a cost pipeline with storage and history, template rendering that reaches namespaces created after the template was written, and keeping every part of it correct across Kubernetes upgrades that do not care about your controller.
+
+For scale, MTO's own changelog is public and runs from v0.2 to v1.9 — eight major version series of continuous development and refinement, with the tenancy model itself restructured more than once along the way. That is what the finished version of this list costs, and tenancy is one of its six capability areas.
+
+None of that means it cannot be done. It means the decision is not "can we build this" — it is whether a multi-year platform-engineering commitment to something that is not your product is the best use of the team. See [How to Implement Kubernetes Multi-Tenancy](kubernetes-multi-tenancy-implementation.md) for what the list actually contains.
 
 ---
 
@@ -93,7 +97,7 @@ If you evaluate one of these against Capsule feature by feature you will conclud
 - MTO is the closest comparison and the widest in scope; the trade is commercial licensing.
 - HNC covers policy propagation but has no tenant abstraction.
 - vCluster, Loft, Kamaji and HyperShift isolate control planes and leave governance unsolved.
-- Building it yourself is viable and consistently underestimated.
+- Building it yourself is possible, and consistently underestimated — MTO's own changelog spans eight major version series.
 
 ---
 
