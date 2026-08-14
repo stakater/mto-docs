@@ -145,7 +145,7 @@ On tenancy the two are close, and either will serve. That is why the comparison 
 
 None of that is impossible to assemble. The cost is rarely the first integration — it is the seventh, and keeping all of them agreeing about who a tenant is after two years of membership changes.
 
-For a sense of what that buys: one government customer runs an internal developer platform on MTO with more than 100 tenants and 700 namespaces, and reports that its greatest value is the speed of onboarding a new tenant, the FinOps data, and capacity planning — two of the three being capabilities Capsule does not address. [What you assemble instead](kubernetes-multi-tenancy-tools.md#what-you-assemble-instead) sets the same trade out across every tool on the market.
+For a sense of what that buys: one public sector customer runs an internal developer platform on MTO with more than 100 tenants and 700 namespaces on a single cluster, and reports that its greatest value is the speed of onboarding a new tenant, the FinOps data, and capacity planning — two of the three being capabilities Capsule does not address. [What you assemble instead](kubernetes-multi-tenancy-tools.md#what-you-assemble-instead) sets the same trade out across every tool on the market.
 
 ---
 

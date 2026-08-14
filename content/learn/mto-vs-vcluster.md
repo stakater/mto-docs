@@ -111,7 +111,7 @@ Each tenant gets:
 
 ### Scalability
 
-- **MTO** → No per-tenant control plane, so tenant count is bounded by cluster capacity rather than by control-plane overhead. One government customer runs more than 100 tenants and 700 namespaces on an internal developer platform
+- **MTO** → No per-tenant control plane, so tenant count is bounded by cluster capacity rather than by control-plane overhead. One public sector customer runs more than 100 tenants and 700 namespaces on a single cluster
 - **vCluster** → Each virtual cluster adds a control plane to run, upgrade and observe
 
 👉 Best for scale: **MTO**

@@ -49,7 +49,7 @@ spec:
 
 The platform team moves from operating resources on behalf of teams to operating a platform teams can safely consume themselves.
 
-This is the largest known deployment shape: one government customer runs an internal developer platform on MTO with more than 100 tenants and 700 namespaces.
+For a sense of scale: one public sector customer runs an internal developer platform on MTO with more than 100 tenants and 700 namespaces on a single cluster, and further clusters in the same estate under the same model.
 
 ## Service providers and multi-customer platforms
 

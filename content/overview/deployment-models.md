@@ -90,6 +90,8 @@ Dedicated clusters give the strongest boundary and the highest operational cost:
 
 MTO is installed per cluster. Where several clusters each host more than one team, applying the same `Tenant`, `Quota` and `IntegrationConfig` definitions to each of them through GitOps gives every cluster the same tenancy model, reviewed in one place. MTO does not federate across clusters or provide a single fleet-wide view — each installation governs its own cluster.
 
+This is a working pattern rather than a theoretical one: one public sector customer runs MTO across several clusters, the largest of them carrying more than 100 tenants and 700 namespaces.
+
 ## Hybrid platforms
 
 Most large platforms arrive here:
