@@ -2291,6 +2291,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#development-and-test-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Development and test platforms
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#enterprise-platform-teams" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2306,17 +2317,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <span class="md-ellipsis">
       
         Service providers and multi-customer platforms
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#development-and-test-platforms" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Development and test platforms
       
     </span>
   </a>
@@ -7086,6 +7086,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#development-and-test-platforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Development and test platforms
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#enterprise-platform-teams" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7101,17 +7112,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <span class="md-ellipsis">
       
         Service providers and multi-customer platforms
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#development-and-test-platforms" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Development and test platforms
       
     </span>
   </a>
@@ -7228,6 +7228,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <h1 id="use-cases">Use Cases<a class="headerlink" href="#use-cases" title="Permanent link">#</a></h1>
 <p>MTO is for organizations running Kubernetes as a shared platform across several teams, departments, business units or customers. The situations below are the ones it was built for — most evaluators recognize themselves in more than one.</p>
+<p>The first is deliberately placed: it is the situation where the capability areas stop being a list and start compounding, which is the clearest picture of what MTO is.</p>
+<h2 id="development-and-test-platforms">Development and test platforms<a class="headerlink" href="#development-and-test-platforms" title="Permanent link">#</a></h2>
+<p><strong>The situation.</strong> Non-production environments need to appear quickly, then become hard to govern and expensive to keep. They consume capacity overnight, at weekends, and long after a project went quiet.</p>
+<p><strong>What MTO does.</strong> Five capabilities combine here:</p>
+<ul>
+<li><strong>Self-service namespaces and sandboxes</strong> — teams get environments without a provisioning ticket.</li>
+<li><strong>Templates</strong> — every new environment arrives with the standard platform configuration already in it.</li>
+<li><strong>Quota</strong> — teams operate inside a boundary the platform team set once.</li>
+<li><strong><a href="../guides/hibernate-tenant.html">Hibernation</a></strong> — idle workloads sleep on a schedule and wake on demand.</li>
+<li><strong><a href="../console/showback.html">Cost visibility</a></strong> — the platform team can see which environments are actually expensive.</li>
+</ul>
+<p>The result is a controlled development platform rather than an uncontrolled collection of namespaces.</p>
 <h2 id="enterprise-platform-teams">Enterprise platform teams<a class="headerlink" href="#enterprise-platform-teams" title="Permanent link">#</a></h2>
 <p><strong>The situation.</strong> A platform team runs Kubernetes or OpenShift for many internal application teams. As adoption grows, the team becomes the manual coordinator of namespaces, access, quota, network boundaries, standard configuration, integrations and cost questions. Platform engineers spend their time serving requests instead of improving the platform.</p>
 <p><strong>What MTO does.</strong> Each application team becomes a Tenant. Its members come from your existing identity provider groups, so joining or leaving the team changes cluster access automatically. The team owns a fixed set of namespaces — typically <code>dev</code>, <code>staging</code>, <code>prod</code> prefixed with the tenant name — and can create more within the quota it was given. Sandboxes give each developer a personal namespace inside the team's boundary, rather than a shared scratch namespace nobody dares clean up.</p>
@@ -7258,17 +7270,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Customers usually have no cluster access at all; Kubernetes is an implementation detail. What matters is that instances are isolated and that cost-to-serve is known.</p>
 <p><strong>What MTO does.</strong> Each customer is a Tenant, created by the same automation that handles commercial onboarding — a definition committed to Git and applied by your GitOps tool. Quota per customer prevents one instance from starving the rest and maps cleanly onto whatever plan they bought. Templates guarantee every customer environment is provisioned identically. Showback prices each customer's consumption, so cost-to-serve is a number you read rather than model. Offboarding is a deletion.</p>
 <p>This raises infrastructure utilization without giving every customer a dedicated cluster where the isolation requirement does not justify one — see <a href="deployment-models.html">Deployment Models</a>.</p>
-<h2 id="development-and-test-platforms">Development and test platforms<a class="headerlink" href="#development-and-test-platforms" title="Permanent link">#</a></h2>
-<p><strong>The situation.</strong> Non-production environments need to appear quickly, then become hard to govern and expensive to keep. They consume capacity overnight, at weekends, and long after a project went quiet.</p>
-<p><strong>What MTO does.</strong> Five capabilities combine here:</p>
-<ul>
-<li><strong>Self-service namespaces and sandboxes</strong> — teams get environments without a provisioning ticket.</li>
-<li><strong>Templates</strong> — every new environment arrives with the standard platform configuration already in it.</li>
-<li><strong>Quota</strong> — teams operate inside a boundary the platform team set once.</li>
-<li><strong><a href="../guides/hibernate-tenant.html">Hibernation</a></strong> — idle workloads sleep on a schedule and wake on demand.</li>
-<li><strong><a href="../console/showback.html">Cost visibility</a></strong> — the platform team can see which environments are actually expensive.</li>
-</ul>
-<p>The result is a controlled development platform rather than an uncontrolled collection of namespaces.</p>
 <h2 id="platform-standardization">Platform standardization<a class="headerlink" href="#platform-standardization" title="Permanent link">#</a></h2>
 <p><strong>The situation.</strong> The platform team has standards for networking, security, observability, configuration and secrets. Enforcing them means documentation, reviews, admission policies, scripts and repeated manual configuration — and compliance is still only as good as the last person who read the wiki.</p>
 <p><strong>What MTO does.</strong> Templates package those standards as reusable platform capabilities and distribute them across tenant environments. They can be optional, for tenants to consume, or enforced — applied to every namespace of one tenant or of all tenants, and kept in sync. A documented baseline becomes a guaranteed one, and new namespaces are compliant by construction rather than by checklist.</p>

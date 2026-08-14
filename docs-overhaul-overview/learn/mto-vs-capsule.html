@@ -6953,6 +6953,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
+  <a href="#operational-questions-buyers-ask" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operational questions buyers ask
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-to-decide" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7554,6 +7565,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
+  <a href="#operational-questions-buyers-ask" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operational questions buyers ask
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#how-to-decide" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7833,7 +7855,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Capsule's scope is the cluster. GitOps and secrets tenancy are configured separately.</p>
 <h3 id="interface">Interface<a class="headerlink" href="#interface" title="Permanent link">#</a></h3>
 <p>MTO ships a console covering tenants, namespaces, quota, cost, capacity, templates and hibernation, permission-aware so tenant users see their own scope. It reads and writes the same objects as the API, so there is no second source of truth.</p>
-<p>Capsule is API-only.</p>
+<p>For the command line, both products solve the same RBAC limitation — a tenant user granted <code>list</code> on a cluster-scoped resource sees every instance of it, not only their own. Capsule solves it with a proxy in the request path; MTO solves it with the <a href="../cli/overview.html"><code>kubectl-tenant</code> plugin</a>, which reads the Tenant status and filters results client-side. No proxy to run, and ordinary <code>kubectl</code> everywhere else.</p>
+<p>Capsule has no console.</p>
 <h3 id="licence-and-support">Licence and support<a class="headerlink" href="#licence-and-support" title="Permanent link">#</a></h3>
 <p>Capsule is open source with community support and commercial support available from Clastix. MTO is a commercial product with vendor support. For some organizations this decides the question before any feature comparison starts.</p>
 <hr>
@@ -7881,6 +7904,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tbody>
 </table>
 <p>None of that is impossible to assemble. The cost is rarely the first integration — it is the seventh, and keeping all of them agreeing about who a tenant is after two years of membership changes. <a href="kubernetes-multi-tenancy-tools.html#what-you-assemble-instead">What you assemble instead</a> sets the same trade out across every tool on the market.</p>
+<hr>
+<h2 id="operational-questions-buyers-ask">Operational questions buyers ask<a class="headerlink" href="#operational-questions-buyers-ask" title="Permanent link">#</a></h2>
+<p>Both products are installed into an existing cluster, so the practical questions are about fit rather than features.</p>
+<ul>
+<li><strong>Brownfield adoption</strong> — existing namespaces join a tenant by carrying its label, so a cluster already in production can be brought under management incrementally rather than rebuilt. See <a href="../guides/create-namespaces.html">Create Namespaces</a>.</li>
+<li><strong>Bring your own stack</strong> — MTO installs a supporting stack, and each component can be pointed at one you already run instead. PostgreSQL, Prometheus, OpenCost and Dex each take <code>mode: Managed</code> or <code>mode: External</code>, so an existing Prometheus or an existing identity broker is used rather than duplicated. See <a href="../concepts/integration-config.html">Integration Config</a>.</li>
+<li><strong>Licensing</strong> — MTO has a free Basic tier limited to two tenants and a commercial Enterprise tier. See <a href="../pricing.html">Pricing</a>.</li>
+</ul>
 <hr>
 <h2 id="how-to-decide">How to Decide<a class="headerlink" href="#how-to-decide" title="Permanent link">#</a></h2>
 <h3 id="choose-capsule-when">Choose Capsule when<a class="headerlink" href="#choose-capsule-when" title="Permanent link">#</a></h3>
