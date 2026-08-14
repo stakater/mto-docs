@@ -115,7 +115,13 @@ MTO earns its place when:
 
 ## Where MTO is not the right answer
 
-If a tenant is genuinely untrusted and needs its own API server — hostile workloads, or a hard regulatory boundary between tenants — namespace-based multi-tenancy is not the tool. MTO is built for teams, departments and customers inside one organization's trust boundary. [Deployment Models](deployment-models.md) covers what to reach for instead, and where MTO still fits alongside it.
+The honest limit is narrower than it is usually stated, so it is worth being precise about it.
+
+MTO is not the answer when a tenant **holds cluster credentials** and needs a boundary that a shared API server cannot provide — its own CRDs, cluster-admin rights, or a regulatory requirement that names infrastructure separation specifically. That is an isolation decision, and [Deployment Models](deployment-models.md) covers what to reach for.
+
+It is *not* ruled out simply because tenants are external or untrusted. Where customers reach the platform through a portal, an API or a logical control plane and never receive cluster credentials, the shared cluster sits behind your product rather than between you and the customer — and MTO does the tenancy, quota, templates, cost and extension groundwork underneath it. That is the standard shape for service providers and telecommunications platforms, and it is covered in [Deployment Models](deployment-models.md#when-tenants-never-touch-the-cluster-api).
+
+Even where stronger isolation is genuinely required, MTO usually still applies inside it: a virtual or hosted cluster given to a department is itself shared by several teams.
 
 ## Next
 

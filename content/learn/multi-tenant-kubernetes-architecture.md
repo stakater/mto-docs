@@ -44,7 +44,7 @@ Control planes run as workloads on a management cluster, with dedicated worker n
 
 ### Dedicated clusters
 
-Complete separation and complete duplication of operational cost. The right answer for regulatory boundaries and genuinely untrusted workloads; an expensive default.
+Complete separation and complete duplication of operational cost. The right answer for regulatory boundaries and for adversarial tenants holding cluster credentials; an expensive default.
 
 [Deployment Models](../overview/deployment-models.md) compares these directly, including the case for combining them.
 
@@ -60,7 +60,9 @@ Something has to represent the tenant: an object that owns namespaces, membershi
 
 ### Access model
 
-Access should be derived from tenant membership, and membership from your existing identity provider groups. Hand-written role bindings per namespace are the most common source of stale permissions.
+Two questions, and the first is often skipped: **do tenants reach the Kubernetes API at all?** On internal platforms they usually do, and access should then be derived from tenant membership, with membership coming from your existing identity provider groups — hand-written role bindings per namespace are the most common source of stale permissions.
+
+Where a portal, an API or a logical control plane sits in front and no cluster credentials are issued to tenants, the cluster's access model is between the platform team and its own product. That is the standard shape for service providers and telecommunications platforms, and it is why external customers do not by themselves force a stronger isolation model.
 
 ### Resource governance
 
@@ -149,7 +151,7 @@ A design that lets several teams, departments or customers share Kubernetes infr
 
 ### Should I start with namespaces or virtual clusters?
 
-Start with namespaces unless you have a specific reason not to — a tenant needing its own CRDs, cluster-scoped autonomy, or a trust boundary that a shared API server cannot provide. Isolation is easy to add later for the tenants that need it.
+Start with namespaces unless you have a specific reason not to — a tenant needing its own CRDs, cluster-scoped autonomy, or a boundary that a shared API server cannot provide for tenants who hold credentials to it. Note that external customers served through a product layer, with no cluster credentials issued, are not such a reason. Isolation is easy to add later for the tenants that genuinely need it.
 
 ### Can one architecture serve every tenant?
 

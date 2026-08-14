@@ -14,10 +14,10 @@ This page covers the models, where each one is appropriate, and the failure mode
 
 | Model | Isolation boundary | Efficiency | Typical use |
 |--------|-----|----------|----------|
-| Namespace-based | Namespace, RBAC, quota, network policy | Highest | Internal teams sharing a cluster |
+| Namespace-based | Namespace, RBAC, quota, network policy | Highest | Internal teams, and external customers served through a product layer |
 | Virtual clusters | Separate API server per tenant | High | Teams needing CRD or cluster-scoped autonomy |
 | Hosted control planes | Control plane per tenant, shared infrastructure | Medium | Cluster-as-a-service platforms |
-| Cluster per tenant | Whole cluster | Lowest | Regulatory or hostile-tenant isolation |
+| Cluster per tenant | Whole cluster | Lowest | Regulatory separation, or adversarial tenants holding cluster credentials |
 
 Most organizations do not pick one. They pick a default and make exceptions.
 
@@ -40,13 +40,22 @@ The important property is that a tenant owns more than one thing. It has people,
 
 ## Soft and hard multi-tenancy
 
-The distinction that drives every other decision is how much you trust your tenants.
+For tenants who can reach the Kubernetes API, the distinction that drives every other decision is how much you trust them.
 
 **Soft multi-tenancy** assumes tenants are not actively hostile. Teams inside one company, departments, or customers under contract. Tenants share a control plane and nodes; the boundary is enforced by RBAC, quota, network policy and admission control. This is the common case, and it is where namespace-based multi-tenancy belongs.
 
 **Hard multi-tenancy** assumes a tenant may actively try to escape its boundary. Here a shared API server is a shared attack surface, and the answer is separate control planes or separate clusters — accepting the cost that comes with them.
 
-Being honest about which one you need is the single most useful thing you can do early. Most platforms need soft multi-tenancy and buy hard multi-tenancy by accident, through cluster sprawl.
+### The question before that one
+
+Trust only decides the answer for tenants who can reach the Kubernetes API. Before asking how much you trust a tenant, ask whether the tenant talks to the cluster at all:
+
+- **Tenants use `kubectl`** — the cluster boundary is the boundary the tenant experiences, and their trustworthiness decides the model. Typical of internal platforms.
+- **Tenants use a product** — a portal, an API or a logical control plane in front, with no cluster credentials issued. The shared cluster is then an implementation detail behind your product, and the trust question moves to the product layer.
+
+The second shape is how most service providers, SaaS vendors and telecommunications platforms serve external customers, and it is why "our tenants are external" does not by itself require hard multi-tenancy.
+
+Being honest about which situation you are in is the single most useful thing you can do early. Most platforms need soft multi-tenancy and buy hard multi-tenancy by accident, through cluster sprawl.
 
 ---
 
@@ -83,7 +92,7 @@ See [MTO vs HyperShift](mto-vs-hypershift.md) and [MTO vs Kamaji](mto-vs-kamaji.
 
 Complete separation, and complete duplication of operational cost — every cluster is another control plane, monitoring stack, upgrade cycle and on-call surface.
 
-Appropriate for regulatory boundaries, genuinely untrusted workloads, or tenants whose scale justifies it. Expensive as a default.
+Appropriate for regulatory boundaries, adversarial workloads holding cluster credentials, or tenants whose scale justifies it. Expensive as a default.
 
 ---
 
@@ -121,7 +130,7 @@ This is the layer [Multi-Tenant Operator](../index.md) addresses.
 ## Best practices
 
 - **Decide what a tenant is before choosing a tool.** The tool follows the model, not the reverse.
-- **Be honest about the trust boundary.** Do not pay for hard multi-tenancy you do not need — or assume soft multi-tenancy is enough when it is not.
+- **Establish who holds cluster credentials before debating trust.** Tenants reached through a product layer never touch the API server, so their trustworthiness does not decide the isolation model. Do not pay for hard multi-tenancy you do not need — or assume soft multi-tenancy is enough when a tenant with API access is genuinely adversarial.
 - **Make the tenant a declarative object.** If the boundary lives in Git and is continuously reconciled, drift is corrected rather than discovered.
 - **Enforce at admission, not in documentation.** A standard that is only written down is a standard that is only sometimes met.
 - **Attribute cost from the start.** Retrofitting attribution onto an established cluster means retrofitting a labelling convention onto everything already running.
@@ -133,7 +142,9 @@ This is the layer [Multi-Tenant Operator](../index.md) addresses.
 
 ### Is namespace-based multi-tenancy secure enough?
 
-For tenants inside one organization's trust boundary — teams, departments, contracted customers — yes, provided RBAC, quota, network policy and admission control are actually enforced rather than documented. For genuinely untrusted or hostile tenants, a shared API server is a shared attack surface and you want separate control planes.
+For tenants who hold cluster credentials, it is sufficient when they are not adversarial — teams, departments, contracted customers — provided RBAC, quota, network policy and admission control are actually enforced rather than documented. For adversarial tenants with API access, a shared API server is a shared attack surface and you want separate control planes.
+
+For tenants who never receive cluster credentials, the question does not arise in the same form: they cannot reach the API server, so the boundary that matters is the one your product layer enforces.
 
 ### What is the difference between soft and hard multi-tenancy?
 

@@ -22,7 +22,7 @@ This guide helps you understand the differences and choose the right approach.
 | Scalability | High — no per-tenant control plane | Moderate — a control plane per tenant |
 | Cost | Very efficient | Higher overhead |
 | Complexity | Low | Medium |
-| Best for | Internal platforms | External / untrusted tenants |
+| Best for | Tenants that do not need their own API server | Tenants that hold cluster credentials and need control-plane autonomy |
 
 ---
 
@@ -72,8 +72,8 @@ Each tenant gets:
 
 ### Best For
 
-- SaaS platforms
-- External or untrusted tenants
+- Tenants that need their own CRDs or cluster-scoped configuration
+- Tenants given direct API access that must not share an API server
 - Teams needing cluster-level control
 
 ---
@@ -104,7 +104,7 @@ Each tenant gets:
 
 ### Isolation Model
 
-- **MTO** → Best for internal, non-hostile multi-tenancy using policies (RBAC, NetworkPolicies)
+- **MTO** → Policy-enforced isolation (RBAC, NetworkPolicies, quota, admission). Sufficient wherever tenants do not hold cluster credentials, or hold them without needing their own API server
 - **vCluster** → Best for stronger isolation with separate control plane abstraction
 
 ---
@@ -147,10 +147,10 @@ Each tenant gets:
 
 ### Security Boundaries
 
-- **MTO** → Suitable for trusted tenants within one organization
-- **vCluster** → Suitable for untrusted or external tenants
+- **MTO** → Suitable wherever tenants do not reach the Kubernetes API directly — including external customers behind a portal, API or logical control plane — and for tenants with API access that are not adversarial
+- **vCluster** → Suitable where tenants hold cluster credentials and must not share an API server
 
-👉 Choose based on trust model
+👉 Choose based on who holds cluster credentials, not on who the tenant is
 
 ---
 
@@ -193,7 +193,7 @@ MTO includes all of these, built on the same tenant definition, which is why the
 
 ### Choose vCluster when
 
-- Tenants are external or untrusted
+- Tenants hold cluster credentials and must not share an API server
 - You need strong isolation
 - Teams require cluster-level control
 - You can accept higher operational overhead
@@ -232,8 +232,8 @@ MTO uses a shared Kubernetes cluster with policy-based isolation, while vCluster
 
 ### Is vCluster more secure than MTO?
 
-vCluster provides stronger isolation, making it better for untrusted tenants.  
-MTO is secure for internal environments when policies are properly enforced.
+vCluster provides stronger isolation, so it is the better fit where an adversarial tenant holds cluster credentials.  
+MTO is secure when its policies are enforced — and where tenants never receive cluster credentials, they cannot reach the API server at all, so the comparison does not apply in the usual way.
 
 ---
 
@@ -294,7 +294,7 @@ MTO strengthens this model with automation and governance.
 
 ### What are the limitations of MTO?
 
-- Not suitable for hostile multi-tenancy  
+- Not sufficient on its own where an adversarial tenant holds cluster credentials  
 - Relies on correct policy enforcement  
 - Shared control plane risks if misconfigured  
 

@@ -4,7 +4,7 @@
 
 This is the practical counterpart to [Multi-Tenant Kubernetes Architecture](multi-tenant-kubernetes-architecture.md): the order to do things in, what to enforce at each step, and the decisions that are expensive to reverse later.
 
-It assumes the common case — teams, departments or customers inside one organization's trust boundary, sharing a cluster. If your tenants are genuinely untrusted, start at [Deployment Models](../overview/deployment-models.md) instead.
+It assumes the common case: tenants sharing a cluster, either as internal teams using `kubectl` directly, or as external customers reached through a product layer that holds the cluster credentials on their behalf. If tenants hold cluster credentials *and* need a boundary a shared API server cannot provide, start at [Deployment Models](../overview/deployment-models.md) instead.
 
 ---
 

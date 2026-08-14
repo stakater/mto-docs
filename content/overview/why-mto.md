@@ -46,7 +46,7 @@ The platform team's job shifts from executing requests to **defining guardrails*
 
 Honesty is more useful than a longer list:
 
-- **It is namespace-based multi-tenancy, not control-plane-per-tenant.** Tenants share the cluster's API server and nodes. If your isolation requirement is a hostile, untrusted tenant that needs its own API server, that is a different architecture — MTO is built for the common case of teams, departments and customers inside one organization's trust boundary.
+- **It is namespace-based multi-tenancy, not control-plane-per-tenant.** Tenants who hold cluster credentials share the API server and the nodes. If a tenant needs its own API server or its own CRDs, that is a different isolation architecture — though MTO still governs whatever remains shared beneath it, and where tenants reach the platform through a product rather than through `kubectl`, the constraint does not apply at all. See [Deployment Models](deployment-models.md).
 - **It does not replace your CI, GitOps or policy engine.** It defines and enforces the tenant boundary, and integrates with the tools you already run.
 - **It is not a hosted service.** MTO runs in your cluster, on your infrastructure, under your control.
 

@@ -85,7 +85,7 @@ MTO's boundary is namespace-based and enforced by policy. It is a weaker isolati
 
 vCluster Platform is stronger: separate API server per environment, per-environment CRDs, cluster-scoped resources that do not collide.
 
-MTO is namespace-based. Cluster-scoped resources, including CRDs, are shared. For tenants inside one trust boundary this is usually the right trade; for a tenant that needs its own CRDs it is not.
+MTO is namespace-based. Cluster-scoped resources, including CRDs, are shared. Where tenants do not need their own CRDs — including external customers reached through a product layer, who never touch the API at all — this is usually the right trade. For a tenant that does need its own CRDs, it is not.
 
 ### Efficiency
 

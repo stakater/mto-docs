@@ -29,7 +29,43 @@ flowchart TB
 
 It suits internal development teams, shared enterprise platforms, development and test environments, and any situation where efficient infrastructure sharing matters.
 
-The limit is honest and worth stating: tenants share one API server and one set of nodes. That is the right trade for teams, departments and customers inside one organization's trust boundary. It is not the right trade for a genuinely hostile tenant.
+The limit is worth stating precisely, because it is narrower than it first appears: tenants who hold cluster credentials share one API server and one set of nodes. Where tenants do not hold cluster credentials at all, that limit does not apply — see the next section.
+
+## When tenants never touch the cluster API
+
+The isolation question is usually posed as *how much do you trust your tenants?* That is the wrong first question. The right one is:
+
+> Do tenants talk to the cluster API themselves, or does a product sit in front?
+
+For internal platforms the answer is usually the former: developers run `kubectl`, so the cluster's boundary is the boundary the tenant experiences, and the tenant's trustworthiness matters directly.
+
+For service providers, SaaS vendors and telecommunications platforms it is usually the latter. Customers are served through a portal, an API or a logical control plane. They never receive cluster credentials and cannot reach the Kubernetes API at all — so the fact that the cluster is shared is an implementation detail behind the product, not a boundary the customer is on the other side of.
+
+```mermaid
+flowchart TB
+    Cust["External customers"]
+    Layer["Product layer<br/>portal, API, or logical control planes"]
+    subgraph Cluster["One Kubernetes cluster"]
+        MTO["MTO — tenancy, quota, templates,<br/>FinOps, hibernation, extensions"]
+        NS["Tenant namespaces and workloads"]
+    end
+    Cust --> Layer
+    Layer --> MTO
+    MTO --> NS
+```
+
+In this shape, MTO does the groundwork underneath the product:
+
+- **Tenancy** — one customer, one tenant; namespaces, access and isolation reconciled from a single definition the product layer creates
+- **Quota** — what each customer may consume, mapped to whatever plan they bought
+- **Templates** — every customer environment provisioned identically, by construction rather than by checklist
+- **FinOps** — cost-to-serve per customer as a figure you read rather than model
+- **Hibernation** — dormant customer environments stop costing money
+- **Extensions** — the customer's boundary carried into GitOps and secrets management
+
+The externally facing control plane is a separate layer, and one way to build it is with logical control planes — see [MTO vs KCP](../learn/mto-vs-kcp.md), which describes that composition rather than treating the two as alternatives.
+
+This is a common and deliberate architecture, and it is why "our customers are external" does not, on its own, rule out a shared cluster. What rules it out is tenants holding cluster credentials whose use you cannot bound, or a regulatory requirement that names infrastructure separation specifically.
 
 ## Virtual clusters
 

@@ -20,7 +20,7 @@ This page explains the distinction, because for most readers the honest answer i
 | Typical user | Platform team sharing a cluster between teams | Teams building multi-tenant API services |
 | Isolation | Namespace, policy-enforced | Logical control plane per workspace |
 | Licence | Commercial | Open source, CNCF Sandbox |
-| Same decision? | Rarely | Rarely |
+| Same decision? | Rarely | Rarely — but often the same architecture, stacked |
 
 ---
 
@@ -99,19 +99,43 @@ MTO installs into an existing cluster and governs it. KCP is infrastructure you 
 - You need many isolated API surfaces and workloads are not the point
 - Control-plane-as-a-service is the product
 
-### Consider both when
+---
 
-You are building a platform whose control plane is itself a product, and which also runs shared workload clusters. They would sit at different layers and solve different problems.
+## Using them together
+
+The interesting case is not choosing between them — it is stacking them, and it is a well-formed architecture rather than a curiosity.
+
+A service provider or telecommunications platform needs to give external customers a control plane of their own without giving them credentials to a cluster. Logical control planes serve that front: each customer gets an isolated API surface that is the product. Underneath, the workloads still have to run somewhere, be governed, be standardized, be costed and be cleaned up when a customer leaves — on infrastructure the provider owns and wants to use efficiently.
+
+```mermaid
+flowchart TB
+    Cust["External customers"]
+    KCP["Logical control planes<br/>the customer-facing API"]
+    subgraph Cluster["One shared Kubernetes cluster"]
+        MTO["MTO — tenancy, quota, templates,<br/>FinOps, hibernation, extensions"]
+        NS["Tenant namespaces and workloads"]
+    end
+    Cust --> KCP
+    KCP --> MTO
+    MTO --> NS
+```
+
+In that stack the two layers do not overlap at any point:
+
+- **The logical control plane** gives each customer an isolated API surface and keeps them off the cluster entirely.
+- **MTO** makes the shared cluster underneath a governed platform: one tenant per customer, quota mapped to their plan, environments standardized by template, cost-to-serve attributed per customer, dormant environments hibernated, and the boundary carried into GitOps and secrets management.
+
+This is also why "our customers are external, so we need hard multi-tenancy" is too quick a conclusion. Customers who never receive cluster credentials cannot reach the API server, so the shared cluster sits behind the product rather than between the provider and the customer. See [Deployment Models](../overview/deployment-models.md#when-tenants-never-touch-the-cluster-api).
 
 ---
 
 ## Key Takeaways
 
-- KCP and MTO are rarely candidates for the same decision.
+- KCP and MTO are rarely candidates for the same decision, and frequently candidates for the same architecture.
 - KCP is API multi-tenancy; MTO is workload-platform multi-tenancy.
 - KCP workspaces do not run workloads, which is usually the deciding fact.
 - If you are trying to share a cluster between teams, KCP is not the tool you are looking for.
-- If you are building a multi-tenant API service, MTO is not the tool you are looking for.
+- Stacked — logical control planes facing the customer, MTO governing the shared cluster beneath — they cover a shape neither reaches alone: external customers, isolated API surfaces, and one efficiently governed cluster underneath.
 
 ---
 
@@ -127,7 +151,7 @@ Not for workload tenancy. Workspaces isolate API surfaces; namespaces scope work
 
 ### Can MTO and KCP be used together?
 
-They are not integrated, and there is no conflict either. They would address different layers of a larger platform.
+Yes, and it is a natural pairing rather than a coincidence. Logical control planes give external customers an isolated API surface without cluster credentials; MTO governs the shared cluster their workloads actually run on. There is no integration between the two products — they simply occupy different layers, and the layer boundary is clean.
 
 ### Which is more mature for platform teams?
 

@@ -63,7 +63,7 @@ Those are operating-model questions, and they persist regardless of how the isol
 
 HyperShift is decisively stronger. A hosted cluster has its own API server, its own CRDs, its own cluster-scoped resources and its own nodes. A tenant can be cluster-admin without affecting anyone else.
 
-MTO's boundary is namespace-based and policy-enforced: appropriate for tenants inside one trust boundary, insufficient for a tenant that needs its own CRDs or genuine cluster-admin rights.
+MTO's boundary is namespace-based and policy-enforced: sufficient wherever tenants do not hold cluster credentials of their own, or hold them without needing their own CRDs or cluster-admin rights; insufficient where they do.
 
 ### Cost and density
 
@@ -107,7 +107,7 @@ MTO includes all of these, built on the same tenant definition, which is why the
 
 ### Choose MTO when
 
-- Tenants are teams, departments or customers inside one trust boundary
+- Tenants do not need their own API server — including external customers reached through a product layer
 - Infrastructure efficiency matters
 - The requirement is governance, standardization and cost accountability
 - You want one cluster to operate rather than a fleet

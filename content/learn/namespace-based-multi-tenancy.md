@@ -16,7 +16,7 @@ It is the most efficient model available, and the one most platform teams should
 | Control plane | Shared |
 | Nodes | Shared, optionally partitioned by node pool |
 | Efficiency | Highest of any model |
-| Suits | Teams, departments and customers inside one trust boundary |
+| Suits | Any tenant that does not need its own API server — including external customers served through a product layer |
 | Does not suit | Hostile tenants, or tenants needing their own CRDs |
 
 ---
@@ -64,11 +64,13 @@ This is the part that decides whether the model fits.
 
 ## Where it stops being enough
 
-- A tenant is genuinely untrusted or actively adversarial
+- A tenant **holds cluster credentials** and is untrusted or adversarial
 - A tenant needs its own CRDs, or a conflicting version of a shared one
 - A tenant needs cluster-admin-like autonomy inside its own boundary
 - A regulatory or contractual requirement demands infrastructure separation
 - A tenant's scale or lifecycle justifies its own cluster
+
+The first point carries a condition that is easy to miss. If tenants never reach the Kubernetes API — because a portal, an API or a logical control plane sits in front — then how much you trust them says nothing about whether the cluster may be shared. Service providers and telecommunications platforms commonly serve entirely external customers from one shared cluster for exactly this reason. See [Deployment Models](../overview/deployment-models.md#when-tenants-never-touch-the-cluster-api).
 
 For these, see [Deployment Models](../overview/deployment-models.md), which covers virtual clusters, hosted control planes and dedicated clusters, and where each fits.
 
