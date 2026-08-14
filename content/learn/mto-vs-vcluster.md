@@ -337,11 +337,11 @@ MTO strengthens this model with automation and governance.
 
 ## Keywords
 
-Kubernetes multi-tenancy  
-MTO vs vCluster  
-Kubernetes virtual clusters  
-multi-tenant Kubernetes architecture  
-platform engineering Kubernetes  
-Kubernetes tenant isolation  
-vCluster alternatives  
-internal developer platform Kubernetes  
+Kubernetes multi-tenancy
+MTO vs vCluster
+Kubernetes virtual clusters
+multi-tenant Kubernetes architecture
+platform engineering Kubernetes
+vCluster alternatives
+Kubernetes tenant isolation
+internal developer platform Kubernetes

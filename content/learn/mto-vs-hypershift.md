@@ -170,7 +170,7 @@ It is an OpenShift project. Kamaji addresses the same architectural idea for ups
 
 MTO vs Hypershift
 hosted control planes OpenShift
-OpenShift multi-tenancy
 hosted control planes Kubernetes
-cluster as a service OpenShift
+OpenShift multi-tenancy
 OpenShift tenant isolation
+cluster as a service OpenShift

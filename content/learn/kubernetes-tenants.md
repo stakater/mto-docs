@@ -161,5 +161,5 @@ what is a tenant in Kubernetes
 tenant vs namespace
 Kubernetes tenant model
 multi-tenant Kubernetes platform
-tenant RBAC Kubernetes
 Kubernetes tenant abstraction
+tenant RBAC Kubernetes

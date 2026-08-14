@@ -217,8 +217,8 @@ Capsule has a smaller surface, which is genuinely simpler. MTO installs more —
 ## Keywords
 
 MTO vs Capsule
-alternative to Capsule
-Capsule Kubernetes multi-tenancy
-open source Kubernetes multi-tenancy
 Kubernetes tenant operator
+Capsule Kubernetes multi-tenancy
+alternative to Capsule
+open source Kubernetes multi-tenancy
 namespace-based multi-tenancy tools

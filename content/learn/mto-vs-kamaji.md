@@ -167,8 +167,8 @@ MTO, materially — there is no per-tenant control plane and no per-tenant node 
 ## Keywords
 
 MTO vs Kamaji
+cluster as a service Kubernetes
 Kamaji hosted control planes
 Kamaji Kubernetes
-cluster as a service Kubernetes
 tenant control planes
 managed Kubernetes multi-tenancy
