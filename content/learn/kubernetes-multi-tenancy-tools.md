@@ -20,7 +20,7 @@ This page sorts the landscape.
 | vCluster | Virtual clusters | Control-plane isolation |
 | vCluster Platform / Loft | Commercial platform | Management over virtual clusters and namespaces |
 | Kamaji | Hosted control planes | Control-plane isolation |
-| HyperShift | Hosted control planes | Control-plane isolation, OpenShift |
+| Hypershift | Hosted control planes | Control-plane isolation, OpenShift |
 | KCP | Logical control planes | API multi-tenancy, not workload isolation |
 
 ---
@@ -56,7 +56,7 @@ Best suited to organizations running Kubernetes as an internal platform for many
 
 ### Capsule
 
-A CNCF Sandbox project from Clastix, and the closest open-source comparison to MTO's core. Capsule introduces a `Tenant` custom resource, groups namespaces under it, and enforces per-tenant policy on namespaces, quota, network policy and admission. A proxy component lets tenant users list resources scoped to their tenant.
+A CNCF Sandbox project, and the closest open-source comparison to MTO's core. Capsule introduces a `Tenant` custom resource, groups namespaces under it, and enforces per-tenant policy on namespaces, quota, network policy and admission. A proxy component lets tenant users list resources scoped to their tenant.
 
 Best suited to teams that want namespace-based tenant governance from an open-source project and are prepared to assemble cost visibility, standardization and platform integrations separately.
 
@@ -64,7 +64,7 @@ See [MTO vs Capsule](mto-vs-capsule.md).
 
 ### Hierarchical Namespace Controller (HNC)
 
-A Kubernetes SIG Multi-Tenancy project. HNC lets namespaces have parents, creates subnamespaces beneath them, and propagates policy objects — RBAC, network policies, and other configured types — down the hierarchy.
+A Kubernetes SIG Multi-Tenancy project. HNC lets namespaces have parents, creates child namespaces beneath them, and propagates policy objects — RBAC, network policies, and other configured types — down the hierarchy.
 
 It solves one specific and real problem: keeping policy consistent across a group of related namespaces. It is not a tenant model — there is no membership, allocation, cost or lifecycle concept — and it is usually a component of a platform rather than the platform.
 
@@ -92,15 +92,15 @@ See [MTO vs Loft](mto-vs-loft.md).
 
 ### Kamaji
 
-A Clastix project that runs tenant Kubernetes control planes as pods on a management cluster, with worker nodes joining each tenant control plane. The result is real, separate clusters without dedicated control-plane machines.
+An open-source project, from the same maintainers as Capsule, that runs tenant Kubernetes control planes as pods on a management cluster, with worker nodes joining each tenant control plane. The result is real, separate clusters without dedicated control-plane machines.
 
 See [MTO vs Kamaji](mto-vs-kamaji.md).
 
-### HyperShift
+### Hypershift
 
 Red Hat's hosted control planes for OpenShift: control planes run as workloads on a management cluster with worker nodes attached per hosted cluster. Same architectural idea as Kamaji, in the OpenShift ecosystem.
 
-See [MTO vs HyperShift](mto-vs-hypershift.md).
+See [MTO vs Hypershift](mto-vs-hypershift.md).
 
 ---
 
@@ -169,7 +169,7 @@ Often, yes. A governance layer plus an isolation layer is a common and sensible 
 
 ### Which of these are open source?
 
-Capsule, HNC, vCluster, Kamaji, HyperShift and KCP are open source. MTO and vCluster Platform are commercial products.
+Capsule, HNC, vCluster, Kamaji, Hypershift and KCP are open source. MTO and vCluster Platform are commercial products.
 
 ---
 

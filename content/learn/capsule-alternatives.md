@@ -74,7 +74,7 @@ These appear on every list of Capsule alternatives and address a different layer
 
 **vCluster Platform (Loft)** is the commercial platform around virtual clusters: self-service provisioning, templates, sleep mode. Closer to a platform comparison, still built on a different primitive.
 
-**Kamaji** and **HyperShift** run tenant control planes as workloads on a management cluster, giving each tenant a real cluster. Again: isolation, not governance — and Kamaji comes from Clastix, the same organization as Capsule, precisely because the two address different layers.
+**Kamaji** and **Hypershift** run tenant control planes as workloads on a management cluster, giving each tenant a real cluster. Again: isolation, not governance — and Kamaji comes from the same maintainers as Capsule, precisely because the two address different layers.
 
 If you evaluate one of these against Capsule feature by feature you will conclude they are incomparable, which is correct. See [Deployment Models](../overview/deployment-models.md).
 
@@ -96,7 +96,7 @@ If you evaluate one of these against Capsule feature by feature you will conclud
 - Most "Capsule alternatives" lists mix governance tools with isolation tools. Only the governance tools are alternatives.
 - MTO is the closest comparison and the widest in scope; the trade is commercial licensing.
 - HNC covers policy propagation but has no tenant abstraction.
-- vCluster, Loft, Kamaji and HyperShift isolate control planes and leave governance unsolved.
+- vCluster, Loft, Kamaji and Hypershift isolate control planes and leave governance unsolved.
 - Building it yourself is possible, and consistently underestimated — MTO has been in continuous development since December 2020.
 
 ---

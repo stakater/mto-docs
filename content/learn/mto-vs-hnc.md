@@ -13,7 +13,7 @@ It comes up in multi-tenancy searches because keeping policy consistent across a
 | Aspect | MTO | HNC |
 |--------|-----|----------|
 | Category | Tenant operating model | Namespace organization |
-| Core abstraction | `Tenant` | Namespace hierarchy and subnamespaces |
+| Core abstraction | `Tenant` | Namespace hierarchy and child namespaces |
 | Membership model | Owners, editors, viewers from IdP groups | None; propagates RBAC objects |
 | Quota | At the tenant scope | Propagated objects, no tenant budget |
 | Admission guardrails | Included | Not included |
@@ -25,14 +25,14 @@ It comes up in multi-tenancy searches because keeping policy consistent across a
 
 ## What is HNC?
 
-HNC introduces a parent-child relationship between namespaces. A namespace can be declared the child of another, and HNC creates **subnamespaces** beneath a parent on request.
+HNC introduces a parent-child relationship between namespaces. A namespace can be declared the child of another, and HNC creates **child namespaces** beneath a parent on request.
 
 Its central capability is **propagation**: configured object types — typically RBAC roles and bindings, network policies, resource quotas, secrets and config maps — are copied from a parent namespace to all of its descendants and kept in sync.
 
 ### Key Characteristics
 
 - Namespace parent-child hierarchy
-- Subnamespace creation delegated to namespace owners
+- Child-namespace creation delegated to namespace owners
 - Policy object propagation down the tree
 - Hierarchical RBAC, so access granted at a parent applies to descendants
 - Open source, from Kubernetes SIG Multi-Tenancy
@@ -168,6 +168,6 @@ Technically yes, but decide which one owns namespace metadata and policy distrib
 MTO vs HNC
 Hierarchical Namespace Controller
 Kubernetes namespace hierarchy
-subnamespaces Kubernetes
+child namespaces Kubernetes
 HNC multi-tenancy
 Kubernetes SIG multi-tenancy

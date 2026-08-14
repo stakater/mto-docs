@@ -47,7 +47,7 @@ This guide helps you understand the differences and choose the right approach.
 
 ### Best For
 
-- Internal Developer Platforms (IDPs)
+- Internal developer platforms
 - Platform engineering teams
 - Enterprises with multiple teams
 - Cost-sensitive environments
@@ -331,7 +331,7 @@ MTO strengthens this model with automation and governance.
 
 - Not sufficient on its own where an adversarial tenant holds cluster credentials  
 - Relies on correct policy enforcement  
-- Shared control plane risks if misconfigured  
+- Shared control plane risks if its policies are set wrongly  
 
 ---
 

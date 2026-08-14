@@ -26,7 +26,7 @@ They sit at the same layer, which makes this a genuine comparison rather than a 
 
 ## What is Capsule?
 
-Capsule is a CNCF Sandbox project from Clastix that implements namespace-based multi-tenancy through a `Tenant` custom resource. Namespaces belong to a tenant, and Capsule enforces the tenant's policies on them — resource quota, network policies, admission constraints and access.
+Capsule is a CNCF Sandbox project that implements namespace-based multi-tenancy through a `Tenant` custom resource. Namespaces belong to a tenant, and Capsule enforces the tenant's policies on them — resource quota, network policies, admission constraints and access.
 
 It also ships a proxy component that lets tenant users list cluster-scoped resources filtered to what their tenant owns, which addresses a real gap in namespace-based tenancy: a tenant user running `kubectl get namespaces` would otherwise see nothing or need cluster-wide read access.
 
@@ -126,7 +126,7 @@ Capsule has no console.
 
 ### Licence and support
 
-Capsule is open source with community support and commercial support available from Clastix. MTO is a commercial product with vendor support. For some organizations this decides the question before any feature comparison starts.
+Capsule is open source, with community support and commercial support available from its maintainers. MTO is a commercial product with vendor support. For some organizations this decides the question before any feature comparison starts.
 
 ---
 
@@ -206,7 +206,7 @@ No. Cost attribution is outside its scope; you would pair it with separate cost 
 
 ### Is Capsule good enough for an internal developer platform?
 
-For the tenancy layer, often yes. An IDP usually also needs standardization, cost visibility and self-service, which you would assemble around it.
+For the tenancy layer, often yes. An internal developer platform usually also needs standardization, cost visibility and self-service, which you would assemble around it.
 
 ### Which is easier to operate?
 
@@ -217,8 +217,8 @@ Capsule has a smaller surface, which is genuinely simpler. MTO installs more —
 ## Keywords
 
 MTO vs Capsule
+alternative to Capsule
 Capsule Kubernetes multi-tenancy
-Capsule alternative
 open source Kubernetes multi-tenancy
 Kubernetes tenant operator
 namespace-based multi-tenancy tools

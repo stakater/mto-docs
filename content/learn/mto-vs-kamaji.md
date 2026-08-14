@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Kamaji is an open-source project from Clastix that runs tenant Kubernetes control planes as pods on a management cluster, with worker nodes joining each tenant control plane. It is the upstream-Kubernetes counterpart to the hosted-control-plane idea.
+Kamaji is an open-source project that runs tenant Kubernetes control planes as pods on a management cluster, with worker nodes joining each tenant control plane. It is the upstream-Kubernetes counterpart to the hosted-control-plane idea.
 
 Like every hosted-control-plane technology, Kamaji answers an isolation question. Multi-Tenant Operator answers a governance question. Comparing them directly only makes sense once that split is clear.
 
@@ -26,7 +26,7 @@ Like every hosted-control-plane technology, Kamaji answers an isolation question
 
 Kamaji runs the control plane of each tenant cluster as ordinary pods on a management cluster, rather than on dedicated control-plane machines. Worker nodes join the tenant control plane, giving each tenant a real Kubernetes cluster that passes upstream conformance without the usual per-cluster control-plane cost.
 
-It comes from Clastix, the same organization behind Capsule — which is a useful signal about how these layers relate. One product isolates control planes; the other governs tenancy within a cluster. They are deliberately separate things.
+It comes from the same maintainers as Capsule — which is a useful signal about how these layers relate. One product isolates control planes; the other governs tenancy within a cluster. They are deliberately separate things.
 
 ### Key Characteristics
 
@@ -136,7 +136,7 @@ That gives one tenant operating model across the estate rather than governance o
 - Kamaji makes per-tenant clusters affordable; it does not make governance unnecessary.
 - A tenant cluster shared by several teams has the same governance problem as any shared cluster.
 - MTO is the more efficient answer where tenants do not need their own control plane.
-- Kamaji and HyperShift address the same architectural idea — Kamaji for upstream Kubernetes, HyperShift for OpenShift.
+- Kamaji and Hypershift address the same architectural idea — Kamaji for upstream Kubernetes, Hypershift for OpenShift.
 
 ---
 
@@ -146,11 +146,11 @@ That gives one tenant operating model across the estate rather than governance o
 
 It is an isolation solution: a cluster per tenant, run affordably. It does not model tenants, membership, allocation, standards or cost.
 
-### How does Kamaji differ from HyperShift?
+### How does Kamaji differ from Hypershift?
 
-Same architectural idea — control planes as workloads on a management cluster. Kamaji targets upstream Kubernetes; HyperShift targets OpenShift. See [MTO vs HyperShift](mto-vs-hypershift.md).
+Same architectural idea — control planes as workloads on a management cluster. Kamaji targets upstream Kubernetes; Hypershift targets OpenShift. See [MTO vs Hypershift](mto-vs-hypershift.md).
 
-### Kamaji and Capsule are both from Clastix. Do they compete?
+### Kamaji and Capsule share maintainers. Do they compete?
 
 No, and that is instructive: Kamaji isolates control planes, Capsule governs tenancy within a cluster. They are separate products because they address separate layers — the same split as Kamaji and MTO.
 
@@ -168,7 +168,7 @@ MTO, materially — there is no per-tenant control plane and no per-tenant node 
 
 MTO vs Kamaji
 Kamaji hosted control planes
-Clastix Kamaji
+Kamaji Kubernetes
 cluster as a service Kubernetes
 tenant control planes
 managed Kubernetes multi-tenancy

@@ -166,7 +166,7 @@ Because it is genuinely multi-tenant — of API surfaces rather than of clusters
 ## Keywords
 
 MTO vs KCP
-KCP Kubernetes
+logical control planes Kubernetes
 KCP workspaces
 control plane as a service
 API multi-tenancy Kubernetes

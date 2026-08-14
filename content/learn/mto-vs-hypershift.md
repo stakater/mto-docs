@@ -1,16 +1,16 @@
-# MTO vs HyperShift
+# MTO vs Hypershift
 
 ## Introduction
 
-HyperShift is Red Hat's hosted control planes project for OpenShift: the control plane of a hosted cluster runs as workloads on a management cluster, with worker nodes attached to it. It is the technology behind hosted-control-plane offerings in the OpenShift ecosystem.
+Hypershift is Red Hat's hosted control planes project for OpenShift: the control plane of a hosted cluster runs as workloads on a management cluster, with worker nodes attached to it. It is the technology behind hosted-control-plane offerings in the OpenShift ecosystem.
 
-Both HyperShift and Multi-Tenant Operator appear in OpenShift multi-tenancy discussions. They answer different questions, and OpenShift teams often end up using both.
+Both Hypershift and Multi-Tenant Operator appear in OpenShift multi-tenancy discussions. They answer different questions, and OpenShift teams often end up using both.
 
 ---
 
 ## TL;DR
 
-| Aspect | MTO | HyperShift |
+| Aspect | MTO | Hypershift |
 |--------|-----|----------|
 | Unit given to a tenant | Namespaces within a cluster | A whole OpenShift cluster |
 | Isolation | Namespace, policy-enforced | Full cluster, separate control plane |
@@ -22,9 +22,9 @@ Both HyperShift and Multi-Tenant Operator appear in OpenShift multi-tenancy disc
 
 ---
 
-## What is HyperShift?
+## What is Hypershift?
 
-HyperShift decouples an OpenShift cluster's control plane from its data plane. Instead of dedicating three control-plane machines to every cluster, the control plane runs as pods on a shared management cluster, and worker nodes join it.
+Hypershift decouples an OpenShift cluster's control plane from its data plane. Instead of dedicating three control-plane machines to every cluster, the control plane runs as pods on a shared management cluster, and worker nodes join it.
 
 The result is a real, separate OpenShift cluster per tenant, at meaningfully lower cost and faster provisioning than standalone clusters — while keeping the strongest isolation boundary available short of separate infrastructure.
 
@@ -47,11 +47,11 @@ The result is a real, separate OpenShift cluster per tenant, at meaningfully low
 
 ## Core Architectural Difference
 
-**HyperShift gives a tenant a cluster. MTO gives a tenant a governed part of one.**
+**Hypershift gives a tenant a cluster. MTO gives a tenant a governed part of one.**
 
 That is the whole comparison, and it is a decision about isolation, not about governance.
 
-HyperShift makes per-tenant clusters affordable enough to be a realistic default in a way standalone clusters never were. What it does not do is answer the questions that arrive once a tenant has its cluster: who belongs to this tenant, what may they consume, what standards must their environments meet, what does this cost, and what happens inside that cluster when three teams share it.
+Hypershift makes per-tenant clusters affordable enough to be a realistic default in a way standalone clusters never were. What it does not do is answer the questions that arrive once a tenant has its cluster: who belongs to this tenant, what may they consume, what standards must their environments meet, what does this cost, and what happens inside that cluster when three teams share it.
 
 Those are operating-model questions, and they persist regardless of how the isolation was achieved.
 
@@ -61,7 +61,7 @@ Those are operating-model questions, and they persist regardless of how the isol
 
 ### Isolation
 
-HyperShift is decisively stronger. A hosted cluster has its own API server, its own CRDs, its own cluster-scoped resources and its own nodes. A tenant can be cluster-admin without affecting anyone else.
+Hypershift is decisively stronger. A hosted cluster has its own API server, its own CRDs, its own cluster-scoped resources and its own nodes. A tenant can be cluster-admin without affecting anyone else.
 
 MTO's boundary is namespace-based and policy-enforced: sufficient wherever tenants do not hold cluster credentials of their own, or hold them without needing their own CRDs or cluster-admin rights; insufficient where they do.
 
@@ -69,17 +69,17 @@ MTO's boundary is namespace-based and policy-enforced: sufficient wherever tenan
 
 MTO is the more efficient model by a wide margin: one control plane, one monitoring stack and one upgrade cycle for all tenants.
 
-HyperShift reduces the cost of per-tenant clusters substantially compared with standalone clusters, but each hosted cluster still has a control plane consuming management-cluster capacity and dedicated worker nodes.
+Hypershift reduces the cost of per-tenant clusters substantially compared with standalone clusters, but each hosted cluster still has a control plane consuming management-cluster capacity and dedicated worker nodes.
 
 ### Operational surface
 
-With MTO you operate one cluster. With HyperShift you operate a management cluster plus a fleet of hosted clusters — each with its own upgrades, monitoring and configuration drift.
+With MTO you operate one cluster. With Hypershift you operate a management cluster plus a fleet of hosted clusters — each with its own upgrades, monitoring and configuration drift.
 
 ### Governance
 
 This is where they stop competing. MTO models tenants, derives RBAC from identity provider groups, allocates quota at the tenant scope, enforces guardrails at admission, standardizes environments, attributes cost, hibernates idle workloads and extends the tenant boundary into ArgoCD and OpenBao or Vault.
 
-HyperShift provisions and manages the lifecycle of clusters. What happens inside one is not its concern.
+Hypershift provisions and manages the lifecycle of clusters. What happens inside one is not its concern.
 
 ### Inside a hosted cluster
 
@@ -89,7 +89,7 @@ If a hosted cluster serves a single small team, it may need no further tenancy m
 
 ## What the isolation layer leaves you to assemble
 
-HyperShift hands a tenant a cluster. Everything that makes that cluster a governed platform is still to be built, and built again for each hosted cluster shared by more than one team:
+Hypershift hands a tenant a cluster. Everything that makes that cluster a governed platform is still to be built, and built again for each hosted cluster shared by more than one team:
 
 - **Tenancy** — who owns this environment, who may access it, and what it may consume
 - **Standardization** — the baseline every environment carries, applied to the ones created later and corrected when it drifts
@@ -112,7 +112,7 @@ MTO includes all of these, built on the same tenant definition, which is why the
 - The requirement is governance, standardization and cost accountability
 - You want one cluster to operate rather than a fleet
 
-### Choose HyperShift when
+### Choose Hypershift when
 
 - Tenants require their own OpenShift cluster
 - A tenant needs cluster-admin rights or its own CRDs
@@ -125,7 +125,7 @@ MTO includes all of these, built on the same tenant definition, which is why the
 
 This is the common outcome on larger OpenShift estates, and the two layers compose cleanly:
 
-- HyperShift provides clusters to the tenants whose isolation requirement justifies one.
+- Hypershift provides clusters to the tenants whose isolation requirement justifies one.
 - MTO governs tenancy inside the clusters that serve more than one team — including hosted ones.
 
 The result is a consistent tenant operating model across both, rather than one governance model for the shared cluster and none for the hosted ones.
@@ -134,8 +134,8 @@ The result is a consistent tenant operating model across both, rather than one g
 
 ## Key Takeaways
 
-- HyperShift is an isolation technology; MTO is an operating model. Different layers.
-- HyperShift makes per-tenant clusters affordable; it does not make governance unnecessary.
+- Hypershift is an isolation technology; MTO is an operating model. Different layers.
+- Hypershift makes per-tenant clusters affordable; it does not make governance unnecessary.
 - A hosted cluster shared by several teams has the same governance problem as any shared cluster.
 - MTO remains the more efficient answer where tenants do not need their own control plane.
 - On OpenShift estates the two are frequently deployed together.
@@ -144,23 +144,23 @@ The result is a consistent tenant operating model across both, rather than one g
 
 ## Frequently Asked Questions (FAQ)
 
-### Is HyperShift a multi-tenancy solution?
+### Is Hypershift a multi-tenancy solution?
 
 It is an isolation solution. It gives each tenant a cluster; it does not model tenants, their membership, allocation, standards or cost.
 
-### Can MTO run inside a HyperShift hosted cluster?
+### Can MTO run inside a Hypershift hosted cluster?
 
 A hosted cluster is an OpenShift cluster, so the usual installation applies. If the hosted cluster serves more than one team, governing it is the same problem as governing any shared cluster.
 
 ### Which is cheaper?
 
-MTO, materially — there is no per-tenant control plane and no per-tenant node pool. HyperShift is cheaper than standalone clusters, not cheaper than sharing one.
+MTO, materially — there is no per-tenant control plane and no per-tenant node pool. Hypershift is cheaper than standalone clusters, not cheaper than sharing one.
 
 ### When is a hosted cluster the right answer?
 
 When a tenant genuinely needs cluster-admin rights, its own CRDs, or separation that a shared API server cannot provide.
 
-### Is HyperShift OpenShift-only?
+### Is Hypershift OpenShift-only?
 
 It is an OpenShift project. Kamaji addresses the same architectural idea for upstream Kubernetes — see [MTO vs Kamaji](mto-vs-kamaji.md).
 
@@ -168,8 +168,8 @@ It is an OpenShift project. Kamaji addresses the same architectural idea for ups
 
 ## Keywords
 
-MTO vs HyperShift
-HyperShift hosted control planes
+MTO vs Hypershift
+hosted control planes OpenShift
 OpenShift multi-tenancy
 hosted control planes Kubernetes
 cluster as a service OpenShift

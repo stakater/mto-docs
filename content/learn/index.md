@@ -62,7 +62,7 @@ These technologies isolate control planes. They are frequently described as alte
 - [MTO vs vCluster](mto-vs-vcluster.md)
 - [MTO vs Loft (vCluster Platform)](mto-vs-loft.md)
 - [MTO vs Kamaji](mto-vs-kamaji.md)
-- [MTO vs HyperShift](mto-vs-hypershift.md)
+- [MTO vs Hypershift](mto-vs-hypershift.md)
 - [MTO vs KCP](mto-vs-kcp.md)
 
 ---

@@ -86,7 +86,7 @@ The control plane for each tenant cluster runs as workloads on a management clus
 - **Strengths** — genuine per-tenant clusters without dedicated control-plane hardware.
 - **Limits** — a fleet to operate, and the tenant model still has to be built on top.
 
-See [MTO vs HyperShift](mto-vs-hypershift.md) and [MTO vs Kamaji](mto-vs-kamaji.md).
+See [MTO vs Hypershift](mto-vs-hypershift.md) and [MTO vs Kamaji](mto-vs-kamaji.md).
 
 ### Cluster per tenant
 

@@ -11,7 +11,7 @@ Nothing here is enabled by default, and nothing is all-or-nothing.
 - **Cluster-wide integrations are inert until configured.** If `spec.integrations.argocd` is not set in the IntegrationConfig, MTO has no ArgoCD configuration and creates nothing there. The same holds for Vault and OpenBao.
 - **Per-tenant extensions are created per tenant.** A tenant with no `Extensions` resource gets no `AppProject`, whatever other tenants are doing.
 
-That matters when adopting MTO on a cluster already in production. If you have ArgoCD `AppProjects` you maintain in Git today, leave the integration unconfigured and MTO will not touch them — there is no reconcile to lose and no migration to perform. The same is true of Vault or OpenBao policies managed elsewhere.
+That matters when adopting MTO on a cluster already in production. If you have ArgoCD `AppProjects` you maintain in Git today, leave the integration unset and MTO will not touch them — there is no reconcile to lose and no migration to perform. The same is true of Vault or OpenBao policies managed elsewhere.
 
 You can then enable an extension for one tenant, see what it produces, and decide whether to move the rest. Adoption is incremental by construction rather than by exception.
 
