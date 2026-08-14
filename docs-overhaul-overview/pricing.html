@@ -6869,6 +6869,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-the-enterprise-licence-is-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the Enterprise licence is measured
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#support-plans" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6997,6 +7008,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-the-enterprise-licence-is-measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the Enterprise licence is measured
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#support-plans" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7099,6 +7121,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>The tenant limit is the line, and it is a low one by design — two tenants is enough to prove the model and not enough to run a platform on.</p>
 <p><strong>Basic</strong> suits evaluation, a proof of concept, a demonstration environment, or a lab where you are learning the tenant model. It is a real installation rather than a trial: nothing expires, and no capability is withheld.</p>
 <p><strong>Enterprise</strong> is what a shared platform needs. Once a third team, department or customer arrives, the tenant limit is reached — and at that point you also want a support commitment, since the platform is now in the path of other people's work.</p>
+<h2 id="how-the-enterprise-licence-is-measured">How the Enterprise licence is measured<a class="headerlink" href="#how-the-enterprise-licence-is-measured" title="Permanent link">#</a></h2>
+<p>MTO is licensed against the scale of what it governs. What counts as scale depends on what you are building with it, because the two common shapes are genuinely different — and a measure that is fair for one is not fair for the other.</p>
+<p><strong>An internal platform.</strong> You run Kubernetes for teams inside your own organization. Scale tracks the clusters you operate, so the licence follows the cluster. This is the straightforward case and the one most Enterprise customers are in.</p>
+<p><strong>A platform you sell.</strong> You are a service provider, a managed service provider or an internal cloud provider, and MTO is part of what your customers are paying for. Here the infrastructure is a poor measure of scale: one large bare-metal cluster can carry a great many customers. Licensing for this shape is agreed against the scale of the service rather than the hardware underneath it.</p>
+<p>Same product and the same capabilities either way. What changes is only what the licence is measured against, so that it stays proportionate to what MTO is doing for you.</p>
+<p>To keep the conversation short, it helps to arrive with four things: which of the two shapes above you are in, roughly how many tenants you expect, how many clusters you run, and whether you need Standard or Premium support.</p>
 <h2 id="support-plans">Support plans<a class="headerlink" href="#support-plans" title="Permanent link">#</a></h2>
 <p>Enterprise support comes in two plans, described in full at <a href="https://support.stakater.com/">Stakater Support</a>.</p>
 <p><strong>Standard</strong> — business-hours support, intended for development environments, non-critical workloads and cost-sensitive operations.</p>
