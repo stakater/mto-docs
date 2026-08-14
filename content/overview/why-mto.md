@@ -34,7 +34,7 @@ The platform team's job shifts from executing requests to **defining guardrails*
 
 **Cost becomes attributable.** Because the tenant — not the namespace — is the unit of ownership, it is also the unit of cost. Showback reports what each tenant and namespace consumed and what it was priced at, which is what turns "the cluster is expensive" into a conversation with a specific team.
 
-**Idle spend is removable.** Development, test and demo environments are idle most of the week. Hibernation puts them to sleep on a schedule and wakes them on demand, so you stop paying for capacity nobody is using — and showback lets you prove the effect.
+**Idle spend is removable.** Development, test and demo environments are idle most of the week. Hibernation puts them to sleep on a schedule and wakes them on demand, and showback shows the effect. What that is worth depends on your infrastructure: on public cloud with a cluster autoscaler, freed requests let nodes be removed and the bill falls; on fixed on-premise capacity it releases headroom for other workloads and defers the next hardware purchase rather than reducing an invoice.
 
 **Standards are enforced, not documented.** Templates push required resources — network policies, secrets, config, Helm-based application scaffolding — into every tenant namespace and keep them in sync. New namespaces are compliant with your baseline by construction.
 

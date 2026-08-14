@@ -101,7 +101,7 @@ Non-production environments are idle most of the week, and idle environments sti
 
 Hibernation is driven by a `ClusterResourceSupervisor` resource, provided by the Hibernation Operator. It targets namespaces by label selector, and because MTO stamps `stakater.com/tenant: <tenant-name>` on every namespace it manages, one selector covers a whole tenant. A supervisor can also name the tenant's ArgoCD AppProjects, so the tenant's Applications sleep alongside its workloads instead of syncing them back up.
 
-The saving shows up directly in showback.
+The effect shows up directly in showback. What it is worth depends on the infrastructure underneath: with a cluster autoscaler, freed requests allow nodes to be removed and the bill falls; on fixed capacity it releases headroom for other workloads and defers the next purchase. Hibernation scales workloads — PersistentVolumeClaims and their storage cost are untouched.
 
 More details on [Hibernating a Tenant](../guides/hibernate-tenant.md) and the [Hibernation console](../console/hibernation.md).
 

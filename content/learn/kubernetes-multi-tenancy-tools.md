@@ -14,7 +14,7 @@ This page sorts the landscape.
 
 | Tool | Category | Layer it addresses |
 |--------|-----|----------|
-| Multi-Tenant Operator (MTO) | Tenant operating model | Governance within a cluster |
+| Multi-Tenant Operator (MTO) | Multi-pillar platform | Governance within a cluster, plus templates, FinOps, hibernation, ecosystem integrations and a console |
 | Capsule | Tenant operating model | Governance within a cluster |
 | Hierarchical Namespace Controller (HNC) | Namespace organization | Policy propagation within a cluster |
 | vCluster | Virtual clusters | Control-plane isolation |
@@ -41,9 +41,16 @@ A platform with thirty virtual clusters has exactly the same operating-model pro
 
 ### Multi-Tenant Operator (MTO)
 
-A commercial operator from Stakater that adds a `Tenant` abstraction to Kubernetes and OpenShift and reconciles the cluster to match it: namespaces, RBAC from identity provider groups, quota at the tenant scope, admission guardrails, network isolation, standard metadata and templates.
+MTO is a commercial platform from Stakater built on a single `Tenant` definition that drives six capability areas: **multi-tenancy**, **templates**, **FinOps**, **hibernation**, **extensions** into the surrounding ecosystem, and a **console** for both administrators and tenant users. Tenancy is the foundation the other five stand on, not the extent of the product.
 
-It also covers the layers most governance tooling leaves out — cost attribution to the tenant boundary, hibernation of idle environments, extension of the tenant boundary into ArgoCD and OpenBao or Vault, and a console for both administrators and tenant users over the same objects.
+- **Multi-tenancy** — namespaces, RBAC from identity provider groups, quota at the tenant scope, admission guardrails and network isolation, reconciled continuously
+- **Templates** — parameterized environments, optionally enforced across a tenant or the whole cluster
+- **FinOps** — usage sampled per namespace, aggregated to the tenant, priced, stored as history, with capacity planning
+- **Hibernation** — idle workloads slept and woken on a schedule or on demand
+- **Extensions** — the tenant boundary carried into ArgoCD, OpenBao or Vault, and developer tooling
+- **Console** — a permission-aware interface over the same objects the API exposes
+
+It appears in this section because of the first item. It is listed here only once, but it is the only entry on this page that addresses more than one layer.
 
 Best suited to organizations running Kubernetes as an internal platform for many teams, or as a shared platform for many customers, where governance and cost accountability matter as much as isolation.
 

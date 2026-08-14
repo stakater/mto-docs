@@ -35,7 +35,9 @@ It is focused, open source, and a CNCF Sandbox project. Teams look for alternati
 
 The closest direct comparison. Same layer, same abstraction, wider scope.
 
-MTO provides tenant governance — a `Tenant` owning namespaces, RBAC derived from identity provider groups, quota at the tenant scope, admission guardrails, network isolation and standard metadata — and then continues into the areas Capsule leaves out:
+MTO is a commercial platform from Stakater built on a single `Tenant` definition that drives six capability areas: **multi-tenancy**, **templates**, **FinOps**, **hibernation**, **extensions** into the surrounding ecosystem, and a **console** for both administrators and tenant users. Tenancy is the foundation the other five stand on, not the extent of the product.
+
+Its tenancy pillar — a `Tenant` owning namespaces, RBAC derived from identity provider groups, quota at the tenant scope, admission guardrails and network isolation — is where Capsule is a genuine alternative. The other five are where the comparison stops being like for like:
 
 - **Standardization** — templates rendered into tenant namespaces and reconciled continuously, optionally enforced across every namespace of one tenant or all tenants
 - **Cost attribution** — consumption sampled per namespace, aggregated to the tenant, priced with provider pricing on public cloud, and stored so periods can be compared

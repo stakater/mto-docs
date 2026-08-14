@@ -48,7 +48,9 @@ It also ships a proxy component that lets tenant users list cluster-scoped resou
 
 ## What is MTO?
 
-Multi-Tenant Operator is a commercial operator from Stakater covering the same tenant governance ground, plus the layers most platforms need next.
+MTO is a commercial platform from Stakater built on a single `Tenant` definition that drives six capability areas: **multi-tenancy**, **templates**, **FinOps**, **hibernation**, **extensions** into the surrounding ecosystem, and a **console** for both administrators and tenant users. Tenancy is the foundation the other five stand on, not the extent of the product.
+
+Capsule is comparable on the first of those six. The comparison below is therefore narrow where the products overlap and wide where they do not.
 
 ### Key Characteristics
 
@@ -128,7 +130,18 @@ Capsule is open source with community support and commercial support available f
 
 ## What you assemble instead
 
-The list above is the substance of the comparison: standardization, cost, hibernation, GitOps and secrets tenancy, and an interface are all products in their own right. Choosing Capsule means sourcing and integrating each of them separately, then keeping them agreeing with each other about who a tenant is. [What you assemble instead](kubernetes-multi-tenancy-tools.md#what-you-assemble-instead) sets out the trade capability by capability.
+On tenancy the two are close, and either will serve. That is why the comparison is decided almost entirely by the five pillars above — each of which is a product in its own right.
+
+| Capability | MTO | With Capsule you would add |
+|--------|-----|----------|
+| Standardization | Templates, optionally enforced, reconciled continuously | GitOps conventions or a templating operator, plus a way to reach namespaces created later |
+| Cost | Sampled per namespace, aggregated to the tenant, priced, stored as history | A cost tool, a metrics stack, a database, dashboards, and a labelling convention everything depends on |
+| Idle environments | Hibernation on a schedule or on demand, label-targeted | Controllers or scheduled jobs that scale down and can restore what was running |
+| GitOps tenancy | An ArgoCD `AppProject` per tenant, from the same definition | ArgoCD projects and RBAC maintained by hand, kept in step with membership |
+| Secrets tenancy | A path, policies and login roles per tenant in OpenBao or Vault | Secrets-platform policy written and revised per tenant and per access change |
+| Interface | A permission-aware console for both personas | A UI you build, or tenant users on `kubectl` and YAML |
+
+None of that is impossible to assemble. The cost is rarely the first integration — it is the seventh, and keeping all of them agreeing about who a tenant is after two years of membership changes. [What you assemble instead](kubernetes-multi-tenancy-tools.md#what-you-assemble-instead) sets the same trade out across every tool on the market.
 
 ---
 

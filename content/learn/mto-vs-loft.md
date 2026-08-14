@@ -47,7 +47,9 @@ The platform adds what a virtual cluster on its own does not have: self-service 
 
 ## What is MTO?
 
-MTO adds a `Tenant` abstraction to a shared Kubernetes or OpenShift cluster and reconciles the cluster to match it: namespaces, RBAC from identity provider groups, quota at the tenant scope, admission guardrails, network isolation, standard metadata and templates — plus cost attribution, hibernation, and extension of the tenant boundary into ArgoCD and OpenBao or Vault.
+MTO is a commercial platform from Stakater built on a single `Tenant` definition that drives six capability areas: **multi-tenancy**, **templates**, **FinOps**, **hibernation**, **extensions** into the surrounding ecosystem, and a **console** for both administrators and tenant users. Tenancy is the foundation the other five stand on, not the extent of the product.
+
+On a shared Kubernetes or OpenShift cluster it reconciles namespaces, RBAC, quota, admission guardrails and network isolation from that definition, then builds templates, cost attribution, hibernation and ecosystem integrations on the same object.
 
 ### Key Characteristics
 

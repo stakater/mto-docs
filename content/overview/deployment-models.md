@@ -62,6 +62,7 @@ In this shape, MTO does the groundwork underneath the product:
 - **FinOps** — cost-to-serve per customer as a figure you read rather than model
 - **Hibernation** — dormant customer environments stop costing money
 - **Extensions** — the customer's boundary carried into GitOps and secrets management
+- **Console** — an interface over the same objects for your own operators, whatever the product layer shows the customer
 
 The externally facing control plane is a separate layer, and one way to build it is with logical control planes — see [MTO vs KCP](../learn/mto-vs-kcp.md), which describes that composition rather than treating the two as alternatives.
 

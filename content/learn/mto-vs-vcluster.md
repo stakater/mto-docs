@@ -18,10 +18,10 @@ This guide helps you understand the differences and choose the right approach.
 | Aspect | MTO | vCluster |
 |--------|-----|----------|
 | Model | Shared cluster (policy-based) | Virtual cluster per tenant |
-| Isolation | Soft multi-tenancy | Stronger isolation |
+| Isolation | Policy-enforced within a shared cluster | Separate API server per tenant |
 | Scalability | High — no per-tenant control plane | Moderate — a control plane per tenant |
 | Cost | Very efficient | Higher overhead |
-| Complexity | Low | Medium |
+| Complexity | One cluster to operate; MTO installs its own supporting stack | A control plane per tenant to run and upgrade |
 | Best for | Tenants that do not need their own API server | Tenants that hold cluster credentials and need control-plane autonomy |
 
 ---
@@ -154,6 +154,42 @@ Each tenant gets:
 
 ---
 
+### Standardization
+
+- **MTO** → Templates rendered into tenant namespaces, optionally enforced across a tenant or every tenant, and reconciled as they change
+- **vCluster** → Not addressed; each virtual cluster starts empty
+
+👉 Best for standardization: **MTO**
+
+---
+
+### Idle environment cost
+
+- **MTO** → Hibernation sleeps and wakes workloads on a schedule or on demand, targeted by label so one schedule covers a whole tenant
+- **vCluster** → Not addressed by vCluster itself
+
+👉 Best for idle cost: **MTO**
+
+---
+
+### Ecosystem integrations
+
+- **MTO** → The tenant boundary carried into ArgoCD as a scoped `AppProject`, and into OpenBao or Vault as a path with per-tenant policies and login roles
+- **vCluster** → Not addressed; GitOps and secrets tenancy are configured separately per virtual cluster
+
+👉 Best for ecosystem reach: **MTO**
+
+---
+
+### Interface
+
+- **MTO** → A permission-aware console over the same objects, for administrators and tenant users
+- **vCluster** → API and CLI
+
+👉 Best for tenant self-service: **MTO**
+
+---
+
 ### FinOps and Cost Visibility
 
 - **MTO** → Built-in (showback, chargeback, cost and usage analysis, capacity planning)
@@ -183,11 +219,10 @@ MTO includes all of these, built on the same tenant definition, which is why the
 
 ### Choose MTO when
 
-- Tenants are within the same organization
-- You need high scalability
-- Cost efficiency is critical
-- You want governance and standardization
-- You are building an Internal Developer Platform
+- Tenants do not need their own API server — including external customers reached through a portal, API or logical control plane
+- You need templates, cost attribution, hibernation or ecosystem integrations, not tenancy alone
+- Infrastructure efficiency matters
+- You are building an internal developer platform or a customer-facing cloud platform
 
 ---
 
@@ -204,8 +239,8 @@ MTO includes all of these, built on the same tenant definition, which is why the
 
 You can combine both:
 
-- Use **vCluster per customer** (isolation)
-- Use **MTO inside each vCluster** (efficiency and governance)
+- Use **vCluster** for the tenants that genuinely need their own API server
+- Use **MTO** to govern any cluster shared by more than one team — the host cluster, and each virtual cluster that serves several teams
 
 This gives:
 
@@ -240,13 +275,13 @@ MTO is secure when its policies are enforced — and where tenants never receive
 ### Can MTO replace vCluster?
 
 No. They solve different problems.  
-MTO is for efficient internal multi-tenancy, while vCluster is for stronger isolation.
+vCluster provides control-plane isolation. MTO provides the operating model — tenancy, templates, cost, hibernation and ecosystem integrations — which vCluster does not address at all.
 
 ---
 
 ### When should I use MTO instead of vCluster?
 
-Use MTO for internal platforms where cost, scalability, and governance are priorities.
+Use MTO where tenants do not need their own API server, and where you need more than tenancy — standardized environments, cost attributed per tenant, idle environments slept, and the tenant boundary carried into ArgoCD and your secrets platform. That includes customer-facing platforms whose users never receive cluster credentials.
 
 ---
 
@@ -266,8 +301,8 @@ MTO is more cost-efficient due to a shared control plane and lower overhead.
 
 Yes. This is a common and powerful architecture:
 
-- vCluster for isolation
-- MTO for internal multi-tenancy
+- vCluster for control-plane isolation
+- MTO for the operating model — tenancy, templates, cost, hibernation and ecosystem integrations
 
 ---
 

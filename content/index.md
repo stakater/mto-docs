@@ -13,6 +13,8 @@ MTO enables platform teams to securely serve multiple teams, departments or cust
 
 Platform administrators define the guardrails. Tenants get self-service within those boundaries.
 
+The name describes where it starts, not where it stops. The same `Tenant` definition also drives standardized environments, cost attributed per team or customer, hibernation of idle workloads, and the tenant's identity in the tools around the cluster — six capability areas from one object, rather than six products to integrate.
+
 ## What MTO provides
 
 | Capability | Customer problem | What MTO provides |
