@@ -1,25 +1,34 @@
-# kubectl plugin
+# kubectl-tenant Plugin
 
-A kubectl plugin that provides tenant-scoped access to cluster resources managed by Multi-Tenant Operator.
+Tenant users work in ordinary `kubectl`. The problem is that Kubernetes gives them no way to see what they own.
 
-## Overview
+Ask a developer to list the storage classes their tenant may use, or the namespaces it owns, and Kubernetes offers two answers, both wrong. Without cluster-scoped `list` permission they see nothing. With it they see everything on the cluster — every other tenant's namespaces included — because RBAC on a cluster-scoped resource is all-or-nothing. There is no "list the ones that are mine".
 
-Kubernetes RBAC has a fundamental limitation: when granting `list` permissions on cluster-scoped resources, users can see *all* resources of that type, not just those belonging to their tenant. The kubectl-tenant plugin solves this by reading the Tenant CR status and filtering results to show only resources the tenant is permitted to access.
+The `kubectl-tenant` plugin adds that missing verb.
 
-**Source Code:** [https://github.com/stakater/kubectl-tenant](https://github.com/stakater/kubectl-tenant)
+![kubectl tenant RBAC demo](../images/kubectlTenantRbacDemo.gif)
+
+**Source:** [`kubectl-tenant` on GitHub](https://github.com/stakater/kubectl-tenant)
+
+## Why it matters
+
+**For tenant users** — the platform becomes discoverable from the command line they already use. `kubectl tenant get namespaces my-tenant` answers "what do I have?" without a console, a ticket, or a guess. Every standard output flag works, so it composes with the scripts and pipelines already in use.
+
+**For platform administrators** — you no longer choose between a usable platform and a tight one. Tenant users get a scoped view without being granted cluster-wide read, which is the permission you did not want to hand out and the one that quietly turns a multi-tenant cluster into a transparent one.
+
+**Nothing in the request path.** The plugin runs on the user's machine: it reads the Tenant resource, works out what that tenant is entitled to, and asks the API server for those objects. It is not a proxy. Other approaches to this problem place a component between users and the API server, which is another deployment to run, scale, secure and keep available — and which every `kubectl` call then depends on. Here, if the plugin is absent, `kubectl` behaves exactly as it always did.
 
 ## Installation
 
-Download the binary for your platform from [GitHub Releases](https://github.com/stakater/kubectl-tenant/releases):
+Download the binary for your platform from [GitHub Releases](https://github.com/stakater/kubectl-tenant/releases), substituting the current version:
 
 ```bash
-# Download for your OS/Arch
 curl -L https://github.com/stakater/kubectl-tenant/releases/download/v0.0.1/kubectl-tenant-linux-amd64 -o kubectl-tenant
 chmod +x kubectl-tenant
 mv kubectl-tenant ~/.local/bin/   # ensure this path is in your $PATH
 ```
 
-Verify it works:
+`kubectl` discovers any executable named `kubectl-*` on your `PATH` and exposes it as a nested command, so no further configuration is needed. Verify it:
 
 ```bash
 kubectl tenant --help
@@ -36,6 +45,8 @@ mv kubectl-tenant /usr/local/bin/
 
 ## Supported Resources
 
+These are the cluster-scoped resources a tenant has an entitlement to, so they are the ones where "show me mine" is a question Kubernetes cannot answer on its own.
+
 | Resource | Command Keyword |
 |----------|----------------|
 | Storage Classes | `storageclasses` |
@@ -43,6 +54,8 @@ mv kubectl-tenant /usr/local/bin/
 | Ingress Classes | `ingressclasses` |
 | Priority Classes | `priorityclasses` |
 | Quotas | `quotas` |
+
+Namespaced resources are unaffected — ordinary `kubectl` already scopes those correctly through namespace RBAC.
 
 ## Usage
 
@@ -67,7 +80,7 @@ kubectl tenant get <resource-type> <tenant-name> <resource-name> [flags]
 
 ### List Tenants
 
-List all tenants the current user belongs to (as owner, editor, or viewer):
+Start here. It answers "which tenants am I in, and as what?" — useful when someone belongs to several, and the first thing to run after installing:
 
 ```bash
 kubectl tenant list
@@ -78,6 +91,8 @@ NAME        ROLE
 logistics   owner
 warehouse   viewer
 ```
+
+The role shown is the tenant role that grants the access — owner, editor or viewer — so a user can see immediately why a command succeeds or is refused.
 
 ### List Resources
 
@@ -121,7 +136,7 @@ my-tenant-fast        kubernetes.io/aws-ebs   30d
 
 ### Output Formats
 
-All standard kubectl output formats and flags are supported:
+All standard kubectl output formats and flags are supported, so the plugin composes with existing tooling rather than replacing it:
 
 ```bash
 # YAML output
@@ -139,10 +154,14 @@ kubectl tenant get namespaces my-tenant -o custom-columns=NAME:.metadata.name,ST
 
 ## How It Works
 
-- Reads the specified Tenant CR from `tenantoperator.stakater.com/v1beta3`
-- Extracts permitted resources from the tenant's status fields
-- Fetches and returns only those resources the tenant can access
+1. Reads the specified Tenant resource from `tenantoperator.stakater.com/v1beta3`.
+1. Extracts the permitted resources from the tenant's status fields — the same status MTO's controllers maintain, so the answer reflects the live tenant definition rather than a cached copy.
+1. Requests those objects from the API server and prints them.
 
-## Demo
+The user's own credentials are used throughout. The plugin narrows what is asked for; it does not widen what the user may have. Someone who is not a member of a tenant gets nothing from it.
 
-![kubectl tenant RBAC demo](../images/kubectlTenantRbacDemo.gif)
+## Next
+
+- [Tenant](../concepts/tenant.md) — the resource the plugin reads
+- [Console](../console/overview.md) — the same information, for people who prefer a UI
+- [Storage Classes](../guides/storage-classes.md) and [Pod Priority Classes](../guides/pod-priority-classes.md) — how the entitlements it lists are configured
