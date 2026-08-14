@@ -60,14 +60,6 @@ A web demo of the [MTO Console](console/overview.md) is available on the [Multi-
 
 Contact [`sales@stakater.com`](mailto:sales@stakater.com) to request a demo tailored to your environment.
 
-## Before you talk to sales
-
-These pages answer most of what comes up first:
-
-- [Deployment Models](overview/deployment-models.md) — whether a shared cluster fits your isolation requirements
-- [Comparisons](learn/index.md) — how MTO differs from Capsule, vCluster, Loft and the hosted-control-plane tools
-- [Installation](getting-started/installation/overview.md) — what installing Basic involves
-
 ## Contact
 
 For pricing, licensing or anything not covered here, contact [`sales@stakater.com`](mailto:sales@stakater.com).
