@@ -153,6 +153,7 @@ Both products are installed into an existing cluster, so the practical questions
 
 - **Brownfield adoption** — existing namespaces join a tenant by carrying its label, so a cluster already in production can be brought under management incrementally rather than rebuilt. See [Create Namespaces](../guides/create-namespaces.md).
 - **Bring your own stack** — MTO installs a supporting stack, and each component can be pointed at one you already run instead. PostgreSQL, Prometheus, OpenCost and Dex each take `mode: Managed` or `mode: External`, so an existing Prometheus or an existing identity broker is used rather than duplicated. See [Integration Config](../concepts/integration-config.md).
+- **Existing ArgoCD and secrets setup** — every extension is optional and inert until configured. If you already maintain ArgoCD `AppProjects` or Vault policies in Git, leave the integration unset and MTO does not touch them; enable it for one tenant when you want to. See [Extensions](../concepts/extensions.md).
 - **Licensing** — MTO has a free Basic tier limited to two tenants and a commercial Enterprise tier. See [Pricing](../pricing.md).
 
 ---
