@@ -7432,9 +7432,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tr>
 <tr>
 <td>Build it yourself</td>
-<td>Yes</td>
+<td>In principle</td>
 <td>—</td>
-<td>Common, and usually underestimated</td>
+<td>Underestimated by a wide margin — see below</td>
 </tr>
 </tbody>
 </table>
@@ -7461,8 +7461,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>A partial alternative. HNC organizes namespaces into a hierarchy and propagates policy objects down it, which covers Capsule's policy-consistency ground.</p>
 <p>It has no tenant abstraction — no membership, no allocation at the tenant scope, no lifecycle — so if what you valued in Capsule was the <code>Tenant</code> object, HNC is a step sideways rather than across. See <a href="mto-vs-hnc.html">MTO vs HNC</a>.</p>
 <h3 id="building-it-yourself">Building it yourself<a class="headerlink" href="#building-it-yourself" title="Permanent link">#</a></h3>
-<p>The most common alternative, and the one whose cost is most often underestimated. The primitives are all in Kubernetes; the work is in reconciliation, admission control, identity integration, cost attribution and keeping it correct across upgrades.</p>
-<p>Worth doing if tenancy is your differentiator. Rarely worth it otherwise. See <a href="kubernetes-multi-tenancy-implementation.html">How to Implement Kubernetes Multi-Tenancy</a> for what the list actually contains.</p>
+<p>The alternative teams reach for most often, and the one whose scale is hardest to judge from the inside.</p>
+<p>The primitives are all in Kubernetes, so a first version arrives quickly and convincingly. What follows is the actual work: continuous reconciliation, an admission webhook in the write path of every workload, identity provider integration, a cost pipeline with storage and history, template rendering that reaches namespaces created after the template was written, and keeping every part of it correct across Kubernetes upgrades that do not care about your controller.</p>
+<p>For scale, MTO's own changelog is public and runs from v0.2 to v1.9 — eight major version series of continuous development and refinement, with the tenancy model itself restructured more than once along the way. That is what the finished version of this list costs, and tenancy is one of its six capability areas.</p>
+<p>None of that means it cannot be done. It means the decision is not "can we build this" — it is whether a multi-year platform-engineering commitment to something that is not your product is the best use of the team. See <a href="kubernetes-multi-tenancy-implementation.html">How to Implement Kubernetes Multi-Tenancy</a> for what the list actually contains.</p>
 <hr>
 <h2 id="not-really-alternatives">Not really alternatives<a class="headerlink" href="#not-really-alternatives" title="Permanent link">#</a></h2>
 <p>These appear on every list of Capsule alternatives and address a different layer.</p>
@@ -7487,7 +7489,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li>MTO is the closest comparison and the widest in scope; the trade is commercial licensing.</li>
 <li>HNC covers policy propagation but has no tenant abstraction.</li>
 <li>vCluster, Loft, Kamaji and HyperShift isolate control planes and leave governance unsolved.</li>
-<li>Building it yourself is viable and consistently underestimated.</li>
+<li>Building it yourself is possible, and consistently underestimated — MTO's own changelog spans eight major version series.</li>
 </ul>
 <hr>
 <h2 id="frequently-asked-questions-faq">Frequently Asked Questions (FAQ)<a class="headerlink" href="#frequently-asked-questions-faq" title="Permanent link">#</a></h2>
