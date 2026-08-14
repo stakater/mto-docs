@@ -2,6 +2,22 @@
 
 MTO is for organizations running Kubernetes as a shared platform across several teams, departments, business units or customers. The situations below are the ones it was built for — most evaluators recognize themselves in more than one.
 
+The first is deliberately placed: it is the situation where the capability areas stop being a list and start compounding, which is the clearest picture of what MTO is.
+
+## Development and test platforms
+
+**The situation.** Non-production environments need to appear quickly, then become hard to govern and expensive to keep. They consume capacity overnight, at weekends, and long after a project went quiet.
+
+**What MTO does.** Five capabilities combine here:
+
+* **Self-service namespaces and sandboxes** — teams get environments without a provisioning ticket.
+* **Templates** — every new environment arrives with the standard platform configuration already in it.
+* **Quota** — teams operate inside a boundary the platform team set once.
+* **[Hibernation](../guides/hibernate-tenant.md)** — idle workloads sleep on a schedule and wake on demand.
+* **[Cost visibility](../console/showback.md)** — the platform team can see which environments are actually expensive.
+
+The result is a controlled development platform rather than an uncontrolled collection of namespaces.
+
 ## Enterprise platform teams
 
 **The situation.** A platform team runs Kubernetes or OpenShift for many internal application teams. As adoption grows, the team becomes the manual coordinator of namespaces, access, quota, network boundaries, standard configuration, integrations and cost questions. Platform engineers spend their time serving requests instead of improving the platform.
@@ -42,20 +58,6 @@ Customers usually have no cluster access at all; Kubernetes is an implementation
 **What MTO does.** Each customer is a Tenant, created by the same automation that handles commercial onboarding — a definition committed to Git and applied by your GitOps tool. Quota per customer prevents one instance from starving the rest and maps cleanly onto whatever plan they bought. Templates guarantee every customer environment is provisioned identically. Showback prices each customer's consumption, so cost-to-serve is a number you read rather than model. Offboarding is a deletion.
 
 This raises infrastructure utilization without giving every customer a dedicated cluster where the isolation requirement does not justify one — see [Deployment Models](deployment-models.md).
-
-## Development and test platforms
-
-**The situation.** Non-production environments need to appear quickly, then become hard to govern and expensive to keep. They consume capacity overnight, at weekends, and long after a project went quiet.
-
-**What MTO does.** Five capabilities combine here:
-
-* **Self-service namespaces and sandboxes** — teams get environments without a provisioning ticket.
-* **Templates** — every new environment arrives with the standard platform configuration already in it.
-* **Quota** — teams operate inside a boundary the platform team set once.
-* **[Hibernation](../guides/hibernate-tenant.md)** — idle workloads sleep on a schedule and wake on demand.
-* **[Cost visibility](../console/showback.md)** — the platform team can see which environments are actually expensive.
-
-The result is a controlled development platform rather than an uncontrolled collection of namespaces.
 
 ## Platform standardization
 

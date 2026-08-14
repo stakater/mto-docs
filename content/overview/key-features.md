@@ -145,7 +145,9 @@ More details on [Console](../console/overview.md).
 
 **No cluster sprawl.** One governed cluster hosting many teams means one control plane, one monitoring stack and one upgrade cycle to operate — instead of multiplying that work by the number of teams.
 
-**A native experience.** Tenants use ordinary `kubectl`, ordinary namespaces and ordinary Kubernetes resources. MTO adds no proxy, no custom binary and no extra management layer between users and the API.
+**A native experience.** Tenants use ordinary `kubectl`, ordinary namespaces and ordinary Kubernetes resources — no proxy in the request path and no management layer between users and the API. Where Kubernetes RBAC cannot express a tenant-scoped view of cluster-scoped resources, the optional [`kubectl-tenant` plugin](../cli/overview.md) filters results to what the tenant owns.
+
+**Your stack, not a second one.** MTO provisions the components the Console and FinOps depend on, and each can be pointed at infrastructure you already run instead: PostgreSQL, Prometheus, OpenCost and Dex each take `mode: Managed` or `mode: External`. An existing Prometheus or identity broker is used, not duplicated. See [Integration Config](../concepts/integration-config.md).
 
 ## Next
 

@@ -120,7 +120,9 @@ Capsule's scope is the cluster. GitOps and secrets tenancy are configured separa
 
 MTO ships a console covering tenants, namespaces, quota, cost, capacity, templates and hibernation, permission-aware so tenant users see their own scope. It reads and writes the same objects as the API, so there is no second source of truth.
 
-Capsule is API-only.
+For the command line, both products solve the same RBAC limitation — a tenant user granted `list` on a cluster-scoped resource sees every instance of it, not only their own. Capsule solves it with a proxy in the request path; MTO solves it with the [`kubectl-tenant` plugin](../cli/overview.md), which reads the Tenant status and filters results client-side. No proxy to run, and ordinary `kubectl` everywhere else.
+
+Capsule has no console.
 
 ### Licence and support
 
@@ -142,6 +144,16 @@ On tenancy the two are close, and either will serve. That is why the comparison 
 | Interface | A permission-aware console for both personas | A UI you build, or tenant users on `kubectl` and YAML |
 
 None of that is impossible to assemble. The cost is rarely the first integration — it is the seventh, and keeping all of them agreeing about who a tenant is after two years of membership changes. [What you assemble instead](kubernetes-multi-tenancy-tools.md#what-you-assemble-instead) sets the same trade out across every tool on the market.
+
+---
+
+## Operational questions buyers ask
+
+Both products are installed into an existing cluster, so the practical questions are about fit rather than features.
+
+- **Brownfield adoption** — existing namespaces join a tenant by carrying its label, so a cluster already in production can be brought under management incrementally rather than rebuilt. See [Create Namespaces](../guides/create-namespaces.md).
+- **Bring your own stack** — MTO installs a supporting stack, and each component can be pointed at one you already run instead. PostgreSQL, Prometheus, OpenCost and Dex each take `mode: Managed` or `mode: External`, so an existing Prometheus or an existing identity broker is used rather than duplicated. See [Integration Config](../concepts/integration-config.md).
+- **Licensing** — MTO has a free Basic tier limited to two tenants and a commercial Enterprise tier. See [Pricing](../pricing.md).
 
 ---
 
