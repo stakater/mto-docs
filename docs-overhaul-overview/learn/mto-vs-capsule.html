@@ -7788,7 +7788,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </ul>
 <hr>
 <h2 id="what-is-mto">What is MTO?<a class="headerlink" href="#what-is-mto" title="Permanent link">#</a></h2>
-<p>Multi-Tenant Operator is a commercial operator from Stakater covering the same tenant governance ground, plus the layers most platforms need next.</p>
+<p>MTO is a commercial platform from Stakater built on a single <code>Tenant</code> definition that drives six capability areas: <strong>multi-tenancy</strong>, <strong>templates</strong>, <strong>FinOps</strong>, <strong>hibernation</strong>, <strong>extensions</strong> into the surrounding ecosystem, and a <strong>console</strong> for both administrators and tenant users. Tenancy is the foundation the other five stand on, not the extent of the product.</p>
+<p>Capsule is comparable on the first of those six. The comparison below is therefore narrow where the products overlap and wide where they do not.</p>
 <h3 id="key-characteristics_1">Key Characteristics<a class="headerlink" href="#key-characteristics_1" title="Permanent link">#</a></h3>
 <ul>
 <li><code>Tenant</code> custom resource owning namespaces, membership, quota and standards</li>
@@ -7837,7 +7838,49 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Capsule is open source with community support and commercial support available from Clastix. MTO is a commercial product with vendor support. For some organizations this decides the question before any feature comparison starts.</p>
 <hr>
 <h2 id="what-you-assemble-instead">What you assemble instead<a class="headerlink" href="#what-you-assemble-instead" title="Permanent link">#</a></h2>
-<p>The list above is the substance of the comparison: standardization, cost, hibernation, GitOps and secrets tenancy, and an interface are all products in their own right. Choosing Capsule means sourcing and integrating each of them separately, then keeping them agreeing with each other about who a tenant is. <a href="kubernetes-multi-tenancy-tools.html#what-you-assemble-instead">What you assemble instead</a> sets out the trade capability by capability.</p>
+<p>On tenancy the two are close, and either will serve. That is why the comparison is decided almost entirely by the five pillars above — each of which is a product in its own right.</p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>MTO</th>
+<th>With Capsule you would add</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standardization</td>
+<td>Templates, optionally enforced, reconciled continuously</td>
+<td>GitOps conventions or a templating operator, plus a way to reach namespaces created later</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>Sampled per namespace, aggregated to the tenant, priced, stored as history</td>
+<td>A cost tool, a metrics stack, a database, dashboards, and a labelling convention everything depends on</td>
+</tr>
+<tr>
+<td>Idle environments</td>
+<td>Hibernation on a schedule or on demand, label-targeted</td>
+<td>Controllers or scheduled jobs that scale down and can restore what was running</td>
+</tr>
+<tr>
+<td>GitOps tenancy</td>
+<td>An ArgoCD <code>AppProject</code> per tenant, from the same definition</td>
+<td>ArgoCD projects and RBAC maintained by hand, kept in step with membership</td>
+</tr>
+<tr>
+<td>Secrets tenancy</td>
+<td>A path, policies and login roles per tenant in OpenBao or Vault</td>
+<td>Secrets-platform policy written and revised per tenant and per access change</td>
+</tr>
+<tr>
+<td>Interface</td>
+<td>A permission-aware console for both personas</td>
+<td>A UI you build, or tenant users on <code>kubectl</code> and YAML</td>
+</tr>
+</tbody>
+</table>
+<p>None of that is impossible to assemble. The cost is rarely the first integration — it is the seventh, and keeping all of them agreeing about who a tenant is after two years of membership changes. <a href="kubernetes-multi-tenancy-tools.html#what-you-assemble-instead">What you assemble instead</a> sets the same trade out across every tool on the market.</p>
 <hr>
 <h2 id="how-to-decide">How to Decide<a class="headerlink" href="#how-to-decide" title="Permanent link">#</a></h2>
 <h3 id="choose-capsule-when">Choose Capsule when<a class="headerlink" href="#choose-capsule-when" title="Permanent link">#</a></h3>

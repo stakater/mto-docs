@@ -7625,7 +7625,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><strong>Instant</strong> — put an environment to sleep now, and leave it asleep until someone wakes it.</li>
 </ul>
 <p>Hibernation is driven by a <code>ClusterResourceSupervisor</code> resource, provided by the Hibernation Operator. It targets namespaces by label selector, and because MTO stamps <code>stakater.com/tenant: &lt;tenant-name&gt;</code> on every namespace it manages, one selector covers a whole tenant. A supervisor can also name the tenant's ArgoCD AppProjects, so the tenant's Applications sleep alongside its workloads instead of syncing them back up.</p>
-<p>The saving shows up directly in showback.</p>
+<p>The effect shows up directly in showback. What it is worth depends on the infrastructure underneath: with a cluster autoscaler, freed requests allow nodes to be removed and the bill falls; on fixed capacity it releases headroom for other workloads and defers the next purchase. Hibernation scales workloads — PersistentVolumeClaims and their storage cost are untouched.</p>
 <p>More details on <a href="../guides/hibernate-tenant.html">Hibernating a Tenant</a> and the <a href="../console/hibernation.html">Hibernation console</a>.</p>
 <h2 id="extensions">Extensions<a class="headerlink" href="#extensions" title="Permanent link">#</a></h2>
 <p>The tenant boundary does not stop at the Kubernetes API. Extensions project the same tenant definition into the tools around the cluster, so you maintain one boundary instead of several.</p>

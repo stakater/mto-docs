@@ -7558,8 +7558,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <tbody>
 <tr>
 <td>Multi-Tenant Operator (MTO)</td>
-<td>Tenant operating model</td>
-<td>Governance within a cluster</td>
+<td>Multi-pillar platform</td>
+<td>Governance within a cluster, plus templates, FinOps, hibernation, ecosystem integrations and a console</td>
 </tr>
 <tr>
 <td>Capsule</td>
@@ -7607,8 +7607,16 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <hr>
 <h2 id="governance-within-a-cluster">Governance within a cluster<a class="headerlink" href="#governance-within-a-cluster" title="Permanent link">#</a></h2>
 <h3 id="multi-tenant-operator-mto">Multi-Tenant Operator (MTO)<a class="headerlink" href="#multi-tenant-operator-mto" title="Permanent link">#</a></h3>
-<p>A commercial operator from Stakater that adds a <code>Tenant</code> abstraction to Kubernetes and OpenShift and reconciles the cluster to match it: namespaces, RBAC from identity provider groups, quota at the tenant scope, admission guardrails, network isolation, standard metadata and templates.</p>
-<p>It also covers the layers most governance tooling leaves out — cost attribution to the tenant boundary, hibernation of idle environments, extension of the tenant boundary into ArgoCD and OpenBao or Vault, and a console for both administrators and tenant users over the same objects.</p>
+<p>MTO is a commercial platform from Stakater built on a single <code>Tenant</code> definition that drives six capability areas: <strong>multi-tenancy</strong>, <strong>templates</strong>, <strong>FinOps</strong>, <strong>hibernation</strong>, <strong>extensions</strong> into the surrounding ecosystem, and a <strong>console</strong> for both administrators and tenant users. Tenancy is the foundation the other five stand on, not the extent of the product.</p>
+<ul>
+<li><strong>Multi-tenancy</strong> — namespaces, RBAC from identity provider groups, quota at the tenant scope, admission guardrails and network isolation, reconciled continuously</li>
+<li><strong>Templates</strong> — parameterized environments, optionally enforced across a tenant or the whole cluster</li>
+<li><strong>FinOps</strong> — usage sampled per namespace, aggregated to the tenant, priced, stored as history, with capacity planning</li>
+<li><strong>Hibernation</strong> — idle workloads slept and woken on a schedule or on demand</li>
+<li><strong>Extensions</strong> — the tenant boundary carried into ArgoCD, OpenBao or Vault, and developer tooling</li>
+<li><strong>Console</strong> — a permission-aware interface over the same objects the API exposes</li>
+</ul>
+<p>It appears in this section because of the first item. It is listed here only once, but it is the only entry on this page that addresses more than one layer.</p>
 <p>Best suited to organizations running Kubernetes as an internal platform for many teams, or as a shared platform for many customers, where governance and cost accountability matter as much as isolation.</p>
 <h3 id="capsule">Capsule<a class="headerlink" href="#capsule" title="Permanent link">#</a></h3>
 <p>A CNCF Sandbox project from Clastix, and the closest open-source comparison to MTO's core. Capsule introduces a <code>Tenant</code> custom resource, groups namespaces under it, and enforces per-tenant policy on namespaces, quota, network policy and admission. A proxy component lets tenant users list resources scoped to their tenant.</p>

@@ -7024,6 +7024,50 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
+  <a href="#standardization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Standardization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idle-environment-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Idle environment cost
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecosystem-integrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ecosystem integrations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#finops-and-cost-visibility" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7638,6 +7682,50 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
+  <a href="#standardization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Standardization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idle-environment-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Idle environment cost
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ecosystem-integrations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ecosystem integrations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#finops-and-cost-visibility" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7921,8 +8009,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tr>
 <tr>
 <td>Isolation</td>
-<td>Soft multi-tenancy</td>
-<td>Stronger isolation</td>
+<td>Policy-enforced within a shared cluster</td>
+<td>Separate API server per tenant</td>
 </tr>
 <tr>
 <td>Scalability</td>
@@ -7936,8 +8024,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tr>
 <tr>
 <td>Complexity</td>
-<td>Low</td>
-<td>Medium</td>
+<td>One cluster to operate; MTO installs its own supporting stack</td>
+<td>A control plane per tenant to run and upgrade</td>
 </tr>
 <tr>
 <td>Best for</td>
@@ -8053,6 +8141,34 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </ul>
 <p>👉 Choose based on who holds cluster credentials, not on who the tenant is</p>
 <hr>
+<h3 id="standardization">Standardization<a class="headerlink" href="#standardization" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>MTO</strong> → Templates rendered into tenant namespaces, optionally enforced across a tenant or every tenant, and reconciled as they change</li>
+<li><strong>vCluster</strong> → Not addressed; each virtual cluster starts empty</li>
+</ul>
+<p>👉 Best for standardization: <strong>MTO</strong></p>
+<hr>
+<h3 id="idle-environment-cost">Idle environment cost<a class="headerlink" href="#idle-environment-cost" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>MTO</strong> → Hibernation sleeps and wakes workloads on a schedule or on demand, targeted by label so one schedule covers a whole tenant</li>
+<li><strong>vCluster</strong> → Not addressed by vCluster itself</li>
+</ul>
+<p>👉 Best for idle cost: <strong>MTO</strong></p>
+<hr>
+<h3 id="ecosystem-integrations">Ecosystem integrations<a class="headerlink" href="#ecosystem-integrations" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>MTO</strong> → The tenant boundary carried into ArgoCD as a scoped <code>AppProject</code>, and into OpenBao or Vault as a path with per-tenant policies and login roles</li>
+<li><strong>vCluster</strong> → Not addressed; GitOps and secrets tenancy are configured separately per virtual cluster</li>
+</ul>
+<p>👉 Best for ecosystem reach: <strong>MTO</strong></p>
+<hr>
+<h3 id="interface">Interface<a class="headerlink" href="#interface" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>MTO</strong> → A permission-aware console over the same objects, for administrators and tenant users</li>
+<li><strong>vCluster</strong> → API and CLI</li>
+</ul>
+<p>👉 Best for tenant self-service: <strong>MTO</strong></p>
+<hr>
 <h3 id="finops-and-cost-visibility">FinOps and Cost Visibility<a class="headerlink" href="#finops-and-cost-visibility" title="Permanent link">#</a></h3>
 <ul>
 <li><strong>MTO</strong> → Built-in (showback, chargeback, cost and usage analysis, capacity planning)</li>
@@ -8076,11 +8192,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="how-to-decide">How to Decide<a class="headerlink" href="#how-to-decide" title="Permanent link">#</a></h2>
 <h3 id="choose-mto-when">Choose MTO when<a class="headerlink" href="#choose-mto-when" title="Permanent link">#</a></h3>
 <ul>
-<li>Tenants are within the same organization</li>
-<li>You need high scalability</li>
-<li>Cost efficiency is critical</li>
-<li>You want governance and standardization</li>
-<li>You are building an Internal Developer Platform</li>
+<li>Tenants do not need their own API server — including external customers reached through a portal, API or logical control plane</li>
+<li>You need templates, cost attribution, hibernation or ecosystem integrations, not tenancy alone</li>
+<li>Infrastructure efficiency matters</li>
+<li>You are building an internal developer platform or a customer-facing cloud platform</li>
 </ul>
 <hr>
 <h3 id="choose-vcluster-when">Choose vCluster when<a class="headerlink" href="#choose-vcluster-when" title="Permanent link">#</a></h3>
@@ -8094,8 +8209,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="hybrid-approach-recommended-in-many-cases">Hybrid Approach (Recommended in Many Cases)<a class="headerlink" href="#hybrid-approach-recommended-in-many-cases" title="Permanent link">#</a></h2>
 <p>You can combine both:</p>
 <ul>
-<li>Use <strong>vCluster per customer</strong> (isolation)</li>
-<li>Use <strong>MTO inside each vCluster</strong> (efficiency and governance)</li>
+<li>Use <strong>vCluster</strong> for the tenants that genuinely need their own API server</li>
+<li>Use <strong>MTO</strong> to govern any cluster shared by more than one team — the host cluster, and each virtual cluster that serves several teams</li>
 </ul>
 <p>This gives:</p>
 <ul>
@@ -8120,10 +8235,10 @@ MTO is secure when its policies are enforced — and where tenants never receive
 <hr>
 <h3 id="can-mto-replace-vcluster">Can MTO replace vCluster?<a class="headerlink" href="#can-mto-replace-vcluster" title="Permanent link">#</a></h3>
 <p>No. They solve different problems.<br>
-MTO is for efficient internal multi-tenancy, while vCluster is for stronger isolation.</p>
+vCluster provides control-plane isolation. MTO provides the operating model — tenancy, templates, cost, hibernation and ecosystem integrations — which vCluster does not address at all.</p>
 <hr>
 <h3 id="when-should-i-use-mto-instead-of-vcluster">When should I use MTO instead of vCluster?<a class="headerlink" href="#when-should-i-use-mto-instead-of-vcluster" title="Permanent link">#</a></h3>
-<p>Use MTO for internal platforms where cost, scalability, and governance are priorities.</p>
+<p>Use MTO where tenants do not need their own API server, and where you need more than tenancy — standardized environments, cost attributed per tenant, idle environments slept, and the tenant boundary carried into ArgoCD and your secrets platform. That includes customer-facing platforms whose users never receive cluster credentials.</p>
 <hr>
 <h3 id="does-vcluster-create-real-kubernetes-clusters">Does vCluster create real Kubernetes clusters?<a class="headerlink" href="#does-vcluster-create-real-kubernetes-clusters" title="Permanent link">#</a></h3>
 <p>No. It creates virtual clusters that behave like real ones but share underlying infrastructure.</p>
@@ -8134,8 +8249,8 @@ MTO is for efficient internal multi-tenancy, while vCluster is for stronger isol
 <h3 id="can-mto-and-vcluster-be-used-together">Can MTO and vCluster be used together?<a class="headerlink" href="#can-mto-and-vcluster-be-used-together" title="Permanent link">#</a></h3>
 <p>Yes. This is a common and powerful architecture:</p>
 <ul>
-<li>vCluster for isolation</li>
-<li>MTO for internal multi-tenancy</li>
+<li>vCluster for control-plane isolation</li>
+<li>MTO for the operating model — tenancy, templates, cost, hibernation and ecosystem integrations</li>
 </ul>
 <hr>
 <h3 id="does-mto-support-cost-tracking">Does MTO support cost tracking?<a class="headerlink" href="#does-mto-support-cost-tracking" title="Permanent link">#</a></h3>

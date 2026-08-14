@@ -7184,6 +7184,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><strong>FinOps</strong> — cost-to-serve per customer as a figure you read rather than model</li>
 <li><strong>Hibernation</strong> — dormant customer environments stop costing money</li>
 <li><strong>Extensions</strong> — the customer's boundary carried into GitOps and secrets management</li>
+<li><strong>Console</strong> — an interface over the same objects for your own operators, whatever the product layer shows the customer</li>
 </ul>
 <p>The externally facing control plane is a separate layer, and one way to build it is with logical control planes — see <a href="../learn/mto-vs-kcp.html">MTO vs KCP</a>, which describes that composition rather than treating the two as alternatives.</p>
 <p>This is a common and deliberate architecture, and it is why "our customers are external" does not, on its own, rule out a shared cluster. What rules it out is tenants holding cluster credentials whose use you cannot bound, or a regulatory requirement that names infrastructure separation specifically.</p>
