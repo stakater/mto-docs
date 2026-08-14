@@ -7664,7 +7664,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="detailed-comparison">Detailed Comparison<a class="headerlink" href="#detailed-comparison" title="Permanent link">#</a></h2>
 <h3 id="isolation">Isolation<a class="headerlink" href="#isolation" title="Permanent link">#</a></h3>
 <p>Kamaji is decisively stronger. A tenant cluster has its own API server, its own etcd or equivalent data store, its own CRDs and its own nodes. A tenant can be cluster-admin without affecting anyone else.</p>
-<p>MTO's boundary is namespace-based and policy-enforced — appropriate for tenants inside one trust boundary, insufficient for a tenant that needs its own CRDs or genuine cluster-admin rights.</p>
+<p>MTO's boundary is namespace-based and policy-enforced — sufficient wherever tenants do not hold cluster credentials of their own, or hold them without needing their own CRDs or cluster-admin rights; insufficient where they do.</p>
 <h3 id="efficiency">Efficiency<a class="headerlink" href="#efficiency" title="Permanent link">#</a></h3>
 <p>MTO is the more efficient model: one control plane and one operational surface for every tenant.</p>
 <p>Kamaji reduces per-cluster overhead substantially compared with standalone clusters, but each tenant still has a control plane consuming management-cluster capacity and dedicated worker nodes.</p>
@@ -7692,7 +7692,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="how-to-decide">How to Decide<a class="headerlink" href="#how-to-decide" title="Permanent link">#</a></h2>
 <h3 id="choose-mto-when">Choose MTO when<a class="headerlink" href="#choose-mto-when" title="Permanent link">#</a></h3>
 <ul>
-<li>Tenants are teams, departments or customers inside one trust boundary</li>
+<li>Tenants do not need their own API server — including external customers reached through a product layer</li>
 <li>Infrastructure efficiency matters and per-tenant control planes are hard to justify</li>
 <li>The requirement is governance, standardization and cost accountability</li>
 <li>You want one cluster to operate rather than a fleet</li>

@@ -7360,7 +7360,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tr>
 <tr>
 <td>Suits</td>
-<td>Teams, departments and customers inside one trust boundary</td>
+<td>Any tenant that does not need its own API server — including external customers served through a product layer</td>
 </tr>
 <tr>
 <td>Does not suit</td>
@@ -7400,12 +7400,13 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <hr>
 <h2 id="where-it-stops-being-enough">Where it stops being enough<a class="headerlink" href="#where-it-stops-being-enough" title="Permanent link">#</a></h2>
 <ul>
-<li>A tenant is genuinely untrusted or actively adversarial</li>
+<li>A tenant <strong>holds cluster credentials</strong> and is untrusted or adversarial</li>
 <li>A tenant needs its own CRDs, or a conflicting version of a shared one</li>
 <li>A tenant needs cluster-admin-like autonomy inside its own boundary</li>
 <li>A regulatory or contractual requirement demands infrastructure separation</li>
 <li>A tenant's scale or lifecycle justifies its own cluster</li>
 </ul>
+<p>The first point carries a condition that is easy to miss. If tenants never reach the Kubernetes API — because a portal, an API or a logical control plane sits in front — then how much you trust them says nothing about whether the cluster may be shared. Service providers and telecommunications platforms commonly serve entirely external customers from one shared cluster for exactly this reason. See <a href="../overview/deployment-models.html#when-tenants-never-touch-the-cluster-api">Deployment Models</a>.</p>
 <p>For these, see <a href="../overview/deployment-models.html">Deployment Models</a>, which covers virtual clusters, hosted control planes and dedicated clusters, and where each fits.</p>
 <hr>
 <h2 id="the-operational-problem-nobody-expects">The operational problem nobody expects<a class="headerlink" href="#the-operational-problem-nobody-expects" title="Permanent link">#</a></h2>

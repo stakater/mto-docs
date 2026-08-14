@@ -7810,7 +7810,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="detailed-comparison">Detailed Comparison<a class="headerlink" href="#detailed-comparison" title="Permanent link">#</a></h2>
 <h3 id="isolation">Isolation<a class="headerlink" href="#isolation" title="Permanent link">#</a></h3>
 <p>vCluster Platform is stronger: separate API server per environment, per-environment CRDs, cluster-scoped resources that do not collide.</p>
-<p>MTO is namespace-based. Cluster-scoped resources, including CRDs, are shared. For tenants inside one trust boundary this is usually the right trade; for a tenant that needs its own CRDs it is not.</p>
+<p>MTO is namespace-based. Cluster-scoped resources, including CRDs, are shared. Where tenants do not need their own CRDs — including external customers reached through a product layer, who never touch the API at all — this is usually the right trade. For a tenant that does need its own CRDs, it is not.</p>
 <h3 id="efficiency">Efficiency<a class="headerlink" href="#efficiency" title="Permanent link">#</a></h3>
 <p>MTO is materially more efficient. One control plane serves every tenant, so per-tenant overhead is the workloads themselves.</p>
 <p>Each virtual cluster runs its own control plane. At a handful of environments this is negligible; at hundreds it is a real line in the budget and a real operational surface.</p>

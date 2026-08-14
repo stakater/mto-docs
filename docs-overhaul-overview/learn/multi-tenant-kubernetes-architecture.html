@@ -7590,7 +7590,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h3 id="hosted-control-planes">Hosted control planes<a class="headerlink" href="#hosted-control-planes" title="Permanent link">#</a></h3>
 <p>Control planes run as workloads on a management cluster, with dedicated worker nodes per tenant cluster. Genuine per-tenant clusters without dedicated control-plane infrastructure — and a fleet to run.</p>
 <h3 id="dedicated-clusters">Dedicated clusters<a class="headerlink" href="#dedicated-clusters" title="Permanent link">#</a></h3>
-<p>Complete separation and complete duplication of operational cost. The right answer for regulatory boundaries and genuinely untrusted workloads; an expensive default.</p>
+<p>Complete separation and complete duplication of operational cost. The right answer for regulatory boundaries and for adversarial tenants holding cluster credentials; an expensive default.</p>
 <p><a href="../overview/deployment-models.html">Deployment Models</a> compares these directly, including the case for combining them.</p>
 <hr>
 <h2 id="the-layers-above-isolation">The layers above isolation<a class="headerlink" href="#the-layers-above-isolation" title="Permanent link">#</a></h2>
@@ -7598,7 +7598,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h3 id="tenancy-model">Tenancy model<a class="headerlink" href="#tenancy-model" title="Permanent link">#</a></h3>
 <p>Something has to represent the tenant: an object that owns namespaces, membership, allocation, standards and cost, and a controller that keeps the platform matching it. Without this, every relationship between a team and its resources is maintained by hand. See <a href="kubernetes-tenants.html">What is a Tenant in Kubernetes?</a>.</p>
 <h3 id="access-model">Access model<a class="headerlink" href="#access-model" title="Permanent link">#</a></h3>
-<p>Access should be derived from tenant membership, and membership from your existing identity provider groups. Hand-written role bindings per namespace are the most common source of stale permissions.</p>
+<p>Two questions, and the first is often skipped: <strong>do tenants reach the Kubernetes API at all?</strong> On internal platforms they usually do, and access should then be derived from tenant membership, with membership coming from your existing identity provider groups — hand-written role bindings per namespace are the most common source of stale permissions.</p>
+<p>Where a portal, an API or a logical control plane sits in front and no cluster credentials are issued to tenants, the cluster's access model is between the platform team and its own product. That is the standard shape for service providers and telecommunications platforms, and it is why external customers do not by themselves force a stronger isolation model.</p>
 <h3 id="resource-governance">Resource governance<a class="headerlink" href="#resource-governance" title="Permanent link">#</a></h3>
 <p>Allocation belongs at the tenant scope, not per namespace — otherwise a tenant that can create namespaces can multiply its own budget. Guardrails on what a tenant may use (storage classes, ingress classes, priority classes, registries, hostnames) belong at admission, where they are rejected at write time.</p>
 <h3 id="standardization">Standardization<a class="headerlink" href="#standardization" title="Permanent link">#</a></h3>
@@ -7659,7 +7660,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h3 id="what-is-a-multi-tenant-kubernetes-architecture">What is a multi-tenant Kubernetes architecture?<a class="headerlink" href="#what-is-a-multi-tenant-kubernetes-architecture" title="Permanent link">#</a></h3>
 <p>A design that lets several teams, departments or customers share Kubernetes infrastructure, combining an isolation model with a tenancy model that governs ownership, access, allocation, standards and cost.</p>
 <h3 id="should-i-start-with-namespaces-or-virtual-clusters">Should I start with namespaces or virtual clusters?<a class="headerlink" href="#should-i-start-with-namespaces-or-virtual-clusters" title="Permanent link">#</a></h3>
-<p>Start with namespaces unless you have a specific reason not to — a tenant needing its own CRDs, cluster-scoped autonomy, or a trust boundary that a shared API server cannot provide. Isolation is easy to add later for the tenants that need it.</p>
+<p>Start with namespaces unless you have a specific reason not to — a tenant needing its own CRDs, cluster-scoped autonomy, or a boundary that a shared API server cannot provide for tenants who hold credentials to it. Note that external customers served through a product layer, with no cluster credentials issued, are not such a reason. Isolation is easy to add later for the tenants that genuinely need it.</p>
 <h3 id="can-one-architecture-serve-every-tenant">Can one architecture serve every tenant?<a class="headerlink" href="#can-one-architecture-serve-every-tenant" title="Permanent link">#</a></h3>
 <p>Rarely at scale. Most large platforms end up combining a shared cluster for most teams with stronger isolation for the few that require it. What should stay consistent across them is the tenant operating model.</p>
 <h3 id="where-does-gitops-fit">Where does GitOps fit?<a class="headerlink" href="#where-does-gitops-fit" title="Permanent link">#</a></h3>

@@ -7463,7 +7463,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h1 id="how-to-implement-kubernetes-multi-tenancy">How to Implement Kubernetes Multi-Tenancy<a class="headerlink" href="#how-to-implement-kubernetes-multi-tenancy" title="Permanent link">#</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h2>
 <p>This is the practical counterpart to <a href="multi-tenant-kubernetes-architecture.html">Multi-Tenant Kubernetes Architecture</a>: the order to do things in, what to enforce at each step, and the decisions that are expensive to reverse later.</p>
-<p>It assumes the common case — teams, departments or customers inside one organization's trust boundary, sharing a cluster. If your tenants are genuinely untrusted, start at <a href="../overview/deployment-models.html">Deployment Models</a> instead.</p>
+<p>It assumes the common case: tenants sharing a cluster, either as internal teams using <code>kubectl</code> directly, or as external customers reached through a product layer that holds the cluster credentials on their behalf. If tenants hold cluster credentials <em>and</em> need a boundary a shared API server cannot provide, start at <a href="../overview/deployment-models.html">Deployment Models</a> instead.</p>
 <hr>
 <h2 id="tldr">TL;DR<a class="headerlink" href="#tldr" title="Permanent link">#</a></h2>
 <table>

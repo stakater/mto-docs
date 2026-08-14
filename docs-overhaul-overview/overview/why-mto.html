@@ -7143,7 +7143,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="what-mto-does-not-do">What MTO does not do<a class="headerlink" href="#what-mto-does-not-do" title="Permanent link">#</a></h2>
 <p>Honesty is more useful than a longer list:</p>
 <ul>
-<li><strong>It is namespace-based multi-tenancy, not control-plane-per-tenant.</strong> Tenants share the cluster's API server and nodes. If your isolation requirement is a hostile, untrusted tenant that needs its own API server, that is a different architecture — MTO is built for the common case of teams, departments and customers inside one organization's trust boundary.</li>
+<li><strong>It is namespace-based multi-tenancy, not control-plane-per-tenant.</strong> Tenants who hold cluster credentials share the API server and the nodes. If a tenant needs its own API server or its own CRDs, that is a different isolation architecture — though MTO still governs whatever remains shared beneath it, and where tenants reach the platform through a product rather than through <code>kubectl</code>, the constraint does not apply at all. See <a href="deployment-models.html">Deployment Models</a>.</li>
 <li><strong>It does not replace your CI, GitOps or policy engine.</strong> It defines and enforces the tenant boundary, and integrates with the tools you already run.</li>
 <li><strong>It is not a hosted service.</strong> MTO runs in your cluster, on your infrastructure, under your control.</li>
 </ul>

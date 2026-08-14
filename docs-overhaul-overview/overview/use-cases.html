@@ -7308,7 +7308,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li>You are building an internal developer platform or a Kubernetes-based cloud platform.</li>
 </ul>
 <h2 id="where-mto-is-not-the-right-answer">Where MTO is not the right answer<a class="headerlink" href="#where-mto-is-not-the-right-answer" title="Permanent link">#</a></h2>
-<p>If a tenant is genuinely untrusted and needs its own API server — hostile workloads, or a hard regulatory boundary between tenants — namespace-based multi-tenancy is not the tool. MTO is built for teams, departments and customers inside one organization's trust boundary. <a href="deployment-models.html">Deployment Models</a> covers what to reach for instead, and where MTO still fits alongside it.</p>
+<p>The honest limit is narrower than it is usually stated, so it is worth being precise about it.</p>
+<p>MTO is not the answer when a tenant <strong>holds cluster credentials</strong> and needs a boundary that a shared API server cannot provide — its own CRDs, cluster-admin rights, or a regulatory requirement that names infrastructure separation specifically. That is an isolation decision, and <a href="deployment-models.html">Deployment Models</a> covers what to reach for.</p>
+<p>It is <em>not</em> ruled out simply because tenants are external or untrusted. Where customers reach the platform through a portal, an API or a logical control plane and never receive cluster credentials, the shared cluster sits behind your product rather than between you and the customer — and MTO does the tenancy, quota, templates, cost and extension groundwork underneath it. That is the standard shape for service providers and telecommunications platforms, and it is covered in <a href="deployment-models.html#when-tenants-never-touch-the-cluster-api">Deployment Models</a>.</p>
+<p>Even where stronger isolation is genuinely required, MTO usually still applies inside it: a virtual or hosted cluster given to a department is itself shared by several teams.</p>
 <h2 id="next">Next<a class="headerlink" href="#next" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="deployment-models.html">Deployment Models</a> — shared, virtual and dedicated clusters</li>

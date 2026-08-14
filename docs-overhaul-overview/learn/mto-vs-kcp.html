@@ -7079,19 +7079,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#consider-both-when" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-them-together" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Consider both when
+        Using them together
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -7408,19 +7408,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#consider-both-when" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-them-together" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Consider both when
+        Using them together
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -7587,7 +7587,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <tr>
 <td>Same decision?</td>
 <td>Rarely</td>
-<td>Rarely</td>
+<td>Rarely — but often the same architecture, stacked</td>
 </tr>
 </tbody>
 </table>
@@ -7642,16 +7642,34 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li>You need many isolated API surfaces and workloads are not the point</li>
 <li>Control-plane-as-a-service is the product</li>
 </ul>
-<h3 id="consider-both-when">Consider both when<a class="headerlink" href="#consider-both-when" title="Permanent link">#</a></h3>
-<p>You are building a platform whose control plane is itself a product, and which also runs shared workload clusters. They would sit at different layers and solve different problems.</p>
+<hr>
+<h2 id="using-them-together">Using them together<a class="headerlink" href="#using-them-together" title="Permanent link">#</a></h2>
+<p>The interesting case is not choosing between them — it is stacking them, and it is a well-formed architecture rather than a curiosity.</p>
+<p>A service provider or telecommunications platform needs to give external customers a control plane of their own without giving them credentials to a cluster. Logical control planes serve that front: each customer gets an isolated API surface that is the product. Underneath, the workloads still have to run somewhere, be governed, be standardized, be costed and be cleaned up when a customer leaves — on infrastructure the provider owns and wants to use efficiently.</p>
+<pre class="mermaid"><code>flowchart TB
+    Cust["External customers"]
+    KCP["Logical control planes&lt;br/&gt;the customer-facing API"]
+    subgraph Cluster["One shared Kubernetes cluster"]
+        MTO["MTO — tenancy, quota, templates,&lt;br/&gt;FinOps, hibernation, extensions"]
+        NS["Tenant namespaces and workloads"]
+    end
+    Cust --&gt; KCP
+    KCP --&gt; MTO
+    MTO --&gt; NS</code></pre>
+<p>In that stack the two layers do not overlap at any point:</p>
+<ul>
+<li><strong>The logical control plane</strong> gives each customer an isolated API surface and keeps them off the cluster entirely.</li>
+<li><strong>MTO</strong> makes the shared cluster underneath a governed platform: one tenant per customer, quota mapped to their plan, environments standardized by template, cost-to-serve attributed per customer, dormant environments hibernated, and the boundary carried into GitOps and secrets management.</li>
+</ul>
+<p>This is also why "our customers are external, so we need hard multi-tenancy" is too quick a conclusion. Customers who never receive cluster credentials cannot reach the API server, so the shared cluster sits behind the product rather than between the provider and the customer. See <a href="../overview/deployment-models.html#when-tenants-never-touch-the-cluster-api">Deployment Models</a>.</p>
 <hr>
 <h2 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">#</a></h2>
 <ul>
-<li>KCP and MTO are rarely candidates for the same decision.</li>
+<li>KCP and MTO are rarely candidates for the same decision, and frequently candidates for the same architecture.</li>
 <li>KCP is API multi-tenancy; MTO is workload-platform multi-tenancy.</li>
 <li>KCP workspaces do not run workloads, which is usually the deciding fact.</li>
 <li>If you are trying to share a cluster between teams, KCP is not the tool you are looking for.</li>
-<li>If you are building a multi-tenant API service, MTO is not the tool you are looking for.</li>
+<li>Stacked — logical control planes facing the customer, MTO governing the shared cluster beneath — they cover a shape neither reaches alone: external customers, isolated API surfaces, and one efficiently governed cluster underneath.</li>
 </ul>
 <hr>
 <h2 id="frequently-asked-questions-faq">Frequently Asked Questions (FAQ)<a class="headerlink" href="#frequently-asked-questions-faq" title="Permanent link">#</a></h2>
@@ -7660,7 +7678,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h3 id="can-kcp-replace-namespaces-for-multi-tenancy">Can KCP replace namespaces for multi-tenancy?<a class="headerlink" href="#can-kcp-replace-namespaces-for-multi-tenancy" title="Permanent link">#</a></h3>
 <p>Not for workload tenancy. Workspaces isolate API surfaces; namespaces scope workloads on a cluster.</p>
 <h3 id="can-mto-and-kcp-be-used-together">Can MTO and KCP be used together?<a class="headerlink" href="#can-mto-and-kcp-be-used-together" title="Permanent link">#</a></h3>
-<p>They are not integrated, and there is no conflict either. They would address different layers of a larger platform.</p>
+<p>Yes, and it is a natural pairing rather than a coincidence. Logical control planes give external customers an isolated API surface without cluster credentials; MTO governs the shared cluster their workloads actually run on. There is no integration between the two products — they simply occupy different layers, and the layer boundary is clean.</p>
 <h3 id="which-is-more-mature-for-platform-teams">Which is more mature for platform teams?<a class="headerlink" href="#which-is-more-mature-for-platform-teams" title="Permanent link">#</a></h3>
 <p>For sharing a workload cluster between teams, tenant-governance tooling is the established answer. KCP targets a newer and narrower problem space, and its status is worth checking directly before adopting it.</p>
 <h3 id="why-does-kcp-show-up-in-multi-tenancy-searches">Why does KCP show up in multi-tenancy searches?<a class="headerlink" href="#why-does-kcp-show-up-in-multi-tenancy-searches" title="Permanent link">#</a></h3>

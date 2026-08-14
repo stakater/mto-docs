@@ -6470,6 +6470,23 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Soft and hard multi-tenancy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-question-before-that-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The question before that one
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -7229,6 +7246,23 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Soft and hard multi-tenancy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-question-before-that-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The question before that one
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -7449,7 +7483,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <td>Namespace-based</td>
 <td>Namespace, RBAC, quota, network policy</td>
 <td>Highest</td>
-<td>Internal teams sharing a cluster</td>
+<td>Internal teams, and external customers served through a product layer</td>
 </tr>
 <tr>
 <td>Virtual clusters</td>
@@ -7467,7 +7501,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <td>Cluster per tenant</td>
 <td>Whole cluster</td>
 <td>Lowest</td>
-<td>Regulatory or hostile-tenant isolation</td>
+<td>Regulatory separation, or adversarial tenants holding cluster credentials</td>
 </tr>
 </tbody>
 </table>
@@ -7485,10 +7519,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>The important property is that a tenant owns more than one thing. It has people, namespaces, a resource allocation, standards its environments must meet, a cost, and usually access to platform services outside Kubernetes. See <a href="kubernetes-tenants.html">What is a Tenant in Kubernetes?</a> for the full concept.</p>
 <hr>
 <h2 id="soft-and-hard-multi-tenancy">Soft and hard multi-tenancy<a class="headerlink" href="#soft-and-hard-multi-tenancy" title="Permanent link">#</a></h2>
-<p>The distinction that drives every other decision is how much you trust your tenants.</p>
+<p>For tenants who can reach the Kubernetes API, the distinction that drives every other decision is how much you trust them.</p>
 <p><strong>Soft multi-tenancy</strong> assumes tenants are not actively hostile. Teams inside one company, departments, or customers under contract. Tenants share a control plane and nodes; the boundary is enforced by RBAC, quota, network policy and admission control. This is the common case, and it is where namespace-based multi-tenancy belongs.</p>
 <p><strong>Hard multi-tenancy</strong> assumes a tenant may actively try to escape its boundary. Here a shared API server is a shared attack surface, and the answer is separate control planes or separate clusters — accepting the cost that comes with them.</p>
-<p>Being honest about which one you need is the single most useful thing you can do early. Most platforms need soft multi-tenancy and buy hard multi-tenancy by accident, through cluster sprawl.</p>
+<h3 id="the-question-before-that-one">The question before that one<a class="headerlink" href="#the-question-before-that-one" title="Permanent link">#</a></h3>
+<p>Trust only decides the answer for tenants who can reach the Kubernetes API. Before asking how much you trust a tenant, ask whether the tenant talks to the cluster at all:</p>
+<ul>
+<li><strong>Tenants use <code>kubectl</code></strong> — the cluster boundary is the boundary the tenant experiences, and their trustworthiness decides the model. Typical of internal platforms.</li>
+<li><strong>Tenants use a product</strong> — a portal, an API or a logical control plane in front, with no cluster credentials issued. The shared cluster is then an implementation detail behind your product, and the trust question moves to the product layer.</li>
+</ul>
+<p>The second shape is how most service providers, SaaS vendors and telecommunications platforms serve external customers, and it is why "our tenants are external" does not by itself require hard multi-tenancy.</p>
+<p>Being honest about which situation you are in is the single most useful thing you can do early. Most platforms need soft multi-tenancy and buy hard multi-tenancy by accident, through cluster sprawl.</p>
 <hr>
 <h2 id="the-models">The models<a class="headerlink" href="#the-models" title="Permanent link">#</a></h2>
 <h3 id="namespace-based-multi-tenancy">Namespace-based multi-tenancy<a class="headerlink" href="#namespace-based-multi-tenancy" title="Permanent link">#</a></h3>
@@ -7514,7 +7555,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>See <a href="mto-vs-hypershift.html">MTO vs HyperShift</a> and <a href="mto-vs-kamaji.html">MTO vs Kamaji</a>.</p>
 <h3 id="cluster-per-tenant">Cluster per tenant<a class="headerlink" href="#cluster-per-tenant" title="Permanent link">#</a></h3>
 <p>Complete separation, and complete duplication of operational cost — every cluster is another control plane, monitoring stack, upgrade cycle and on-call surface.</p>
-<p>Appropriate for regulatory boundaries, genuinely untrusted workloads, or tenants whose scale justifies it. Expensive as a default.</p>
+<p>Appropriate for regulatory boundaries, adversarial workloads holding cluster credentials, or tenants whose scale justifies it. Expensive as a default.</p>
 <hr>
 <h2 id="isolation-is-not-the-whole-problem">Isolation is not the whole problem<a class="headerlink" href="#isolation-is-not-the-whole-problem" title="Permanent link">#</a></h2>
 <p>Choosing an isolation model answers <em>how separated are tenants</em>. It does not answer:</p>
@@ -7539,7 +7580,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="best-practices">Best practices<a class="headerlink" href="#best-practices" title="Permanent link">#</a></h2>
 <ul>
 <li><strong>Decide what a tenant is before choosing a tool.</strong> The tool follows the model, not the reverse.</li>
-<li><strong>Be honest about the trust boundary.</strong> Do not pay for hard multi-tenancy you do not need — or assume soft multi-tenancy is enough when it is not.</li>
+<li><strong>Establish who holds cluster credentials before debating trust.</strong> Tenants reached through a product layer never touch the API server, so their trustworthiness does not decide the isolation model. Do not pay for hard multi-tenancy you do not need — or assume soft multi-tenancy is enough when a tenant with API access is genuinely adversarial.</li>
 <li><strong>Make the tenant a declarative object.</strong> If the boundary lives in Git and is continuously reconciled, drift is corrected rather than discovered.</li>
 <li><strong>Enforce at admission, not in documentation.</strong> A standard that is only written down is a standard that is only sometimes met.</li>
 <li><strong>Attribute cost from the start.</strong> Retrofitting attribution onto an established cluster means retrofitting a labelling convention onto everything already running.</li>
@@ -7548,7 +7589,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <hr>
 <h2 id="frequently-asked-questions-faq">Frequently Asked Questions (FAQ)<a class="headerlink" href="#frequently-asked-questions-faq" title="Permanent link">#</a></h2>
 <h3 id="is-namespace-based-multi-tenancy-secure-enough">Is namespace-based multi-tenancy secure enough?<a class="headerlink" href="#is-namespace-based-multi-tenancy-secure-enough" title="Permanent link">#</a></h3>
-<p>For tenants inside one organization's trust boundary — teams, departments, contracted customers — yes, provided RBAC, quota, network policy and admission control are actually enforced rather than documented. For genuinely untrusted or hostile tenants, a shared API server is a shared attack surface and you want separate control planes.</p>
+<p>For tenants who hold cluster credentials, it is sufficient when they are not adversarial — teams, departments, contracted customers — provided RBAC, quota, network policy and admission control are actually enforced rather than documented. For adversarial tenants with API access, a shared API server is a shared attack surface and you want separate control planes.</p>
+<p>For tenants who never receive cluster credentials, the question does not arise in the same form: they cannot reach the API server, so the boundary that matters is the one your product layer enforces.</p>
 <h3 id="what-is-the-difference-between-soft-and-hard-multi-tenancy">What is the difference between soft and hard multi-tenancy?<a class="headerlink" href="#what-is-the-difference-between-soft-and-hard-multi-tenancy" title="Permanent link">#</a></h3>
 <p>Soft multi-tenancy assumes tenants are not adversarial and separates them with Kubernetes policy. Hard multi-tenancy assumes they might be, and separates them at the control plane or cluster level.</p>
 <h3 id="do-virtual-clusters-replace-namespace-based-multi-tenancy">Do virtual clusters replace namespace-based multi-tenancy?<a class="headerlink" href="#do-virtual-clusters-replace-namespace-based-multi-tenancy" title="Permanent link">#</a></h3>
