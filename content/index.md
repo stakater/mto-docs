@@ -63,6 +63,8 @@ See [How MTO Works](overview/how-it-works.md) for the full reconciliation path.
 - [Why MTO](overview/why-mto.md) — the business argument
 - [Key Capabilities](overview/key-features.md) — capability by capability
 - [Use Cases](overview/use-cases.md) — the shapes this takes in practice
+- [Deployment Models](overview/deployment-models.md) — shared, virtual and dedicated clusters
+- [Comparisons](learn/index.md) — MTO against Capsule, vCluster, Loft and the rest, by layer
 
 ### Running MTO
 

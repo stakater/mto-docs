@@ -130,6 +130,7 @@ Even where stronger isolation is genuinely required, MTO usually still applies i
 ## Next
 
 * [Deployment Models](deployment-models.md) — shared, virtual and dedicated clusters
+* [Comparisons](../learn/index.md) — MTO against the alternatives, sorted by the layer each one addresses
 * [Key Capabilities](key-features.md) — what each capability area includes
 * [How MTO Works](how-it-works.md) — the reconciliation path, end to end
 * [Create a Tenant](../guides/create-tenant.md) — start with one object

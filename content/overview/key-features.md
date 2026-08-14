@@ -153,4 +153,5 @@ More details on [Console](../console/overview.md).
 
 * [How MTO Works](how-it-works.md) — how these fit together at runtime
 * [Use Cases](use-cases.md) — the shapes this takes in practice
+* [Comparisons](../learn/index.md) — how these capabilities compare with other multi-tenancy tooling
 * [Create a Tenant](../guides/create-tenant.md) — start with one object

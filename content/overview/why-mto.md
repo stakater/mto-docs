@@ -60,4 +60,5 @@ Honesty is more useful than a longer list:
 - [Key Capabilities](key-features.md) — what each capability area includes
 - [Deployment Models](deployment-models.md) — where MTO fits alongside virtual and dedicated clusters
 - [Use Cases](use-cases.md) — the shapes this takes in practice
+- [Comparisons](../learn/index.md) — how MTO differs from Capsule, vCluster, Loft, HNC and the hosted-control-plane tools
 - [Create a Tenant](../guides/create-tenant.md) — try it
