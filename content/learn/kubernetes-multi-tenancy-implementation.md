@@ -103,7 +103,7 @@ Each of these configured by hand is another system that drifts from the tenant t
 
 Everything above can be assembled from Kubernetes primitives plus controllers you write. Teams regularly start down that path, because a first version arrives quickly and convincingly.
 
-The cost is never in getting it working. It is in the continuous reconciliation, the admission webhook sitting in the write path of every workload, the identity provider integration, the cost pipeline with storage and history, and keeping all of it correct across Kubernetes upgrades. MTO's own changelog runs from v0.2 to v1.9 — eight major version series of development and refinement, with the tenancy model restructured more than once — and tenancy is one of its six capability areas.
+The cost is never in getting it working. It is in the continuous reconciliation, the admission webhook sitting in the write path of every workload, the identity provider integration, the cost pipeline with storage and history, and keeping all of it correct across Kubernetes upgrades. For scale: MTO has been in continuous development since December 2020 — more than five years, across eight major version series — and tenancy is one of its six capability areas.
 
 The question is therefore not whether you could build it. It is whether a multi-year commitment to platform tenancy is the best use of a team whose product is something else.
 

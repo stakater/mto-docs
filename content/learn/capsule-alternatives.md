@@ -60,7 +60,7 @@ The alternative teams reach for most often, and the one whose scale is hardest t
 
 The primitives are all in Kubernetes, so a first version arrives quickly and convincingly. What follows is the actual work: continuous reconciliation, an admission webhook in the write path of every workload, identity provider integration, a cost pipeline with storage and history, template rendering that reaches namespaces created after the template was written, and keeping every part of it correct across Kubernetes upgrades that do not care about your controller.
 
-For scale, MTO's own changelog is public and runs from v0.2 to v1.9 — eight major version series of continuous development and refinement, with the tenancy model itself restructured more than once along the way. That is what the finished version of this list costs, and tenancy is one of its six capability areas.
+For scale: MTO has been in continuous development since December 2020 — more than five years, across eight major version series from v0.2 to v1.9, with the tenancy model itself restructured more than once along the way. The changelog is public. That is what the finished version of this list costs, and tenancy is one of its six capability areas.
 
 None of that means it cannot be done. It means the decision is not "can we build this" — it is whether a multi-year platform-engineering commitment to something that is not your product is the best use of the team. See [How to Implement Kubernetes Multi-Tenancy](kubernetes-multi-tenancy-implementation.md) for what the list actually contains.
 
@@ -97,7 +97,7 @@ If you evaluate one of these against Capsule feature by feature you will conclud
 - MTO is the closest comparison and the widest in scope; the trade is commercial licensing.
 - HNC covers policy propagation but has no tenant abstraction.
 - vCluster, Loft, Kamaji and HyperShift isolate control planes and leave governance unsolved.
-- Building it yourself is possible, and consistently underestimated — MTO's own changelog spans eight major version series.
+- Building it yourself is possible, and consistently underestimated — MTO has been in continuous development since December 2020.
 
 ---
 

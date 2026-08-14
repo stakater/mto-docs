@@ -40,6 +40,8 @@ The platform team's job shifts from executing requests to **defining guardrails*
 
 **Governance follows the tenant out of Kubernetes.** Extensions project the same tenant boundary into the tools around the cluster — an ArgoCD AppProject scoped to the tenant's repositories and namespaces, Vault roles and policies scoped to its secrets. One definition, one boundary, instead of four systems you have to keep in sync by hand.
 
+**It is not a first version.** MTO has been in continuous development since December 2020 — more than five years across eight major version series — in production on Kubernetes and OpenShift. The [changelog](../release-notes.md) is public, including the migrations, so you can see what has changed under customers rather than take the maturity on trust.
+
 **Both audiences get an interface.** Administrators get a console for tenants, quotas, costs and capacity; tenant users get a self-service view of what they own. Both read and write the same Kubernetes objects, so there is no second source of truth.
 
 ## What MTO does not do
