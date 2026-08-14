@@ -20,13 +20,20 @@ The `kubectl-tenant` plugin adds that missing verb.
 
 ## Installation
 
-Download the binary for your platform from [GitHub Releases](https://github.com/stakater/kubectl-tenant/releases), substituting the current version:
+Releases are published as archives for Linux, macOS and Windows on `amd64`, `arm64` and 32-bit architectures. Pick the one matching your machine from [GitHub Releases](https://github.com/stakater/kubectl-tenant/releases):
 
 ```bash
-curl -L https://github.com/stakater/kubectl-tenant/releases/download/v0.0.1/kubectl-tenant-linux-amd64 -o kubectl-tenant
+VERSION=v1.0.0
+OS=linux            # linux | darwin | windows
+ARCH=amd64          # amd64 | arm64 | 386
+
+curl -sL "https://github.com/stakater/kubectl-tenant/releases/download/${VERSION}/kubectl-tenant_${VERSION}_${OS}_${ARCH}.tar.gz" \
+  | tar -xz kubectl-tenant
 chmod +x kubectl-tenant
 mv kubectl-tenant ~/.local/bin/   # ensure this path is in your $PATH
 ```
+
+Each release also publishes a checksums file if you want to verify the download before installing.
 
 `kubectl` discovers any executable named `kubectl-*` on your `PATH` and exposes it as a nested command, so no further configuration is needed. Verify it:
 
