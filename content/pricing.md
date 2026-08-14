@@ -21,17 +21,11 @@ The tenant limit is the line, and it is a low one by design — two tenants is e
 
 **Enterprise** is what a shared platform needs. Once a third team, department or customer arrives, the tenant limit is reached — and at that point you also want a support commitment, since the platform is now in the path of other people's work.
 
-## How the Enterprise licence is measured
+## How it is licensed
 
-MTO is licensed against the scale of what it governs. What counts as scale depends on what you are building with it, because the two common shapes are genuinely different — and a measure that is fair for one is not fair for the other.
+The Enterprise licence is **per cluster** — one licence for each cluster MTO is installed on, whatever number of tenants, namespaces or nodes that cluster carries.
 
-**An internal platform.** You run Kubernetes for teams inside your own organization. Scale tracks the clusters you operate, so the licence follows the cluster. This is the straightforward case and the one most Enterprise customers are in.
-
-**A platform you sell.** You are a service provider, a managed service provider or an internal cloud provider, and MTO is part of what your customers are paying for. Here the infrastructure is a poor measure of scale: one large bare-metal cluster can carry a great many customers. Licensing for this shape is agreed against the scale of the service rather than the hardware underneath it.
-
-Same product and the same capabilities either way. What changes is only what the licence is measured against, so that it stays proportionate to what MTO is doing for you.
-
-To keep the conversation short, it helps to arrive with four things: which of the two shapes above you are in, roughly how many tenants you expect, how many clusters you run, and whether you need Standard or Premium support.
+Contact [`sales@stakater.com`](mailto:sales@stakater.com) for pricing.
 
 ## Support plans
 
