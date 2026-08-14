@@ -7192,7 +7192,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    MTO vs HyperShift
+    MTO vs Hypershift
   
 
     
@@ -7629,7 +7629,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <tr>
 <td>Core abstraction</td>
 <td><code>Tenant</code></td>
-<td>Namespace hierarchy and subnamespaces</td>
+<td>Namespace hierarchy and child namespaces</td>
 </tr>
 <tr>
 <td>Membership model</td>
@@ -7665,12 +7665,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </table>
 <hr>
 <h2 id="what-is-hnc">What is HNC?<a class="headerlink" href="#what-is-hnc" title="Permanent link">#</a></h2>
-<p>HNC introduces a parent-child relationship between namespaces. A namespace can be declared the child of another, and HNC creates <strong>subnamespaces</strong> beneath a parent on request.</p>
+<p>HNC introduces a parent-child relationship between namespaces. A namespace can be declared the child of another, and HNC creates <strong>child namespaces</strong> beneath a parent on request.</p>
 <p>Its central capability is <strong>propagation</strong>: configured object types — typically RBAC roles and bindings, network policies, resource quotas, secrets and config maps — are copied from a parent namespace to all of its descendants and kept in sync.</p>
 <h3 id="key-characteristics">Key Characteristics<a class="headerlink" href="#key-characteristics" title="Permanent link">#</a></h3>
 <ul>
 <li>Namespace parent-child hierarchy</li>
-<li>Subnamespace creation delegated to namespace owners</li>
+<li>Child-namespace creation delegated to namespace owners</li>
 <li>Policy object propagation down the tree</li>
 <li>Hierarchical RBAC, so access granted at a parent applies to descendants</li>
 <li>Open source, from Kubernetes SIG Multi-Tenancy</li>
@@ -7757,7 +7757,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>MTO vs HNC
 Hierarchical Namespace Controller
 Kubernetes namespace hierarchy
-subnamespaces Kubernetes
+child namespaces Kubernetes
 HNC multi-tenancy
 Kubernetes SIG multi-tenancy</p>
 

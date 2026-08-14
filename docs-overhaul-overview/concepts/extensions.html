@@ -6970,7 +6970,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    MTO vs HyperShift
+    MTO vs Hypershift
   
 
     
@@ -7171,7 +7171,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><strong>Cluster-wide integrations are inert until configured.</strong> If <code>spec.integrations.argocd</code> is not set in the IntegrationConfig, MTO has no ArgoCD configuration and creates nothing there. The same holds for Vault and OpenBao.</li>
 <li><strong>Per-tenant extensions are created per tenant.</strong> A tenant with no <code>Extensions</code> resource gets no <code>AppProject</code>, whatever other tenants are doing.</li>
 </ul>
-<p>That matters when adopting MTO on a cluster already in production. If you have ArgoCD <code>AppProjects</code> you maintain in Git today, leave the integration unconfigured and MTO will not touch them — there is no reconcile to lose and no migration to perform. The same is true of Vault or OpenBao policies managed elsewhere.</p>
+<p>That matters when adopting MTO on a cluster already in production. If you have ArgoCD <code>AppProjects</code> you maintain in Git today, leave the integration unset and MTO will not touch them — there is no reconcile to lose and no migration to perform. The same is true of Vault or OpenBao policies managed elsewhere.</p>
 <p>You can then enable an extension for one tenant, see what it produces, and decide whether to move the rest. Adoption is incremental by construction rather than by exception.</p>
 <h2 id="the-four-mechanisms">The four mechanisms<a class="headerlink" href="#the-four-mechanisms" title="Permanent link">#</a></h2>
 <p>MTO extends into surrounding systems in four different ways. Which one applies depends on the system, and the distinction matters because it determines <em>where</em> you configure it.</p>

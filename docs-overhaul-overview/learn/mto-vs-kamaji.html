@@ -7103,7 +7103,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <a href="#how-does-kamaji-differ-from-hypershift" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How does Kamaji differ from HyperShift?
+        How does Kamaji differ from Hypershift?
       
     </span>
   </a>
@@ -7111,10 +7111,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#kamaji-and-capsule-are-both-from-clastix-do-they-compete" class="md-nav__link">
+  <a href="#kamaji-and-capsule-share-maintainers-do-they-compete" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Kamaji and Capsule are both from Clastix. Do they compete?
+        Kamaji and Capsule share maintainers. Do they compete?
       
     </span>
   </a>
@@ -7181,7 +7181,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    MTO vs HyperShift
+    MTO vs Hypershift
   
 
     
@@ -7508,7 +7508,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <a href="#how-does-kamaji-differ-from-hypershift" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How does Kamaji differ from HyperShift?
+        How does Kamaji differ from Hypershift?
       
     </span>
   </a>
@@ -7516,10 +7516,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </li>
         
           <li class="md-nav__item">
-  <a href="#kamaji-and-capsule-are-both-from-clastix-do-they-compete" class="md-nav__link">
+  <a href="#kamaji-and-capsule-share-maintainers-do-they-compete" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Kamaji and Capsule are both from Clastix. Do they compete?
+        Kamaji and Capsule share maintainers. Do they compete?
       
     </span>
   </a>
@@ -7586,7 +7586,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <h1 id="mto-vs-kamaji">MTO vs Kamaji<a class="headerlink" href="#mto-vs-kamaji" title="Permanent link">#</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h2>
-<p>Kamaji is an open-source project from Clastix that runs tenant Kubernetes control planes as pods on a management cluster, with worker nodes joining each tenant control plane. It is the upstream-Kubernetes counterpart to the hosted-control-plane idea.</p>
+<p>Kamaji is an open-source project that runs tenant Kubernetes control planes as pods on a management cluster, with worker nodes joining each tenant control plane. It is the upstream-Kubernetes counterpart to the hosted-control-plane idea.</p>
 <p>Like every hosted-control-plane technology, Kamaji answers an isolation question. Multi-Tenant Operator answers a governance question. Comparing them directly only makes sense once that split is clear.</p>
 <hr>
 <h2 id="tldr">TL;DR<a class="headerlink" href="#tldr" title="Permanent link">#</a></h2>
@@ -7639,7 +7639,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <hr>
 <h2 id="what-is-kamaji">What is Kamaji?<a class="headerlink" href="#what-is-kamaji" title="Permanent link">#</a></h2>
 <p>Kamaji runs the control plane of each tenant cluster as ordinary pods on a management cluster, rather than on dedicated control-plane machines. Worker nodes join the tenant control plane, giving each tenant a real Kubernetes cluster that passes upstream conformance without the usual per-cluster control-plane cost.</p>
-<p>It comes from Clastix, the same organization behind Capsule — which is a useful signal about how these layers relate. One product isolates control planes; the other governs tenancy within a cluster. They are deliberately separate things.</p>
+<p>It comes from the same maintainers as Capsule — which is a useful signal about how these layers relate. One product isolates control planes; the other governs tenancy within a cluster. They are deliberately separate things.</p>
 <h3 id="key-characteristics">Key Characteristics<a class="headerlink" href="#key-characteristics" title="Permanent link">#</a></h3>
 <ul>
 <li>Tenant control planes as pods on a management cluster</li>
@@ -7719,15 +7719,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li>Kamaji makes per-tenant clusters affordable; it does not make governance unnecessary.</li>
 <li>A tenant cluster shared by several teams has the same governance problem as any shared cluster.</li>
 <li>MTO is the more efficient answer where tenants do not need their own control plane.</li>
-<li>Kamaji and HyperShift address the same architectural idea — Kamaji for upstream Kubernetes, HyperShift for OpenShift.</li>
+<li>Kamaji and Hypershift address the same architectural idea — Kamaji for upstream Kubernetes, Hypershift for OpenShift.</li>
 </ul>
 <hr>
 <h2 id="frequently-asked-questions-faq">Frequently Asked Questions (FAQ)<a class="headerlink" href="#frequently-asked-questions-faq" title="Permanent link">#</a></h2>
 <h3 id="is-kamaji-a-multi-tenancy-solution">Is Kamaji a multi-tenancy solution?<a class="headerlink" href="#is-kamaji-a-multi-tenancy-solution" title="Permanent link">#</a></h3>
 <p>It is an isolation solution: a cluster per tenant, run affordably. It does not model tenants, membership, allocation, standards or cost.</p>
-<h3 id="how-does-kamaji-differ-from-hypershift">How does Kamaji differ from HyperShift?<a class="headerlink" href="#how-does-kamaji-differ-from-hypershift" title="Permanent link">#</a></h3>
-<p>Same architectural idea — control planes as workloads on a management cluster. Kamaji targets upstream Kubernetes; HyperShift targets OpenShift. See <a href="mto-vs-hypershift.html">MTO vs HyperShift</a>.</p>
-<h3 id="kamaji-and-capsule-are-both-from-clastix-do-they-compete">Kamaji and Capsule are both from Clastix. Do they compete?<a class="headerlink" href="#kamaji-and-capsule-are-both-from-clastix-do-they-compete" title="Permanent link">#</a></h3>
+<h3 id="how-does-kamaji-differ-from-hypershift">How does Kamaji differ from Hypershift?<a class="headerlink" href="#how-does-kamaji-differ-from-hypershift" title="Permanent link">#</a></h3>
+<p>Same architectural idea — control planes as workloads on a management cluster. Kamaji targets upstream Kubernetes; Hypershift targets OpenShift. See <a href="mto-vs-hypershift.html">MTO vs Hypershift</a>.</p>
+<h3 id="kamaji-and-capsule-share-maintainers-do-they-compete">Kamaji and Capsule share maintainers. Do they compete?<a class="headerlink" href="#kamaji-and-capsule-share-maintainers-do-they-compete" title="Permanent link">#</a></h3>
 <p>No, and that is instructive: Kamaji isolates control planes, Capsule governs tenancy within a cluster. They are separate products because they address separate layers — the same split as Kamaji and MTO.</p>
 <h3 id="can-mto-run-inside-a-kamaji-tenant-cluster">Can MTO run inside a Kamaji tenant cluster?<a class="headerlink" href="#can-mto-run-inside-a-kamaji-tenant-cluster" title="Permanent link">#</a></h3>
 <p>A tenant cluster is an ordinary Kubernetes cluster, so the usual installation applies. Whether it is worth doing depends on whether that cluster is shared by more than one team.</p>
@@ -7737,7 +7737,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="keywords">Keywords<a class="headerlink" href="#keywords" title="Permanent link">#</a></h2>
 <p>MTO vs Kamaji
 Kamaji hosted control planes
-Clastix Kamaji
+Kamaji Kubernetes
 cluster as a service Kubernetes
 tenant control planes
 managed Kubernetes multi-tenancy</p>

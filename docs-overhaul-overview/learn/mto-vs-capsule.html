@@ -7253,7 +7253,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    MTO vs HyperShift
+    MTO vs Hypershift
   
 
     
@@ -7792,7 +7792,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </table>
 <hr>
 <h2 id="what-is-capsule">What is Capsule?<a class="headerlink" href="#what-is-capsule" title="Permanent link">#</a></h2>
-<p>Capsule is a CNCF Sandbox project from Clastix that implements namespace-based multi-tenancy through a <code>Tenant</code> custom resource. Namespaces belong to a tenant, and Capsule enforces the tenant's policies on them — resource quota, network policies, admission constraints and access.</p>
+<p>Capsule is a CNCF Sandbox project that implements namespace-based multi-tenancy through a <code>Tenant</code> custom resource. Namespaces belong to a tenant, and Capsule enforces the tenant's policies on them — resource quota, network policies, admission constraints and access.</p>
 <p>It also ships a proxy component that lets tenant users list cluster-scoped resources filtered to what their tenant owns, which addresses a real gap in namespace-based tenancy: a tenant user running <code>kubectl get namespaces</code> would otherwise see nothing or need cluster-wide read access.</p>
 <h3 id="key-characteristics">Key Characteristics<a class="headerlink" href="#key-characteristics" title="Permanent link">#</a></h3>
 <ul>
@@ -7858,7 +7858,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>For the command line, both products solve the same RBAC limitation — a tenant user granted <code>list</code> on a cluster-scoped resource sees every instance of it, not only their own. Capsule solves it with a proxy in the request path; MTO solves it with the <a href="../cli/overview.html"><code>kubectl-tenant</code> plugin</a>, which reads the Tenant status and filters results client-side. No proxy to run, and ordinary <code>kubectl</code> everywhere else.</p>
 <p>Capsule has no console.</p>
 <h3 id="licence-and-support">Licence and support<a class="headerlink" href="#licence-and-support" title="Permanent link">#</a></h3>
-<p>Capsule is open source with community support and commercial support available from Clastix. MTO is a commercial product with vendor support. For some organizations this decides the question before any feature comparison starts.</p>
+<p>Capsule is open source, with community support and commercial support available from its maintainers. MTO is a commercial product with vendor support. For some organizations this decides the question before any feature comparison starts.</p>
 <hr>
 <h2 id="what-you-assemble-instead">What you assemble instead<a class="headerlink" href="#what-you-assemble-instead" title="Permanent link">#</a></h2>
 <p>On tenancy the two are close, and either will serve. That is why the comparison is decided almost entirely by the five pillars above — each of which is a product in its own right.</p>
@@ -7950,14 +7950,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h3 id="does-capsule-support-cost-showback">Does Capsule support cost showback?<a class="headerlink" href="#does-capsule-support-cost-showback" title="Permanent link">#</a></h3>
 <p>No. Cost attribution is outside its scope; you would pair it with separate cost tooling and maintain the labelling that tooling requires.</p>
 <h3 id="is-capsule-good-enough-for-an-internal-developer-platform">Is Capsule good enough for an internal developer platform?<a class="headerlink" href="#is-capsule-good-enough-for-an-internal-developer-platform" title="Permanent link">#</a></h3>
-<p>For the tenancy layer, often yes. An IDP usually also needs standardization, cost visibility and self-service, which you would assemble around it.</p>
+<p>For the tenancy layer, often yes. An internal developer platform usually also needs standardization, cost visibility and self-service, which you would assemble around it.</p>
 <h3 id="which-is-easier-to-operate">Which is easier to operate?<a class="headerlink" href="#which-is-easier-to-operate" title="Permanent link">#</a></h3>
 <p>Capsule has a smaller surface, which is genuinely simpler. MTO installs more — including a console, an identity broker and a cost pipeline — but installs them for you rather than leaving them as integration projects.</p>
 <hr>
 <h2 id="keywords">Keywords<a class="headerlink" href="#keywords" title="Permanent link">#</a></h2>
 <p>MTO vs Capsule
+alternative to Capsule
 Capsule Kubernetes multi-tenancy
-Capsule alternative
 open source Kubernetes multi-tenancy
 Kubernetes tenant operator
 namespace-based multi-tenancy tools</p>

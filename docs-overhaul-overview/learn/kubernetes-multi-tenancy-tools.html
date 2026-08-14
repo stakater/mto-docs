@@ -6830,7 +6830,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <a href="#hypershift" class="md-nav__link">
     <span class="md-ellipsis">
       
-        HyperShift
+        Hypershift
       
     </span>
   </a>
@@ -7159,7 +7159,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    MTO vs HyperShift
+    MTO vs Hypershift
   
 
     
@@ -7375,7 +7375,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <a href="#hypershift" class="md-nav__link">
     <span class="md-ellipsis">
       
-        HyperShift
+        Hypershift
       
     </span>
   </a>
@@ -7587,7 +7587,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <td>Control-plane isolation</td>
 </tr>
 <tr>
-<td>HyperShift</td>
+<td>Hypershift</td>
 <td>Hosted control planes</td>
 <td>Control-plane isolation, OpenShift</td>
 </tr>
@@ -7619,11 +7619,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>It appears in this section because of the first item. It is listed here only once, but it is the only entry on this page that addresses more than one layer.</p>
 <p>Best suited to organizations running Kubernetes as an internal platform for many teams, or as a shared platform for many customers, where governance and cost accountability matter as much as isolation.</p>
 <h3 id="capsule">Capsule<a class="headerlink" href="#capsule" title="Permanent link">#</a></h3>
-<p>A CNCF Sandbox project from Clastix, and the closest open-source comparison to MTO's core. Capsule introduces a <code>Tenant</code> custom resource, groups namespaces under it, and enforces per-tenant policy on namespaces, quota, network policy and admission. A proxy component lets tenant users list resources scoped to their tenant.</p>
+<p>A CNCF Sandbox project, and the closest open-source comparison to MTO's core. Capsule introduces a <code>Tenant</code> custom resource, groups namespaces under it, and enforces per-tenant policy on namespaces, quota, network policy and admission. A proxy component lets tenant users list resources scoped to their tenant.</p>
 <p>Best suited to teams that want namespace-based tenant governance from an open-source project and are prepared to assemble cost visibility, standardization and platform integrations separately.</p>
 <p>See <a href="mto-vs-capsule.html">MTO vs Capsule</a>.</p>
 <h3 id="hierarchical-namespace-controller-hnc">Hierarchical Namespace Controller (HNC)<a class="headerlink" href="#hierarchical-namespace-controller-hnc" title="Permanent link">#</a></h3>
-<p>A Kubernetes SIG Multi-Tenancy project. HNC lets namespaces have parents, creates subnamespaces beneath them, and propagates policy objects — RBAC, network policies, and other configured types — down the hierarchy.</p>
+<p>A Kubernetes SIG Multi-Tenancy project. HNC lets namespaces have parents, creates child namespaces beneath them, and propagates policy objects — RBAC, network policies, and other configured types — down the hierarchy.</p>
 <p>It solves one specific and real problem: keeping policy consistent across a group of related namespaces. It is not a tenant model — there is no membership, allocation, cost or lifecycle concept — and it is usually a component of a platform rather than the platform.</p>
 <p>See <a href="mto-vs-hnc.html">MTO vs HNC</a>.</p>
 <hr>
@@ -7637,11 +7637,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>The nearest commercial comparison to MTO, though built on a different isolation primitive — virtual clusters first, where MTO governs a shared cluster.</p>
 <p>See <a href="mto-vs-loft.html">MTO vs Loft</a>.</p>
 <h3 id="kamaji">Kamaji<a class="headerlink" href="#kamaji" title="Permanent link">#</a></h3>
-<p>A Clastix project that runs tenant Kubernetes control planes as pods on a management cluster, with worker nodes joining each tenant control plane. The result is real, separate clusters without dedicated control-plane machines.</p>
+<p>An open-source project, from the same maintainers as Capsule, that runs tenant Kubernetes control planes as pods on a management cluster, with worker nodes joining each tenant control plane. The result is real, separate clusters without dedicated control-plane machines.</p>
 <p>See <a href="mto-vs-kamaji.html">MTO vs Kamaji</a>.</p>
-<h3 id="hypershift">HyperShift<a class="headerlink" href="#hypershift" title="Permanent link">#</a></h3>
+<h3 id="hypershift">Hypershift<a class="headerlink" href="#hypershift" title="Permanent link">#</a></h3>
 <p>Red Hat's hosted control planes for OpenShift: control planes run as workloads on a management cluster with worker nodes attached per hosted cluster. Same architectural idea as Kamaji, in the OpenShift ecosystem.</p>
-<p>See <a href="mto-vs-hypershift.html">MTO vs HyperShift</a>.</p>
+<p>See <a href="mto-vs-hypershift.html">MTO vs Hypershift</a>.</p>
 <hr>
 <h2 id="a-different-problem-entirely">A different problem entirely<a class="headerlink" href="#a-different-problem-entirely" title="Permanent link">#</a></h2>
 <h3 id="kcp">KCP<a class="headerlink" href="#kcp" title="Permanent link">#</a></h3>
@@ -7725,7 +7725,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h3 id="do-i-need-more-than-one-of-these">Do I need more than one of these?<a class="headerlink" href="#do-i-need-more-than-one-of-these" title="Permanent link">#</a></h3>
 <p>Often, yes. A governance layer plus an isolation layer is a common and sensible combination, particularly once one or two tenants need stronger isolation than the rest.</p>
 <h3 id="which-of-these-are-open-source">Which of these are open source?<a class="headerlink" href="#which-of-these-are-open-source" title="Permanent link">#</a></h3>
-<p>Capsule, HNC, vCluster, Kamaji, HyperShift and KCP are open source. MTO and vCluster Platform are commercial products.</p>
+<p>Capsule, HNC, vCluster, Kamaji, Hypershift and KCP are open source. MTO and vCluster Platform are commercial products.</p>
 <hr>
 <h2 id="keywords">Keywords<a class="headerlink" href="#keywords" title="Permanent link">#</a></h2>
 <p>Kubernetes multi-tenancy tools
