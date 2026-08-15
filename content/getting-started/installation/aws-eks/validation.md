@@ -1,4 +1,4 @@
-# MTO Validation Guide
+# Validate MTO on EKS
 
 In this guide, we will set up **two tenants**—**Logistics** and **Retail**—for an imaginary e-commerce company, each with one user.
 
@@ -171,7 +171,7 @@ Set the following environment variables from the access keys generated in [previ
 - `AWS_SECRET_ACCESS_KEY`
 - `AWS_REGION` (optional)
 
-Execute the following command to update the kube context
+Execute the following command to update the `kubeconfig` context
 
 ```sh
 aws configure set region $AWS_REGION
@@ -227,7 +227,7 @@ Set the following environment variables from the access keys generated in [previ
 - `AWS_SECRET_ACCESS_KEY`
 - `AWS_REGION` (optional)
 
-Execute the following command to update the kube context
+Execute the following command to update the `kubeconfig` context
 
 ```sh
 aws configure set region $AWS_REGION

@@ -145,7 +145,7 @@ spec:
 
 You can uninstall MTO by following these steps:
 
-* Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set `spec.onDelete.cleanNamespaces` to `false` for all those tenants whose namespaces you want to retain, and `spec.onDelete.cleanAppProject` to `false` for all those tenants whose AppProject you want to retain. For more details check out [onDelete](../../guides/delete-tenant.md)
+* Decide whether to retain tenant namespaces and ArgoCD AppProjects. Set `spec.onDeletePurgeNamespaces` to `false` on every tenant whose namespaces you want to keep, and `argoCD.onDeletePurgeAppProject` to `false` on its `Extensions` resource for every AppProject you want to keep. See [Delete a Tenant](../../guides/delete-tenant.md) and [Uninstalling MTO](../uninstalling.md).
 
 * After making the required changes open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
 
