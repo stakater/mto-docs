@@ -7067,18 +7067,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="decide-what-to-keep">Decide what to keep<a class="headerlink" href="#decide-what-to-keep" title="Permanent link">#</a></h2>
 <p>Deleting a <code>Tenant</code> can delete what the tenant owns, so set the retention you want on each tenant <strong>before</strong> removing the operator that would act on it:</p>
 <ul>
-<li><code>spec.onDeletePurgeNamespaces</code> on the <code>Tenant</code> — whether the tenant's namespaces are deleted along with it. It defaults to <code>false</code>, so namespaces survive unless you asked otherwise. See <a href="../guides/delete-tenant.html">Delete a Tenant</a>.</li>
+<li><code>spec.namespaces.onDeletePurgeNamespaces</code> on the <code>Tenant</code> — whether the tenant's namespaces are deleted along with it. It defaults to <code>false</code>, so namespaces survive unless you asked otherwise. See <a href="../guides/delete-tenant.html">Delete a Tenant</a>.</li>
 <li><code>argoCD.onDeletePurgeAppProject</code> on the tenant's <code>Extensions</code> resource — whether its ArgoCD <code>AppProject</code> is deleted with it. See <a href="../concepts/extensions.html#per-tenant-extensions-the-extensions-cr">Extensions</a>.</li>
 </ul>
 <h2 id="disable-the-console-and-cost-components">Disable the console and cost components<a class="headerlink" href="#disable-the-console-and-cost-components" title="Permanent link">#</a></h2>
-<p>If you enabled the console or showback, turn them off before uninstalling, so the components MTO provisioned are removed by the operator that created them rather than left behind.</p>
+<p>If you enabled the console or showback, turn them off before uninstalling, while the operator that manages them is still running.</p>
+<p>The <code>IntegrationConfig</code> manages the resources behind the console GUI — PostgreSQL, Prometheus, OpenCost, the MTO Console and Gateway, Dex and DexConfigOperator, and the FinOps Operator and Gateway — so this step is what hands them back before MTO goes.</p>
 <p>Edit the <code>IntegrationConfig</code> — by default <code>tenant-operator-config</code> — and set:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">components</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
-<p>This removes the Console, Gateway, Dex, PostgreSQL, Prometheus and the FinOps components. See <a href="../concepts/integration-config.html">Integration Config</a>.</p>
+<p>See <a href="../concepts/integration-config.html">Integration Config</a>.</p>
 <h2 id="remove-the-integrationconfig">Remove the IntegrationConfig<a class="headerlink" href="#remove-the-integrationconfig" title="Permanent link">#</a></h2>
 <p>Delete the <code>IntegrationConfig</code> from the cluster. On OpenShift you can do this from <code>Search</code> → <code>IntegrationConfig</code> → <code>tenant-operator-config</code> → <code>Delete</code>.</p>
 <h2 id="remove-the-operator">Remove the operator<a class="headerlink" href="#remove-the-operator" title="Permanent link">#</a></h2>
@@ -7102,7 +7103,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tbody>
 </table>
 <h2 id="optionally-remove-the-custom-resource-definitions">Optionally remove the custom resource definitions<a class="headerlink" href="#optionally-remove-the-custom-resource-definitions" title="Permanent link">#</a></h2>
-<p>Uninstalling the operator leaves MTO's CRDs and the resources built from them on the cluster. Removing the CRDs deletes every <code>Tenant</code>, <code>Quota</code>, <code>IntegrationConfig</code> and <code>Template</code> with them, and that cannot be undone — so do it only when you are certain the tenant definitions are no longer wanted.</p>
+<p>Uninstalling the operator leaves MTO's CRDs and the resources built from them on the cluster. Removing the CRDs deletes every <code>Tenant</code>, <code>Quota</code>, <code>IntegrationConfig</code> and <code>Extensions</code> resource with them, and that cannot be undone — so do it only when you are certain the tenant definitions are no longer wanted.</p>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
 <ul>
 <li>For how to use MTO, see the <a href="../guides/create-tenant.html">Tenant tutorial</a>.</li>
