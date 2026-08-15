@@ -2364,7 +2364,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Overview
+    Installing MTO
   
 
     
@@ -2855,7 +2855,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Uninstall via OperatorHub UI on OpenShift
+    Uninstalling MTO
   
 
     
@@ -7242,7 +7242,7 @@ subscription.operators.coreos.com/tenant-operator<span class="w"> </span>created
 <p>You can uninstall MTO by following these steps:</p>
 <ul>
 <li>
-<p>Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not. If yes, please set <code>spec.onDelete.cleanNamespaces</code> to <code>false</code> for all those tenants whose namespaces you want to retain, and <code>spec.onDelete.cleanAppProject</code> to <code>false</code> for all those tenants whose AppProject you want to retain. For more details check out <a href="../../guides/delete-tenant.html">onDelete</a></p>
+<p>Decide whether to retain tenant namespaces and ArgoCD AppProjects. Set <code>spec.onDeletePurgeNamespaces</code> to <code>false</code> on every tenant whose namespaces you want to keep, and <code>argoCD.onDeletePurgeAppProject</code> to <code>false</code> on its <code>Extensions</code> resource for every AppProject you want to keep. See <a href="../../guides/delete-tenant.html">Delete a Tenant</a> and <a href="../uninstalling.html">Uninstalling MTO</a>.</p>
 </li>
 <li>
 <p>After making the required changes open OpenShift console and click on <code>Operators</code>, followed by <code>Installed Operators</code> from the side menu</p>

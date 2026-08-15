@@ -97,7 +97,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mto-validation-guide" class="md-skip">
+        <a href="#validate-mto-on-eks" class="md-skip">
           Skip to content
         </a>
       
@@ -2364,7 +2364,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Overview
+    Installing MTO
   
 
     
@@ -2968,7 +2968,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Uninstall via OperatorHub UI on OpenShift
+    Uninstalling MTO
   
 
     
@@ -7322,7 +7322,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="mto-validation-guide">MTO Validation Guide<a class="headerlink" href="#mto-validation-guide" title="Permanent link">#</a></h1>
+<h1 id="validate-mto-on-eks">Validate MTO on EKS<a class="headerlink" href="#validate-mto-on-eks" title="Permanent link">#</a></h1>
 <p>In this guide, we will set up <strong>two tenants</strong>—<strong>Logistics</strong> and <strong>Retail</strong>—for an imaginary e-commerce company, each with one user.</p>
 <ul>
 <li><strong>Falcon</strong> will be the user assigned to the <strong>Logistics</strong> tenant.  </li>
@@ -7456,7 +7456,7 @@ retail-build<span class="w">            </span>Active<span class="w">   </span>5
 <li><code>AWS_SECRET_ACCESS_KEY</code></li>
 <li><code>AWS_REGION</code> (optional)</li>
 </ul>
-<p>Execute the following command to update the kube context</p>
+<p>Execute the following command to update the <code>kubeconfig</code> context</p>
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>region<span class="w"> </span><span class="nv">$AWS_REGION</span>
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="nv">$AWS_ACCESS_KEY_ID</span>
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="nv">$AWS_SECRET_ACCESS_KEY</span>
@@ -7492,7 +7492,7 @@ Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> 
 <li><code>AWS_SECRET_ACCESS_KEY</code></li>
 <li><code>AWS_REGION</code> (optional)</li>
 </ul>
-<p>Execute the following command to update the kube context</p>
+<p>Execute the following command to update the <code>kubeconfig</code> context</p>
 <div class="highlight"><pre><span></span><code>aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>region<span class="w"> </span><span class="nv">$AWS_REGION</span>
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span><span class="nv">$AWS_ACCESS_KEY_ID</span>
 aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span><span class="nv">$AWS_SECRET_ACCESS_KEY</span>

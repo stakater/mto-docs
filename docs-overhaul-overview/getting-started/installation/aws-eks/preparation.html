@@ -97,7 +97,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mto-preparation-guide" class="md-skip">
+        <a href="#prepare-an-eks-cluster-for-mto" class="md-skip">
           Skip to content
         </a>
       
@@ -2364,7 +2364,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Overview
+    Installing MTO
   
 
     
@@ -2923,7 +2923,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Uninstall via OperatorHub UI on OpenShift
+    Uninstalling MTO
   
 
     
@@ -7232,7 +7232,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="mto-preparation-guide">MTO Preparation Guide<a class="headerlink" href="#mto-preparation-guide" title="Permanent link">#</a></h1>
+<h1 id="prepare-an-eks-cluster-for-mto">Prepare an EKS Cluster for MTO<a class="headerlink" href="#prepare-an-eks-cluster-for-mto" title="Permanent link">#</a></h1>
 <p>This document provides a detailed walk through of the preparation steps required for MTO installation.</p>
 <h2 id="cluster-requirements">Cluster Requirements<a class="headerlink" href="#cluster-requirements" title="Permanent link">#</a></h2>
 <p>An EKS 1.28+ cluster with the following components:</p>
@@ -7340,7 +7340,7 @@ aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span cla
 <p>To install the AWS EBS CSI Driver, execute the following command:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span><span class="s2">"github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.38"</span>
 </code></pre></div>
-<p>Once installed, verify that the driver is running by checking the pods in the kube-system namespace:</p>
+<p>Once installed, verify that the driver is running by checking the pods in the <code>kube-system</code> namespace:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ebs
 </code></pre></div>
 <h3 id="create-storage-class-for-ebs">Create Storage Class for EBS<a class="headerlink" href="#create-storage-class-for-ebs" title="Permanent link">#</a></h3>

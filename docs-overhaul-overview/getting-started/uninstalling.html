@@ -22,7 +22,7 @@
     
     
       
-        <title>Uninstall via OperatorHub UI on OpenShift - Multi-Tenant Operator</title>
+        <title>Uninstalling MTO - Multi-Tenant Operator</title>
       
     
     
@@ -97,7 +97,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#uninstall-via-operatorhub-ui-on-openshift" class="md-skip">
+        <a href="#uninstalling-mto" class="md-skip">
           Skip to content
         </a>
       
@@ -2362,7 +2362,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Overview
+    Installing MTO
   
 
     
@@ -2730,7 +2730,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Uninstall via OperatorHub UI on OpenShift
+    Uninstalling MTO
   
 
     
@@ -2748,7 +2748,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Uninstall via OperatorHub UI on OpenShift
+    Uninstalling MTO
   
 
     
@@ -2774,6 +2774,61 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       On this page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#decide-what-to-keep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decide what to keep
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disable-the-console-and-cost-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disable the console and cost components
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove-the-integrationconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remove the IntegrationConfig
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove-the-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remove the operator
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optionally-remove-the-custom-resource-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optionally remove the custom resource definitions
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#notes" class="md-nav__link">
@@ -6922,6 +6977,61 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
+  <a href="#decide-what-to-keep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decide what to keep
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disable-the-console-and-cost-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disable the console and cost components
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove-the-integrationconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remove the IntegrationConfig
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove-the-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remove the operator
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optionally-remove-the-custom-resource-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optionally remove the custom resource definitions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#notes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -6952,41 +7062,51 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="uninstall-via-operatorhub-ui-on-openshift">Uninstall via OperatorHub UI on OpenShift<a class="headerlink" href="#uninstall-via-operatorhub-ui-on-openshift" title="Permanent link">#</a></h1>
-<p>You can uninstall MTO by following these steps:</p>
+<h1 id="uninstalling-mto">Uninstalling MTO<a class="headerlink" href="#uninstalling-mto" title="Permanent link">#</a></h1>
+<p>Removing MTO is a few decisions followed by one removal step. Make the decisions first: two of them cannot be undone once the operator is gone.</p>
+<h2 id="decide-what-to-keep">Decide what to keep<a class="headerlink" href="#decide-what-to-keep" title="Permanent link">#</a></h2>
+<p>Deleting a <code>Tenant</code> can delete what the tenant owns, so set the retention you want on each tenant <strong>before</strong> removing the operator that would act on it:</p>
 <ul>
-<li>
-<p>Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not.
-For more details check out <a href="../guides/delete-tenant.html#configuration-for-retaining-resources">onDeletePurgeNamespaces</a>
-<a href="../concepts/extensions.html#per-tenant-extensions-the-extensions-cr">onDeletePurgeAppProject</a></p>
-</li>
-<li>
-<p>In case you have enabled console and showback, you will have to disable it first by navigating to <code>Search</code> -&gt; <code>IntegrationConfig</code> -&gt; <code>tenant-operator-config</code> and set <code>spec.components.console</code> and <code>spec.components.showback</code> to <code>false</code>.</p>
-</li>
-<li>
-<p>Remove IntegrationConfig CR from the cluster by navigating to <code>Search</code> -&gt; <code>IntegrationConfig</code> -&gt; <code>tenant-operator-config</code> and select <code>Delete</code> from actions dropdown.</p>
-</li>
-<li>
-<p>After making the required changes open OpenShift console and click on <code>Operators</code>, followed by <code>Installed Operators</code> from the side menu</p>
-</li>
+<li><code>spec.onDeletePurgeNamespaces</code> on the <code>Tenant</code> — whether the tenant's namespaces are deleted along with it. It defaults to <code>false</code>, so namespaces survive unless you asked otherwise. See <a href="../guides/delete-tenant.html">Delete a Tenant</a>.</li>
+<li><code>argoCD.onDeletePurgeAppProject</code> on the tenant's <code>Extensions</code> resource — whether its ArgoCD <code>AppProject</code> is deleted with it. See <a href="../concepts/extensions.html#per-tenant-extensions-the-extensions-cr">Extensions</a>.</li>
 </ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/installed-operators.png" data-desc-position="bottom"><img alt="image" src="../images/installed-operators.png"></a></p>
-<ul>
-<li>Now click on uninstall and confirm uninstall.</li>
-</ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/uninstall-from-ui.png" data-desc-position="bottom"><img alt="image" src="../images/uninstall-from-ui.png"></a></p>
-<ul>
-<li>
-<p>Now the operator has been uninstalled.</p>
-</li>
-<li>
-<p><code>Optional:</code> you can also manually remove MTO's CRDs and its resources from the cluster.</p>
-</li>
-</ul>
+<h2 id="disable-the-console-and-cost-components">Disable the console and cost components<a class="headerlink" href="#disable-the-console-and-cost-components" title="Permanent link">#</a></h2>
+<p>If you enabled the console or showback, turn them off before uninstalling, so the components MTO provisioned are removed by the operator that created them rather than left behind.</p>
+<p>Edit the <code>IntegrationConfig</code> — by default <code>tenant-operator-config</code> — and set:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">components</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<p>This removes the Console, Gateway, Dex, PostgreSQL, Prometheus and the FinOps components. See <a href="../concepts/integration-config.html">Integration Config</a>.</p>
+<h2 id="remove-the-integrationconfig">Remove the IntegrationConfig<a class="headerlink" href="#remove-the-integrationconfig" title="Permanent link">#</a></h2>
+<p>Delete the <code>IntegrationConfig</code> from the cluster. On OpenShift you can do this from <code>Search</code> → <code>IntegrationConfig</code> → <code>tenant-operator-config</code> → <code>Delete</code>.</p>
+<h2 id="remove-the-operator">Remove the operator<a class="headerlink" href="#remove-the-operator" title="Permanent link">#</a></h2>
+<p>Uninstall the way you installed:</p>
+<table>
+<thead>
+<tr>
+<th>How you installed</th>
+<th>How to remove</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenShift, via OperatorHub or OLM</td>
+<td><a href="installation/openshift.html#uninstall-via-operatorhub-ui">Uninstall via OperatorHub UI</a></td>
+</tr>
+<tr>
+<td>Kubernetes, AKS or EKS, via Helm</td>
+<td><a href="installation/kubernetes.html#uninstall-via-helm-cli">Uninstall via Helm CLI</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="optionally-remove-the-custom-resource-definitions">Optionally remove the custom resource definitions<a class="headerlink" href="#optionally-remove-the-custom-resource-definitions" title="Permanent link">#</a></h2>
+<p>Uninstalling the operator leaves MTO's CRDs and the resources built from them on the cluster. Removing the CRDs deletes every <code>Tenant</code>, <code>Quota</code>, <code>IntegrationConfig</code> and <code>Template</code> with them, and that cannot be undone — so do it only when you are certain the tenant definitions are no longer wanted.</p>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
 <ul>
-<li>For more details on how to use MTO please refer <a href="../guides/create-tenant.html">Tenant's tutorial</a>.</li>
-<li>For more details on how to extend your MTO manager ClusterRole please refer <a href="../guides/extend-default-roles.html">extend-default-clusterroles</a>.</li>
+<li>For how to use MTO, see the <a href="../guides/create-tenant.html">Tenant tutorial</a>.</li>
+<li>For extending MTO's manager ClusterRole, see <a href="../guides/extend-default-roles.html">Extending Default Roles</a>.</li>
 </ul>
 
 
