@@ -24,7 +24,7 @@ The name describes where it starts, not where it stops. The same `Tenant` defini
 | **FinOps** | Who is consuming what, and what does it cost? | Tenant/namespace showback, usage and capacity insights |
 | **Hibernation** | Why pay for idle environments? | Scheduled and manual workload sleep and wake |
 | **Extensions** | What about the tools surrounding Kubernetes? | Extend tenant boundaries into ArgoCD, Vault and other platform services |
-| **Console** | How do operators and tenants actually use all this? | A centralized visual experience for tenants, namespaces, costs, quotas, templates and hibernation |
+| **Console** | How do operators and tenants actually use all this? | A centralized visual experience for tenants, namespaces, costs, quotas, templates and hibernation — and a tenant-scoped `kubectl` plugin for people who prefer the command line |
 
 ## The idea in one object
 
@@ -71,4 +71,5 @@ See [How MTO Works](overview/how-it-works.md) for the full reconciliation path.
 - [Installation](getting-started/installation/overview.md) — install on OpenShift, Kubernetes, AKS or EKS
 - [Create a Tenant](guides/create-tenant.md) — your first tenant
 - [Console](console/overview.md) — the UI for administrators and tenant users
+- [kubectl-tenant plugin](cli/overview.md) — the same tenant scoping from the command line
 - [Architecture](concepts/architecture.md) — components and controllers
