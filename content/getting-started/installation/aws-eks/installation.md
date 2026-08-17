@@ -28,14 +28,8 @@ kubectl patch integrationconfig tenant-operator-config \
     \"components\": {
       \"console\": true,
       \"ingress\": {
-        \"console\": {
-          \"host\": \"console.<FULL_SUBDOMAIN>\",
-          \"tlsSecretName\": \"<SECRET_NAME>\"
-        },
-        \"gateway\": {
-          \"host\": \"gateway.<FULL_SUBDOMAIN>\",
-          \"tlsSecretName\": \"<SECRET_NAME>\"
-        },
+        \"host\": \"mto.<FULL_SUBDOMAIN>\",
+        \"tlsSecretName\": \"<SECRET_NAME>\",
         \"ingressClassName\": \"nginx\"
       },
       \"showback\": true
@@ -49,6 +43,8 @@ Placeholder         | Description
 `<FULL_SUBDOMAIN>`  | Full subdomain of the EKS cluster e.g. `iinhdnh6.demo.kubeapp.cloud`
 `<SECRET_NAME>`     | Name of the secret that should be used as TLS secret
 
+All MTO components share this host, the Console on `/` and the Gateway, Dex and FinOps Gateway on their own path prefixes. On Kubernetes the host has to be set explicitly, there is no cluster domain to derive it from. See [Ingress](../../../concepts/integration-config.md#ingress).
+
 Wait for the pods to be ready with the following command
 
 ```bash
@@ -60,9 +56,9 @@ List the ingresses to access the URL of MTO Console
 ```bash
 > kubectl get ingress -n multi-tenant-operator
 
-NAME                       CLASS   HOSTS                                  ADDRESS                                                                          PORTS     AGE
-tenant-operator-console    nginx   console.iinhdnh6.demo.kubeapp.cloud    ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com   80, 443   23m
-tenant-operator-gateway    nginx   gateway.iinhdnh6.demo.kubeapp.cloud    ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com   80, 443   23m
+NAME                       CLASS   HOSTS                              ADDRESS                                                                          PORTS     AGE
+tenant-operator-console    nginx   mto.iinhdnh6.demo.kubeapp.cloud    ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com   80, 443   23m
+tenant-operator-gateway    nginx   mto.iinhdnh6.demo.kubeapp.cloud    ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com   80, 443   23m
 
 ```
 
