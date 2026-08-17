@@ -2447,6 +2447,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#console-admin-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Console Admin Access
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6404,6 +6415,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#console-admin-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Console Admin Access
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -6591,6 +6613,22 @@ subscription.operators.coreos.com/tenant-operator<span class="w"> </span>created
 <ul>
 <li>Now the <code>InstallPlan</code> will be approved, and MTO console components will be installed.</li>
 </ul>
+<h3 id="console-admin-access">Console Admin Access<a class="headerlink" href="#console-admin-access" title="Permanent link">#</a></h3>
+<p>MTO ships with a default admin user, <code>mto</code>, that you can log in to the console with. It is not privileged out of the box, so add its email to the privileged users in the <code>IntegrationConfig</code> to give it administrator access:</p>
+<div class="highlight"><pre><span></span><code>oc<span class="w"> </span>patch<span class="w"> </span>integrationconfigs.tenantoperator.stakater.com<span class="w"> </span>tenant-operator-config<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>--type<span class="o">=</span>merge<span class="w"> </span>--patch<span class="w"> </span><span class="s1">'{</span>
+<span class="s1">    "spec": {</span>
+<span class="s1">        "accessControl": {</span>
+<span class="s1">            "privileged": {</span>
+<span class="s1">                "users": [</span>
+<span class="s1">                    "mto@stakater.com"</span>
+<span class="s1">                ]</span>
+<span class="s1">            }</span>
+<span class="s1">        }</span>
+<span class="s1">    }</span>
+<span class="s1">}'</span>
+</code></pre></div>
+<p>Users listed under <code>spec.accessControl.privileged</code> can see every tenant and namespace in the console, along with the <code>IntegrationConfig</code> itself. For the other console roles, see <a href="../../console/configuration.html">Configuration</a>.</p>
 <h2 id="uninstall-via-operatorhub-ui">Uninstall via OperatorHub UI<a class="headerlink" href="#uninstall-via-operatorhub-ui" title="Permanent link">#</a></h2>
 <p>You can uninstall MTO by following these steps:</p>
 <ul>
