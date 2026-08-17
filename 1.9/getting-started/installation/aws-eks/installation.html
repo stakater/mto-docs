@@ -5276,14 +5276,8 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <span class="s2">    \"components\": {</span>
 <span class="s2">      \"console\": true,</span>
 <span class="s2">      \"ingress\": {</span>
-<span class="s2">        \"console\": {</span>
-<span class="s2">          \"host\": \"console.&lt;FULL_SUBDOMAIN&gt;\",</span>
-<span class="s2">          \"tlsSecretName\": \"&lt;SECRET_NAME&gt;\"</span>
-<span class="s2">        },</span>
-<span class="s2">        \"gateway\": {</span>
-<span class="s2">          \"host\": \"gateway.&lt;FULL_SUBDOMAIN&gt;\",</span>
-<span class="s2">          \"tlsSecretName\": \"&lt;SECRET_NAME&gt;\"</span>
-<span class="s2">        },</span>
+<span class="s2">        \"host\": \"mto.&lt;FULL_SUBDOMAIN&gt;\",</span>
+<span class="s2">        \"tlsSecretName\": \"&lt;SECRET_NAME&gt;\",</span>
 <span class="s2">        \"ingressClassName\": \"nginx\"</span>
 <span class="s2">      },</span>
 <span class="s2">      \"showback\": true</span>
@@ -5309,15 +5303,16 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </tr>
 </tbody>
 </table>
+<p>All MTO components share this host, the Console on <code>/</code> and the Gateway, Dex and FinOps Gateway on their own path prefixes. On Kubernetes the host has to be set explicitly, there is no cluster domain to derive it from. See <a href="../../../concepts/integration-config.html#ingress">Ingress</a>.</p>
 <p>Wait for the pods to be ready with the following command</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>--for<span class="o">=</span><span class="nv">condition</span><span class="o">=</span>ready<span class="w"> </span>pod<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator<span class="w"> </span>--all<span class="w"> </span>--timeout<span class="o">=</span>300s
 </code></pre></div>
 <p>List the ingresses to access the URL of MTO Console</p>
 <div class="highlight"><pre><span></span><code>&gt;<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>ingress<span class="w"> </span>-n<span class="w"> </span>multi-tenant-operator
 
-NAME<span class="w">                       </span>CLASS<span class="w">   </span>HOSTS<span class="w">                                  </span>ADDRESS<span class="w">                                                                          </span>PORTS<span class="w">     </span>AGE
-tenant-operator-console<span class="w">    </span>nginx<span class="w">   </span>console.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
-tenant-operator-gateway<span class="w">    </span>nginx<span class="w">   </span>gateway.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
+NAME<span class="w">                       </span>CLASS<span class="w">   </span>HOSTS<span class="w">                              </span>ADDRESS<span class="w">                                                                          </span>PORTS<span class="w">     </span>AGE
+tenant-operator-console<span class="w">    </span>nginx<span class="w">   </span>mto.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
+tenant-operator-gateway<span class="w">    </span>nginx<span class="w">   </span>mto.iinhdnh6.demo.kubeapp.cloud<span class="w">    </span>ae51c179026a94c90952fc50d5d91b52-a4446376b6415dcb.elb.eu-north-1.amazonaws.com<span class="w">   </span><span class="m">80</span>,<span class="w"> </span><span class="m">443</span><span class="w">   </span>23m
 </code></pre></div>
 <h2 id="mto-console-admin-login">MTO Console Admin Login<a class="headerlink" href="#mto-console-admin-login" title="Permanent link">#</a></h2>
 <p>Patch the following integration config to give privileged access to MTO's default admin user</p>
