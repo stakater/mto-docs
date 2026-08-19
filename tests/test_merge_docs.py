@@ -1060,3 +1060,45 @@ def test_run_product_first_missing_placeholder_raises(tmp_path):
     }]
     with pytest.raises(KeyError):
         m.run(operators, str(content), str(mkdocs))
+
+
+# --- menu order from the sub-operator's own nav ---
+
+def test_read_source_order(tmp_path):
+    repo = tmp_path / "op"; repo.mkdir()
+    (repo / "mkdocs.yml").write_text(
+        "site_name: Op\nnav:\n  - Guides:\n      - guides/b.md\n      - guides/a.md\n"
+        "  - x.md\n")
+    assert m.read_source_order(repo) == ["guides/b.md", "guides/a.md", "x.md"]
+
+
+def test_read_source_order_missing_nav_is_empty(tmp_path):
+    repo = tmp_path / "op"; repo.mkdir()
+    assert m.read_source_order(repo) == []
+
+
+def test_run_product_first_orders_by_suboperator_nav(tmp_path):
+    repo = tmp_path / "op"
+    _touch(repo / "content", "guides/zebra.md", "guides/alpha.md", "guides/mid.md",
+           "guides/unlisted.md")
+    # sub-op nav orders them zebra, mid, alpha (NOT alphabetical); unlisted absent
+    (repo / "mkdocs.yml").write_text(
+        "site_name: Op\nnav:\n  - Guides:\n"
+        "      - guides/zebra.md\n      - guides/mid.md\n      - guides/alpha.md\n")
+    content = tmp_path / "content"; content.mkdir()
+    mkdocs = tmp_path / "mkdocs.yml"
+    mkdocs.write_text("site_name: MTO\nnav:\n  - Op: []\n")
+    operators = [{
+        "title": "Op", "section": "Op", "product_first": True,
+        "repo": str(repo), "slug": "op", "docs_dir": "content", "exclude": [],
+        "mappings": [{"from": "guides/**", "into": "guides", "under": "Guides"}],
+    }]
+    m.run(operators, str(content), str(mkdocs))
+    section = m.find_section(m.read_nav(mkdocs.read_text()), "Op")
+    # nav order preserved; the page absent from the sub-op nav ranks last
+    assert {"Guides": [
+        "op/guides/zebra.md",
+        "op/guides/mid.md",
+        "op/guides/alpha.md",
+        "op/guides/unlisted.md",
+    ]} in section
