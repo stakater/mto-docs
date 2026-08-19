@@ -179,6 +179,23 @@ def read_folder_titles(repo):
     return {}
 
 
+def read_source_order(repo):
+    """Ordered source file paths from the sub-operator's own nav, so merged
+    sub-sections keep the operator's intended page order instead of alphabetical.
+    Files absent from the sub-op nav are ranked last (see run)."""
+    for candidate in ("theme_override/mkdocs.yml", "mkdocs.yml"):
+        path = repo / candidate
+        if not path.is_file():
+            continue
+        try:
+            nav = read_nav(path.read_text(encoding="utf-8"))
+        except (ValueError, KeyError, TypeError):
+            continue
+        if nav:
+            return _collect_files(nav)
+    return []
+
+
 def find_section(nav, title):
     for item in nav:
         if isinstance(item, dict):
@@ -683,7 +700,7 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None, site_title=Non
                         if under not in sub_index:
                             sub_index[under] = len(sub_pages)
                             sub_pages.append((under, []))
-                        sub_pages[sub_index[under]][1].append(dest_rel)
+                        sub_pages[sub_index[under]][1].append((dest_rel, rel))
                     elif mapping.get("under"):
                         if flatten:
                             mapping_dests.append(dest_rel)
@@ -731,7 +748,14 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None, site_title=Non
                                "live_url": live_url, "style": style}
 
         if product_first:
-            fill_placeholder(nav, op["section"], product_subsections(sub_pages))
+            # order each sub-section by the sub-operator's own nav; pages absent
+            # from it rank last, then fall back to alphabetical (by dest)
+            rank = {src: i for i, src in enumerate(read_source_order(repo))}
+            ordered = []
+            for under, pairs in sub_pages:
+                pairs.sort(key=lambda p: (rank.get(p[1], len(rank)), p[0]))
+                ordered.append((under, [dest for dest, _ in pairs]))
+            fill_placeholder(nav, op["section"], product_subsections(ordered))
 
         for under, entries in under_entries.items():
             insert_subtree(nav, under, op["title"], build_nav_tree(entries, folder_titles))
