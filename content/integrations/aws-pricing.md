@@ -179,7 +179,7 @@ components:
 For more information, refer to the following resources
 
 - [`OpenCost documentation`](https://www.opencost.io/docs/configuration/aws)
-- [`Kubecost documentation`](https://docs.kubecost.com/install-and-configure/install/cloud-integration/aws-cloud-integrations)
+- [`Kubecost documentation`](https://www.ibm.com/docs/en/kubecost/self-hosted/2.x?topic=integrations-aws-cloud-billing-integration)
 - [`Assign IAM roles to Kubernetes service accounts`](https://docs.aws.amazon.com/eks/latest/userguide/associate-service-account-role.html)
 - [`Track your Spot Instance costs using the Spot Instance data feed`](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html)
 - [`Manage access keys from IAM users`](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
