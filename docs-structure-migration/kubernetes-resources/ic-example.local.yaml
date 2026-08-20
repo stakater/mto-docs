@@ -1,0 +1,221 @@
+apiVersion: tenantoperator.stakater.com/v1beta1
+kind: IntegrationConfig
+metadata:
+  name: tenant-operator-config
+  namespace: multi-tenant-operator
+spec:
+  components:
+    console: true
+    showback: true
+    # Postgres configuration - choose Managed or External mode
+    postgres:
+      mode: Managed # or External
+      # Managed mode: Operator deploys and manages Postgres
+      values:
+        primary:
+          persistence:
+            size: "20Gi"
+          resources:
+            limits:
+              cpu: "2"
+              memory: "4Gi"
+            requests:
+              cpu: "500m"
+              memory: "2Gi"
+      # External mode: Use existing Postgres instance
+      # external:
+      #   secretRef:
+      #     name: external-postgres-connection
+      #     namespace: shared-services
+      #     # Secret should contain:
+      #     # - dsn: "postgresql://user:pass@host:5432/dbname?sslmode=require" OR
+      #     # - POSTGRESQL_SERVICE / host: "postgres.example.com"
+      #     # - POSTGRESQL_PORT / port: "5432"
+      #     # - POSTGRESQL_USER / username: "mto_user"
+      #     # - POSTGRESQL_PASSWORD / password: "secret"
+      #     # - POSTGRESQL_DATABASE / database: "mto_db"
+      #     # - POSTGRESQL_SSL / sslmode: "require"
+
+    # Prometheus configuration - choose Managed or External mode
+    prometheus:
+      mode: Managed # or External
+      # Managed mode: Operator deploys and manages Prometheus
+      values:
+        server:
+          retention: "30d"
+          persistence:
+            size: "50Gi"
+          resources:
+            limits:
+              cpu: "2"
+              memory: "8Gi"
+            requests:
+              cpu: "500m"
+              memory: "4Gi"
+      # External mode: Use existing Prometheus instance
+      # external:
+      #   endpoint: https://prometheus.shared-platform.example.com
+      #   credentialsSecretRef:
+      #     name: prometheus-credentials
+      #     namespace: observability
+      #     # Optional secret containing auth/TLS material:
+      #     # - username: "admin"
+      #     # - password: "secret"
+      #     # - ca.crt: <certificate>
+      #     # - client.crt: <certificate>
+      #     # - client.key: <key>
+
+    # OpenCost configuration - choose Managed or External mode
+    opencost:
+      mode: Managed # or External
+      # Managed mode: Operator deploys and manages OpenCost
+      values:
+        opencost:
+          exporter:
+            replicas: 2
+            resources:
+              limits:
+                cpu: "1"
+                memory: "2Gi"
+              requests:
+                cpu: "200m"
+                memory: "512Mi"
+      # External mode: Use existing OpenCost instance
+      # external:
+      #   # Option 1: Use external URL
+      #   gatewayURL: https://opencost.shared-platform.example.com
+      #   # Option 2: Use in-cluster service reference
+      #   # serviceRef:
+      #   #   name: opencost-gateway
+      #   #   namespace: opencost
+      #   #   port: "9003"
+
+    finopsOperator:
+      controllerManager:
+        repository: ghcr.io/stakater/finops-operator
+        tag: v0.0.1
+      gateway:
+        repository: ghcr.io/stakater/finops-gateway
+        tag: v0.0.1-187a10f9
+
+    showbackOpts:
+      retentionPeriod: "15d"
+      # Optional: Custom pricing configuration for OpenCost
+      # custom:
+      #   CPU: "0.031611"
+      #   spotCPU: "0.006655"
+      #   RAM: "0.004237"
+      #   spotRAM: "0.000892"
+      #   GPU: "0.95"
+      #   storage: "0.00005479452"
+      #   zoneNetworkEgress: "0.01"
+      #   regionNetworkEgress: "0.01"
+      #   internetNetworkEgress: "0.143"
+      # Optional: Cloud pricing secret for AWS/Azure
+      # cloudPricingSecretRef:
+      #   name: opencost-cloud-pricing
+      #   namespace: multi-tenant-operator
+
+    ingress:
+      IngressClassName: "nginx"
+      Keycloak:
+        Host: tenant-operator-keycloak.apps.mycluster-ams.abcdef.cloud
+        TLSSecretName: tenant-operator-tls
+      Console:
+        Host: tenant-operator-console.apps.mycluster-ams.abcdef.cloud
+        TLSSecretName: tenant-operator-tls
+      Gateway:
+        Host: tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud
+        TLSSecretName: tenant-operator-tls
+    trustedRootCert: my-custom-cert
+  accessControl:
+    rbac:
+      tenantRoles:
+        default:
+          owner:
+            clusterRoles:
+              - admin
+          editor:
+            clusterRoles:
+              - edit
+          viewer:
+            clusterRoles:
+              - view
+              - viewer
+        custom:
+          - labelSelector:
+              matchExpressions:
+                - key: stakater.com/kind
+                  operator: In
+                  values:
+                    - build
+              matchLabels:
+                stakater.com/kind: dev
+            owner:
+              clusterRoles:
+                - custom-owner
+            editor:
+              clusterRoles:
+                - custom-editor
+            viewer:
+              clusterRoles:
+                - custom-viewer
+                - custom-view
+    namespaceAccessPolicy:
+      deny:
+        privilegedNamespaces:
+          users:
+            - system:serviceaccount:openshift-argocd:argocd-application-controller
+            - adam@stakater.com
+          groups:
+            - cluster-admins
+    privileged:
+      namespaces:
+        - ^default$
+        - ^openshift-*
+        - ^kube-*
+      serviceAccounts:
+        - ^system:serviceaccount:openshift-*
+        - ^system:serviceaccount:kube-*
+      users:
+        - ""
+      groups:
+        - cluster-admins
+  metadata:
+    groups:
+      labels:
+        role: customer-reader
+      annotations:
+        openshift.io/node-selector: node-role.kubernetes.io/worker=
+    namespaces:
+      labels:
+        stakater.com/workload-monitoring: "true"
+      annotations:
+        openshift.io/node-selector: node-role.kubernetes.io/worker=
+    sandboxes:
+      labels:
+        stakater.com/kind: sandbox
+      annotations:
+        openshift.io/node-selector: node-role.kubernetes.io/worker=
+  integrations:
+    argocd:
+      enabled: bool
+      clusterResourceWhitelist:
+        - group: tronador.stakater.com
+          kind: EnvironmentProvisioner
+      namespaceResourceBlacklist:
+        - group: "" # all groups
+          kind: ResourceQuota
+      namespace: openshift-operators
+    vault:
+      enabled: true
+      authMethod: kubernetes #enum: {kubernetes:default, Token}
+      accessInfo:
+        accessorPath: oidc/
+        address: https://vault.apps.prod.abcdefghi.kubeapp.cloud/
+        roleName: mto
+        secretRef:
+          name: ""
+          namespace: ""
+      config:
+        ssoClient: vault
