@@ -1,4 +1,4 @@
-# MTO Preparation Guide
+# Prepare an EKS Cluster for MTO
 
 This document provides a detailed walk through of the preparation steps required for MTO installation.
 
@@ -146,7 +146,7 @@ To install the AWS EBS CSI Driver, execute the following command:
 kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.38"
 ```
 
-Once installed, verify that the driver is running by checking the pods in the kube-system namespace:
+Once installed, verify that the driver is running by checking the pods in the `kube-system` namespace:
 
 ```bash
 kubectl get pods -n kube-system | grep ebs

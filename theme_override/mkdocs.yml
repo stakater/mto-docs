@@ -55,7 +55,8 @@ plugins:
       redirect_maps:
         about/key-features.md: overview/key-features.md
         about/use-cases.md: overview/use-cases.md
-        about/benefits.md: overview/benefits.md
+        about/benefits.md: overview/why-mto.md
+        overview/benefits.md: overview/why-mto.md
         architecture/architecture.md: concepts/architecture.md
         architecture/concepts.md: concepts/terminology.md
         kubernetes-resources/tenant/tenant-overview.md: concepts/tenant.md
@@ -98,10 +99,12 @@ plugins:
 nav:
   - Overview:
       - Introduction: index.md
+      - overview/why-mto.md
       - overview/key-features.md
-      - overview/use-cases.md
-      - overview/benefits.md
+      - overview/how-it-works.md
       - Architecture: concepts/architecture.md
+      - overview/deployment-models.md
+      - overview/use-cases.md
   - Getting Started:
       - Installation:
           - getting-started/installation/overview.md
@@ -166,8 +169,7 @@ nav:
       - OpenBao: integrations/openbao/readme.md
       - integrations/devworkspace.md
       - integrations/mattermost.md
-  - CLI:
-      - cli/overview.md
+  - CLI: cli/overview.md
   - Reference:
       - reference/api.md
       - reference/configuration.md
@@ -177,5 +179,27 @@ nav:
       - reference/webhooks.md
   - Troubleshooting: troubleshooting.md
   - Release Notes: release-notes.md
+  # Evaluator-facing concepts and comparisons. Top of funnel, not reference
+  # material — see the audience split in the Overview section.
+  - Learn:
+      - Overview: learn/index.md
+      - Concepts:
+          - learn/kubernetes-multi-tenancy.md
+          - learn/namespace-based-multi-tenancy.md
+          - learn/kubernetes-tenants.md
+          - learn/tenant-lifecycle-management.md
+      - Architecture:
+          - learn/multi-tenant-kubernetes-architecture.md
+          - learn/kubernetes-multi-tenancy-implementation.md
+      - Comparisons:
+          - learn/kubernetes-multi-tenancy-tools.md
+          - learn/mto-vs-capsule.md
+          - learn/mto-vs-hnc.md
+          - learn/capsule-alternatives.md
+          - learn/mto-vs-vcluster.md
+          - learn/mto-vs-loft.md
+          - learn/mto-vs-kamaji.md
+          - learn/mto-vs-hypershift.md
+          - learn/mto-vs-kcp.md
   - Pricing: pricing.md
   - EULA: eula.md

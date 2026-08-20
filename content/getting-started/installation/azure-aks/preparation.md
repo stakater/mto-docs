@@ -1,4 +1,4 @@
-# MTO Preparation Guide
+# Prepare an AKS Cluster for MTO
 
 This document provides a detailed walk through of the preparation steps required for MTO installation.
 
