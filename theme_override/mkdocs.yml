@@ -10,6 +10,16 @@ theme:
 # which unions lists, so stylesheets/extra.css is preserved.
 extra_css:
   - stylesheets/nav-labels.css
+  - stylesheets/api-toc.css
+
+extra_javascript:
+  - javascripts/api-toc.js
+
+# mto-docs' own half of the concatenated API reference (see merge.yaml
+# concat_into). The merge builds reference/api.md out of it, so it must not be
+# rendered as a page of its own.
+exclude_docs: |
+  reference/api.src.md
 
 strict: true
 validation:
@@ -20,6 +30,11 @@ extra:
   version:
     provider: mike
     default: latest
+  # Pages whose "On this page" sections render collapsed, read by the
+  # partials/toc-item.html fork. The API reference is one page carrying every
+  # type of every operator, so its TOC is a few hundred entries long.
+  collapsible_toc_pages:
+    - reference/api.md
 
 # Resolves {{ screenshot: <name> }} directives to the images captured by
 # screenshots/capture.sh. Our own module, loaded by mkdocs' built-in hooks: key --

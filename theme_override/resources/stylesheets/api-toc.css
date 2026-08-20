@@ -1,0 +1,102 @@
+/* Collapsible "On this page" entries, for generated API reference pages whose
+   TOC runs to a couple of hundred type headings. Only pages listed in
+   extra.collapsible_toc_pages get the markup (see partials/toc-item.html), so
+   every rule here is scoped to .md-nav--secondary and is inert elsewhere. */
+
+/* Collapsed is the default: a section's children appear only once its toggle is
+   checked. The checkbox precedes both the link container and this <nav>, so the
+   sibling combinator reaches it from either state. */
+.md-nav--secondary .md-nav__item--nested > .md-nav {
+  display: none;
+}
+
+.md-nav--secondary .md-nav__item--nested > .md-nav__toggle:checked ~ .md-nav {
+  display: block;
+}
+
+/* Link and toggle side by side. This row deliberately does NOT use material's
+   md-nav__container / md-nav__link classes: material collects .md-nav__link
+   inside the TOC and reads .hash off each one, which throws on anything that is
+   not an anchor — and that throw takes down the sidebar sizing for the whole
+   page (no height cap, so an expanded section runs off-screen unreachable). */
+.md-nav--secondary .md-nav__toc-row {
+  align-items: flex-start;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.md-nav--secondary .md-nav__toc-row > .md-nav__link {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+/* The chevron. Material only wires .md-nav__icon up inside .md-nav--primary and
+   in its own desktop media query, so the mask is set here to get the same arrow
+   in the sidebar and in the mobile drawer. */
+.md-nav--secondary .md-nav__toc-toggle {
+  /* flex, not the inline default a <label> gets: the icon is a <span>, and an
+     inline span ignores the width and height set below */
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  /* .md-nav__link carries this same top margin, so the arrow lines up with the
+     first line of the title rather than the top of the box */
+  margin-top: 0.625em;
+  /* pull the arrow back into the padding .md-nav__list already supplies, so it
+     lines up with the section titles rather than pushing them left */
+  margin-right: -0.2rem;
+  padding: 0;
+}
+
+.md-nav--secondary .md-nav__toc-toggle .md-nav__icon {
+  height: 0.9rem;
+  width: 0.9rem;
+}
+
+.md-nav--secondary .md-nav__toc-toggle .md-nav__icon::after {
+  background-color: currentcolor;
+  border-radius: 100%;
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  -webkit-mask-image: var(--md-nav-icon--next);
+  mask-image: var(--md-nav-icon--next);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transition: transform 250ms;
+}
+
+.md-nav--secondary .md-nav__toc-toggle:hover .md-nav__icon::after {
+  background-color: var(--md-accent-fg-color);
+}
+
+/* Rotate on expand. Material has this rule for the primary nav but gates it, so
+   state it again rather than depend on which copy wins. */
+.md-nav--secondary .md-nav__toggle:checked ~ .md-nav__toc-row .md-nav__icon::after {
+  transform: rotate(90deg);
+}
+
+/* Keyboard focus: the label is the control, so it needs a visible ring of its
+   own (the hidden checkbox cannot show one). */
+.md-nav--secondary .md-nav__toc-toggle:focus-visible {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 2px;
+}
+
+/* Wrap instead of ellipsizing, for section titles and the type names under
+   them alike: group-version names differ only in their last few characters, and
+   a truncated TenantStatus/TenantSpec pair reads the same. Scoped to entries
+   inside a collapsible section, so other pages keep upstream's ellipsis. None
+   of these names have spaces to break on, hence anywhere. */
+.md-nav--secondary .md-nav__item--nested .md-ellipsis {
+  overflow: visible;
+  overflow-wrap: anywhere;
+  text-overflow: clip;
+  white-space: normal;
+}

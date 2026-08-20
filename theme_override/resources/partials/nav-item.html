@@ -170,6 +170,9 @@
         {{ render_content(nav_item) }}
       </a>
       {% if toc %}
+        {#- Stakater override: the drawer renders a second copy of the TOC, so its
+            collapsible toggles need ids of their own (see partials/toc-item.html). -#}
+        {% set toc_ns = "drawer-" %}
         {% include "partials/toc.html" %}
       {% endif %}
     </li>

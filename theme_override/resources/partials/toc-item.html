@@ -1,0 +1,66 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+{#- Stakater override: forked from mkdocs-material 9.7.6's partials/toc-item.html
+    to make TOC entries with children collapsible on the pages listed in
+    extra.collapsible_toc_pages. Everything else renders exactly as upstream.
+    Re-diff against upstream on theme bumps. -#}
+{% set collapsible = toc_item.children
+  and page.file.src_uri in (config.extra.collapsible_toc_pages or []) %}
+{% set toc_toggle = "__toc_" ~ (toc_ns | default("")) ~ toc_item.id %}
+<li class="md-nav__item {{ 'md-nav__item--nested' if collapsible }}">
+  {% if collapsible %}
+    {#- A section whose children are all leaves is the type list of one group
+        version, and starts open: collapsing it too would put every type two
+        clicks away instead of one. -#}
+    {% set checked = "checked" if not toc_item.children | selectattr("children") | list %}
+    <input class="md-nav__toggle md-toggle" type="checkbox" id="{{ toc_toggle }}" {{ checked }}>
+  {% endif %}
+  {% set title %}
+    <span class="md-ellipsis">
+      {% if toc_item.typeset %}
+        <span class="md-typeset">
+          {{ toc_item.typeset.title }}
+        </span>
+      {% else %}
+        {{ toc_item.title }}
+      {% endif %}
+    </span>
+  {% endset %}
+  {#- A label cannot sit inside the anchor, so a collapsible entry pairs the two
+      in a row. Neither the row nor the label may carry md-nav__link: material
+      collects .md-nav__link inside the TOC and reads .hash off each one, which
+      throws on anything that is not an anchor and takes the sidebar's own
+      sizing down with it. -#}
+  {% if collapsible %}
+    <div class="md-nav__toc-row">
+      <a href="{{ toc_item.url }}" class="md-nav__link">
+        {{ title }}
+      </a>
+      <label class="md-nav__toc-toggle" for="{{ toc_toggle }}" id="{{ toc_toggle }}_label"
+             tabindex="0" aria-label="{{ toc_item.title | striptags | e }}">
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    </div>
+  {% else %}
+    <a href="{{ toc_item.url }}" class="md-nav__link">
+      {{ title }}
+    </a>
+  {% endif %}
+  {% if toc_item.children %}
+    {#- aria-labelledby, not aria-label, when collapsible: material's label
+        handler keeps aria-expanded in step through that link. -#}
+    {% if collapsible %}
+      <nav class="md-nav" aria-labelledby="{{ toc_toggle }}_label"
+           aria-expanded="{{ 'true' if checked else 'false' }}">
+    {% else %}
+      <nav class="md-nav" aria-label="{{ toc_item.title | striptags | e }}">
+    {% endif %}
+      <ul class="md-nav__list">
+        {% for toc_item in toc_item.children %}
+          {% include "partials/toc-item.html" %}
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
+</li>

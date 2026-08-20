@@ -24,7 +24,9 @@ operators:
       - from: "guides/**"
         into: "guides"
         under: "Guides"
-      - from: "reference/api.md"          # concatenated into the single API page
+      # concatenated onto mto's own reference/api.src.md; the result,
+      # reference/api.md, is generated and gitignored
+      - from: "reference/api.md"
         concat_into: "reference/api.md"
         under: "Reference"
         as: "API Reference"
