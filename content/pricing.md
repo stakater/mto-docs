@@ -1,32 +1,59 @@
 # Pricing
 
-Multi Tenant Operator (MTO) is available in two versions: _Basic_ and _Enterprise_.
+Multi-Tenant Operator comes in two editions: **Basic**, which is free, and **Enterprise**, which is commercially licensed.
 
-The Basic version is free.
+The difference is not the feature set. Basic is the whole product with a limit on how many tenants it will manage, so you can install MTO, define tenants, use templates, see cost and capacity data, hibernate environments and configure extensions before speaking to anyone.
 
-The Enterprise version is priced according to information on the [Multi Tenant Operator website](https://www.stakater.com/products/mto/).
+## Editions
 
-## Feature Difference
-
-The difference between the versions are highlighted here:
-
-| Feature | Basic | Enterprise |
+| | Basic | Enterprise |
 | :- | :-: | :-: |
-| Number of possible Tenants | Two (2) | Unlimited |
-| Support | Community support through [community Slack](https://stakater-community.slack.com/archives/C07HS5V9P6G) | Choose among three support tiers |
-| Custom development requests | Not possible | Possible through support requests |
+| Number of tenants | Two (2) | Unlimited |
+| Support | Community, through [community Slack](https://stakater-community.slack.com/archives/C07HS5V9P6G) | Standard or Premium plan |
+| Custom development requests | Not available | Available through support requests |
 | Price | Free | Contact [`sales@stakater.com`](mailto:sales@stakater.com) |
+
+## Which edition you need
+
+The tenant limit is the line, and it is a low one by design — two tenants is enough to prove the model and not enough to run a platform on.
+
+**Basic** suits evaluation, a proof of concept, a demonstration environment, or a lab where you are learning the tenant model. It is a real installation rather than a trial: nothing expires, and no capability is withheld.
+
+**Enterprise** is what a shared platform needs. Once a third team, department or customer arrives, the tenant limit is reached — and at that point you also want a support commitment, since the platform is now in the path of other people's work.
+
+## How it is licensed
+
+The Enterprise licence is **per cluster** — one licence for each cluster MTO is installed on, whatever number of tenants, namespaces or nodes that cluster carries.
+
+Contact [`sales@stakater.com`](mailto:sales@stakater.com) for pricing.
+
+## Support plans
+
+Enterprise support comes in two plans, described in full at [Stakater Support](https://support.stakater.com/).
+
+**Standard** — business-hours support, intended for development environments, non-critical workloads and cost-sensitive operations.
+
+**Premium** — 24x7 support with priority handling, structured escalation and proactive engagement, intended for production and business-critical workloads.
+
+Both plans define a coverage window, response time targets, an escalation model and a level of operational engagement, and both use the same severity framework:
+
+| Severity | Meaning |
+| :- | :- |
+| P1 | Critical |
+| P2 | High |
+| P3 | Medium |
+| P4 | Low |
+
+Support requests are raised through the [Stakater support portal](https://stakater-cloud.atlassian.net/servicedesk/customer/portals). See [Stakater Support](https://support.stakater.com/) for the response targets and coverage details that apply to each plan.
+
+Basic users are welcome in the [community Slack](https://stakater-community.slack.com/archives/C07HS5V9P6G), which is community support rather than a support commitment — no response targets and no escalation path.
 
 ## Demo
 
-A web application demo of MTO is available on the [Multi Tenant Operator website](https://www.stakater.com/products/mto/), it showcases MTO Console which is aimed at providing a more intuitive and user-friendly way for administrators and tenant users to manage tenants and their resources.
+A web demo of the [MTO Console](console/overview.md) is available on the [Multi-Tenant Operator website](https://www.stakater.com/products/mto/), showing how administrators and tenant users work with tenants, namespaces, quotas, templates, cost and capacity.
 
-Contact [`sales@stakater.com`](mailto:sales@stakater.com) to request a custom demo.
-
-## Support
-
-See [Stakater Support](https://support.stakater.com/) for information about support for the Enterprise Version of MTO.
+Contact [`sales@stakater.com`](mailto:sales@stakater.com) to request a demo tailored to your environment.
 
 ## Contact
 
-For more info, contact [`sales@stakater.com`](mailto:sales@stakater.com).
+For pricing, licensing or anything not covered here, contact [`sales@stakater.com`](mailto:sales@stakater.com).

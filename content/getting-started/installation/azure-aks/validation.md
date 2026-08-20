@@ -1,4 +1,4 @@
-# MTO Validation Guide
+# Validate MTO on AKS
 
 In this guide, we will set up **two tenants**—**Logistics** and **Retail**—for an imaginary e-commerce company, each with one user.
 

@@ -1,4 +1,4 @@
-# Overview
+# Installing MTO
 
 The Multi-Tenant Operator (MTO) supports two installation methods: Operator Lifecycle Manager (OLM) and Helm Chart. These methods ensure flexibility and compatibility across various Kubernetes environments, including OpenShift, Azure Kubernetes Service (AKS), Amazon Elastic Kubernetes Service (EKS), and others.
 
@@ -30,4 +30,4 @@ Choose the installation guide that matches your environment:
 * [Installing with Helm on EKS](aws-eks/installation.md)
 * [Installing with Helm on any Kubernetes](kubernetes.md)
 
-By following the appropriate guide, you’ll be able to deploy MTO efficiently and start managing multi-tenancy in your Kubernetes environment.
+Once MTO is installed, [create your first tenant](../../guides/create-tenant.md) to see the model working end to end. To remove MTO later, see [Uninstalling MTO](../uninstalling.md).
