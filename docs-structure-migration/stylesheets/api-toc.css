@@ -43,9 +43,11 @@
   /* .md-nav__link carries this same top margin, so the arrow lines up with the
      first line of the title rather than the top of the box */
   margin-top: 0.625em;
-  /* pull the arrow back into the padding .md-nav__list already supplies, so it
-     lines up with the section titles rather than pushing them left */
-  margin-right: -0.2rem;
+  /* no negative margin here, unlike material's own nav icon: the padding it
+     pulls into belongs to .md-nav__link in the secondary nav, not to this row,
+     so the label's box would simply overhang the row's right edge — and the
+     scrollwrap has overflow-y: auto, which resolves overflow-x to auto too, so
+     4px of overhang earns a horizontal scrollbar down the whole sidebar */
   padding: 0;
 }
 
