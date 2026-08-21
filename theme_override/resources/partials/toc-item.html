@@ -10,11 +10,10 @@
 {% set toc_toggle = "__toc_" ~ (toc_ns | default("")) ~ toc_item.id %}
 <li class="md-nav__item {{ 'md-nav__item--nested' if collapsible }}">
   {% if collapsible %}
-    {#- A section whose children are all leaves is the type list of one group
-        version, and starts open: collapsing it too would put every type two
-        clicks away instead of one. -#}
-    {% set checked = "checked" if not toc_item.children | selectattr("children") | list %}
-    <input class="md-nav__toggle md-toggle" type="checkbox" id="{{ toc_toggle }}" {{ checked }}>
+    {#- Open by default, collapsible on demand: a collapsed section is
+        display:none, so anything inside it is invisible to the browser's own
+        find. The reader can fold away what they are not reading. -#}
+    <input class="md-nav__toggle md-toggle" type="checkbox" id="{{ toc_toggle }}" checked>
   {% endif %}
   {% set title %}
     <span class="md-ellipsis">
@@ -52,7 +51,7 @@
         handler keeps aria-expanded in step through that link. -#}
     {% if collapsible %}
       <nav class="md-nav" aria-labelledby="{{ toc_toggle }}_label"
-           aria-expanded="{{ 'true' if checked else 'false' }}">
+           aria-expanded="true">
     {% else %}
       <nav class="md-nav" aria-label="{{ toc_item.title | striptags | e }}">
     {% endif %}

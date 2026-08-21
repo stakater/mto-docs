@@ -966,10 +966,11 @@ def test_apply_concat_reshapes_every_api_section(tmp_path):
 
     page = (content / "reference/api.md").read_text()
     assert "Resource Types" not in page
-    assert page.index("#### Tenant") < page.index("#### AccessControl")
-    assert page.index("#### Supervisor") < page.index("#### Helper")
-    # demoted one level by the concat, so the types land at 4 not 5
-    assert "##### " not in page
+    assert page.index("#### Tenant") < page.index("##### AccessControl")
+    assert page.index("#### Supervisor") < page.index("##### Helper")
+    # the concat demotes by one, so a package is 3, its kinds 4, their types 5
+    assert "### mto.io/v1" in page
+    assert "###### " not in page
 
 
 def test_apply_concat_is_idempotent(tmp_path):

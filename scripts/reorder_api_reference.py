@@ -9,10 +9,12 @@ Two things, both of which the generator has no knob for:
   directly below it — scroll past `TenantSpec` and you are in the types
   `TenantSpec` is made of. Kinds are taken one at a time, so their subtrees do
   not interleave, and anything no kind reaches is left alphabetical at the end.
-- **Depth.** The `Resource Types` heading and its list of kinds are dropped and
-  the type sections promoted one level, so they sit directly under their
-  package. The list was the only thing between a package and its types, and with
-  the kinds ordered first it said nothing the page does not.
+- **Depth.** A kind's heading sits directly under its package; every type that
+  something else references is one step smaller, however deep in the tree it is,
+  so a package reads as a list of kinds with their parts under them.
+  The `Resource Types` heading and its list of kinds are dropped along the way:
+  it was the only thing between a package and its types, and with the kinds
+  ordered first it said nothing the page does not.
 
 Run it after generation, alongside the fixups in
 docs/generating-api-reference.md:
@@ -163,18 +165,23 @@ def kind_sections(lines, flags, spans):
     return kinds
 
 
-def promote(lines, flags, start, stop):
-    """One type section, a heading level shallower: with the `Resource Types`
-    wrapper gone, the types are direct children of their package. Trailing blank
-    lines are normalised to one, so that the section which happened to sit last
-    in the file does not end up flush against the next heading once moved."""
+def at_level(lines, flags, start, stop, level):
+    """One type section with its heading set to `level`, and any heading inside
+    it moved by the same amount. Kinds sit directly under their package; a type
+    something else references is a step smaller, whatever its depth in the tree.
+    Trailing blank lines are normalised to one, so that the section which
+    happened to sit last in the file does not end up flush against the next
+    heading once moved."""
+    mo = HEADING_RE.match(lines[start])
+    shift = level - len(mo.group(1)) if mo else 0
     out = []
     for j in range(start, stop):
         line = lines[j]
-        if not flags[j]:
+        if not flags[j] and shift:
             mo = HEADING_RE.match(line)
-            if mo and len(mo.group(1)) > 1:
-                line = line[1:]
+            if mo:
+                depth = min(max(len(mo.group(1)) + shift, 1), 6)
+                line = "#" * depth + line[len(mo.group(1)):]
         out.append(line)
     while out and not out[-1].strip():
         out.pop()
@@ -196,12 +203,12 @@ def reorder_text(text):
                 end = i
                 break
         section = [h for h in heads if start < h[0] < end]
-        # a fresh page nests the types under `Resource Types`, one level deeper
-        # than they need to be; a page already reshaped has them at level + 1
-        fresh = any(lvl == level + 2 for _, lvl, _ in section)
+        # Every heading just below the package is a type section, at whichever
+        # level it currently sits: crd-ref-docs puts them all at level + 2 under
+        # `Resource Types`, and this script leaves kinds at level + 1 and the
+        # rest at level + 2, so both shapes have to be recognised.
         types = [(i, t) for i, lvl, t in section
-                 if lvl == level + (2 if fresh else 1)
-                 and t.lower() != "resource types"]
+                 if level < lvl <= level + 2 and t.lower() != "resource types"]
         if not types:
             continue
 
@@ -209,15 +216,16 @@ def reorder_text(text):
         bounds = [i for i, _ in types] + [end]
         spans = {t: (i, bounds[k + 1]) for k, (i, t) in enumerate(types)}
         refs = references(lines, flags, spans)
-        kinds = kind_sections(lines, flags, spans)
-        blocks = {t: promote(lines, flags, *spans[t]) if fresh
-                  else lines[spans[t][0]:spans[t][1]] for t in spans}
+        kinds = set(kind_sections(lines, flags, spans))
+        blocks = {t: at_level(lines, flags, *spans[t],
+                              level + (1 if t in kinds else 2))
+                  for t in spans}
         # the package doc, up to whatever the types used to be introduced by
         preamble = lines[pos:rt_span[0] if rt_span else types[0][0]]
         while preamble and not preamble[-1].strip():
             preamble.pop()
         out.extend(preamble + [""])
-        for name in type_order(kinds, blocks, refs):
+        for name in type_order(kind_sections(lines, flags, spans), blocks, refs):
             out.extend(blocks[name])
         pos = end
     out.extend(lines[pos:])

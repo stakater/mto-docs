@@ -1,15 +1,21 @@
-from reorder_api_reference import (code_flags, kind_sections, references,
-                                   reorder_text, type_order)
+from reorder_api_reference import (code_flags, headings, kind_sections,
+                                   references, reorder_text, type_order)
 
 
-def names(text, level="###"):
-    """Type section names in document order, ignoring fenced code."""
+def sections(text, base=2):
+    """(level, name) for every type section, in document order."""
     lines = text.splitlines()
     flags = code_flags(lines)
-    return [ln[len(level) + 1:].strip()
-            for ln, in_code in zip(lines, flags)
-            if not in_code and ln.startswith(level + " ")
-            and not ln.startswith(level + "#")]
+    return [(lvl, title) for _, lvl, title in headings(lines, flags)
+            if base < lvl <= base + 2 and title.lower() != "resource types"]
+
+
+def names(text, base=2):
+    return [name for _, name in sections(text, base)]
+
+
+def levels(text, base=2):
+    return {name: lvl for lvl, name in sections(text, base)}
 
 
 GV = "tenantoperator.stakater.com/v1beta3"
@@ -21,14 +27,18 @@ def gv_page(kinds, types, gv_level=2, fields=None, reshaped=False):
     type to the types its field table links to. `reshaped` renders the page as
     this script leaves it — no Resource Types block, types one level up."""
     gv, rt = "#" * gv_level, "#" * (gv_level + 1)
-    ty = "#" * (gv_level + (1 if reshaped else 2))
     out = ["# API Reference\n", f"{gv} {GV}\n", "Package v1beta3 docs\n"]
     if kinds and not reshaped:
         out.append(f"{rt} Resource Types")
         out += [f"- [{k}](#{k.lower()})" for k in kinds]
         out.append("")
     for t in types:
-        body = [f"{ty} {t}", "", f"{t} does a thing.", ""]
+        # fresh output has every type at the same level, under Resource Types;
+        # reshaped has the kinds a level above the types they reference
+        depth = gv_level + 2
+        if reshaped and t in kinds:
+            depth = gv_level + 1
+        body = ["#" * depth + f" {t}", "", f"{t} does a thing.", ""]
         rows = []
         if t in kinds:
             rows.append("| `apiVersion` _string_ | `group.io/v1` | | |")
@@ -160,17 +170,33 @@ class TestReorderText:
         assert "Resource Types" not in out
         assert "- [Tenant](#tenant)" not in out
 
-    def test_promotes_types_to_sit_directly_under_the_package(self):
+    def test_kinds_sit_directly_under_the_package(self):
         page = gv_page(["Tenant"], ["AccessControl", "Tenant"])
         out = reorder_text(page)
         assert "### Tenant\n" in out and "#### Tenant\n" not in out
         assert "## " + GV + "\n\nPackage v1beta3 docs\n\n### Tenant\n" in out
 
+    def test_a_referenced_type_is_one_step_smaller_at_any_depth(self):
+        page = gv_page(["Tenant"],
+                       ["AccessControl", "Namespaces", "Sandboxes", "Tenant",
+                        "TenantSpec"],
+                       fields={"Tenant": ["TenantSpec"],
+                               "TenantSpec": ["AccessControl", "Namespaces"],
+                               "Namespaces": ["Sandboxes"]})
+        # Sandboxes is three references deep and still only one level smaller
+        assert levels(reorder_text(page)) == {
+            "Tenant": 3, "TenantSpec": 4, "AccessControl": 4,
+            "Namespaces": 4, "Sandboxes": 4}
+
+    def test_a_type_no_kind_reaches_is_a_step_smaller_too(self):
+        page = gv_page(["Tenant"], ["Orphan", "Tenant"])
+        assert levels(reorder_text(page)) == {"Tenant": 3, "Orphan": 4}
+
     def test_body_of_each_section_travels_with_its_heading(self):
         page = gv_page(["Tenant"], ["AccessControl", "Tenant"])
         out = reorder_text(page)
         assert "### Tenant\n\nTenant does a thing." in out
-        assert "### AccessControl\n\nAccessControl does a thing." in out
+        assert "#### AccessControl\n\nAccessControl does a thing." in out
 
     def test_every_section_is_separated_by_a_blank_line(self):
         # the section that happened to sit last in the file must not end up
@@ -187,7 +213,9 @@ class TestReorderText:
                        reshaped=True)
         out = reorder_text(page)
         assert names(out) == ["Tenant", "TenantSpec", "AccessControl"]
-        assert "#### " not in out          # nothing demoted or promoted again
+        assert levels(out) == {"Tenant": 3, "TenantSpec": 4,
+                               "AccessControl": 4}
+        assert out == reorder_text(out)
 
     def test_group_versions_are_reordered_independently(self):
         page = "\n".join([
@@ -221,8 +249,9 @@ class TestReorderText:
         page = gv_page(["Tenant"], ["AccessControl", "Tenant", "TenantSpec"],
                        gv_level=3, fields={"Tenant": ["TenantSpec"]})
         out = reorder_text(page)
-        assert names(out, "####") == ["Tenant", "TenantSpec", "AccessControl"]
-        assert "##### " not in out
+        assert names(out, base=3) == ["Tenant", "TenantSpec", "AccessControl"]
+        assert levels(out, base=3) == {"Tenant": 4, "TenantSpec": 5,
+                                       "AccessControl": 5}
 
     def test_headings_inside_code_fences_are_not_sections(self):
         page = "\n".join([
@@ -242,8 +271,8 @@ class TestReorderText:
         ])
         out = reorder_text(page)
         assert names(out) == ["Tenant", "AccessControl"]
-        assert "#### NotAType" in out                 # left at its own level
-        assert out.index("### AccessControl") < out.index("#### NotAType")
+        assert "#### NotAType" in out                 # untouched inside the fence
+        assert out.index("#### AccessControl") < out.index("#### NotAType")
 
     def test_content_outside_any_group_version_is_preserved(self):
         page = "\n".join([
