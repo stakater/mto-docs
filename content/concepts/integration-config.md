@@ -208,7 +208,7 @@ Following are the different components that can be used to configure multi-tenan
     dexConfigOperator: {}
     finopsOperator: {}
     ingress:
-      ingressClassName: 
+      ingressClassName: nginx
       host: mto.apps.mycluster-ams.abcdef.cloud
       tlsSecretName: tenant-operator-tls
 ```
