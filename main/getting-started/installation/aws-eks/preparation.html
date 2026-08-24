@@ -52,6 +52,10 @@
     
       <link rel="stylesheet" href="../../../stylesheets/nav-labels.css">
     
+      <link rel="stylesheet" href="../../../stylesheets/api-toc.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/api-reference.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2681,136 +2685,221 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
-        <li class="md-nav__item">
-  <a href="#cluster-requirements" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#cluster-requirements" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Cluster Requirements
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#local-setup-requirements" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#local-setup-requirements" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Local Setup Requirements
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#optional-creating-and-configuring-an-eks-cluster" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#optional-creating-and-configuring-an-eks-cluster" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Optional: Creating and Configuring an EKS Cluster
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Optional: Creating and Configuring an EKS Cluster">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Optional: Creating and Configuring an EKS Cluster">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#create-eks-cluster" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#create-eks-cluster" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Create EKS Cluster
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#install-ingress-controller" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#install-ingress-controller" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Install Ingress Controller
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#install-certmanager" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#install-certmanager" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Install Certmanager
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#create-lets-encrypt-access-key-secret" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#create-lets-encrypt-access-key-secret" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Create Let's Encrypt Access Key Secret
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#create-clusterissuer-for-lets-encrypt" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#create-clusterissuer-for-lets-encrypt" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Create ClusterIssuer for Let's Encrypt
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#install-aws-ebs-csi-driver" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#install-aws-ebs-csi-driver" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Install AWS EBS CSI Driver
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#create-storage-class-for-ebs" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#create-storage-class-for-ebs" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Create Storage Class for EBS
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#create-wildcard-dns-record" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#create-wildcard-dns-record" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Create Wildcard DNS Record
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#create-wildcard-certificate" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#create-wildcard-certificate" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Create Wildcard Certificate
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -2819,14 +2908,21 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#whats-next" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         What's Next?
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
       
@@ -7062,136 +7158,221 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
-        <li class="md-nav__item">
-  <a href="#cluster-requirements" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#cluster-requirements" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Cluster Requirements
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#local-setup-requirements" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#local-setup-requirements" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Local Setup Requirements
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#optional-creating-and-configuring-an-eks-cluster" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#optional-creating-and-configuring-an-eks-cluster" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Optional: Creating and Configuring an EKS Cluster
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Optional: Creating and Configuring an EKS Cluster">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Optional: Creating and Configuring an EKS Cluster">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#create-eks-cluster" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#create-eks-cluster" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Create EKS Cluster
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#install-ingress-controller" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#install-ingress-controller" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Install Ingress Controller
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#install-certmanager" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#install-certmanager" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Install Certmanager
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#create-lets-encrypt-access-key-secret" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#create-lets-encrypt-access-key-secret" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Create Let's Encrypt Access Key Secret
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#create-clusterissuer-for-lets-encrypt" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#create-clusterissuer-for-lets-encrypt" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Create ClusterIssuer for Let's Encrypt
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#install-aws-ebs-csi-driver" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#install-aws-ebs-csi-driver" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Install AWS EBS CSI Driver
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#create-storage-class-for-ebs" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#create-storage-class-for-ebs" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Create Storage Class for EBS
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#create-wildcard-dns-record" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#create-wildcard-dns-record" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Create Wildcard DNS Record
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#create-wildcard-certificate" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#create-wildcard-certificate" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Create Wildcard Certificate
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -7200,14 +7381,21 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#whats-next" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#whats-next" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         What's Next?
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
       
@@ -8185,6 +8373,8 @@ aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span cla
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/api-toc.js"></script>
       
     
   
