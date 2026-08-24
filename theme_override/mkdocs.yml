@@ -6,6 +6,22 @@ edit_uri: blob/main/content/
 theme:
   favicon: assets/images/favicon.svg
 
+# Appended to the shared theme's extra_css by combine_mkdocs_config_yaml.py,
+# which unions lists, so stylesheets/extra.css is preserved.
+extra_css:
+  - stylesheets/nav-labels.css
+  - stylesheets/api-toc.css
+  - stylesheets/api-reference.css
+
+extra_javascript:
+  - javascripts/api-toc.js
+
+# mto-docs' own half of the concatenated API reference (see merge.yaml
+# concat_into). The merge builds reference/api.md out of it, so it must not be
+# rendered as a page of its own.
+exclude_docs: |
+  reference/api.src.md
+
 strict: true
 validation:
   links:
@@ -15,6 +31,11 @@ extra:
   version:
     provider: mike
     default: latest
+  # Pages whose "On this page" sections render collapsed, read by the
+  # partials/toc-item.html fork. The API reference is one page carrying every
+  # type of every operator, so its TOC is a few hundred entries long.
+  collapsible_toc_pages:
+    - reference/api.md
 
 # Resolves {{ screenshot: <name> }} directives to the images captured by
 # screenshots/capture.sh. Our own module, loaded by mkdocs' built-in hooks: key --
@@ -35,7 +56,8 @@ plugins:
       redirect_maps:
         about/key-features.md: overview/key-features.md
         about/use-cases.md: overview/use-cases.md
-        about/benefits.md: overview/benefits.md
+        about/benefits.md: overview/why-mto.md
+        overview/benefits.md: overview/why-mto.md
         architecture/architecture.md: concepts/architecture.md
         architecture/concepts.md: concepts/terminology.md
         kubernetes-resources/tenant/tenant-overview.md: concepts/tenant.md
@@ -78,16 +100,12 @@ plugins:
 nav:
   - Overview:
       - Introduction: index.md
+      - overview/why-mto.md
       - overview/key-features.md
+      - overview/how-it-works.md
+      - Architecture: concepts/architecture.md
+      - overview/deployment-models.md
       - overview/use-cases.md
-      - overview/benefits.md
-  - Concepts:
-      - concepts/architecture.md
-      - concepts/terminology.md
-      - concepts/tenant.md
-      - concepts/quota.md
-      - concepts/extensions.md
-      - concepts/integration-config.md
   - Getting Started:
       - Installation:
           - getting-started/installation/overview.md
@@ -102,6 +120,34 @@ nav:
               - Installation: "getting-started/installation/aws-eks/installation.md"
               - Validation: "getting-started/installation/aws-eks/validation.md"
       - getting-started/uninstalling.md
+  - Multi-Tenancy:
+      - Concepts:
+          - concepts/terminology.md
+          - concepts/tenant.md
+          - concepts/quota.md
+          - concepts/extensions.md
+          - concepts/integration-config.md
+      - Guides:
+          - guides/create-tenant.md
+          - guides/create-namespaces.md
+          - guides/create-sandbox.md
+          - guides/assign-metadata.md
+          - guides/hibernate-tenant.md
+          - guides/restrict-nodepool-per-tenant.md
+          - guides/disable-intra-tenant-networking.md
+          - guides/ingress-sharding.md
+          - guides/host-validation.md
+          - guides/storage-classes.md
+          - guides/pod-priority-classes.md
+          - guides/service-accounts.md
+          - guides/image-registries.md
+          - guides/custom-roles.md
+          - guides/extend-default-roles.md
+          - guides/delete-tenant.md
+          - guides/templated-metadata-values.md
+  - Templates: []
+  - FinOps: []
+  - Hibernation: []
   - Console:
       - console/overview.md
       - console/dashboard.md
@@ -115,35 +161,18 @@ nav:
       - console/cluster-template-instances.md
       - console/capacity-planning.md
       - console/configuration.md
-  - Guides:
-      - guides/create-tenant.md
-      - guides/create-namespaces.md
-      - guides/create-sandbox.md
-      - guides/assign-metadata.md
-      - guides/hibernate-tenant.md
-      - guides/restrict-nodepool-per-tenant.md
-      - guides/disable-intra-tenant-networking.md
-      - guides/ingress-sharding.md
-      - guides/host-validation.md
-      - guides/storage-classes.md
-      - guides/pod-priority-classes.md
-      - guides/service-accounts.md
-      - guides/image-registries.md
-      - guides/custom-roles.md
-      - guides/extend-default-roles.md
-      - guides/delete-tenant.md
-      - guides/templated-metadata-values.md
   - Integrations:
+      - integrations/overview.md
       - integrations/argocd.md
+      - integrations/grafana/readme.md
+      - integrations/lgtm/lgtm.md
       - integrations/vault/vault.md
       - OpenBao: integrations/openbao/readme.md
       - integrations/devworkspace.md
       - integrations/mattermost.md
-  - CLI:
-      - cli/overview.md
+  - CLI: cli/overview.md
   - Reference:
-      - API Reference:
-          - Tenant Operator: reference/api.md
+      - reference/api.md
       - reference/configuration.md
       - reference/rbac.md
       - reference/security-model.md
@@ -151,5 +180,27 @@ nav:
       - reference/webhooks.md
   - Troubleshooting: troubleshooting.md
   - Release Notes: release-notes.md
+  # Evaluator-facing concepts and comparisons. Top of funnel, not reference
+  # material — see the audience split in the Overview section.
+  - Learn:
+      - Overview: learn/index.md
+      - Concepts:
+          - learn/kubernetes-multi-tenancy.md
+          - learn/namespace-based-multi-tenancy.md
+          - learn/kubernetes-tenants.md
+          - learn/tenant-lifecycle-management.md
+      - Architecture:
+          - learn/multi-tenant-kubernetes-architecture.md
+          - learn/kubernetes-multi-tenancy-implementation.md
+      - Comparisons:
+          - learn/kubernetes-multi-tenancy-tools.md
+          - learn/mto-vs-capsule.md
+          - learn/mto-vs-hnc.md
+          - learn/capsule-alternatives.md
+          - learn/mto-vs-vcluster.md
+          - learn/mto-vs-loft.md
+          - learn/mto-vs-kamaji.md
+          - learn/mto-vs-hypershift.md
+          - learn/mto-vs-kcp.md
   - Pricing: pricing.md
   - EULA: eula.md

@@ -1,4 +1,4 @@
-# MTO Installation Guide
+# Install MTO on EKS
 
 Once the [necessary preparations](preparation.md) are complete, you can proceed with the installation section.
 

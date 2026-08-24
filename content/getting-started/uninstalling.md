@@ -1,28 +1,49 @@
-# Uninstall via OperatorHub UI on OpenShift
+# Uninstalling MTO
 
-You can uninstall MTO by following these steps:
+Removing MTO is a few decisions followed by one removal step. Make the decisions first: two of them cannot be undone once the operator is gone.
 
-* Decide on whether you want to retain tenant namespaces and ArgoCD AppProjects or not.
-For more details check out [onDeletePurgeNamespaces](../guides/delete-tenant.md#configuration-for-retaining-resources)
-[onDeletePurgeAppProject](../concepts/extensions.md#configuring-argocd-integration)
+## Decide what to keep
 
-* In case you have enabled console and showback, you will have to disable it first by navigating to `Search` -> `IntegrationConfig` -> `tenant-operator-config` and set `spec.components.console` and `spec.components.showback` to `false`.
+Deleting a `Tenant` can delete what the tenant owns, so set the retention you want on each tenant **before** removing the operator that would act on it:
 
-* Remove IntegrationConfig CR from the cluster by navigating to `Search` -> `IntegrationConfig` -> `tenant-operator-config` and select `Delete` from actions dropdown.
+- `spec.namespaces.onDeletePurgeNamespaces` on the `Tenant` — whether the tenant's namespaces are deleted along with it. It defaults to `false`, so namespaces survive unless you asked otherwise. See [Delete a Tenant](../guides/delete-tenant.md).
+- `argoCD.onDeletePurgeAppProject` on the tenant's `Extensions` resource — whether its ArgoCD `AppProject` is deleted with it. See [Extensions](../concepts/extensions.md#per-tenant-extensions-the-extensions-cr).
 
-* After making the required changes open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
+## Disable the console and cost components
 
-![image](../images/installed-operators.png)
+If you enabled the console or showback, turn them off before uninstalling, while the operator that manages them is still running.
 
-* Now click on uninstall and confirm uninstall.
+The `IntegrationConfig` manages the resources behind the console GUI — PostgreSQL, Prometheus, OpenCost, the MTO Console and Gateway, Dex and DexConfigOperator, and the FinOps Operator and Gateway — so this step is what hands them back before MTO goes.
 
-![image](../images/uninstall-from-ui.png)
+Edit the `IntegrationConfig` — by default `tenant-operator-config` — and set:
 
-* Now the operator has been uninstalled.
+```yaml
+spec:
+  components:
+    console: false
+    showback: false
+```
 
-* `Optional:` you can also manually remove MTO's CRDs and its resources from the cluster.
+See [Integration Config](../concepts/integration-config.md).
+
+## Remove the IntegrationConfig
+
+Delete the `IntegrationConfig` from the cluster. On OpenShift you can do this from `Search` → `IntegrationConfig` → `tenant-operator-config` → `Delete`.
+
+## Remove the operator
+
+Uninstall the way you installed:
+
+| How you installed | How to remove |
+|---|---|
+| OpenShift, via OperatorHub or OLM | [Uninstall via OperatorHub UI](installation/openshift.md#uninstall-via-operatorhub-ui) |
+| Kubernetes, AKS or EKS, via Helm | [Uninstall via Helm CLI](installation/kubernetes.md#uninstall-via-helm-cli) |
+
+## Optionally remove the custom resource definitions
+
+Uninstalling the operator leaves MTO's CRDs and the resources built from them on the cluster. Removing the CRDs deletes every `Tenant`, `Quota`, `IntegrationConfig` and `Extensions` resource with them, and that cannot be undone — so do it only when you are certain the tenant definitions are no longer wanted.
 
 ## Notes
 
-* For more details on how to use MTO please refer [Tenant's tutorial](../guides/create-tenant.md).
-* For more details on how to extend your MTO manager ClusterRole please refer [extend-default-clusterroles](../guides/extend-default-roles.md).
+- For how to use MTO, see the [Tenant tutorial](../guides/create-tenant.md).
+- For extending MTO's manager ClusterRole, see [Extending Default Roles](../guides/extend-default-roles.md).
