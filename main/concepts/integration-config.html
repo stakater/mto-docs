@@ -3059,6 +3059,24 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li class="md-nav__item ">
   
   
+    <a href="#path-layout" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Path layout
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
     <a href="#consolidated-mode-recommended" class="md-nav__link">
       
     <span class="md-ellipsis">
@@ -3082,6 +3100,24 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     <span class="md-ellipsis">
       
         Legacy mode (per-component hosts)
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#upgrading-from-per-component-hosts" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Upgrading from per-component hosts
       
     </span>
   
@@ -7710,6 +7746,24 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li class="md-nav__item ">
   
   
+    <a href="#path-layout" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Path layout
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
     <a href="#consolidated-mode-recommended" class="md-nav__link">
       
     <span class="md-ellipsis">
@@ -7733,6 +7787,24 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     <span class="md-ellipsis">
       
         Legacy mode (per-component hosts)
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#upgrading-from-per-component-hosts" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Upgrading from per-component hosts
       
     </span>
   
@@ -8473,18 +8545,8 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
 <span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="s">'nginx'</span>
-<span class="w">      </span><span class="nt">console</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-console.apps.mycluster-ams.abcdef.cloud</span>
-<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
-<span class="w">      </span><span class="nt">gateway</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud</span>
-<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
-<span class="w">      </span><span class="nt">dex</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-dex.apps.mycluster-ams.abcdef.cloud</span>
-<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
-<span class="w">      </span><span class="nt">finopsGateway</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-finops.apps.mycluster-ams.abcdef.cloud</span>
-<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">      </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
 <span class="w">    </span><span class="nt">postgres</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Managed</span>
 <span class="w">      </span><span class="nt">values</span><span class="p">:</span>
@@ -8648,19 +8710,9 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <span class="w">    </span><span class="nt">dexConfigOperator</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">    </span><span class="nt">finopsOperator</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
-<span class="w">      </span><span class="nt">console</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-console.apps.mycluster-ams.abcdef.cloud</span>
-<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
-<span class="w">      </span><span class="nt">gateway</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud</span>
-<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
-<span class="w">      </span><span class="nt">dex</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-dex.apps.mycluster-ams.abcdef.cloud</span>
-<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
-<span class="w">      </span><span class="nt">finopsGateway</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-finops.apps.mycluster-ams.abcdef.cloud</span>
-<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
+<span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto.apps.mycluster-ams.abcdef.cloud</span>
+<span class="w">      </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
 </code></pre></div>
 <ul>
 <li><code>components.console:</code> Enables or disables the console GUI for MTO.</li>
@@ -8670,22 +8722,22 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li><code>tlsSecretName:</code> Name of the secret containing the TLS certificate and key covering the shared host in consolidated mode.</li>
 <li><code>ingressClassName:</code> Ingress class to be used for the ingress.</li>
 <li><code>console:</code> Settings for the console's ingress.<ul>
-<li><code>host:</code> hostname for the console's ingress.</li>
+<li><code>host:</code> hostname for the console's ingress. Setting it opts the installation into legacy per-component mode.</li>
 <li><code>tlsSecretName:</code> Name of the secret containing the TLS certificate and key for the console's ingress.</li>
 </ul>
 </li>
 <li><code>gateway:</code> Settings for the gateway's ingress.<ul>
-<li><code>host:</code> hostname for the gateway's ingress.</li>
+<li><code>host:</code> hostname for the gateway's ingress. Setting it opts the installation into legacy per-component mode.</li>
 <li><code>tlsSecretName:</code> Name of the secret containing the TLS certificate and key for the gateway's ingress.</li>
 </ul>
 </li>
 <li><code>dex:</code> Settings for the Dex's ingress.<ul>
-<li><code>host:</code> hostname for the Dex's ingress.</li>
+<li><code>host:</code> hostname for the Dex's ingress. Setting it opts the installation into legacy per-component mode.</li>
 <li><code>tlsSecretName:</code> Name of the secret containing the TLS certificate and key for the Dex's ingress.</li>
 </ul>
 </li>
 <li><code>finopsGateway:</code> Settings for the FinOps Gateway's ingress.<ul>
-<li><code>host:</code> hostname for the FinOps Gateway's ingress.</li>
+<li><code>host:</code> hostname for the FinOps Gateway's ingress. Setting it opts the installation into legacy per-component mode.</li>
 <li><code>tlsSecretName:</code> Name of the secret containing the TLS certificate and key for the FinOps Gateway's ingress.</li>
 </ul>
 </li>
@@ -8726,6 +8778,39 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <p>Details on console GUI and showback can be found <a href="../console/overview.html">here</a></p>
 <h3 id="ingress">Ingress<a class="headerlink" href="#ingress" title="Permanent link">#</a></h3>
 <p>MTO's web components — Console, Gateway, Dex, and the FinOps gateway — are served under a <strong>single shared hostname</strong> by default, each on its own path prefix, rather than one hostname per component.</p>
+<h4 id="path-layout">Path layout<a class="headerlink" href="#path-layout" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Path under the shared host</th>
+<th>Example URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Console</td>
+<td><code>/</code></td>
+<td><code>https://mto.apps.example.com/</code></td>
+</tr>
+<tr>
+<td>Gateway</td>
+<td><code>/gateway</code></td>
+<td><code>https://mto.apps.example.com/gateway</code></td>
+</tr>
+<tr>
+<td>Dex</td>
+<td><code>/dex</code></td>
+<td><code>https://mto.apps.example.com/dex</code></td>
+</tr>
+<tr>
+<td>FinOps Gateway</td>
+<td><code>/finops</code></td>
+<td><code>https://mto.apps.example.com/finops</code></td>
+</tr>
+</tbody>
+</table>
+<p>Every component ingress uses <code>pathType: Prefix</code> and no rewrite annotations, so the full path reaches the backend and each backend serves under its prefix. The Console holds <code>/</code> and relies on the ingress controller matching the longer prefixes first, which both the nginx ingress controller and the OpenShift router do.</p>
 <h4 id="consolidated-mode-recommended">Consolidated mode (recommended)<a class="headerlink" href="#consolidated-mode-recommended" title="Permanent link">#</a></h4>
 <p>Set a top-level <code>host</code> to serve all components under one hostname:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
@@ -8741,7 +8826,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li><code>tlsSecretName</code>: a single TLS secret whose certificate covers the shared host, used by every component ingress.</li>
 <li><code>ingressClassName</code>: ingress class for all component ingresses. On OpenShift, if omitted, MTO discovers the default IngressClass (falling back to <code>openshift-default</code>).</li>
 </ul>
-<p>On OpenShift, when no host is set, the shared host is auto-derived from the cluster ingress domain. On Kubernetes there is no cluster domain to derive from, so <code>host</code> must be set explicitly.</p>
+<p>On OpenShift, when no host is set, the shared host is auto-derived from the cluster ingress domain as <code>tenant-operator-&lt;operator-namespace&gt;.&lt;cluster-ingress-domain&gt;</code>. On Kubernetes there is no cluster domain to derive from, so <code>host</code> must be set explicitly.</p>
 <h4 id="legacy-mode-per-component-hosts">Legacy mode (per-component hosts)<a class="headerlink" href="#legacy-mode-per-component-hosts" title="Permanent link">#</a></h4>
 <p>Set explicit per-component hosts to keep each component on its own hostname (pre-consolidation behavior). Setting any per-component host, with no top-level host, selects legacy mode:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
@@ -8760,10 +8845,13 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-finops.apps.example.com</span>
 <span class="w">      </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">finops-tls</span>
 </code></pre></div>
+<p>In legacy mode a component without an explicit <code>host</code> still falls back to its auto-derived OpenShift hostname, <code>tenant-operator-&lt;component&gt;-&lt;operator-namespace&gt;.&lt;cluster-ingress-domain&gt;</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>In consolidated mode the Dex issuer becomes <code>https://&lt;host&gt;/dex</code>. Any external OIDC client that trusts MTO's Dex must be configured with this issuer.</p>
 </div>
+<h4 id="upgrading-from-per-component-hosts">Upgrading from per-component hosts<a class="headerlink" href="#upgrading-from-per-component-hosts" title="Permanent link">#</a></h4>
+<p>OpenShift installations that set no ingress hosts previously got one auto-derived hostname per component. They now move to a single shared host, which changes every component URL and the Dex issuer, so existing sessions have to re-authenticate and external OIDC clients need the new issuer. To stay on the old hostnames, set the per-component <code>host</code> fields as shown in legacy mode. Kubernetes installations already required hosts to be configured and are unaffected as long as a host is set.</p>
 <h3 id="postgresql">PostgreSQL<a class="headerlink" href="#postgresql" title="Permanent link">#</a></h3>
 <p>The <code>values</code> field accepts <a href="https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml">Bitnami PostgreSQL Helm chart values</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>

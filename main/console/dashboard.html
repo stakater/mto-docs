@@ -6893,25 +6893,16 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <span class="w">    </span><span class="nt">console</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ingress-class-name&gt;</span>
-<span class="w">      </span><span class="nt">console</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-console.&lt;hostname&gt;</span>
-<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;tls-secret-name&gt;</span>
-<span class="w">      </span><span class="nt">gateway</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-gateway.&lt;hostname&gt;</span>
-<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;tls-secret-name&gt;</span>
-<span class="w">      </span><span class="nt">dex</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-dex.&lt;hostname&gt;</span>
-<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;tls-secret-name&gt;</span>
-<span class="w">      </span><span class="nt">finopsGateway</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-finops.&lt;hostname&gt;</span>
-<span class="w">        </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;tls-secret-name&gt;</span>
+<span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;shared-hostname&gt;</span>
+<span class="w">      </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;tls-secret-name&gt;</span>
 <span class="w">    </span><span class="nt">showback</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="nt">trustedRootCert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;root-ca-secret-name&gt;</span>
 </code></pre></div>
-<p><code>&lt;hostname&gt;</code> : hostname of the cluster<br>
+<p><code>&lt;shared-hostname&gt;</code> : hostname serving the Console, Gateway, Dex and FinOps Gateway<br>
 <code>&lt;ingress-class-name&gt;</code> : name of the ingress class<br>
 <code>&lt;tls-secret-name&gt;</code> : name of the secret that contains the TLS certificate and key<br>
 <code>&lt;root-ca-secret-name&gt;</code> : name of the secret that contains the root CA certificate</p>
+<p>The Console is served at <code>/</code> on the shared host, and the other components on their own path prefixes. See <a href="../concepts/integration-config.html#ingress">Ingress</a> for the path layout and for the legacy one host per component setup.</p>
 <blockquote>
 <p>Note: <code>trustedRootCert</code> and <code>tls-secret-name</code> are optional. If not provided, MTO will use the default root CA certificate and secrets respectively.</p>
 </blockquote>
