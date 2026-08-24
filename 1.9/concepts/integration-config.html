@@ -11,7 +11,7 @@
         <link rel="prev" href="extensions.html">
       
       
-        <link rel="next" href="template-operator/cluster-template-instance.html">
+        <link rel="next" href="../guides/create-tenant.html">
       
       
         
@@ -49,6 +49,12 @@
     
     
       <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/nav-labels.css">
+    
+      <link rel="stylesheet" href="../stylesheets/api-toc.css">
+    
+      <link rel="stylesheet" href="../stylesheets/api-reference.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -2015,7 +2021,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     
     
     
@@ -2062,7 +2067,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
       <a href="../index.html" class="md-nav__link">
         
@@ -2090,6 +2094,32 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
+    <li class="md-nav__item">
+      <a href="../overview/why-mto.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why MTO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
     <li class="md-nav__item">
       <a href="../overview/key-features.html" class="md-nav__link">
@@ -2099,7 +2129,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Key Features
+    Key Capabilities
   
 
     
@@ -2115,19 +2145,18 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             
               
                 
-  
   
   
   
     <li class="md-nav__item">
-      <a href="../overview/use-cases.html" class="md-nav__link">
+      <a href="../overview/how-it-works.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Use Cases
+    How MTO Works
   
 
     
@@ -2143,91 +2172,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             
               
                 
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Concepts
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Concepts
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
   
   
   
@@ -2258,6 +2202,647 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
+    <li class="md-nav__item">
+      <a href="../overview/deployment-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/use-cases.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1">
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Installation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installing MTO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/openshift.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    On OpenShift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/kubernetes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    On Kubernetes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_4">
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_4" id="__nav_2_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    On AKS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    On AKS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/azure-aks/preparation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/azure-aks/installation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/azure-aks/validation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_5">
+        
+          
+          <label class="md-nav__link" for="__nav_2_1_5" id="__nav_2_1_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    On EKS
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    On EKS
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/aws-eks/preparation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preparation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/aws-eks/installation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/installation/aws-eks/validation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/uninstalling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Uninstalling MTO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Tenancy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Multi-Tenancy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
   
     <li class="md-nav__item">
       <a href="terminology.html" class="md-nav__link">
@@ -2283,7 +2868,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             
               
                 
-  
   
   
   
@@ -2314,7 +2898,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
       <a href="quota.html" class="md-nav__link">
         
@@ -2339,7 +2922,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             
               
                 
-  
   
   
   
@@ -2370,7 +2952,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
     
-  
   
   
     <li class="md-nav__item md-nav__item--active">
@@ -2433,71 +3014,115 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
-        <li class="md-nav__item">
-  <a href="#components" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#components" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Components
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Components">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Components">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#ingress" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#ingress" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Ingress
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Ingress">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Ingress">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#path-layout" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#path-layout" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Path layout
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#consolidated-mode-recommended" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#consolidated-mode-recommended" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Consolidated mode (recommended)
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#legacy-mode-per-component-hosts" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#legacy-mode-per-component-hosts" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Legacy mode (per-component hosts)
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#upgrading-from-per-component-hosts" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#upgrading-from-per-component-hosts" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Upgrading from per-component hosts
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -2506,102 +3131,165 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#postgresql" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#postgresql" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         PostgreSQL
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#prometheus" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#prometheus" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Prometheus
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#opencost" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#opencost" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         OpenCost
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#dex" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#dex" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Dex
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#dexconfigoperator" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#dexconfigoperator" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         DexConfigOperator
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#finops-operator" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#finops-operator" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         FinOps Operator
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#custom-pricing" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#custom-pricing" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Custom Pricing
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#azure-pricing" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#azure-pricing" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Azure Pricing
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#aws-pricing" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#aws-pricing" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         AWS Pricing
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -2610,61 +3298,99 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#access-control" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#access-control" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Access Control
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Access Control">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Access Control">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#rbac" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#rbac" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         RBAC
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="RBAC">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="RBAC">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#tenantroles" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#tenantroles" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         TenantRoles
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="TenantRoles">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="TenantRoles">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#default" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#default" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Default
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#custom" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#custom" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Custom
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -2678,26 +3404,41 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#namespace-access-policy" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#namespace-access-policy" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Namespace Access Policy
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Namespace Access Policy">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Namespace Access Policy">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#deny" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#deny" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Deny
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -2706,59 +3447,95 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#privileged" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#privileged" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Privileged
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Privileged">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Privileged">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#namespaces" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#namespaces" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Namespaces
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#serviceaccounts" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#serviceaccounts" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         ServiceAccounts
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#users" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#users" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Users
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#groups" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#groups" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Groups
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -2772,26 +3549,41 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#metadata" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#metadata" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Metadata
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Metadata">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Metadata">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#namespaces-group-and-sandbox" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#namespaces-group-and-sandbox" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Namespaces, group and sandbox
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -2800,83 +3592,135 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#integrations" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#integrations" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Integrations
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Integrations">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Integrations">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#argocd" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#argocd" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         ArgoCD
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#vault" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#vault" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Vault
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Vault">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Vault">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#authmethod-kubernetes" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#authmethod-kubernetes" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         AuthMethod - Kubernetes
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#authmethod-token" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#authmethod-token" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         AuthMethod - Token
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#vault-policies" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#vault-policies" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Vault Policies
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Vault Policies">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Vault Policies">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#custom-policies" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#custom-policies" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Custom Policies
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -2895,26 +3739,41 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#tenantpolicies" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#tenantpolicies" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         TenantPolicies
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="TenantPolicies">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="TenantPolicies">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#network" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#network" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Network
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -2923,14 +3782,21 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#related-guides" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#related-guides" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Related guides
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
       
@@ -2943,21 +3809,74 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
               
                 
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
   
     <li class="md-nav__item">
-      <a href="template-operator/cluster-template-instance.html" class="md-nav__link">
+      <a href="../guides/create-tenant.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    ClusterTemplateInstance
+    Create a Tenant
   
 
     
@@ -2976,16 +3895,15 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
-      <a href="template-operator/template-instance.html" class="md-nav__link">
+      <a href="../guides/create-namespaces.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    TemplateInstance
+    Create Namespaces
   
 
     
@@ -3004,9 +3922,628 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
+    <li class="md-nav__item">
+      <a href="../guides/create-sandbox.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create Sandbox Namespaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
     <li class="md-nav__item">
-      <a href="template-operator/template.html" class="md-nav__link">
+      <a href="../guides/assign-metadata.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Assign Metadata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/hibernate-tenant.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hibernate a Tenant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restricting Tenant Workloads to Specific Nodes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/disable-intra-tenant-networking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Disable intra-tenant networking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/ingress-sharding.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ingress Sharding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/host-validation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restricting Hostname per Tenant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/storage-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restricting Storage Classes per Tenant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/pod-priority-classes.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restricting Pod Priority Classes per Tenant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/service-accounts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restricting Service Accounts per Tenant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/image-registries.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Restricting Image Registries per Tenant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/custom-roles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changing the default access level for tenant owners
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/extend-default-roles.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extending the default access level for tenant members
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/delete-tenant.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delete a Tenant
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../guides/templated-metadata-values.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Templated values in Labels and Annotations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Templates
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Templates
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1">
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Overview
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../template-operator/overview/key-features.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../template-operator/overview/use-cases.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benefits of Template Operator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2">
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../template-operator/concepts/templates/template.html" class="md-nav__link">
         
   
   
@@ -3032,16 +4569,15 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
-      <a href="hibernation-operator/cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../template-operator/concepts/templates/template-instance.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    ClusterResourceSupervisor
+    TemplateInstance
   
 
     
@@ -3060,9 +4596,1248 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
+    <li class="md-nav__item">
+      <a href="../template-operator/concepts/templates/cluster-template-instance.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ClusterTemplateInstance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3">
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
   
     <li class="md-nav__item">
-      <a href="hibernation-operator/resource-supervisor.html" class="md-nav__link">
+      <a href="../template-operator/guides/templates/deploying-templates.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Distributing Resources in Namespaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../template-operator/guides/templates/distributing-manifests.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Distributing Resources in Namespaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../template-operator/guides/templates/copying-resources.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Propagate Secrets from Parent to Descendant namespaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../template-operator/guides/templates/copying-resources-2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Copying Secrets and ConfigMaps across Tenant Namespaces via TGI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../template-operator/guides/templates/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Distributing Secrets Using Sealed Secrets Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../template-operator/guides/templates/deploying-private-helm-charts.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploying Private Helm Chart to Multiple Namespaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../template-operator/guides/templates/template-default-params.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Using Templates with Default Parameters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../template-operator/guides/templates/resource-sync-by-tgi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sync Resources Deployed by ClusterTemplateInstance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FinOps
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    FinOps
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1">
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Overview
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/overview/key-features.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/overview/use-cases.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2">
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/concepts/finops-provider.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FinOpsProvider
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/concepts/pricebook.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PriceBook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/concepts/costjob.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CostJob
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/concepts/offering.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Offering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/concepts/subscription.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subscription
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/concepts/billing-model.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Billing model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/concepts/compatibility-and-hierarchy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compatibility and hierarchy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3">
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/guides/define-pricing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Define pricing with a PriceBook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/guides/switch-active-pricebook.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Switch the active PriceBook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/guides/collect-cost-data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Collect cost data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/guides/define-offering.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Define an offering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/guides/price-resource-usage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Price resource usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/guides/subscribe-to-offering.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subscribe to an offering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/guides/compose-subscriptions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compose subscriptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/guides/read-subscription-costs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Read subscription costs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../finops/guides/deactivate-a-subscription.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deactivate a subscription
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hibernation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hibernation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1">
+        
+          
+          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Overview
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hibernation/overview/key-features.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key Features
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hibernation/overview/use-cases.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use Cases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hibernation/overview/benefits.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benefits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2">
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hibernation/concepts/resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -3083,16 +5858,43 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hibernation/concepts/cluster-resource-supervisor.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ClusterResourceSupervisor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
     </li>
   
 
-    
-      
-      
-  
+              
+            
+              
+                
   
   
   
@@ -3105,17 +5907,17 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3">
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Getting Started
+    Guides
   
 
     
@@ -3126,12 +5928,12 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Getting Started
+    Guides
   
 
           </label>
@@ -3142,63 +5944,15 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1">
-        
-          
-          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Installation
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Installation
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../getting-started/installation/overview.html" class="md-nav__link">
+      <a href="../hibernation/guides/create-resource-supervisor.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Overview
+    Hibernate Workloads in a Single Namespace
   
 
     
@@ -3217,16 +5971,15 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
-      <a href="../getting-started/installation/openshift.html" class="md-nav__link">
+      <a href="../hibernation/guides/create-cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    On OpenShift
+    Hibernate Workloads Across Multiple Namespaces
   
 
     
@@ -3245,286 +5998,15 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
-      <a href="../getting-started/installation/kubernetes.html" class="md-nav__link">
+      <a href="../hibernation/guides/hibernate-resources.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    On Kubernetes
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_4">
-        
-          
-          <label class="md-nav__link" for="__nav_3_1_4" id="__nav_3_1_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    On AKS
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    On AKS
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../getting-started/installation/azure-aks/preparation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Preparation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../getting-started/installation/azure-aks/installation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Installation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../getting-started/installation/azure-aks/validation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Validation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_5">
-        
-          
-          <label class="md-nav__link" for="__nav_3_1_5" id="__nav_3_1_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    On EKS
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_1_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    On EKS
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../getting-started/installation/aws-eks/preparation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Preparation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../getting-started/installation/aws-eks/installation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Installation
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../getting-started/installation/aws-eks/validation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Validation
+    Hibernate a Tenant
   
 
     
@@ -3552,46 +6034,9 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     </li>
   
 
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../getting-started/uninstalling.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Uninstall via OperatorHub UI on OpenShift
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
     
       
       
-  
   
   
   
@@ -3604,10 +6049,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   
@@ -3625,8 +6070,8 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3638,7 +6083,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             
               
                 
-  
   
   
   
@@ -3669,7 +6113,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
       <a href="../console/dashboard.html" class="md-nav__link">
         
@@ -3694,7 +6137,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             
               
                 
-  
   
   
   
@@ -3725,7 +6167,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
       <a href="../console/namespaces.html" class="md-nav__link">
         
@@ -3750,7 +6191,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             
               
                 
-  
   
   
   
@@ -3781,7 +6221,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
       <a href="../console/showback.html" class="md-nav__link">
         
@@ -3806,7 +6245,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             
               
                 
-  
   
   
   
@@ -3837,7 +6275,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
       <a href="../console/templates.html" class="md-nav__link">
         
@@ -3862,7 +6299,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             
               
                 
-  
   
   
   
@@ -3893,7 +6329,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
       <a href="../console/cluster-template-instances.html" class="md-nav__link">
         
@@ -3921,7 +6356,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
       <a href="../console/capacity-planning.html" class="md-nav__link">
         
@@ -3946,7 +6380,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             
               
                 
-  
   
   
   
@@ -3984,7 +6417,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     
     
     
@@ -3994,848 +6426,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Guides
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Guides
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/create-tenant.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Create a Tenant
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/create-namespaces.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Create Namespaces
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/create-sandbox.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Create Sandbox Namespaces
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/assign-metadata.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Assign Metadata
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/hibernate-tenant.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hibernate a Tenant
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Restricting Tenant Workloads to Specific Nodes
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/disable-intra-tenant-networking.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Disable intra-tenant networking
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/ingress-sharding.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Ingress Sharding
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/host-validation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Restricting Hostname per Tenant
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/storage-classes.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Restricting Storage Classes per Tenant
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/pod-priority-classes.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Restricting Pod Priority Classes per Tenant
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/service-accounts.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Restricting Service Accounts per Tenant
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/image-registries.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Restricting Image Registries per Tenant
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/custom-roles.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Changing the default access level for tenant owners
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/extend-default-roles.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Extending the default access level for tenant members
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/delete-tenant.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Delete a Tenant
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/templated-metadata-values.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Templated values in Labels and Annotations
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/template-operator/copying-resources-2.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Copying Secrets and ConfigMaps across Tenant Namespaces via TGI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/template-operator/copying-resources.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Propagate Secrets from Parent to Descendant namespaces
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/template-operator/deploying-private-helm-charts.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Deploying Private Helm Chart to Multiple Namespaces
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/template-operator/deploying-templates.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Distributing Resources in Namespaces
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/template-operator/distributing-manifests.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Distributing Resources in Namespaces
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/template-operator/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Distributing Secrets Using Sealed Secrets Template
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/template-operator/resource-sync-by-tgi.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Sync Resources Deployed by ClusterTemplateInstance
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/template-operator/template-default-params.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Using Templates with Default Parameters
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/hibernation-operator/create-cluster-resource-supervisor.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hibernate Workloads Across Multiple Namespaces
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/hibernation-operator/create-resource-supervisor.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hibernate Workloads in a Single Namespace
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../guides/hibernation-operator/hibernate-resources.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hibernate a Tenant
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
-        
-          
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -4853,8 +6447,8 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -4869,27 +6463,15 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../integrations/overview.html" class="md-nav__link">
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1">
-        
-          
-          <label class="md-nav__link" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
-            
   
   
   <span class="md-ellipsis">
     
   
-    ArgoCD
+    Overview
   
 
     
@@ -4897,23 +6479,14 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    ArgoCD
+      </a>
+    </li>
   
 
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
+              
             
               
                 
-  
   
   
   
@@ -4925,7 +6498,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Tenant Operator
+    ArgoCD
   
 
     
@@ -4944,16 +6517,15 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
-      <a href="../integrations/hibernation-operator/argocd.html" class="md-nav__link">
+      <a href="../integrations/grafana/readme.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Hibernation Operator
+    Grafana
   
 
     
@@ -4967,9 +6539,28 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
-          </ul>
-        </nav>
-      
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/lgtm/lgtm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LGTM stack
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -4977,7 +6568,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             
               
                 
-  
   
   
   
@@ -5008,7 +6598,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
       <a href="../integrations/openbao/readme.html" class="md-nav__link">
         
@@ -5036,7 +6625,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
       <a href="../integrations/devworkspace.html" class="md-nav__link">
         
@@ -5061,7 +6649,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             
               
                 
-  
   
   
   
@@ -5099,54 +6686,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
-        
-          
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    CLI
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    CLI
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
       <a href="../cli/overview.html" class="md-nav__link">
         
@@ -5155,7 +6694,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    kubectl plugin
+    CLI
   
 
     
@@ -5167,18 +6706,9 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     </li>
   
 
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
     
       
       
-  
   
   
   
@@ -5191,10 +6721,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
             
   
   
@@ -5212,8 +6742,8 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -5225,54 +6755,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             
               
                 
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1">
-        
-          
-          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API Reference
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_1">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    API Reference
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
   
   
   
@@ -5284,7 +6766,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   <span class="md-ellipsis">
     
   
-    Tenant Operator
+    API Reference
   
 
     
@@ -5300,71 +6782,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             
               
                 
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/api/template-operator/api.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Template Operator
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../reference/api/hibernation-operator/api.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Hibernation Operator
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
   
   
   
@@ -5395,7 +6812,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
       <a href="../reference/rbac.html" class="md-nav__link">
         
@@ -5420,7 +6836,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             
               
                 
-  
   
   
   
@@ -5451,7 +6866,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
       <a href="../reference/metrics.html" class="md-nav__link">
         
@@ -5476,7 +6890,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
             
               
                 
-  
   
   
   
@@ -5514,7 +6927,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
-  
     <li class="md-nav__item">
       <a href="../troubleshooting.html" class="md-nav__link">
         
@@ -5538,7 +6950,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     
       
       
-  
   
   
   
@@ -5568,6 +6979,652 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13">
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learn
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Learn
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_2">
+        
+          
+          <label class="md-nav__link" for="__nav_13_2" id="__nav_13_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/kubernetes-multi-tenancy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes Multi-Tenancy: Concepts, Models and Best Practices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/namespace-based-multi-tenancy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Namespace-Based Multi-Tenancy in Kubernetes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/kubernetes-tenants.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What is a Tenant in Kubernetes?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/tenant-lifecycle-management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tenant Lifecycle Management in Kubernetes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3">
+        
+          
+          <label class="md-nav__link" for="__nav_13_3" id="__nav_13_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/multi-tenant-kubernetes-architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Tenant Kubernetes Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/kubernetes-multi-tenancy-implementation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to Implement Kubernetes Multi-Tenancy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_4">
+        
+          
+          <label class="md-nav__link" for="__nav_13_4" id="__nav_13_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comparisons
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Comparisons
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/kubernetes-multi-tenancy-tools.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes Multi-Tenancy Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/mto-vs-capsule.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MTO vs Capsule
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/mto-vs-hnc.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MTO vs Hierarchical Namespace Controller (HNC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/capsule-alternatives.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capsule Alternatives
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/mto-vs-vcluster.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MTO vs vCluster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/mto-vs-loft.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MTO vs Loft (vCluster Platform)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/mto-vs-kamaji.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MTO vs Kamaji
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/mto-vs-hypershift.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MTO vs Hypershift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn/mto-vs-kcp.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MTO vs KCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
   
     <li class="md-nav__item">
       <a href="../pricing.html" class="md-nav__link">
@@ -5592,7 +7649,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     
       
       
-  
   
   
   
@@ -5645,71 +7701,115 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
-        <li class="md-nav__item">
-  <a href="#components" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#components" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Components
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Components">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Components">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#ingress" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#ingress" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Ingress
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Ingress">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Ingress">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#path-layout" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#path-layout" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Path layout
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#consolidated-mode-recommended" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#consolidated-mode-recommended" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Consolidated mode (recommended)
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#legacy-mode-per-component-hosts" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#legacy-mode-per-component-hosts" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Legacy mode (per-component hosts)
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#upgrading-from-per-component-hosts" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#upgrading-from-per-component-hosts" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Upgrading from per-component hosts
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -5718,102 +7818,165 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#postgresql" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#postgresql" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         PostgreSQL
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#prometheus" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#prometheus" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Prometheus
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#opencost" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#opencost" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         OpenCost
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#dex" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#dex" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Dex
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#dexconfigoperator" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#dexconfigoperator" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         DexConfigOperator
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#finops-operator" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#finops-operator" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         FinOps Operator
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#custom-pricing" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#custom-pricing" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Custom Pricing
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#azure-pricing" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#azure-pricing" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Azure Pricing
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#aws-pricing" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#aws-pricing" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         AWS Pricing
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -5822,61 +7985,99 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#access-control" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#access-control" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Access Control
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Access Control">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Access Control">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#rbac" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#rbac" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         RBAC
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="RBAC">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="RBAC">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#tenantroles" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#tenantroles" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         TenantRoles
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="TenantRoles">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="TenantRoles">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#default" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#default" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Default
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#custom" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#custom" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Custom
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -5890,26 +8091,41 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#namespace-access-policy" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#namespace-access-policy" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Namespace Access Policy
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Namespace Access Policy">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Namespace Access Policy">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#deny" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#deny" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Deny
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -5918,59 +8134,95 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#privileged" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#privileged" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Privileged
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Privileged">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Privileged">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#namespaces" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#namespaces" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Namespaces
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#serviceaccounts" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#serviceaccounts" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         ServiceAccounts
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#users" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#users" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Users
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#groups" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#groups" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Groups
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -5984,26 +8236,41 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#metadata" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#metadata" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Metadata
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Metadata">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Metadata">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#namespaces-group-and-sandbox" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#namespaces-group-and-sandbox" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Namespaces, group and sandbox
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -6012,83 +8279,135 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#integrations" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#integrations" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Integrations
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Integrations">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Integrations">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#argocd" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#argocd" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         ArgoCD
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#vault" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#vault" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Vault
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Vault">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Vault">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#authmethod-kubernetes" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#authmethod-kubernetes" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         AuthMethod - Kubernetes
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#authmethod-token" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#authmethod-token" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         AuthMethod - Token
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#vault-policies" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#vault-policies" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Vault Policies
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="Vault Policies">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Vault Policies">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#custom-policies" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#custom-policies" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Custom Policies
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -6107,26 +8426,41 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#tenantpolicies" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#tenantpolicies" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         TenantPolicies
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="TenantPolicies">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="TenantPolicies">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#network" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#network" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Network
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -6135,14 +8469,21 @@ This documentation is either for an old version, or for the unreleased 'main' ve
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#related-guides" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#related-guides" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         Related guides
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
       
@@ -7784,6 +10125,8 @@ This documentation is either for an old version, or for the unreleased 'main' ve
     
     
       <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../javascripts/api-toc.js"></script>
       
     
   
