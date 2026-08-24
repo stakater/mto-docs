@@ -31,7 +31,7 @@ _**August 11, 2026**_
 
 #### Bug Fixes
 
-- Fixed a FinOps Operator issue where an unused materialized view caused resource usage spikes on every FinOps cronjob run.
+- Fixed a FinOps Operator issue where an unused materialized view caused resource usage spikes on every FinOps CronJob run.
 - Fixed unnecessary DexConfigOperator restarts caused by non-deterministic Dex configuration generation.
 
 #### Component Updates
