@@ -208,7 +208,7 @@ Following are the different components that can be used to configure multi-tenan
     dexConfigOperator: {}
     finopsOperator: {}
     ingress:
-      ingressClassName: nginx
+      ingressClassName: 
       host: mto.apps.mycluster-ams.abcdef.cloud
       tlsSecretName: tenant-operator-tls
 ```
@@ -280,7 +280,7 @@ MTO's web components — Console, Gateway, Dex, and the FinOps gateway — are s
 | Dex | `/dex` | `https://mto.apps.example.com/dex` |
 | FinOps Gateway | `/finops` | `https://mto.apps.example.com/finops` |
 
-Every component ingress uses `pathType: Prefix` and no rewrite annotations, so the full path reaches the backend and each backend serves under its prefix. The Console holds `/` and relies on the ingress controller matching the longer prefixes first, which both the NGINX ingress controller and the OpenShift router do.
+Every component ingress uses `pathType: Prefix` and no rewrite annotations, so the full path reaches the backend and each backend serves under its prefix. The Console holds `/` and relies on the ingress controller matching the longer prefixes first, which both the nginx ingress controller and the OpenShift router do.
 
 #### Consolidated mode (recommended)
 
