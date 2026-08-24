@@ -12,6 +12,8 @@ import sys
 import yaml
 from pathlib import Path
 
+import reorder_api_reference
+
 _WILDCARD = set("*?[]")
 
 
@@ -315,28 +317,57 @@ def apply_group(nav, group):
     section[:] = new_section
 
 
+def reshape_api_page(text):
+    """Kinds above their own types, no `Resource Types` wrapper — applied to
+    every source of a concatenated page, mto-docs' own and each sub-operator's,
+    so the one page reads the same the whole way down. Sub-operator repos have
+    no such step of their own, and their published sites keep whatever order
+    crd-ref-docs gave them; this only shapes the copy merged in here. A page
+    that is not crd-ref-docs output has no group-version headings and comes back
+    unchanged."""
+    return reorder_api_reference.reorder_text(text)
+
+
+def concat_source(content_dir, into):
+    """Where mto-docs' own half of a concatenated page lives: `api.md` is built
+    from `api.src.md`. The two must stay separate — `into` is overwritten on
+    every merge, so reading mto's own content back out of it would demote and
+    re-wrap the whole page one level deeper each run."""
+    path = Path(content_dir) / into
+    return path.with_name(f"{path.stem}.src{path.suffix}")
+
+
 def apply_concat(nav, targets, content_dir, op_ctx, site_title):
-    """Concatenate several source pages into one per `into` target. The existing
-    content page (mto-docs' own) is the first `## site_title` section; each
-    contributing operator adds a `## heading` section sourced from its clone and
+    """Concatenate several source pages into one per `into` target. mto-docs'
+    own `<into>.src.md` is the first `## site_title` section; each contributing
+    operator adds a `## heading` section sourced from its clone and
     link-rewritten. Every source's own headings are demoted one level so the
-    in-page TOC lists the sections. One `{as: into}` leaf is set under `under`."""
+    in-page TOC lists the sections. One `{as: into}` leaf is set under `under`.
+    `into` itself is pure output: regenerated from scratch here, gitignored."""
     content_dir = Path(content_dir)
     for into, spec in targets.items():
         blocks, page_title = [], None
         self_path = content_dir / into
-        if self_path.is_file():
-            page_title, body = split_h1(self_path.read_text(encoding="utf-8"))
+        src_path = concat_source(content_dir, into)
+        if src_path.is_file():
+            raw = reshape_api_page(src_path.read_text(encoding="utf-8"))
+            page_title, body = split_h1(raw)
             blocks.append(f"## {site_title}\n\n{shift_headings(body, 1).strip()}\n")
+        elif self_path.is_file():
+            raise ValueError(
+                f"concat target {into!r} exists but {src_path.name!r} does not: "
+                f"mto-docs' own half of the page belongs in {src_path.name!r} "
+                f"({into} is generated). Rename it, or delete it if it is "
+                f"output from an earlier merge.")
         for heading, op_title, frm in spec["sections"]:
             ctx = op_ctx[op_title]
             raw = (ctx["docs"] / frm).read_text(encoding="utf-8")
             raw, _ = rewrite_links(raw, frm, into, ctx["op_map"],
                                    ctx["live_url"], ctx["style"])
-            body = shift_headings(split_h1(raw)[1], 1).strip()
+            body = shift_headings(split_h1(reshape_api_page(raw))[1], 1).strip()
             blocks.append(f"## {heading}\n\n{body}\n")
         if page_title is None:
-            page_title = read_h1(self_path) or prettify(Path(into).stem)
+            page_title = read_h1(src_path) or prettify(Path(into).stem)
         self_path.parent.mkdir(parents=True, exist_ok=True)
         self_path.write_text(f"# {page_title}\n\n" + "\n".join(blocks), encoding="utf-8")
         _set_single_leaf(nav, spec["under"], into, spec.get("as"))

@@ -909,8 +909,8 @@ def test_run_unlabelled_operator_folds_while_labelled_one_stays_grouped(tmp_path
 def test_apply_concat_builds_page_and_leaf(tmp_path):
     content = tmp_path / "content"
     (content / "reference").mkdir(parents=True)
-    (content / "reference/api.md").write_text(
-        "# API Reference\n\n## Packages\n\nmto crds\n")          # mto's own (self)
+    (content / "reference/api.src.md").write_text(
+        "# API Reference\n\n## Packages\n\nmto crds\n")          # mto's own half
     opdocs = tmp_path / "hib" / "content"
     (opdocs / "reference").mkdir(parents=True)
     (opdocs / "reference/api.md").write_text(
@@ -931,6 +931,107 @@ def test_apply_concat_builds_page_and_leaf(tmp_path):
     section = m.find_section(nav, "Reference")
     assert section[0] == {"API Reference": "reference/api.md"}       # labeled leaf
     assert "reference/rbac.md" in section                            # siblings kept
+
+
+def test_apply_concat_reshapes_every_api_section(tmp_path):
+    """Both halves of the page go through reorder_api_reference: kinds above
+    their own types, no `Resource Types` wrapper, whoever generated them."""
+    content = tmp_path / "content"
+    (content / "reference").mkdir(parents=True)
+    def api_page(group, kind, helper):
+        """A crd-ref-docs page: alphabetical, types under Resource Types, and
+        the apiVersion/kind rows that mark which type is the kind."""
+        return (f"# API Reference\n\n## {group}\n\ndocs\n\n"
+                f"### Resource Types\n- [{kind}](#{kind.lower()})\n\n"
+                f"#### {helper}\n\nhelper\n\n"
+                f"#### {kind}\n\nkind\n\n"
+                "| Field | Description | Default | Validation |\n"
+                "| --- | --- | --- | --- |\n"
+                f"| `apiVersion` _string_ | `{group}` | | |\n"
+                f"| `kind` _string_ | `{kind}` | | |\n")
+
+    (content / "reference/api.src.md").write_text(
+        api_page("mto.io/v1", "Tenant", "AccessControl"))
+    opdocs = tmp_path / "hib" / "content"
+    (opdocs / "reference").mkdir(parents=True)
+    (opdocs / "reference/api.md").write_text(
+        api_page("hib.io/v1", "Supervisor", "Helper"))
+    op_ctx = {"Hib": {"docs": opdocs, "op_map": {}, "live_url": None,
+                      "style": "directory"}}
+    targets = {"reference/api.md": {
+        "under": "Reference", "as": "API Reference",
+        "sections": [("Hibernation Operator", "Hib", "reference/api.md")]}}
+    m.apply_concat([{"Reference": ["reference/api.md"]}], targets, str(content),
+                   op_ctx, "Tenant Operator")
+
+    page = (content / "reference/api.md").read_text()
+    assert "Resource Types" not in page
+    assert page.index("#### Tenant") < page.index("##### AccessControl")
+    assert page.index("#### Supervisor") < page.index("##### Helper")
+    # the concat demotes by one, so a package is 3, its kinds 4, their types 5
+    assert "### mto.io/v1" in page
+    assert "###### " not in page
+
+
+def test_apply_concat_is_idempotent(tmp_path):
+    """The bug this split exists to prevent: merging twice used to read the
+    generated page back in, demoting it and adding another site_title wrapper."""
+    content = tmp_path / "content"
+    (content / "reference").mkdir(parents=True)
+    (content / "reference/api.src.md").write_text(
+        "# API Reference\n\n## Packages\n\nmto crds\n")
+    opdocs = tmp_path / "hib" / "content"
+    (opdocs / "reference").mkdir(parents=True)
+    (opdocs / "reference/api.md").write_text("# API Reference\n\n## Widgets\n\nhib\n")
+    op_ctx = {"Hib": {"docs": opdocs, "op_map": {}, "live_url": None,
+                      "style": "directory"}}
+    targets = {"reference/api.md": {
+        "under": "Reference", "as": "API Reference",
+        "sections": [("Hib", "Hib", "reference/api.md")]}}
+
+    pages = []
+    for _ in range(3):
+        nav = [{"Reference": ["reference/api.md"]}]
+        m.apply_concat(nav, targets, str(content), op_ctx, "Tenant Operator")
+        pages.append((content / "reference/api.md").read_text())
+    assert pages[0] == pages[1] == pages[2]
+    assert pages[0].count("## Tenant Operator") == 1
+    assert "### Packages" in pages[0] and "#### Packages" not in pages[0]
+
+
+def test_apply_concat_rejects_a_target_with_no_source(tmp_path):
+    content = tmp_path / "content"
+    (content / "reference").mkdir(parents=True)
+    # only the generated page is present: output from an earlier merge, or a
+    # page that was never split into api.md + api.src.md
+    (content / "reference/api.md").write_text("# API Reference\n\n## Own\n\nmto\n")
+    targets = {"reference/api.md": {"under": "Reference", "as": None, "sections": []}}
+    with pytest.raises(ValueError, match="api.src.md"):
+        m.apply_concat([{"Reference": ["reference/api.md"]}], targets,
+                       str(content), {}, "Tenant Operator")
+
+
+def test_apply_concat_without_own_source_uses_operator_sections_only(tmp_path):
+    content = tmp_path / "content"
+    content.mkdir()
+    opdocs = tmp_path / "hib" / "content"
+    (opdocs / "reference").mkdir(parents=True)
+    (opdocs / "reference/api.md").write_text("# API Reference\n\n## Widgets\n\nhib\n")
+    op_ctx = {"Hib": {"docs": opdocs, "op_map": {}, "live_url": None,
+                      "style": "directory"}}
+    targets = {"reference/api.md": {
+        "under": "Reference", "as": "API Reference",
+        "sections": [("Hib", "Hib", "reference/api.md")]}}
+    m.apply_concat([{"Reference": ["reference/api.md"]}], targets, str(content),
+                   op_ctx, "Tenant Operator")
+    page = (content / "reference/api.md").read_text()
+    assert page.startswith("# Api")            # no source page to take an H1 from
+    assert "## Tenant Operator" not in page and "## Hib" in page
+
+
+def test_concat_source_path():
+    assert m.concat_source("content", "reference/api.md") == \
+        Path("content/reference/api.src.md")
 
 
 def test_shift_headings_skips_code_fences_and_caps():
@@ -958,7 +1059,7 @@ def test_run_product_first_fills_placeholder_and_concats(tmp_path):
         "# API Reference\n\n## Kinds\n\ntpl crds\n")
     content = tmp_path / "content"
     (content / "reference").mkdir(parents=True)
-    (content / "reference/api.md").write_text(
+    (content / "reference/api.src.md").write_text(
         "# API Reference\n\n## Packages\n\nmto crds\n")
     mkdocs = tmp_path / "mkdocs.yml"
     mkdocs.write_text(
@@ -999,7 +1100,7 @@ def test_run_concat_conflicting_under_raises(tmp_path):
     (repo / "content/reference/api.md").write_text("# API\n\n## X\n\nbody\n")
     content = tmp_path / "content"; content.mkdir()
     (content / "reference").mkdir()
-    (content / "reference/api.md").write_text("# API\n\n## Own\n\nmto\n")
+    (content / "reference/api.src.md").write_text("# API\n\n## Own\n\nmto\n")
     mkdocs = tmp_path / "mkdocs.yml"
     mkdocs.write_text("site_name: MTO\nnav:\n  - Reference:\n      - reference/api.md\n")
     operators = [{

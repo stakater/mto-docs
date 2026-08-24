@@ -66,9 +66,13 @@ serve: theme ## Full local preview: clones the sub-operator repos, then mkdocs s
 	$(PY) -m mkdocs serve
 
 serve-local: theme merge-local ## Same preview from local checkouts, no cloning
-	$(PY) -m mkdocs serve
+	$(PY) -m mkdocs serve -a localhost:9000
 
 clean: ## Remove fetched repos and generated artifacts (surgical; never `git clean`)
 	rm -rf .suboperators mkdocs.yml dist site
+	@python3 -c "import sys;sys.path.insert(0,'scripts');import merge_docs;\
+	  print('\n'.join(sorted({m['concat_into'] for o in merge_docs.load_config('merge.yaml') \
+	  for m in o['mappings'] if m.get('concat_into')})))" 2>/dev/null \
+	  | while read -r f; do [ -n "$$f" ] && rm -f "content/$$f"; done
 	@python3 -c "import sys;sys.path.insert(0,'scripts');import merge_docs;[print(o['slug']) for o in merge_docs.load_config('merge.yaml')]" 2>/dev/null \
 	  | while read -r s; do [ -n "$$s" ] && find content -type d -name "$$s" -prune -exec rm -rf {} + 2>/dev/null || true; done
