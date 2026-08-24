@@ -9,26 +9,18 @@ components:
     console: true
     ingress:
       ingressClassName: <ingress-class-name>
-      console:
-        host: tenant-operator-console.<hostname>
-        tlsSecretName: <tls-secret-name>
-      gateway:
-        host: tenant-operator-gateway.<hostname>
-        tlsSecretName: <tls-secret-name>
-      dex:
-        host: tenant-operator-dex.<hostname>
-        tlsSecretName: <tls-secret-name>
-      finopsGateway:
-        host: tenant-operator-finops.<hostname>
-        tlsSecretName: <tls-secret-name>
+      host: <shared-hostname>
+      tlsSecretName: <tls-secret-name>
     showback: true
     trustedRootCert: <root-ca-secret-name>
 ```  
 
-`<hostname>` : hostname of the cluster  
+`<shared-hostname>` : hostname serving the Console, Gateway, Dex and FinOps Gateway  
 `<ingress-class-name>` : name of the ingress class  
 `<tls-secret-name>` : name of the secret that contains the TLS certificate and key  
 `<root-ca-secret-name>` : name of the secret that contains the root CA certificate
+
+The Console is served at `/` on the shared host, and the other components on their own path prefixes. See [Ingress](../concepts/integration-config.md#ingress) for the path layout and for the legacy one host per component setup.
 
 >Note: `trustedRootCert` and `tls-secret-name` are optional. If not provided, MTO will use the default root CA certificate and secrets respectively.
 

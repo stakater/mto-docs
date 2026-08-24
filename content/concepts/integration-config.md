@@ -39,18 +39,8 @@ spec:
 
     ingress:
       ingressClassName: 'nginx'
-      console:
-        host: tenant-operator-console.apps.mycluster-ams.abcdef.cloud
-        tlsSecretName: tenant-operator-tls
-      gateway:
-        host: tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud
-        tlsSecretName: tenant-operator-tls
-      dex:
-        host: tenant-operator-dex.apps.mycluster-ams.abcdef.cloud
-        tlsSecretName: tenant-operator-tls
-      finopsGateway:
-        host: tenant-operator-finops.apps.mycluster-ams.abcdef.cloud
-        tlsSecretName: tenant-operator-tls
+      host: mto.apps.mycluster-ams.abcdef.cloud
+      tlsSecretName: tenant-operator-tls
     postgres:
       mode: Managed
       values:
@@ -218,19 +208,9 @@ Following are the different components that can be used to configure multi-tenan
     dexConfigOperator: {}
     finopsOperator: {}
     ingress:
-      ingressClassName: nginx
-      console:
-        host: tenant-operator-console.apps.mycluster-ams.abcdef.cloud
-        tlsSecretName: tenant-operator-tls
-      gateway:
-        host: tenant-operator-gateway.apps.mycluster-ams.abcdef.cloud
-        tlsSecretName: tenant-operator-tls
-      dex:
-        host: tenant-operator-dex.apps.mycluster-ams.abcdef.cloud
-        tlsSecretName: tenant-operator-tls
-      finopsGateway:
-        host: tenant-operator-finops.apps.mycluster-ams.abcdef.cloud
-        tlsSecretName: tenant-operator-tls
+      ingressClassName: 
+      host: mto.apps.mycluster-ams.abcdef.cloud
+      tlsSecretName: tenant-operator-tls
 ```
 
 - `components.console:` Enables or disables the console GUI for MTO.
@@ -240,16 +220,16 @@ Following are the different components that can be used to configure multi-tenan
     - `tlsSecretName:` Name of the secret containing the TLS certificate and key covering the shared host in consolidated mode.
     - `ingressClassName:` Ingress class to be used for the ingress.
     - `console:` Settings for the console's ingress.
-        - `host:` hostname for the console's ingress.
+        - `host:` hostname for the console's ingress. Setting it opts the installation into legacy per-component mode.
         - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the console's ingress.
     - `gateway:` Settings for the gateway's ingress.
-        - `host:` hostname for the gateway's ingress.
+        - `host:` hostname for the gateway's ingress. Setting it opts the installation into legacy per-component mode.
         - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the gateway's ingress.
     - `dex:` Settings for the Dex's ingress.
-        - `host:` hostname for the Dex's ingress.
+        - `host:` hostname for the Dex's ingress. Setting it opts the installation into legacy per-component mode.
         - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the Dex's ingress.
     - `finopsGateway:` Settings for the FinOps Gateway's ingress.
-        - `host:` hostname for the FinOps Gateway's ingress.
+        - `host:` hostname for the FinOps Gateway's ingress. Setting it opts the installation into legacy per-component mode.
         - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the FinOps Gateway's ingress.
 - `components.showbackOpts:` Configures the showback feature with the following options:
     - `custom:` Custom pricing model for showback.
@@ -291,6 +271,17 @@ Details on console GUI and showback can be found [here](../console/overview.md)
 
 MTO's web components — Console, Gateway, Dex, and the FinOps gateway — are served under a **single shared hostname** by default, each on its own path prefix, rather than one hostname per component.
 
+#### Path layout
+
+| Component | Path under the shared host | Example URL |
+| --- | --- | --- |
+| Console | `/` | `https://mto.apps.example.com/` |
+| Gateway | `/gateway` | `https://mto.apps.example.com/gateway` |
+| Dex | `/dex` | `https://mto.apps.example.com/dex` |
+| FinOps Gateway | `/finops` | `https://mto.apps.example.com/finops` |
+
+Every component ingress uses `pathType: Prefix` and no rewrite annotations, so the full path reaches the backend and each backend serves under its prefix. The Console holds `/` and relies on the ingress controller matching the longer prefixes first, which both the nginx ingress controller and the OpenShift router do.
+
 #### Consolidated mode (recommended)
 
 Set a top-level `host` to serve all components under one hostname:
@@ -309,7 +300,7 @@ components:
 - `tlsSecretName`: a single TLS secret whose certificate covers the shared host, used by every component ingress.
 - `ingressClassName`: ingress class for all component ingresses. On OpenShift, if omitted, MTO discovers the default IngressClass (falling back to `openshift-default`).
 
-On OpenShift, when no host is set, the shared host is auto-derived from the cluster ingress domain. On Kubernetes there is no cluster domain to derive from, so `host` must be set explicitly.
+On OpenShift, when no host is set, the shared host is auto-derived from the cluster ingress domain as `tenant-operator-<operator-namespace>.<cluster-ingress-domain>`. On Kubernetes there is no cluster domain to derive from, so `host` must be set explicitly.
 
 #### Legacy mode (per-component hosts)
 
@@ -333,8 +324,14 @@ components:
       tlsSecretName: finops-tls
 ```
 
+In legacy mode a component without an explicit `host` still falls back to its auto-derived OpenShift hostname, `tenant-operator-<component>-<operator-namespace>.<cluster-ingress-domain>`.
+
 !!! note
     In consolidated mode the Dex issuer becomes `https://<host>/dex`. Any external OIDC client that trusts MTO's Dex must be configured with this issuer.
+
+#### Upgrading from per-component hosts
+
+OpenShift installations that set no ingress hosts previously got one auto-derived hostname per component. They now move to a single shared host, which changes every component URL and the Dex issuer, so existing sessions have to re-authenticate and external OIDC clients need the new issuer. To stay on the old hostnames, set the per-component `host` fields as shown in legacy mode. Kubernetes installations already required hosts to be configured and are unaffected as long as a host is set.
 
 ### PostgreSQL
 

@@ -1,15 +1,22 @@
-# Config for generating content/reference/api.md from the tenant-operator Go
+# Config for generating content/reference/api.src.md from the tenant-operator Go
 # types with https://github.com/elastic/crd-ref-docs (template-operator-docs
-# model). One-off manual regeneration (no CI workflow here yet):
+# model). The .src.md is mto's own half of the page; the merge concatenates the
+# sub-operators onto it and writes content/reference/api.md, which is generated
+# and gitignored (see merge.yaml concat_into). One-off manual regeneration (no
+# CI workflow here yet):
 #
 #   go install github.com/elastic/crd-ref-docs@latest
 #   crd-ref-docs --source-path=<tenant-operator>/api \
 #     --config=crd-ref-docs.yaml --renderer=markdown \
-#     --output-path=content/reference/api.md
+#     --output-path=content/reference/api.src.md
 #   # Then prepend the '<!-- markdownlint-disable -->' header, and delink the
 #   # api/common helper types that crd-ref-docs links but does not render
 #   # (they fail `mkdocs build --strict`):
-#   sed -i -E 's/\[(Namespace|Members)\]\(#(namespace|members)\)/\1/g' content/reference/api.md
+#   sed -i -E 's/\[(Namespace|Members)\]\(#(namespace|members)\)/\1/g' content/reference/api.src.md
+#   # Then walk the types as a tree from each kind and drop the Resource Types
+#   # wrapper (crd-ref-docs renders types alphabetically, so Tenant lands after
+#   # AccessControl, and nests them under a heading a level deeper than needed):
+#   python scripts/reorder_api_reference.py content/reference/api.src.md
 #
 processor:
   ignoreTypes:
