@@ -52,6 +52,10 @@
     
       <link rel="stylesheet" href="../../../stylesheets/nav-labels.css">
     
+      <link rel="stylesheet" href="../../../stylesheets/api-toc.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/api-reference.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -97,7 +101,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mto-validation-guide" class="md-skip">
+        <a href="#validate-mto-on-aks" class="md-skip">
           Skip to content
         </a>
       
@@ -2092,6 +2096,33 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
+      <a href="../../../overview/why-mto.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why MTO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../overview/key-features.html" class="md-nav__link">
         
   
@@ -2099,7 +2130,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Key Features
+    Key Capabilities
   
 
     
@@ -2119,41 +2150,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../../overview/use-cases.html" class="md-nav__link">
+      <a href="../../../overview/how-it-works.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Use Cases
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
+    How MTO Works
   
 
     
@@ -2181,6 +2185,60 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
     Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/deployment-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/use-cases.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Use Cases
   
 
     
@@ -2310,7 +2368,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Overview
+    Installing MTO
   
 
     
@@ -2547,26 +2605,41 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
-        <li class="md-nav__item">
-  <a href="#1-create-configure-azure-users-groups" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#1-create-configure-azure-users-groups" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         1. Create &amp; Configure Azure Users &amp; Groups
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="1. Create &amp; Configure Azure Users &amp; Groups">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="1. Create &amp; Configure Azure Users &amp; Groups">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#11-create-a-user" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#11-create-a-user" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         1.1. Create a user
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -2575,81 +2648,131 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#2-create-mto-quota" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#2-create-mto-quota" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         2. Create MTO Quota
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#3-create-mto-tenants" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#3-create-mto-tenants" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         3. Create MTO Tenants
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#4-list-namespaces-as-cluster-admin" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#4-list-namespaces-as-cluster-admin" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         4. List namespaces as cluster admin
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#5-validate-falcon-permissions" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#5-validate-falcon-permissions" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         5. Validate Falcon permissions
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="5. Validate Falcon permissions">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="5. Validate Falcon permissions">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#51-switch-to-falcon" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#51-switch-to-falcon" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         5.1. Switch to falcon
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#52-check-cli-permissions" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#52-check-cli-permissions" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         5.2. Check CLI permissions
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#53-validate-console-permissions" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#53-validate-console-permissions" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         5.3. Validate Console permissions
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -2658,48 +2781,77 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#6-validate-bear-permissions" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#6-validate-bear-permissions" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         6. Validate Bear permissions
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="6. Validate Bear permissions">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="6. Validate Bear permissions">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#61-switch-to-bear" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#61-switch-to-bear" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         6.1. Switch to bear
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#62-check-cli-permissions" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#62-check-cli-permissions" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         6.2. Check CLI permissions
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#63-validate-console-permissions" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#63-validate-console-permissions" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         6.3. Validate Console permissions
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -2881,7 +3033,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Uninstall via OperatorHub UI on OpenShift
+    Uninstalling MTO
   
 
     
@@ -6006,52 +6158,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
-        
-          
-          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    CLI
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_9">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    CLI
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
     <li class="md-nav__item">
       <a href="../../../cli/overview.html" class="md-nav__link">
         
@@ -6060,7 +6166,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    kubectl plugin
+    CLI
   
 
     
@@ -6069,14 +6175,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -6353,6 +6451,653 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13">
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learn
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Learn
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_2">
+        
+          
+          <label class="md-nav__link" for="__nav_13_2" id="__nav_13_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concepts
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concepts
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/kubernetes-multi-tenancy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes Multi-Tenancy: Concepts, Models and Best Practices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/namespace-based-multi-tenancy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Namespace-Based Multi-Tenancy in Kubernetes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/kubernetes-tenants.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    What is a Tenant in Kubernetes?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/tenant-lifecycle-management.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tenant Lifecycle Management in Kubernetes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3">
+        
+          
+          <label class="md-nav__link" for="__nav_13_3" id="__nav_13_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/multi-tenant-kubernetes-architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Tenant Kubernetes Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/kubernetes-multi-tenancy-implementation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to Implement Kubernetes Multi-Tenancy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_4">
+        
+          
+          <label class="md-nav__link" for="__nav_13_4" id="__nav_13_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Comparisons
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_13_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Comparisons
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/kubernetes-multi-tenancy-tools.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kubernetes Multi-Tenancy Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/mto-vs-capsule.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MTO vs Capsule
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/mto-vs-hnc.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MTO vs Hierarchical Namespace Controller (HNC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/capsule-alternatives.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Capsule Alternatives
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/mto-vs-vcluster.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MTO vs vCluster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/mto-vs-loft.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MTO vs Loft (vCluster Platform)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/mto-vs-kamaji.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MTO vs Kamaji
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/mto-vs-hypershift.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MTO vs Hypershift
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../learn/mto-vs-kcp.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MTO vs KCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../../pricing.html" class="md-nav__link">
         
@@ -6428,26 +7173,41 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
-        <li class="md-nav__item">
-  <a href="#1-create-configure-azure-users-groups" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#1-create-configure-azure-users-groups" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         1. Create &amp; Configure Azure Users &amp; Groups
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="1. Create &amp; Configure Azure Users &amp; Groups">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="1. Create &amp; Configure Azure Users &amp; Groups">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#11-create-a-user" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#11-create-a-user" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         1.1. Create a user
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -6456,81 +7216,131 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#2-create-mto-quota" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#2-create-mto-quota" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         2. Create MTO Quota
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#3-create-mto-tenants" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#3-create-mto-tenants" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         3. Create MTO Tenants
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#4-list-namespaces-as-cluster-admin" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#4-list-namespaces-as-cluster-admin" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         4. List namespaces as cluster admin
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#5-validate-falcon-permissions" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#5-validate-falcon-permissions" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         5. Validate Falcon permissions
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="5. Validate Falcon permissions">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="5. Validate Falcon permissions">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#51-switch-to-falcon" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#51-switch-to-falcon" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         5.1. Switch to falcon
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#52-check-cli-permissions" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#52-check-cli-permissions" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         5.2. Check CLI permissions
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#53-validate-console-permissions" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#53-validate-console-permissions" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         5.3. Validate Console permissions
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -6539,48 +7349,77 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#6-validate-bear-permissions" class="md-nav__link">
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#6-validate-bear-permissions" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         6. Validate Bear permissions
       
     </span>
-  </a>
   
-    <nav class="md-nav" aria-label="6. Validate Bear permissions">
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="6. Validate Bear permissions">
+    
       <ul class="md-nav__list">
         
-          <li class="md-nav__item">
-  <a href="#61-switch-to-bear" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#61-switch-to-bear" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         6.1. Switch to bear
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#62-check-cli-permissions" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#62-check-cli-permissions" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         6.2. Check CLI permissions
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#63-validate-console-permissions" class="md-nav__link">
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#63-validate-console-permissions" class="md-nav__link">
+      
     <span class="md-ellipsis">
       
         6.3. Validate Console permissions
       
     </span>
-  </a>
+  
+    </a>
+  
   
 </li>
         
@@ -6609,7 +7448,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="mto-validation-guide">MTO Validation Guide<a class="headerlink" href="#mto-validation-guide" title="Permanent link">#</a></h1>
+<h1 id="validate-mto-on-aks">Validate MTO on AKS<a class="headerlink" href="#validate-mto-on-aks" title="Permanent link">#</a></h1>
 <p>In this guide, we will set up <strong>two tenants</strong>—<strong>Logistics</strong> and <strong>Retail</strong>—for an imaginary e-commerce company, each with one user.</p>
 <ul>
 <li><strong>Falcon</strong> will be the user assigned to the <strong>Logistics</strong> tenant.  </li>
@@ -7477,6 +8316,8 @@ Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> 
     
     
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../javascripts/api-toc.js"></script>
       
     
   
