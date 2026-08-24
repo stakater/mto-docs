@@ -8711,7 +8711,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">    </span><span class="nt">dexConfigOperator</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">    </span><span class="nt">finopsOperator</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">    </span><span class="nt">ingress</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">      </span><span class="nt">ingressClassName</span><span class="p">:</span><span class="w"> </span>
 <span class="w">      </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto.apps.mycluster-ams.abcdef.cloud</span>
 <span class="w">      </span><span class="nt">tlsSecretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-tls</span>
 </code></pre></div>
@@ -8811,7 +8811,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </tr>
 </tbody>
 </table>
-<p>Every component ingress uses <code>pathType: Prefix</code> and no rewrite annotations, so the full path reaches the backend and each backend serves under its prefix. The Console holds <code>/</code> and relies on the ingress controller matching the longer prefixes first, which both the NGINX ingress controller and the OpenShift router do.</p>
+<p>Every component ingress uses <code>pathType: Prefix</code> and no rewrite annotations, so the full path reaches the backend and each backend serves under its prefix. The Console holds <code>/</code> and relies on the ingress controller matching the longer prefixes first, which both the nginx ingress controller and the OpenShift router do.</p>
 <h4 id="consolidated-mode-recommended">Consolidated mode (recommended)<a class="headerlink" href="#consolidated-mode-recommended" title="Permanent link">#</a></h4>
 <p>Set a top-level <code>host</code> to serve all components under one hostname:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
