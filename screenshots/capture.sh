@@ -16,8 +16,15 @@ OUT="$DIR/captured"
 CONFIG_FILE="$DIR/config.env"
 ENV_FILE="$DIR/.env"           # credentials (and any overrides)
 
-if [ ! -f "$ENV_FILE" ]; then
-    echo "FAIL: $ENV_FILE not found - copy .env.example and fill in the credentials" >&2
+# Credentials come from .env locally; CI sets them in the environment instead.
+creds=()
+if [ -f "$ENV_FILE" ]; then
+    creds=(--env-file "$ENV_FILE")
+elif [ -n "${CONSOLE_USER:-}" ] && [ -n "${CONSOLE_PASSWORD:-}" ]; then
+    creds=(-e CONSOLE_USER -e CONSOLE_PASSWORD)
+else
+    echo "FAIL: no credentials - copy .env.example to $ENV_FILE, or set" >&2
+    echo "      CONSOLE_USER and CONSOLE_PASSWORD in the environment" >&2
     exit 1
 fi
 
@@ -54,7 +61,7 @@ for flow in $flows; do
     echo "RUN: $name"
     if docker run --rm \
         --env-file "$CONFIG_FILE" \
-        --env-file "$ENV_FILE" \
+        "${creds[@]}" \
         -e E2E_ARTIFACTS_DIR=/out \
         -v "$OUT:/out" \
         -v "$flow:/etc/e2e/test.yaml:ro" \
