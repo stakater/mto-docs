@@ -15,5 +15,8 @@ concurrency:
 
 jobs:
   capture:
-    uses: stakater/.github/.github/workflows/docs-screenshots.yaml@v0.0.198
+    uses: stakater/.github/.github/workflows/docs-screenshots.yaml@v0.0.199
+    with:
+      # The capture script is downloaded by the Makefile, at the ref pinned there.
+      CAPTURE_COMMAND: make screenshots
     secrets: inherit

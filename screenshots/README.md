@@ -50,18 +50,20 @@ screenshots/
   mkdocs_hook.py     # resolves directives during mkdocs build (in memory)
   config.env         # checked-in config: console URL, tenant/namespace/quota names
   .env.example       # template for .env — credentials only
-  capture.sh         # runs all flows (or one) via docker
 ```
+
+The capture script itself comes from `stakater/.github`. `make` downloads it into
+`makefiles/`, which is gitignored, at the ref pinned in the Makefile.
 
 ## Running
 
 Copy `.env.example` to `.env` and fill in the credentials, then:
 
 ```sh
-./screenshots/capture.sh            # _seed, all capture flows, _teardown
-./screenshots/capture.sh tenants    # just flows/tenants.yaml
-./screenshots/capture.sh _seed      # setup only
-./screenshots/capture.sh _teardown  # cleanup only (safe to run any time)
+make screenshots                          # _seed, all capture flows, _teardown
+make screenshots-one FLOW=tenants         # just flows/tenants.yaml
+make screenshots-one FLOW=_seed           # setup only
+make screenshots-one FLOW=_teardown       # cleanup only (safe to run any time)
 ```
 
 A full run is setup → capture → teardown, all as flows:
@@ -75,18 +77,18 @@ A full run is setup → capture → teardown, all as flows:
 A failing flow doesn't stop the run, so teardown always gets to run. Its steps are
 non-fatal too, so one missing object doesn't block the rest — which also means its
 PASS tells you nothing; read the `[after] … failed` lines. Single-flow runs don't
-clean up, so follow them with `./screenshots/capture.sh _teardown`.
+clean up, so follow them with `make screenshots-one FLOW=_teardown`.
 
 `config.env` is checked in and holds everything that isn't a credential (console URL,
 tenant, namespace, quota names). `.env` holds only `CONSOLE_USER` and
 `CONSOLE_PASSWORD`, and can override anything in `config.env` for a one-off run.
 In CI those two credentials are the only secrets — the rest comes from `config.env`.
 
-`capture.sh` uses `ghcr.io/stakater/browser-runner:latest`. Override it to test
+The capture uses `ghcr.io/stakater/browser-runner:latest`. Override it to test
 against a different build:
 
 ```sh
-RUNNER_IMAGE=browser-runner:dev ./screenshots/capture.sh
+RUNNER_IMAGE=browser-runner:dev make screenshots
 ```
 
 ## Image standard
@@ -155,5 +157,5 @@ the flows under `docs-*` names and deleted by `_teardown`. What must already exi
 Mutations are bounded: hibernation really sleeps its two namespaces, and the
 instance flows deploy one ConfigMap into `DOCS_NAMESPACE`. `_teardown` reverses all
 of it. **If a run dies before teardown**, the leftover `docs-*` objects make the
-next run fail on a duplicate name — run `./screenshots/capture.sh _teardown` first.
+next run fail on a duplicate name — run `make screenshots-one FLOW=_teardown` first.
 

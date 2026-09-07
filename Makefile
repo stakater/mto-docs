@@ -10,8 +10,15 @@ PY   := $(VENV)/bin/python
 # $(SUBOPS)/<repo name from merge.yaml>, e.g. ~/Documents/work/template-operator-docs.
 SUBOPS ?= $(HOME)/Documents/work
 
+# Screenshot capture comes from the shared repo. The ref is pinned, so a change
+# there cannot change published screenshots without a commit here. makefiles/ is
+# downloaded, and gitignored.
+DOCS_SS_REF ?= v0.0.199
+DOCS_SS_MK_URL ?= https://raw.githubusercontent.com/stakater/.github/$(DOCS_SS_REF)/.github/makefiles/docs-screenshots.mk
+DOCS_SS_MK := makefiles/docs-screenshots.mk
+
 .DEFAULT_GOAL := help
-.PHONY: help venv test theme merge merge-local screenshots screenshots-check docs-images serve serve-local clean
+.PHONY: help venv test theme merge merge-local screenshots screenshots-one screenshots-check docs-images serve serve-local clean
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) \
@@ -41,19 +48,30 @@ merge-local: venv ## Merge from local sub-operator checkouts under SUBOPS (no cl
 	echo ">> merging from $(SUBOPS)"; \
 	$(PY) scripts/merge_docs.py $$args
 
+$(DOCS_SS_MK): ## Download the shared screenshot makefile (only if missing)
+	@mkdir -p $(dir $@)
+	@echo "Downloading $(DOCS_SS_MK_URL) -> $@"
+	@curl -H 'Cache-Control: no-cache' -fsSL "$(DOCS_SS_MK_URL)" -o "$@" \
+	  || { echo "ERROR: failed to download $(DOCS_SS_MK_URL)"; exit 1; }
+
 # The build resolves {{ screenshot: ... }} itself (see screenshots/mkdocs_hook.py).
-screenshots: ## Capture live console screenshots into screenshots/captured/
-	bash screenshots/capture.sh
+screenshots: $(DOCS_SS_MK) ## Capture live console screenshots into screenshots/captured/
+	$(MAKE) -f $(DOCS_SS_MK) capture DOCS_SS_REF=$(DOCS_SS_REF)
 
-screenshots-check: ## Read-only: check every {{ screenshot: ... }} has a captured image
-	python3 screenshots/inject.py --check
+screenshots-one: $(DOCS_SS_MK) ## Capture one flow: make screenshots-one FLOW=<name>
+	$(MAKE) -f $(DOCS_SS_MK) capture-one FLOW=$(FLOW) DOCS_SS_REF=$(DOCS_SS_REF)
 
-docs-images: merge ## CI pre-build hook: merge sub-operator docs, then capture screenshots
+screenshots-check: $(DOCS_SS_MK) ## Read-only: check every {{ screenshot: ... }} has a captured image
+	$(MAKE) -f $(DOCS_SS_MK) check
+
+# The capture script reads the credentials from the environment, so nothing writes
+# them to disk.
+docs-images: merge $(DOCS_SS_MK) ## CI pre-build hook: merge sub-operator docs, then capture screenshots
 	@test -n "$$PRE_BUILD_USER" -a -n "$$PRE_BUILD_PASSWORD" \
 	  || { echo "docs-images: PRE_BUILD_USER/PRE_BUILD_PASSWORD not set"; exit 1; }
-	@printf 'CONSOLE_USER=%s\nCONSOLE_PASSWORD=%s\n' "$$PRE_BUILD_USER" "$$PRE_BUILD_PASSWORD" > screenshots/.env
-	bash screenshots/capture.sh
-	python3 screenshots/inject.py --check
+	CONSOLE_USER="$$PRE_BUILD_USER" CONSOLE_PASSWORD="$$PRE_BUILD_PASSWORD" \
+	  $(MAKE) -f $(DOCS_SS_MK) capture DOCS_SS_REF=$(DOCS_SS_REF)
+	$(MAKE) -f $(DOCS_SS_MK) check
 
 theme: venv ## Combine the shared theme with theme_override into dist/_theme and mkdocs.yml
 	git submodule update --init --recursive
@@ -69,7 +87,7 @@ serve-local: theme merge-local ## Same preview from local checkouts, no cloning
 	$(PY) -m mkdocs serve -a localhost:9000
 
 clean: ## Remove fetched repos and generated artifacts (surgical; never `git clean`)
-	rm -rf .suboperators mkdocs.yml dist site
+	rm -rf .suboperators mkdocs.yml dist site makefiles
 	@python3 -c "import sys;sys.path.insert(0,'scripts');import merge_docs;\
 	  print('\n'.join(sorted({m['concat_into'] for o in merge_docs.load_config('merge.yaml') \
 	  for m in o['mappings'] if m.get('concat_into')})))" 2>/dev/null \
