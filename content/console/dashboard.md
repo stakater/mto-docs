@@ -27,4 +27,4 @@ The Console is served at `/` on the shared host, and the other components on the
 Once the above configuration is set on the IntegrationConfig, MTO would start provisioning the required resources for MTO Console to be ready. In a few moments, you should be able to see the Console Ingress in the `multi-tenant-operator` namespace which gives you access to the Console.
 
 For more details on the configuration, please visit [here](../concepts/integration-config.md).
-{{ screenshot: dashboard }}
+![The MTO Console dashboard]({{ screenshot: dashboard }})

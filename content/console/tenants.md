@@ -2,13 +2,13 @@
 
 Here, admins have a bird's-eye view of all tenants, with the ability to delve into each one for detailed examination and management. This section is pivotal for observing the distribution and organization of tenants within the system. More information on each tenant can be accessed by clicking the tenant name.
 
-{{ screenshot: tenants }}
+![The Tenants page]({{ screenshot: tenants }})
 
 ## Live YAML and Graph View
 
 In the MTO Console, clicking a resource's name opens its detail page, which includes a `YAML` tab revealing the live YAML configuration for complete information on the resource. For Tenant resources, a supplementary `Graph` tab is available, illustrating the relationships and dependencies of all resources under a Tenant. This dual-view approach empowers users with both the detailed control of YAML and the holistic oversight of the graph view.
 
-{{ screenshot: tenants-graph }}
+![A tenant detail page on the Graph tab]({{ screenshot: tenants-graph }})
 
 Effortlessly associate tenants with their respective resources using the enhanced graph feature on the MTO Console. This dynamic graph illustrates the relationships between tenants and the resources they create, encompassing both MTO's proprietary resources and native Kubernetes/OpenShift elements.
 
@@ -33,11 +33,11 @@ Explore with an intuitive graph that showcases the relationships between tenants
 To view the graph of your tenant, follow the steps below:
 
 - Navigate to `Tenants` page on the MTO Console using the left navigation bar.
-{{ screenshot: graph-1 }}
+![The MTO Console dashboard]({{ screenshot: graph-1 }})
 - Click on the name of the tenant for which you want to view the graph.
-{{ screenshot: graph-2 }}
+![The Tenants page]({{ screenshot: graph-2 }})
 - Click on `Graph` tab on the tenant details page.
-{{ screenshot: graph-3 }}
+![A tenant detail page on the Graph tab]({{ screenshot: graph-3 }})
 
 ## Tenant Quota
 
@@ -45,12 +45,12 @@ In this view, users can access a dedicated tab to review the quota utilization f
 
 ### Aggregated Quota View
 
-{{ screenshot: tenant-quota-aggregated-view }}
+![The Quota tab of a tenant in aggregated view]({{ screenshot: tenant-quota-aggregated-view }})
 This view provides users with an overview of the combined resource allocation and usage across all namespaces within their tenant. It offers a comprehensive look at the total limits and usage of resources such as CPU, memory, and other defined quotas. Users can easily monitor and manage resource distribution across their entire tenant environment from this aggregated perspective.
 
 ### Namespace Quota View
 
-{{ screenshot: tenant-quota-namespace-view }}
+![The Quota tab of a tenant in namespace view]({{ screenshot: tenant-quota-namespace-view }})
 Alternatively, users can opt to view quota settings on a per-namespace basis. This view allows users to focus specifically on the resource allocation and usage within individual namespaces. By selecting this option, users gain granular insights into the resource constraints and utilization for each namespace, facilitating more targeted management and optimization of resources at the namespace level.
 
 ## Tenant Utilization
@@ -64,7 +64,7 @@ In the **Utilization** tab of the tenant console, users are presented with a det
 
 Users can adjust the interval window using the provided selector to customize the time frame for the displayed data. This table allows users to quickly assess resource utilization across all namespaces, facilitating efficient resource management and cost tracking.
 
-{{ screenshot: tenant-utilization-namespaces }}
+![The Utilization tab of a tenant]({{ screenshot: tenant-utilization-namespaces }})
 
 Upon selecting a specific namespace from the utilization table, users are directed to a detailed view that includes CPU and memory utilization graphs along with a workload table. This detailed view provides:
 
@@ -77,7 +77,7 @@ Upon selecting a specific namespace from the utilization table, users are direct
 
 This detailed view provides users with in-depth insights into resource utilization at the workload level, enabling precise monitoring and optimization of resource allocation within the selected namespace.
 
-{{ screenshot: tenant-utilization-namespace-stats }}
+![A namespace drill-down on the Utilization tab]({{ screenshot: tenant-utilization-namespace-stats }})
 
 ## Create Tenant
 
@@ -85,7 +85,7 @@ The tenant creation process involves a drawer interface with a sidebar navigatio
 
 ### Tenant Overview
 
-{{ screenshot: tenant-overview }}
+![The Create Tenant drawer on the Overview step]({{ screenshot: tenant-overview }})
 
 The name of the tenant is an important requirement in tenant creation process. Users must ensure the tenant name meets the specified criteria. The Create button remains disabled until the entered tenant name passes validation and a quota is selected.
 
@@ -123,7 +123,7 @@ Error Handling on tenant overview is based on the following factors
 
 ### Access Control (Optional)
 
-{{ screenshot: tenant-access-control }}
+![The Create Tenant drawer on the Access Control step]({{ screenshot: tenant-access-control }})
 
 This section allows users to configure access control for the tenant. This section is optional and provides three tabs for managing user roles: Owners, Editors, and Viewers.
 
@@ -163,7 +163,7 @@ This section allows users to optionally configure namespaces and metadata for th
 
 ### Namespace
 
-{{ screenshot: tenant-namespace-tab }}
+![The Create Tenant drawer on the Namespace step]({{ screenshot: tenant-namespace-tab }})
 
 - Toggles:
     - Sandbox: Activates the sandbox environment for the tenant.
@@ -187,7 +187,7 @@ The Metadata tab has 3 main sections:
 
 #### Common and Sandbox Tabs
 
-{{ screenshot: tenant-metadata-common-sandbox-tab }}
+![The Metadata step on the Common and Sandbox tabs]({{ screenshot: tenant-metadata-common-sandbox-tab }})
 
 - Both sections allow users to add annotations and labels using Key and Value input fields.
 - Inputs act as filters for existing values.
@@ -196,7 +196,7 @@ The Metadata tab has 3 main sections:
 
 #### Specific Tab
 
-{{ screenshot: tenant-metadata-specific-tab }}
+![The Metadata step on the Specific tab]({{ screenshot: tenant-metadata-specific-tab }})
 
 - Includes an Add Accordion button.
 - Each accordion contains the following fields:
@@ -225,7 +225,7 @@ The Metadata tab has 3 main sections:
 
 ### YAML View
 
-{{ screenshot: yaml-view }}
+![The YAML view in the Create Tenant drawer]({{ screenshot: yaml-view }})
 
 - A YAML representation of the configuration can be previewed as user clicks on the last navigation item in the sidebar creation or update.
 

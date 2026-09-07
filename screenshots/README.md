@@ -3,10 +3,16 @@
 Live MTO Console screenshots for these docs, captured with browser-runner
 (design: `browser-runner/docs/docs-screenshot-automation.md`).
 
-The 57 console screenshots aren't referenced by path any more. Each
-`![…](../images/x.png)` in `content/console/*.md` is a `{{ screenshot: x }}` directive
-that the build swaps for that run's capture. The old hand-taken images live in
-`baseline/`, kept for diffing; the build never reads them.
+The 57 console screenshots aren't referenced by path any more. In
+`content/console/*.md` the path is a `{{ screenshot: x }}` directive that the build
+swaps for that run's capture, and the page keeps its own alt text:
+
+```markdown
+![The Quotas page, listing each quota and the tenants that use it]({{ screenshot: quotas }})
+```
+
+The old hand-taken images live in `baseline/`, kept for diffing; the build never
+reads them.
 
 Why a directive and not just the path: a path can silently render a stale file. A
 directive can only resolve to an image captured for it, and fails the build if there
@@ -18,7 +24,7 @@ isn't one.
 `theme_override/mkdocs.yml`) runs during `mkdocs build`:
 
 1. copies every referenced image from `captured/` into `content/images/generated/`
-2. replaces each directive with an image link, in memory — source files are never
+2. replaces each directive with the image path, in memory — source files are never
    touched. No capture for a directive means the build fails and names the page.
 
 `captured/` is the only source. No fallback to `baseline/`, because falling back

@@ -2,7 +2,7 @@
 
 [Cluster Template Instances](https://docs.stakater.com/template-operator/main/kubernetes-resources/cluster-template-instance.html) in the MTO Console allow users to deploy standardized resource configurations, such as Kubernetes manifests, Helm charts, Secrets, or ConfigMaps, into multiple namespaces that match specific label selectors. By using Cluster Template Instances, organizations can ensure consistency, repeatability, and compliance across multiple environments. Each Cluster Template Instance is based on a predefined template and can be managed, synchronized, or removed as needed, making it easy to propagate best practices and updates throughout your infrastructure.
 
-{{ screenshot: cti-tab }}
+![The Cluster Template Instances tab]({{ screenshot: cti-tab }})
 
 The Cluster Template Instances tab on the Template Instances page lists each instance with the following columns: **Name**, **Template**, **Status**, **Sync**, **Namespaces** (the number of matched namespaces), **Created**, and an **Actions** kebab menu.
 
@@ -10,7 +10,7 @@ The Cluster Template Instances tab on the Template Instances page lists each ins
 
 By clicking on the Cluster Template Instance name user can be directed to the details section of the selected Cluster Template Instance. It has breadcrumb to redirect user back to the Template Instances table.
 
-{{ screenshot: cti-details }}
+![A Cluster Template Instance detail page]({{ screenshot: cti-details }})
 
 The details page shows:
 
@@ -28,7 +28,7 @@ Click the **Create Instance(s)** button at the top right of the Template Instanc
 
 ### Basic Information
 
-{{ screenshot: cti-create }}
+![The create drawer on the Basic Information step]({{ screenshot: cti-create }})
 
 - **Instance Name:** Enter a unique name for the Cluster Template Instance.
 - **Template:** Pick the template you want to instantiate (for example, `docker-pull-secret`).
@@ -38,7 +38,7 @@ Click **Next** to continue to Parameters.
 
 ### Parameters
 
-{{ screenshot: cti-create-param }}
+![The create drawer on the Parameters step]({{ screenshot: cti-create-param }})
 
 - **Parameter Name:** Select a parameter defined in the template.
 - **Value:** Provide the value for the selected parameter.
@@ -48,7 +48,7 @@ Click **Next** to continue to Namespace Selector.
 
 ### Namespace Selector
 
-{{ screenshot: cti-create-ns-selector }}
+![The create drawer on the Namespace Selector step]({{ screenshot: cti-create-ns-selector }})
 
 The **Namespace Labels Selector** targets namespaces by their labels.
 
@@ -75,7 +75,7 @@ The new Cluster Template Instance will appear in the Cluster Template Instances 
 
 A YAML representation of the Cluster Template Instance can be previewed by selecting **View YAML** from the Actions kebab menu on an instance row. The YAML drawer also provides **Copy** and **Download** options.
 
-{{ screenshot: cti-yaml }}
+![The YAML view of a Cluster Template Instance]({{ screenshot: cti-yaml }})
 
 ## Update Cluster Template Instance
 

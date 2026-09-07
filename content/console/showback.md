@@ -2,7 +2,7 @@
 
 Most Kubernetes cost discussions stall in the same place: the bill is one number, and nobody can say which team caused it. Cost Analysis answers that question directly — what each tenant and each namespace consumed, and what it cost.
 
-{{ screenshot: showback }}
+![The Cost Analysis page]({{ screenshot: showback }})
 
 ## How the number is produced
 
