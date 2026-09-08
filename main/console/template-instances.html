@@ -7273,17 +7273,17 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
 <h1 id="template-instances">Template Instances<a class="headerlink" href="#template-instances" title="Permanent link">#</a></h1>
 <p><a href="https://docs.stakater.com/template-operator/main/kubernetes-resources/template-instance.html">Template Instances</a> in the MTO Console allow users to deploy standardized resource configurations, such as Kubernetes manifests, Helm charts, Secrets, or ConfigMaps, into specific namespaces. By using Template Instances, organizations can ensure consistency, repeatability, and compliance across multiple environments. Each instance is based on a predefined template and can be managed, synchronized, or removed as needed, making it easy to propagate best practices and updates throughout your infrastructure.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-instances.png" data-desc-position="bottom"><img alt="template-instances" src="../images/generated/template-instances.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-instances.png" data-desc-position="bottom"><img alt="The Template Instances page" src="../images/generated/template-instances.png"></a></p>
 <p>The Template Instances page lists all instances across the cluster, organized into two tabs: <strong>Template Instances</strong> (namespace-scoped) and <strong>Cluster Template Instances</strong> (cluster-scoped). Each row shows <strong>Name</strong>, <strong>Namespace</strong>, <strong>Template</strong>, <strong>Status</strong>, <strong>Sync</strong>, <strong>Created</strong>, and an <strong>Actions</strong> kebab menu.</p>
 <h2 id="details-section">Details Section<a class="headerlink" href="#details-section" title="Permanent link">#</a></h2>
 <p>By clicking on the Template Instance name user can be directed to the details section of the selected Template Instance.
 It has breadcrumb to redirect user back to the Template Instances table.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-instance-details.png" data-desc-position="bottom"><img alt="template-instance-details" src="../images/generated/template-instance-details.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-instance-details.png" data-desc-position="bottom"><img alt="A Template Instance detail page" src="../images/generated/template-instance-details.png"></a></p>
 <h2 id="create-template-instance">Create Template Instance<a class="headerlink" href="#create-template-instance" title="Permanent link">#</a></h2>
 <p>The Template Instance creation process in the MTO Console is designed to be straightforward, allowing users to deploy a selected template into a specific namespace with optional synchronization. The process is presented in a drawer interface.</p>
 <p>Click the <strong>Create Instance(s)</strong> button at the top right of the Template Instances page to open the creation drawer.</p>
 <h3 id="select-instance-type">Select Instance Type<a class="headerlink" href="#select-instance-type" title="Permanent link">#</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-instance-create-drawer.png" data-desc-position="bottom"><img alt="template-instance-create-drawer" src="../images/generated/template-instance-create-drawer.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-instance-create-drawer.png" data-desc-position="bottom"><img alt="The create drawer on the Select Instance Type step" src="../images/generated/template-instance-create-drawer.png"></a></p>
 <p>The drawer first prompts you to choose the scope of the instance:</p>
 <ul>
 <li><strong>Template Instance:</strong> Creates resources in a specific namespace.</li>
@@ -7291,7 +7291,7 @@ It has breadcrumb to redirect user back to the Template Instances table.</p>
 </ul>
 <p>Select <strong>Template Instance</strong> to continue with the namespace-scoped flow described below. The cluster-scoped flow is documented separately on the <a href="cluster-template-instances.html">Cluster Template Instances</a> page. The <strong>Change Type</strong> button on later steps lets you switch between the two scopes without leaving the drawer.</p>
 <h3 id="basic-information">Basic Information<a class="headerlink" href="#basic-information" title="Permanent link">#</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-instance-create-drawer-info.png" data-desc-position="bottom"><img alt="template-instance-create-drawer-info" src="../images/generated/template-instance-create-drawer-info.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-instance-create-drawer-info.png" data-desc-position="bottom"><img alt="The create drawer on the Basic Information step" src="../images/generated/template-instance-create-drawer-info.png"></a></p>
 <ul>
 <li><strong>Instance Name:</strong> Enter a unique name for the instance.</li>
 <li><strong>Namespace:</strong> Select the target namespace where the resources will be deployed (for example, <code>arsenal-dev</code>).</li>
@@ -7300,7 +7300,7 @@ It has breadcrumb to redirect user back to the Template Instances table.</p>
 </ul>
 <p>Click <strong>Next</strong> to continue to Parameters.</p>
 <h3 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">#</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-instance-create-drawer-params.png" data-desc-position="bottom"><img alt="template-instance-create-drawer-params" src="../images/generated/template-instance-create-drawer-params.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-instance-create-drawer-params.png" data-desc-position="bottom"><img alt="The create drawer on the Parameters step" src="../images/generated/template-instance-create-drawer-params.png"></a></p>
 <ul>
 <li><strong>Parameter Name:</strong> Select a parameter defined in the template.</li>
 <li><strong>Value:</strong> Provide the value for the selected parameter.</li>
@@ -7320,7 +7320,7 @@ It has breadcrumb to redirect user back to the Template Instances table.</p>
 </ul>
 <h2 id="yaml-view">YAML View<a class="headerlink" href="#yaml-view" title="Permanent link">#</a></h2>
 <p>A YAML representation of the Template Instance can be previewed by selecting <strong>View YAML</strong> from the Actions kebab menu on an instance row.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-instance-yaml-view.png" data-desc-position="bottom"><img alt="template-instance-yaml-view" src="../images/generated/template-instance-yaml-view.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/template-instance-yaml-view.png" data-desc-position="bottom"><img alt="The YAML view of a Template Instance" src="../images/generated/template-instance-yaml-view.png"></a></p>
 <h2 id="update-template-instance">Update Template Instance<a class="headerlink" href="#update-template-instance" title="Permanent link">#</a></h2>
 <p>Template Instance can not be updated as all fields are disabled.</p>
 <h2 id="delete-template-instance">Delete Template Instance<a class="headerlink" href="#delete-template-instance" title="Permanent link">#</a></h2>
