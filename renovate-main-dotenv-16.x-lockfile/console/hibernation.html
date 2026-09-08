@@ -7567,7 +7567,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><strong>Tenant filter:</strong> Switch the displayed namespaces to a specific tenant.</li>
 <li><strong>Schedule Filters:</strong> Filter the list by namespace state — <code>All</code>, <code>Sleeping</code>, <code>Hibernated</code>, or <code>Active</code>.</li>
 </ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/hibernation-table.png" data-desc-position="bottom"><img alt="hibernation-table" src="../images/generated/hibernation-table.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/hibernation-table.png" data-desc-position="bottom"><img alt="The namespace table on the Hibernation page" src="../images/generated/hibernation-table.png"></a></p>
 <h3 id="waking-a-namespace">Waking a Namespace<a class="headerlink" href="#waking-a-namespace" title="Permanent link">#</a></h3>
 <p>Whether a sleeping namespace can be woken from the list depends on how it was targeted:</p>
 <ul>
@@ -7585,19 +7585,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h4 id="by-labels">By Labels<a class="headerlink" href="#by-labels" title="Permanent link">#</a></h4>
 <p>Selects namespaces by Kubernetes labels. Use the <strong>Select namespace labels</strong> dropdown to search and pick one or more existing label <code>key:value</code> pairs. All current and future namespaces matching the selected labels will be affected.</p>
 <p>In the example below, the label <code>stakater.com/kind:prod</code> is selected and the matching namespaces are shown under "Namespaces to be affected".</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/sleep-by-labels.png" data-desc-position="bottom"><img alt="sleep-by-labels" src="../images/generated/sleep-by-labels.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/sleep-by-labels.png" data-desc-position="bottom"><img alt="The Sleep drawer in By Labels mode" src="../images/generated/sleep-by-labels.png"></a></p>
 <h4 id="by-namespaces">By Namespaces<a class="headerlink" href="#by-namespaces" title="Permanent link">#</a></h4>
 <p>Shows a namespace checklist with a <strong>Select All</strong> link. Users select namespaces directly from the list — there is no labels filter on this flow. Namespaces that are already asleep are shown but cannot be selected.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/sleep-by-name-selection.png" data-desc-position="bottom"><img alt="sleep-by-name-selection" src="../images/generated/sleep-by-name-selection.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/sleep-by-name-selection.png" data-desc-position="bottom"><img alt="The Sleep drawer in By Namespaces mode" src="../images/generated/sleep-by-name-selection.png"></a></p>
 <h3 id="hibernation-mode">Hibernation Mode<a class="headerlink" href="#hibernation-mode" title="Permanent link">#</a></h3>
 <h4 id="sleep-mode-instant">Sleep Mode (Instant)<a class="headerlink" href="#sleep-mode-instant" title="Permanent link">#</a></h4>
 <p>Namespaces sleep immediately when added to the affected list, and wake up automatically when removed from the list. No schedule is required. The drawer's bottom action is <strong>Apply Sleep Mode</strong>.</p>
 <h4 id="hibernate-mode-scheduled">Hibernate Mode (Scheduled)<a class="headerlink" href="#hibernate-mode-scheduled" title="Permanent link">#</a></h4>
 <p>Namespaces sleep and wake automatically based on a defined cron schedule. A schedule must be selected (or created) before the action can proceed.</p>
 <p>The <strong>Select Schedule</strong> dropdown shows existing schedules and their sleep/wake details. Use the <strong>+</strong> button next to it to create a new schedule. The drawer's bottom action is <strong>Apply Hibernation</strong>.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/hibernate-by-labels.png" data-desc-position="bottom"><img alt="hibernate-by-labels" src="../images/generated/hibernate-by-labels.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/hibernate-by-labels.png" data-desc-position="bottom"><img alt="The Hibernate drawer in By Labels mode" src="../images/generated/hibernate-by-labels.png"></a></p>
 <p>Hibernate Mode can also be applied to an explicit set of namespaces using <strong>By Namespaces</strong>.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/hibernate-by-name-selection.png" data-desc-position="bottom"><img alt="hibernate-by-name-selection" src="../images/generated/hibernate-by-name-selection.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/hibernate-by-name-selection.png" data-desc-position="bottom"><img alt="The Hibernate drawer in By Namespaces mode" src="../images/generated/hibernate-by-name-selection.png"></a></p>
 <h3 id="namespaces-to-be-affected">Namespaces to be affected<a class="headerlink" href="#namespaces-to-be-affected" title="Permanent link">#</a></h3>
 <p>Before applying, the <strong>Namespaces to be affected</strong> panel previews exactly which namespaces the current selection will change, along with a count.</p>
 <ul>
@@ -7608,10 +7608,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Clicking <strong>Manage Schedules</strong> opens the <strong>Manage Hibernation Schedules</strong> drawer, which has two tabs: <strong>Existing Schedules</strong> and <strong>Create New</strong>.</p>
 <h3 id="existing-schedules">Existing Schedules<a class="headerlink" href="#existing-schedules" title="Permanent link">#</a></h3>
 <p>Lists the schedules defined for the selected tenant, each showing its <strong>Interval</strong> (the sleep and wake times). Schedules can be searched by name, and the <strong>Columns</strong> control adjusts which columns are shown. Use the delete action to remove a schedule — deleting a schedule wakes any namespaces that were hibernating on it.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/manage-hibernation-schedules.png" data-desc-position="bottom"><img alt="manage-hibernation-schedules" src="../images/generated/manage-hibernation-schedules.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/manage-hibernation-schedules.png" data-desc-position="bottom"><img alt="The hibernation schedules of a tenant" src="../images/generated/manage-hibernation-schedules.png"></a></p>
 <h3 id="creating-a-hibernation-schedule">Creating a Hibernation Schedule<a class="headerlink" href="#creating-a-hibernation-schedule" title="Permanent link">#</a></h3>
 <p>A schedule can be created from the <strong>Create New</strong> tab here, or from the <strong>+</strong> button next to the <strong>Select Schedule</strong> dropdown in the Apply Hibernation Settings drawer. Existing schedules can also be reused directly from that dropdown.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/create-hibernation-schedule.png" data-desc-position="bottom"><img alt="create-hibernation-schedule" src="../images/generated/create-hibernation-schedule.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/create-hibernation-schedule.png" data-desc-position="bottom"><img alt="The Create New tab of the schedule drawer" src="../images/generated/create-hibernation-schedule.png"></a></p>
 <p>The create form has the following fields:</p>
 <ul>
 <li><strong>Schedule Name:</strong> A unique name for the schedule.</li>
@@ -7622,7 +7622,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><strong>Schedule Preview:</strong> Shows the next occurrences of both the Sleep and Wake events for verification.</li>
 </ul>
 <p>Click <strong>Create Schedule</strong> to save.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/create-interval.png" data-desc-position="bottom"><img alt="create-interval" src="../images/generated/create-interval.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../images/generated/create-interval.png" data-desc-position="bottom"><img alt="The interval popup in the schedule drawer" src="../images/generated/create-interval.png"></a></p>
 
 
 
