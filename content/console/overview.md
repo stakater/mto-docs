@@ -4,7 +4,7 @@ The MTO Console is the visual interface over everything MTO manages — tenants,
 
 Everything the Console shows is read from the same Kubernetes resources you manage in Git, and everything it writes goes back to those resources. There is no second source of truth to reconcile.
 
-{{ screenshot: dashboard }}
+![The MTO Console dashboard after sign-in]({{ screenshot: dashboard }})
 
 ## Two personas, one model
 

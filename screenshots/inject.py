@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Resolve `{{ screenshot: <name> }}` directives in the docs to real images.
 
+A directive stands in for the image PATH, so the page keeps its own alt text:
+
+    ![The Tenants page, listing each tenant with its quota]({{ screenshot: tenants }})
+
 Two ways to use this:
 
   * `--check` (recommended, and what CI should gate on) verifies every directive
@@ -50,9 +54,9 @@ def resolve_source(name: str) -> Path | None:
     return captured if captured.exists() else None
 
 
-def link_for(name: str, depth: int) -> str:
-    """Markdown link for a directive, relative to a page `depth` dirs below content/."""
-    return f"![{name}]({'../' * depth}images/generated/{name}.png)"
+def path_for(name: str, depth: int) -> str:
+    """Image path for a directive, relative to a page `depth` dirs below content/."""
+    return f"{'../' * depth}images/generated/{name}.png"
 
 
 def main() -> int:
@@ -109,9 +113,9 @@ def main() -> int:
         text = page.read_text()
         if not DIRECTIVE.search(text):
             continue
-        # Depth from the page to content/, so the link works wherever the page lives.
+        # Depth from the page to content/, so the path works wherever the page lives.
         depth = len(page.relative_to(CONTENT).parent.parts)
-        new = DIRECTIVE.sub(lambda m: link_for(m.group(1), depth), text)
+        new = DIRECTIVE.sub(lambda m: path_for(m.group(1), depth), text)
         page.write_text(new)
 
     print(f"\ninject: wrote {len(wanted)} images to "

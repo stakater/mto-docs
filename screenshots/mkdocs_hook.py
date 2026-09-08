@@ -19,7 +19,7 @@ braces in the docs can be affected.
 Two phases:
   on_pre_build     copies each referenced image into content/images/generated/ so
                    mkdocs picks it up when it collects files (pre_build runs first)
-  on_page_markdown replaces the directive with a normal image link, IN MEMORY --
+  on_page_markdown replaces the directive with the image path, IN MEMORY --
                    source files are never rewritten
 
 Images come ONLY from screenshots/captured/. There is no fallback to the archived
@@ -38,7 +38,7 @@ from inject import (  # noqa: E402  (path juggling must come first)
     CONTENT,
     DIRECTIVE,
     GENERATED,
-    link_for,
+    path_for,
     resolve_source,
 )
 
@@ -63,7 +63,7 @@ def on_pre_build(config, **kwargs):
 
 
 def on_page_markdown(markdown, page, config, files, **kwargs):
-    """Swap directives for image links, relative to this page's depth."""
+    """Swap directives for image paths, relative to this page's depth."""
     if not DIRECTIVE.search(markdown):
         return markdown
 
@@ -77,6 +77,6 @@ def on_page_markdown(markdown, page, config, files, **kwargs):
                 f"{{{{ screenshot: {name} }}}} but screenshots/captured/{name}.png "
                 f"does not exist. Run `make screenshots` (or drop the directive)."
             )
-        return link_for(name, depth)
+        return path_for(name, depth)
 
     return DIRECTIVE.sub(replace, markdown)

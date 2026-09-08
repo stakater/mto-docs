@@ -8,7 +8,7 @@ Administrators have overarching access to the console, including the ability to 
 
 Administrators are the users and groups listed under `spec.accessControl.privileged` in the `IntegrationConfig`. MTO's default admin user, `mto@stakater.com`, is not on that list out of the box, so add it to `privileged.users` to give it administrator access in the console. See [Console Admin Access](../getting-started/installation/openshift.md#console-admin-access) for the patch.
 
-{{ screenshot: integration-config }}
+![The IntegrationConfig page]({{ screenshot: integration-config }})
 
 ### Tenant Users
 

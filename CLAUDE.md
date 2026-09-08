@@ -10,9 +10,12 @@ YAML, Markdown and directories alike. Exceptions are names a tool fixes
 
 ## Console screenshots
 
-Pages under `content/console/` reference images as `{{ screenshot: name }}`, not
-`![…](../images/…)`. The build resolves each directive to `screenshots/captured/<name>.png`
-and fails if one is missing, so never add a plain image path to a console page.
+Pages under `content/console/` reference images as
+`![alt text]({{ screenshot: name }})`, never as a path into `../images/`. The
+directive stands in for the path, so each page keeps its own alt text.
+
+The build resolves each directive to `screenshots/captured/<name>.png` and fails if
+one is missing, so never add a plain image path to a console page.
 
 Those captures are committed. `screenshots.yaml` refreshes them on PR approval or a
 manual run; no docs build talks to the live console. See `screenshots/README.md`.
