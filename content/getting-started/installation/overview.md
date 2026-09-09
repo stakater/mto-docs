@@ -30,4 +30,4 @@ Choose the installation guide that matches your environment:
 * [Installing with Helm on EKS](aws-eks/installation.md)
 * [Installing with Helm on any Kubernetes](kubernetes.md)
 
-Once MTO is installed, [create your first tenant](../../guides/create-tenant.md) to see the model working end to end. To remove MTO later, see [Uninstalling MTO](../uninstalling.md).
+Once MTO is installed, [create your first tenant](../../guides/create-tenant.md) to see the model working end to end. Before the cluster carries real tenants, work through [Production Readiness](../production-readiness.md). To remove MTO later, see [Uninstalling MTO](../uninstalling.md).

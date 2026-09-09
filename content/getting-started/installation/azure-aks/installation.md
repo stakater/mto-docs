@@ -80,7 +80,7 @@ kubectl patch integrationconfigs.tenantoperator.stakater.com -n multi-tenant-ope
 }"
 ```
 
-Open the Console URL and Log In with the admin user. Default username and password is `mto`
+Open the Console URL and Log In with the admin user. Default username and password is `mto`. This account exists so you can sign in before an identity provider is connected; remove it before the cluster goes to production, see [Remove the default admin login](../../production-readiness.md#remove-the-default-admin-login).
 
 ![MTO Console Login Page](../../../images/mto-console-login.png)
 
