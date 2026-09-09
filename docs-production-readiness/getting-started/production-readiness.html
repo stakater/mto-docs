@@ -7330,7 +7330,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><strong>Point MTO at your own Prometheus.</strong> Set <code>components.prometheus.mode</code> to <code>External</code> with <code>external.serverURL</code>. Showback samples usage from this Prometheus, so its retention bounds how far back cost data can be recomputed. See <a href="../concepts/integration-config.html#prometheus">Prometheus</a>.</li>
 <li><strong>Back up the database.</strong> PostgreSQL holds the Console cache and the showback history that outlives Prometheus retention. Losing it does not affect tenancy enforcement, but it does lose cost history. See <a href="../console/showback.html">Cost Analysis</a>.</li>
 <li><strong>Own the upgrade cadence.</strong> With <code>External</code> mode, MTO upgrades no longer touch PostgreSQL or Prometheus. Track the upstream security advisories and upgrade on your own schedule.</li>
-<li><strong>Decide the same for OpenCost and Dex.</strong> Both also support <code>External</code> mode. Leave them <code>Managed</code> if you have no existing instance, but note the same single-instance defaults apply. See <a href="../concepts/integration-config.html#opencost">OpenCost</a> and <a href="../concepts/integration-config.html#dex">Dex</a>.</li>
+<li><strong>Leave OpenCost in <code>Managed</code> mode.</strong> Showback depends on the OpenCost API, so MTO pins the OpenCost version it ships with and upgrades it in step with its own releases. Running your own OpenCost puts that compatibility on you. See <a href="../concepts/integration-config.html#opencost">OpenCost</a>.</li>
+<li><strong>Dex can go either way.</strong> If you already run Dex, point MTO at it with <code>External</code> mode. Otherwise keep the bundled one and connect it to your identity provider, as described in the next section. See <a href="../concepts/integration-config.html#dex">Dex</a>.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">components</span><span class="p">:</span>
@@ -7394,7 +7395,7 @@ kubectl<span class="w"> </span>delete<span class="w"> </span>secret<span class="
 <h2 id="secure-the-console-endpoints">Secure the Console endpoints<a class="headerlink" href="#secure-the-console-endpoints" title="Permanent link">#</a></h2>
 <ul>
 <li><strong>Use a real certificate for the shared host.</strong> Set <code>components.ingress.host</code> and <code>tlsSecretName</code> to a certificate that covers the host, issued by a CA your users trust. See <a href="../concepts/integration-config.html#ingress">Ingress</a>.</li>
-<li><strong>Set <code>trustedRootCert</code> for private CAs.</strong> If your certificates chain to an internal root, provide it so the Gateway, Dex and FinOps Gateway trust each other. See <a href="../console/dashboard.html">Dashboard</a>.</li>
+<li><strong>Set <code>trustedRootCert</code> for a private certificate authority.</strong> If your certificates chain to an internal root, provide it so the Gateway, Dex and FinOps Gateway trust each other. See <a href="../console/dashboard.html">Dashboard</a>.</li>
 <li><strong>Update external OIDC clients.</strong> In consolidated mode the Dex issuer is <code>https://&lt;host&gt;/dex</code>. Anything that trusts MTO's Dex, such as Grafana or Vault, needs that issuer.</li>
 </ul>
 <h2 id="set-the-isolation-defaults">Set the isolation defaults<a class="headerlink" href="#set-the-isolation-defaults" title="Permanent link">#</a></h2>
