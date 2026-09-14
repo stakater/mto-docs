@@ -1,0 +1,22 @@
+/* Generated API reference pages (content/reference/api.md), whose headings are
+   type names rather than prose.
+
+   The nesting there is operator > package > kind > type, so on the merged page a
+   referenced type lands on h5 — and material treats h5 as a caption rather than
+   a heading: 0.8em and uppercase. That makes a type heading 14.08px, exactly the
+   size of the field table under it and smaller than the paragraph above it, and
+   renders TenantSpec as TENANTSPEC.
+
+   The heading level has to stay one step deeper, since that is what groups a
+   kind's types under it in the sidebar and in the document outline, so the
+   typography is pinned here instead: a type reads the same whether it is h4 on
+   the sub-operator's own site or h5 merged into MTO. theme_common's extra.css
+   already does this for heading colour, overriding material's lighter h5/h6 —
+   size and text-transform are what was left. */
+.md-typeset h5 {
+  font-size: 1em;
+  /* match h4's margin too: with the sizes equal, a kind having less space above
+     it than the types below it would read as a mistake */
+  margin: 1em 0;
+  text-transform: none;
+}
