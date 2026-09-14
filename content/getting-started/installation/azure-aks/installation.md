@@ -82,11 +82,8 @@ kubectl patch integrationconfigs.tenantoperator.stakater.com -n multi-tenant-ope
 
 Open the Console URL and Log In with the admin user. Default username and password is `mto`
 
-![MTO Console Login Page](../../../images/mto-console-login.png)
-
-Dashboard will open after the successful login. Currently we don't have any tenants
-
-![MTO Console Dashboard](../../../images/mto-console-dashboard-0-tenants.png)
+The Dashboard opens after the successful login. It stays empty until you create a
+tenant. See [Console Overview](../../../console/overview.md) for more detail.
 
 ## What's Next
 
