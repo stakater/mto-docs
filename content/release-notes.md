@@ -15,17 +15,17 @@ _**September 17, 2026**_
 
 #### Features
 
-- Template Operator v2 can now be deployed alongside MTO by setting `components.templateOperatorV2.mode` to `Managed` in the [IntegrationConfig](concepts/integration-config.md). Disabled by default.
+- Template Operator v2 can now be deployed alongside MTO by setting `components.templateOperatorV2.mode` to `Managed` in the [IntegrationConfig](concepts/integration-config.md). It is disabled by default.
 - Tenant status now reports readiness. `kubectl get tenant` shows a `READY` column, and the `Ready` condition reflects the outcome of every sync instead of always reporting `True`.
 - Tenant status now exposes `managedNamespaces`, listing every namespace labeled for the tenant regardless of how it was created.
-- FinOps cost collection can now split each query into parallel namespace batches via `CostJob.spec.sharding`, for clusters where a single cluster-wide query times out.
+- FinOps cost collection can now split each query into parallel namespace batches through `CostJob.spec.sharding`, which is intended for clusters where a single cluster-wide query times out.
 - FinOps `CostJob` resource requests and limits are now configurable via `spec.resources`.
 - MTO Console Cost Analysis and Capacity Planning pages now offer a lens view with filtering, sorting, pagination, and a column picker across the full cost dataset.
 
 #### Enhancements
 
-- `Offering` status now reports `subscriptionFee.period` with an explicit unit suffix, so its meaning no longer depends on reading `tickAlignment` alongside it.
-- Tenant owners can now apply namespace manifests with `oc apply`. The owner role previously permitted only `oc create`.
+- `Offering` status now reports `subscriptionFee.period` with an explicit unit suffix, so it can be interpreted without also reading `tickAlignment`.
+- Tenant owners can now apply namespace manifests with `oc apply`, which the owner role previously did not permit.
 - Manual edits to tenant ClusterRoles and namespace LimitRanges are now reverted immediately instead of on the next scheduled reconcile.
 - FinOps cost collection and charge collection jobs now default to an hourly interval instead of every minute.
 - Templates upgraded to [v0.1.8](https://docs.stakater.com/template-operator-docs/release-notes/), adding Go template support.
@@ -35,7 +35,7 @@ _**September 17, 2026**_
 #### Bug Fixes
 
 - Increased PostgreSQL resource limits to prevent OOM kills.
-- Deleting a tenant with `onDeletePurgeNamespaces: false` no longer strips the tenant label from retained namespaces, which previously also removed their LimitRange, RoleBindings, network policy, and Vault role.
+- Deleting a tenant with `onDeletePurgeNamespaces: false` no longer strips the tenant label from retained namespaces. Removing that label also removed their LimitRange, RoleBindings, network policy, and Vault role.
 - Fixed duplicate tenant users not being reported on Kubernetes.
 - Fixed tenant hostname validation warnings being overwritten during the same reconcile.
 - Fixed the FinOps collection job discarding environment variables from its job template, which caused retried runs to collect the wrong time window.
