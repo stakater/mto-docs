@@ -59,6 +59,8 @@ spec:
         issuer: https://dex.example.com
     dexConfigOperator: {}
     finopsOperator: {}
+    templateOperatorV2:
+      mode: Managed
   accessControl:
     rbac:
       tenantRoles:
@@ -207,6 +209,8 @@ Following are the different components that can be used to configure multi-tenan
         issuer: https://dex.example.com
     dexConfigOperator: {}
     finopsOperator: {}
+    templateOperatorV2:
+      mode: Managed
     ingress:
       ingressClassName: 
       host: mto.apps.mycluster-ams.abcdef.cloud
@@ -242,9 +246,10 @@ Following are the different components that can be used to configure multi-tenan
 - `components.dex:` Configures Dex.
 - `components.dexConfigOperator:` Configures DexConfigOperator.
 - `components.finopsOperator:` Configures FinOps Operator.
+- `components.templateOperatorV2:` Configures Template Operator v2. Set `mode` to `Managed` to deploy it alongside MTO, or leave it at the default `Disabled` to deploy nothing. Chart values can be overridden via `values`. See [Templates](https://docs.stakater.com/template-operator-docs/) for what it provides.
 
 !!! note
-  PostgreSQL, Prometheus, OpenCost, Dex, DexConfigOperator and FinOpsOperator are configured using MTO Dependencies Operator. See [MTO Dependencies Operator documentation](https://github.com/stakater/mto-dependencies-operator) for reference
+  PostgreSQL, Prometheus, OpenCost, Dex, DexConfigOperator, FinOpsOperator and Template Operator v2 are configured using MTO Dependencies Operator. See [MTO Dependencies Operator documentation](https://github.com/stakater/mto-dependencies-operator) for reference
 
 Here's an example of how to generate the secrets required to configure MTO:
 

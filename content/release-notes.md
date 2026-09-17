@@ -1,5 +1,69 @@
 # Changelog
 
+## v1.10.x
+
+### Migration Guide
+
+Follow these steps to upgrade to version 1.10.x from 1.9.x
+
+- For OpenShift: update the channel from `release-1.9` to `release-1.10` in your OLM Subscription.
+- For Kubernetes: update the Helm chart version to `1.10.x`.
+
+### v1.10.0
+
+_**September 17, 2026**_
+
+#### Features
+
+- Template Operator v2 can now be deployed alongside MTO by setting `components.templateOperatorV2.mode` to `Managed` in the [IntegrationConfig](concepts/integration-config.md). Disabled by default.
+- Tenant status now reports readiness. `kubectl get tenant` shows a `READY` column, and the `Ready` condition reflects the outcome of every sync instead of always reporting `True`.
+- Tenant status now exposes `managedNamespaces`, listing every namespace labeled for the tenant regardless of how it was created.
+- FinOps cost collection can now split each query into parallel namespace batches via `CostJob.spec.sharding`, for clusters where a single cluster-wide query times out.
+- FinOps `CostJob` resource requests and limits are now configurable via `spec.resources`.
+- MTO Console Cost Analysis and Capacity Planning pages now offer a lens view with filtering, sorting, pagination, and a column picker across the full cost dataset.
+
+#### Enhancements
+
+- `Offering` status now reports `subscriptionFee.period` with an explicit unit suffix, so its meaning no longer depends on reading `tickAlignment` alongside it.
+- Tenant owners can now apply namespace manifests with `oc apply`. The owner role previously permitted only `oc create`.
+- Manual edits to tenant ClusterRoles and namespace LimitRanges are now reverted immediately instead of on the next scheduled reconcile.
+- FinOps cost collection and charge collection jobs now default to an hourly interval instead of every minute.
+
+#### Bug Fixes
+
+- Increased PostgreSQL resource limits to prevent OOM kills.
+- Deleting a tenant with `onDeletePurgeNamespaces: false` no longer strips the tenant label from retained namespaces, which previously also removed their LimitRange, RoleBindings, network policy, and Vault role.
+- Fixed duplicate tenant users not being reported on Kubernetes.
+- Fixed tenant hostname validation warnings being overwritten during the same reconcile.
+- Fixed the FinOps collection job discarding environment variables from its job template, which caused retried runs to collect the wrong time window.
+- Dependency CRDs are now installed and upgraded with their charts, so they no longer need to be purged manually after an upgrade.
+
+#### Sub-operator Updates
+
+- **Templates** upgraded to `v0.1.8`, adding Go template support and surfacing Helm errors on instance status. See the [Templates changelog](https://docs.stakater.com/template-operator-docs/release-notes/).
+- **Hibernation** upgraded to `v0.1.104`, a correctness release for sleep and wake. See the [Hibernation changelog](https://docs.stakater.com/hibernation-operator-docs/release-notes.html) for behavior changes that affect downgrades.
+- **FinOps** upgraded to `v0.1.7`. See the [FinOps changelog](https://docs.stakater.com/finops-docs/release-notes/).
+
+#### Component Updates
+
+| Name | Tag | Image |
+| --- | --- | --- |
+| `tenant-operator`         | v1.10.0             | `ghcr.io/stakater/public/mto/tenant-operator`             |
+| `mto-console`             | 1.0.252             | `ghcr.io/stakater/public/mto/mto-console`                 |
+| `mto-gateway`             | 1.0.172             | `ghcr.io/stakater/public/mto/mto-gateway`                 |
+| `finops-operator`         | v0.1.7              | `ghcr.io/stakater/public/finops-operator`                 |
+| `finops-gateway`          | v0.1.6              | `ghcr.io/stakater/public/finops-gateway`                  |
+| `mto-dependencies-operator` | v0.0.14           | `ghcr.io/stakater/public/mto-dependencies-operator`       |
+| `dex-config-operator`     | v0.0.7              | `ghcr.io/stakater/public/dex-config-operator`             |
+| `template-operator`       | v0.1.8              | `ghcr.io/stakater/public/template-operator`               |
+| `template-operator-v2`    | v0.0.8              | `ghcr.io/stakater/public/template-operator-v2`            |
+| `hibernation-operator`    | v0.1.104            | `ghcr.io/stakater/public/hibernation-operator`            |
+| `postgresql`              | 18.2                | `ghcr.io/stakater/public/mto/postgresql`                  |
+| `dex`                     | v0.0.1              | `ghcr.io/stakater/public/mto/dex`                         |
+| `prometheus`              | v2.55.1             | `quay.io/prometheus/prometheus`                           |
+| `kube-state-metrics`      | v2.17.0             | `registry.k8s.io/kube-state-metrics/kube-state-metrics`   |
+| `opencost`                | 1.117.3             | `ghcr.io/opencost/opencost`                               |
+
 ## v1.9.x
 
 ### Migration Guide
