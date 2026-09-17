@@ -28,6 +28,9 @@ _**September 17, 2026**_
 - Tenant owners can now apply namespace manifests with `oc apply`. The owner role previously permitted only `oc create`.
 - Manual edits to tenant ClusterRoles and namespace LimitRanges are now reverted immediately instead of on the next scheduled reconcile.
 - FinOps cost collection and charge collection jobs now default to an hourly interval instead of every minute.
+- Templates upgraded to [v0.1.8](https://docs.stakater.com/template-operator-docs/release-notes/), adding Go template support.
+- Hibernation upgraded to [v0.1.104](https://docs.stakater.com/hibernation-operator-docs/release-notes.html), a correctness release for sleep and wake.
+- FinOps upgraded to [v0.1.7](https://docs.stakater.com/finops-docs/release-notes/).
 
 #### Bug Fixes
 
@@ -37,12 +40,6 @@ _**September 17, 2026**_
 - Fixed tenant hostname validation warnings being overwritten during the same reconcile.
 - Fixed the FinOps collection job discarding environment variables from its job template, which caused retried runs to collect the wrong time window.
 - Dependency CRDs are now installed and upgraded with their charts, so they no longer need to be purged manually after an upgrade.
-
-#### Sub-operator Updates
-
-- **Templates** upgraded to `v0.1.8`, adding Go template support and surfacing Helm errors on instance status. See the [Templates changelog](https://docs.stakater.com/template-operator-docs/release-notes/).
-- **Hibernation** upgraded to `v0.1.104`, a correctness release for sleep and wake. See the [Hibernation changelog](https://docs.stakater.com/hibernation-operator-docs/release-notes.html) for behavior changes that affect downgrades.
-- **FinOps** upgraded to `v0.1.7`. See the [FinOps changelog](https://docs.stakater.com/finops-docs/release-notes/).
 
 #### Component Updates
 
