@@ -246,7 +246,7 @@ Following are the different components that can be used to configure multi-tenan
 - `components.dex:` Configures Dex.
 - `components.dexConfigOperator:` Configures DexConfigOperator.
 - `components.finopsOperator:` Configures FinOps Operator.
-- `components.templateOperatorV2:` Configures Template Operator v2. Set `mode` to `Managed` to deploy it alongside MTO, or leave it at the default `Disabled` to deploy nothing. Chart values can be overridden via `values`. See [Templates](https://docs.stakater.com/template-operator-docs/) for what it provides.
+- `components.templateOperatorV2:` Configures Template Operator v2. Set `mode` to `Managed` to deploy it alongside MTO, or leave it at the default `Disabled` to deploy nothing. Chart values can be overridden via `values`.
 
 !!! note
   PostgreSQL, Prometheus, OpenCost, Dex, DexConfigOperator, FinOpsOperator and Template Operator v2 are configured using MTO Dependencies Operator. See [MTO Dependencies Operator documentation](https://github.com/stakater/mto-dependencies-operator) for reference
