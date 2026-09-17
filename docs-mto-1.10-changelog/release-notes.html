@@ -6294,24 +6294,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#sub-operator-updates" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Sub-operator Updates
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-        
-          
-
-<li class="md-nav__item ">
-  
-  
     <a href="#component-updates" class="md-nav__link">
       
     <span class="md-ellipsis">
@@ -10881,24 +10863,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#sub-operator-updates" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Sub-operator Updates
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-        
-          
-
-<li class="md-nav__item ">
-  
-  
     <a href="#component-updates" class="md-nav__link">
       
     <span class="md-ellipsis">
@@ -14661,6 +14625,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li>Tenant owners can now apply namespace manifests with <code>oc apply</code>. The owner role previously permitted only <code>oc create</code>.</li>
 <li>Manual edits to tenant ClusterRoles and namespace LimitRanges are now reverted immediately instead of on the next scheduled reconcile.</li>
 <li>FinOps cost collection and charge collection jobs now default to an hourly interval instead of every minute.</li>
+<li>Templates upgraded to <a href="https://docs.stakater.com/template-operator-docs/release-notes/">v0.1.8</a>, adding Go template support.</li>
+<li>Hibernation upgraded to <a href="https://docs.stakater.com/hibernation-operator-docs/release-notes.html">v0.1.104</a>, a correctness release for sleep and wake.</li>
+<li>FinOps upgraded to <a href="https://docs.stakater.com/finops-docs/release-notes/">v0.1.7</a>.</li>
 </ul>
 <h4 id="bug-fixes">Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">#</a></h4>
 <ul>
@@ -14670,12 +14637,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li>Fixed tenant hostname validation warnings being overwritten during the same reconcile.</li>
 <li>Fixed the FinOps collection job discarding environment variables from its job template, which caused retried runs to collect the wrong time window.</li>
 <li>Dependency CRDs are now installed and upgraded with their charts, so they no longer need to be purged manually after an upgrade.</li>
-</ul>
-<h4 id="sub-operator-updates">Sub-operator Updates<a class="headerlink" href="#sub-operator-updates" title="Permanent link">#</a></h4>
-<ul>
-<li><strong>Templates</strong> upgraded to <code>v0.1.8</code>, adding Go template support and surfacing Helm errors on instance status. See the <a href="https://docs.stakater.com/template-operator-docs/release-notes/">Templates changelog</a>.</li>
-<li><strong>Hibernation</strong> upgraded to <code>v0.1.104</code>, a correctness release for sleep and wake. See the <a href="https://docs.stakater.com/hibernation-operator-docs/release-notes.html">Hibernation changelog</a> for behavior changes that affect downgrades.</li>
-<li><strong>FinOps</strong> upgraded to <code>v0.1.7</code>. See the <a href="https://docs.stakater.com/finops-docs/release-notes/">FinOps changelog</a>.</li>
 </ul>
 <h4 id="component-updates">Component Updates<a class="headerlink" href="#component-updates" title="Permanent link">#</a></h4>
 <table>
