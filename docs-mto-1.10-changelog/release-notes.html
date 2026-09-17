@@ -14612,17 +14612,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p><em><strong>September 17, 2026</strong></em></p>
 <h4 id="features">Features<a class="headerlink" href="#features" title="Permanent link">#</a></h4>
 <ul>
-<li>Template Operator v2 can now be deployed alongside MTO by setting <code>components.templateOperatorV2.mode</code> to <code>Managed</code> in the <a href="concepts/integration-config.html">IntegrationConfig</a>. Disabled by default.</li>
+<li>Template Operator v2 can now be deployed alongside MTO by setting <code>components.templateOperatorV2.mode</code> to <code>Managed</code> in the <a href="concepts/integration-config.html">IntegrationConfig</a>. It is disabled by default.</li>
 <li>Tenant status now reports readiness. <code>kubectl get tenant</code> shows a <code>READY</code> column, and the <code>Ready</code> condition reflects the outcome of every sync instead of always reporting <code>True</code>.</li>
 <li>Tenant status now exposes <code>managedNamespaces</code>, listing every namespace labeled for the tenant regardless of how it was created.</li>
-<li>FinOps cost collection can now split each query into parallel namespace batches via <code>CostJob.spec.sharding</code>, for clusters where a single cluster-wide query times out.</li>
+<li>FinOps cost collection can now split each query into parallel namespace batches through <code>CostJob.spec.sharding</code>, which is intended for clusters where a single cluster-wide query times out.</li>
 <li>FinOps <code>CostJob</code> resource requests and limits are now configurable via <code>spec.resources</code>.</li>
 <li>MTO Console Cost Analysis and Capacity Planning pages now offer a lens view with filtering, sorting, pagination, and a column picker across the full cost dataset.</li>
 </ul>
 <h4 id="enhancements">Enhancements<a class="headerlink" href="#enhancements" title="Permanent link">#</a></h4>
 <ul>
-<li><code>Offering</code> status now reports <code>subscriptionFee.period</code> with an explicit unit suffix, so its meaning no longer depends on reading <code>tickAlignment</code> alongside it.</li>
-<li>Tenant owners can now apply namespace manifests with <code>oc apply</code>. The owner role previously permitted only <code>oc create</code>.</li>
+<li><code>Offering</code> status now reports <code>subscriptionFee.period</code> with an explicit unit suffix, so it can be interpreted without also reading <code>tickAlignment</code>.</li>
+<li>Tenant owners can now apply namespace manifests with <code>oc apply</code>, which the owner role previously did not permit.</li>
 <li>Manual edits to tenant ClusterRoles and namespace LimitRanges are now reverted immediately instead of on the next scheduled reconcile.</li>
 <li>FinOps cost collection and charge collection jobs now default to an hourly interval instead of every minute.</li>
 <li>Templates upgraded to <a href="https://docs.stakater.com/template-operator-docs/release-notes/">v0.1.8</a>, adding Go template support.</li>
@@ -14632,7 +14632,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h4 id="bug-fixes">Bug Fixes<a class="headerlink" href="#bug-fixes" title="Permanent link">#</a></h4>
 <ul>
 <li>Increased PostgreSQL resource limits to prevent OOM kills.</li>
-<li>Deleting a tenant with <code>onDeletePurgeNamespaces: false</code> no longer strips the tenant label from retained namespaces, which previously also removed their LimitRange, RoleBindings, network policy, and Vault role.</li>
+<li>Deleting a tenant with <code>onDeletePurgeNamespaces: false</code> no longer strips the tenant label from retained namespaces. Removing that label also removed their LimitRange, RoleBindings, network policy, and Vault role.</li>
 <li>Fixed duplicate tenant users not being reported on Kubernetes.</li>
 <li>Fixed tenant hostname validation warnings being overwritten during the same reconcile.</li>
 <li>Fixed the FinOps collection job discarding environment variables from its job template, which caused retried runs to collect the wrong time window.</li>
