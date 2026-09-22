@@ -8517,6 +8517,24 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
+    <a href="#costjobsharding" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        CostJobSharding
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
     <a href="#costjobstatus" class="md-nav__link">
       
     <span class="md-ellipsis">
@@ -12958,6 +12976,24 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <span class="md-ellipsis">
       
         CostJobType
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#costjobsharding" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        CostJobSharding
       
     </span>
   
@@ -17877,6 +17913,12 @@ See https://docs.stakater.com/finops-operator/latest for more details</p>
 <td></td>
 <td>Optional: {} <br></td>
 </tr>
+<tr>
+<td><code>sharding</code> <em><a href="#costjobsharding">CostJobSharding</a></em></td>
+<td>Sharding splits the OpenCost allocation query into several smaller<br>namespace-filtered queries run in parallel, instead of one cluster-wide<br>query per hour. Set this when the single query times out or exhausts<br>memory on a large cluster. Unset means the single cluster-wide query.</td>
+<td></td>
+<td>Optional: {} <br></td>
+</tr>
 </tbody>
 </table>
 <h5 id="costjobtype">CostJobType<a class="headerlink" href="#costjobtype" title="Permanent link">#</a></h5>
@@ -17900,6 +17942,34 @@ See https://docs.stakater.com/finops-operator/latest for more details</p>
 <tr>
 <td><code>SubscriptionChargeCollection</code></td>
 <td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="costjobsharding">CostJobSharding<a class="headerlink" href="#costjobsharding" title="Permanent link">#</a></h5>
+<p>CostJobSharding configures how the OpenCost allocation query is split up.</p>
+<p><em>Appears in:</em>
+- <a href="#costjobspec">CostJobSpec</a></p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Default</th>
+<th>Validation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>namespacesPerShard</code> <em>integer</em></td>
+<td>NamespacesPerShard is the maximum number of namespaces covered by a single<br>OpenCost query. Lower values mean more, smaller requests.</td>
+<td>25</td>
+<td>Minimum: 1 <br>Optional: {} <br></td>
+</tr>
+<tr>
+<td><code>concurrency</code> <em>integer</em></td>
+<td>Concurrency is how many shard queries are in flight at once. It also bounds<br>the job's peak memory, since that many responses can be held at a time.</td>
+<td>4</td>
+<td>Maximum: 32 <br>Minimum: 1 <br>Optional: {} <br></td>
 </tr>
 </tbody>
 </table>
@@ -18445,6 +18515,7 @@ feeInBucket = priceMicros * (ticks(endExclusive) - ticks(start))
   - If the subscription deactivates before minPeriods have elapsed, the remaining periods are billed
     as an adjustment at deactivation time, so the total billed periods is at least minPeriods.</p>
 <p>All monetary values are expressed in micro-currency units (10^-6 of the currency).</p>
+<p>The period bounds below are derived in PeriodCount's doc; change them together.</p>
 <p><em>Appears in:</em>
 - <a href="#pricing">Pricing</a>
 - <a href="#resolvedpricing">ResolvedPricing</a></p>
@@ -18460,9 +18531,9 @@ feeInBucket = priceMicros * (ticks(endExclusive) - ticks(start))
 <tbody>
 <tr>
 <td><code>period</code> <em>string</em></td>
-<td>Period is the tick interval. Its interpretation depends on tickAlignment:<br>  - ActivatedAt: a Go duration string (e.g., "1h", "30m", "24h").<br>  - HourBoundary: an integer number of hours (e.g., "1", "2").<br>  - DayBoundary: an integer number of days (e.g., "1", "7").<br>  - MonthBoundary: an integer number of months (e.g., "1", "3", "12").</td>
+<td>Period is the tick interval. It must be greater than zero, and its form<br>depends on tickAlignment:<br>  - ActivatedAt: a Go duration string (e.g., "30m", "1h", "24h").<br>  - HourBoundary: hours, bare or "h"-suffixed (e.g., "1", "2h"), max 999999.<br>  - DayBoundary: days, bare or "d"-suffixed (e.g., "1", "7d"), max 99999.<br>  - MonthBoundary: months, bare or "mo"-suffixed (e.g., "1", "3mo"), max 999.<br>The unit suffix is optional, but a suffix belonging to a different<br>alignment is rejected. status.resolvedPricing republishes this value in<br>canonical suffixed form.</td>
 <td></td>
-<td></td>
+<td>MaxLength: 8 <br></td>
 </tr>
 <tr>
 <td><code>tickAlignment</code> <em><a href="#tickalignment">TickAlignment</a></em></td>
@@ -18533,7 +18604,7 @@ feeInBucket = priceMicros * (ticks(endExclusive) - ticks(start))
 <tbody>
 <tr>
 <td><code>requiredOfferings</code> <em><a href="#objectreference">ObjectReference</a> array</em></td>
-<td>RequiredOfferings lists offerings that must be covered by an active subscription in<br>the same family (the connected tree sharing a root ancestor) for a subscription to<br>this offering to activate. Coverage spans the whole family EXCEPT the subscription's<br>own subtree: ancestors, siblings, uncles, and cousins all count; the subscription's<br>own children and descendants do not. A root subscription's subtree is the entire<br>family, so a requirement-bearing root can never be covered.</td>
+<td>RequiredOfferings lists offerings that must exist in parent or sibling subscriptions</td>
 <td></td>
 <td>Optional: {} <br></td>
 </tr>
@@ -18562,9 +18633,9 @@ feeInBucket = priceMicros * (ticks(endExclusive) - ticks(start))
 </tr>
 <tr>
 <td><code>namespace</code> <em>string</em></td>
-<td>Namespace of the referenced object. Must be set explicitly — references are<br>never resolved against the referrer's namespace, so the same reference always<br>means the same object no matter where it is authored. MinLength guards against<br>an empty string, which +required alone would accept.</td>
+<td>Namespace of the Offering. If empty, defaults to the Subscription's namespace.</td>
 <td></td>
-<td>MinLength: 1 <br>Required: {} <br></td>
+<td>Optional: {} <br></td>
 </tr>
 </tbody>
 </table>
@@ -18986,9 +19057,6 @@ empty.</p>
 <p>SubscriptionSpec defines the desired state of Subscription.
 A Subscription creates a binding to an Offering, starting the clock and instantiating the offering.
 Effectively it starts consuming the cost-driving entity from a billing perspective.</p>
-<p>offeringRef and parent are immutable: both determine what the subscription is
-billed for and which subscriptions provide its compatibility coverage, and a
-subscription's activation is a billing epoch that cannot be re-pointed.</p>
 <p><em>Appears in:</em>
 - <a href="#subscription">Subscription</a></p>
 <table>
@@ -19021,7 +19089,7 @@ subscription's activation is a billing epoch that cannot be re-pointed.</p>
 </tr>
 <tr>
 <td><code>lifecycle</code> <em><a href="#subscriptionlifecycle">SubscriptionLifecycle</a></em></td>
-<td>Lifecycle allows overriding lifecycle behavior if the Offering permits it.<br>If both parent and targetRef are set:<br>- activation requires BOTH (parent active AND target Ready)<br>- deactivation happens if EITHER stops applying, except parent deactivation is ignored when onParentDeactivate=Orphan<br>Note: onParentDeactivate=Orphan only governs the parent lifecycle link. It does not<br>exempt the subscription from its offering's compatibility requirements: if the deactivating<br>parent was the only active provider of a required offering, the subscription is still<br>deactivated for the coverage gap.</td>
+<td>Lifecycle allows overriding lifecycle behavior if the Offering permits it.<br>If both parent and targetRef are set:<br>- activation requires BOTH (parent active AND target Ready)<br>- deactivation happens if EITHER stops applying, except parent deactivation is ignored when onParentDeactivate=Orphan</td>
 <td></td>
 <td>Optional: {} <br></td>
 </tr>
@@ -19096,7 +19164,7 @@ subscription's activation is a billing epoch that cannot be re-pointed.</p>
 <tbody>
 <tr>
 <td><code>onParentDeactivate</code> <em><a href="#parentdeactivateaction">ParentDeactivateAction</a></em></td>
-<td>OnParentDeactivate controls what happens when the parent subscription deactivates:<br>- Deactivate: this subscription also deactivates.<br>- Orphan: this subscription stays active independently, while retaining the parent reference for traceability.<br>Orphan only detaches the parent lifecycle link; compatibility requirements are still enforced.<br>An orphan whose required offering was covered only by the now-deactivated parent (and by no<br>active sibling) is still deactivated, because keeping it active would violate the requirement.</td>
+<td>OnParentDeactivate controls what happens when the parent subscription deactivates:<br>- Deactivate: this subscription also deactivates.<br>- Orphan: this subscription stays active independently, while retaining the parent reference for traceability.</td>
 <td>Deactivate</td>
 <td>Enum: [Deactivate Orphan] <br></td>
 </tr>
@@ -19181,12 +19249,6 @@ Unset references are ignored. If neither reference is set, the subscription acti
 <tr>
 <td><code>deactivatedAt</code> <em><a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#time-v1-meta">Time</a></em></td>
 <td>DeactivatedAt is the time when the subscription was deactivated.</td>
-<td></td>
-<td>Optional: {} <br></td>
-</tr>
-<tr>
-<td><code>compatibilityRoot</code> <em>string</em></td>
-<td>CompatibilityRoot is the metadata.uid of this subscription's root ancestor,<br>resolved once by the controller. It identifies the connected family used<br>for compatibility coverage.</td>
 <td></td>
 <td>Optional: {} <br></td>
 </tr>
