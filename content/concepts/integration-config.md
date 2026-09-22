@@ -212,7 +212,7 @@ Following are the different components that can be used to configure multi-tenan
     templateOperatorV2:
       mode: Managed
     ingress:
-      ingressClassName: 
+      ingressClassName: nginx
       host: mto.apps.mycluster-ams.abcdef.cloud
       tlsSecretName: tenant-operator-tls
 ```
