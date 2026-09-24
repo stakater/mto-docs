@@ -215,7 +215,7 @@ Navigate to MTO Console URL and Log In with the user credentials.
 
 Dashboard will open after the successful login. Now you can navigate different tenants and namespaces using MTO Console
 
-![The dashboard for falcon@nordmart.com](../../../images/mto-console-falcon-dashboard.png)
+![The dashboard for the falcon user](../../../images/mto-console-falcon-dashboard.png)
 
 ## 6. Validate Bear permissions
 
@@ -271,4 +271,4 @@ Navigate to MTO Console URL and Log In with the user credentials.
 
 Dashboard will open after the successful login. Now you can navigate different tenants and namespaces using MTO Console
 
-![The dashboard for bear@nordmart.com](../../../images/mto-console-bear-dashboard.png)
+![The dashboard for the bear user](../../../images/mto-console-bear-dashboard.png)
