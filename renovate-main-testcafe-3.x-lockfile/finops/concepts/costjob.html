@@ -4467,6 +4467,24 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
+    <a href="#sharding-the-allocation-query" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Sharding the allocation query
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
     <a href="#timeouts" class="md-nav__link">
       
     <span class="md-ellipsis">
@@ -7119,6 +7137,24 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
+    <a href="#sharding-the-allocation-query" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Sharding the allocation query
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
     <a href="#timeouts" class="md-nav__link">
       
     <span class="md-ellipsis">
@@ -7294,6 +7330,24 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </code></pre></div>
 <p>Unlike the environment, this is not merged. Setting <code>spec.resources</code> replaces the container's whole resources block, so a partial value does not inherit the template's defaults for the keys it leaves out: a <code>spec.resources</code> naming only <code>requests</code> produces a container with requests and no limits at all. Write out every request and limit you want the pod to have. Leaving the field unset is the way to keep the operator's own defaults, which the shipped pod template sets to requests of <code>50m</code> CPU and <code>64Mi</code> memory against limits of <code>500m</code> CPU and <code>256Mi</code> memory.</p>
 <p>The override applies to either job type, because both generate their CronJob from the same template and the reconciler matches the <code>loader</code> container by name. Like the rest of the CronJob's <code>spec</code>, it is reapplied on every reconcile, so raising it on the CostJob is the only way to make it stick.</p>
+<h2 id="sharding-the-allocation-query">Sharding the allocation query<a class="headerlink" href="#sharding-the-allocation-query" title="Permanent link">#</a></h2>
+<p>A <code>ResourceCostCollection</code> run asks OpenCost for one hour of allocation data at a time, aggregated over the whole cluster in a single request. On a large enough cluster that request times out, or returns a response big enough to exhaust the job's memory. <code>spec.sharding</code> splits each hour into several namespace-filtered queries run in parallel instead.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">finops.stakater.com/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CostJob</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">allocation-collection</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">finops-operator-system</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceCostCollection</span>
+<span class="w">  </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1h</span>
+<span class="w">  </span><span class="nt">sharding</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">namespacesPerShard</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">25</span>
+<span class="w">    </span><span class="nt">concurrency</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+</code></pre></div>
+<p><code>namespacesPerShard</code> is the largest number of namespaces one query covers, defaulting to <code>25</code>; lower values mean more, smaller requests. <code>concurrency</code> is how many of those queries are in flight at once, defaulting to <code>4</code>, and it also bounds the run's peak memory, since that many responses can be held at a time.</p>
+<p>The namespaces to shard on come from OpenCost rather than from the Kubernetes API, through a cheap discovery query that aggregates the hour by namespace. That matters: OpenCost's list also covers namespaces deleted part way through the window, and its own pseudo-namespaces, neither of which the Kubernetes API would return. Sharding therefore cannot quietly drop rows that a single unfiltered query would have returned.</p>
+<p>A failure in any one shard aborts the rest of that hour and is propagated, so the hour is rolled back rather than committed half written. Shards write through one shared transaction, and the rows a shard produces are the rows a single unfiltered query would have produced for those namespaces.</p>
+<p>Sharding is opt-in and applies only to allocation collection. Left unset, the run issues the same single unfiltered query as before, and <code>spec.sharding</code> on a <code>SubscriptionChargeCollection</code> CostJob does nothing. Apply the regenerated CRD before setting the field, or the API server prunes it and the run silently falls back to the single query.</p>
 <h2 id="timeouts">Timeouts<a class="headerlink" href="#timeouts" title="Permanent link">#</a></h2>
 <p>Six optional fields bound the phases of a run. Each is a duration with a default set on the type, and the reconciler copies whatever is set onto the pod's environment; a field left unset falls back to that default.</p>
 <table>
