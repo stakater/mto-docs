@@ -9,6 +9,42 @@ Follow these steps to upgrade to version 1.10.x from 1.9.x
 - For OpenShift: update the channel from `release-1.9` to `release-1.10` in your OLM Subscription.
 - For Kubernetes: update the Helm chart version to `1.10.x`.
 
+### v1.10.1
+
+_**September 25, 2026**_
+
+#### Enhancements
+
+- The showback Prometheus now scrapes only the metrics OpenCost uses. This cuts ingestion from roughly 21GB/day to 3GB/day on large clusters, where the TSDB volume could previously fill up and deadlock Prometheus. The `kubernetes-apiservers` job is removed, cAdvisor is limited to the container metrics OpenCost queries, and the annotation-driven jobs keep only kube-state-metrics and DCGM GPU metrics, so a tenant's annotated exporter can no longer fill the volume.
+- The Prometheus scrape config now ships as chart `serverFiles` instead of an operator-owned ConfigMap, so it can be customised through `components.prometheus.values` in the [IntegrationConfig](concepts/integration-config.md). Lists are replaced, not merged, so setting `serverFiles."prometheus.yml".scrape_configs` replaces all of MTO's scrape jobs.
+
+#### Bug Fixes
+
+- The deprecation notice on `showbackOpts.retentionPeriod` now points to `spec.components.prometheus.values.server.retention`. It previously pointed to `spec.components.prometheus.retention`, a field that does not exist.
+
+!!! note
+    Prometheus restarts once during the upgrade as it switches to the chart-rendered ConfigMap. The filtering only affects new data, so existing disk usage goes down gradually as old blocks age out over the retention period.
+
+#### Component Updates
+
+| Name | Tag | Image |
+| --- | --- | --- |
+| `tenant-operator`         | v1.10.1             | `ghcr.io/stakater/public/mto/tenant-operator`             |
+| `mto-console`             | 1.0.252             | `ghcr.io/stakater/public/mto/mto-console`                 |
+| `mto-gateway`             | 1.0.172             | `ghcr.io/stakater/public/mto/mto-gateway`                 |
+| `finops-operator`         | v0.1.7              | `ghcr.io/stakater/public/finops-operator`                 |
+| `finops-gateway`          | v0.1.6              | `ghcr.io/stakater/public/finops-gateway`                  |
+| `mto-dependencies-operator` | v0.0.14           | `ghcr.io/stakater/public/mto-dependencies-operator`       |
+| `dex-config-operator`     | v0.0.7              | `ghcr.io/stakater/public/dex-config-operator`             |
+| `template-operator`       | v0.1.8              | `ghcr.io/stakater/public/template-operator`               |
+| `template-operator-v2`    | v0.0.8              | `ghcr.io/stakater/public/template-operator-v2`            |
+| `hibernation-operator`    | v0.1.104            | `ghcr.io/stakater/public/hibernation-operator`            |
+| `postgresql`              | 18.2                | `ghcr.io/stakater/public/mto/postgresql`                  |
+| `dex`                     | v0.0.1              | `ghcr.io/stakater/public/mto/dex`                         |
+| `prometheus`              | v2.55.1             | `quay.io/prometheus/prometheus`                           |
+| `kube-state-metrics`      | v2.17.0             | `registry.k8s.io/kube-state-metrics/kube-state-metrics`   |
+| `opencost`                | 1.117.3             | `ghcr.io/opencost/opencost`                               |
+
 ### v1.10.0
 
 _**September 17, 2026**_
