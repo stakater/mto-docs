@@ -16,6 +16,9 @@ steps:
   # Selector matches both stock Dex (name="login") and themed variants (name="username").
   - { step: open, url: "${CONSOLE_URL}" }
   - { step: wait-for, selector: 'input[name="login"], input[name="username"]', timeout: 60s }
+  # The sign-in page, before any credentials are typed. It shows no user, so the
+  # installation pages use it for every user they describe.
+  - { step: screenshot, path: console-login.png, fullPage: false }
   - { step: fill, selector: 'input[name="login"], input[name="username"]', value: "${CONSOLE_USER}" }
   - { step: fill, selector: 'input[name="password"]', value: "${CONSOLE_PASSWORD}" }
   # The click is instant; Playwright then waits for the Dex -> /auth/callback ->

@@ -34,7 +34,7 @@ jobs:
     uses: stakater/.github/.github/workflows/push_versioned_doc.yaml@v0.0.192
     with:
       PRE_BUILD_HOOK: ${{ needs.hook.outputs.pre_build }}
-      LATEST_DOC_VERSION: "1.9"
+      LATEST_DOC_VERSION: "1.10"
     secrets:
       # GHCR_TOKEN, not PUBLISH_TOKEN: if the hook captures, it pulls the private
       # browser-runner image, which PUBLISH_TOKEN has no package read access to.
