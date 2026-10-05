@@ -519,19 +519,15 @@ After modifying your default IntegrationConfig in `multi-tenant-operator` namesp
 
 MTO supports Azure pricing model via the `showbackOpts.cloudIntegrationSecretRef` field. Following 2 types of pricing are supported:
 
-- [`Azure Standard Pricing`](../integrations/azure-pricing.md#azure-standard-pricing)
-- [`Customer-specific pricing`](../integrations/azure-pricing.md#customer-specific-pricing)
-
-More details on Azure pricing can be found [here](../integrations/azure-pricing.md).
+- `Azure Standard Pricing`
+- `Customer-specific pricing`
 
 ### AWS Pricing
 
 MTO supports AWS pricing model via the `integrationConfig.components.showbackOpts.cloudIntegrationSecretRef` field. Following 2 types of pricing are supported:
 
-- [`AWS Standard Pricing`](../integrations/aws-pricing.md#aws-standard-pricing)
-- [`AWS Spot Instance Pricing`](../integrations/aws-pricing.md#aws-spot-instance-pricing)
-
-More details on AWS pricing can be found [here](../integrations/aws-pricing.md).
+- `AWS Standard Pricing`
+- `AWS Spot Instance Pricing`
 
 ## Access Control
 
