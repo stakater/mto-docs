@@ -7185,7 +7185,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <ol>
 <li><strong>Sampled</strong> — Prometheus and <code>kube-state-metrics</code> record actual resource usage and requests per namespace over time.</li>
 <li><strong>Aggregated</strong> — usage is rolled up to the tenant, because the tenant is the unit of ownership. Every namespace MTO manages already belongs to exactly one tenant.</li>
-<li><strong>Priced</strong> — OpenCost applies rates to the sampled usage. For public-cloud clusters, MTO can use provider pricing so the figures track what you are actually billed. See <a href="../integrations/aws-pricing.html">AWS Pricing</a> and <a href="../integrations/azure-pricing.html">Azure Pricing</a>.</li>
+<li><strong>Priced</strong> — OpenCost applies rates to the sampled usage. For public-cloud clusters, MTO can use provider pricing so the figures track what you are actually billed.</li>
 <li><strong>Stored</strong> — results are written to MTO's PostgreSQL instance, so history survives Prometheus retention and you can compare this month against the last.</li>
 </ol>
 <h2 id="why-the-tenant-boundary-makes-this-correct">Why the tenant boundary makes this correct<a class="headerlink" href="#why-the-tenant-boundary-makes-this-correct" title="Permanent link">#</a></h2>
