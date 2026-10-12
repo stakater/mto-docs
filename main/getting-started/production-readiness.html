@@ -7378,11 +7378,11 @@ kubectl<span class="w"> </span>delete<span class="w"> </span>secret<span class="
 </ul>
 <h2 id="control-upgrades">Control upgrades<a class="headerlink" href="#control-upgrades" title="Permanent link">#</a></h2>
 <ul>
-<li><strong>OpenShift.</strong> Subscribe to the <code>stable</code> channel with <code>installPlanApproval: Manual</code>, so a new version installs only when you approve it. See <a href="installation/openshift.html#installing-via-operatorhub-ui">Installing via OperatorHub UI</a>.</li>
+<li><strong>OpenShift.</strong> Subscribe to the latest <code>release-1.x</code> channel with <code>installPlanApproval: Manual</code>, so a new version installs only when you approve it. See <a href="installation/openshift.html#installing-via-software-catalog-ui">Installing via Software Catalog UI</a>.</li>
 <li><strong>Helm.</strong> Pin the chart version in your <code>helm upgrade</code> command or GitOps source rather than tracking the latest tag.</li>
 <li><strong>Read the release notes first.</strong> Some releases change behaviour that needs preparation, such as the move to Dex or the shared ingress hostname. See <a href="../release-notes.html">Release Notes</a>.</li>
 <li><strong>Upgrade a non-production cluster first.</strong> The tenant definitions are the same resources everywhere, so a staging cluster running the same <code>Tenant</code>, <code>Quota</code> and <code>IntegrationConfig</code> manifests is a faithful rehearsal.</li>
-<li><strong>Know the recovery path.</strong> A stuck OLM upgrade can require uninstalling and reinstalling the operator. Tenant resources survive that, since CRDs are kept. See <a href="../troubleshooting.html#operatorhub-upgrade-error">OperatorHub Upgrade Error</a>.</li>
+<li><strong>Know the recovery path.</strong> A stuck OLM upgrade can require uninstalling and reinstalling the operator. Tenant resources survive that, since CRDs are kept. See <a href="../troubleshooting.html#software-catalog-upgrade-error">Software Catalog Upgrade Error</a>.</li>
 </ul>
 <h2 id="monitor-the-operator">Monitor the operator<a class="headerlink" href="#monitor-the-operator" title="Permanent link">#</a></h2>
 <ul>
