@@ -1,5 +1,64 @@
 # Changelog
 
+## v1.11.x
+
+### Migration Guide
+
+Follow these steps to upgrade to version 1.11.x from 1.10.x
+
+- For OpenShift: update the channel from `release-1.10` to `release-1.11` in your OLM Subscription.
+- For Kubernetes: update the Helm chart version to `1.11.x`.
+
+### v1.11.0
+
+_**October 8, 2026**_
+
+#### Features
+
+- Quota status now reports readiness. `kubectl get quota` shows a `READY` column, backed by a `Ready` condition and `status.ready`. On Kubernetes, `Ready` means the tenant's ResourceQuotas and the tenant-wide quota admission webhook are in place. On OpenShift, it means only that the Quota spec was accepted.
+- Tenant status now reports a `Provisioned` condition, shown in a new `PROVISIONED` column. It is narrower than `Ready`: it goes `False` only when a core part of the tenant fails, such as namespaces, RBAC or quota. An unreachable integration such as Vault makes `Ready` `False` but leaves `Provisioned` `True`.
+- Tenant status now reports a `QuotaReady` condition, which shows whether the tenant's Quota is usable.
+- A Tenant can now be applied before its Quota exists. Admission returns a warning instead of rejecting it, so GitOps no longer needs a sync wave between the two. The tenant reports an error and retries until the Quota appears.
+
+#### Enhancements
+
+- Advisory warnings, such as repeated users or a failure to list managed namespaces, are still reported as conditions but no longer turn the tenant's `Ready` `False`. Commands such as `kubectl wait --for=condition=Ready` are no longer held up by cosmetic warnings.
+- Tenants and their namespaces now recover as soon as a Quota becomes ready, instead of waiting for the next scheduled reconcile.
+- FinOps upgraded to [v0.2.0](https://docs.stakater.com/finops-docs/release-notes/).
+
+#### Behavior Changes
+
+These changes stop MTO from reporting a tenant as working while its quota is not being enforced. Review them before upgrading.
+
+- **A tenant stops syncing while its Quota is not ready.** The tenant reconcile stops at the quota check and reports `QuotaReady=False`, so changes to users, permissions and policies are not applied until the Quota recovers.
+- **Namespaces get no LimitRange and no RoleBindings while the tenant's Quota is not ready.** Without quota enforcement, the namespace has no resource limits, so tenant users get no access to it until the Quota is ready. A `QuotaNotReady` warning event is recorded on the namespace.
+- **Switching `spec.quota` to a Quota that does not exist or is not ready is rejected.** This prevents a running tenant from being stalled by a quota change. Creating a tenant is not affected, and other edits to a tenant whose current Quota is not ready are still allowed.
+- **Tenant owners cannot add namespaces to a tenant that is not provisioned or is being deleted.** This applies to creating a namespace with the `stakater.com/tenant` label, or adding or changing that label on an existing namespace. A tenant that has not reconciled yet counts as not provisioned. Namespaces already in a tenant are not affected. Cluster admins, privileged service accounts and MTO itself are exempt.
+
+#### Bug Fixes
+
+- Bumped `oras-go` to v2.6.2 and OpenTelemetry to v1.45.0 to resolve `govulncheck` findings.
+
+#### Component Updates
+
+| Name | Tag | Image |
+| --- | --- | --- |
+| `tenant-operator`         | v1.11.0             | `ghcr.io/stakater/public/mto/tenant-operator`             |
+| `mto-console`             | 1.0.253             | `ghcr.io/stakater/public/mto/mto-console`                 |
+| `mto-gateway`             | 1.0.173             | `ghcr.io/stakater/public/mto/mto-gateway`                 |
+| `finops-operator`         | v0.2.0              | `ghcr.io/stakater/public/finops-operator`                 |
+| `finops-gateway`          | v0.1.7              | `ghcr.io/stakater/public/finops-gateway`                  |
+| `mto-dependencies-operator` | v0.0.15           | `ghcr.io/stakater/public/mto-dependencies-operator`       |
+| `dex-config-operator`     | v0.0.7              | `ghcr.io/stakater/public/dex-config-operator`             |
+| `template-operator`       | v0.1.8              | `ghcr.io/stakater/public/template-operator`               |
+| `template-operator-v2`    | v0.0.8              | `ghcr.io/stakater/public/template-operator-v2`            |
+| `hibernation-operator`    | v0.1.104            | `ghcr.io/stakater/public/hibernation-operator`            |
+| `postgresql`              | 18.2                | `ghcr.io/stakater/public/mto/postgresql`                  |
+| `dex`                     | v0.0.7              | `ghcr.io/stakater/public/mto/dex`                         |
+| `prometheus`              | v2.55.1             | `quay.io/prometheus/prometheus`                           |
+| `kube-state-metrics`      | v2.17.0             | `registry.k8s.io/kube-state-metrics/kube-state-metrics`   |
+| `opencost`                | 1.117.3             | `ghcr.io/opencost/opencost`                               |
+
 ## v1.10.x
 
 ### Migration Guide
