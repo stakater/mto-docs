@@ -6183,18 +6183,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#operatorhub-upgrade-error" class="md-nav__link">
+    <a href="#software-catalog-upgrade-error" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        OperatorHub Upgrade Error
+        Software Catalog Upgrade Error
       
     </span>
   
     </a>
   
   
-      <nav class="md-nav" aria-label="OperatorHub Upgrade Error">
+      <nav class="md-nav" aria-label="Software Catalog Upgrade Error">
     
       <ul class="md-nav__list">
         
@@ -7360,18 +7360,18 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#operatorhub-upgrade-error" class="md-nav__link">
+    <a href="#software-catalog-upgrade-error" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        OperatorHub Upgrade Error
+        Software Catalog Upgrade Error
       
     </span>
   
     </a>
   
   
-      <nav class="md-nav" aria-label="OperatorHub Upgrade Error">
+      <nav class="md-nav" aria-label="Software Catalog Upgrade Error">
     
       <ul class="md-nav__list">
         
@@ -7792,10 +7792,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="troubleshooting-guide">Troubleshooting Guide<a class="headerlink" href="#troubleshooting-guide" title="Permanent link">#</a></h1>
-<h2 id="operatorhub-upgrade-error">OperatorHub Upgrade Error<a class="headerlink" href="#operatorhub-upgrade-error" title="Permanent link">#</a></h2>
+<h2 id="software-catalog-upgrade-error">Software Catalog Upgrade Error<a class="headerlink" href="#software-catalog-upgrade-error" title="Permanent link">#</a></h2>
 <h3 id="operator-is-stuck-in-upgrade-if-upgrade-approval-is-set-to-automatic">Operator is stuck in upgrade if upgrade approval is set to Automatic<a class="headerlink" href="#operator-is-stuck-in-upgrade-if-upgrade-approval-is-set-to-automatic" title="Permanent link">#</a></h3>
 <h4 id="problem">Problem<a class="headerlink" href="#problem" title="Permanent link">#</a></h4>
-<p>If operator upgrade is set to Automatic Approval on OperatorHub, there may be scenarios where it gets blocked.</p>
+<p>If operator upgrade is set to Automatic Approval on Software Catalog, there may be scenarios where it gets blocked.</p>
 <h4 id="resolution">Resolution<a class="headerlink" href="#resolution" title="Permanent link">#</a></h4>
 <div class="admonition information">
 <p class="admonition-title">Information</p>
@@ -7805,7 +7805,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>As OLM does not allow to upgrade or downgrade from a version stuck because of error, the only possible fix is to uninstall the operator from the cluster.
 When the operator is uninstalled it removes all of its resources i.e., ClusterRoles, ClusterRoleBindings, and Deployments etc., except Custom Resource Definitions (CRDs), so none of the Custom Resources (CRs), Tenants, Templates etc., will be removed from the cluster.
 If any CRD has a conversion webhook defined then that webhook should be removed before installing the stable version of the operator. This can be achieved via removing the <code>.spec.conversion</code> block from the CRD schema.</p>
-<p>As an example, if you have installed v0.8.0 of Multi Tenant Operator on your cluster, then it'll stuck in an error <code>error validating existing CRs against new CRD's schema for "integrationconfigs.tenantoperator.stakater.com": error validating custom resource against new schema for IntegrationConfig multi-tenant-operator/tenant-operator-config: [].spec.tenantRoles: Required value</code>. To resolve this issue, you'll first uninstall the MTO from the cluster. Once you uninstall the MTO, check Tenant CRD which will have a conversion block, which needs to be removed. After removing the conversion block from the Tenant CRD, install the latest available version of MTO from OperatorHub.</p>
+<p>As an example, if you have installed v0.8.0 of Multi Tenant Operator on your cluster, then it'll stuck in an error <code>error validating existing CRs against new CRD's schema for "integrationconfigs.tenantoperator.stakater.com": error validating custom resource against new schema for IntegrationConfig multi-tenant-operator/tenant-operator-config: [].spec.tenantRoles: Required value</code>. To resolve this issue, you'll first uninstall the MTO from the cluster. Once you uninstall the MTO, check Tenant CRD which will have a conversion block, which needs to be removed. After removing the conversion block from the Tenant CRD, install the latest available version of MTO from Software Catalog.</p>
 <h2 id="permission-issues">Permission Issues<a class="headerlink" href="#permission-issues" title="Permanent link">#</a></h2>
 <h3 id="vault-user-permissions-are-not-updated-if-the-user-is-added-to-a-tenant-and-the-user-does-not-exist-in-rhsso">Vault user permissions are not updated if the user is added to a Tenant, and the user does not exist in RHSSO<a class="headerlink" href="#vault-user-permissions-are-not-updated-if-the-user-is-added-to-a-tenant-and-the-user-does-not-exist-in-rhsso" title="Permanent link">#</a></h3>
 <h4 id="problem_1">Problem<a class="headerlink" href="#problem_1" title="Permanent link">#</a></h4>
@@ -7850,7 +7850,7 @@ from server for: "namespace.yaml": namespaces "ns1" is forbidden: User "muneeb" 
 <p><strong>Answer.</strong> The above error can occur if the ArgoCD Application is syncing from a source that is not allowed the referenced AppProject. To solve this, verify that you have referred to the correct project in the given ArgoCD Application, and that the repoURL used for the Application's source is valid. If the error still appears, you can add the URL to the relevant Tenant's <code>spec.integrations.argocd.sourceRepos</code> array.</p>
 <h2 id="mto-opencost">MTO - OpenCost<a class="headerlink" href="#mto-opencost" title="Permanent link">#</a></h2>
 <h3 id="q-why-are-there-mto-showback-pods-failing-in-my-cluster">Q. Why are there <code>mto-showback-*</code> pods failing in my cluster?<a class="headerlink" href="#q-why-are-there-mto-showback-pods-failing-in-my-cluster" title="Permanent link">#</a></h3>
-<p><strong>Answer.</strong> The <code>mto-showback-*</code> pods are used to calculate the cost of the resources used by each tenant. These pods are created by the Multi-Tenant Operator and are scheduled to run every 10 minutes. If the pods are failing, it is likely that the operator's necessary to calculate cost are not present in the cluster. To solve this, you can navigate to <code>Operators</code> -&gt; <code>Installed Operators</code> in the OpenShift console and check if the MTO-OpenCost and MTO-Prometheus operators are installed. If they are in a pending state, you can manually approve them to install them in the cluster.</p>
+<p><strong>Answer.</strong> The <code>mto-showback-*</code> pods are used to calculate the cost of the resources used by each tenant. These pods are created by the Multi-Tenant Operator and are scheduled to run every 10 minutes. If the pods are failing, it is likely that the operator's necessary to calculate cost are not present in the cluster. To solve this, you can navigate to <code>Ecosystem</code> -&gt; <code>Installed Operators</code> in the OpenShift console and check if the MTO-OpenCost and MTO-Prometheus operators are installed. If they are in a pending state, you can manually approve them to install them in the cluster.</p>
 
 
 
