@@ -19,6 +19,6 @@ jobs:
       statuses: write
     uses: stakater/.github/.github/workflows/docs-target.yaml@v0.0.200
     with:
-      LATEST_DOC_VERSION: "1.10"
+      LATEST_DOC_VERSION: ${{ vars.LATEST_DOC_VERSION }}
     secrets:
       PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
