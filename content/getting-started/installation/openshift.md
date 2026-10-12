@@ -162,6 +162,8 @@ oc patch integrationconfigs.tenantoperator.stakater.com tenant-operator-config \
 
 Users listed under `spec.accessControl.privileged` can see every tenant and namespace in the console, along with the `IntegrationConfig` itself. For the other console roles, see [Configuration](../../console/configuration.md).
 
+The `mto` account exists so you can sign in before an identity provider is connected. Remove it before the cluster goes to production; see [Remove the default admin login](../production-readiness.md#remove-the-default-admin-login).
+
 ## Uninstall via OperatorHub UI
 
 You can uninstall MTO by following these steps:
