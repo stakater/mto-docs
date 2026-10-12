@@ -36,7 +36,7 @@ Uninstall the way you installed:
 
 | How you installed | How to remove |
 |---|---|
-| OpenShift, via OperatorHub or OLM | [Uninstall via OperatorHub UI](installation/openshift.md#uninstall-via-operatorhub-ui) |
+| OpenShift, via Software Catalog or OLM | [Uninstall via Software Catalog UI](installation/openshift.md#uninstall-via-software-catalog-ui) |
 | Kubernetes, AKS or EKS, via Helm | [Uninstall via Helm CLI](installation/kubernetes.md#uninstall-via-helm-cli) |
 
 ## Optionally remove the custom resource definitions

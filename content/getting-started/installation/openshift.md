@@ -1,48 +1,48 @@
 # On OpenShift
 
-MTO is [RedHat Certified](https://catalog.redhat.com/en/software/container-stacks/detail/618fa05e3adfdfc43f73b126) operator available on the Red Hat MarketPlace.
+MTO is [RedHat Certified](https://catalog.redhat.com/en/software/container-stacks/detail/618fa05e3adfdfc43f73b126) operator available on the Red Hat Ecosystem Catalog.
 
 This document contains instructions on installing, uninstalling and configuring Multi Tenant Operator on OpenShift.
 
-1. [OpenShift OperatorHub UI](#installing-via-operatorhub-ui)
+1. [OpenShift Software Catalog UI](#installing-via-software-catalog-ui)
 
 1. [CLI/GitOps](#installing-via-cli-or-gitops)
 
 1. [Enabling Console](#enabling-console)
 
-1. [Uninstall](#uninstall-via-operatorhub-ui)
+1. [Uninstall](#uninstall-via-software-catalog-ui)
 
 ## Requirements
 
 * An **OpenShift** cluster
 
-## Installing via OperatorHub UI
+## Installing via Software Catalog UI
 
-* After opening OpenShift console click on `Operators`, followed by `OperatorHub` from the side menu
+* After opening OpenShift console click on `Ecosystem`, followed by `Software Catalog` from the side menu
 
-![image](../../images/operatorHub.png)
+![image](../../images/software-catalog.png)
 
 * Now search for `Multi Tenant Operator` and then click on `Multi Tenant Operator` tile
 
-![image](../../images/search_tenant_operator_operatorHub.png)
+![image](../../images/software-catalog-search.png)
 
 * Click on the `install` button
 
-![image](../../images/to_install_1.png)
+![image](../../images/operator-details-install.png)
 
-* Select `Updated channel`. Select `multi-tenant-operator` to install the operator in `multi-tenant-operator` namespace from `Installed Namespace` dropdown menu. After configuring `Update approval` click on the `install` button.
+* Select `Update channel`. Select `multi-tenant-operator` to install the operator in `multi-tenant-operator` namespace under `Installed Namespace`. After configuring `Update approval` click on the `install` button.
 
-> Note: Use `stable` channel for seamless upgrades. For `Production Environment` prefer `Manual` approval and use `Automatic` for `Development Environment`
+> Note: Use the latest `release-1.x` channel for seamless upgrades. For `Production Environment` prefer `Manual` approval and use `Automatic` for `Development Environment`
 
-![image](../../images/to_install_2.png)
+![image](../../images/operator-install-form.png)
 
 * Wait for the operator to be installed
 
-![image](../../images/to_install_wait.png)
+![image](../../images/operator-installing.png)
 
 * Once successfully installed, MTO will be ready to enforce multi-tenancy in your cluster
 
-![image](../../images/to_installed_successful.png)
+![image](../../images/operator-installed.png)
 
 > Note: MTO will be installed in `multi-tenant-operator` namespace.
 
@@ -78,33 +78,33 @@ metadata:
   name: tenant-operator
   namespace: multi-tenant-operator
 spec:
-  channel: stable
+  channel: release-1.10
   installPlanApproval: Automatic
   name: tenant-operator
   source: certified-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: tenant-operator.v0.10.0
+  startingCSV: tenant-operator.v1.10.1
 EOF
 subscription.operators.coreos.com/tenant-operator created
 ```
 
 > Note: To bring MTO via GitOps, add the above files in GitOps repository.
 
-* After creating the `subscription` custom resource open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
+* After creating the `subscription` custom resource open OpenShift console and click on `Ecosystem`, followed by `Installed Operators` from the side menu
 
-![image](../../images/to_sub_installation_wait.png)
+![image](../../images/installed-operators-pending.png)
 
 * Wait for the installation to complete
 
-![image](../../images/to_sub_installation_successful.png)
+![image](../../images/installed-operators-succeeded.png)
 
 * Once the installation is complete click on `Workloads`, followed by `Pods` from the side menu and select `multi-tenant-operator` project
 
-![image](../../images/select_multi_tenant_operator_project.png)
+![image](../../images/pods-select-project.png)
 
 * Once pods are up and running, MTO will be ready to enforce multi-tenancy in your cluster
 
-![image](../../images/to_installed_successful_pod.png)
+![image](../../images/pods-running.png)
 
 For more details and configurations check out [IntegrationConfig](../../concepts/integration-config.md).
 
@@ -119,27 +119,25 @@ spec:
     showback: true
 ```
 
-> Note: If your `InstallPlan` approval is set to `Manual` then you will have to manually approve the `InstallPlan` for MTO console components to be installed.
+> Note: If your `InstallPlan` approval is set to `Manual` then you will have to manually approve the `InstallPlan` for MTO to be installed.
 
 ### Manual Approval
 
-* Open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu.
+* Open OpenShift console and click on `Ecosystem`, followed by `Installed Operators` from the side menu.
 
-![image](../../images/manual-approve-1.png)
+* Now click on `Upgrade available` in front of `tenant-operator`.
 
-* Now click on `Upgrade available` in front of `mto-opencost` or `mto-prometheus`.
-
-![image](../../images/manual-approve-2.png)
+![image](../../images/installed-operators-upgrade-available.png)
 
 * Now click on `Preview InstallPlan` on top.
 
-![image](../../images/manual-approve-3.png)
+![image](../../images/install-plan-preview.png)
 
 * Now click on `Approve` button.
 
-![image](../../images/manual-approve-4.png)
+![image](../../images/install-plan-approve.png)
 
-* Now the `InstallPlan` will be approved, and MTO console components will be installed.
+* Now the `InstallPlan` will be approved, and MTO will be installed.
 
 ### Console Admin Access
 
@@ -162,19 +160,21 @@ oc patch integrationconfigs.tenantoperator.stakater.com tenant-operator-config \
 
 Users listed under `spec.accessControl.privileged` can see every tenant and namespace in the console, along with the `IntegrationConfig` itself. For the other console roles, see [Configuration](../../console/configuration.md).
 
-## Uninstall via OperatorHub UI
+The `mto` account exists so you can sign in before an identity provider is connected. Remove it before the cluster goes to production; see [Remove the default admin login](../production-readiness.md#remove-the-default-admin-login).
+
+## Uninstall via Software Catalog UI
 
 You can uninstall MTO by following these steps:
 
 * Decide whether to retain tenant namespaces and ArgoCD AppProjects. Set `spec.namespaces.onDeletePurgeNamespaces` to `false` on every tenant whose namespaces you want to keep, and `argoCD.onDeletePurgeAppProject` to `false` on its `Extensions` resource for every AppProject you want to keep. See [Delete a Tenant](../../guides/delete-tenant.md) and [Uninstalling MTO](../uninstalling.md).
 
-* After making the required changes open OpenShift console and click on `Operators`, followed by `Installed Operators` from the side menu
+* After making the required changes open OpenShift console and click on `Ecosystem`, followed by `Installed Operators` from the side menu
 
 ![image](../../images/installed-operators.png)
 
 * Now click on uninstall and confirm uninstall.
 
-![image](../../images/uninstall-from-ui.png)
+![image](../../images/uninstall-operator.png)
 
 * Now the operator has been uninstalled.
 
