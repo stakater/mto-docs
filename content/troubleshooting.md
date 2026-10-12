@@ -1,12 +1,12 @@
 # Troubleshooting Guide
 
-## OperatorHub Upgrade Error
+## Software Catalog Upgrade Error
 
 ### Operator is stuck in upgrade if upgrade approval is set to Automatic
 
 #### Problem
 
-If operator upgrade is set to Automatic Approval on OperatorHub, there may be scenarios where it gets blocked.
+If operator upgrade is set to Automatic Approval on Software Catalog, there may be scenarios where it gets blocked.
 
 #### Resolution
 
@@ -17,7 +17,7 @@ As OLM does not allow to upgrade or downgrade from a version stuck because of er
 When the operator is uninstalled it removes all of its resources i.e., ClusterRoles, ClusterRoleBindings, and Deployments etc., except Custom Resource Definitions (CRDs), so none of the Custom Resources (CRs), Tenants, Templates etc., will be removed from the cluster.
 If any CRD has a conversion webhook defined then that webhook should be removed before installing the stable version of the operator. This can be achieved via removing the `.spec.conversion` block from the CRD schema.
 
-As an example, if you have installed v0.8.0 of Multi Tenant Operator on your cluster, then it'll stuck in an error `error validating existing CRs against new CRD's schema for "integrationconfigs.tenantoperator.stakater.com": error validating custom resource against new schema for IntegrationConfig multi-tenant-operator/tenant-operator-config: [].spec.tenantRoles: Required value`. To resolve this issue, you'll first uninstall the MTO from the cluster. Once you uninstall the MTO, check Tenant CRD which will have a conversion block, which needs to be removed. After removing the conversion block from the Tenant CRD, install the latest available version of MTO from OperatorHub.
+As an example, if you have installed v0.8.0 of Multi Tenant Operator on your cluster, then it'll stuck in an error `error validating existing CRs against new CRD's schema for "integrationconfigs.tenantoperator.stakater.com": error validating custom resource against new schema for IntegrationConfig multi-tenant-operator/tenant-operator-config: [].spec.tenantRoles: Required value`. To resolve this issue, you'll first uninstall the MTO from the cluster. Once you uninstall the MTO, check Tenant CRD which will have a conversion block, which needs to be removed. After removing the conversion block from the Tenant CRD, install the latest available version of MTO from Software Catalog.
 
 ## Permission Issues
 
@@ -98,4 +98,4 @@ The fix is to create namespaces with `kubectl create` instead.
 
 ### Q. Why are there `mto-showback-*` pods failing in my cluster?
 
-**Answer.** The `mto-showback-*` pods are used to calculate the cost of the resources used by each tenant. These pods are created by the Multi-Tenant Operator and are scheduled to run every 10 minutes. If the pods are failing, it is likely that the operator's necessary to calculate cost are not present in the cluster. To solve this, you can navigate to `Operators` -> `Installed Operators` in the OpenShift console and check if the MTO-OpenCost and MTO-Prometheus operators are installed. If they are in a pending state, you can manually approve them to install them in the cluster.
+**Answer.** The `mto-showback-*` pods are used to calculate the cost of the resources used by each tenant. These pods are created by the Multi-Tenant Operator and are scheduled to run every 10 minutes. If the pods are failing, it is likely that the operator's necessary to calculate cost are not present in the cluster. To solve this, you can navigate to `Ecosystem` -> `Installed Operators` in the OpenShift console and check if the MTO-OpenCost and MTO-Prometheus operators are installed. If they are in a pending state, you can manually approve them to install them in the cluster.
