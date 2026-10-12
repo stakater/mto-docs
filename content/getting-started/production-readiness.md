@@ -65,11 +65,11 @@ The webhooks on namespaces and RoleBindings fail open. While the webhook Deploym
 
 ## Control upgrades
 
-- **OpenShift.** Subscribe to the `stable` channel with `installPlanApproval: Manual`, so a new version installs only when you approve it. See [Installing via OperatorHub UI](installation/openshift.md#installing-via-operatorhub-ui).
+- **OpenShift.** Subscribe to the latest `release-1.x` channel with `installPlanApproval: Manual`, so a new version installs only when you approve it. See [Installing via Software Catalog UI](installation/openshift.md#installing-via-software-catalog-ui).
 - **Helm.** Pin the chart version in your `helm upgrade` command or GitOps source rather than tracking the latest tag.
 - **Read the release notes first.** Some releases change behaviour that needs preparation, such as the move to Dex or the shared ingress hostname. See [Release Notes](../release-notes.md).
 - **Upgrade a non-production cluster first.** The tenant definitions are the same resources everywhere, so a staging cluster running the same `Tenant`, `Quota` and `IntegrationConfig` manifests is a faithful rehearsal.
-- **Know the recovery path.** A stuck OLM upgrade can require uninstalling and reinstalling the operator. Tenant resources survive that, since CRDs are kept. See [OperatorHub Upgrade Error](../troubleshooting.md#operatorhub-upgrade-error).
+- **Know the recovery path.** A stuck OLM upgrade can require uninstalling and reinstalling the operator. Tenant resources survive that, since CRDs are kept. See [Software Catalog Upgrade Error](../troubleshooting.md#software-catalog-upgrade-error).
 
 ## Monitor the operator
 
