@@ -1,0 +1,24 @@
+name: Docs Target
+
+# Asks on every PR to main whether it also goes to the latest docs branch, and
+# syncs it there on merge. See the shared workflow for details.
+
+on:
+  pull_request_target:
+    branches:
+      - main
+    types: [opened, reopened, synchronize, closed]
+  issue_comment:
+    types: [edited]
+
+jobs:
+  docs_target:
+    permissions:
+      issues: write
+      pull-requests: write
+      statuses: write
+    uses: stakater/.github/.github/workflows/docs-target.yaml@v0.0.200
+    with:
+      LATEST_DOC_VERSION: ${{ vars.LATEST_DOC_VERSION }}
+    secrets:
+      PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
