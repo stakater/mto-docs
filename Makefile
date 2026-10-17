@@ -18,7 +18,7 @@ DOCS_SS_MK_URL ?= https://raw.githubusercontent.com/stakater/.github/$(DOCS_SS_R
 DOCS_SS_MK := makefiles/docs-screenshots.mk
 
 .DEFAULT_GOAL := help
-.PHONY: help venv test theme merge merge-local screenshots screenshots-one screenshots-check docs-images serve serve-local clean
+.PHONY: help venv test theme merge merge-local screenshots screenshots-one screenshots-check docs-images serve serve-local clean doctest doctest-list
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) \
@@ -47,6 +47,22 @@ merge-local: venv ## Merge from local sub-operator checkouts under SUBOPS (no cl
 	  for o in merge_docs.load_config('merge.yaml')))"); \
 	echo ">> merging from $(SUBOPS)"; \
 	$(PY) scripts/merge_docs.py $$args
+
+# Runs a docs page end to end, as a reader would: it creates a kind cluster,
+# installs what the page installs, and deletes the cluster at the end. Needs
+# docker, kind, kubectl and helm. VARIANT is a file under tests/doctest/variants/.
+#   make doctest PAGE=content/integrations/build-your-own/tutorial.md
+#   make doctest PAGE=... VARIANT=tests/doctest/variants/kind-node-image.yaml KIND_NODE_IMAGE=kindest/node:v1.34.0
+DOCTEST_WORKDIR ?= .doctest
+doctest: venv ## Run one docs page end to end on kind: make doctest PAGE=<page.md> [VARIANT=<file>]
+	@test -n "$(PAGE)" || { echo "set PAGE=<page.md>; see tests/doctest/pages.yaml"; exit 1; }
+	@$(VENV)/bin/pip install -q -r requirements-dev.txt
+	@case "$(DOCTEST_WORKDIR)" in ""|/|.|..) echo "refusing DOCTEST_WORKDIR=$(DOCTEST_WORKDIR)"; exit 1;; esac
+	rm -rf "$(DOCTEST_WORKDIR)"
+	$(PY) scripts/page_runner.py "$(PAGE)" "$(DOCTEST_WORKDIR)" $(if $(VARIANT),--variant "$(VARIANT)",)
+
+doctest-list: ## List the docs pages CI runs end to end, and their variants
+	@cat tests/doctest/pages.yaml
 
 $(DOCS_SS_MK): ## Download the shared screenshot makefile (only if missing)
 	@mkdir -p $(dir $@)
