@@ -1,0 +1,24 @@
+# Install template-operator-v2 from its public chart instead of through MTO, so
+# a template-operator-v2 release is tested before an MTO release ships it.
+# TOV2_CHART_VERSION picks the chart version; empty means the latest.
+substitutions:
+  - from: |-
+      kubectl -n multi-tenant-operator patch integrationconfigs.tenantoperator.stakater.com tenant-operator-config \
+        --type merge -p '{"spec":{"components":{"templateOperatorV2":{"mode":"Managed"}}}}'
+      kubectl -n multi-tenant-operator wait deployment/template-operator-v2-controller-manager --for=create --timeout=180s
+      kubectl -n multi-tenant-operator wait deployment/template-operator-v2-controller-manager --for=condition=Available --timeout=300s
+    to: |-
+      helm install template-operator-v2 oci://ghcr.io/stakater/public/charts/template-operator-v2 \
+        ${TOV2_CHART_VERSION:+--version "$TOV2_CHART_VERSION"} \
+        --namespace stakater-template-operator --create-namespace --wait --timeout 5m
+      helm list -n stakater-template-operator
+  - from: kubectl -n multi-tenant-operator get deployment template-operator-v2-controller-manager
+    to: kubectl -n stakater-template-operator get deployment template-operator-v2-controller-manager
+  - from: |-
+      templateOperator:
+        serviceAccount: tenant-operator-template-operator-v2
+        namespace: multi-tenant-operator
+    to: |-
+      templateOperator:
+        serviceAccount: template-operator-v2
+        namespace: stakater-template-operator

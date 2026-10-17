@@ -1,0 +1,145 @@
+name: Doc tests
+
+# Runs docs pages end to end on kind, as a reader would (scripts/page_runner.py),
+# so a new MTO, template-operator-v2 or Kubernetes release that breaks a page
+# is caught here rather than by a customer. The pages and their variants are
+# listed in tests/doctest/pages.yaml.
+#
+#   as-written                    the page as published; it installs the latest MTO
+#   kubernetes-latest             the newest node image of the latest kind release
+#   template-operator-v2-latest   the latest template-operator-v2 chart, ahead of MTO
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+      - '[0-9]+.[0-9]+'
+    paths:
+      - 'content/integrations/build-your-own/**'
+      - 'scripts/page_runner.py'
+      - 'scripts/doctest_ci.py'
+      - 'tests/doctest/**'
+      - '.github/workflows/doctest.yaml'
+  schedule:
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+    inputs:
+      tov2_chart_version:
+        description: template-operator-v2 chart version for the template-operator-v2-latest variant (empty = latest)
+        required: false
+        default: ''
+      kind_node_image:
+        description: Node image for the kubernetes-latest variant (empty = newest in the latest kind release)
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: doctest-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  # The kind and Helm the pages are written against. kubernetes-latest
+  # overrides kind with the latest release.
+  KIND_VERSION: v0.30.0
+  HELM_VERSION: v3.16.3
+
+jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q -r requirements-dev.txt
+      - id: matrix
+        run: echo "matrix=$(python scripts/doctest_ci.py matrix)" >> "$GITHUB_OUTPUT"
+
+  page:
+    needs: matrix
+    name: ${{ matrix.variant }} · ${{ matrix.page }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.matrix.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: azure/setup-helm@v4
+        with:
+          version: ${{ env.HELM_VERSION }}
+
+      - name: Pick versions for this variant
+        env:
+          GH_TOKEN: ${{ github.token }}
+          INPUT_NODE_IMAGE: ${{ inputs.kind_node_image }}
+          INPUT_TOV2_VERSION: ${{ inputs.tov2_chart_version }}
+        run: |
+          pip install -q -r requirements-dev.txt
+          kind_version="${{ env.KIND_VERSION }}"
+          if [ "${{ matrix.variant }}" = kubernetes-latest ]; then
+            release=$(gh api repos/kubernetes-sigs/kind/releases/latest)
+            kind_version=$(jq -r .tag_name <<<"$release")
+            image="${INPUT_NODE_IMAGE:-$(jq -r .body <<<"$release" | python scripts/doctest_ci.py newest-node-image)}"
+            echo "KIND_NODE_IMAGE=$image" >> "$GITHUB_ENV"
+          fi
+          echo "TOV2_CHART_VERSION=$INPUT_TOV2_VERSION" >> "$GITHUB_ENV"
+          echo "KIND_INSTALL_VERSION=$kind_version" >> "$GITHUB_ENV"
+
+      - name: Install kind
+        run: |
+          curl -fsSLo /usr/local/bin/kind "https://kind.sigs.k8s.io/dl/${KIND_INSTALL_VERSION}/kind-linux-amd64"
+          chmod +x /usr/local/bin/kind
+          kind version
+
+      - name: Run the page
+        run: make doctest PAGE="${{ matrix.page }}" VARIANT="${{ matrix.file }}"
+
+      - name: Record what was tested
+        if: always()
+        run: |
+          {
+            echo "### ${{ matrix.variant }}: ${{ matrix.page }}"
+            echo "- kind: $(kind version 2>/dev/null)"
+            echo "- node image: ${KIND_NODE_IMAGE:-as pinned on the page}"
+            echo "- latest MTO chart: $(helm show chart oci://ghcr.io/stakater/public/charts/tenant-operator 2>/dev/null | awk '/^version:/{print $2}')"
+            echo "- template-operator-v2: ${TOV2_CHART_VERSION:-latest or MTO-managed}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Dump cluster state on failure
+        if: failure()
+        run: |
+          kubectl get templateinstances.templates.v2.stakater.com -A -o wide || true
+          kubectl get pods -A || true
+          kubectl -n multi-tenant-operator logs deploy/template-operator-v2-controller-manager --tail=200 || true
+          kubectl -n stakater-template-operator logs deploy/template-operator-v2-controller-manager --tail=200 || true
+
+  # A scheduled run has no pull request to fail on, so a failure opens (or
+  # comments on) one issue instead of going unnoticed.
+  report:
+    needs: page
+    if: failure() && github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          title="Doc tests failing on a newer release"
+          number=$(gh issue list -R "$GITHUB_REPOSITORY" --state open --search "in:title \"$title\"" --json number -q '.[0].number')
+          body="The scheduled doc tests failed: $RUN_URL. A newer MTO, template-operator-v2 or Kubernetes release no longer matches a page in tests/doctest/pages.yaml."
+          if [ -n "$number" ]; then
+            gh issue comment "$number" -R "$GITHUB_REPOSITORY" --body "$body"
+          else
+            gh issue create -R "$GITHUB_REPOSITORY" --title "$title" --body "$body"
+          fi
