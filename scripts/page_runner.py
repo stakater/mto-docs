@@ -7,7 +7,8 @@ A page is runnable when it follows three conventions:
 - A block preceded by a line "Create `<path>`:" is a file, written to <path>.
   Every other non-bash block is illustration and is ignored.
 - A ```text block straight after a command is its documented output. If that
-  output starts with "Error from server", or is exactly "no" (a refused
+  output is an API error ("Error from server ..."), kubectl's report of a
+  refusal ('The configmaps "x" is invalid: ...'), or exactly "no" (a refused
   `kubectl auth can-i`), the command is expected to fail, and the run fails if
   it succeeds.
 
@@ -33,8 +34,10 @@ import yaml
 
 BLOCK = re.compile(r"^```(\w*)\n(.*?)\n```$", re.S | re.M)
 CREATE = re.compile(r"Create `([^`]+)`:\s*$")
-EXPECTED_ERROR = "Error from server"
-REFUSAL = "no"  # what `kubectl auth can-i` prints, with exit code 1
+# Documented output that means the command must fail: an API error, kubectl's
+# report of a 422 (an admission policy or validation refusal), or a refused
+# `kubectl auth can-i`.
+EXPECTED_FAILURE = re.compile(r'^(Error from server|The \S+ "[^"]+" is invalid:|no$)')
 
 
 class DoctestError(Exception):
@@ -74,7 +77,7 @@ def parse(markdown):
             expected = ""
             if nxt is not None and nxt.group(1) == "text" and not markdown[block.end():nxt.start()].strip():
                 expected = nxt.group(2)
-            steps.append(Step("run", body, expected=expected, expect_error=expected.startswith(EXPECTED_ERROR) or expected.strip() == REFUSAL))
+            steps.append(Step("run", body, expected=expected, expect_error=bool(EXPECTED_FAILURE.match(expected.strip()))))
     return steps
 
 

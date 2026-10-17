@@ -199,7 +199,17 @@ def test_a_failed_setup_skips_the_page_but_still_tears_down(tmp_path):
     assert seen == ["make-cluster", "delete-cluster"]
 
 
-@pytest.mark.parametrize("output, fails", [("no", True), ("yes", False), ("Error from server (Forbidden): x", True), ("nothing", False)])
+@pytest.mark.parametrize(
+    "output, fails",
+    [
+        ("no", True),
+        ("yes", False),
+        ("Error from server (Forbidden): x", True),
+        ('The configmaps "policy-check" is invalid: : ValidatingAdmissionPolicy denied', True),
+        ("The answer is invalid in prose", False),
+        ("nothing", False),
+    ],
+)
 def test_documented_refusals_are_expected_failures(output, fails):
     steps = dt.parse(f"```bash\nkubectl auth can-i get pods\n```\n\n```text\n{output}\n```\n")
     assert steps[0].expect_error is fails
