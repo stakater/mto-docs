@@ -815,6 +815,31 @@ EOF
 kubectl apply -f template-operator-v2-write-scope.yaml
 ```
 
+The API server takes a few seconds to start enforcing a new policy. Check that it is enforced: ask it, as template-operator-v2, to accept a ConfigMap in `globex-dev` owned by a TemplateInstance in `acme-dev`. The loop waits until that is refused, and the last command shows the refusal:
+
+```bash
+cat > policy-check.yaml <<'EOF'
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: policy-check
+  namespace: globex-dev
+  labels:
+    templates.v2.stakater.com/instance-namespace: acme-dev
+EOF
+for i in $(seq 1 30); do
+  kubectl apply --dry-run=server -f policy-check.yaml \
+    --as system:serviceaccount:multi-tenant-operator:tenant-operator-template-operator-v2 >/dev/null 2>&1 || break
+  sleep 2
+done
+kubectl apply --dry-run=server -f policy-check.yaml \
+  --as system:serviceaccount:multi-tenant-operator:tenant-operator-template-operator-v2
+```
+
+```text
+The configmaps "policy-check" is invalid: : ValidatingAdmissionPolicy 'template-operator-v2-write-scope' with binding 'template-operator-v2-write-scope' denied request: template-operator-v2: a TemplateInstance in namespace acme-dev may only write objects in its own namespace
+```
+
 Try again:
 
 ```bash
