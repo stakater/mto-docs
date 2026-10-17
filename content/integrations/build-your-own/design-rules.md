@@ -16,6 +16,68 @@ An extension has two failure domains, and each rule below keeps a failure in the
 
 There is a worse case than a failed render: **a render that succeeds with the wrong output.** template-operator-v2 deletes whatever a render no longer contains. If a typo makes the parent emit no children, every child is deleted, and with them every object they rendered, for every tenant. Most of the rules below come back to this.
 
+## Template authors share your permissions
+
+Everything your chart grants goes to template-operator-v2's ServiceAccount, and template-operator-v2 renders *every* Template on the cluster with that ServiceAccount. A Template can write into any namespace, not only its own. `targetNamespaces` limits where a TemplateInstance may be created, not where the objects it renders land. So anyone who can create a Template and a TemplateInstance, in any namespace, can use every permission any extension has granted.
+
+That is a cross-tenant path when tenants can create Templates. MTO's tenant roles do not include them, but template-operator-v2 ships `template-operator-v2-template-editor-role` and `template-operator-v2-templateinstance-editor-role` so that teams can use it themselves. The [tutorial](tutorial.md#step-9-stop-other-templates-borrowing-your-permissions) shows a tenant owner with only those two roles writing a ConfigMap into another tenant's namespace through `tenant-info`'s grant. With the ArgoCD extension's grant, the same Template could write an `AppProject` that allows every destination: cluster-admin through ArgoCD.
+
+Narrowing your RBAC does not fix this, because every Template uses the same ServiceAccount. An admission policy does. template-operator-v2 labels each object it renders with the namespace of the TemplateInstance that owns it (`templates.v2.stakater.com/instance-namespace`), and overwrites any value a template sets. So the cluster can require that a TemplateInstance writes only inside its own namespace, unless that namespace is one you trust to hold extensions:
+
+```yaml
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: template-operator-v2-write-scope
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: ["*"]
+        apiVersions: ["*"]
+        resources: ["*"]
+        operations: ["CREATE", "UPDATE", "DELETE"]
+  variables:
+    - name: obj
+      expression: 'request.operation == "DELETE" ? oldObject : object'
+    - name: owner
+      expression: 'variables.obj.metadata.?labels[?"templates.v2.stakater.com/instance-namespace"].orValue("")'
+  matchConditions:
+    - name: is-template-operator-v2
+      expression: 'request.userInfo.username == "system:serviceaccount:<namespace>:<template-operator-v2 ServiceAccount>"'
+    - name: is-rendered-object
+      expression: '(object != null && "templates.v2.stakater.com/instance-namespace" in object.metadata.?labels.orValue({})) || (oldObject != null && "templates.v2.stakater.com/instance-namespace" in oldObject.metadata.?labels.orValue({}))'
+  validations:
+    - expression: 'variables.owner in ["multi-tenant-operator", "<other extension namespaces>"] || (has(variables.obj.metadata.namespace) && variables.obj.metadata.namespace == variables.owner)'
+      messageExpression: '"template-operator-v2: a TemplateInstance in namespace " + variables.owner + " may only write objects in its own namespace"'
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: template-operator-v2-write-scope
+spec:
+  policyName: template-operator-v2-write-scope
+  validationActions: [Deny]
+```
+
+Tested on template-operator-v2 0.0.8:
+
+| TemplateInstance in | Renders into | Result |
+|---|---|---|
+| a namespace on the list | another namespace, or a cluster-scoped object | allowed |
+| any namespace | its own namespace | allowed |
+| a namespace not on the list | another namespace | refused, and the TemplateInstance reports the message |
+| a namespace not on the list | a cluster-scoped object | refused |
+| any namespace | an object labelled as if another namespace owned it | refused: template-operator-v2 replaces the label |
+
+Teardown is not affected, because deleting an object is checked against the label it already carries.
+
+The policy is a cluster-wide rule, not part of any one extension, so the platform team owns it and adds each extension's namespace to the list. In your chart's documentation:
+
+- **Say which permissions you grant template-operator-v2, and where.** A cluster-wide write grant is shared with every Template author until the policy is in place.
+- **Do not grant the template-operator-v2 editor roles to tenants** unless the policy is in place.
+- **Treat who can create Templates in your extension's namespace as part of your trust boundary.** Anyone who can is trusted with everything the extension can do.
+
 ## Write the parent so it cannot fail
 
 Every tenant flows through the parent's single render.
@@ -312,6 +374,7 @@ The ArgoCD extension adds three more kinds of render test:
 - [ ] Every chart value that affects all tenants is checked by a template guard, not only by the schema.
 - [ ] Child names cannot collide with the parent's.
 - [ ] RBAC grants list and watch at cluster scope on every rendered kind, and survives `helm uninstall`.
+- [ ] Your docs list every permission the chart grants template-operator-v2, and the cluster has the write-scope policy, with your namespace on its list.
 - [ ] `sync: strict`, with `metadata.finalizers` and any field your tool writes in `ignoreFields`.
 - [ ] Every kind has a deletion decision: delete, orphan, or protected in the tool.
 - [ ] Health is read back from the tool's own status, and documented for what it can and cannot say.

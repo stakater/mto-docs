@@ -709,7 +709,142 @@ kubectl -n multi-tenant-operator wait templateinstances.templates.v2.stakater.co
   --for=jsonpath='{.status.phase}'=Ready --timeout=60s
 ```
 
-## Step 9: opt a tenant out
+## Step 9: stop other Templates borrowing your permissions
+
+The RBAC from step 4 belongs to template-operator-v2's ServiceAccount, not to your extension. template-operator-v2 renders *any* Template with that ServiceAccount, so everyone who can create a Template and a TemplateInstance gets your extension's permissions, in every namespace.
+
+Tenants cannot create Templates by default: MTO's tenant roles do not include them. But template-operator-v2 ships `template-operator-v2-template-editor-role` and `template-operator-v2-templateinstance-editor-role` so that teams can use it themselves. Bind them for `acme`'s owner, in `acme`'s own namespace:
+
+```bash
+kubectl -n acme-dev create rolebinding alice-templates \
+  --clusterrole=template-operator-v2-template-editor-role --user=alice@acme.example
+kubectl -n acme-dev create rolebinding alice-templateinstances \
+  --clusterrole=template-operator-v2-templateinstance-editor-role --user=alice@acme.example
+```
+
+Alice cannot write into `globex`'s namespace herself:
+
+```bash
+kubectl auth can-i create configmaps --namespace globex-dev --as alice@acme.example
+```
+
+```text
+no
+```
+
+Through template-operator-v2, she can. This Template lives in `acme-dev` and renders a ConfigMap into `globex-dev`:
+
+```bash
+cat > planted.yaml <<'EOF'
+apiVersion: templates.v2.stakater.com/v2alpha1
+kind: Template
+metadata:
+  name: plant
+  namespace: acme-dev
+spec:
+  gotemplate: |
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: planted
+      namespace: globex-dev
+    data:
+      owner: alice
+---
+apiVersion: templates.v2.stakater.com/v2alpha1
+kind: TemplateInstance
+metadata:
+  name: plant
+  namespace: acme-dev
+spec:
+  templateRef:
+    name: plant
+    namespace: acme-dev
+EOF
+kubectl apply --as alice@acme.example -f planted.yaml
+kubectl -n globex-dev wait configmap/planted --for=create --timeout=60s
+```
+
+template-operator-v2 wrote into another tenant's namespace with the permission you gave it for `tenant-info`. Remove it:
+
+```bash
+kubectl -n acme-dev delete templateinstances.templates.v2.stakater.com plant --wait
+```
+
+RBAC cannot fix this, because it is the same ServiceAccount either way. An admission policy can. template-operator-v2 labels every object it renders with the namespace of the TemplateInstance that owns it, and replaces any value a template sets. So the cluster can require that a TemplateInstance writes only into its own namespace, unless it lives in a namespace you trust to hold extensions:
+
+```bash
+cat > template-operator-v2-write-scope.yaml <<'EOF'
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: template-operator-v2-write-scope
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: ["*"]
+        apiVersions: ["*"]
+        resources: ["*"]
+        operations: ["CREATE", "UPDATE", "DELETE"]
+  variables:
+    - name: obj
+      expression: 'request.operation == "DELETE" ? oldObject : object'
+    - name: owner
+      expression: 'variables.obj.metadata.?labels[?"templates.v2.stakater.com/instance-namespace"].orValue("")'
+  matchConditions:
+    # Requests from template-operator-v2...
+    - name: is-template-operator-v2
+      expression: 'request.userInfo.username == "system:serviceaccount:multi-tenant-operator:tenant-operator-template-operator-v2"'
+    # ...on an object it rendered.
+    - name: is-rendered-object
+      expression: '(object != null && "templates.v2.stakater.com/instance-namespace" in object.metadata.?labels.orValue({})) || (oldObject != null && "templates.v2.stakater.com/instance-namespace" in oldObject.metadata.?labels.orValue({}))'
+  validations:
+    # Namespaces that hold extensions may write anywhere their RBAC allows.
+    - expression: 'variables.owner in ["multi-tenant-operator"] || (has(variables.obj.metadata.namespace) && variables.obj.metadata.namespace == variables.owner)'
+      messageExpression: '"template-operator-v2: a TemplateInstance in namespace " + variables.owner + " may only write objects in its own namespace"'
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: template-operator-v2-write-scope
+spec:
+  policyName: template-operator-v2-write-scope
+  validationActions: [Deny]
+EOF
+kubectl apply -f template-operator-v2-write-scope.yaml
+```
+
+Try again:
+
+```bash
+kubectl apply --as alice@acme.example -f planted.yaml
+kubectl -n acme-dev wait templateinstances.templates.v2.stakater.com/plant --for=jsonpath='{.status.phase}'=Failed --timeout=60s
+kubectl -n globex-dev get configmap planted
+```
+
+```text
+Error from server (NotFound): configmaps "planted" not found
+```
+
+The TemplateInstance's `Applied` condition carries the policy's message. Alice can still use template-operator-v2 inside `acme-dev`, which is what the editor roles are for. And `tenant-info`, whose TemplateInstances live in `multi-tenant-operator`, keeps working:
+
+```bash
+kubectl annotate tenant acme --overwrite 'tenant-info.example.com/labels={"team":"platform"}'
+kubectl -n acme-dev wait configmap/tenant-info --for=jsonpath='{.metadata.labels.team}'=platform --timeout=60s
+```
+
+Clean up Alice's attempt and her bindings:
+
+```bash
+kubectl -n acme-dev delete templateinstances.templates.v2.stakater.com plant --wait
+kubectl -n acme-dev delete templates.templates.v2.stakater.com plant
+kubectl -n acme-dev delete rolebinding alice-templates alice-templateinstances
+```
+
+Keep the policy. It is a cluster-wide rule rather than part of one extension: add every namespace that holds extensions to its allowlist. See [Template authors share your permissions](design-rules.md#template-authors-share-your-permissions).
+
+## Step 10: opt a tenant out
 
 ```bash
 kubectl annotate tenant globex tenant-info.example.com/enabled-
@@ -726,7 +861,7 @@ The parent stopped emitting the child, so template-operator-v2 deleted it, and w
 
 That is usually what you want, but not always. If the objects hold something you cannot recreate, such as data or credentials that people depend on, see [Deletion](design-rules.md#deletion) before you ship.
 
-## Step 10: uninstall in the right order
+## Step 11: uninstall in the right order
 
 Order matters. Delete the parent TemplateInstance, wait until every child is gone, and only then uninstall the release. Then remove the RBAC that Helm kept.
 
@@ -736,6 +871,12 @@ kubectl -n multi-tenant-operator wait templateinstances.templates.v2.stakater.co
   -l templates.v2.stakater.com/instance=tenant-info-parent --for=delete --timeout=120s
 helm uninstall tenant-info --namespace multi-tenant-operator
 kubectl delete clusterrolebinding,clusterrole tenant-info-read tenant-info-write
+```
+
+Delete the policy from step 9 only if no other extension relies on it:
+
+```bash
+kubectl delete -f template-operator-v2-write-scope.yaml
 ```
 
 A plain `helm uninstall` deletes the Templates in the same step as the parent TemplateInstance. Without the `keep` annotation it would also delete the RBAC that template-operator-v2 needs to clean up, and every TemplateInstance would stay in `Terminating`.

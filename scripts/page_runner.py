@@ -7,8 +7,9 @@ A page is runnable when it follows three conventions:
 - A block preceded by a line "Create `<path>`:" is a file, written to <path>.
   Every other non-bash block is illustration and is ignored.
 - A ```text block straight after a command is its documented output. If that
-  output starts with "Error from server", the command is expected to fail, and
-  the run fails if it succeeds.
+  output starts with "Error from server", or is exactly "no" (a refused
+  `kubectl auth can-i`), the command is expected to fail, and the run fails if
+  it succeeds.
 
 A variant may also carry setup and teardown commands, for a page that assumes
 something already exists, such as a cluster.
@@ -33,6 +34,7 @@ import yaml
 BLOCK = re.compile(r"^```(\w*)\n(.*?)\n```$", re.S | re.M)
 CREATE = re.compile(r"Create `([^`]+)`:\s*$")
 EXPECTED_ERROR = "Error from server"
+REFUSAL = "no"  # what `kubectl auth can-i` prints, with exit code 1
 
 
 class DoctestError(Exception):
@@ -72,7 +74,7 @@ def parse(markdown):
             expected = ""
             if nxt is not None and nxt.group(1) == "text" and not markdown[block.end():nxt.start()].strip():
                 expected = nxt.group(2)
-            steps.append(Step("run", body, expected=expected, expect_error=expected.startswith(EXPECTED_ERROR)))
+            steps.append(Step("run", body, expected=expected, expect_error=expected.startswith(EXPECTED_ERROR) or expected.strip() == REFUSAL))
     return steps
 
 
