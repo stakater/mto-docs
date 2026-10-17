@@ -95,10 +95,13 @@ jobs:
           echo "KIND_INSTALL_VERSION=$kind_version" >> "$GITHUB_ENV"
 
       - name: Install kind
+        # Into a directory of our own: the runner image ships a root-owned kind.
         run: |
-          curl -fsSLo /usr/local/bin/kind "https://kind.sigs.k8s.io/dl/${KIND_INSTALL_VERSION}/kind-linux-amd64"
-          chmod +x /usr/local/bin/kind
-          kind version
+          mkdir -p "$RUNNER_TEMP/bin"
+          curl -fsSLo "$RUNNER_TEMP/bin/kind" "https://kind.sigs.k8s.io/dl/${KIND_INSTALL_VERSION}/kind-linux-amd64"
+          chmod +x "$RUNNER_TEMP/bin/kind"
+          echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/bin/kind" version
 
       - name: Run the page
         run: make doctest PAGE="${{ matrix.page }}" VARIANT="${{ matrix.file }}"
