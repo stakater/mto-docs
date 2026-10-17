@@ -8207,11 +8207,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </ul>
 <h3 id="on-a-running-cluster">On a running cluster<a class="headerlink" href="#on-a-running-cluster" title="Permanent link">#</a></h3>
 <p>Every screenshot on this page comes from one demo instance: two tenants, <code>pe</code> and <code>team-a</code>, and <code>dana</code>, a member of both. The YAML examples further down use <code>bluesky</code> and <code>arsenal</code> instead.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/grafana-user-orgs.png" data-desc-position="bottom"><img alt="An organisation switcher listing two tenants and the user's own aggregated view, each with a role." src="../../images/grafana-user-orgs.png"></a></p>
+<p></p>
 <p><em><code>dana</code> belongs to both tenants, so the switcher offers <code>pe</code>, <code>team-a</code> and their own aggregated view — and nothing else. They are Editor in both tenants, and Editor in the aggregated view too, that being the lower of the two.</em></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/grafana-tenant-datasources.png" data-desc-position="bottom"><img alt="A tenant organisation's data source list, holding a single Tempo data source." src="../../images/grafana-tenant-datasources.png"></a></p>
+<p></p>
 <p><em>Inside <code>pe</code>, one data source, still named plainly <code>Tempo</code>. The tenant lives in its UID — <code>tempo-pe</code> — and in the <code>X-Scope-OrgID</code> header, not in anything the team reads on screen.</em></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/grafana-tenant-dashboards.png" data-desc-position="bottom"><img alt="A tenant organisation's dashboard list, showing its own two dashboards in the Default folder, tagged as operator-managed." src="../../images/grafana-tenant-dashboards.png"></a></p>
+<p></p>
 <p><em><code>pe</code> holds only <code>pe</code>'s dashboards; a member here has no route to <code>team-a</code>'s. Neither dashboard declared a folder, so both landed in the per-organisation <code>Default</code> folder. The <code>mto-grafana-managed</code> tag is what cleanup keys on — dashboards made by hand never carry it, so the operator never deletes them.</em></p>
 <h2 id="how-tenant-roles-map-to-grafana-access">How tenant roles map to Grafana access<a class="headerlink" href="#how-tenant-roles-map-to-grafana-access" title="Permanent link">#</a></h2>
 <p>Access is decided by the identity-provider groups in the user's token. For each tenant, the extension renders a group name from a pattern and writes an OAuth org-mapping entry pointing that group at the tenant's organisation with a Grafana role.</p>
@@ -8629,7 +8629,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   end</code></pre>
 <p><em>Content is copied in from each tenant the user belongs to, and labelled with where it came from. The union trace data source is the one thing that is not a copy of anything — it spans the whole view.</em></p>
 <p>Everything inside it is labelled by origin, so it stays obvious which tenant a panel is reading from. Each tenant's dashboards land in their own folder, titled from <code>folderPrefix</code> — which is what keeps two tenants' copies of the same platform dashboard apart:</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/grafana-aggregated-view-dashboards.png" data-desc-position="bottom"><img alt="An aggregated view's dashboard list, with one tenant-prefixed folder per tenant, each holding the same dashboard." src="../../images/grafana-aggregated-view-dashboards.png"></a></p>
+<p></p>
 <p><em>One user's aggregated view. Each folder holds that tenant's own dashboard — <code>Service health</code> for <code>pe</code>, <code>Checkout latency</code> for <code>team-a</code> — alongside <code>Tempo traces</code>, which both tenants run and which therefore appears twice. The <code>[pe]</code> and <code>[team-a]</code> prefixes are the only thing telling the two copies apart.</em></p>
 <p>Data sources are labelled the same way: every mirror carries its tenant as a suffix, whatever its type — <code>Tempo (pe)</code>, <code>Tempo (team-a)</code>, and a <code>Mimir (pe)</code> or <code>Loki (pe)</code> alongside them if those tenants have such data sources. The optional cross-tenant data source is Tempo only, and is named <code>Tempo (all tenants)</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
@@ -8700,7 +8700,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li>Users in a single tenant get no union data source, as it would duplicate their per-tenant copy.</li>
 <li>Pair it with <code>useMinTenantRole: true</code> to query it from Explore.</li>
 </ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/grafana-explore-datasources.png" data-desc-position="bottom"><img alt="The data source picker in Grafana Explore inside an aggregated view, offering one Tempo data source per tenant plus an all-tenants one." src="../../images/grafana-explore-datasources.png"></a></p>
+<p></p>
 <p><em>Explore inside an aggregated view. The user can query either tenant on its own, or <code>Tempo (all tenants)</code> to follow one trace across both. Explore is available here at all because <code>useMinTenantRole</code> granted Editor — at the default Viewer it would be closed.</em></p>
 <h3 id="what-mirrored-content-does-and-does-not-allow">What mirrored content does and does not allow<a class="headerlink" href="#what-mirrored-content-does-and-does-not-allow" title="Permanent link">#</a></h3>
 <p>Mirrored content is operator-owned and read-oriented:</p>
