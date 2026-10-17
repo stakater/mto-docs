@@ -8,6 +8,11 @@ name: Doc tests
 #   as-written                    the page as published; it installs the latest MTO
 #   kubernetes-latest             the newest node image of the latest kind release
 #   template-operator-v2-latest   the latest template-operator-v2 chart, ahead of MTO
+#
+# It runs: on a release tag (push v*); weekly; on demand (workflow_dispatch); on
+# a pull request touching the guide, the runner, the tests or this workflow; and
+# on a pull request whose change to content/release-notes.md mentions
+# template-operator-v2 (the `decide` job gates that last case).
 
 on:
   pull_request:
@@ -20,6 +25,15 @@ on:
       - 'scripts/doctest_ci.py'
       - 'tests/doctest/**'
       - '.github/workflows/doctest.yaml'
+      # The changelog: a PR editing it may be announcing a template-operator-v2
+      # (or MTO) bump. The `decide` job runs the pages only when the release-note
+      # diff actually mentions template-operator-v2, so unrelated edits are free.
+      - 'content/release-notes.md'
+  push:
+    # Each release: a tag push verifies the published guide against whatever MTO,
+    # template-operator-v2 and Kubernetes are current at release time.
+    tags:
+      - 'v*'
   schedule:
     - cron: '0 3 * * 1'
   workflow_dispatch:
@@ -47,7 +61,50 @@ env:
   HELM_VERSION: v3.16.3
 
 jobs:
+  # Whether to run the (expensive) page jobs. Always yes except on a pull request
+  # that only touches the changelog without mentioning template-operator-v2 —
+  # that edit triggers the workflow (so a tov2 bump is caught) but shouldn't
+  # spin up clusters when it is unrelated.
+  decide:
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.decide.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: decide
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        # Capture-then-test throughout: `grep -q` short-circuits and SIGPIPEs its
+        # producer, which under the runner's `bash -o pipefail` would fail the
+        # pipeline even on a match. `grep ... >/dev/null` consumes the whole
+        # stream, and `|| true` absorbs grep's exit-1-on-no-match.
+        run: |
+          if [ "$EVENT" != pull_request ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"; echo "release/schedule/dispatch -> run"; exit 0
+          fi
+          git fetch -q origin "$BASE_SHA" || true
+          changed=$(git diff --name-only "$BASE_SHA"...HEAD)
+          echo "changed files:"; echo "$changed"
+          # Anything other than the changelog triggering this run means a guide,
+          # script, test or the workflow itself changed -> always run.
+          others=$(printf '%s\n' "$changed" | grep -vE '^content/release-notes\.md$' || true)
+          if [ -n "$others" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"; echo "guide/test/workflow change -> run"; exit 0
+          fi
+          # Only the changelog changed: run only if the added lines mention tov2.
+          added=$(git diff "$BASE_SHA"...HEAD -- content/release-notes.md | grep -E '^\+' || true)
+          if printf '%s\n' "$added" | grep -iE 'template[ -]?operator[ -]?v2|templateOperatorV2|tov2' >/dev/null; then
+            echo "run=true" >> "$GITHUB_OUTPUT"; echo "changelog mentions template-operator-v2 -> run"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"; echo "changelog change unrelated to template-operator-v2 -> skip"
+          fi
+
   matrix:
+    needs: decide
+    if: needs.decide.outputs.run == 'true'
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.matrix.outputs.matrix }}
@@ -61,7 +118,8 @@ jobs:
         run: echo "matrix=$(python scripts/doctest_ci.py matrix)" >> "$GITHUB_OUTPUT"
 
   page:
-    needs: matrix
+    needs: [decide, matrix]
+    if: needs.decide.outputs.run == 'true'
     name: ${{ matrix.variant }} · ${{ matrix.page }}
     runs-on: ubuntu-latest
     timeout-minutes: 45
