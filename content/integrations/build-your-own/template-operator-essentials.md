@@ -191,6 +191,8 @@ Out of the box, template-operator-v2's ServiceAccount can manage `templates` and
 
 The ServiceAccount's name depends on how template-operator-v2 was installed. See [Installing template-operator-v2](#installing-template-operator-v2). Make it a chart value.
 
+These grants are not private to your extension: every Template on the cluster renders with the same ServiceAccount. See [Template authors share your permissions](design-rules.md#template-authors-share-your-permissions).
+
 Ship the RBAC in your chart, not through template-operator-v2: a RoleBinding cannot be rendered in the same pass as the Role it binds. And keep it on uninstall. See [Uninstall in the right order](design-rules.md#uninstall-in-the-right-order).
 
 ## Rendering a Helm chart

@@ -22,3 +22,5 @@ substitutions:
       templateOperator:
         serviceAccount: template-operator-v2
         namespace: stakater-template-operator
+  - from: system:serviceaccount:multi-tenant-operator:tenant-operator-template-operator-v2
+    to: system:serviceaccount:stakater-template-operator:template-operator-v2
