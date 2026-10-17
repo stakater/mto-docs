@@ -13,3 +13,11 @@ pages:
       # tested before MTO ships it. CI sets TOV2_CHART_VERSION (empty = latest).
       - name: template-operator-v2-latest
         file: tests/doctest/variants/template-operator-v2-standalone.yaml
+
+  - page: content/getting-started/installation/kubernetes.md
+    variants:
+      # The page assumes a cluster with cert-manager, so the variant creates one.
+      - name: as-written
+        file: tests/doctest/variants/kind-cluster.yaml
+      - name: kubernetes-latest
+        file: tests/doctest/variants/kind-cluster.yaml

@@ -1,0 +1,9 @@
+# For a page that assumes a cluster with cert-manager already exists: create a
+# kind cluster first and delete it afterwards. KIND_NODE_IMAGE picks the
+# Kubernetes version; CI sets it for the kubernetes-latest variant.
+setup: |
+  kind create cluster --name doctest --image "${KIND_NODE_IMAGE:-kindest/node:v1.33.4}"
+  kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.20.0/cert-manager.yaml
+  kubectl -n cert-manager wait deploy --all --for=condition=Available --timeout=300s
+teardown: |
+  kind delete cluster --name doctest
