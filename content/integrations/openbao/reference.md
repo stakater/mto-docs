@@ -61,7 +61,7 @@ What each tier may do is fixed by the extension and is not a value.
 
 - **OpenBao Config Operator** — the operator that applies this configuration to OpenBao.
 - [Tenant](../../concepts/tenant.md) — the resource this extension reads.
-- [Vault Enterprise](../vault-enterprise/overview.md) — the equivalent for HashiCorp Vault Enterprise (KV, sharing, SSO; no transit/PKI yet).
+- **Vault Enterprise extension** — the equivalent for HashiCorp Vault Enterprise (KV, sharing, SSO; transit and PKI not supported there yet).
 
 ---
 
