@@ -1,5 +1,7 @@
 # Installation
 
+For a platform administrator: install the chart once, then opt tenants in. The whole setup is cluster-wide — there is no per-tenant installation step.
+
 ## Requirements
 
 | | |
@@ -61,6 +63,9 @@ kubectl annotate tenant acme argocd.tenantoperator.stakater.com/enabled=true
 
 `scaffolding.mode` also offers `OnLabel` (a label instead of an annotation), `Always` (every tenant), and `Never` (none). See [Reference](reference.md).
 
+!!! tip "Roll out gradually"
+    Keep the default `OnAnnotation` and opt in **one** tenant first. Confirm its `AppProject` looks right, then opt in the rest. Switching to `Always` later brings every tenant in at once; narrowing the mode again *removes* the projects it now excludes (see [Operating → what deletes an AppProject](operating.md#what-deletes-an-appproject)), so change it deliberately.
+
 ## Verify
 
 One row per opted-in tenant:
@@ -78,5 +83,3 @@ acme     True
 
 !!! tip
     Always use the fully-qualified `templateinstances.templates.v2.stakater.com`. On OpenShift, a bare `kubectl get templateinstance` resolves to OpenShift's own `template.openshift.io` kind and returns the wrong object with an empty status — which looks exactly like "nothing is reconciling".
-
-Next: [Giving a tenant a project](giving-a-tenant-a-project.md).

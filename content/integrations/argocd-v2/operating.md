@@ -1,5 +1,7 @@
 # Operating
 
+Day-2 for a platform administrator: how drift is handled, how to check every tenant at once, what removes a project, and how to upgrade and uninstall safely.
+
 ## Drift protection
 
 `sync.mode` defaults to `strict`: a managed `AppProject` cannot be hand-edited or deleted — Template Operator's admission webhook refuses both. Under the looser `revert`, a hand-deleted `AppProject` wedges in `Terminating` forever while its `TemplateInstance` still reports healthy, so `strict` is the right default.
@@ -45,6 +47,17 @@ With `onDeletePurgeAppProject: false` (the default) the chart marks each `AppPro
 "Purge on" is `onDeletePurgeAppProject: true`, or the `on-delete-purge` annotation on one `Tenant`.
 
 These do **not** delete an `AppProject`: a malformed override annotation (only that child fails), a tenant losing all its namespaces (it keeps the project), or the parent failing to render (Template Operator keeps the last rendered set, so a broken `IntegrationConfig` cannot wipe the fleet).
+
+## Upgrading the chart
+
+`helm upgrade` re-renders every tenant's `AppProject` in place — the object's UID does not change, so ArgoCD keeps using it. A values change (new repos, a tightened profile) therefore reaches every tenant on the next render.
+
+Two upgrades change the rendered projects on purpose, so make them deliberately and announce them:
+
+- **Moving off the compatibility shape** (dropping `argocd.allowControlPlaneDestination` / `roles.profile: extensionsCompatible`) removes the control-plane destination and narrows the roles. See [Migrating](migrating.md#then-move-to-the-secure-defaults).
+- **Narrowing `scaffolding.mode`** removes the projects for every tenant the new mode excludes — see [what deletes an AppProject](#what-deletes-an-appproject).
+
+Check the chart's release notes before a major version bump; a renamed child `TemplateInstance` is called out there, because it releases and re-creates each project.
 
 ## Uninstalling
 
