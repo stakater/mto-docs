@@ -5784,14 +5784,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="giving-a-tenant-a-project.html" class="md-nav__link">
+      <a href="giving-a-tenant-an-appproject.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Giving a tenant a project
+    Giving a tenant an AppProject
   
 
     
@@ -7634,7 +7634,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Four ways to end up with something that looks correct and isn't:</p>
 <ul>
 <li><strong>Seed the resource lists.</strong> <code>clusterResourceWhitelist</code> and <code>namespaceResourceBlacklist</code> are chart values; if you forget them every tenant's project silently loses both lists.</li>
-<li><strong>Set <code>sourceRepos</code>.</strong> A project with none permits no repository — see <a href="giving-a-tenant-a-project.html">Giving a tenant a project</a>.</li>
+<li><strong>Set <code>sourceRepos</code>.</strong> A project with none permits no repository — see <a href="giving-a-tenant-an-appproject.html">Giving a tenant an AppProject</a>.</li>
 <li><strong>List real groups and users.</strong> <code>roles[].groups</code> gets the MTO-generated group first, but MTO only creates it when the tenant-operator runs with <code>PLATFORM_TYPE=Openshift</code>. A tenant whose owners are only that group gets a project granting access to nobody.</li>
 </ul>
 <h3 id="match-users-the-way-your-login-provides-them">Match users the way your login provides them<a class="headerlink" href="#match-users-the-way-your-login-provides-them" title="Permanent link">#</a></h3>

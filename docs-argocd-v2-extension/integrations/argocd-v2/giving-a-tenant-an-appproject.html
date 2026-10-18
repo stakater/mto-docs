@@ -5,7 +5,7 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/docs-argocd-v2-extension/integrations/argocd-v2/giving-a-tenant-a-project.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/docs-argocd-v2-extension/integrations/argocd-v2/giving-a-tenant-an-appproject.html">
       
       
         <link rel="prev" href="installation.html">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Giving a tenant a project - Multi-Tenant Operator</title>
+        <title>Giving a tenant an AppProject - Multi-Tenant Operator</title>
       
     
     
@@ -101,7 +101,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#giving-a-tenant-a-project" class="md-skip">
+        <a href="#giving-a-tenant-an-appproject" class="md-skip">
           Skip to content
         </a>
       
@@ -5800,7 +5800,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Giving a tenant a project
+    Giving a tenant an AppProject
   
 
     
@@ -5811,14 +5811,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="giving-a-tenant-a-project.html" class="md-nav__link md-nav__link--active">
+      <a href="giving-a-tenant-an-appproject.html" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    Giving a tenant a project
+    Giving a tenant an AppProject
   
 
     
@@ -7413,7 +7413,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="giving-a-tenant-a-project">Giving a tenant a project<a class="headerlink" href="#giving-a-tenant-a-project" title="Permanent link">#</a></h1>
+<h1 id="giving-a-tenant-an-appproject">Giving a tenant an AppProject<a class="headerlink" href="#giving-a-tenant-an-appproject" title="Permanent link">#</a></h1>
 <p>This walks through opting a tenant in, seeing its <code>AppProject</code>, and deploying an Application. It assumes the extension is installed (<a href="installation.html">Installation</a>) and a <code>Tenant</code> named <code>acme</code> exists with two namespaces, <code>acme-dev</code> and <code>acme-prod</code>.</p>
 <h2 id="1-set-the-repositories-the-tenant-may-deploy-from">1. Set the repositories the tenant may deploy from<a class="headerlink" href="#1-set-the-repositories-the-tenant-may-deploy-from" title="Permanent link">#</a></h2>
 <p>An <code>AppProject</code> with no <code>sourceRepos</code> permits <strong>no</strong> repository, and ArgoCD then rejects every Application with <code>application repo ... is not permitted in project</code>. Creating the project is not the same as letting the tenant deploy.</p>

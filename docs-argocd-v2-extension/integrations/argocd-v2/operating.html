@@ -5784,14 +5784,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="giving-a-tenant-a-project.html" class="md-nav__link">
+      <a href="giving-a-tenant-an-appproject.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Giving a tenant a project
+    Giving a tenant an AppProject
   
 
     
@@ -5994,11 +5994,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#when-a-tenant-has-no-project" class="md-nav__link">
+    <a href="#troubleshooting" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        When a tenant has no project
+        Troubleshooting
       
     </span>
   
@@ -7362,11 +7362,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#when-a-tenant-has-no-project" class="md-nav__link">
+    <a href="#troubleshooting" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        When a tenant has no project
+        Troubleshooting
       
     </span>
   
@@ -7467,12 +7467,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p class="admonition-title">Tip</p>
 <p>Use the fully-qualified <code>templateinstances.templates.v2.stakater.com</code>. On OpenShift a bare <code>kubectl get templateinstance</code> returns OpenShift's own kind with an empty status — indistinguishable from "not reconciling".</p>
 </div>
-<h2 id="when-a-tenant-has-no-project">When a tenant has no project<a class="headerlink" href="#when-a-tenant-has-no-project" title="Permanent link">#</a></h2>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h2>
+<p><strong>A tenant has no <code>AppProject</code>.</strong> Most common first, each independent of the others:</p>
 <ul>
 <li>The tenant has not opted in (<code>scaffolding.mode</code> is <code>OnAnnotation</code>/<code>OnLabel</code> and the annotation/label is missing or not exactly <code>"true"</code>).</li>
-<li><code>rbac.serviceAccount</code> does not match Template Operator's identity, so the parent cannot list <code>Tenant</code>s — check <code>mto-argocd-parent</code>'s <code>Ready</code> condition (<a href="installation.html#verify">Installation</a>).</li>
-<li>The tenant has a malformed override annotation: only that tenant's child fails; the fleet health query above names it.</li>
+<li><code>rbac.serviceAccount</code> does not match Template Operator v2's identity, so the parent cannot list <code>Tenant</code>s — check <code>mto-argocd-parent</code>'s <code>Ready</code> condition (<a href="installation.html#verify">Installation</a>).</li>
+<li>The tenant has a malformed override annotation: only that tenant's child fails; the <a href="#fleet-health">fleet-health query</a> above names it.</li>
 </ul>
+<p><strong>Nothing reconciles for any tenant</strong> (no <code>AppProject</code>s at all). The parent cannot read its inputs — almost always the wrong <code>rbac.serviceAccount</code> (above), a missing <code>IntegrationConfig</code>, or a Kubernetes/Template Operator version mismatch (<a href="installation.html#requirements">Installation</a>). Read <code>mto-argocd-parent</code>'s conditions.</p>
+<p><strong>An edit to an <code>AppProject</code> is rejected</strong> with a <code>sync-enforcement</code> webhook error. That is <code>sync.mode: strict</code> working as intended — the <code>Tenant</code> is the only place to change what the extension produces. See <a href="#drift-protection">Drift protection</a>.</p>
 <h2 id="what-deletes-an-appproject">What deletes an AppProject<a class="headerlink" href="#what-deletes-an-appproject" title="Permanent link">#</a></h2>
 <p>Template Operator owns every object a child renders. When the parent stops rendering a tenant's child — the tenant opts out, <code>scaffolding.mode</code> narrows, the <code>Tenant</code> is deleted, or <code>helm uninstall</code> runs — the child and its <code>AppProject</code> are removed, <strong>unless</strong> the <code>AppProject</code> is marked to be kept.</p>
 <p>With <code>onDeletePurgeAppProject: false</code> (the default) the chart marks each <code>AppProject</code> <code>templates.v2.stakater.com/deletion-policy: Orphan</code>. Template Operator 0.0.7+ honours the mark and <em>releases</em> the project (the object stays, without the finalizer/labels, and ArgoCD keeps using it).</p>
