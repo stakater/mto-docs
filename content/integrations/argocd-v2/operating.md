@@ -25,11 +25,17 @@ The `errors` field collects every failing condition's message, whichever stage b
 !!! tip
     Use the fully-qualified `templateinstances.templates.v2.stakater.com`. On OpenShift a bare `kubectl get templateinstance` returns OpenShift's own kind with an empty status — indistinguishable from "not reconciling".
 
-## When a tenant has no project
+## Troubleshooting
+
+**A tenant has no `AppProject`.** Most common first, each independent of the others:
 
 - The tenant has not opted in (`scaffolding.mode` is `OnAnnotation`/`OnLabel` and the annotation/label is missing or not exactly `"true"`).
-- `rbac.serviceAccount` does not match Template Operator's identity, so the parent cannot list `Tenant`s — check `mto-argocd-parent`'s `Ready` condition ([Installation](installation.md#verify)).
-- The tenant has a malformed override annotation: only that tenant's child fails; the fleet health query above names it.
+- `rbac.serviceAccount` does not match Template Operator v2's identity, so the parent cannot list `Tenant`s — check `mto-argocd-parent`'s `Ready` condition ([Installation](installation.md#verify)).
+- The tenant has a malformed override annotation: only that tenant's child fails; the [fleet-health query](#fleet-health) above names it.
+
+**Nothing reconciles for any tenant** (no `AppProject`s at all). The parent cannot read its inputs — almost always the wrong `rbac.serviceAccount` (above), a missing `IntegrationConfig`, or a Kubernetes/Template Operator version mismatch ([Installation](installation.md#requirements)). Read `mto-argocd-parent`'s conditions.
+
+**An edit to an `AppProject` is rejected** with a `sync-enforcement` webhook error. That is `sync.mode: strict` working as intended — the `Tenant` is the only place to change what the extension produces. See [Drift protection](#drift-protection).
 
 ## What deletes an AppProject
 

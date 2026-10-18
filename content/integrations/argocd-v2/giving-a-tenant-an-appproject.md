@@ -1,4 +1,4 @@
-# Giving a tenant a project
+# Giving a tenant an AppProject
 
 This walks through opting a tenant in, seeing its `AppProject`, and deploying an Application. It assumes the extension is installed ([Installation](installation.md)) and a `Tenant` named `acme` exists with two namespaces, `acme-dev` and `acme-prod`.
 

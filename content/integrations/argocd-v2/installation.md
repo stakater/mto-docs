@@ -86,4 +86,4 @@ acme     True
 
 ---
 
-**Previous:** [Overview](overview.md) · **Next:** [Giving a tenant a project](giving-a-tenant-a-project.md)
+**Previous:** [Overview](overview.md) · **Next:** [Giving a tenant an AppProject](giving-a-tenant-an-appproject.md)

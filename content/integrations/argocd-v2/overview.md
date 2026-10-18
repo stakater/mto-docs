@@ -101,7 +101,7 @@ Edit cannot create, delete or override Applications, and the web terminal (`exec
 ## In this section
 
 1. [Installation](installation.md) — requirements, install the chart, opt a tenant in
-1. [Giving a tenant a project](giving-a-tenant-a-project.md) — opt in, see the `AppProject`, deploy an Application
+1. [Giving a tenant an AppProject](giving-a-tenant-an-appproject.md) — opt in, see the `AppProject`, deploy an Application
 1. [Applications in tenant namespaces](applications.md) — Applications and ApplicationSets outside the control plane
 1. [Identity and sync impersonation](identity-and-impersonation.md) — groups by pattern, syncing as a tenant ServiceAccount
 1. [Security](security.md) — least-privilege defaults, cluster-scoped kinds, the trust boundary

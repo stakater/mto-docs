@@ -51,4 +51,4 @@ On OpenShift GitOps 1.22 the same lives on the `ArgoCD` resource: `spec.applicat
 
 ---
 
-**Previous:** [Giving a tenant a project](giving-a-tenant-a-project.md) · **Next:** [Identity and sync impersonation](identity-and-impersonation.md)
+**Previous:** [Giving a tenant an AppProject](giving-a-tenant-an-appproject.md) · **Next:** [Identity and sync impersonation](identity-and-impersonation.md)

@@ -80,7 +80,7 @@ spec:
 Four ways to end up with something that looks correct and isn't:
 
 - **Seed the resource lists.** `clusterResourceWhitelist` and `namespaceResourceBlacklist` are chart values; if you forget them every tenant's project silently loses both lists.
-- **Set `sourceRepos`.** A project with none permits no repository — see [Giving a tenant a project](giving-a-tenant-a-project.md).
+- **Set `sourceRepos`.** A project with none permits no repository — see [Giving a tenant an AppProject](giving-a-tenant-an-appproject.md).
 - **List real groups and users.** `roles[].groups` gets the MTO-generated group first, but MTO only creates it when the tenant-operator runs with `PLATFORM_TYPE=Openshift`. A tenant whose owners are only that group gets a project granting access to nobody.
 
 ### Match users the way your login provides them
