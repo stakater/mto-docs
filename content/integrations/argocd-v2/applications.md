@@ -2,6 +2,11 @@
 
 By default a tenant's Applications live in the ArgoCD control-plane namespace. Write access there is effectively ArgoCD admin, so it is usually better to let tenants keep their Applications — and ApplicationSets — in their own namespaces. Both are off by default.
 
+| Feature | Chart value | ArgoCD needed | Also needs (outside the chart) |
+|:---|:---|:---|:---|
+| Applications in tenant namespaces | `argocd.sourceNamespaces.enabled` | 3.x (3.4.4+ for 3-segment RBAC) | ArgoCD watching the namespaces; the `<tenant>-argocd` namespace from MTO |
+| ApplicationSets in tenant namespaces | (follows source namespaces) | 3.5+ / OpenShift GitOps 1.22 | the `applicationsetcontroller.*` platform settings below |
+
 ## Applications
 
 Turn on source namespaces:

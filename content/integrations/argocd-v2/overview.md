@@ -1,28 +1,84 @@
 # ArgoCD
 
+Give every tenant its own ArgoCD `AppProject` — scoped to the tenant's namespaces, with owner, edit and view roles — derived from the `Tenant` you already maintain and kept in sync as it changes.
+
 !!! note
-    This is the Helm-chart ArgoCD extension ([`mto-extension-argocd`](https://github.com/stakater/mto-extension-argocd)). It replaces the built-in ArgoCD integration configured through the `Extensions` resource, which is now deprecated — see [the older integration](../argocd.md) and [Migrating](migrating.md).
+    This is the Helm-chart ArgoCD extension ([`mto-extension-argocd`](https://github.com/stakater/mto-extension-argocd)). It replaces the built-in ArgoCD integration configured through the `Extensions` resource, now deprecated — see [the older integration](../argocd.md) and [Migrating](migrating.md).
 
-With the Multi-Tenant Operator (MTO), a cluster administrator gives every tenant its own ArgoCD `AppProject`, scoped to that tenant's namespaces, with owner, edit and view roles — derived from the `Tenant` you already maintain, and kept in step as the tenant changes.
+## At a glance
 
-The extension is a Helm chart. It installs no operator and no controller of its own: it renders a few [Template Operator](../build-your-own/template-operator-essentials.md) objects, and Template Operator reconciles one `AppProject` per tenant. Nothing is created for a tenant until that tenant opts in.
+| You maintain | The extension keeps in sync |
+|:---|:---|
+| a `Tenant` | one `AppProject` per tenant |
+| and opt it in (one annotation) | scoped to the tenant's namespaces |
+| | owner / edit / view roles, bound to its groups and users |
+| | the repositories it may deploy from |
+| | the cluster-scoped kinds it may manage |
 
-## What it saves you
+**You write** — a `Tenant`, opted in:
 
-Setting a tenant up in ArgoCD by hand means creating, per tenant: an `AppProject` scoped to the right namespaces, a role for each access level, the policies behind each role, and the source-repository and resource allow/deny lists. All of it has to be revisited whenever the tenant gains a namespace, changes membership, or adjusts what it may deploy.
+```yaml
+apiVersion: tenantoperator.stakater.com/v1beta3
+kind: Tenant
+metadata:
+  name: acme
+  annotations:
+    argocd.tenantoperator.stakater.com/enabled: "true"   # opt in
+spec:
+  accessControl:
+    owners:
+      groups: [acme-admins]
+      users:  [alice@acme.example]
+  namespaces:
+    withTenantPrefix: [dev, prod]
+```
 
-The extension derives all of it from the `Tenant` resource and keeps it current — creating what is now needed and removing what no longer applies. A tenant member never hand-edits ArgoCD RBAC.
+**You get** — one `AppProject`, kept in sync (abridged):
 
-## What each tenant gets
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: acme
+  namespace: openshift-gitops
+spec:
+  destinations:                       # the tenant's namespaces — never the control plane
+    - { namespace: acme-dev,  server: https://kubernetes.default.svc }
+    - { namespace: acme-prod, server: https://kubernetes.default.svc }
+  roles:                              # bound to the tenant's groups and users
+    - { name: acme-owner, ... }       # full access to acme/*
+    - { name: acme-edit,  ... }       # get, sync, update
+    - { name: acme-view,  ... }       # get
+  sourceRepos: [ https://github.com/acme/acme-gitops ]
+```
 
-Opt a `Tenant` in, and one `AppProject` appears in the ArgoCD namespace:
+No `AppProject` YAML and no hand-written ArgoCD RBAC — and nothing is created for a tenant until it opts in.
 
-- **Destinations** are the tenant's own namespaces — never the ArgoCD control-plane namespace (see [Security](security.md)).
-- **Three roles** — owner, edit, view — bound to the tenant's groups and users, each at least privilege (see [How roles map to ArgoCD access](#how-roles-map-to-argocd-access)).
-- **Source repositories** the tenant may deploy from, from a per-tenant pattern.
-- **Allowed cluster-scoped kinds** and **denied namespaced kinds**, as the platform sets them.
+## How it works
 
-Remove the opt-in and the extension stops managing the `AppProject`; whether it is kept or deleted is covered in [Operating](operating.md#what-deletes-an-appproject).
+The chart installs no operator of its own. It renders three [Template Operator](../build-your-own/template-operator-essentials.md) objects; Template Operator reconciles one `AppProject` per tenant.
+
+```mermaid
+flowchart LR
+    T[Tenants] --> P
+    N[Namespaces] --> P
+    IC[IntegrationConfig] --> P
+    P["parent<br/>TemplateInstance"] -- one child per opted-in tenant --> C["child<br/>TemplateInstance"]
+    C -- renders --> A["one AppProject<br/>per tenant"]
+    A --> ARGO[ArgoCD]
+```
+
+The parent reads every `Tenant`, every `Namespace`, and the `IntegrationConfig` — three cluster-wide watches regardless of tenant count — and emits one child per opted-in tenant. A namespace event affecting one tenant rewrites only that tenant's project. Full mechanism in [Build your own → how an extension works](../build-your-own/overview.md#how-an-extension-works).
+
+## Who does what
+
+| | Platform administrator | Tenant |
+|:---|:---|:---|
+| **Sets up** | installs the chart; sets `argocd.namespace`, repos, resource limits | — |
+| **Per tenant** | nothing — opt-in is one annotation | opts in; creates Applications in its project |
+| **Never** | hand-writes an `AppProject` or ArgoCD RBAC | touches ArgoCD RBAC, or reaches another tenant's project |
+
+The division is the point: a tenant gets self-service GitOps scoped to itself, and the platform team maintains no per-tenant ArgoCD configuration.
 
 ## How roles map to ArgoCD access
 
@@ -34,28 +90,15 @@ Each `Tenant` access level becomes one `AppProject` role, at least privilege by 
 | editors | `<tenant>-edit` | `get`, `sync`, `update`, `action/*` | `get` | `get` |
 | viewers | `<tenant>-view` | `get` | `get` | `get` |
 
-Edit cannot create, delete or override Applications, and the web terminal (`exec`) is off unless you turn it on for owners. The legacy, broader shape is available for migration only — see [Security](security.md) and [Migrating](migrating.md).
+Edit cannot create, delete or override Applications, and the web terminal (`exec`) is off unless you enable it for owners. The legacy, broader shape exists for migration only — see [Security](security.md) and [Migrating](migrating.md).
 
-## How it works
-
-```mermaid
-flowchart LR
-    T[Tenants] --> P
-    N[Namespaces] --> P
-    IC[IntegrationConfig] --> P
-    P[parent TemplateInstance] -- one child per opted-in tenant --> C[child TemplateInstance]
-    C -- renders --> A[one AppProject per tenant]
-    A --> ARGO[ArgoCD]
-```
-
-The chart installs a parent `Template`, a child `Template`, and the one parent `TemplateInstance`. The parent reads every `Tenant`, every `Namespace`, and the `IntegrationConfig` — three cluster-wide watches regardless of tenant count — and emits one child per opted-in tenant; each child renders that tenant's `AppProject`. A namespace event affecting one tenant rewrites only that tenant's project.
-
-Because the extension is built on Template Operator, the same cluster-wide note applies as for any extension: the permissions the chart grants are shared with anyone who can author a `Template`. See [Security](security.md#template-authors-share-these-permissions).
+!!! info "Built on Template Operator"
+    Because the extension renders through Template Operator, the permissions the chart grants are shared with anyone who can author a `Template`. On a cluster where tenants (or others) can create Templates, read [Security → Template authors share these permissions](security.md#template-authors-share-these-permissions) before going to production.
 
 ## In this section
 
 1. [Installation](installation.md) — requirements, install the chart, opt a tenant in
-1. [Giving a tenant a project](giving-a-tenant-a-project.md) — opt in, see the `AppProject`, create an Application
+1. [Giving a tenant a project](giving-a-tenant-a-project.md) — opt in, see the `AppProject`, deploy an Application
 1. [Applications in tenant namespaces](applications.md) — Applications and ApplicationSets outside the control plane
 1. [Identity and sync impersonation](identity-and-impersonation.md) — groups by pattern, syncing as a tenant ServiceAccount
 1. [Security](security.md) — least-privilege defaults, cluster-scoped kinds, the trust boundary

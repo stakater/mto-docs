@@ -2,6 +2,11 @@
 
 Two independent settings: how the project's roles name their groups, and whose identity a sync runs as.
 
+| Setting | Chart value | Default | Effect |
+|:---|:---|:---|:---|
+| Groups named by pattern | `identity.mode` | `accessControl` | roles use the `Tenant`'s groups/users; `groupPattern` or `both` uses IdP groups named `tenant-<t>-<tier>` |
+| Sync impersonation | `argocd.impersonation.enabled` | `false` | syncs run as a ServiceAccount in the destination namespace instead of the cluster-admin controller |
+
 ## Groups named by pattern
 
 By default (`identity.mode: accessControl`) each role's groups are the `Tenant`'s owners, editors and viewers, plus the MTO-generated group and any privileged groups. The other Stakater extensions instead take access from identity-provider groups named by a pattern, and so can this one:
