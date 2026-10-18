@@ -34,7 +34,46 @@ A `Tenant` can override its repositories and resource lists by annotation ([Refe
 
 The extension runs on Template Operator, which renders **every** `Template` on the cluster with one ServiceAccount — the one this chart grants `AppProject` write in the ArgoCD namespace. A `Template` can target any namespace, so **anyone who can create a `Template` and a `TemplateInstance` can use that grant**, not only this chart.
 
-MTO's tenant roles do not include Templates by default, so tenants cannot do this out of the box. It becomes reachable the moment anyone is bound to Template Operator's own `template-editor`/`templateinstance-editor` roles, or an equivalent. If you grant those, confine Template Operator's writes with a `ValidatingAdmissionPolicy` that only allows a rendered object when its owning `TemplateInstance` is in a namespace you trust — see [Build your own → Design rules](../build-your-own/design-rules.md#template-authors-share-your-permissions) for the policy, which is verified against the label Template Operator stamps and cannot be spoofed.
+MTO's tenant roles do not include Templates by default, so tenants cannot do this out of the box. It becomes reachable the moment anyone is bound to Template Operator's own `template-editor`/`templateinstance-editor` roles, or an equivalent. If you grant those, confine Template Operator's writes with a `ValidatingAdmissionPolicy` that only allows a rendered object when its owning `TemplateInstance` is in a namespace you trust. Template Operator stamps `templates.v2.stakater.com/instance-namespace` on every object it renders and overwrites any value a template sets, so the policy can trust it and a template cannot spoof it.
+
+### Confining Template Operator's writes
+
+Set `is-operator` to your Template Operator identity, and list the namespaces that hold extensions (e.g. `multi-tenant-operator`) in the `validations` expression. Verified on Template Operator 0.0.8: cross-namespace and cluster-scoped writes from a `TemplateInstance` not on the allow-list are denied, while own-namespace and allow-listed writes pass and teardown is unaffected.
+
+```yaml
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: template-operator-v2-write-scope
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: ["*"]
+        apiVersions: ["*"]
+        resources: ["*"]
+        operations: ["CREATE", "UPDATE", "DELETE"]
+  variables:
+    - name: obj
+      expression: 'request.operation == "DELETE" ? oldObject : object'
+    - name: owner
+      expression: 'variables.obj.metadata.?labels[?"templates.v2.stakater.com/instance-namespace"].orValue("")'
+  matchConditions:
+    - name: is-operator
+      expression: 'request.userInfo.username == "system:serviceaccount:multi-tenant-operator:tenant-operator-template-operator-v2"'
+    - name: is-rendered-object
+      expression: '(object != null && "templates.v2.stakater.com/instance-namespace" in object.metadata.?labels.orValue({})) || (oldObject != null && "templates.v2.stakater.com/instance-namespace" in oldObject.metadata.?labels.orValue({}))'
+  validations:
+    - expression: 'variables.owner in ["multi-tenant-operator"] || (has(variables.obj.metadata.namespace) && variables.obj.metadata.namespace == variables.owner)'
+      messageExpression: '"template-operator-v2: a TemplateInstance in namespace " + variables.owner + " may only write objects in its own namespace"'
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata: { name: template-operator-v2-write-scope }
+spec:
+  policyName: template-operator-v2-write-scope
+  validationActions: [Deny]
+```
 
 ## Before production
 
@@ -55,3 +94,7 @@ data:
 ```
 
 ArgoCD reloads it without a restart. Only include a claim users cannot change themselves in the identity provider, and note the setting is global (email entries in `policy.csv` start to match too, and a user in a project role can create tokens for that role).
+
+---
+
+**Previous:** [Identity and sync impersonation](identity-and-impersonation.md) · **Next:** [Operating](operating.md)

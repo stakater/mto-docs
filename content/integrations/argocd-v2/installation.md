@@ -7,7 +7,7 @@ For a platform administrator: install the chart once, then opt tenants in. The w
 | | |
 |:---|:---|
 | [Multi-Tenant Operator](../../getting-started/installation/overview.md) | `Tenant` `v1beta3` and `IntegrationConfig` `v1beta1` |
-| [Template Operator](../build-your-own/template-operator-essentials.md) | `0.0.8` recommended. `0.0.7+` is needed to keep `AppProject`s on teardown (see [Operating](operating.md#what-deletes-an-appproject)); `strict` drift protection (the default) needs the sync webhook |
+| [Template Operator](https://github.com/stakater/template-operator-v2) | `0.0.8` recommended. `0.0.7+` is needed to keep `AppProject`s on teardown (see [Operating](operating.md#what-deletes-an-appproject)); `strict` drift protection (the default) needs the sync webhook |
 | ArgoCD | `argoproj.io/v1alpha1` `AppProject`; 3.x, tested on 3.5.4 |
 | Kubernetes | 1.33+ tested. Template Operator's CRDs do not install on 1.31 |
 
@@ -33,7 +33,7 @@ spec:
       mode: Managed
 ```
 
-MTO then runs Template Operator in `multi-tenant-operator` as the ServiceAccount `tenant-operator-template-operator-v2`. To install it yourself instead, see [Template Operator essentials](../build-your-own/template-operator-essentials.md#installing-template-operator-v2); the ServiceAccount name and namespace are then different.
+MTO then runs Template Operator in `multi-tenant-operator` as the ServiceAccount `tenant-operator-template-operator-v2` — the values used below. To install it yourself from its Helm chart instead, it runs as `template-operator-v2` in `stakater-template-operator`; set `rbac.serviceAccount` to match.
 
 ## Install the extension
 
@@ -83,3 +83,7 @@ acme     True
 
 !!! tip
     Always use the fully-qualified `templateinstances.templates.v2.stakater.com`. On OpenShift, a bare `kubectl get templateinstance` resolves to OpenShift's own `template.openshift.io` kind and returns the wrong object with an empty status — which looks exactly like "nothing is reconciling".
+
+---
+
+**Previous:** [Overview](overview.md) · **Next:** [Giving a tenant a project](giving-a-tenant-a-project.md)

@@ -45,3 +45,7 @@ Even in compatibility mode, a few differences are intentional (each is pinned by
 - **metadata** carries a `templates.v2.stakater.com/deletion-policy: Orphan` annotation when purge is off, and does not carry MTO's `multi-tenant-operator/predicate` label.
 
 See [Security](security.md) for the defaults and [Operating](operating.md#what-deletes-an-appproject) for what teardown does.
+
+---
+
+**Previous:** [Reference](reference.md)

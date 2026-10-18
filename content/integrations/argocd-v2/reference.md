@@ -46,3 +46,7 @@ A cluster-scoped kind on the allow-list is granted for every object of that kind
 ## The opt-in annotation value
 
 `scaffolding.mode: OnAnnotation`/`OnLabel` includes a tenant only when `argocd.tenantoperator.stakater.com/enabled` is exactly `"true"`. `"True"`, `"yes"`, `"1"` and `"on"` all read as opted out, deliberately.
+
+---
+
+**Previous:** [Operating](operating.md) · **Next:** [Migrating](migrating.md)

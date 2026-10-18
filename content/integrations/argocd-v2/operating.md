@@ -70,3 +70,7 @@ helm uninstall mto-extension-argocd -n multi-tenant-operator
 The chart's RBAC is kept on uninstall (`helm.sh/resource-policy: keep`, and `Prune=false,Delete=false` for an ArgoCD-managed release), so Template Operator keeps the permissions its finalizers need while it reaps the children. What then happens to the `AppProject`s depends on the version and purge, as above. The `NOTES.txt` that `helm install` prints has the commands to remove the kept RBAC afterwards.
 
 Reinstalling immediately fails with an ownership-metadata error — wait for `Template/mto-argocd-parent` to disappear first.
+
+---
+
+**Previous:** [Security](security.md) · **Next:** [Reference](reference.md)

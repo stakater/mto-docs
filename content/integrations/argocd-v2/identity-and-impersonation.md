@@ -60,3 +60,7 @@ Three things are needed outside this chart:
 1. **A reduced controller ClusterRole**, for real damage limitation. Otherwise impersonation enforces tenant boundaries at sync time while the controller still holds cluster-admin.
 
 ArgoCD picks the account by the Application's destination namespace, and the template above grants it `edit` in that namespace only. So two kinds of Application stop syncing: one carrying a cluster-scoped kind from `clusterResourceWhitelist` (such as a `Namespace`), and one whose manifests write into another namespace. Grant those rights to `argocd-deployer` deliberately, or keep such Applications out of tenant projects.
+
+---
+
+**Previous:** [Applications in tenant namespaces](applications.md) · **Next:** [Security](security.md)

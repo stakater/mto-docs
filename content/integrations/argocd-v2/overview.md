@@ -56,7 +56,7 @@ No `AppProject` YAML and no hand-written ArgoCD RBAC — and nothing is created 
 
 ## How it works
 
-The chart installs no operator of its own. It renders three [Template Operator](../build-your-own/template-operator-essentials.md) objects; Template Operator reconciles one `AppProject` per tenant.
+The chart installs no operator of its own. It renders three [Template Operator](https://github.com/stakater/template-operator-v2) objects — a parent `Template`, a child `Template`, and one parent `TemplateInstance`; Template Operator reconciles one `AppProject` per tenant.
 
 ```mermaid
 flowchart LR
@@ -68,7 +68,7 @@ flowchart LR
     A --> ARGO[ArgoCD]
 ```
 
-The parent reads every `Tenant`, every `Namespace`, and the `IntegrationConfig` — three cluster-wide watches regardless of tenant count — and emits one child per opted-in tenant. A namespace event affecting one tenant rewrites only that tenant's project. Full mechanism in [Build your own → how an extension works](../build-your-own/overview.md#how-an-extension-works).
+The parent reads every `Tenant`, every `Namespace`, and the `IntegrationConfig` — three cluster-wide watches regardless of tenant count — and emits one child per opted-in tenant. A namespace event affecting one tenant rewrites only that tenant's project.
 
 ## Who does what
 
@@ -105,3 +105,7 @@ Edit cannot create, delete or override Applications, and the web terminal (`exec
 1. [Operating](operating.md) — drift protection, deletion, fleet health, uninstall
 1. [Reference](reference.md) — chart values and per-tenant overrides
 1. [Migrating](migrating.md) — from the deprecated `Extensions` integration
+
+---
+
+**Next:** [Installation](installation.md)

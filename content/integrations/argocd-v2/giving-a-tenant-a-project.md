@@ -85,3 +85,7 @@ ArgoCD accepts it because the repo matches `sourceRepos` and the destination is 
 - Deploy into the ArgoCD control-plane namespace — never a destination (see [Security](security.md)).
 - Deploy from a repository outside its `sourceRepos`.
 - Manage a cluster-scoped kind unless the platform allow-listed it (see [Reference](reference.md#cluster-scoped-kinds)).
+
+---
+
+**Previous:** [Installation](installation.md) · **Next:** [Applications in tenant namespaces](applications.md)

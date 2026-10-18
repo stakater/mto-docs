@@ -48,3 +48,7 @@ They carry risks only platform settings can close ([ArgoCD docs](https://argo-cd
 | `applicationsetcontroller.enable.tokenref.strict.mode: "true"` | a generator may only use token Secrets labelled for ApplicationSets |
 
 On OpenShift GitOps 1.22 the same lives on the `ArgoCD` resource: `spec.applicationSet.sourceNamespaces` and `spec.applicationSet.scmProviders`. Two more: a `clusters: {}` generator discovers every cluster ArgoCD knows, and an ApplicationSet whose template sets `project` from a parameter cannot use project-scoped repositories.
+
+---
+
+**Previous:** [Giving a tenant a project](giving-a-tenant-a-project.md) · **Next:** [Identity and sync impersonation](identity-and-impersonation.md)
