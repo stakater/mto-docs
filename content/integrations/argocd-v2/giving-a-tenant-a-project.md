@@ -79,6 +79,9 @@ spec:
 
 ArgoCD accepts it because the repo matches `sourceRepos` and the destination is one of the project's `destinations`. A destination outside the tenant's namespaces, or a repo outside its `sourceRepos`, is refused.
 
+!!! info "What this looks like to a tenant's developers"
+    Tenant members do nothing to set this up. They sign in to ArgoCD with their usual identity, and their group gives them owner, edit or view in their own project — they see and manage only their own Applications. An owner or editor creates Applications (in the ArgoCD UI/API, or by `kubectl apply` once [Applications in tenant namespaces](applications.md) is enabled); edit cannot delete or override, and view is read-only. They never touch an `AppProject` or ArgoCD RBAC.
+
 ## What a tenant cannot do
 
 - Deploy into a namespace it does not own — `destinations` is the tenant's namespaces only.

@@ -47,6 +47,10 @@ A cluster-scoped kind on the allow-list is granted for every object of that kind
 
 `scaffolding.mode: OnAnnotation`/`OnLabel` includes a tenant only when `argocd.tenantoperator.stakater.com/enabled` is exactly `"true"`. `"True"`, `"yes"`, `"1"` and `"on"` all read as opted out, deliberately.
 
+## One release per cluster
+
+Install the chart **once per cluster**. Its `Template` and RBAC object names are fixed (`mto-argocd-parent`, `mto-argocd-child`, and the `mto-extension-argocd-*` roles), so a second release fails with an `invalid ownership metadata` error. A single release already serves every tenant, and the parent reads the one cluster-wide `IntegrationConfig`, so two releases — even in different namespaces — would collide on it. To target more than one ArgoCD instance from one cluster, raise it with the maintainers; it is not supported by a second install.
+
 ---
 
 **Previous:** [Operating](operating.md) · **Next:** [Migrating](migrating.md)
