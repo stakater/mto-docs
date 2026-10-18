@@ -45,7 +45,7 @@ Each renders an `ExternalSecret` and `Secret` named `<serviceaccount>-<name>`. T
 
 ## Not supported yet
 
-Transit (encryption) and PKI (certificates) engines, and cert-manager integration. For those, see the [OpenBao extension](../openbao/overview.md), which covers transit and PKI.
+Transit (encryption) and PKI (certificates) engines, and cert-manager integration. For those, use the **OpenBao extension**, which covers transit and PKI.
 
 ## One release per cluster
 
