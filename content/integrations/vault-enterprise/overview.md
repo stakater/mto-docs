@@ -74,7 +74,7 @@ A workload's `vault.stakater.com/role` sets what it may do on its KV paths:
 Human SSO users get the same roles, from their identity-provider group — see [Delivery and login](delivery-and-login.md#human-sso).
 
 !!! info "Built on Template Operator v2"
-    Because the extension renders through Template Operator v2, the permissions the bootstrap grants are shared with anyone who can author a `Template`. On a cluster where tenants (or others) can create Templates, read [Security → Template authors share these permissions](security.md#template-authors-share-these-permissions) before production.
+    Because the extension renders through Template Operator v2, the permissions the bootstrap grants are shared with anyone who can author a `Template`. On a cluster where tenants (or others) can create Templates, read [Security → how the extension scopes Template Operator v2](security.md#how-the-extension-scopes-template-operator-v2) before production.
 
 ## In this section
 
