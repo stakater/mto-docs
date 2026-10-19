@@ -96,7 +96,7 @@ Each `Tenant` access level becomes one `AppProject` role, at least privilege by 
 Edit cannot create, delete or override Applications, and the web terminal (`exec`) is off unless you enable it for owners. The legacy, broader shape exists for migration only — see [Security](security.md) and [Migrating](migrating.md).
 
 !!! info "Built on Template Operator"
-    Because the extension renders through Template Operator, the permissions the chart grants are shared with anyone who can author a `Template`. On a cluster where tenants (or others) can create Templates, read [Security → Template authors share these permissions](security.md#template-authors-share-these-permissions) before going to production.
+    Because the extension renders through Template Operator, the permissions the chart grants are shared with anyone who can author a `Template`. On a cluster where tenants (or others) can create Templates, read [Security → how the extension scopes Template Operator v2](security.md#how-the-extension-scopes-template-operator-v2) before going to production.
 
 ## In this section
 
