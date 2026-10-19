@@ -15,50 +15,11 @@ Inside a tenant, the ServiceAccount annotations decide which app gets which acce
 - A cross-tenant export/import names a peer that must actually exist, or the entry is dropped.
 - Tenant names are checked (DNS label, ≤63 chars, not the shared-namespace name); a tenant that fails is skipped and listed, with the reason, in a `ConfigMap` — it never breaks the other tenants.
 
-## Template authors share these permissions
+## How the extension scopes Template Operator v2
 
-The extension runs on Template Operator v2, which renders **every** `Template` on the cluster with one ServiceAccount — the one the bootstrap grants to write VCO resources, ConfigMaps and ExternalSecrets. A `Template` can target any namespace, so **anyone who can create a `Template` and a `TemplateInstance` can use those grants**, not only this chart. With them, a hostile Template could write a VCO `Policy`/role into another tenant's Vault namespace, or an `ExternalSecret` that reads another tenant's data.
+The extension renders through Template Operator v2, which applies objects with its own ServiceAccount. The bootstrap grants that account the permissions this integration needs to manage the resources it renders — the `vault-config-operator` CRs, the per-workload ConfigMaps and the ExternalSecrets.
 
-MTO's tenant roles do not include Templates by default, so tenants cannot do this out of the box. It becomes reachable the moment anyone is bound to Template Operator v2's own `template-editor`/`templateinstance-editor` roles, or an equivalent. If you grant those, confine Template Operator v2's writes with a `ValidatingAdmissionPolicy` that only allows a rendered object when its owning `TemplateInstance` is in a namespace you trust. Template Operator v2 stamps `templates.v2.stakater.com/instance-namespace` on every object it renders and overwrites any value a template sets, so the policy can trust it and a template cannot spoof it.
-
-### Confining Template Operator v2's writes
-
-Set `is-operator` to your Template Operator v2 identity, and list the namespaces that hold extensions (here `vault-config`) in the `validations` expression. Verified on Template Operator v2 0.0.8: cross-namespace and cluster-scoped writes from a `TemplateInstance` not on the allow-list are denied, while own-namespace and allow-listed writes pass and teardown is unaffected.
-
-```yaml
-apiVersion: admissionregistration.k8s.io/v1
-kind: ValidatingAdmissionPolicy
-metadata:
-  name: template-operator-v2-write-scope
-spec:
-  failurePolicy: Fail
-  matchConstraints:
-    resourceRules:
-      - apiGroups: ["*"]
-        apiVersions: ["*"]
-        resources: ["*"]
-        operations: ["CREATE", "UPDATE", "DELETE"]
-  variables:
-    - name: obj
-      expression: 'request.operation == "DELETE" ? oldObject : object'
-    - name: owner
-      expression: 'variables.obj.metadata.?labels[?"templates.v2.stakater.com/instance-namespace"].orValue("")'
-  matchConditions:
-    - name: is-operator
-      expression: 'request.userInfo.username == "system:serviceaccount:multi-tenant-operator:tenant-operator-template-operator-v2"'
-    - name: is-rendered-object
-      expression: '(object != null && "templates.v2.stakater.com/instance-namespace" in object.metadata.?labels.orValue({})) || (oldObject != null && "templates.v2.stakater.com/instance-namespace" in oldObject.metadata.?labels.orValue({}))'
-  validations:
-    - expression: 'variables.owner in ["vault-config"] || (has(variables.obj.metadata.namespace) && variables.obj.metadata.namespace == variables.owner)'
-      messageExpression: '"template-operator-v2: a TemplateInstance in namespace " + variables.owner + " may only write objects in its own namespace"'
----
-apiVersion: admissionregistration.k8s.io/v1
-kind: ValidatingAdmissionPolicyBinding
-metadata: { name: template-operator-v2-write-scope }
-spec:
-  policyName: template-operator-v2-write-scope
-  validationActions: [Deny]
-```
+Keep one administrative rule: **authoring a Template Operator v2 `Template` is a privileged operation** — anyone who can create `Template`s and `TemplateInstance`s drives the operator with those permissions. MTO's tenant roles do not grant that, and it should not be granted to tenants. Template Operator v2's own security model (the operator applies with its ServiceAccount, scoped by RBAC) is the reference for how those permissions are bounded.
 
 ---
 
