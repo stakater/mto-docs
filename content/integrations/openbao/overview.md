@@ -90,7 +90,7 @@ Transit needs write access, so `viewer` and `audit-read` get none. Certificates 
 | **Never** | writes per-tenant OpenBao policy by hand | holds a static credential, or reaches another tenant's namespace |
 
 !!! info "Built on Template Operator v2"
-    Because the extension renders through Template Operator v2, the permissions it grants are shared with anyone who can author a `Template`. On a cluster where tenants (or others) can create Templates, read [Security → Template authors share these permissions](security.md#template-authors-share-these-permissions) before production.
+    Because the extension renders through Template Operator v2, the permissions it grants are shared with anyone who can author a `Template`. On a cluster where tenants (or others) can create Templates, read [Security → how the extension scopes Template Operator v2](security.md#how-the-extension-scopes-template-operator-v2) before production.
 
 ## In this section
 
