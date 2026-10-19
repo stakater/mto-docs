@@ -18,22 +18,108 @@ This document contains instructions for installing, uninstalling, and configurin
 
 * The public Helm Chart for MTO is available at [Stakater ghcr Packages](https://github.com/orgs/stakater/packages/container/package/public/charts/multi-tenant-operator).
 
-* Use the `helm install` command to install the MTO helm chart. Here, `webhook.manager.env.bypassedGroups` has the names of groups which are designated as Cluster Admins in your cluster. For this example, we will use `system:masters`
+### Choose the bypassed groups
+
+MTO's webhook refuses to create a namespace that does not belong to a tenant, unless the request comes from a member of one of its **bypassed groups**. List the groups your cluster administrators belong to there; otherwise they cannot create namespaces such as the one for cert-manager or an operator.
+
+Check which groups your own user is in:
 
 ```terminal
-helm install tenant-operator oci://ghcr.io/stakater/public/charts/tenant-operator --namespace multi-tenant-operator --create-namespace --set 'webhook.manager.env.bypassedGroups=system:masters'
+kubectl auth whoami
+```
+
+Which group a cluster administrator has depends on how the cluster was set up:
+
+| Cluster | Administrator group |
+|---|---|
+| Clusters built with `kubeadm` on Kubernetes 1.29 or later, including kind | `kubeadm:cluster-admins` |
+| Older `kubeadm` clusters, and certificate-based admin users | `system:masters` |
+| Managed clusters (AKS, EKS) and clusters behind an identity provider | The group that grants your administrators cluster-admin. `kubectl auth whoami` shows it. |
+
+`webhook.manager.env.bypassedGroups` takes a comma-separated list. Put it in a values file: on the command line, `--set` reads a comma as a list separator.
+
+### Install
+
+Write the values file, listing your administrator groups:
+
+```bash
+cat > mto-values.yaml <<'EOF'
+webhook:
+  manager:
+    env:
+      bypassedGroups: system:masters,kubeadm:cluster-admins
+EOF
+```
+
+Install the chart into MTO's namespace:
+
+```bash
+helm install tenant-operator oci://ghcr.io/stakater/public/charts/tenant-operator \
+  --namespace multi-tenant-operator --create-namespace \
+  --values mto-values.yaml
 ```
 
 !!! note
     It is better to install MTO in its preferred namespace, `multi-tenant-operator`
 
-Wait for the pods to be up:
+Wait for MTO to be ready:
 
-```terminal
-kubectl get pods -n multi-tenant-operator --watch
+```bash
+kubectl -n multi-tenant-operator wait deployment --all --for=condition=Available --timeout=10m
 ```
 
-After all pods come in running state, you can follow the [Tutorials](../../guides/create-tenant.md).
+### Verify
+
+Check that you can still create a namespace that belongs to no tenant. If this is refused, your user is not in a bypassed group: see [Choose the bypassed groups](#choose-the-bypassed-groups).
+
+```bash
+kubectl create namespace mto-install-check
+kubectl delete namespace mto-install-check
+```
+
+Then create a tenant and check that MTO creates its namespace:
+
+```bash
+kubectl apply -f - <<'EOF'
+apiVersion: tenantoperator.stakater.com/v1beta1
+kind: Quota
+metadata:
+  name: small
+spec:
+  resourcequota:
+    hard:
+      configmaps: "10"
+---
+apiVersion: tenantoperator.stakater.com/v1beta3
+kind: Tenant
+metadata:
+  name: install-check
+spec:
+  quota: small
+  accessControl:
+    owners:
+      users: [admin@example.com]
+  namespaces:
+    withTenantPrefix: [dev]
+EOF
+kubectl wait namespace/install-check-dev --for=create --timeout=120s
+kubectl get namespace install-check-dev -L stakater.com/tenant
+```
+
+```text
+NAME                STATUS   AGE   TENANT
+install-check-dev   Active   5s    install-check
+```
+
+Remove the check tenant when you are done. A tenant you delete keeps its namespaces by default, so delete the namespace too:
+
+```bash
+kubectl delete tenant install-check
+kubectl delete quota small
+kubectl delete namespace install-check-dev --ignore-not-found
+```
+
+You can now follow the [Tutorials](../../guides/create-tenant.md).
 
 ### Enterprise License Configuration
 
@@ -62,7 +148,7 @@ MTO can be uninstalled using Helm CLI if Helm was used to install it earlier.
 
 * Use the `helm uninstall` command to remove the previously created `Helm Release` in the `multi-tenant-operator` namespace:
 
-```terminal
+```bash
 helm uninstall tenant-operator --namespace multi-tenant-operator
 ```
 
