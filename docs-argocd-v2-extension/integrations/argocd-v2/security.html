@@ -6003,41 +6003,16 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#template-authors-share-these-permissions" class="md-nav__link">
+    <a href="#how-the-extension-scopes-template-operator-v2" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Template authors share these permissions
+        How the extension scopes Template Operator v2
       
     </span>
   
     </a>
   
-  
-      <nav class="md-nav" aria-label="Template authors share these permissions">
-    
-      <ul class="md-nav__list">
-        
-          
-
-<li class="md-nav__item ">
-  
-  
-    <a href="#confining-template-operators-writes" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Confining Template Operator's writes
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -7448,41 +7423,16 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#template-authors-share-these-permissions" class="md-nav__link">
+    <a href="#how-the-extension-scopes-template-operator-v2" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Template authors share these permissions
+        How the extension scopes Template Operator v2
       
     </span>
   
     </a>
   
-  
-      <nav class="md-nav" aria-label="Template authors share these permissions">
-    
-      <ul class="md-nav__list">
-        
-          
-
-<li class="md-nav__item ">
-  
-  
-    <a href="#confining-template-operators-writes" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Confining Template Operator's writes
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -7592,44 +7542,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Since ArgoCD 3.3 an entry can take a <code>name</code> (a glob). Older ArgoCD drops the field on apply, turning the entry back into "every object of this kind", so the chart refuses a <code>name</code> unless <code>argocd.allowClusterResourceNames: true</code> confirms 3.3+. Use exact names; a prefix glob is not tenant-safe (<code>{{ tenant }}-*</code> for <code>acme</code> also matches <code>acme-corp-prod</code>). See <a href="reference.html#cluster-scoped-kinds">Reference</a>.</p>
 <h2 id="per-tenant-overrides-are-as-trusted-as-the-tenant">Per-tenant overrides are as trusted as the Tenant<a class="headerlink" href="#per-tenant-overrides-are-as-trusted-as-the-tenant" title="Permanent link">#</a></h2>
 <p>A <code>Tenant</code> can override its repositories and resource lists by annotation (<a href="reference.html#per-tenant-overrides">Reference</a>). Those values are shape-checked but not value-checked, so whoever can annotate a <code>Tenant</code> can widen that tenant's access up to what the annotations allow. Keep <code>Tenant</code> write access with the platform, and treat anyone who can annotate a <code>Tenant</code> as trusted with its ArgoCD access.</p>
-<h2 id="template-authors-share-these-permissions">Template authors share these permissions<a class="headerlink" href="#template-authors-share-these-permissions" title="Permanent link">#</a></h2>
-<p>The extension runs on Template Operator, which renders <strong>every</strong> <code>Template</code> on the cluster with one ServiceAccount — the one this chart grants <code>AppProject</code> write in the ArgoCD namespace. A <code>Template</code> can target any namespace, so <strong>anyone who can create a <code>Template</code> and a <code>TemplateInstance</code> can use that grant</strong>, not only this chart.</p>
-<p>MTO's tenant roles do not include Templates by default, so tenants cannot do this out of the box. It becomes reachable the moment anyone is bound to Template Operator's own <code>template-editor</code>/<code>templateinstance-editor</code> roles, or an equivalent. If you grant those, confine Template Operator's writes with a <code>ValidatingAdmissionPolicy</code> that only allows a rendered object when its owning <code>TemplateInstance</code> is in a namespace you trust. Template Operator stamps <code>templates.v2.stakater.com/instance-namespace</code> on every object it renders and overwrites any value a template sets, so the policy can trust it and a template cannot spoof it.</p>
-<h3 id="confining-template-operators-writes">Confining Template Operator's writes<a class="headerlink" href="#confining-template-operators-writes" title="Permanent link">#</a></h3>
-<p>Set <code>is-operator</code> to your Template Operator identity, and list the namespaces that hold extensions (e.g. <code>multi-tenant-operator</code>) in the <code>validations</code> expression. Verified on Template Operator 0.0.8: cross-namespace and cluster-scoped writes from a <code>TemplateInstance</code> not on the allow-list are denied, while own-namespace and allow-listed writes pass and teardown is unaffected.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admissionregistration.k8s.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ValidatingAdmissionPolicy</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-operator-v2-write-scope</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">failurePolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Fail</span>
-<span class="w">  </span><span class="nt">matchConstraints</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">resourceRules</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">apiVersions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"*"</span><span class="p p-Indicator">]</span>
-<span class="w">        </span><span class="nt">operations</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"CREATE"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"UPDATE"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"DELETE"</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">obj</span>
-<span class="w">      </span><span class="nt">expression</span><span class="p">:</span><span class="w"> </span><span class="s">'request.operation</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">"DELETE"</span><span class="nv"> </span><span class="s">?</span><span class="nv"> </span><span class="s">oldObject</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">object'</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">owner</span>
-<span class="w">      </span><span class="nt">expression</span><span class="p">:</span><span class="w"> </span><span class="s">'variables.obj.metadata.?labels[?"templates.v2.stakater.com/instance-namespace"].orValue("")'</span>
-<span class="w">  </span><span class="nt">matchConditions</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">is-operator</span>
-<span class="w">      </span><span class="nt">expression</span><span class="p">:</span><span class="w"> </span><span class="s">'request.userInfo.username</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">"system:serviceaccount:multi-tenant-operator:tenant-operator-template-operator-v2"'</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">is-rendered-object</span>
-<span class="w">      </span><span class="nt">expression</span><span class="p">:</span><span class="w"> </span><span class="s">'(object</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">null</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">"templates.v2.stakater.com/instance-namespace"</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">object.metadata.?labels.orValue({}))</span><span class="nv"> </span><span class="s">||</span><span class="nv"> </span><span class="s">(oldObject</span><span class="nv"> </span><span class="s">!=</span><span class="nv"> </span><span class="s">null</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">"templates.v2.stakater.com/instance-namespace"</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">oldObject.metadata.?labels.orValue({}))'</span>
-<span class="w">  </span><span class="nt">validations</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">expression</span><span class="p">:</span><span class="w"> </span><span class="s">'variables.owner</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">["multi-tenant-operator"]</span><span class="nv"> </span><span class="s">||</span><span class="nv"> </span><span class="s">(has(variables.obj.metadata.namespace)</span><span class="nv"> </span><span class="s">&amp;&amp;</span><span class="nv"> </span><span class="s">variables.obj.metadata.namespace</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">variables.owner)'</span>
-<span class="w">      </span><span class="nt">messageExpression</span><span class="p">:</span><span class="w"> </span><span class="s">'"template-operator-v2:</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">TemplateInstance</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">namespace</span><span class="nv"> </span><span class="s">"</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">variables.owner</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">"</span><span class="nv"> </span><span class="s">may</span><span class="nv"> </span><span class="s">only</span><span class="nv"> </span><span class="s">write</span><span class="nv"> </span><span class="s">objects</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">its</span><span class="nv"> </span><span class="s">own</span><span class="nv"> </span><span class="s">namespace"'</span>
-<span class="nn">---</span>
-<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admissionregistration.k8s.io/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ValidatingAdmissionPolicyBinding</span>
-<span class="nt">metadata</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> name</span><span class="p">:</span><span class="w"> </span><span class="nv">template-operator-v2-write-scope</span><span class="w"> </span><span class="p p-Indicator">}</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">policyName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">template-operator-v2-write-scope</span>
-<span class="w">  </span><span class="nt">validationActions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">Deny</span><span class="p p-Indicator">]</span>
-</code></pre></div>
+<h2 id="how-the-extension-scopes-template-operator-v2">How the extension scopes Template Operator v2<a class="headerlink" href="#how-the-extension-scopes-template-operator-v2" title="Permanent link">#</a></h2>
+<p>The extension renders through Template Operator v2, which applies objects with its own ServiceAccount. This chart grants that account <strong>least privilege</strong> — it may write <code>AppProject</code>s only in the ArgoCD namespace (through a RoleBinding scoped there) and otherwise only read — so there is no broad, cluster-wide write for a stray <code>Template</code> to misuse, and nothing extra for you to install.</p>
+<p>Keep one administrative rule: <strong>authoring a Template Operator v2 <code>Template</code> is a privileged operation</strong> — anyone who can create <code>Template</code>s and <code>TemplateInstance</code>s drives the operator. MTO's tenant roles do not grant that, and it should not be granted to tenants.</p>
 <h2 id="before-production">Before production<a class="headerlink" href="#before-production" title="Permanent link">#</a></h2>
 <p>Four ways to end up with something that looks correct and isn't:</p>
 <ul>
