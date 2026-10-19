@@ -30,50 +30,11 @@ Since ArgoCD 3.3 an entry can take a `name` (a glob). Older ArgoCD drops the fie
 
 A `Tenant` can override its repositories and resource lists by annotation ([Reference](reference.md#per-tenant-overrides)). Those values are shape-checked but not value-checked, so whoever can annotate a `Tenant` can widen that tenant's access up to what the annotations allow. Keep `Tenant` write access with the platform, and treat anyone who can annotate a `Tenant` as trusted with its ArgoCD access.
 
-## Template authors share these permissions
+## How the extension scopes Template Operator v2
 
-The extension runs on Template Operator, which renders **every** `Template` on the cluster with one ServiceAccount — the one this chart grants `AppProject` write in the ArgoCD namespace. A `Template` can target any namespace, so **anyone who can create a `Template` and a `TemplateInstance` can use that grant**, not only this chart.
+The extension renders through Template Operator v2, which applies objects with its own ServiceAccount. This chart grants that account **least privilege** — it may write `AppProject`s only in the ArgoCD namespace (through a RoleBinding scoped there) and otherwise only read — so there is no broad, cluster-wide write for a stray `Template` to misuse, and nothing extra for you to install.
 
-MTO's tenant roles do not include Templates by default, so tenants cannot do this out of the box. It becomes reachable the moment anyone is bound to Template Operator's own `template-editor`/`templateinstance-editor` roles, or an equivalent. If you grant those, confine Template Operator's writes with a `ValidatingAdmissionPolicy` that only allows a rendered object when its owning `TemplateInstance` is in a namespace you trust. Template Operator stamps `templates.v2.stakater.com/instance-namespace` on every object it renders and overwrites any value a template sets, so the policy can trust it and a template cannot spoof it.
-
-### Confining Template Operator's writes
-
-Set `is-operator` to your Template Operator identity, and list the namespaces that hold extensions (e.g. `multi-tenant-operator`) in the `validations` expression. Verified on Template Operator 0.0.8: cross-namespace and cluster-scoped writes from a `TemplateInstance` not on the allow-list are denied, while own-namespace and allow-listed writes pass and teardown is unaffected.
-
-```yaml
-apiVersion: admissionregistration.k8s.io/v1
-kind: ValidatingAdmissionPolicy
-metadata:
-  name: template-operator-v2-write-scope
-spec:
-  failurePolicy: Fail
-  matchConstraints:
-    resourceRules:
-      - apiGroups: ["*"]
-        apiVersions: ["*"]
-        resources: ["*"]
-        operations: ["CREATE", "UPDATE", "DELETE"]
-  variables:
-    - name: obj
-      expression: 'request.operation == "DELETE" ? oldObject : object'
-    - name: owner
-      expression: 'variables.obj.metadata.?labels[?"templates.v2.stakater.com/instance-namespace"].orValue("")'
-  matchConditions:
-    - name: is-operator
-      expression: 'request.userInfo.username == "system:serviceaccount:multi-tenant-operator:tenant-operator-template-operator-v2"'
-    - name: is-rendered-object
-      expression: '(object != null && "templates.v2.stakater.com/instance-namespace" in object.metadata.?labels.orValue({})) || (oldObject != null && "templates.v2.stakater.com/instance-namespace" in oldObject.metadata.?labels.orValue({}))'
-  validations:
-    - expression: 'variables.owner in ["multi-tenant-operator"] || (has(variables.obj.metadata.namespace) && variables.obj.metadata.namespace == variables.owner)'
-      messageExpression: '"template-operator-v2: a TemplateInstance in namespace " + variables.owner + " may only write objects in its own namespace"'
----
-apiVersion: admissionregistration.k8s.io/v1
-kind: ValidatingAdmissionPolicyBinding
-metadata: { name: template-operator-v2-write-scope }
-spec:
-  policyName: template-operator-v2-write-scope
-  validationActions: [Deny]
-```
+Keep one administrative rule: **authoring a Template Operator v2 `Template` is a privileged operation** — anyone who can create `Template`s and `TemplateInstance`s drives the operator. MTO's tenant roles do not grant that, and it should not be granted to tenants.
 
 ## Before production
 
