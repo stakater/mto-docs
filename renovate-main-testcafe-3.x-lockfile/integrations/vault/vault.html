@@ -4939,33 +4939,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
               
             
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../hibernation/overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -8059,7 +8032,7 @@ vault<span class="w"> </span><span class="nb">read</span><span class="w"> </span
 <p>This section applies only to that chain. With an identity provider that emits group names, nothing here is needed.</p>
 <h3 id="step-1-include-group-ids-in-entra-id-tokens">Step 1: Include group IDs in Entra ID tokens<a class="headerlink" href="#step-1-include-group-ids-in-entra-id-tokens" title="Permanent link">#</a></h3>
 <p>In <strong>Microsoft Entra ID → App Registrations</strong>, open the registration used by Keycloak and configure an <strong>optional claim</strong> that includes group IDs in the token.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/azuread-groupClaim.png" data-desc-position="bottom"><img alt="App Registrations setup showing how the group ID claim was added." src="../../images/azuread-groupClaim.png"></a></p>
+<p></p>
 <h3 id="step-2-import-the-claim-as-a-user-attribute-in-keycloak">Step 2: Import the claim as a user attribute in Keycloak<a class="headerlink" href="#step-2-import-the-claim-as-a-user-attribute-in-keycloak" title="Permanent link">#</a></h3>
 <p>On the Keycloak identity provider pointing at Entra ID, create an attribute importer mapper:</p>
 <table>
@@ -8088,10 +8061,10 @@ vault<span class="w"> </span><span class="nb">read</span><span class="w"> </span
 </tr>
 </tbody>
 </table>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/keycloak-idp-mapper.png" data-desc-position="bottom"><img alt="Keycloak IdP mapper showing the group IDs claim mapped to the user attribute." src="../../images/keycloak-idp-mapper.png"></a></p>
+<p></p>
 <h3 id="step-3-forward-the-attribute-into-the-vault-clients-token">Step 3: Forward the attribute into the Vault client's token<a class="headerlink" href="#step-3-forward-the-attribute-into-the-vault-clients-token" title="Permanent link">#</a></h3>
 <p>On the Vault client in Keycloak, create a protocol mapper that forwards the <code>groups</code> user attribute into the token it issues to Vault.</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/vault-client-attribute-mapper.png" data-desc-position="bottom"><img alt="Keycloak Vault client mapper showing the user attribute forwarded as a token claim." src="../../images/vault-client-attribute-mapper.png"></a></p>
+<p></p>
 <h3 id="step-4-put-the-group-ids-in-the-tenant">Step 4: Put the group IDs in the tenant<a class="headerlink" href="#step-4-put-the-group-ids-in-the-tenant" title="Permanent link">#</a></h3>
 <p>Set the tenant's <code>accessControl</code> groups to the Entra ID object IDs rather than group names:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
@@ -8104,7 +8077,7 @@ vault<span class="w"> </span><span class="nb">read</span><span class="w"> </span
 <span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;object-id&gt;</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/azuread-groupID.png" data-desc-position="bottom"><img alt="The tenant spec carrying an Entra ID group object ID." src="../../images/azuread-groupID.png"></a></p>
+<p></p>
 <p>MTO creates the Vault identity group and its alias from whatever string is listed there, so once the object IDs match the claim, a member of that Entra ID group signing in through OIDC lands in the tenant's Vault group.</p>
 
 
