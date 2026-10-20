@@ -4940,33 +4940,6 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -7271,7 +7244,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">18</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span>
 <span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1-5"</span>
 </code></pre></div>
-<p><code>labelSelector</code> is a standard Kubernetes label selector, so <code>matchLabels</code> and <code>matchExpressions</code> both work and are combined with AND. It is re-evaluated on each reconcile, which is what lets namespaces created later be picked up without editing the resource.</p>
+<p><code>labelSelector</code> is a standard Kubernetes label selector, so <code>matchLabels</code> and <code>matchExpressions</code> both work and are combined with AND. It is re-evaluated at each scheduled sleep or wake, so namespaces created later are picked up without editing the resource.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>An empty <code>labelSelector: {}</code> matches no namespaces, not all of them, and a <code>ClusterResourceSupervisor</code> with no <code>spec.namespaces</code> at all hibernates nothing. To cover a broad set, apply a label the target namespaces share and select on that.</p>
@@ -7289,7 +7262,7 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li>The namespace is annotated <code>hibernation.stakater.com/exclude: "true"</code>.</li>
 <li>The namespace is the one the operator itself runs in.</li>
 </ul>
-<p>The annotation is how an individual team opts out of a platform-wide policy without needing the selector changed.</p>
+<p>Anything the supervisor already slept in a namespace that becomes excluded is woken. The annotation is how an individual team opts out of a platform-wide policy without needing the selector changed.</p>
 <h2 id="overlap-between-supervisors">Overlap between supervisors<a class="headerlink" href="#overlap-between-supervisors" title="Permanent link">#</a></h2>
 <p>The admission webhook rejects a <code>ClusterResourceSupervisor</code> that claims a namespace already claimed by another one, and also rejects duplicate names within a single resource. Two cluster-scoped supervisors therefore cannot fight over the same namespace.</p>
 <div class="admonition warning">
@@ -7343,17 +7316,22 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </tr>
 <tr>
 <td><code>sleepingNamespaces</code></td>
-<td>Per-namespace detail of scaled-down workloads and their original replica counts</td>
+<td>Per-namespace detail of scaled-down workloads and their original replica counts. After a failed wake, each application still asleep carries an <code>errorMessage</code></td>
 </tr>
 <tr>
 <td><code>nextReconcileTime</code></td>
 <td>Next scheduled sleep or wake</td>
 </tr>
+<tr>
+<td><code>conditions</code></td>
+<td><code>Ready</code>, <code>True</code> after a successful sleep or wake and <code>False</code> with the reason after a failed one</td>
+</tr>
 </tbody>
 </table>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>clusterresourcesupervisor<span class="w"> </span>dev-environments-hibernation<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.status}'</span>
 </code></pre></div>
-<p>When a namespace you expected is missing from <code>watchedNamespaces</code>, <code>ignoreNamespaces</code> is the first place to look.</p>
+<p>When a namespace you expected is missing from <code>watchedNamespaces</code>, <code>ignoreNamespaces</code> is the first place to look. When <code>currentStatus</code> is <code>error</code>, read the <code>Ready</code> condition, see <a href="https://docs.stakater.com/hibernation-operator-docs/troubleshooting.html#finding-why-a-sleep-or-wake-failed">Troubleshooting</a>.</p>
+<p>The replica counts in <code>sleepingNamespaces</code> are the only record of them. If the status is lost the workloads stay at zero and the operator emits a <code>LedgerLost</code> Warning Event rather than guessing.</p>
 <h2 id="choosing-between-the-two">Choosing between the two<a class="headerlink" href="#choosing-between-the-two" title="Permanent link">#</a></h2>
 <p>Use a <code>ResourceSupervisor</code> when a namespace should decide its own hibernation and the team owning it holds only namespace-level permissions. Use a <code>ClusterResourceSupervisor</code> when a platform team sets the policy across many namespaces, when the set is defined by labels and changes over time, or when ArgoCD sync windows need suppressing during sleep.</p>
 <h2 id="related-guides">Related guides<a class="headerlink" href="#related-guides" title="Permanent link">#</a></h2>
