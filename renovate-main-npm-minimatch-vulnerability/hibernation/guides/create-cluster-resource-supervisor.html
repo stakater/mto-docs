@@ -4941,33 +4941,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
               
             
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -7313,6 +7286,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <td><code>status.nextReconcileTime</code></td>
 <td>Next scheduled sleep or wake</td>
 </tr>
+<tr>
+<td><code>status.conditions</code></td>
+<td><code>Ready</code>, <code>False</code> with the reason when a sleep or wake fails. See <a href="https://docs.stakater.com/hibernation-operator-docs/troubleshooting.html#finding-why-a-sleep-or-wake-failed">Troubleshooting</a></td>
+</tr>
 </tbody>
 </table>
 <p>If a namespace you expected is missing from <code>watchedNamespaces</code>, check <code>ignoreNamespaces</code>. Namespaces annotated <code>hibernation.stakater.com/exclude: "true"</code>, and the operator's own namespace, are always filtered out.</p>
@@ -7343,7 +7320,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p>Two further points before enabling this:</p>
 <ul>
 <li>The operator replaces <code>spec.syncWindows</code> on each named AppProject rather than appending to it. Any sync windows you maintain there by other means are overwritten.</li>
-<li>The integration requires the ArgoCD <code>AppProject</code> CRD to be present, and <code>argoCD.enabled=true</code> at <a href="https://docs.stakater.com/hibernation-operator-docs/getting-started/installation/kubernetes.html#optional-enable-argocd-integration">install time</a>. If the CRD is absent the operator logs the fact and carries on hibernating.</li>
+<li>The integration requires the ArgoCD <code>AppProject</code> CRD to be present, and needs no installation option. If the CRD is absent, the operator logs the fact and continues hibernating. Refer to <a href="https://docs.stakater.com/hibernation-operator-docs/integrations/argocd.html">ArgoCD Integration</a>.</li>
 </ul>
 <h2 id="related-guides">Related guides<a class="headerlink" href="#related-guides" title="Permanent link">#</a></h2>
 <ul>
