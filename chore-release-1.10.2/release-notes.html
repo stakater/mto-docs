@@ -14930,7 +14930,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <ul>
 <li>Tenant and Quota can now be applied in any order, so GitOps tools can sync both in one pass. A Tenant whose Quota does not exist yet is admitted with a warning instead of being rejected, and it reconciles once the Quota exists and is ready.</li>
 <li>Quota status now reports readiness. <code>kubectl get quota</code> shows a <code>READY</code> column, and the <code>Ready</code> condition turns <code>False</code> when the Quota's ResourceQuotas or webhook config fail to sync.</li>
-<li>Tenant status has a new <code>Provisioned</code> condition, shown as a <code>PROVISIONED</code> column in <code>kubectl get tenant</code>. It is <code>True</code> once the tenant's quota is enforced and its namespaces, RBAC and ClusterResourceQuota are in place. <code>Ready</code> still covers everything, including Vault, Casbin and other integrations, so a tenant can be <code>Provisioned</code> but not <code>Ready</code>.</li>
+<li>Tenant status has a new <code>Provisioned</code> condition, shown as a <code>PROVISIONED</code> column in <code>kubectl get tenant</code>. It is <code>True</code> once the tenant's quota is enforced and its namespaces, RBAC and ClusterResourceQuota are in place. <code>Ready</code> still covers everything, including Vault and other integrations, so a tenant can be <code>Provisioned</code> but not <code>Ready</code>.</li>
 <li>The gateway can now trust a private CA. Set <code>components.gateway.values.trustedCA</code> in the <a href="concepts/integration-config.html">IntegrationConfig</a> to a ConfigMap in the operator namespace holding a PEM bundle (key <code>ca-bundle.crt</code> by default). The bundle replaces the image's trust store, so it must include every CA the gateway needs, not just the private one. The gateway restarts when the bundle changes, and the operator reports an error instead of rolling out a stuck pod when the ConfigMap or key is missing.</li>
 <li>The gateway's JWKS fetch location can be overridden with <code>components.gateway.values.jwksBaseURL</code>. Include Dex's issuer path; <code>/keys</code> is appended. Tokens are still validated against the issuer.</li>
 </ul>
@@ -14938,7 +14938,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <ul>
 <li>The gateway now fetches signing keys from a managed Dex over its in-cluster Service instead of the Dex ingress, so it no longer fails when the ingress serves a certificate the gateway does not trust.</li>
 <li>The <code>mto-custom-catalog</code> Helm chart no longer renders an empty <code>config.env</code> in the Subscription when no image overrides are set.</li>
-<li>Go is bumped to 1.26.9 and <code>golang.org/x/net</code> to v0.60.0 to resolve govulncheck findings.</li>
+<li>Go is bumped to 1.26.9 and <code>golang.org/x/net</code> to v0.60.0 to resolve known vulnerabilities.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Behavior changes</p>
