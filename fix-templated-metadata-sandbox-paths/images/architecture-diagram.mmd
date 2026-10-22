@@ -1,0 +1,70 @@
+---
+config:
+  layout: elk
+  theme: default
+---
+flowchart TB
+    Users(["Users"])
+
+    subgraph Operators["MTO Operators"]
+        direction LR
+        subgraph CoreOp["Core Operator"]
+            direction TB
+            TC["Tenant Controller"]
+            NC["Namespace Controller"]
+            EC["Extensions Controller"]
+            QIC["Quota & IntegrationConfig Controller"]
+            PC["Pilot Controller"]
+            WH["Webhook"]
+        end
+        subgraph ChildOps["Child Operators"]
+            direction TB
+            TmplOp["Template Operator"]
+            HibOp["Hibernation Operator"]
+            DepsOp["MTO Dependencies Operator"]
+        end
+    end
+
+    subgraph ConsoleStack["Console Stack"]
+        direction LR
+        MC["MTO Console"]
+        MG["MTO Gateway"]
+        FG["FinOps Gateway"]
+    end
+
+    subgraph Managed["Managed Dependencies"]
+        direction TB
+        subgraph Identity["Identity"]
+            direction LR
+            DX["Dex"]
+            DCO["DexConfigOperator"]
+        end
+        subgraph FinOps["FinOps"]
+            direction LR
+            FO["FinOps Operator"]
+            OC["OpenCost"]
+        end
+        subgraph Data["Data"]
+            direction LR
+            PG[("PostgreSQL")]
+            PR["Prometheus"]
+        end
+    end
+
+    Users --> MC
+    PC -- provisions --> ConsoleStack
+    PC -- deploys CRs --> DepsOp
+    DepsOp -- reconciles --> Identity
+    DepsOp -- reconciles --> FinOps
+    DepsOp -- reconciles --> Data
+    MC --> MG
+    MC --> FG
+    MC --> DX
+    MG --> PG
+    MG --> DX
+    FG --> OC
+    FG --> PG
+    OC --> PR
+    FO -- scrape job --> PG
+    DX --> PG
+    DCO -. configures .-> DX
