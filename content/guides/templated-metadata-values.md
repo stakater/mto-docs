@@ -7,11 +7,11 @@ Templated values are placeholders in your configuration that get replaced with a
 - `"{{ TENANT.USERNAME }}"`
     - **Description**: The username associated with users specified in [Tenant](../concepts/tenant.md) under `Owners` and `Editors`.
     - **Supported in CRs**:
-        - `Tenant`: Under `sandboxMetadata.labels` and `sandboxMetadata.annotations`.
-        - `IntegrationConfig`: Under `metadata.sandboxs.labels` and `metadata.sandboxs.annotations`.
+        - `Tenant`: Under `spec.namespaces.metadata.sandbox.labels` and `spec.namespaces.metadata.sandbox.annotations`.
+        - `IntegrationConfig`: Under `spec.metadata.sandboxes.labels` and `spec.metadata.sandboxes.annotations`.
     - **Example**:
 
       ```yaml
-        annotation:
+        annotations:
           che.eclipse.org/username: "{{ TENANT.USERNAME }}" # double quotes are required
       ```
