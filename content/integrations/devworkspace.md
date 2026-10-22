@@ -16,7 +16,7 @@ DevWorkspaces require specific metadata on a namespace for it to work in it. Wit
 
 ## Automate sandbox metadata for all Tenant users via Tenant CR
 
-With Multi Tenant Operator (MTO), you can set `sandboxMetadata` like below to automate metadata for all sandboxes:
+With Multi Tenant Operator (MTO), you can set `spec.namespaces.metadata.sandbox` like below to automate metadata for all sandboxes:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta3
@@ -48,7 +48,7 @@ spec:
           che.eclipse.org/username: "{{ TENANT.USERNAME }}"
 ```
 
-It will create sandbox namespaces and also apply the `sandboxMetadata` for owners and editors. Notice the template `{{ TENANT.USERNAME }}`, it will resolve the username as value of the corresponding annotation. For more info on templated value, see [Templated Metadata Values](../guides/templated-metadata-values.md)
+It will create sandbox namespaces and also apply the sandbox metadata for owners and editors. Notice the template `{{ TENANT.USERNAME }}`, it will resolve the username as value of the corresponding annotation. For more info on templated value, see [Templated Metadata Values](../guides/templated-metadata-values.md)
 
 ## Automate sandbox metadata for all Tenant users via IntegrationConfig CR
 
