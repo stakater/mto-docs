@@ -8,7 +8,7 @@
         <link rel="canonical" href="https://docs.stakater.com/mto/docs-release-notes-1.11.0/hibernation/concepts/resource-supervisor.html">
       
       
-        <link rel="prev" href="../overview/benefits.html">
+        <link rel="prev" href="../overview/use-cases.html">
       
       
         <link rel="next" href="cluster-resource-supervisor.html">
@@ -4941,33 +4941,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
               
             
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -7347,14 +7320,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">    </span><span class="nt">wakeSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">8</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">     </span><span class="c1"># Wake daily at 08:00 UTC</span>
 </code></pre></div>
 <h3 id="sleep-with-no-scheduled-wake">Sleep with no scheduled wake<a class="headerlink" href="#sleep-with-no-scheduled-wake" title="Permanent link">#</a></h3>
-<p>Omitting <code>wakeSchedule</code> sleeps the workloads at the next sleep time and leaves them there. The operator still reconciles at each subsequent sleep time, so workloads added to the namespace later are hibernated too rather than being left running.</p>
+<p>Omitting <code>wakeSchedule</code> sleeps the workloads at the next sleep time and leaves them there. Workloads are hibernated again at each subsequent sleep time, so workloads added to the namespace later are hibernated too rather than being left running.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">sleepSchedule</span><span class="p">:</span><span class="w"> </span><span class="s">"0</span><span class="nv"> </span><span class="s">12</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*"</span><span class="w">   </span><span class="c1"># Sleep at the next 12:00 UTC, no wake</span>
 </code></pre></div>
 <p>To bring the workloads back, add a <code>wakeSchedule</code> or delete the resource.</p>
 <h3 id="immediate-sleep">Immediate sleep<a class="headerlink" href="#immediate-sleep" title="Permanent link">#</a></h3>
-<p>An empty schedule sleeps the workloads as soon as the resource is created, and reconciles hourly to catch anything new. This suits ephemeral environments such as CI preview namespaces, where the namespace should be parked from the moment it exists.</p>
+<p>An empty schedule sleeps the workloads as soon as the resource is created, and hibernates any new workloads within the hour. This suits ephemeral environments such as CI preview namespaces, where the namespace should be parked from the moment it exists.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hibernation.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ResourceSupervisor</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -7365,16 +7338,21 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Setting <code>wakeSchedule</code> without <code>sleepSchedule</code> is not a supported combination and the operator does not act on it.</p>
+<p>Setting <code>wakeSchedule</code> without <code>sleepSchedule</code> is not supported, and the resource is rejected.</p>
 </div>
 <h2 id="replica-counts-and-restoration">Replica counts and restoration<a class="headerlink" href="#replica-counts-and-restoration" title="Permanent link">#</a></h2>
-<p>Before scaling a workload down, the operator writes its replica count to the annotation <code>hibernation.stakater.com/original-replicas</code> on the workload itself, and reads it back on wake. Keeping the count on the workload rather than in the supervisor's status means it survives operator restarts and stays visible with <code>kubectl get</code>.</p>
+<p>Before scaling a workload down, the operator records its replica count in <code>status.sleepingNamespaces</code> on the <code>ResourceSupervisor</code>, and a wake restores exactly that count. A wake is restore only: a workload the operator never slept is left alone, and no count is ever guessed.</p>
 <p>Workloads already at zero replicas are skipped, so they are not later "restored" to zero-with-a-record they never had.</p>
-<p>Deleting the <code>ResourceSupervisor</code> wakes its workloads first. A finalizer holds the resource until the restore finishes, which makes deletion the straightforward way to cancel hibernation.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The status is the only record of the counts. If it is lost, the workloads stay at zero and the operator emits a <code>LedgerLost</code> Warning Event instead of inventing a count. Scale them back by hand.</p>
+</div>
+<p>Versions before v0.1.104 stored the count in the annotation <code>hibernation.stakater.com/original-replicas</code> on each workload, and woke anything without it to 1 replica. The annotation is still read on wake, so workloads slept by an older version come back at their recorded count, but nothing writes it anymore.</p>
+<p>Deleting the <code>ResourceSupervisor</code> wakes its workloads first. The resource is retained until the restore succeeds, and a failed wake is retried, which makes deletion the straightforward way to cancel hibernation.</p>
 <h2 id="exclusions">Exclusions<a class="headerlink" href="#exclusions" title="Permanent link">#</a></h2>
-<p>A namespace annotated <code>hibernation.stakater.com/exclude: "true"</code> is never hibernated, even if a <code>ResourceSupervisor</code> exists in it. The operator's own namespace is excluded the same way. This gives platform teams a way to protect a namespace regardless of what is created inside it.</p>
+<p>A namespace annotated <code>hibernation.stakater.com/exclude: "true"</code> is never hibernated, even if a <code>ResourceSupervisor</code> exists in it, and anything already asleep there is woken. The operator's own namespace is excluded the same way. This gives platform teams a way to protect a namespace regardless of what is created inside it.</p>
 <h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">#</a></h2>
-<p><code>status.currentStatus</code> reports <code>running</code>, <code>sleeping</code>, or <code>error</code>, and <code>status.nextReconcileTime</code> gives the next time the operator will act.</p>
+<p><code>status.currentStatus</code> reports <code>running</code>, <code>sleeping</code>, or <code>error</code>, and <code>status.nextReconcileTime</code> gives the next time the operator will act. The <code>Ready</code> condition in <code>status.conditions</code> says whether the last sleep or wake succeeded, and if not why. See <a href="https://docs.stakater.com/hibernation-operator-docs/troubleshooting.html#finding-why-a-sleep-or-wake-failed">Troubleshooting</a> for its reasons.</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>resourcesupervisor<span class="w"> </span>nightly-hibernation<span class="w"> </span>-n<span class="w"> </span>my-app-staging<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.status}'</span>
 </code></pre></div>
 <h2 id="differences-from-clusterresourcesupervisor">Differences from ClusterResourceSupervisor<a class="headerlink" href="#differences-from-clusterresourcesupervisor" title="Permanent link">#</a></h2>

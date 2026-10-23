@@ -4941,33 +4941,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
               
             
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -7214,14 +7187,15 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <ul>
 <li><code>status.currentStatus</code> is <code>running</code>, <code>sleeping</code>, or <code>error</code>.</li>
 <li><code>status.nextReconcileTime</code> is the next time the operator will sleep or wake the workloads.</li>
+<li>The <code>Ready</code> condition in <code>status.conditions</code> is <code>True</code> after a successful sleep or wake, and <code>False</code> with the reason when one fails. See <a href="https://docs.stakater.com/hibernation-operator-docs/troubleshooting.html#finding-why-a-sleep-or-wake-failed">Troubleshooting</a>.</li>
 </ul>
 <h2 id="what-gets-hibernated">What gets hibernated<a class="headerlink" href="#what-gets-hibernated" title="Permanent link">#</a></h2>
 <p>Only <code>Deployments</code> and <code>StatefulSets</code> in the same namespace are touched. Other workload types, and resources in any other namespace, are left alone. Workloads already sitting at zero replicas are skipped rather than recorded as sleeping.</p>
-<p>Before scaling a workload down, the operator writes its replica count to the annotation <code>hibernation.stakater.com/original-replicas</code> on the workload itself. Waking reads the count back from there, so you can always see what a sleeping workload will return to:</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>deploy<span class="w"> </span>-n<span class="w"> </span>my-app-staging<span class="w"> </span>-o<span class="w"> </span>custom-columns<span class="o">=</span><span class="se">\</span>
-NAME:.metadata.name,REPLICAS:.spec.replicas,ORIGINAL:<span class="s1">'.metadata.annotations.hibernation\.stakater\.com/original-replicas'</span>
+<p>Before scaling a workload down, the operator records its replica count in the supervisor's <code>status.sleepingNamespaces</code>. Waking restores exactly that count and touches nothing it did not sleep, so you can always see what a sleeping workload will return to:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>resourcesupervisor<span class="w"> </span>my-namespace-hibernation<span class="w"> </span>-n<span class="w"> </span>my-app-staging<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{range .status.sleepingNamespaces[*].sleepingApplications[*]}{.kind}/{.name}: {.replicas}{"\n"}{end}'</span>
 </code></pre></div>
-<p>Deleting the <code>ResourceSupervisor</code> wakes its workloads first. A finalizer holds the resource until the restore completes, so removing the supervisor is a safe way to cancel hibernation rather than a way to strand workloads at zero.</p>
+<p>Deleting the <code>ResourceSupervisor</code> wakes its workloads first. The resource is retained until the restore succeeds, so removing the supervisor is a safe way to cancel hibernation rather than a way to strand workloads at zero.</p>
 <p>A namespace annotated with <code>hibernation.stakater.com/exclude: "true"</code> is skipped, even if a <code>ResourceSupervisor</code> exists in it.</p>
 <h2 id="related-guides">Related guides<a class="headerlink" href="#related-guides" title="Permanent link">#</a></h2>
 <ul>

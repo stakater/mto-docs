@@ -5010,33 +5010,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
               
             
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../hibernation/overview/benefits.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Benefits
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -7008,13 +6981,13 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <ul>
 <li><strong>Description</strong>: The username associated with users specified in <a href="../concepts/tenant.html">Tenant</a> under <code>Owners</code> and <code>Editors</code>.</li>
 <li><strong>Supported in CRs</strong>:<ul>
-<li><code>Tenant</code>: Under <code>sandboxMetadata.labels</code> and <code>sandboxMetadata.annotations</code>.</li>
-<li><code>IntegrationConfig</code>: Under <code>metadata.sandboxs.labels</code> and <code>metadata.sandboxs.annotations</code>.</li>
+<li><code>Tenant</code>: Under <code>spec.namespaces.metadata.sandbox.labels</code> and <code>spec.namespaces.metadata.sandbox.annotations</code>.</li>
+<li><code>IntegrationConfig</code>: Under <code>spec.metadata.sandboxes.labels</code> and <code>spec.metadata.sandboxes.annotations</code>.</li>
 </ul>
 </li>
 <li><strong>Example</strong>:</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">annotation</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">TENANT.USERNAME</span><span class="nv"> </span><span class="s">}}"</span><span class="w"> </span><span class="c1"># double quotes are required</span>
 </code></pre></div>
 </li>
