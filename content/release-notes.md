@@ -68,6 +68,48 @@ Follow these steps to upgrade to version 1.10.x from 1.9.x
 - For OpenShift: update the channel from `release-1.9` to `release-1.10` in your OLM Subscription.
 - For Kubernetes: update the Helm chart version to `1.10.x`.
 
+### v1.10.2
+
+_**October 20, 2026**_
+
+#### Enhancements
+
+- Tenant and Quota can now be applied in any order, so GitOps tools can sync both in one pass. A Tenant whose Quota does not exist yet is admitted with a warning instead of being rejected, and it reconciles once the Quota exists and is ready.
+- Quota status now reports readiness. `kubectl get quota` shows a `READY` column, and the `Ready` condition turns `False` when the Quota's ResourceQuotas or webhook config fail to sync.
+- Tenant status has a new `Provisioned` condition, shown as a `PROVISIONED` column in `kubectl get tenant`. It is `True` once the tenant's quota is enforced and its namespaces, RBAC and ClusterResourceQuota are in place. `Ready` still covers everything, including Vault and other integrations, so a tenant can be `Provisioned` but not `Ready`.
+- The gateway can now trust a private CA. Set `components.gateway.values.trustedCA` in the [IntegrationConfig](concepts/integration-config.md) to a ConfigMap in the operator namespace holding a PEM bundle (key `ca-bundle.crt` by default). The bundle replaces the image's trust store, so it must include every CA the gateway needs, not just the private one. The gateway restarts when the bundle changes, and the operator reports an error instead of rolling out a stuck pod when the ConfigMap or key is missing.
+- The gateway's JWKS fetch location can be overridden with `components.gateway.values.jwksBaseURL`. Include Dex's issuer path; `/keys` is appended. Tokens are still validated against the issuer.
+
+#### Bug Fixes
+
+- The gateway now fetches signing keys from a managed Dex over its in-cluster Service instead of the Dex ingress, so it no longer fails when the ingress serves a certificate the gateway does not trust.
+- The `mto-custom-catalog` Helm chart no longer renders an empty `config.env` in the Subscription when no image overrides are set.
+- Go is bumped to 1.26.9 and `golang.org/x/net` to v0.60.0 to resolve known vulnerabilities.
+
+!!! note "Behavior changes"
+    - A tenant does not reconcile while its Quota is missing or not ready. Its namespaces keep running, but LimitRanges and RoleBindings are not synced and new namespaces cannot join the tenant until the Quota is ready. Check `kubectl get quota` after upgrading.
+    - Changing `spec.quota` on an existing tenant to a Quota that is missing or not ready is rejected. Edits that leave `spec.quota` unchanged are always accepted, even when the current Quota is unhealthy.
+
+#### Component Updates
+
+| Name | Tag | Image |
+| --- | --- | --- |
+| `tenant-operator`         | v1.10.2             | `ghcr.io/stakater/public/mto/tenant-operator`             |
+| `mto-console`             | 1.0.252             | `ghcr.io/stakater/public/mto/mto-console`                 |
+| `mto-gateway`             | 1.0.172             | `ghcr.io/stakater/public/mto/mto-gateway`                 |
+| `finops-operator`         | v0.1.7              | `ghcr.io/stakater/public/finops-operator`                 |
+| `finops-gateway`          | v0.1.6              | `ghcr.io/stakater/public/finops-gateway`                  |
+| `mto-dependencies-operator` | v0.0.14           | `ghcr.io/stakater/public/mto-dependencies-operator`       |
+| `dex-config-operator`     | v0.0.7              | `ghcr.io/stakater/public/dex-config-operator`             |
+| `template-operator`       | v0.1.8              | `ghcr.io/stakater/public/template-operator`               |
+| `template-operator-v2`    | v0.0.8              | `ghcr.io/stakater/public/template-operator-v2`            |
+| `hibernation-operator`    | v0.1.104            | `ghcr.io/stakater/public/hibernation-operator`            |
+| `postgresql`              | 18.2                | `ghcr.io/stakater/public/mto/postgresql`                  |
+| `dex`                     | v0.0.1              | `ghcr.io/stakater/public/mto/dex`                         |
+| `prometheus`              | v2.55.1             | `quay.io/prometheus/prometheus`                           |
+| `kube-state-metrics`      | v2.17.0             | `registry.k8s.io/kube-state-metrics/kube-state-metrics`   |
+| `opencost`                | 1.117.3             | `ghcr.io/opencost/opencost`                               |
+
 ### v1.10.1
 
 _**September 25, 2026**_
