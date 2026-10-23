@@ -96,7 +96,7 @@ this repo's `content/` directory at build time by [`scripts/merge_docs.py`](./sc
   normally with no extra setup.
 - To include sub-operator docs in a local build: clone the sub-operator repos, make
   them available to the build (e.g. via `docker build --build-context`), and pass
-  `--build-arg MERGE_SUBOP_REPOS="template-operator=/path hibernation-operator=/path"`
+  `--build-arg MERGE_SUBOP_REPOS="template-operator=/path hibernation=/path"`
   (space-separated `slug=path` pairs). Alternatively, run
   `python scripts/merge_docs.py --set-repo slug=path ...` on the host as a
   pre-build step, then build normally.
