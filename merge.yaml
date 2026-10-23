@@ -2,14 +2,42 @@
 # `repo` is the canonical source (git URL); the pipeline clones it and the merge
 # runs against the clone via --set-repo. Locally override with --set-repo.
 #
-# Product-first: each operator fills its own top-level nav placeholder section
-# (declared empty in theme_override/mkdocs.yml) with Overview/Concepts/Guides
-# sub-sections. `site_title` labels mto-docs' own section in the joined API page.
+# Product-first: each operator fills its own nav placeholder section (declared
+# empty in theme_override/mkdocs.yml) with Overview/Concepts/Guides sub-sections.
+# A placeholder may be nested (Templates > v2); its name must be unique
+# in the nav, since the lookup takes the first match. `site_title` labels mto-docs'
+# own section in the joined API page.
 site_title: "Tenant Operator"
 
 operators:
+  - title: Templates v2
+    section: "v2"
+    slug: template-operator-v2
+    repo: https://github.com/stakater/template-operator-v2-docs.git
+    live_url: https://docs.stakater.com/template-operator-v2-docs/
+    live_url_style: directory
+    mappings:
+      - from: "index.md"
+        into: "overview"
+        under: "Overview"
+      - from: "about/**"
+        into: "overview"
+        under: "Overview"
+      - from: "concepts/**"
+        into: "concepts"
+        under: "Concepts"
+      - from: "how-to-guides/**"
+        into: "guides"
+        under: "Guides"
+      - from: "reference/api.md"
+        concat_into: "reference/api.md"
+        heading: "Template Operator v2"
+      # template-operator-v2-docs has no images/ directory, so no images mapping here
+    exclude:
+      - "**/.gitkeep"
+
   - title: Templates
-    section: "Templates"
+    section: "v1 – Legacy"
     slug: template-operator          # avoid mkdocs' reserved top-level /templates/ dir
     repo: https://github.com/stakater/template-operator-docs.git
     branch: "0.1"                     # channel branch, keeps this MTO version off the sub-operator's main
@@ -31,7 +59,7 @@ operators:
         concat_into: "reference/api.md"
         under: "Reference"
         as: "API Reference"
-        heading: "Template Operator"
+        heading: "Template Operator v1 – Legacy"
       - from: "images/**"
         into: "images"
     exclude:
