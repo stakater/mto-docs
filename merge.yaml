@@ -4,44 +4,14 @@
 #
 # Product-first: each operator fills its own nav placeholder section (declared
 # empty in theme_override/mkdocs.yml) with Overview/Concepts/Guides sub-sections.
-# A placeholder may be nested (Templates > Legacy (v1)); its name must be unique
+# A placeholder may be nested (Templates > v2); its name must be unique
 # in the nav, since the lookup takes the first match. `site_title` labels mto-docs'
 # own section in the joined API page.
 site_title: "Tenant Operator"
 
 operators:
-  - title: Templates
-    section: "Legacy (v1)"
-    slug: template-operator          # avoid mkdocs' reserved top-level /templates/ dir
-    repo: https://github.com/stakater/template-operator-docs.git
-    live_url: https://docs.stakater.com/template-operator-docs/
-    live_url_style: directory
-    mappings:
-      - from: "overview/**"
-        into: "overview"
-        under: "Overview"
-      - from: "concepts/**"
-        into: "concepts"
-        under: "Concepts"
-      - from: "guides/**"
-        into: "guides"
-        under: "Guides"
-      # concatenated onto mto's own reference/api.src.md; the result,
-      # reference/api.md, is generated and gitignored
-      - from: "reference/api.md"
-        concat_into: "reference/api.md"
-        under: "Reference"
-        as: "API Reference"
-        heading: "Template Operator (Legacy)"
-      - from: "images/**"
-        into: "images"
-    exclude:
-      - "**/.gitkeep"
-      - "concepts/architecture.md"      # shared Architecture lives in Multi-Tenancy
-      - "concepts/terminology.md"       # shared Terminology lives in Multi-Tenancy
-
   - title: Templates v2
-    section: "Templates v2"
+    section: "v2"
     slug: template-operator-v2
     repo: https://github.com/stakater/template-operator-v2-docs.git
     live_url: https://docs.stakater.com/template-operator-v2-docs/
@@ -65,6 +35,36 @@ operators:
       # template-operator-v2-docs has no images/ directory, so no images mapping here
     exclude:
       - "**/.gitkeep"
+
+  - title: Templates
+    section: "v1 (Legacy)"
+    slug: template-operator          # avoid mkdocs' reserved top-level /templates/ dir
+    repo: https://github.com/stakater/template-operator-docs.git
+    live_url: https://docs.stakater.com/template-operator-docs/
+    live_url_style: directory
+    mappings:
+      - from: "overview/**"
+        into: "overview"
+        under: "Overview"
+      - from: "concepts/**"
+        into: "concepts"
+        under: "Concepts"
+      - from: "guides/**"
+        into: "guides"
+        under: "Guides"
+      # concatenated onto mto's own reference/api.src.md; the result,
+      # reference/api.md, is generated and gitignored
+      - from: "reference/api.md"
+        concat_into: "reference/api.md"
+        under: "Reference"
+        as: "API Reference"
+        heading: "Template Operator v1 (Legacy)"
+      - from: "images/**"
+        into: "images"
+    exclude:
+      - "**/.gitkeep"
+      - "concepts/architecture.md"      # shared Architecture lives in Multi-Tenancy
+      - "concepts/terminology.md"       # shared Terminology lives in Multi-Tenancy
 
   - title: FinOps
     section: "FinOps"
