@@ -1,5 +1,47 @@
 # Changelog
 
+## v1.11.x
+
+### Migration Guide
+
+Follow these steps to upgrade to version 1.11.x from 1.10.x
+
+- For OpenShift: update the channel from `release-1.10` to `release-1.11` in your OLM Subscription. MTO 1.11 requires `mto-dependencies-operator` v0.1.16 or later; OLM upgrades it from the same catalog as part of the install plan.
+- For Kubernetes: update the Helm chart version to `1.11.x`. The chart pulls in `mto-dependencies-operator` 0.1.16.
+
+### v1.11.0
+
+_**October 26, 2026**_
+
+#### Enhancements
+
+- FinOps upgraded to [v0.2.0](https://docs.stakater.com/finops-docs/release-notes/).
+- `kube-state-metrics` is now pulled from `ghcr.io/stakater/public/mto/kube-state-metrics`, a mirror of the upstream image, so showback works on clusters that cannot reach `registry.k8s.io`.
+
+#### Bug Fixes
+
+- The FinOps operator and Dex config operator no longer fail to install with `invalid ownership metadata ... "meta.helm.sh/release-namespace" must equal "multi-tenant-operator"` when `mto-dependencies-operator` runs in a different namespace than MTO, which is the default on OpenShift. `mto-dependencies-operator` v0.1.16 keeps the CRDs of its vendored charts current itself instead of handing them to Helm, and brings them up to date on each upgrade. Existing custom resources under those CRDs are preserved.
+
+#### Component Updates
+
+| Name | Tag | Image |
+| --- | --- | --- |
+| `tenant-operator`         | v1.11.0             | `ghcr.io/stakater/public/mto/tenant-operator`             |
+| `mto-console`             | 1.0.253             | `ghcr.io/stakater/public/mto/mto-console`                 |
+| `mto-gateway`             | 1.0.173             | `ghcr.io/stakater/public/mto/mto-gateway`                 |
+| `finops-operator`         | v0.2.0              | `ghcr.io/stakater/public/finops-operator`                 |
+| `finops-gateway`          | v0.1.7              | `ghcr.io/stakater/public/finops-gateway`                  |
+| `mto-dependencies-operator` | v0.1.16           | `ghcr.io/stakater/public/mto-dependencies-operator`       |
+| `dex-config-operator`     | v0.0.7              | `ghcr.io/stakater/public/dex-config-operator`             |
+| `template-operator`       | v0.1.8              | `ghcr.io/stakater/public/template-operator`               |
+| `template-operator-v2`    | v0.0.8              | `ghcr.io/stakater/public/template-operator-v2`            |
+| `hibernation-operator`    | v0.1.104            | `ghcr.io/stakater/public/hibernation-operator`            |
+| `postgresql`              | 18.2                | `ghcr.io/stakater/public/mto/postgresql`                  |
+| `dex`                     | v0.0.7              | `ghcr.io/stakater/public/mto/dex`                         |
+| `prometheus`              | v2.55.1             | `quay.io/prometheus/prometheus`                           |
+| `kube-state-metrics`      | v2.17.0             | `ghcr.io/stakater/public/mto/kube-state-metrics`          |
+| `opencost`                | 1.117.3             | `ghcr.io/opencost/opencost`                               |
+
 ## v1.10.x
 
 ### Migration Guide
