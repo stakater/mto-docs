@@ -709,11 +709,11 @@ kubectl -n multi-tenant-operator wait templateinstances.templates.v2.stakater.co
   --for=jsonpath='{.status.phase}'=Ready --timeout=60s
 ```
 
-## Step 9: stop other Templates borrowing your permissions
+## Step 9 (optional): a guardrail against other Templates
 
-The RBAC from step 4 belongs to template-operator-v2's ServiceAccount, not to your extension. template-operator-v2 renders *any* Template with that ServiceAccount, so everyone who can create a Template and a TemplateInstance gets your extension's permissions, in every namespace.
+The RBAC from step 4 belongs to template-operator-v2's ServiceAccount, not to your extension, and template-operator-v2 renders *any* Template with that ServiceAccount. The primary control for that is in step 4 — grant the operator least privilege and don't hand tenants the Template Operator roles (MTO's tenant roles don't). This step shows an **optional** extra guardrail for a cluster where a broadly-permissioned operator is unavoidable; it is defence-in-depth, not a required fix.
 
-Tenants cannot create Templates by default: MTO's tenant roles do not include them. But template-operator-v2 ships `template-operator-v2-template-editor-role` and `template-operator-v2-templateinstance-editor-role` so that teams can use it themselves. Bind them for `acme`'s owner, in `acme`'s own namespace:
+To see the exposure, bind template-operator-v2's own editor roles for `acme`'s owner in `acme`'s namespace (MTO does not grant these by default):
 
 ```bash
 kubectl -n acme-dev create rolebinding alice-templates \
@@ -867,7 +867,7 @@ kubectl -n acme-dev delete templates.templates.v2.stakater.com plant
 kubectl -n acme-dev delete rolebinding alice-templates alice-templateinstances
 ```
 
-Keep the policy. It is a cluster-wide rule rather than part of one extension: add every namespace that holds extensions to its allowlist. See [Template authors share your permissions](design-rules.md#template-authors-share-your-permissions).
+If you keep the policy, it is a cluster-wide rule rather than part of one extension: add every namespace that holds extensions to its allowlist. The canonical version and the full rationale live in [Template Operator v2 → Security](../../template-operator-v2/concepts/security.md); this extension's own take is in [The operator's ServiceAccount is the boundary](design-rules.md#the-operators-serviceaccount-is-the-boundary).
 
 ## Step 10: opt a tenant out
 
