@@ -21,7 +21,7 @@ And the patterns an extension is built on, each a worked guide:
 
 - The fan-out: one instance renders into many namespaces — [Rendering to many namespaces](../../template-operator-v2/guides/rendering-to-many-namespaces.md).
 - Composition: a parent that renders child `TemplateInstance`s, one per tenant — [Composing TemplateInstances](../../template-operator-v2/guides/composing-templateinstances.md).
-- Testing your gotemplates the way the operator renders them — [Testing Templates](../../template-operator-v2/guides/testing-templates.md).
+- Testing your `gotemplate`s the way the operator renders them — [Testing Templates](../../template-operator-v2/guides/testing-templates.md).
 
 ## Extension-specific notes
 
