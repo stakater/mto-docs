@@ -1,4 +1,7 @@
-# Vault
+# Vault Community
+
+!!! warning "Deprecated — Vault Community (v1 – Legacy)"
+    This is the legacy built-in Vault integration, configured through the `IntegrationConfig`. It is **deprecated**. The current approach is the **[Vault Enterprise](../vault-enterprise/overview.md)** extension, which renders per-tenant configuration through Template Operator v2. (Vault Enterprise isolates each tenant in its own Vault namespace, which requires Vault Enterprise.)
 
 [Vault](https://www.vaultproject.io/) is an identity-based secret and encryption management system: it validates and authorizes a client — a person, a machine or an application — before giving it access to a secret.
 
