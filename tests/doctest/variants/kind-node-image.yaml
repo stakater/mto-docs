@@ -1,0 +1,5 @@
+# Run the page on another Kubernetes version: kind's --image overrides the node
+# image the page pins in kind.yaml. Set KIND_NODE_IMAGE, e.g. kindest/node:v1.34.0.
+substitutions:
+  - from: kind create cluster --name mto-ext --config kind.yaml
+    to: kind create cluster --name mto-ext --config kind.yaml --image "${KIND_NODE_IMAGE:?set KIND_NODE_IMAGE}"
