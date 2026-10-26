@@ -3038,11 +3038,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#the-four-mechanisms" class="md-nav__link">
+    <a href="#the-three-mechanisms" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        The four mechanisms
+        The three mechanisms
       
     </span>
   
@@ -3097,24 +3097,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <span class="md-ellipsis">
       
         Metadata automation: DevWorkspace
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-      
-        
-
-<li class="md-nav__item ">
-  
-  
-    <a href="#companion-operators-mattermost" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Companion operators: Mattermost
       
     </span>
   
@@ -7820,33 +7802,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   
-    <li class="md-nav__item">
-      <a href="../integrations/mattermost.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Mattermost
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
     
     
     
@@ -7856,10 +7811,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_11">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_10">
         
           
-          <label class="md-nav__link" for="__nav_8_11" id="__nav_8_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_10" id="__nav_8_10_label" tabindex="0">
             
   
   
@@ -7877,8 +7832,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_11_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_11">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_10">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -9081,11 +9036,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#the-four-mechanisms" class="md-nav__link">
+    <a href="#the-three-mechanisms" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        The four mechanisms
+        The three mechanisms
       
     </span>
   
@@ -9140,24 +9095,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     <span class="md-ellipsis">
       
         Metadata automation: DevWorkspace
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-      
-        
-
-<li class="md-nav__item ">
-  
-  
-    <a href="#companion-operators-mattermost" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Companion operators: Mattermost
       
     </span>
   
@@ -9233,8 +9170,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </ul>
 <p>That matters when adopting MTO on a cluster already in production. If you have ArgoCD <code>AppProjects</code> you maintain in Git today, leave the integration unset and MTO will not touch them — there is no reconcile to lose and no migration to perform. The same is true of Vault or OpenBao policies managed elsewhere.</p>
 <p>You can then enable an extension for one tenant, see what it produces, and decide whether to move the rest. Adoption is incremental by construction rather than by exception.</p>
-<h2 id="the-four-mechanisms">The four mechanisms<a class="headerlink" href="#the-four-mechanisms" title="Permanent link">#</a></h2>
-<p>MTO extends into surrounding systems in four different ways. Which one applies depends on the system, and the distinction matters because it determines <em>where</em> you configure it.</p>
+<h2 id="the-three-mechanisms">The three mechanisms<a class="headerlink" href="#the-three-mechanisms" title="Permanent link">#</a></h2>
+<p>MTO extends into surrounding systems in three different ways. Which one applies depends on the system, and the distinction matters because it determines <em>where</em> you configure it.</p>
 <table>
 <thead>
 <tr>
@@ -9262,12 +9199,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <td><code>Tenant</code> or <code>IntegrationConfig</code> metadata</td>
 <td>Tenant or cluster-wide</td>
 <td>DevWorkspace</td>
-</tr>
-<tr>
-<td>Companion operator, triggered by label</td>
-<td>Label on the <code>Tenant</code></td>
-<td>One tenant</td>
-<td>Mattermost</td>
 </tr>
 </tbody>
 </table>
@@ -9363,23 +9294,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </code></pre></div>
 <p>Every sandbox MTO creates then arrives ready to be a workspace, with the username substituted per user.</p>
 <p>See <a href="../integrations/devworkspace.html">DevWorkspace</a>.</p>
-<h2 id="companion-operators-mattermost">Companion operators: Mattermost<a class="headerlink" href="#companion-operators-mattermost" title="Permanent link">#</a></h2>
-<p>The fourth mechanism is a separately installed operator that watches Tenants and acts on the ones that opt in with a label.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sigma</span>
-<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">stakater.com/mattermost</span><span class="p">:</span><span class="w"> </span><span class="s">'true'</span>
-</code></pre></div>
-<p>With the <code>MTO-Mattermost-Integration-Operator</code> installed, that label makes it create and manage a Mattermost Team from the Tenant — members follow tenant membership, so someone leaving the tenant leaves the team.</p>
-<p>See <a href="../integrations/mattermost.html">Mattermost</a>.</p>
 <h2 id="choosing-where-to-configure">Choosing where to configure<a class="headerlink" href="#choosing-where-to-configure" title="Permanent link">#</a></h2>
 <ul>
 <li>The tool needs per-tenant configuration that differs between tenants → <strong>Extensions CR</strong> (ArgoCD today).</li>
 <li>The tool needs one connection and one policy set for the cluster → <strong>IntegrationConfig <code>integrations</code></strong> (ArgoCD endpoint, Vault).</li>
 <li>The tool only needs namespaces to be labelled correctly → <strong>metadata automation</strong> (DevWorkspace).</li>
-<li>The tool has its own operator that watches Tenants → <strong>label the Tenant</strong> (Mattermost).</li>
 <li>The tool is configured through Kubernetes objects, and none of the above covers it → <strong>build an extension</strong> with template-operator-v2. See <a href="../integrations/build-your-own/overview.html">Build your own extension</a>.</li>
 </ul>
 <h2 id="next">Next<a class="headerlink" href="#next" title="Permanent link">#</a></h2>
@@ -9388,7 +9307,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><a href="../integrations/argocd.html">ArgoCD Multi-Tenancy</a></li>
 <li><a href="../integrations/vault/vault.html">Vault Multi-Tenancy</a></li>
 <li><a href="../integrations/devworkspace.html">DevWorkspace</a></li>
-<li><a href="../integrations/mattermost.html">Mattermost</a></li>
 <li><a href="../integrations/build-your-own/overview.html">Build your own extension</a></li>
 </ul>
 
