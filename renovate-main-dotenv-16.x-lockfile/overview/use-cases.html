@@ -6981,8 +6981,54 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6">
+        
+          
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenBao
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenBao
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../integrations/openbao/readme.html" class="md-nav__link">
+      <a href="../integrations/openbao/overview.html" class="md-nav__link">
         
   
   
@@ -6998,6 +7044,230 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/openbao/installation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/openbao/giving-an-application-a-secret.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Giving an application a secret
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/openbao/secrets-and-sharing.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secrets and sharing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/openbao/encryption-and-certificates.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Encryption and certificates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/openbao/delivery-and-login.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Delivery and login
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/openbao/security.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/openbao/operating.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operating
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../integrations/openbao/reference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -8547,7 +8817,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p><strong>What MTO does.</strong> MTO provisions an ArgoCD <code>AppProject</code> per tenant, scoped to the repositories the tenant may deploy from and the namespaces it may deploy into, with cluster-resource allow-lists and namespace-resource deny-lists. Delivery boundaries line up with platform boundaries because both come from the same Tenant definition. See <a href="../integrations/argocd.html">ArgoCD Multi-Tenancy</a>.</p>
 <h2 id="shared-secrets-management">Shared secrets management<a class="headerlink" href="#shared-secrets-management" title="Permanent link">#</a></h2>
 <p><strong>The situation.</strong> A central secrets platform runs alongside Kubernetes, and its authorization model is a second administrative system with its own namespaces, policies and roles — drifting from the cluster's tenancy model every time a team changes.</p>
-<p><strong>What MTO does.</strong> The tenant boundary extends into <a href="../integrations/openbao/readme.html">OpenBao</a> or <a href="../integrations/vault/vault.html">Vault</a>: each tenant gets its own secrets path with the policies and login roles that let its people and workloads reach it and nothing else, derived from the <code>Tenant</code> resource you already maintain. Application teams stop writing secrets-platform policy entirely.</p>
+<p><strong>What MTO does.</strong> The tenant boundary extends into <a href="../integrations/openbao/overview.html">OpenBao</a> or <a href="../integrations/vault/vault.html">Vault</a>: each tenant gets its own secrets path with the policies and login roles that let its people and workloads reach it and nothing else, derived from the <code>Tenant</code> resource you already maintain. Application teams stop writing secrets-platform policy entirely.</p>
 <h2 id="building-an-internal-developer-platform">Building an internal developer platform<a class="headerlink" href="#building-an-internal-developer-platform" title="Permanent link">#</a></h2>
 <p>MTO does not try to be every platform service. It provides the common tenant layer underneath them — one consistent answer to <em>who the tenant is, what they own, what they may consume, and what boundaries apply</em> — across Kubernetes and the supported services around it.</p>
 <pre class="mermaid"><code>flowchart TB
