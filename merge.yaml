@@ -38,6 +38,28 @@ operators:
       - "concepts/architecture.md"      # shared Architecture lives in Multi-Tenancy
       - "concepts/terminology.md"       # shared Terminology lives in Multi-Tenancy
 
+  - title: Templates v2
+    section: "Templates v2"
+    slug: template-operator-v2
+    repo: https://github.com/stakater/template-operator-v2-docs.git
+    live_url: https://docs.stakater.com/template-operator-v2/latest/
+    live_url_style: html
+    mappings:
+      - from: "about/**"
+        into: "overview"
+        under: "Overview"
+      - from: "concepts/**"
+        into: "concepts"
+        under: "Concepts"
+      - from: "how-to-guides/**"
+        into: "guides"
+        under: "Guides"
+      # no reference/api.md concat: its types share names with Template Operator v1
+      # (Template, TemplateInstance, ...), so in-page links would jump to the v1 types;
+      # links to the API reference go to the live v2 site instead
+    exclude:
+      - "**/.gitkeep"
+
   - title: FinOps
     section: "FinOps"
     repo: https://github.com/stakater/finops-docs.git
