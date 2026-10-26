@@ -121,11 +121,11 @@ MTO extends the tenant's permission model into Vault, creating the paths, roles 
 
 More details on [Vault Multi-Tenancy](../integrations/vault/vault.md).
 
-### Developer workspaces and collaboration
+### Developer workspaces
 
-DevWorkspace gives tenant users cloud development environments inside their own namespaces. Mattermost creates a team and a set of channels per tenant, and removes users from it when they leave the tenant.
+DevWorkspace gives tenant users cloud development environments inside their own namespaces.
 
-More details on [DevWorkspace](../integrations/devworkspace.md) and [Mattermost](../integrations/mattermost.md).
+More details on [DevWorkspace](../integrations/devworkspace.md).
 
 More details on [Extensions](../concepts/extensions.md).
 
