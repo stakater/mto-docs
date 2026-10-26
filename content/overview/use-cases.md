@@ -83,7 +83,7 @@ This raises infrastructure utilization without giving every customer a dedicated
 
 **The situation.** A central secrets platform runs alongside Kubernetes, and its authorization model is a second administrative system with its own namespaces, policies and roles — drifting from the cluster's tenancy model every time a team changes.
 
-**What MTO does.** The tenant boundary extends into [OpenBao](../integrations/openbao/readme.md) or [Vault](../integrations/vault/vault.md): each tenant gets its own secrets path with the policies and login roles that let its people and workloads reach it and nothing else, derived from the `Tenant` resource you already maintain. Application teams stop writing secrets-platform policy entirely.
+**What MTO does.** The tenant boundary extends into [OpenBao](../integrations/openbao/overview.md) or [Vault](../integrations/vault/vault.md): each tenant gets its own secrets path with the policies and login roles that let its people and workloads reach it and nothing else, derived from the `Tenant` resource you already maintain. Application teams stop writing secrets-platform policy entirely.
 
 ## Building an internal developer platform
 
