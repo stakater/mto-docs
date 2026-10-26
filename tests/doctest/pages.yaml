@@ -1,0 +1,15 @@
+# Docs pages that CI runs end to end (scripts/page_runner.py), and the variants
+# each one is also run with. Every page creates and deletes its own kind cluster.
+pages:
+  - page: content/integrations/build-your-own/tutorial.md
+    variants:
+      # As written: the latest MTO, the template-operator-v2 that MTO deploys,
+      # Kubernetes as pinned on the page.
+      - name: as-written
+      # The newest kindest/node image. CI sets KIND_NODE_IMAGE.
+      - name: kubernetes-latest
+        file: tests/doctest/variants/kind-node-image.yaml
+      # template-operator-v2 installed from its own chart, so a release is
+      # tested before MTO ships it. CI sets TOV2_CHART_VERSION (empty = latest).
+      - name: template-operator-v2-latest
+        file: tests/doctest/variants/template-operator-v2-standalone.yaml
