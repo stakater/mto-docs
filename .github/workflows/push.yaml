@@ -6,6 +6,12 @@ on:
       - 'main'
       - '[0-9]+.[0-9]+'
 
+# A newer push to the same branch supersedes the running one. Deploys across
+# branches are queued in the shared workflow, so this must not reuse its group.
+concurrency:
+  group: push-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   # An approved PR already committed its screenshots (screenshots.yaml), so
   # capturing again here would only risk failing the deploy on a console outage.
@@ -31,7 +37,7 @@ jobs:
 
   push:
     needs: hook
-    uses: stakater/.github/.github/workflows/push_versioned_doc.yaml@v0.0.192
+    uses: stakater/.github/.github/workflows/push_versioned_doc.yaml@v0.0.202
     with:
       PRE_BUILD_HOOK: ${{ needs.hook.outputs.pre_build }}
       LATEST_DOC_VERSION: ${{ vars.LATEST_DOC_VERSION }}
