@@ -11,3 +11,5 @@ MTO can extend tenancy into the tools you run alongside the cluster, so each ten
 - [Mattermost](mattermost.md) – A Mattermost team per tenant, whose members follow tenant membership.
 
 Each extension is configured once for the cluster; everything per tenant is derived from your [`Tenant`](../concepts/tenant.md) resources, so a new tenant needs no setup step in the tool.
+
+To integrate a tool that is not listed here, see [Build your own extension](build-your-own/overview.md).

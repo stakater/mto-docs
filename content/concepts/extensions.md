@@ -169,6 +169,7 @@ See [Mattermost](../integrations/mattermost.md).
 - The tool needs one connection and one policy set for the cluster → **IntegrationConfig `integrations`** (ArgoCD endpoint, Vault).
 - The tool only needs namespaces to be labelled correctly → **metadata automation** (DevWorkspace).
 - The tool has its own operator that watches Tenants → **label the Tenant** (Mattermost).
+- The tool is configured through Kubernetes objects, and none of the above covers it → **build an extension** with template-operator-v2. See [Build your own extension](../integrations/build-your-own/overview.md).
 
 ## Next
 
@@ -177,3 +178,4 @@ See [Mattermost](../integrations/mattermost.md).
 - [Vault Multi-Tenancy](../integrations/vault/vault.md)
 - [DevWorkspace](../integrations/devworkspace.md)
 - [Mattermost](../integrations/mattermost.md)
+- [Build your own extension](../integrations/build-your-own/overview.md)
