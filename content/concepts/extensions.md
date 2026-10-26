@@ -15,16 +15,15 @@ That matters when adopting MTO on a cluster already in production. If you have A
 
 You can then enable an extension for one tenant, see what it produces, and decide whether to move the rest. Adoption is incremental by construction rather than by exception.
 
-## The four mechanisms
+## The three mechanisms
 
-MTO extends into surrounding systems in four different ways. Which one applies depends on the system, and the distinction matters because it determines *where* you configure it.
+MTO extends into surrounding systems in three different ways. Which one applies depends on the system, and the distinction matters because it determines *where* you configure it.
 
 | Mechanism | Configured in | Scope | Used by |
 |---|---|---|---|
 | Extensions CR | `Extensions` resource | One tenant | ArgoCD |
 | IntegrationConfig integrations | `IntegrationConfig.spec.integrations` | Cluster-wide | ArgoCD, Vault |
 | Namespace metadata automation | `Tenant` or `IntegrationConfig` metadata | Tenant or cluster-wide | DevWorkspace |
-| Companion operator, triggered by label | Label on the `Tenant` | One tenant | Mattermost |
 
 Only the first of these uses the `Extensions` custom resource. Today that resource carries ArgoCD configuration and nothing else — its spec has exactly two fields, `tenantName` and `argoCD`.
 
@@ -146,29 +145,11 @@ Every sandbox MTO creates then arrives ready to be a workspace, with the usernam
 
 See [DevWorkspace](../integrations/devworkspace.md).
 
-## Companion operators: Mattermost
-
-The fourth mechanism is a separately installed operator that watches Tenants and acts on the ones that opt in with a label.
-
-```yaml
-apiVersion: tenantoperator.stakater.com/v1beta3
-kind: Tenant
-metadata:
-  name: sigma
-  labels:
-    stakater.com/mattermost: 'true'
-```
-
-With the `MTO-Mattermost-Integration-Operator` installed, that label makes it create and manage a Mattermost Team from the Tenant — members follow tenant membership, so someone leaving the tenant leaves the team.
-
-See [Mattermost](../integrations/mattermost.md).
-
 ## Choosing where to configure
 
 - The tool needs per-tenant configuration that differs between tenants → **Extensions CR** (ArgoCD today).
 - The tool needs one connection and one policy set for the cluster → **IntegrationConfig `integrations`** (ArgoCD endpoint, Vault).
 - The tool only needs namespaces to be labelled correctly → **metadata automation** (DevWorkspace).
-- The tool has its own operator that watches Tenants → **label the Tenant** (Mattermost).
 - The tool is configured through Kubernetes objects, and none of the above covers it → **build an extension** with template-operator-v2. See [Build your own extension](../integrations/build-your-own/overview.md).
 
 ## Next
@@ -177,5 +158,4 @@ See [Mattermost](../integrations/mattermost.md).
 - [ArgoCD Multi-Tenancy](../integrations/argocd.md)
 - [Vault Multi-Tenancy](../integrations/vault/vault.md)
 - [DevWorkspace](../integrations/devworkspace.md)
-- [Mattermost](../integrations/mattermost.md)
 - [Build your own extension](../integrations/build-your-own/overview.md)
