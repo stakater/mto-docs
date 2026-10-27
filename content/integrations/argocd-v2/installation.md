@@ -7,7 +7,7 @@ For a platform administrator: install the chart once, then opt tenants in. The w
 | | |
 |:---|:---|
 | [Multi-Tenant Operator](../../getting-started/installation/overview.md) | `Tenant` `v1beta3` and `IntegrationConfig` `v1beta1` |
-| [Template Operator v2](https://github.com/stakater/template-operator-v2) (`templates.v2.stakater.com`) | **Required** — the extension is configuration for it and does nothing without it. `0.0.8` recommended; `0.0.7+` keeps `AppProject`s on teardown (see [Operating](operating.md#what-deletes-an-appproject)); `strict` drift protection (the default) needs its sync webhook |
+| [Template Operator v2](../../template-operator-v2/concepts/overview.md) (`templates.v2.stakater.com`) | **Required** — the extension is configuration for it and does nothing without it. `0.0.8` recommended; `0.0.7+` keeps `AppProject`s on teardown (see [Operating](operating.md#what-deletes-an-appproject)); `strict` drift protection (the default) needs its sync webhook |
 | ArgoCD | `argoproj.io/v1alpha1` `AppProject`; 3.x, tested on 3.5.4 |
 | Kubernetes | 1.33+ tested. Template Operator v2's CRDs do not install on 1.31 |
 

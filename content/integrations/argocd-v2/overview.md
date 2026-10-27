@@ -1,4 +1,4 @@
-# ArgoCD
+# Overview
 
 Give every tenant its own ArgoCD `AppProject` — scoped to the tenant's namespaces, with owner, edit and view roles — derived from the `Tenant` you already maintain and kept in sync as it changes.
 
@@ -6,7 +6,7 @@ Give every tenant its own ArgoCD `AppProject` — scoped to the tenant's namespa
     This is the Helm-chart ArgoCD extension ([`mto-extension-argocd`](https://github.com/stakater/mto-extension-argocd)). It replaces the built-in ArgoCD integration configured through the `Extensions` resource, now deprecated — see [the older integration](../argocd.md) and [Migrating](migrating.md).
 
 !!! warning "Requires Template Operator v2"
-    The extension is **configuration for [Template Operator v2](https://github.com/stakater/template-operator-v2)** (custom resources in the `templates.v2.stakater.com` API group) — it installs no controller of its own and does nothing until Template Operator v2 reconciles it. Template Operator v2 must be running on the cluster; MTO can deploy it for you. See [Installation](installation.md).
+    The extension is **configuration for [Template Operator v2](../../template-operator-v2/concepts/overview.md)** (custom resources in the `templates.v2.stakater.com` API group) — it installs no controller of its own and does nothing until Template Operator v2 reconciles it. Template Operator v2 must be running on the cluster; MTO can deploy it for you. See [Installation](installation.md).
 
 ## At a glance
 
@@ -59,7 +59,7 @@ No `AppProject` YAML and no hand-written ArgoCD RBAC — and nothing is created 
 
 ## How it works
 
-The chart installs no operator of its own. It renders three [Template Operator v2](https://github.com/stakater/template-operator-v2) objects — a parent `Template`, a child `Template`, and one parent `TemplateInstance` — and Template Operator v2 reconciles one `AppProject` per tenant.
+The chart installs no operator of its own. It renders three [Template Operator v2](../../template-operator-v2/concepts/overview.md) objects — a parent `Template`, a child `Template`, and one parent `TemplateInstance` — and Template Operator v2 reconciles one `AppProject` per tenant.
 
 ```mermaid
 flowchart LR
