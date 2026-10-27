@@ -4,7 +4,7 @@ These steps are done once per cluster, by a platform administrator, before any t
 
 ## Deploy the stack
 
-Loki, Mimir, Tempo, a collector and a Grafana instance must be running, with multi-tenancy enabled on Loki, Mimir and Tempo, and the MTO gateways in front of Loki and Mimir. Each component and how it can be deployed — operator or chart — is listed in [How it works → what it is made of](how-it-works.md#what-it-is-made-of). Stakater can deploy the whole stack, or only the MTO components in front of an LGTM stack you already run.
+Loki, Mimir, Tempo, a collector and a Grafana instance must be running, with multi-tenancy enabled on Loki, Mimir and Tempo, and the MTO gateways in front of Loki and Mimir. Each component and how it can be deployed — operator or chart — is listed in [How it works → what it is made of](how-it-works.md#what-it-is-made-of). Stakater can deploy the whole stack, or only the MTO components in front of a Grafana stack you already run.
 
 ## Install the Grafana extension
 

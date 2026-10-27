@@ -2,7 +2,7 @@
 
 Your `Tenant` resources already say who your teams are: which namespaces they own, what they may use, and who may act for them. The Grafana stack integration extends that same definition into observability.
 
-One shared stack — [Loki](https://grafana.com/oss/loki/), [Mimir](https://grafana.com/oss/mimir/), [Tempo](https://grafana.com/oss/tempo/) and [Grafana](https://grafana.com/) — then serves every tenant, and each one reaches only its own logs, metrics, traces and dashboards. Nothing about a tenant is described twice: the `Tenant` that governs its namespaces and access is the tenant the observability stack partitions on.
+One shared stack — [Loki](https://grafana.com/oss/loki/), [Mimir](https://grafana.com/oss/mimir/), [Tempo](https://grafana.com/oss/tempo/) and [Grafana](https://grafana.com/), the components also known as the LGTM stack — then serves every tenant, and each one reaches only its own logs, metrics, traces and dashboards. Nothing about a tenant is described twice: the `Tenant` that governs its namespaces and access is the tenant the observability stack partitions on.
 
 Note that the Grafana stack integration is optional, and ships as a separate extension.
 

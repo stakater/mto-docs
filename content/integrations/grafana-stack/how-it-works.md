@@ -95,7 +95,7 @@ Where both an operator and a chart exist, either will do, and the choice can fol
 - **Mimir** — Grafana publishes the chart and no operator of its own, so the chart is the route.
 - **Grafana** — the extension configures an instance the Grafana Operator owns, so that operator is required rather than preferred.
 
-Stakater can deploy the whole stack, or only the MTO components in front of an LGTM stack you already run. Either way two requirements hold: multi-tenancy must be enabled on Loki, Mimir and Tempo, and whatever collects telemetry must tag it with the source pod's namespace.
+Stakater can deploy the whole stack, or only the MTO components in front of a Grafana stack you already run. Either way two requirements hold: multi-tenancy must be enabled on Loki, Mimir and Tempo, and whatever collects telemetry must tag it with the source pod's namespace.
 
 ---
 
