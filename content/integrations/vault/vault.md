@@ -1,9 +1,7 @@
 # Vault Community
 
 !!! warning "Deprecated — Vault Community (Legacy)"
-    This is the legacy built-in Vault integration, configured through the `IntegrationConfig`. It is **deprecated** — use the **[Vault Enterprise](../vault-enterprise/overview.md)** extension instead.
-
-    Its limitation is the strength of the boundary: it separates tenants with a per-tenant KV engine, policies and identity groups, but all of that lives in one shared Vault with no per-tenant Vault *namespace*. A Vault namespace is a hard isolation boundary, and it exists only in Vault Enterprise. The Vault Enterprise extension gives each tenant its own namespace, rendered through Template Operator v2.
+    This is the legacy built-in Vault integration, configured through the `IntegrationConfig`, and it is **deprecated** — use the **[Vault Enterprise](../vault-enterprise/overview.md)** extension instead. The limitation is the strength of the boundary: Vault Community separates tenants with a per-tenant KV engine, policies and identity groups, but all of that lives in one shared Vault with no per-tenant Vault *namespace* — the hard isolation boundary that exists only in Vault Enterprise, which the Enterprise extension gives each tenant, rendered through Template Operator v2.
 
 [Vault](https://www.vaultproject.io/) is an identity-based secret and encryption management system: it validates and authorizes a client — a person, a machine or an application — before giving it access to a secret.
 
