@@ -8,7 +8,7 @@ For a platform administrator: a Vault admin sets up the login VCO uses once, the
 |:---|:---|
 | Vault | **Enterprise** (tested on 2.1.1). Tenant isolation is one Vault *namespace* per tenant, and namespaces exist only in Enterprise. On Community Edition every tenant's objects land in root and collide. |
 | [`vault-config-operator`](https://github.com/redhat-cop/vault-config-operator) (VCO) | **v1.0.3 or later** — the first release with `spec.authentication.targetNamespace` and the `Namespace` fix the charts rely on. |
-| [Template Operator v2](https://github.com/stakater/template-operator-v2) (`templates.v2.stakater.com`) | **Required** — the extension is configuration for it and does nothing without it. `0.0.8` recommended. |
+| [Template Operator v2](../../template-operator-v2/concepts/overview.md) (`templates.v2.stakater.com`) | **Required** — the extension is configuration for it and does nothing without it. `0.0.8` recommended. |
 | [Multi-Tenant Operator](../../getting-started/installation/overview.md) | the `Tenant` CRD. MTO labels each tenant namespace `stakater.com/tenant: <tenant>`; that label is what the charts key on. |
 | [External Secrets Operator](https://external-secrets.io/) | only if `parent.eso` is enabled (the default) — see [Delivery and login](delivery-and-login.md). |
 
@@ -16,7 +16,9 @@ For a platform administrator: a Vault admin sets up the login VCO uses once, the
 
 The simplest route is to let MTO deploy it: set `components.templateOperatorV2.mode: Managed` in the `IntegrationConfig`. MTO then runs it in `multi-tenant-operator` as the ServiceAccount `tenant-operator-template-operator-v2` — the value used for `templateOperator` below. To install it yourself from its chart instead, it runs as `template-operator-v2` in `stakater-template-operator`.
 
-## Vault bootstrap (one time, by a Vault admin)
+## Install `vault-config-operator`
+
+The extension renders [`vault-config-operator`](https://github.com/redhat-cop/vault-config-operator) (VCO) custom resources, so VCO must be running on the cluster — **v1.0.3 or later** (see [Requirements](#requirements)). Install it from OperatorHub or with its Helm chart, following the operator's own README. The Vault bootstrap below then sets up the Kubernetes-auth login VCO uses.
 
 VCO logs in to Vault with the Kubernetes auth method **once**, in `vco.namespace` (empty = root), as the ServiceAccount the bootstrap chart creates. Before the chart can do anything, a Vault admin sets up that login:
 
