@@ -1,5 +1,8 @@
 # Extensions
 
+!!! danger "Deprecated"
+    This extension model — the `Extensions` resource, `IntegrationConfig` integrations, and label-triggered companion operators — is **deprecated** and will be removed in a future release. Build your own extension with Template Operator v2 instead; see [Build your own extension](../extensions/build-your-own/overview.md).
+
 A tenant boundary that stops at the Kubernetes API is only half a boundary. The team that owns `bluesky-dev` also needs an ArgoCD project scoped to its namespaces, a Vault path only it can read, and a workspace it can develop in — and if those are configured by hand, they drift away from the Tenant the moment membership changes.
 
 Extensions are how MTO projects the same Tenant definition into the tools around the cluster.
@@ -79,7 +82,7 @@ The fields:
 
 MTO reconciles this into an ArgoCD `AppProject` whose destinations are the tenant's namespaces. The tenant gets GitOps self-service; nobody hand-edits ArgoCD RBAC.
 
-See [ArgoCD Multi-Tenancy](../integrations/argocd.md) for the full integration.
+See [ArgoCD Multi-Tenancy](../extensions/argocd.md) for the full integration.
 
 ## Cluster-wide integrations: IntegrationConfig
 
@@ -113,7 +116,7 @@ Some systems are configured once for the whole cluster rather than per tenant, u
 
 With Vault enabled, MTO creates a path, a role and policies per tenant, and binds them to the tenant's owners, editors and viewers. The `policies` list lets you attach additional custom policies to specific tenant roles.
 
-See [Vault Multi-Tenancy](../integrations/vault/vault.md) and [Integration Config](integration-config.md).
+See [Vault Multi-Tenancy](../extensions/vault/vault.md) and [Integration Config](integration-config.md).
 
 ## Metadata automation: DevWorkspace
 
@@ -143,19 +146,19 @@ Setting that by hand on every sandbox does not scale, so MTO templates it. Clust
 
 Every sandbox MTO creates then arrives ready to be a workspace, with the username substituted per user.
 
-See [DevWorkspace](../integrations/devworkspace.md).
+See [DevWorkspace](../extensions/devworkspace.md).
 
 ## Choosing where to configure
 
 - The tool needs per-tenant configuration that differs between tenants → **Extensions CR** (ArgoCD today).
 - The tool needs one connection and one policy set for the cluster → **IntegrationConfig `integrations`** (ArgoCD endpoint, Vault).
 - The tool only needs namespaces to be labelled correctly → **metadata automation** (DevWorkspace).
-- The tool is configured through Kubernetes objects, and none of the above covers it → **build an extension** with template-operator-v2. See [Build your own extension](../integrations/build-your-own/overview.md).
+- The tool is configured through Kubernetes objects, and none of the above covers it → **build an extension** with template-operator-v2. See [Build your own extension](../extensions/build-your-own/overview.md).
 
 ## Next
 
 - [Integration Config](integration-config.md) — the cluster-wide configuration object
-- [ArgoCD Multi-Tenancy](../integrations/argocd.md)
-- [Vault Multi-Tenancy](../integrations/vault/vault.md)
-- [DevWorkspace](../integrations/devworkspace.md)
-- [Build your own extension](../integrations/build-your-own/overview.md)
+- [ArgoCD Multi-Tenancy](../extensions/argocd.md)
+- [Vault Multi-Tenancy](../extensions/vault/vault.md)
+- [DevWorkspace](../extensions/devworkspace.md)
+- [Build your own extension](../extensions/build-your-own/overview.md)

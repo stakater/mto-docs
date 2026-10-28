@@ -113,19 +113,19 @@ The tenant boundary does not stop at the Kubernetes API. Extensions project the 
 
 MTO provisions an `AppProject` per tenant, scoped to the repositories the tenant may deploy from and the namespaces it may deploy into, with cluster-resource allow-lists and namespace-resource deny-lists. Tenant users get GitOps self-service without an administrator hand-editing ArgoCD RBAC.
 
-More details on [ArgoCD Multi-Tenancy](../integrations/argocd.md).
+More details on [ArgoCD Multi-Tenancy](../extensions/argocd.md).
 
 ### HashiCorp Vault
 
 MTO extends the tenant's permission model into Vault, creating the paths, roles and policies for the tenant. Tenant users manage their own secrets without anyone else gaining access to their paths.
 
-More details on [Vault Multi-Tenancy](../integrations/vault/vault.md).
+More details on [Vault Multi-Tenancy](../extensions/vault/vault.md).
 
 ### Developer workspaces
 
 DevWorkspace gives tenant users cloud development environments inside their own namespaces.
 
-More details on [DevWorkspace](../integrations/devworkspace.md).
+More details on [DevWorkspace](../extensions/devworkspace.md).
 
 More details on [Extensions](../concepts/extensions.md).
 

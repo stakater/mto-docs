@@ -77,13 +77,13 @@ This raises infrastructure utilization without giving every customer a dedicated
 
 **The situation.** The cluster isolates tenants properly while the GitOps platform stays shared. Unless ArgoCD's own configuration is governed just as carefully, a tenant can reach applications or resources that belong to someone else — and that configuration is maintained by hand, separately from the cluster's tenancy model.
 
-**What MTO does.** MTO provisions an ArgoCD `AppProject` per tenant, scoped to the repositories the tenant may deploy from and the namespaces it may deploy into, with cluster-resource allow-lists and namespace-resource deny-lists. Delivery boundaries line up with platform boundaries because both come from the same Tenant definition. See [ArgoCD Multi-Tenancy](../integrations/argocd.md).
+**What MTO does.** MTO provisions an ArgoCD `AppProject` per tenant, scoped to the repositories the tenant may deploy from and the namespaces it may deploy into, with cluster-resource allow-lists and namespace-resource deny-lists. Delivery boundaries line up with platform boundaries because both come from the same Tenant definition. See [ArgoCD Multi-Tenancy](../extensions/argocd.md).
 
 ## Shared secrets management
 
 **The situation.** A central secrets platform runs alongside Kubernetes, and its authorization model is a second administrative system with its own namespaces, policies and roles — drifting from the cluster's tenancy model every time a team changes.
 
-**What MTO does.** The tenant boundary extends into [OpenBao](../integrations/openbao/overview.md) or [Vault](../integrations/vault/vault.md): each tenant gets its own secrets path with the policies and login roles that let its people and workloads reach it and nothing else, derived from the `Tenant` resource you already maintain. Application teams stop writing secrets-platform policy entirely.
+**What MTO does.** The tenant boundary extends into [OpenBao](../extensions/openbao/overview.md) or [Vault](../extensions/vault/vault.md): each tenant gets its own secrets path with the policies and login roles that let its people and workloads reach it and nothing else, derived from the `Tenant` resource you already maintain. Application teams stop writing secrets-platform policy entirely.
 
 ## Building an internal developer platform
 
