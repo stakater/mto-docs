@@ -1,5 +1,8 @@
 # Extensions
 
+!!! danger "Deprecated"
+    This extension model — the `Extensions` resource, `IntegrationConfig` integrations, and label-triggered companion operators — is **deprecated**. Build your own extension with Template Operator v2 instead; see [Build your own extension](../extensions/build-your-own/overview.md).
+
 A tenant boundary that stops at the Kubernetes API is only half a boundary. The team that owns `bluesky-dev` also needs an ArgoCD project scoped to its namespaces, a Vault path only it can read, and a workspace it can develop in — and if those are configured by hand, they drift away from the Tenant the moment membership changes.
 
 Extensions are how MTO projects the same Tenant definition into the tools around the cluster.
