@@ -24,7 +24,14 @@ _**October 27, 2026**_
 
 #### Deprecations
 
-- The legacy ways of extending MTO are **deprecated** and will be removed in a future release: the ArgoCD and Vault integrations configured through the `IntegrationConfig`, and the `Extensions` resource model. Migrate to the extensions that render through Template Operator v2 — [ArgoCD v2](extensions/argocd-v2/overview.md), [Vault Enterprise](extensions/vault-enterprise/overview.md), or [build your own](extensions/build-your-own/overview.md). Start migrating now; reach out to Stakater support if you need help.
+The built-in ways of integrating ArgoCD and Vault are **deprecated** and will be removed in a future release — both the `spec.integrations` configuration in the `IntegrationConfig` and the `Extensions` resource. Each now has a replacement that renders through Template Operator v2:
+
+| Deprecated | Replacement |
+|:---|:---|
+| ArgoCD — the `IntegrationConfig` integration or the `Extensions` resource | [ArgoCD v2](extensions/argocd-v2/overview.md) |
+| Vault — the `IntegrationConfig` integration | [Vault Enterprise](extensions/vault-enterprise/overview.md) |
+
+For any other tool, [build your own extension](extensions/build-your-own/overview.md). Start migrating now, and reach out to Stakater support if you need help.
 
 #### Component Updates
 
