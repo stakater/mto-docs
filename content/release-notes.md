@@ -22,6 +22,10 @@ _**October 27, 2026**_
 
 - The FinOps operator and Dex config operator no longer fail to install with `invalid ownership metadata ... "meta.helm.sh/release-namespace" must equal "multi-tenant-operator"` when `mto-dependencies-operator` runs in a different namespace than MTO, which is the default on OpenShift. `mto-dependencies-operator` v0.1.16 keeps the CRDs of its vendored charts current itself instead of handing them to Helm, and brings them up to date on each upgrade. Existing custom resources under those CRDs are preserved.
 
+#### Deprecations
+
+- The legacy ways of extending MTO are **deprecated** and will be removed in a future release: the ArgoCD and Vault integrations configured through the `IntegrationConfig`, and the `Extensions` resource model. Migrate to the extensions that render through Template Operator v2 — [ArgoCD v2](extensions/argocd-v2/overview.md), [Vault Enterprise](extensions/vault-enterprise/overview.md), or [build your own](extensions/build-your-own/overview.md). Start migrating now; reach out to Stakater support if you need help.
+
 #### Component Updates
 
 | Name | Tag | Image |
