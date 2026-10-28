@@ -812,7 +812,7 @@ integrations:
 ### ArgoCD
 
 !!! danger "Deprecated"
-    Configuring ArgoCD through the `IntegrationConfig` is the legacy integration and is **deprecated**. Use the [ArgoCD v2 extension](../extensions/argocd-v2/overview.md) instead.
+    Configuring ArgoCD through the `IntegrationConfig` is the legacy integration; it is **deprecated** and will be removed in a future release. Use the [ArgoCD v2 extension](../extensions/argocd-v2/overview.md) instead.
 
 [ArgoCD](https://argoproj.github.io/argo-cd/) is a declarative, GitOps continuous delivery tool for Kubernetes. It follows the GitOps pattern of using Git repositories as the source of truth for defining the desired application state. ArgoCD uses Kubernetes manifests and configures the applications on the cluster.
 
@@ -837,7 +837,7 @@ argocd:
 ### Vault
 
 !!! danger "Deprecated"
-    Configuring Vault through the `IntegrationConfig` is the legacy Vault Community integration and is **deprecated**. Use the [Vault Enterprise extension](../extensions/vault-enterprise/overview.md) instead.
+    Configuring Vault through the `IntegrationConfig` is the legacy Vault Community integration; it is **deprecated** and will be removed in a future release. Use the [Vault Enterprise extension](../extensions/vault-enterprise/overview.md) instead.
 
 [Vault](https://www.vaultproject.io/) is used to secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data using a UI, CLI, or http API.
 
