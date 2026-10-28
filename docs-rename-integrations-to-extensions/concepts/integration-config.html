@@ -11491,6 +11491,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">editor</span>
 </code></pre></div>
 <h3 id="argocd">ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">#</a></h3>
+<div class="admonition danger">
+<p class="admonition-title">Deprecated</p>
+<p>Configuring ArgoCD through the <code>IntegrationConfig</code> is the legacy integration and is <strong>deprecated</strong>. Use the <a href="../extensions/argocd-v2/overview.html">ArgoCD v2 extension</a> instead.</p>
+</div>
 <p><a href="https://argoproj.github.io/argo-cd/">ArgoCD</a> is a declarative, GitOps continuous delivery tool for Kubernetes. It follows the GitOps pattern of using Git repositories as the source of truth for defining the desired application state. ArgoCD uses Kubernetes manifests and configures the applications on the cluster.</p>
 <p>If <code>argocd</code> is configured on a cluster, then ArgoCD configuration can be enabled.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">argocd</span><span class="p">:</span>
@@ -11509,6 +11513,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li><code>argocd.namespace</code> is an optional field used to specify the namespace where ArgoCD Applications and AppProjects are deployed. The field should be populated when you want to create an ArgoCD AppProject for each tenant.</li>
 </ul>
 <h3 id="vault">Vault<a class="headerlink" href="#vault" title="Permanent link">#</a></h3>
+<div class="admonition danger">
+<p class="admonition-title">Deprecated</p>
+<p>Configuring Vault through the <code>IntegrationConfig</code> is the legacy Vault Community integration and is <strong>deprecated</strong>. Use the <a href="../extensions/vault-enterprise/overview.html">Vault Enterprise extension</a> instead.</p>
+</div>
 <p><a href="https://www.vaultproject.io/">Vault</a> is used to secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data using a UI, CLI, or http API.</p>
 <p>If <code>vault</code> is configured on a cluster, then Vault configuration can be enabled.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">vault</span><span class="p">:</span>
