@@ -5,7 +5,7 @@ Done once per cluster, by a platform administrator, before any tenant gets an Op
 ## Prerequisites
 
 - An **OpenBao server** reachable from the cluster.
-- [Template Operator v2](https://github.com/stakater/template-operator-v2) (`templates.v2.stakater.com`) and the **OpenBao Config Operator** — the extension renders objects for them and does nothing without them.
+- [Template Operator v2](../../template-operator-v2/concepts/overview.md) (`templates.v2.stakater.com`) and the [**OpenBao Config Operator**](https://github.com/stakater/openbao-config-operator) — the extension renders objects for them and does nothing without them.
 - [External Secrets Operator](https://external-secrets.io/), while secrets are delivered as Kubernetes `Secret`s (the default).
 - [cert-manager](https://cert-manager.io/) to issue certificates through Kubernetes, and [trust-manager](https://cert-manager.io/docs/trust/trust-manager/) for trust between tenants.
 - An OIDC identity provider, for human login.
@@ -15,6 +15,20 @@ MTO labels each tenant namespace `stakater.com/tenant=<tenant-name>`, and the ex
 ## Install Template Operator v2
 
 The simplest route is to let MTO deploy it: set `components.templateOperatorV2.mode: Managed` in the `IntegrationConfig`. MTO then runs it in `multi-tenant-operator` as the ServiceAccount `tenant-operator-template-operator-v2`.
+
+## Install the OpenBao Config Operator
+
+The [OpenBao Config Operator](https://github.com/stakater/openbao-config-operator) applies to OpenBao the custom resources the extension renders. Install it once per cluster.
+
+On plain Kubernetes, apply the release manifest (server-side, because the bundled CRDs are large):
+
+```bash
+kubectl apply --server-side -f https://raw.githubusercontent.com/stakater/openbao-config-operator/v0.0.6/dist/install.yaml
+```
+
+It runs in the `openbao-config-operator-system` namespace. On OpenShift, install it from its OLM catalog instead — a `CatalogSource` and a `Subscription`; see the operator's [deployment guide](https://github.com/stakater/openbao-config-operator/blob/main/DEPLOY.md).
+
+The operator holds no OpenBao token: it authenticates with its own ServiceAccount through the one-time bootstrap in [Give the operator its own credentials](#give-the-operator-its-own-credentials) below.
 
 ## Enable the extension
 

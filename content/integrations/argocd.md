@@ -1,5 +1,8 @@
 # ArgoCD
 
+!!! warning "Deprecated — ArgoCD v1 (Legacy)"
+    This is the legacy ArgoCD integration, configured through the `Extensions` resource. It is **deprecated**. Use **[ArgoCD v2](argocd-v2/overview.md)** instead — the Helm-chart extension that renders a per-tenant `AppProject` through Template Operator v2. To move an existing setup across, see [Migrating](argocd-v2/migrating.md).
+
 With the Multi-Tenant Operator (MTO), cluster administrators can configure multi-tenancy within their cluster. The integration of ArgoCD with MTO allows for the configuration of multi-tenancy in ArgoCD applications and AppProjects.
 
 MTO can be configured to create AppProjects for each tenant. These AppProjects enable tenants to create ArgoCD Applications that can be synced to namespaces owned by them. Cluster admins can blacklist certain namespace resources and allow specific cluster-scoped resources as needed (see the NamespaceResourceBlacklist and ClusterResourceWhitelist sections in [Integration Config docs](../concepts/integration-config.md) and [Tenant Custom Resource docs](../concepts/tenant.md)).

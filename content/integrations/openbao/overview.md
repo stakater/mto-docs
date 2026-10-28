@@ -1,4 +1,4 @@
-# OpenBao
+# Overview
 
 [OpenBao](https://openbao.org/) is an identity-based secret and encryption management system. With the Multi-Tenant Operator (MTO), the OpenBao extension gives every tenant its own OpenBao namespace — a secrets store, encryption keys and a certificate authority — with the policies and login roles that let the tenant's people and workloads reach them and nothing else, all derived from the `Tenant` you already maintain.
 
@@ -6,7 +6,7 @@
     This is the Helm-chart OpenBao extension ([`mto-extension-openbao`](https://github.com/stakater/mto-extension-openbao)). It is optional.
 
 !!! warning "Requires Template Operator v2 and the OpenBao Config Operator"
-    The extension is **configuration** — it installs no controller of its own. It renders [Template Operator v2](https://github.com/stakater/template-operator-v2) objects (`templates.v2.stakater.com`), which render OpenBao Config Operator custom resources; that operator applies them to OpenBao. Both operators must be running. See [Installation](installation.md).
+    The extension is **configuration** — it installs no controller of its own. It renders [Template Operator v2](../../template-operator-v2/concepts/overview.md) objects (`templates.v2.stakater.com`), which render [OpenBao Config Operator](https://github.com/stakater/openbao-config-operator) custom resources; that operator applies them to OpenBao. Both operators must be running. See [Installation](installation.md).
 
 ## At a glance
 
