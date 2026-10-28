@@ -8,10 +8,10 @@
         <link rel="canonical" href="https://docs.stakater.com/mto/docs-grafana-stack/integrations/argocd.html">
       
       
-        <link rel="prev" href="overview.html">
+        <link rel="prev" href="argocd-v2/migrating.html">
       
       
-        <link rel="next" href="argocd-v2/overview.html">
+        <link rel="next" href="grafana-stack/overview.html">
       
       
         
@@ -22,7 +22,7 @@
     
     
       
-        <title>ArgoCD - Multi-Tenant Operator</title>
+        <title>v1 – Legacy - Multi-Tenant Operator</title>
       
     
     
@@ -6628,16 +6628,20 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
   
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" checked="">
+        
           
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -6651,141 +6655,19 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="argocd.html" class="md-nav__link md-nav__link--active">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-  
-  
-  <span class="md-ellipsis">
-    
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
   
     ArgoCD
   
 
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        
-
-<li class="md-nav__item ">
-  
-  
-    <a href="#default-argocd-configuration" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Default ArgoCD configuration
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-      
-        
-
-<li class="md-nav__item ">
-  
-  
-    <a href="#creating-argocd-appprojects-for-your-tenant" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Creating ArgoCD AppProjects for your tenant
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-      
-        
-
-<li class="md-nav__item ">
-  
-  
-    <a href="#preventing-argocd-from-syncing-certain-name-spaced-resources" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Preventing ArgoCD from Syncing Certain Name-spaced Resources
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-      
-        
-
-<li class="md-nav__item ">
-  
-  
-    <a href="#allowing-argocd-to-sync-certain-cluster-wide-resources" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Allowing ArgoCD to Sync Certain Cluster-Wide Resources
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-      
-        
-
-<li class="md-nav__item ">
-  
-  
-    <a href="#overriding-namespaceresourceblacklist-andor-clusterresourcewhitelist-per-tenant" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Overriding NamespaceResourceBlacklist and/or ClusterResourceWhitelist Per Tenant
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -6801,17 +6683,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2_1">
         
           
-          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_2_1" id="__nav_8_2_1_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    ArgoCD v2
+    v2
   
 
     
@@ -6822,12 +6704,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2_1">
             <span class="md-nav__icon md-icon"></span>
             
   
-    ArgoCD v2
+    v2
   
 
           </label>
@@ -6846,7 +6728,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    ArgoCD
+    Overview
   
 
     
@@ -7088,6 +6970,180 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v1 – Legacy
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="argocd.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v1 – Legacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#default-argocd-configuration" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Default ArgoCD configuration
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#creating-argocd-appprojects-for-your-tenant" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Creating ArgoCD AppProjects for your tenant
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#preventing-argocd-from-syncing-certain-name-spaced-resources" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Preventing ArgoCD from Syncing Certain Name-spaced Resources
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#allowing-argocd-to-sync-certain-cluster-wide-resources" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Allowing ArgoCD to Sync Certain Cluster-Wide Resources
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#overriding-namespaceresourceblacklist-andor-clusterresourcewhitelist-per-tenant" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Overriding NamespaceResourceBlacklist and/or ClusterResourceWhitelist Per Tenant
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
     
     
@@ -7098,10 +7154,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3">
         
           
-          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
             
   
   
@@ -7119,8 +7175,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_4">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -7359,33 +7415,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   
-    <li class="md-nav__item">
-      <a href="vault/vault.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Vault
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
     
     
     
@@ -7395,10 +7424,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4">
         
           
-          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
             
   
   
@@ -7416,8 +7445,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -7440,7 +7469,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Vault Enterprise
+    Overview
   
 
     
@@ -7656,6 +7685,33 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
   
+    <li class="md-nav__item">
+      <a href="vault/vault.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vault Community (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
     
     
     
@@ -7665,10 +7721,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_7">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_6">
         
           
-          <label class="md-nav__link" for="__nav_8_7" id="__nav_8_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_6" id="__nav_8_6_label" tabindex="0">
             
   
   
@@ -7686,8 +7742,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -7710,7 +7766,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    OpenBao
+    Overview
   
 
     
@@ -7989,10 +8045,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_9">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_8">
         
           
-          <label class="md-nav__link" for="__nav_8_9" id="__nav_8_9_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_8" id="__nav_8_8_label" tabindex="0">
             
   
   
@@ -8010,8 +8066,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_9_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_9">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -9302,6 +9358,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="argocd">ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">#</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Deprecated — ArgoCD v1 (Legacy)</p>
+<p>This is the legacy ArgoCD integration, configured through the <code>Extensions</code> resource. It is <strong>deprecated</strong>. Use <strong><a href="argocd-v2/overview.html">ArgoCD v2</a></strong> instead — the Helm-chart extension that renders a per-tenant <code>AppProject</code> through Template Operator v2. To move an existing setup across, see <a href="argocd-v2/migrating.html">Migrating</a>.</p>
+</div>
 <p>With the Multi-Tenant Operator (MTO), cluster administrators can configure multi-tenancy within their cluster. The integration of ArgoCD with MTO allows for the configuration of multi-tenancy in ArgoCD applications and AppProjects.</p>
 <p>MTO can be configured to create AppProjects for each tenant. These AppProjects enable tenants to create ArgoCD Applications that can be synced to namespaces owned by them. Cluster admins can blacklist certain namespace resources and allow specific cluster-scoped resources as needed (see the NamespaceResourceBlacklist and ClusterResourceWhitelist sections in <a href="../concepts/integration-config.html">Integration Config docs</a> and <a href="../concepts/tenant.html">Tenant Custom Resource docs</a>).</p>
 <p>Note that ArgoCD integration in MTO is optional.</p>
