@@ -1194,7 +1194,7 @@ _**October 16, 2024**_
 
 ### v0.3.1
 
-- feat: Add ability to create ArgoCD AppProjects per tenant, more details in [relevant docs](integrations/argocd.md)
+- feat: Add ability to create ArgoCD AppProjects per tenant, more details in [relevant docs](extensions/argocd.md)
 
 ### v0.3.0
 
