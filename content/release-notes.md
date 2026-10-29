@@ -22,6 +22,17 @@ _**October 27, 2026**_
 
 - The FinOps operator and Dex config operator no longer fail to install with `invalid ownership metadata ... "meta.helm.sh/release-namespace" must equal "multi-tenant-operator"` when `mto-dependencies-operator` runs in a different namespace than MTO, which is the default on OpenShift. `mto-dependencies-operator` v0.1.16 keeps the CRDs of its vendored charts current itself instead of handing them to Helm, and brings them up to date on each upgrade. Existing custom resources under those CRDs are preserved.
 
+#### Deprecations
+
+The built-in ways of integrating ArgoCD and Vault are **deprecated** and will be removed in a future release — both the `spec.integrations` configuration in the `IntegrationConfig` and the `Extensions` resource. Each now has a replacement that renders through Template Operator v2:
+
+| Deprecated | Replacement |
+|:---|:---|
+| ArgoCD — the `IntegrationConfig` integration or the `Extensions` resource | [ArgoCD v2](extensions/argocd-v2/overview.md) |
+| Vault — the `IntegrationConfig` integration | [Vault Enterprise](extensions/vault-enterprise/overview.md) |
+
+For any other tool, [build your own extension](extensions/build-your-own/overview.md). Start migrating now, and reach out to Stakater support if you need help.
+
 #### Component Updates
 
 | Name | Tag | Image |
@@ -1071,7 +1082,7 @@ _**October 16, 2024**_
 
 - feat: TemplateGroupInstance will now directly create template resources instead of creating TemplateInstances
 
-#### Migrating from pervious version
+#### Migrating from previous version
 
 - To migrate to Tenant-Operator:v0.3.25 perform the following steps
     - Downscale Tenant-Operator deployment by setting the replicas count to 0
