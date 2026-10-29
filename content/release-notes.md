@@ -1071,7 +1071,7 @@ _**October 16, 2024**_
 
 - feat: TemplateGroupInstance will now directly create template resources instead of creating TemplateInstances
 
-#### Migrating from pervious version
+#### Migrating from previous version
 
 - To migrate to Tenant-Operator:v0.3.25 perform the following steps
     - Downscale Tenant-Operator deployment by setting the replicas count to 0
