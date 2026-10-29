@@ -8516,6 +8516,24 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li class="md-nav__item ">
   
   
+    <a href="#deprecations" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Deprecations
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
     <a href="#component-updates" class="md-nav__link">
       
     <span class="md-ellipsis">
@@ -13365,6 +13383,24 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li class="md-nav__item ">
   
   
+    <a href="#deprecations" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Deprecations
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
     <a href="#component-updates" class="md-nav__link">
       
     <span class="md-ellipsis">
@@ -17419,6 +17455,27 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <ul>
 <li>The FinOps operator and Dex config operator no longer fail to install with <code>invalid ownership metadata ... "meta.helm.sh/release-namespace" must equal "multi-tenant-operator"</code> when <code>mto-dependencies-operator</code> runs in a different namespace than MTO, which is the default on OpenShift. <code>mto-dependencies-operator</code> v0.1.16 keeps the CRDs of its vendored charts current itself instead of handing them to Helm, and brings them up to date on each upgrade. Existing custom resources under those CRDs are preserved.</li>
 </ul>
+<h4 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">#</a></h4>
+<p>The built-in ways of integrating ArgoCD and Vault are <strong>deprecated</strong> and will be removed in a future release — both the <code>spec.integrations</code> configuration in the <code>IntegrationConfig</code> and the <code>Extensions</code> resource. Each now has a replacement that renders through Template Operator v2:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Deprecated</th>
+<th style="text-align: left;">Replacement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ArgoCD — the <code>IntegrationConfig</code> integration or the <code>Extensions</code> resource</td>
+<td style="text-align: left;"><a href="extensions/argocd-v2/overview.html">ArgoCD v2</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Vault — the <code>IntegrationConfig</code> integration</td>
+<td style="text-align: left;"><a href="extensions/vault-enterprise/overview.html">Vault Enterprise</a></td>
+</tr>
+</tbody>
+</table>
+<p>For any other tool, <a href="extensions/build-your-own/overview.html">build your own extension</a>. Start migrating now, and reach out to Stakater support if you need help.</p>
 <h4 id="component-updates">Component Updates<a class="headerlink" href="#component-updates" title="Permanent link">#</a></h4>
 <table>
 <thead>
