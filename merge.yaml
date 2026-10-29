@@ -1,6 +1,8 @@
 # Controls which sub-operator docs are merged into mto-docs at build time.
 # `repo` is the canonical source (git URL); the pipeline clones it and the merge
 # runs against the clone via --set-repo. Locally override with --set-repo.
+# `docs_dir` (default `content`) is the docs root inside that repo; `from` globs
+# are relative to it. Merged files land in mto-docs' own docs_dir (mkdocs.yml).
 #
 # Product-first: each operator fills its own nav placeholder section (declared
 # empty in theme_override/mkdocs.yml) with Overview/Concepts/Guides sub-sections.
@@ -14,6 +16,7 @@ operators:
     section: "v2"
     slug: template-operator-v2
     repo: https://github.com/stakater/template-operator-v2-docs.git
+    docs_dir: content                # docs root inside the repo, e.g. doc/content/my-docs
     live_url: https://docs.stakater.com/template-operator-v2-docs/
     live_url_style: directory
     mappings:
@@ -37,6 +40,7 @@ operators:
     section: "v1 – Legacy"
     slug: template-operator          # avoid mkdocs' reserved top-level /templates/ dir
     repo: https://github.com/stakater/template-operator-docs.git
+    docs_dir: content
     live_url: https://docs.stakater.com/template-operator-docs/
     live_url_style: directory
     mappings:
@@ -66,6 +70,7 @@ operators:
   - title: FinOps
     section: "FinOps"
     repo: https://github.com/stakater/finops-docs.git
+    docs_dir: content
     live_url: https://docs.stakater.com/finops-docs/
     live_url_style: directory
     mappings:
@@ -90,6 +95,7 @@ operators:
   - title: Hibernation
     section: "Hibernation"
     repo: https://github.com/stakater/hibernation-operator-docs.git
+    docs_dir: content
     live_url: https://docs.stakater.com/hibernation-operator-docs/
     live_url_style: html
     mappings:
