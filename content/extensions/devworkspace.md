@@ -16,7 +16,16 @@ The two labels mark the namespace as a Che workspaces namespace; the annotation 
 
 ## Apply it to every sandbox
 
-Set `spec.namespaces.metadata.sandbox` on the `Tenant`. MTO creates a sandbox namespace for each owner and editor and applies this metadata to all of them:
+Set the metadata where its scope belongs:
+
+- **One tenant** — set `spec.namespaces.metadata.sandbox` on that `Tenant`.
+- **Every tenant on the cluster** — set `spec.metadata.sandboxes` on the `IntegrationConfig` (note the plural key).
+
+Either way `{{ TENANT.USERNAME }}` resolves to the username of the owner or editor each sandbox belongs to, so every sandbox receives its own `che.eclipse.org/username`. See [Templated Metadata Values](../guides/templated-metadata-values.md).
+
+### On one tenant
+
+MTO creates a sandbox namespace for each owner and editor and applies this metadata to all of them:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta3
@@ -45,23 +54,22 @@ spec:
           che.eclipse.org/username: "{{ TENANT.USERNAME }}"
 ```
 
-`{{ TENANT.USERNAME }}` resolves to the username of the owner or editor each sandbox belongs to, so every sandbox receives its own `che.eclipse.org/username`. See [Templated Metadata Values](../guides/templated-metadata-values.md).
+### Across every tenant
 
-!!! note "Legacy: setting it on IntegrationConfig"
-    The same metadata can be applied to every sandbox cluster-wide through `spec.metadata.sandboxes` on the `IntegrationConfig` (note the plural key). Prefer the `Tenant` above; reach for this only on an existing `IntegrationConfig`-based setup.
+To stamp the same metadata onto the sandboxes of every tenant at once, set it on the cluster's `IntegrationConfig` instead:
 
-    ```yaml
-    apiVersion: tenantoperator.stakater.com/v1beta1
-    kind: IntegrationConfig
-    metadata:
-      name: tenant-operator-config
-      namespace: multi-tenant-operator
-    spec:
-      metadata:
-        sandboxes:
-          labels:
-            app.kubernetes.io/part-of: che.eclipse.org
-            app.kubernetes.io/component: workspaces-namespace
-          annotations:
-            che.eclipse.org/username: "{{ TENANT.USERNAME }}"
-    ```
+```yaml
+apiVersion: tenantoperator.stakater.com/v1beta1
+kind: IntegrationConfig
+metadata:
+  name: tenant-operator-config
+  namespace: multi-tenant-operator
+spec:
+  metadata:
+    sandboxes:
+      labels:
+        app.kubernetes.io/part-of: che.eclipse.org
+        app.kubernetes.io/component: workspaces-namespace
+      annotations:
+        che.eclipse.org/username: "{{ TENANT.USERNAME }}"
+```
