@@ -7964,6 +7964,49 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </a>
   
   
+      <nav class="md-nav" aria-label="Apply it to every sandbox">
+    
+      <ul class="md-nav__list">
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#on-one-tenant" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        On one tenant
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#across-every-tenant" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Across every tenant
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -9225,6 +9268,49 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </a>
   
   
+      <nav class="md-nav" aria-label="Apply it to every sandbox">
+    
+      <ul class="md-nav__list">
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#on-one-tenant" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        On one tenant
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#across-every-tenant" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Across every tenant
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -9258,7 +9344,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </code></pre></div>
 <p>The two labels mark the namespace as a Che workspaces namespace; the annotation names the user it belongs to.</p>
 <h2 id="apply-it-to-every-sandbox">Apply it to every sandbox<a class="headerlink" href="#apply-it-to-every-sandbox" title="Permanent link">#</a></h2>
-<p>Set <code>spec.namespaces.metadata.sandbox</code> on the <code>Tenant</code>. MTO creates a sandbox namespace for each owner and editor and applies this metadata to all of them:</p>
+<p>Set the metadata where its scope belongs:</p>
+<ul>
+<li><strong>One tenant</strong> — set <code>spec.namespaces.metadata.sandbox</code> on that <code>Tenant</code>.</li>
+<li><strong>Every tenant on the cluster</strong> — set <code>spec.metadata.sandboxes</code> on the <code>IntegrationConfig</code> (note the plural key).</li>
+</ul>
+<p>Either way <code>{{ TENANT.USERNAME }}</code> resolves to the username of the owner or editor each sandbox belongs to, so every sandbox receives its own <code>che.eclipse.org/username</code>. See <a href="../guides/templated-metadata-values.html">Templated Metadata Values</a>.</p>
+<h3 id="on-one-tenant">On one tenant<a class="headerlink" href="#on-one-tenant" title="Permanent link">#</a></h3>
+<p>MTO creates a sandbox namespace for each owner and editor and applies this metadata to all of them:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -9284,10 +9377,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">        </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">TENANT.USERNAME</span><span class="nv"> </span><span class="s">}}"</span>
 </code></pre></div>
-<p><code>{{ TENANT.USERNAME }}</code> resolves to the username of the owner or editor each sandbox belongs to, so every sandbox receives its own <code>che.eclipse.org/username</code>. See <a href="../guides/templated-metadata-values.html">Templated Metadata Values</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Legacy: setting it on IntegrationConfig</p>
-<p>The same metadata can be applied to every sandbox cluster-wide through <code>spec.metadata.sandboxes</code> on the <code>IntegrationConfig</code> (note the plural key). Prefer the <code>Tenant</code> above; reach for this only on an existing <code>IntegrationConfig</code>-based setup.</p>
+<h3 id="across-every-tenant">Across every tenant<a class="headerlink" href="#across-every-tenant" title="Permanent link">#</a></h3>
+<p>To stamp the same metadata onto the sandboxes of every tenant at once, set it on the cluster's <code>IntegrationConfig</code> instead:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -9302,7 +9393,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">TENANT.USERNAME</span><span class="nv"> </span><span class="s">}}"</span>
 </code></pre></div>
-</div>
 
 
 
