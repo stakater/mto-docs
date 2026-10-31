@@ -1,4 +1,4 @@
-# Templated values in Labels and Annotations
+# Templated metadata values
 
 Some labels and annotations that MTO applies to managed namespaces need a value that differs per user or per tenant. Instead of a fixed string, you write a **templated value** — a placeholder that MTO replaces with real data when it reconciles the resource.
 
