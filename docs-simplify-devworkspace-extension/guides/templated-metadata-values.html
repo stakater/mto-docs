@@ -3571,6 +3571,31 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </a>
   
   
+      <nav class="md-nav" aria-label="Supported templated values">
+    
+      <ul class="md-nav__list">
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#tenantusername" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        {{ TENANT.USERNAME }}
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -9191,6 +9216,31 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </a>
   
   
+      <nav class="md-nav" aria-label="Supported templated values">
+    
+      <ul class="md-nav__list">
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#tenantusername" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        {{ TENANT.USERNAME }}
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -9214,25 +9264,38 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="templated-values-in-labels-and-annotations">Templated values in Labels and Annotations<a class="headerlink" href="#templated-values-in-labels-and-annotations" title="Permanent link">#</a></h1>
-<p>Templated values are placeholders in your configuration that get replaced with actual data when the CR is processed. Below is a list of currently supported templated values, their descriptions, and where they can be used.</p>
+<p>Some labels and annotations that MTO applies to managed namespaces need a value that differs per user or per tenant. Instead of a fixed string, you write a <strong>templated value</strong> — a placeholder that MTO replaces with real data when it reconciles the resource.</p>
+<p>This page lists the templated values MTO supports today.</p>
 <h2 id="supported-templated-values">Supported templated values<a class="headerlink" href="#supported-templated-values" title="Permanent link">#</a></h2>
-<ul>
-<li>
-<p><code>"{{ TENANT.USERNAME }}"</code></p>
-<ul>
-<li><strong>Description</strong>: The username associated with users specified in <a href="../concepts/tenant.html">Tenant</a> under <code>Owners</code> and <code>Editors</code>.</li>
-<li><strong>Supported in CRs</strong> — the key name differs between the two, and both are correct:<ul>
-<li><code>Tenant</code> (one tenant): under <code>spec.namespaces.metadata.sandbox.labels</code> and <code>spec.namespaces.metadata.sandbox.annotations</code> — the key is singular <code>sandbox</code>.</li>
-<li><code>IntegrationConfig</code> (every tenant on the cluster): under <code>spec.metadata.sandboxes.labels</code> and <code>spec.metadata.sandboxes.annotations</code> — the key is plural <code>sandboxes</code>.</li>
-</ul>
-</li>
-<li><strong>Example</strong>:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">TENANT.USERNAME</span><span class="nv"> </span><span class="s">}}"</span><span class="w"> </span><span class="c1"># double quotes are required</span>
+<h3 id="tenantusername"><code>{{ TENANT.USERNAME }}</code><a class="headerlink" href="#tenantusername" title="Permanent link">#</a></h3>
+<p>Resolves to the username of the tenant member a namespace belongs to — one of the users listed under <code>owners</code> or <code>editors</code> in the <a href="../concepts/tenant.html"><code>Tenant</code></a>. Use it where a per-user namespace needs a label or annotation carrying that user's name, as <a href="../extensions/devworkspace.html">DevWorkspace</a> sandboxes do.</p>
+<p>Set it in either of two places, depending on how widely it should apply. The key name differs between the two, and both are correct:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Resource</th>
+<th style="text-align: left;">Field</th>
+<th style="text-align: left;">Applies to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><a href="../concepts/tenant.html"><code>Tenant</code></a></td>
+<td style="text-align: left;"><code>spec.namespaces.metadata.sandbox.labels</code> / <code>.annotations</code> — singular <code>sandbox</code></td>
+<td style="text-align: left;">that tenant's sandboxes</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="../concepts/integration-config.html"><code>IntegrationConfig</code></a></td>
+<td style="text-align: left;"><code>spec.metadata.sandboxes.labels</code> / <code>.annotations</code> — plural <code>sandboxes</code></td>
+<td style="text-align: left;">every tenant's sandboxes, cluster-wide</td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">che.eclipse.org/username</span><span class="p">:</span><span class="w"> </span><span class="s">"{{</span><span class="nv"> </span><span class="s">TENANT.USERNAME</span><span class="nv"> </span><span class="s">}}"</span><span class="w">   </span><span class="c1"># the double quotes are required</span>
 </code></pre></div>
-</li>
-</ul>
+<p>The double quotes are not optional: unquoted, the leading <code>{{</code> is read as the start of a YAML flow mapping, so the value fails to parse.</p>
 
 
 
