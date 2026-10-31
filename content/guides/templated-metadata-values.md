@@ -1,17 +1,27 @@
 # Templated values in Labels and Annotations
 
-Templated values are placeholders in your configuration that get replaced with actual data when the CR is processed. Below is a list of currently supported templated values, their descriptions, and where they can be used.
+Some labels and annotations that MTO applies to managed namespaces need a value that differs per user or per tenant. Instead of a fixed string, you write a **templated value** — a placeholder that MTO replaces with real data when it reconciles the resource.
+
+This page lists the templated values MTO supports today.
 
 ## Supported templated values
 
-- `"{{ TENANT.USERNAME }}"`
-    - **Description**: The username associated with users specified in [Tenant](../concepts/tenant.md) under `Owners` and `Editors`.
-    - **Supported in CRs** — the key name differs between the two, and both are correct:
-        - `Tenant` (one tenant): under `spec.namespaces.metadata.sandbox.labels` and `spec.namespaces.metadata.sandbox.annotations` — the key is singular `sandbox`.
-        - `IntegrationConfig` (every tenant on the cluster): under `spec.metadata.sandboxes.labels` and `spec.metadata.sandboxes.annotations` — the key is plural `sandboxes`.
-    - **Example**:
+### `{{ TENANT.USERNAME }}`
 
-      ```yaml
-        annotations:
-          che.eclipse.org/username: "{{ TENANT.USERNAME }}" # double quotes are required
-      ```
+Resolves to the username of the tenant member a namespace belongs to — one of the users listed under `owners` or `editors` in the [`Tenant`](../concepts/tenant.md). Use it where a per-user namespace needs a label or annotation carrying that user's name, as [DevWorkspace](../extensions/devworkspace.md) sandboxes do.
+
+Set it in either of two places, depending on how widely it should apply. The key name differs between the two, and both are correct:
+
+| Resource | Field | Applies to |
+|:---|:---|:---|
+| [`Tenant`](../concepts/tenant.md) | `spec.namespaces.metadata.sandbox.labels` / `.annotations` — singular `sandbox` | that tenant's sandboxes |
+| [`IntegrationConfig`](../concepts/integration-config.md) | `spec.metadata.sandboxes.labels` / `.annotations` — plural `sandboxes` | every tenant's sandboxes, cluster-wide |
+
+Example:
+
+```yaml
+annotations:
+  che.eclipse.org/username: "{{ TENANT.USERNAME }}"   # the double quotes are required
+```
+
+The double quotes are not optional: unquoted, the leading `{{` is read as the start of a YAML flow mapping, so the value fails to parse.
