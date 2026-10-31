@@ -9221,9 +9221,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p><code>"{{ TENANT.USERNAME }}"</code></p>
 <ul>
 <li><strong>Description</strong>: The username associated with users specified in <a href="../concepts/tenant.html">Tenant</a> under <code>Owners</code> and <code>Editors</code>.</li>
-<li><strong>Supported in CRs</strong>:<ul>
-<li><code>Tenant</code>: Under <code>spec.namespaces.metadata.sandbox.labels</code> and <code>spec.namespaces.metadata.sandbox.annotations</code>.</li>
-<li><code>IntegrationConfig</code>: Under <code>spec.metadata.sandboxes.labels</code> and <code>spec.metadata.sandboxes.annotations</code>.</li>
+<li><strong>Supported in CRs</strong> — the key name differs between the two, and both are correct:<ul>
+<li><code>Tenant</code> (one tenant): under <code>spec.namespaces.metadata.sandbox.labels</code> and <code>spec.namespaces.metadata.sandbox.annotations</code> — the key is singular <code>sandbox</code>.</li>
+<li><code>IntegrationConfig</code> (every tenant on the cluster): under <code>spec.metadata.sandboxes.labels</code> and <code>spec.metadata.sandboxes.annotations</code> — the key is plural <code>sandboxes</code>.</li>
 </ul>
 </li>
 <li><strong>Example</strong>:</li>
