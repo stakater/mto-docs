@@ -1,22 +1,31 @@
 # DevWorkspace
 
-## DevWorkspaces metadata via Multi Tenant Operator
+[DevWorkspaces](https://github.com/devfile/devworkspace-operator) — the workspace engine behind [Eclipse Che](https://www.eclipse.org/che/) and OpenShift Dev Spaces — only run in a namespace that carries specific `che.eclipse.org` metadata. Multi Tenant Operator (MTO) can stamp that metadata onto every sandbox namespace it creates, so each tenant user lands in a workspace-ready sandbox with no manual step.
 
-DevWorkspaces require specific metadata on a namespace for it to work in it. With Multi Tenant Operator (MTO), you can create sandbox namespaces for users of a Tenant, and then add the required metadata automatically on all sandboxes.
-
-## Required metadata for enabling DevWorkspace on sandbox
+## The metadata a sandbox needs
 
 ```yaml
-  labels:
-    app.kubernetes.io/part-of: che.eclipse.org
-    app.kubernetes.io/component: workspaces-namespace
-  annotations:
-    che.eclipse.org/username: <username>
+labels:
+  app.kubernetes.io/part-of: che.eclipse.org
+  app.kubernetes.io/component: workspaces-namespace
+annotations:
+  che.eclipse.org/username: <username>
 ```
 
-## Automate sandbox metadata for all Tenant users via Tenant CR
+The two labels mark the namespace as a Che workspaces namespace; the annotation names the user it belongs to.
 
-With Multi Tenant Operator (MTO), you can set `spec.namespaces.metadata.sandbox` like below to automate metadata for all sandboxes:
+## Apply it to every sandbox
+
+Set the metadata where its scope belongs:
+
+- **One tenant** — set `spec.namespaces.metadata.sandbox` on that `Tenant`.
+- **Every tenant on the cluster** — set `spec.metadata.sandboxes` on the `IntegrationConfig` (note the plural key).
+
+Either way `{{ TENANT.USERNAME }}` resolves to the username of the owner or editor each sandbox belongs to, so every sandbox receives its own `che.eclipse.org/username`. See [Templated Metadata Values](../guides/templated-metadata-values.md).
+
+### On one tenant
+
+MTO creates a sandbox namespace for each owner and editor and applies this metadata to all of them:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta3
@@ -32,9 +41,6 @@ spec:
     editors:
       users:
         - erik@acme.org
-    viewers:
-      users:
-        - john@acme.org
   namespaces:
     sandboxes:
       enabled: true
@@ -48,11 +54,9 @@ spec:
           che.eclipse.org/username: "{{ TENANT.USERNAME }}"
 ```
 
-It will create sandbox namespaces and also apply the sandbox metadata for owners and editors. Notice the template `{{ TENANT.USERNAME }}`, it will resolve the username as value of the corresponding annotation. For more info on templated value, see [Templated Metadata Values](../guides/templated-metadata-values.md)
+### Across every tenant
 
-## Automate sandbox metadata for all Tenant users via IntegrationConfig CR
-
-You can also automate the metadata on all sandbox namespaces by using IntegrationConfig, notice `metadata.sandboxes`:
+To stamp the same metadata onto the sandboxes of every tenant at once, set it on the cluster's `IntegrationConfig` instead:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta1
@@ -61,55 +65,7 @@ metadata:
   name: tenant-operator-config
   namespace: multi-tenant-operator
 spec:
-  accessControl:
-    namespaceAccessPolicy:
-      deny:
-        privilegedNamespaces: {}
-    privileged:
-      namespaces:
-      - ^default$
-      - ^openshift.*
-      - ^kube.*
-      serviceAccounts:
-      - ^system:serviceaccount:openshift.*
-      - ^system:serviceaccount:kube.*
-      - ^system:serviceaccount:stakater-actions-runner-controller:actions-runner-controller-runner-deployment$
-    rbac:
-      tenantRoles:
-        default:
-          editor:
-            clusterRoles:
-            - edit
-          owner:
-            clusterRoles:
-            - admin
-          viewer:
-            clusterRoles:
-            - view
-  components:
-    console: false
-    ingress:
-      console: {}
-      gateway: {}
-      dex: {}
-      finopsGateway: {}
-    showback: false
-  integrations:
-    vault:
-      accessInfo:
-        accessorPath: ""
-        address: ""
-        roleName: ""
-        secretRef:
-          name: ""
-          namespace: ""
-      authMethod: kubernetes
-      config:
-        ssoClient: ""
-      enabled: false
   metadata:
-    groups: {}
-    namespaces: {}
     sandboxes:
       labels:
         app.kubernetes.io/part-of: che.eclipse.org
@@ -117,5 +73,3 @@ spec:
       annotations:
         che.eclipse.org/username: "{{ TENANT.USERNAME }}"
 ```
-
- For more info on templated value `"{{ TENANT.USERNAME }}"`, see [here](../guides/templated-metadata-values.md)
