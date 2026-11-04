@@ -467,6 +467,12 @@ def load_config(path):
     return operators
 
 
+def mkdocs_docs_dir(mkdocs_path):
+    """docs_dir declared in mkdocs.yml, resolved like mkdocs does (default `docs`)."""
+    mo = re.search(r"^docs_dir:\s*['\"]?([^'\"\s#]+)", Path(mkdocs_path).read_text(), re.M)
+    return Path(mkdocs_path).parent / (mo.group(1) if mo else "docs")
+
+
 def read_h1(path):
     """First level-1 heading text in a markdown file, else None."""
     try:
@@ -824,14 +830,15 @@ def parse_repo_overrides(pairs):
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Merge sub-operator docs into mto-docs.")
     ap.add_argument("--config", default="merge.yaml")
-    ap.add_argument("--content-dir", default="content")
+    ap.add_argument("--content-dir", help="default: docs_dir from --mkdocs")
     ap.add_argument("--mkdocs", default="mkdocs.yml")
     ap.add_argument("--set-repo", action="append", default=[], metavar="slug=path")
     args = ap.parse_args(argv)
     operators = load_config(args.config)
     site_title = (yaml.safe_load(Path(args.config).read_text()) or {}).get("site_title")
     overrides = parse_repo_overrides(args.set_repo)
-    run(operators, args.content_dir, args.mkdocs, overrides, site_title=site_title)
+    content_dir = args.content_dir or mkdocs_docs_dir(args.mkdocs)
+    run(operators, content_dir, args.mkdocs, overrides, site_title=site_title)
     return 0
 
 

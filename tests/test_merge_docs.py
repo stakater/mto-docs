@@ -625,6 +625,14 @@ def test_main_end_to_end(tmp_path, monkeypatch):
     assert (content / "kubernetes-resources/template-operator/create.md").is_file()
 
 
+def test_mkdocs_docs_dir(tmp_path):
+    mkdocs = tmp_path / "mkdocs.yml"
+    mkdocs.write_text("site_name: x\ndocs_dir: 'doc/content/my-docs'  # src\n")
+    assert m.mkdocs_docs_dir(mkdocs) == tmp_path / "doc/content/my-docs"
+    mkdocs.write_text("site_name: x\n")
+    assert m.mkdocs_docs_dir(mkdocs) == tmp_path / "docs"
+
+
 def test_insert_extra_list_under_existing_extra():
     text = (
         "docs_dir: content\n"
