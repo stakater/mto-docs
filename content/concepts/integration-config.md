@@ -309,8 +309,8 @@ On OpenShift, when no host is set, the shared host is auto-derived from the clus
 
 #### Legacy mode (per-component hosts)
 
-!!! warning "Legacy"
-    Per-component hosts are the pre-consolidation behavior, kept only for backward compatibility. New installations should use [consolidated mode](#consolidated-mode-recommended).
+!!! danger "Deprecated"
+    Per-component hosts are the pre-consolidation behavior; this mode is **deprecated** and will be removed in a future release. Use [consolidated mode](#consolidated-mode-recommended) instead.
 
 Set explicit per-component hosts to keep each component on its own hostname (pre-consolidation behavior). Setting any per-component host, with no top-level host, selects legacy mode:
 
