@@ -3497,7 +3497,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Templated values in Labels and Annotations
+    Templated metadata values
   
 
     
@@ -4993,6 +4993,31 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </a>
   
   
+      <nav class="md-nav" aria-label="Passing Parameters to Template via TemplateInstance, ClusterTemplateInstance">
+    
+      <ul class="md-nav__list">
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#removing-a-field-from-a-deployed-template" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Removing a field from a deployed Template
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -5180,6 +5205,33 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
     Sync Resources Deployed by ClusterTemplateInstance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="removing-fields.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Removing a Field from a Template
   
 
     
@@ -9351,6 +9403,31 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     </a>
   
   
+      <nav class="md-nav" aria-label="Passing Parameters to Template via TemplateInstance, ClusterTemplateInstance">
+    
+      <ul class="md-nav__list">
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#removing-a-field-from-a-deployed-template" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Removing a field from a deployed Template
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -9417,6 +9494,10 @@ kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w">
 NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
 docker-secret<span class="w">    </span>Active<span class="w">   </span>2m
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Deleting a <code>data</code> key from this Template removes it from every deployed Secret on the next sync, because the operator nulls <code>data</code> keys that disappear from the Template. Any other field stays on the live Secret until it is set to <code>null</code>. See <a href="removing-fields.html">Removing a Field from a Template</a>.</p>
+</div>
 <p><code>ClusterTemplateInstance</code> can also target specific tenants or all tenant namespaces under a single YAML definition.</p>
 <h3 id="clustertemplateinstance-for-multiple-tenants">ClusterTemplateInstance for multiple Tenants<a class="headerlink" href="#clustertemplateinstance-for-multiple-tenants" title="Permanent link">#</a></h3>
 <p>It can be done by using the <code>matchExpressions</code> field, dividing the tenant label in key and values.</p>
@@ -9549,6 +9630,8 @@ docker-pull-secret<span class="w">    </span>Active<span class="w">   </span>3m
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DEFAULT_CPU_REQUESTS</span>
 <span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span>
 </code></pre></div>
+<h3 id="removing-a-field-from-a-deployed-template">Removing a field from a deployed Template<a class="headerlink" href="#removing-a-field-from-a-deployed-template" title="Permanent link">#</a></h3>
+<p>Deleting a line from the Template does not remove that field from the resources it deployed. The live resource keeps the value it was last given. To remove a field, set it to <code>null</code> in the Template, apply the Template with <code>kubectl apply --server-side</code> (client-side <code>kubectl apply</code> silently drops the <code>null</code>), and keep <code>sync: true</code> on the instance. An empty value for a <code>${{NAME}}</code> parameter also renders a <code>null</code> and removes the field. See <a href="removing-fields.html">Removing a Field from a Template</a>.</p>
 
 
 

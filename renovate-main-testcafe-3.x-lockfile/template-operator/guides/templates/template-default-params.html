@@ -3497,7 +3497,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <span class="md-ellipsis">
     
   
-    Templated values in Labels and Annotations
+    Templated metadata values
   
 
     
@@ -5044,6 +5044,33 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
   
     Sync Resources Deployed by ClusterTemplateInstance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="removing-fields.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Removing a Field from a Template
   
 
     
@@ -9163,6 +9190,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Container</span>
 </code></pre></div>
 <p>Parameters can be used with both <code>manifests</code> and <code>helm charts</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A parameter without a default <code>value</code> renders as empty when the instance leaves it out. In the <code>${{NAME}}</code> form that empty value is a <code>null</code>, and the operator removes the field from the deployed resource with no error. A default <code>value</code> prevents this. So does <code>required: true</code> with a <code>validation</code> pattern that rejects an empty string. See <a href="removing-fields.html">Removing a Field from a Template</a>.</p>
+</div>
 
 
 
