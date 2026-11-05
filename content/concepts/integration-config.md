@@ -249,7 +249,7 @@ Following are the different components that can be used to configure multi-tenan
 - `components.templateOperatorV2:` Configures Template Operator v2. Set `mode` to `Managed` to deploy it alongside MTO, or leave it at the default `Disabled` to deploy nothing. Chart values can be overridden via `values`.
 
 !!! note
-  PostgreSQL, Prometheus, OpenCost, Dex, DexConfigOperator, FinOpsOperator and Template Operator v2 are configured using MTO Dependencies Operator. See [MTO Dependencies Operator documentation](https://github.com/stakater/mto-dependencies-operator) for reference
+    PostgreSQL, Prometheus, OpenCost, Dex, DexConfigOperator, FinOpsOperator and Template Operator v2 are configured using MTO Dependencies Operator. See [MTO Dependencies Operator documentation](https://github.com/stakater/mto-dependencies-operator) for reference
 
 Here's an example of how to generate the secrets required to configure MTO:
 
@@ -308,6 +308,9 @@ components:
 On OpenShift, when no host is set, the shared host is auto-derived from the cluster ingress domain as `tenant-operator-<operator-namespace>.<cluster-ingress-domain>`. On Kubernetes there is no cluster domain to derive from, so `host` must be set explicitly.
 
 #### Legacy mode (per-component hosts)
+
+!!! warning "Legacy"
+    Per-component hosts are the pre-consolidation behavior, kept only for backward compatibility. New installations should use [consolidated mode](#consolidated-mode-recommended).
 
 Set explicit per-component hosts to keep each component on its own hostname (pre-consolidation behavior). Setting any per-component host, with no top-level host, selects legacy mode:
 
@@ -772,6 +775,9 @@ users:
 ```
 
 ## Integrations
+
+!!! danger "Deprecated"
+    Configuring integrations through the `IntegrationConfig` is the legacy mechanism; it is **deprecated** and will be removed in a future release. Configure these tools through [Extensions](../extensions/overview.md) instead.
 
 Integrations are used to configure the integrations that MTO has with other tools. Currently, MTO supports the following integrations:
 
