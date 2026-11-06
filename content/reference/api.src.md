@@ -726,9 +726,9 @@ _Appears in:_
 
 | Field | Description | Default | Validation |
 | --- | --- | --- | --- |
-| `custom` _[Custom](#custom)_ | Custom is used to define custom pricing for opencost. If not provided, the default pricing will be used.<br />Custom field is deprecated and will be removed in a future release. Please use the spec.components.finopsOperator.priceBook field instead to configure custom pricing for OpenCost. |  | Optional: \{\} <br /> |
-| `cloudPricingSecretRef` _[SecretRef](#secretref)_ | CloudPricingSecretRef is the reference to the secret containing the opeconst config for AWS/Azure.<br />This field is deprecated and will be removed in a future release. Please use the spec.components.opencost.cloudIntegrationSecret field instead to configure the cloud integration for OpenCost. |  | Optional: \{\} <br /> |
-| `retentionPeriod` _string_ | RetentionPeriod defines the retention period of prometheus server<br />This field is deprecated and will be removed in a future release. Please use the spec.components.prometheus.retention field instead to configure the retention period for Prometheus. | 7d |  |
+| `custom` _[Custom](#custom)_ | Custom is used to define custom pricing for opencost. If not provided, the default pricing will be used.<br />Custom field is deprecated and will be removed in a future release. Configure custom pricing through `spec.components.finopsOperator.values.priceBook` instead. |  | Optional: \{\} <br /> |
+| `cloudPricingSecretRef` _[SecretRef](#secretref)_ | CloudPricingSecretRef is the reference to the secret containing the opeconst config for AWS/Azure.<br />This field is deprecated and will be removed in a future release. Configure the cloud integration through `spec.components.opencost.values.opencost.cloudIntegrationSecret` instead. Azure customer-specific pricing has no replacement yet. |  | Optional: \{\} <br /> |
+| `retentionPeriod` _string_ | RetentionPeriod defines the retention period of prometheus server<br />This field is deprecated and will be removed in a future release. Configure the retention period through `spec.components.prometheus.values.server.retention` instead. | 7d |  |
 
 #### Custom
 
