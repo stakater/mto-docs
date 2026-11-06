@@ -1,6 +1,6 @@
 # IntegrationConfig
 
-`IntegrationConfig` is used to configure settings of multi-tenancy for Multi Tenant Operator.
+`IntegrationConfig` holds the cluster-wide configuration for Multi Tenant Operator. It lives in the `multi-tenant-operator` namespace and groups the settings for MTO's [components](#components), [access control](#access-control), [metadata defaults](#metadata), [integrations](#integrations) and [tenant isolation policies](#tenantpolicies).
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta1
@@ -235,11 +235,11 @@ Following are the different components that can be used to configure multi-tenan
     - `finopsGateway:` Settings for the FinOps Gateway's ingress.
         - `host:` hostname for the FinOps Gateway's ingress. Setting it opts the installation into legacy per-component mode.
         - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the FinOps Gateway's ingress.
-- `components.showbackOpts:` Configures the showback feature with the following options:
-    - `custom:` Custom pricing model for showback.
-    - `cloudPricingSecretRef:` Secret reference for AWS / Azure Pricing model.
-    - `opencostServiceRoleArn`: Role ARN to be used by OpenCost gateway's service account
-    - `retentionPeriod`: Retention period to configure `--storage.tsdb.retention.time` parameter of MTO Prometheus Deployment
+- `components.showbackOpts:` **Deprecated** — configures the showback pricing options. This field and all of its sub-fields will be removed in a future release; configure showback through the dedicated component fields instead:
+    - `custom:` custom pricing model → use [`components.finopsOperator.priceBook`](#finops-operator).
+    - `cloudPricingSecretRef:` secret reference for the AWS / Azure pricing model → use [`components.opencost.cloudIntegrationSecret`](#opencost).
+    - `opencostServiceRoleArn:` role ARN used by the OpenCost gateway's service account.
+    - `retentionPeriod:` Prometheus retention (`--storage.tsdb.retention.time`) → use [`components.prometheus.retention`](#prometheus).
 - `components.postgres:` Configures PostgreSQL.
 - `components.prometheus:` Configures Prometheus.
 - `components.opencost:` Configures OpenCost.
@@ -495,6 +495,9 @@ components:
 
 ### Custom Pricing
 
+!!! danger "Deprecated"
+    `showbackOpts.custom` is **deprecated** and will be removed in a future release. Use [`components.finopsOperator.priceBook`](#finops-operator) to configure custom pricing instead.
+
 You can modify IntegrationConfig to customise the default pricing model. Here is what you need at `IntegrationConfig.spec.components`:
 
 ```yaml
@@ -520,14 +523,20 @@ After modifying your default IntegrationConfig in `multi-tenant-operator` namesp
 
 ### Azure Pricing
 
-MTO supports Azure pricing model via the `showbackOpts.cloudIntegrationSecretRef` field. Following 2 types of pricing are supported:
+!!! danger "Deprecated"
+    Configuring cloud pricing through `showbackOpts` is **deprecated** and will be removed in a future release. Use [`components.opencost.cloudIntegrationSecret`](#opencost) instead.
+
+MTO supports the Azure pricing model via the `showbackOpts.cloudPricingSecretRef` field. Following 2 types of pricing are supported:
 
 - `Azure Standard Pricing`
 - `Customer-specific pricing`
 
 ### AWS Pricing
 
-MTO supports AWS pricing model via the `integrationConfig.components.showbackOpts.cloudIntegrationSecretRef` field. Following 2 types of pricing are supported:
+!!! danger "Deprecated"
+    Configuring cloud pricing through `showbackOpts` is **deprecated** and will be removed in a future release. Use [`components.opencost.cloudIntegrationSecret`](#opencost) instead.
+
+MTO supports the AWS pricing model via the `components.showbackOpts.cloudPricingSecretRef` field. Following 2 types of pricing are supported:
 
 - `AWS Standard Pricing`
 - `AWS Spot Instance Pricing`
