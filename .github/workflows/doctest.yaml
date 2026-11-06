@@ -112,7 +112,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.15'
       - run: pip install -q -r requirements-dev.txt
       - id: matrix
         run: echo "matrix=$(python scripts/doctest_ci.py matrix)" >> "$GITHUB_OUTPUT"
@@ -130,7 +130,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.15'
       - uses: azure/setup-helm@v4
         with:
           version: ${{ env.HELM_VERSION }}
