@@ -5879,6 +5879,33 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../template-operator/guides/templates/removing-fields.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Removing a Field from a Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -11005,8 +11032,8 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-</div>
 <p>PostgreSQL, Prometheus, OpenCost, Dex, DexConfigOperator, FinOpsOperator and Template Operator v2 are configured using MTO Dependencies Operator. See <a href="https://github.com/stakater/mto-dependencies-operator">MTO Dependencies Operator documentation</a> for reference</p>
+</div>
 <p>Here's an example of how to generate the secrets required to configure MTO:</p>
 <p><strong>TLS Secret for Ingress:</strong></p>
 <p>Create a TLS secret containing your SSL/TLS certificate and key for secure communication. This secret will be used for the Console and Gateway ingresses.</p>
@@ -11074,6 +11101,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 </ul>
 <p>On OpenShift, when no host is set, the shared host is auto-derived from the cluster ingress domain as <code>tenant-operator-&lt;operator-namespace&gt;.&lt;cluster-ingress-domain&gt;</code>. On Kubernetes there is no cluster domain to derive from, so <code>host</code> must be set explicitly.</p>
 <h4 id="legacy-mode-per-component-hosts">Legacy mode (per-component hosts)<a class="headerlink" href="#legacy-mode-per-component-hosts" title="Permanent link">#</a></h4>
+<div class="admonition danger">
+<p class="admonition-title">Deprecated</p>
+<p>Per-component hosts are the pre-consolidation behavior; this mode is <strong>deprecated</strong> and will be removed in a future release. Use <a href="#consolidated-mode-recommended">consolidated mode</a> instead.</p>
+</div>
 <p>Set explicit per-component hosts to keep each component on its own hostname (pre-consolidation behavior). Setting any per-component host, with no top-level host, selects legacy mode:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ingress</span><span class="p">:</span>
@@ -11456,6 +11487,10 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">andrew@stakater.com</span>
 </code></pre></div>
 <h2 id="integrations">Integrations<a class="headerlink" href="#integrations" title="Permanent link">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">Deprecated</p>
+<p>Configuring integrations through the <code>IntegrationConfig</code> is the legacy mechanism; it is <strong>deprecated</strong> and will be removed in a future release. Configure these tools through <a href="../extensions/overview.html">Extensions</a> instead.</p>
+</div>
 <p>Integrations are used to configure the integrations that MTO has with other tools. Currently, MTO supports the following integrations:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">integrations</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">argocd</span><span class="p">:</span>

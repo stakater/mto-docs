@@ -5113,6 +5113,33 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="removing-fields.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Removing a Field from a Template
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -9261,6 +9288,10 @@ kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w">
 NAME<span class="w">             </span>STATE<span class="w">    </span>AGE
 docker-secret<span class="w">    </span>Active<span class="w">   </span>2m
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Deleting a <code>data</code> key from this Template removes it from every deployed Secret on the next sync, because the operator nulls <code>data</code> keys that disappear from the Template. Any other field stays on the live Secret until it is set to <code>null</code>. See <a href="removing-fields.html">Removing a Field from a Template</a>.</p>
+</div>
 <p><code>ClusterTemplateInstance</code> can also target specific tenants or all tenant namespaces under a single YAML definition.</p>
 
 
