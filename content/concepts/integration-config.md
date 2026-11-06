@@ -1,6 +1,6 @@
 # IntegrationConfig
 
-`IntegrationConfig` holds the cluster-wide configuration for Multi Tenant Operator. It lives in the `multi-tenant-operator` namespace and groups the settings for MTO's [components](#components), [access control](#access-control), [metadata defaults](#metadata), [integrations](#integrations) and [tenant isolation policies](#tenantpolicies).
+`IntegrationConfig` is the single resource that configures Multi Tenant Operator for a cluster. One `IntegrationConfig`, named `tenant-operator-config`, lives in the `multi-tenant-operator` namespace and its `spec` is split into five sections:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta1
@@ -9,268 +9,48 @@ metadata:
   name: tenant-operator-config
   namespace: multi-tenant-operator
 spec:
-  components:
-    console: true
-    showback: true
-    showbackOpts:
-      custom:
-        CPU: "0.031611"
-        spotCPU: "0.006655"
-        RAM: "0.004237"
-        spotRAM: "0.000892"
-        GPU: "0.95"
-        storage: "0.00005479452"
-        zoneNetworkEgress: "0.01"
-        regionNetworkEgress: "0.01"
-        internetNetworkEgress: "0.12"
-        spotLabel: "kops.k8s.io/instancegroup"
-        spotLabelValue: "spotinstance-nodes"
-        awsSpotDataRegion: "us-east-2"
-        awsSpotDataBucket: "my-spot-bucket"
-        awsSpotDataPrefix: "spot_pricing_prefix"
-        projectID: "012345678901"
-
-      cloudPricingSecretRef:
-        name: secret-name
-        namespace: multi-tenant-operator
-      
-      opencostServiceRoleArn: arn:aws:iam::123456789012:role/S3Access
-      retentionPeriod: 7d
-
-    ingress:
-      ingressClassName: 'nginx'
-      host: mto.apps.mycluster-ams.abcdef.cloud
-      tlsSecretName: tenant-operator-tls
-    postgres:
-      mode: Managed
-      values:
-        primary:
-          persistence:
-            size: "20Gi"
-    prometheus:
-      mode: External
-      external:
-        serverURL: https://prometheus.example.com
-    opencost:
-      mode: Managed
-    dex:
-      mode: External
-      external:
-        issuer: https://dex.example.com
-    dexConfigOperator: {}
-    finopsOperator: {}
-    templateOperatorV2:
-      mode: Managed
-  accessControl:
-    rbac:
-      tenantRoles:
-        default:
-          owner:
-            clusterRoles:
-              - admin
-          editor:
-            clusterRoles:
-              - edit
-          viewer:
-            clusterRoles:
-              - view
-        custom:
-        - labelSelector:
-            matchExpressions:
-            - key: stakater.com/kind
-              operator: In
-              values:
-                - build
-            matchLabels:
-              stakater.com/kind: dev
-          owner:
-            clusterRoles:
-              - custom-owner
-          editor:
-            clusterRoles:
-              - custom-editor
-          viewer:
-            clusterRoles:
-              - custom-view
-    namespaceAccessPolicy:
-      deny:
-        privilegedNamespaces:
-          users:
-            - system:serviceaccount:openshift-argocd:argocd-application-controller
-            - adam@stakater.com
-          groups:
-            - cluster-admins
-    privileged:
-      namespaces:
-        - ^default$
-        - ^openshift.*
-        - ^kube.*
-      serviceAccounts:
-        - ^system:serviceaccount:openshift.*
-        - ^system:serviceaccount:kube.*
-      users:
-        - ''
-      groups:
-        - cluster-admins
-  metadata:
-    groups:
-      labels:
-        role: customer-reader
-      annotations:
-        openshift.io/node-selector: node-role.kubernetes.io/worker=
-    namespaces:
-      labels:
-        stakater.com/workload-monitoring: "true"
-      annotations:
-        openshift.io/node-selector: node-role.kubernetes.io/worker=
-    sandboxes:
-      labels:
-        stakater.com/kind: sandbox
-      annotations:
-        openshift.io/node-selector: node-role.kubernetes.io/worker=
-  integrations:
-    argocd:
-      clusterResourceWhitelist:
-        - group: tronador.stakater.com
-          kind: EnvironmentProvisioner
-      namespaceResourceBlacklist:
-        - group: '' # all groups
-          kind: ResourceQuota
-      namespace: openshift-operators
-    vault:
-      enabled: true
-      authMethod: kubernetes      #enum: {kubernetes:default, token}
-      accessInfo:
-        accessorPath: oidc/
-        address: https://vault.apps.prod.abcdefghi.kubeapp.cloud/
-        roleName: mto
-        secretRef:
-          name: ''
-          namespace: ''
-      config:
-        ssoClient: vault
-      policies:
-        - name: CustomPolicy
-          rules:
-            - capabilities:
-                - read
-                - list
-              path: testPath
-          tenantRoles:
-            - viewer
-            - editor
-  tenantPolicies:
-    network:
-      disableIntraTenantNetworking: true
-      disableNodePortServices: true
-      disableHostPorts: true
+  components: {}      # the console, showback and the services behind them
+  accessControl: {}   # tenant roles, and privileged users/namespaces MTO leaves alone
+  metadata: {}        # default labels/annotations for managed namespaces and groups
+  integrations: {}    # ArgoCD and Vault wiring (deprecated — use Extensions)
+  tenantPolicies: {}  # extra tenant isolation
 ```
 
-Following are the different components that can be used to configure multi-tenancy in a cluster via Multi Tenant Operator.
+Each section is described below.
 
 ## Components
 
+`components` configures the MTO console, the showback (cost) feature, and the services that back them.
+
 ```yaml
-  components:
-    console: true
-    showback: true
-    showbackOpts:
-      custom:
-        CPU: "0.031611"
-        spotCPU: "0.006655"
-        RAM: "0.004237"
-        spotRAM: "0.000892"
-        GPU: "0.95"
-        storage: "0.00005479452"
-        zoneNetworkEgress: "0.01"
-        regionNetworkEgress: "0.01"
-        internetNetworkEgress: "0.12"
-      cloudPricingSecretRef:
-        name: azure-pricing
-        namespace: multi-tenant-operator
-
-      opencostServiceRoleArn: arn:aws:iam::123456789012:role/S3Access
-      retentionPeriod: 7d
-    postgres:
-      mode: Managed
-      values:
-        primary:
-          persistence:
-            size: "20Gi"
-    prometheus:
-      mode: External
-      external:
-        serverURL: https://prometheus.example.com
-    opencost:
-      mode: Managed
-    dex:
-      mode: External
-      external:
-        issuer: https://dex.example.com
-    dexConfigOperator: {}
-    finopsOperator: {}
-    templateOperatorV2:
-      mode: Managed
-    ingress:
-      ingressClassName: nginx
-      host: mto.apps.mycluster-ams.abcdef.cloud
-      tlsSecretName: tenant-operator-tls
+components:
+  console: true
+  showback: true
+  ingress:
+    host: mto.apps.example.com
+    tlsSecretName: mto-tls
+    ingressClassName: nginx
+  postgres:
+    mode: Managed
+  prometheus:
+    mode: Managed
+  opencost:
+    mode: Managed
+  dex:
+    mode: Managed
+  templateOperatorV2:
+    mode: Managed
 ```
 
-- `components.console:` Enables or disables the console GUI for MTO.
-- `components.showback:` Enables or disables the showback feature on the console.
-- `components.ingress:` Configures the ingress settings for various components:
-    - `host:` Shared hostname serving all components. Setting it enables consolidated mode. See [Ingress](#ingress).
-    - `tlsSecretName:` Name of the secret containing the TLS certificate and key covering the shared host in consolidated mode.
-    - `ingressClassName:` Ingress class to be used for the ingress.
-    - `console:` Settings for the console's ingress.
-        - `host:` hostname for the console's ingress. Setting it opts the installation into legacy per-component mode.
-        - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the console's ingress.
-    - `gateway:` Settings for the gateway's ingress.
-        - `host:` hostname for the gateway's ingress. Setting it opts the installation into legacy per-component mode.
-        - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the gateway's ingress.
-    - `dex:` Settings for the Dex's ingress.
-        - `host:` hostname for the Dex's ingress. Setting it opts the installation into legacy per-component mode.
-        - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the Dex's ingress.
-    - `finopsGateway:` Settings for the FinOps Gateway's ingress.
-        - `host:` hostname for the FinOps Gateway's ingress. Setting it opts the installation into legacy per-component mode.
-        - `tlsSecretName:` Name of the secret containing the TLS certificate and key for the FinOps Gateway's ingress.
-- `components.showbackOpts:` **Deprecated** — configures the showback pricing options. This field and all of its sub-fields will be removed in a future release; configure showback through the dedicated component fields instead:
-    - `custom:` custom pricing model → use [`components.finopsOperator.priceBook`](#finops-operator).
-    - `cloudPricingSecretRef:` secret reference for the AWS / Azure pricing model → use [`components.opencost.cloudIntegrationSecret`](#opencost).
-    - `opencostServiceRoleArn:` role ARN used by the OpenCost gateway's service account.
-    - `retentionPeriod:` Prometheus retention (`--storage.tsdb.retention.time`) → use [`components.prometheus.retention`](#prometheus).
-- `components.postgres:` Configures PostgreSQL.
-- `components.prometheus:` Configures Prometheus.
-- `components.opencost:` Configures OpenCost.
-- `components.dex:` Configures Dex.
-- `components.dexConfigOperator:` Configures DexConfigOperator.
-- `components.finopsOperator:` Configures FinOps Operator.
-- `components.templateOperatorV2:` Configures Template Operator v2. Set `mode` to `Managed` to deploy it alongside MTO, or leave it at the default `Disabled` to deploy nothing. Chart values can be overridden via `values`.
+| Field | Purpose |
+| --- | --- |
+| `console` | Enable or disable the MTO console GUI. |
+| `showback` | Enable or disable the showback (cost) feature in the console. |
+| `ingress` | How the web components are exposed. See [Ingress](#ingress). |
+| `postgres`, `prometheus`, `opencost`, `dex`, `dexConfigOperator`, `finopsOperator`, `templateOperatorV2` | The services behind the console and showback. See [Dependencies](#dependencies). |
+| `showbackOpts` | **Deprecated** showback pricing options. See [Showback pricing](#showback-pricing-deprecated). |
 
-!!! note
-    PostgreSQL, Prometheus, OpenCost, Dex, DexConfigOperator, FinOpsOperator and Template Operator v2 are configured using MTO Dependencies Operator. See [MTO Dependencies Operator documentation](https://github.com/stakater/mto-dependencies-operator) for reference
-
-Here's an example of how to generate the secrets required to configure MTO:
-
-**TLS Secret for Ingress:**
-
-Create a TLS secret containing your SSL/TLS certificate and key for secure communication. This secret will be used for the Console and Gateway ingresses.
-
-```bash
-kubectl -n multi-tenant-operator create secret tls <tls-secret-name> --key=<path-to-key.pem> --cert=<path-to-cert.pem>
-```
-
-Integration config will be managing the following resources required for console GUI:
-
-- `Postgresql` resources
-- `Prometheus` resources
-- `Opencost` resources
-- `MTO Console, Gateway` resources
-- `Dex` and `DexConfigOperator` resources
-- `FinOps Operator` and `FinOps Gateway` resources
-
-Details on console GUI and showback can be found [here](../console/overview.md)
+The console GUI and showback are described in the [console overview](../console/overview.md).
 
 ### Ingress
 
@@ -293,8 +73,6 @@ Set a top-level `host` to serve all components under one hostname:
 
 ```yaml
 components:
-  console: true
-  showback: true
   ingress:
     host: mto.apps.example.com   # shared host for all components
     tlsSecretName: mto-tls       # TLS cert covering the shared host
@@ -307,12 +85,21 @@ components:
 
 On OpenShift, when no host is set, the shared host is auto-derived from the cluster ingress domain as `tenant-operator-<operator-namespace>.<cluster-ingress-domain>`. On Kubernetes there is no cluster domain to derive from, so `host` must be set explicitly.
 
+Create the TLS secret in the operator namespace:
+
+```bash
+kubectl -n multi-tenant-operator create secret tls <tls-secret-name> --key=<path-to-key.pem> --cert=<path-to-cert.pem>
+```
+
+!!! note
+    In consolidated mode the Dex issuer becomes `https://<host>/dex`. Any external OIDC client that trusts MTO's Dex must be configured with this issuer.
+
 #### Legacy mode (per-component hosts)
 
 !!! danger "Deprecated"
     Per-component hosts are the pre-consolidation behavior; this mode is **deprecated** and will be removed in a future release. Use [consolidated mode](#consolidated-mode-recommended) instead.
 
-Set explicit per-component hosts to keep each component on its own hostname (pre-consolidation behavior). Setting any per-component host, with no top-level host, selects legacy mode:
+Set explicit per-component hosts, with no top-level `host`, to keep each component on its own hostname:
 
 ```yaml
 components:
@@ -332,37 +119,35 @@ components:
       tlsSecretName: finops-tls
 ```
 
-In legacy mode a component without an explicit `host` still falls back to its auto-derived OpenShift hostname, `tenant-operator-<component>-<operator-namespace>.<cluster-ingress-domain>`.
-
-!!! note
-    In consolidated mode the Dex issuer becomes `https://<host>/dex`. Any external OIDC client that trusts MTO's Dex must be configured with this issuer.
+A component without an explicit `host` still falls back to its auto-derived OpenShift hostname, `tenant-operator-<component>-<operator-namespace>.<cluster-ingress-domain>`.
 
 #### Upgrading from per-component hosts
 
 OpenShift installations that set no ingress hosts previously got one auto-derived hostname per component. They now move to a single shared host, which changes every component URL and the Dex issuer, so existing sessions have to re-authenticate and external OIDC clients need the new issuer. To stay on the old hostnames, set the per-component `host` fields as shown in legacy mode. Kubernetes installations already required hosts to be configured and are unaffected as long as a host is set.
 
-### PostgreSQL
+### Dependencies
 
-The `values` field accepts [Bitnami PostgreSQL Helm chart values](https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml).
+PostgreSQL, Prometheus, OpenCost, Dex, DexConfigOperator, FinOps Operator and Template Operator v2 are provisioned by the [MTO Dependencies Operator](https://github.com/stakater/mto-dependencies-operator). The services that support both `Managed` and `External` share the same shape:
+
+- `mode`: `Managed` (MTO deploys and manages it — the default) or `External` (you supply it).
+- `values`: Helm chart value overrides, applied when `mode: Managed`.
+- `external`: connection details, used when `mode: External`.
+
+#### PostgreSQL
+
+`values` accepts [Bitnami PostgreSQL Helm chart values](https://github.com/bitnami/charts/blob/main/bitnami/postgresql/values.yaml).
 
 ```yaml
 components:
   postgres:
-    mode: Managed # or External
+    mode: Managed
     values:
       primary:
         persistence:
           size: "20Gi"
-        resources:
-          limits:
-            cpu: "2"
-            memory: "4Gi"
-          requests:
-            cpu: "500m"
-            memory: "2Gi"
 ```
 
-To use an external PostgreSQL instance, set `mode: External` and provide connection details:
+To use an external PostgreSQL instance, set `mode: External` and reference a connection secret:
 
 ```yaml
 components:
@@ -374,34 +159,24 @@ components:
         namespace: shared-services
 ```
 
-The referenced secret should contain either:
+The referenced secret must contain either a `dsn` field with a full connection string (`postgresql://user:pass@host:5432/dbname?sslmode=require`) or the individual fields `host`, `port`, `username`, `password`, `database` and `sslmode`.
 
-- A `dsn` field with a full connection string: `postgresql://user:pass@host:5432/dbname?sslmode=require`
-- Or individual fields: `host`, `port`, `username`, `password`, `database`, `sslmode`
+#### Prometheus
 
-### Prometheus
-
-The `values` field accepts [Prometheus Helm chart values](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml).
+`values` accepts [Prometheus Helm chart values](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml).
 
 ```yaml
 components:
   prometheus:
-    mode: Managed # or External
+    mode: Managed
     values:
       server:
         retention: "30d"
         persistence:
           size: "50Gi"
-        resources:
-          limits:
-            cpu: "2"
-            memory: "8Gi"
-          requests:
-            cpu: "500m"
-            memory: "4Gi"
 ```
 
-To use an external Prometheus instance:
+To use an external Prometheus instance, set `mode: External` and point MTO at it with `external.serverURL`:
 
 ```yaml
 components:
@@ -411,30 +186,21 @@ components:
       serverURL: https://prometheus.example.com
 ```
 
-- `external.serverURL`: The base URL of the external Prometheus server for query API access.
+#### OpenCost
 
-### OpenCost
-
-The `values` field accepts [OpenCost Helm chart values](https://github.com/opencost/opencost-helm-chart/blob/main/charts/opencost/values.yaml).
+`values` accepts [OpenCost Helm chart values](https://github.com/opencost/opencost-helm-chart/blob/main/charts/opencost/values.yaml).
 
 ```yaml
 components:
   opencost:
-    mode: Managed # or External
+    mode: Managed
     values:
       opencost:
         exporter:
           replicas: 2
-          resources:
-            limits:
-              cpu: "1"
-              memory: "2Gi"
-            requests:
-              cpu: "200m"
-              memory: "512Mi"
 ```
 
-To use an external OpenCost instance:
+To use an external OpenCost instance, set `mode: External` and point MTO at it with `external.serverURL`:
 
 ```yaml
 components:
@@ -444,20 +210,18 @@ components:
       serverURL: https://opencost.example.com
 ```
 
-- `external.serverURL`: The base URL of the external OpenCost server for query API access.
+#### Dex
 
-### Dex
-
-The `values` field accepts [Dex Helm chart values](https://github.com/dexidp/helm-charts/blob/master/charts/dex/values.yaml).
+`values` accepts [Dex Helm chart values](https://github.com/dexidp/helm-charts/blob/master/charts/dex/values.yaml).
 
 ```yaml
 components:
   dex:
-    mode: Managed # or External
+    mode: Managed
     values: {}
 ```
 
-To use an external Dex instance:
+To use an external Dex instance, set `mode: External` and give its issuer URL (used for OIDC discovery):
 
 ```yaml
 components:
@@ -467,11 +231,9 @@ components:
       issuer: https://dex.example.com
 ```
 
-- `external.issuer`: The URL of the external Dex issuer, used for OIDC discovery.
+#### DexConfigOperator
 
-### DexConfigOperator
-
-DexConfigOperator helps configure Dex on Kubernetes. Its deployment can be customized via Helm chart values:
+DexConfigOperator helps configure Dex on Kubernetes. It takes only `values`, Helm chart values for customizing its deployment:
 
 ```yaml
 components:
@@ -479,11 +241,9 @@ components:
     values: {}
 ```
 
-- `values`: Helm chart values for customizing the DexConfigOperator deployment.
+#### FinOps Operator
 
-### FinOps Operator
-
-The FinOps Operator powers the showback features in MTO. Its deployment can be customized via Helm chart values:
+The FinOps Operator powers the showback feature. It takes only `values`, Helm chart values for customizing its deployment:
 
 ```yaml
 components:
@@ -491,57 +251,69 @@ components:
     values: {}
 ```
 
-- `values`: Helm chart values for customizing the FinOps Operator deployment.
+#### Template Operator v2
 
-### Custom Pricing
-
-!!! danger "Deprecated"
-    `showbackOpts.custom` is **deprecated** and will be removed in a future release. Use [`components.finopsOperator.priceBook`](#finops-operator) to configure custom pricing instead.
-
-You can modify IntegrationConfig to customise the default pricing model. Here is what you need at `IntegrationConfig.spec.components`:
+Set `mode: Managed` to deploy Template Operator v2 alongside MTO. It is not deployed by default (`mode: Disabled`). Chart values can be overridden via `values`:
 
 ```yaml
 components:
-    console: true # should be enabled
-    showback: true # should be enabled
-    showbackOpts:
-      # add below and override any default value
-      # you can also remove the ones you do not need
-      custom:
-        CPU: "0.031611"
-        spotCPU: "0.006655"
-        RAM: "0.004237"
-        spotRAM: "0.000892"
-        GPU: "0.95"
-        storage: "0.00005479452"
-        zoneNetworkEgress: "0.01"
-        regionNetworkEgress: "0.01"
-        internetNetworkEgress: "0.12"
+  templateOperatorV2:
+    mode: Managed
+    values: {}
 ```
 
-After modifying your default IntegrationConfig in `multi-tenant-operator` namespace, a ConfigMap named `opencost-custom-pricing` will be updated. You will be able to see updated pricing info in `mto-console`.
-
-### Azure Pricing
+### Showback pricing (deprecated)
 
 !!! danger "Deprecated"
-    Configuring cloud pricing through `showbackOpts` is **deprecated** and will be removed in a future release. Use [`components.opencost.cloudIntegrationSecret`](#opencost) instead.
+    `showbackOpts` is **deprecated** and will be removed in a future release. Configure showback through the dedicated component fields instead:
 
-MTO supports the Azure pricing model via the `showbackOpts.cloudPricingSecretRef` field. Following 2 types of pricing are supported:
+    - Custom pricing (`showbackOpts.custom`) → `components.finopsOperator.priceBook`
+    - AWS / Azure cloud pricing (`showbackOpts.cloudPricingSecretRef`) → `components.opencost.cloudIntegrationSecret`
+    - Prometheus retention (`showbackOpts.retentionPeriod`) → [`components.prometheus`](#prometheus) (`values.server.retention`)
 
-- `Azure Standard Pricing`
-- `Customer-specific pricing`
+The sections below document the legacy `showbackOpts` fields for existing installations.
 
-### AWS Pricing
+#### Custom Pricing
 
-!!! danger "Deprecated"
-    Configuring cloud pricing through `showbackOpts` is **deprecated** and will be removed in a future release. Use [`components.opencost.cloudIntegrationSecret`](#opencost) instead.
+Override the default pricing model under `components.showbackOpts.custom`:
 
-MTO supports the AWS pricing model via the `components.showbackOpts.cloudPricingSecretRef` field. Following 2 types of pricing are supported:
+```yaml
+components:
+  console: true
+  showback: true
+  showbackOpts:
+    custom:
+      CPU: "0.031611"
+      spotCPU: "0.006655"
+      RAM: "0.004237"
+      spotRAM: "0.000892"
+      GPU: "0.95"
+      storage: "0.00005479452"
+      zoneNetworkEgress: "0.01"
+      regionNetworkEgress: "0.01"
+      internetNetworkEgress: "0.12"
+```
 
-- `AWS Standard Pricing`
-- `AWS Spot Instance Pricing`
+After the `IntegrationConfig` is updated, MTO updates a ConfigMap named `opencost-custom-pricing` and the new pricing appears in the console.
+
+#### Azure Pricing
+
+MTO supports the Azure pricing model via `components.showbackOpts.cloudPricingSecretRef`, for both Azure Standard Pricing and customer-specific pricing.
+
+#### AWS Pricing
+
+MTO supports the AWS pricing model via `components.showbackOpts.cloudPricingSecretRef`, for both AWS Standard Pricing and AWS Spot Instance Pricing.
 
 ## Access Control
+
+`accessControl` has three parts: [`rbac`](#rbac) sets the roles bound in each tenant namespace, [`namespaceAccessPolicy`](#namespace-access-policy) restricts who may act on managed namespaces, and [`privileged`](#privileged) lists the namespaces, service accounts, users and groups MTO leaves alone.
+
+### RBAC
+
+`rbac.tenantRoles` defines which roles are bound in each tenant namespace. It has a required `default` set and an optional `custom` set selected by namespace labels.
+
+!!! warning
+    If you configure no roles, the default OpenShift roles `owner`, `edit` and `view` apply to tenant members. See [Changing the default access level](../guides/custom-roles.md).
 
 ```yaml
 accessControl:
@@ -558,177 +330,94 @@ accessControl:
           clusterRoles:
             - view
       custom:
-      - labelSelector:
-          matchExpressions:
-          - key: stakater.com/kind
-            operator: In
-            values:
-              - build
-          matchLabels:
-            stakater.com/kind: dev
-        owner:
-          clusterRoles:
-            - custom-owner
-        editor:
-          clusterRoles:
-            - custom-editor
-        viewer:
-          clusterRoles:
-            - custom-view
+        - labelSelector:
+            matchLabels:
+              stakater.com/kind: dev
+          owner:
+            clusterRoles:
+              - custom-owner
+```
+
+#### TenantRoles
+
+`tenantRoles` holds a required `default` role set and an optional `custom` set selected by namespace labels.
+
+##### Default
+
+`default` holds the roles bound in every tenant namespace that is not matched by a `custom` entry. All three subfields — `owner`, `editor` and `viewer` — are required and must each name at least one role. They correspond to the member fields of the [Tenant CR](tenant.md).
+
+##### Custom
+
+`custom` is an optional array of roles applied only to namespaces matched by a `labelSelector`. A namespace matched by two selectors gets both sets of roles. Any of `owner`, `editor` or `viewer` omitted from a `custom` entry is inherited from `default`. For example, a `custom` entry that sets only `owner` takes its `editor` and `viewer` from `default`.
+
+### Namespace Access Policy
+
+`namespaceAccessPolicy.deny.privilegedNamespaces` restricts which privileged users and groups may perform CRUD operations on managed namespaces.
+
+```yaml
+accessControl:
   namespaceAccessPolicy:
     deny:
       privilegedNamespaces:
         users:
           - system:serviceaccount:openshift-argocd:argocd-application-controller
           - adam@stakater.com
-          groups:
-            - cluster-admins
-  privileged:
-    namespaces:
-      - ^default$
-      - ^openshift.*
-      - ^kube.*
-    serviceAccounts:
-      - ^system:serviceaccount:openshift.*
-      - ^system:serviceaccount:kube.*
-    users:
-      - ''
-    groups:
-      - cluster-admins
+        groups:
+          - cluster-admins
 ```
-
-### RBAC
-
-RBAC is used to configure the roles that will be applied to each Tenant namespace. The field allows optional custom roles, that are then used to create RoleBindings for namespaces that match a labelSelector.
-
-#### TenantRoles
-
-TenantRoles are required within the IntegrationConfig, as they are used for defining what roles will be applied to each Tenant namespace. The field allows optional custom roles, that are then used to create RoleBindings for namespaces that match a labelSelector.
-
-> ⚠️ If you do not configure roles in any way, then the default OpenShift roles of `owner`, `edit`, and `view` will apply to Tenant members. Their details can be found [here](../guides/custom-roles.md)
-
-```yaml
-rbac:
-  tenantRoles:
-    default:
-      owner:
-        clusterRoles:
-          - admin
-      editor:
-        clusterRoles:
-          - edit
-      viewer:
-        clusterRoles:
-          - view
-    custom:
-    - labelSelector:
-        matchExpressions:
-        - key: stakater.com/kind
-          operator: In
-          values:
-            - build
-        matchLabels:
-          stakater.com/kind: dev
-      owner:
-        clusterRoles:
-          - custom-owner
-      editor:
-        clusterRoles:
-          - custom-editor
-      viewer:
-        clusterRoles:
-          - custom-view
-```
-
-##### Default
-
-This field contains roles that will be used to create default `roleBindings` for each namespace that belongs to tenants. These `roleBindings` are only created for a namespace if that namespace isn't already matched by the `custom` field below it. Therefore, it is required to have at least one role mentioned within each of its three subfields: `owner`, `editor`, and `viewer`. These 3 subfields also correspond to the member fields of the [Tenant CR](tenant.md)
-
-##### Custom
-
-An array of custom roles. Similar to the `default` field, you can mention roles within this field as well. However, the custom roles also require the use of a `labelSelector` for each iteration within the array. The roles mentioned here will only apply to the namespaces that are matched by the `labelSelector`. If a namespace is matched by 2 different `labelSelectors`, then both roles will apply to it. Additionally, roles can be skipped within the `labelSelector`. These missing roles are then inherited from the `default` roles field . For example, if the following custom roles arrangement is used:
-
-```yaml
-custom:
-- labelSelector:
-    matchExpressions:
-    - key: stakater.com/kind
-      operator: In
-      values:
-        - build
-    matchLabels:
-      stakater.com/kind: dev
-  owner:
-    clusterRoles:
-      - custom-owner
-```
-
-Then the `editor` and `viewer` roles will be taken from the `default` roles field, as that is required to have at least one role mentioned.
-
-### Namespace Access Policy
-
-Namespace Access Policy is used to configure the namespaces that are allowed to be created by tenants. It also allows the configuration of namespaces that are ignored by MTO.
-
-```yaml
-namespaceAccessPolicy:
-  deny:
-    privilegedNamespaces:
-      groups:
-        - cluster-admins
-      users:
-        - system:serviceaccount:openshift-argocd:argocd-application-controller
-        - adam@stakater.com
-  privileged:
-    namespaces:
-      - ^default$
-      - ^openshift.*
-      - ^kube.*
-    serviceAccounts:
-      - ^system:serviceaccount:openshift.*
-      - ^system:serviceaccount:kube.*
-    users:
-      - ''
-    groups:
-      - cluster-admins
-```
-
-#### Deny
-
-`namespaceAccessPolicy.Deny:` Can be used to restrict privileged *users/groups* CRUD operation over managed namespaces.
 
 ### Privileged
 
+`privileged` lists the namespaces, service accounts, users and groups that MTO ignores — it neither manages nor interferes with them, including deletion. Namespace and service-account entries are regex patterns.
+
+```yaml
+accessControl:
+  privileged:
+    namespaces:
+      - ^default$
+      - ^openshift.*
+      - ^kube.*
+    serviceAccounts:
+      - ^system:serviceaccount:openshift.*
+      - ^system:serviceaccount:kube.*
+    users:
+      - ''
+    groups:
+      - cluster-admins
+```
+
 #### Namespaces
 
-`privileged.namespaces:` Contains the list of `namespaces` ignored by MTO. MTO will not manage the `namespaces` in this list. Treatment for privileged namespaces does not involve further integrations or finalizers processing as with normal namespaces. Values in this list are regex patterns.
+`privileged.namespaces` lists namespaces MTO does not manage; privileged namespaces skip the integrations and finalizer processing applied to normal namespaces. Values are regex patterns, for example:
 
-For example:
+- `^default$` — the `default` namespace.
+- `^openshift-.*` — every namespace with the `openshift-` prefix.
+- `^stakater.` — any namespace containing `stakater` (a bare word matches any namespace containing it).
 
-- To ignore the `default` namespace, we can specify `^default$`
-- To ignore all namespaces starting with the `openshift-` prefix, we can specify `^openshift-.*`.
-- To ignore any namespace containing `stakater` in its name, we can specify `^stakater.`. (A constant word given as a regex pattern will match any namespace containing that word.)
+#### Service Accounts
 
-#### ServiceAccounts
-
-`privileged.serviceAccounts:` Contains the list of `ServiceAccounts` ignored by MTO. MTO will not manage the `ServiceAccounts` in this list. Values in this list are regex patterns. For example, to ignore all `ServiceAccounts` starting with the `system:serviceaccount:openshift-` prefix, we can use `^system:serviceaccount:openshift-.*`; and to ignore a specific service account like `system:serviceaccount:builder` service account we can use `^system:serviceaccount:builder$.`
+`privileged.serviceAccounts` lists service accounts MTO does not manage. Values are regex patterns — for example `^system:serviceaccount:openshift-.*` for all service accounts under the `openshift-` prefix, or `^system:serviceaccount:builder$` for one specific account.
 
 !!! note
-    `stakater`, `stakater.` and `stakater.*` will have the same effect. To check out the combinations, go to [Regex101](https://regex101.com/), select Golang, and type your expected regex and test string.
+    `stakater`, `stakater.` and `stakater.*` all have the same effect. To test a pattern, use [Regex101](https://regex101.com/) with the Golang flavor.
 
 #### Users
 
-`privileged.users:` Contains the list of `users` ignored by MTO. MTO will not manage the `users` in this list. Values in this list are regex patterns.
+`privileged.users` lists users MTO does not manage. Values are regex patterns.
 
 #### Groups
 
-`privileged.groups:` Contains names of the groups that are allowed to perform CRUD operations on namespaces present on the cluster. Users in the specified group(s) will be able to perform these operations without MTO getting in their way. MTO does not interfere even with the deletion of `privilegedNamespaces`.
+`privileged.groups` names groups allowed to perform CRUD operations on any namespace on the cluster without MTO getting in their way, including deletion of privileged namespaces.
 
 !!! note
-    User `kube:admin` is bypassed by default to perform operations as a cluster admin, this includes operations on all the namespaces.
+    `kube:admin` is bypassed by default and can operate as cluster admin on all namespaces.
 
-> ⚠️ If you want to use a more complex regex pattern (for the `privileged.namespaces` or `privileged.serviceAccounts` field), it is recommended that you test the regex pattern first -  either locally or using a platform such as <https://regex101.com/>.
+!!! warning
+    Test any non-trivial regex for `privileged.namespaces` or `privileged.serviceAccounts` before applying it — locally or with a tool such as [Regex101](https://regex101.com/).
 
 ## Metadata
+
+`metadata` sets default `labels` and `annotations` that MTO applies to the namespaces, groups and sandbox namespaces it manages.
 
 ```yaml
 metadata:
@@ -747,13 +436,9 @@ metadata:
     annotations: {}
 ```
 
-### Namespaces, group and sandbox
+- `metadata.namespaces` applies to tenant namespaces, `metadata.groups` to managed groups, and `metadata.sandboxes` to sandbox namespaces.
 
-We can use the `metadata.namespaces`, `metadata.group` and `metadata.sandbox` fields to automatically add `labels` and `annotations` to the **Namespaces** and **Groups** managed via MTO.
-
-If we want to add default *labels/annotations* to sandbox namespaces of tenants than we just simply add them in `metadata.namespaces.labels`/`metadata.namespaces.annotations` respectively.
-
-Whenever a project is made it will have the labels and annotations as mentioned above.
+Every project created afterwards carries these labels and annotations:
 
 ```yaml
 kind: Project
@@ -765,11 +450,6 @@ metadata:
   labels:
     workload-monitoring: 'true'
     stakater.com/tenant: bluesky
-spec:
-  finalizers:
-    - kubernetes
-status:
-  phase: Active
 ```
 
 ```yaml
@@ -788,7 +468,14 @@ users:
 !!! danger "Deprecated"
     Configuring integrations through the `IntegrationConfig` is the legacy mechanism; it is **deprecated** and will be removed in a future release. Configure these tools through [Extensions](../extensions/overview.md) instead.
 
-Integrations are used to configure the integrations that MTO has with other tools. Currently, MTO supports the following integrations:
+`integrations` wires MTO into other tools. MTO supports ArgoCD and Vault.
+
+### ArgoCD
+
+!!! danger "Deprecated"
+    Configuring ArgoCD through the `IntegrationConfig` is the legacy integration; it is **deprecated** and will be removed in a future release. Use the [ArgoCD v2 extension](../extensions/argocd-v2/overview.md) instead.
+
+[ArgoCD](https://argoproj.github.io/argo-cd/) is a GitOps continuous-delivery tool for Kubernetes. When ArgoCD is installed on the cluster, MTO can create an AppProject per tenant so each tenant syncs only to its own namespaces.
 
 ```yaml
 integrations:
@@ -800,9 +487,24 @@ integrations:
       - group: '' # all groups
         kind: ResourceQuota
     namespace: openshift-operators
+```
+
+- `clusterResourceWhitelist`: cluster-scoped resources ArgoCD may sync from your GitOps repo.
+- `namespaceResourceBlacklist`: resources ArgoCD may **not** sync from your GitOps repo.
+- `namespace`: where ArgoCD Applications and AppProjects are deployed. Set it when you want an AppProject created per tenant.
+
+### Vault
+
+!!! danger "Deprecated"
+    Configuring Vault through the `IntegrationConfig` is the legacy Vault Community integration; it is **deprecated** and will be removed in a future release. Use the [Vault Enterprise extension](../extensions/vault-enterprise/overview.md) instead.
+
+[Vault](https://www.vaultproject.io/) secures and controls access to tokens, passwords, certificates and encryption keys. When Vault is installed on the cluster, MTO can configure per-tenant access.
+
+```yaml
+integrations:
   vault:
     enabled: true
-    authMethod: kubernetes      #enum: {kubernetes:default, Token}
+    authMethod: kubernetes      # kubernetes (default) or token
     accessInfo:
       accessorPath: oidc/
       address: https://vault.apps.prod.abcdefghi.kubeapp.cloud/
@@ -824,94 +526,33 @@ integrations:
           - editor
 ```
 
-### ArgoCD
+MTO supports two authentication methods, selected by `authMethod`:
 
-!!! danger "Deprecated"
-    Configuring ArgoCD through the `IntegrationConfig` is the legacy integration; it is **deprecated** and will be removed in a future release. Use the [ArgoCD v2 extension](../extensions/argocd-v2/overview.md) instead.
-
-[ArgoCD](https://argoproj.github.io/argo-cd/) is a declarative, GitOps continuous delivery tool for Kubernetes. It follows the GitOps pattern of using Git repositories as the source of truth for defining the desired application state. ArgoCD uses Kubernetes manifests and configures the applications on the cluster.
-
-If `argocd` is configured on a cluster, then ArgoCD configuration can be enabled.
-
-```yaml
-argocd:
-  enabled: bool
-  clusterResourceWhitelist:
-    - group: tronador.stakater.com
-      kind: EnvironmentProvisioner
-  namespaceResourceBlacklist:
-    - group: '' # all groups
-      kind: ResourceQuota
-  namespace: openshift-operators
-```
-
-- `argocd.clusterResourceWhitelist` allows ArgoCD to sync the listed cluster scoped resources from your GitOps repo.
-- `argocd.namespaceResourceBlacklist` prevents ArgoCD from syncing the listed resources from your GitOps repo.
-- `argocd.namespace` is an optional field used to specify the namespace where ArgoCD Applications and AppProjects are deployed. The field should be populated when you want to create an ArgoCD AppProject for each tenant.
-
-### Vault
-
-!!! danger "Deprecated"
-    Configuring Vault through the `IntegrationConfig` is the legacy Vault Community integration; it is **deprecated** and will be removed in a future release. Use the [Vault Enterprise extension](../extensions/vault-enterprise/overview.md) instead.
-
-[Vault](https://www.vaultproject.io/) is used to secure, store and tightly control access to tokens, passwords, certificates, encryption keys for protecting secrets and other sensitive data using a UI, CLI, or http API.
-
-If `vault` is configured on a cluster, then Vault configuration can be enabled.
-
-```yaml
-vault:
-  enabled: true
-  authMethod: kubernetes      #enum: {kubernetes:default, token}
-  accessInfo:
-    accessorPath: oidc/
-    address: https://vault.apps.prod.abcdefghi.kubeapp.cloud/
-    roleName: mto
-    secretRef:
-      name: ''
-      namespace: ''
-  config:
-    ssoClient: vault
-  policies:
-    - name: CustomPolicy
-      rules:
-        - capabilities:
-            - read
-            - list
-          path: testPath
-      tenantRoles:
-        - viewer
-        - editor
-```
-
-If enabled, then admins have to specify the `authMethod` to be used for authentication. MTO supports two authentication methods:
-
-- `kubernetes`: This is the default authentication method. It uses the Kubernetes authentication method to authenticate with Vault.
-- `token`: This method uses a Vault token to authenticate with Vault.
+- `kubernetes` (default): authenticate using Vault's Kubernetes auth method.
+- `token`: authenticate using a Vault token.
 
 #### AuthMethod - Kubernetes
 
-If `authMethod` is set to `kubernetes`, then admins have to specify the following fields:
+With `authMethod: kubernetes`, specify:
 
-- `accessorPath:` Accessor Path within Vault to fetch SSO accessorID
-- `address:` Valid Vault address reachable within cluster.
-- `roleName:` Vault's Kubernetes authentication role
-- `sso.clientName:` SSO client name.
+- `accessorPath`: accessor path within Vault used to fetch the SSO accessor ID.
+- `address`: a Vault address reachable from within the cluster.
+- `roleName`: Vault's Kubernetes authentication role.
+- `config.ssoClient`: the SSO client name.
+
+See the [Vault Kubernetes auth docs](https://developer.hashicorp.com/vault/docs/auth/kubernetes) for enabling Kubernetes auth in Vault.
 
 #### AuthMethod - Token
 
-If `authMethod` is set to `token`, then admins have to specify the following fields:
+With `authMethod: token`, specify:
 
-- `accessorPath:` Accessor Path within Vault to fetch SSO accessorID
-- `address:` Valid Vault address reachable within cluster.
-- `secretRef:` Secret containing Vault token.
-    - `name:` Name of the secret containing Vault token.
-    - `namespace:` Namespace of the secret containing Vault token.
-
-For more details around enabling Kubernetes auth in Vault, visit [here](https://developer.HashiCorp.com/vault/docs/auth/kubernetes)
+- `accessorPath`: accessor path within Vault used to fetch the SSO accessor ID.
+- `address`: a Vault address reachable from within the cluster.
+- `secretRef`: the secret holding the Vault token, by `name` and `namespace`.
 
 #### Vault Policies
 
-The role created within Vault for Kubernetes authentication should have the following permissions:
+The Vault role used for Kubernetes authentication needs these permissions:
 
 ```hcl
 path "secret/*" {
@@ -951,66 +592,58 @@ path "identity/group/id/*" {
 
 ##### Custom Policies
 
-You can create custom policies for all of your tenants. The policies are created within Vault and are then assigned to the tenant roles specified in the `tenantRoles` field.
+Custom policies are created in Vault and assigned to the tenant roles named in `tenantRoles`.
 
-- `name:` Name of the policy to be created within Vault.
-- `rules:` Rules to be applied to the policy. The rules are specified in the same format as the Vault policy language.
-    - `capabilities:` Capabilities to be applied to the policy. The capabilities can be `create`, `read`, `update`, `patch`, `delete`, `list`.
-    - `path:` Path to which the capabilities will be applied.
-- `tenantRoles` is an array of roles to which the policy will be assigned. The roles are specified in the same format as the Tenant CR. i.e. `viewer`, `editor`, `owner`.
-
-Example:
+- `name`: the policy name created in Vault.
+- `rules`: policy rules in Vault's policy language.
+    - `capabilities`: any of `create`, `read`, `update`, `patch`, `delete`, `list`.
+    - `path`: the path the capabilities apply to.
+- `tenantRoles`: the roles the policy is assigned to — `viewer`, `editor` or `owner`.
 
 ```yaml
-  policies:
-    - name: CustomEditor
-      rules:
-        - capabilities:
-            - read
-            - list
-            - patch
-            - update
-          path: testPath
-      tenantRoles:
-        - editor
-    - name: CustomViewer
-      rules:
-        - capabilities:
-            - read
-            - list
-          path: testPath
-      tenantRoles:
-        - viewer
+policies:
+  - name: CustomEditor
+    rules:
+      - capabilities:
+          - read
+          - list
+          - patch
+          - update
+        path: testPath
+    tenantRoles:
+      - editor
+  - name: CustomViewer
+    rules:
+      - capabilities:
+          - read
+          - list
+        path: testPath
+    tenantRoles:
+      - viewer
 ```
 
 ## TenantPolicies
 
-`tenantPolicies` contains settings to configure additional tenant isolation.
+`tenantPolicies` adds further tenant isolation.
+
+### Network
+
+`tenantPolicies.network` controls how tenants are allowed to communicate:
 
 ```yaml
 tenantPolicies:
   network:
     disableIntraTenantNetworking: true
+    disableNodePortServices: true
+    disableHostPorts: true
 ```
 
-### Network
+- `disableIntraTenantNetworking` (default `false`): deploy NetworkPolicies that stop tenants communicating with other tenants.
+- `disableNodePortServices` (default `false`): disallow `NodePort` services across all namespaces.
+- `disableHostPorts` (default `false`): disallow containers that define a `hostPort`.
 
-Configure how tenants are allowed to communicate
-
-```yaml
-network:
-  disableIntraTenantNetworking: true
-  disableNodePortServices: true
-  disableHostPorts: true
-```
-
-- `disableIntraTenantNetworking`: (Default false) Disallow tenants communicating with other tenants by deploying NetworkPolicies.
-
-> ⚠️ This will disable **only** intra-tenant networking. It will **not** block service discovery through DNS queries; tenants may still resolve services in other namespaces via DNS, but network traffic will be blocked. In cases requiring stricter filtering, this setting should be turned off and the stricter NetworkPolicies deployed through [Templates](https://docs.stakater.com/template-operator/main/kubernetes-resources/template.html) or manually. If you need help with your enterprise environment, do not hesitate to [contact us.](https://www.stakater.com/contact/)
-
-- `disableNodePortServices`: (Default false) Disallow creation of services of type `NodePort` across all namespaces.
-
-- `disableHostPorts`: (Default false) Disallow the creation of containers with `hostPort` defined in it.
+!!! warning
+    `disableIntraTenantNetworking` blocks network traffic **only** — it does not stop DNS service discovery, so tenants can still resolve services in other namespaces even though traffic is blocked. For stricter filtering, turn this off and deploy stricter NetworkPolicies through [Templates](https://docs.stakater.com/template-operator/main/kubernetes-resources/template.html) or manually. For help with an enterprise environment, [contact us](https://www.stakater.com/contact/).
 
 ## Related guides
 
