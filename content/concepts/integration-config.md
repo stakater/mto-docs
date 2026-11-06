@@ -265,13 +265,65 @@ components:
 ### Showback pricing (deprecated)
 
 !!! danger "Deprecated"
-    `showbackOpts` is **deprecated** and will be removed in a future release. Configure showback through the dedicated component fields instead.
+    `showbackOpts` is **deprecated** and will be removed in a future release. Its settings now belong in the Helm `values` of the FinOps Operator, OpenCost and Prometheus components.
 
-Replace the legacy fields as follows:
+Each legacy field moves as follows:
 
-- Custom pricing (`showbackOpts.custom`) → `components.finopsOperator.priceBook`
-- AWS / Azure cloud pricing (`showbackOpts.cloudPricingSecretRef`) → `components.opencost.cloudIntegrationSecret`
-- Prometheus retention (`showbackOpts.retentionPeriod`) → [`components.prometheus`](#prometheus) (`values.server.retention`)
+| Legacy field | Replacement |
+| --- | --- |
+| `showbackOpts.custom` | `components.finopsOperator.values.priceBook.rates` |
+| `showbackOpts.cloudPricingSecretRef` | `components.opencost.values.opencost.cloudIntegrationSecret`, except for Azure customer-specific pricing |
+| `showbackOpts.retentionPeriod` | `components.prometheus.values.server.retention` |
+
+#### Migrating custom pricing
+
+Custom rates are now set in the FinOps Operator price book. The rate names differ from the legacy keys:
+
+```yaml
+components:
+  finopsOperator:
+    values:
+      priceBook:
+        rates:
+          cpuHour: "0.031611"         # was CPU
+          spotCpuHour: "0.006655"     # was spotCPU
+          ramGbHour: "0.004237"       # was RAM
+          spotRamGbHour: "0.000892"   # was spotRAM
+          gpuHour: "0.95"             # was GPU
+          pvGbHour: "0.00005479452"   # was storage
+          networkGiB: "0.01"          # was zoneNetworkEgress
+```
+
+The price book has a single network rate, so `regionNetworkEgress` and `internetNetworkEgress` have no equivalent. MTO already leaves both out when it builds the price book from `showbackOpts.custom`.
+
+#### Migrating cloud pricing
+
+For AWS pricing and Azure standard pricing, create the cloud integration secret in the operator namespace and reference it by name:
+
+```yaml
+components:
+  opencost:
+    values:
+      opencost:
+        cloudIntegrationSecret: cloud-integration
+```
+
+Unlike `cloudPricingSecretRef`, this field does not copy the secret from another namespace, so it must already exist in `multi-tenant-operator`.
+
+!!! note
+    Azure customer-specific pricing has no replacement yet. MTO reads the billing account and offer ID only from the secret referenced by `cloudPricingSecretRef`, so keep using that field for customer-specific pricing until a replacement is available.
+
+#### Migrating retention
+
+Set the Prometheus retention in the [Prometheus](#prometheus) chart values:
+
+```yaml
+components:
+  prometheus:
+    values:
+      server:
+        retention: "30d"
+```
 
 The sections below document the legacy `showbackOpts` fields for existing installations.
 
@@ -315,7 +367,7 @@ MTO supports the AWS pricing model via `components.showbackOpts.cloudPricingSecr
 `rbac.tenantRoles` defines which roles are bound in each tenant namespace. It has a required `default` set and an optional `custom` set selected by namespace labels.
 
 !!! warning
-    If you configure no roles, the default OpenShift roles `owner`, `edit` and `view` apply to tenant members. See [Changing the default access level](../guides/custom-roles.md).
+    If you configure no roles, tenant members receive the default cluster roles: `admin` for owners, `edit` for editors and `view` for viewers. See [Changing the default access level](../guides/custom-roles.md).
 
 ```yaml
 accessControl:
@@ -394,18 +446,18 @@ accessControl:
 
 - `^default$` — the `default` namespace.
 - `^openshift-.*` — every namespace with the `openshift-` prefix.
-- `^stakater.` — any namespace containing `stakater` (a bare word matches any namespace containing it).
+- `stakater` — every namespace whose name contains `stakater`. A pattern without `^` or `$` matches anywhere in the name.
 
 #### Service Accounts
 
 `privileged.serviceAccounts` lists service accounts MTO does not manage. Values are regex patterns — for example `^system:serviceaccount:openshift-.*` for all service accounts under the `openshift-` prefix, or `^system:serviceaccount:builder$` for one specific account.
 
 !!! note
-    `stakater`, `stakater.` and `stakater.*` all have the same effect. To test a pattern, use [Regex101](https://regex101.com/) with the Golang flavor.
+    `stakater` and `stakater.*` match the same namespaces. `stakater.` additionally requires at least one character after `stakater`, so it does not match a namespace named exactly `stakater`. To test a pattern, use [Regex101](https://regex101.com/) with the Golang flavor.
 
 #### Users
 
-`privileged.users` lists users MTO does not manage. Values are regex patterns.
+`privileged.users` lists users MTO does not manage. Each entry must match the username exactly; regex patterns are not supported.
 
 #### Groups
 
@@ -450,7 +502,7 @@ metadata:
   annotations:
     openshift.io/node-selector: node-role.kubernetes.io/worker=
   labels:
-    workload-monitoring: 'true'
+    stakater.com/workload-monitoring: 'true'
     stakater.com/tenant: bluesky
 ```
 
