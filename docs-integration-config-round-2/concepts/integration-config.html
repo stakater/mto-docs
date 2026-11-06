@@ -3335,6 +3335,60 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
+    <a href="#migrating-custom-pricing" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Migrating custom pricing
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#migrating-cloud-pricing" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Migrating cloud pricing
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#migrating-retention" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Migrating retention
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
     <a href="#custom-pricing" class="md-nav__link">
       
     <span class="md-ellipsis">
@@ -10281,6 +10335,60 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
+    <a href="#migrating-custom-pricing" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Migrating custom pricing
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#migrating-cloud-pricing" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Migrating cloud pricing
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#migrating-retention" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Migrating retention
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
     <a href="#custom-pricing" class="md-nav__link">
       
     <span class="md-ellipsis">
@@ -11057,14 +11165,68 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h3 id="showback-pricing-deprecated">Showback pricing (deprecated)<a class="headerlink" href="#showback-pricing-deprecated" title="Permanent link">#</a></h3>
 <div class="admonition danger">
 <p class="admonition-title">Deprecated</p>
-<p><code>showbackOpts</code> is <strong>deprecated</strong> and will be removed in a future release. Configure showback through the dedicated component fields instead.</p>
+<p><code>showbackOpts</code> is <strong>deprecated</strong> and will be removed in a future release. Its settings now belong in the Helm <code>values</code> of the FinOps Operator, OpenCost and Prometheus components.</p>
 </div>
-<p>Replace the legacy fields as follows:</p>
-<ul>
-<li>Custom pricing (<code>showbackOpts.custom</code>) → <code>components.finopsOperator.priceBook</code></li>
-<li>AWS / Azure cloud pricing (<code>showbackOpts.cloudPricingSecretRef</code>) → <code>components.opencost.cloudIntegrationSecret</code></li>
-<li>Prometheus retention (<code>showbackOpts.retentionPeriod</code>) → <a href="#prometheus"><code>components.prometheus</code></a> (<code>values.server.retention</code>)</li>
-</ul>
+<p>Each legacy field moves as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Legacy field</th>
+<th>Replacement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>showbackOpts.custom</code></td>
+<td><code>components.finopsOperator.values.priceBook.rates</code></td>
+</tr>
+<tr>
+<td><code>showbackOpts.cloudPricingSecretRef</code></td>
+<td><code>components.opencost.values.opencost.cloudIntegrationSecret</code>, except for Azure customer-specific pricing</td>
+</tr>
+<tr>
+<td><code>showbackOpts.retentionPeriod</code></td>
+<td><code>components.prometheus.values.server.retention</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="migrating-custom-pricing">Migrating custom pricing<a class="headerlink" href="#migrating-custom-pricing" title="Permanent link">#</a></h4>
+<p>Custom rates are now set in the FinOps Operator price book. The rate names differ from the legacy keys:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">finopsOperator</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">priceBook</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">rates</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpuHour</span><span class="p">:</span><span class="w"> </span><span class="s">"0.031611"</span><span class="w">         </span><span class="c1"># was CPU</span>
+<span class="w">          </span><span class="nt">spotCpuHour</span><span class="p">:</span><span class="w"> </span><span class="s">"0.006655"</span><span class="w">     </span><span class="c1"># was spotCPU</span>
+<span class="w">          </span><span class="nt">ramGbHour</span><span class="p">:</span><span class="w"> </span><span class="s">"0.004237"</span><span class="w">       </span><span class="c1"># was RAM</span>
+<span class="w">          </span><span class="nt">spotRamGbHour</span><span class="p">:</span><span class="w"> </span><span class="s">"0.000892"</span><span class="w">   </span><span class="c1"># was spotRAM</span>
+<span class="w">          </span><span class="nt">gpuHour</span><span class="p">:</span><span class="w"> </span><span class="s">"0.95"</span><span class="w">             </span><span class="c1"># was GPU</span>
+<span class="w">          </span><span class="nt">pvGbHour</span><span class="p">:</span><span class="w"> </span><span class="s">"0.00005479452"</span><span class="w">   </span><span class="c1"># was storage</span>
+<span class="w">          </span><span class="nt">networkGiB</span><span class="p">:</span><span class="w"> </span><span class="s">"0.01"</span><span class="w">          </span><span class="c1"># was zoneNetworkEgress</span>
+</code></pre></div>
+<p>The price book has a single network rate, so <code>regionNetworkEgress</code> and <code>internetNetworkEgress</code> have no equivalent. MTO already leaves both out when it builds the price book from <code>showbackOpts.custom</code>.</p>
+<h4 id="migrating-cloud-pricing">Migrating cloud pricing<a class="headerlink" href="#migrating-cloud-pricing" title="Permanent link">#</a></h4>
+<p>For AWS pricing and Azure standard pricing, create the cloud integration secret in the operator namespace and reference it by name:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">opencost</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">opencost</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">cloudIntegrationSecret</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cloud-integration</span>
+</code></pre></div>
+<p>Unlike <code>cloudPricingSecretRef</code>, this field does not copy the secret from another namespace, so it must already exist in <code>multi-tenant-operator</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Azure customer-specific pricing has no replacement yet. MTO reads the billing account and offer ID only from the secret referenced by <code>cloudPricingSecretRef</code>, so keep using that field for customer-specific pricing until a replacement is available.</p>
+</div>
+<h4 id="migrating-retention">Migrating retention<a class="headerlink" href="#migrating-retention" title="Permanent link">#</a></h4>
+<p>Set the Prometheus retention in the <a href="#prometheus">Prometheus</a> chart values:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">prometheus</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">server</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">retention</span><span class="p">:</span><span class="w"> </span><span class="s">"30d"</span>
+</code></pre></div>
 <p>The sections below document the legacy <code>showbackOpts</code> fields for existing installations.</p>
 <h4 id="custom-pricing">Custom Pricing<a class="headerlink" href="#custom-pricing" title="Permanent link">#</a></h4>
 <p>Override the default pricing model under <code>components.showbackOpts.custom</code>:</p>
@@ -11094,7 +11256,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <p><code>rbac.tenantRoles</code> defines which roles are bound in each tenant namespace. It has a required <code>default</code> set and an optional <code>custom</code> set selected by namespace labels.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If you configure no roles, the default OpenShift roles <code>owner</code>, <code>edit</code> and <code>view</code> apply to tenant members. See <a href="../guides/custom-roles.html">Changing the default access level</a>.</p>
+<p>If you configure no roles, tenant members receive the default cluster roles: <code>admin</code> for owners, <code>edit</code> for editors and <code>view</code> for viewers. See <a href="../guides/custom-roles.html">Changing the default access level</a>.</p>
 </div>
 <div class="highlight"><pre><span></span><code><span class="nt">accessControl</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">rbac</span><span class="p">:</span>
@@ -11156,16 +11318,16 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <ul>
 <li><code>^default$</code> — the <code>default</code> namespace.</li>
 <li><code>^openshift-.*</code> — every namespace with the <code>openshift-</code> prefix.</li>
-<li><code>^stakater.</code> — any namespace containing <code>stakater</code> (a bare word matches any namespace containing it).</li>
+<li><code>stakater</code> — every namespace whose name contains <code>stakater</code>. A pattern without <code>^</code> or <code>$</code> matches anywhere in the name.</li>
 </ul>
 <h4 id="service-accounts">Service Accounts<a class="headerlink" href="#service-accounts" title="Permanent link">#</a></h4>
 <p><code>privileged.serviceAccounts</code> lists service accounts MTO does not manage. Values are regex patterns — for example <code>^system:serviceaccount:openshift-.*</code> for all service accounts under the <code>openshift-</code> prefix, or <code>^system:serviceaccount:builder$</code> for one specific account.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code>stakater</code>, <code>stakater.</code> and <code>stakater.*</code> all have the same effect. To test a pattern, use <a href="https://regex101.com/">Regex101</a> with the Golang flavor.</p>
+<p><code>stakater</code> and <code>stakater.*</code> match the same namespaces. <code>stakater.</code> additionally requires at least one character after <code>stakater</code>, so it does not match a namespace named exactly <code>stakater</code>. To test a pattern, use <a href="https://regex101.com/">Regex101</a> with the Golang flavor.</p>
 </div>
 <h4 id="users">Users<a class="headerlink" href="#users" title="Permanent link">#</a></h4>
-<p><code>privileged.users</code> lists users MTO does not manage. Values are regex patterns.</p>
+<p><code>privileged.users</code> lists users MTO does not manage. Each entry must match the username exactly; regex patterns are not supported.</p>
 <h4 id="groups">Groups<a class="headerlink" href="#groups" title="Permanent link">#</a></h4>
 <p><code>privileged.groups</code> names groups allowed to perform CRUD operations on any namespace on the cluster without MTO getting in their way, including deletion of privileged namespaces.</p>
 <div class="admonition note">
@@ -11204,7 +11366,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">openshift.io/node-selector</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">node-role.kubernetes.io/worker=</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">workload-monitoring</span><span class="p">:</span><span class="w"> </span><span class="s">'true'</span>
+<span class="w">    </span><span class="nt">stakater.com/workload-monitoring</span><span class="p">:</span><span class="w"> </span><span class="s">'true'</span>
 <span class="w">    </span><span class="nt">stakater.com/tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Group</span>
