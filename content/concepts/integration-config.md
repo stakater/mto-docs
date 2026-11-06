@@ -265,11 +265,13 @@ components:
 ### Showback pricing (deprecated)
 
 !!! danger "Deprecated"
-    `showbackOpts` is **deprecated** and will be removed in a future release. Configure showback through the dedicated component fields instead:
+    `showbackOpts` is **deprecated** and will be removed in a future release. Configure showback through the dedicated component fields instead.
 
-    - Custom pricing (`showbackOpts.custom`) → `components.finopsOperator.priceBook`
-    - AWS / Azure cloud pricing (`showbackOpts.cloudPricingSecretRef`) → `components.opencost.cloudIntegrationSecret`
-    - Prometheus retention (`showbackOpts.retentionPeriod`) → [`components.prometheus`](#prometheus) (`values.server.retention`)
+Replace the legacy fields as follows:
+
+- Custom pricing (`showbackOpts.custom`) → `components.finopsOperator.priceBook`
+- AWS / Azure cloud pricing (`showbackOpts.cloudPricingSecretRef`) → `components.opencost.cloudIntegrationSecret`
+- Prometheus retention (`showbackOpts.retentionPeriod`) → [`components.prometheus`](#prometheus) (`values.server.retention`)
 
 The sections below document the legacy `showbackOpts` fields for existing installations.
 
