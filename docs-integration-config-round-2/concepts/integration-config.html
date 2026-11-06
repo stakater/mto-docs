@@ -11057,13 +11057,14 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h3 id="showback-pricing-deprecated">Showback pricing (deprecated)<a class="headerlink" href="#showback-pricing-deprecated" title="Permanent link">#</a></h3>
 <div class="admonition danger">
 <p class="admonition-title">Deprecated</p>
-<p><code>showbackOpts</code> is <strong>deprecated</strong> and will be removed in a future release. Configure showback through the dedicated component fields instead:</p>
+<p><code>showbackOpts</code> is <strong>deprecated</strong> and will be removed in a future release. Configure showback through the dedicated component fields instead.</p>
+</div>
+<p>Replace the legacy fields as follows:</p>
 <ul>
 <li>Custom pricing (<code>showbackOpts.custom</code>) → <code>components.finopsOperator.priceBook</code></li>
 <li>AWS / Azure cloud pricing (<code>showbackOpts.cloudPricingSecretRef</code>) → <code>components.opencost.cloudIntegrationSecret</code></li>
 <li>Prometheus retention (<code>showbackOpts.retentionPeriod</code>) → <a href="#prometheus"><code>components.prometheus</code></a> (<code>values.server.retention</code>)</li>
 </ul>
-</div>
 <p>The sections below document the legacy <code>showbackOpts</code> fields for existing installations.</p>
 <h4 id="custom-pricing">Custom Pricing<a class="headerlink" href="#custom-pricing" title="Permanent link">#</a></h4>
 <p>Override the default pricing model under <code>components.showbackOpts.custom</code>:</p>
