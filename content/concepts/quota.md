@@ -193,5 +193,5 @@ the `stakater` StorageClass across the tenant's namespaces will then not exceed
 
 ## Related guides
 
-- [Create a Tenant](../guides/create-tenant.md)
-- [Restricting Storage Classes per Tenant](../guides/storage-classes.md)
+* [Create a Tenant](../guides/create-tenant.md)
+* [Restricting Storage Classes per Tenant](../guides/storage-classes.md)
