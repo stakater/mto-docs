@@ -9834,67 +9834,34 @@ administrator. See <a href="#resource-guardrails">Resource guardrails</a> to ena
 them.</p>
 </div>
 <h2 id="the-spec-at-a-glance">The spec at a glance<a class="headerlink" href="#the-spec-at-a-glance" title="Permanent link">#</a></h2>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Required</th>
-<th>What it controls</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="#quota"><code>quota</code></a></td>
-<td>✅</td>
-<td>Name of the <a href="quota.html">Quota</a> CR that caps the tenant's resource usage.</td>
-</tr>
-<tr>
-<td><a href="#access-control"><code>accessControl</code></a></td>
-<td></td>
-<td>Owners, editors and viewers of the tenant.</td>
-</tr>
-<tr>
-<td><a href="#namespaces"><code>namespaces</code></a></td>
-<td></td>
-<td>Which namespaces the tenant gets, plus their metadata.</td>
-</tr>
-<tr>
-<td><a href="#description"><code>desc</code></a></td>
-<td></td>
-<td>Human-readable description of the tenant.</td>
-</tr>
-<tr>
-<td><a href="#storage-classes"><code>storageClasses</code></a></td>
-<td></td>
-<td>StorageClasses the tenant may use (allow-list).</td>
-</tr>
-<tr>
-<td><a href="#ingress-classes"><code>ingressClasses</code></a></td>
-<td></td>
-<td>IngressClasses the tenant may use (allow-list).</td>
-</tr>
-<tr>
-<td><a href="#pod-priority-classes"><code>podPriorityClasses</code></a></td>
-<td></td>
-<td>PriorityClasses the tenant may use (allow-list).</td>
-</tr>
-<tr>
-<td><a href="#image-registries"><code>imageRegistries</code></a></td>
-<td></td>
-<td>Registries the tenant may pull from (allow-list).</td>
-</tr>
-<tr>
-<td><a href="#service-accounts"><code>serviceAccounts</code></a></td>
-<td></td>
-<td>Service accounts the tenant may <strong>not</strong> use (deny-list).</td>
-</tr>
-<tr>
-<td><a href="#hostname-validation"><code>hostValidationConfig</code></a></td>
-<td></td>
-<td>Allowed ingress and route host names.</td>
-</tr>
-</tbody>
-</table>
+<p>Only <code>quota</code> is required; everything else is optional. The <code>spec</code> is a flat set
+of fields:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span><span class="w">             </span><span class="c1"># required — the Quota CR that caps resource usage</span>
+<span class="w">  </span><span class="nt">desc</span><span class="p">:</span><span class="w"> </span><span class="s">"..."</span><span class="w">              </span><span class="c1"># human-readable description of the tenant</span>
+<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">        </span><span class="c1"># owners, editors and viewers of the tenant</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">           </span><span class="c1"># which namespaces the tenant gets, and their metadata</span>
+<span class="w">  </span><span class="c1"># Resource guardrails — each optional; omit a field to leave it unset:</span>
+<span class="w">  </span><span class="nt">storageClasses</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">       </span><span class="c1"># StorageClasses the tenant may use (allow-list)</span>
+<span class="w">  </span><span class="nt">ingressClasses</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">       </span><span class="c1"># IngressClasses the tenant may use (allow-list)</span>
+<span class="w">  </span><span class="nt">podPriorityClasses</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">   </span><span class="c1"># PriorityClasses the tenant may use (allow-list)</span>
+<span class="w">  </span><span class="nt">imageRegistries</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">      </span><span class="c1"># registries the tenant may pull from (allow-list)</span>
+<span class="w">  </span><span class="nt">serviceAccounts</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">      </span><span class="c1"># service accounts the tenant may NOT use (deny-list)</span>
+<span class="w">  </span><span class="nt">hostValidationConfig</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"> </span><span class="c1"># allowed ingress and route host names</span>
+</code></pre></div>
+<p>Each section is described below.</p>
+<div class="admonition warning">
+<p class="admonition-title">An empty map is not a no-op</p>
+<p>For <code>storageClasses</code>, <code>ingressClasses</code> and <code>podPriorityClasses</code>, an empty
+map (<code>{}</code>) is itself a setting — it means <strong>allow all</strong> (see
+<a href="#resource-guardrails">Resource guardrails</a>). To leave a guardrail unset,
+omit the field entirely. The <code>{}</code> above are placeholders for the shape, not
+a manifest to apply as-is.</p>
+</div>
 <p>The full, generated field reference lives in the
 <a href="../reference/api.html#tenant">API reference</a>.</p>
 <h2 id="a-complete-example">A complete example<a class="headerlink" href="#a-complete-example" title="Permanent link">#</a></h2>
@@ -9904,6 +9871,7 @@ them.</p>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<span class="w">  </span><span class="nt">desc</span><span class="p">:</span><span class="w"> </span><span class="s">"This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">tenant</span><span class="nv"> </span><span class="s">setup</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">v1beta3</span><span class="nv"> </span><span class="s">version."</span>
 <span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">users</span><span class="p">:</span>
@@ -9950,7 +9918,6 @@ them.</p>
 <span class="w">            </span><span class="nt">specific-label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">specific-dev-value</span>
 <span class="w">          </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">specific-annotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">specific-dev-value</span>
-<span class="w">  </span><span class="nt">desc</span><span class="p">:</span><span class="w"> </span><span class="s">"This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">tenant</span><span class="nv"> </span><span class="s">setup</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">v1beta3</span><span class="nv"> </span><span class="s">version."</span>
 <span class="w">  </span><span class="nt">storageClasses</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">staging</span>

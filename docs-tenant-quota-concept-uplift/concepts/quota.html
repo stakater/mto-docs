@@ -9459,29 +9459,21 @@ webhook load it can admit more than the configured ceiling. Reach out to
 </div>
 <h2 id="the-spec-at-a-glance">The spec at a glance<a class="headerlink" href="#the-spec-at-a-glance" title="Permanent link">#</a></h2>
 <p>A Quota is served at <code>tenantoperator.stakater.com/v1beta1</code> (note: the
-<a href="tenant.html">Tenant</a> that links it is <code>v1beta3</code>).</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Required</th>
-<th>What it controls</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>resourcequota</code></td>
-<td>✅</td>
-<td>Aggregate resource ceilings for the tenant — a standard Kubernetes <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#resourcequotaspec-v1-core">ResourceQuotaSpec</a>.</td>
-</tr>
-<tr>
-<td><code>limitrange</code></td>
-<td></td>
-<td>Per-object defaults, minimums and maximums — a standard Kubernetes <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#limitrangespec-v1-core">LimitRangeSpec</a>.</td>
-</tr>
-</tbody>
-</table>
-<p>See the <a href="../reference/api.html#quota">API reference</a> for the generated schema.</p>
+<a href="tenant.html">Tenant</a> that links it is <code>v1beta3</code>). The <code>spec</code> has two fields:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quota</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">resourcequota</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">  </span><span class="c1"># required — aggregate resource ceilings (ResourceQuotaSpec)</span>
+<span class="w">  </span><span class="nt">limitrange</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">     </span><span class="c1"># optional — per-object defaults and bounds (LimitRangeSpec)</span>
+</code></pre></div>
+<p>Both take standard Kubernetes types — a
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#resourcequotaspec-v1-core">ResourceQuotaSpec</a>
+and a
+<a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#limitrangespec-v1-core">LimitRangeSpec</a> —
+so any key those support can be set here. See the
+<a href="../reference/api.html#quota">API reference</a> for the generated schema.</p>
 <h2 id="assigning-a-quota-to-a-tenant">Assigning a quota to a tenant<a class="headerlink" href="#assigning-a-quota-to-a-tenant" title="Permanent link">#</a></h2>
 <p>Bill, a cluster admin, first creates a <code>Quota</code> with the ceilings Anna's tenant
 will have. <code>limitrange</code> is optional — skip it if you don't need per-object
