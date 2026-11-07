@@ -49,18 +49,36 @@ spec:
 
 ## The spec at a glance
 
-| Field | Required | What it controls |
-|-------|----------|------------------|
-| [`quota`](#quota) | ✅ | Name of the [Quota](quota.md) CR that caps the tenant's resource usage. |
-| [`accessControl`](#access-control) | | Owners, editors and viewers of the tenant. |
-| [`namespaces`](#namespaces) | | Which namespaces the tenant gets, plus their metadata. |
-| [`desc`](#description) | | Human-readable description of the tenant. |
-| [`storageClasses`](#storage-classes) | | StorageClasses the tenant may use (allow-list). |
-| [`ingressClasses`](#ingress-classes) | | IngressClasses the tenant may use (allow-list). |
-| [`podPriorityClasses`](#pod-priority-classes) | | PriorityClasses the tenant may use (allow-list). |
-| [`imageRegistries`](#image-registries) | | Registries the tenant may pull from (allow-list). |
-| [`serviceAccounts`](#service-accounts) | | Service accounts the tenant may **not** use (deny-list). |
-| [`hostValidationConfig`](#hostname-validation) | | Allowed ingress and route host names. |
+Only `quota` is required; everything else is optional. The `spec` is a flat set
+of fields:
+
+```yaml
+apiVersion: tenantoperator.stakater.com/v1beta3
+kind: Tenant
+metadata:
+  name: tenant-sample
+spec:
+  quota: small             # required — the Quota CR that caps resource usage
+  desc: "..."              # human-readable description of the tenant
+  accessControl: {}        # owners, editors and viewers of the tenant
+  namespaces: {}           # which namespaces the tenant gets, and their metadata
+  # Resource guardrails — each optional; omit a field to leave it unset:
+  storageClasses: {}       # StorageClasses the tenant may use (allow-list)
+  ingressClasses: {}       # IngressClasses the tenant may use (allow-list)
+  podPriorityClasses: {}   # PriorityClasses the tenant may use (allow-list)
+  imageRegistries: {}      # registries the tenant may pull from (allow-list)
+  serviceAccounts: {}      # service accounts the tenant may NOT use (deny-list)
+  hostValidationConfig: {} # allowed ingress and route host names
+```
+
+Each section is described below.
+
+!!! warning "An empty map is not a no-op"
+    For `storageClasses`, `ingressClasses` and `podPriorityClasses`, an empty
+    map (`{}`) is itself a setting — it means **allow all** (see
+    [Resource guardrails](#resource-guardrails)). To leave a guardrail unset,
+    omit the field entirely. The `{}` above are placeholders for the shape, not
+    a manifest to apply as-is.
 
 The full, generated field reference lives in the
 [API reference](../reference/api.md#tenant).
@@ -74,6 +92,7 @@ metadata:
   name: tenant-sample
 spec:
   quota: small
+  desc: "This is a sample tenant setup for the v1beta3 version."
   accessControl:
     owners:
       users:
@@ -120,7 +139,6 @@ spec:
             specific-label: specific-dev-value
           annotations:
             specific-annotation: specific-dev-value
-  desc: "This is a sample tenant setup for the v1beta3 version."
   storageClasses:
     allowed:
       - staging

@@ -47,14 +47,24 @@ flowchart TB
 ## The spec at a glance
 
 A Quota is served at `tenantoperator.stakater.com/v1beta1` (note: the
-[Tenant](tenant.md) that links it is `v1beta3`).
+[Tenant](tenant.md) that links it is `v1beta3`). The `spec` has two fields:
 
-| Field | Required | What it controls |
-|-------|----------|------------------|
-| `resourcequota` | ✅ | Aggregate resource ceilings for the tenant — a standard Kubernetes [ResourceQuotaSpec](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#resourcequotaspec-v1-core). |
-| `limitrange` | | Per-object defaults, minimums and maximums — a standard Kubernetes [LimitRangeSpec](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#limitrangespec-v1-core). |
+```yaml
+apiVersion: tenantoperator.stakater.com/v1beta1
+kind: Quota
+metadata:
+  name: small
+spec:
+  resourcequota: {}  # required — aggregate resource ceilings (ResourceQuotaSpec)
+  limitrange: {}     # optional — per-object defaults and bounds (LimitRangeSpec)
+```
 
-See the [API reference](../reference/api.md#quota) for the generated schema.
+Both take standard Kubernetes types — a
+[ResourceQuotaSpec](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#resourcequotaspec-v1-core)
+and a
+[LimitRangeSpec](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#limitrangespec-v1-core) —
+so any key those support can be set here. See the
+[API reference](../reference/api.md#quota) for the generated schema.
 
 ## Assigning a quota to a tenant
 
