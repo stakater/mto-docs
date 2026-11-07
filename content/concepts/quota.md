@@ -52,8 +52,8 @@ each a standard Kubernetes type, so any key those types support can be set:
 
 | Field | Required | What it controls |
 |-------|----------|------------------|
-| `resourcequota` | ✅ | Aggregate resource ceilings for the tenant — a [ResourceQuotaSpec](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#resourcequotaspec-v1-core). |
-| `limitrange` | | Per-object defaults, minimums and maximums — a [LimitRangeSpec](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#limitrangespec-v1-core). |
+| `resourcequota` | Yes | Aggregate resource ceilings for the tenant — a [ResourceQuotaSpec](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#resourcequotaspec-v1-core). |
+| `limitrange` | No | Per-object defaults, minimums and maximums — a [LimitRangeSpec](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#limitrangespec-v1-core). |
 
 For a manifest you can adapt, see
 [Assigning a quota to a tenant](#assigning-a-quota-to-a-tenant) below; the full

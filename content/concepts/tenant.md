@@ -54,16 +54,16 @@ they appear in the manifest:
 
 | Field | Required | What it controls |
 |-------|----------|------------------|
-| `quota` | ✅ | Name of the [Quota](quota.md) CR that caps the tenant's resource usage. |
-| `desc` | | Human-readable description of the tenant. |
-| `accessControl` | | Owners, editors and viewers of the tenant. |
-| `namespaces` | | Which namespaces the tenant gets, and their metadata. |
-| `storageClasses` | | StorageClasses the tenant may use (allow-list). |
-| `ingressClasses` | | IngressClasses the tenant may use (allow-list). |
-| `podPriorityClasses` | | PriorityClasses the tenant may use (allow-list). |
-| `imageRegistries` | | Registries the tenant may pull from (allow-list). |
-| `serviceAccounts` | | Service accounts the tenant may **not** use (deny-list). |
-| `hostValidationConfig` | | Allowed ingress and route host names. |
+| `quota` | Yes | Name of the [Quota](quota.md) CR that caps the tenant's resource usage. |
+| `desc` | No | Human-readable description of the tenant. |
+| `accessControl` | No | Owners, editors and viewers of the tenant. |
+| `namespaces` | No | Which namespaces the tenant gets, and their metadata. |
+| `storageClasses` | No | StorageClasses the tenant may use (allow-list). |
+| `ingressClasses` | No | IngressClasses the tenant may use (allow-list). |
+| `podPriorityClasses` | No | PriorityClasses the tenant may use (allow-list). |
+| `imageRegistries` | No | Registries the tenant may pull from (allow-list). |
+| `serviceAccounts` | No | Service accounts the tenant may **not** use (deny-list). |
+| `hostValidationConfig` | No | Allowed ingress and route host names. |
 
 Each field is described below, in the same order. For a manifest you can adapt,
 see [A complete example](#a-complete-example); the full generated schema is in
