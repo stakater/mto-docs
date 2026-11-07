@@ -3038,24 +3038,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#access-control" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Access Control
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-      
-        
-
-<li class="md-nav__item ">
-  
-  
     <a href="#quota" class="md-nav__link">
       
     <span class="md-ellipsis">
@@ -3074,11 +3056,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#namespaces" class="md-nav__link">
+    <a href="#description" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Namespaces
+        Description
       
     </span>
   
@@ -3092,11 +3074,29 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#description" class="md-nav__link">
+    <a href="#access-control" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Description
+        Access Control
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#namespaces" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Namespaces
       
     </span>
   
@@ -9556,24 +9556,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#access-control" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Access Control
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-      
-        
-
-<li class="md-nav__item ">
-  
-  
     <a href="#quota" class="md-nav__link">
       
     <span class="md-ellipsis">
@@ -9592,11 +9574,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#namespaces" class="md-nav__link">
+    <a href="#description" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Namespaces
+        Description
       
     </span>
   
@@ -9610,11 +9592,29 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#description" class="md-nav__link">
+    <a href="#access-control" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Description
+        Access Control
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#namespaces" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Namespaces
       
     </span>
   
@@ -9834,36 +9834,72 @@ administrator. See <a href="#resource-guardrails">Resource guardrails</a> to ena
 them.</p>
 </div>
 <h2 id="the-spec-at-a-glance">The spec at a glance<a class="headerlink" href="#the-spec-at-a-glance" title="Permanent link">#</a></h2>
-<p>Only <code>quota</code> is required; everything else is optional. The <code>spec</code> is a flat set
-of fields:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span><span class="w">             </span><span class="c1"># required — the Quota CR that caps resource usage</span>
-<span class="w">  </span><span class="nt">desc</span><span class="p">:</span><span class="w"> </span><span class="s">"..."</span><span class="w">              </span><span class="c1"># human-readable description of the tenant</span>
-<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">        </span><span class="c1"># owners, editors and viewers of the tenant</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">           </span><span class="c1"># which namespaces the tenant gets, and their metadata</span>
-<span class="w">  </span><span class="c1"># Resource guardrails — each optional; omit a field to leave it unset:</span>
-<span class="w">  </span><span class="nt">storageClasses</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">       </span><span class="c1"># StorageClasses the tenant may use (allow-list)</span>
-<span class="w">  </span><span class="nt">ingressClasses</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">       </span><span class="c1"># IngressClasses the tenant may use (allow-list)</span>
-<span class="w">  </span><span class="nt">podPriorityClasses</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">   </span><span class="c1"># PriorityClasses the tenant may use (allow-list)</span>
-<span class="w">  </span><span class="nt">imageRegistries</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">      </span><span class="c1"># registries the tenant may pull from (allow-list)</span>
-<span class="w">  </span><span class="nt">serviceAccounts</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w">      </span><span class="c1"># service accounts the tenant may NOT use (deny-list)</span>
-<span class="w">  </span><span class="nt">hostValidationConfig</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span><span class="w"> </span><span class="c1"># allowed ingress and route host names</span>
-</code></pre></div>
-<p>Each section is described below.</p>
-<div class="admonition warning">
-<p class="admonition-title">An empty map is not a no-op</p>
-<p>For <code>storageClasses</code>, <code>ingressClasses</code> and <code>podPriorityClasses</code>, an empty
-map (<code>{}</code>) is itself a setting — it means <strong>allow all</strong> (see
-<a href="#resource-guardrails">Resource guardrails</a>). To leave a guardrail unset,
-omit the field entirely. The <code>{}</code> above are placeholders for the shape, not
-a manifest to apply as-is.</p>
-</div>
-<p>The full, generated field reference lives in the
-<a href="../reference/api.html#tenant">API reference</a>.</p>
+<p>Only <code>quota</code> is required; every other field is optional. Listed in the order
+they appear in the manifest:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>What it controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>quota</code></td>
+<td>✅</td>
+<td>Name of the <a href="quota.html">Quota</a> CR that caps the tenant's resource usage.</td>
+</tr>
+<tr>
+<td><code>desc</code></td>
+<td></td>
+<td>Human-readable description of the tenant.</td>
+</tr>
+<tr>
+<td><code>accessControl</code></td>
+<td></td>
+<td>Owners, editors and viewers of the tenant.</td>
+</tr>
+<tr>
+<td><code>namespaces</code></td>
+<td></td>
+<td>Which namespaces the tenant gets, and their metadata.</td>
+</tr>
+<tr>
+<td><code>storageClasses</code></td>
+<td></td>
+<td>StorageClasses the tenant may use (allow-list).</td>
+</tr>
+<tr>
+<td><code>ingressClasses</code></td>
+<td></td>
+<td>IngressClasses the tenant may use (allow-list).</td>
+</tr>
+<tr>
+<td><code>podPriorityClasses</code></td>
+<td></td>
+<td>PriorityClasses the tenant may use (allow-list).</td>
+</tr>
+<tr>
+<td><code>imageRegistries</code></td>
+<td></td>
+<td>Registries the tenant may pull from (allow-list).</td>
+</tr>
+<tr>
+<td><code>serviceAccounts</code></td>
+<td></td>
+<td>Service accounts the tenant may <strong>not</strong> use (deny-list).</td>
+</tr>
+<tr>
+<td><code>hostValidationConfig</code></td>
+<td></td>
+<td>Allowed ingress and route host names.</td>
+</tr>
+</tbody>
+</table>
+<p>Each field is described below, in the same order. For a manifest you can adapt,
+see <a href="#a-complete-example">A complete example</a>; the full generated schema is in
+the <a href="../reference/api.html#tenant">API reference</a>.</p>
 <h2 id="a-complete-example">A complete example<a class="headerlink" href="#a-complete-example" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
@@ -9926,10 +9962,6 @@ a manifest to apply as-is.</p>
 <span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik</span>
-<span class="w">  </span><span class="nt">serviceAccounts</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">denied</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-1</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-2</span>
 <span class="w">  </span><span class="nt">podPriorityClasses</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high-priority</span>
@@ -9937,6 +9969,10 @@ a manifest to apply as-is.</p>
 <span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker.io</span>
+<span class="w">  </span><span class="nt">serviceAccounts</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">denied</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-1</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-2</span>
 <span class="w">  </span><span class="nt">hostValidationConfig</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.saap.dev</span>
@@ -9945,6 +9981,15 @@ a manifest to apply as-is.</p>
 <span class="w">    </span><span class="nt">allowedRegex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^[a-zA-Z0-9-]+\.saap\.dev$</span>
 <span class="w">    </span><span class="nt">denyWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
+<h2 id="quota">Quota<a class="headerlink" href="#quota" title="Permanent link">#</a></h2>
+<p><code>spec.quota</code> names the <a href="quota.html">Quota</a> CR that caps the tenant's resource
+usage — CPU, memory and more — so no single tenant can consume a
+disproportionate share. A Quota is a separate, reusable object that many
+tenants can reference by name; see the <a href="quota.html">Quota concept</a> for how it is
+defined and enforced.</p>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
+<p><code>desc</code> is a human-readable description of the tenant, which helps documentation
+and at-a-glance understanding of its purpose.</p>
 <h2 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">#</a></h2>
 <p>Access control divides tenant users into three roles, each with its own
 privileges, so you can manage permissions precisely:</p>
@@ -9958,12 +10003,6 @@ privileges, so you can manage permissions precisely:</p>
 <p>Link users and groups to a role by listing their usernames or group names under
 <code>owners</code>, <code>editors</code> and <code>viewers</code>. The concrete permissions behind each role
 come from <a href="integration-config.html#tenantroles">IntegrationConfig's <code>TenantRoles</code> field</a>.</p>
-<h2 id="quota">Quota<a class="headerlink" href="#quota" title="Permanent link">#</a></h2>
-<p><code>spec.quota</code> names the <a href="quota.html">Quota</a> CR that caps the tenant's resource
-usage — CPU, memory and more — so no single tenant can consume a
-disproportionate share. A Quota is a separate, reusable object that many
-tenants can reference by name; see the <a href="quota.html">Quota concept</a> for how it is
-defined and enforced.</p>
 <h2 id="namespaces">Namespaces<a class="headerlink" href="#namespaces" title="Permanent link">#</a></h2>
 <p><code>namespaces</code> controls which namespaces the tenant gets and how they are
 labelled:</p>
@@ -10000,9 +10039,6 @@ then <code>namespaces.metadata.common</code>, then
 <code>openshift.project.labels</code> / <code>openshift.project.annotations</code> from the
 <a href="integration-config.html">IntegrationConfig</a>.</p>
 </div>
-<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p><code>desc</code> is a human-readable description of the tenant, which helps documentation
-and at-a-glance understanding of its purpose.</p>
 <h2 id="resource-guardrails">Resource guardrails<a class="headerlink" href="#resource-guardrails" title="Permanent link">#</a></h2>
 <p>Beyond quota, a Tenant can constrain which <strong>cluster-scoped</strong> resources its
 workloads may use. There are two enforcement styles.</p>
