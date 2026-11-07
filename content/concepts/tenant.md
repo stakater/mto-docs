@@ -1,6 +1,35 @@
 # Tenant
 
-A minimal Tenant definition requires only a quota field, essential for limiting resource consumption:
+A **Tenant** is the single declarative definition of one team's slice of the
+cluster. In one object you describe *who* the team is, *where* they run, and
+*what they may consume* — and the operator turns that into the namespaces, RBAC,
+resource quota, metadata and admission guardrails that make it real, keeping
+them in sync as the Tenant changes.
+
+Because everything derives from one object, the pieces cannot drift apart:
+membership, namespaces, allocation and standards always agree with each other.
+
+## What the operator creates from a Tenant
+
+```mermaid
+flowchart TB
+    Admin["Platform admin"] -->|defines| T["Tenant CR<br/>one per team"]
+    T --> NS["Namespaces<br/>prefixed · shared · sandboxes"]
+    T --> RBAC["RBAC bindings<br/>owners · editors · viewers"]
+    T --> Q["Linked Quota<br/>spec.quota → Quota CR"]
+    T --> MD["Namespace metadata<br/>labels · annotations"]
+    T --> G["Admission guardrails<br/>storage · ingress · registries<br/>service accounts · priority · hostnames"]
+    NS --> K["Kubernetes / OpenShift"]
+    RBAC --> K
+    Q --> K
+    MD --> K
+    G --> K
+```
+
+## A minimal Tenant
+
+The smallest valid Tenant needs only a `quota`, which caps what the team can
+consume:
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta3
@@ -12,9 +41,31 @@ spec:
 ```
 
 !!! note
-    This minimal configuration does not specify `storageClasses`, `ingressClasses`, or `podPriorityClasses`. These features are disabled by default, leaving RBAC configuration for these cluster resources to the platform administrator. See the sections below for details on enabling these features.
+    A minimal Tenant does not set `storageClasses`, `ingressClasses` or
+    `podPriorityClasses`. Those guardrails are **disabled by default**, which
+    leaves RBAC for those cluster-scoped resources to the platform
+    administrator. See [Resource guardrails](#resource-guardrails) to enable
+    them.
 
-For a more comprehensive setup, a detailed Tenant definition includes various configurations:
+## The spec at a glance
+
+| Field | Required | What it controls |
+|-------|----------|------------------|
+| [`quota`](#quota) | ✅ | Name of the [Quota](quota.md) CR that caps the tenant's resource usage. |
+| [`accessControl`](#access-control) | | Owners, editors and viewers of the tenant. |
+| [`namespaces`](#namespaces) | | Which namespaces the tenant gets, plus their metadata. |
+| [`desc`](#description) | | Human-readable description of the tenant. |
+| [`storageClasses`](#storage-classes) | | StorageClasses the tenant may use (allow-list). |
+| [`ingressClasses`](#ingress-classes) | | IngressClasses the tenant may use (allow-list). |
+| [`podPriorityClasses`](#pod-priority-classes) | | PriorityClasses the tenant may use (allow-list). |
+| [`imageRegistries`](#image-registries) | | Registries the tenant may pull from (allow-list). |
+| [`serviceAccounts`](#service-accounts) | | Service accounts the tenant may **not** use (deny-list). |
+| [`hostValidationConfig`](#hostname-validation) | | Allowed ingress and route host names. |
+
+The full, generated field reference lives in the
+[API reference](../reference/api.md#tenant).
+
+## A complete example
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta3
@@ -77,75 +128,113 @@ spec:
   ingressClasses:
     allowed:
       - nginx
-      - trafeik
-
+      - traefik
   serviceAccounts:
     denied:
       - service-user-1
       - service-user-2
-
   podPriorityClasses:
     allowed:
       - high-priority
-
   imageRegistries:
     allowed:
       - ghcr.io
       - docker.io
-  
   hostValidationConfig:
     allowed:
       - gateway.saap.dev
       - console.saap.dev
-      - *.saap.prod
+      - "*.saap.prod"
     allowedRegex: ^[a-zA-Z0-9-]+\.saap\.dev$
     denyWildcards: false
-
 ```
 
 ## Access Control
 
-Structured access control is critical for managing roles and permissions within a tenant effectively. It divides users into three categories, each with customizable privileges. This design enables precise role-based access management.  
+Access control divides tenant users into three roles, each with its own
+privileges, so you can manage permissions precisely:
 
-These roles are obtained from [IntegrationConfig's TenantRoles field](integration-config.md#tenantroles).
-  
-* `Owners`: Have full administrative rights, including resource management and namespace creation. Their roles are crucial for high-level management tasks.
-* `Editors`: Granted permissions to modify resources, enabling them to support day-to-day operations without full administrative access.
-* `Viewers`: Provide read-only access, suitable for oversight and auditing without the ability to alter resources.
+* **Owners** — full administrative rights, including resource management and
+  namespace creation. Suited to high-level management of the tenant.
+* **Editors** — may modify resources, supporting day-to-day operations without
+  full administrative access.
+* **Viewers** — read-only access, suited to oversight and auditing.
 
-Users and groups are linked to these roles by specifying their usernames or group names in the respective fields under `owners`, `editors`, and `viewers`.
+Link users and groups to a role by listing their usernames or group names under
+`owners`, `editors` and `viewers`. The concrete permissions behind each role
+come from [IntegrationConfig's `TenantRoles` field](integration-config.md#tenantroles).
 
 ## Quota
 
-The `quota` field sets the resource limits for the tenant, such as CPU and memory usage, to prevent any single tenant from consuming a disproportionate amount of resources. This mechanism ensures efficient resource allocation and fosters fair usage practices across all tenants.  
-
-For more information on quotas, please refer [here](quota.md).
+`spec.quota` names the [Quota](quota.md) CR that caps the tenant's resource
+usage — CPU, memory and more — so no single tenant can consume a
+disproportionate share. A Quota is a separate, reusable object that many
+tenants can reference by name; see the [Quota concept](quota.md) for how it is
+defined and enforced.
 
 ## Namespaces
 
-Controls the creation and management of namespaces within the tenant:
+`namespaces` controls which namespaces the tenant gets and how they are
+labelled:
 
-* `sandboxes`:
-    * When enabled, sandbox namespaces are created with the following naming convention - **{TenantName}**-**{UserName}**-*sandbox*.
-    * In case of groups, the sandbox namespaces will be created for each member of the group.
-    * Setting `private` to *true* will make the sandboxes visible only to the user they belong to. By default, sandbox namespaces are visible to all tenant members.
+* `sandboxes` — personal namespaces for tenant members.
+    * When enabled, a sandbox is created per user with the naming convention
+      **{TenantName}**-**{UserName}**-*sandbox*. For a group, one is created
+      for each member.
+    * `private: true` makes each sandbox visible only to its owner. By default
+      sandboxes are visible to all tenant members.
+* `withTenantPrefix` — namespaces created with the tenant name as a prefix, for
+  easy identification and isolation.
+* `withoutTenantPrefix` — namespaces created without the prefix, useful for
+  shared or common resources.
+* `onDeletePurgeNamespaces` — whether the tenant's namespaces are deleted when
+  the tenant is deleted. Defaults to `false`.
+* `metadata` — labels and annotations applied to the tenant's namespaces:
+    * `common` — applied across **all** of the tenant's namespaces.
+    * `sandbox` — applied across sandbox namespaces. Supports templating: the
+      placeholder `{{ TENANT.USERNAME }}` is replaced with the owning user, e.g.
+      `username: {{ TENANT.USERNAME }}`.
+    * `specific` — applied to the named namespaces only, for custom
+      configurations.
 
-* `withoutTenantPrefix`: Lists the namespaces to be created without automatically prefixing them with the tenant name, useful for shared or common resources.
-* `withTenantPrefix`: Namespaces listed here will be prefixed with the tenant name, ensuring easy identification and isolation.
-* `onDeletePurgeNamespaces`: Determines whether namespaces associated with the tenant should be deleted upon the tenant's deletion, enabling clean up and resource freeing.
-* `metadata`: Configures metadata like labels and annotations that are applied to namespaces managed by the tenant:
-    * `common`: Applies specified labels and annotations across all namespaces within the tenant, ensuring consistent metadata for resources and workloads.
-    * `sandbox`: Special metadata for sandbox namespaces, which can include templated annotations or labels for dynamic information.
-        * We also support the use of a templating mechanism within annotations, specifically allowing the inclusion of the tenant's username through the placeholder `{{ TENANT.USERNAME }}`. This template can be utilized to dynamically insert the tenant's username value into annotations, for example, as `username: {{ TENANT.USERNAME }}`.
-    * `specific`: Allows applying unique labels and annotations to specified tenant namespaces, enabling custom configurations for particular workloads or environments.
+!!! warning "Metadata precedence"
+    When the same label or annotation key is set by more than one mechanism,
+    the highest precedence wins in this order: `namespaces.metadata.specific`,
+    then `namespaces.metadata.common`, then
+    `openshift.project.labels` / `openshift.project.annotations` from the
+    [IntegrationConfig](integration-config.md).
 
 ## Description
 
-`desc` provides a human-readable description of the tenant, aiding in documentation and at-a-glance understanding of the tenant's purpose and configuration.
+`desc` is a human-readable description of the tenant, which helps documentation
+and at-a-glance understanding of its purpose.
 
-> ⚠️ If same label or annotation key is being applied using different methods provided, then the highest precedence will be given to `namespaces.metadata.specific` followed by `namespaces.metadata.common` and in the end would be the ones applied from `openshift.project.labels`/`openshift.project.annotations` in `IntegrationConfig`
+## Resource guardrails
 
-## Storage
+Beyond quota, a Tenant can constrain which **cluster-scoped** resources its
+workloads may use. There are two enforcement styles.
+
+**Allow-lists with secure-by-default RBAC** — `storageClasses`,
+`ingressClasses` and `podPriorityClasses`. Each follows the same three-state
+model, where configuring the field both filters usage *and* sets up the RBAC:
+
+| Spec state | Behaviour |
+|------------|-----------|
+| Field omitted (`nil`) | **Disabled** — the operator configures no RBAC; access is left to the platform administrator. |
+| Empty (`{}` or `{allowed: []}`) | **Allow all** — the operator configures RBAC so the tenant may use any class in the cluster. |
+| Listed (`{allowed: [...]}`) | **Only the listed** — the operator configures RBAC so the tenant may use only those classes. |
+
+**Admission guardrails, always enforced when set** — `imageRegistries`
+(allow-list) and `serviceAccounts` (deny-list). When present, every matching
+workload is validated at admission.
+
+`podPriorityClasses`, `imageRegistries` and `serviceAccounts` are validated on
+the standard workload-bearing resources — **Pods, Deployments, StatefulSets,
+ReplicaSets, Jobs, CronJobs and DaemonSets**. `storageClasses` are evaluated
+when a PersistentVolumeClaim is created, and `ingressClasses` when an Ingress is
+created.
+
+### Storage classes
 
 ```yaml
 storageClasses:
@@ -154,68 +243,38 @@ storageClasses:
     - shared
 ```
 
-The `storageClasses` field controls which StorageClasses a tenant may use for PersistentVolumeClaims. This field follows a **secure-by-default** model. Configuring this field enables both the filtering functionality and automatic RBAC configuration:
+The class of a PersistentVolumeClaim is resolved as follows:
 
-| Spec State | Behavior |
-|------------|----------|
-| Field not specified (`nil`) | **Feature disabled** - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for StorageClasses (if any) |
-| Empty struct `{}` or `{allowed: []}` | **Allow all** - the operator automatically configures RBAC so that tenants can use any storage class in the cluster |
-| Specific values `{allowed: ["sc1"]}` | **Only allow specified** - the operator automatically configures RBAC so that tenants can only use the listed storage classes |
-
-The evaluation works as follows:
-
-* If the `storageClass` field is set when creating a PersistentVolumeClaim, it is evaluated directly.
-* If the `volumeName` is provided instead, the operator inspects the corresponding PersistentVolume to determine its class.
-* If neither `storageClass` nor `volumeName` is provided, the evaluation is deferred until a default storage class is set.
-* An empty string for `storageClass` (vs. null) is treated as the literal value `""`
+* If `storageClassName` is set on the PVC, it is evaluated directly.
+* If only `volumeName` is given, the operator inspects that PersistentVolume to
+  determine its class.
+* If neither is given, evaluation is deferred until a default storage class is
+  set.
+* An empty string for `storageClassName` (as opposed to null) is treated as the
+  literal value `""`.
 
 !!! tip
-    Tenant users can use the [kubectl-tenant plugin](../cli/overview.md) to list available StorageClasses: `kubectl tenant get storageclasses <tenant-name>`
+    Tenant users can list their available StorageClasses with the
+    [kubectl-tenant plugin](../cli/overview.md):
+    `kubectl tenant get storageclasses <tenant-name>`.
 
-## Ingress
+### Ingress classes
 
 !!! note
-    This field is applicable only for Kubernetes. For more information, refer to the [Ingress Sharding Guide](../guides/ingress-sharding.md).
+    This field applies to Kubernetes only. See the
+    [Ingress Sharding guide](../guides/ingress-sharding.md) for details.
 
 ```yaml
 ingressClasses:
   allowed:
-  - nginx
-  - traefik
+    - nginx
+    - traefik
 ```
 
-The `ingressClasses` field controls which IngressClasses a tenant may use. This field follows a **secure-by-default** model. Configuring this field enables both the filtering functionality and automatic RBAC configuration:
+If an Ingress specifies no IngressClass, it is treated as `""`; include `""` in
+the allow-list to permit such Ingresses.
 
-| Spec State | Behavior |
-|------------|----------|
-| Field not specified (`nil`) | **Feature disabled** - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for IngressClasses (if any) |
-| Empty struct `{}` or `{allowed: []}` | **Allow all** - the operator automatically configures RBAC so that tenants can use any ingress class in the cluster |
-| Specific values `{allowed: ["nginx"]}` | **Only allow specified** - the operator automatically configures RBAC so that tenants can only use the listed ingress classes |
-
-The empty string `""` is treated like any other IngressClass name. If no IngressClass is specified for an Ingress resource, it will be treated as `""` and must be included in the allow-list if permitted.
-
-## Service Accounts
-
-* `denied` restricts the tenant from using the specified service accounts in pods, deployments, and other resources. The empty string `""` or no service account name is provided then it is treated as `default` service account name. `default` must be added to denied list if you want to block pods / pod controllers with default or empty service account
-
-Following resources will be watched for service account field:
-
-* Pods
-* Deployments
-* StatefulSets
-* ReplicaSets
-* Jobs
-* CronJobs
-* Daemonsets
-
-```yaml
-serviceAccounts:
-  denied:
-    - service-user-1
-    - service-user-2
-```
-
-## Pod Priority Classes
+### Pod priority classes
 
 ```yaml
 podPriorityClasses:
@@ -223,41 +282,10 @@ podPriorityClasses:
     - high-priority
 ```
 
-The `podPriorityClasses` field controls which PriorityClasses a tenant may use. This field follows a **secure-by-default** model. Configuring this field enables both the filtering functionality and automatic RBAC configuration:
+If a workload omits `priorityClassName`, it is treated as `""`; include `""` in
+the allow-list to permit workloads without a priority class.
 
-| Spec State | Behavior |
-|------------|----------|
-| Field not specified (`nil`) | **Feature disabled** - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for PodPriorityClasses (if any) |
-| Empty struct `{}` or `{allowed: []}` | **Allow all** - the operator automatically configures RBAC so that tenants can use any priority class in the cluster |
-| Specific values `{allowed: ["high-priority"]}` | **Only allow specified** - the operator automatically configures RBAC so that tenants can only use the listed priority classes |
-
-The following resources are validated for the `priorityClassName` field:
-
-* Pods
-* Deployments
-* StatefulSets
-* ReplicaSets
-* Jobs
-* CronJobs
-* Daemonsets
-
-The empty string `""` is treated like any other `priorityClass` name. Include `""` in the allow-list to permit resources that omit a priority class.
-
-## Image Registries
-
-The `imageRegistries` field allows you to specify which container image registries are permitted for use within the tenant. This ensures that only trusted sources are used for pulling container images, enhancing security and compliance.
-
-* `allowed`: Specifies the registries that the tenant is authorized to use. Any attempt to pull images from registries not included in this list will be blocked. To allow the tenant to pull images without specifying a registry name, the empty string "" must be included in the allowed list, enabling access to the container runtime's default registry.
-
-Following resources will be watched for image registries:
-
-* Pods
-* Deployments
-* StatefulSets
-* ReplicaSets
-* Jobs
-* CronJobs
-* Daemonsets
+### Image registries
 
 ```yaml
 imageRegistries:
@@ -266,15 +294,33 @@ imageRegistries:
     - docker.io
 ```
 
-## Hostname Validation
+`allowed` lists the registries the tenant may pull from; images from any other
+registry are blocked. To allow images referenced without a registry name
+(pulled from the container runtime's default registry), include the empty
+string `""` in the list.
 
-The `hostValidationConfig` field allows you to specify rules for the validation of hostnames in ingresses and routes.
+### Service accounts
 
-* `allowed`: Specifies a list of allowed hostnames. Any wildcards used in this field will be compared as is. Use `allowedRegex` field for pattern matching.
+```yaml
+serviceAccounts:
+  denied:
+    - service-user-1
+    - service-user-2
+```
 
-* `allowedRegex`: Specifies a regex that will be used to validate the hostname. Hostnames matching the regex will be allowed.
+`denied` blocks the listed service accounts from being used by the tenant's
+workloads. A workload with no service account (or `""`) is treated as using the
+`default` service account; add `default` to the deny-list to block workloads
+that fall back to it.
 
-* `denyWildcards`: Use of wildcards in ingress hostnames will be restricted if field is set to true
+## Hostname validation
+
+`hostValidationConfig` validates host names on Ingresses and Routes:
+
+* `allowed` — exact host names that are permitted. Wildcards are compared
+  literally; use `allowedRegex` for pattern matching.
+* `allowedRegex` — host names matching this regular expression are permitted.
+* `denyWildcards` — when `true`, wildcard host names in Ingresses are rejected.
 
 ## Related guides
 
