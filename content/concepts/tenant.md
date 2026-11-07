@@ -49,39 +49,25 @@ spec:
 
 ## The spec at a glance
 
-Only `quota` is required; everything else is optional. The `spec` is a flat set
-of fields:
+Only `quota` is required; every other field is optional. Listed in the order
+they appear in the manifest:
 
-```yaml
-apiVersion: tenantoperator.stakater.com/v1beta3
-kind: Tenant
-metadata:
-  name: tenant-sample
-spec:
-  quota: small             # required — the Quota CR that caps resource usage
-  desc: "..."              # human-readable description of the tenant
-  accessControl: {}        # owners, editors and viewers of the tenant
-  namespaces: {}           # which namespaces the tenant gets, and their metadata
-  # Resource guardrails — each optional; omit a field to leave it unset:
-  storageClasses: {}       # StorageClasses the tenant may use (allow-list)
-  ingressClasses: {}       # IngressClasses the tenant may use (allow-list)
-  podPriorityClasses: {}   # PriorityClasses the tenant may use (allow-list)
-  imageRegistries: {}      # registries the tenant may pull from (allow-list)
-  serviceAccounts: {}      # service accounts the tenant may NOT use (deny-list)
-  hostValidationConfig: {} # allowed ingress and route host names
-```
+| Field | Required | What it controls |
+|-------|----------|------------------|
+| `quota` | ✅ | Name of the [Quota](quota.md) CR that caps the tenant's resource usage. |
+| `desc` | | Human-readable description of the tenant. |
+| `accessControl` | | Owners, editors and viewers of the tenant. |
+| `namespaces` | | Which namespaces the tenant gets, and their metadata. |
+| `storageClasses` | | StorageClasses the tenant may use (allow-list). |
+| `ingressClasses` | | IngressClasses the tenant may use (allow-list). |
+| `podPriorityClasses` | | PriorityClasses the tenant may use (allow-list). |
+| `imageRegistries` | | Registries the tenant may pull from (allow-list). |
+| `serviceAccounts` | | Service accounts the tenant may **not** use (deny-list). |
+| `hostValidationConfig` | | Allowed ingress and route host names. |
 
-Each section is described below.
-
-!!! warning "An empty map is not a no-op"
-    For `storageClasses`, `ingressClasses` and `podPriorityClasses`, an empty
-    map (`{}`) is itself a setting — it means **allow all** (see
-    [Resource guardrails](#resource-guardrails)). To leave a guardrail unset,
-    omit the field entirely. The `{}` above are placeholders for the shape, not
-    a manifest to apply as-is.
-
-The full, generated field reference lives in the
-[API reference](../reference/api.md#tenant).
+Each field is described below, in the same order. For a manifest you can adapt,
+see [A complete example](#a-complete-example); the full generated schema is in
+the [API reference](../reference/api.md#tenant).
 
 ## A complete example
 
@@ -147,10 +133,6 @@ spec:
     allowed:
       - nginx
       - traefik
-  serviceAccounts:
-    denied:
-      - service-user-1
-      - service-user-2
   podPriorityClasses:
     allowed:
       - high-priority
@@ -158,6 +140,10 @@ spec:
     allowed:
       - ghcr.io
       - docker.io
+  serviceAccounts:
+    denied:
+      - service-user-1
+      - service-user-2
   hostValidationConfig:
     allowed:
       - gateway.saap.dev
@@ -166,6 +152,19 @@ spec:
     allowedRegex: ^[a-zA-Z0-9-]+\.saap\.dev$
     denyWildcards: false
 ```
+
+## Quota
+
+`spec.quota` names the [Quota](quota.md) CR that caps the tenant's resource
+usage — CPU, memory and more — so no single tenant can consume a
+disproportionate share. A Quota is a separate, reusable object that many
+tenants can reference by name; see the [Quota concept](quota.md) for how it is
+defined and enforced.
+
+## Description
+
+`desc` is a human-readable description of the tenant, which helps documentation
+and at-a-glance understanding of its purpose.
 
 ## Access Control
 
@@ -181,14 +180,6 @@ privileges, so you can manage permissions precisely:
 Link users and groups to a role by listing their usernames or group names under
 `owners`, `editors` and `viewers`. The concrete permissions behind each role
 come from [IntegrationConfig's `TenantRoles` field](integration-config.md#tenantroles).
-
-## Quota
-
-`spec.quota` names the [Quota](quota.md) CR that caps the tenant's resource
-usage — CPU, memory and more — so no single tenant can consume a
-disproportionate share. A Quota is a separate, reusable object that many
-tenants can reference by name; see the [Quota concept](quota.md) for how it is
-defined and enforced.
 
 ## Namespaces
 
@@ -221,11 +212,6 @@ labelled:
     then `namespaces.metadata.common`, then
     `openshift.project.labels` / `openshift.project.annotations` from the
     [IntegrationConfig](integration-config.md).
-
-## Description
-
-`desc` is a human-readable description of the tenant, which helps documentation
-and at-a-glance understanding of its purpose.
 
 ## Resource guardrails
 
