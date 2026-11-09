@@ -640,7 +640,7 @@ _**March 19, 2025**_
 
 #### Features
 
-- Added the option to select [Ingress class per tenant](concepts/tenant.md#ingress) via Tenant CR
+- Added the option to select [Ingress class per tenant](concepts/tenant.md#ingress-classes) via Tenant CR
 - Added CRUD for [Quota](console/quotas.md) and [Tenant](console/tenants.md) CR via console.
 - Added support for [AWS CloudCosts integration in Opencost](https://docs.stakater.com/mto/1.2/integrations/aws-pricing.html)
 - Added support for [node label filtering on Capacity Planning page](console/capacity-planning.md)
@@ -673,7 +673,7 @@ _**January 27, 2025**_
 
 - Added [Azure Pricing](https://docs.stakater.com/mto/1.1/how-to-guides/azure-pricing.html) support for Opencost via [Integration Config](concepts/integration-config.md#azure-pricing).
 - Added option to disable `Intra-tenant Networking` via [Integration Config](concepts/integration-config.md#tenantpolicies).
-- Added [Storage class per tenant](concepts/tenant.md#storage) support via Tenant CR.
+- Added [Storage class per tenant](concepts/tenant.md#storage-classes) support via Tenant CR.
 - Added option to override component images.
 - Added support to add/update `Casbin` policies via `tenant-operator-casbin-config` ConfigMap.
 
