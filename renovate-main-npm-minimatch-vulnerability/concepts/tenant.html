@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.8.1">
     
     
       
@@ -2966,11 +2966,65 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#access-control" class="md-nav__link">
+    <a href="#what-the-operator-creates-from-a-tenant" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Access Control
+        What the operator creates from a Tenant
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#a-minimal-tenant" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        A minimal Tenant
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#the-spec-at-a-glance" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        The spec at a glance
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#a-complete-example" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        A complete example
       
     </span>
   
@@ -3002,24 +3056,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#namespaces" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Namespaces
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-      
-        
-
-<li class="md-nav__item ">
-  
-  
     <a href="#description" class="md-nav__link">
       
     <span class="md-ellipsis">
@@ -3038,11 +3074,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#storage" class="md-nav__link">
+    <a href="#access-control" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Storage
+        Access Control
       
     </span>
   
@@ -3056,11 +3092,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#ingress" class="md-nav__link">
+    <a href="#namespaces" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Ingress
+        Namespaces
       
     </span>
   
@@ -3074,11 +3110,31 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#service-accounts" class="md-nav__link">
+    <a href="#resource-guardrails" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Service Accounts
+        Resource guardrails
+      
+    </span>
+  
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Resource guardrails">
+    
+      <ul class="md-nav__list">
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#storage-classes" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Storage classes
       
     </span>
   
@@ -3086,8 +3142,26 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
 </li>
-      
         
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#ingress-classes" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Ingress classes
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
 
 <li class="md-nav__item ">
   
@@ -3096,7 +3170,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
     <span class="md-ellipsis">
       
-        Pod Priority Classes
+        Pod priority classes
       
     </span>
   
@@ -3104,8 +3178,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
 </li>
-      
         
+          
 
 <li class="md-nav__item ">
   
@@ -3114,12 +3188,35 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
     <span class="md-ellipsis">
       
-        Image Registries
+        Image registries
       
     </span>
   
     </a>
   
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#service-accounts" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Service accounts
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3132,7 +3229,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
     <span class="md-ellipsis">
       
-        Hostname Validation
+        Hostname validation
       
     </span>
   
@@ -9387,11 +9484,65 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#access-control" class="md-nav__link">
+    <a href="#what-the-operator-creates-from-a-tenant" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Access Control
+        What the operator creates from a Tenant
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#a-minimal-tenant" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        A minimal Tenant
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#the-spec-at-a-glance" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        The spec at a glance
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#a-complete-example" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        A complete example
       
     </span>
   
@@ -9423,24 +9574,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#namespaces" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Namespaces
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-      
-        
-
-<li class="md-nav__item ">
-  
-  
     <a href="#description" class="md-nav__link">
       
     <span class="md-ellipsis">
@@ -9459,11 +9592,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#storage" class="md-nav__link">
+    <a href="#access-control" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Storage
+        Access Control
       
     </span>
   
@@ -9477,11 +9610,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#ingress" class="md-nav__link">
+    <a href="#namespaces" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Ingress
+        Namespaces
       
     </span>
   
@@ -9495,11 +9628,31 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#service-accounts" class="md-nav__link">
+    <a href="#resource-guardrails" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Service Accounts
+        Resource guardrails
+      
+    </span>
+  
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Resource guardrails">
+    
+      <ul class="md-nav__list">
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#storage-classes" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Storage classes
       
     </span>
   
@@ -9507,8 +9660,26 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
 </li>
-      
         
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#ingress-classes" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Ingress classes
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
 
 <li class="md-nav__item ">
   
@@ -9517,7 +9688,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
     <span class="md-ellipsis">
       
-        Pod Priority Classes
+        Pod priority classes
       
     </span>
   
@@ -9525,8 +9696,8 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
 </li>
-      
         
+          
 
 <li class="md-nav__item ">
   
@@ -9535,12 +9706,35 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
     <span class="md-ellipsis">
       
-        Image Registries
+        Image registries
       
     </span>
   
     </a>
   
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#service-accounts" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Service accounts
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -9553,7 +9747,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       
     <span class="md-ellipsis">
       
-        Hostname Validation
+        Hostname validation
       
     </span>
   
@@ -9601,7 +9795,29 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 
 <h1 id="tenant">Tenant<a class="headerlink" href="#tenant" title="Permanent link">#</a></h1>
-<p>A minimal Tenant definition requires only a quota field, essential for limiting resource consumption:</p>
+<p>A <strong>Tenant</strong> is the single declarative definition of one team's slice of the
+cluster. In one object you describe <em>who</em> the team is, <em>where</em> they run, and
+<em>what they may consume</em> — and the operator turns that into the namespaces, RBAC,
+resource quota, metadata and admission guardrails that make it real, keeping
+them in sync as the Tenant changes.</p>
+<p>Because everything derives from one object, the pieces cannot drift apart:
+membership, namespaces, allocation and standards always agree with each other.</p>
+<h2 id="what-the-operator-creates-from-a-tenant">What the operator creates from a Tenant<a class="headerlink" href="#what-the-operator-creates-from-a-tenant" title="Permanent link">#</a></h2>
+<pre class="mermaid"><code>flowchart TB
+    Admin["Platform admin"] --&gt;|defines| T["Tenant CR&lt;br/&gt;one per team"]
+    T --&gt; NS["Namespaces&lt;br/&gt;prefixed · shared · sandboxes"]
+    T --&gt; RBAC["RBAC bindings&lt;br/&gt;owners · editors · viewers"]
+    T --&gt; Q["Linked Quota&lt;br/&gt;spec.quota → Quota CR"]
+    T --&gt; MD["Namespace metadata&lt;br/&gt;labels · annotations"]
+    T --&gt; G["Admission guardrails&lt;br/&gt;storage · ingress · registries&lt;br/&gt;service accounts · priority · hostnames"]
+    NS --&gt; K["Kubernetes / OpenShift"]
+    RBAC --&gt; K
+    Q --&gt; K
+    MD --&gt; K
+    G --&gt; K</code></pre>
+<h2 id="a-minimal-tenant">A minimal Tenant<a class="headerlink" href="#a-minimal-tenant" title="Permanent link">#</a></h2>
+<p>The smallest valid Tenant needs only a <code>quota</code>, which caps what the team can
+consume:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -9611,15 +9827,87 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This minimal configuration does not specify <code>storageClasses</code>, <code>ingressClasses</code>, or <code>podPriorityClasses</code>. These features are disabled by default, leaving RBAC configuration for these cluster resources to the platform administrator. See the sections below for details on enabling these features.</p>
+<p>A minimal Tenant does not set <code>storageClasses</code>, <code>ingressClasses</code> or
+<code>podPriorityClasses</code>. Those guardrails are <strong>disabled by default</strong>, which
+leaves RBAC for those cluster-scoped resources to the platform
+administrator. See <a href="#resource-guardrails">Resource guardrails</a> to enable
+them.</p>
 </div>
-<p>For a more comprehensive setup, a detailed Tenant definition includes various configurations:</p>
+<h2 id="the-spec-at-a-glance">The spec at a glance<a class="headerlink" href="#the-spec-at-a-glance" title="Permanent link">#</a></h2>
+<p>Only <code>quota</code> is required; every other field is optional. Listed in the order
+they appear in the manifest:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>What it controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#quota"><code>quota</code></a></td>
+<td>Yes</td>
+<td>Name of the <a href="quota.html">Quota</a> CR that caps the tenant's resource usage.</td>
+</tr>
+<tr>
+<td><a href="#description"><code>desc</code></a></td>
+<td>No</td>
+<td>Human-readable description of the tenant.</td>
+</tr>
+<tr>
+<td><a href="#access-control"><code>accessControl</code></a></td>
+<td>No</td>
+<td>Owners, editors and viewers of the tenant.</td>
+</tr>
+<tr>
+<td><a href="#namespaces"><code>namespaces</code></a></td>
+<td>No</td>
+<td>Which namespaces the tenant gets, and their metadata.</td>
+</tr>
+<tr>
+<td><a href="#storage-classes"><code>storageClasses</code></a></td>
+<td>No</td>
+<td>StorageClasses the tenant may use (allow-list).</td>
+</tr>
+<tr>
+<td><a href="#ingress-classes"><code>ingressClasses</code></a></td>
+<td>No</td>
+<td>IngressClasses the tenant may use (allow-list).</td>
+</tr>
+<tr>
+<td><a href="#pod-priority-classes"><code>podPriorityClasses</code></a></td>
+<td>No</td>
+<td>PriorityClasses the tenant may use (allow-list).</td>
+</tr>
+<tr>
+<td><a href="#image-registries"><code>imageRegistries</code></a></td>
+<td>No</td>
+<td>Registries the tenant may pull from (allow-list).</td>
+</tr>
+<tr>
+<td><a href="#service-accounts"><code>serviceAccounts</code></a></td>
+<td>No</td>
+<td>Service accounts the tenant may <strong>not</strong> use (deny-list).</td>
+</tr>
+<tr>
+<td><a href="#hostname-validation"><code>hostValidationConfig</code></a></td>
+<td>No</td>
+<td>Allowed ingress and route host names.</td>
+</tr>
+</tbody>
+</table>
+<p>Each field is described below, in the same order. For a manifest you can adapt,
+see <a href="#a-complete-example">A complete example</a>; the full generated schema is in
+the <a href="../reference/api.html#tenant">API reference</a>.</p>
+<h2 id="a-complete-example">A complete example<a class="headerlink" href="#a-complete-example" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-sample</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<span class="w">  </span><span class="nt">desc</span><span class="p">:</span><span class="w"> </span><span class="s">"This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">tenant</span><span class="nv"> </span><span class="s">setup</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">v1beta3</span><span class="nv"> </span><span class="s">version."</span>
 <span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">users</span><span class="p">:</span>
@@ -9666,7 +9954,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">            </span><span class="nt">specific-label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">specific-dev-value</span>
 <span class="w">          </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">specific-annotation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">specific-dev-value</span>
-<span class="w">  </span><span class="nt">desc</span><span class="p">:</span><span class="w"> </span><span class="s">"This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">tenant</span><span class="nv"> </span><span class="s">setup</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">v1beta3</span><span class="nv"> </span><span class="s">version."</span>
 <span class="w">  </span><span class="nt">storageClasses</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">staging</span>
@@ -9674,237 +9961,189 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <span class="w">  </span><span class="nt">ingressClasses</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trafeik</span>
-
-<span class="w">  </span><span class="nt">serviceAccounts</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">denied</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-1</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-2</span>
-
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik</span>
 <span class="w">  </span><span class="nt">podPriorityClasses</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high-priority</span>
-
 <span class="w">  </span><span class="nt">imageRegistries</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker.io</span>
-
+<span class="w">  </span><span class="nt">serviceAccounts</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">denied</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-1</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-2</span>
 <span class="w">  </span><span class="nt">hostValidationConfig</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gateway.saap.dev</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">console.saap.dev</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="err">*</span><span class="l l-Scalar l-Scalar-Plain">.saap.prod</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"*.saap.prod"</span>
 <span class="w">    </span><span class="nt">allowedRegex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">^[a-zA-Z0-9-]+\.saap\.dev$</span>
 <span class="w">    </span><span class="nt">denyWildcards</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
-<h2 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">#</a></h2>
-<p>Structured access control is critical for managing roles and permissions within a tenant effectively. It divides users into three categories, each with customizable privileges. This design enables precise role-based access management.  </p>
-<p>These roles are obtained from <a href="integration-config.html#tenantroles">IntegrationConfig's TenantRoles field</a>.</p>
-<ul>
-<li><code>Owners</code>: Have full administrative rights, including resource management and namespace creation. Their roles are crucial for high-level management tasks.</li>
-<li><code>Editors</code>: Granted permissions to modify resources, enabling them to support day-to-day operations without full administrative access.</li>
-<li><code>Viewers</code>: Provide read-only access, suitable for oversight and auditing without the ability to alter resources.</li>
-</ul>
-<p>Users and groups are linked to these roles by specifying their usernames or group names in the respective fields under <code>owners</code>, <code>editors</code>, and <code>viewers</code>.</p>
 <h2 id="quota">Quota<a class="headerlink" href="#quota" title="Permanent link">#</a></h2>
-<p>The <code>quota</code> field sets the resource limits for the tenant, such as CPU and memory usage, to prevent any single tenant from consuming a disproportionate amount of resources. This mechanism ensures efficient resource allocation and fosters fair usage practices across all tenants.  </p>
-<p>For more information on quotas, please refer <a href="quota.html">here</a>.</p>
-<h2 id="namespaces">Namespaces<a class="headerlink" href="#namespaces" title="Permanent link">#</a></h2>
-<p>Controls the creation and management of namespaces within the tenant:</p>
-<ul>
-<li>
-<p><code>sandboxes</code>:</p>
-<ul>
-<li>When enabled, sandbox namespaces are created with the following naming convention - <strong>{TenantName}</strong>-<strong>{UserName}</strong>-<em>sandbox</em>.</li>
-<li>In case of groups, the sandbox namespaces will be created for each member of the group.</li>
-<li>Setting <code>private</code> to <em>true</em> will make the sandboxes visible only to the user they belong to. By default, sandbox namespaces are visible to all tenant members.</li>
-</ul>
-</li>
-<li>
-<p><code>withoutTenantPrefix</code>: Lists the namespaces to be created without automatically prefixing them with the tenant name, useful for shared or common resources.</p>
-</li>
-<li><code>withTenantPrefix</code>: Namespaces listed here will be prefixed with the tenant name, ensuring easy identification and isolation.</li>
-<li><code>onDeletePurgeNamespaces</code>: Determines whether namespaces associated with the tenant should be deleted upon the tenant's deletion, enabling clean up and resource freeing.</li>
-<li><code>metadata</code>: Configures metadata like labels and annotations that are applied to namespaces managed by the tenant:<ul>
-<li><code>common</code>: Applies specified labels and annotations across all namespaces within the tenant, ensuring consistent metadata for resources and workloads.</li>
-<li><code>sandbox</code>: Special metadata for sandbox namespaces, which can include templated annotations or labels for dynamic information.<ul>
-<li>We also support the use of a templating mechanism within annotations, specifically allowing the inclusion of the tenant's username through the placeholder <code>{{ TENANT.USERNAME }}</code>. This template can be utilized to dynamically insert the tenant's username value into annotations, for example, as <code>username: {{ TENANT.USERNAME }}</code>.</li>
-</ul>
-</li>
-<li><code>specific</code>: Allows applying unique labels and annotations to specified tenant namespaces, enabling custom configurations for particular workloads or environments.</li>
-</ul>
-</li>
-</ul>
+<p><code>spec.quota</code> names the <a href="quota.html">Quota</a> CR that caps the tenant's resource
+usage — CPU, memory and more — so no single tenant can consume a
+disproportionate share. A Quota is a separate, reusable object that many
+tenants can reference by name; see the <a href="quota.html">Quota concept</a> for how it is
+defined and enforced.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p><code>desc</code> provides a human-readable description of the tenant, aiding in documentation and at-a-glance understanding of the tenant's purpose and configuration.</p>
-<blockquote>
-<p>⚠️ If same label or annotation key is being applied using different methods provided, then the highest precedence will be given to <code>namespaces.metadata.specific</code> followed by <code>namespaces.metadata.common</code> and in the end would be the ones applied from <code>openshift.project.labels</code>/<code>openshift.project.annotations</code> in <code>IntegrationConfig</code></p>
-</blockquote>
-<h2 id="storage">Storage<a class="headerlink" href="#storage" title="Permanent link">#</a></h2>
+<p><code>desc</code> is a human-readable description of the tenant, which helps documentation
+and at-a-glance understanding of its purpose.</p>
+<h2 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">#</a></h2>
+<p>Access control divides tenant users into three roles, each with its own
+privileges, so you can manage permissions precisely:</p>
+<ul>
+<li><strong>Owners</strong> — full administrative rights, including resource management and
+  namespace creation. Suited to high-level management of the tenant.</li>
+<li><strong>Editors</strong> — may modify resources, supporting day-to-day operations without
+  full administrative access.</li>
+<li><strong>Viewers</strong> — read-only access, suited to oversight and auditing.</li>
+</ul>
+<p>Link users and groups to a role by listing their usernames or group names under
+<code>owners</code>, <code>editors</code> and <code>viewers</code>. The concrete permissions behind each role
+come from <a href="integration-config.html#tenantroles">IntegrationConfig's <code>TenantRoles</code> field</a>.</p>
+<h2 id="namespaces">Namespaces<a class="headerlink" href="#namespaces" title="Permanent link">#</a></h2>
+<p><code>namespaces</code> controls which namespaces the tenant gets and how they are
+labelled:</p>
+<ul>
+<li><code>sandboxes</code> — personal namespaces for tenant members.<ul>
+<li>When enabled, a sandbox is created per user with the naming convention
+  <strong>{TenantName}</strong>-<strong>{UserName}</strong>-<em>sandbox</em>. For a group, one is created
+  for each member.</li>
+<li><code>private: true</code> makes each sandbox visible only to its owner. By default
+  sandboxes are visible to all tenant members.</li>
+</ul>
+</li>
+<li><code>withTenantPrefix</code> — namespaces created with the tenant name as a prefix, for
+  easy identification and isolation.</li>
+<li><code>withoutTenantPrefix</code> — namespaces created without the prefix, useful for
+  shared or common resources.</li>
+<li><code>onDeletePurgeNamespaces</code> — whether the tenant's namespaces are deleted when
+  the tenant is deleted. Defaults to <code>false</code>.</li>
+<li><code>metadata</code> — labels and annotations applied to the tenant's namespaces:<ul>
+<li><code>common</code> — applied across <strong>all</strong> of the tenant's namespaces.</li>
+<li><code>sandbox</code> — applied across sandbox namespaces. Supports templating: the
+  placeholder <code>{{ TENANT.USERNAME }}</code> is replaced with the owning user, e.g.
+  <code>username: {{ TENANT.USERNAME }}</code>.</li>
+<li><code>specific</code> — applied to the named namespaces only, for custom
+  configurations.</li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Metadata precedence</p>
+<p>When the same label or annotation key is set by more than one mechanism,
+the highest precedence wins in this order: <code>namespaces.metadata.specific</code>,
+then <code>namespaces.metadata.common</code>, then
+<code>openshift.project.labels</code> / <code>openshift.project.annotations</code> from the
+<a href="integration-config.html">IntegrationConfig</a>.</p>
+</div>
+<h2 id="resource-guardrails">Resource guardrails<a class="headerlink" href="#resource-guardrails" title="Permanent link">#</a></h2>
+<p>Beyond quota, a Tenant can constrain which <strong>cluster-scoped</strong> resources its
+workloads may use. There are two enforcement styles.</p>
+<p><strong>Allow-lists with secure-by-default RBAC</strong> — <code>storageClasses</code>,
+<code>ingressClasses</code> and <code>podPriorityClasses</code>. Each follows the same three-state
+model, where configuring the field both filters usage <em>and</em> sets up the RBAC:</p>
+<table>
+<thead>
+<tr>
+<th>Spec state</th>
+<th>Behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Field omitted (<code>nil</code>)</td>
+<td><strong>Disabled</strong> — the operator configures no RBAC; access is left to the platform administrator.</td>
+</tr>
+<tr>
+<td>Empty (<code>{}</code> or <code>{allowed: []}</code>)</td>
+<td><strong>Allow all</strong> — the operator configures RBAC so the tenant may use any class in the cluster.</td>
+</tr>
+<tr>
+<td>Listed (<code>{allowed: [...]}</code>)</td>
+<td><strong>Only the listed</strong> — the operator configures RBAC so the tenant may use only those classes.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Admission guardrails, always enforced when set</strong> — <code>imageRegistries</code>
+(allow-list) and <code>serviceAccounts</code> (deny-list). When present, every matching
+workload is validated at admission.</p>
+<p><code>podPriorityClasses</code>, <code>imageRegistries</code> and <code>serviceAccounts</code> are validated on
+the standard workload-bearing resources — <strong>Pods, Deployments, StatefulSets,
+ReplicaSets, Jobs, CronJobs and DaemonSets</strong>. <code>storageClasses</code> are evaluated
+when a PersistentVolumeClaim is created, and <code>ingressClasses</code> when an Ingress is
+created.</p>
+<h3 id="storage-classes">Storage classes<a class="headerlink" href="#storage-classes" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">storageClasses</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">staging-fast</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared</span>
 </code></pre></div>
-<p>The <code>storageClasses</code> field controls which StorageClasses a tenant may use for PersistentVolumeClaims. This field follows a <strong>secure-by-default</strong> model. Configuring this field enables both the filtering functionality and automatic RBAC configuration:</p>
-<table>
-<thead>
-<tr>
-<th>Spec State</th>
-<th>Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Field not specified (<code>nil</code>)</td>
-<td><strong>Feature disabled</strong> - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for StorageClasses (if any)</td>
-</tr>
-<tr>
-<td>Empty struct <code>{}</code> or <code>{allowed: []}</code></td>
-<td><strong>Allow all</strong> - the operator automatically configures RBAC so that tenants can use any storage class in the cluster</td>
-</tr>
-<tr>
-<td>Specific values <code>{allowed: ["sc1"]}</code></td>
-<td><strong>Only allow specified</strong> - the operator automatically configures RBAC so that tenants can only use the listed storage classes</td>
-</tr>
-</tbody>
-</table>
-<p>The evaluation works as follows:</p>
+<p>The class of a PersistentVolumeClaim is resolved as follows:</p>
 <ul>
-<li>If the <code>storageClass</code> field is set when creating a PersistentVolumeClaim, it is evaluated directly.</li>
-<li>If the <code>volumeName</code> is provided instead, the operator inspects the corresponding PersistentVolume to determine its class.</li>
-<li>If neither <code>storageClass</code> nor <code>volumeName</code> is provided, the evaluation is deferred until a default storage class is set.</li>
-<li>An empty string for <code>storageClass</code> (vs. null) is treated as the literal value <code>""</code></li>
+<li>If <code>storageClassName</code> is set on the PVC, it is evaluated directly.</li>
+<li>If only <code>volumeName</code> is given, the operator inspects that PersistentVolume to
+  determine its class.</li>
+<li>If neither is given, evaluation is deferred until a default storage class is
+  set.</li>
+<li>An empty string for <code>storageClassName</code> (as opposed to null) is treated as the
+  literal value <code>""</code>.</li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Tenant users can use the <a href="../cli/overview.html">kubectl-tenant plugin</a> to list available StorageClasses: <code>kubectl tenant get storageclasses &lt;tenant-name&gt;</code></p>
+<p>Tenant users can list their available StorageClasses with the
+<a href="../cli/overview.html">kubectl-tenant plugin</a>:
+<code>kubectl tenant get storageclasses &lt;tenant-name&gt;</code>.</p>
 </div>
-<h2 id="ingress">Ingress<a class="headerlink" href="#ingress" title="Permanent link">#</a></h2>
+<h3 id="ingress-classes">Ingress classes<a class="headerlink" href="#ingress-classes" title="Permanent link">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This field is applicable only for Kubernetes. For more information, refer to the <a href="../guides/ingress-sharding.html">Ingress Sharding Guide</a>.</p>
+<p>This field applies to Kubernetes only. See the
+<a href="../guides/ingress-sharding.html">Ingress Sharding guide</a> for details.</p>
 </div>
 <div class="highlight"><pre><span></span><code><span class="nt">ingressClasses</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">allowed</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">traefik</span>
 </code></pre></div>
-<p>The <code>ingressClasses</code> field controls which IngressClasses a tenant may use. This field follows a <strong>secure-by-default</strong> model. Configuring this field enables both the filtering functionality and automatic RBAC configuration:</p>
-<table>
-<thead>
-<tr>
-<th>Spec State</th>
-<th>Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Field not specified (<code>nil</code>)</td>
-<td><strong>Feature disabled</strong> - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for IngressClasses (if any)</td>
-</tr>
-<tr>
-<td>Empty struct <code>{}</code> or <code>{allowed: []}</code></td>
-<td><strong>Allow all</strong> - the operator automatically configures RBAC so that tenants can use any ingress class in the cluster</td>
-</tr>
-<tr>
-<td>Specific values <code>{allowed: ["nginx"]}</code></td>
-<td><strong>Only allow specified</strong> - the operator automatically configures RBAC so that tenants can only use the listed ingress classes</td>
-</tr>
-</tbody>
-</table>
-<p>The empty string <code>""</code> is treated like any other IngressClass name. If no IngressClass is specified for an Ingress resource, it will be treated as <code>""</code> and must be included in the allow-list if permitted.</p>
-<h2 id="service-accounts">Service Accounts<a class="headerlink" href="#service-accounts" title="Permanent link">#</a></h2>
-<ul>
-<li><code>denied</code> restricts the tenant from using the specified service accounts in pods, deployments, and other resources. The empty string <code>""</code> or no service account name is provided then it is treated as <code>default</code> service account name. <code>default</code> must be added to denied list if you want to block pods / pod controllers with default or empty service account</li>
-</ul>
-<p>Following resources will be watched for service account field:</p>
-<ul>
-<li>Pods</li>
-<li>Deployments</li>
-<li>StatefulSets</li>
-<li>ReplicaSets</li>
-<li>Jobs</li>
-<li>CronJobs</li>
-<li>Daemonsets</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="nt">serviceAccounts</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">denied</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-1</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-2</span>
-</code></pre></div>
-<h2 id="pod-priority-classes">Pod Priority Classes<a class="headerlink" href="#pod-priority-classes" title="Permanent link">#</a></h2>
+<p>If an Ingress specifies no IngressClass, it is treated as <code>""</code>; include <code>""</code> in
+the allow-list to permit such Ingresses.</p>
+<h3 id="pod-priority-classes">Pod priority classes<a class="headerlink" href="#pod-priority-classes" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">podPriorityClasses</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high-priority</span>
 </code></pre></div>
-<p>The <code>podPriorityClasses</code> field controls which PriorityClasses a tenant may use. This field follows a <strong>secure-by-default</strong> model. Configuring this field enables both the filtering functionality and automatic RBAC configuration:</p>
-<table>
-<thead>
-<tr>
-<th>Spec State</th>
-<th>Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Field not specified (<code>nil</code>)</td>
-<td><strong>Feature disabled</strong> - no RBAC is configured by the operator; it is left to the platform administrator to configure appropriate RBAC for PodPriorityClasses (if any)</td>
-</tr>
-<tr>
-<td>Empty struct <code>{}</code> or <code>{allowed: []}</code></td>
-<td><strong>Allow all</strong> - the operator automatically configures RBAC so that tenants can use any priority class in the cluster</td>
-</tr>
-<tr>
-<td>Specific values <code>{allowed: ["high-priority"]}</code></td>
-<td><strong>Only allow specified</strong> - the operator automatically configures RBAC so that tenants can only use the listed priority classes</td>
-</tr>
-</tbody>
-</table>
-<p>The following resources are validated for the <code>priorityClassName</code> field:</p>
-<ul>
-<li>Pods</li>
-<li>Deployments</li>
-<li>StatefulSets</li>
-<li>ReplicaSets</li>
-<li>Jobs</li>
-<li>CronJobs</li>
-<li>Daemonsets</li>
-</ul>
-<p>The empty string <code>""</code> is treated like any other <code>priorityClass</code> name. Include <code>""</code> in the allow-list to permit resources that omit a priority class.</p>
-<h2 id="image-registries">Image Registries<a class="headerlink" href="#image-registries" title="Permanent link">#</a></h2>
-<p>The <code>imageRegistries</code> field allows you to specify which container image registries are permitted for use within the tenant. This ensures that only trusted sources are used for pulling container images, enhancing security and compliance.</p>
-<ul>
-<li><code>allowed</code>: Specifies the registries that the tenant is authorized to use. Any attempt to pull images from registries not included in this list will be blocked. To allow the tenant to pull images without specifying a registry name, the empty string "" must be included in the allowed list, enabling access to the container runtime's default registry.</li>
-</ul>
-<p>Following resources will be watched for image registries:</p>
-<ul>
-<li>Pods</li>
-<li>Deployments</li>
-<li>StatefulSets</li>
-<li>ReplicaSets</li>
-<li>Jobs</li>
-<li>CronJobs</li>
-<li>Daemonsets</li>
-</ul>
+<p>If a workload omits <code>priorityClassName</code>, it is treated as <code>""</code>; include <code>""</code> in
+the allow-list to permit workloads without a priority class.</p>
+<h3 id="image-registries">Image registries<a class="headerlink" href="#image-registries" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">imageRegistries</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">allowed</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker.io</span>
 </code></pre></div>
-<h2 id="hostname-validation">Hostname Validation<a class="headerlink" href="#hostname-validation" title="Permanent link">#</a></h2>
-<p>The <code>hostValidationConfig</code> field allows you to specify rules for the validation of hostnames in ingresses and routes.</p>
+<p><code>allowed</code> lists the registries the tenant may pull from; images from any other
+registry are blocked. To allow images referenced without a registry name
+(pulled from the container runtime's default registry), include the empty
+string <code>""</code> in the list.</p>
+<h3 id="service-accounts">Service accounts<a class="headerlink" href="#service-accounts" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">serviceAccounts</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">denied</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-1</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service-user-2</span>
+</code></pre></div>
+<p><code>denied</code> blocks the listed service accounts from being used by the tenant's
+workloads. A workload with no service account (or <code>""</code>) is treated as using the
+<code>default</code> service account; add <code>default</code> to the deny-list to block workloads
+that fall back to it.</p>
+<h2 id="hostname-validation">Hostname validation<a class="headerlink" href="#hostname-validation" title="Permanent link">#</a></h2>
+<p><code>hostValidationConfig</code> validates host names on Ingresses and Routes:</p>
 <ul>
-<li>
-<p><code>allowed</code>: Specifies a list of allowed hostnames. Any wildcards used in this field will be compared as is. Use <code>allowedRegex</code> field for pattern matching.</p>
-</li>
-<li>
-<p><code>allowedRegex</code>: Specifies a regex that will be used to validate the hostname. Hostnames matching the regex will be allowed.</p>
-</li>
-<li>
-<p><code>denyWildcards</code>: Use of wildcards in ingress hostnames will be restricted if field is set to true</p>
-</li>
+<li><code>allowed</code> — exact host names that are permitted. Wildcards are compared
+  literally; use <code>allowedRegex</code> for pattern matching.</li>
+<li><code>allowedRegex</code> — host names matching this regular expression are permitted.</li>
+<li><code>denyWildcards</code> — when <code>true</code>, wildcard host names in Ingresses are rejected.</li>
 </ul>
 <h2 id="related-guides">Related guides<a class="headerlink" href="#related-guides" title="Permanent link">#</a></h2>
 <ul>
@@ -10637,7 +10876,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="../javascripts/api-toc.js"></script>
       
