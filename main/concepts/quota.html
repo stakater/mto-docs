@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.svg">
-      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.8.0">
+      <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.8.1">
     
     
       
@@ -2992,11 +2992,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li class="md-nav__item ">
   
   
-    <a href="#assigning-resource-quotas" class="md-nav__link">
+    <a href="#how-a-quota-is-enforced" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Assigning Resource Quotas
+        How a Quota is enforced
       
     </span>
   
@@ -3010,11 +3010,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li class="md-nav__item ">
   
   
-    <a href="#limiting-persistentvolume-for-tenant" class="md-nav__link">
+    <a href="#the-spec-at-a-glance" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Limiting PersistentVolume for Tenant
+        The spec at a glance
       
     </span>
   
@@ -3028,11 +3028,47 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li class="md-nav__item ">
   
   
-    <a href="#adding-storageclass-restrictions-for-tenant" class="md-nav__link">
+    <a href="#assigning-a-quota-to-a-tenant" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Adding StorageClass Restrictions for Tenant
+        Assigning a quota to a tenant
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#limiting-total-storage" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Limiting total storage
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#limiting-storage-per-storageclass" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Limiting storage per StorageClass
       
     </span>
   
@@ -9260,11 +9296,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li class="md-nav__item ">
   
   
-    <a href="#assigning-resource-quotas" class="md-nav__link">
+    <a href="#how-a-quota-is-enforced" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Assigning Resource Quotas
+        How a Quota is enforced
       
     </span>
   
@@ -9278,11 +9314,11 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li class="md-nav__item ">
   
   
-    <a href="#limiting-persistentvolume-for-tenant" class="md-nav__link">
+    <a href="#the-spec-at-a-glance" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Limiting PersistentVolume for Tenant
+        The spec at a glance
       
     </span>
   
@@ -9296,11 +9332,47 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 <li class="md-nav__item ">
   
   
-    <a href="#adding-storageclass-restrictions-for-tenant" class="md-nav__link">
+    <a href="#assigning-a-quota-to-a-tenant" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Adding StorageClass Restrictions for Tenant
+        Assigning a quota to a tenant
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#limiting-total-storage" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Limiting total storage
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#limiting-storage-per-storageclass" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Limiting storage per StorageClass
       
     </span>
   
@@ -9348,15 +9420,74 @@ This documentation is either for an old version, or for the unreleased 'main' ve
 
 
 <h1 id="quota">Quota<a class="headerlink" href="#quota" title="Permanent link">#</a></h1>
-<p>Underlying implementation of Quota CR in OpenShift differs from rest of the Kubernetes distributions. In OpenShift, MTO relies on <a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1">ClusterResourceQuota CR</a> to do the calculations and link with the tenant. However, in other distributions, MTO creates underlying <a href="https://kubernetes.io/docs/concepts/policy/resource-quotas/">ResourceQuota CRs</a> in every Tenant namespace which are aggregated at the time of resource admission for calculations.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Quota CR in Kubernetes in a preview feature, which can malfunction to allow more resources than the allowed count in its spec when the webhook is under load. Feel free to contact <a href="https://support.stakater.com/">Stakater Support</a> if you have any questions.</p>
+<p>A <strong>Quota</strong> is a reusable allocation profile owned by the cluster
+administrator. It defines the resource ceilings a tenant may consume
+(<code>resourcequota</code>) and, optionally, per-object defaults and bounds
+(<code>limitrange</code>). A <a href="tenant.html">Tenant</a> references a Quota by name through its
+<code>spec.quota</code> field.</p>
+<p>The value is in the indirection: <strong>one Quota can back many tenants</strong>. The admin
+defines <code>small</code>, <code>medium</code> and <code>large</code> once, assigns them, and changes a tier in
+a single place for every tenant that uses it. It also keeps duties separate —
+admins own the ceilings, tenant owners work freely beneath them.</p>
+<pre class="mermaid"><code>flowchart LR
+    Admin["Platform admin"] --&gt;|defines once| Q["Quota 'small'"]
+    Q --&gt; T1["Tenant alpha&lt;br/&gt;spec.quota: small"]
+    Q --&gt; T2["Tenant bluesky&lt;br/&gt;spec.quota: small"]
+    Q --&gt; T3["Tenant gamma&lt;br/&gt;spec.quota: small"]</code></pre>
+<h2 id="how-a-quota-is-enforced">How a Quota is enforced<a class="headerlink" href="#how-a-quota-is-enforced" title="Permanent link">#</a></h2>
+<p>The ceiling is the same everywhere; the underlying object the operator creates
+differs by distribution.</p>
+<pre class="mermaid"><code>flowchart TB
+    Q["Quota CR"]
+    Q --&gt;|OpenShift| CRQ["ClusterResourceQuota&lt;br/&gt;one object spanning all&lt;br/&gt;of the tenant's namespaces"]
+    Q --&gt;|other distributions| RQ["ResourceQuota&lt;br/&gt;in every tenant namespace"]
+    RQ --&gt; Agg["Aggregated across namespaces&lt;br/&gt;at admission time"]</code></pre>
+<ul>
+<li>On <strong>OpenShift</strong>, MTO relies on a
+  <a href="https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1">ClusterResourceQuota</a>
+  that spans all of the tenant's namespaces and does the calculation natively.</li>
+<li>On <strong>other Kubernetes distributions</strong>, MTO creates a standard
+  <a href="https://kubernetes.io/docs/concepts/policy/resource-quotas/">ResourceQuota</a>
+  in each tenant namespace and aggregates usage at admission time.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Preview on Kubernetes</p>
+<p>Quota enforcement on non-OpenShift distributions is a preview feature. Under
+webhook load it can admit more than the configured ceiling. Reach out to
+<a href="https://support.stakater.com/">Stakater Support</a> with any questions.</p>
 </div>
-<p>Using Multi Tenant Operator, the cluster-admin can set and enforce cluster resource quotas and limit ranges for tenants.</p>
-<h2 id="assigning-resource-quotas">Assigning Resource Quotas<a class="headerlink" href="#assigning-resource-quotas" title="Permanent link">#</a></h2>
-<p>Bill is a cluster admin who will first create <code>Quota</code> CR where he sets the maximum resource limits that Anna's tenant will have.
-Here <code>limitrange</code> is an optional field, cluster admin can skip it if not needed.</p>
+<h2 id="the-spec-at-a-glance">The spec at a glance<a class="headerlink" href="#the-spec-at-a-glance" title="Permanent link">#</a></h2>
+<p>A Quota is served at <code>tenantoperator.stakater.com/v1beta1</code> (note: the
+<a href="tenant.html">Tenant</a> that links it is <code>v1beta3</code>). The <code>spec</code> has two fields,
+each a standard Kubernetes type, so any key those types support can be set:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>What it controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>resourcequota</code></td>
+<td>Yes</td>
+<td>Aggregate resource ceilings for the tenant — a <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#resourcequotaspec-v1-core">ResourceQuotaSpec</a>.</td>
+</tr>
+<tr>
+<td><code>limitrange</code></td>
+<td>No</td>
+<td>Per-object defaults, minimums and maximums — a <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#limitrangespec-v1-core">LimitRangeSpec</a>.</td>
+</tr>
+</tbody>
+</table>
+<p>For a manifest you can adapt, see
+<a href="#assigning-a-quota-to-a-tenant">Assigning a quota to a tenant</a> below; the full
+generated schema is in the <a href="../reference/api.html#quota">API reference</a>.</p>
+<h2 id="assigning-a-quota-to-a-tenant">Assigning a quota to a tenant<a class="headerlink" href="#assigning-a-quota-to-a-tenant" title="Permanent link">#</a></h2>
+<p>Bill, a cluster admin, first creates a <code>Quota</code> with the ceilings Anna's tenant
+will have. <code>limitrange</code> is optional — skip it if you don't need per-object
+bounds.</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quota</span>
@@ -9382,12 +9513,12 @@ Here <code>limitrange</code> is an optional field, cluster admin can skip it if 
 <span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">"100Mi"</span>
 <span class="l l-Scalar l-Scalar-Plain">EOF</span>
 </code></pre></div>
-<p>For more details please refer to <a href="quota.html">Quotas</a>.</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>quota<span class="w"> </span>small
 NAME<span class="w">       </span>STATE<span class="w">    </span>AGE
 small<span class="w">      </span>Active<span class="w">   </span>3m
 </code></pre></div>
-<p>Bill then proceeds to create a tenant for Anna, while also linking the newly created <code>Quota</code>.</p>
+<p>Bill then creates Anna's tenant, linking the <code>small</code> quota through
+<code>spec.quota</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
@@ -9401,19 +9532,23 @@ small<span class="w">      </span>Active<span class="w">   </span>3m
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
 <span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">withTenantPrefix</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">production</span>
 <span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="l l-Scalar l-Scalar-Plain">EOF</span>
 </code></pre></div>
-<p>Now that the quota is linked with Anna's tenant, Anna can create any resource within the values of resource quota and limit range.</p>
+<p>Anna can now create resources freely up to the quota's ceilings:</p>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>bluesky-production<span class="w"> </span>create<span class="w"> </span>deployment<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx:latest<span class="w"> </span>--replicas<span class="w"> </span><span class="m">4</span>
 </code></pre></div>
-<p>Once the resource quota assigned to the tenant has been reached, Anna cannot create further resources.</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>pods<span class="w"> </span>bluesky-training
+<p>Once the tenant's usage reaches a ceiling, further resources are rejected:</p>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>-n<span class="w"> </span>bluesky-production<span class="w"> </span>run<span class="w"> </span>overflow<span class="w"> </span>--image<span class="o">=</span>nginx:latest
 Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="o">(</span>Cannot<span class="w"> </span>exceed<span class="w"> </span>Namespace<span class="w"> </span>quota:<span class="w"> </span>please,<span class="w"> </span>reach<span class="w"> </span>out<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>system<span class="w"> </span>administrators<span class="o">)</span>
 </code></pre></div>
-<h2 id="limiting-persistentvolume-for-tenant">Limiting PersistentVolume for Tenant<a class="headerlink" href="#limiting-persistentvolume-for-tenant" title="Permanent link">#</a></h2>
-<p>Bill, as a cluster admin, wants to restrict the amount of storage a Tenant can use. For that he'll add the <code>requests.storage</code> field to <code>quota.spec.resourcequota.hard</code>. If Bill wants to restrict tenant <code>bluesky</code> to use only <code>50Gi</code> of storage, he'll first create a quota with <code>requests.storage</code> field set to <code>50Gi</code>.</p>
+<h2 id="limiting-total-storage">Limiting total storage<a class="headerlink" href="#limiting-total-storage" title="Permanent link">#</a></h2>
+<p>To cap the storage a tenant may provision, Bill adds <code>requests.storage</code> to
+<code>resourcequota.hard</code>. This Quota limits the tenant to <code>50Gi</code> across all its
+namespaces:</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quota</span>
@@ -9425,65 +9560,41 @@ Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> 
 <span class="w">      </span><span class="nt">requests.cpu</span><span class="p">:</span><span class="w"> </span><span class="s">'5'</span>
 <span class="w">      </span><span class="nt">requests.memory</span><span class="p">:</span><span class="w"> </span><span class="s">'10Gi'</span>
 <span class="w">      </span><span class="nt">requests.storage</span><span class="p">:</span><span class="w"> </span><span class="s">'50Gi'</span>
-</code></pre></div>
-<p>Once the quota is created, Bill will create the tenant and set the quota field to the one he created.</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="l l-Scalar l-Scalar-Plain">EOF</span>
 </code></pre></div>
-<p>Now, the combined storage used by all tenant namespaces will not exceed <code>50Gi</code>.</p>
-<h2 id="adding-storageclass-restrictions-for-tenant">Adding StorageClass Restrictions for Tenant<a class="headerlink" href="#adding-storageclass-restrictions-for-tenant" title="Permanent link">#</a></h2>
-<p>Now, Bill, as a cluster admin, wants to make sure that no Tenant can provision more than a fixed amount of storage from a StorageClass. Bill can restrict that using <code>&lt;storage-class-name&gt;.storageclass.storage.k8s.io/requests.storage</code> field in <code>quota.spec.resourcequota.hard</code> field. If Bill wants to restrict tenant <code>sigma</code> to use only <code>20Gi</code> of storage from storage class <code>stakater</code>, he'll first create a StorageClass <code>stakater</code> and then create the relevant Quota with <code>stakater.storageclass.storage.k8s.io/requests.storage</code> field set to <code>20Gi</code>.</p>
+<p>Link it to the tenant the same way — set <code>spec.quota: medium</code> on the Tenant.
+The combined storage used by all of the tenant's namespaces will then not
+exceed <code>50Gi</code>.</p>
+<h2 id="limiting-storage-per-storageclass">Limiting storage per StorageClass<a class="headerlink" href="#limiting-storage-per-storageclass" title="Permanent link">#</a></h2>
+<p>To cap how much a tenant may provision <strong>from a specific StorageClass</strong>, Bill
+uses the <code>&lt;storage-class-name&gt;.storageclass.storage.k8s.io/requests.storage</code>
+key. This Quota limits provisioning from the <code>stakater</code> StorageClass to <code>20Gi</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
 <span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Quota</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sc-limited</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">resourcequota</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">hard</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">requests.cpu</span><span class="p">:</span><span class="w"> </span><span class="s">'2'</span>
 <span class="w">      </span><span class="nt">requests.memory</span><span class="p">:</span><span class="w"> </span><span class="s">'4Gi'</span>
 <span class="w">      </span><span class="nt">stakater.storageclass.storage.k8s.io/requests.storage</span><span class="p">:</span><span class="w"> </span><span class="s">'20Gi'</span>
-</code></pre></div>
-<p>Once the quota is created, Bill will create the tenant and set the quota field to the one he created.</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">kubectl create -f - &lt;&lt; EOF</span>
-<span class="l l-Scalar l-Scalar-Plain">apiVersion</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
-<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">users</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anna@aurora.org</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthony@aurora.org</span>
-<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="l l-Scalar l-Scalar-Plain">EOF</span>
 </code></pre></div>
-<p>Now, the combined storage provisioned from StorageClass <code>stakater</code> used by all tenant namespaces will not exceed <code>20Gi</code>.</p>
-<blockquote>
-<p>The <code>20Gi</code> limit will only be applied to StorageClass <code>stakater</code>. If a tenant member creates a PVC with some other StorageClass, he will not be restricted.</p>
-</blockquote>
+<p>Link it with <code>spec.quota: sc-limited</code>. The combined storage provisioned from
+the <code>stakater</code> StorageClass across the tenant's namespaces will then not exceed
+<code>20Gi</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This limit applies <strong>only</strong> to the named StorageClass. A PVC created with a
+different StorageClass is not restricted by this key.</p>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>More details about <code>Resource Quota</code> can be found <a href="https://kubernetes.io/docs/concepts/policy/resource-quotas/">here</a></p>
+<p>For the full set of quota keys, see the Kubernetes
+<a href="https://kubernetes.io/docs/concepts/policy/resource-quotas/">Resource Quotas</a>
+documentation.</p>
 </div>
 <h2 id="related-guides">Related guides<a class="headerlink" href="#related-guides" title="Permanent link">#</a></h2>
 <ul>
@@ -10198,7 +10309,7 @@ Error<span class="w"> </span>from<span class="w"> </span>server<span class="w"> 
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="../javascripts/api-toc.js"></script>
       
