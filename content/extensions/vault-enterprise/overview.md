@@ -3,7 +3,7 @@
 Give every tenant its own **Vault Enterprise namespace** — with a KV secrets engine, Kubernetes login, per-application policies and (optionally) human SSO and delivery as Kubernetes `Secret`s — derived from the `Tenant` you already maintain and kept in sync as it changes.
 
 !!! note
-    This is the Helm-chart Vault Enterprise extension ([`mto-extension-vault-enterprise`](https://github.com/stakater/mto-extension-vault-enterprise)). It is separate from the deprecated [Vault Community](../vault/vault.md) integration; use this one for per-tenant Vault **Enterprise namespaces**.
+    This is the Helm-chart Vault Enterprise extension ([`mto-extension-vault-enterprise`](https://github.com/stakater/mto-extension-vault-enterprise)). It is separate from the deprecated [Vault Community](../vault/vault.md) integration; use this one for per-tenant Vault **Enterprise namespaces**. On Vault Community Edition, use the [Vault Community](../vault-community/overview.md) extension, which has the same annotations, roles and names.
 
 !!! warning "Requires Template Operator v2, VCO and Vault Enterprise"
     The extension is **configuration** — it installs no controller of its own. It renders [Template Operator v2](../../template-operator-v2/concepts/overview.md) objects (`templates.v2.stakater.com`), which in turn render [`vault-config-operator`](https://github.com/redhat-cop/vault-config-operator) (VCO) custom resources; VCO writes them to Vault. Both operators must be running, and Vault must be **Enterprise** (tenant isolation is one Vault *namespace* per tenant, and namespaces exist only in Enterprise). See [Installation](installation.md).
