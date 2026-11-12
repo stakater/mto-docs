@@ -68,6 +68,11 @@ operators:
     repo: https://github.com/stakater/finops-docs.git
     live_url: https://docs.stakater.com/finops-docs/
     live_url_style: directory
+    # MTO's own install page stands in for the standalone install docs in links
+    link_overrides:
+      getting-started/installation/overview.md: getting-started/installation/operators/finops.md
+      getting-started/installation/kubernetes.md: getting-started/installation/operators/finops.md
+      getting-started/installation/openshift.md: getting-started/installation/operators/finops.md
     mappings:
       - from: "overview/**"
         into: "overview"
@@ -92,6 +97,11 @@ operators:
     repo: https://github.com/stakater/hibernation-operator-docs.git
     live_url: https://docs.stakater.com/hibernation-operator-docs/
     live_url_style: html
+    # MTO's own install page stands in for the standalone install docs in links
+    link_overrides:
+      getting-started/installation/overview.md: getting-started/installation/operators/hibernation.md
+      getting-started/installation/kubernetes.md: getting-started/installation/operators/hibernation.md
+      getting-started/installation/openshift.md: getting-started/installation/operators/hibernation.md
     mappings:
       - from: "overview/**"
         into: "overview"
