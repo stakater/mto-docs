@@ -3,7 +3,7 @@
 The Hibernation Operator ships with MTO. Installing MTO installs it too, so there is nothing to enable in the IntegrationConfig and no separate chart or operator to install.
 
 - **OLM (OpenShift):** the MTO bundle declares the Hibernation Operator as a dependency, so OLM installs it alongside MTO.
-- **Helm:** the MTO chart carries the Hibernation Operator as a subchart and deploys it into MTO's namespace.
+- **Helm:** the MTO chart carries the Hibernation Operator as a chart dependency and deploys it into MTO's namespace.
 
 To install MTO itself, see [Installing MTO](../overview.md).
 
