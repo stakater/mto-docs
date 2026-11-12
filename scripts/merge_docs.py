@@ -245,11 +245,23 @@ def product_subsections(ordered_unders):
 
 
 def fill_placeholder(nav, section, nodes):
-    """Append sub-section nodes into the (empty) `section` placeholder."""
+    """Fill the `section` placeholder with sub-section nodes. A `{name: []}`
+    slot declared in the placeholder takes the node of that name in place;
+    other nodes are appended. Other declared entries are mto-docs' own and keep
+    their position. A slot left empty is an error (likely a typo)."""
     sec = find_section(nav, section)
     if sec is None:
         raise KeyError(f"placeholder section {section!r} not found in nav")
-    sec.extend(nodes)
+    slots = {k: item for item in sec if isinstance(item, dict)
+             for k, v in item.items() if v == []}
+    for node in nodes:
+        (name, value), = node.items()
+        if name in slots:
+            slots.pop(name)[name] = value
+        else:
+            sec.append(node)
+    if slots:
+        raise ValueError(f"unfilled slot(s) {sorted(slots)} in placeholder {section!r}")
 
 
 def _set_single_leaf(nav, under, path, label=None):
@@ -463,6 +475,7 @@ def load_config(path):
             "live_url": raw.get("live_url"),
             "live_url_style": raw.get("live_url_style", "directory"),
             "mappings": raw["mappings"],
+            "link_overrides": raw.get("link_overrides") or {},
         })
     return operators
 
@@ -601,6 +614,11 @@ def _to_live_url(path, live_url, style):
     return base + path   # assets keep their path
 
 
+class _OverrideTarget(str):
+    """An op_map destination from link_overrides: a stand-in page that does not
+    carry the source page's anchors, so links to it drop their fragment."""
+
+
 def _rewrite_url(url, src_dir, dest_dir, mapping, live_url, style, external):
     """Whitelisted target -> local relative link; otherwise -> live_url fallback."""
     if not url or url[0] in "#/" or "://" in url or url.startswith("mailto:"):
@@ -611,7 +629,10 @@ def _rewrite_url(url, src_dir, dest_dir, mapping, live_url, style, external):
         return url
     resolved = posixpath.normpath(posixpath.join(src_dir, path_part))
     if resolved in mapping:
-        return posixpath.relpath(mapping[resolved], dest_dir or ".") + frag
+        target = mapping[resolved]
+        if isinstance(target, _OverrideTarget):
+            frag = ""
+        return posixpath.relpath(target, dest_dir or ".") + frag
     # not whitelisted: fall back to the operator's live docs, if configured
     if live_url and not resolved.startswith(".."):
         external.append(resolved)
@@ -626,7 +647,7 @@ def rewrite_links(text, src_rel, dest_rel, mapping, live_url=None,
     Whitelisted targets (files copied by the merge, present in `mapping`) become
     local relative links. Any other relative link falls back to `live_url` (the
     operator's published docs) when provided, else is left unchanged. Anchors are
-    preserved. Returns (new_text, externalized) where `externalized` lists the
+    preserved, except on links to a link_overrides stand-in page. Returns (new_text, externalized) where `externalized` lists the
     source paths that were pointed at the live site.
     """
     src_dir = posixpath.dirname(src_rel)
@@ -762,6 +783,18 @@ def run(operators, content_dir, mkdocs_path, repo_overrides=None, site_title=Non
                     flat_inserts.extend((mapping["under"], "leaf", d) for d in mapping_dests)
                     # untitled flat pages are candidates for duplicate auto-grouping
                     flat_pages.extend((mapping["under"], d, op["title"]) for d in mapping_dests)
+
+        # link_overrides: an mto-docs page stands in for a source page that is
+        # not merged; a merged page wins
+        for src, target in op.get("link_overrides", {}).items():
+            src = posixpath.normpath(src)
+            if not (docs / src).is_file():
+                raise FileNotFoundError(
+                    f"{op['title']}: link_overrides source not found: {src}")
+            if not (content_dir / target).is_file():
+                raise FileNotFoundError(
+                    f"{op['title']}: link_overrides target not found: {target}")
+            op_map.setdefault(src, _OverrideTarget(target))
 
         # rewrite links now that all destinations are known: whitelisted targets
         # become local, everything else falls back to the operator's live docs
