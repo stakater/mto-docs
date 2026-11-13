@@ -221,6 +221,28 @@ def test_fill_placeholder_fills_and_raises():
         m.fill_placeholder(nav, "Ghost", [])
 
 
+def test_fill_placeholder_fills_slot_in_place():
+    nav = [{"Hib": [{"Overview": []}, {"Installation": "i.md"}]}]
+    m.fill_placeholder(nav, "Hib", [{"Overview": ["h/o/a.md", "h/o/b.md"]},
+                                    {"Guides": "h/g.md"}])
+    assert nav[0]["Hib"] == [{"Overview": ["h/o/a.md", "h/o/b.md"]},
+                             {"Installation": "i.md"},
+                             {"Guides": "h/g.md"}]
+
+
+def test_fill_placeholder_unfilled_slot_raises():
+    nav = [{"Hib": [{"Overviw": []}]}]
+    with pytest.raises(ValueError, match="Overviw"):
+        m.fill_placeholder(nav, "Hib", [{"Overview": "h/o.md"}])
+
+
+def test_fill_placeholder_slots_scoped_to_section():
+    nav = [{"A": [{"Overview": []}]}, {"B": [{"Overview": []}]}]
+    m.fill_placeholder(nav, "B", [{"Overview": "b.md"}])
+    assert nav[1]["B"] == [{"Overview": "b.md"}]
+    assert nav[0]["A"] == [{"Overview": []}]
+
+
 def test_set_single_leaf_with_label():
     nav = [{"Reference": ["reference/api.md", "reference/rbac.md"]}]
     m._set_single_leaf(nav, "Reference", "reference/api.md", label="API Reference")
@@ -467,6 +489,14 @@ def test_load_config_defaults(tmp_path):
     assert ops[1]["docs_dir"] == "site"
     assert ops[1]["exclude"] == ["**/.gitkeep"]
     assert ops[1]["branch"] == "develop"
+    assert ops[0]["link_overrides"] == {}
+
+
+def test_load_config_link_overrides(tmp_path):
+    cfg = tmp_path / "merge.yaml"
+    cfg.write_text("operators:\n  - title: Hib\n    repo: r\n    mappings: []\n"
+                   "    link_overrides:\n      a/install.md: x/hib.md\n")
+    assert m.load_config(str(cfg))[0]["link_overrides"] == {"a/install.md": "x/hib.md"}
 
 
 def test_load_config_section_defaults_to_title(tmp_path):
@@ -1169,6 +1199,59 @@ def test_run_product_first_missing_placeholder_raises(tmp_path):
     }]
     with pytest.raises(KeyError):
         m.run(operators, str(content), str(mkdocs))
+
+
+# --- link_overrides: mto pages stand in for source pages in links ---
+
+def _hib_run(tmp_path, overrides):
+    """Merge a tiny Hibernation repo; return the merged guide's text."""
+    repo = tmp_path / "hib"
+    _touch(repo / "content", "overview/index.md",
+           "getting-started/installation/overview.md")
+    (repo / "content/guides").mkdir(parents=True)
+    (repo / "content/guides/g.md").write_text(
+        "# G\n\n[i](../getting-started/installation/overview.md#helm)\n"
+        "[k](../getting-started/installation/kubernetes.md)\n"
+        "[o](../overview/index.md)\n")
+    content = tmp_path / "content"
+    _touch(content, "ops/hib.md")
+    mkdocs = tmp_path / "mkdocs.yml"
+    mkdocs.write_text("site_name: MTO\nnav:\n  - Hib: []\n")
+    operators = [{
+        "title": "Hib", "section": "Hib", "repo": str(repo),
+        "slug": "hib", "docs_dir": "content", "exclude": [],
+        "live_url": "https://d/hib/", "live_url_style": "directory",
+        "mappings": [
+            {"from": "overview/**", "into": "overview", "under": "Overview"},
+            {"from": "guides/**", "into": "guides", "under": "Guides"},
+        ],
+        "link_overrides": overrides,
+    }]
+    m.run(operators, str(content), str(mkdocs))
+    return (content / "hib/guides/g.md").read_text()
+
+
+def test_run_link_override_rewrites_local(tmp_path):
+    text = _hib_run(tmp_path, {"getting-started/installation/overview.md": "ops/hib.md"})
+    # the anchor belongs to the source page, not the stand-in, so it is dropped
+    assert "(../../ops/hib.md)" in text and "#helm" not in text
+    assert "https://d/hib/getting-started/installation/kubernetes" in text
+
+
+def test_run_link_override_missing_target_raises(tmp_path):
+    with pytest.raises(FileNotFoundError, match="ops/nope.md"):
+        _hib_run(tmp_path, {"getting-started/installation/overview.md": "ops/nope.md"})
+
+
+def test_run_link_override_unknown_source_raises(tmp_path):
+    with pytest.raises(FileNotFoundError, match="getting-started/instalation/overview.md"):
+        _hib_run(tmp_path, {"getting-started/instalation/overview.md": "ops/hib.md"})
+
+
+def test_run_link_override_loses_to_merged_page(tmp_path):
+    text = _hib_run(tmp_path, {"overview/index.md": "ops/hib.md"})
+    assert "ops/hib.md" not in text
+    assert "(../overview/index.md)" in text
 
 
 # --- menu order from the sub-operator's own nav ---
