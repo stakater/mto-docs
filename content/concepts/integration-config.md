@@ -550,7 +550,7 @@ integrations:
 ### Vault
 
 !!! danger "Deprecated"
-    Configuring Vault through the `IntegrationConfig` is the legacy Vault Community integration; it is **deprecated** and will be removed in a future release. Use the [Vault Enterprise extension](../extensions/vault-enterprise/overview.md) instead.
+    Configuring Vault through the `IntegrationConfig` is the legacy Vault Community integration; it is **deprecated** and will be removed in a future release. Use the [Vault Community extension](../extensions/vault-community/overview.md) instead, or the [Vault Enterprise extension](../extensions/vault-enterprise/overview.md) on Vault Enterprise. To move an existing setup across, see [Migrating](../extensions/vault-community/migrating.md).
 
 [Vault](https://www.vaultproject.io/) secures and controls access to tokens, passwords, certificates and encryption keys. When Vault is installed on the cluster, MTO can configure per-tenant access.
 
