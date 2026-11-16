@@ -62,7 +62,7 @@ The OpenBao policy, the login role and the Kubernetes `Secret` are all created f
 | cert-manager issuance | off | A cert-manager `Issuer` per namespace. |
 | Cross-tenant trust | off | Opt-in, directional trust between two tenants' certificate authorities. |
 
-Engines exist for every tenant, but grant nothing on their own: a workload gets access only once its ServiceAccount is annotated. Access is never derived from the tenant's `accessControl` groups (as it is in the [Vault integration](../vault/vault.md)) — workloads get access from ServiceAccount annotations, people from identity-provider groups named after the tenant.
+Engines exist for every tenant, but grant nothing on their own: a workload gets access only once its ServiceAccount is annotated. Access is never derived from the tenant's `accessControl` groups (as it is in the [Vault integration](../vault-community/v1-legacy/vault.md)) — workloads get access from ServiceAccount annotations, people from identity-provider groups named after the tenant.
 
 ![The OpenBao namespace list: one namespace per tenant, plus the platform namespace.](../../images/openbao-namespaces.png)
 

@@ -119,7 +119,7 @@ More details on [ArgoCD Multi-Tenancy](../extensions/argocd.md).
 
 MTO extends the tenant's permission model into Vault, creating the paths, roles and policies for the tenant. Tenant users manage their own secrets without anyone else gaining access to their paths.
 
-More details on [Vault Multi-Tenancy](../extensions/vault/vault.md).
+More details on [Vault Multi-Tenancy](../extensions/vault-community/v1-legacy/vault.md).
 
 ### Developer workspaces
 
