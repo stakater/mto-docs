@@ -5,31 +5,31 @@
       
       
       
-        <link rel="canonical" href="https://docs.stakater.com/mto/docs-vault-community-extension/extensions/vault-community/secrets-and-sharing.html">
+        <link rel="canonical" href="https://docs.stakater.com/mto/docs-vault-community-extension/extensions/vault-community/v1-legacy/vault.html">
       
       
-        <link rel="prev" href="giving-an-application-a-secret.html">
+        <link rel="prev" href="../v2/migrating.html">
       
       
-        <link rel="next" href="delivery-and-login.html">
+        <link rel="next" href="../../openbao/overview.html">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.svg">
+      <link rel="icon" href="../../../assets/images/favicon.svg">
       <meta name="generator" content="mkdocs-ProperDocs 1.6.7, mkdocs-material-9.8.1">
     
     
       
-        <title>Secrets and sharing - Multi-Tenant Operator</title>
+        <title>v1 – Legacy - Multi-Tenant Operator</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -48,15 +48,15 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-      <link rel="stylesheet" href="../../stylesheets/nav-labels.css">
+      <link rel="stylesheet" href="../../../stylesheets/nav-labels.css">
     
-      <link rel="stylesheet" href="../../stylesheets/api-toc.css">
+      <link rel="stylesheet" href="../../../stylesheets/api-toc.css">
     
-      <link rel="stylesheet" href="../../stylesheets/api-reference.css">
+      <link rel="stylesheet" href="../../../stylesheets/api-reference.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -72,7 +72,7 @@
 
     
     
-  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -101,7 +101,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#secrets-and-sharing" class="md-skip">
+        <a href="#vault-community" class="md-skip">
           Skip to content
         </a>
       
@@ -346,7 +346,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   <nav class="md-header__inner md-grid" aria-label="Header">
 
     <!-- Link to home -->
-    <a href="../.." title="Multi-Tenant Operator" class="md-header__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
+    <a href="../../.." title="Multi-Tenant Operator" class="md-header__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
       <!-- 
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -367,10 +367,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
         <!-- Logo -->
         <div class="md-header__topic">
           
-          <img class="md-header__logo_light" src="../../assets/images/logo-light.png#only-light" alt="logo">
+          <img class="md-header__logo_light" src="../../../assets/images/logo-light.png#only-light" alt="logo">
           
           
-          <img class="md-header__logo_dark" src="../../assets/images/logo-dark.png#only-dark" alt="logo">
+          <img class="md-header__logo_dark" src="../../../assets/images/logo-dark.png#only-dark" alt="logo">
           
           
           <div class="header-site-name">
@@ -1994,7 +1994,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Multi-Tenant Operator" class="md-nav__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
+    <a href="../../.." title="Multi-Tenant Operator" class="md-nav__button md-logo" aria-label="Multi-Tenant Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
@@ -2069,7 +2069,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../index.html" class="md-nav__link">
+      <a href="../../../index.html" class="md-nav__link">
         
   
   
@@ -2096,7 +2096,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../overview/why-mto.html" class="md-nav__link">
+      <a href="../../../overview/why-mto.html" class="md-nav__link">
         
   
   
@@ -2123,7 +2123,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../overview/key-features.html" class="md-nav__link">
+      <a href="../../../overview/key-features.html" class="md-nav__link">
         
   
   
@@ -2150,7 +2150,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../overview/how-it-works.html" class="md-nav__link">
+      <a href="../../../overview/how-it-works.html" class="md-nav__link">
         
   
   
@@ -2177,7 +2177,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/architecture.html" class="md-nav__link">
+      <a href="../../../concepts/architecture.html" class="md-nav__link">
         
   
   
@@ -2204,7 +2204,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../overview/deployment-models.html" class="md-nav__link">
+      <a href="../../../overview/deployment-models.html" class="md-nav__link">
         
   
   
@@ -2231,7 +2231,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../overview/use-cases.html" class="md-nav__link">
+      <a href="../../../overview/use-cases.html" class="md-nav__link">
         
   
   
@@ -2357,7 +2357,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/overview.html" class="md-nav__link">
+      <a href="../../../getting-started/installation/overview.html" class="md-nav__link">
         
   
   
@@ -2384,7 +2384,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/openshift.html" class="md-nav__link">
+      <a href="../../../getting-started/installation/openshift.html" class="md-nav__link">
         
   
   
@@ -2411,7 +2411,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/kubernetes.html" class="md-nav__link">
+      <a href="../../../getting-started/installation/kubernetes.html" class="md-nav__link">
         
   
   
@@ -2484,7 +2484,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/azure-aks/preparation.html" class="md-nav__link">
+      <a href="../../../getting-started/installation/azure-aks/preparation.html" class="md-nav__link">
         
   
   
@@ -2511,7 +2511,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/azure-aks/installation.html" class="md-nav__link">
+      <a href="../../../getting-started/installation/azure-aks/installation.html" class="md-nav__link">
         
   
   
@@ -2538,7 +2538,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/azure-aks/validation.html" class="md-nav__link">
+      <a href="../../../getting-started/installation/azure-aks/validation.html" class="md-nav__link">
         
   
   
@@ -2619,7 +2619,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/aws-eks/preparation.html" class="md-nav__link">
+      <a href="../../../getting-started/installation/aws-eks/preparation.html" class="md-nav__link">
         
   
   
@@ -2646,7 +2646,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/aws-eks/installation.html" class="md-nav__link">
+      <a href="../../../getting-started/installation/aws-eks/installation.html" class="md-nav__link">
         
   
   
@@ -2673,7 +2673,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/aws-eks/validation.html" class="md-nav__link">
+      <a href="../../../getting-started/installation/aws-eks/validation.html" class="md-nav__link">
         
   
   
@@ -2716,7 +2716,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/production-readiness.html" class="md-nav__link">
+      <a href="../../../getting-started/production-readiness.html" class="md-nav__link">
         
   
   
@@ -2743,7 +2743,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/uninstalling.html" class="md-nav__link">
+      <a href="../../../getting-started/uninstalling.html" class="md-nav__link">
         
   
   
@@ -2869,7 +2869,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/terminology.html" class="md-nav__link">
+      <a href="../../../concepts/terminology.html" class="md-nav__link">
         
   
   
@@ -2896,7 +2896,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/tenant.html" class="md-nav__link">
+      <a href="../../../concepts/tenant.html" class="md-nav__link">
         
   
   
@@ -2923,7 +2923,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/quota.html" class="md-nav__link">
+      <a href="../../../concepts/quota.html" class="md-nav__link">
         
   
   
@@ -2950,7 +2950,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/extensions.html" class="md-nav__link">
+      <a href="../../../concepts/extensions.html" class="md-nav__link">
         
   
   
@@ -2977,7 +2977,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../concepts/integration-config.html" class="md-nav__link">
+      <a href="../../../concepts/integration-config.html" class="md-nav__link">
         
   
   
@@ -3058,7 +3058,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/create-tenant.html" class="md-nav__link">
+      <a href="../../../guides/create-tenant.html" class="md-nav__link">
         
   
   
@@ -3085,7 +3085,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/create-namespaces.html" class="md-nav__link">
+      <a href="../../../guides/create-namespaces.html" class="md-nav__link">
         
   
   
@@ -3112,7 +3112,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/create-sandbox.html" class="md-nav__link">
+      <a href="../../../guides/create-sandbox.html" class="md-nav__link">
         
   
   
@@ -3139,7 +3139,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/assign-metadata.html" class="md-nav__link">
+      <a href="../../../guides/assign-metadata.html" class="md-nav__link">
         
   
   
@@ -3166,7 +3166,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/hibernate-tenant.html" class="md-nav__link">
+      <a href="../../../guides/hibernate-tenant.html" class="md-nav__link">
         
   
   
@@ -3193,7 +3193,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
+      <a href="../../../guides/restrict-nodepool-per-tenant.html" class="md-nav__link">
         
   
   
@@ -3220,7 +3220,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/disable-intra-tenant-networking.html" class="md-nav__link">
+      <a href="../../../guides/disable-intra-tenant-networking.html" class="md-nav__link">
         
   
   
@@ -3247,7 +3247,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/ingress-sharding.html" class="md-nav__link">
+      <a href="../../../guides/ingress-sharding.html" class="md-nav__link">
         
   
   
@@ -3274,7 +3274,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/host-validation.html" class="md-nav__link">
+      <a href="../../../guides/host-validation.html" class="md-nav__link">
         
   
   
@@ -3301,7 +3301,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/storage-classes.html" class="md-nav__link">
+      <a href="../../../guides/storage-classes.html" class="md-nav__link">
         
   
   
@@ -3328,7 +3328,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/pod-priority-classes.html" class="md-nav__link">
+      <a href="../../../guides/pod-priority-classes.html" class="md-nav__link">
         
   
   
@@ -3355,7 +3355,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/service-accounts.html" class="md-nav__link">
+      <a href="../../../guides/service-accounts.html" class="md-nav__link">
         
   
   
@@ -3382,7 +3382,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/image-registries.html" class="md-nav__link">
+      <a href="../../../guides/image-registries.html" class="md-nav__link">
         
   
   
@@ -3409,7 +3409,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/custom-roles.html" class="md-nav__link">
+      <a href="../../../guides/custom-roles.html" class="md-nav__link">
         
   
   
@@ -3436,7 +3436,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/extend-default-roles.html" class="md-nav__link">
+      <a href="../../../guides/extend-default-roles.html" class="md-nav__link">
         
   
   
@@ -3463,7 +3463,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/delete-tenant.html" class="md-nav__link">
+      <a href="../../../guides/delete-tenant.html" class="md-nav__link">
         
   
   
@@ -3490,7 +3490,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../guides/templated-metadata-values.html" class="md-nav__link">
+      <a href="../../../guides/templated-metadata-values.html" class="md-nav__link">
         
   
   
@@ -3670,7 +3670,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/overview/introduction.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/overview/introduction.html" class="md-nav__link">
         
   
   
@@ -3697,7 +3697,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/overview/key-features.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/overview/key-features.html" class="md-nav__link">
         
   
   
@@ -3724,7 +3724,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/overview/benefits.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/overview/benefits.html" class="md-nav__link">
         
   
   
@@ -3759,7 +3759,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/operators/template-operator-v2.html" class="md-nav__link">
+      <a href="../../../getting-started/installation/operators/template-operator-v2.html" class="md-nav__link">
         
   
   
@@ -3832,7 +3832,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/concepts/overview.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/concepts/overview.html" class="md-nav__link">
         
   
   
@@ -3859,7 +3859,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/concepts/gotemplate.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/concepts/gotemplate.html" class="md-nav__link">
         
   
   
@@ -3886,7 +3886,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/concepts/helm.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/concepts/helm.html" class="md-nav__link">
         
   
   
@@ -3913,7 +3913,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/concepts/parameters.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/concepts/parameters.html" class="md-nav__link">
         
   
   
@@ -3940,7 +3940,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/concepts/target-namespaces.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/concepts/target-namespaces.html" class="md-nav__link">
         
   
   
@@ -3967,7 +3967,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/concepts/sync.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/concepts/sync.html" class="md-nav__link">
         
   
   
@@ -3994,7 +3994,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/concepts/status.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/concepts/status.html" class="md-nav__link">
         
   
   
@@ -4021,7 +4021,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/concepts/outputs.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/concepts/outputs.html" class="md-nav__link">
         
   
   
@@ -4048,7 +4048,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/concepts/lifecycle.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/concepts/lifecycle.html" class="md-nav__link">
         
   
   
@@ -4075,7 +4075,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/concepts/security.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/concepts/security.html" class="md-nav__link">
         
   
   
@@ -4156,7 +4156,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/guides/deploying-templates.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/guides/deploying-templates.html" class="md-nav__link">
         
   
   
@@ -4183,7 +4183,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/guides/rendering-to-many-namespaces.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/guides/rendering-to-many-namespaces.html" class="md-nav__link">
         
   
   
@@ -4210,7 +4210,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/guides/composing-templateinstances.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/guides/composing-templateinstances.html" class="md-nav__link">
         
   
   
@@ -4237,7 +4237,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/guides/distributing-a-configmap.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/guides/distributing-a-configmap.html" class="md-nav__link">
         
   
   
@@ -4264,7 +4264,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/guides/surfacing-status-with-outputs.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/guides/surfacing-status-with-outputs.html" class="md-nav__link">
         
   
   
@@ -4291,7 +4291,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/guides/using-gotemplate.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/guides/using-gotemplate.html" class="md-nav__link">
         
   
   
@@ -4318,7 +4318,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/guides/testing-templates.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/guides/testing-templates.html" class="md-nav__link">
         
   
   
@@ -4345,7 +4345,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/guides/deploying-helm-charts.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/guides/deploying-helm-charts.html" class="md-nav__link">
         
   
   
@@ -4372,7 +4372,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/guides/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/guides/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   
@@ -4399,7 +4399,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/guides/parameters-and-overrides.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/guides/parameters-and-overrides.html" class="md-nav__link">
         
   
   
@@ -4426,7 +4426,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/guides/target-namespaces.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/guides/target-namespaces.html" class="md-nav__link">
         
   
   
@@ -4453,7 +4453,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/guides/parameter-validation.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/guides/parameter-validation.html" class="md-nav__link">
         
   
   
@@ -4480,7 +4480,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/guides/drift-protection.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/guides/drift-protection.html" class="md-nav__link">
         
   
   
@@ -4507,7 +4507,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator-v2/guides/orphan-resource-handling.html" class="md-nav__link">
+      <a href="../../../template-operator-v2/guides/orphan-resource-handling.html" class="md-nav__link">
         
   
   
@@ -4642,7 +4642,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator/overview/introduction.html" class="md-nav__link">
+      <a href="../../../template-operator/overview/introduction.html" class="md-nav__link">
         
   
   
@@ -4669,7 +4669,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator/overview/key-features.html" class="md-nav__link">
+      <a href="../../../template-operator/overview/key-features.html" class="md-nav__link">
         
   
   
@@ -4696,7 +4696,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator/overview/use-cases.html" class="md-nav__link">
+      <a href="../../../template-operator/overview/use-cases.html" class="md-nav__link">
         
   
   
@@ -4731,7 +4731,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/operators/template-operator.html" class="md-nav__link">
+      <a href="../../../getting-started/installation/operators/template-operator.html" class="md-nav__link">
         
   
   
@@ -4804,7 +4804,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator/concepts/templates/template.html" class="md-nav__link">
+      <a href="../../../template-operator/concepts/templates/template.html" class="md-nav__link">
         
   
   
@@ -4831,7 +4831,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator/concepts/templates/template-instance.html" class="md-nav__link">
+      <a href="../../../template-operator/concepts/templates/template-instance.html" class="md-nav__link">
         
   
   
@@ -4858,7 +4858,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator/concepts/templates/cluster-template-instance.html" class="md-nav__link">
+      <a href="../../../template-operator/concepts/templates/cluster-template-instance.html" class="md-nav__link">
         
   
   
@@ -4939,7 +4939,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator/guides/templates/deploying-templates.html" class="md-nav__link">
+      <a href="../../../template-operator/guides/templates/deploying-templates.html" class="md-nav__link">
         
   
   
@@ -4966,7 +4966,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator/guides/templates/distributing-manifests.html" class="md-nav__link">
+      <a href="../../../template-operator/guides/templates/distributing-manifests.html" class="md-nav__link">
         
   
   
@@ -4993,7 +4993,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator/guides/templates/copying-resources.html" class="md-nav__link">
+      <a href="../../../template-operator/guides/templates/copying-resources.html" class="md-nav__link">
         
   
   
@@ -5020,7 +5020,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator/guides/templates/copying-resources-2.html" class="md-nav__link">
+      <a href="../../../template-operator/guides/templates/copying-resources-2.html" class="md-nav__link">
         
   
   
@@ -5047,7 +5047,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator/guides/templates/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
+      <a href="../../../template-operator/guides/templates/distributing-secrets-using-sealed-secret-template.html" class="md-nav__link">
         
   
   
@@ -5074,7 +5074,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator/guides/templates/deploying-private-helm-charts.html" class="md-nav__link">
+      <a href="../../../template-operator/guides/templates/deploying-private-helm-charts.html" class="md-nav__link">
         
   
   
@@ -5101,7 +5101,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator/guides/templates/template-default-params.html" class="md-nav__link">
+      <a href="../../../template-operator/guides/templates/template-default-params.html" class="md-nav__link">
         
   
   
@@ -5128,7 +5128,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator/guides/templates/resource-sync-by-tgi.html" class="md-nav__link">
+      <a href="../../../template-operator/guides/templates/resource-sync-by-tgi.html" class="md-nav__link">
         
   
   
@@ -5155,7 +5155,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../template-operator/guides/templates/removing-fields.html" class="md-nav__link">
+      <a href="../../../template-operator/guides/templates/removing-fields.html" class="md-nav__link">
         
   
   
@@ -5297,7 +5297,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/overview/introduction.html" class="md-nav__link">
+      <a href="../../../finops/overview/introduction.html" class="md-nav__link">
         
   
   
@@ -5324,7 +5324,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/overview/key-features.html" class="md-nav__link">
+      <a href="../../../finops/overview/key-features.html" class="md-nav__link">
         
   
   
@@ -5351,7 +5351,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/overview/use-cases.html" class="md-nav__link">
+      <a href="../../../finops/overview/use-cases.html" class="md-nav__link">
         
   
   
@@ -5386,7 +5386,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/operators/finops.html" class="md-nav__link">
+      <a href="../../../getting-started/installation/operators/finops.html" class="md-nav__link">
         
   
   
@@ -5459,7 +5459,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/concepts/resource-model.html" class="md-nav__link">
+      <a href="../../../finops/concepts/resource-model.html" class="md-nav__link">
         
   
   
@@ -5486,7 +5486,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/concepts/finops-provider.html" class="md-nav__link">
+      <a href="../../../finops/concepts/finops-provider.html" class="md-nav__link">
         
   
   
@@ -5513,7 +5513,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/concepts/pricebook.html" class="md-nav__link">
+      <a href="../../../finops/concepts/pricebook.html" class="md-nav__link">
         
   
   
@@ -5540,7 +5540,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/concepts/costjob.html" class="md-nav__link">
+      <a href="../../../finops/concepts/costjob.html" class="md-nav__link">
         
   
   
@@ -5567,7 +5567,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/concepts/offering.html" class="md-nav__link">
+      <a href="../../../finops/concepts/offering.html" class="md-nav__link">
         
   
   
@@ -5594,7 +5594,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/concepts/subscription.html" class="md-nav__link">
+      <a href="../../../finops/concepts/subscription.html" class="md-nav__link">
         
   
   
@@ -5621,7 +5621,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/concepts/billing-model.html" class="md-nav__link">
+      <a href="../../../finops/concepts/billing-model.html" class="md-nav__link">
         
   
   
@@ -5648,7 +5648,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/concepts/compatibility-and-hierarchy.html" class="md-nav__link">
+      <a href="../../../finops/concepts/compatibility-and-hierarchy.html" class="md-nav__link">
         
   
   
@@ -5729,7 +5729,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/guides/define-pricing.html" class="md-nav__link">
+      <a href="../../../finops/guides/define-pricing.html" class="md-nav__link">
         
   
   
@@ -5756,7 +5756,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/guides/switch-active-pricebook.html" class="md-nav__link">
+      <a href="../../../finops/guides/switch-active-pricebook.html" class="md-nav__link">
         
   
   
@@ -5783,7 +5783,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/guides/collect-cost-data.html" class="md-nav__link">
+      <a href="../../../finops/guides/collect-cost-data.html" class="md-nav__link">
         
   
   
@@ -5810,7 +5810,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/guides/define-offering.html" class="md-nav__link">
+      <a href="../../../finops/guides/define-offering.html" class="md-nav__link">
         
   
   
@@ -5837,7 +5837,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/guides/price-resource-usage.html" class="md-nav__link">
+      <a href="../../../finops/guides/price-resource-usage.html" class="md-nav__link">
         
   
   
@@ -5864,7 +5864,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/guides/subscribe-to-offering.html" class="md-nav__link">
+      <a href="../../../finops/guides/subscribe-to-offering.html" class="md-nav__link">
         
   
   
@@ -5891,7 +5891,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/guides/compose-subscriptions.html" class="md-nav__link">
+      <a href="../../../finops/guides/compose-subscriptions.html" class="md-nav__link">
         
   
   
@@ -5918,7 +5918,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/guides/read-subscription-costs.html" class="md-nav__link">
+      <a href="../../../finops/guides/read-subscription-costs.html" class="md-nav__link">
         
   
   
@@ -5945,7 +5945,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../finops/guides/deactivate-a-subscription.html" class="md-nav__link">
+      <a href="../../../finops/guides/deactivate-a-subscription.html" class="md-nav__link">
         
   
   
@@ -6079,7 +6079,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../hibernation/overview/introduction.html" class="md-nav__link">
+      <a href="../../../hibernation/overview/introduction.html" class="md-nav__link">
         
   
   
@@ -6106,7 +6106,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../hibernation/overview/key-features.html" class="md-nav__link">
+      <a href="../../../hibernation/overview/key-features.html" class="md-nav__link">
         
   
   
@@ -6133,7 +6133,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../hibernation/overview/use-cases.html" class="md-nav__link">
+      <a href="../../../hibernation/overview/use-cases.html" class="md-nav__link">
         
   
   
@@ -6168,7 +6168,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/installation/operators/hibernation.html" class="md-nav__link">
+      <a href="../../../getting-started/installation/operators/hibernation.html" class="md-nav__link">
         
   
   
@@ -6241,7 +6241,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../hibernation/concepts/resource-supervisor.html" class="md-nav__link">
+      <a href="../../../hibernation/concepts/resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -6268,7 +6268,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../hibernation/concepts/cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../../../hibernation/concepts/cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -6349,7 +6349,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../hibernation/guides/create-resource-supervisor.html" class="md-nav__link">
+      <a href="../../../hibernation/guides/create-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -6376,7 +6376,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../hibernation/guides/create-cluster-resource-supervisor.html" class="md-nav__link">
+      <a href="../../../hibernation/guides/create-cluster-resource-supervisor.html" class="md-nav__link">
         
   
   
@@ -6403,7 +6403,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../hibernation/guides/hibernate-resources.html" class="md-nav__link">
+      <a href="../../../hibernation/guides/hibernate-resources.html" class="md-nav__link">
         
   
   
@@ -6491,7 +6491,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/overview.html" class="md-nav__link">
+      <a href="../../../console/overview.html" class="md-nav__link">
         
   
   
@@ -6518,7 +6518,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/dashboard.html" class="md-nav__link">
+      <a href="../../../console/dashboard.html" class="md-nav__link">
         
   
   
@@ -6545,7 +6545,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/tenants.html" class="md-nav__link">
+      <a href="../../../console/tenants.html" class="md-nav__link">
         
   
   
@@ -6572,7 +6572,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/namespaces.html" class="md-nav__link">
+      <a href="../../../console/namespaces.html" class="md-nav__link">
         
   
   
@@ -6599,7 +6599,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/hibernation.html" class="md-nav__link">
+      <a href="../../../console/hibernation.html" class="md-nav__link">
         
   
   
@@ -6626,7 +6626,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/showback.html" class="md-nav__link">
+      <a href="../../../console/showback.html" class="md-nav__link">
         
   
   
@@ -6653,7 +6653,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/quotas.html" class="md-nav__link">
+      <a href="../../../console/quotas.html" class="md-nav__link">
         
   
   
@@ -6680,7 +6680,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/templates.html" class="md-nav__link">
+      <a href="../../../console/templates.html" class="md-nav__link">
         
   
   
@@ -6707,7 +6707,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/template-instances.html" class="md-nav__link">
+      <a href="../../../console/template-instances.html" class="md-nav__link">
         
   
   
@@ -6734,7 +6734,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/cluster-template-instances.html" class="md-nav__link">
+      <a href="../../../console/cluster-template-instances.html" class="md-nav__link">
         
   
   
@@ -6761,7 +6761,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/capacity-planning.html" class="md-nav__link">
+      <a href="../../../console/capacity-planning.html" class="md-nav__link">
         
   
   
@@ -6788,7 +6788,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../console/configuration.html" class="md-nav__link">
+      <a href="../../../console/configuration.html" class="md-nav__link">
         
   
   
@@ -6870,7 +6870,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../overview.html" class="md-nav__link">
+      <a href="../../overview.html" class="md-nav__link">
         
   
   
@@ -6989,7 +6989,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../argocd-v2/overview.html" class="md-nav__link">
+      <a href="../../argocd-v2/overview.html" class="md-nav__link">
         
   
   
@@ -7016,7 +7016,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../argocd-v2/installation.html" class="md-nav__link">
+      <a href="../../argocd-v2/installation.html" class="md-nav__link">
         
   
   
@@ -7043,7 +7043,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../argocd-v2/giving-a-tenant-an-appproject.html" class="md-nav__link">
+      <a href="../../argocd-v2/giving-a-tenant-an-appproject.html" class="md-nav__link">
         
   
   
@@ -7070,7 +7070,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../argocd-v2/applications.html" class="md-nav__link">
+      <a href="../../argocd-v2/applications.html" class="md-nav__link">
         
   
   
@@ -7097,7 +7097,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../argocd-v2/identity-and-impersonation.html" class="md-nav__link">
+      <a href="../../argocd-v2/identity-and-impersonation.html" class="md-nav__link">
         
   
   
@@ -7124,7 +7124,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../argocd-v2/security.html" class="md-nav__link">
+      <a href="../../argocd-v2/security.html" class="md-nav__link">
         
   
   
@@ -7151,7 +7151,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../argocd-v2/operating.html" class="md-nav__link">
+      <a href="../../argocd-v2/operating.html" class="md-nav__link">
         
   
   
@@ -7178,7 +7178,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../argocd-v2/reference.html" class="md-nav__link">
+      <a href="../../argocd-v2/reference.html" class="md-nav__link">
         
   
   
@@ -7205,7 +7205,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../argocd-v2/migrating.html" class="md-nav__link">
+      <a href="../../argocd-v2/migrating.html" class="md-nav__link">
         
   
   
@@ -7240,7 +7240,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../argocd.html" class="md-nav__link">
+      <a href="../../argocd.html" class="md-nav__link">
         
   
   
@@ -7321,7 +7321,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../grafana-stack/overview.html" class="md-nav__link">
+      <a href="../../grafana-stack/overview.html" class="md-nav__link">
         
   
   
@@ -7348,7 +7348,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../grafana-stack/how-it-works.html" class="md-nav__link">
+      <a href="../../grafana-stack/how-it-works.html" class="md-nav__link">
         
   
   
@@ -7375,7 +7375,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../grafana-stack/installation.html" class="md-nav__link">
+      <a href="../../grafana-stack/installation.html" class="md-nav__link">
         
   
   
@@ -7402,7 +7402,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../grafana-stack/giving-a-tenant-a-dashboard.html" class="md-nav__link">
+      <a href="../../grafana-stack/giving-a-tenant-a-dashboard.html" class="md-nav__link">
         
   
   
@@ -7429,7 +7429,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../grafana-stack/tenant-access-and-roles.html" class="md-nav__link">
+      <a href="../../grafana-stack/tenant-access-and-roles.html" class="md-nav__link">
         
   
   
@@ -7456,7 +7456,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../grafana-stack/choosing-which-tenants.html" class="md-nav__link">
+      <a href="../../grafana-stack/choosing-which-tenants.html" class="md-nav__link">
         
   
   
@@ -7483,7 +7483,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../grafana-stack/operating.html" class="md-nav__link">
+      <a href="../../grafana-stack/operating.html" class="md-nav__link">
         
   
   
@@ -7510,7 +7510,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../grafana-stack/reference.html" class="md-nav__link">
+      <a href="../../grafana-stack/reference.html" class="md-nav__link">
         
   
   
@@ -7591,7 +7591,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../vault-enterprise/overview.html" class="md-nav__link">
+      <a href="../../vault-enterprise/overview.html" class="md-nav__link">
         
   
   
@@ -7618,7 +7618,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../vault-enterprise/installation.html" class="md-nav__link">
+      <a href="../../vault-enterprise/installation.html" class="md-nav__link">
         
   
   
@@ -7645,7 +7645,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../vault-enterprise/giving-an-application-a-secret.html" class="md-nav__link">
+      <a href="../../vault-enterprise/giving-an-application-a-secret.html" class="md-nav__link">
         
   
   
@@ -7672,7 +7672,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../vault-enterprise/secrets-and-sharing.html" class="md-nav__link">
+      <a href="../../vault-enterprise/secrets-and-sharing.html" class="md-nav__link">
         
   
   
@@ -7699,7 +7699,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../vault-enterprise/delivery-and-login.html" class="md-nav__link">
+      <a href="../../vault-enterprise/delivery-and-login.html" class="md-nav__link">
         
   
   
@@ -7726,7 +7726,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../vault-enterprise/security.html" class="md-nav__link">
+      <a href="../../vault-enterprise/security.html" class="md-nav__link">
         
   
   
@@ -7753,7 +7753,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../vault-enterprise/operating.html" class="md-nav__link">
+      <a href="../../vault-enterprise/operating.html" class="md-nav__link">
         
   
   
@@ -7780,7 +7780,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../vault-enterprise/reference.html" class="md-nav__link">
+      <a href="../../vault-enterprise/reference.html" class="md-nav__link">
         
   
   
@@ -7861,19 +7861,17 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
-  
   
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5_1" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5_1">
         
           
           <label class="md-nav__link" for="__nav_8_5_1" id="__nav_8_5_1_label" tabindex="0">
@@ -7894,7 +7892,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_5_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_5_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_5_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -7911,7 +7909,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="overview.html" class="md-nav__link">
+      <a href="../v2/overview.html" class="md-nav__link">
         
   
   
@@ -7938,7 +7936,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="installation.html" class="md-nav__link">
+      <a href="../v2/installation.html" class="md-nav__link">
         
   
   
@@ -7965,7 +7963,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="giving-an-application-a-secret.html" class="md-nav__link">
+      <a href="../v2/giving-an-application-a-secret.html" class="md-nav__link">
         
   
   
@@ -7990,36 +7988,9 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Secrets and sharing
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="secrets-and-sharing.html" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../v2/secrets-and-sharing.html" class="md-nav__link">
         
   
   
@@ -8035,100 +8006,6 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        
-
-<li class="md-nav__item ">
-  
-  
-    <a href="#the-kv-layout" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        The KV layout
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-      
-        
-
-<li class="md-nav__item ">
-  
-  
-    <a href="#sharing-within-a-tenant" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Sharing within a tenant
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-      
-        
-
-<li class="md-nav__item ">
-  
-  
-    <a href="#sharing-between-tenants" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Sharing between tenants
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-      
-        
-
-<li class="md-nav__item ">
-  
-  
-    <a href="#names" class="md-nav__link">
-      
-    <span class="md-ellipsis">
-      
-        Names
-      
-    </span>
-  
-    </a>
-  
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -8140,7 +8017,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="delivery-and-login.html" class="md-nav__link">
+      <a href="../v2/delivery-and-login.html" class="md-nav__link">
         
   
   
@@ -8167,7 +8044,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="security.html" class="md-nav__link">
+      <a href="../v2/security.html" class="md-nav__link">
         
   
   
@@ -8194,7 +8071,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="operating.html" class="md-nav__link">
+      <a href="../v2/operating.html" class="md-nav__link">
         
   
   
@@ -8221,7 +8098,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="reference.html" class="md-nav__link">
+      <a href="../v2/reference.html" class="md-nav__link">
         
   
   
@@ -8248,7 +8125,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="migrating.html" class="md-nav__link">
+      <a href="../v2/migrating.html" class="md-nav__link">
         
   
   
@@ -8281,9 +8158,36 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../vault/vault.html" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v1 – Legacy
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="vault.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -8299,6 +8203,434 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#what-it-saves-you" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        What it saves you
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#what-each-tenant-gets" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        What each tenant gets
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#how-tenant-roles-map-to-vault-access" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        How tenant roles map to Vault access
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#setting-up-the-integration" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Setting up the integration
+      
+    </span>
+  
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Setting up the integration">
+    
+      <ul class="md-nav__list">
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#prerequisites" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#enabling-the-integration" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Enabling the integration
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#creating-the-vault-role-for-mto" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Creating the Vault role for MTO
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#giving-an-application-a-secret" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Giving an application a secret
+      
+    </span>
+  
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Giving an application a secret">
+    
+      <ul class="md-nav__list">
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#1-create-the-tenant" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        1. Create the tenant
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#2-write-the-first-secret-user-oidc-auth" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        2. Write the first secret — user OIDC auth
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#3-label-the-serviceaccount-service-account-auth" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        3. Label the ServiceAccount — service account auth
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#4-read-the-secret-from-the-pod" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        4. Read the secret from the pod
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#operating-it" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Operating it
+      
+    </span>
+  
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Operating it">
+    
+      <ul class="md-nav__list">
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#checking-what-was-created" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Checking what was created
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#when-a-pod-cannot-log-in" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        When a pod cannot log in
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#what-deletion-does" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        What deletion does
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#using-microsoft-entra-id-group-ids" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Using Microsoft Entra ID group IDs
+      
+    </span>
+  
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Using Microsoft Entra ID group IDs">
+    
+      <ul class="md-nav__list">
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#step-1-include-group-ids-in-entra-id-tokens" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Step 1: Include group IDs in Entra ID tokens
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#step-2-import-the-claim-as-a-user-attribute-in-keycloak" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Step 2: Import the claim as a user attribute in Keycloak
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#step-3-forward-the-attribute-into-the-vault-clients-token" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Step 3: Forward the attribute into the Vault client's token
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#step-4-put-the-group-ids-in-the-tenant" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Step 4: Put the group IDs in the tenant
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -8364,7 +8696,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../openbao/overview.html" class="md-nav__link">
+      <a href="../../openbao/overview.html" class="md-nav__link">
         
   
   
@@ -8391,7 +8723,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../openbao/installation.html" class="md-nav__link">
+      <a href="../../openbao/installation.html" class="md-nav__link">
         
   
   
@@ -8418,7 +8750,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../openbao/giving-an-application-a-secret.html" class="md-nav__link">
+      <a href="../../openbao/giving-an-application-a-secret.html" class="md-nav__link">
         
   
   
@@ -8445,7 +8777,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../openbao/secrets-and-sharing.html" class="md-nav__link">
+      <a href="../../openbao/secrets-and-sharing.html" class="md-nav__link">
         
   
   
@@ -8472,7 +8804,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../openbao/encryption-and-certificates.html" class="md-nav__link">
+      <a href="../../openbao/encryption-and-certificates.html" class="md-nav__link">
         
   
   
@@ -8499,7 +8831,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../openbao/delivery-and-login.html" class="md-nav__link">
+      <a href="../../openbao/delivery-and-login.html" class="md-nav__link">
         
   
   
@@ -8526,7 +8858,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../openbao/security.html" class="md-nav__link">
+      <a href="../../openbao/security.html" class="md-nav__link">
         
   
   
@@ -8553,7 +8885,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../openbao/operating.html" class="md-nav__link">
+      <a href="../../openbao/operating.html" class="md-nav__link">
         
   
   
@@ -8580,7 +8912,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../openbao/reference.html" class="md-nav__link">
+      <a href="../../openbao/reference.html" class="md-nav__link">
         
   
   
@@ -8615,7 +8947,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../devworkspace.html" class="md-nav__link">
+      <a href="../../devworkspace.html" class="md-nav__link">
         
   
   
@@ -8688,7 +9020,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../build-your-own/overview.html" class="md-nav__link">
+      <a href="../../build-your-own/overview.html" class="md-nav__link">
         
   
   
@@ -8715,7 +9047,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../build-your-own/template-operator-essentials.html" class="md-nav__link">
+      <a href="../../build-your-own/template-operator-essentials.html" class="md-nav__link">
         
   
   
@@ -8742,7 +9074,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../build-your-own/tutorial.html" class="md-nav__link">
+      <a href="../../build-your-own/tutorial.html" class="md-nav__link">
         
   
   
@@ -8769,7 +9101,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../build-your-own/design-rules.html" class="md-nav__link">
+      <a href="../../build-your-own/design-rules.html" class="md-nav__link">
         
   
   
@@ -8796,7 +9128,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../build-your-own/real-extensions.html" class="md-nav__link">
+      <a href="../../build-your-own/real-extensions.html" class="md-nav__link">
         
   
   
@@ -8838,7 +9170,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../cli/overview.html" class="md-nav__link">
+      <a href="../../../cli/overview.html" class="md-nav__link">
         
   
   
@@ -8910,7 +9242,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../reference/api.html" class="md-nav__link">
+      <a href="../../../reference/api.html" class="md-nav__link">
         
   
   
@@ -8937,7 +9269,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../reference/configuration.html" class="md-nav__link">
+      <a href="../../../reference/configuration.html" class="md-nav__link">
         
   
   
@@ -8964,7 +9296,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../reference/rbac.html" class="md-nav__link">
+      <a href="../../../reference/rbac.html" class="md-nav__link">
         
   
   
@@ -8991,7 +9323,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../reference/security-model.html" class="md-nav__link">
+      <a href="../../../reference/security-model.html" class="md-nav__link">
         
   
   
@@ -9018,7 +9350,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../reference/metrics.html" class="md-nav__link">
+      <a href="../../../reference/metrics.html" class="md-nav__link">
         
   
   
@@ -9045,7 +9377,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../reference/webhooks.html" class="md-nav__link">
+      <a href="../../../reference/webhooks.html" class="md-nav__link">
         
   
   
@@ -9079,7 +9411,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../troubleshooting.html" class="md-nav__link">
+      <a href="../../../troubleshooting.html" class="md-nav__link">
         
   
   
@@ -9105,7 +9437,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../release-notes.html" class="md-nav__link">
+      <a href="../../../release-notes.html" class="md-nav__link">
         
   
   
@@ -9177,7 +9509,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../learn/index.html" class="md-nav__link">
+      <a href="../../../learn/index.html" class="md-nav__link">
         
   
   
@@ -9250,7 +9582,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../learn/kubernetes-multi-tenancy.html" class="md-nav__link">
+      <a href="../../../learn/kubernetes-multi-tenancy.html" class="md-nav__link">
         
   
   
@@ -9277,7 +9609,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../learn/namespace-based-multi-tenancy.html" class="md-nav__link">
+      <a href="../../../learn/namespace-based-multi-tenancy.html" class="md-nav__link">
         
   
   
@@ -9304,7 +9636,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../learn/kubernetes-tenants.html" class="md-nav__link">
+      <a href="../../../learn/kubernetes-tenants.html" class="md-nav__link">
         
   
   
@@ -9331,7 +9663,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../learn/tenant-lifecycle-management.html" class="md-nav__link">
+      <a href="../../../learn/tenant-lifecycle-management.html" class="md-nav__link">
         
   
   
@@ -9412,7 +9744,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../learn/multi-tenant-kubernetes-architecture.html" class="md-nav__link">
+      <a href="../../../learn/multi-tenant-kubernetes-architecture.html" class="md-nav__link">
         
   
   
@@ -9439,7 +9771,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../learn/kubernetes-multi-tenancy-implementation.html" class="md-nav__link">
+      <a href="../../../learn/kubernetes-multi-tenancy-implementation.html" class="md-nav__link">
         
   
   
@@ -9520,7 +9852,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../learn/kubernetes-multi-tenancy-tools.html" class="md-nav__link">
+      <a href="../../../learn/kubernetes-multi-tenancy-tools.html" class="md-nav__link">
         
   
   
@@ -9547,7 +9879,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../learn/mto-vs-capsule.html" class="md-nav__link">
+      <a href="../../../learn/mto-vs-capsule.html" class="md-nav__link">
         
   
   
@@ -9574,7 +9906,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../learn/mto-vs-hnc.html" class="md-nav__link">
+      <a href="../../../learn/mto-vs-hnc.html" class="md-nav__link">
         
   
   
@@ -9601,7 +9933,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../learn/capsule-alternatives.html" class="md-nav__link">
+      <a href="../../../learn/capsule-alternatives.html" class="md-nav__link">
         
   
   
@@ -9628,7 +9960,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../learn/mto-vs-vcluster.html" class="md-nav__link">
+      <a href="../../../learn/mto-vs-vcluster.html" class="md-nav__link">
         
   
   
@@ -9655,7 +9987,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../learn/mto-vs-loft.html" class="md-nav__link">
+      <a href="../../../learn/mto-vs-loft.html" class="md-nav__link">
         
   
   
@@ -9682,7 +10014,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../learn/mto-vs-kamaji.html" class="md-nav__link">
+      <a href="../../../learn/mto-vs-kamaji.html" class="md-nav__link">
         
   
   
@@ -9709,7 +10041,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../learn/mto-vs-hypershift.html" class="md-nav__link">
+      <a href="../../../learn/mto-vs-hypershift.html" class="md-nav__link">
         
   
   
@@ -9736,7 +10068,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../learn/mto-vs-kcp.html" class="md-nav__link">
+      <a href="../../../learn/mto-vs-kcp.html" class="md-nav__link">
         
   
   
@@ -9778,7 +10110,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../pricing.html" class="md-nav__link">
+      <a href="../../../pricing.html" class="md-nav__link">
         
   
   
@@ -9804,7 +10136,7 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
   
     <li class="md-nav__item">
-      <a href="../../eula.html" class="md-nav__link">
+      <a href="../../../eula.html" class="md-nav__link">
         
   
   
@@ -9857,11 +10189,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#the-kv-layout" class="md-nav__link">
+    <a href="#what-it-saves-you" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        The KV layout
+        What it saves you
       
     </span>
   
@@ -9875,11 +10207,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#sharing-within-a-tenant" class="md-nav__link">
+    <a href="#what-each-tenant-gets" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Sharing within a tenant
+        What each tenant gets
       
     </span>
   
@@ -9893,11 +10225,11 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#sharing-between-tenants" class="md-nav__link">
+    <a href="#how-tenant-roles-map-to-vault-access" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Sharing between tenants
+        How tenant roles map to Vault access
       
     </span>
   
@@ -9911,16 +10243,350 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <li class="md-nav__item ">
   
   
-    <a href="#names" class="md-nav__link">
+    <a href="#setting-up-the-integration" class="md-nav__link">
       
     <span class="md-ellipsis">
       
-        Names
+        Setting up the integration
       
     </span>
   
     </a>
   
+  
+      <nav class="md-nav" aria-label="Setting up the integration">
+    
+      <ul class="md-nav__list">
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#prerequisites" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#enabling-the-integration" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Enabling the integration
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#creating-the-vault-role-for-mto" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Creating the Vault role for MTO
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#giving-an-application-a-secret" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Giving an application a secret
+      
+    </span>
+  
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Giving an application a secret">
+    
+      <ul class="md-nav__list">
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#1-create-the-tenant" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        1. Create the tenant
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#2-write-the-first-secret-user-oidc-auth" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        2. Write the first secret — user OIDC auth
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#3-label-the-serviceaccount-service-account-auth" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        3. Label the ServiceAccount — service account auth
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#4-read-the-secret-from-the-pod" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        4. Read the secret from the pod
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#operating-it" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Operating it
+      
+    </span>
+  
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Operating it">
+    
+      <ul class="md-nav__list">
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#checking-what-was-created" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Checking what was created
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#when-a-pod-cannot-log-in" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        When a pod cannot log in
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#what-deletion-does" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        What deletion does
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#using-microsoft-entra-id-group-ids" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Using Microsoft Entra ID group IDs
+      
+    </span>
+  
+    </a>
+  
+  
+      <nav class="md-nav" aria-label="Using Microsoft Entra ID group IDs">
+    
+      <ul class="md-nav__list">
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#step-1-include-group-ids-in-entra-id-tokens" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Step 1: Include group IDs in Entra ID tokens
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#step-2-import-the-claim-as-a-user-attribute-in-keycloak" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Step 2: Import the claim as a user attribute in Keycloak
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#step-3-forward-the-attribute-into-the-vault-clients-token" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Step 3: Forward the attribute into the Vault client's token
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+          
+
+<li class="md-nav__item ">
+  
+  
+    <a href="#step-4-put-the-group-ids-in-the-tenant" class="md-nav__link">
+      
+    <span class="md-ellipsis">
+      
+        Step 4: Put the group IDs in the tenant
+      
+    </span>
+  
+    </a>
+  
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -9944,73 +10610,343 @@ This documentation is for a pull request deployment and is unreleased, it is onl
   
 
 
-<h1 id="secrets-and-sharing">Secrets and sharing<a class="headerlink" href="#secrets-and-sharing" title="Permanent link">#</a></h1>
-<p>Each application has its own KV prefix. Sharing is opt-in: within a tenant through a <code>_shared/</code> space, and between tenants through directional export/import.</p>
-<h2 id="the-kv-layout">The KV layout<a class="headerlink" href="#the-kv-layout" title="Permanent link">#</a></h2>
-<p>Inside the tenant's <code>&lt;tenant&gt;/kv</code> mount:</p>
-<div class="highlight"><pre><span></span><code>&lt;tenant&gt;/kv/data/&lt;env&gt;/&lt;namespace&gt;/&lt;app&gt;/...          an app's own secrets
-&lt;tenant&gt;/kv/data/&lt;env&gt;/_shared/from-&lt;namespace&gt;/...   written by that namespace's editor/admin apps,
-                                                      read by every app there and by subscribers
-</code></pre></div>
-<p><code>&lt;env&gt;</code> is <code>parent.env</code> (default <code>dev</code>). In the Vault UI, open the <code>acme/kv</code> mount: tenant <code>acme</code> with namespace <code>acme-shop</code> shows one folder per namespace plus <code>_shared/</code>.</p>
-<h2 id="sharing-within-a-tenant">Sharing within a tenant<a class="headerlink" href="#sharing-within-a-tenant" title="Permanent link">#</a></h2>
-<p>An editor or admin app writes to its namespace's <code>_shared/from-&lt;namespace&gt;/</code> space automatically. Another app reads it by subscribing, with an annotation on its ServiceAccount:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">vault.stakater.com/kv</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
-<span class="w">    </span><span class="nt">vault.stakater.com/role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">viewer</span>
-<span class="w">    </span><span class="nt">vault.stakater.com/kv-subscribe-ns</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acme-shop</span><span class="w">    </span><span class="c1"># CSV of writer namespaces</span>
-</code></pre></div>
-<p>Put on a ServiceAccount in <code>acme-tools</code>, this lets that app read <code>acme-shop</code>'s shared space (and that of any other namespace it subscribes to). A subscription is read-only on both the data and the metadata path, so a subscriber cannot change <code>max_versions</code> and destroy the writer's versions. A namespace outside the tenant cannot be subscribed to.</p>
-<h2 id="sharing-between-tenants">Sharing between tenants<a class="headerlink" href="#sharing-between-tenants" title="Permanent link">#</a></h2>
-<p>Cross-tenant sharing is directional and opt-in on both sides. The writer exports to a peer; the reader imports from a peer. The data lives in the shared mount <code>shared/kv</code>, in neither tenant's own mount.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># a ServiceAccount in tenant acme — may write to team-b's inbox</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">vault.stakater.com/kv</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
-<span class="w">    </span><span class="nt">vault.stakater.com/role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">editor</span>
-<span class="w">    </span><span class="nt">vault.stakater.com/kv-export-tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">team-b</span><span class="w">       </span><span class="c1"># CSV of peer tenants</span>
-<span class="nn">---</span>
-<span class="c1"># a ServiceAccount in tenant team-b — may read what acme sent</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">vault.stakater.com/kv</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
-<span class="w">    </span><span class="nt">vault.stakater.com/role</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">viewer</span>
-<span class="w">    </span><span class="nt">vault.stakater.com/kv-import-tenant</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">acme</span><span class="w">          </span><span class="c1"># CSV of peer tenants</span>
-</code></pre></div>
-<p><code>acme</code> writes to <code>shared/kv/data/&lt;env&gt;/from-acme/to-team-b/</code> and <code>team-b</code> reads it. The share roles live on each tenant's own auth mount, so a share login uses <code>VAULT_K8S_MOUNT</code> like any other; the role and path for each peer are in the app's <code>ConfigMap</code> (<code>VAULT_OUT_&lt;PEER&gt;_ROLE</code>/<code>_PATH</code>, <code>VAULT_IN_&lt;PEER&gt;_ROLE</code>/<code>_PATH</code>). Offboarding a tenant disables its auth mount, which revokes its share tokens too.</p>
-<p>A share to a tenant that does not exist yet renders nothing, and appears when that tenant does. Because the share lives in the shared mount, deleting a tenant never deletes it — see <a href="operating.html#deletion">Operating → deletion</a>.</p>
-<h2 id="names">Names<a class="headerlink" href="#names" title="Permanent link">#</a></h2>
-<p>The extension names each policy and role by joining parts with dots:</p>
+<h1 id="vault-community">Vault Community<a class="headerlink" href="#vault-community" title="Permanent link">#</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Deprecated — Vault Community v1 (Legacy)</p>
+<p>This is the legacy built-in Vault integration, configured through the <code>IntegrationConfig</code>. It is <strong>deprecated</strong> and will be removed in a future release. Use <strong><a href="../v2/overview.html">Vault Community v2</a></strong> instead — the Helm-chart extension that gives each tenant its own KV mount, per-application policies and login roles in a shared Vault Community, rendered through Template Operator v2. To move an existing setup across, see <a href="../v2/migrating.html">Migrating</a>. For a per-tenant Vault <em>namespace</em> — the hard isolation boundary that exists only in Vault Enterprise — use the <a href="../../vault-enterprise/overview.html">Vault Enterprise</a> extension.</p>
+</div>
+<p><a href="https://www.vaultproject.io/">Vault</a> is an identity-based secret and encryption management system: it validates and authorizes a client — a person, a machine or an application — before giving it access to a secret.</p>
+<p>With the Multi-Tenant Operator (MTO), cluster administrators can configure multi-tenancy within their cluster. The Vault integration extends that multi-tenancy into Vault: every tenant gets its own KV secrets engine, along with the policies, identity groups and Kubernetes auth roles that let tenant members and their workloads reach that engine and nothing else.</p>
+<p>Note that Vault integration in MTO is optional.</p>
+<h2 id="what-it-saves-you">What it saves you<a class="headerlink" href="#what-it-saves-you" title="Permanent link">#</a></h2>
+<p>Setting a tenant up in Vault by hand means creating, per tenant: a KV secrets engine; an admin policy and a read policy; an identity group for every identity-provider group that should have access, and a group alias on the OIDC accessor for each; and a Kubernetes auth role for every namespace whose workloads need to read secrets. All of it has to be revisited whenever a namespace is added, a team's group membership changes, or a tenant is removed.</p>
+<p>MTO derives all of it from the <code>Tenant</code> resource you already maintain, and keeps it in step as the tenant changes — creating what is now needed and removing what no longer applies.</p>
+<p>The other half is what it removes from application teams. A developer never writes a Vault policy and never holds a static Vault credential. They add one label to a ServiceAccount, and the pod authenticates with the token Kubernetes already gives it.</p>
+<pre class="mermaid"><code>flowchart LR
+  T["Tenant CR"] --&gt; M["Multi-Tenant Operator"]
+  M --&gt;|"KV v2 engine, admin and read policies,&lt;br/&gt;identity group and alias per tenant group"| V[("Vault")]
+  M --&gt;|"Kubernetes auth role per namespace&lt;br/&gt;that has a labelled ServiceAccount"| V
+  U["Tenant member"] --&gt;|"OIDC login"| V
+  S["ServiceAccount&lt;br/&gt;labelled vault-access"] --&gt;|"ServiceAccount token"| V</code></pre>
+<p><em>Per tenant, the only two things written by hand are the <code>Tenant</code> resource and a label on a ServiceAccount. Everything inside Vault is derived from them.</em></p>
+<h2 id="what-each-tenant-gets">What each tenant gets<a class="headerlink" href="#what-each-tenant-gets" title="Permanent link">#</a></h2>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">Family</th>
-<th style="text-align: left;">Name</th>
-<th style="text-align: left;">For</th>
+<th style="text-align: left;">Capability</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">What it is</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>kv.</code></td>
-<td style="text-align: left;"><code>kv.&lt;tenant&gt;.&lt;namespace&gt;.&lt;serviceaccount&gt;</code></td>
-<td style="text-align: left;">an app's own access</td>
+<td style="text-align: left;">A private KV path</td>
+<td style="text-align: left;">on</td>
+<td style="text-align: left;">A KV version 2 secrets engine mounted at <code>&lt;tenant&gt;/kv</code>. Tenants cannot see or reach another tenant's path.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>share.</code></td>
-<td style="text-align: left;"><code>share.&lt;tenant&gt;.&lt;namespace&gt;.&lt;serviceaccount&gt;.out.&lt;peer&gt;</code> / <code>.in.&lt;peer&gt;</code></td>
-<td style="text-align: left;">an export or an import</td>
+<td style="text-align: left;">Human login</td>
+<td style="text-align: left;">on</td>
+<td style="text-align: left;">Tenant members sign in through the same OIDC identity provider as the cluster, and their IdP group membership places them in a Vault identity group.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>sso.</code></td>
-<td style="text-align: left;"><code>sso.&lt;tenant&gt;.&lt;role&gt;</code></td>
-<td style="text-align: left;">a human SSO role</td>
+<td style="text-align: left;">Workload login</td>
+<td style="text-align: left;">on</td>
+<td style="text-align: left;">Pods authenticate with their Kubernetes service account token. No static Vault credentials are distributed.</td>
+</tr>
+<tr>
+<td style="text-align: left;">A common shared path</td>
+<td style="text-align: left;">on</td>
+<td style="text-align: left;">One path, <code>commonSecretsPath</code>, shared by every tenant — writable by Owners, readable by Viewers.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Editor access</td>
+<td style="text-align: left;">off</td>
+<td style="text-align: left;">Editors get no Vault access unless a custom policy grants it.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Custom policies</td>
+<td style="text-align: left;">off</td>
+<td style="text-align: left;">The <code>policies</code> block in the IntegrationConfig grants extra access to any tenant role.</td>
 </tr>
 </tbody>
 </table>
-<p>None of the parts may contain a dot (tenant names are checked), so two different sets of parts can never collide. Every name starts with the tenant, because on Community Edition all tenants' policies and roles share one Vault namespace. You do not write these names; they are shown here so you recognise them in Vault.</p>
-<hr>
-<p><strong>Previous:</strong> <a href="giving-an-application-a-secret.html">Giving an application a secret</a> · <strong>Next:</strong> <a href="delivery-and-login.html">Delivery and login</a></p>
+<p>MTO keeps all of it in step with the cluster: auth roles are removed when their namespace goes away, identity groups are deleted when they no longer match the tenant's access control, and custom policies are deleted when they are removed from the IntegrationConfig.</p>
+<h2 id="how-tenant-roles-map-to-vault-access">How tenant roles map to Vault access<a class="headerlink" href="#how-tenant-roles-map-to-vault-access" title="Permanent link">#</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tenant role</th>
+<th style="text-align: left;">Policy</th>
+<th style="text-align: left;">Vault path</th>
+<th style="text-align: left;">Capabilities</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Owner</td>
+<td style="text-align: left;"><code>&lt;tenant&gt;-admin</code></td>
+<td style="text-align: left;"><code>&lt;tenant&gt;/*</code></td>
+<td style="text-align: left;">Create, Read, Update, Delete, List</td>
+</tr>
+<tr>
+<td style="text-align: left;">Owner</td>
+<td style="text-align: left;"><code>&lt;tenant&gt;-admin</code></td>
+<td style="text-align: left;"><code>sys/mounts/&lt;tenant&gt;/*</code></td>
+<td style="text-align: left;">Create, Read, Update, Delete, List</td>
+</tr>
+<tr>
+<td style="text-align: left;">Owner</td>
+<td style="text-align: left;"><code>&lt;tenant&gt;-admin</code></td>
+<td style="text-align: left;"><code>&lt;commonSecretsPath&gt;/*</code></td>
+<td style="text-align: left;">Create, Read, Update, Delete, List</td>
+</tr>
+<tr>
+<td style="text-align: left;">Viewer</td>
+<td style="text-align: left;"><code>&lt;tenant&gt;-read</code></td>
+<td style="text-align: left;"><code>&lt;tenant&gt;/*</code></td>
+<td style="text-align: left;">Read, List</td>
+</tr>
+<tr>
+<td style="text-align: left;">Viewer</td>
+<td style="text-align: left;"><code>&lt;tenant&gt;-read</code></td>
+<td style="text-align: left;"><code>&lt;commonSecretsPath&gt;/*</code></td>
+<td style="text-align: left;">Read, List</td>
+</tr>
+<tr>
+<td style="text-align: left;">Editor</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">—</td>
+<td style="text-align: left;">No access by default</td>
+</tr>
+</tbody>
+</table>
+<p>Editors receive Vault access only through a custom policy in the IntegrationConfig whose <code>tenantRoles</code> includes <code>editor</code>. Without one, no Vault identity group is created for the tenant's editor groups.</p>
+<p>Workloads get the tenant's <code>&lt;tenant&gt;-read</code> policy, whichever role their namespace's members hold.</p>
+<h2 id="setting-up-the-integration">Setting up the integration<a class="headerlink" href="#setting-up-the-integration" title="Permanent link">#</a></h2>
+<p>These three steps are done once per cluster, by a platform administrator, before any tenant gets a Vault path.</p>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">#</a></h3>
+<ul>
+<li>A Vault instance reachable from the cluster.</li>
+<li>The <a href="https://developer.hashicorp.com/vault/docs/auth/kubernetes">Kubernetes auth method</a> enabled in Vault — workloads always authenticate through it, and so does MTO itself when <code>authMethod</code> is <code>kubernetes</code>.</li>
+<li>An RHSSO (Red Hat Single Sign-On) instance integrated with Vault over the <a href="https://developer.hashicorp.com/vault/docs/auth/jwt">OIDC login method</a>, for user access.</li>
+</ul>
+<h3 id="enabling-the-integration">Enabling the integration<a class="headerlink" href="#enabling-the-integration" title="Permanent link">#</a></h3>
+<p>Administrators point MTO at Vault by adding the details to the <a href="../../../concepts/integration-config.html#vault">IntegrationConfig</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IntegrationConfig</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenant-operator-config</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">multi-tenant-operator</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">integrations</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">vault</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">      </span><span class="nt">authMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
+<span class="w">      </span><span class="nt">accessInfo</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">accessorPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">oidc/</span>
+<span class="w">        </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://vault.apps.prod.abcdefghi.kubeapp.cloud/</span>
+<span class="w">        </span><span class="nt">roleName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mto</span>
+<span class="w">      </span><span class="nt">config</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">ssoClient</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vault</span>
+<span class="w">        </span><span class="nt">commonSecretsPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">common-shared-secrets</span>
+</code></pre></div>
+<p><code>authMethod</code> accepts <code>kubernetes</code> (the default, shown above) or <code>token</code>. Token authentication uses a <code>secretRef</code> pointing at a secret holding a Vault token, instead of <code>roleName</code>.</p>
+<p><code>accessorPath</code> is the path of the OIDC auth mount in Vault. MTO reads its accessor ID and uses it to alias each tenant group to the identity provider.</p>
+<p><code>commonSecretsPath</code> is a single path shared by all tenants; it defaults to <code>common-shared-secrets</code> when unset. Every field, and the <code>policies</code> block for defining custom tenant policies, is described in the <a href="../../../concepts/integration-config.html#vault">IntegrationConfig documentation</a>.</p>
+<h3 id="creating-the-vault-role-for-mto">Creating the Vault role for MTO<a class="headerlink" href="#creating-the-vault-role-for-mto" title="Permanent link">#</a></h3>
+<p><code>roleName</code> above names a role under Vault's Kubernetes authentication, which is how MTO reaches Vault. Create that role with a policy granting the following permissions:</p>
+<div class="highlight"><pre><span></span><code><span class="err">path</span><span class="w"> </span><span class="s2">"secret/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"create", "read", "update", "patch", "delete", "list"</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"sys/mounts"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"read", "list"</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"sys/mounts/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"create", "read", "update", "patch", "delete", "list"</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"managed-addons/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"read", "list"</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"auth/kubernetes/role/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"create", "read", "update", "patch", "delete", "list"</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"sys/auth"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"read", "list"</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"sys/policies/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"create", "read", "update", "patch", "delete", "list"</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"identity/group"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"create", "read", "update", "patch", "delete", "list"</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"identity/group-alias"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"create", "read", "update", "patch", "delete", "list"</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"identity/group-alias/id/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"create", "read", "update", "patch", "delete", "list"</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"identity/group/name/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"create", "read", "update", "patch", "delete", "list"</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"identity/group/id/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"create", "read", "update", "patch", "delete", "list"</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="giving-an-application-a-secret">Giving an application a secret<a class="headerlink" href="#giving-an-application-a-secret" title="Permanent link">#</a></h2>
+<p>This is the path most people take, and everything else on this page builds on it: create the tenant, write a secret as one of its members, read it from a pod. The examples use tenant <code>bluesky</code> and its namespace <code>bluesky-dev</code>.</p>
+<h3 id="1-create-the-tenant">1. Create the tenant<a class="headerlink" href="#1-create-the-tenant" title="Permanent link">#</a></h3>
+<p>Administrators create a tenant as usual. Vault access is granted by group: only the <code>groups</code> entries under <code>accessControl</code> produce Vault access, and <code>users</code> entries do not.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-owner-group</span>
+<span class="w">    </span><span class="nt">viewers</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-viewer-group</span>
+<span class="w">  </span><span class="nt">quota</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">small</span>
+<span class="w">  </span><span class="nt">namespaces</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sandboxes</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<p>MTO then creates, for tenant <code>bluesky</code>:</p>
+<ul>
+<li>a KV version 2 secrets engine mounted at <code>bluesky/kv</code>;</li>
+<li>a <code>bluesky-admin</code> policy and a <code>bluesky-read</code> policy;</li>
+<li>an owner identity group named <code>bluesky</code>, plus one for each group under <code>owners.groups</code>, holding the <code>bluesky-admin</code> policy;</li>
+<li>an identity group for each group under <code>viewers.groups</code>, holding the <code>bluesky-read</code> policy;</li>
+<li>a group alias for each of those groups on the OIDC accessor, so a user's IdP group membership places them in the matching Vault group.</li>
+</ul>
+<h3 id="2-write-the-first-secret-user-oidc-auth">2. Write the first secret — user OIDC auth<a class="headerlink" href="#2-write-the-first-secret-user-oidc-auth" title="Permanent link">#</a></h3>
+<p>Someone has to put a secret in. A member of an owner group signs in through OIDC and writes it; their IdP group membership is what carries the <code>bluesky-admin</code> policy.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant MTO as Multi-Tenant Operator
+    participant Vault
+    participant IdP as OIDC provider
+    participant User as Tenant member
+    MTO-&gt;&gt;Vault: create bluesky/kv, bluesky-admin and bluesky-read policies
+    MTO-&gt;&gt;Vault: create an identity group per tenant group, aliased to the OIDC accessor
+    User-&gt;&gt;Vault: log in through OIDC
+    Vault-&gt;&gt;IdP: authenticate and read the group claim
+    Vault--&gt;&gt;User: token carrying the group's policy
+    User-&gt;&gt;Vault: manage secrets under bluesky/kv</code></pre>
+<div class="highlight"><pre><span></span><code>vault<span class="w"> </span>login<span class="w"> </span>-method<span class="o">=</span>oidc
+vault<span class="w"> </span>kv<span class="w"> </span>put<span class="w"> </span>bluesky/kv/db-creds<span class="w"> </span><span class="nv">username</span><span class="o">=</span>app<span class="w"> </span><span class="nv">password</span><span class="o">=</span>s3cr3t
+</code></pre></div>
+<h3 id="3-label-the-serviceaccount-service-account-auth">3. Label the ServiceAccount — service account auth<a class="headerlink" href="#3-label-the-serviceaccount-service-account-auth" title="Permanent link">#</a></h3>
+<p>MTO enables the <a href="https://developer.hashicorp.com/vault/docs/auth/kubernetes">Kubernetes auth method</a>, which authenticates a client to Vault with a Kubernetes service account token. For every tenant namespace, MTO creates a Kubernetes auth role named <code>&lt;namespace&gt;-&lt;tenant&gt;-mto</code>, bound to that namespace and carrying the tenant's <code>&lt;tenant&gt;-read</code> policy.</p>
+<p>Only service accounts labelled <code>stakater.com/vault-access: true</code> are bound to that role:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-app</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bluesky-dev</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">stakater.com/vault-access</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+</code></pre></div>
+<p>Adding or removing the label re-reconciles the namespace. If a namespace has no labelled service account, MTO deletes the role.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant MTO as Multi-Tenant Operator
+    participant K8s as Kubernetes
+    participant Vault
+    participant Pod
+    MTO-&gt;&gt;K8s: watch ServiceAccounts labelled stakater.com/vault-access
+    MTO-&gt;&gt;Vault: create auth role bluesky-dev-bluesky-mto, policy bluesky-read
+    Pod-&gt;&gt;Vault: log in with its ServiceAccount token
+    Vault-&gt;&gt;K8s: verify the token
+    Vault--&gt;&gt;Pod: token carrying bluesky-read
+    Pod-&gt;&gt;Vault: read secrets under bluesky/kv</code></pre>
+<h3 id="4-read-the-secret-from-the-pod">4. Read the secret from the pod<a class="headerlink" href="#4-read-the-secret-from-the-pod" title="Permanent link">#</a></h3>
+<p>From a pod running as <code>bluesky-app</code>, exchange the service account token for a Vault token and read the secret written in step 2:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">VAULT_TOKEN</span><span class="o">=</span><span class="k">$(</span>vault<span class="w"> </span>write<span class="w"> </span>-field<span class="o">=</span>token<span class="w"> </span>auth/kubernetes/login<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nv">role</span><span class="o">=</span>bluesky-dev-bluesky-mto<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nv">jwt</span><span class="o">=</span>@/var/run/secrets/kubernetes.io/serviceaccount/token<span class="k">)</span>
+
+vault<span class="w"> </span>kv<span class="w"> </span>get<span class="w"> </span>bluesky/kv/db-creds
+</code></pre></div>
+<p>The role name is <code>&lt;namespace&gt;-&lt;tenant&gt;-mto</code>, so a pod in <code>bluesky-dev</code> owned by tenant <code>bluesky</code> uses <code>bluesky-dev-bluesky-mto</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Workload access is read-only: the role carries the <code>&lt;tenant&gt;-read</code> policy. Writing secrets to a tenant's path is done by tenant members signed in through OIDC, or by a client using credentials you issue separately.</p>
+</div>
+<h2 id="operating-it">Operating it<a class="headerlink" href="#operating-it" title="Permanent link">#</a></h2>
+<h3 id="checking-what-was-created">Checking what was created<a class="headerlink" href="#checking-what-was-created" title="Permanent link">#</a></h3>
+<p>For tenant <code>bluesky</code>, with a token that can read Vault's configuration:</p>
+<div class="highlight"><pre><span></span><code>vault<span class="w"> </span>secrets<span class="w"> </span>list<span class="w">                                   </span><span class="c1"># bluesky/kv/ is mounted</span>
+vault<span class="w"> </span>policy<span class="w"> </span><span class="nb">read</span><span class="w"> </span>bluesky-admin<span class="w">                      </span><span class="c1"># the owner policy</span>
+vault<span class="w"> </span>list<span class="w"> </span>identity/group/name<span class="w">                       </span><span class="c1"># one group per tenant group</span>
+vault<span class="w"> </span><span class="nb">read</span><span class="w"> </span>auth/kubernetes/role/bluesky-dev-bluesky-mto
+</code></pre></div>
+<p>The auth role's <code>bound_service_account_names</code> lists exactly the labelled service accounts in that namespace, and its <code>token_policies</code> holds <code>bluesky-read</code>.</p>
+<h3 id="when-a-pod-cannot-log-in">When a pod cannot log in<a class="headerlink" href="#when-a-pod-cannot-log-in" title="Permanent link">#</a></h3>
+<ul>
+<li>The auth role only exists while the namespace has at least one service account labelled <code>stakater.com/vault-access: true</code>. The value is the string <code>"true"</code> — quote it in YAML, or Kubernetes rejects the label as a boolean.</li>
+<li>The role name is <code>&lt;namespace&gt;-&lt;tenant&gt;-mto</code>, not the namespace name.</li>
+<li>A pod that can read but not write is behaving correctly: workload roles carry <code>&lt;tenant&gt;-read</code>.</li>
+</ul>
+<h3 id="what-deletion-does">What deletion does<a class="headerlink" href="#what-deletion-does" title="Permanent link">#</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Setting <code>enabled: false</code> removes each tenant's <code>&lt;tenant&gt;-admin</code> and <code>&lt;tenant&gt;-read</code> policies and its identity groups, and unmounts its <code>&lt;tenant&gt;/kv</code> secrets engine. Removing that mount deletes the secrets stored in it. Deleting the <code>vault</code> block outright does not run that cleanup — it leaves everything in Vault as it stands.</p>
+</div>
+<p>Deleting a namespace removes its auth role. Removing a group from the tenant's <code>accessControl</code> deletes the matching Vault identity group, so access follows the tenant definition rather than lingering in Vault.</p>
+<h2 id="using-microsoft-entra-id-group-ids">Using Microsoft Entra ID group IDs<a class="headerlink" href="#using-microsoft-entra-id-group-ids" title="Permanent link">#</a></h2>
+<p>Vault access follows the <code>groups</code> entries in a tenant's <code>accessControl</code>, matched against the group claim in the token the identity provider issues. Microsoft Entra ID puts group <strong>IDs</strong> in that claim, not group names — so if your chain is Entra ID behind Keycloak, the tenant must list object IDs, and Keycloak needs two mappers to carry the claim through.</p>
+<p>This section applies only to that chain. With an identity provider that emits group names, nothing here is needed.</p>
+<h3 id="step-1-include-group-ids-in-entra-id-tokens">Step 1: Include group IDs in Entra ID tokens<a class="headerlink" href="#step-1-include-group-ids-in-entra-id-tokens" title="Permanent link">#</a></h3>
+<p>In <strong>Microsoft Entra ID → App Registrations</strong>, open the registration used by Keycloak and configure an <strong>optional claim</strong> that includes group IDs in the token.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../images/azuread-groupClaim.png" data-desc-position="bottom"><img alt="App Registrations setup showing how the group ID claim was added." src="../../../images/azuread-groupClaim.png"></a></p>
+<h3 id="step-2-import-the-claim-as-a-user-attribute-in-keycloak">Step 2: Import the claim as a user attribute in Keycloak<a class="headerlink" href="#step-2-import-the-claim-as-a-user-attribute-in-keycloak" title="Permanent link">#</a></h3>
+<p>On the Keycloak identity provider pointing at Entra ID, create an attribute importer mapper:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Setting</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Mapper type</td>
+<td style="text-align: left;">User Attribute</td>
+</tr>
+<tr>
+<td style="text-align: left;">User attribute</td>
+<td style="text-align: left;"><code>groups</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Claim</td>
+<td style="text-align: left;"><code>groups</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Sync mode</td>
+<td style="text-align: left;"><code>FORCE</code></td>
+</tr>
+</tbody>
+</table>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../images/keycloak-idp-mapper.png" data-desc-position="bottom"><img alt="Keycloak IdP mapper showing the group IDs claim mapped to the user attribute." src="../../../images/keycloak-idp-mapper.png"></a></p>
+<h3 id="step-3-forward-the-attribute-into-the-vault-clients-token">Step 3: Forward the attribute into the Vault client's token<a class="headerlink" href="#step-3-forward-the-attribute-into-the-vault-clients-token" title="Permanent link">#</a></h3>
+<p>On the Vault client in Keycloak, create a protocol mapper that forwards the <code>groups</code> user attribute into the token it issues to Vault.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../images/vault-client-attribute-mapper.png" data-desc-position="bottom"><img alt="Keycloak Vault client mapper showing the user attribute forwarded as a token claim." src="../../../images/vault-client-attribute-mapper.png"></a></p>
+<h3 id="step-4-put-the-group-ids-in-the-tenant">Step 4: Put the group IDs in the tenant<a class="headerlink" href="#step-4-put-the-group-ids-in-the-tenant" title="Permanent link">#</a></h3>
+<p>Set the tenant's <code>accessControl</code> groups to the Entra ID object IDs rather than group names:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenantoperator.stakater.com/v1beta3</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tenant</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arsenal</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">accessControl</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">owners</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">groups</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;object-id&gt;</span>
+</code></pre></div>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../images/azuread-groupID.png" data-desc-position="bottom"><img alt="The tenant spec carrying an Entra ID group object ID." src="../../../images/azuread-groupID.png"></a></p>
+<p>MTO creates the Vault identity group and its alias from whatever string is listed there, so once the object IDs match the claim, a member of that Entra ID group signing in through OIDC lands in the tenant's Vault group.</p>
 
 
 
@@ -10304,27 +11240,27 @@ This documentation is for a pull request deployment and is unreleased, it is onl
                 <div class="flex-2">
                     <div class="logo-footer-container">
                         
-                        <img class="md-header__logo_light" src="../../assets/images/footer-logo-light.png#only-light" alt="logo">
+                        <img class="md-header__logo_light" src="../../../assets/images/footer-logo-light.png#only-light" alt="logo">
                         
                         
-                        <img src="../../assets/images/footer-logo-dark.png#only-dark" alt="logo">
+                        <img src="../../../assets/images/footer-logo-dark.png#only-dark" alt="logo">
                         
                     </div>
 
                     <div class="collaborations-img-container">
                         <div class="display-flex">
                             
-                            <img class="csa-logo-dark" src="../../assets/images/CSA_dark.png#only-dark" alt="CSA">
+                            <img class="csa-logo-dark" src="../../../assets/images/CSA_dark.png#only-dark" alt="CSA">
                             
                             
-                            <img class="csa-logo-light" src="../../assets/images/CSA_light.png#only-light" alt="CSA">
+                            <img class="csa-logo-light" src="../../../assets/images/CSA_light.png#only-light" alt="CSA">
                             
 
                             
-                            <img class="hc-logo-dark" src="../../assets/images/HC_dark.png#only-dark" alt="HC">
+                            <img class="hc-logo-dark" src="../../../assets/images/HC_dark.png#only-dark" alt="HC">
                             
                             
-                            <img class="hc-logo-light" src="../../assets/images/HC_light.png#only-light" alt="HC">
+                            <img class="hc-logo-light" src="../../../assets/images/HC_light.png#only-light" alt="HC">
                             
                         </div>
                     </div>
@@ -10716,12 +11652,12 @@ This documentation is for a pull request deployment and is unreleased, it is onl
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "navigation.tracking", "toc.follow", "navigation.top"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
-        <script src="../../javascripts/api-toc.js"></script>
+        <script src="../../../javascripts/api-toc.js"></script>
       
     
   
