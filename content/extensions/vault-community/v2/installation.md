@@ -6,12 +6,12 @@ For a platform administrator: a Vault admin sets up the login VCO uses once, the
 
 | | |
 |:---|:---|
-| Vault | **Community Edition** 2.x (tested on 2.1.1). On Vault Enterprise, use the [Vault Enterprise](../vault-enterprise/overview.md) extension. |
+| Vault | **Community Edition** 2.x (tested on 2.1.1). On Vault Enterprise, use the [Vault Enterprise](../../vault-enterprise/overview.md) extension. |
 | One cluster per Vault | Each tenant's auth mount is configured for this cluster's API and CA. A second cluster that writes the same tenant's auth config would let its workloads log in as this cluster's. |
 | [`vault-config-operator`](https://github.com/redhat-cop/vault-config-operator) (VCO) | **v1.0.3 or later**, with drift detection on and a short sync period — see [below](#install-vault-config-operator). |
-| [Template Operator v2](../../template-operator-v2/concepts/overview.md) (`templates.v2.stakater.com`) | **Required**, 0.0.5 or later (the extension's tests run 0.0.7) — the extension is configuration for it and does nothing without it. |
+| [Template Operator v2](../../../template-operator-v2/concepts/overview.md) (`templates.v2.stakater.com`) | **Required**, 0.0.5 or later (the extension's tests run 0.0.7) — the extension is configuration for it and does nothing without it. |
 | Kubernetes | **1.30 or later**, for the `ValidatingAdmissionPolicy` objects the bootstrap chart installs ([Security](security.md#the-admission-policies)). |
-| [Multi-Tenant Operator](../../getting-started/installation/overview.md) | the `Tenant` CRD. MTO labels each tenant namespace `stakater.com/tenant: <tenant>`; that label is what the charts key on. |
+| [Multi-Tenant Operator](../../../getting-started/installation/overview.md) | the `Tenant` CRD. MTO labels each tenant namespace `stakater.com/tenant: <tenant>`; that label is what the charts key on. |
 | [External Secrets Operator](https://external-secrets.io/) | only if `parent.eso` is enabled (the default) — see [Delivery and login](delivery-and-login.md). |
 
 ## Install Template Operator v2

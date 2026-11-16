@@ -1,6 +1,6 @@
 # Migrating from the IntegrationConfig integration
 
-The older Vault integration is configured through `IntegrationConfig.spec.integrations.vault` and reconciled by MTO itself (see [the older page](../vault/vault.md)). This extension replaces it. Both keep each tenant's secrets in a KV v2 mount at `<tenant>/kv`, so the secrets can stay where they are. The access model around them changes: per-application policies instead of one read policy per tenant, and SSO roles instead of identity groups.
+The older Vault integration is configured through `IntegrationConfig.spec.integrations.vault` and reconciled by MTO itself (see [the older page](../v1-legacy/vault.md)). This extension replaces it. Both keep each tenant's secrets in a KV v2 mount at `<tenant>/kv`, so the secrets can stay where they are. The access model around them changes: per-application policies instead of one read policy per tenant, and SSO roles instead of identity groups.
 
 !!! danger "Never set `enabled: false` on the old integration"
     Setting `integrations.vault.enabled: false` makes MTO unmount every tenant's `<tenant>/kv` engine, which **deletes the secrets in it** — the same secrets the extension serves. To turn the old integration off, delete the `vault` block from the `IntegrationConfig`; that leaves Vault as it stands.

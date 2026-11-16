@@ -3,10 +3,10 @@
 Give every tenant its own **secret scope in one shared Vault Community Edition** — a KV secrets engine, Kubernetes login, per-application policies and (optionally) human SSO and delivery as Kubernetes `Secret`s — derived from the `Tenant` you already maintain and kept in sync as it changes.
 
 !!! note
-    This is the Helm-chart Vault Community extension ([`mto-extension-vault-community`](https://github.com/stakater/mto-extension-vault-community)). It replaces the built-in Vault integration configured through the `IntegrationConfig`, now deprecated — see [the older integration](../vault/vault.md) and [Migrating](migrating.md). It is a port of the [Vault Enterprise](../vault-enterprise/overview.md) extension, with the same annotations, roles, object names and `ConfigMap` keys.
+    This is the Helm-chart Vault Community extension ([`mto-extension-vault-community`](https://github.com/stakater/mto-extension-vault-community)). It replaces the built-in Vault integration configured through the `IntegrationConfig`, now deprecated — see [the older integration](../v1-legacy/vault.md) and [Migrating](migrating.md). It is a port of the [Vault Enterprise](../../vault-enterprise/overview.md) extension, with the same annotations, roles, object names and `ConfigMap` keys.
 
 !!! warning "Requires Template Operator v2, VCO and Kubernetes 1.30"
-    The extension is **configuration** — it installs no controller of its own. It renders [Template Operator v2](../../template-operator-v2/concepts/overview.md) objects (`templates.v2.stakater.com`), which in turn render [`vault-config-operator`](https://github.com/redhat-cop/vault-config-operator) (VCO) custom resources; VCO writes them to Vault. Both operators must be running, and the cluster must be Kubernetes 1.30 or later for the admission policies that guard every tenant. See [Installation](installation.md).
+    The extension is **configuration** — it installs no controller of its own. It renders [Template Operator v2](../../../template-operator-v2/concepts/overview.md) objects (`templates.v2.stakater.com`), which in turn render [`vault-config-operator`](https://github.com/redhat-cop/vault-config-operator) (VCO) custom resources; VCO writes them to Vault. Both operators must be running, and the cluster must be Kubernetes 1.30 or later for the admission policies that guard every tenant. See [Installation](installation.md).
 
 ## At a glance
 
@@ -95,8 +95,8 @@ The three extensions give developers the same annotations, roles, names and `Con
 | Backend | A tenant is | Extension |
 |:---|:---|:---|
 | Vault Community | a path prefix: a KV mount, auth mounts, policies and login roles, every policy checked | this one |
-| Vault Enterprise | a Vault namespace | [Vault Enterprise](../vault-enterprise/overview.md) |
-| OpenBao | an OpenBao namespace | [OpenBao](../openbao/overview.md) |
+| Vault Enterprise | a Vault namespace | [Vault Enterprise](../../vault-enterprise/overview.md) |
+| OpenBao | an OpenBao namespace | [OpenBao](../../openbao/overview.md) |
 
 Some things Community Edition cannot give each tenant: its own audit log, identity store or `default` policy, per-tenant quotas, or delegated administration. [Security → what Community Edition cannot isolate](security.md#what-community-edition-cannot-isolate) lists them. If you need them, use Vault Enterprise or OpenBao.
 

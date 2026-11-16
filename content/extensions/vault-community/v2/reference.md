@@ -79,7 +79,7 @@ Each renders an `ExternalSecret` and `Secret` named `<serviceaccount>-<name>`. T
 
 ## Not supported yet
 
-Transit (encryption) and PKI (certificates) engines, and cert-manager integration. A `transit` or `pki` annotation is rejected with an error `ConfigMap`. For those, use the **[OpenBao](../openbao/overview.md) extension**, which covers transit and PKI.
+Transit (encryption) and PKI (certificates) engines, and cert-manager integration. A `transit` or `pki` annotation is rejected with an error `ConfigMap`. For those, use the **[OpenBao](../../openbao/overview.md) extension**, which covers transit and PKI.
 
 ## One release per cluster, one cluster per Vault
 
