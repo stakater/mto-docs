@@ -7,7 +7,7 @@ Implementing hibernation for tenants' namespaces efficiently manages cluster res
 
 ## Prerequisites
 
-- [Hibernation Operator](https://docs.stakater.com/hibernation-operator) must be installed on the cluster.
+- The Hibernation Operator is [installed](../getting-started/installation/operators/hibernation.md) on the cluster. It ships with MTO.
 
 ## Hibernating a Tenant's Namespaces
 
