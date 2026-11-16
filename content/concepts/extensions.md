@@ -116,7 +116,7 @@ Some systems are configured once for the whole cluster rather than per tenant, u
 
 With Vault enabled, MTO creates a path, a role and policies per tenant, and binds them to the tenant's owners, editors and viewers. The `policies` list lets you attach additional custom policies to specific tenant roles.
 
-See [Vault Multi-Tenancy](../extensions/vault/vault.md) and [Integration Config](integration-config.md).
+See [Vault Multi-Tenancy](../extensions/vault-community/v1-legacy/vault.md) and [Integration Config](integration-config.md).
 
 ## Metadata automation: DevWorkspace
 
@@ -159,6 +159,6 @@ See [DevWorkspace](../extensions/devworkspace.md).
 
 - [Integration Config](integration-config.md) — the cluster-wide configuration object
 - [ArgoCD Multi-Tenancy](../extensions/argocd.md)
-- [Vault Multi-Tenancy](../extensions/vault/vault.md)
+- [Vault Multi-Tenancy](../extensions/vault-community/v1-legacy/vault.md)
 - [DevWorkspace](../extensions/devworkspace.md)
 - [Build your own extension](../extensions/build-your-own/overview.md)

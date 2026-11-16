@@ -1,6 +1,6 @@
 # Build your own extension
 
-The extensions in this section, such as [ArgoCD](../argocd.md) and [Vault](../vault/vault.md), carry a tenant into a tool around the cluster. If your tool is not on the list, you can build the extension yourself, the same way Stakater builds its own.
+The extensions in this section, such as [ArgoCD](../argocd.md) and [Vault](../vault-community/v1-legacy/vault.md), carry a tenant into a tool around the cluster. If your tool is not on the list, you can build the extension yourself, the same way Stakater builds its own.
 
 An MTO extension is a Helm chart. It does not include an operator, a container image or a controller. The chart installs a few objects for [template-operator-v2](#template-operator-v2), and template-operator-v2 does the rest. It reads your `Tenant` resources, renders the objects your tool needs for each tenant, and keeps them in step as tenants change.
 

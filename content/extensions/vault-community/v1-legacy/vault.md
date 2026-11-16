@@ -1,7 +1,7 @@
 # Vault Community
 
-!!! warning "Deprecated — Vault Community (Legacy)"
-    This is the legacy built-in Vault integration, configured through the `IntegrationConfig`, and it is **deprecated** and will be removed in a future release — use the **[Vault Enterprise](../vault-enterprise/overview.md)** extension instead. The limitation is the strength of the boundary: Vault Community separates tenants with a per-tenant KV engine, policies and identity groups, but all of that lives in one shared Vault with no per-tenant Vault *namespace* — the hard isolation boundary that exists only in Vault Enterprise, which the Enterprise extension gives each tenant, rendered through Template Operator v2.
+!!! warning "Deprecated — Vault Community v1 (Legacy)"
+    This is the legacy built-in Vault integration, configured through the `IntegrationConfig`. It is **deprecated** and will be removed in a future release. Use **[Vault Community v2](../v2/overview.md)** instead — the Helm-chart extension that gives each tenant its own KV mount, per-application policies and login roles in a shared Vault Community, rendered through Template Operator v2. To move an existing setup across, see [Migrating](../v2/migrating.md). For a per-tenant Vault *namespace* — the hard isolation boundary that exists only in Vault Enterprise — use the [Vault Enterprise](../../vault-enterprise/overview.md) extension.
 
 [Vault](https://www.vaultproject.io/) is an identity-based secret and encryption management system: it validates and authorizes a client — a person, a machine or an application — before giving it access to a secret.
 
@@ -68,7 +68,7 @@ These three steps are done once per cluster, by a platform administrator, before
 
 ### Enabling the integration
 
-Administrators point MTO at Vault by adding the details to the [IntegrationConfig](../../concepts/integration-config.md#vault):
+Administrators point MTO at Vault by adding the details to the [IntegrationConfig](../../../concepts/integration-config.md#vault):
 
 ```yaml
 apiVersion: tenantoperator.stakater.com/v1beta1
@@ -94,7 +94,7 @@ spec:
 
 `accessorPath` is the path of the OIDC auth mount in Vault. MTO reads its accessor ID and uses it to alias each tenant group to the identity provider.
 
-`commonSecretsPath` is a single path shared by all tenants; it defaults to `common-shared-secrets` when unset. Every field, and the `policies` block for defining custom tenant policies, is described in the [IntegrationConfig documentation](../../concepts/integration-config.md#vault).
+`commonSecretsPath` is a single path shared by all tenants; it defaults to `common-shared-secrets` when unset. Every field, and the `policies` block for defining custom tenant policies, is described in the [IntegrationConfig documentation](../../../concepts/integration-config.md#vault).
 
 ### Creating the Vault role for MTO
 
@@ -284,7 +284,7 @@ This section applies only to that chain. With an identity provider that emits gr
 
 In **Microsoft Entra ID → App Registrations**, open the registration used by Keycloak and configure an **optional claim** that includes group IDs in the token.
 
-![App Registrations setup showing how the group ID claim was added.](../../images/azuread-groupClaim.png)
+![App Registrations setup showing how the group ID claim was added.](../../../images/azuread-groupClaim.png)
 
 ### Step 2: Import the claim as a user attribute in Keycloak
 
@@ -297,13 +297,13 @@ On the Keycloak identity provider pointing at Entra ID, create an attribute impo
 | Claim | `groups` |
 | Sync mode | `FORCE` |
 
-![Keycloak IdP mapper showing the group IDs claim mapped to the user attribute.](../../images/keycloak-idp-mapper.png)
+![Keycloak IdP mapper showing the group IDs claim mapped to the user attribute.](../../../images/keycloak-idp-mapper.png)
 
 ### Step 3: Forward the attribute into the Vault client's token
 
 On the Vault client in Keycloak, create a protocol mapper that forwards the `groups` user attribute into the token it issues to Vault.
 
-![Keycloak Vault client mapper showing the user attribute forwarded as a token claim.](../../images/vault-client-attribute-mapper.png)
+![Keycloak Vault client mapper showing the user attribute forwarded as a token claim.](../../../images/vault-client-attribute-mapper.png)
 
 ### Step 4: Put the group IDs in the tenant
 
@@ -321,6 +321,6 @@ spec:
         - <object-id>
 ```
 
-![The tenant spec carrying an Entra ID group object ID.](../../images/azuread-groupID.png)
+![The tenant spec carrying an Entra ID group object ID.](../../../images/azuread-groupID.png)
 
 MTO creates the Vault identity group and its alias from whatever string is listed there, so once the object IDs match the claim, a member of that Entra ID group signing in through OIDC lands in the tenant's Vault group.
