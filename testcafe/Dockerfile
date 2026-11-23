@@ -1,19 +1,9 @@
-FROM node:22-alpine
-WORKDIR testcafe
+# Pinned image ships TestCafe with a matching Chromium, so a distro browser update can't break the tests
+FROM testcafe/testcafe:3.7.7
 
 ARG CURRENT_BRANCH
-
 ENV CURRENT_BRANCH=$CURRENT_BRANCH
-ENV XDG_DOWNLOAD_DIR=/opt/JDownloader/Downloads
 
-COPY src src
-COPY package.json package.json
+COPY src /tests/src
 
-RUN echo "Install build deps.." \
-  && apk --update --no-cache add \
-    chromium \
-    tzdata
-
-RUN yarn
-
-CMD ["yarn", "start"]
+CMD ["chromium:headless", "/tests/src/**.ts", "--disable-native-automation", "--browser-init-timeout", "60000", "--page-load-timeout", "30000"]
