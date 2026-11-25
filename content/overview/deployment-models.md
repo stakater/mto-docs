@@ -98,10 +98,12 @@ Most platforms run more than one cluster — a cluster per environment (dev, sta
 
 **Local runtime, central definition.** The operator, and the `Tenant`, `Quota` and `IntegrationConfig` resources, are local to each cluster — they run in, and are stored by, that cluster's own API server. But the *definitions* of those resources are authored once, in Git, and delivered to every cluster by a GitOps engine (Argo CD, Flux) or a cluster-management layer such as RHACM. One source of truth, reviewed in one place; every cluster kept in step with it.
 
+The platform standards rolled into tenant namespaces — baseline RBAC, network policies, image-pull secrets — are part of that same central definition. They are expressed as [Template Operator v2](../getting-started/installation/operators/template-operator-v2.md) `Template` and `TemplateInstance` objects, which ship with MTO, and they travel in the base alongside the `Tenant`: distributed to every cluster and reconciled locally, so the same standards reach every tenant namespace on every cluster. Standards should not differ between clusters, so they stay in the base and no overlay touches them — only consumption and environment-specific guardrails belong in overlays.
+
 ```mermaid
 flowchart TB
     subgraph Git["Git — single source of truth"]
-        Base["base/<br/>Tenant · Quota · IntegrationConfig"]
+        Base["base/<br/>Tenant · Quota · IntegrationConfig · Templates"]
         Odev["overlays/dev"]
         Oprod["overlays/prod"]
     end
