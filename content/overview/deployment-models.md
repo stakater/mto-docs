@@ -88,9 +88,34 @@ Some tenants require complete cluster isolation — for regulatory or security r
 
 Dedicated clusters give the strongest boundary and the highest operational cost: every cluster is another control plane, monitoring stack, upgrade cycle and on-call surface.
 
-MTO is installed per cluster. Where several clusters each host more than one team, applying the same `Tenant`, `Quota` and `IntegrationConfig` definitions to each of them through GitOps gives every cluster the same tenancy model, reviewed in one place. MTO does not federate across clusters or provide a single fleet-wide view — each installation governs its own cluster.
+MTO is installed per cluster, and each installation governs only its own cluster. Running several clusters consistently is a GitOps pattern rather than an MTO feature — see [Running MTO across many clusters](#running-mto-across-many-clusters).
 
 This is a working pattern rather than a theoretical one: one public sector customer runs MTO across several clusters, the largest of them carrying more than 100 tenants and 700 namespaces.
+
+## Running MTO across many clusters
+
+Most platforms run more than one cluster — a cluster per environment (dev, staging, prod), per region, or a dedicated cluster alongside a shared one. MTO has no fleet controller and no cross-cluster view: each installation governs only the cluster it runs in. Consistency across clusters does not come from MTO federating them — it comes from **where the tenant definitions live**.
+
+**Local runtime, central definition.** The operator, and the `Tenant`, `Quota` and `IntegrationConfig` resources, are local to each cluster — they run in, and are stored by, that cluster's own API server. But the *definitions* of those resources are authored once, in Git, and delivered to every cluster by a GitOps engine (Argo CD, Flux) or a cluster-management layer such as RHACM. One source of truth, reviewed in one place; every cluster kept in step with it.
+
+The platform standards rolled into tenant namespaces — baseline RBAC, network policies, image-pull secrets — are part of that same central definition. They are expressed as [Template Operator v2](../getting-started/installation/operators/template-operator-v2.md) `Template` and `TemplateInstance` objects, which ship with MTO, and they travel in the base alongside the `Tenant`: distributed to every cluster and reconciled locally, so the same standards reach every tenant namespace on every cluster. Standards should not differ between clusters, so they stay in the base and no overlay touches them — only consumption and environment-specific guardrails belong in overlays.
+
+```mermaid
+flowchart TB
+    subgraph Git["Git — single source of truth"]
+        Base["base/<br/>Tenant · Quota · IntegrationConfig · Templates"]
+        Odev["overlays/dev"]
+        Oprod["overlays/prod"]
+    end
+    Hub["GitOps engine<br/>(hub cluster)"]
+    Git --> Hub
+    Hub -->|dev overlay| Cdev["Dev cluster<br/>MTO + CRs"]
+    Hub -->|prod overlay| Cprod["Prod cluster<br/>MTO + CRs"]
+```
+
+**Same tenant, per-cluster overlay.** When one team spans several clusters, keep the tenant's *identity* the same everywhere — `acme` on the dev cluster and `acme` on the prod cluster are the same team — and express what differs per environment as an overlay on a shared base: a larger `Quota` and stricter network policy in prod, a smaller footprint in dev. Forking a separate definition per cluster is exactly what lets dev and prod drift apart, which is the problem a single definition exists to prevent.
+
+This is a GitOps composition around N independent installs, not a feature of MTO: the hub distributes the base plus each cluster's overlay, and MTO on each spoke reconciles what it receives.
 
 ## Hybrid platforms
 
