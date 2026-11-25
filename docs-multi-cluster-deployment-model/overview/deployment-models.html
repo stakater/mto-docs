@@ -10152,9 +10152,10 @@ This documentation is for a pull request deployment and is unreleased, it is onl
 <h2 id="running-mto-across-many-clusters">Running MTO across many clusters<a class="headerlink" href="#running-mto-across-many-clusters" title="Permanent link">#</a></h2>
 <p>Most platforms run more than one cluster — a cluster per environment (dev, staging, prod), per region, or a dedicated cluster alongside a shared one. MTO has no fleet controller and no cross-cluster view: each installation governs only the cluster it runs in. Consistency across clusters does not come from MTO federating them — it comes from <strong>where the tenant definitions live</strong>.</p>
 <p><strong>Local runtime, central definition.</strong> The operator, and the <code>Tenant</code>, <code>Quota</code> and <code>IntegrationConfig</code> resources, are local to each cluster — they run in, and are stored by, that cluster's own API server. But the <em>definitions</em> of those resources are authored once, in Git, and delivered to every cluster by a GitOps engine (Argo CD, Flux) or a cluster-management layer such as RHACM. One source of truth, reviewed in one place; every cluster kept in step with it.</p>
+<p>The platform standards rolled into tenant namespaces — baseline RBAC, network policies, image-pull secrets — are part of that same central definition. They are expressed as <a href="../getting-started/installation/operators/template-operator-v2.html">Template Operator v2</a> <code>Template</code> and <code>TemplateInstance</code> objects, which ship with MTO, and they travel in the base alongside the <code>Tenant</code>: distributed to every cluster and reconciled locally, so the same standards reach every tenant namespace on every cluster. Standards should not differ between clusters, so they stay in the base and no overlay touches them — only consumption and environment-specific guardrails belong in overlays.</p>
 <pre class="mermaid"><code>flowchart TB
     subgraph Git["Git — single source of truth"]
-        Base["base/&lt;br/&gt;Tenant · Quota · IntegrationConfig"]
+        Base["base/&lt;br/&gt;Tenant · Quota · IntegrationConfig · Templates"]
         Odev["overlays/dev"]
         Oprod["overlays/prod"]
     end
